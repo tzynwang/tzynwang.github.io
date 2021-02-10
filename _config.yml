@@ -23,13 +23,13 @@ pretty_urls:
   trailing_html: true # Set to false to remove trailing '.html' from permalinks
 
 # Directory
-source_dir: source
+#source_dir: source
 public_dir: public
 tag_dir: tags
 archive_dir: archives
 category_dir: categories
-code_dir: downloads/code
-i18n_dir: :lang
+#code_dir: downloads/code
+#i18n_dir: :lang
 skip_render:
 
 # Writing
@@ -100,6 +100,8 @@ ignore:
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
 theme: next
+theme_config:
+  scheme: Pisces
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
