@@ -3,14 +3,14 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: "文組露營"
-subtitle: ""
-description: "還沒有餘裕可以搖曳😂"
+title: 普通文組
+subtitle: 
+description: He reads for his own pleasure rather than to impart knowledge or correct the opinions of others (Woolf 1925). 😇
 keywords:
-author: Char
+author: Charlie（茶）
 since: 2021
 language: en
-timezone: ""
+timezone: 
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://example.com/child' and root as '/child/'
