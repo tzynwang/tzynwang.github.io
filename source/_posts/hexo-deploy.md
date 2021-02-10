@@ -1,8 +1,11 @@
 ---
 title: Windows環境：hexo從寫完第一篇文章到deploy至GitHub Page
 date: 2021-02-10 19:00:23
-categories: hexo
-tags: hexo deploy, Windows
+categories: 
+- hexo
+tags:
+- hexo deploy
+- Windows
 ---
 
 這篇文章的主要目的：幫助初學者完成hexo deploy to GitHub Page，盡力做到詳細描述。

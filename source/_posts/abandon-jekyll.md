@@ -1,8 +1,10 @@
 ---
 title: 掰jekyll
 date: 2021-02-08 20:31:26
-categories: jekyll
-tags: bundle-exec
+categories:
+- jekyll
+tags:
+- bundle exec
 ---
 
 花費一個工作天後決定放棄jekyll。
