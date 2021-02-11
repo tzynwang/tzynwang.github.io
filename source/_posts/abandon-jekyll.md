@@ -12,7 +12,7 @@ tags:
 
 研究途中發現第一次在terminal執行jekyll server時需要`bundle exec jekyll server`
 
-提問：為何需要bundle exec？
+提問：為何需要`bundle exec`？
 簡答：`bundle exec`讓環境知道該使用哪些版本的gems
 詳細：`bundle exec`讓環境去查詢Gemfile來得知需要**使用哪些gems、並這些gems要固定在哪個版本**來搭配要執行的程式。
 
@@ -20,9 +20,12 @@ tags:
 
 <!-- more -->
 
-在環境中第一次執行`jekyll server`要輸入`bundle exec jekyll server`，讓環境根據Gemfile查詢你的程式會用到哪些gems、並這些gems該使用哪些版本。在Gemfile沒有更新的情況下，第二次以後直接在環境輸入`jekyll server`就可以了。
+在環境（註）中第一次執行`jekyll server`要輸入`bundle exec jekyll server`，讓環境根據Gemfile查詢你的程式會用到哪些gems、並這些gems該使用哪些版本。在Gemfile沒有更新的情況下，第二次以後直接在環境輸入`jekyll server`就可以了。
 
-若有修改Gemfile的內容，則須執行`bundle exec jekyll server`。
+若有修改Gemfile的內容，則須重新執行`bundle exec jekyll server`。
+
+註：
+「環境」在這個上下文脈絡中指的是Windows的cmd.exe，我透過cmd.exe這個[Command-line interface（CLI）](https://en.wikipedia.org/wiki/Command-line_interface)來執行hexo相關的操作。
 
 參考資料：
 [What does bundle exec rake mean?](https://stackoverflow.com/a/16218854/15028185)
