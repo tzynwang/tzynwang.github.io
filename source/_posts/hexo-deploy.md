@@ -70,6 +70,7 @@ deploy:
 1. 參照[hexo官方文件的步驟2](https://hexo.io/docs/github-pages)，檢查hexo blog中的package.json是否已經填入必須內容
     - 備註：hexo 5.3版似乎已經在package.json自帶步驟2的內容
 1. 確認cmd.exe目前的位置還在hexo blog內（沒有請先`cd <hexo blog的路徑>`）
+1. 輸入`hexo generate`，這會在hexo blog新增一個名稱為「public」的資料夾
 1. 輸入`git init`，如果[Windows的資料夾設定為「顯示隱藏的檔案、資料夾和磁碟機」的話](https://support.microsoft.com/zh-tw/windows/%E5%9C%A8-windows-10-%E4%B8%AD%E6%AA%A2%E8%A6%96%E9%9A%B1%E8%97%8F%E7%9A%84%E6%AA%94%E6%A1%88%E5%92%8C%E8%B3%87%E6%96%99%E5%A4%BE-97fbc472-c603-9d90-91d0-1166d1d9f4b5)，這時候hexo blog資料夾中會出現一個叫做.git的資料夾
 1. 輸入`git add .`，意思是**準備**把hexo blog中所有的東西（除了.gitignore檔案內列出的例外）都推上GitHub
 1. 輸入`git commit -m "<輸入commit訊息>"`，commit訊息之後會顯示在repository上
@@ -77,7 +78,7 @@ deploy:
     - 舉例：github使用者名為「JorgeLuisBorges」，請輸入`git push https://github.com/JorgeLuisBorges/JorgeLuisBorges.github.io.git source`
 1. 以上步驟成功的話，repository裡面會出現一支叫做`source`的分支（branch）
 1. 參照[hexo官方文件的步驟4](https://hexo.io/docs/github-pages)，在repository中新增檔案「.github/workflows/pages.yml」，檔案內容從hexo官方文件中複製貼上即可
-1. 在cmd.exe輸入`hexo clean && hexo deploy`
+1. 在cmd.exe輸入`hexo deploy`
 1. `hexo deploy`後，repository上會出現一個叫`master`的分支
 1. 切換到repository的Settings分頁，GitHub Pages的Source請選擇`master`（即`hexo deploy`後新出現的master分支），並按下`Save`
 1. 以上完成後，blog會出現在「https://<github使用者名稱>.github.io/」
