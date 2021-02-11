@@ -109,3 +109,12 @@ deploy:
   type: git
   repo: https://github.com/tzynwang/tzynwang.github.io.git
   branch: publish
+
+# Sitemap
+## Docs: https://www.npmjs.com/package/hexo-generator-sitemap
+sitemap:
+  path: sitemap.xml
+  template: 
+  rel: false
+  tags: true
+  categories: true
