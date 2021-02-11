@@ -46,6 +46,13 @@
 
   
   <url>
+    <loc>https://tzynwang.github.io/tags/hexo-deploy/</loc>
+    <lastmod>2021-02-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://tzynwang.github.io/tags/Windows/</loc>
     <lastmod>2021-02-11</lastmod>
     <changefreq>daily</changefreq>
@@ -54,13 +61,6 @@
   
   <url>
     <loc>https://tzynwang.github.io/tags/bundle-exec/</loc>
-    <lastmod>2021-02-11</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://tzynwang.github.io/tags/hexo-deploy/</loc>
     <lastmod>2021-02-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
