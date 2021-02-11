@@ -22,9 +22,10 @@ tags:
 - hexo blog：意指[Setup](https://hexo.io/docs/setup)時，透過`hexo init <folder>`產生，存放hexo內容的資料夾
 - cmd.exe：Windows內建的命令列直譯器，按住鍵盤上的Windos鍵（通常在鍵盤左下角）加上R鍵，輸入cmd後Enter即可開啟cmd.exe
 - GitHub Page：指已經完成`hexo deploy`，被部屬到GitHub Page的hexo部落格；可以透過「https://<github使用者名稱>.github.io」這個網址瀏覽。
+- repository：指GitHub上存放hexo部落格的repository，如果完全根據hexo官方文件的指示來進行部屬的話，repository上應有source與master這兩個分支。
 
 
-## 步驟
+## 前半：將中繼標記埋入hexo部落格
 1. 開啟[Google Search Console](https://search.google.com/search-console/welcome)
 1. 在「網頁前置字元」輸入GitHub Page的網址
 1. 選擇「其他驗證方法」中的「HTML 標記」，複製由Google提供的中繼標記
@@ -34,6 +35,23 @@ tags:
 1. 開啟cmd.exe，移動到`hexo blog`（`cd <hexo blog的路徑>`），執行`hexo generate --deploy`
 1. 使用瀏覽器Chrome或Brave開啟「https://<github使用者名稱>.github.io」，按下F12呼叫開發者工具，確認<head></head>之間有包含Google中繼標記
 1. 回到Google Search Console，點選驗證；驗證成功即代表網站註冊完成
+1. 還沒完，但先喝杯茶☕
+
+## 後半：安裝hexo-generator-sitemap
+1. 開啟cmd.exe，移動到`hexo blog`（`cd <hexo blog的路徑>`），執行`npm install hexo-generator-sitemap --save`
+1. 開啟hexo blog中的_config.yml，輸入以下內容：
+```
+sitemap:
+  path: sitemap.xml
+  template: # Custom template path. 沒有使用自訂template的話，此行空白即可
+  rel: false
+  tags: true
+  categories: true
+```
+1. 執行`hexo generate`，public資料夾應會出現sitemap.xml
+1. 執行`hexo deploy`，將sitemap.xml推到repository；master分支的根目錄（root）應可直接看到sitemap.xml檔案
+1. 進入Google Search Console，點選左側欄位的「Sitemap」
+1. 在「新增Sitemap」中填入sitemap.xml，按下提交，完成🎉
 
 
 ## 筆記
