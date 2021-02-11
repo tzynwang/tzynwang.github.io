@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <meta name="google-site-verification" content="6Df5aVEQ0VnFs85Kmy2VYlYOZrGMS1izxzdhFxEN-bI" />
+    <title>普通文組</title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+<link rel="stylesheet" href="/css/gitment.css">
+
+    <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_859455_eaq7v6w8ktj.css">
+<meta name="generator" content="Hexo 5.3.0"></head>
+<body>
+<header class="header">
+    <div class="header-inner">
+        <div class="header-title">
+
+        </div>
+        <nav class="header-nav">
+            
+            <a href="/" class="header-nav-link" >
+                Home
+            </a>
+            
+
+            
+            <a href="/archives" class="header-nav-link">
+                Archives
+            </a>
+            
+
+            
+            <a href="/tags" class="header-nav-link">
+                Tags
+            </a>
+            
+
+            
+            <a href="/about/" class="header-nav-link">
+                About
+            </a>
+            
+        </nav>
+    </div>
+</header>
+<header class="mobile-header">
+    <div class="mobile-nav">
+        <div class="mobile-nav-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="mobile-nav-title">
+            <a href="/" class="mobile-nav-title-link">Charlie（茶）'s Blog</a>
+        </div>
+
+    </div>
+    <nav class="mobile-menu">
+        <ul class="mobile-menu-list">
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-home"></i>
+                <a href="/" class="mobile-nav-link">Home</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-archive"></i>
+                <a href="/archives" class="mobile-nav-link">Archives</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-tag"></i>
+                <a href="/tags" class="mobile-nav-link">Tags</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-about"></i>
+                <a href="/about/" class="mobile-nav-link">About</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<div class="main">
+    <div class="content-inner">
+        <div class="posts">
+    <article class="post-whole">
+        <div class="post-title">
+            <h2 class="title">讓Google可以搜尋到GitHub Page上的hexo部落格</h2>
+            <div class="post-meta">
+                <span class="post-time">2021-02-11</span>
+                
+                <span class="post-category">
+                    
+                    <a class="category" href="/categories/hexo/">hexo</a>
+                    
+                </span>
+                
+                <span class="post-visit"> visited：<span id="busuanzi_value_page_pv"></span></span>
+            </div>
+        </div>
+        <div class="post-toc" id="post-toc">
+    <strong class="post-toc-title">目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E7%AF%87%E7%94%A8%E8%AA%9E%E8%AA%AA%E6%98%8E"><span class="toc-text">本篇用語說明</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%A5%E9%A9%9F"><span class="toc-text">步驟</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AD%86%E8%A8%98"><span class="toc-text">筆記</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99"><span class="toc-text">參考資料</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B4%E9%AB%94%E6%B5%81%E7%A8%8B"><span class="toc-text">整體流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%92%E5%85%A5meta-tag%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-text">插入meta tag的方法</span></a></li></ol></li></ol>
+    <div class="back-to-top" id="back-to-top">
+        <a href="javascript:void(0);">回到顶部</a>
+    </div>
+</div>
+        <div class="post-content">
+            <p>提問：如何讓Google Search可以搜尋到部屬在GitHub Page上的hexo部落格？<br>簡答：去<a target="_blank" rel="noopener" href="https://search.google.com/search-console/welcome">Google Search Console</a>對Google Search註冊你的hexo部落格</p>
+<p>大部分解🔫內收</p>
+<a id="more"></a>
+
+<h2 id="本篇用語說明"><a href="#本篇用語說明" class="headerlink" title="本篇用語說明"></a>本篇用語說明</h2><ul>
+<li>hexo blog：意指<a target="_blank" rel="noopener" href="https://hexo.io/docs/setup">Setup</a>時，透過<code>hexo init &lt;folder&gt;</code>產生，存放hexo內容的資料夾</li>
+<li>cmd.exe：Windows內建的命令列直譯器，按住鍵盤上的Windos鍵（通常在鍵盤左下角）加上R鍵，輸入cmd後Enter即可開啟cmd.exe</li>
+<li>GitHub Page：指已經完成<code>hexo deploy</code>，被部屬到GitHub Page的hexo部落格；可以透過「https://&lt;github使用者名稱&gt;.github.io」這個網址瀏覽。</li>
+</ul>
+<h2 id="步驟"><a href="#步驟" class="headerlink" title="步驟"></a>步驟</h2><ol>
+<li>開啟<a target="_blank" rel="noopener" href="https://search.google.com/search-console/welcome">Google Search Console</a></li>
+<li>在「網頁前置字元」輸入GitHub Page的網址</li>
+<li>選擇「其他驗證方法」中的「HTML 標記」，複製由Google提供的中繼標記</li>
+<li>進入hexo部落格在本機的資料夾</li>
+<li>進入themes資料夾→（主題名稱資料夾）→layout→_partial</li>
+<li>開啟head檔案，將前一個步驟複製起來的Google中繼標記貼到<head></head>標籤之中</li>
+<li>開啟cmd.exe，移動到<code>hexo blog</code>（<code>cd &lt;hexo blog的路徑&gt;</code>），執行<code>hexo generate --deploy</code></li>
+<li>使用瀏覽器Chrome或Brave開啟「https://&lt;github使用者名稱&gt;.github.io」，按下F12呼叫開發者工具，確認<head></head>之間有包含Google中繼標記</li>
+<li>回到Google Search Console，點選驗證；驗證成功即代表網站註冊完成</li>
+</ol>
+<h2 id="筆記"><a href="#筆記" class="headerlink" title="筆記"></a>筆記</h2><p>提問：為什麼要把中繼標記貼到themes資料夾裡面的head檔案中？<br>答：每次執行hexo generate時，才會確保中繼標記都有被包進最後要部屬上GitHub的檔案裡面</p>
+<p>提問：沒有把中繼標記的內容存下來，哪裡可以找回來？<br>答：</p>
+<ol>
+<li>進入Google Search Console，左側欄位往下捲，點選「設定」</li>
+<li>右側面板點選「使用者和權限」，點選擁有者右側的三點按鈕，點選「管理資源擁有者」，會另開新視窗</li>
+<li>點選新視窗中的「詳細資料」複製中繼標記</li>
+</ol>
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><h3 id="整體流程"><a href="#整體流程" class="headerlink" title="整體流程"></a>整體流程</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://brooke01.github.io/tecblog/2020/04/26/hexo-generator-sitemap/">hexo-generator-sitemap</a></li>
+<li><a target="_blank" rel="noopener" href="https://askie.today/upload-sitemap-google-search-console-seo-hexo-blog/">輕鬆地提交 Hexo 部落格的 Sitemap.xml 到 Google Search Console</a><h3 id="插入meta-tag的方法"><a href="#插入meta-tag的方法" class="headerlink" title="插入meta tag的方法"></a>插入meta tag的方法</h3></li>
+<li><a target="_blank" rel="noopener" href="https://hoxis.github.io/Hexo+Next%20SEO%E4%BC%98%E5%8C%96.html">Hexo博客Next主题SEO优化方法</a></li>
+</ul>
+
+        </div>
+        
+        <div class="post-tag">
+            
+            <a class="tag" href="/tags/Google-Search-Console/" title="Google Search Console">Google Search Console</a>
+            
+            <a class="tag" href="/tags/google-site-verification/" title="google-site-verification">google-site-verification</a>
+            
+            <a class="tag" href="/tags/SEO/" title="SEO">SEO</a>
+            
+            <a class="tag" href="/tags/Windows/" title="Windows">Windows</a>
+            
+        </div>
+        
+    </article>
+</div>
+<div class="paginator">
+    
+        
+        
+            <a class="next" href="/2021/02/10/hexo-deploy/">
+                <span class="nav-default">Windows環境：hexo從寫完第一篇文章到deploy至GitHub Page</span>
+                <span class="nav-mobile">Next</span>
+                <i class="iconfont icon-next"></i>
+            </a>
+        
+    
+</div>
+<div id="comment-container"></div>
+    </div>
+</div>
+<footer class="footer-social">
+    
+
+    
+
+    
+
+    <div class="footer-copyright">
+        <p class="time-line">
+            &copy;
+            
+            
+            2021
+            &nbsp;<i class="iconfont icon-heart"></i>&nbsp;
+            <a target="_blank" href="https://github.com/iJinxin">Charlie（茶）</a>
+        </p>
+        <p class="theme-info">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme -
+            <a target="_blank" href="https://github.com/iJinxin/hexo-theme-sky">Sky</a>
+        </p>
+    </div>
+</footer>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="/js/index.js"></script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+    
+
+</script>
+</html>

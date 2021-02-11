@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://tzynwang.github.io/2021/02/11/hexo-and-Google-Search-Console/</loc>
+    
+    <lastmod>2021-02-11</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://tzynwang.github.io/about/index.html</loc>
+    
+    <lastmod>2021-02-11</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://tzynwang.github.io/2021/02/08/abandon-jekyll/</loc>
     
     <lastmod>2021-02-11</lastmod>
@@ -10,13 +24,6 @@
   
   <url>
     <loc>https://tzynwang.github.io/2021/02/10/hexo-deploy/</loc>
-    
-    <lastmod>2021-02-10</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://tzynwang.github.io/about/index.html</loc>
     
     <lastmod>2021-02-10</lastmod>
     
@@ -46,6 +53,34 @@
 
   
   <url>
+    <loc>https://tzynwang.github.io/tags/bundle-exec/</loc>
+    <lastmod>2021-02-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://tzynwang.github.io/tags/Google-Search-Console/</loc>
+    <lastmod>2021-02-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://tzynwang.github.io/tags/google-site-verification/</loc>
+    <lastmod>2021-02-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://tzynwang.github.io/tags/SEO/</loc>
+    <lastmod>2021-02-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://tzynwang.github.io/tags/Windows/</loc>
     <lastmod>2021-02-11</lastmod>
     <changefreq>daily</changefreq>
@@ -59,24 +94,17 @@
     <priority>0.6</priority>
   </url>
   
-  <url>
-    <loc>https://tzynwang.github.io/tags/bundle-exec/</loc>
-    <lastmod>2021-02-11</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
 
   
   <url>
-    <loc>https://tzynwang.github.io/categories/hexo/</loc>
+    <loc>https://tzynwang.github.io/categories/jekyll/</loc>
     <lastmod>2021-02-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://tzynwang.github.io/categories/jekyll/</loc>
+    <loc>https://tzynwang.github.io/categories/hexo/</loc>
     <lastmod>2021-02-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
