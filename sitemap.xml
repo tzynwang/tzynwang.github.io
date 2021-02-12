@@ -2,14 +2,28 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://tzynwang.github.io/2021/02/12/gh-page-empty/</loc>
+    <loc>https://tzynwang.github.io/2021/02/12/next-theme-edit-note/</loc>
     
     <lastmod>2021-02-12</lastmod>
     
   </url>
   
   <url>
-    <loc>https://tzynwang.github.io/2021/02/12/next-theme-edit-note/</loc>
+    <loc>https://tzynwang.github.io/categories/index.html</loc>
+    
+    <lastmod>2021-02-12</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://tzynwang.github.io/tags/index.html</loc>
+    
+    <lastmod>2021-02-12</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://tzynwang.github.io/2021/02/12/gh-page-empty/</loc>
     
     <lastmod>2021-02-12</lastmod>
     
@@ -40,20 +54,6 @@
     <loc>https://tzynwang.github.io/2021/02/08/abandon-jekyll/</loc>
     
     <lastmod>2021-02-11</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://tzynwang.github.io/categories/index.html</loc>
-    
-    <lastmod>2021-02-08</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://tzynwang.github.io/tags/index.html</loc>
-    
-    <lastmod>2021-02-08</lastmod>
     
   </url>
   
@@ -125,7 +125,7 @@
   </url>
   
   <url>
-    <loc>https://tzynwang.github.io/categories/hexo/next-hexo-theme/</loc>
+    <loc>https://tzynwang.github.io/categories/next-hexo-theme/</loc>
     <lastmod>2021-02-12</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>

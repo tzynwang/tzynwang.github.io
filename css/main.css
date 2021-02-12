@@ -1302,7 +1302,7 @@ pre code {
   display: inline-block;
 }
 .site-author-image {
-  border: 1px solid #eee;
+  border: 0px solid #cfc9bd;
   max-width: 120px;
   padding: 2px;
   border-radius: 50%;

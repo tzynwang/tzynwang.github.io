@@ -125,7 +125,6 @@
   <ul class="main-menu menu">
         <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
   </ul>
 </nav>
 
@@ -169,19 +168,20 @@
 <div class="site-state-wrap site-overview-item animated">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
-          <a href="/archives/">
-        
+          <a href="/archives">
           <span class="site-state-item-count">5</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
+            <a href="/categories/">
         <span class="site-state-item-count">3</span>
-        <span class="site-state-item-name">categories</span>
+        <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
+            <a href="/tags/">
         <span class="site-state-item-count">6</span>
-        <span class="site-state-item-name">tags</span>
+        <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
 </div>
@@ -243,7 +243,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2021-02-12 15:23:22 / Modified: 15:33:14" itemprop="dateCreated datePublished" datetime="2021-02-12T15:23:22+08:00">2021-02-12</time>
+      <time title="Created: 2021-02-12 15:23:22 / Modified: 20:46:33" itemprop="dateCreated datePublished" datetime="2021-02-12T15:23:22+08:00">2021-02-12</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -255,7 +255,7 @@
         </span>
           , 
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/hexo/next-hexo-theme/" itemprop="url" rel="index"><span itemprop="name">next (hexo theme)</span></a>
+          <a href="/categories/next-hexo-theme/" itemprop="url" rel="index"><span itemprop="name">next (hexo theme)</span></a>
         </span>
     </span>
 
@@ -269,15 +269,17 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><code>_config.next.yml</code>無法滿足更新部落格文章字體大小的需求，搜一搜發現需要動到<code>themes\next\source\css</code>內的檔案。<br>記錄一下本次更新了哪些值。</p>
+          <p>因<code>_config.next.yml</code>無法滿足更新部落格文章字體大小的需求，故修改了<code>themes\next\source\css</code>內的檔案。<br>記錄一下本次更新了哪些值。</p>
 <h2 id="themes-next-source-css-variables-base-styl"><a href="#themes-next-source-css-variables-base-styl" class="headerlink" title="themes\next\source\css_variables\base.styl"></a>themes\next\source\css_variables\base.styl</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; Color system</span><br><span class="line">&#x2F;&#x2F; --------------------------------------------------</span><br><span class="line">$whitesmoke   &#x3D; #F5F3ED;</span><br><span class="line">$blue         &#x3D; #ADBDC4;</span><br></pre></td></tr></table></figure>
-<p>套了<a target="_blank" rel="noopener" href="https://www.schemecolor.com/elegant-and-classic.php">elegant-and-classic</a>的色票。</p>
+<p>套用了<a target="_blank" rel="noopener" href="https://www.schemecolor.com/elegant-and-classic.php">elegant-and-classic</a>的色票。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; Global text color on &lt;body&gt;</span><br><span class="line">$text-color                   &#x3D; $black-dim;</span><br></pre></td></tr></table></figure>
 <p>修改變數為<code>$black-dim</code>讓整體的文字顏色深一點。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; Font size</span><br><span class="line">$font-size-medium         &#x3D; .95em;</span><br><span class="line">$font-size-large          &#x3D; 1em;</span><br><span class="line">$font-size-larger         &#x3D; 1.125em;</span><br><span class="line">$font-size-largest        &#x3D; 1.25em;</span><br></pre></td></tr></table></figure>
 <p>把字體進行整體縮小。</p>
 <h2 id="themes-next-source-css-variables-Pisces-styl"><a href="#themes-next-source-css-variables-Pisces-styl" class="headerlink" title="themes\next\source\css_variables\Pisces.styl"></a>themes\next\source\css_variables\Pisces.styl</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; Settings for some of the most global styles.</span><br><span class="line">&#x2F;&#x2F; --------------------------------------------------</span><br><span class="line">$body-bg-color                &#x3D; #CFC9BD;</span><br></pre></td></tr></table></figure>
-<p>套了<a target="_blank" rel="noopener" href="https://www.schemecolor.com/elegant-and-classic.php">elegant-and-classic</a>的色票。</p>
+<p>套用了<a target="_blank" rel="noopener" href="https://www.schemecolor.com/elegant-and-classic.php">elegant-and-classic</a>的色票。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; Sidebar</span><br><span class="line">&#x2F;&#x2F; --------------------------------------------------</span><br><span class="line">$site-author-image-border-width   &#x3D; 0px;</span><br><span class="line">$site-author-image-border-color   &#x3D; #CFC9BD;</span><br></pre></td></tr></table></figure>
+<p>覺得左側欄大頭貼邊界以整體視覺上來說有些突兀，決定拔掉。<br>將邊界寬度設定為0px。<br>前後對照如下圖：<br><img src="/2021/02/12/next-theme-edit-note/author-image-border-adjust.png" alt="Author image with and without the border"></p>
 <h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/dpdpdppp/article/details/102387532">hexo(Next主题)修改文字大小</a></p>
 
       
