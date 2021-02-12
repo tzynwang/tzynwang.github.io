@@ -9,7 +9,7 @@ tags:
 ---
 
 症狀描述：
-執行了hexo deploy後，確認與gh-page關聯的分支（branch）內有檔案，並檔案內容皆正確，但連線到「https://<github使用者名稱>.github.io」卻只看到一片空白。
+執行了`hexo deploy`後，確認與gh-page關聯的分支（branch）內有檔案，並檔案內容皆正確，但連線到「https://<github使用者名稱>.github.io」卻只看到一片空白。
 
 簡答：
 - 更新hexo-deployer-git至3.0.0版
