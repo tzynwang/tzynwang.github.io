@@ -22,24 +22,20 @@
     var NexT = window.NexT || {};
     var CONFIG = {"hostname":"tzynwang.github.io","root":"/","images":"/images","scheme":"Pisces","version":"8.2.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}};
   </script>
-<meta name="description" content="提問：如何讓Google Search可以搜尋到部屬在GitHub Page上的hexo部落格？簡答：去Google Search Console對Google Search註冊你的hexo部落格 大部分解🔫內收">
+<meta name="description" content="_config.next.yml無法滿足更新部落格文章字體大小的需求，搜一搜發現需要動到themes\next\source\css內的檔案。記錄一下本次更新了哪些值。 themes\next\source\css_variables\base.styl1234&#x2F;&#x2F; Color system&#x2F;&#x2F; -------------------------------">
 <meta property="og:type" content="article">
-<meta property="og:title" content="讓Google可以搜尋到GitHub Page上的hexo部落格">
-<meta property="og:url" content="https://tzynwang.github.io/2021/02/11/hexo-and-Google-Search-Console/index.html">
+<meta property="og:title" content="但是我不想拒絕修改CSS">
+<meta property="og:url" content="https://tzynwang.github.io/2021/02/12/next-theme-edit-note/index.html">
 <meta property="og:site_name" content="普通文組">
-<meta property="og:description" content="提問：如何讓Google Search可以搜尋到部屬在GitHub Page上的hexo部落格？簡答：去Google Search Console對Google Search註冊你的hexo部落格 大部分解🔫內收">
+<meta property="og:description" content="_config.next.yml無法滿足更新部落格文章字體大小的需求，搜一搜發現需要動到themes\next\source\css內的檔案。記錄一下本次更新了哪些值。 themes\next\source\css_variables\base.styl1234&#x2F;&#x2F; Color system&#x2F;&#x2F; -------------------------------">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-02-11T09:03:29.000Z">
-<meta property="article:modified_time" content="2021-02-11T09:34:14.884Z">
+<meta property="article:published_time" content="2021-02-12T07:23:22.000Z">
+<meta property="article:modified_time" content="2021-02-12T07:33:14.056Z">
 <meta property="article:author" content="Charlie（茶）">
-<meta property="article:tag" content="Windows">
-<meta property="article:tag" content="Google Search Console">
-<meta property="article:tag" content="google-site-verification">
-<meta property="article:tag" content="SEO">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://tzynwang.github.io/2021/02/11/hexo-and-Google-Search-Console/">
+<link rel="canonical" href="https://tzynwang.github.io/2021/02/12/next-theme-edit-note/">
 
 
 <script class="page-configurations">
@@ -51,7 +47,7 @@
     lang   : 'en'
   };
 </script>
-<title>讓Google可以搜尋到GitHub Page上的hexo部落格 | 普通文組</title>
+<title>但是我不想拒絕修改CSS | 普通文組</title>
   
 
 
@@ -161,7 +157,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%AC%E7%AF%87%E7%94%A8%E8%AA%9E%E8%AA%AA%E6%98%8E"><span class="nav-number">1.</span> <span class="nav-text">本篇用語說明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E5%8D%8A%EF%BC%9A%E5%B0%87%E4%B8%AD%E7%B9%BC%E6%A8%99%E8%A8%98%E5%9F%8B%E5%85%A5hexo%E9%83%A8%E8%90%BD%E6%A0%BC"><span class="nav-number">2.</span> <span class="nav-text">前半：將中繼標記埋入hexo部落格</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BE%8C%E5%8D%8A%EF%BC%9A%E5%AE%89%E8%A3%9Dhexo-generator-sitemap"><span class="nav-number">3.</span> <span class="nav-text">後半：安裝hexo-generator-sitemap</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AD%86%E8%A8%98"><span class="nav-number">4.</span> <span class="nav-text">筆記</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99"><span class="nav-number">5.</span> <span class="nav-text">參考資料</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B4%E9%AB%94%E6%B5%81%E7%A8%8B"><span class="nav-number">5.1.</span> <span class="nav-text">整體流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8F%92%E5%85%A5meta-tag%E7%9A%84%E6%96%B9%E6%B3%95"><span class="nav-number">5.2.</span> <span class="nav-text">插入meta tag的方法</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#themes-next-source-css-variables-base-styl"><span class="nav-number">1.</span> <span class="nav-text">themes\next\source\css_variables\base.styl</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#themes-next-source-css-variables-Pisces-styl"><span class="nav-number">2.</span> <span class="nav-text">themes\next\source\css_variables\Pisces.styl</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99"><span class="nav-number">3.</span> <span class="nav-text">參考資料</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -225,7 +221,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://tzynwang.github.io/2021/02/11/hexo-and-Google-Search-Console/">
+    <link itemprop="mainEntityOfPage" href="https://tzynwang.github.io/2021/02/12/next-theme-edit-note/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar-pexels-alex-andrews-215-215.png">
@@ -238,7 +234,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          讓Google可以搜尋到GitHub Page上的hexo部落格
+          但是我不想拒絕修改CSS
         </h1>
 
         <div class="post-meta-container">
@@ -250,7 +246,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2021-02-11 17:03:29 / Modified: 17:34:14" itemprop="dateCreated datePublished" datetime="2021-02-11T17:03:29+08:00">2021-02-11</time>
+      <time title="Created: 2021-02-12 15:23:22 / Modified: 15:33:14" itemprop="dateCreated datePublished" datetime="2021-02-12T15:23:22+08:00">2021-02-12</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -259,6 +255,10 @@
       <span class="post-meta-item-text">In</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
           <a href="/categories/hexo/" itemprop="url" rel="index"><span itemprop="name">hexo</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/hexo/next-hexo-theme/" itemprop="url" rel="index"><span itemprop="name">next (hexo theme)</span></a>
         </span>
     </span>
 
@@ -272,48 +272,16 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>提問：如何讓Google Search可以搜尋到部屬在GitHub Page上的hexo部落格？<br>簡答：去<a target="_blank" rel="noopener" href="https://search.google.com/search-console/welcome">Google Search Console</a>對Google Search註冊你的hexo部落格</p>
-<p>大部分解🔫內收</p>
-<a id="more"></a>
-
-<h2 id="本篇用語說明"><a href="#本篇用語說明" class="headerlink" title="本篇用語說明"></a>本篇用語說明</h2><ul>
-<li>hexo blog：意指<a target="_blank" rel="noopener" href="https://hexo.io/docs/setup">Setup</a>時，透過<code>hexo init &lt;folder&gt;</code>產生，存放hexo內容的資料夾</li>
-<li>cmd.exe：Windows內建的命令列直譯器，按住鍵盤上的Windos鍵（通常在鍵盤左下角）加上R鍵，輸入cmd後Enter即可開啟cmd.exe</li>
-<li>GitHub Page：指已經完成<code>hexo deploy</code>，被部屬到GitHub Page的hexo部落格；可以透過「https://&lt;github使用者名稱&gt;.github.io」這個網址瀏覽。</li>
-<li>repository：指GitHub上存放hexo部落格的repository，如果完全根據hexo官方文件的指示來進行部屬的話，repository上應有source與master這兩個分支。</li>
-</ul>
-<h2 id="前半：將中繼標記埋入hexo部落格"><a href="#前半：將中繼標記埋入hexo部落格" class="headerlink" title="前半：將中繼標記埋入hexo部落格"></a>前半：將中繼標記埋入hexo部落格</h2><ol>
-<li>開啟<a target="_blank" rel="noopener" href="https://search.google.com/search-console/welcome">Google Search Console</a></li>
-<li>在「網頁前置字元」輸入GitHub Page的網址</li>
-<li>選擇「其他驗證方法」中的「HTML 標記」，複製由Google提供的中繼標記</li>
-<li>進入hexo部落格在本機的資料夾</li>
-<li>進入themes資料夾→（主題名稱資料夾）→layout→_partial</li>
-<li>開啟head檔案，將前一個步驟複製起來的Google中繼標記貼到<head></head>標籤之中</li>
-<li>開啟cmd.exe，移動到<code>hexo blog</code>（<code>cd &lt;hexo blog的路徑&gt;</code>），執行<code>hexo generate --deploy</code></li>
-<li>使用瀏覽器Chrome或Brave開啟「https://&lt;github使用者名稱&gt;.github.io」，按下F12呼叫開發者工具，確認<head></head>之間有包含Google中繼標記</li>
-<li>回到Google Search Console，點選驗證；驗證成功即代表網站註冊完成</li>
-<li>還沒完，但先喝杯茶☕</li>
-</ol>
-<h2 id="後半：安裝hexo-generator-sitemap"><a href="#後半：安裝hexo-generator-sitemap" class="headerlink" title="後半：安裝hexo-generator-sitemap"></a>後半：安裝hexo-generator-sitemap</h2><ol>
-<li>開啟cmd.exe，移動到<code>hexo blog</code>（<code>cd &lt;hexo blog的路徑&gt;</code>），執行<code>npm install hexo-generator-sitemap --save</code></li>
-<li>開啟hexo blog中的_config.yml，輸入以下內容：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sitemap:</span><br><span class="line">  path: sitemap.xml</span><br><span class="line">  template: # Custom template path. 沒有使用自訂template的話，此行空白即可</span><br><span class="line">  rel: false</span><br><span class="line">  tags: true</span><br><span class="line">  categories: true</span><br></pre></td></tr></table></figure></li>
-<li>執行<code>hexo generate</code>，public資料夾應會出現sitemap.xml</li>
-<li>執行<code>hexo deploy</code>，將sitemap.xml推到repository；master分支的根目錄（root）應可直接看到sitemap.xml檔案</li>
-<li>進入Google Search Console，點選左側欄位的「Sitemap」</li>
-<li>在「新增Sitemap」中填入sitemap.xml，按下提交，完成🎉</li>
-</ol>
-<h2 id="筆記"><a href="#筆記" class="headerlink" title="筆記"></a>筆記</h2><p>提問：為什麼要把中繼標記貼到themes資料夾裡面的head檔案中？<br>答：每次執行hexo generate時，才會確保中繼標記都有被包進最後要部屬上GitHub的檔案裡面</p>
-<p>提問：沒有把中繼標記的內容存下來，哪裡可以找回來？<br>答：</p>
-<ol>
-<li>進入Google Search Console，左側欄位往下捲，點選「設定」</li>
-<li>右側面板點選「使用者和權限」，點選擁有者右側的三點按鈕，點選「管理資源擁有者」，會另開新視窗</li>
-<li>點選新視窗中的「詳細資料」複製中繼標記</li>
-</ol>
-<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><h3 id="整體流程"><a href="#整體流程" class="headerlink" title="整體流程"></a>整體流程</h3><ul>
-<li><a target="_blank" rel="noopener" href="https://brooke01.github.io/tecblog/2020/04/26/hexo-generator-sitemap/">hexo-generator-sitemap</a></li>
-<li><a target="_blank" rel="noopener" href="https://askie.today/upload-sitemap-google-search-console-seo-hexo-blog/">輕鬆地提交 Hexo 部落格的 Sitemap.xml 到 Google Search Console</a><h3 id="插入meta-tag的方法"><a href="#插入meta-tag的方法" class="headerlink" title="插入meta tag的方法"></a>插入meta tag的方法</h3></li>
-<li><a target="_blank" rel="noopener" href="https://hoxis.github.io/Hexo+Next%20SEO%E4%BC%98%E5%8C%96.html">Hexo博客Next主题SEO优化方法</a></li>
-</ul>
+        <p><code>_config.next.yml</code>無法滿足更新部落格文章字體大小的需求，搜一搜發現需要動到<code>themes\next\source\css</code>內的檔案。<br>記錄一下本次更新了哪些值。</p>
+<h2 id="themes-next-source-css-variables-base-styl"><a href="#themes-next-source-css-variables-base-styl" class="headerlink" title="themes\next\source\css_variables\base.styl"></a>themes\next\source\css_variables\base.styl</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; Color system</span><br><span class="line">&#x2F;&#x2F; --------------------------------------------------</span><br><span class="line">$whitesmoke   &#x3D; #F5F3ED;</span><br><span class="line">$blue         &#x3D; #ADBDC4;</span><br></pre></td></tr></table></figure>
+<p>套了<a target="_blank" rel="noopener" href="https://www.schemecolor.com/elegant-and-classic.php">elegant-and-classic</a>的色票。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; Global text color on &lt;body&gt;</span><br><span class="line">$text-color                   &#x3D; $black-dim;</span><br></pre></td></tr></table></figure>
+<p>修改變數為<code>$black-dim</code>讓整體的文字顏色深一點。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; Font size</span><br><span class="line">$font-size-medium         &#x3D; .95em;</span><br><span class="line">$font-size-large          &#x3D; 1em;</span><br><span class="line">$font-size-larger         &#x3D; 1.125em;</span><br><span class="line">$font-size-largest        &#x3D; 1.25em;</span><br></pre></td></tr></table></figure>
+<p>把字體進行整體縮小。</p>
+<h2 id="themes-next-source-css-variables-Pisces-styl"><a href="#themes-next-source-css-variables-Pisces-styl" class="headerlink" title="themes\next\source\css_variables\Pisces.styl"></a>themes\next\source\css_variables\Pisces.styl</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; Settings for some of the most global styles.</span><br><span class="line">&#x2F;&#x2F; --------------------------------------------------</span><br><span class="line">$body-bg-color                &#x3D; #CFC9BD;</span><br></pre></td></tr></table></figure>
+<p>套了<a target="_blank" rel="noopener" href="https://www.schemecolor.com/elegant-and-classic.php">elegant-and-classic</a>的色票。</p>
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/dpdpdppp/article/details/102387532">hexo(Next主题)修改文字大小</a></p>
 
     </div>
 
@@ -322,25 +290,16 @@
     
 
     <footer class="post-footer">
-          <div class="post-tags">
-              <a href="/tags/Windows/" rel="tag"># Windows</a>
-              <a href="/tags/Google-Search-Console/" rel="tag"># Google Search Console</a>
-              <a href="/tags/google-site-verification/" rel="tag"># google-site-verification</a>
-              <a href="/tags/SEO/" rel="tag"># SEO</a>
-          </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2021/02/10/hexo-deploy/" rel="prev" title="Windows環境：hexo從寫完第一篇文章到deploy至GitHub Page">
-                  <i class="fa fa-chevron-left"></i> Windows環境：hexo從寫完第一篇文章到deploy至GitHub Page
+                <a href="/2021/02/12/gh-page-empty/" rel="prev" title="repository明明有東西，gh-page卻是一片空白">
+                  <i class="fa fa-chevron-left"></i> repository明明有東西，gh-page卻是一片空白
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2021/02/12/gh-page-empty/" rel="next" title="repository明明有東西，gh-page卻是一片空白">
-                  repository明明有東西，gh-page卻是一片空白 <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
     </footer>

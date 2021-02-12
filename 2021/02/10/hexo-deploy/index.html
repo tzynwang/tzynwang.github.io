@@ -1,111 +1,282 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8">
-    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
-    <meta name="google-site-verification" content="6Df5aVEQ0VnFs85Kmy2VYlYOZrGMS1izxzdhFxEN-bI" />
-    <title>普通文組</title>
-    
-<link rel="stylesheet" href="/css/style.css">
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
 
-    
-<link rel="stylesheet" href="/css/gitment.css">
 
-    <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_859455_eaq7v6w8ktj.css">
-<meta name="generator" content="Hexo 5.3.0"></head>
-<body>
-<header class="header">
-    <div class="header-inner">
-        <div class="header-title">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/menu_book-black-18dp.svg" color="#222">
 
-        </div>
-        <nav class="header-nav">
-            
-            <a href="/" class="header-nav-link" >
-                Home
-            </a>
-            
+<link rel="stylesheet" href="/css/main.css">
 
-            
-            <a href="/archives" class="header-nav-link">
-                Archives
-            </a>
-            
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Helvetica:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
 
-            
-            <a href="/tags" class="header-nav-link">
-                Tags
-            </a>
-            
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.2/css/all.min.css">
 
-            
-            <a href="/about/" class="header-nav-link">
-                About
-            </a>
-            
-        </nav>
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"tzynwang.github.io","root":"/","images":"/images","scheme":"Pisces","version":"8.2.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}};
+  </script>
+<meta name="description" content="這篇文章的主要目的：幫助初學者完成hexo deploy to GitHub Page，盡力做到詳細描述。順便記錄把hexo blog部屬到github page過程中踩到的坑，以及如何爬出來。 必要前置需求為了完成部屬（deploy），請先在電腦上安裝git。 本篇用語說明 hexo blog：意指Setup時，透過hexo init &lt;folder&gt;產生，存放hexo內容的資料夾">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Windows環境：hexo從寫完第一篇文章到deploy至GitHub Page">
+<meta property="og:url" content="https://tzynwang.github.io/2021/02/10/hexo-deploy/index.html">
+<meta property="og:site_name" content="普通文組">
+<meta property="og:description" content="這篇文章的主要目的：幫助初學者完成hexo deploy to GitHub Page，盡力做到詳細描述。順便記錄把hexo blog部屬到github page過程中踩到的坑，以及如何爬出來。 必要前置需求為了完成部屬（deploy），請先在電腦上安裝git。 本篇用語說明 hexo blog：意指Setup時，透過hexo init &lt;folder&gt;產生，存放hexo內容的資料夾">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-02-10T11:00:23.000Z">
+<meta property="article:modified_time" content="2021-02-11T13:38:27.336Z">
+<meta property="article:author" content="Charlie（茶）">
+<meta property="article:tag" content="hexo deploy">
+<meta property="article:tag" content="Windows">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://tzynwang.github.io/2021/02/10/hexo-deploy/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+<title>Windows環境：hexo從寫完第一篇文章到deploy至GitHub Page | 普通文組</title>
+  
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
     </div>
-</header>
-<header class="mobile-header">
-    <div class="mobile-nav">
-        <div class="mobile-nav-icon">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-        <div class="mobile-nav-title">
-            <a href="/" class="mobile-nav-title-link">Charlie（茶）'s Blog</a>
-        </div>
+  </div>
 
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">普通文組</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Keep calm and read the docs</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
     </div>
-    <nav class="mobile-menu">
-        <ul class="mobile-menu-list">
-            <li class="mobile-menu-item">
-                <i class="iconfont icon-home"></i>
-                <a href="/" class="mobile-nav-link">Home</a>
-            </li>
-            <li class="mobile-menu-item">
-                <i class="iconfont icon-archive"></i>
-                <a href="/archives" class="mobile-nav-link">Archives</a>
-            </li>
-            <li class="mobile-menu-item">
-                <i class="iconfont icon-tag"></i>
-                <a href="/tags" class="mobile-nav-link">Tags</a>
-            </li>
-            <li class="mobile-menu-item">
-                <i class="iconfont icon-about"></i>
-                <a href="/about/" class="mobile-nav-link">About</a>
-            </li>
-        </ul>
-    </nav>
-</header>
-<div class="main">
-    <div class="content-inner">
-        <div class="posts">
-    <article class="post-whole">
-        <div class="post-title">
-            <h2 class="title">Windows環境：hexo從寫完第一篇文章到deploy至GitHub Page</h2>
-            <div class="post-meta">
-                <span class="post-time">2021-02-10</span>
-                
-                <span class="post-category">
-                    
-                    <a class="category" href="/categories/hexo/">hexo</a>
-                    
-                </span>
-                
-                <span class="post-visit"> visited：<span id="busuanzi_value_page_pv"></span></span>
-            </div>
-        </div>
-        <div class="post-toc" id="post-toc">
-    <strong class="post-toc-title">目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BF%85%E8%A6%81%E5%89%8D%E7%BD%AE%E9%9C%80%E6%B1%82"><span class="toc-text">必要前置需求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E7%AF%87%E7%94%A8%E8%AA%9E%E8%AA%AA%E6%98%8E"><span class="toc-text">本篇用語說明</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E5%BB%BA%E7%AB%8B%E6%96%B0blog%E6%96%87%E7%AB%A0%EF%BC%9F"><span class="toc-text">如何建立新blog文章？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9C%80%E5%85%88%E8%AA%BF%E6%95%B4-config-yml%E5%85%A7%E5%AE%B9"><span class="toc-text">需先調整_config.yml內容</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%96%8B%E5%A7%8Bdeploy%E5%88%B0GitHub-Page"><span class="toc-text">開始deploy到GitHub Page</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#hexo-deploy%E5%BE%8CGitHub-Page%E6%B2%92%E6%9C%89%E5%87%BA%E7%8F%BE%E6%9D%B1%E8%A5%BF%EF%BC%8C%E5%98%97%E8%A9%A6%E4%BF%AE%E6%AD%A3%E9%81%8E%E7%9A%84%E5%85%A7%E5%AE%B9"><span class="toc-text">hexo deploy後GitHub Page沒有出現東西，嘗試修正過的內容</span></a></li></ol>
-    <div class="back-to-top" id="back-to-top">
-        <a href="javascript:void(0);">回到顶部</a>
-    </div>
+  </div>
 </div>
-        <div class="post-content">
-            <p>這篇文章的主要目的：幫助初學者完成hexo deploy to GitHub Page，盡力做到詳細描述。<br>順便記錄把hexo blog部屬到github page過程中踩到的坑，以及如何爬出來。</p>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BF%85%E8%A6%81%E5%89%8D%E7%BD%AE%E9%9C%80%E6%B1%82"><span class="nav-number">1.</span> <span class="nav-text">必要前置需求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%AC%E7%AF%87%E7%94%A8%E8%AA%9E%E8%AA%AA%E6%98%8E"><span class="nav-number">2.</span> <span class="nav-text">本篇用語說明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E5%BB%BA%E7%AB%8B%E6%96%B0blog%E6%96%87%E7%AB%A0%EF%BC%9F"><span class="nav-number">3.</span> <span class="nav-text">如何建立新blog文章？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9C%80%E5%85%88%E8%AA%BF%E6%95%B4-config-yml%E5%85%A7%E5%AE%B9"><span class="nav-number">4.</span> <span class="nav-text">需先調整_config.yml內容</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%96%8B%E5%A7%8Bdeploy%E5%88%B0GitHub-Page"><span class="nav-number">5.</span> <span class="nav-text">開始deploy到GitHub Page</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hexo-deploy%E5%BE%8CGitHub-Page%E6%B2%92%E6%9C%89%E5%87%BA%E7%8F%BE%E6%9D%B1%E8%A5%BF%EF%BC%8C%E5%98%97%E8%A9%A6%E4%BF%AE%E6%AD%A3%E9%81%8E%E7%9A%84%E5%85%A7%E5%AE%B9"><span class="nav-number">6.</span> <span class="nav-text">hexo deploy後GitHub Page沒有出現東西，嘗試修正過的內容</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Charlie（茶）"
+      src="/images/avatar-pexels-alex-andrews-215-215.png">
+  <p class="site-author-name" itemprop="name">Charlie（茶）</p>
+  <div class="site-description" itemprop="description">希望沒有搞錯努力方向的普通人 🤪</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">categories</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://tzynwang.github.io/2021/02/10/hexo-deploy/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar-pexels-alex-andrews-215-215.png">
+      <meta itemprop="name" content="Charlie（茶）">
+      <meta itemprop="description" content="希望沒有搞錯努力方向的普通人 🤪">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="普通文組">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Windows環境：hexo從寫完第一篇文章到deploy至GitHub Page
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-02-10 19:00:23" itemprop="dateCreated datePublished" datetime="2021-02-10T19:00:23+08:00">2021-02-10</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-02-11 21:38:27" itemprop="dateModified" datetime="2021-02-11T21:38:27+08:00">2021-02-11</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/hexo/" itemprop="url" rel="index"><span itemprop="name">hexo</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>這篇文章的主要目的：幫助初學者完成hexo deploy to GitHub Page，盡力做到詳細描述。<br>順便記錄把hexo blog部屬到github page過程中踩到的坑，以及如何爬出來。</p>
 <h2 id="必要前置需求"><a href="#必要前置需求" class="headerlink" title="必要前置需求"></a>必要前置需求</h2><p>為了完成部屬（deploy），請先在電腦上安裝<code>git</code>。</p>
 <h2 id="本篇用語說明"><a href="#本篇用語說明" class="headerlink" title="本篇用語說明"></a>本篇用語說明</h2><ul>
 <li>hexo blog：意指<a target="_blank" rel="noopener" href="https://hexo.io/docs/setup">Setup</a>時，透過<code>hexo init &lt;folder&gt;</code>產生，存放hexo內容的資料夾</li>
@@ -161,70 +332,100 @@
 <li>把_config.yml的root參數設定為<code>&quot;/&quot;</code><br>跟theme一起把<code>&quot;&quot;</code>拿掉並重新執行<code>hexo deploy</code>後，即可在GitHub Page上瀏覽blog，部屬成功😭</li>
 </ol>
 
-        </div>
-        
-        <div class="post-tag">
-            
-            <a class="tag" href="/tags/hexo-deploy/" title="hexo deploy">hexo deploy</a>
-            
-            <a class="tag" href="/tags/Windows/" title="Windows">Windows</a>
-            
-        </div>
-        
-    </article>
-</div>
-<div class="paginator">
-    
-        
-            <a class="prev" href="/2021/02/11/hexo-and-Google-Search-Console/">
-                <i class="iconfont icon-prev"></i>
-                <span class="nav-default">讓Google可以搜尋到GitHub Page上的hexo部落格</span>
-                <span class="nav-mobile">Prev</span>
-            </a>
-        
-        
-            <a class="next" href="/2021/02/08/abandon-jekyll/">
-                <span class="nav-default">掰jekyll</span>
-                <span class="nav-mobile">Next</span>
-                <i class="iconfont icon-next"></i>
-            </a>
-        
-    
-</div>
-<div id="comment-container"></div>
     </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/hexo-deploy/" rel="tag"># hexo deploy</a>
+              <a href="/tags/Windows/" rel="tag"># Windows</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/02/08/abandon-jekyll/" rel="prev" title="掰jekyll">
+                  <i class="fa fa-chevron-left"></i> 掰jekyll
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/02/11/hexo-and-Google-Search-Console/" rel="next" title="讓Google可以搜尋到GitHub Page上的hexo部落格">
+                  讓Google可以搜尋到GitHub Page上的hexo部落格 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
 </div>
-<footer class="footer-social">
-    
 
-    
 
-    
 
-    <div class="footer-copyright">
-        <p class="time-line">
-            &copy;
-            
-            
-            2021
-            &nbsp;<i class="iconfont icon-heart"></i>&nbsp;
-            <a target="_blank" href="https://github.com/iJinxin">Charlie（茶）</a>
-        </p>
-        <p class="theme-info">
-            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme -
-            <a target="_blank" href="https://github.com/iJinxin/hexo-theme-sky">Sky</a>
-        </p>
-    </div>
-</footer>
-</body>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-<script src="/js/index.js"></script>
 
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+
+
 <script>
-    
-
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
 </script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Charlie（茶）</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
 </html>
