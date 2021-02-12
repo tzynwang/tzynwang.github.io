@@ -2,7 +2,8 @@
 title: 但是我不想拒絕修改CSS
 date: 2021-02-12 15:23:22
 categories:
-- [hexo, next (hexo theme)]
+- [hexo]
+- [next (hexo theme)]
 tags:
 ---
 
