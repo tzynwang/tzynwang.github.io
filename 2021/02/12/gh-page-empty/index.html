@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <meta name="google-site-verification" content="6Df5aVEQ0VnFs85Kmy2VYlYOZrGMS1izxzdhFxEN-bI" />
+    <title>普通文組</title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+<link rel="stylesheet" href="/css/gitment.css">
+
+    <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_859455_eaq7v6w8ktj.css">
+<meta name="generator" content="Hexo 5.3.0"></head>
+<body>
+<header class="header">
+    <div class="header-inner">
+        <div class="header-title">
+
+        </div>
+        <nav class="header-nav">
+            
+            <a href="/" class="header-nav-link" >
+                Home
+            </a>
+            
+
+            
+            <a href="/archives" class="header-nav-link">
+                Archives
+            </a>
+            
+
+            
+            <a href="/tags" class="header-nav-link">
+                Tags
+            </a>
+            
+
+            
+            <a href="/about/" class="header-nav-link">
+                About
+            </a>
+            
+        </nav>
+    </div>
+</header>
+<header class="mobile-header">
+    <div class="mobile-nav">
+        <div class="mobile-nav-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="mobile-nav-title">
+            <a href="/" class="mobile-nav-title-link">Charlie（茶）'s Blog</a>
+        </div>
+
+    </div>
+    <nav class="mobile-menu">
+        <ul class="mobile-menu-list">
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-home"></i>
+                <a href="/" class="mobile-nav-link">Home</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-archive"></i>
+                <a href="/archives" class="mobile-nav-link">Archives</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-tag"></i>
+                <a href="/tags" class="mobile-nav-link">Tags</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-about"></i>
+                <a href="/about/" class="mobile-nav-link">About</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<div class="main">
+    <div class="content-inner">
+        <div class="posts">
+    <article class="post-whole">
+        <div class="post-title">
+            <h2 class="title">repository明明有東西，gh-page卻是一片空白</h2>
+            <div class="post-meta">
+                <span class="post-time">2021-02-12</span>
+                
+                <span class="post-category">
+                    
+                    <a class="category" href="/categories/hexo/">hexo</a>
+                    
+                </span>
+                
+                <span class="post-visit"> visited：<span id="busuanzi_value_page_pv"></span></span>
+            </div>
+        </div>
+        <div class="post-toc" id="post-toc">
+    <strong class="post-toc-title">目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%9C%E6%96%BChexo-deployer-git"><span class="toc-text">關於hexo-deployer-git</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%9C%E6%96%BCnode-js%E7%89%88%E6%9C%AC"><span class="toc-text">關於node.js版本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%A8Windows%E7%92%B0%E5%A2%83%E4%B8%AD%E9%99%8D%E7%89%88node-js"><span class="toc-text">在Windows環境中降版node.js</span></a></li></ol>
+    <div class="back-to-top" id="back-to-top">
+        <a href="javascript:void(0);">回到顶部</a>
+    </div>
+</div>
+        <div class="post-content">
+            <p>症狀描述：<br>執行了hexo deploy後，確認與gh-page關聯的分支（branch）內有檔案，並檔案內容皆正確，但連線到「https://&lt;github使用者名稱&gt;.github.io」卻只看到一片空白。</p>
+<p>簡答：</p>
+<ul>
+<li>更新hexo-deployer-git至3.0.0版</li>
+<li>node.js版本需維持在12-13版之間</li>
+</ul>
+<p>詳細搜尋結果與參考資料內收</p>
+<a id="more"></a>
+
+<h2 id="關於hexo-deployer-git"><a href="#關於hexo-deployer-git" class="headerlink" title="關於hexo-deployer-git"></a>關於hexo-deployer-git</h2><p>參考<a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues/4634">deploy responds but cannot deploy #4634</a>，根據建議更新<code>hexo-deployer-git</code>到3.0.0版。不過更新之後，有時執行完<code>hexo deploy</code>（repository上確定有最新資料）還是會遇到gh-page一片空白的問題。<br>再進行一些搜尋後，發現原來node.js版本也可能是問題肇因，如下述🤪</p>
+<h2 id="關於node-js版本"><a href="#關於node-js版本" class="headerlink" title="關於node.js版本"></a>關於node.js版本</h2><p>請使用12或13版。<br>If you’re using Node.js 14, please downgrade to 13 or 12.<br><img src="/2021/02/12/gh-page-empty/node-js-version-suggestion.png" alt="Please use node.js with version 12 or 13"></p>
+<p>2021年2月才開始學著用hexo架部落格，一開始僅注意到<a target="_blank" rel="noopener" href="https://hexo.io/docs/#Requirements">hexo官方文件建議node.js「最低要求10.13，建議12.0或以上」</a>，故一開始裝了node.js當下最新的第14版。<br>降回12.20.2後就一切正常了🥳</p>
+<p>參考資料：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="http://blog.roy4801.tw/2020/05/17/tutorial/hexo-blank/">hexo 產生空白的 HTML</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues/4267">hexo generates empty files #4267</a></li>
+</ul>
+<h2 id="在Windows環境中降版node-js"><a href="#在Windows環境中降版node-js" class="headerlink" title="在Windows環境中降版node.js"></a>在Windows環境中降版node.js</h2><p>個人做法：土法煉鋼，先解除原本安裝在Windows上的node.js第14版，重開機後，下載12.20.2版的node.js並安裝。<br>👉 node.js官方過去版本下載連結：<a target="_blank" rel="noopener" href="https://nodejs.org/en/download/releases/">https://nodejs.org/en/download/releases/</a><br>因為個人使用的是Windows環境，故選擇下載.msi格式的檔案。<br><img src="/2021/02/12/gh-page-empty/node-js-msi.png" alt="Download .msi for Windows environment"></p>
+<p>安裝完12.20.2版的node.js後，開啟cmd.exe並移動到hexo blog位置，輸入<code>node -v</code>與<code>hexo -v</code>檢查版本。<br>執行<code>hexo -v</code>後，cmd.exe印出錯誤訊息如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">err: Error: Missing binding C:\Projects\hexo_blog\node_modules\node-sass\vendor\win32-x64-72\binding.node</span><br><span class="line">  Node Sass could not find a binding for your current environment: Windows 64-bit with Node.js 12.x</span><br><span class="line"></span><br><span class="line">  Found bindings for the following environments:</span><br><span class="line">    - Windows 64-bit with Node.js 14.x</span><br><span class="line"></span><br><span class="line">  This usually happens because your environment has changed since running &#96;npm install&#96;.</span><br><span class="line">  Run &#96;npm rebuild node-sass&#96; to download the binding for your current environment.</span><br></pre></td></tr></table></figure>
+<p>直接根據提示執行了<code>npm rebuild node-sass</code>，完成後再執行一次<code>hexo -v</code>，無錯誤訊息。<br>更新了文章內容後試圖執行<code>hexo deploy</code>，順利部屬到repository上，並gh-page有正常顯示部落格內容。<br>Q.E.D 😮‍💨</p>
+
+        </div>
+        
+        <div class="post-tag">
+            
+            <a class="tag" href="/tags/hexo-deploy/" title="hexo deploy">hexo deploy</a>
+            
+            <a class="tag" href="/tags/Windows/" title="Windows">Windows</a>
+            
+        </div>
+        
+    </article>
+</div>
+<div class="paginator">
+    
+        
+        
+            <a class="next" href="/2021/02/11/hexo-and-Google-Search-Console/">
+                <span class="nav-default">讓Google可以搜尋到GitHub Page上的hexo部落格</span>
+                <span class="nav-mobile">Next</span>
+                <i class="iconfont icon-next"></i>
+            </a>
+        
+    
+</div>
+<div id="comment-container"></div>
+    </div>
+</div>
+<footer class="footer-social">
+    
+
+    
+
+    
+
+    <div class="footer-copyright">
+        <p class="time-line">
+            &copy;
+            
+            
+            2021
+            &nbsp;<i class="iconfont icon-heart"></i>&nbsp;
+            <a target="_blank" href="https://github.com/iJinxin">Charlie（茶）</a>
+        </p>
+        <p class="theme-info">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme -
+            <a target="_blank" href="https://github.com/iJinxin/hexo-theme-sky">Sky</a>
+        </p>
+    </div>
+</footer>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="/js/index.js"></script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+    
+
+</script>
+</html>
