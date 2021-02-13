@@ -11,7 +11,13 @@ tags:
 記錄一下本次更新了哪些值。
 
 
-## themes\next\source\css\_variables\base.styl
+## 本篇用語說明
+hexo部落格的根目錄位置：最初執行`hexo init <folder>`時，`<folder>`的路徑。
+舉例：如果在路徑`D:\hexo_blog`中執行`npm install`，根目錄位置就是`D:\hexo_blog`。
+
+
+## base.styl
+檔案路徑：`<hexo部落格的根目錄位置>\themes\next\source\css\_variables\base.styl`
 ```
 // Color system
 // --------------------------------------------------
@@ -35,7 +41,9 @@ $font-size-largest        = 1.25em;
 ```
 把字體進行整體縮小。
 
-## themes\next\source\css\_variables\Pisces.styl
+
+## Pisces.styl
+檔案路徑：`<hexo部落格的根目錄位置>\themes\next\source\css\_variables\Pisces.styl`
 ```
 // Settings for some of the most global styles.
 // --------------------------------------------------
@@ -49,10 +57,10 @@ $body-bg-color                = #CFC9BD;
 $site-author-image-border-width   = 0px;
 $site-author-image-border-color   = #CFC9BD;
 ```
-覺得左側欄大頭貼邊界以整體視覺上來說有些突兀，決定拔掉。
-將邊界寬度設定為0px。
+覺得左側欄大頭貼邊界以整體視覺上來說有些突兀（側欄、文章區塊皆無邊界線條），決定將邊界寬度設定為0px。
 前後對照如下圖：
 ![Author image with and without the border](author-image-border-adjust.png)
+
 
 ## 參考資料
 [hexo(Next主题)修改文字大小](https://blog.csdn.net/dpdpdppp/article/details/102387532)
