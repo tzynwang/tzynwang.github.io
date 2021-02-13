@@ -15,7 +15,7 @@
 
 <link rel="stylesheet" href="/css/main.css">
 
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Helvetica:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto&display=swap/css?family=Roboto:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.2/css/all.min.css">
 
@@ -23,16 +23,16 @@
     var NexT = window.NexT || {};
     var CONFIG = {"hostname":"tzynwang.github.io","root":"/","images":"/images","scheme":"Pisces","version":"8.2.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}};
   </script>
-<meta name="description" content="因_config.next.yml無法滿足更新部落格文章字體大小的需求，故修改了themes\next\source\css內的檔案。記錄一下本次更新了哪些值。 themes\next\source\css_variables\base.styl1234&#x2F;&#x2F; Color system&#x2F;&#x2F; -----------------------------------">
+<meta name="description" content="因_config.next.yml無法滿足更新部落格文章字體大小的需求，故修改了themes\next\source\css內的檔案。記錄一下本次更新了哪些值。 本篇用語說明hexo部落格的根目錄位置：最初執行hexo init &lt;folder&gt;時，&lt;folder&gt;的路徑。舉例：如果在路徑D:\hexo_blog中執行npm install，根目錄位置就是D:\hexo_b">
 <meta property="og:type" content="article">
 <meta property="og:title" content="但是我不想拒絕修改CSS">
 <meta property="og:url" content="https://tzynwang.github.io/2021/02/12/next-theme-edit-note/index.html">
 <meta property="og:site_name" content="普通文組">
-<meta property="og:description" content="因_config.next.yml無法滿足更新部落格文章字體大小的需求，故修改了themes\next\source\css內的檔案。記錄一下本次更新了哪些值。 themes\next\source\css_variables\base.styl1234&#x2F;&#x2F; Color system&#x2F;&#x2F; -----------------------------------">
+<meta property="og:description" content="因_config.next.yml無法滿足更新部落格文章字體大小的需求，故修改了themes\next\source\css內的檔案。記錄一下本次更新了哪些值。 本篇用語說明hexo部落格的根目錄位置：最初執行hexo init &lt;folder&gt;時，&lt;folder&gt;的路徑。舉例：如果在路徑D:\hexo_blog中執行npm install，根目錄位置就是D:\hexo_b">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://tzynwang.github.io/2021/02/12/next-theme-edit-note/author-image-border-adjust.png">
 <meta property="article:published_time" content="2021-02-12T07:23:22.000Z">
-<meta property="article:modified_time" content="2021-02-12T12:46:33.894Z">
+<meta property="article:modified_time" content="2021-02-13T01:05:25.596Z">
 <meta property="article:author" content="Charlie（茶）">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://tzynwang.github.io/2021/02/12/next-theme-edit-note/author-image-border-adjust.png">
@@ -159,7 +159,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#themes-next-source-css-variables-base-styl"><span class="nav-number">1.</span> <span class="nav-text">themes\next\source\css_variables\base.styl</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#themes-next-source-css-variables-Pisces-styl"><span class="nav-number">2.</span> <span class="nav-text">themes\next\source\css_variables\Pisces.styl</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99"><span class="nav-number">3.</span> <span class="nav-text">參考資料</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%AC%E7%AF%87%E7%94%A8%E8%AA%9E%E8%AA%AA%E6%98%8E"><span class="nav-number">1.</span> <span class="nav-text">本篇用語說明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#base-styl"><span class="nav-number">2.</span> <span class="nav-text">base.styl</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Pisces-styl"><span class="nav-number">3.</span> <span class="nav-text">Pisces.styl</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99"><span class="nav-number">4.</span> <span class="nav-text">參考資料</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -247,10 +247,16 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2021-02-12 15:23:22 / Modified: 20:46:33" itemprop="dateCreated datePublished" datetime="2021-02-12T15:23:22+08:00">2021-02-12</time>
+      <time title="Created: 2021-02-12 15:23:22" itemprop="dateCreated datePublished" datetime="2021-02-12T15:23:22+08:00">2021-02-12</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-02-13 09:05:25" itemprop="dateModified" datetime="2021-02-13T09:05:25+08:00">2021-02-13</time>
+      </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
@@ -276,16 +282,19 @@
     
     <div class="post-body" itemprop="articleBody">
         <p>因<code>_config.next.yml</code>無法滿足更新部落格文章字體大小的需求，故修改了<code>themes\next\source\css</code>內的檔案。<br>記錄一下本次更新了哪些值。</p>
-<h2 id="themes-next-source-css-variables-base-styl"><a href="#themes-next-source-css-variables-base-styl" class="headerlink" title="themes\next\source\css_variables\base.styl"></a>themes\next\source\css_variables\base.styl</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; Color system</span><br><span class="line">&#x2F;&#x2F; --------------------------------------------------</span><br><span class="line">$whitesmoke   &#x3D; #F5F3ED;</span><br><span class="line">$blue         &#x3D; #ADBDC4;</span><br></pre></td></tr></table></figure>
+<h2 id="本篇用語說明"><a href="#本篇用語說明" class="headerlink" title="本篇用語說明"></a>本篇用語說明</h2><p>hexo部落格的根目錄位置：最初執行<code>hexo init &lt;folder&gt;</code>時，<code>&lt;folder&gt;</code>的路徑。<br>舉例：如果在路徑<code>D:\hexo_blog</code>中執行<code>npm install</code>，根目錄位置就是<code>D:\hexo_blog</code>。</p>
+<h2 id="base-styl"><a href="#base-styl" class="headerlink" title="base.styl"></a>base.styl</h2><p>檔案路徑：<code>&lt;hexo部落格的根目錄位置&gt;\themes\next\source\css\_variables\base.styl</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; Color system</span><br><span class="line">&#x2F;&#x2F; --------------------------------------------------</span><br><span class="line">$whitesmoke   &#x3D; #F5F3ED;</span><br><span class="line">$blue         &#x3D; #ADBDC4;</span><br></pre></td></tr></table></figure>
 <p>套用了<a target="_blank" rel="noopener" href="https://www.schemecolor.com/elegant-and-classic.php">elegant-and-classic</a>的色票。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; Global text color on &lt;body&gt;</span><br><span class="line">$text-color                   &#x3D; $black-dim;</span><br></pre></td></tr></table></figure>
 <p>修改變數為<code>$black-dim</code>讓整體的文字顏色深一點。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; Font size</span><br><span class="line">$font-size-medium         &#x3D; .95em;</span><br><span class="line">$font-size-large          &#x3D; 1em;</span><br><span class="line">$font-size-larger         &#x3D; 1.125em;</span><br><span class="line">$font-size-largest        &#x3D; 1.25em;</span><br></pre></td></tr></table></figure>
 <p>把字體進行整體縮小。</p>
-<h2 id="themes-next-source-css-variables-Pisces-styl"><a href="#themes-next-source-css-variables-Pisces-styl" class="headerlink" title="themes\next\source\css_variables\Pisces.styl"></a>themes\next\source\css_variables\Pisces.styl</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; Settings for some of the most global styles.</span><br><span class="line">&#x2F;&#x2F; --------------------------------------------------</span><br><span class="line">$body-bg-color                &#x3D; #CFC9BD;</span><br></pre></td></tr></table></figure>
+<h2 id="Pisces-styl"><a href="#Pisces-styl" class="headerlink" title="Pisces.styl"></a>Pisces.styl</h2><p>檔案路徑：<code>&lt;hexo部落格的根目錄位置&gt;\themes\next\source\css\_variables\Pisces.styl</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; Settings for some of the most global styles.</span><br><span class="line">&#x2F;&#x2F; --------------------------------------------------</span><br><span class="line">$body-bg-color                &#x3D; #CFC9BD;</span><br></pre></td></tr></table></figure>
 <p>套用了<a target="_blank" rel="noopener" href="https://www.schemecolor.com/elegant-and-classic.php">elegant-and-classic</a>的色票。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; Sidebar</span><br><span class="line">&#x2F;&#x2F; --------------------------------------------------</span><br><span class="line">$site-author-image-border-width   &#x3D; 0px;</span><br><span class="line">$site-author-image-border-color   &#x3D; #CFC9BD;</span><br></pre></td></tr></table></figure>
-<p>覺得左側欄大頭貼邊界以整體視覺上來說有些突兀，決定拔掉。<br>將邊界寬度設定為0px。<br>前後對照如下圖：<br><img src="/2021/02/12/next-theme-edit-note/author-image-border-adjust.png" alt="Author image with and without the border"></p>
+<p>覺得左側欄大頭貼邊界以整體視覺上來說有些突兀（側欄、文章區塊皆無邊界線條），決定將邊界寬度設定為0px。<br>前後對照如下圖：<br><img src="/2021/02/12/next-theme-edit-note/author-image-border-adjust.png" alt="Author image with and without the border"></p>
 <h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/dpdpdppp/article/details/102387532">hexo(Next主题)修改文字大小</a></p>
 
     </div>
