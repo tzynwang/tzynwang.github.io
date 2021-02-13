@@ -21,7 +21,7 @@ I know this may not be the best choice (since the [official docs](https://theme-
 ## Enviroment
 ```
 hexo: 5.3.0
-NexT: 7.8.0
+NexT: 8.2.1
 os: Windows_NT 10.0.18363 win32 x64
 ```
 

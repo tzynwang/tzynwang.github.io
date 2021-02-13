@@ -1,5 +1,5 @@
 ---
-title: 讓Google可以搜尋到GitHub Page上的hexo部落格
+title: Submit the hexo blog to Google Search Console, and other SEO settings
 date: 2021-02-11 17:03:29
 categories:
   - hexo
@@ -10,64 +10,120 @@ tags:
   - Windows
 ---
 
+## Summary of this post
+Q: How to make sure Google Search can find my hexo blog that has been deployed on GitHub Page?
+A: Submit your hexo blog to [Google Search Console](https://search.google.com/search-console/welcome) by:
+1. Add `HTML tag` into hexo blog's `<head></head>`
+2. Provide hexo blog's `sitemap.xml` to Google
 
-提問：如何讓Google Search可以搜尋到部屬在GitHub Page上的hexo部落格？
-簡答：去[Google Search Console](https://search.google.com/search-console/welcome)對Google Search註冊你的hexo部落格
-
-大部分解🔫內收
+為了讓Google可以搜尋到hexo部落格，需把`HTML tag`（HTML標記、中繼標籤）加到`<head></head>`，並提交`sitemap.xml`給[Google Search Console](https://search.google.com/search-console/welcome)。
 
 <!-- more -->
 
-## 本篇用語說明
-- hexo blog：意指[Setup](https://hexo.io/docs/setup)時，透過`hexo init <folder>`產生，存放hexo內容的資料夾
-- cmd.exe：Windows內建的命令列直譯器，按住鍵盤上的Windos鍵（通常在鍵盤左下角）加上R鍵，輸入cmd後Enter即可開啟cmd.exe
-- GitHub Page：指已經完成`hexo deploy`，被部屬到GitHub Page的hexo部落格；可以透過「https://<github使用者名稱>.github.io」這個網址瀏覽。
-- repository：指GitHub上存放hexo部落格的repository，如果完全根據hexo官方文件的指示來進行部屬的話，repository上應有source與master這兩個分支。
+
+## Enviroment
+```
+hexo: 5.3.0
+NexT: 8.2.1
+os: Windows_NT 10.0.18363 win32 x64
+```
+
+## About _config.next.yml
+I use [Alternate Theme Config](https://theme-next.js.org/docs/getting-started/configuration.html#config-name-yml) to apply the theme modification according to the suggestion from NexT official document.
 
 
-## 前半：將中繼標記埋入hexo部落格
-1. 開啟[Google Search Console](https://search.google.com/search-console/welcome)
-1. 在「網頁前置字元」輸入GitHub Page的網址
-1. 選擇「其他驗證方法」中的「HTML 標記」，複製由Google提供的中繼標記
-1. 進入hexo部落格在本機的資料夾
-1. 進入themes資料夾→（主題名稱資料夾）→layout→_partial
-1. 開啟head檔案，將前一個步驟複製起來的Google中繼標記貼到<head></head>標籤之中
-1. 開啟cmd.exe，移動到`hexo blog`（`cd <hexo blog的路徑>`），執行`hexo generate --deploy`
-1. 使用瀏覽器Chrome或Brave開啟「https://<github使用者名稱>.github.io」，按下F12呼叫開發者工具，確認<head></head>之間有包含Google中繼標記
-1. 回到Google Search Console，點選驗證；驗證成功即代表網站註冊完成
-1. 還沒完，但先喝杯茶☕
+## Add HTML tag
+1. Visit [Google Search Console](https://search.google.com/search-console/welcome), enter the URL of hexo blog into right hand side column.
+![Enter hexo blog URL](Enter-hexo-blog-URL-to-Google-Search-Console.png)
+1. Select and copy the HTML tag.
+![Select and copy the HTML tag provide by Google Search Console](Copy-HTML-tag.png)
+1. Open the file `_config.next.yml`, navigate to the part `# SEO Settings`, paste the HTML tag "content" part as the value of the key `google_site_verification`
+For example, this is the whole HTML tag contents you've copied:
+`<meta name="google-site-verification" content="(a string includes letters, numbers and _)" />`
+Just paste the content part into `_config.next.yml`, like the below code block shows:
+```
+# ---------------------------------------------------------------
+# SEO Settings
+# See: https://theme-next.js.org/docs/theme-settings/seo
+# ---------------------------------------------------------------
 
-## 後半：安裝hexo-generator-sitemap
-1. 開啟cmd.exe，移動到`hexo blog`（`cd <hexo blog的路徑>`），執行`npm install hexo-generator-sitemap --save`
-1. 開啟hexo blog中的_config.yml，輸入以下內容：
+# Google Webmaster tools verification.
+google_site_verification: (a string includes letters, numbers and _) />
+```
+1. Launch cmd.exe, move to the hexo blog folder, run `hexo clean && hexo generate`
+1. Open the file `index.html` in `public` folder, the HTML tag should appear between the <head></head> tag
+1. Run `hexo deploy` to deploy modification to GitHub Page
+1. Back to Google Search Console and click "Verify"
+![Click the Verify button after adding the HTML tag](Verify-hexo-blog-after-adding-HTML-tag.png)
+1. One of the two parts of Google SEO setting has finished, have a cup of tea ☕
+
+個人目前使用的是8.2.1版的NexT，`_config.next.yml`已內建支援`google_site_verification`。
+在Google Search Console取得HTML tag後，將content的內容貼上即可。
+
+`_config.next.yml`若沒有這個參數的話，則手動將整個HTML tag貼到`\themes\hexo-theme-next\layout\_partials\head`資料夾的`head`檔案中，如下圖：
+![Manually add the Google Search Console HTML tag into NexT theme css head file](Manually-add-HTML-tag-to-NexT-theme.png)
+
+
+## Provide sitemap.xml
+1. Launch cmd.exe, move to the hexo blog folder, run `npm install hexo-generator-sitemap --save`
+1. Open the `_config.yml` file in the root of hexo blog, enter the following contents:
 ```
 sitemap:
   path: sitemap.xml
-  template: # Custom template path. 沒有使用自訂template的話，此行空白即可
+  template: # Custom template path. Leave it as blank if no custom template is used
   rel: false
   tags: true
   categories: true
 ```
-1. 執行`hexo generate`，public資料夾應會出現sitemap.xml
-1. 執行`hexo deploy`，將sitemap.xml推到repository；master分支的根目錄（root）應可直接看到sitemap.xml檔案
-1. 進入Google Search Console，點選左側欄位的「Sitemap」
-1. 在「新增Sitemap」中填入sitemap.xml，按下提交，完成🎉
+1. run `hexo generate` to generate the file `sitemap.xml`
+1. Upload `sitemap.xml` to hexo blog's GitHub repository `master` branch
+1. Visit Google Search Console. Enter "sitemap.xml" and click "Submit"
+![Provide sitemap.xml to Googls Search Console](Submit-sitemap.png)
+1. Done. The whole Google SEO setting has completed 🎉
 
 
-## 筆記
-提問：為什麼要把中繼標記貼到themes資料夾裡面的head檔案中？
-答：每次執行hexo generate時，才會確保中繼標記都有被包進最後要部屬上GitHub的檔案裡面
+## Run Mobile-Friendly Test
 
-提問：沒有把中繼標記的內容存下來，哪裡可以找回來？
-答：
-1. 進入Google Search Console，左側欄位往下捲，點選「設定」
-1. 右側面板點選「使用者和權限」，點選擁有者右側的三點按鈕，點選「管理資源擁有者」，會另開新視窗
-1. 點選新視窗中的「詳細資料」複製中繼標記
+Got an error message when running Google's [Mobile-Friendly Test](https://search.google.com/test/mobile-friendly) in the first time:
+> Refused to apply style from (tl;dr) because its MIME type ('text/html') is not a supported stylesheet MIME type, and strict MIME checking is enabled.
+
+![Mobile-Friendly Test error message](Mobile-Friendly-Test-error-message.png)
+
+Q: How I fixed this problem?
+A: Open `_config.next.yml` and update the `host` value in `# Font Settings` part correctly.
+```
+font:
+  enable: true
+
+  # Uri of fonts host, e.g. https://fonts.googleapis.com (Default).
+  host: https://fonts.googleapis.com/css2?family=Noto+Sans+TC&family=Roboto&display=swap
+
+  # Font options:
+  # `external: true` will load this font family from `host` above.
+  # `family: Times New Roman`. Without any quotes.
+  # `size: x.x`. Use `em` as unit. Default: 1 (16px)
+
+  # Global font settings used for all elements inside <body>.
+  global:
+    external: true
+```
+Run the test again and get greenlight.
+![Pass the Mobile-Friendly Test without andy error message](Pass-Mobile-Friendly-Test.png)
+🎉🎉🎉
 
 
-## 參考資料
-### 整體流程
+## Bonus: I forget the HTML tag contents
+1. Visit Google Search Console, click "Settings" in the left side menu
+![User settings in Google Search Console](User-setting.png)
+1. Click "User", and then click "User management"
+![User management in Google Search Console](User-setting-user-management.png)
+1. HTML tag contents are display in the management console
+![View HTML tag contents](View-HTML-tag-contents.png)
+
+
+## Reference
+- [NexT: Google Webmaster Tools](https://theme-next.js.org/docs/theme-settings/seo#Google-Webmaster-Tools)
+- [hexojs/hexo-generator-sitemap](https://github.com/hexojs/hexo-generator-sitemap)
 - [hexo-generator-sitemap](https://brooke01.github.io/tecblog/2020/04/26/hexo-generator-sitemap/)
 - [輕鬆地提交 Hexo 部落格的 Sitemap.xml 到 Google Search Console](https://askie.today/upload-sitemap-google-search-console-seo-hexo-blog/)
-### 插入meta tag的方法
 - [Hexo博客Next主题SEO优化方法](https://hoxis.github.io/Hexo+Next%20SEO%E4%BC%98%E5%8C%96.html)
