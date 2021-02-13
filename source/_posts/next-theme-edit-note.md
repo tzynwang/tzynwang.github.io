@@ -1,37 +1,92 @@
 ---
-title: 但是我不想拒絕修改CSS
+title: Hexo theme "NexT" CSS modification
 date: 2021-02-12 15:23:22
 categories:
 - [hexo]
-- [next (hexo theme)]
+- [NexT (hexo theme)]
 tags:
+- CSS
 ---
 
-因`_config.next.yml`無法滿足更新部落格文章字體大小的需求，故修改了`themes\next\source\css`內的檔案。
-記錄一下本次更新了哪些值。
+## Summary of this post
+Want to update the **font-size**, **font-family** (for the Chinese character) and **color** settings for my hexo blog. Done some searching and find out the contents in `base.styl` and `Pisces.styl` needs to be modified to fullfill my requirements.
+I know this may not be the best choice (since the [official docs](https://theme-next.js.org/docs/getting-started/configuration.html) suggest applying modification on `_config.next.yml` file) while at least this works...😣
+
+為了修改字體尺寸、字型（主要是中文字體）與版面顏色設定，調整了`base.styl`與`Pisces.styl`的內容。
+只需要修改英語字型的話，更改`_config.next.yml`中`# Font Settings`的段落即可。
+
+<!-- more -->
 
 
-## 本篇用語說明
-hexo部落格的根目錄位置：最初執行`hexo init <folder>`時，`<folder>`的路徑。
-舉例：如果在路徑`D:\hexo_blog`中執行`npm install`，根目錄位置就是`D:\hexo_blog`。
+## Enviroment
+```
+hexo: 5.3.0
+NexT: 7.8.0
+os: Windows_NT 10.0.18363 win32 x64
+```
 
 
-## base.styl
-檔案路徑：`<hexo部落格的根目錄位置>\themes\next\source\css\_variables\base.styl`
+## Modification in base.styl
+File path: `\themes\next\source\css\_variables`
+
+### Color system
 ```
 // Color system
 // --------------------------------------------------
 $whitesmoke   = #F5F3ED;
 $blue         = #ADBDC4;
 ```
-套用了[elegant-and-classic](https://www.schemecolor.com/elegant-and-classic.php)的色票。
+Set <span style="background-color:#F5F3ED">Isabelline  (#F5F3ED)</span> for `$whitesmoke`, and use <span style="background-color:#ADBDC4">Opal (#ADBDC4)</span> to replace the default `$blue`.
+Color scheme reference: [elegant-and-classic](https://www.schemecolor.com/elegant-and-classic.php)
 
+### Text color
 ```
 // Global text color on <body>
 $text-color                   = $black-dim;
 ```
-修改變數為`$black-dim`讓整體的文字顏色深一點。
+Change the text color from `$black-light` to `$black-dim`, lower the color value to make the contents more readable.
 
+### Font family
+#### Chinese font family setting
+```
+// Font families.
+$font-family-chinese      = 'Noto Sans TC';
+```
+沒有特別喜歡NexT預設的中文字型PingFang SC與Microsoft YaHei，決定更換成Google的Noto Sans TC。
+將`$font-family-chinese`的值改成`Noto Sans TC`後，到[Google Fonts](https://fonts.google.com/)選取要使用的字體。
+取得host URI後，將`_config.next.yml`中`host`的值設定為Google Fonts提供的URI。
+
+#### English font family setting
+English font can be easily config in `_config.next.yml`, just update the "Font Settings" part.
+```
+# ---------------------------------------------------------------
+# Font Settings
+# ---------------------------------------------------------------
+font:
+  enable: true
+  host: https://fonts.googleapis.com/css2?family=Noto+Sans+TC&family=Roboto&display=swap
+
+  # Global font settings used for all elements inside <body>.
+  global:
+    external: true
+    family: Roboto
+    size:
+```
+⚗️ Anatomy:
+- Set `external: true` to load the font family from `host`.
+- Go to [Google Fonts](https://fonts.google.com/) to get the host URI for "Roboto".
+    1. Search for the font family "Roboto"
+    1. Click "+ Select this style"
+    1. Click the button "View your selected families" on the top-right side on the screen
+    1. Copy `link href`, paste as the value for "host" key in `_config.next.yml`
+    1. Here's the screenshot for reference:
+![3 steps to get the font hosting URI from Google Fonts](steps-to-get-font-host-uri.png)
+
+💡 Hint:
+In my case, I also add "Noto Sans TC" to the selected families, so the host URI becomes to `https://fonts.googleapis.com/css2?family=Noto+Sans+TC&family=Roboto&display=swap`.
+The URI includes two families "Noto Sans TC" and "Roboto".
+
+### Font size
 ```
 // Font size
 $font-size-medium         = .95em;
@@ -39,28 +94,43 @@ $font-size-large          = 1em;
 $font-size-larger         = 1.125em;
 $font-size-largest        = 1.25em;
 ```
-把字體進行整體縮小。
+Reduce the size scale for blog content and titles.
 
 
-## Pisces.styl
-檔案路徑：`<hexo部落格的根目錄位置>\themes\next\source\css\_variables\Pisces.styl`
+## Modification in Pisces.styl
+File path: `\themes\next\source\css\_variables\Pisces.styl`
+
+### Body background color
 ```
 // Settings for some of the most global styles.
 // --------------------------------------------------
 $body-bg-color                = #CFC9BD;
 ```
-套用了[elegant-and-classic](https://www.schemecolor.com/elegant-and-classic.php)的色票。
+Set the background color to <span style="background-color:#CFC9BD">Pastel Gray (#CFC9BD)</span> to provide a slightly elegent smell (😂) to this blog.
+Color scheme reference: [elegant-and-classic](https://www.schemecolor.com/elegant-and-classic.php)
 
+### Sidebar (menu) color setting
+```
+// Sidebar
+$sidebar-nav-hover-color          = $blue;
+$sidebar-highlight                = $blue;
+```
+Change the hover and highlight color of "Table of Contents" into `$blue`:
+![sidebar (menu) hover and highlight color changes to blue](sidebar-highlight-and-hover-color.png)
+
+
+### Sidebar (menu) image setting
 ```
 // Sidebar
 // --------------------------------------------------
 $site-author-image-border-width   = 0px;
-$site-author-image-border-color   = #CFC9BD;
 ```
-覺得左側欄大頭貼邊界以整體視覺上來說有些突兀（側欄、文章區塊皆無邊界線條），決定將邊界寬度設定為0px。
-前後對照如下圖：
+I think the border around the blog author image creates a little bit conflict to the whole theme style (since the `site-author-image` seems to be the only place that appears the border). Removes the border by setting the `$site-author-image-border-width` to 0px.
+Below is the before-after comprehensive:
 ![Author image with and without the border](author-image-border-adjust.png)
+覺得整體視覺上只有側欄的影像有加邊界反而不太協調，決定拿掉。
 
 
-## 參考資料
-[hexo(Next主题)修改文字大小](https://blog.csdn.net/dpdpdppp/article/details/102387532)
+## Reference
+- [hexo(Next主题)修改文字大小](https://blog.csdn.net/dpdpdppp/article/details/102387532)
+- [Hexo NexT主題將網站字體改為宋體](https://zenreal.github.io/posts/10345/)
