@@ -10,7 +10,7 @@ tags:
 
 ## Summary of this post
 Want to update the **font-size**, **font-family** (for the Chinese character) and **color** settings for my hexo blog. Done some searching and find out the contents in `base.styl` and `Pisces.styl` needs to be modified to fullfill my requirements.
-I know this may not be the best choice (since the [official docs](https://theme-next.js.org/docs/getting-started/configuration.html) suggest applying modification on `_config.next.yml` file) while at least this works...😣
+I know this may not be the best choice (since [NexT's docs](https://theme-next.js.org/docs/getting-started/configuration.html) suggests using Alternate Config ,`_config.next.yml`, to apply modification) while at least this works...😣
 
 為了修改字體尺寸、字型（主要是中文字體）與版面顏色設定，調整了`base.styl`與`Pisces.styl`的內容。
 只需要修改英語字型的話，更改`_config.next.yml`中`# Font Settings`的段落即可。
