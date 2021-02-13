@@ -414,7 +414,7 @@ font:
   enable: true
 
   # Uri of fonts host, e.g. https://fonts.googleapis.com (Default).
-  host: https://fonts.googleapis.com/css2?family=Roboto&display=swap
+  host: https://fonts.googleapis.com/css2?family=Noto+Sans+TC&family=Roboto&display=swap
 
   # Font options:
   # `external: true` will load this font family from `host` above.
