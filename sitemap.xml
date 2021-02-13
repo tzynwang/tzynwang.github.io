@@ -108,6 +108,13 @@
     <priority>0.6</priority>
   </url>
   
+  <url>
+    <loc>https://tzynwang.github.io/tags/CSS/</loc>
+    <lastmod>2021-02-13</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
 
   
   <url>
@@ -125,7 +132,7 @@
   </url>
   
   <url>
-    <loc>https://tzynwang.github.io/categories/next-hexo-theme/</loc>
+    <loc>https://tzynwang.github.io/categories/NexT-hexo-theme/</loc>
     <lastmod>2021-02-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
