@@ -51,7 +51,7 @@ Just paste the content part into `_config.next.yml`, like the below code block s
 google_site_verification: (a string includes letters, numbers and _) />
 ```
 1. Launch cmd.exe, move to the hexo blog folder, run `hexo clean && hexo generate`
-1. Open the file `index.html` in `public` folder, the HTML tag should appear between the <head></head> tag
+1. Open the file `index.html` in `public` folder, the HTML tag should appear between the `<head></head>` tag
 1. Run `hexo deploy` to deploy modification to GitHub Page
 1. Back to Google Search Console and click "Verify"
 ![Click the Verify button after adding the HTML tag](Verify-hexo-blog-after-adding-HTML-tag.png)
@@ -125,5 +125,6 @@ Run the test again and get greenlight.
 - [NexT: Google Webmaster Tools](https://theme-next.js.org/docs/theme-settings/seo#Google-Webmaster-Tools)
 - [hexojs/hexo-generator-sitemap](https://github.com/hexojs/hexo-generator-sitemap)
 - [hexo-generator-sitemap](https://brooke01.github.io/tecblog/2020/04/26/hexo-generator-sitemap/)
+- [Hexo搜尋引擎優化](https://hsiangfeng.github.io/hexo/20190514/2072033203/)
 - [輕鬆地提交 Hexo 部落格的 Sitemap.xml 到 Google Search Console](https://askie.today/upload-sitemap-google-search-console-seo-hexo-blog/)
 - [Hexo博客Next主题SEO优化方法](https://hoxis.github.io/Hexo+Next%20SEO%E4%BC%98%E5%8C%96.html)
