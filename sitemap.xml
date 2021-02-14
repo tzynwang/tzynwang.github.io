@@ -2,28 +2,28 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://tzynwang.github.io/2021/02/14/-hexo-doc-update-contribution-workflow/</loc>
+    <loc>https://tzynwang.github.io/2021/02/14/hexo-doc-update-contribution-workflow/</loc>
     
     <lastmod>2021-02-14</lastmod>
     
   </url>
   
   <url>
-    <loc>https://tzynwang.github.io/2021/02/10/-hexo-deploy/</loc>
+    <loc>https://tzynwang.github.io/2021/02/10/hexo-deploy/</loc>
     
     <lastmod>2021-02-14</lastmod>
     
   </url>
   
   <url>
-    <loc>https://tzynwang.github.io/2021/02/12/-next-theme-edit-note/</loc>
+    <loc>https://tzynwang.github.io/2021/02/12/next-theme-edit-note/</loc>
     
     <lastmod>2021-02-14</lastmod>
     
   </url>
   
   <url>
-    <loc>https://tzynwang.github.io/2021/02/11/-hexo-and-Google-Search-Console/</loc>
+    <loc>https://tzynwang.github.io/2021/02/11/hexo-and-Google-Search-Console/</loc>
     
     <lastmod>2021-02-13</lastmod>
     
@@ -51,7 +51,7 @@
   </url>
   
   <url>
-    <loc>https://tzynwang.github.io/2021/02/08/-abandon-jekyll/</loc>
+    <loc>https://tzynwang.github.io/2021/02/08/abandon-jekyll/</loc>
     
     <lastmod>2021-02-11</lastmod>
     
@@ -68,27 +68,6 @@
   
   <url>
     <loc>https://tzynwang.github.io/tags/bundle-exec/</loc>
-    <lastmod>2021-02-14</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://tzynwang.github.io/tags/hexo-deploy/</loc>
-    <lastmod>2021-02-14</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://tzynwang.github.io/tags/Windows/</loc>
-    <lastmod>2021-02-14</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://tzynwang.github.io/tags/CSS/</loc>
     <lastmod>2021-02-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -115,6 +94,27 @@
     <priority>0.6</priority>
   </url>
   
+  <url>
+    <loc>https://tzynwang.github.io/tags/Windows/</loc>
+    <lastmod>2021-02-14</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://tzynwang.github.io/tags/hexo-deploy/</loc>
+    <lastmod>2021-02-14</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://tzynwang.github.io/tags/CSS/</loc>
+    <lastmod>2021-02-14</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
 
   
   <url>
@@ -132,14 +132,14 @@
   </url>
   
   <url>
-    <loc>https://tzynwang.github.io/categories/NexT-hexo-theme/</loc>
+    <loc>https://tzynwang.github.io/categories/hexo/Contribution/</loc>
     <lastmod>2021-02-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://tzynwang.github.io/categories/hexo/Contribution/</loc>
+    <loc>https://tzynwang.github.io/categories/NexT-hexo-theme/</loc>
     <lastmod>2021-02-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
