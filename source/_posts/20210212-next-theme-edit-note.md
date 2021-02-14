@@ -9,7 +9,7 @@ tags:
 ---
 
 ## Summary of this post
-Want to update the **font-size**, **font-family** (for the Chinese character) and **color** settings for my hexo blog. Done some searching and find out the contents in `base.styl` and `Pisces.styl` needs to be modified to fullfill my requirements.
+Want to update the **font-size**, **font-family** (for the Chinese character) and **color** settings for my hexo blog. Done some searching and find out the contents in `base.styl` and `Pisces.styl` needs to be modified to fullfil my requirements.
 I know this may not be the best choice (since [NexT's docs](https://theme-next.js.org/docs/getting-started/configuration.html) suggests using Alternate Config ,`_config.next.yml`, to apply modification) while at least this works...😣
 
 為了修改字體尺寸、字型（主要是中文字體）與版面顏色設定，調整了`base.styl`與`Pisces.styl`的內容。
@@ -106,7 +106,7 @@ File path: `\themes\next\source\css\_variables\Pisces.styl`
 // --------------------------------------------------
 $body-bg-color                = #CFC9BD;
 ```
-Set the background color to <span style="background-color:#CFC9BD">Pastel Gray (#CFC9BD)</span> to provide a slightly elegent smell (😂) to this blog.
+Set the background color to <span style="background-color:#CFC9BD">Pastel Gray (#CFC9BD)</span> to provide a slightly elegant smell (😂) to this blog.
 Color scheme reference: [elegant-and-classic](https://www.schemecolor.com/elegant-and-classic.php)
 
 ### Sidebar (menu) color setting
