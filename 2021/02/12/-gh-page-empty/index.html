@@ -23,21 +23,25 @@
     var NexT = window.NexT || {};
     var CONFIG = {"hostname":"tzynwang.github.io","root":"/","images":"/images","scheme":"Pisces","version":"8.2.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}};
   </script>
-<meta name="description" content="花費一個工作天後決定放棄jekyll。安裝過程還挺得住，但喜歡的theme不是文件太精簡看不懂，就是不支援github page，難受🤪 研究途中發現第一次在terminal執行jekyll server時需要bundle exec jekyll server 提問：為何需要bundle exec？簡答：bundle exec讓環境知道該使用哪些版本的gems詳細：bundle exec讓環境去">
+<meta name="description" content="症狀描述：執行了hexo deploy後，確認與gh-page關聯的分支（branch）內有檔案，並檔案內容皆正確，但連線到「https:&#x2F;&#x2F;&lt;github使用者名稱&gt;.github.io」卻只看到一片空白。 簡答：  更新hexo-deployer-git至3.0.0版 node.js版本需維持在12-13版之間  詳細搜尋結果與參考資料內收">
 <meta property="og:type" content="article">
-<meta property="og:title" content="掰jekyll">
-<meta property="og:url" content="https://tzynwang.github.io/2021/02/08/abandon-jekyll/index.html">
+<meta property="og:title" content="repository明明有東西，gh-page卻是一片空白">
+<meta property="og:url" content="https://tzynwang.github.io/2021/02/12/-gh-page-empty/index.html">
 <meta property="og:site_name" content="普通文組">
-<meta property="og:description" content="花費一個工作天後決定放棄jekyll。安裝過程還挺得住，但喜歡的theme不是文件太精簡看不懂，就是不支援github page，難受🤪 研究途中發現第一次在terminal執行jekyll server時需要bundle exec jekyll server 提問：為何需要bundle exec？簡答：bundle exec讓環境知道該使用哪些版本的gems詳細：bundle exec讓環境去">
+<meta property="og:description" content="症狀描述：執行了hexo deploy後，確認與gh-page關聯的分支（branch）內有檔案，並檔案內容皆正確，但連線到「https:&#x2F;&#x2F;&lt;github使用者名稱&gt;.github.io」卻只看到一片空白。 簡答：  更新hexo-deployer-git至3.0.0版 node.js版本需維持在12-13版之間  詳細搜尋結果與參考資料內收">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-02-08T12:31:26.000Z">
-<meta property="article:modified_time" content="2021-02-11T02:30:44.739Z">
+<meta property="og:image" content="https://tzynwang.github.io/2021/02/12/-gh-page-empty/node-js-version-suggestion.png">
+<meta property="og:image" content="https://tzynwang.github.io/2021/02/12/-gh-page-empty/node-js-msi.png">
+<meta property="article:published_time" content="2021-02-12T01:35:11.000Z">
+<meta property="article:modified_time" content="2021-02-12T07:43:01.544Z">
 <meta property="article:author" content="Charlie（茶）">
-<meta property="article:tag" content="bundle exec">
+<meta property="article:tag" content="hexo deploy">
+<meta property="article:tag" content="Windows">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://tzynwang.github.io/2021/02/12/-gh-page-empty/node-js-version-suggestion.png">
 
 
-<link rel="canonical" href="https://tzynwang.github.io/2021/02/08/abandon-jekyll/">
+<link rel="canonical" href="https://tzynwang.github.io/2021/02/12/-gh-page-empty/">
 
 
 <script class="page-configurations">
@@ -49,7 +53,7 @@
     lang   : 'en'
   };
 </script>
-<title>掰jekyll | 普通文組</title>
+<title>repository明明有東西，gh-page卻是一片空白 | 普通文組</title>
   
 
 
@@ -145,7 +149,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           Table of Contents
@@ -158,6 +162,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%9C%E6%96%BChexo-deployer-git"><span class="nav-number">1.</span> <span class="nav-text">關於hexo-deployer-git</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%9C%E6%96%BCnode-js%E7%89%88%E6%9C%AC"><span class="nav-number">2.</span> <span class="nav-text">關於node.js版本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%A8Windows%E7%92%B0%E5%A2%83%E4%B8%AD%E9%99%8D%E7%89%88node-js"><span class="nav-number">3.</span> <span class="nav-text">在Windows環境中降版node.js</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -172,13 +177,13 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-count">6</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
@@ -222,7 +227,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://tzynwang.github.io/2021/02/08/abandon-jekyll/">
+    <link itemprop="mainEntityOfPage" href="https://tzynwang.github.io/2021/02/12/-gh-page-empty/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar-pexels-alex-andrews-215-215.png">
@@ -235,7 +240,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          掰jekyll
+          repository明明有東西，gh-page卻是一片空白
         </h1>
 
         <div class="post-meta-container">
@@ -245,23 +250,17 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
+      
 
-      <time title="Created: 2021-02-08 20:31:26" itemprop="dateCreated datePublished" datetime="2021-02-08T20:31:26+08:00">2021-02-08</time>
+      <time title="Created: 2021-02-12 09:35:11 / Modified: 15:43:01" itemprop="dateCreated datePublished" datetime="2021-02-12T09:35:11+08:00">2021-02-12</time>
     </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-02-11 10:30:44" itemprop="dateModified" datetime="2021-02-11T10:30:44+08:00">2021-02-11</time>
-      </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
       </span>
       <span class="post-meta-item-text">In</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/jekyll/" itemprop="url" rel="index"><span itemprop="name">jekyll</span></a>
+          <a href="/categories/hexo/" itemprop="url" rel="index"><span itemprop="name">hexo</span></a>
         </span>
     </span>
 
@@ -275,17 +274,27 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>花費一個工作天後決定放棄jekyll。<br>安裝過程還挺得住，但喜歡的theme不是文件太精簡看不懂，就是不支援github page，難受🤪</p>
-<p>研究途中發現第一次在terminal執行jekyll server時需要<code>bundle exec jekyll server</code></p>
-<p>提問：為何需要<code>bundle exec</code>？<br>簡答：<code>bundle exec</code>讓環境知道該使用哪些版本的gems<br>詳細：<code>bundle exec</code>讓環境去查詢Gemfile來得知需要<strong>使用哪些gems、並這些gems要固定在哪個版本</strong>來搭配要執行的程式。</p>
-<p>其他筆記與資料來源內收。</p>
+        <p>症狀描述：<br>執行了<code>hexo deploy</code>後，確認與gh-page關聯的分支（branch）內有檔案，並檔案內容皆正確，但連線到「https://&lt;github使用者名稱&gt;.github.io」卻只看到一片空白。</p>
+<p>簡答：</p>
+<ul>
+<li>更新hexo-deployer-git至3.0.0版</li>
+<li>node.js版本需維持在12-13版之間</li>
+</ul>
+<p>詳細搜尋結果與參考資料內收</p>
 <a id="more"></a>
 
-<p>在環境（註）中第一次執行<code>jekyll server</code>要輸入<code>bundle exec jekyll server</code>，讓環境根據Gemfile查詢你的程式會用到哪些gems、並這些gems該使用哪些版本。在Gemfile沒有更新的情況下，第二次以後直接在環境輸入<code>jekyll server</code>就可以了。</p>
-<p>若有修改Gemfile的內容，則須重新執行<code>bundle exec jekyll server</code>。</p>
-<p>註：<br>「環境」在這個上下文脈絡中指的是Windows的cmd.exe，我透過cmd.exe這個<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Command-line_interface">Command-line interface（CLI）</a>來執行hexo相關的操作。</p>
-<p>參考資料：<br><a target="_blank" rel="noopener" href="https://stackoverflow.com/a/16218854/15028185">What does bundle exec rake mean?</a></p>
-<p>You’re running <code>bundle exec</code> on a program. The program’s creators wrote it when <strong>certain versions of gems</strong> were available. The program <strong>Gemfile</strong> specifies the versions of the gems the creators decided to use. That is, the script was made to run correctly against these gem versions.</p>
+<h2 id="關於hexo-deployer-git"><a href="#關於hexo-deployer-git" class="headerlink" title="關於hexo-deployer-git"></a>關於hexo-deployer-git</h2><p>參考<a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues/4634">deploy responds but cannot deploy #4634</a>，根據建議更新<code>hexo-deployer-git</code>到3.0.0版。不過更新之後，有時執行完<code>hexo deploy</code>（repository上確定有最新資料）還是會遇到gh-page一片空白的問題。<br>再進行一些搜尋後，發現原來node.js版本也可能是問題肇因，如下述🤪</p>
+<h2 id="關於node-js版本"><a href="#關於node-js版本" class="headerlink" title="關於node.js版本"></a>關於node.js版本</h2><p>請使用12或13版。<br>If you’re using Node.js 14, please downgrade to 13 or 12.<br><img src="/2021/02/12/-gh-page-empty/node-js-version-suggestion.png" alt="Please use node.js with version 12 or 13"></p>
+<p>2021年2月才開始學著用hexo架部落格，一開始僅注意到<a target="_blank" rel="noopener" href="https://hexo.io/docs/#Requirements">hexo官方文件建議node.js「最低要求10.13，建議12.0或以上」</a>，故一開始裝了node.js當下最新的第14版。<br>降回12.20.2後就一切正常了🥳</p>
+<p>參考資料：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="http://blog.roy4801.tw/2020/05/17/tutorial/hexo-blank/">hexo 產生空白的 HTML</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues/4267">hexo generates empty files #4267</a></li>
+</ul>
+<h2 id="在Windows環境中降版node-js"><a href="#在Windows環境中降版node-js" class="headerlink" title="在Windows環境中降版node.js"></a>在Windows環境中降版node.js</h2><p>個人做法：土法煉鋼，先解除原本安裝在Windows上的node.js第14版，重開機後，下載12.20.2版的node.js並安裝。<br>👉 node.js官方過去版本下載連結：<a target="_blank" rel="noopener" href="https://nodejs.org/en/download/releases/">https://nodejs.org/en/download/releases/</a><br>因為個人使用的是Windows環境，故選擇下載.msi格式的檔案。<br><img src="/2021/02/12/-gh-page-empty/node-js-msi.png" alt="Download .msi for Windows environment"></p>
+<p>安裝完12.20.2版的node.js後，開啟cmd.exe並移動到hexo blog位置，輸入<code>node -v</code>與<code>hexo -v</code>檢查版本。<br>執行<code>hexo -v</code>後，cmd.exe印出錯誤訊息如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">err: Error: Missing binding C:\Projects\hexo_blog\node_modules\node-sass\vendor\win32-x64-72\binding.node</span><br><span class="line">  Node Sass could not find a binding for your current environment: Windows 64-bit with Node.js 12.x</span><br><span class="line"></span><br><span class="line">  Found bindings for the following environments:</span><br><span class="line">    - Windows 64-bit with Node.js 14.x</span><br><span class="line"></span><br><span class="line">  This usually happens because your environment has changed since running &#96;npm install&#96;.</span><br><span class="line">  Run &#96;npm rebuild node-sass&#96; to download the binding for your current environment.</span><br></pre></td></tr></table></figure>
+<p>直接根據提示執行了<code>npm rebuild node-sass</code>，完成後再執行一次<code>hexo -v</code>，無錯誤訊息。<br>更新了文章內容後試圖執行<code>hexo deploy</code>，順利部屬到repository上，並gh-page有正常顯示部落格內容。<br>Q.E.D 😮‍💨</p>
 
     </div>
 
@@ -295,17 +304,21 @@
 
     <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/bundle-exec/" rel="tag"># bundle exec</a>
+              <a href="/tags/hexo-deploy/" rel="tag"># hexo deploy</a>
+              <a href="/tags/Windows/" rel="tag"># Windows</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
+                <a href="/2021/02/11/-hexo-and-Google-Search-Console/" rel="prev" title="Submit the hexo blog to Google Search Console, and other SEO settings">
+                  <i class="fa fa-chevron-left"></i> Submit the hexo blog to Google Search Console, and other SEO settings
+                </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2021/02/10/hexo-deploy/" rel="next" title="Windows環境：hexo從寫完第一篇文章到deploy至GitHub Page">
-                  Windows環境：hexo從寫完第一篇文章到deploy至GitHub Page <i class="fa fa-chevron-right"></i>
+                <a href="/2021/02/12/-next-theme-edit-note/" rel="next" title="Hexo theme "NexT" CSS modification">
+                  Hexo theme "NexT" CSS modification <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>
