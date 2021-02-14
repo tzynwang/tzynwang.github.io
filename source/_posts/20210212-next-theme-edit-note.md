@@ -18,7 +18,7 @@ I know this may not be the best choice (since [NexT's docs](https://theme-next.j
 <!-- more -->
 
 
-## Enviroment
+## Environment
 ```
 hexo: 5.3.0
 NexT: 8.2.1
