@@ -67,6 +67,20 @@
 
   
   <url>
+    <loc>https://tzynwang.github.io/tags/hexo-deploy/</loc>
+    <lastmod>2021-02-14</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://tzynwang.github.io/tags/Windows/</loc>
+    <lastmod>2021-02-14</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://tzynwang.github.io/tags/bundle-exec/</loc>
     <lastmod>2021-02-14</lastmod>
     <changefreq>daily</changefreq>
@@ -95,20 +109,6 @@
   </url>
   
   <url>
-    <loc>https://tzynwang.github.io/tags/Windows/</loc>
-    <lastmod>2021-02-14</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://tzynwang.github.io/tags/hexo-deploy/</loc>
-    <lastmod>2021-02-14</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://tzynwang.github.io/tags/CSS/</loc>
     <lastmod>2021-02-14</lastmod>
     <changefreq>daily</changefreq>
@@ -118,14 +118,14 @@
 
   
   <url>
-    <loc>https://tzynwang.github.io/categories/jekyll/</loc>
+    <loc>https://tzynwang.github.io/categories/hexo/</loc>
     <lastmod>2021-02-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://tzynwang.github.io/categories/hexo/</loc>
+    <loc>https://tzynwang.github.io/categories/jekyll/</loc>
     <lastmod>2021-02-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
