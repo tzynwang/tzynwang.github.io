@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://tzynwang.github.io/2021/02/14/-hexo-doc-update-contribution-workflow/</loc>
+    
+    <lastmod>2021-02-14</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://tzynwang.github.io/2021/02/10/-hexo-deploy/</loc>
     
     <lastmod>2021-02-14</lastmod>
@@ -10,13 +17,6 @@
   
   <url>
     <loc>https://tzynwang.github.io/2021/02/12/-next-theme-edit-note/</loc>
-    
-    <lastmod>2021-02-14</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://tzynwang.github.io/2021/02/14/-hexo-doc-update-contribution-workflow/</loc>
     
     <lastmod>2021-02-14</lastmod>
     
@@ -67,6 +67,13 @@
 
   
   <url>
+    <loc>https://tzynwang.github.io/tags/bundle-exec/</loc>
+    <lastmod>2021-02-14</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://tzynwang.github.io/tags/hexo-deploy/</loc>
     <lastmod>2021-02-14</lastmod>
     <changefreq>daily</changefreq>
@@ -81,7 +88,7 @@
   </url>
   
   <url>
-    <loc>https://tzynwang.github.io/tags/bundle-exec/</loc>
+    <loc>https://tzynwang.github.io/tags/CSS/</loc>
     <lastmod>2021-02-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -108,21 +115,7 @@
     <priority>0.6</priority>
   </url>
   
-  <url>
-    <loc>https://tzynwang.github.io/tags/CSS/</loc>
-    <lastmod>2021-02-14</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
 
-  
-  <url>
-    <loc>https://tzynwang.github.io/categories/hexo/</loc>
-    <lastmod>2021-02-14</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
   
   <url>
     <loc>https://tzynwang.github.io/categories/jekyll/</loc>
@@ -132,7 +125,7 @@
   </url>
   
   <url>
-    <loc>https://tzynwang.github.io/categories/hexo/Contribution/</loc>
+    <loc>https://tzynwang.github.io/categories/hexo/</loc>
     <lastmod>2021-02-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -140,6 +133,13 @@
   
   <url>
     <loc>https://tzynwang.github.io/categories/NexT-hexo-theme/</loc>
+    <lastmod>2021-02-14</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://tzynwang.github.io/categories/hexo/Contribution/</loc>
     <lastmod>2021-02-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
