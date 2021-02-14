@@ -28,7 +28,7 @@ os: Windows_NT 10.0.18363 win32 x64
 
 
 ## Workflow
-1. fork [hexojs/site](https://github.com/hexojs/hexo)
+1. Fork [hexojs/site](https://github.com/hexojs/hexo)
 ![Click "Fork" button](fork-hexo-site.png)
 1. Open cmd.exe, move to `C:\Projects\hexo_contributing` by entering `cd C:\Projects\hexo_contributing` (since I want to store the hexojs/site repo in this location on my computer).
 1. Enter `git init` to [create a empty Git repository](https://git-scm.com/docs/git-init) in this folder.
