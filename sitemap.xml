@@ -146,14 +146,7 @@
   </url>
   
   <url>
-    <loc>https://tzynwang.github.io/categories/NexT-theme/</loc>
-    <lastmod>2021-02-15</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://tzynwang.github.io/categories/NexT-theme/CSS/</loc>
+    <loc>https://tzynwang.github.io/categories/hexo/CSS/</loc>
     <lastmod>2021-02-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
