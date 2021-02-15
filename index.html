@@ -169,13 +169,13 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-count">6</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
@@ -218,6 +218,114 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tzynwang.github.io/2021/02/15/hexo-tag-figure-note/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar-pexels-alex-andrews-215-215.png">
+      <meta itemprop="name" content="Charlie（茶）">
+      <meta itemprop="description" content="希望沒有搞錯努力方向的普通人 🤪">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="普通文組">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/02/15/hexo-tag-figure-note/" class="post-title-link" itemprop="url">Plugin&#58; hexo-tag-figure</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-02-15 15:11:42 / Modified: 16:53:10" itemprop="dateCreated datePublished" datetime="2021-02-15T15:11:42+08:00">2021-02-15</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/hexo/" itemprop="url" rel="index"><span itemprop="name">hexo</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/NexT-theme/" itemprop="url" rel="index"><span itemprop="name">NexT (theme)</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/NexT-theme/CSS/" itemprop="url" rel="index"><span itemprop="name">CSS</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="Summary-of-this-post"><a href="#Summary-of-this-post" class="headerlink" title="Summary of this post"></a>Summary of this post</h2><p>This post is my notes for the following topics:</p>
+<ol>
+<li>hexo plugin: <a target="_blank" rel="noopener" href="https://github.com/chawyehsu/hexo-tag-figure">hexo-tag-figure</a></li>
+<li>adding additional CSS style settings to NexT theme (by configuring <code>custom_file_path</code> in the file <code>_config.next.yml</code>)</li>
+</ol>
+<p>此篇主要是記錄<code>hexo-tag-figure</code>的使用心得，以及如何使用<code>_config.next.yml</code>中的<code>custom_file_path</code>參數設定來增加自定義CSS設定內容的相關筆記。</p>
+<h2 id="Environment"><a href="#Environment" class="headerlink" title="Environment"></a>Environment</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">hexo-tag-figure: 0.4.1</span><br><span class="line">NexT: 8.2.1</span><br><span class="line">hexo: 5.3.0</span><br><span class="line">hexo-cli: 4.2.0</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></table></figure>
+
+<h2 id="hexo-tag-figure"><a href="#hexo-tag-figure" class="headerlink" title="hexo-tag-figure"></a>hexo-tag-figure</h2><h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="figure--center"><img src="/2021/02/15/hexo-tag-figure-note/book-cover.png" width="300" title="Confessions of a Young Novelist " alt="Book cover of Confessions of a Young Novelist"><figcaption><p>Confessions of a Young Novelist </p></figcaption></figure>
+
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% figure figure--center 2021&#x2F;02&#x2F;15&#x2F;hexo-tag-figure-note&#x2F;book-cover.png 300 &quot;Confessions of a Young Novelist &#39;Book cover of Confessions of a Young Novelist&#39;&quot; %&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>figure--center</code>: the <code>class name</code> of the figure element.<br>  This is the <strong>required</strong> argument, though in the end I didn’t apply customized CSS style to this class, this argument can not be skipped.</li>
+<li><code>2021/02/15/hexo-tag-figure-note/book-cover.png</code>: the image path.<br>  Check the source to find the path logic:  <figure class="figure--center"><img src="/2021/02/15/hexo-tag-figure-note/image-path.png" title="Check the image path by DevTools " alt="Screenshot of checking the image path through DevTools"><figcaption><p>Check the image path by DevTools </p></figcaption></figure>
+  Aad the permalink <code>:year/:month/:day/:title/</code> as prefix to load the image.<br>  文件沒有特別針對image path做說明，從DevTools觀察了一下其他還沒使用hexo-tag-figure插入的圖片路徑，測試後發現image path要加permalink。</li>
+<li><code>300</code>: the image width. I skip the height setting.</li>
+<li><code>Confessions of a Young Novelist</code>: the title text that is placed in <code>figcaption</code> element.<br>  Add customized font color and font size to this element.</li>
+<li><code>Book cover of Confessions of a Young Novelist</code>: the alt text for this image.</li>
+</ul>
+<h1 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h1><ol>
+<li>According to <a target="_blank" rel="noopener" href="https://theme-next.js.org/docs/advanced-settings/custom-files.html">NexT’s document</a>, extra CSS settings can be added by enable the <code>custom_file_path</code> in theme config file (in my case the <code>_config.next.yml</code> in root folder). This is my configuration:<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"># Define custom file paths.</span><br><span class="line"># Create your custom files in site directory &#96;source&#x2F;_data&#96; and uncomment needed files below.</span><br><span class="line">custom_file_path:</span><br><span class="line">  #head: source&#x2F;_data&#x2F;head.njk</span><br><span class="line">  #header: source&#x2F;_data&#x2F;header.njk</span><br><span class="line">  #sidebar: source&#x2F;_data&#x2F;sidebar.njk</span><br><span class="line">  #postMeta: source&#x2F;_data&#x2F;post-meta.njk</span><br><span class="line">  #postBodyEnd: source&#x2F;_data&#x2F;post-body-end.njk</span><br><span class="line">  #footer: source&#x2F;_data&#x2F;footer.njk</span><br><span class="line">  #bodyEnd: source&#x2F;_data&#x2F;body-end.njk</span><br><span class="line">  #variable: source&#x2F;_data&#x2F;variables.styl</span><br><span class="line">  #mixin: source&#x2F;_data&#x2F;mixins.styl</span><br><span class="line">  style: source&#x2F;_data&#x2F;styles.styl # Enable this option by removing the &#39;#&#39; in the beginning of the line</span><br></pre></td></tr></table></figure></li>
+<li>Add the <code>styles.styl</code> file in the path <code>C:\Projects\hexo_blog\source\_data</code></li>
+<li>Add CSS settings for <code>figcaption</code> element, remove each image’s bottom margin by setting the <code>margin-button</code> to 0px. With <code>margin-button</code> set as 0px, the text underneath (the <code>figcaption</code>) will be closer to the image.<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">figcaption &#123;</span><br><span class="line">    color: #999;</span><br><span class="line">    text-align: center;</span><br><span class="line">    font-size: 14px; # Set to 14px to make the font size same as the text in table of content</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.post-body img &#123;</span><br><span class="line">    margin-bottom: 0px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="figure--center"><img src="/2021/02/15/hexo-tag-figure-note/margin-bottom-20px.png" title="margin-bottom 20px"><figcaption><p>margin-bottom 20px</p></figcaption></figure>
+<figure class="figure--center"><img src="/2021/02/15/hexo-tag-figure-note/margin-bottom-0px.png" title="margin-bottom 0px"><figcaption><p>margin-bottom 0px</p></figcaption></figure></li>
+<li>Save the configuration and run <code>hexo generate</code> and <code>hexo deploy</code>, done ☕</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="https://tzynwang.github.io/2021/02/14/hexo-doc-update-contribution-workflow/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -243,7 +351,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2021-02-14 09:53:37 / Modified: 21:28:00" itemprop="dateCreated datePublished" datetime="2021-02-14T09:53:37+08:00">2021-02-14</time>
+      <time title="Created: 2021-02-14 09:53:37 / Modified: 21:31:52" itemprop="dateCreated datePublished" datetime="2021-02-14T09:53:37+08:00">2021-02-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -255,7 +363,7 @@
         </span>
           , 
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/hexo/Contribution/" itemprop="url" rel="index"><span itemprop="name">Contribution</span></a>
+          <a href="/categories/hexo/contribution/" itemprop="url" rel="index"><span itemprop="name">contribution</span></a>
         </span>
     </span>
 
