@@ -74,6 +74,13 @@
 
   
   <url>
+    <loc>https://tzynwang.github.io/tags/Windows/</loc>
+    <lastmod>2021-02-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://tzynwang.github.io/tags/bundle-exec/</loc>
     <lastmod>2021-02-15</lastmod>
     <changefreq>daily</changefreq>
@@ -101,24 +108,17 @@
     <priority>0.6</priority>
   </url>
   
-  <url>
-    <loc>https://tzynwang.github.io/tags/Windows/</loc>
-    <lastmod>2021-02-15</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
 
   
   <url>
-    <loc>https://tzynwang.github.io/categories/jekyll/</loc>
+    <loc>https://tzynwang.github.io/categories/hexo/</loc>
     <lastmod>2021-02-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://tzynwang.github.io/categories/hexo/</loc>
+    <loc>https://tzynwang.github.io/categories/jekyll/</loc>
     <lastmod>2021-02-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -139,6 +139,13 @@
   </url>
   
   <url>
+    <loc>https://tzynwang.github.io/categories/hexo/NexT-theme/</loc>
+    <lastmod>2021-02-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://tzynwang.github.io/categories/NexT-theme/</loc>
     <lastmod>2021-02-15</lastmod>
     <changefreq>daily</changefreq>
@@ -147,13 +154,6 @@
   
   <url>
     <loc>https://tzynwang.github.io/categories/NexT-theme/CSS/</loc>
-    <lastmod>2021-02-15</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://tzynwang.github.io/categories/hexo/NexT-theme/</loc>
     <lastmod>2021-02-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
