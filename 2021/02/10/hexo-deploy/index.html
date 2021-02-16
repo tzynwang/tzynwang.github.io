@@ -33,7 +33,7 @@
 <meta property="og:image" content="https://tzynwang.github.io/2021/02/10/hexo-deploy/config-github-pages-setting-00.png">
 <meta property="og:image" content="https://tzynwang.github.io/2021/02/10/hexo-deploy/config-github-pages-setting-01.png">
 <meta property="article:published_time" content="2021-02-10T11:00:23.000Z">
-<meta property="article:modified_time" content="2021-02-14T13:28:17.051Z">
+<meta property="article:modified_time" content="2021-02-16T01:31:43.895Z">
 <meta property="article:author" content="Charlie（茶）">
 <meta property="article:tag" content="hexo, hexo blog, tzyn, 普通文組">
 <meta name="twitter:card" content="summary">
@@ -131,6 +131,8 @@
   <ul class="main-menu menu">
         <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
   </ul>
 </nav>
 
@@ -174,19 +176,21 @@
 <div class="site-state-wrap site-overview-item animated">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
-          <a href="/archives">
-          <span class="site-state-item-count">6</span>
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">7</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
-        <span class="site-state-item-count">6</span>
+          
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -256,7 +260,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-02-14 21:28:17" itemprop="dateModified" datetime="2021-02-14T21:28:17+08:00">2021-02-14</time>
+        <time title="Modified: 2021-02-16 09:31:43" itemprop="dateModified" datetime="2021-02-16T09:31:43+08:00">2021-02-16</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -309,7 +313,7 @@
 </ol>
 <h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><ul>
 <li>Do not add <code>""</code> for the value of <code>root</code> and <code>theme</code> in the <code>_config.yml</code> file. Just wrote the value like following:<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># Extensions</span><br><span class="line">## Plugins: https://hexo.io/plugins/</span><br><span class="line">## Themes: https://hexo.io/themes/</span><br><span class="line">theme: next</span><br><span class="line"></span><br><span class="line"># URL</span><br><span class="line">## If your site is put in a subdirectory, set url as 'http://example.com/child' and root as '/child/'</span><br><span class="line">url: https://tzynwang.github.io</span><br><span class="line">root: /</span><br></pre></td></tr></tbody></table></figure></li>
-<li>To update blog contents (e.g. add new post), run <code>hexo generate</code> plus <code>hexo deploy</code>. <code>git commit</code> and <code>git push</code> the local content to “source” branch is not required for updating the blog contents on GitHub Pages.</li>
+<li>To update blog contents (e.g. add new post), run <code>hexo generate</code> plus <code>hexo deploy</code>.<br><code>git commit</code> and <code>git push</code> the local content to “source” branch is not required for updating the blog contents on GitHub Pages.</li>
 <li>The branch name “source” and “master” can be changed to other preferred names.<ul>
 <li>Make sure to update the contents in <code>.github/workflows/pages.yml</code> file and the <code>_config.yml</code> file that exists in the root folder.</li>
 <li>For example, if I want to <code>git push</code> the contents to the “development” branch, and <code>hexo deploy</code> to the “publish” branch, the <code>.github/workflows/pages.yml</code> file should be updated as follow:<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">name: Pages</span><br><span class="line"></span><br><span class="line">on:</span><br><span class="line">  push:</span><br><span class="line">    branches:</span><br><span class="line">      - development</span><br><span class="line"></span><br><span class="line">jobs:</span><br><span class="line">  pages:</span><br><span class="line">    runs-on: ubuntu-latest</span><br><span class="line">    steps:</span><br><span class="line">      - uses: actions/checkout@v2</span><br><span class="line">      - name: Use Node.js 12.x</span><br><span class="line">        uses: actions/setup-node@v1</span><br><span class="line">        with:</span><br><span class="line">          node-version: '12.x'</span><br><span class="line">      - name: Cache NPM dependencies</span><br><span class="line">        uses: actions/cache@v2</span><br><span class="line">        with:</span><br><span class="line">          path: node_modules</span><br><span class="line">          key: ${{ runner.OS }}-npm-cache</span><br><span class="line">          restore-keys: |</span><br><span class="line">            ${{ runner.OS }}-npm-cache</span><br><span class="line">      - name: Install Dependencies</span><br><span class="line">        run: npm install</span><br><span class="line">      - name: Build</span><br><span class="line">        run: npm run build</span><br><span class="line">      - name: Deploy</span><br><span class="line">        uses: peaceiris/actions-gh-pages@v3</span><br><span class="line">        with:</span><br><span class="line">          github_token: ${{ secrets.GITHUB_TOKEN }}</span><br><span class="line">          publish_dir: ./public</span><br><span class="line">          publish_branch: publish</span><br></pre></td></tr></tbody></table></figure>

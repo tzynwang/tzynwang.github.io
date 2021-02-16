@@ -124,6 +124,8 @@
   <ul class="main-menu menu">
         <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
   </ul>
 </nav>
 
@@ -166,19 +168,21 @@
 <div class="site-state-wrap site-overview-item animated">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
-          <a href="/archives">
-          <span class="site-state-item-count">6</span>
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">7</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
-        <span class="site-state-item-count">6</span>
+          
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -207,6 +211,104 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope="" itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tzynwang.github.io/2021/02/16/add-404-for-hexo-blog/">
+
+    <span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar-pexels-alex-andrews-215-215.png">
+      <meta itemprop="name" content="Charlie（茶）">
+      <meta itemprop="description" content="希望沒有搞錯努力方向的普通人 🤪">
+    </span>
+
+    <span hidden="" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="普通文組">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/02/16/add-404-for-hexo-blog/" class="post-title-link" itemprop="url">Add 404 handle page for hexo blog</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-02-16 09:36:19 / Modified: 10:06:42" itemprop="dateCreated datePublished" datetime="2021-02-16T09:36:19+08:00">2021-02-16</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+          <a href="/categories/hexo/" itemprop="url" rel="index"><span itemprop="name">hexo</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+          <a href="/categories/hexo/404-handle/" itemprop="url" rel="index"><span itemprop="name">404 handle</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="Summary-of-this-post"><a href="#Summary-of-this-post" class="headerlink" title="Summary of this post"></a>Summary of this post</h2><p>Add a 404 page for the hexo blog.</p>
+<figure class="figure--center"><img src="/2021/02/16/add-404-for-hexo-blog/404-page-for-hexo-blog.jpg" title="The 404 page"><figcaption><p>The 404 page</p></figcaption></figure>
+
+
+<h2 id="Environment"><a href="#Environment" class="headerlink" title="Environment"></a>Environment</h2><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo: 5.3.0</span><br><span class="line">hexo-cli: 4.2.0</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="Workflow"><a href="#Workflow" class="headerlink" title="Workflow"></a>Workflow</h2><ol>
+<li>Create a 404.md file in the <code>source</code> folder<figure class="figure--center"><img src="/2021/02/16/add-404-for-hexo-blog/location-of-404-page.jpg" title="Add the 404.md in the source folder of hexo blog " alt="The screenshot to display file location of 404.md file for the hexo blog"><figcaption><p>Add the 404.md in the source folder of hexo blog </p></figcaption></figure></li>
+<li>Add page content for the 404.md file:<ul>
+<li><code>permalink: /404.html</code> in line 3 is <strong>required</strong>.</li>
+<li>Fill in the correct URL (<code>https://&lt;your GitHub username&gt;.github.io/</code>) for redirection in line 9 and line 19</li>
+<li>The value of <code>countTime</code> in line 12 can be updated to the preferred waiting time. I just leave the waiting time as 5 seconds without changing it.<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: 404</span><br><span class="line">permalink: /404.html</span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">## Page not exists</span><br><span class="line">The page you are looking for does not exist.</span><br><span class="line">Will bring you back to the homepage in &lt;span id="timeout"&gt;5&lt;/span&gt; second(s).</span><br><span class="line">Or [click this link](https://&lt;your GitHub username&gt;.github.io/) to go back to the homepage immediately.</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">let countTime = 5;</span><br><span class="line"></span><br><span class="line">function count() {</span><br><span class="line">  </span><br><span class="line">  document.getElementById('timeout').textContent = countTime;</span><br><span class="line">  countTime -= 1;</span><br><span class="line">  if(countTime === 0){</span><br><span class="line">    location.href = "https://&lt;your GitHub username&gt;.github.io/";</span><br><span class="line">  }</span><br><span class="line">  setTimeout(() =&gt; {</span><br><span class="line">    count();</span><br><span class="line">  }, 1000);</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">count();</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></tbody></table></figure></li>
+</ul>
+</li>
+<li>Save the file. Run <code>hexo generate</code> and <code>hexo deploy</code> to push the 404 handle page to the repository. Done ☕</li>
+</ol>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
+<li>For the copy:<br>  <a target="_blank" rel="noopener" href="https://codepen.io/kdbkapsere/pen/oNXLbqQ">404 Page by Kasper De Bruyne</a></li>
+<li>For the <code>404.md</code> file location and the instruction of deployment:<br>  <a target="_blank" rel="noopener" href="https://github.com/ppoffice/hexo-theme-icarus/issues/66#issuecomment-165919312">https://github.com/ppoffice/hexo-theme-icarus/issues/66#issuecomment-165919312</a></li>
+<li>For the JavaScript of auto-redirect:<br>  <a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/articles/10249685">(23) 試著學 Hexo - SEO 篇 - 新增你的 404 頁面</a></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -561,7 +663,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-02-13 14:54:09" itemprop="dateModified" datetime="2021-02-13T14:54:09+08:00">2021-02-13</time>
+        <time title="Modified: 2021-02-16 09:18:14" itemprop="dateModified" datetime="2021-02-16T09:18:14+08:00">2021-02-16</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -570,6 +672,10 @@
       <span class="post-meta-item-text">In</span>
         <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
           <a href="/categories/hexo/" itemprop="url" rel="index"><span itemprop="name">hexo</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+          <a href="/categories/hexo/SEO/" itemprop="url" rel="index"><span itemprop="name">SEO</span></a>
         </span>
     </span>
 
@@ -653,7 +759,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-02-14 21:28:17" itemprop="dateModified" datetime="2021-02-14T21:28:17+08:00">2021-02-14</time>
+        <time title="Modified: 2021-02-16 09:31:43" itemprop="dateModified" datetime="2021-02-16T09:31:43+08:00">2021-02-16</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -706,7 +812,7 @@
 </ol>
 <h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><ul>
 <li>Do not add <code>""</code> for the value of <code>root</code> and <code>theme</code> in the <code>_config.yml</code> file. Just wrote the value like following:<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># Extensions</span><br><span class="line">## Plugins: https://hexo.io/plugins/</span><br><span class="line">## Themes: https://hexo.io/themes/</span><br><span class="line">theme: next</span><br><span class="line"></span><br><span class="line"># URL</span><br><span class="line">## If your site is put in a subdirectory, set url as 'http://example.com/child' and root as '/child/'</span><br><span class="line">url: https://tzynwang.github.io</span><br><span class="line">root: /</span><br></pre></td></tr></tbody></table></figure></li>
-<li>To update blog contents (e.g. add new post), run <code>hexo generate</code> plus <code>hexo deploy</code>. <code>git commit</code> and <code>git push</code> the local content to “source” branch is not required for updating the blog contents on GitHub Pages.</li>
+<li>To update blog contents (e.g. add new post), run <code>hexo generate</code> plus <code>hexo deploy</code>.<br><code>git commit</code> and <code>git push</code> the local content to “source” branch is not required for updating the blog contents on GitHub Pages.</li>
 <li>The branch name “source” and “master” can be changed to other preferred names.<ul>
 <li>Make sure to update the contents in <code>.github/workflows/pages.yml</code> file and the <code>_config.yml</code> file that exists in the root folder.</li>
 <li>For example, if I want to <code>git push</code> the contents to the “development” branch, and <code>hexo deploy</code> to the “publish” branch, the <code>.github/workflows/pages.yml</code> file should be updated as follow:<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">name: Pages</span><br><span class="line"></span><br><span class="line">on:</span><br><span class="line">  push:</span><br><span class="line">    branches:</span><br><span class="line">      - development</span><br><span class="line"></span><br><span class="line">jobs:</span><br><span class="line">  pages:</span><br><span class="line">    runs-on: ubuntu-latest</span><br><span class="line">    steps:</span><br><span class="line">      - uses: actions/checkout@v2</span><br><span class="line">      - name: Use Node.js 12.x</span><br><span class="line">        uses: actions/setup-node@v1</span><br><span class="line">        with:</span><br><span class="line">          node-version: '12.x'</span><br><span class="line">      - name: Cache NPM dependencies</span><br><span class="line">        uses: actions/cache@v2</span><br><span class="line">        with:</span><br><span class="line">          path: node_modules</span><br><span class="line">          key: ${{ runner.OS }}-npm-cache</span><br><span class="line">          restore-keys: |</span><br><span class="line">            ${{ runner.OS }}-npm-cache</span><br><span class="line">      - name: Install Dependencies</span><br><span class="line">        run: npm install</span><br><span class="line">      - name: Build</span><br><span class="line">        run: npm run build</span><br><span class="line">      - name: Deploy</span><br><span class="line">        uses: peaceiris/actions-gh-pages@v3</span><br><span class="line">        with:</span><br><span class="line">          github_token: ${{ secrets.GITHUB_TOKEN }}</span><br><span class="line">          publish_dir: ./public</span><br><span class="line">          publish_branch: publish</span><br></pre></td></tr></tbody></table></figure>
