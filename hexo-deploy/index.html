@@ -24,23 +24,23 @@
 <meta name="description" content="Summary of this postThis post describes my whole workflow about deploying hexo blog from local to GitHub Page 🛫記錄了自己把hexo blog從本機部屬到GitHub Pages的過程，寫得比hexo官方文件詳細一些。沒有對官方文件提出improvement是因為這些內容可能太繁瑣了 �">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Deploy hexo blog to GitHub Page">
-<meta property="og:url" content="https://tzynwang.github.io/2021/02/10/hexo-deploy/index.html">
+<meta property="og:url" content="https://tzynwang.github.io/hexo-deploy/index.html">
 <meta property="og:site_name" content="普通文組">
 <meta property="og:description" content="Summary of this postThis post describes my whole workflow about deploying hexo blog from local to GitHub Page 🛫記錄了自己把hexo blog從本機部屬到GitHub Pages的過程，寫得比hexo官方文件詳細一些。沒有對官方文件提出improvement是因為這些內容可能太繁瑣了 �">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://tzynwang.github.io/2021/02/10/hexo-deploy/add-new-file-to-repository-00.png">
-<meta property="og:image" content="https://tzynwang.github.io/2021/02/10/hexo-deploy/add-new-file-to-repository-01.png">
-<meta property="og:image" content="https://tzynwang.github.io/2021/02/10/hexo-deploy/config-github-pages-setting-00.png">
-<meta property="og:image" content="https://tzynwang.github.io/2021/02/10/hexo-deploy/config-github-pages-setting-01.png">
+<meta property="og:image" content="https://tzynwang.github.io/hexo-deploy/add-new-file-to-repository-00.png">
+<meta property="og:image" content="https://tzynwang.github.io/hexo-deploy/add-new-file-to-repository-01.png">
+<meta property="og:image" content="https://tzynwang.github.io/hexo-deploy/config-github-pages-setting-00.png">
+<meta property="og:image" content="https://tzynwang.github.io/hexo-deploy/config-github-pages-setting-01.png">
 <meta property="article:published_time" content="2021-02-10T11:00:23.000Z">
 <meta property="article:modified_time" content="2021-02-16T01:31:43.895Z">
 <meta property="article:author" content="Charlie（茶）">
 <meta property="article:tag" content="hexo, hexo blog, tzyn, 普通文組">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://tzynwang.github.io/2021/02/10/hexo-deploy/add-new-file-to-repository-00.png">
+<meta name="twitter:image" content="https://tzynwang.github.io/hexo-deploy/add-new-file-to-repository-00.png">
 
 
-<link rel="canonical" href="https://tzynwang.github.io/2021/02/10/hexo-deploy/">
+<link rel="canonical" href="https://tzynwang.github.io/hexo-deploy/">
 
 
 <script class="page-configurations">
@@ -229,7 +229,7 @@
   
 
   <article itemscope="" itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://tzynwang.github.io/2021/02/10/hexo-deploy/">
+    <link itemprop="mainEntityOfPage" href="https://tzynwang.github.io/hexo-deploy/">
 
     <span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar-pexels-alex-andrews-215-215.png">
@@ -303,12 +303,12 @@
 <li>Enter <code>git add .</code> to stage everything that are going to be committed (except the folders, files that are ignored by <code>.gitignore</code> file)</li>
 <li>Enter <code>git commit -m "initial commit"</code></li>
 <li>Enter <code>git push https://github.com/tzynwang/&lt;GitHub username&gt;.github.io.git source</code>, this will push all the files that are staged to the “source” branch on the GitHub repository</li>
-<li>Add a file <code>.github/workflows/pages.yml</code> to the “source” branch on the GitHub repository.<br><img src="/2021/02/10/hexo-deploy/add-new-file-to-repository-00.png" alt="Add new file through GitHub webpage interface"><br><img src="/2021/02/10/hexo-deploy/add-new-file-to-repository-01.png" alt="Enter the name for the new-add file"></li>
+<li>Add a file <code>.github/workflows/pages.yml</code> to the “source” branch on the GitHub repository.<br><img src="/hexo-deploy/add-new-file-to-repository-00.png" alt="Add new file through GitHub webpage interface"><br><img src="/hexo-deploy/add-new-file-to-repository-01.png" alt="Enter the name for the new-add file"></li>
 <li>Add the following contents to the file <code>.github/workflows/pages.yml</code>:<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">name: Pages</span><br><span class="line"></span><br><span class="line">on:</span><br><span class="line">  push:</span><br><span class="line">    branches:</span><br><span class="line">      - source  # default branch</span><br><span class="line"></span><br><span class="line">jobs:</span><br><span class="line">  pages:</span><br><span class="line">    runs-on: ubuntu-latest</span><br><span class="line">    steps:</span><br><span class="line">      - uses: actions/checkout@v2</span><br><span class="line">      - name: Use Node.js 12.x</span><br><span class="line">        uses: actions/setup-node@v1</span><br><span class="line">        with:</span><br><span class="line">          node-version: '12.x'</span><br><span class="line">      - name: Cache NPM dependencies</span><br><span class="line">        uses: actions/cache@v2</span><br><span class="line">        with:</span><br><span class="line">          path: node_modules</span><br><span class="line">          key: ${{ runner.OS }}-npm-cache</span><br><span class="line">          restore-keys: |</span><br><span class="line">            ${{ runner.OS }}-npm-cache</span><br><span class="line">      - name: Install Dependencies</span><br><span class="line">        run: npm install</span><br><span class="line">      - name: Build</span><br><span class="line">        run: npm run build</span><br><span class="line">      - name: Deploy</span><br><span class="line">        uses: peaceiris/actions-gh-pages@v3</span><br><span class="line">        with:</span><br><span class="line">          github_token: ${{ secrets.GITHUB_TOKEN }}</span><br><span class="line">          publish_dir: ./public</span><br><span class="line">          publish_branch: master  # deploying branch</span><br></pre></td></tr></tbody></table></figure></li>
 <li>Back to cmd.exe, run <code>hexo clean</code>, and then <code>hexo generate</code></li>
 <li>After <code>hexo generate</code>, a folder “public” will be created</li>
 <li>Enter <code>hexo deploy</code>, this command will push the contents from local folder “public” to the branch “master” on GitHub repository. You don’t need to create the branch “master” yourself, <code>hexo deploy</code> will handle this<br>💡 There will be 2 branches on the repository, one is “source” and another is “master”. The “master” branch contains the contents that will be rendered on your GitHub Pages</li>
-<li>After <code>hexo deploy</code> is completed, go to the “Settings” page for the repository. Change the Source of GitHub Pages to Branch “master”<br><img src="/2021/02/10/hexo-deploy/config-github-pages-setting-00.png" alt="Click the &quot;Setting&quot; tab on GitHub repository"><br><img src="/2021/02/10/hexo-deploy/config-github-pages-setting-01.png" alt="Config the GitHub Pages setting"></li>
+<li>After <code>hexo deploy</code> is completed, go to the “Settings” page for the repository. Change the Source of GitHub Pages to Branch “master”<br><img src="/hexo-deploy/config-github-pages-setting-00.png" alt="Click the &quot;Setting&quot; tab on GitHub repository"><br><img src="/hexo-deploy/config-github-pages-setting-01.png" alt="Config the GitHub Pages setting"></li>
 <li>Navigate to the URL <code>https://&lt;GitHub username&gt;.github.io/</code> to view your hexo blog ☕</li>
 </ol>
 <h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><ul>
@@ -337,12 +337,12 @@ The configuration in <code>_config.yml</code> file should be set like this:<figu
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2021/02/08/abandon-jekyll/" rel="prev" title="掰jekyll">
+                <a href="/abandon-jekyll/" rel="prev" title="掰jekyll">
                   <i class="fa fa-chevron-left"></i> 掰jekyll
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2021/02/11/hexo-and-Google-Search-Console/" rel="next" title="Submit the hexo blog to Google Search Console, and other SEO settings">
+                <a href="/hexo-and-Google-Search-Console/" rel="next" title="Submit the hexo blog to Google Search Console, and other SEO settings">
                   Submit the hexo blog to Google Search Console, and other SEO settings <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
