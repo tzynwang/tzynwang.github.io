@@ -3,9 +3,9 @@ title: Deploy hexo blog to GitHub Page
 date: 2021-02-10 19:00:23
 categories: 
 - hexo
-tags:
+- deployment
+keywords:
 - hexo deploy
-- Windows
 ---
 
 ## Summary of this post
@@ -65,7 +65,7 @@ deploy:
 
 ### To deploy hexo blog
 1. Open cmd.exe, move to hexo blog. In my case I enter `cd C:\Projects\hexo_blog`, this is the location that store my hexo blog contents
-1. Enter `git init` in cmd.exe
+1. In cmd.exe, enter `git init` to [create a empty Git repository](https://git-scm.com/docs/git-init). If Windows is set to [show the hidden files](https://support.microsoft.com/en-us/windows/show-hidden-files-0320fe58-0117-fd59-6851-9b7f9840fdb2), a `.git` folder can be viewed after running the `git init` command.
 1. Enter `git checkout -b source` to create a branch call "source"
 1. Enter `git add .` to stage everything that are going to be committed (except the folders, files that are ignored by `.gitignore` file)
 1. Enter `git commit -m "initial commit"`
@@ -120,8 +120,7 @@ jobs:
 
 
 ### Note
-Do not add `""` for the value of `root` and `theme` in the `_config.yml` file.
-Just wrote the value like following:
+- Do not add `""` for the value of `root` and `theme` in the `_config.yml` file. Just wrote the value like following:
 ```
 # Extensions
 ## Plugins: https://hexo.io/plugins/
@@ -133,6 +132,52 @@ theme: next
 url: https://tzynwang.github.io
 root: /
 ```
+- To update blog contents (e.g. add new post), run `hexo generate` plus `hexo deploy`.
+  `git commit` and `git push` the local content to "source" branch is not required for updating the blog contents on GitHub Pages.
+- The branch name "source" and "master" can be changed to other preferred names.
+  - Make sure to update the contents in `.github/workflows/pages.yml` file and the `_config.yml` file that exists in the root folder.
+  - For example, if I want to `git push` the contents to the "development" branch, and `hexo deploy` to the "publish" branch, the `.github/workflows/pages.yml` file should be updated as follow:
+  ```
+  name: Pages
+
+  on:
+    push:
+      branches:
+        - development
+
+  jobs:
+    pages:
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v2
+        - name: Use Node.js 12.x
+          uses: actions/setup-node@v1
+          with:
+            node-version: '12.x'
+        - name: Cache NPM dependencies
+          uses: actions/cache@v2
+          with:
+            path: node_modules
+            key: ${{ runner.OS }}-npm-cache
+            restore-keys: |
+              ${{ runner.OS }}-npm-cache
+        - name: Install Dependencies
+          run: npm install
+        - name: Build
+          run: npm run build
+        - name: Deploy
+          uses: peaceiris/actions-gh-pages@v3
+          with:
+            github_token: ${{ secrets.GITHUB_TOKEN }}
+            publish_dir: ./public
+            publish_branch: publish
+  ```
+  The configuration in `_config.yml` file should be set like this:
+  ```
+  # Deployment
+  deploy:
+    branch: publish
+  ```
 
 
 ## Reference

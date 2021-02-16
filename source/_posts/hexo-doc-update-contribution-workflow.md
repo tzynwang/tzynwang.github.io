@@ -1,10 +1,11 @@
 ---
-title: hexo contribution workflow note&#58; document update
+title: Hexo contribution workflow note&#58; document update
 date: 2021-02-14 09:53:37
 categories:
 - hexo
-- Contribution
-tags:
+- contribution
+keywords:
+- hexo contribution
 ---
 
 This a note for participating hexo's contribution (for improving the documentation in English and traditional Chinese).

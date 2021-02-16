@@ -2,10 +2,10 @@
 title: Hexo theme "NexT" CSS modification
 date: 2021-02-12 15:23:22
 categories:
-- [hexo]
-- [NexT (hexo theme)]
-tags:
-- CSS
+- hexo
+- NexT (theme)
+keywords:
+- NexT CSS configuration
 ---
 
 ## Summary of this post

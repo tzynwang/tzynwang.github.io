@@ -6,7 +6,7 @@
 title: 普通文組
 subtitle: Keep calm and read the docs
 description: 希望沒有搞錯努力方向的普通人 🤪
-keywords:
+keywords: hexo, hexo blog, tzyn, 普通文組
 author: Charlie（茶）
 since: 2021
 language: en
@@ -16,7 +16,7 @@ timezone:
 ## If your site is put in a subdirectory, set url as 'http://example.com/child' and root as '/child/'
 url: https://tzynwang.github.io
 root: /
-permalink: :year/:month/:day/:title/
+permalink: :year/:title/
 permalink_defaults:
 pretty_urls:
   trailing_index: true # Set to false to remove trailing 'index.html' from permalinks
@@ -33,7 +33,7 @@ category_dir: categories
 skip_render:
 
 # Writing
-new_post_name: title.md # File name of new posts
+new_post_name: :title.md # File name of new posts
 default_layout: post
 titlecase: false # Transform title into titlecase
 external_link:
@@ -124,3 +124,30 @@ sitemap:
   rel: false
   tags: true
   categories: true
+
+# hexo-optimize
+## Docs: https://github.com/next-theme/hexo-optimize#readme
+filter_optimize:
+  enable: true
+  remove_comments: false
+  css:
+    # minify all css files
+    minify: true
+    # bundle loaded css files into one
+    bundle: true
+    # use a script block to load css elements dynamically
+    delivery: true
+    # make specific css content inline into the html page
+    #   - only support the full path
+    #   - default is ['css/main.css']
+    inlines:
+    excludes:
+  js:
+    # minify all js files
+    minify: true
+    # bundle loaded js files into one
+    bundle: true
+    excludes:
+  # set the priority of this plugin,
+  # lower means it will be executed first, default of Hexo is 10
+  priority: 12

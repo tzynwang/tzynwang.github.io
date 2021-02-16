@@ -3,11 +3,10 @@ title: Submit the hexo blog to Google Search Console, and other SEO settings
 date: 2021-02-11 17:03:29
 categories:
   - hexo
+  - SEO
 tags:
   - Google Search Console
   - google-site-verification
-  - SEO
-  - Windows
 ---
 
 ## Summary of this post
