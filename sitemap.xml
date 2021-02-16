@@ -44,13 +44,6 @@
   </url>
   
   <url>
-    <loc>https://tzynwang.github.io/2021/hello-world/</loc>
-    
-    <lastmod>2021-02-15</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://tzynwang.github.io/2021/hexo-doc-update-contribution-workflow/</loc>
     
     <lastmod>2021-02-14</lastmod>
@@ -79,13 +72,6 @@
   </url>
   
   <url>
-    <loc>https://tzynwang.github.io/2021/gh-page-empty/</loc>
-    
-    <lastmod>2021-02-12</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://tzynwang.github.io/about/index.html</loc>
     
     <lastmod>2021-02-12</lastmod>
@@ -107,20 +93,6 @@
     <priority>1.0</priority>
   </url>
 
-  
-  <url>
-    <loc>https://tzynwang.github.io/tags/hexo-deploy/</loc>
-    <lastmod>2021-02-16</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://tzynwang.github.io/tags/Windows/</loc>
-    <lastmod>2021-02-16</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
   
   <url>
     <loc>https://tzynwang.github.io/tags/bundle-exec/</loc>
@@ -174,14 +146,14 @@
   </url>
   
   <url>
-    <loc>https://tzynwang.github.io/categories/hexo/category-hierarchy/</loc>
+    <loc>https://tzynwang.github.io/categories/hexo/deployment/</loc>
     <lastmod>2021-02-16</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://tzynwang.github.io/categories/hexo/deployment/</loc>
+    <loc>https://tzynwang.github.io/categories/hexo/category-hierarchy/</loc>
     <lastmod>2021-02-16</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
