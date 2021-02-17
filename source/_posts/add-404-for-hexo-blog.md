@@ -8,7 +8,7 @@ tags:
 ---
 
 ## Summary of this post
-Add a 404 page for the hexo blog.
+The workflow of adding a 404 handling page for the hexo blog.
 {% figure figure--center 2021/add-404-for-hexo-blog/404-page-for-hexo-blog.jpg "The 404 page" %}
 
 

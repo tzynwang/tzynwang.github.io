@@ -26,6 +26,10 @@ os: Windows_NT 10.0.18363 win32 x64
 
 
 ## hexo-tag-figure
+### GitHub
+[hexo-tag-figure](https://github.com/chawyehsu/hexo-tag-figure)
+
+
 ### Example
 {% figure figure--center 2021/hexo-tag-figure-note/book-cover.jpg 300 "Confessions of a Young Novelist 'Book cover of Confessions of a Young Novelist'" %}
 
@@ -37,7 +41,7 @@ os: Windows_NT 10.0.18363 win32 x64
     This is the **required** argument, though in the end I didn't apply customized CSS style to this class, this argument can not be skipped.
 - `hexo-tag-figure-note/book-cover.jpg`: the image path.
     Check the source code to find the path logic:
-    {% figure figure--center hexo-tag-figure-note/image-path.png "Check the image path by DevTools 'Screenshot of checking the image path through DevTools'" %}
+    {% figure figure--center 2021/hexo-tag-figure-note/image-path.png "Check the image path by DevTools 'Screenshot of checking the image path through DevTools'" %}
     (update on Feb 16 2021: I change the `permalink` setting from `:year/:month/:day/:title/` to `:title/`, thus the image path needs to be updated too. The image path in the screenshot includes `:year/:month/:day/:title/` since I previously set the `permalink` in this form 😅)
     Aad the permalink `:title/` as prefix to load the image.
     文件沒有特別針對image path做說明，從DevTools觀察了一下其他還沒使用hexo-tag-figure插入的圖片路徑，測試後發現image path要加上permalink。
@@ -76,6 +80,6 @@ figcaption {
     margin-bottom: 0px;
 }
 ```
-{% figure figure--center 2021/hexo-tag-figure-note/margin-bottom-20px.png "margin-bottom 20px" %}
-{% figure figure--center 2021/hexo-tag-figure-note/margin-bottom-0px.png "margin-bottom 0px" %}
+{% figure figure--center 2021/hexo-tag-figure-note/margin-bottom-20px.jpg "margin-bottom 20px" %}
+{% figure figure--center 2021/hexo-tag-figure-note/margin-bottom-0px.jpg "margin-bottom 0px" %}
 1. Save the configuration and run `hexo generate` and `hexo deploy`, done ☕

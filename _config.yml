@@ -41,7 +41,7 @@ external_link:
   field: site # Apply to the whole site
   exclude: ""
 filename_case: 0
-render_drafts: false
+render_drafts: false # Note: set to 'true' will generate the drafts into public folder
 post_asset_folder: true
 marked:
   prependRoot: true
@@ -124,6 +124,14 @@ sitemap:
   rel: false
   tags: true
   categories: true
+
+# Local Search
+# Dependencies: https://github.com/next-theme/hexo-generator-searchdb
+search:
+  path: search.xml
+  field: post
+  content: true
+  format: html
 
 # hexo-optimize
 ## Docs: https://github.com/next-theme/hexo-optimize#readme

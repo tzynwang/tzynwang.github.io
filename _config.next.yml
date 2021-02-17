@@ -88,6 +88,7 @@ menu:
   #schedule: /schedule/ || fa fa-calendar
   #sitemap: /sitemap.xml || fa fa-sitemap
   #commonweal: /404/ || fa fa-heartbeat
+  #Google search: /search/ || fa fa-search
 
 # Enable / Disable menu icons / item badges.
 menu_settings:
@@ -726,12 +727,12 @@ algolia_search:
 # Local Search
 # Dependencies: https://github.com/next-theme/hexo-generator-searchdb
 local_search:
-  enable: false
+  enable: enable
   # If auto, trigger search by changing input.
   # If manual, trigger search by pressing enter key or search button.
   trigger: auto
   # Show top n results per article, show all results by setting to -1
-  top_n_per_article: 1
+  top_n_per_article: -1
   # Unescape html strings to the readable one.
   unescape: false
   # Preload the search data when the page loads.
@@ -822,7 +823,7 @@ motion:
 # For more information: https://github.com/rstacruz/nprogress
 nprogress:
   enable: false
-  spinner: true
+  spinner: false
 
 # Canvas ribbon
 # For more information: https://github.com/hustcc/ribbon.js
