@@ -2,7 +2,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://tzynwang.github.io/2021/hexo-generator-searchdb-note/</loc>
+    <loc>https://tzynwang.github.io/2021/page-speed-note/</loc>
+    
+    <lastmod>2021-02-17</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://tzynwang.github.io/2021/hexo-search-engine-note/</loc>
     
     <lastmod>2021-02-17</lastmod>
     
@@ -153,14 +160,14 @@
   </url>
   
   <url>
-    <loc>https://tzynwang.github.io/categories/hexo/SEO/</loc>
+    <loc>https://tzynwang.github.io/categories/hexo/category-hierarchy/</loc>
     <lastmod>2021-02-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://tzynwang.github.io/categories/hexo/category-hierarchy/</loc>
+    <loc>https://tzynwang.github.io/categories/hexo/SEO/</loc>
     <lastmod>2021-02-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -174,14 +181,14 @@
   </url>
   
   <url>
-    <loc>https://tzynwang.github.io/categories/hexo/contribution/</loc>
+    <loc>https://tzynwang.github.io/categories/hexo/blog-content-search/</loc>
     <lastmod>2021-02-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://tzynwang.github.io/categories/hexo/blog-content-search/</loc>
+    <loc>https://tzynwang.github.io/categories/hexo/contribution/</loc>
     <lastmod>2021-02-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
