@@ -126,6 +126,7 @@
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
         <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li>
         <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+        <li class="menu-item menu-item-google-search"><a href="/search/" rel="section"><i class="fa fa-search fa-fw"></i>Google search</a></li>
   </ul>
 </nav>
 
@@ -170,14 +171,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-count">9</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-count">10</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
@@ -220,6 +221,117 @@
   
 
   <article itemscope="" itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tzynwang.github.io/2021/hexo-generator-searchdb-note/">
+
+    <span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar-pexels-alex-andrews-215-215.png">
+      <meta itemprop="name" content="Charlie（茶）">
+      <meta itemprop="description" content="希望沒有搞錯努力方向的普通人 🤪">
+    </span>
+
+    <span hidden="" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="普通文組">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/hexo-generator-searchdb-note/" class="post-title-link" itemprop="url">Add search engine for hexo blog</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-02-17 09:07:53 / Modified: 11:03:43" itemprop="dateCreated datePublished" datetime="2021-02-17T09:07:53+08:00">2021-02-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+          <a href="/categories/hexo/" itemprop="url" rel="index"><span itemprop="name">hexo</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+          <a href="/categories/hexo/blog-content-search/" itemprop="url" rel="index"><span itemprop="name">blog content search</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="Summary-of-this-post"><a href="#Summary-of-this-post" class="headerlink" title="Summary of this post"></a>Summary of this post</h2><p>2 ways to add local search engine to the hexo blog:</p>
+<ol>
+<li>use plugin: hexo-generator-searchdb</li>
+<li>use Google’s Programmable Search Engine</li>
+</ol>
+<h2 id="Environment"><a href="#Environment" class="headerlink" title="Environment"></a>Environment</h2><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo: 5.3.0</span><br><span class="line">hexo-cli: 4.2.0</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="hexo-generator-searchdb"><a href="#hexo-generator-searchdb" class="headerlink" title="hexo-generator-searchdb"></a>hexo-generator-searchdb</h2><h3 id="GitHub"><a href="#GitHub" class="headerlink" title="GitHub"></a>GitHub</h3><p><a target="_blank" rel="noopener" href="https://github.com/next-theme/hexo-generator-searchdb">hexo-generator-searchdb</a><br>Version: 1.3.3</p>
+<h3 id="Configuration"><a href="#Configuration" class="headerlink" title="Configuration"></a>Configuration</h3><h4 id="config-yml"><a href="#config-yml" class="headerlink" title="_config.yml"></a>_config.yml</h4><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">search:</span><br><span class="line">  path: search.xml</span><br><span class="line">  field: post</span><br><span class="line">  content: true</span><br><span class="line">  format: html</span><br></pre></td></tr></tbody></table></figure>
+<h4 id="config-next-yml"><a href="#config-next-yml" class="headerlink" title="_config.next.yml"></a>_config.next.yml</h4><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"># ---------------------------------------------------------------</span><br><span class="line"># Search Services</span><br><span class="line"># ---------------------------------------------------------------</span><br><span class="line"></span><br><span class="line"># Local Search</span><br><span class="line">local_search:</span><br><span class="line">  enable: true</span><br><span class="line">  </span><br><span class="line">  # If auto, trigger search by changing input.</span><br><span class="line">  # If manual, trigger search by pressing enter key or search button.</span><br><span class="line">  trigger: auto</span><br><span class="line">  </span><br><span class="line">  # Show top n results per article, show all results by setting to -1</span><br><span class="line">  top_n_per_article: -1</span><br><span class="line">  </span><br><span class="line">  # Unescape html strings to the readable one.</span><br><span class="line">  unescape: false</span><br><span class="line">  </span><br><span class="line">  # Preload the search data when the page loads.</span><br><span class="line">  preload: false</span><br></pre></td></tr></tbody></table></figure>
+<p>Note:<br>No needs to add <code>/search/</code> link in <code># Menu Settings</code> if you want to use local search engine that provides by hexo-generator-searchdb. NexT (theme) will handle the search tab once the <code># Local Search</code> option is enable.</p>
+<h4 id="CSS-for-search-result-highlight"><a href="#CSS-for-search-result-highlight" class="headerlink" title="CSS for search result highlight"></a>CSS for search result highlight</h4><p>File path: <code>themes\next\source\css\_common\components\third-party\search.styl</code><br>I’d removed the bold setting and update the border-bottom style for <code>mark.search-keyword</code>:</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mark.search-keyword {</span><br><span class="line">    background: transparent;</span><br><span class="line">    border-bottom: 1px solid $red;</span><br><span class="line">    color: $red;</span><br><span class="line">    /*font-weight: bold;*/</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="Result-☕"><a href="#Result-☕" class="headerlink" title="Result ☕"></a>Result ☕</h3><figure class="figure--center"><img src="/2021/hexo-generator-searchdb-note/search-result.jpg" title="Launching local search on hexo blog " alt="The screenshot of hexo blog local search"><figcaption><p>Launching local search on hexo blog </p></figcaption></figure>
+
+
+<h2 id="Programmable-Search-Engine"><a href="#Programmable-Search-Engine" class="headerlink" title="Programmable Search Engine"></a>Programmable Search Engine</h2><p>Another way to add search function for hexo blog is adding <a target="_blank" rel="noopener" href="https://programmablesearchengine.google.com/about/">Google’s Programmable Search Engine</a>.</p>
+<h3 id="Workflow"><a href="#Workflow" class="headerlink" title="Workflow"></a>Workflow</h3><ol>
+<li>Go to <a target="_blank" rel="noopener" href="https://programmablesearchengine.google.com/about/">Programmable Search Engine</a> and click “Get Started”<figure class="figure--center"><img src="/2021/hexo-generator-searchdb-note/programmable-search-engine-00.jpg" title="Google's Programmable Search Engine " alt="The screenshot of Google's Programmable Search Engine homepage"><figcaption><p>Google's Programmable Search Engine </p></figcaption></figure></li>
+<li>Enter the URL of the site to search. I enter <code>https://tzynwang.github.io/*</code> (with <code>*</code> at the end of URL) to make Google search the whole hexo blog<figure class="figure--center"><img src="/2021/hexo-generator-searchdb-note/programmable-search-engine-01.jpg" title="Enter the URL to search by Google " alt="The screenshot of config URL for Programmable Search Engine"><figcaption><p>Enter the URL to search by Google </p></figcaption></figure></li>
+<li>Click “CREATE” to submit the search engine application<figure class="figure--center"><img src="/2021/hexo-generator-searchdb-note/programmable-search-engine-02.jpg" title="After submitting, user can decide to get the search engine code, visit the public URL of the search engine, or modify the search engine " alt="The screenshot after submitting the search engine application"><figcaption><p>After submitting, user can decide to get the search engine code, visit the public URL of the search engine, or modify the search engine </p></figcaption></figure></li>
+<li>To add Google’s search engine to hexo blog, click “Get code”</li>
+<li>Copy the code<figure class="figure--center"><img src="/2021/hexo-generator-searchdb-note/programmable-search-engine-03.jpg" title="Copy search engine's code " alt="The screenshot of copying search engine's code"><figcaption><p>Copy search engine's code </p></figcaption></figure></li>
+<li>Launch cmd.exe, enter <code>hexo new page search</code> to add the searching page for hexo blog</li>
+<li>Open the <code>index.md</code> file in <code>search</code> folder which was just created, add the front-matter <code>type: "search"</code></li>
+<li>Paste the search engine code as the content in <code>index.md</code>. Here’s how the <code>index.md</code> should look like: <figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: search</span><br><span class="line">date: 2021-02-17 10:33:04</span><br><span class="line">type: "search"</span><br><span class="line">layout: search</span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">&lt;script async src="https://cse.google.com/cse.js?cx=9e7ebf1af41ffecee"&gt;&lt;/script&gt;</span><br><span class="line">&lt;div class="gcse-search"&gt;&lt;/div&gt;</span><br></pre></td></tr></tbody></table></figure></li>
+<li>Update the configuration in the <code>_config.next.yml</code> file: add <code>search</code> option in <code># Menu Settings</code> <figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># ---------------------------------------------------------------</span><br><span class="line"># Menu Settings</span><br><span class="line"># ---------------------------------------------------------------</span><br><span class="line">menu:</span><br><span class="line">home: / || fa fa-home</span><br><span class="line">about: /about/ || fa fa-user</span><br><span class="line">categories: /categories/ || fa fa-th</span><br><span class="line">archives: /archives/ || fa fa-archive</span><br><span class="line">Google search: /search/ || fa fa-search</span><br></pre></td></tr></tbody></table></figure></li>
+<li>Save the settings, run <code>hexo server</code> to preview the result</li>
+</ol>
+<h3 id="Result-☕-1"><a href="#Result-☕-1" class="headerlink" title="Result ☕"></a>Result ☕</h3><figure class="figure--center"><img src="/2021/hexo-generator-searchdb-note/programmable-search-engine-04.jpg" title="The screenshot of Google's Programmable Search Engine on hexo blog"><figcaption><p>The screenshot of Google's Programmable Search Engine on hexo blog</p></figcaption></figure>
+
+
+<h2 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h2><p>I decide to use <code>hexo-generator-searchdb</code> instead of adding another page to handle the search engine.<br>Prefer the way that NexT theme handles the search engine, it opens a searching tab on the current page. Users don’t need to navigate to another page for doing content searching.</p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a target="_blank" rel="noopener" href="https://blog.johnwu.cc/article/hexo-google-custom-search.html">Hexo - 自訂站內搜尋 (Google Custom Search)</a></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope="" itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="https://tzynwang.github.io/2021/add-404-for-hexo-blog/">
 
     <span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -245,7 +357,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2021-02-16 09:36:19 / Modified: 15:10:13" itemprop="dateCreated datePublished" datetime="2021-02-16T09:36:19+08:00">2021-02-16</time>
+      <time title="Created: 2021-02-16 09:36:19 / Modified: 20:29:11" itemprop="dateCreated datePublished" datetime="2021-02-16T09:36:19+08:00">2021-02-16</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -271,7 +383,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h2 id="Summary-of-this-post"><a href="#Summary-of-this-post" class="headerlink" title="Summary of this post"></a>Summary of this post</h2><p>Add a 404 page for the hexo blog.</p>
+          <h2 id="Summary-of-this-post"><a href="#Summary-of-this-post" class="headerlink" title="Summary of this post"></a>Summary of this post</h2><p>The workflow of adding a 404 handling page for the hexo blog.</p>
 <figure class="figure--center"><img src="/2021/add-404-for-hexo-blog/404-page-for-hexo-blog.jpg" title="The 404 page"><figcaption><p>The 404 page</p></figcaption></figure>
 
 
@@ -349,7 +461,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-02-16 16:50:29" itemprop="dateModified" datetime="2021-02-16T16:50:29+08:00">2021-02-16</time>
+        <time title="Modified: 2021-02-16 20:29:54" itemprop="dateModified" datetime="2021-02-16T20:29:54+08:00">2021-02-16</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -387,7 +499,8 @@
 <p>此篇主要是記錄<code>hexo-tag-figure</code>的使用心得，以及如何使用<code>_config.next.yml</code>中的<code>custom_file_path</code>參數設定來增加自定義CSS設定內容的相關筆記。</p>
 <h2 id="Environment"><a href="#Environment" class="headerlink" title="Environment"></a>Environment</h2><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">hexo-tag-figure: 0.4.1</span><br><span class="line">NexT: 8.2.1</span><br><span class="line">hexo: 5.3.0</span><br><span class="line">hexo-cli: 4.2.0</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></tbody></table></figure>
 
-<h2 id="hexo-tag-figure"><a href="#hexo-tag-figure" class="headerlink" title="hexo-tag-figure"></a>hexo-tag-figure</h2><h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="figure--center"><img src="/2021/hexo-tag-figure-note/book-cover.jpg" width="300" title="Confessions of a Young Novelist " alt="Book cover of Confessions of a Young Novelist"><figcaption><p>Confessions of a Young Novelist </p></figcaption></figure>
+<h2 id="hexo-tag-figure"><a href="#hexo-tag-figure" class="headerlink" title="hexo-tag-figure"></a>hexo-tag-figure</h2><h3 id="GitHub"><a href="#GitHub" class="headerlink" title="GitHub"></a>GitHub</h3><p><a target="_blank" rel="noopener" href="https://github.com/chawyehsu/hexo-tag-figure">hexo-tag-figure</a></p>
+<h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="figure--center"><img src="/2021/hexo-tag-figure-note/book-cover.jpg" width="300" title="Confessions of a Young Novelist " alt="Book cover of Confessions of a Young Novelist"><figcaption><p>Confessions of a Young Novelist </p></figcaption></figure>
 
 <h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">{% figure figure--center 2021/hexo-tag-figure-note/book-cover.jpg 300 "Confessions of a Young Novelist 'Book cover of Confessions of a Young Novelist'" %}</span><br></pre></td></tr></tbody></table></figure>
 <ul>
@@ -463,7 +576,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-02-16 16:48:14" itemprop="dateModified" datetime="2021-02-16T16:48:14+08:00">2021-02-16</time>
+        <time title="Modified: 2021-02-16 20:31:54" itemprop="dateModified" datetime="2021-02-16T20:31:54+08:00">2021-02-16</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -503,7 +616,7 @@
 <p>Result:</p>
 <figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">├── Fruit</span><br><span class="line">|   └── Apple</span><br><span class="line">|      └── Apple Seed</span><br><span class="line">└── Vegetable</span><br></pre></td></tr></tbody></table></figure>
 
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a target="_blank" rel="noopener" href="https://hexo.io/docs/front-matter#Categories-amp-Tags">The official introduction about hexo’s categories</a></p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a target="_blank" rel="noopener" href="https://hexo.io/docs/front-matter#Categories-amp-Tags">hexo: Front-matter/Categories &amp; Tags</a></p>
 
       
     </div>

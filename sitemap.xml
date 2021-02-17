@@ -2,14 +2,28 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://tzynwang.github.io/2021/hexo-tag-figure-note/</loc>
+    <loc>https://tzynwang.github.io/2021/hexo-generator-searchdb-note/</loc>
+    
+    <lastmod>2021-02-17</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://tzynwang.github.io/search/index.html</loc>
+    
+    <lastmod>2021-02-17</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://tzynwang.github.io/2021/hexo-category-hierarchy/</loc>
     
     <lastmod>2021-02-16</lastmod>
     
   </url>
   
   <url>
-    <loc>https://tzynwang.github.io/2021/hexo-category-hierarchy/</loc>
+    <loc>https://tzynwang.github.io/2021/hexo-tag-figure-note/</loc>
     
     <lastmod>2021-02-16</lastmod>
     
@@ -88,7 +102,7 @@
 
   <url>
     <loc>https://tzynwang.github.io/</loc>
-    <lastmod>2021-02-16</lastmod>
+    <lastmod>2021-02-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -96,21 +110,21 @@
   
   <url>
     <loc>https://tzynwang.github.io/tags/bundle-exec/</loc>
-    <lastmod>2021-02-16</lastmod>
+    <lastmod>2021-02-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://tzynwang.github.io/tags/Google-Search-Console/</loc>
-    <lastmod>2021-02-16</lastmod>
+    <lastmod>2021-02-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://tzynwang.github.io/tags/google-site-verification/</loc>
-    <lastmod>2021-02-16</lastmod>
+    <lastmod>2021-02-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
@@ -119,63 +133,70 @@
   
   <url>
     <loc>https://tzynwang.github.io/categories/hexo/</loc>
-    <lastmod>2021-02-16</lastmod>
+    <lastmod>2021-02-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://tzynwang.github.io/categories/jekyll/</loc>
-    <lastmod>2021-02-16</lastmod>
+    <lastmod>2021-02-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://tzynwang.github.io/categories/hexo/404-handle/</loc>
-    <lastmod>2021-02-16</lastmod>
+    <lastmod>2021-02-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://tzynwang.github.io/categories/hexo/SEO/</loc>
-    <lastmod>2021-02-16</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://tzynwang.github.io/categories/hexo/deployment/</loc>
-    <lastmod>2021-02-16</lastmod>
+    <lastmod>2021-02-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://tzynwang.github.io/categories/hexo/category-hierarchy/</loc>
-    <lastmod>2021-02-16</lastmod>
+    <lastmod>2021-02-17</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://tzynwang.github.io/categories/hexo/deployment/</loc>
+    <lastmod>2021-02-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://tzynwang.github.io/categories/hexo/contribution/</loc>
-    <lastmod>2021-02-16</lastmod>
+    <lastmod>2021-02-17</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://tzynwang.github.io/categories/hexo/blog-content-search/</loc>
+    <lastmod>2021-02-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://tzynwang.github.io/categories/hexo/NexT-theme/</loc>
-    <lastmod>2021-02-16</lastmod>
+    <lastmod>2021-02-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://tzynwang.github.io/categories/hexo/CSS/</loc>
-    <lastmod>2021-02-16</lastmod>
+    <lastmod>2021-02-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
