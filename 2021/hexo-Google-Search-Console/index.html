@@ -1,0 +1,455 @@
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/menu_book-black-18dp.svg" color="#222">
+  <meta name="google-site-verification" content="6Df5aVEQ0VnFs85Kmy2VYlYOZrGMS1izxzdhFxEN-bI">
+
+
+
+
+
+
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"tzynwang.github.io","root":"/","images":"/images","scheme":"Pisces","version":"8.2.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":"enable","trigger":"auto","top_n_per_article":-1,"unescape":false,"preload":false}};
+  </script>
+<meta name="description" content="Summary of this postQ: How to make sure Google Search can find my hexo blog that has been deployed on GitHub Page?A: Submit your hexo blog to Google Search Console by:  Add HTML tag into hexo blog’s &amp;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Submit to Google Search Console, SEO settings">
+<meta property="og:url" content="https://tzynwang.github.io/2021/hexo-Google-Search-Console/index.html">
+<meta property="og:site_name" content="普通文組">
+<meta property="og:description" content="Summary of this postQ: How to make sure Google Search can find my hexo blog that has been deployed on GitHub Page?A: Submit your hexo blog to Google Search Console by:  Add HTML tag into hexo blog’s &amp;">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://tzynwang.github.io/2021/hexo-Google-Search-Console/Enter-hexo-blog-URL-to-Google-Search-Console.png">
+<meta property="og:image" content="https://tzynwang.github.io/2021/hexo-Google-Search-Console/Copy-HTML-tag.png">
+<meta property="og:image" content="https://tzynwang.github.io/2021/hexo-Google-Search-Console/Verify-hexo-blog-after-adding-HTML-tag.png">
+<meta property="og:image" content="https://tzynwang.github.io/2021/hexo-Google-Search-Console/Manually-add-HTML-tag-to-NexT-theme.png">
+<meta property="og:image" content="https://tzynwang.github.io/2021/hexo-Google-Search-Console/Submit-sitemap.png">
+<meta property="og:image" content="https://tzynwang.github.io/2021/hexo-Google-Search-Console/Mobile-Friendly-Test-error-message.png">
+<meta property="og:image" content="https://tzynwang.github.io/2021/hexo-Google-Search-Console/Pass-Mobile-Friendly-Test.png">
+<meta property="og:image" content="https://tzynwang.github.io/2021/hexo-Google-Search-Console/User-setting.png">
+<meta property="og:image" content="https://tzynwang.github.io/2021/hexo-Google-Search-Console/User-setting-user-management.png">
+<meta property="og:image" content="https://tzynwang.github.io/2021/hexo-Google-Search-Console/View-HTML-tag-contents.png">
+<meta property="article:published_time" content="2021-02-11T09:03:29.000Z">
+<meta property="article:modified_time" content="2021-02-18T12:43:01.055Z">
+<meta property="article:author" content="Charlie（茶）">
+<meta property="article:tag" content="hexo, hexo blog, tzyn, 普通文組">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://tzynwang.github.io/2021/hexo-Google-Search-Console/Enter-hexo-blog-URL-to-Google-Search-Console.png">
+
+
+<link rel="canonical" href="https://tzynwang.github.io/2021/hexo-Google-Search-Console/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+<title>Submit to Google Search Console, SEO settings | 普通文組</title>
+  
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+<script>function loadCss(l){var d=document,h=d.head,s=d.createElement('link');s.rel='stylesheet';s.href=l;!function e(f){if (d.body)return f();setTimeout(function(){e(f)})}(function(){h.appendChild(s);});}loadCss('/style.css');loadCss('https://fonts.googleapis.com/css2?family=Noto+Sans+TC&family=Roboto&display=swap/css?family=Roboto:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext');loadCss('https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.2/css/all.min.css');</script><noscript><link rel="stylesheet" href="/style.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC&amp;family=Roboto&amp;display=swap/css?family=Roboto:300,300italic,400,400italic,700,700italic&amp;display=swap&amp;subset=latin,latin-ext"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.2/css/all.min.css"></noscript></head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">普通文組</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Keep calm and read the docs</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80" placeholder="Searching..." spellcheck="false" type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Summary-of-this-post"><span class="nav-number">1.</span> <span class="nav-text">Summary of this post</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Enviroment"><span class="nav-number">2.</span> <span class="nav-text">Enviroment</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#About-config-next-yml"><span class="nav-number">3.</span> <span class="nav-text">About _config.next.yml</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Add-HTML-tag"><span class="nav-number">4.</span> <span class="nav-text">Add HTML tag</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Provide-sitemap-xml"><span class="nav-number">5.</span> <span class="nav-text">Provide sitemap.xml</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Run-Mobile-Friendly-Test"><span class="nav-number">6.</span> <span class="nav-text">Run Mobile-Friendly Test</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bonus-I-forget-the-HTML-tag-contents"><span class="nav-number">7.</span> <span class="nav-text">Bonus: I forget the HTML tag contents</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-number">8.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Charlie（茶）" src="/images/avatar-pexels-alex-andrews-215-215.png">
+  <p class="site-author-name" itemprop="name">Charlie（茶）</p>
+  <div class="site-description" itemprop="description">希望沒有搞錯努力方向的普通人 🤪</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope="" itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://tzynwang.github.io/2021/hexo-Google-Search-Console/">
+
+    <span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar-pexels-alex-andrews-215-215.png">
+      <meta itemprop="name" content="Charlie（茶）">
+      <meta itemprop="description" content="希望沒有搞錯努力方向的普通人 🤪">
+    </span>
+
+    <span hidden="" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="普通文組">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Submit to Google Search Console, SEO settings
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-02-11 17:03:29" itemprop="dateCreated datePublished" datetime="2021-02-11T17:03:29+08:00">2021-02-11</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-02-18 20:43:01" itemprop="dateModified" datetime="2021-02-18T20:43:01+08:00">2021-02-18</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+          <a href="/categories/hexo/" itemprop="url" rel="index"><span itemprop="name">hexo</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="Summary-of-this-post"><a href="#Summary-of-this-post" class="headerlink" title="Summary of this post"></a>Summary of this post</h2><p>Q: How to make sure Google Search can find my hexo blog that has been deployed on GitHub Page?<br>A: Submit your hexo blog to <a target="_blank" rel="noopener" href="https://search.google.com/search-console/welcome">Google Search Console</a> by:</p>
+<ol>
+<li>Add <code>HTML tag</code> into hexo blog’s <code>&lt;head&gt;&lt;/head&gt;</code></li>
+<li>Provide hexo blog’s <code>sitemap.xml</code> to Google</li>
+</ol>
+<p>為了讓Google可以搜尋到hexo部落格，需把<code>HTML tag</code>（HTML標記、中繼標籤）加到<code>&lt;head&gt;&lt;/head&gt;</code>，並提交<code>sitemap.xml</code>給<a target="_blank" rel="noopener" href="https://search.google.com/search-console/welcome">Google Search Console</a>。</p>
+<h2 id="Enviroment"><a href="#Enviroment" class="headerlink" title="Enviroment"></a>Enviroment</h2><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo: 5.3.0</span><br><span class="line">NexT: 8.2.1</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="About-config-next-yml"><a href="#About-config-next-yml" class="headerlink" title="About _config.next.yml"></a>About _config.next.yml</h2><p>I use <a target="_blank" rel="noopener" href="https://theme-next.js.org/docs/getting-started/configuration.html#config-name-yml">Alternate Theme Config</a> to apply the theme modification according to the suggestion from NexT official document.</p>
+<h2 id="Add-HTML-tag"><a href="#Add-HTML-tag" class="headerlink" title="Add HTML tag"></a>Add HTML tag</h2><ol>
+<li>Visit <a target="_blank" rel="noopener" href="https://search.google.com/search-console/welcome">Google Search Console</a>, enter the URL of hexo blog into right hand side column.<br><img src="/2021/hexo-Google-Search-Console/Enter-hexo-blog-URL-to-Google-Search-Console.png" alt="Enter hexo blog URL"></li>
+<li>Select and copy the HTML tag.<br><img src="/2021/hexo-Google-Search-Console/Copy-HTML-tag.png" alt="Select and copy the HTML tag provide by Google Search Console"></li>
+<li>Open the file <code>_config.next.yml</code>, navigate to the part <code># SEO Settings</code>, paste the HTML tag “content” part as the value of the key <code>google_site_verification</code><br>For example, this is the whole HTML tag contents you’ve copied:<br><code>&lt;meta name="google-site-verification" content="(a string includes letters, numbers and _)" /&gt;</code><br>Just paste the content part into <code>_config.next.yml</code>, like the below code block shows:<figure class="highlight yaml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ---------------------------------------------------------------</span></span><br><span class="line"><span class="comment"># SEO Settings</span></span><br><span class="line"><span class="comment"># See: https://theme-next.js.org/docs/theme-settings/seo</span></span><br><span class="line"><span class="comment"># ---------------------------------------------------------------</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Google Webmaster tools verification.</span></span><br><span class="line"><span class="attr">google_site_verification:</span> <span class="string">(a</span> <span class="string">string</span> <span class="string">includes</span> <span class="string">letters,</span> <span class="string">numbers</span> <span class="string">and</span> <span class="string">_)</span> <span class="string">/&gt;</span></span><br></pre></td></tr></tbody></table></figure></li>
+<li>Launch cmd.exe, move to the hexo blog folder, run <code>hexo clean &amp;&amp; hexo generate</code></li>
+<li>Open the file <code>index.html</code> in <code>public</code> folder, the HTML tag should appear between the <code>&lt;head&gt;&lt;/head&gt;</code> tag</li>
+<li>Run <code>hexo deploy</code> to deploy modification to GitHub Page</li>
+<li>Back to Google Search Console and click “Verify”<br><img src="/2021/hexo-Google-Search-Console/Verify-hexo-blog-after-adding-HTML-tag.png" alt="Click the Verify button after adding the HTML tag"></li>
+<li>One of the two parts of Google SEO setting has finished, have a cup of tea ☕</li>
+</ol>
+<p>個人目前使用的是8.2.1版的NexT，<code>_config.next.yml</code>已內建支援<code>google_site_verification</code>。<br>在Google Search Console取得HTML tag後，將content的內容貼上即可。</p>
+<p><code>_config.next.yml</code>若沒有這個參數的話，則手動將整個HTML tag貼到<code>\themes\hexo-theme-next\layout\_partials\head</code>資料夾的<code>head</code>檔案中，如下圖：<br><img src="/2021/hexo-Google-Search-Console/Manually-add-HTML-tag-to-NexT-theme.png" alt="Manually add the Google Search Console HTML tag into NexT theme css head file"></p>
+<h2 id="Provide-sitemap-xml"><a href="#Provide-sitemap-xml" class="headerlink" title="Provide sitemap.xml"></a>Provide sitemap.xml</h2><ol>
+<li>Launch cmd.exe, move to the hexo blog folder, run <code>npm install hexo-generator-sitemap --save</code></li>
+<li>Open the <code>_config.yml</code> file in the root of hexo blog, enter the following contents:<figure class="highlight yaml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">sitemap:</span></span><br><span class="line">  <span class="attr">path:</span> <span class="string">sitemap.xml</span></span><br><span class="line">  <span class="attr">template:</span> <span class="comment"># Custom template path. Leave it as blank if no custom template is used</span></span><br><span class="line">  <span class="attr">rel:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">tags:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">categories:</span> <span class="literal">true</span></span><br></pre></td></tr></tbody></table></figure></li>
+<li>run <code>hexo generate</code> to generate the file <code>sitemap.xml</code></li>
+<li>Upload <code>sitemap.xml</code> to hexo blog’s GitHub repository <code>master</code> branch</li>
+<li>Visit Google Search Console. Enter “sitemap.xml” and click “Submit”<br><img src="/2021/hexo-Google-Search-Console/Submit-sitemap.png" alt="Provide sitemap.xml to Googls Search Console"></li>
+<li>Done. The whole Google SEO setting has completed 🎉</li>
+</ol>
+<h2 id="Run-Mobile-Friendly-Test"><a href="#Run-Mobile-Friendly-Test" class="headerlink" title="Run Mobile-Friendly Test"></a>Run Mobile-Friendly Test</h2><p>Got an error message when running Google’s <a target="_blank" rel="noopener" href="https://search.google.com/test/mobile-friendly">Mobile-Friendly Test</a> in the first time:</p>
+<blockquote>
+<p>Refused to apply style from (tl;dr) because its MIME type (‘text/html’) is not a supported stylesheet MIME type, and strict MIME checking is enabled.</p>
+</blockquote>
+<p><img src="/2021/hexo-Google-Search-Console/Mobile-Friendly-Test-error-message.png" alt="Mobile-Friendly Test error message"></p>
+<p>Q: How I fixed this problem?<br>A: Open <code>_config.next.yml</code> and update the <code>host</code> value in <code># Font Settings</code> part correctly.</p>
+<figure class="highlight yaml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">font:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># Uri of fonts host, e.g. https://fonts.googleapis.com (Default).</span></span><br><span class="line">  <span class="attr">host:</span> <span class="string">https://fonts.googleapis.com/css2?family=Noto+Sans+TC&amp;family=Roboto&amp;display=swap</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># Font options:</span></span><br><span class="line">  <span class="comment"># `external: true` will load this font family from `host` above.</span></span><br><span class="line">  <span class="comment"># `family: Times New Roman`. Without any quotes.</span></span><br><span class="line">  <span class="comment"># `size: x.x`. Use `em` as unit. Default: 1 (16px)</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># Global font settings used for all elements inside &lt;body&gt;.</span></span><br><span class="line">  <span class="attr">global:</span></span><br><span class="line">    <span class="attr">external:</span> <span class="literal">true</span></span><br></pre></td></tr></tbody></table></figure>
+<p>Run the test again and get greenlight.<br><img src="/2021/hexo-Google-Search-Console/Pass-Mobile-Friendly-Test.png" alt="Pass the Mobile-Friendly Test without andy error message"><br>🎉🎉🎉</p>
+<h2 id="Bonus-I-forget-the-HTML-tag-contents"><a href="#Bonus-I-forget-the-HTML-tag-contents" class="headerlink" title="Bonus: I forget the HTML tag contents"></a>Bonus: I forget the HTML tag contents</h2><ol>
+<li>Visit Google Search Console, click “Settings” in the left side menu<br><img src="/2021/hexo-Google-Search-Console/User-setting.png" alt="User settings in Google Search Console"></li>
+<li>Click “User”, and then click “User management”<br><img src="/2021/hexo-Google-Search-Console/User-setting-user-management.png" alt="User management in Google Search Console"></li>
+<li>HTML tag contents are display in the management console<br><img src="/2021/hexo-Google-Search-Console/View-HTML-tag-contents.png" alt="View HTML tag contents"></li>
+</ol>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://theme-next.js.org/docs/theme-settings/seo#Google-Webmaster-Tools">NexT: Google Webmaster Tools</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo-generator-sitemap">hexojs/hexo-generator-sitemap</a></li>
+<li><a target="_blank" rel="noopener" href="https://brooke01.github.io/tecblog/2020/04/26/hexo-generator-sitemap/">hexo-generator-sitemap</a></li>
+<li><a target="_blank" rel="noopener" href="https://hsiangfeng.github.io/hexo/20190514/2072033203/">Hexo搜尋引擎優化</a></li>
+<li><a target="_blank" rel="noopener" href="https://askie.today/upload-sitemap-google-search-console-seo-hexo-blog/">輕鬆地提交 Hexo 部落格的 Sitemap.xml 到 Google Search Console</a></li>
+<li><a target="_blank" rel="noopener" href="https://hoxis.github.io/Hexo+Next%20SEO%E4%BC%98%E5%8C%96.html">Hexo博客Next主题SEO优化方法</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/hexo-deploy/" rel="prev" title="Deploy to GitHub Page">
+                  <i class="fa fa-chevron-left"></i> Deploy to GitHub Page
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/next-theme-edit/" rel="next" title="Theme " next"="" font="" modification"="">
+                  Theme "NexT" font modification <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  © 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Charlie（茶）</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> &amp; <a href="https://theme-next.js.org/pisces/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+
+
+  
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+<script src="/bundle.js"></script></body></html>
