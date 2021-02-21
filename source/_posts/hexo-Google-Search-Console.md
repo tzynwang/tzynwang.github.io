@@ -1,12 +1,8 @@
 ---
-title: Submit the hexo blog to Google Search Console, and other SEO settings
+title: Submit to Google Search Console, SEO settings
 date: 2021-02-11 17:03:29
 categories:
-  - hexo
-  - SEO
-tags:
-  - Google Search Console
-  - google-site-verification
+- hexo
 ---
 
 ## Summary of this post
@@ -16,8 +12,6 @@ A: Submit your hexo blog to [Google Search Console](https://search.google.com/se
 2. Provide hexo blog's `sitemap.xml` to Google
 
 為了讓Google可以搜尋到hexo部落格，需把`HTML tag`（HTML標記、中繼標籤）加到`<head></head>`，並提交`sitemap.xml`給[Google Search Console](https://search.google.com/search-console/welcome)。
-
-<!-- more -->
 
 
 ## Enviroment
@@ -40,7 +34,7 @@ I use [Alternate Theme Config](https://theme-next.js.org/docs/getting-started/co
 For example, this is the whole HTML tag contents you've copied:
 `<meta name="google-site-verification" content="(a string includes letters, numbers and _)" />`
 Just paste the content part into `_config.next.yml`, like the below code block shows:
-```
+```YAML
 # ---------------------------------------------------------------
 # SEO Settings
 # See: https://theme-next.js.org/docs/theme-settings/seo
@@ -66,7 +60,7 @@ google_site_verification: (a string includes letters, numbers and _) />
 ## Provide sitemap.xml
 1. Launch cmd.exe, move to the hexo blog folder, run `npm install hexo-generator-sitemap --save`
 1. Open the `_config.yml` file in the root of hexo blog, enter the following contents:
-```
+```YAML
 sitemap:
   path: sitemap.xml
   template: # Custom template path. Leave it as blank if no custom template is used
@@ -90,7 +84,7 @@ Got an error message when running Google's [Mobile-Friendly Test](https://search
 
 Q: How I fixed this problem?
 A: Open `_config.next.yml` and update the `host` value in `# Font Settings` part correctly.
-```
+```YAML
 font:
   enable: true
 

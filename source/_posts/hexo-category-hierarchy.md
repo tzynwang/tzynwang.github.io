@@ -1,10 +1,8 @@
 ---
-title: hexo posts' category hierarchy
+title: Category hierarchy
 date: 2021-02-15 09:38:00
 categories:
 - hexo
-- category hierarchy
-tags:
 ---
 
 
@@ -13,51 +11,49 @@ An introduction to hexo's category hierarchy.
 
 
 ### Categories with hierarchy
-```
-categories:
+```YAML
+# categories:
 - Fruit
 - Apple
-```
-Result:
-```
+
+# Result:
 └── Fruit
     └── Apple
 ```
 
 ### Categories without hierarchy (no hierarchy, parallel)
-```
-categories:
+```YAML
+# categories:
 - [Fruit, Apple] 
 - [Vegetable]
-```
-Result:
-```
+
+# Result:
 ├── Fruit
 |   └── Apple
 └── Vegetable
 ```
 
 ### Multiple parallel categories
-```
+```YAML
+# categories:
 - [Fruit, Apple]
 - [Fruit, Orange]
 - [Vegetable]
-```
-Result:
-```
-├── Fruit # 2 sub-categories "Apple" and "Orange" exist under the parent category "Fruit"
+
+# Result:
+├── Fruit
 |   └── Apple
 |   └── Orange
 └── Vegetable
 ```
 
 ### Sub-sub-category
-```
+```YAML
+# categories:
 - [Fruit, Apple, Apple seed]
 - [Vegetable]
-```
-Result:
-```
+
+# Result:
 ├── Fruit
 |   └── Apple
 |      └── Apple Seed

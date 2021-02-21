@@ -1,11 +1,9 @@
 ---
-title: Hexo theme "NexT" CSS modification
+title: Theme "NexT" font modification
 date: 2021-02-12 15:23:22
 categories:
 - hexo
 - NexT (theme)
-keywords:
-- NexT CSS configuration
 ---
 
 ## Summary of this post
@@ -14,8 +12,6 @@ I know this may not be the best choice (since [NexT's docs](https://theme-next.j
 
 為了修改字體尺寸、字型（主要是中文字體）與版面顏色設定，調整了`base.styl`與`Pisces.styl`的內容。
 只需要修改英語字型的話，更改`_config.next.yml`中`# Font Settings`的段落即可。
-
-<!-- more -->
 
 
 ## Environment
@@ -30,7 +26,7 @@ os: Windows_NT 10.0.18363 win32 x64
 File path: `\themes\next\source\css\_variables`
 
 ### Color system
-```
+```SCSS
 // Color system
 // --------------------------------------------------
 $whitesmoke   = #F5F3ED;
@@ -40,7 +36,7 @@ Set <span style="background-color:#F5F3ED">Isabelline  (#F5F3ED)</span> for `$wh
 Color scheme reference: [elegant-and-classic](https://www.schemecolor.com/elegant-and-classic.php)
 
 ### Text color
-```
+```SCSS
 // Global text color on <body>
 $text-color                   = $black-dim;
 ```
@@ -48,7 +44,7 @@ Change the text color from `$black-light` to `$black-dim`, lower the color value
 
 ### Font family
 #### Chinese font family setting
-```
+```SCSS
 // Font families.
 $font-family-chinese      = 'Noto Sans TC';
 ```
@@ -58,7 +54,7 @@ $font-family-chinese      = 'Noto Sans TC';
 
 #### English font family setting
 English font can be easily config in `_config.next.yml`, just update the "Font Settings" part.
-```
+```YAML
 # ---------------------------------------------------------------
 # Font Settings
 # ---------------------------------------------------------------
@@ -87,7 +83,7 @@ In my case, I also add "Noto Sans TC" to the selected families, so the host URI 
 The URI includes two families "Noto Sans TC" and "Roboto".
 
 ### Font size
-```
+```SCSS
 // Font size
 $font-size-medium         = .95em;
 $font-size-large          = 1em;
@@ -101,7 +97,7 @@ Reduce the size scale for blog content and titles.
 File path: `\themes\next\source\css\_variables\Pisces.styl`
 
 ### Body background color
-```
+```SCSS
 // Settings for some of the most global styles.
 // --------------------------------------------------
 $body-bg-color                = #CFC9BD;
@@ -110,7 +106,7 @@ Set the background color to <span style="background-color:#CFC9BD">Pastel Gray (
 Color scheme reference: [elegant-and-classic](https://www.schemecolor.com/elegant-and-classic.php)
 
 ### Sidebar (menu) color setting
-```
+```SCSS
 // Sidebar
 $sidebar-nav-hover-color          = $blue;
 $sidebar-highlight                = $blue;
@@ -120,7 +116,7 @@ Change the hover and highlight color of "Table of Contents" into `$blue`:
 
 
 ### Sidebar (menu) image setting
-```
+```SCSS
 // Sidebar
 // --------------------------------------------------
 $site-author-image-border-width   = 0px;

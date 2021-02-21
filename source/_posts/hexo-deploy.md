@@ -1,11 +1,8 @@
 ---
-title: Deploy hexo blog to GitHub Page
+title: Deploy to GitHub Page
 date: 2021-02-10 19:00:23
 categories: 
 - hexo
-- deployment
-keywords:
-- hexo deploy
 ---
 
 ## Summary of this post
@@ -37,7 +34,7 @@ For example, if the username is "johndoe", then the repository should be named a
 ### Update _config.yml
 Open the file `_config.yml` in the root of hexo blog folder.
 Update the value of `url` and `deploy` keys.
-```
+```YAML
 # URL
 url: https://<GitHub username>.github.io
 root: /
@@ -50,7 +47,7 @@ deploy:
 ```
 
 For example, if the username is "johndoe", then the contents in `_config.yml` should be:
-```
+```YAML
 # URL
 url: https://johndoe.github.io
 root: /
@@ -74,7 +71,7 @@ deploy:
 ![Add new file through GitHub webpage interface](add-new-file-to-repository-00.png)
 ![Enter the name for the new-add file](add-new-file-to-repository-01.png)
 1. Add the following contents to the file `.github/workflows/pages.yml`:
-```
+```YAML
 name: Pages
 
 on:
@@ -121,7 +118,7 @@ jobs:
 
 ### Note
 - Do not add `""` for the value of `root` and `theme` in the `_config.yml` file. Just wrote the value like following:
-```
+```YAML
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
@@ -137,43 +134,43 @@ root: /
 - The branch name "source" and "master" can be changed to other preferred names.
   - Make sure to update the contents in `.github/workflows/pages.yml` file and the `_config.yml` file that exists in the root folder.
   - For example, if I want to `git push` the contents to the "development" branch, and `hexo deploy` to the "publish" branch, the `.github/workflows/pages.yml` file should be updated as follow:
-  ```
-  name: Pages
+```YAML
+name: Pages
 
-  on:
-    push:
-      branches:
-        - development
+on:
+  push:
+    branches:
+      - development
 
-  jobs:
-    pages:
-      runs-on: ubuntu-latest
-      steps:
-        - uses: actions/checkout@v2
-        - name: Use Node.js 12.x
-          uses: actions/setup-node@v1
-          with:
-            node-version: '12.x'
-        - name: Cache NPM dependencies
-          uses: actions/cache@v2
-          with:
-            path: node_modules
-            key: ${{ runner.OS }}-npm-cache
-            restore-keys: |
-              ${{ runner.OS }}-npm-cache
-        - name: Install Dependencies
-          run: npm install
-        - name: Build
-          run: npm run build
-        - name: Deploy
-          uses: peaceiris/actions-gh-pages@v3
-          with:
-            github_token: ${{ secrets.GITHUB_TOKEN }}
-            publish_dir: ./public
-            publish_branch: publish
-  ```
+jobs:
+  pages:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js 12.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+      - name: Cache NPM dependencies
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: ${{ runner.OS }}-npm-cache
+          restore-keys: |
+            ${{ runner.OS }}-npm-cache
+      - name: Install Dependencies
+        run: npm install
+      - name: Build
+        run: npm run build
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
+          publish_branch: publish
+```
   The configuration in `_config.yml` file should be set like this:
-  ```
+  ```YAML
   # Deployment
   deploy:
     branch: publish

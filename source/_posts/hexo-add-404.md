@@ -1,15 +1,13 @@
 ---
-title: Add 404 handle page for hexo blog
+title: Add 404 page
 date: 2021-02-16 09:36:19
 categories:
 - hexo
-- 404 handle
-tags:
 ---
 
 ## Summary of this post
 The workflow of adding a 404 handling page for the hexo blog.
-{% figure figure--center 2021/add-404-for-hexo-blog/404-page-for-hexo-blog.jpg "The 404 page" %}
+{% figure figure--center 2021/hexo-add-404/404-page-for-hexo-blog.jpg "The 404 page" %}
 
 
 ## Environment
@@ -22,12 +20,12 @@ os: Windows_NT 10.0.18363 win32 x64
 
 ## Workflow
 1. Create a 404.md file in the `source` folder
-{% figure figure--center 2021/add-404-for-hexo-blog/location-of-404-page.jpg "Add the 404.md in the source folder of hexo blog 'The screenshot to display file location of 404.md file for the hexo blog'" %}
+{% figure figure--center 2021/hexo-add-404/location-of-404-page.jpg "Add the 404.md in the source folder of hexo blog 'The screenshot to display file location of 404.md file for the hexo blog'" %}
 1. Add page content for the 404.md file:
      - `permalink: /404.html` in line 3 is **required**.
      - Fill in the correct URL (`https://<your GitHub username>.github.io/`) for redirection in line 9 and line 19
      - The value of `countTime` in line 12 can be updated to the preferred waiting time. I just leave the waiting time as 5 seconds without changing it.
-```
+```markdown
 ---
 title: 404
 permalink: /404.html
@@ -37,6 +35,7 @@ permalink: /404.html
 The page you are looking for does not exist.
 Will bring you back to the homepage in <span id="timeout">5</span> second(s).
 Or [click this link](https://<your GitHub username>.github.io/) to go back to the homepage immediately.
+
 
 <script>
 let countTime = 5;
