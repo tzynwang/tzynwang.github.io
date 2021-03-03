@@ -15,6 +15,57 @@
       </categories>
   </entry>
   <entry>
+    <title>DevTools與CSS有關的新功能（Chrome 89）</title>
+    <url>/2021/chrome-89-css/</url>
+    <content><![CDATA[<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>本篇是記錄Chrome 89的DevTools中，CSS相關新功能的筆記。</p>
+<h2 id="版本與環境"><a href="#版本與環境" class="headerlink" title="版本與環境"></a>版本與環境</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Google Chrome: 89.0.4389.72 (Official Build) (64-bit)</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></table></figure>
+
+<h2 id="DevTools中與CSS相關的新內容（Chrome-89）"><a href="#DevTools中與CSS相關的新內容（Chrome-89）" class="headerlink" title="DevTools中與CSS相關的新內容（Chrome 89）"></a>DevTools中與CSS相關的新內容（Chrome 89）</h2><h3 id="直接對node截圖"><a href="#直接對node截圖" class="headerlink" title="直接對node截圖"></a>直接對node截圖</h3><p>原文連結：<a href="https://developers.google.com/web/updates/2021/01/devtools#node-screenshot">https://developers.google.com/web/updates/2021/01/devtools#node-screenshot</a></p>
+<figure class="figure--center"><img src="/2021/chrome-89-css/node-screenshot.jpg"></figure>
+<p>在node上點擊右鍵，選擇Capture node screenshot後，截圖就會下載到本機。</p>
+<h3 id="可直接套用偽類-target至元件上"><a href="#可直接套用偽類-target至元件上" class="headerlink" title="可直接套用偽類:target至元件上"></a>可直接套用偽類:target至元件上</h3><p>原文連結：<a href="https://developers.google.com/web/updates/2021/01/devtools#force-target">https://developers.google.com/web/updates/2021/01/devtools#force-target</a></p>
+<figure class="figure--center"><img src="/2021/chrome-89-css/target.jpg" title="可直接套用:target偽類 " alt="The screenshot of DevTools"><figcaption><p>可直接套用:target偽類 </p></figcaption></figure>
+<p>不用點擊連結，即可套用<code>:target</code>到元件上。<br>打開DevTools，點選Elements標籤，點選元件後按下:hov按鈕，即可展開支援套用的偽類（pseudo-element）清單。<br>選擇<code>:target</code>後，即可直接觀察相關的CSS表現內容。</p>
+<figure class="figure--center"><img src="/2021/chrome-89-css/target-example.jpg"></figure>
+<figure class="figure--center"><img src="/2021/chrome-89-css/target-example-select.jpg"></figure>
+
+<p>以上兩張螢幕截圖用到的原始碼：</p>
+<p class="codepen" data-height="300" data-theme-id="dark" data-default-tab="html,result" data-user="Charlie7779" data-slug-hash="abBKWNL" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title=":target">
+  <span>See the Pen <a href="https://codepen.io/Charlie7779/pen/abBKWNL">
+  :target</a> by Charlie (<a href="https://codepen.io/Charlie7779">@Charlie7779</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+
+<h3 id="直接在DevTools裡面複製元件"><a href="#直接在DevTools裡面複製元件" class="headerlink" title="直接在DevTools裡面複製元件"></a>直接在DevTools裡面複製元件</h3><p>原文連結：<a href="https://developers.google.com/web/updates/2021/01/devtools#duplicate-element">https://developers.google.com/web/updates/2021/01/devtools#duplicate-element</a></p>
+<figure class="figure--center"><img src="/2021/chrome-89-css/duplicate-element.jpg"></figure>
+<figure class="figure--center"><img src="/2021/chrome-89-css/duplicate-element-after.jpg"></figure>
+<p>在元件上按下右鍵選擇Duplicate element後，該元件的副本就會出現在被拷貝的元件下方。<br>支援快速鍵，點選元件後按下<code>Shift</code>+ <code>Alt</code>+ ⬇️（Windows）或<code>Shift</code>+ <code>Option</code>+ ⬇️（Mac）即可拷貝元件。</p>
+<h3 id="支援color-picker"><a href="#支援color-picker" class="headerlink" title="支援color picker"></a>支援color picker</h3><p>原文連結：<a href="https://developers.google.com/web/updates/2021/01/devtools#color-picker">https://developers.google.com/web/updates/2021/01/devtools#color-picker</a><br>並且如果按住<code>Shift</code>後以滑鼠左鍵點擊顏色方塊的話，可以切換為不同的顏色編碼格式（RGBA、HSLA、Hex）</p>
+<h3 id="複製元件的CSS內容"><a href="#複製元件的CSS內容" class="headerlink" title="複製元件的CSS內容"></a>複製元件的CSS內容</h3><p>原文連結：<a href="https://developers.google.com/web/updates/2021/01/devtools#copy-css">https://developers.google.com/web/updates/2021/01/devtools#copy-css</a><br>在Styles區塊對元件的CSS設定按下右鍵，可複製CSS內容。</p>
+<figure class="figure--center"><img src="/2021/chrome-89-css/copy-CSS-properties.jpg"></figure>
+<p>如果是在選取器位置按下右鍵的話，會出現以下選項：</p>
+<ul>
+<li>Copy selector：複製選取器，上圖水藍色部分</li>
+<li>Copy rule：複製CSS規則，上圖黃色部分</li>
+<li>Copy all declarations：複製選取器與CSS規則，上圖水藍色加上黃色部分</li>
+</ul>
+<figure class="figure--center"><img src="/2021/chrome-89-css/copy-CSS-properties-1.jpg"></figure>
+<p>如果是在中括號<code>&#123;&#125;</code>區塊按下右鍵的話，選項如下：</p>
+<ul>
+<li>Copy declaration：複製紅框與粉框部分</li>
+<li>Copy property：複製紅框部分</li>
+<li>Copy value：複製粉框部分</li>
+<li>Copy rule：複製水藍色加上黃色部分</li>
+<li>Copy all declarations：僅複製黃色部分</li>
+</ul>
+<h2 id="附錄"><a href="#附錄" class="headerlink" title="附錄"></a>附錄</h2><h3 id="如何檢查Chrome的版本"><a href="#如何檢查Chrome的版本" class="headerlink" title="如何檢查Chrome的版本"></a>如何檢查Chrome的版本</h3><figure class="figure--center"><img src="/2021/chrome-89-css/check-chrome-version.png" title="More icon >> Help >> About Google Chrome " alt="The screenshot of displaying the path to check Chrome"><figcaption><p>More icon >> Help >> About Google Chrome </p></figcaption></figure>
+<figure class="figure--center"><img src="/2021/chrome-89-css/chrome-version-info.png" title="點選About Google Chrome後，即可看到Chrome版本 " alt="The screenshot of Chrome version information"><figcaption><p>點選About Google Chrome後，即可看到Chrome版本 </p></figcaption></figure>
+<p>打開Chrome後，點選畫面右上角的垂直排列三點按鈕，依序選擇幫助、關於，點開關於後即可看到Chrome版本資訊。</p>
+<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><p><a href="https://www.w3schools.com/cssref/sel_target.asp">CSS :target Selector</a><br><a href="https://www.google.com/chrome/update/">How to check Chrome’s version</a></p>
+]]></content>
+  </entry>
+  <entry>
     <title>Git workflow</title>
     <url>/2021/git-workflow/</url>
     <content><![CDATA[<h2 id="Summary-of-this-post"><a href="#Summary-of-this-post" class="headerlink" title="Summary of this post"></a>Summary of this post</h2><p>A note for 2 types of the git workflow:</p>
@@ -140,21 +191,6 @@
       </categories>
   </entry>
   <entry>
-    <title>Category hierarchy</title>
-    <url>/2021/hexo-category-hierarchy/</url>
-    <content><![CDATA[<h2 id="Summary-of-this-post"><a href="#Summary-of-this-post" class="headerlink" title="Summary of this post"></a>Summary of this post</h2><p>An introduction to hexo’s category hierarchy.</p>
-<h3 id="Categories-with-hierarchy"><a href="#Categories-with-hierarchy" class="headerlink" title="Categories with hierarchy"></a>Categories with hierarchy</h3><figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># categories:</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">Fruit</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">Apple</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Result:</span></span><br><span class="line"><span class="string">└──</span> <span class="string">Fruit</span></span><br><span class="line">    <span class="string">└──</span> <span class="string">Apple</span></span><br></pre></td></tr></table></figure>
-<h3 id="Categories-without-hierarchy-no-hierarchy-parallel"><a href="#Categories-without-hierarchy-no-hierarchy-parallel" class="headerlink" title="Categories without hierarchy (no hierarchy, parallel)"></a>Categories without hierarchy (no hierarchy, parallel)</h3><figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># categories:</span></span><br><span class="line"><span class="bullet">-</span> [<span class="string">Fruit</span>, <span class="string">Apple</span>] </span><br><span class="line"><span class="bullet">-</span> [<span class="string">Vegetable</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># Result:</span></span><br><span class="line"><span class="string">├──</span> <span class="string">Fruit</span></span><br><span class="line"><span class="string">|</span>   <span class="string">└──</span> <span class="string">Apple</span></span><br><span class="line"><span class="string">└──</span> <span class="string">Vegetable</span></span><br></pre></td></tr></table></figure>
-<h3 id="Multiple-parallel-categories"><a href="#Multiple-parallel-categories" class="headerlink" title="Multiple parallel categories"></a>Multiple parallel categories</h3><figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># categories:</span></span><br><span class="line"><span class="bullet">-</span> [<span class="string">Fruit</span>, <span class="string">Apple</span>]</span><br><span class="line"><span class="bullet">-</span> [<span class="string">Fruit</span>, <span class="string">Orange</span>]</span><br><span class="line"><span class="bullet">-</span> [<span class="string">Vegetable</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># Result:</span></span><br><span class="line"><span class="string">├──</span> <span class="string">Fruit</span></span><br><span class="line"><span class="string">|</span>   <span class="string">└──</span> <span class="string">Apple</span></span><br><span class="line"><span class="string">|</span>   <span class="string">└──</span> <span class="string">Orange</span></span><br><span class="line"><span class="string">└──</span> <span class="string">Vegetable</span></span><br></pre></td></tr></table></figure>
-<h3 id="Sub-sub-category"><a href="#Sub-sub-category" class="headerlink" title="Sub-sub-category"></a>Sub-sub-category</h3><figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># categories:</span></span><br><span class="line"><span class="bullet">-</span> [<span class="string">Fruit</span>, <span class="string">Apple</span>, <span class="string">Apple</span> <span class="string">seed</span>]</span><br><span class="line"><span class="bullet">-</span> [<span class="string">Vegetable</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># Result:</span></span><br><span class="line"><span class="string">├──</span> <span class="string">Fruit</span></span><br><span class="line"><span class="string">|</span>   <span class="string">└──</span> <span class="string">Apple</span></span><br><span class="line"><span class="string">|</span>      <span class="string">└──</span> <span class="string">Apple</span> <span class="string">Seed</span></span><br><span class="line"><span class="string">└──</span> <span class="string">Vegetable</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://hexo.io/docs/front-matter#Categories-amp-Tags">hexo: Front-matter/Categories &amp; Tags</a></p>
-]]></content>
-      <categories>
-        <category>hexo</category>
-      </categories>
-  </entry>
-  <entry>
     <title>Contribution workflow note&amp;#58; document update</title>
     <url>/2021/hexo-contribution-workflow/</url>
     <content><![CDATA[<p>This a note for participating hexo’s contribution (for improving the documentation in English and traditional Chinese).<br>參與了hexo說明文件的改善協作，記錄一下整個流程。<br>不過pr因為提出的改善建議已經過時（<a href="https://github.com/hexojs/hexo/issues/4267#issuecomment-778646141">hexo 4.2.1已支援Noje.js 14</a>）所以並沒有被接受 🤣</p>
@@ -194,6 +230,21 @@
 <li><a href="https://stackoverflow.com/a/10142727/15028185">How to cancel a pull request on github?</a></li>
 <li><a href="https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/closing-a-pull-request">GitHub Docs: Closing a pull request</a></li>
 </ul>
+]]></content>
+      <categories>
+        <category>hexo</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Category hierarchy</title>
+    <url>/2021/hexo-category-hierarchy/</url>
+    <content><![CDATA[<h2 id="Summary-of-this-post"><a href="#Summary-of-this-post" class="headerlink" title="Summary of this post"></a>Summary of this post</h2><p>An introduction to hexo’s category hierarchy.</p>
+<h3 id="Categories-with-hierarchy"><a href="#Categories-with-hierarchy" class="headerlink" title="Categories with hierarchy"></a>Categories with hierarchy</h3><figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># categories:</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">Fruit</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">Apple</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Result:</span></span><br><span class="line"><span class="string">└──</span> <span class="string">Fruit</span></span><br><span class="line">    <span class="string">└──</span> <span class="string">Apple</span></span><br></pre></td></tr></table></figure>
+<h3 id="Categories-without-hierarchy-no-hierarchy-parallel"><a href="#Categories-without-hierarchy-no-hierarchy-parallel" class="headerlink" title="Categories without hierarchy (no hierarchy, parallel)"></a>Categories without hierarchy (no hierarchy, parallel)</h3><figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># categories:</span></span><br><span class="line"><span class="bullet">-</span> [<span class="string">Fruit</span>, <span class="string">Apple</span>] </span><br><span class="line"><span class="bullet">-</span> [<span class="string">Vegetable</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># Result:</span></span><br><span class="line"><span class="string">├──</span> <span class="string">Fruit</span></span><br><span class="line"><span class="string">|</span>   <span class="string">└──</span> <span class="string">Apple</span></span><br><span class="line"><span class="string">└──</span> <span class="string">Vegetable</span></span><br></pre></td></tr></table></figure>
+<h3 id="Multiple-parallel-categories"><a href="#Multiple-parallel-categories" class="headerlink" title="Multiple parallel categories"></a>Multiple parallel categories</h3><figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># categories:</span></span><br><span class="line"><span class="bullet">-</span> [<span class="string">Fruit</span>, <span class="string">Apple</span>]</span><br><span class="line"><span class="bullet">-</span> [<span class="string">Fruit</span>, <span class="string">Orange</span>]</span><br><span class="line"><span class="bullet">-</span> [<span class="string">Vegetable</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># Result:</span></span><br><span class="line"><span class="string">├──</span> <span class="string">Fruit</span></span><br><span class="line"><span class="string">|</span>   <span class="string">└──</span> <span class="string">Apple</span></span><br><span class="line"><span class="string">|</span>   <span class="string">└──</span> <span class="string">Orange</span></span><br><span class="line"><span class="string">└──</span> <span class="string">Vegetable</span></span><br></pre></td></tr></table></figure>
+<h3 id="Sub-sub-category"><a href="#Sub-sub-category" class="headerlink" title="Sub-sub-category"></a>Sub-sub-category</h3><figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># categories:</span></span><br><span class="line"><span class="bullet">-</span> [<span class="string">Fruit</span>, <span class="string">Apple</span>, <span class="string">Apple</span> <span class="string">seed</span>]</span><br><span class="line"><span class="bullet">-</span> [<span class="string">Vegetable</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># Result:</span></span><br><span class="line"><span class="string">├──</span> <span class="string">Fruit</span></span><br><span class="line"><span class="string">|</span>   <span class="string">└──</span> <span class="string">Apple</span></span><br><span class="line"><span class="string">|</span>      <span class="string">└──</span> <span class="string">Apple</span> <span class="string">Seed</span></span><br><span class="line"><span class="string">└──</span> <span class="string">Vegetable</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://hexo.io/docs/front-matter#Categories-amp-Tags">hexo: Front-matter/Categories &amp; Tags</a></p>
 ]]></content>
       <categories>
         <category>hexo</category>
@@ -240,6 +291,23 @@ The configuration in <code>_config.yml</code> file should be set like this:<figu
 </li>
 </ul>
 <h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://hexo.io/docs/github-pages">hexo: GitHub Pages</a></p>
+]]></content>
+      <categories>
+        <category>hexo</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Display draft post</title>
+    <url>/2021/hexo-drafts/</url>
+    <content><![CDATA[<p>To view the draft posts (in the <code>source\_drafts</code> folder) on localhost:4000, just run <code>hexo server --draft</code>.<br>Set <code>render_drafts</code> as <code>true</code> in <code>_config.yml</code> will make <code>hexo generate</code> generate the posts in <code>source\_drafts</code> into <code>public</code> folder, which means the draft posts will be deployed to GitHub page by <code>hexo deploy</code>.<br>No needs to set <code>render_drafts</code> as <code>true</code> to view the draft posts on localhost, running <code>hexo server --draft</code> is enough.</p>
+<p><code>_config.yml</code>中的<code>render_drafts</code>設定為<code>true</code>的話，執行<code>hexo generate</code>時，資料夾<code>source\_drafts</code>內的檔案也會被生成到<code>public</code>資料夾中。<br>在這個情況下執行<code>hexo deploy</code>就會把草稿文章推到GitHub Page上。</p>
+<p>只是想要在localhost:4000上瀏覽草稿的話，執行<code>hexo server --draft</code>即可，不用修改<code>render_drafts</code>的值。<br>hexo官方文件對<code>render_drafts</code>的說明比較簡短，一開始以為設定成<code>true</code>只是代表<code>hexo server</code>會渲染草稿……😇</p>
+<h2 id="Environment"><a href="#Environment" class="headerlink" title="Environment"></a>Environment</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo: 5.3.0</span><br><span class="line">hexo-cli: 4.2.0</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></table></figure>
+
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
+<li><a href="https://hexo.io/docs/commands#Display-drafts">hexo: Commands/Display drafts</a></li>
+<li><a href="https://hexo.io/docs/configuration#Writing">hexo: Configuration/Writing</a></li>
+</ul>
 ]]></content>
       <categories>
         <category>hexo</category>
@@ -372,23 +440,6 @@ The configuration in <code>_config.yml</code> file should be set like this:<figu
       <categories>
         <category>hexo</category>
         <category>NexT (theme)</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>Display draft post</title>
-    <url>/2021/hexo-drafts/</url>
-    <content><![CDATA[<p>To view the draft posts (in the <code>source\_drafts</code> folder) on localhost:4000, just run <code>hexo server --draft</code>.<br>Set <code>render_drafts</code> as <code>true</code> in <code>_config.yml</code> will make <code>hexo generate</code> generate the posts in <code>source\_drafts</code> into <code>public</code> folder, which means the draft posts will be deployed to GitHub page by <code>hexo deploy</code>.<br>No needs to set <code>render_drafts</code> as <code>true</code> to view the draft posts on localhost, running <code>hexo server --draft</code> is enough.</p>
-<p><code>_config.yml</code>中的<code>render_drafts</code>設定為<code>true</code>的話，執行<code>hexo generate</code>時，資料夾<code>source\_drafts</code>內的檔案也會被生成到<code>public</code>資料夾中。<br>在這個情況下執行<code>hexo deploy</code>就會把草稿文章推到GitHub Page上。</p>
-<p>只是想要在localhost:4000上瀏覽草稿的話，執行<code>hexo server --draft</code>即可，不用修改<code>render_drafts</code>的值。<br>hexo官方文件對<code>render_drafts</code>的說明比較簡短，一開始以為設定成<code>true</code>只是代表<code>hexo server</code>會渲染草稿……😇</p>
-<h2 id="Environment"><a href="#Environment" class="headerlink" title="Environment"></a>Environment</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo: 5.3.0</span><br><span class="line">hexo-cli: 4.2.0</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></table></figure>
-
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
-<li><a href="https://hexo.io/docs/commands#Display-drafts">hexo: Commands/Display drafts</a></li>
-<li><a href="https://hexo.io/docs/configuration#Writing">hexo: Configuration/Writing</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>hexo</category>
       </categories>
   </entry>
 </search>
