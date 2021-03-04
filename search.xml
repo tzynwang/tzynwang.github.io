@@ -72,7 +72,10 @@
 <h3 id="檢查Chrome的版本"><a href="#檢查Chrome的版本" class="headerlink" title="檢查Chrome的版本"></a>檢查Chrome的版本</h3><figure class="figure--center"><img src="/2021/chrome-89-css/check-chrome-version.png" title="More icon >> Help >> About Google Chrome " alt="The screenshot of displaying the path to check Chrome"><figcaption><p>More icon >> Help >> About Google Chrome </p></figcaption></figure>
 <figure class="figure--center"><img src="/2021/chrome-89-css/chrome-version-info.png" title="點選About Google Chrome後，即可看到Chrome版本 " alt="The screenshot of Chrome version information"><figcaption><p>點選About Google Chrome後，即可看到Chrome版本 </p></figcaption></figure>
 <p>打開Chrome後，點選畫面右上角的垂直排列三點按鈕，依序選擇幫助、關於，點開關於後即可看到Chrome版本資訊。</p>
-<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><p><a href="https://www.w3schools.com/cssref/sel_target.asp">CSS :target Selector</a><br><a href="https://www.google.com/chrome/update/">How to check Chrome’s version</a></p>
+<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
+<li><a href="https://www.w3schools.com/cssref/sel_target.asp">CSS :target Selector</a></li>
+<li><a href="https://www.google.com/chrome/update/">How to check Chrome’s version</a></li>
+</ul>
 ]]></content>
   </entry>
   <entry>
@@ -451,5 +454,68 @@ The configuration in <code>_config.yml</code> file should be set like this:<figu
         <category>hexo</category>
         <category>NexT (theme)</category>
       </categories>
+  </entry>
+  <entry>
+    <title>VSCode擴充套件（Extensions）與自訂snippets</title>
+    <url>/2021/vs-code-extensions-snippets/</url>
+    <content><![CDATA[<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>記錄一些目前有在使用的VSCode擴充套件，與自訂snippets的步驟筆記。</p>
+<h2 id="版本與環境"><a href="#版本與環境" class="headerlink" title="版本與環境"></a>版本與環境</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">VSCode: 1.53.2 (user setup)</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></table></figure>
+
+<h2 id="擴充套件（Extensions）"><a href="#擴充套件（Extensions）" class="headerlink" title="擴充套件（Extensions）"></a>擴充套件（Extensions）</h2><h3 id="Bracket-Pair-Colorizer-2"><a href="#Bracket-Pair-Colorizer-2" class="headerlink" title="Bracket Pair Colorizer 2"></a>Bracket Pair Colorizer 2</h3><p>套件網址：<a href="https://marketplace.visualstudio.com/items?itemName=CoenraadS.bracket-pair-colorizer-2">https://marketplace.visualstudio.com/items?itemName=CoenraadS.bracket-pair-colorizer-2</a><br>幫成對的括號套用相同的顏色，方便辨識。<br>根據<a href="https://github.com/CoenraadS/Bracket-Pair-Colorizer-2#faq">官方Q&amp;A</a>的內容，2代改善了執行速度與正確性，其餘設定與1代看起來沒什麼差異。</p>
+<p>如果要修改套件設定的話，可參考以下gif：</p>
+<figure class="figure--center"><img src="/2021/vs-code-extensions-snippets/extension-setting.gif"></figure>
+
+<h3 id="indent-rainbow"><a href="#indent-rainbow" class="headerlink" title="indent-rainbow"></a>indent-rainbow</h3><p>套件網址：<a href="https://marketplace.visualstudio.com/items?itemName=oderwat.indent-rainbow">https://marketplace.visualstudio.com/items?itemName=oderwat.indent-rainbow</a><br>幫縮排區域套上顏色，縮排尺寸不正確時顯示為紅色，如下圖。</p>
+<figure class="figure--center"><img src="/2021/vs-code-extensions-snippets/incorrect-space.png"></figure>
+
+<h3 id="Lorem-Picsum-photos-snippets"><a href="#Lorem-Picsum-photos-snippets" class="headerlink" title="Lorem Picsum photos snippets"></a>Lorem Picsum photos snippets</h3><p>套件網址：<a href="https://marketplace.visualstudio.com/items?itemName=huang-an-sheng.lorem-picsum-photos-snippets">https://marketplace.visualstudio.com/items?itemName=huang-an-sheng.lorem-picsum-photos-snippets</a><br>練習切版時直接在html檔案中輸入<code>picsum</code>即可帶出有假圖的<code>&lt;img&gt;</code>標籤。</p>
+<figure class="figure--center"><img src="/2021/vs-code-extensions-snippets/lorem-piscum.gif"></figure>
+<ul>
+<li>輸入<code>picsum</code>後直接按下<code>tab</code>會產生帶一張固定id假圖的標籤<code>&lt;img src=&quot;https://picsum.photos/id/684/600/400&quot; alt=&quot;&quot;&gt;</code><ul>
+<li>需要隨機圖片的話，把圖片網址改為<code>https://picsum.photos/&#123;width&#125;/&#123;height&#125;?random=&#123;seed&#125;</code></li>
+<li><code>&#123;width&#125;</code>代表圖片寬度（單位px），<code>&#123;height&#125;</code>代表圖片高度（單位px），<code>&#123;seed&#125;</code>為正整數</li>
+<li>假圖網址加上不同的<code>&#123;seed&#125;</code>會讓每一組網址產生不同的圖片，參考下圖：<figure class="figure--center"><img src="/2021/vs-code-extensions-snippets/lorem-picsum.png"></figure></li>
+<li>第一列圖片的網址由左至右分別是<code>https://picsum.photos/600/400?random=1</code>、<code>https://picsum.photos/600/400?random=2</code>、<code>https://picsum.photos/600/400?random=3</code>、<code>https://picsum.photos/600/400?random=4</code>，第二列圖片的網址統一使用<code>https://picsum.photos/600/400?random</code></li>
+<li>第二列的圖片在每次重新整理網頁時都會更新，但會是四張一樣的圖</li>
+</ul>
+</li>
+<li><code>picsum-grayscale</code>：灰階假圖</li>
+<li><code>picsum-blur</code>：有模糊效果的假圖</li>
+<li><code>picsum-square</code>：正方形假圖</li>
+<li><code>picsum-grayscale-blur</code>：灰階加模糊效果</li>
+<li>其餘預設效果可參考套件的說明內容</li>
+</ul>
+<h3 id="Live-Server"><a href="#Live-Server" class="headerlink" title="Live Server"></a>Live Server</h3><p>套件網址：<a href="https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer">https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer</a><br>安裝完畢後，VSCode右下角會出現Go Live按鈕，點下啟動Live Server。<br>預設可以在<code>localhost:5500</code>即時看到VSCode的檔案（修改檔案內容後，存檔、重新整理<code>localhost:5500</code>上的頁面，才會看到修改內容）。</p>
+<h3 id="Code-Spell-Checker"><a href="#Code-Spell-Checker" class="headerlink" title="Code Spell Checker"></a>Code Spell Checker</h3><p>套件網址：<a href="https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker">https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker</a><br>支援CamelCase，並且偵測到拼寫不正確的單字時，會提供建議用字，如下圖：</p>
+<figure class="figure--center"><img src="/2021/vs-code-extensions-snippets/code-spell-checker.gif"></figure>
+
+
+<h2 id="自訂snippets"><a href="#自訂snippets" class="headerlink" title="自訂snippets"></a>自訂snippets</h2><p>自訂了一個帶有bootstrap5 CSS與JS CDN連結的html樣板。</p>
+<ol>
+<li>從<a href="https://getbootstrap.com/docs/5.0/getting-started/introduction/#starter-template">bootstrap5官方文件</a>複製html樣板內容</li>
+<li>開啟VSCode，按下F1，輸入「snippets」，選擇「Preferences: Configure User Snippets」<figure class="figure--center"><img src="/2021/vs-code-extensions-snippets/snippets-edit-0.png"></figure></li>
+<li>因為要建立的是html樣板，故輸入html，意即建立給html文件使用的snippets<figure class="figure--center"><img src="/2021/vs-code-extensions-snippets/snippets-edit-1.png"></figure></li>
+<li>另外一個開啟html.json的方式是依序點選「畫面右上角的File（Mac版為Code） &gt;&gt; Preferences &gt;&gt; User Snippets」後，輸入html開啟html.json<figure class="figure--center"><img src="/2021/vs-code-extensions-snippets/snippets-edit-another-path.png"></figure></li>
+<li>在html.json檔案中貼上bootstrap5的html樣板內容<figure class="figure--center"><img src="/2021/vs-code-extensions-snippets/snippets-edit-content.png"></figure>
+<ul>
+<li>圖中第16行<code>bootstrap5 template</code>代表snippets名稱</li>
+<li>第17行<code>prefix</code>的值代表呼叫snippets的快速鍵，為了避免跟VSCode預設的html樣板起衝突，設定為<code>!!</code></li>
+<li>第18至35行<code>body</code>的值代表snippets的內容，每一行後面須加上半形逗號<code>,</code>分隔內容</li>
+<li>第36行<code>description</code>是輸入快速鍵時出現在snippets選單的說明內容，請參考下圖<figure class="figure--center"><img src="/2021/vs-code-extensions-snippets/snippets-enter-hotkey.png"></figure>
+原始碼如下：<figure class="highlight"><table><tr><td class="code"><pre><span class="line">&quot;bootstrap5 template&quot;: &#123;</span><br><span class="line">    &quot;prefix&quot;: &quot;!!&quot;,</span><br><span class="line">    &quot;body&quot;: [</span><br><span class="line">        &quot;&lt;!doctype html&gt;&quot;,</span><br><span class="line">        &quot;&lt;html lang=\&quot;en\&quot;&gt;&quot;,</span><br><span class="line">        &quot;    &lt;head&gt;&quot;,</span><br><span class="line">        &quot;        &lt;meta charset=\&quot;utf-8\&quot;&gt;&quot;,</span><br><span class="line">        &quot;        &lt;meta name=\&quot;viewport\&quot; content=\&quot;width=device-width, initial-scale=1\&quot;&gt;&quot;,</span><br><span class="line">        &quot;&quot;,</span><br><span class="line">        &quot;        &lt;!-- Bootstrap CSS --&gt;&quot;,</span><br><span class="line">        &quot;        &lt;link href=\&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css\&quot; rel=\&quot;stylesheet\&quot; integrity=\&quot;sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl\&quot; crossorigin=\&quot;anonymous\&quot;&gt;&quot;,</span><br><span class="line">        &quot;&quot;,</span><br><span class="line">        &quot;        &lt;title&gt;Hello, world!&lt;/title&gt;&quot;,</span><br><span class="line">        &quot;    &lt;/head&gt;&quot;,</span><br><span class="line">        &quot;    &lt;body&gt;&quot;,</span><br><span class="line">        &quot;        &lt;!-- Option 1: Bootstrap Bundle with Popper --&gt;&quot;,</span><br><span class="line">        &quot;        &lt;script src=\&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js\&quot; integrity=\&quot;sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0\&quot; crossorigin=\&quot;anonymous\&quot;&gt;&lt;/script&gt;&quot;,</span><br><span class="line">        &quot;    &lt;/body&gt;&quot;,</span><br><span class="line">        <span class="string">&quot;&lt;/html&gt;&quot;</span></span><br><span class="line">    ],</span><br><span class="line">    &quot;description&quot;: &quot;bootstrap5 template&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>以上內容輸入完畢後，存檔，之後即可在html格式的檔案中輸入快速鍵<code>!!</code>並按下<code>tab</code>來套用剛才自訂的snippets內容<figure class="figure--center"><img src="/2021/vs-code-extensions-snippets/snippets-done.png"></figure>
+
+
+</li>
+</ol>
+<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
+<li><a href="https://wcc723.github.io/development/2020/12/13/vscode-extension/">12 個前端愛用的 VSCode 擴充套件</a></li>
+<li><a href="https://tw.alphacamp.co/blog/visual-studio-code-editor-tutorial-and-extensions">VSCode快速安裝教學，推薦常用外掛擴充套件</a></li>
+<li><a href="https://stackoverflow.com/a/29973358/15028185">How do you format code in Visual Studio Code (VSCode)</a></li>
+<li><a href="https://code.visualstudio.com/docs/editor/userdefinedsnippets#_create-your-own-snippets">Visual Studio Code: Create your own snippets</a></li>
+</ul>
+]]></content>
   </entry>
 </search>
