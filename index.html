@@ -265,7 +265,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2021-03-07 12:36:03 / Modified: 15:18:00" itemprop="dateCreated datePublished" datetime="2021-03-07T12:36:03+08:00">2021-03-07</time>
+      <time title="Created: 2021-03-07 12:36:03 / Modified: 21:37:48" itemprop="dateCreated datePublished" datetime="2021-03-07T12:36:03+08:00">2021-03-07</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -289,7 +289,7 @@
     <div class="post-body" itemprop="articleBody">
           <h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>關於YouTube影片「<a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=qm0IfG1GyZU">10 modern layouts in 1 line of CSS</a>」的相關筆記。</p>
 <h2 id="版本與環境"><a href="#版本與環境" class="headerlink" title="版本與環境"></a>版本與環境</h2><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Google Chrome: 89.0.4389.72 (Official Build) (64-bit)</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></tbody></table></figure>
-<h2 id="基礎"><a href="#基礎" class="headerlink" title="基礎"></a>基礎</h2><h3 id="fr-fractional-units"><a href="#fr-fractional-units" class="headerlink" title="fr(fractional units)"></a><code>fr</code>(fractional units)</h3><p>類似百分比，與百分比不同的地方是「所有使用fr來宣告尺寸的元件，這些元件會互相參考彼此的尺寸」<br>在一些非常極端的情況下可能會造成尺寸炸裂，以下列原始碼來舉例：</p>
+<h2 id="基礎"><a href="#基礎" class="headerlink" title="基礎"></a>基礎</h2><h3 id="fr-fractional-units"><a href="#fr-fractional-units" class="headerlink" title="fr (fractional units)"></a><code>fr</code> (fractional units)</h3><p>類似百分比，與百分比不同的地方是「所有使用fr來宣告尺寸的元件，這些元件會互相參考彼此的尺寸」。<br>在一些非常極端的情況下可能會造成尺寸炸裂，以下列原始碼來舉例：</p>
 <p class="codepen" data-height="265" data-theme-id="dark" data-default-tab="html,result" data-user="Charlie7779" data-slug-hash="WNogyEW" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="fr">
   <span>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/Charlie7779/pen/WNogyEW">
   fr</a> by Charlie (<a target="_blank" rel="noopener" href="https://codepen.io/Charlie7779">@Charlie7779</a>)
@@ -297,8 +297,8 @@
 </p>
 <script async="" src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
 
-<p>在<code>&lt;div class="cyan"&gt;&lt;/div&gt;</code>中如果僅置入一段文字的話，高度為48px（4fr）<br>那麼作為1fr的<code>&lt;div class="coral"&gt;&lt;/div&gt;</code>與<code>&lt;div class="gold"&gt;&lt;/div&gt;</code>的高度就是48除以4，等於12px</p>
-<p>而當我在<code>&lt;div class="cyan"&gt;&lt;/div&gt;</code>中置入2萬個字元後，元件的高度被撐到4128px<br>而<code>&lt;div class="coral"&gt;&lt;/div&gt;</code>與<code>&lt;div class="gold"&gt;&lt;/div&gt;</code>的高度就一起因應<code>&lt;div class="cyan"&gt;&lt;/div&gt;</code>而改變，為4182除以4，等於1032px</p>
+<p>在第一組<code>&lt;div class="cyan"&gt;&lt;/div&gt;</code>中僅置入一段文字，高度為48px（4fr）。<br>那麼作為1fr的<code>&lt;div class="coral"&gt;&lt;/div&gt;</code>與<code>&lt;div class="gold"&gt;&lt;/div&gt;</code>的高度就是48除以4，等於12px。</p>
+<p>而當我在第二組<code>&lt;div class="cyan"&gt;&lt;/div&gt;</code>中置入2萬個字元後，元件的高度被撐到4128px。<br>而<code>&lt;div class="coral"&gt;&lt;/div&gt;</code>與<code>&lt;div class="gold"&gt;&lt;/div&gt;</code>的高度就一起因應<code>&lt;div class="cyan"&gt;&lt;/div&gt;</code>而改變，為4182除以4，等於1032px。</p>
 <h3 id="auto"><a href="#auto" class="headerlink" title="auto"></a><code>auto</code></h3><p>auto spacing，根據內容自動分配寬高。<br>所以如果沒有給予元件任何內容的話，高度就會是0。</p>
 <h3 id="minmax"><a href="#minmax" class="headerlink" title="minmax()"></a><code>minmax()</code></h3><p>作用如其名稱，設定最小與最大的尺寸。</p>
 <h3 id="clamp"><a href="#clamp" class="headerlink" title="clamp()"></a><code>clamp()</code></h3><p>接受三個參數，分別設定最小（minimum value）、理想（preferred value）與最大（maximum allowed value）尺寸。</p>
