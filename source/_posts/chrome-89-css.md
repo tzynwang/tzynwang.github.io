@@ -2,6 +2,7 @@
 title: DevTools與CSS有關的新功能（Chrome 89）
 date: 2021-03-03 19:22:14
 categories: 
+- CSS
 tags:
 ---
 
@@ -98,5 +99,5 @@ os: Windows_NT 10.0.18363 win32 x64
 
 
 ## 參考文件
-[CSS :target Selector](https://www.w3schools.com/cssref/sel_target.asp)
-[How to check Chrome's version](https://www.google.com/chrome/update/)
+- [CSS :target Selector](https://www.w3schools.com/cssref/sel_target.asp)
+- [How to check Chrome's version](https://www.google.com/chrome/update/)
