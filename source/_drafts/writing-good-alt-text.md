@@ -24,6 +24,8 @@ tags:
 03:26 Now the image has a caption equivalent to the alt, it's best to make the alt an empty string.
 但參考影片留言的內容：
 > leaving the alt attribute empty will hide the image from screen readers.
+`alt=""`的時候，screen reader會跳過該圖片。除非是裝飾性素材（如背景圖片），否則不適合讓alt為空白。
+
 
 > In general, alt and figcaption should not be the same. Alt descriptions should be functional; figcaption descriptions should be editorial or illustrative.
 
@@ -35,9 +37,22 @@ tags:
 
 小結論：`<figcaption>`為editorial或illustrative導向，而alt用來做（圖片的）功能性描述。
 
-關於上下文對alt的影響程度，可參考 07:34 Does the skin color of the speaker matter?
+
+而何謂editorial與illustrative，參考[Alt vs Figcaption](https://thoughtbot.com/blog/alt-vs-figcaption)：
+> Editorial or illustrative descriptions can convey the who, what, when, where, and/or why of an image contextualizing it alongside other content on the page. This may be information that isn’t apparent from just looking at the image.
+
+我流解讀：描述的事圖片帶出的故事。
+
+
+最後，關於上下文對alt的影響程度，可參考 07:34 Does the skin color of the speaker matter?
 影片中的立場：如果講者談論的是與種族相關的演講題目，這或許重要到需在alt中註明。
+
+
+## 補充：<figcaption>的用途
+除了提供圖片說明以外，也可以作為`blockquote`或引用文獻時拿來標註出處、說明引用來源。
+`<figcaption>`是block物件，可搭配`<small>`或`<cite>`（使用情境：註明來源），也可作為照片的拍攝時間標籤（搭配`<time>`）使用。
 
 
 ## 參考文件
 - [Writing Good Alt Text - HTTP 203](https://youtu.be/flf2vS0IoRs)
+- [Alt vs Figcaption](https://thoughtbot.com/blog/alt-vs-figcaption)
