@@ -17,8 +17,8 @@ os: Windows_NT 10.0.18363 win32 x64
 ```
 
 ## 基礎
-### `fr` (fractional units)
-類似百分比，與百分比不同的地方是「所有使用fr來宣告尺寸的元件，這些元件會互相參考彼此的尺寸」。
+### `fr`(fractional units)
+類似百分比，與百分比不同的地方是「所有使用fr來宣告尺寸的元件，這些元件會互相參考彼此的尺寸」
 在一些非常極端的情況下可能會造成尺寸炸裂，以下列原始碼來舉例：
 <p class="codepen" data-height="265" data-theme-id="dark" data-default-tab="html,result" data-user="Charlie7779" data-slug-hash="WNogyEW" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="fr">
   <span>See the Pen <a href="https://codepen.io/Charlie7779/pen/WNogyEW">
@@ -27,11 +27,11 @@ os: Windows_NT 10.0.18363 win32 x64
 </p>
 <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
 
-在第一組`<div class="cyan"></div>`中僅置入一段文字，高度為48px（4fr）。
-那麼作為1fr的`<div class="coral"></div>`與`<div class="gold"></div>`的高度就是48除以4，等於12px。
+在`<div class="cyan"></div>`中如果僅置入一段文字的話，高度為48px（4fr）
+那麼作為1fr的`<div class="coral"></div>`與`<div class="gold"></div>`的高度就是48除以4，等於12px
 
-而當我在第二組`<div class="cyan"></div>`中置入2萬個字元後，元件的高度被撐到4128px。
-而`<div class="coral"></div>`與`<div class="gold"></div>`的高度就一起因應`<div class="cyan"></div>`而改變，為4182除以4，等於1032px。
+而當我在`<div class="cyan"></div>`中置入2萬個字元後，元件的高度被撐到4128px
+而`<div class="coral"></div>`與`<div class="gold"></div>`的高度就一起因應`<div class="cyan"></div>`而改變，為4182除以4，等於1032px
 
 ### `auto`
 auto spacing，根據內容自動分配寬高。
