@@ -1,19 +1,23 @@
 ---
 title: 「Edit Files With Workspaces」相關筆記
-date: 2021-03-11 14:03:04
 categories:
-- DevTools
+  - DevTools
+date: 2021-03-11 14:03:04
 tags:
 ---
 
-## 說明
+## 總結
 這篇文章是在處理ALPHA Camp 學期1 S3 A11作業「試用開發者工具」時，嘗試搭配DevTools，避免作業過程中意外重新整理網頁，造成作業進度遺失的問題。
 
-## 懶人包
 DevTools確實可以解決上述問題。
 但為了要讓DevTools可以隨時儲存我的修改進度，需要先將作業範例檔案git clone回本機，然後再透過DevTools開啟作業資料夾，給予DevTools權限來記錄我對作業進行的修改。
 
+
 ## 版本與環境
+```
+Google Chrome: 89.0.4389.82 (Official Build) (x86_64)
+ox: macOS Big Suf Version 11.1
+```
 
 
 ## 流程與筆記
@@ -36,7 +40,7 @@ DevTools確實可以解決上述問題。
 問：為什麼我在Elements修改網頁的內文不像修改CSS會被保存下來？
 答：因為在Elements標籤下做的修改都是改到DOM，不是改到HTML。
 瀏覽器取得HTML後，解析、並搭配CSS與JS來決定最後呈現給使用者看的內容會長什麼樣子，使用者看到、並用Elements操作（修改）的東西是DOM。
-而這些DOM最終為什麼會以這些樣子呈現在網頁上，是綜合了HTML、CSS與JS互相搭配的結果；而DevTools很難知道它到底該把使用者對DOM做的修改記錄到HTML、CSS或是JS檔案中。
+而這些DOM最終為什麼會以這些樣子呈現在網頁上，是綜合了HTML、CSS與JS互相搭配的結果，DevTools很難知道它到底該把使用者對DOM做的修改內容記錄到HTML、CSS或是JS檔案中。
 
 更詳細的解說可參考：[Save an HTML change to disk: Why it doesn't work](https://developers.google.com/web/tools/chrome-devtools/workspaces#why)
 
