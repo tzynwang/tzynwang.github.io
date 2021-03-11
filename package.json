@@ -28,7 +28,7 @@
     "hexo-renderer-stylus": "^2.0.0",
     "hexo-server": "^2.0.0",
     "hexo-tag-figure": "^0.4.1",
-    "hexo-theme-landscape": "^0.0.3"
-  },
-  "devDependencies": {}
+    "hexo-theme-landscape": "^0.0.3",
+    "marked": "^2.0.1"
+  }
 }
