@@ -3,7 +3,7 @@ name: Pages
 on:
   push:
     branches:
-      - nobranches # 暫時停止自動deploy功能，回到windows系統後需修改回master
+      - master # 需暫時停止自動deploy功能的話，把master修改成任何其他名字
 
 jobs:
   pages:
