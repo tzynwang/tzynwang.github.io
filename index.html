@@ -19,7 +19,7 @@
 
 <script class="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"tzynwang.github.io","root":"/","images":"/images","scheme":"Pisces","version":"8.2.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":"enable","trigger":"auto","top_n_per_article":-1,"unescape":false,"preload":false}};
+    var CONFIG = {"hostname":"tzynwang.github.io","root":"/","images":"/images","scheme":"Pisces","version":"8.2.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":"enable","trigger":"auto","top_n_per_article":-1,"unescape":false,"preload":false}};
   </script>
 <meta name="description" content="希望沒有搞錯努力方向的普通人 🤪">
 <meta property="og:type" content="website">
@@ -195,14 +195,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">14</span>
+          <span class="site-state-item-count">15</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
   </nav>
@@ -240,6 +240,105 @@
   
 
   <article itemscope="" itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tzynwang.github.io/2021/edit-files-with-workspaces/">
+
+    <span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar-pexels-alex-andrews-215-215.png">
+      <meta itemprop="name" content="Charlie（茶）">
+      <meta itemprop="description" content="希望沒有搞錯努力方向的普通人 🤪">
+    </span>
+
+    <span hidden="" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="普通文組">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/edit-files-with-workspaces/" class="post-title-link" itemprop="url">「Edit Files With Workspaces」相關筆記</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-03-11 14:03:04" itemprop="dateCreated datePublished" datetime="2021-03-11T14:03:04+08:00">2021-03-11</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-03-15 15:10:58" itemprop="dateModified" datetime="2021-03-15T15:10:58+08:00">2021-03-15</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+          <a href="/categories/DevTools/" itemprop="url" rel="index"><span itemprop="name">DevTools</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>這篇文章是在處理ALPHA Camp 學期1 S3 A11作業「試用開發者工具」時，嘗試搭配DevTools，避免作業過程中意外重新整理網頁，造成作業進度遺失的問題。</p>
+<p>DevTools確實可以解決上述問題。<br>但為了要讓DevTools可以隨時儲存我的修改進度，需要先將作業範例檔案git clone回本機，然後再透過DevTools開啟作業資料夾，給予DevTools權限來記錄我對作業進行的修改。</p>
+<h2 id="版本與環境"><a href="#版本與環境" class="headerlink" title="版本與環境"></a>版本與環境</h2><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Google Chrome: 89.0.4389.82 (Official Build) (x86_64)</span><br><span class="line">ox: macOS Big Suf Version 11.1</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="流程與筆記"><a href="#流程與筆記" class="headerlink" title="流程與筆記"></a>流程與筆記</h2><ol>
+<li>觀察ALPHA Camp提供的作業連結（<a target="_blank" rel="noopener" href="https://alphacamp.github.io/css-facebook/">https://alphacamp.github.io/css-facebook/</a>），推測作業範例應該是用GitHub Pages發布的，嘗試搜尋「ALPHA Camp github」，運氣不錯，作業的repo是公開的</li>
+<li>把作業範例git clone回本機</li>
+<li>用VSCode開啟作業範例，使用VSCode的擴充套件「<a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer">Live Server</a>」讓index.html在localhost:5500動起來</li>
+<li>參考官方文件的說明（<a target="_blank" rel="noopener" href="https://developers.google.com/web/tools/chrome-devtools/workspaces#devtools">「Set up DevTools」</a>），開啟DevTools後，點選功能分頁中的「Sources」</li>
+<li>進入子選項「Filesystem」，點選「+ Add folder to workspace」，選擇作業所在的資料夾<br> 備註：在流程第二步，我選擇將作業clone回桌面的css-facebook資料夾，故在這一步，我要在DevTools中選擇開啟位在桌面的css-facebook資料夾</li>
+<li>在DevTools跳出權限請求視窗時，選擇給予DevTools權限來修改本機檔案</li>
+<li>在沒有開錯資料夾、沒有出現其他問題的情況下，Filesystem區域會出現資料夾css-facebook，點開資料夾會看到index.html與style.css兩個檔案，並style.css的檔案圖示右下角會有綠點 <figure class="figure--center"><img src="/2021/edit-files-with-workspaces/file-mapping-success.png"></figure></li>
+<li>綠點代表現在透過DevTools對網頁做的CSS更動都會儲存到style.css中，這樣即使改到一半重新整理網頁，先前的CSS修改也不會消失</li>
+</ol>
+<h3 id="注意事項"><a href="#注意事項" class="headerlink" title="注意事項"></a>注意事項</h3><p>在DevTools的Elements標籤下修改的HTML內容不會被保存下來，想要保存對HTML的變更，請移動到Sources標籤去修改index.html</p>
+<figure class="figure--center"><img src="/2021/edit-files-with-workspaces/why-it-isnt-saved.png"></figure>
+
+<p>問：為什麼我在Elements修改網頁的內文不像修改CSS會被保存下來？<br>答：因為在Elements標籤下做的修改都是改到DOM，不是改到HTML。<br>瀏覽器取得HTML後，解析、並搭配CSS與JS來決定最後呈現給使用者看的內容會長什麼樣子，使用者看到、並用Elements操作（修改）的東西是DOM。<br>而這些DOM最終為什麼會以這些樣子呈現在網頁上，是綜合了HTML、CSS與JS互相搭配的結果，DevTools很難知道它到底該把使用者對DOM做的修改內容記錄到HTML、CSS或是JS檔案中。</p>
+<p>更詳細的解說可參考：<a target="_blank" rel="noopener" href="https://developers.google.com/web/tools/chrome-devtools/workspaces#why">Save an HTML change to disk: Why it doesn’t work</a></p>
+<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><p><a target="_blank" rel="noopener" href="https://developers.google.com/web/tools/chrome-devtools/workspaces">Edit Files With Workspaces</a></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope="" itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="https://tzynwang.github.io/2021/morden-layouts-1-line-css/">
 
     <span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -263,10 +362,16 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2021-03-07 12:36:03 / Modified: 21:37:48" itemprop="dateCreated datePublished" datetime="2021-03-07T12:36:03+08:00">2021-03-07</time>
+      <time title="Created: 2021-03-07 12:36:03" itemprop="dateCreated datePublished" datetime="2021-03-07T12:36:03+08:00">2021-03-07</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-03-15 15:10:58" itemprop="dateModified" datetime="2021-03-15T15:10:58+08:00">2021-03-15</time>
+      </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
@@ -289,7 +394,7 @@
     <div class="post-body" itemprop="articleBody">
           <h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>關於YouTube影片「<a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=qm0IfG1GyZU">10 modern layouts in 1 line of CSS</a>」的相關筆記。</p>
 <h2 id="版本與環境"><a href="#版本與環境" class="headerlink" title="版本與環境"></a>版本與環境</h2><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Google Chrome: 89.0.4389.72 (Official Build) (64-bit)</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></tbody></table></figure>
-<h2 id="基礎"><a href="#基礎" class="headerlink" title="基礎"></a>基礎</h2><h3 id="fr-fractional-units"><a href="#fr-fractional-units" class="headerlink" title="fr (fractional units)"></a><code>fr</code> (fractional units)</h3><p>類似百分比，與百分比不同的地方是「所有使用fr來宣告尺寸的元件，這些元件會互相參考彼此的尺寸」。<br>在一些非常極端的情況下可能會造成尺寸炸裂，以下列原始碼來舉例：</p>
+<h2 id="基礎"><a href="#基礎" class="headerlink" title="基礎"></a>基礎</h2><h3 id="fr-fractional-units"><a href="#fr-fractional-units" class="headerlink" title="fr(fractional units)"></a><code>fr</code>(fractional units)</h3><p>類似百分比，與百分比不同的地方是「所有使用fr來宣告尺寸的元件，這些元件會互相參考彼此的尺寸」<br>在一些非常極端的情況下可能會造成尺寸炸裂，以下列原始碼來舉例：</p>
 <p class="codepen" data-height="265" data-theme-id="dark" data-default-tab="html,result" data-user="Charlie7779" data-slug-hash="WNogyEW" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="fr">
   <span>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/Charlie7779/pen/WNogyEW">
   fr</a> by Charlie (<a target="_blank" rel="noopener" href="https://codepen.io/Charlie7779">@Charlie7779</a>)
@@ -297,8 +402,8 @@
 </p>
 <script async="" src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
 
-<p>在第一組<code>&lt;div class="cyan"&gt;&lt;/div&gt;</code>中僅置入一段文字，高度為48px（4fr）。<br>那麼作為1fr的<code>&lt;div class="coral"&gt;&lt;/div&gt;</code>與<code>&lt;div class="gold"&gt;&lt;/div&gt;</code>的高度就是48除以4，等於12px。</p>
-<p>而當我在第二組<code>&lt;div class="cyan"&gt;&lt;/div&gt;</code>中置入2萬個字元後，元件的高度被撐到4128px。<br>而<code>&lt;div class="coral"&gt;&lt;/div&gt;</code>與<code>&lt;div class="gold"&gt;&lt;/div&gt;</code>的高度就一起因應<code>&lt;div class="cyan"&gt;&lt;/div&gt;</code>而改變，為4182除以4，等於1032px。</p>
+<p>在<code>&lt;div class="cyan"&gt;&lt;/div&gt;</code>中如果僅置入一段文字的話，高度為48px（4fr）<br>那麼作為1fr的<code>&lt;div class="coral"&gt;&lt;/div&gt;</code>與<code>&lt;div class="gold"&gt;&lt;/div&gt;</code>的高度就是48除以4，等於12px</p>
+<p>而當我在<code>&lt;div class="cyan"&gt;&lt;/div&gt;</code>中置入2萬個字元後，元件的高度被撐到4128px<br>而<code>&lt;div class="coral"&gt;&lt;/div&gt;</code>與<code>&lt;div class="gold"&gt;&lt;/div&gt;</code>的高度就一起因應<code>&lt;div class="cyan"&gt;&lt;/div&gt;</code>而改變，為4182除以4，等於1032px</p>
 <h3 id="auto"><a href="#auto" class="headerlink" title="auto"></a><code>auto</code></h3><p>auto spacing，根據內容自動分配寬高。<br>所以如果沒有給予元件任何內容的話，高度就會是0。</p>
 <h3 id="minmax"><a href="#minmax" class="headerlink" title="minmax()"></a><code>minmax()</code></h3><p>作用如其名稱，設定最小與最大的尺寸。</p>
 <h3 id="clamp"><a href="#clamp" class="headerlink" title="clamp()"></a><code>clamp()</code></h3><p>接受三個參數，分別設定最小（minimum value）、理想（preferred value）與最大（maximum allowed value）尺寸。</p>
@@ -545,13 +650,17 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-03-07 15:17:59" itemprop="dateModified" datetime="2021-03-07T15:17:59+08:00">2021-03-07</time>
+        <time title="Modified: 2021-03-15 15:10:58" itemprop="dateModified" datetime="2021-03-15T15:10:58+08:00">2021-03-15</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
       </span>
       <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+          <a href="/categories/DevTools/" itemprop="url" rel="index"><span itemprop="name">DevTools</span></a>
+        </span>
+          , 
         <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
           <a href="/categories/CSS/" itemprop="url" rel="index"><span itemprop="name">CSS</span></a>
         </span>
@@ -1230,122 +1339,6 @@
 <h3 id="Sub-sub-category"><a href="#Sub-sub-category" class="headerlink" title="Sub-sub-category"></a>Sub-sub-category</h3><figure class="highlight yaml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># categories:</span></span><br><span class="line"><span class="bullet">-</span> [<span class="string">Fruit</span>, <span class="string">Apple</span>, <span class="string">Apple</span> <span class="string">seed</span>]</span><br><span class="line"><span class="bullet">-</span> [<span class="string">Vegetable</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># Result:</span></span><br><span class="line"><span class="string">├──</span> <span class="string">Fruit</span></span><br><span class="line"><span class="string">|</span>   <span class="string">└──</span> <span class="string">Apple</span></span><br><span class="line"><span class="string">|</span>      <span class="string">└──</span> <span class="string">Apple</span> <span class="string">Seed</span></span><br><span class="line"><span class="string">└──</span> <span class="string">Vegetable</span></span><br></pre></td></tr></tbody></table></figure>
 
 <h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a target="_blank" rel="noopener" href="https://hexo.io/docs/front-matter#Categories-amp-Tags">hexo: Front-matter/Categories &amp; Tags</a></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope="" itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://tzynwang.github.io/2021/hexo-contribution-workflow/">
-
-    <span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar-pexels-alex-andrews-215-215.png">
-      <meta itemprop="name" content="Charlie（茶）">
-      <meta itemprop="description" content="希望沒有搞錯努力方向的普通人 🤪">
-    </span>
-
-    <span hidden="" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="普通文組">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/hexo-contribution-workflow/" class="post-title-link" itemprop="url">Contribution workflow note: document update</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-02-14 09:53:37" itemprop="dateCreated datePublished" datetime="2021-02-14T09:53:37+08:00">2021-02-14</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-02-18 20:11:20" itemprop="dateModified" datetime="2021-02-18T20:11:20+08:00">2021-02-18</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-          <a href="/categories/hexo/" itemprop="url" rel="index"><span itemprop="name">hexo</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>This a note for participating hexo’s contribution (for improving the documentation in English and traditional Chinese).<br>參與了hexo說明文件的改善協作，記錄一下整個流程。<br>不過pr因為提出的改善建議已經過時（<a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues/4267#issuecomment-778646141">hexo 4.2.1已支援Noje.js 14</a>）所以並沒有被接受 🤣</p>
-<h2 id="Preparing-works"><a href="#Preparing-works" class="headerlink" title="Preparing works"></a>Preparing works</h2><ul>
-<li>Read the <a target="_blank" rel="noopener" href="https://hexo.io/docs/contributing">hexo’s official guide for contributing</a></li>
-<li>Understand what is “Fork” in git workflow: <a target="_blank" rel="noopener" href="https://docs.github.com/en/github/getting-started-with-github/fork-a-repo">GitHub Docs: Fork a repo</a></li>
-<li>Understand how to create a branch in CLI: <a target="_blank" rel="noopener" href="https://www.datree.io/resources/git-create-branch">Git create branch [a Git commands tutorial]</a></li>
-</ul>
-<h2 id="Environment"><a href="#Environment" class="headerlink" title="Environment"></a>Environment</h2><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo: 5.3.0</span><br><span class="line">hexo-cli: 4.2.0</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></tbody></table></figure>
-
-<h2 id="Workflow"><a href="#Workflow" class="headerlink" title="Workflow"></a>Workflow</h2><ol>
-<li>Fork <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo">hexojs/site</a><br><img src="/2021/hexo-contribution-workflow/fork-hexo-site.png" alt="Click &quot;Fork&quot; button"></li>
-<li>Open cmd.exe, move to <code>C:\Projects\hexo_contributing</code> by entering <code>cd C:\Projects\hexo_contributing</code> (since I want to store the hexojs/site repo in this location on my computer).</li>
-<li>Enter <code>git init</code> to <a target="_blank" rel="noopener" href="https://git-scm.com/docs/git-init">create a empty Git repository</a> in this folder.</li>
-<li>Follow the instruction on hexo’s contribution document:<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/tzynwang/site.git</span><br><span class="line">cd site</span><br><span class="line">npm install</span><br></pre></td></tr></tbody></table></figure></li>
-<li>Dive into the <code>\site\source</code> folder. Update the contents in English and traditional Chinese documents</li>
-<li>Run <code>hexo server</code> to have a live previwing, checking the pages I’d updated and make sure nothing was mess-up</li>
-<li>Create a branch call “update-node-js-version-suggestion” by entering <code>git checkout -b update-node-js-version-suggestion</code> in cmd.exe</li>
-<li>Push the modification from local to GitHub by <code>git push https://github.com/tzynwang/site.git update-node-js-version-suggestion</code></li>
-<li>Create a pull request on GitHub page, describe what changes I’d applied to the documents.</li>
-</ol>
-<h2 id="Result"><a href="#Result" class="headerlink" title="Result"></a>Result</h2><p><a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues/4267#issuecomment-778646141">Receive a comment</a> which indicated the improvement is out of date (my bad), thus remove the pr from GitHub. Here’s the flow:</p>
-<ol>
-<li>Click the <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/pulls">“Pull requests” tab in hexojs/site</a>, click the pr I’d sent<br><img src="/2021/hexo-contribution-workflow/close-pr-00.png" alt="Navigate to the Pull request tab in hexojs/site repository"></li>
-<li>Scroll to the page bottom, add the comment to describe the reason of closing the pr. Click the button “Close with comment”<br><img src="/2021/hexo-contribution-workflow/close-pr-01.png" alt="Comment the reason for closing the pull-request before closing it"></li>
-<li>Click the button “Delete branch” (since it has no useage now)<br><img src="/2021/hexo-contribution-workflow/close-pr-02.png" alt="Delete the branch from GitHub repository"></li>
-<li>The branch has been deleted<br><img src="/2021/hexo-contribution-workflow/close-pr-03.png" alt="The screenshot after deleting a branch"><br>Done 😌</li>
-</ol>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p>About how to use indicator characters (<code>:</code>) in yaml file and bracket (<code>[]</code>) in markdown file:</p>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://riptutorial.com/yaml/example/25838/escaping-characters">yaml Escaping Characters</a></li>
-<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/a/19086251/15028185">How to escape indicator characters (i.e. : or - ) in YAML</a></li>
-<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/a/43011868/15028185">How to escape backslash bracket ([) in Markdown?</a></li>
-</ul>
-<p>About cancel, delete, remove a GitHub pull request:</p>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/a/10142727/15028185">How to cancel a pull request on github?</a></li>
-<li><a target="_blank" rel="noopener" href="https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/closing-a-pull-request">GitHub Docs: Closing a pull request</a></li>
-</ul>
 
       
     </div>

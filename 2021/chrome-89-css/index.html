@@ -19,7 +19,7 @@
 
 <script class="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"tzynwang.github.io","root":"/","images":"/images","scheme":"Pisces","version":"8.2.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":"enable","trigger":"auto","top_n_per_article":-1,"unescape":false,"preload":false}};
+    var CONFIG = {"hostname":"tzynwang.github.io","root":"/","images":"/images","scheme":"Pisces","version":"8.2.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":"enable","trigger":"auto","top_n_per_article":-1,"unescape":false,"preload":false}};
   </script>
 <meta name="description" content="總結本篇是記錄Chrome 89的DevTools中，CSS相關新功能的筆記。 版本與環境12Google Chrome: 89.0.4389.72 (Official Build) (64-bit)os: Windows_NT 10.0.18363 win32 x64  DevTools中與CSS相關的新內容（Chrome 89）直接對node截圖原文連結：https://developers.">
 <meta property="og:type" content="article">
@@ -44,7 +44,7 @@
 <meta property="og:image" content="https://tzynwang.github.io/2021/chrome-89-css/check-chrome-version.png">
 <meta property="og:image" content="https://tzynwang.github.io/2021/chrome-89-css/chrome-version-info.png">
 <meta property="article:published_time" content="2021-03-03T11:22:14.000Z">
-<meta property="article:modified_time" content="2021-03-07T07:17:59.530Z">
+<meta property="article:modified_time" content="2021-03-15T07:10:58.120Z">
 <meta property="article:author" content="Charlie（茶）">
 <meta property="article:tag" content="hexo, hexo blog, tzyn, 普通文組">
 <meta name="twitter:card" content="summary">
@@ -214,14 +214,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">14</span>
+          <span class="site-state-item-count">15</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
   </nav>
@@ -291,13 +291,17 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-03-07 15:17:59" itemprop="dateModified" datetime="2021-03-07T15:17:59+08:00">2021-03-07</time>
+        <time title="Modified: 2021-03-15 15:10:58" itemprop="dateModified" datetime="2021-03-15T15:10:58+08:00">2021-03-15</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
       </span>
       <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+          <a href="/categories/DevTools/" itemprop="url" rel="index"><span itemprop="name">DevTools</span></a>
+        </span>
+          , 
         <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
           <a href="/categories/CSS/" itemprop="url" rel="index"><span itemprop="name">CSS</span></a>
         </span>

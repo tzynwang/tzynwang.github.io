@@ -4,19 +4,26 @@
   <url>
     <loc>https://tzynwang.github.io/2021/morden-layouts-1-line-css/</loc>
     
-    <lastmod>2021-03-07</lastmod>
+    <lastmod>2021-03-15</lastmod>
     
   </url>
   
   <url>
-    <loc>https://tzynwang.github.io/2021/vs-code-extensions-snippets/</loc>
+    <loc>https://tzynwang.github.io/2021/edit-files-with-workspaces/</loc>
     
-    <lastmod>2021-03-07</lastmod>
+    <lastmod>2021-03-15</lastmod>
     
   </url>
   
   <url>
     <loc>https://tzynwang.github.io/2021/chrome-89-css/</loc>
+    
+    <lastmod>2021-03-15</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://tzynwang.github.io/2021/vs-code-extensions-snippets/</loc>
     
     <lastmod>2021-03-07</lastmod>
     
@@ -137,7 +144,7 @@
 
   <url>
     <loc>https://tzynwang.github.io/</loc>
-    <lastmod>2021-03-07</lastmod>
+    <lastmod>2021-03-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -147,49 +154,56 @@
   
   <url>
     <loc>https://tzynwang.github.io/categories/hexo/</loc>
-    <lastmod>2021-03-07</lastmod>
+    <lastmod>2021-03-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://tzynwang.github.io/categories/jekyll/</loc>
-    <lastmod>2021-03-07</lastmod>
+    <lastmod>2021-03-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://tzynwang.github.io/categories/DevTools/</loc>
+    <lastmod>2021-03-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://tzynwang.github.io/categories/git/</loc>
-    <lastmod>2021-03-07</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://tzynwang.github.io/categories/hexo/CSS/</loc>
-    <lastmod>2021-03-07</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://tzynwang.github.io/categories/hexo/NexT-theme/</loc>
-    <lastmod>2021-03-07</lastmod>
+    <lastmod>2021-03-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://tzynwang.github.io/categories/CSS/</loc>
-    <lastmod>2021-03-07</lastmod>
+    <lastmod>2021-03-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://tzynwang.github.io/categories/hexo/CSS/</loc>
+    <lastmod>2021-03-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://tzynwang.github.io/categories/hexo/NexT-theme/</loc>
+    <lastmod>2021-03-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://tzynwang.github.io/categories/VSCode/</loc>
-    <lastmod>2021-03-07</lastmod>
+    <lastmod>2021-03-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>

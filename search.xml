@@ -15,6 +15,102 @@
       </categories>
   </entry>
   <entry>
+    <title>DevTools與CSS有關的新功能（Chrome 89）</title>
+    <url>/2021/chrome-89-css/</url>
+    <content><![CDATA[<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>本篇是記錄Chrome 89的DevTools中，CSS相關新功能的筆記。</p>
+<h2 id="版本與環境"><a href="#版本與環境" class="headerlink" title="版本與環境"></a>版本與環境</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Google Chrome: 89.0.4389.72 (Official Build) (64-bit)</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></table></figure>
+
+<h2 id="DevTools中與CSS相關的新內容（Chrome-89）"><a href="#DevTools中與CSS相關的新內容（Chrome-89）" class="headerlink" title="DevTools中與CSS相關的新內容（Chrome 89）"></a>DevTools中與CSS相關的新內容（Chrome 89）</h2><h3 id="直接對node截圖"><a href="#直接對node截圖" class="headerlink" title="直接對node截圖"></a>直接對node截圖</h3><p>原文連結：<a href="https://developers.google.com/web/updates/2021/01/devtools#node-screenshot">https://developers.google.com/web/updates/2021/01/devtools#node-screenshot</a></p>
+<figure class="figure--center"><img src="/2021/chrome-89-css/node-screenshot.jpg"></figure>
+<p>在node上點擊右鍵，選擇Capture node screenshot後，截圖就會下載到本機。</p>
+<h3 id="可直接套用偽類-target至元件上"><a href="#可直接套用偽類-target至元件上" class="headerlink" title="可直接套用偽類:target至元件上"></a>可直接套用偽類:target至元件上</h3><p>原文連結：<a href="https://developers.google.com/web/updates/2021/01/devtools#force-target">https://developers.google.com/web/updates/2021/01/devtools#force-target</a></p>
+<figure class="figure--center"><img src="/2021/chrome-89-css/target.jpg" title="可直接套用:target偽類 " alt="The screenshot of DevTools"><figcaption><p>可直接套用:target偽類 </p></figcaption></figure>
+<p>不用點擊連結，即可套用<code>:target</code>到元件上。<br>打開DevTools，點選Elements標籤，點選元件後按下:hov按鈕，即可展開支援套用的偽類（pseudo-element）清單。<br>選擇<code>:target</code>後，即可直接觀察相關的CSS表現內容。</p>
+<figure class="figure--center"><img src="/2021/chrome-89-css/target-example.jpg"></figure>
+<figure class="figure--center"><img src="/2021/chrome-89-css/target-example-select.jpg"></figure>
+
+<p>以上兩張螢幕截圖用到的原始碼：</p>
+<p class="codepen" data-height="300" data-theme-id="dark" data-default-tab="html,result" data-user="Charlie7779" data-slug-hash="abBKWNL" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title=":target">
+  <span>See the Pen <a href="https://codepen.io/Charlie7779/pen/abBKWNL">
+  :target</a> by Charlie (<a href="https://codepen.io/Charlie7779">@Charlie7779</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+
+<h3 id="直接在DevTools裡面複製元件"><a href="#直接在DevTools裡面複製元件" class="headerlink" title="直接在DevTools裡面複製元件"></a>直接在DevTools裡面複製元件</h3><p>原文連結：<a href="https://developers.google.com/web/updates/2021/01/devtools#duplicate-element">https://developers.google.com/web/updates/2021/01/devtools#duplicate-element</a></p>
+<figure class="figure--center"><img src="/2021/chrome-89-css/duplicate-element.jpg"></figure>
+<figure class="figure--center"><img src="/2021/chrome-89-css/duplicate-element-after.jpg"></figure>
+<p>在元件上按下右鍵選擇Duplicate element後，該元件的副本就會出現在被拷貝的元件下方。<br>支援快速鍵，點選元件後按下<code>Shift</code>+ <code>Alt</code>+ ⬇️（Windows）或<code>Shift</code>+ <code>Option</code>+ ⬇️（Mac）即可拷貝元件。</p>
+<h3 id="支援color-picker"><a href="#支援color-picker" class="headerlink" title="支援color picker"></a>支援color picker</h3><p>原文連結：<a href="https://developers.google.com/web/updates/2021/01/devtools#color-picker">https://developers.google.com/web/updates/2021/01/devtools#color-picker</a><br>並且如果按住<code>Shift</code>後以滑鼠左鍵點擊顏色方塊的話，可以切換為不同的顏色編碼格式（RGBA、HSLA、Hex）</p>
+<h3 id="複製元件的CSS內容"><a href="#複製元件的CSS內容" class="headerlink" title="複製元件的CSS內容"></a>複製元件的CSS內容</h3><p>原文連結：<a href="https://developers.google.com/web/updates/2021/01/devtools#copy-css">https://developers.google.com/web/updates/2021/01/devtools#copy-css</a><br>在Styles區塊對元件的CSS設定按下右鍵，可複製CSS內容。</p>
+<figure class="figure--center"><img src="/2021/chrome-89-css/copy-CSS-properties.jpg"></figure>
+<p>如果是在選取器位置按下右鍵的話，會出現以下選項：</p>
+<ul>
+<li>Copy selector：複製選取器，上圖水藍色部分</li>
+<li>Copy rule：複製CSS規則，上圖黃色部分</li>
+<li>Copy all declarations：複製選取器與CSS規則，上圖水藍色加上黃色部分</li>
+</ul>
+<figure class="figure--center"><img src="/2021/chrome-89-css/copy-CSS-properties-1.jpg"></figure>
+<p>如果是在中括號<code>&#123;&#125;</code>區塊按下右鍵的話，選項如下：</p>
+<ul>
+<li>Copy declaration：複製紅框與粉框部分</li>
+<li>Copy property：複製紅框部分</li>
+<li>Copy value：複製粉框部分</li>
+<li>Copy rule：複製水藍色加上黃色部分</li>
+<li>Copy all declarations：僅複製黃色部分</li>
+</ul>
+<h3 id="字體編輯面板（Experimental-features）"><a href="#字體編輯面板（Experimental-features）" class="headerlink" title="字體編輯面板（Experimental features）"></a>字體編輯面板（Experimental features）</h3><p>原文連結：<a href="https://developers.google.com/web/updates/2021/01/devtools#font">https://developers.google.com/web/updates/2021/01/devtools#font</a></p>
+<figure class="figure--center"><img src="/2021/chrome-89-css/font-editor.jpg"></figure>
+<p>點選上圖紅框內的字體圖示，可即時調整字體設計。</p>
+<h3 id="flexbox-debug工具（Experimental-features）"><a href="#flexbox-debug工具（Experimental-features）" class="headerlink" title="flexbox debug工具（Experimental features）"></a>flexbox debug工具（Experimental features）</h3><p>原文連結：<a href="https://developers.google.com/web/updates/2021/01/devtools#flexbox">https://developers.google.com/web/updates/2021/01/devtools#flexbox</a></p>
+<figure class="figure--center"><img src="/2021/chrome-89-css/flexbox-gap.jpg"></figure>
+<figure class="figure--center"><img src="/2021/chrome-89-css/flexbox-align-items.jpg"></figure>
+<p>有<code>display: flex;</code>特性的元件，右側會顯示flex圖示。<br>滑鼠移動到flex相關的特性上，會在畫面中顯示提示。上圖分別是滑鼠指向<code>gap</code>與<code>align-items</code>。</p>
+<h2 id="附錄"><a href="#附錄" class="headerlink" title="附錄"></a>附錄</h2><h3 id="開啟Experimental-features"><a href="#開啟Experimental-features" class="headerlink" title="開啟Experimental features"></a>開啟Experimental features</h3><figure class="figure--center"><img src="/2021/chrome-89-css/experimental-features.jpg"></figure>
+<figure class="figure--center"><img src="/2021/chrome-89-css/experimental-features-1.jpg"></figure>
+<p>點選DevTools的齒輪圖示（設定），移動到Experiments標籤，勾選需要開啟的相關功能。<br>設定完畢後需關閉、重新啟動DevTools來套用設定。</p>
+<h3 id="檢查Chrome的版本"><a href="#檢查Chrome的版本" class="headerlink" title="檢查Chrome的版本"></a>檢查Chrome的版本</h3><figure class="figure--center"><img src="/2021/chrome-89-css/check-chrome-version.png" title="More icon >> Help >> About Google Chrome " alt="The screenshot of displaying the path to check Chrome"><figcaption><p>More icon >> Help >> About Google Chrome </p></figcaption></figure>
+<figure class="figure--center"><img src="/2021/chrome-89-css/chrome-version-info.png" title="點選About Google Chrome後，即可看到Chrome版本 " alt="The screenshot of Chrome version information"><figcaption><p>點選About Google Chrome後，即可看到Chrome版本 </p></figcaption></figure>
+<p>打開Chrome後，點選畫面右上角的垂直排列三點按鈕，依序選擇幫助、關於，點開關於後即可看到Chrome版本資訊。</p>
+<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
+<li><a href="https://www.w3schools.com/cssref/sel_target.asp">CSS :target Selector</a></li>
+<li><a href="https://www.google.com/chrome/update/">How to check Chrome’s version</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>DevTools</category>
+        <category>CSS</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>「Edit Files With Workspaces」相關筆記</title>
+    <url>/2021/edit-files-with-workspaces/</url>
+    <content><![CDATA[<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>這篇文章是在處理ALPHA Camp 學期1 S3 A11作業「試用開發者工具」時，嘗試搭配DevTools，避免作業過程中意外重新整理網頁，造成作業進度遺失的問題。</p>
+<p>DevTools確實可以解決上述問題。<br>但為了要讓DevTools可以隨時儲存我的修改進度，需要先將作業範例檔案git clone回本機，然後再透過DevTools開啟作業資料夾，給予DevTools權限來記錄我對作業進行的修改。</p>
+<h2 id="版本與環境"><a href="#版本與環境" class="headerlink" title="版本與環境"></a>版本與環境</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Google Chrome: 89.0.4389.82 (Official Build) (x86_64)</span><br><span class="line">ox: macOS Big Suf Version 11.1</span><br></pre></td></tr></table></figure>
+
+<h2 id="流程與筆記"><a href="#流程與筆記" class="headerlink" title="流程與筆記"></a>流程與筆記</h2><ol>
+<li>觀察ALPHA Camp提供的作業連結（<a href="https://alphacamp.github.io/css-facebook/">https://alphacamp.github.io/css-facebook/</a>），推測作業範例應該是用GitHub Pages發布的，嘗試搜尋「ALPHA Camp github」，運氣不錯，作業的repo是公開的</li>
+<li>把作業範例git clone回本機</li>
+<li>用VSCode開啟作業範例，使用VSCode的擴充套件「<a href="https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer">Live Server</a>」讓index.html在localhost:5500動起來</li>
+<li>參考官方文件的說明（<a href="https://developers.google.com/web/tools/chrome-devtools/workspaces#devtools">「Set up DevTools」</a>），開啟DevTools後，點選功能分頁中的「Sources」</li>
+<li>進入子選項「Filesystem」，點選「+ Add folder to workspace」，選擇作業所在的資料夾<br> 備註：在流程第二步，我選擇將作業clone回桌面的css-facebook資料夾，故在這一步，我要在DevTools中選擇開啟位在桌面的css-facebook資料夾</li>
+<li>在DevTools跳出權限請求視窗時，選擇給予DevTools權限來修改本機檔案</li>
+<li>在沒有開錯資料夾、沒有出現其他問題的情況下，Filesystem區域會出現資料夾css-facebook，點開資料夾會看到index.html與style.css兩個檔案，並style.css的檔案圖示右下角會有綠點 <figure class="figure--center"><img src="/2021/edit-files-with-workspaces/file-mapping-success.png"></figure></li>
+<li>綠點代表現在透過DevTools對網頁做的CSS更動都會儲存到style.css中，這樣即使改到一半重新整理網頁，先前的CSS修改也不會消失</li>
+</ol>
+<h3 id="注意事項"><a href="#注意事項" class="headerlink" title="注意事項"></a>注意事項</h3><p>在DevTools的Elements標籤下修改的HTML內容不會被保存下來，想要保存對HTML的變更，請移動到Sources標籤去修改index.html</p>
+<figure class="figure--center"><img src="/2021/edit-files-with-workspaces/why-it-isnt-saved.png"></figure>
+
+<p>問：為什麼我在Elements修改網頁的內文不像修改CSS會被保存下來？<br>答：因為在Elements標籤下做的修改都是改到DOM，不是改到HTML。<br>瀏覽器取得HTML後，解析、並搭配CSS與JS來決定最後呈現給使用者看的內容會長什麼樣子，使用者看到、並用Elements操作（修改）的東西是DOM。<br>而這些DOM最終為什麼會以這些樣子呈現在網頁上，是綜合了HTML、CSS與JS互相搭配的結果，DevTools很難知道它到底該把使用者對DOM做的修改內容記錄到HTML、CSS或是JS檔案中。</p>
+<p>更詳細的解說可參考：<a href="https://developers.google.com/web/tools/chrome-devtools/workspaces#why">Save an HTML change to disk: Why it doesn’t work</a></p>
+<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><p><a href="https://developers.google.com/web/tools/chrome-devtools/workspaces">Edit Files With Workspaces</a></p>
+]]></content>
+      <categories>
+        <category>DevTools</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Git workflow</title>
     <url>/2021/git-workflow/</url>
     <content><![CDATA[<h2 id="Summary-of-this-post"><a href="#Summary-of-this-post" class="headerlink" title="Summary of this post"></a>Summary of this post</h2><p>A note for 2 types of the git workflow:</p>
@@ -348,7 +444,7 @@ The configuration in <code>_config.yml</code> file should be set like this:<figu
     <url>/2021/morden-layouts-1-line-css/</url>
     <content><![CDATA[<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>關於YouTube影片「<a href="https://www.youtube.com/watch?v=qm0IfG1GyZU">10 modern layouts in 1 line of CSS</a>」的相關筆記。</p>
 <h2 id="版本與環境"><a href="#版本與環境" class="headerlink" title="版本與環境"></a>版本與環境</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Google Chrome: 89.0.4389.72 (Official Build) (64-bit)</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></table></figure>
-<h2 id="基礎"><a href="#基礎" class="headerlink" title="基礎"></a>基礎</h2><h3 id="fr-fractional-units"><a href="#fr-fractional-units" class="headerlink" title="fr (fractional units)"></a><code>fr</code> (fractional units)</h3><p>類似百分比，與百分比不同的地方是「所有使用fr來宣告尺寸的元件，這些元件會互相參考彼此的尺寸」。<br>在一些非常極端的情況下可能會造成尺寸炸裂，以下列原始碼來舉例：</p>
+<h2 id="基礎"><a href="#基礎" class="headerlink" title="基礎"></a>基礎</h2><h3 id="fr-fractional-units"><a href="#fr-fractional-units" class="headerlink" title="fr(fractional units)"></a><code>fr</code>(fractional units)</h3><p>類似百分比，與百分比不同的地方是「所有使用fr來宣告尺寸的元件，這些元件會互相參考彼此的尺寸」<br>在一些非常極端的情況下可能會造成尺寸炸裂，以下列原始碼來舉例：</p>
 <p class="codepen" data-height="265" data-theme-id="dark" data-default-tab="html,result" data-user="Charlie7779" data-slug-hash="WNogyEW" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="fr">
   <span>See the Pen <a href="https://codepen.io/Charlie7779/pen/WNogyEW">
   fr</a> by Charlie (<a href="https://codepen.io/Charlie7779">@Charlie7779</a>)
@@ -356,8 +452,8 @@ The configuration in <code>_config.yml</code> file should be set like this:<figu
 </p>
 <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
 
-<p>在第一組<code>&lt;div class=&quot;cyan&quot;&gt;&lt;/div&gt;</code>中僅置入一段文字，高度為48px（4fr）。<br>那麼作為1fr的<code>&lt;div class=&quot;coral&quot;&gt;&lt;/div&gt;</code>與<code>&lt;div class=&quot;gold&quot;&gt;&lt;/div&gt;</code>的高度就是48除以4，等於12px。</p>
-<p>而當我在第二組<code>&lt;div class=&quot;cyan&quot;&gt;&lt;/div&gt;</code>中置入2萬個字元後，元件的高度被撐到4128px。<br>而<code>&lt;div class=&quot;coral&quot;&gt;&lt;/div&gt;</code>與<code>&lt;div class=&quot;gold&quot;&gt;&lt;/div&gt;</code>的高度就一起因應<code>&lt;div class=&quot;cyan&quot;&gt;&lt;/div&gt;</code>而改變，為4182除以4，等於1032px。</p>
+<p>在<code>&lt;div class=&quot;cyan&quot;&gt;&lt;/div&gt;</code>中如果僅置入一段文字的話，高度為48px（4fr）<br>那麼作為1fr的<code>&lt;div class=&quot;coral&quot;&gt;&lt;/div&gt;</code>與<code>&lt;div class=&quot;gold&quot;&gt;&lt;/div&gt;</code>的高度就是48除以4，等於12px</p>
+<p>而當我在<code>&lt;div class=&quot;cyan&quot;&gt;&lt;/div&gt;</code>中置入2萬個字元後，元件的高度被撐到4128px<br>而<code>&lt;div class=&quot;coral&quot;&gt;&lt;/div&gt;</code>與<code>&lt;div class=&quot;gold&quot;&gt;&lt;/div&gt;</code>的高度就一起因應<code>&lt;div class=&quot;cyan&quot;&gt;&lt;/div&gt;</code>而改變，為4182除以4，等於1032px</p>
 <h3 id="auto"><a href="#auto" class="headerlink" title="auto"></a><code>auto</code></h3><p>auto spacing，根據內容自動分配寬高。<br>所以如果沒有給予元件任何內容的話，高度就會是0。</p>
 <h3 id="minmax"><a href="#minmax" class="headerlink" title="minmax()"></a><code>minmax()</code></h3><p>作用如其名稱，設定最小與最大的尺寸。</p>
 <h3 id="clamp"><a href="#clamp" class="headerlink" title="clamp()"></a><code>clamp()</code></h3><p>接受三個參數，分別設定最小（minimum value）、理想（preferred value）與最大（maximum allowed value）尺寸。</p>
@@ -527,73 +623,6 @@ The configuration in <code>_config.yml</code> file should be set like this:<figu
 ]]></content>
       <categories>
         <category>VSCode</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>DevTools與CSS有關的新功能（Chrome 89）</title>
-    <url>/2021/chrome-89-css/</url>
-    <content><![CDATA[<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>本篇是記錄Chrome 89的DevTools中，CSS相關新功能的筆記。</p>
-<h2 id="版本與環境"><a href="#版本與環境" class="headerlink" title="版本與環境"></a>版本與環境</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Google Chrome: 89.0.4389.72 (Official Build) (64-bit)</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></table></figure>
-
-<h2 id="DevTools中與CSS相關的新內容（Chrome-89）"><a href="#DevTools中與CSS相關的新內容（Chrome-89）" class="headerlink" title="DevTools中與CSS相關的新內容（Chrome 89）"></a>DevTools中與CSS相關的新內容（Chrome 89）</h2><h3 id="直接對node截圖"><a href="#直接對node截圖" class="headerlink" title="直接對node截圖"></a>直接對node截圖</h3><p>原文連結：<a href="https://developers.google.com/web/updates/2021/01/devtools#node-screenshot">https://developers.google.com/web/updates/2021/01/devtools#node-screenshot</a></p>
-<figure class="figure--center"><img src="/2021/chrome-89-css/node-screenshot.jpg"></figure>
-<p>在node上點擊右鍵，選擇Capture node screenshot後，截圖就會下載到本機。</p>
-<h3 id="可直接套用偽類-target至元件上"><a href="#可直接套用偽類-target至元件上" class="headerlink" title="可直接套用偽類:target至元件上"></a>可直接套用偽類:target至元件上</h3><p>原文連結：<a href="https://developers.google.com/web/updates/2021/01/devtools#force-target">https://developers.google.com/web/updates/2021/01/devtools#force-target</a></p>
-<figure class="figure--center"><img src="/2021/chrome-89-css/target.jpg" title="可直接套用:target偽類 " alt="The screenshot of DevTools"><figcaption><p>可直接套用:target偽類 </p></figcaption></figure>
-<p>不用點擊連結，即可套用<code>:target</code>到元件上。<br>打開DevTools，點選Elements標籤，點選元件後按下:hov按鈕，即可展開支援套用的偽類（pseudo-element）清單。<br>選擇<code>:target</code>後，即可直接觀察相關的CSS表現內容。</p>
-<figure class="figure--center"><img src="/2021/chrome-89-css/target-example.jpg"></figure>
-<figure class="figure--center"><img src="/2021/chrome-89-css/target-example-select.jpg"></figure>
-
-<p>以上兩張螢幕截圖用到的原始碼：</p>
-<p class="codepen" data-height="300" data-theme-id="dark" data-default-tab="html,result" data-user="Charlie7779" data-slug-hash="abBKWNL" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title=":target">
-  <span>See the Pen <a href="https://codepen.io/Charlie7779/pen/abBKWNL">
-  :target</a> by Charlie (<a href="https://codepen.io/Charlie7779">@Charlie7779</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
-</p>
-<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
-
-<h3 id="直接在DevTools裡面複製元件"><a href="#直接在DevTools裡面複製元件" class="headerlink" title="直接在DevTools裡面複製元件"></a>直接在DevTools裡面複製元件</h3><p>原文連結：<a href="https://developers.google.com/web/updates/2021/01/devtools#duplicate-element">https://developers.google.com/web/updates/2021/01/devtools#duplicate-element</a></p>
-<figure class="figure--center"><img src="/2021/chrome-89-css/duplicate-element.jpg"></figure>
-<figure class="figure--center"><img src="/2021/chrome-89-css/duplicate-element-after.jpg"></figure>
-<p>在元件上按下右鍵選擇Duplicate element後，該元件的副本就會出現在被拷貝的元件下方。<br>支援快速鍵，點選元件後按下<code>Shift</code>+ <code>Alt</code>+ ⬇️（Windows）或<code>Shift</code>+ <code>Option</code>+ ⬇️（Mac）即可拷貝元件。</p>
-<h3 id="支援color-picker"><a href="#支援color-picker" class="headerlink" title="支援color picker"></a>支援color picker</h3><p>原文連結：<a href="https://developers.google.com/web/updates/2021/01/devtools#color-picker">https://developers.google.com/web/updates/2021/01/devtools#color-picker</a><br>並且如果按住<code>Shift</code>後以滑鼠左鍵點擊顏色方塊的話，可以切換為不同的顏色編碼格式（RGBA、HSLA、Hex）</p>
-<h3 id="複製元件的CSS內容"><a href="#複製元件的CSS內容" class="headerlink" title="複製元件的CSS內容"></a>複製元件的CSS內容</h3><p>原文連結：<a href="https://developers.google.com/web/updates/2021/01/devtools#copy-css">https://developers.google.com/web/updates/2021/01/devtools#copy-css</a><br>在Styles區塊對元件的CSS設定按下右鍵，可複製CSS內容。</p>
-<figure class="figure--center"><img src="/2021/chrome-89-css/copy-CSS-properties.jpg"></figure>
-<p>如果是在選取器位置按下右鍵的話，會出現以下選項：</p>
-<ul>
-<li>Copy selector：複製選取器，上圖水藍色部分</li>
-<li>Copy rule：複製CSS規則，上圖黃色部分</li>
-<li>Copy all declarations：複製選取器與CSS規則，上圖水藍色加上黃色部分</li>
-</ul>
-<figure class="figure--center"><img src="/2021/chrome-89-css/copy-CSS-properties-1.jpg"></figure>
-<p>如果是在中括號<code>&#123;&#125;</code>區塊按下右鍵的話，選項如下：</p>
-<ul>
-<li>Copy declaration：複製紅框與粉框部分</li>
-<li>Copy property：複製紅框部分</li>
-<li>Copy value：複製粉框部分</li>
-<li>Copy rule：複製水藍色加上黃色部分</li>
-<li>Copy all declarations：僅複製黃色部分</li>
-</ul>
-<h3 id="字體編輯面板（Experimental-features）"><a href="#字體編輯面板（Experimental-features）" class="headerlink" title="字體編輯面板（Experimental features）"></a>字體編輯面板（Experimental features）</h3><p>原文連結：<a href="https://developers.google.com/web/updates/2021/01/devtools#font">https://developers.google.com/web/updates/2021/01/devtools#font</a></p>
-<figure class="figure--center"><img src="/2021/chrome-89-css/font-editor.jpg"></figure>
-<p>點選上圖紅框內的字體圖示，可即時調整字體設計。</p>
-<h3 id="flexbox-debug工具（Experimental-features）"><a href="#flexbox-debug工具（Experimental-features）" class="headerlink" title="flexbox debug工具（Experimental features）"></a>flexbox debug工具（Experimental features）</h3><p>原文連結：<a href="https://developers.google.com/web/updates/2021/01/devtools#flexbox">https://developers.google.com/web/updates/2021/01/devtools#flexbox</a></p>
-<figure class="figure--center"><img src="/2021/chrome-89-css/flexbox-gap.jpg"></figure>
-<figure class="figure--center"><img src="/2021/chrome-89-css/flexbox-align-items.jpg"></figure>
-<p>有<code>display: flex;</code>特性的元件，右側會顯示flex圖示。<br>滑鼠移動到flex相關的特性上，會在畫面中顯示提示。上圖分別是滑鼠指向<code>gap</code>與<code>align-items</code>。</p>
-<h2 id="附錄"><a href="#附錄" class="headerlink" title="附錄"></a>附錄</h2><h3 id="開啟Experimental-features"><a href="#開啟Experimental-features" class="headerlink" title="開啟Experimental features"></a>開啟Experimental features</h3><figure class="figure--center"><img src="/2021/chrome-89-css/experimental-features.jpg"></figure>
-<figure class="figure--center"><img src="/2021/chrome-89-css/experimental-features-1.jpg"></figure>
-<p>點選DevTools的齒輪圖示（設定），移動到Experiments標籤，勾選需要開啟的相關功能。<br>設定完畢後需關閉、重新啟動DevTools來套用設定。</p>
-<h3 id="檢查Chrome的版本"><a href="#檢查Chrome的版本" class="headerlink" title="檢查Chrome的版本"></a>檢查Chrome的版本</h3><figure class="figure--center"><img src="/2021/chrome-89-css/check-chrome-version.png" title="More icon >> Help >> About Google Chrome " alt="The screenshot of displaying the path to check Chrome"><figcaption><p>More icon >> Help >> About Google Chrome </p></figcaption></figure>
-<figure class="figure--center"><img src="/2021/chrome-89-css/chrome-version-info.png" title="點選About Google Chrome後，即可看到Chrome版本 " alt="The screenshot of Chrome version information"><figcaption><p>點選About Google Chrome後，即可看到Chrome版本 </p></figcaption></figure>
-<p>打開Chrome後，點選畫面右上角的垂直排列三點按鈕，依序選擇幫助、關於，點開關於後即可看到Chrome版本資訊。</p>
-<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
-<li><a href="https://www.w3schools.com/cssref/sel_target.asp">CSS :target Selector</a></li>
-<li><a href="https://www.google.com/chrome/update/">How to check Chrome’s version</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>CSS</category>
       </categories>
   </entry>
 </search>
