@@ -444,7 +444,7 @@ The configuration in <code>_config.yml</code> file should be set like this:<figu
     <url>/2021/morden-layouts-1-line-css/</url>
     <content><![CDATA[<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>關於YouTube影片「<a href="https://www.youtube.com/watch?v=qm0IfG1GyZU">10 modern layouts in 1 line of CSS</a>」的相關筆記。</p>
 <h2 id="版本與環境"><a href="#版本與環境" class="headerlink" title="版本與環境"></a>版本與環境</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Google Chrome: 89.0.4389.72 (Official Build) (64-bit)</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></table></figure>
-<h2 id="基礎"><a href="#基礎" class="headerlink" title="基礎"></a>基礎</h2><h3 id="fr-fractional-units"><a href="#fr-fractional-units" class="headerlink" title="fr(fractional units)"></a><code>fr</code>(fractional units)</h3><p>類似百分比，與百分比不同的地方是「所有使用fr來宣告尺寸的元件，這些元件會互相參考彼此的尺寸」<br>在一些非常極端的情況下可能會造成尺寸炸裂，以下列原始碼來舉例：</p>
+<h2 id="基礎"><a href="#基礎" class="headerlink" title="基礎"></a>基礎</h2><h3 id="fr-fractional-units"><a href="#fr-fractional-units" class="headerlink" title="fr (fractional units)"></a><code>fr</code> (fractional units)</h3><p>類似百分比，與百分比不同的地方是「所有使用fr來宣告尺寸的元件，這些元件會互相參考彼此的尺寸」<br>在一些非常極端的情況下可能會造成尺寸炸裂，以下列原始碼來舉例：</p>
 <p class="codepen" data-height="265" data-theme-id="dark" data-default-tab="html,result" data-user="Charlie7779" data-slug-hash="WNogyEW" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="fr">
   <span>See the Pen <a href="https://codepen.io/Charlie7779/pen/WNogyEW">
   fr</a> by Charlie (<a href="https://codepen.io/Charlie7779">@Charlie7779</a>)
