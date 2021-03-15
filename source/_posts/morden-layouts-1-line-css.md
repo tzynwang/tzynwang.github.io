@@ -17,7 +17,7 @@ os: Windows_NT 10.0.18363 win32 x64
 ```
 
 ## 基礎
-### `fr`(fractional units)
+### `fr` (fractional units)
 類似百分比，與百分比不同的地方是「所有使用fr來宣告尺寸的元件，這些元件會互相參考彼此的尺寸」
 在一些非常極端的情況下可能會造成尺寸炸裂，以下列原始碼來舉例：
 <p class="codepen" data-height="265" data-theme-id="dark" data-default-tab="html,result" data-user="Charlie7779" data-slug-hash="WNogyEW" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="fr">
