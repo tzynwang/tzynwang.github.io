@@ -3,7 +3,8 @@ name: Pages
 on:
   push:
     branches:
-      - master # 需暫時停止自動deploy功能的話，把master修改成任何其他名字
+      - cancel-auto-deploy
+      # 要auto deploy的話設定為「master」，設定為其他名稱代表不要auto deploy
 
 jobs:
   pages:
