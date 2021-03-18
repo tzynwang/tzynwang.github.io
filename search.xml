@@ -83,6 +83,69 @@
       </categories>
   </entry>
   <entry>
+    <title>CSS Specificity 相關筆記</title>
+    <url>/2021/css-specificity/</url>
+    <content><![CDATA[<h2 id="重點整理"><a href="#重點整理" class="headerlink" title="重點整理"></a>重點整理</h2><ul>
+<li>有重複的CSS樣式套用到同一個元件上的時候，權重（specificity）高的樣式會覆蓋權重低的樣式設定。</li>
+<li>原始碼中位置越下方（後發）的CSS樣式擁有越高的權重。</li>
+<li>樣式規則有衝突的時候，權重較高的樣式會覆蓋權重低的樣式。衝突規則的權重一樣大的時候，後發的樣式會覆蓋先寫的樣式。</li>
+</ul>
+<h2 id="Specificity"><a href="#Specificity" class="headerlink" title="Specificity"></a>Specificity</h2><p>Specificity（以降以「權重」稱之）的高低影響哪一些CSS樣式會發生作用。設定好的CSS沒有作用，可能就是CSS樣式的權重沒有妥善安排，導致編寫好的CSS樣式沒有如預期般套用到元件上。</p>
+<p>權重從低至高順位如下：</p>
+<ol>
+<li>universal selector與inherited style：使用*選取「全部」與繼承得來的樣式，兩者的權重皆為<code>0-0-0-0-0</code>；最低的樣式權重</li>
+<li>element selector、::pseudo-element selector：選取元件或偽元件，權重為<code>0-0-0-0-1</code><ul>
+<li>元件：html、body、section、div、p……等</li>
+<li>偽元件：參考<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-elements">MDN</a>，較常見的大概是<code>::after</code>、<code>::before</code>與<code>::first-letter</code></li>
+</ul>
+</li>
+<li>.class selector、:pseudo-class selector、[attribute] selector：選取class、偽類或具有特定屬性（attribute）的元件，權重為<code>0-0-0-1-0</code><ul>
+<li>偽類：參考<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes">MDN</a>，偽類指的是元件的「某一種狀態」，最常見的大概是<code>:hover</code></li>
+<li>屬性：參考<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes">MDN</a>，以<code>[input=&quot;checkbox&quot;]</code>為例，就是「選取所有是checkbox特性的input元件」</li>
+</ul>
+</li>
+<li>#id selector：選取擁有某id的元件，權重是<code>0-0-1-0-0</code></li>
+<li>inline style（比如<code>&lt;p style=&quot;color: red;&quot;&gt;text&lt;/p&gt;</code>）：權重是<code>0-1-0-0-0</code>，不過這樣會讓原始碼的維護性變差，所以還是避免使用吧</li>
+<li><code>!important</code>：擁有最大的權重<code>1-0-0-0-0</code>，而後發的<code>!important</code>會壓過先寫出來的<code>!important</code></li>
+</ol>
+<p>CSS的權重並不是十進位制，選取五十個.class做出來的CSS樣式也比不過選取一個#id宣告出來的樣式。<br>直接上示範，假設以下兩種<code>background-color</code>的樣式設定位在同一份原始碼裡面：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-id">#yellow</span> &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: yellow;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.c1</span> <span class="selector-class">.c2</span> <span class="selector-class">.c3</span> <span class="selector-class">.c4</span> <span class="selector-class">.c5</span> <span class="selector-class">.c6</span> <span class="selector-class">.c7</span> <span class="selector-class">.c8</span> <span class="selector-class">.c9</span> <span class="selector-class">.c10</span> <span class="selector-class">.c11</span> &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: green;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>而HTML內容如下：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;c1&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;c2&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;c3&quot;</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;c4&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;c5&quot;</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;c6&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;c7&quot;</span>&gt;</span></span><br><span class="line">              <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;c8&quot;</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;c9&quot;</span>&gt;</span></span><br><span class="line">                  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;c10&quot;</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;c11&quot;</span> <span class="attr">id</span>=<span class="string">&quot;yellow&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">              <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>那麼該<code>&lt;div&gt;</code>的背景顏色會是黃色，參考以下codepen右側畫面：</p>
+<p class="codepen" data-height="265" data-theme-id="dark" data-default-tab="html,result" data-user="Charlie7779" data-slug-hash="vYywoqR" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="css specifity">
+  <span>See the Pen <a href="https://codepen.io/Charlie7779/pen/vYywoqR">
+  css specifity</a> by Charlie (<a href="https://codepen.io/Charlie7779">@Charlie7779</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+
+<p>在CSS Specificity的宇宙裡，團結起來的五十個<code>.筷子</code>還是會被<code>#●門</code>夾爆的。</p>
+<h2 id="快速判別樣式的權重"><a href="#快速判別樣式的權重" class="headerlink" title="快速判別樣式的權重"></a>快速判別樣式的權重</h2><ul>
+<li><code>!important</code>最大，有複數個<code>!important</code>就看哪一段樣式最後被執行</li>
+<li>element贏不過.class與[attribute]，.class與[attribute]贏不過#id</li>
+<li>使用人家寫好的計算機：<a href="https://specificity.keegan.st/">Specificity Calculator</a></li>
+</ul>
+<figure class="figure--center"><img src="/2021/css-specificity/fullhouse.jpg" title="在CSS Specificity的宇宙裡，就算你爸變兔子.class也打不過#id"><figcaption><p>在CSS Specificity的宇宙裡，就算你爸變兔子.class也打不過#id</p></figcaption></figure>
+
+
+<h2 id="樣式的位置很重要"><a href="#樣式的位置很重要" class="headerlink" title="樣式的位置很重要"></a>樣式的位置很重要</h2><p>假設<code>style.css</code>的內容如下：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">p</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: blue;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>而HTML內容如下：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">href</span>=<span class="string">&quot;./style.css&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line">    p &#123;</span><br><span class="line">      color: green;</span><br><span class="line">    &#125;</span><br><span class="line">  <span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consectetur, magnam!<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>因為<code>&lt;style&gt;</code>在<code>&lt;link rel=&quot;stylesheet&quot; href=&quot;./style.css&quot;&gt;</code>之後，所以<code>&lt;p&gt;</code>會是綠色。<br>而如果調換<code>&lt;style&gt;</code>與<code>&lt;link rel=&quot;stylesheet&quot; href=&quot;./style.css&quot;&gt;</code>的順序：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line">    p &#123;</span><br><span class="line">      color: green;</span><br><span class="line">    &#125;</span><br><span class="line">  <span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">href</span>=<span class="string">&quot;./style.css&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consectetur, magnam!<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><code>&lt;p&gt;</code>就會是藍色。</p>
+<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
+<li><a href="https://www.smashingmagazine.com/2007/07/css-specificity-things-you-should-know/">CSS Specificity: Things You Should Know</a></li>
+<li><a href="https://cssspecificity.com/">CSS Specificity with icons inspired by “The Shining”</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>CSS</category>
+      </categories>
+  </entry>
+  <entry>
     <title>「Edit Files With Workspaces」相關筆記</title>
     <url>/2021/edit-files-with-workspaces/</url>
     <content><![CDATA[<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>這篇文章是在處理ALPHA Camp 學期1 S3 A11作業「試用開發者工具」時，嘗試搭配DevTools，避免作業過程中意外重新整理網頁，造成作業進度遺失的問題。</p>
@@ -319,6 +382,23 @@
       </categories>
   </entry>
   <entry>
+    <title>Display draft post</title>
+    <url>/2021/hexo-drafts/</url>
+    <content><![CDATA[<p>To view the draft posts (in the <code>source\_drafts</code> folder) on localhost:4000, just run <code>hexo server --draft</code>.<br>Set <code>render_drafts</code> as <code>true</code> in <code>_config.yml</code> will make <code>hexo generate</code> generate the posts in <code>source\_drafts</code> into <code>public</code> folder, which means the draft posts will be deployed to GitHub page by <code>hexo deploy</code>.<br>No needs to set <code>render_drafts</code> as <code>true</code> to view the draft posts on localhost, running <code>hexo server --draft</code> is enough.</p>
+<p><code>_config.yml</code>中的<code>render_drafts</code>設定為<code>true</code>的話，執行<code>hexo generate</code>時，資料夾<code>source\_drafts</code>內的檔案也會被生成到<code>public</code>資料夾中。<br>在這個情況下執行<code>hexo deploy</code>就會把草稿文章推到GitHub Page上。</p>
+<p>只是想要在localhost:4000上瀏覽草稿的話，執行<code>hexo server --draft</code>即可，不用修改<code>render_drafts</code>的值。<br>hexo官方文件對<code>render_drafts</code>的說明比較簡短，一開始以為設定成<code>true</code>只是代表<code>hexo server</code>會渲染草稿……😇</p>
+<h2 id="Environment"><a href="#Environment" class="headerlink" title="Environment"></a>Environment</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo: 5.3.0</span><br><span class="line">hexo-cli: 4.2.0</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></table></figure>
+
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
+<li><a href="https://hexo.io/docs/commands#Display-drafts">hexo: Commands/Display drafts</a></li>
+<li><a href="https://hexo.io/docs/configuration#Writing">hexo: Configuration/Writing</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>hexo</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Deploy to GitHub Page</title>
     <url>/2021/hexo-deploy/</url>
     <content><![CDATA[<h2 id="Summary-of-this-post"><a href="#Summary-of-this-post" class="headerlink" title="Summary of this post"></a>Summary of this post</h2><p>This post describes my whole workflow about deploying hexo blog from local to GitHub Page 🛫<br>記錄了自己把hexo blog從本機部屬到GitHub Pages的過程，寫得比hexo官方文件詳細一些。<br>沒有對官方文件提出improvement是因為這些內容可能太繁瑣了 🤣</p>
@@ -359,23 +439,6 @@ The configuration in <code>_config.yml</code> file should be set like this:<figu
 </li>
 </ul>
 <h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://hexo.io/docs/github-pages">hexo: GitHub Pages</a></p>
-]]></content>
-      <categories>
-        <category>hexo</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>Display draft post</title>
-    <url>/2021/hexo-drafts/</url>
-    <content><![CDATA[<p>To view the draft posts (in the <code>source\_drafts</code> folder) on localhost:4000, just run <code>hexo server --draft</code>.<br>Set <code>render_drafts</code> as <code>true</code> in <code>_config.yml</code> will make <code>hexo generate</code> generate the posts in <code>source\_drafts</code> into <code>public</code> folder, which means the draft posts will be deployed to GitHub page by <code>hexo deploy</code>.<br>No needs to set <code>render_drafts</code> as <code>true</code> to view the draft posts on localhost, running <code>hexo server --draft</code> is enough.</p>
-<p><code>_config.yml</code>中的<code>render_drafts</code>設定為<code>true</code>的話，執行<code>hexo generate</code>時，資料夾<code>source\_drafts</code>內的檔案也會被生成到<code>public</code>資料夾中。<br>在這個情況下執行<code>hexo deploy</code>就會把草稿文章推到GitHub Page上。</p>
-<p>只是想要在localhost:4000上瀏覽草稿的話，執行<code>hexo server --draft</code>即可，不用修改<code>render_drafts</code>的值。<br>hexo官方文件對<code>render_drafts</code>的說明比較簡短，一開始以為設定成<code>true</code>只是代表<code>hexo server</code>會渲染草稿……😇</p>
-<h2 id="Environment"><a href="#Environment" class="headerlink" title="Environment"></a>Environment</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo: 5.3.0</span><br><span class="line">hexo-cli: 4.2.0</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></table></figure>
-
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
-<li><a href="https://hexo.io/docs/commands#Display-drafts">hexo: Commands/Display drafts</a></li>
-<li><a href="https://hexo.io/docs/configuration#Writing">hexo: Configuration/Writing</a></li>
-</ul>
 ]]></content>
       <categories>
         <category>hexo</category>
