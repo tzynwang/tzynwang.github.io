@@ -271,7 +271,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-03-19 09:59:23" itemprop="dateModified" datetime="2021-03-19T09:59:23+08:00">2021-03-19</time>
+        <time title="Modified: 2021-03-19 11:51:20" itemprop="dateModified" datetime="2021-03-19T11:51:20+08:00">2021-03-19</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -320,7 +320,7 @@
 </blockquote>
 <p>參考<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes">MDN</a>，偽類指的是HTML元素的「某一種狀態」，最常見的大概是<code>:hover</code></p>
 </li>
-<li><p>屬性：參考<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes">MDN</a>，以<code>[input="checkbox"]</code>為例，就是「選取所有是checkbox特性的input元素」</p>
+<li><p>屬性：參考<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes">MDN</a>，以<code>input[type="checkbox"]</code>為例，就是「選取所有是checkbox特性的input元素」</p>
 </li>
 </ul>
 </li>
@@ -410,9 +410,23 @@
 <script async="" src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
 
 
+<h2 id="透過繼承得到的樣式，權重是0-0-0-0-0"><a href="#透過繼承得到的樣式，權重是0-0-0-0-0" class="headerlink" title="透過繼承得到的樣式，權重是0-0-0-0-0"></a>透過繼承得到的樣式，權重是0-0-0-0-0</h2><p>舉個🌰，假設以下兩種樣式設定位在同一份原始碼裡面：</p>
+<figure class="highlight css"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#parent</span> {</span><br><span class="line">  <span class="attribute">color</span>: green;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">h1</span> {</span><br><span class="line">  <span class="attribute">color</span>: red;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>而HTML內容如下：</p>
+<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span> <span class="attr">id</span>=<span class="string">"parent"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>A Title<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+<p><code>&lt;h1&gt;</code>從<code>&lt;body id="parent"&gt;</code>繼承到的文字色彩樣式會被CSS樣式表中的<code>h1</code>覆蓋掉（樣式<code>h1</code>的權重是0-0-0-0-1），<code>&lt;h1&gt;A Title&lt;/h1&gt;</code>會是紅色：</p>
+<p class="codepen" data-height="265" data-theme-id="dark" data-default-tab="html,result" data-user="Charlie7779" data-slug-hash="vYyqRXo" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="inherited styles">
+  <span>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/Charlie7779/pen/vYyqRXo">
+  inherited styles</a> by Charlie (<a target="_blank" rel="noopener" href="https://codepen.io/Charlie7779">@Charlie7779</a>)
+  on <a target="_blank" rel="noopener" href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async="" src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+
+
 <h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
 <li><a target="_blank" rel="noopener" href="https://www.smashingmagazine.com/2007/07/css-specificity-things-you-should-know/">CSS Specificity: Things You Should Know</a></li>
 <li><a target="_blank" rel="noopener" href="https://meyerweb.com/eric/css/link-specificity.html">Link Specificity: I tried to apply CSS to my hyperlinks and the hovering didn’t work</a></li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity#directly_targeted_elements_vs._inherited_styles">MDN: Directly targeted elements vs. inherited styles</a></li>
 <li><a target="_blank" rel="noopener" href="https://cssspecificity.com/">CSS Specificity with icons inspired by “The Shining”</a></li>
 </ul>
 
