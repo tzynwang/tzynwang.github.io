@@ -1,26 +1,35 @@
 ---
-title: 使用GitHub Actions來產生sitemap.xml
-date: 2021-03-09 10:54:00
+title: 使用GitHub Actions自動產生sitemap.xml
 categories:
+  - git
+date: 2021-03-09 10:54:00
 tags:
 ---
 
 ## 總結
-使用GitHub Actions搭配`git push`指令，在每次更新網頁後自動產生sitemap.xml
+使用GitHub Actions執行腳本，在每次透過`git push`更新網頁內容後自動產生sitemap.xml
+
 
 ## 版本與環境
+```
+hexo: 5.3.0
+hexo-cli: 4.2.0
+os: Windows_NT 10.0.18363 win32 x64
+```
 
-## 過程紀錄
+
+## 過程記錄
 1. 在GitHub repository根目錄中建立資料夾`.github/workflows`，並在其中建立`.yml`格式的檔案來存放腳本
 1. 腳本內容如下：
-```YAML
+```YML
 name: Generate xml sitemap
 # name會出現在Action標籤點開後，左側workflows的列表中
 
 on:
   push:
     branches:
-      - main # git push到main分支的時候，啟動以下腳本
+      - main 
+      # git push到main分支的時候，啟動以下腳本
 
 jobs:
   sitemap_job:
@@ -32,14 +41,14 @@ jobs:
       with:
         fetch-depth: 0 
     - name: Generate new sitemap
-    # 參考cicirello/generate-sitemap的文件，將base-url-path的值設定為要產生sitemap的URL
       id: sitemap
       uses: cicirello/generate-sitemap@v1.6.1
       with:
         base-url-path: https://tzynwang.github.io/action-practice/
+        # 參考cicirello/generate-sitemap的文件，將base-url-path的值設定為要產生sitemap的URL
     - name: Push sitemap to repository
     # 根據cicirello/generate-sitemap文件的說明，使用者需另找方法處理透過腳本產生的sitemap.xml
-    # 故追加一段git腳本內容，把方才產生出來的sitemap透過git push放到repository中
+    # 故追加一段git腳本內容，把方才在GitHub Actions VM產生出來的sitemap透過git push放到repository中
       run: |
         git config --global user.name "tzyn (GitHub Actions sitemap gen)"
         git config --global user.email "tzyn.wang@gmail.com"
@@ -50,7 +59,7 @@ jobs:
 1. 在本機執行`git push`將commit內容推到GitHub上
 1. 進入repository的Actions標籤，確認腳本有在執行
 1. 執行完成，確認sitemap.xml也有被加到repository中
-1. 執行`git pull`將sitemap.xml拉回本機
+1. 在本機執行`git pull`將新產生的sitemap.xml拉本機資料夾
 
 
 ## 參考文件
