@@ -9,6 +9,16 @@ tags:
 ## 總結
 記錄在2021年ALPHA Camp學期一、三月班第三週履歷網頁作業使用到的技術、思路與開發流程。
 
+## 成品
+- 純網頁展示版：<a href="https://tzynwang.github.io/S4-A14-assignment-anatomy/" target="_blank">點我</a>
+- codepen展示：
+  <p class="codepen" data-height="265" data-theme-id="dark" data-default-tab="css,result" data-user="Charlie7779" data-slug-hash="zYogoWZ" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="S4 A14 為客戶打造履歷網頁">
+  <span>See the Pen <a href="https://codepen.io/Charlie7779/pen/zYogoWZ">
+  S4 A14 為客戶打造履歷網頁</a> by Charlie (<a href="https://codepen.io/Charlie7779">@Charlie7779</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+
 
 ## 版本與環境
 ```
@@ -43,9 +53,9 @@ os: Windows_NT 10.0.18363 win32 x64
   - 履歷內容文字多，並想呈現較專業的感覺，故挑選有襯線的`Newsreader`作為主字體
     - `Newsreader`的[說明](https://fonts.google.com/specimen/Newsreader?preview.text_type=custom#about)也提到字體本身適合應用在需要閱讀的情境：primarily intended for continuous on-screen reading in content-rich environments.
   - 姓名的部分挑選`Kristi`，想營造手動簽名的視覺效果
-- 全預設定（`*`）
+- 全域設定（`*`）
   - 手動重設`margin`與`padding`為`0`、`box-sizing`設定為`border-box`，避免干擾後續排版作業
-  - 考量到後續可能會更改用色，選擇使用關鍵字來處理色票（color tickets）
+  - 考量到後續可能會更改用色，選擇使用關鍵字（`var()`）來控制顏色
 - `<div class="container">`：一般狀態下使用淺色背景（`var(--light)`）搭配深色文字（`var(--dark)`）
 - `header`：使用`padding`將內容往內推移，避免文字過於靠近邊緣，降低易讀性
 - `main`：除了`padding`之外，加上`max-width`限制文字不會因為螢幕較寬而延伸到底
@@ -57,6 +67,7 @@ os: Windows_NT 10.0.18363 win32 x64
 - `header`與`.avatar`：為了在各種版面下都能簡單的處理水平置中，直接使用`display: flex;`搭配`flex-direction: column;`與`align-items: center;`來做讓`header`與`.avatar`下所有的內容都呈現水平置中
 - `img`：與wireframe的設計不同，最後決定拿掉履歷照片的`border-radius: 50%;`，因為最終成品一眼望過去只有照片是圓形反而覺得有點突兀
 - `h1`：加上`transform: rotate(-5deg);`讓文字稍微向右上角抬起，增加一點活躍感；並配合`margin-bottom: 8px;`來製造空間，稍稍推開下方的連結組合
+  - 最終並沒有實作wireframe中「讓姓名重疊到照片上」的排版，因目前只想到可以使用`position: absolute;`來控制，但這樣會難以處理RWD下欄位寬度浮動時的水平置中問題，故放棄此設計
 - `header ul`：使用`list-style: none;`移除預設的圓點樣式；加上`display: flex;`讓連結們水平排列；使用`header ul`選取器是因為整份履歷中還有其他部位使用到`ul`元件，不加上`header`會導致其他區塊的`ul`排版走山
 - `header ul li`：使用`display: inline-block;`讓連結們能撐開Y軸（高度），加上`margin: 16px;`來讓按鈕之間保持距離
 - `header ul li:last-child`：`display: none;`讓連結群組最尾端的印表機圖示預設為不顯示，再往下的CSS設定會配合`@media`讓印表機圖示在適當的裝置上呈現出來
