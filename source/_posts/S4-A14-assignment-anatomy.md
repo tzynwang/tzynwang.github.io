@@ -67,7 +67,7 @@ os: Windows_NT 10.0.18363 win32 x64
 - `header`與`.avatar`：為了在各種版面下都能簡單的處理水平置中，直接使用`display: flex;`搭配`flex-direction: column;`與`align-items: center;`來做讓`header`與`.avatar`下所有的內容都呈現水平置中
 - `img`：與wireframe的設計不同，最後決定拿掉履歷照片的`border-radius: 50%;`，因為最終成品一眼望過去只有照片是圓形反而覺得有點突兀
 - `h1`：加上`transform: rotate(-5deg);`讓文字稍微向右上角抬起，增加一點活躍感；並配合`margin-bottom: 8px;`來製造空間，稍稍推開下方的連結組合
-  - 最終並沒有實作wireframe中「讓姓名重疊到照片上」的排版，因目前只想到可以使用`position: absolute;`來控制，但這樣會難以處理RWD下欄位寬度浮動時的水平置中問題，故放棄此設計
+  - 最終並沒有實作wireframe中「讓姓名重疊到照片上」的排版，因目前只想到可以使用`position: absolute;`來控制，但這樣會難以處理RWD下欄位寬度浮動時的水平置中問題，故暫時放棄此設計
 - `header ul`：使用`list-style: none;`移除預設的圓點樣式；加上`display: flex;`讓連結們水平排列；使用`header ul`選取器是因為整份履歷中還有其他部位使用到`ul`元件，不加上`header`會導致其他區塊的`ul`排版走山
 - `header ul li`：使用`display: inline-block;`讓連結們能撐開Y軸（高度），加上`margin: 16px;`來讓按鈕之間保持距離
 - `header ul li:last-child`：`display: none;`讓連結群組最尾端的印表機圖示預設為不顯示，再往下的CSS設定會配合`@media`讓印表機圖示在適當的裝置上呈現出來
