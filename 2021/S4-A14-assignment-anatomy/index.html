@@ -29,7 +29,7 @@
 <meta property="og:description" content="總結記錄在2021年ALPHA Camp學期一、三月班第三週履歷網頁作業使用到的技術、思路與開發流程。 成品 純網頁展示版：點我 codepen展示： See the Pen  S4 A14 為客戶打造履歷網頁 by Charlie (@Charlie7779) on CodePen.       版本與環境12Google Chrome: 89.0.4389.90 (Official Build">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-03-20T13:06:49.000Z">
-<meta property="article:modified_time" content="2021-03-21T08:39:42.020Z">
+<meta property="article:modified_time" content="2021-03-21T12:47:40.226Z">
 <meta property="article:author" content="Charlie（茶）">
 <meta property="article:tag" content="hexo, hexo blog, tzyn, 普通文組">
 <meta name="twitter:card" content="summary">
@@ -275,7 +275,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-03-21 16:39:42" itemprop="dateModified" datetime="2021-03-21T16:39:42+08:00">2021-03-21</time>
+        <time title="Modified: 2021-03-21 20:47:40" itemprop="dateModified" datetime="2021-03-21T20:47:40+08:00">2021-03-21</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -356,11 +356,14 @@ on <a target="_blank" rel="noopener" href="https://codepen.io">CodePen</a>.</spa
 <li><code>header</code>與<code>.avatar</code>：為了在各種版面下都能簡單的處理水平置中，直接使用<code>display: flex;</code>搭配<code>flex-direction: column;</code>與<code>align-items: center;</code>來做讓<code>header</code>與<code>.avatar</code>下所有的內容都呈現水平置中</li>
 <li><code>img</code>：與wireframe的設計不同，最後決定拿掉履歷照片的<code>border-radius: 50%;</code>，因為最終成品一眼望過去只有照片是圓形反而覺得有點突兀</li>
 <li><code>h1</code>：加上<code>transform: rotate(-5deg);</code>讓文字稍微向右上角抬起，增加一點活躍感；並配合<code>margin-bottom: 8px;</code>來製造空間，稍稍推開下方的連結組合<ul>
-<li>最終並沒有實作wireframe中「讓姓名重疊到照片上」的排版，因目前只想到可以使用<code>position: absolute;</code>來控制，但這樣會難以處理RWD下欄位寬度浮動時的水平置中問題，故放棄此設計</li>
+<li>最終並沒有實作wireframe中「讓姓名重疊到照片上」的排版，因目前只想到可以使用<code>position: absolute;</code>來控制，但這樣會難以處理RWD下欄位寬度浮動時的水平置中問題，故暫時放棄此設計</li>
 </ul>
 </li>
 <li><code>header ul</code>：使用<code>list-style: none;</code>移除預設的圓點樣式；加上<code>display: flex;</code>讓連結們水平排列；使用<code>header ul</code>選取器是因為整份履歷中還有其他部位使用到<code>ul</code>元件，不加上<code>header</code>會導致其他區塊的<code>ul</code>排版走山</li>
-<li><code>header ul li</code>：使用<code>display: inline-block;</code>讓連結們能撐開Y軸（高度），加上<code>margin: 16px;</code>來讓按鈕之間保持距離</li>
+<li><code>header ul li</code>：加上<code>margin: 16px;</code>來讓按鈕之間保持距離<ul>
+<li>更新修正：因為<code>header ul</code>已經是flex container，其中包含的<code>&lt;li&gt;</code>元素會成為flex item，<a target="_blank" rel="noopener" href="https://drafts.csswg.org/css-flexbox-1/#flex-items">而flex item有block的特性</a>，故不需要再對<code>header ul li</code>加上<code>display: inline-block;</code>來撐開Y軸（高度）</li>
+</ul>
+</li>
 <li><code>header ul li:last-child</code>：<code>display: none;</code>讓連結群組最尾端的印表機圖示預設為不顯示，再往下的CSS設定會配合<code>@media</code>讓印表機圖示在適當的裝置上呈現出來</li>
 <li><code>a</code>：因為有三種顏色狀態，故加上<code>transition: 0.3s;</code>讓換色過程有0.3秒的漸變時間</li>
 <li><code>a:link</code>、<code>a:visited</code>、<code>a:hover</code>、<code>a:active</code>：剛好可以使用色票中的主、輔與亮點顏色；樣式撰寫的順序為LVHA的理由參考之前記錄過的<a href="https://tzynwang.github.io/2021/css-specificity/" target="_blank">CSS Specificity 相關筆記</a></li>
