@@ -54,7 +54,7 @@
 <li><code>header ul li</code>：使用<code>display: inline-block;</code>讓連結們能撐開Y軸（高度），加上<code>margin: 16px;</code>來讓按鈕之間保持距離</li>
 <li><code>header ul li:last-child</code>：<code>display: none;</code>讓連結群組最尾端的印表機圖示預設為不顯示，再往下的CSS設定會配合<code>@media</code>讓印表機圖示在適當的裝置上呈現出來</li>
 <li><code>a</code>：因為有三種顏色狀態，故加上<code>transition: 0.3s;</code>讓換色過程有0.3秒的漸變時間</li>
-<li><code>a:link</code>、<code>a:visited</code>、<code>a:hover</code>、<code>a:active</code>：剛好可以使用色票中的主、輔與亮點顏色；樣式撰寫的順序為LVHA的理由參考之前記錄過的<a href="./2021/css-specificity/#LVHA" target="_blank">CSS Specificity 相關筆記</a></li>
+<li><code>a:link</code>、<code>a:visited</code>、<code>a:hover</code>、<code>a:active</code>：剛好可以使用色票中的主、輔與亮點顏色；樣式撰寫的順序為LVHA的理由參考之前記錄過的<a href="https://tzynwang.github.io/2021/css-specificity/" target="_blank">CSS Specificity 相關筆記</a></li>
 </ul>
 <h3 id="main"><a href="#main" class="headerlink" title="main"></a><code>main</code></h3><script src="https://gist.github.com/tzynwang/ed13c13882860c3133090b37a5734b18.js"></script>
 
@@ -92,7 +92,7 @@
 <ol>
 <li>使用<code>&lt;input type=&quot;checkbox&quot;&gt;</code>搭配<code>&lt;label&gt;</code>並使用<code>position: fixed;</code>固定位置，<code>&lt;input&gt;</code>放在可視畫面之外，<code>&lt;label&gt;</code>留在畫面右下角（小版面）或右上方（中型以上版面）讓使用者點擊</li>
 <li><code>&lt;label&gt;</code>被點擊後，使用CSS選取器<code>:checked</code>搭配<code>filter: invert(100%);</code>來為畫面上的顏色套上負片效果</li>
-<li>關於<code>filter: invert(100%);</code>的視覺效果，可參考之前做過的微型專案：<a href="./CSS-filter-property/" target="_blank">CSS filter Property</a></li>
+<li>關於<code>filter: invert(100%);</code>的視覺效果，可參考之前做過的微型專案：<a href="https://tzynwang.github.io/CSS-filter-property/" target="_blank">CSS filter Property</a></li>
 </ol>
 <p>較詳細說明如下：</p>
 <ul>
