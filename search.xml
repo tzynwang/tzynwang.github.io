@@ -46,9 +46,9 @@ on <a href="https://codepen.io">CodePen</a>.</span>
 <li>姓名的部分挑選<code>Kristi</code>，想營造手動簽名的視覺效果</li>
 </ul>
 </li>
-<li>全預設定（<code>*</code>）<ul>
+<li>全域設定（<code>*</code>）<ul>
 <li>手動重設<code>margin</code>與<code>padding</code>為<code>0</code>、<code>box-sizing</code>設定為<code>border-box</code>，避免干擾後續排版作業</li>
-<li>考量到後續可能會更改用色，選擇使用關鍵字來處理色票（color tickets）</li>
+<li>考量到後續可能會更改用色，選擇使用關鍵字（<code>var()</code>）來控制顏色</li>
 </ul>
 </li>
 <li><code>&lt;div class=&quot;container&quot;&gt;</code>：一般狀態下使用淺色背景（<code>var(--light)</code>）搭配深色文字（<code>var(--dark)</code>）</li>
@@ -61,7 +61,10 @@ on <a href="https://codepen.io">CodePen</a>.</span>
 <ul>
 <li><code>header</code>與<code>.avatar</code>：為了在各種版面下都能簡單的處理水平置中，直接使用<code>display: flex;</code>搭配<code>flex-direction: column;</code>與<code>align-items: center;</code>來做讓<code>header</code>與<code>.avatar</code>下所有的內容都呈現水平置中</li>
 <li><code>img</code>：與wireframe的設計不同，最後決定拿掉履歷照片的<code>border-radius: 50%;</code>，因為最終成品一眼望過去只有照片是圓形反而覺得有點突兀</li>
-<li><code>h1</code>：加上<code>transform: rotate(-5deg);</code>讓文字稍微向右上角抬起，增加一點活躍感；並配合<code>margin-bottom: 8px;</code>來製造空間，稍稍推開下方的連結組合</li>
+<li><code>h1</code>：加上<code>transform: rotate(-5deg);</code>讓文字稍微向右上角抬起，增加一點活躍感；並配合<code>margin-bottom: 8px;</code>來製造空間，稍稍推開下方的連結組合<ul>
+<li>最終並沒有實作wireframe中「讓姓名重疊到照片上」的排版，因目前只想到可以使用<code>position: absolute;</code>來控制，但這樣會難以處理RWD下欄位寬度浮動時的水平置中問題，故放棄此設計</li>
+</ul>
+</li>
 <li><code>header ul</code>：使用<code>list-style: none;</code>移除預設的圓點樣式；加上<code>display: flex;</code>讓連結們水平排列；使用<code>header ul</code>選取器是因為整份履歷中還有其他部位使用到<code>ul</code>元件，不加上<code>header</code>會導致其他區塊的<code>ul</code>排版走山</li>
 <li><code>header ul li</code>：使用<code>display: inline-block;</code>讓連結們能撐開Y軸（高度），加上<code>margin: 16px;</code>來讓按鈕之間保持距離</li>
 <li><code>header ul li:last-child</code>：<code>display: none;</code>讓連結群組最尾端的印表機圖示預設為不顯示，再往下的CSS設定會配合<code>@media</code>讓印表機圖示在適當的裝置上呈現出來</li>
