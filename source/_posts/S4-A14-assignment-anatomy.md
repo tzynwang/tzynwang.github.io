@@ -61,7 +61,7 @@ os: Windows_NT 10.0.18363 win32 x64
 - `header ul li`：使用`display: inline-block;`讓連結們能撐開Y軸（高度），加上`margin: 16px;`來讓按鈕之間保持距離
 - `header ul li:last-child`：`display: none;`讓連結群組最尾端的印表機圖示預設為不顯示，再往下的CSS設定會配合`@media`讓印表機圖示在適當的裝置上呈現出來
 - `a`：因為有三種顏色狀態，故加上`transition: 0.3s;`讓換色過程有0.3秒的漸變時間
-- `a:link`、`a:visited`、`a:hover`、`a:active`：剛好可以使用色票中的主、輔與亮點顏色；樣式撰寫的順序為LVHA的理由參考之前記錄過的<a href="./2021/css-specificity/#LVHA" target="_blank">CSS Specificity 相關筆記</a>
+- `a:link`、`a:visited`、`a:hover`、`a:active`：剛好可以使用色票中的主、輔與亮點顏色；樣式撰寫的順序為LVHA的理由參考之前記錄過的<a href="https://tzynwang.github.io/2021/css-specificity/" target="_blank">CSS Specificity 相關筆記</a>
 
 ### `main`
 <script src="https://gist.github.com/tzynwang/ed13c13882860c3133090b37a5734b18.js"></script>
@@ -104,7 +104,7 @@ os: Windows_NT 10.0.18363 win32 x64
 簡短說明如何使用純CSS做出「亮色／暗色模式」切換的效果：
 1. 使用`<input type="checkbox">`搭配`<label>`並使用`position: fixed;`固定位置，`<input>`放在可視畫面之外，`<label>`留在畫面右下角（小版面）或右上方（中型以上版面）讓使用者點擊
 1. `<label>`被點擊後，使用CSS選取器`:checked`搭配`filter: invert(100%);`來為畫面上的顏色套上負片效果
-1. 關於`filter: invert(100%);`的視覺效果，可參考之前做過的微型專案：<a href="./CSS-filter-property/" target="_blank">CSS filter Property</a>
+1. 關於`filter: invert(100%);`的視覺效果，可參考之前做過的微型專案：<a href="https://tzynwang.github.io/CSS-filter-property/" target="_blank">CSS filter Property</a>
 
 
 較詳細說明如下：
