@@ -4,6 +4,18 @@
     <title>ALPHA Camp 履歷網頁作業：內容解析</title>
     <url>/2021/S4-A14-assignment-anatomy/</url>
     <content><![CDATA[<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>記錄在2021年ALPHA Camp學期一、三月班第三週履歷網頁作業使用到的技術、思路與開發流程。</p>
+<h2 id="成品"><a href="#成品" class="headerlink" title="成品"></a>成品</h2><ul>
+<li>純網頁展示版：<a href="https://tzynwang.github.io/S4-A14-assignment-anatomy/" target="_blank">點我</a></li>
+<li>codepen展示：<p class="codepen" data-height="265" data-theme-id="dark" data-default-tab="css,result" data-user="Charlie7779" data-slug-hash="zYogoWZ" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="S4 A14 為客戶打造履歷網頁">
+<span>See the Pen <a href="https://codepen.io/Charlie7779/pen/zYogoWZ">
+S4 A14 為客戶打造履歷網頁</a> by Charlie (<a href="https://codepen.io/Charlie7779">@Charlie7779</a>)
+on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+
+
+</li>
+</ul>
 <h2 id="版本與環境"><a href="#版本與環境" class="headerlink" title="版本與環境"></a>版本與環境</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Google Chrome: 89.0.4389.90 (Official Build) (64-bit)</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></table></figure>
 <h2 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h2><ol>
 <li>雖然課程還沒有要求成品需有RDW效果，但因為已經知道原理、也在之前做過的微型專案實作過RDW，故本次作業要求自己做出（至少）手機與桌機兩種版面</li>
