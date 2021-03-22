@@ -57,7 +57,7 @@ os: Windows_NT 10.0.18363 win32 x64
   - 手動重設`margin`與`padding`為`0`、`box-sizing`設定為`border-box`，避免干擾後續排版作業
   - 考量到後續可能會更改用色，選擇使用關鍵字（`var()`）來控制顏色
 - `<div class="container">`：一般狀態下使用淺色背景（`var(--light)`）搭配深色文字（`var(--dark)`）
-- `header`：使用`padding`將內容往內推移，避免文字過於靠近邊緣，降低易讀性
+- `header, main`：使用`padding`將內容往內推移，避免文字過於靠近邊緣，降低易讀性
 - `main`：除了`padding`之外，加上`max-width`限制文字不會因為螢幕較寬而延伸到底
 - `h2`：因有多個`h2`出現在網頁上，且樣式不會配合畫面改變尺寸或`margin`、`padding`等，故放在通用樣式區域宣告
 
@@ -69,7 +69,8 @@ os: Windows_NT 10.0.18363 win32 x64
 - `h1`：加上`transform: rotate(-5deg);`讓文字稍微向右上角抬起，增加一點活躍感；並配合`margin-bottom: 8px;`來製造空間，稍稍推開下方的連結組合
   - 最終並沒有實作wireframe中「讓姓名重疊到照片上」的排版，因目前只想到可以使用`position: absolute;`來控制，但這樣會難以處理RWD下欄位寬度浮動時的水平置中問題，故暫時放棄此設計
 - `header ul`：使用`list-style: none;`移除預設的圓點樣式；加上`display: flex;`讓連結們水平排列；使用`header ul`選取器是因為整份履歷中還有其他部位使用到`ul`元件，不加上`header`會導致其他區塊的`ul`排版走山
-- `header ul li`：使用`display: inline-block;`讓連結們能撐開Y軸（高度），加上`margin: 16px;`來讓按鈕之間保持距離
+- `header ul li`：加上`margin: 16px;`來讓按鈕之間保持距離
+  - 更新修正：因為`header ul`已經是flex container，其中包含的`<li>`元素會成為flex item，[而flex item有block的特性](https://drafts.csswg.org/css-flexbox-1/#flex-items)，故不需要再對`header ul li`加上`display: inline-block;`來撐開Y軸（高度）
 - `header ul li:last-child`：`display: none;`讓連結群組最尾端的印表機圖示預設為不顯示，再往下的CSS設定會配合`@media`讓印表機圖示在適當的裝置上呈現出來
 - `a`：因為有三種顏色狀態，故加上`transition: 0.3s;`讓換色過程有0.3秒的漸變時間
 - `a:link`、`a:visited`、`a:hover`、`a:active`：剛好可以使用色票中的主、輔與亮點顏色；樣式撰寫的順序為LVHA的理由參考之前記錄過的<a href="https://tzynwang.github.io/2021/css-specificity/" target="_blank">CSS Specificity 相關筆記</a>
