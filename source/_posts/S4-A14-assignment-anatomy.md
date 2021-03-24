@@ -4,6 +4,7 @@ date: 2021-03-20 21:06:49
 categories:
 - CSS
 tags:
+- ALPHA Camp作業
 ---
 
 ## 總結
@@ -16,8 +17,8 @@ tags:
   <span>See the Pen <a href="https://codepen.io/Charlie7779/pen/zYogoWZ">
   S4 A14 為客戶打造履歷網頁</a> by Charlie (<a href="https://codepen.io/Charlie7779">@Charlie7779</a>)
   on <a href="https://codepen.io">CodePen</a>.</span>
-</p>
-<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+  </p>
+  <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
 
 
 ## 版本與環境
@@ -49,13 +50,13 @@ os: Windows_NT 10.0.18363 win32 x64
 <script src="https://gist.github.com/tzynwang/d21d76dc229a53dad1c956d255b8fb38.js"></script>
 
 - 字體
-  - 因作業會上傳到codepen，故不採取self-host，而是直接`@import`由Google提供的字體服務
-  - 履歷內容文字多，並想呈現較專業的感覺，故挑選有襯線的`Newsreader`作為主字體
-    - `Newsreader`的[說明](https://fonts.google.com/specimen/Newsreader?preview.text_type=custom#about)也提到字體本身適合應用在需要閱讀的情境：primarily intended for continuous on-screen reading in content-rich environments.
-  - 姓名的部分挑選`Kristi`，想營造手動簽名的視覺效果
+    - 因作業會上傳到codepen，故不採取self-host，而是直接`@import`由Google提供的字體服務
+    - 履歷內容文字多，並想呈現較專業的感覺，故挑選有襯線的`Newsreader`作為主字體
+        - `Newsreader`的[說明](https://fonts.google.com/specimen/Newsreader?preview.text_type=custom#about)也提到字體本身適合應用在需要閱讀的情境：primarily intended for continuous on-screen reading in content-rich environments.
+    - 姓名的部分挑選`Kristi`，想營造手動簽名的視覺效果
 - 全域設定（`*`）
-  - 手動重設`margin`與`padding`為`0`、`box-sizing`設定為`border-box`，避免干擾後續排版作業
-  - 考量到後續可能會更改用色，選擇使用關鍵字（`var()`）來控制顏色
+    - 手動重設`margin`與`padding`為`0`、`box-sizing`設定為`border-box`，避免干擾後續排版作業
+    - 考量到後續可能會更改用色，選擇使用關鍵字（`var()`）來控制顏色
 - `<div class="container">`：一般狀態下使用淺色背景（`var(--light)`）搭配深色文字（`var(--dark)`）
 - `header, main`：使用`padding`將內容往內推移，避免文字過於靠近邊緣，降低易讀性
 - `main`：除了`padding`之外，加上`max-width`限制文字不會因為螢幕較寬而延伸到底
@@ -67,10 +68,19 @@ os: Windows_NT 10.0.18363 win32 x64
 - `header`與`.avatar`：為了在各種版面下都能簡單的處理水平置中，直接使用`display: flex;`搭配`flex-direction: column;`與`align-items: center;`來做讓`header`與`.avatar`下所有的內容都呈現水平置中
 - `img`：與wireframe的設計不同，最後決定拿掉履歷照片的`border-radius: 50%;`，因為最終成品一眼望過去只有照片是圓形反而覺得有點突兀
 - `h1`：加上`transform: rotate(-5deg);`讓文字稍微向右上角抬起，增加一點活躍感；並配合`margin-bottom: 8px;`來製造空間，稍稍推開下方的連結組合
-  - 最終並沒有實作wireframe中「讓姓名重疊到照片上」的排版，因目前只想到可以使用`position: absolute;`來控制，但這樣會難以處理RWD下欄位寬度浮動時的水平置中問題，故暫時放棄此設計
+    - 最終並沒有實作wireframe中「讓姓名重疊到照片上」的排版，因目前只想到可以使用`position: absolute;`來控制，但這樣會難以處理RWD下欄位寬度浮動時的水平置中問題，故暫時放棄此設計
+    - 更新：將`<h1>`包在一層`<div>`內，設定`<div>`為`position: absolute;`，然後加上`display: flex;`來控制`<h1>`的水平位置即可
+    <p class="codepen" data-height="265" data-theme-id="dark" data-default-tab="css,result" data-user="Charlie7779" data-slug-hash="MWJgKrP" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="S4 A14 為客戶打造履歷網頁 bonus track">
+    <span>See the Pen <a href="https://codepen.io/Charlie7779/pen/MWJgKrP">
+    S4 A14 為客戶打造履歷網頁 bonus track</a> by Charlie (<a href="https://codepen.io/Charlie7779">@Charlie7779</a>)
+    on <a href="https://codepen.io">CodePen</a>.</span>
+    </p>
+    <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+    - 照片下方的半透明底色使用兩層背景實現：第一層背景是`url("相片路徑")`、第二層背景是使用`linear-gradient()`繪製的半透明區塊
+
 - `header ul`：使用`list-style: none;`移除預設的圓點樣式；加上`display: flex;`讓連結們水平排列；使用`header ul`選取器是因為整份履歷中還有其他部位使用到`ul`元件，不加上`header`會導致其他區塊的`ul`排版走山
 - `header ul li`：加上`margin: 16px;`來讓按鈕之間保持距離
-  - 更新修正：因為`header ul`已經是flex container，其中包含的`<li>`元素會成為flex item，[而flex item有block的特性](https://drafts.csswg.org/css-flexbox-1/#flex-items)，故不需要再對`header ul li`加上`display: inline-block;`來撐開Y軸（高度）
+    - 更新修正：因為`header ul`已經是flex container，其中包含的`<li>`元素會成為flex item，[而flex item有block的特性](https://drafts.csswg.org/css-flexbox-1/#flex-items)，故不需要再對`header ul li`加上`display: inline-block;`來撐開Y軸（高度）
 - `header ul li:last-child`：`display: none;`讓連結群組最尾端的印表機圖示預設為不顯示，再往下的CSS設定會配合`@media`讓印表機圖示在適當的裝置上呈現出來
 - `a`：因為有三種顏色狀態，故加上`transition: 0.3s;`讓換色過程有0.3秒的漸變時間
 - `a:link`、`a:visited`、`a:hover`、`a:active`：剛好可以使用色票中的主、輔與亮點顏色；樣式撰寫的順序為LVHA的理由參考之前記錄過的<a href="https://tzynwang.github.io/2021/css-specificity/" target="_blank">CSS Specificity 相關筆記</a>
@@ -122,14 +132,14 @@ os: Windows_NT 10.0.18363 win32 x64
 較詳細說明如下：
 - `#dark, #darkLabel`：使用`position: fixed;`固定`<input type="checkbox" id="dark">`與`<label for="dark" id="darkLabel">`的位置
 - `#dark`：幫`<label>`和`<input>`定位時，這兩項元素的位置是參考`<body>`來偏移，所以將`<input>`的位置設定為`top: -2rem;`、`left: -2rem;`來把核取方塊推到視覺範圍之外
-  - 入門可參考YouTube影片：[金魚都能懂網頁設計入門 : Fixed 定位](https://www.youtube.com/watch?v=6jwl-XEpXLk&list=PLqivELodHt3iL9PgGHg0_EF86FwdiqCre&index=13)
-  - [MDN對`fixed`的說明](https://developer.mozilla.org/en-US/docs/Web/CSS/position#values)：It is positioned relative to the initial containing block established by the viewport, except when one of its ancestors has a transform, perspective, or filter property set to something other than none, in which case that ancestor behaves as the containing block. 而因為`<label>`和`<input>`之上就是`<body>`了，所以在這份作業中不用擔心其他元素會被拿來當作定位參考的問題
+    - 入門可參考YouTube影片：[金魚都能懂網頁設計入門 : Fixed 定位](https://www.youtube.com/watch?v=6jwl-XEpXLk&list=PLqivELodHt3iL9PgGHg0_EF86FwdiqCre&index=13)
+    - [MDN對`fixed`的說明](https://developer.mozilla.org/en-US/docs/Web/CSS/position#values)：It is positioned relative to the initial containing block established by the viewport, except when one of its ancestors has a transform, perspective, or filter property set to something other than none, in which case that ancestor behaves as the containing block. 而因為`<label>`和`<input>`之上就是`<body>`了，所以在這份作業中不用擔心其他元素會被拿來當作定位參考的問題
 - `#darkLabel`：使用`opacity: 0.8;`讓按鈕在視覺上不要那麼厚重；加上`z-index: 1;`確保按鈕不會被其他元素覆蓋掉；而因為在亮色／暗色之間切換時會改變按鈕顏色，故補上`transition: 0.3s;`讓顏色轉換的過程不要太突兀；而`display: flex;`、`justify-content: center;`與`align-items: center;`讓按鈕中的圖示XY軸置中
 - `#darkLabel svg`：按鈕中的圖示用`fill: var(--light);`來填入顏色
 - `#dark:checked~#darkLabel`：在`<input type="checkbox" id="dark">`被勾選後，`<label for="dark" id="darkLabel">`按鈕本身的顏色要變淺（`background-color: var(--medium);`），並按鈕陰影因為整體畫面的背景顏色變深，所以也要改的亮一點（`box-shadow: 0px 0px 8px var(--light);`）
 - `#dark:checked~#darkLabel svg`：原理同上，按鈕本身顏色變淺的話，按鈕內的圖示顏色要加深（`fill: var(--dark);`）
 - `#dark:checked~#darkLabel svg path`：用選取器抓取`<svg>`圖示裡面的`<path>`元素，修改其`d`值讓圖示形狀從月亮變為太陽
-  - 參考：[CSS change d property of <path> - Stack Overflow](https://stackoverflow.com/questions/42227012/css-change-d-property-of-path)
+    - 參考：[CSS change d property of <path> - Stack Overflow](https://stackoverflow.com/questions/42227012/css-change-d-property-of-path)
 - `#dark:checked~.container, #dark:checked~footer`：使用`filter: invert(100%);`來讓`.container`與`footer`元素的顏色負片化，而`hue-rotate(180deg)`讓顏色在負片化之後讓色相「轉回」原點
 - `#dark:checked~.container header .avatar img, #dark:checked~footer p span`：把「不要負片」的元素選取起來，套用`filter: hue-rotate(-180deg) invert(100%);`把顏色負片回去（抵銷掉負片效果）
 - 上述CSS原始碼第51行開始：使用`@media`讓切換「亮色／暗色模式」的按鈕在手機橫持以上的版面停留在畫面右上方（`top: 0;`與`right: 60px;`），並修改`width`與`height`讓按鈕變成窄長方形
