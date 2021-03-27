@@ -97,6 +97,14 @@ let function = (item) => console.log(item)
     - JavaScript built-in iterable objects: Array, array-like objects (arguments, NodeList), TypedArray, Map, Set, String
     - 而Object不是iterable objects，對Object使用`for...of`會回傳`Error: not iterable`
     - iterable objects可參考[MDN的說明](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols#the_iterable_protocol)
+- 無法遍歷到使用「non-numeric」作為索引的值
+    <iframe height="400px" width="100%" src="https://replit.com/@Charlie7779/forofWu-Fa-Bian-Li-non-numeric-properties?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+
+- 無法直接遍歷「包含了non-numeric索引」的陣列
+    <iframe height="400px" width="100%" src="https://replit.com/@Charlie7779/forofWu-Fa-Zhi-Jie-Bian-Li-You-forofWu-Fa-Zhi-Jie-Bian-Li-Bao-Han-non-numeric-propertiesDe-Zhen-Lie?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+
+- 但如果先建立一個沒有「non-numeric索引」的陣列，再assign「包含了non-numeric索引」的值進去陣列裡面，這樣是可以遍歷的
+    <iframe height="400px" width="100%" src="https://replit.com/@Charlie7779/forofKe-Yi-Bian-Li-Xuan-Gao-Hou-Bu-Jia-Shang-non-numeric-propertiesDe-Zhen-Lie?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
 
 
 ### `every()`
@@ -110,6 +118,15 @@ let function = (item) => console.log(item)
 - 一旦callback function回傳falsy value，`every()`就會停止（參考上方示範碼第21行輸出的結果）
 - [參考MDN的說明](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/every#description)：對空的陣列執行`every()`，不管callback function的條件是什麼，`every()`都會回傳true
 - `every()`不會對被刪除的、空的值執行callback function
+
+
+### `some()`
+- 可遍歷陣列
+- 不可直接遍歷物件
+
+<iframe height="400px" width="100%" src="https://replit.com/@Charlie7779/Arrayprototypesome?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+
+- 對陣列中的每一個物件執行callback function，只要有一個物件讓callback function回傳truthy value，`some()`就會回傳true
 
 
 ### `forEach()`
@@ -142,6 +159,7 @@ let function = (item) => console.log(item)
 - `reduce()`的callback最少需要兩個參數`accumulator`與`currentValue`
     - `accumulator`：如其名稱，代表累加下來的值；負責記住callback要回傳的值
     - `currentValue`：需額外納入`reduce()`計算過程中的數字
+- `reduceRight()`則是從陣列的右側向左遍歷
 
 
 ## 會回傳新陣列
