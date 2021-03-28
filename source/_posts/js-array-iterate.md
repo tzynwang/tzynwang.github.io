@@ -10,13 +10,6 @@ tags:
 本篇文章是關於JavaScript遍歷陣列（部分方法也可直接遍歷物件）方法的筆記
 keywords: array, iterate, iteration
 
-
-## 版本與環境
-```
-Google Chrome: 89.0.4389.90 (Official Build) (x86_64)
-ox: macOS Big Suf Version 11.1
-```
-
 - 不會回傳新陣列的方式：`for`搭配`length()`、`while`搭配`length()`、`for...in`、`for...of`、`every()`、`some()`、`forEach()`、`join`、`reduce()`
 - 會回傳一個新陣列的方式：` filter()`、`flat()`、`flatMap()`、`map()`
 
