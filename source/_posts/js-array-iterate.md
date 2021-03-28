@@ -7,7 +7,7 @@ tags:
 ---
 
 ## 總結
-本篇文章是關於JavaScript遍歷陣列（部分方法也可直接遍歷物件）方法的筆記
+本篇文章是關於JavaScript遍歷陣列（部分方法也可直接遍歷物件）方法的筆記。
 keywords: array, iterate, iteration
 
 - 不會回傳新陣列的方式：`for`搭配`length()`、`while`搭配`length()`、`for...in`、`for...of`、`every()`、`some()`、`forEach()`、`join`、`reduce()`
