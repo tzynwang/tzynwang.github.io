@@ -1,0 +1,468 @@
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/menu_book-black-18dp.svg" color="#222">
+  <meta name="google-site-verification" content="6Df5aVEQ0VnFs85Kmy2VYlYOZrGMS1izxzdhFxEN-bI">
+
+
+
+
+
+
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"tzynwang.github.io","root":"/","images":"/images","scheme":"Pisces","version":"8.2.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":"enable","trigger":"auto","top_n_per_article":-1,"unescape":false,"preload":false}};
+  </script>
+<meta name="description" content="總結微型專案「grid-template-areas generator」是為了不想要手動輸入多種grid-template-areas設定的產物；輸入column與row的始末後，按下generate按鈕即可產生能直接使用的grid-template-areas設定，並提供一鍵複製的功能。 成品codepen展示：    See the Pen    grid-template-areas ge">
+<meta property="og:type" content="article">
+<meta property="og:title" content="自主練習專案「grid-template-areas generator」技術記錄">
+<meta property="og:url" content="https://tzynwang.github.io/2021/grid-template-areas-generator-review/index.html">
+<meta property="og:site_name" content="普通文組">
+<meta property="og:description" content="總結微型專案「grid-template-areas generator」是為了不想要手動輸入多種grid-template-areas設定的產物；輸入column與row的始末後，按下generate按鈕即可產生能直接使用的grid-template-areas設定，並提供一鍵複製的功能。 成品codepen展示：    See the Pen    grid-template-areas ge">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-03-24T04:18:30.000Z">
+<meta property="article:modified_time" content="2021-03-29T11:20:32.731Z">
+<meta property="article:author" content="Charlie (Tzu Yin)">
+<meta property="article:tag" content="Side Project">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://tzynwang.github.io/2021/grid-template-areas-generator-review/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+<title>自主練習專案「grid-template-areas generator」技術記錄 | 普通文組</title>
+  
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="普通文組" type="application/atom+xml">
+<script>function loadCss(l){var d=document,h=d.head,s=d.createElement('link');s.rel='stylesheet';s.href=l;!function e(f){if (d.body)return f();setTimeout(function(){e(f)})}(function(){h.appendChild(s);});}loadCss('/style.css');loadCss('https://fonts.googleapis.com/css2?family=Noto+Sans+TC&family=Roboto&display=swap/css?family=Roboto:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext');loadCss('https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.2/css/all.min.css');</script><noscript><link rel="stylesheet" href="/style.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC&amp;family=Roboto&amp;display=swap/css?family=Roboto:300,300italic,400,400italic,700,700italic&amp;display=swap&amp;subset=latin,latin-ext"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.2/css/all.min.css"></noscript></head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">普通文組</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Keep calm and read the docs</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+        <li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section"><i class="fas fa-rss fa-fw"></i>RSS</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80" placeholder="Searching..." spellcheck="false" type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B8%BD%E7%B5%90"><span class="nav-number">1.</span> <span class="nav-text">總結</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%88%90%E5%93%81"><span class="nav-number">2.</span> <span class="nav-text">成品</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%89%88%E6%9C%AC%E8%88%87%E7%92%B0%E5%A2%83"><span class="nav-number">3.</span> <span class="nav-text">版本與環境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS%E5%85%A7%E5%AE%B9"><span class="nav-number">4.</span> <span class="nav-text">CSS內容</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-before%E8%88%87linear-gradient-%E7%95%AB%E5%9C%96%E7%A4%BA"><span class="nav-number">4.1.</span> <span class="nav-text">使用::before與linear-gradient()畫圖示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#lt-textarea-gt-%E6%8F%9B%E8%A1%8C%E4%B8%8A%E8%89%B2%E6%95%88%E6%9E%9C"><span class="nav-number">4.2.</span> <span class="nav-text">&lt;textarea&gt;換行上色效果</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JS%E5%85%A7%E5%AE%B9"><span class="nav-number">5.</span> <span class="nav-text">JS內容</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#return%E8%88%87break%E7%9A%84%E5%B7%AE%E5%88%A5"><span class="nav-number">5.1.</span> <span class="nav-text">return與break的差別</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Regular-Expressions%E7%AD%86%E8%A8%98"><span class="nav-number">5.2.</span> <span class="nav-text">Regular Expressions筆記</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%83%E8%80%83%E6%96%87%E4%BB%B6"><span class="nav-number">6.</span> <span class="nav-text">參考文件</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Charlie (Tzu Yin)" src="/images/avatar-pexels-alex-andrews-215-215.png">
+  <p class="site-author-name" itemprop="name">Charlie (Tzu Yin)</p>
+  <div class="site-description" itemprop="description">一介普通文組的學習筆記 📒</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope="" itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://tzynwang.github.io/2021/grid-template-areas-generator-review/">
+
+    <span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar-pexels-alex-andrews-215-215.png">
+      <meta itemprop="name" content="Charlie (Tzu Yin)">
+      <meta itemprop="description" content="一介普通文組的學習筆記 📒">
+    </span>
+
+    <span hidden="" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="普通文組">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          自主練習專案「grid-template-areas generator」技術記錄
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-03-24 12:18:30" itemprop="dateCreated datePublished" datetime="2021-03-24T12:18:30+08:00">2021-03-24</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-03-29 19:20:32" itemprop="dateModified" datetime="2021-03-29T19:20:32+08:00">2021-03-29</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+          <a href="/categories/CSS/" itemprop="url" rel="index"><span itemprop="name">CSS</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>微型專案「grid-template-areas generator」是為了不想要手動輸入多種grid-template-areas設定的產物；輸入column與row的始末後，按下generate按鈕即可產生能直接使用的grid-template-areas設定，並提供一鍵複製的功能。</p>
+<h2 id="成品"><a href="#成品" class="headerlink" title="成品"></a>成品</h2><p>codepen展示：</p>
+<p class="codepen" data-height="265" data-theme-id="dark" data-default-tab="css,result" data-user="Charlie7779" data-slug-hash="qBqGbpm" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="grid-template-areas generator">
+  <span>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/Charlie7779/pen/qBqGbpm">
+  grid-template-areas generator</a> by Charlie (<a target="_blank" rel="noopener" href="https://codepen.io/Charlie7779">@Charlie7779</a>)
+  on <a target="_blank" rel="noopener" href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async="" src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+
+
+<h2 id="版本與環境"><a href="#版本與環境" class="headerlink" title="版本與環境"></a>版本與環境</h2><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Google Chrome: 89.0.4389.90 (Official Build) (64-bit)</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="CSS內容"><a href="#CSS內容" class="headerlink" title="CSS內容"></a>CSS內容</h2><h3 id="使用-before與linear-gradient-畫圖示"><a href="#使用-before與linear-gradient-畫圖示" class="headerlink" title="使用::before與linear-gradient()畫圖示"></a>使用<code>::before</code>與<code>linear-gradient()</code>畫圖示</h3><ul>
+<li><p>先選取<code>.label</code>的<code>::before</code>部位，設定<code>position: absolute;</code>與<code>top: 8px;</code>、<code>left: 4px;</code>來讓圖示預定繪製的範圍離<code>.label</code>左邊框4px遠，並垂直置中</p>
+</li>
+<li><p><code>background</code>如果設定多個<code>linear-gradient()</code>，原始碼從上到下會分別對應圖層從上到下繪製的內容</p>
+<ul>
+<li><p>以cell start的圖示為例：</p>
+<script src="https://gist.github.com/tzynwang/9b197345e6727409ced24f58820e1a47.js"></script>
+
+<p class="codepen" data-height="265" data-theme-id="dark" data-default-tab="css,result" data-user="Charlie7779" data-slug-hash="GRrJEJM" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="linear-gradient()">
+<span>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/Charlie7779/pen/GRrJEJM">
+linear-gradient()</a> by Charlie (<a target="_blank" rel="noopener" href="https://codepen.io/Charlie7779">@Charlie7779</a>)
+on <a target="_blank" rel="noopener" href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async="" src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script></li>
+<li><p>其他欄位的圖示原理相同，僅是修改色塊位置或縮小覆蓋區域</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="lt-textarea-gt-換行上色效果"><a href="#lt-textarea-gt-換行上色效果" class="headerlink" title="<textarea>換行上色效果"></a><code>&lt;textarea&gt;</code>換行上色效果</h3><ul>
+<li>使用<code>repeating-linear-gradient</code>來重複製造淺綠／白色相間的色塊背景</li>
+<li>將文字的高度設定成與色塊背景高度一致，並在<code>background</code>加上<code>local</code>參數，讓背景隨著滑鼠滾輪捲動，視覺上更為自然  <script src="https://gist.github.com/tzynwang/1badaf6cd76aa8aaef55437f307378e3.js"></script>
+
+
+</li>
+</ul>
+<h2 id="JS內容"><a href="#JS內容" class="headerlink" title="JS內容"></a>JS內容</h2><h3 id="return與break的差別"><a href="#return與break的差別" class="headerlink" title="return與break的差別"></a><code>return</code>與<code>break</code>的差別</h3><script src="https://gist.github.com/tzynwang/3e954aaba9dc39d3c9409e58ebdbbd02.js"></script>
+
+<ul>
+<li>一開始在第13行與23行使用不正確的關鍵字<code>break</code>來脫離迴圈；<code>break</code>儘代表「跳脫現在的迴圈」，卻會繼續執行接下來的程式碼。故第13行使用<code>break</code>離開後，接下來會去執行第21行的程式碼（而不是脫離整個function）。</li>
+<li>改用<code>return</code>後，第13行與23行的意義變為「印出錯誤訊息後，就離開function，不會繼續走完function接下來的程式碼」。</li>
+</ul>
+<h3 id="Regular-Expressions筆記"><a href="#Regular-Expressions筆記" class="headerlink" title="Regular Expressions筆記"></a>Regular Expressions筆記</h3><ul>
+<li>使用方式：先設定包覆在<code>//</code>中的<code>pattern</code>（有需要的話也可指定<code>modifiers</code>），再搭配<code>test()</code>來判定變數是否帶有pattern內容；以下為步驟解析：<ul>
+<li><code>let r = /^\+?[1-9][0-9]*$/</code>中，pattern的內容是「<code>^\+?[1-9][0-9]*$</code>」</li>
+<li><code>^</code>：「開頭須包含」</li>
+<li><code>\+</code>與<code>?</code>：加號前面的斜線為跳脫字元，<code>?</code>代表可以有0個或1個<code>\+</code></li>
+<li><code>[1-9]</code>：內容範圍涵蓋1到9</li>
+<li><code>[0-9]</code>與<code>*</code>：代表可以擁有0個（含）以上的<code>[0-9]</code>字元</li>
+<li><code>$</code>：「結尾須包含」</li>
+</ul>
+</li>
+<li>翻譯成白話文：「開頭需有1-9任一數字，可以有<code>+</code>號，接著可以有任意數量的0-9」</li>
+<li>pattern並無包含數字以外字元的內容，故如果是「<code>123a321</code>」這樣夾雜數字以外的字串，<code>r.test(x)</code>會回傳<code>false</code></li>
+<li>最後並沒有採用正規表示式來判定輸入內容是否為正整數，而是改用<code>parseInt()</code>，因為<code>parseInt()</code>可以同時處理<code>String</code>轉換為<code>Number</code>的工作</li>
+</ul>
+<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://wcc723.github.io/css/2013/09/25/background-att/">CSS沒有極限 - 意想不到的background-attachment</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=rhzKDrUiJVk">Learn Regular Expressions In 20 Minutes</a></li>
+<li><a target="_blank" rel="noopener" href="https://regexr.com/">RegExr: Learn, Build, &amp; Test RegEx</a>：會顯示有依附關係的reg exr</li>
+<li><a target="_blank" rel="noopener" href="https://regex101.com/">regular expressions 101</a>：有附debugger</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Side-Project/" rel="tag"># Side Project</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/Japanese-50-review/" rel="prev" title="自主練習專案「日本文學經典50」技術記錄與反省">
+                  <i class="fa fa-chevron-left"></i> 自主練習專案「日本文學經典50」技術記錄與反省
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/js-array-iterate/" rel="next" title="「JavaScript陣列遍歷」相關筆記">
+                  「JavaScript陣列遍歷」相關筆記 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  © 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Charlie (Tzu Yin)</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> &amp; <a href="https://theme-next.js.org/pisces/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+
+
+  
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+<script src="/bundle.js"></script></body></html>

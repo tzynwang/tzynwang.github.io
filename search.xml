@@ -1,6 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>自主練習專案「日本文學經典50」技術記錄與反省</title>
+    <url>/2021/Japanese-50-review/</url>
+    <content><![CDATA[<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>微型專案「日本文學經典50」是在閱讀完《一生必讀的50本日本文學名著》後，覺得書末一口氣展示50本經典的排版讓人印象深刻，決定以該圖為範本練習CSS grid排版</p>
+<figure class="figure--center"><img src="/2021/Japanese-50-review/Japanese-50.PNG"></figure>
+
+
+<h2 id="成品"><a href="#成品" class="headerlink" title="成品"></a>成品</h2><p>純網頁展示版：<a href="https://tzynwang.github.io/Japanese-literature-50/">點我</a></p>
+<figure class="figure--center"><img src="/2021/Japanese-50-review/prj-demo.gif"></figure>
+
+
+<h2 id="版本與環境"><a href="#版本與環境" class="headerlink" title="版本與環境"></a>版本與環境</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Google Chrome: 89.0.4389.90 (Official Build) (64-bit)</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></table></figure>
+<h2 id="JS內容"><a href="#JS內容" class="headerlink" title="JS內容"></a>JS內容</h2><script src="https://gist.github.com/tzynwang/3916e8975b303a87353c69a81539ba6b.js"></script>
+
+<h2 id="JS技術記錄"><a href="#JS技術記錄" class="headerlink" title="JS技術記錄"></a>JS技術記錄</h2><h3 id="將資料與HTML分離"><a href="#將資料與HTML分離" class="headerlink" title="將資料與HTML分離"></a>將資料與HTML分離</h3><ul>
+<li>將專案會用到的文字內容（著作、作者與年份的文字資料）從HTML原始碼中抽離，另外建立一個.csv檔案來儲存這些文字資料；選擇將內容與結構分開是為了讓HTML原始碼看起來更乾淨</li>
+<li>使用JavaScript來讀取、並把文字內容插入DOM物件</li>
+</ul>
+<h3 id="從資料庫讀取資料"><a href="#從資料庫讀取資料" class="headerlink" title="從資料庫讀取資料"></a>從資料庫讀取資料</h3><ul>
+<li>專案會用到的文字內容被存放到csv檔案（資料庫）中，經過搜尋關鍵字「JavaScript read server side csv」後，得知可以使用<strong>ajax</strong>來實現需求<ul>
+<li>參考：<a href="https://stackoverflow.com/questions/3567369/reading-server-side-file-with-javascript">Reading Server Side file with Javascript</a></li>
+</ul>
+</li>
+<li>jQuery library可以達成這個目標，不過檔案大小有90kb，且除了ajax以外沒有打算使用jQuery提供的其他功能，故繼續搜尋，發現<a href="https://www.papaparse.com/">Papa Parse</a>可以處理專案需求，檔案也比jQuery小（50kb），所以最後決定使用Papa Parse</li>
+</ul>
+<h4 id="什麼是ajax"><a href="#什麼是ajax" class="headerlink" title="什麼是ajax"></a>什麼是ajax</h4><iframe width="560" height="315" src="https://www.youtube.com/embed/dQcBs4S-wEQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<blockquote>
+<p>(00:39) We can talk to the outside world and make changes on our website, have something happen that <strong>interact with the server</strong>, but maybe it doesn’t reload our entire page.</p>
+</blockquote>
+<blockquote>
+<p>(00:50) ajax allows us to do that.</p>
+</blockquote>
+<p>ajax可以在「不重新載入整個網頁」的情況下，<strong>向server side索取資料</strong>後，配合JavaScript修改DOM的內容（或樣式）；在本專案的應用情境則是：讀取server上的csv檔案內容後，把檔案內容根據一定的規則放入適當的DOM物件中。</p>
+<h2 id="HTML內容"><a href="#HTML內容" class="headerlink" title="HTML內容"></a>HTML內容</h2><p>因為把文字資料與HTML區隔開了，所以HTML原始碼挺空曠的：</p>
+<script src="https://gist.github.com/tzynwang/74b572e9e22be4064b5c90f468a2fa38.js"></script>
+
+<ul>
+<li>一口氣產生50個<code>&lt;div&gt;</code>（且50個div的class分別從c-1數到c-50）的emmet是：  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">(.item.c-$)*50</span><br></pre></td></tr></table></figure></li>
+<li>設計每一個<code>&lt;div&gt;</code>擁有不同編號的c-$ class是為了讓JS在讀取依照年代排列的出版品資料後，可以從1到50格<code>&lt;div&gt;</code>依序插入文字</li>
+<li>在不同寬度的版面下，50個<code>&lt;div&gt;</code>會分別呈現三欄、四欄或五欄寬的排列，且偶數行要進行順序反轉；前述兩個需求都需要透過配合CSS內容來完成，而每一個.item都擁有與其順位一致的.c-$ class的話（比如順位二的.item就會有.c-2的class），就可以使用CSS來選取特定順位的<code>&lt;div&gt;</code>並修改其排版位置</li>
+</ul>
+<h2 id="CSS內容"><a href="#CSS內容" class="headerlink" title="CSS內容"></a>CSS內容</h2><h3 id="基本設定"><a href="#基本設定" class="headerlink" title="基本設定"></a>基本設定</h3><script src="https://gist.github.com/tzynwang/dc01878c945e0dc7f90ff6c88cc18268.js"></script>
+
+<h3 id="三欄版面"><a href="#三欄版面" class="headerlink" title="三欄版面"></a>三欄版面</h3><script src="https://gist.github.com/tzynwang/ec6016dd7e365965c4a1e637201b9f63.js"></script>
+
+<p>四欄與五欄排版主要不同的內容在於grid-template-areas的佈局，以及偶數行反轉排列的.c-$不一樣</p>
+<h2 id="CSS技術記錄"><a href="#CSS技術記錄" class="headerlink" title="CSS技術記錄"></a>CSS技術記錄</h2><h3 id="lt-input-gt-搭配-lt-label-gt-控制全部的蓋版元素"><a href="#lt-input-gt-搭配-lt-label-gt-控制全部的蓋版元素" class="headerlink" title="&lt;input&gt;搭配&lt;label&gt;控制全部的蓋版元素"></a><code>&lt;input&gt;</code>搭配<code>&lt;label&gt;</code>控制全部的蓋版元素</h3><p>發想：既然可以透過純CSS做出一鍵切換「亮色／暗色模式」的話，想要「一鍵開啟全部的蓋板物件」的話，把input:checked後執行的「filter: invert()」換成「修改蓋板物件的top位置」就好</p>
+<h3 id="repeat-y處理大範圍背景"><a href="#repeat-y處理大範圍背景" class="headerlink" title="repeat-y處理大範圍背景"></a>repeat-y處理大範圍背景</h3><p>發想：</p>
+<ul>
+<li>假如窗簾繩使用一張48x2000px尺寸、且背景要透明的圖片的話，檔案大小會影響載入與顯示的速度</li>
+<li>那麼，既然窗簾繩「線段」的部分可以重複、只有「末端」的花樣要不同的話，就使用repeat-y來重複「線段」部分使用的背景圖片，並用<code>::after</code>來放置「末端」</li>
+</ul>
+<h3 id="Sass相關筆記"><a href="#Sass相關筆記" class="headerlink" title="Sass相關筆記"></a>Sass相關筆記</h3><ul>
+<li>瀏覽器無法直接處理.scss檔案，VS Code需安裝sass compiler外掛來將.scss檔案處理為.css</li>
+<li>（本次沒有用到）Sass的變數由$宣告，比如<code>$primaryColor: #008AD8;</code>，使用的時候就像是：  <figure class="highlight scss"><table><tr><td class="code"><pre><span class="line"><span class="variable">$primaryColor</span>: <span class="number">#008AD8</span>;</span><br><span class="line"><span class="selector-class">.btn</span> &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="variable">$primaryColor</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>（本次沒有用到）Sass支援巢狀結構：  <figure class="highlight scss"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="number">#ccc</span>;</span><br><span class="line">  <span class="selector-tag">button</span> &#123;</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="number">#333</span>;</span><br><span class="line">    <span class="attribute">color</span>: <span class="number">#fff</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+  等同CSS的：  <figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="number">#ccc</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">div</span> <span class="selector-tag">button</span> &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="number">#333</span>;</span><br><span class="line">  <span class="attribute">color</span>: <span class="number">#fff</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>pseudo-classes與pseudo-elements可以搭配&amp;使用，比如：  <figure class="highlight scss"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">button</span> &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="number">#333</span>;</span><br><span class="line">  <span class="attribute">color</span>: <span class="number">#fff</span>;</span><br><span class="line">  &amp;<span class="selector-pseudo">:hover</span> &#123;</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="number">#ff00ff</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+  等同CSS的：  <figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">button</span> &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="number">#333</span>;</span><br><span class="line">  <span class="attribute">color</span>: <span class="number">#fff</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">button</span><span class="selector-pseudo">:hover</span> &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="number">#ff00ff</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>（本次沒有用到）匯入：主檔案使用<code>@use &quot;模組路徑&quot;</code>（不需加上<code>.scss</code>）、而模組的檔案名稱要由底線（<code>_</code>）開頭：  <figure class="highlight scss"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 主檔案</span></span><br><span class="line"><span class="keyword">@use</span> <span class="string">&quot;./_header&quot;</span></span><br></pre></td></tr></table></figure>
+  <figure class="highlight scss"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 此為模組，檔案名稱為：_header.scss</span></span><br><span class="line"><span class="selector-tag">header</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: <span class="number">#333</span>;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="number">#eee</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><code>@mixin</code>：概念類似JavaScript的function；注意呼叫（<code>@include</code>）mixin的時候，要在mixin名稱後面加上<code>()</code>與<code>;</code>  <figure class="highlight scss"><table><tr><td class="code"><pre><span class="line"><span class="comment">// mixin使用@mixin開頭，用@include使用</span></span><br><span class="line"><span class="comment">// 以下範例的mixin名稱為「flexXYcenter」</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">@mixin</span> flexXYcenter() &#123;</span><br><span class="line">  <span class="attribute">display</span>: flex;</span><br><span class="line">  justify-contents: center;</span><br><span class="line">  <span class="attribute">align-items</span>: center;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">  <span class="keyword">@include</span> flexXYcenter();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>mixin可以接受參數，注意參數也要使用<code>$</code>開頭：  <figure class="highlight scss"><table><tr><td class="code"><pre><span class="line"><span class="keyword">@mixin</span> flexXYcenter(<span class="variable">$direction</span>) &#123;</span><br><span class="line">  <span class="attribute">display</span>: flex;</span><br><span class="line">  justify-contents: center;</span><br><span class="line">  <span class="attribute">align-items</span>: center;</span><br><span class="line">  <span class="attribute">flex-direction</span>: <span class="variable">$direction</span>; <span class="comment">// 使用參數決定要flex row或flex column</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">  <span class="keyword">@include</span> flexXYcenter(column);</span><br><span class="line">  <span class="comment">// flex-direction: column;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">main &#123;</span><br><span class="line">  <span class="keyword">@include</span> flexXYcenter(row);</span><br><span class="line">  <span class="comment">// flex-direction: row;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>mixin可以接受複數個參數：  <figure class="highlight scss"><table><tr><td class="code"><pre><span class="line"><span class="keyword">@mixin</span> flexXYcenter(<span class="variable">$direction</span>, <span class="variable">$color</span>) &#123;</span><br><span class="line">  <span class="attribute">display</span>: flex;</span><br><span class="line">  justify-contents: center;</span><br><span class="line">  <span class="attribute">align-items</span>: center;</span><br><span class="line">  <span class="attribute">flex-direction</span>: <span class="variable">$direction</span>; <span class="comment">// 使用參數決定要flex row或flex column</span></span><br><span class="line">  <span class="attribute">color</span>: <span class="variable">$color</span>; <span class="comment">// 使用參數決定文字顏色</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">main &#123;</span><br><span class="line">  <span class="keyword">@include</span> flexXYcenter(row, <span class="number">#ccc</span>);</span><br><span class="line">  <span class="comment">// 等同以下內容：</span></span><br><span class="line">  <span class="comment">// display: flex;</span></span><br><span class="line">  <span class="comment">// justify-contents: center;</span></span><br><span class="line">  <span class="comment">// align-items: center;</span></span><br><span class="line">  <span class="comment">// flex-direction: row;</span></span><br><span class="line">  <span class="comment">// color: #ccc;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><code>@extend</code>：可以理解成「繼承、延續」既有的內容  <figure class="highlight scss"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">  <span class="keyword">@include</span> flexXYcenter(row, <span class="number">#ccc</span>);</span><br><span class="line">&#125;</span><br><span class="line">main &#123;</span><br><span class="line">  <span class="keyword">@extend</span> body;</span><br><span class="line">  <span class="comment">// 然後處理其他任何除了body已經寫過、或是要覆寫的properties</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="反省"><a href="#反省" class="headerlink" title="反省"></a>反省</h2><ul>
+<li>沒有先畫wireframe就開始動手編寫原始碼，grid處理完之後，發現不管是要調整整體的平衡或是追加內容都顯得很麻煩⋯⋯之後的練習還是盡量避免不規劃就動手做的模式</li>
+<li>一開始的目的是想要練習CSS grid，但此專案的排版其實用CSS flex就可以達成了，儘管可以用gird排版、但不確定這是不是最好的做法</li>
+<li>UI的設計感沒有統一，素材都是找到後直接套用；蓋板的深綠色物件風格與背景以及右側窗簾繩不一致</li>
+</ul>
+<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
+<li>和風配色參考：配色パターン中<a href="https://www.colordic.org/colorscheme">和色大辞典</a>的部分</li>
+<li><a href="https://youtu.be/Zz6eOVaaelI">Learn Sass In 20 Minutes</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>CSS</category>
+      </categories>
+      <tags>
+        <tag>Side Project</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>ALPHA Camp 履歷網頁作業：內容解析</title>
     <url>/2021/S4-A14-assignment-anatomy/</url>
     <content><![CDATA[<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>記錄在2021年ALPHA Camp學期一、三月班第三週履歷網頁作業使用到的技術、思路與開發流程。</p>
@@ -52,27 +141,42 @@ on <a href="https://codepen.io">CodePen</a>.</span>
 </ul>
 </li>
 <li><code>&lt;div class=&quot;container&quot;&gt;</code>：一般狀態下使用淺色背景（<code>var(--light)</code>）搭配深色文字（<code>var(--dark)</code>）</li>
-<li><code>header</code>：使用<code>padding</code>將內容往內推移，避免文字過於靠近邊緣，降低易讀性</li>
+<li><code>header, main</code>：使用<code>padding</code>將內容往內推移，避免文字過於靠近邊緣，降低易讀性</li>
 <li><code>main</code>：除了<code>padding</code>之外，加上<code>max-width</code>限制文字不會因為螢幕較寬而延伸到底</li>
 <li><code>h2</code>：因有多個<code>h2</code>出現在網頁上，且樣式不會配合畫面改變尺寸或<code>margin</code>、<code>padding</code>等，故放在通用樣式區域宣告</li>
 </ul>
 <h3 id="header"><a href="#header" class="headerlink" title="header"></a><code>header</code></h3><script src="https://gist.github.com/tzynwang/702cfae7a67818c5ba0153f2358229f6.js"></script>
 
 <ul>
-<li><code>header</code>與<code>.avatar</code>：為了在各種版面下都能簡單的處理水平置中，直接使用<code>display: flex;</code>搭配<code>flex-direction: column;</code>與<code>align-items: center;</code>來做讓<code>header</code>與<code>.avatar</code>下所有的內容都呈現水平置中</li>
-<li><code>img</code>：與wireframe的設計不同，最後決定拿掉履歷照片的<code>border-radius: 50%;</code>，因為最終成品一眼望過去只有照片是圓形反而覺得有點突兀</li>
-<li><code>h1</code>：加上<code>transform: rotate(-5deg);</code>讓文字稍微向右上角抬起，增加一點活躍感；並配合<code>margin-bottom: 8px;</code>來製造空間，稍稍推開下方的連結組合<ul>
+<li><p><code>header</code>與<code>.avatar</code>：為了在各種版面下都能簡單的處理水平置中，直接使用<code>display: flex;</code>搭配<code>flex-direction: column;</code>與<code>align-items: center;</code>來做讓<code>header</code>與<code>.avatar</code>下所有的內容都呈現水平置中</p>
+</li>
+<li><p><code>img</code>：與wireframe的設計不同，最後決定拿掉履歷照片的<code>border-radius: 50%;</code>，因為最終成品一眼望過去只有照片是圓形反而覺得有點突兀</p>
+</li>
+<li><p><code>h1</code>：加上<code>transform: rotate(-5deg);</code>讓文字稍微向右上角抬起，增加一點活躍感；並配合<code>margin-bottom: 8px;</code>來製造空間，稍稍推開下方的連結組合</p>
+<ul>
 <li>最終並沒有實作wireframe中「讓姓名重疊到照片上」的排版，因目前只想到可以使用<code>position: absolute;</code>來控制，但這樣會難以處理RWD下欄位寬度浮動時的水平置中問題，故暫時放棄此設計</li>
+<li>更新：將<code>&lt;h1&gt;</code>包在一層<code>&lt;div&gt;</code>內，設定<code>&lt;div&gt;</code>為<code>position: absolute;</code>，然後加上<code>display: flex;</code>來控制<code>&lt;h1&gt;</code>的水平位置即可<p class="codepen" data-height="265" data-theme-id="dark" data-default-tab="css,result" data-user="Charlie7779" data-slug-hash="MWJgKrP" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="S4 A14 為客戶打造履歷網頁 bonus track">
+<span>See the Pen <a href="https://codepen.io/Charlie7779/pen/MWJgKrP">
+S4 A14 為客戶打造履歷網頁 bonus track</a> by Charlie (<a href="https://codepen.io/Charlie7779">@Charlie7779</a>)
+on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script></li>
+<li>照片下方的半透明底色使用兩層背景實現：第一層背景是<code>url(&quot;相片路徑&quot;)</code>、第二層背景是使用<code>linear-gradient()</code>繪製的半透明區塊</li>
 </ul>
 </li>
-<li><code>header ul</code>：使用<code>list-style: none;</code>移除預設的圓點樣式；加上<code>display: flex;</code>讓連結們水平排列；使用<code>header ul</code>選取器是因為整份履歷中還有其他部位使用到<code>ul</code>元件，不加上<code>header</code>會導致其他區塊的<code>ul</code>排版走山</li>
-<li><code>header ul li</code>：加上<code>margin: 16px;</code>來讓按鈕之間保持距離<ul>
+<li><p><code>header ul</code>：使用<code>list-style: none;</code>移除預設的圓點樣式；加上<code>display: flex;</code>讓連結們水平排列；使用<code>header ul</code>選取器是因為整份履歷中還有其他部位使用到<code>ul</code>元件，不加上<code>header</code>會導致其他區塊的<code>ul</code>排版走山</p>
+</li>
+<li><p><code>header ul li</code>：加上<code>margin: 16px;</code>來讓按鈕之間保持距離</p>
+<ul>
 <li>更新修正：因為<code>header ul</code>已經是flex container，其中包含的<code>&lt;li&gt;</code>元素會成為flex item，<a href="https://drafts.csswg.org/css-flexbox-1/#flex-items">而flex item有block的特性</a>，故不需要再對<code>header ul li</code>加上<code>display: inline-block;</code>來撐開Y軸（高度）</li>
 </ul>
 </li>
-<li><code>header ul li:last-child</code>：<code>display: none;</code>讓連結群組最尾端的印表機圖示預設為不顯示，再往下的CSS設定會配合<code>@media</code>讓印表機圖示在適當的裝置上呈現出來</li>
-<li><code>a</code>：因為有三種顏色狀態，故加上<code>transition: 0.3s;</code>讓換色過程有0.3秒的漸變時間</li>
-<li><code>a:link</code>、<code>a:visited</code>、<code>a:hover</code>、<code>a:active</code>：剛好可以使用色票中的主、輔與亮點顏色；樣式撰寫的順序為LVHA的理由參考之前記錄過的<a href="https://tzynwang.github.io/2021/css-specificity/" target="_blank">CSS Specificity 相關筆記</a></li>
+<li><p><code>header ul li:last-child</code>：<code>display: none;</code>讓連結群組最尾端的印表機圖示預設為不顯示，再往下的CSS設定會配合<code>@media</code>讓印表機圖示在適當的裝置上呈現出來</p>
+</li>
+<li><p><code>a</code>：因為有三種顏色狀態，故加上<code>transition: 0.3s;</code>讓換色過程有0.3秒的漸變時間</p>
+</li>
+<li><p><code>a:link</code>、<code>a:visited</code>、<code>a:hover</code>、<code>a:active</code>：剛好可以使用色票中的主、輔與亮點顏色；樣式撰寫的順序為LVHA的理由參考之前記錄過的<a href="https://tzynwang.github.io/2021/css-specificity/" target="_blank">CSS Specificity 相關筆記</a></p>
+</li>
 </ul>
 <h3 id="main"><a href="#main" class="headerlink" title="main"></a><code>main</code></h3><script src="https://gist.github.com/tzynwang/ed13c13882860c3133090b37a5734b18.js"></script>
 
@@ -140,6 +244,9 @@ on <a href="https://codepen.io">CodePen</a>.</span>
       <categories>
         <category>CSS</category>
       </categories>
+      <tags>
+        <tag>ALPHA Camp作業</tag>
+      </tags>
   </entry>
   <entry>
     <title>bundle exec</title>
@@ -224,7 +331,7 @@ on <a href="https://codepen.io">CodePen</a>.</span>
       </categories>
   </entry>
   <entry>
-    <title>CSS Specificity 相關筆記</title>
+    <title>「CSS Specificity」相關筆記</title>
     <url>/2021/css-specificity/</url>
     <content><![CDATA[<h2 id="重點整理"><a href="#重點整理" class="headerlink" title="重點整理"></a>重點整理</h2><ul>
 <li>有重複的CSS樣式規則套用到同一個HTML元素上的時候，權重（specificity）高的樣式會覆蓋權重低的樣式設定。</li>
@@ -234,8 +341,10 @@ on <a href="https://codepen.io">CodePen</a>.</span>
 <h2 id="Specificity"><a href="#Specificity" class="headerlink" title="Specificity"></a>Specificity</h2><p>Specificity（以降以「權重」稱之）的高低影響哪一些CSS樣式會發生作用。<br>設定好的CSS沒有作用，可能就是CSS樣式的權重沒有妥善安排，導致編寫好的CSS樣式沒有如預期般套用到HTML元素上。</p>
 <p>權重從低至高順位分組如下：</p>
 <ol>
-<li>universal selector與inherited style：使用<code>*</code>選取「全部」與繼承得來的樣式，兩者的權重皆為<code>0-0-0-0-0</code>；最低的權重</li>
-<li>element selector、::pseudo-element selector：選取HTML元素或偽元素，權重為<code>0-0-0-0-1</code><ul>
+<li><p>universal selector與inherited style：使用<code>*</code>選取「全部」與繼承得來的樣式，兩者的權重皆為<code>0-0-0-0-0</code>；最低的權重</p>
+</li>
+<li><p>element selector、::pseudo-element selector：選取HTML元素或偽元素，權重為<code>0-0-0-0-1</code></p>
+<ul>
 <li><p>HTML元素：html、body、section、div、p……等HTML元素（element）</p>
 </li>
 <li><p>偽元素：</p>
@@ -246,7 +355,8 @@ on <a href="https://codepen.io">CodePen</a>.</span>
 </li>
 </ul>
 </li>
-<li>.class selector、:pseudo-class selector、[attribute] selector：選取class、偽類或具有特定屬性（attribute）的HTML元素，權重為<code>0-0-0-1-0</code><ul>
+<li><p>.class selector、:pseudo-class selector、[attribute] selector：選取class、偽類或具有特定屬性（attribute）的HTML元素，權重為<code>0-0-0-1-0</code></p>
+<ul>
 <li><p>偽類：</p>
 <blockquote>
 <p>A CSS pseudo-class is a keyword added to a selector that specifies a special <strong>state</strong> of the selected element(s).</p>
@@ -257,9 +367,12 @@ on <a href="https://codepen.io">CodePen</a>.</span>
 </li>
 </ul>
 </li>
-<li>#id selector：選取擁有某id的HTML元素，權重是<code>0-0-1-0-0</code></li>
-<li>inline style（比如<code>&lt;p style=&quot;color: red;&quot;&gt;text&lt;/p&gt;</code>）：權重是<code>0-1-0-0-0</code>，不過這樣會讓原始碼的維護性變差，所以還是避免使用吧</li>
-<li><code>!important</code>：擁有最大的權重<code>1-0-0-0-0</code>，而後發的<code>!important</code>會壓過先寫出來的<code>!important</code></li>
+<li><p>#id selector：選取擁有某id的HTML元素，權重是<code>0-0-1-0-0</code></p>
+</li>
+<li><p>inline style（比如<code>&lt;p style=&quot;color: red;&quot;&gt;text&lt;/p&gt;</code>）：權重是<code>0-1-0-0-0</code>，不過這樣會讓原始碼的維護性變差，所以還是避免使用吧</p>
+</li>
+<li><p><code>!important</code>：擁有最大的權重<code>1-0-0-0-0</code>，而後發的<code>!important</code>會壓過先寫出來的<code>!important</code></p>
+</li>
 </ol>
 <h3 id="權重的計算方式"><a href="#權重的計算方式" class="headerlink" title="權重的計算方式"></a>權重的計算方式</h3><p>參考以上劃分的六種權重分組，將選取器中屬於同一組的選擇器條件相加後進行比大小。<br>舉個🌰，假設以下兩種<code>color</code>的樣式設定位在同一份原始碼裡面：</p>
 <figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-id">#blue</span> &#123; <span class="comment">/* 第一組樣式 */</span></span><br><span class="line">  <span class="attribute">color</span>: blue;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">div</span> <span class="selector-tag">p</span> &#123; <span class="comment">/* 第二組樣式 */</span></span><br><span class="line">  <span class="attribute">color</span>: red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -456,6 +569,80 @@ on <a href="https://codepen.io">CodePen</a>.</span>
       <categories>
         <category>git</category>
       </categories>
+  </entry>
+  <entry>
+    <title>自主練習專案「grid-template-areas generator」技術記錄</title>
+    <url>/2021/grid-template-areas-generator-review/</url>
+    <content><![CDATA[<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>微型專案「grid-template-areas generator」是為了不想要手動輸入多種grid-template-areas設定的產物；輸入column與row的始末後，按下generate按鈕即可產生能直接使用的grid-template-areas設定，並提供一鍵複製的功能。</p>
+<h2 id="成品"><a href="#成品" class="headerlink" title="成品"></a>成品</h2><p>codepen展示：</p>
+<p class="codepen" data-height="265" data-theme-id="dark" data-default-tab="css,result" data-user="Charlie7779" data-slug-hash="qBqGbpm" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="grid-template-areas generator">
+  <span>See the Pen <a href="https://codepen.io/Charlie7779/pen/qBqGbpm">
+  grid-template-areas generator</a> by Charlie (<a href="https://codepen.io/Charlie7779">@Charlie7779</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+
+
+<h2 id="版本與環境"><a href="#版本與環境" class="headerlink" title="版本與環境"></a>版本與環境</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Google Chrome: 89.0.4389.90 (Official Build) (64-bit)</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></table></figure>
+<h2 id="CSS內容"><a href="#CSS內容" class="headerlink" title="CSS內容"></a>CSS內容</h2><h3 id="使用-before與linear-gradient-畫圖示"><a href="#使用-before與linear-gradient-畫圖示" class="headerlink" title="使用::before與linear-gradient()畫圖示"></a>使用<code>::before</code>與<code>linear-gradient()</code>畫圖示</h3><ul>
+<li><p>先選取<code>.label</code>的<code>::before</code>部位，設定<code>position: absolute;</code>與<code>top: 8px;</code>、<code>left: 4px;</code>來讓圖示預定繪製的範圍離<code>.label</code>左邊框4px遠，並垂直置中</p>
+</li>
+<li><p><code>background</code>如果設定多個<code>linear-gradient()</code>，原始碼從上到下會分別對應圖層從上到下繪製的內容</p>
+<ul>
+<li><p>以cell start的圖示為例：</p>
+<script src="https://gist.github.com/tzynwang/9b197345e6727409ced24f58820e1a47.js"></script>
+
+<p class="codepen" data-height="265" data-theme-id="dark" data-default-tab="css,result" data-user="Charlie7779" data-slug-hash="GRrJEJM" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="linear-gradient()">
+<span>See the Pen <a href="https://codepen.io/Charlie7779/pen/GRrJEJM">
+linear-gradient()</a> by Charlie (<a href="https://codepen.io/Charlie7779">@Charlie7779</a>)
+on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script></li>
+<li><p>其他欄位的圖示原理相同，僅是修改色塊位置或縮小覆蓋區域</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="lt-textarea-gt-換行上色效果"><a href="#lt-textarea-gt-換行上色效果" class="headerlink" title="&lt;textarea&gt;換行上色效果"></a><code>&lt;textarea&gt;</code>換行上色效果</h3><ul>
+<li>使用<code>repeating-linear-gradient</code>來重複製造淺綠／白色相間的色塊背景</li>
+<li>將文字的高度設定成與色塊背景高度一致，並在<code>background</code>加上<code>local</code>參數，讓背景隨著滑鼠滾輪捲動，視覺上更為自然  <script src="https://gist.github.com/tzynwang/1badaf6cd76aa8aaef55437f307378e3.js"></script>
+
+
+</li>
+</ul>
+<h2 id="JS內容"><a href="#JS內容" class="headerlink" title="JS內容"></a>JS內容</h2><h3 id="return與break的差別"><a href="#return與break的差別" class="headerlink" title="return與break的差別"></a><code>return</code>與<code>break</code>的差別</h3><script src="https://gist.github.com/tzynwang/3e954aaba9dc39d3c9409e58ebdbbd02.js"></script>
+
+<ul>
+<li>一開始在第13行與23行使用不正確的關鍵字<code>break</code>來脫離迴圈；<code>break</code>儘代表「跳脫現在的迴圈」，卻會繼續執行接下來的程式碼。故第13行使用<code>break</code>離開後，接下來會去執行第21行的程式碼（而不是脫離整個function）。</li>
+<li>改用<code>return</code>後，第13行與23行的意義變為「印出錯誤訊息後，就離開function，不會繼續走完function接下來的程式碼」。</li>
+</ul>
+<h3 id="Regular-Expressions筆記"><a href="#Regular-Expressions筆記" class="headerlink" title="Regular Expressions筆記"></a>Regular Expressions筆記</h3><ul>
+<li>使用方式：先設定包覆在<code>//</code>中的<code>pattern</code>（有需要的話也可指定<code>modifiers</code>），再搭配<code>test()</code>來判定變數是否帶有pattern內容；以下為步驟解析：<ul>
+<li><code>let r = /^\+?[1-9][0-9]*$/</code>中，pattern的內容是「<code>^\+?[1-9][0-9]*$</code>」</li>
+<li><code>^</code>：「開頭須包含」</li>
+<li><code>\+</code>與<code>?</code>：加號前面的斜線為跳脫字元，<code>?</code>代表可以有0個或1個<code>\+</code></li>
+<li><code>[1-9]</code>：內容範圍涵蓋1到9</li>
+<li><code>[0-9]</code>與<code>*</code>：代表可以擁有0個（含）以上的<code>[0-9]</code>字元</li>
+<li><code>$</code>：「結尾須包含」</li>
+</ul>
+</li>
+<li>翻譯成白話文：「開頭需有1-9任一數字，可以有<code>+</code>號，接著可以有任意數量的0-9」</li>
+<li>pattern並無包含數字以外字元的內容，故如果是「<code>123a321</code>」這樣夾雜數字以外的字串，<code>r.test(x)</code>會回傳<code>false</code></li>
+<li>最後並沒有採用正規表示式來判定輸入內容是否為正整數，而是改用<code>parseInt()</code>，因為<code>parseInt()</code>可以同時處理<code>String</code>轉換為<code>Number</code>的工作</li>
+</ul>
+<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
+<li><a href="https://wcc723.github.io/css/2013/09/25/background-att/">CSS沒有極限 - 意想不到的background-attachment</a></li>
+<li><a href="https://www.youtube.com/watch?v=rhzKDrUiJVk">Learn Regular Expressions In 20 Minutes</a></li>
+<li><a href="https://regexr.com/">RegExr: Learn, Build, &amp; Test RegEx</a>：會顯示有依附關係的reg exr</li>
+<li><a href="https://regex101.com/">regular expressions 101</a>：有附debugger</li>
+</ul>
+]]></content>
+      <categories>
+        <category>CSS</category>
+      </categories>
+      <tags>
+        <tag>Side Project</tag>
+      </tags>
   </entry>
   <entry>
     <title>Submit to Google Search Console, SEO settings</title>
@@ -707,6 +894,334 @@ The configuration in <code>_config.yml</code> file should be set like this:<figu
       <categories>
         <category>hexo</category>
         <category>CSS</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>「How JPEG Works」相關筆記</title>
+    <url>/2021/how-jpeg-works/</url>
+    <content><![CDATA[<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>問：JPEG到底是什麼？<br>答：實際上是一種壓縮影像的演算法</p>
+<p>問：JPEG如何壓縮影像？<br>簡答：將影像從RGB轉換為Y’CbCr，捨棄多餘的顏色資訊、壓縮人眼不易察覺的部分（影像中高頻率變化的部分）後，輸出為.jpg檔案</p>
+<p>內收關於影片組「<a href="https://www.youtube.com/playlist?list=PLzH6n4zXuckoAod3z31QEST1ZaizBuNHh">How JPEG Works</a>」的相關筆記、JPEG詳細的壓縮過程，與其他參考資料來源。</p>
+<a id="more"></a>
+
+<h2 id="Part-0-color-spaces"><a href="#Part-0-color-spaces" class="headerlink" title="Part 0: color spaces"></a>Part 0: color spaces</h2><iframe width="560" height="315" src="https://www.youtube.com/embed/LFXN9PiOGtY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<h3 id="Color-spaces"><a href="#Color-spaces" class="headerlink" title="Color spaces"></a>Color spaces</h3><ul>
+<li>Color spaces are the ways of representing the colors in an image<ul>
+<li><span style="color: #FF0000;">R</span><span style="color: #00FF00;">G</span><span style="color: #0000FF;">B</span>: red, green and blue; most monitors use this format</li>
+<li>Y’CbCr: use by high definition video, TV broadcasting, <strong>JPEG</strong></li>
+<li><span style="color: #00FFFF">C</span><span style="color: #FF00FF">M</span><span style="color: #FFFF00">Y</span><span style="color: #000000">K</span>: cyan, magenta, yellow and black; printers use this format<ul>
+<li>01:48 用K來代表黑色是因為B已經被藍色（blue）使用了</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="Y’CbCr"><a href="#Y’CbCr" class="headerlink" title="Y’CbCr"></a>Y’CbCr</h3><ul>
+<li>Y’: luminosity from 0 to 255；明亮的程度</li>
+<li>Cb/ Cr: blue/ red chrominance values from -127 to 128；藍色／紅色的濃度<figure class="figure--center"><img src="/2021/how-jpeg-works/Y50_CbCr_Scaled.jpg" title="The CbCr plane at constant luma Y′=0.5"><figcaption><p>The CbCr plane at constant luma Y′=0.5</p></figcaption></figure>
+<figure class="figure--center"><img src="/2021/how-jpeg-works/Y'CbCr_cube.png" title="Y′CbCr color cube"><figcaption><p>Y′CbCr color cube</p></figcaption></figure></li>
+<li>05:58開始：<ul>
+<li>You’ll generally use Y’CbCr if you’re doing any kind of TV broadcasting.</li>
+<li>If you’re actually sending a stream of data to someone’s TV, you need to worry about how much compression you have about data, because it’s quite important. </li>
+<li>Y’CbCr lets you do very clever techniques by <strong>down sampling the color components</strong>, but <strong>not</strong> down sampling the luminous component; people won’t really notice this… in fact, this is the fundamental to how JPEG works.</li>
+</ul>
+</li>
+<li>Wiki: This reflects the fact that human eye is less sensitive to fine color details than to fine brightness details.<ul>
+<li>人眼「對明亮變化的察覺程度」大於「對顏色變化的察覺程度」</li>
+<li>Y’CbCr將影像的「明亮度資訊」與「顏色資訊」分開來</li>
+<li>捨棄一定程度顏色的資訊，但盡量保留影像的明亮度資訊的話，即使經過壓縮，人眼也不太容易察覺壓縮前後的差異</li>
+<li>JPEG就是使用這樣的原理來壓縮圖片的</li>
+</ul>
+</li>
+</ul>
+<h2 id="Part-1-files-and-color"><a href="#Part-1-files-and-color" class="headerlink" title="Part 1: files and color"></a>Part 1: files and color</h2><iframe width="560" height="315" src="https://www.youtube.com/embed/n_uNPbdenRs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<h3 id="JFIF"><a href="#JFIF" class="headerlink" title="JFIF"></a>JFIF</h3><ul>
+<li>JPEG實際上並不是檔案格式，而是壓縮影像的方式；JFIF才是檔案格式</li>
+<li>JPEG File Interchange Format (JFIF) is the actual wrapper that holds the compress data.<ul>
+<li>(Wiki) JFIF is an image file format standard, the most common format for storing and transmitting photographic images on the World Wide Web.</li>
+<li>(Wiki) JFIF defines supplementary specifications for the container format that contains the image data encoded with the JPEG algorithm.</li>
+</ul>
+</li>
+<li>01:07 …really, when we’re talking about a JPEG file, we’re actually talking about a JFIF file most of the time.</li>
+</ul>
+<h3 id="frequency"><a href="#frequency" class="headerlink" title="frequency"></a>frequency</h3><ul>
+<li>01:30開始：<ul>
+<li>…we don’t see high-frequency changes in image intensity very well either. So we can get rid of some of that high-frequency information.</li>
+<li>Bits of image that change intensity very very quickly, we can kind of sorta blur out, and those things will go away, we won’t really see a difference.</li>
+</ul>
+</li>
+</ul>
+<p>筆記：人眼對於高頻率的變化並不敏銳，所以影像裡面高頻率的部分可以捨棄（壓縮）。<br>影像的頻率：指「像素變化」的程度。<br>使用<strong>越少</strong>的像素完成變化，頻率越<strong>高</strong>；使用<strong>越多</strong>的像素完成變化，頻率越<strong>低</strong>。</p>
+<ul>
+<li>Let’s say you have some region in your image that changes from white to black. If it takes many pixels to undergo that change, it’s low frequency. The fewer the pixels it takes to represent that intensity variation, the higher the frequency. Ref.: <a href="https://www.quora.com/What-are-the-low-and-high-frequencies-in-an-image?share=1">What are the low and high frequencies in an image?</a></li>
+<li>Frequency means rate of change of something. In two-dimensional signals like digital images, frequencies are rate of change of grey scale value (intensity of pixel) with respect to space. This is also called Spatial frequency. Ref.: <a href="https://www.quora.com/What-are-frequencies-in-images-Better-if-explained-with-an-example">What are frequencies in images?</a></li>
+<li>One interesting application is in the use of compression algorithms like JPEG. Here the DCT (Discrete cosine transform) is used to save more of the important parts of the image (the low frequencies) and less of the high frequencies. Ref. <a href="https://photo.stackexchange.com/questions/40401/what-does-frequency-mean-in-an-image">What does “frequency” mean in an image?</a></li>
+<li>Wiki: Human vision is much more sensitive to <strong>small variations in color (or brightness) over large areas</strong> than to the strength of <strong>high-frequency brightness variations</strong>.</li>
+</ul>
+<p>補充：對人眼來說，察覺「大範圍中小小的顏色或亮度變化」比發現「高頻率的亮度變化」容易。</p>
+<h3 id="Compression-steps"><a href="#Compression-steps" class="headerlink" title="Compression steps"></a>Compression steps</h3><ol>
+<li>Transform the image into Y’CbCr color space<ul>
+<li>Y’CbCr separate each pixel’s intensity (Y’) from color (Cb, Cr)</li>
+</ul>
+</li>
+<li>Down-sampling (chroma sub-sampling)<ul>
+<li>Wiki: reduce the spatial(空間性的) resolution of the Cb and Cr components</li>
+<li>白話文：減少影像使用的顏色數量</li>
+</ul>
+</li>
+<li>Block splitting<ul>
+<li>Wiki: depending on chroma sub-sampling, this yields Minimum Coded Unit (MCU) blocks of size 8×8 (4:4:4 when no sub-sampling), 16×8 (4:2:2), or most commonly 16×16 (4:2:0).</li>
+</ul>
+</li>
+<li>Apply DCT (discrete cosine transform)</li>
+<li>Quantization (the lossy part in JPEG compression)</li>
+<li>Huffman encoding, get the .JPG file</li>
+</ol>
+<h3 id="Down-sampling"><a href="#Down-sampling" class="headerlink" title="Down-sampling"></a>Down-sampling</h3><ul>
+<li>04:37開始：<ul>
+<li>One of the nice things about Y’CbCr is that human eye doesn’t really see chrominance very well. It’s certainly a much lower resolution than we see changes in intensity.</li>
+<li>Just like with TV encoding, we can massively down sample the amount of Cb and Cr that we see in the image.</li>
+</ul>
+</li>
+<li>06:14 Down-sampling is sometimes tied to the quality of the JPG that you output.<ul>
+<li>影像軟體在輸出.JPG檔案時，「品質」調整的通常就是down-sampling的程度</li>
+</ul>
+</li>
+<li>06:29 In general, most software will use a down-sample of 2 in both direction, which is 4 times less colors.</li>
+</ul>
+<h2 id="Part-2-DCT-Discrete-Cosine-Transform"><a href="#Part-2-DCT-Discrete-Cosine-Transform" class="headerlink" title="Part 2: DCT (Discrete Cosine Transform)"></a>Part 2: DCT (Discrete Cosine Transform)</h2><iframe width="560" height="315" src="https://www.youtube.com/embed/Q2aEzeMDHMA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<h3 id="DCT"><a href="#DCT" class="headerlink" title="DCT"></a>DCT</h3><ul>
+<li>02:53 …in JPEG, we can get rid of some of the higher frequency signals and the general gist of the image will still be there.</li>
+<li>03:19 What we do in JPEG is we split each image into 8 by 8 pixel groups, and each of those pixel groups is separately encoded with its own discrete cosine transform.</li>
+<li>Wiki:<ul>
+<li>Each 8 by 8 pixel group is converted to a frequency-domain representation by “normalized, two-dimensional type-II DCT”.</li>
+<li>Before computing the DCT of the pixel group, its values are shifted from a positive range to one centered on zero (from <code>[0, 255]</code> to <code>[-128, 127]</code>). This step reduces the dynamic range requirements in the DCT processing stage that follows.<figure class="figure--center"><img src="/2021/how-jpeg-works/patterns.png" title="two-dimensional DCT basis functions"><figcaption><p>two-dimensional DCT basis functions</p></figcaption></figure></li>
+<li>The DCT transforms an pixel group of input values to a linear combination of these 64 patterns (see above image). The output values are referred to as <strong>transform coefficients</strong>.</li>
+</ul>
+</li>
+</ul>
+<h3 id="Quantization"><a href="#Quantization" class="headerlink" title="Quantization"></a>Quantization</h3><ul>
+<li>08:27 After calculating the discrete cosine transform coefficients, we will try to remove the ones we don’t want. We call the process of removing the high frequency data “quantization”.</li>
+<li>Wiki: the elements in the quantization matrix control the compression ratio, with larger values producing greater compression.<ul>
+<li>白話文：DCT結束後得到的<strong>transform coefficients</strong>會根據quantization matrix繼續壓縮。quantization matrix會指示<strong>transform coefficients</strong>中每一個像素被壓縮的程度；quantization matrix中越大的數字代表越大的壓縮比例</li>
+<li>12:55 If we increase the values in the quantization table, we’re essentially operating a lower JPEG quality setting.</li>
+</ul>
+</li>
+</ul>
+<h3 id="Quantization-matrix-quantization-table"><a href="#Quantization-matrix-quantization-table" class="headerlink" title="Quantization matrix (quantization table)"></a>Quantization matrix (quantization table)</h3><p>Wiki: the quantization matrix is designed to provide more resolution to more perceivable frequency components over less perceivable components (usually lower frequencies over high frequencies) in addition to transforming as many components to 0, which can be encoded with greatest efficiency.</p>
+<p>白話文：quantization matrix會盡可能保留人眼可察覺的部分（通常是低頻率的部分），捨棄人眼察覺不出來的部分（高頻率的部分）</p>
+<h3 id="Huffman-encoding"><a href="#Huffman-encoding" class="headerlink" title="Huffman encoding"></a>Huffman encoding</h3><ul>
+<li>以zigzag的形式來編碼<strong>transform coefficients</strong></li>
+<li><strong>transform coefficients</strong>中，通常是左上角擁有較多資訊，而右下角偏向被捨棄，搭配Huffman encoding可以讓尾部大量的0一起被壓縮<ul>
+<li>10:34 We serialize them out into a long line, and we use Huffman encoding to shrink them right down.</li>
+</ul>
+</li>
+</ul>
+<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
+<li><a href="https://en.wikipedia.org/wiki/YCbCr">Wikipedia: YCbCr</a></li>
+<li><a href="https://en.wikipedia.org/wiki/JPEG">Wikipedia: JPEG</a></li>
+<li><a href="https://en.wikipedia.org/wiki/JPEG_File_Interchange_Format">Wikipedia: JPEG File Interchange Format</a></li>
+</ul>
+]]></content>
+  </entry>
+  <entry>
+    <title>「JavaScript陣列遍歷」相關筆記</title>
+    <url>/2021/js-array-iterate/</url>
+    <content><![CDATA[<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>本篇文章是關於JavaScript遍歷陣列（部分方法也可直接遍歷物件）方法的筆記。<br>keywords: array, iterate, iteration</p>
+<ul>
+<li>不會回傳新陣列的方式：<code>for</code>搭配<code>length()</code>、<code>while</code>搭配<code>length()</code>、<code>for...in</code>、<code>for...of</code>、<code>every()</code>、<code>some()</code>、<code>forEach()</code>、<code>join</code>、<code>reduce()</code></li>
+<li>會回傳一個新陣列的方式：<code> filter()</code>、<code>flat()</code>、<code>flatMap()</code>、<code>map()</code></li>
+</ul>
+<a id="more"></a>
+
+<h2 id="不會回傳新陣列"><a href="#不會回傳新陣列" class="headerlink" title="不會回傳新陣列"></a>不會回傳新陣列</h2><h3 id="for搭配length"><a href="#for搭配length" class="headerlink" title="for搭配length()"></a><code>for</code>搭配<code>length()</code></h3><ul>
+<li>可遍歷陣列</li>
+<li>不可直接遍歷物件</li>
+</ul>
+<iframe height="400px" width="100%" src="https://replit.com/@Charlie7779/forDa-Pei-Arrayprototypelength?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+
+
+<ul>
+<li><code>Array.prototype.length</code>會回傳一個陣列內有多少個物件（並回傳物件的類別是number）</li>
+<li>陣列物件會從零開始數（0 based index），三個物件的陣列會讓<code>Array.prototype.length</code>回傳<code>3</code>，而陣列內物件的index依序為0、1、2</li>
+<li>搭配<code>for</code>迴圈，從第一個物件（index 0）開始，直到index等於<code>Array.prototype.length</code>前停止</li>
+<li>無法用這種方式來遍歷object，因為對object使用<code>Array.prototype.length</code>會回傳<code>undefined</code>（參考以下示範）<iframe height="400px" width="100%" src="https://replit.com/@Charlie7779/ArrayprototypelengthWu-Fa-Da-Pei-object?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+
+
+</li>
+</ul>
+<p>參考：<br><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/length">MDN: Array.prototype.length</a></p>
+<h4 id="題外話：如何得知object的長度"><a href="#題外話：如何得知object的長度" class="headerlink" title="題外話：如何得知object的長度"></a>題外話：如何得知object的長度</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> size = <span class="built_in">Object</span>.keys(myObj).length;</span><br></pre></td></tr></table></figure>
+<p><code>Object.keys()</code>會回傳一個陣列，陣列裡面包含一個物件的所有<code>key</code>，對回傳的陣列取其<code>length</code>即可知道物件的長度；參考：</p>
+<ul>
+<li><a href="https://stackoverflow.com/questions/5223/length-of-a-javascript-object">stack overflow: Length of a JavaScript object</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/keys">MDN: Object.keys</a></li>
+</ul>
+<h3 id="while搭配length"><a href="#while搭配length" class="headerlink" title="while搭配length()"></a><code>while</code>搭配<code>length()</code></h3><ul>
+<li>可遍歷陣列</li>
+<li>不可直接遍歷物件</li>
+</ul>
+<iframe height="400px" width="100%" src="https://replit.com/@Charlie7779/whileDa-Pei-Arrayprototypelength?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+
+<p>將<code>Array.prototype.length</code>設定為<code>while</code>迴圈的條件</p>
+<h4 id="題外話：把normal-function轉換成arrow-function"><a href="#題外話：把normal-function轉換成arrow-function" class="headerlink" title="題外話：把normal function轉換成arrow function"></a>題外話：把normal function轉換成arrow function</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 把function的部分獨立出來</span></span><br><span class="line"><span class="function"><span class="keyword">function</span>(<span class="params">item</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.lot(item)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 用一個變數來存放arrow function</span></span><br><span class="line"><span class="keyword">let</span> <span class="function"><span class="keyword">function</span> = (<span class="params">item</span>) =&gt; </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(item)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// &#123;&#125;裡面只有一行console.log(item)，拿掉&#123;&#125;</span></span><br><span class="line"><span class="keyword">let</span> <span class="function"><span class="keyword">function</span> = (<span class="params">item</span>) =&gt; <span class="title">console</span>.<span class="title">log</span>(<span class="params">item</span>)</span></span><br></pre></td></tr></table></figure>
+<p>參考：</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/NAN7U3MrX6o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
+<h3 id="for-in"><a href="#for-in" class="headerlink" title="for...in"></a><code>for...in</code></h3><ul>
+<li>可遍歷陣列</li>
+<li>可遍歷物件</li>
+</ul>
+<iframe height="400px" width="100%" src="https://replit.com/@Charlie7779/forinBian-Li?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+
+<ul>
+<li>只會遍歷enumerable、non-Symbol <strong>properties</strong></li>
+<li>參考<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...in#description">MDN的說明</a>：<ul>
+<li>A <code>for...in</code> loop <strong>only</strong> iterates over <strong>enumerable, non-Symbol properties</strong>.</li>
+<li>Objects created from built–in constructors like <code>Array()</code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Array">(ref.)</a> and <code>Object()</code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/Object">(ref.)</a> have inherited non–enumerable properties from <code>Object.prototype</code> and <code>String.prototype</code>, such as String’s <code>indexOf()</code> method or Object’s <code>toString()</code> method.</li>
+</ul>
+</li>
+<li>遍歷的是enumerable <strong>properties</strong> (key-value pair中的<strong>key</strong>)，而非value；使用<code>for...in</code>遍歷陣列或字串時需注意是否抓取到正確的物件，參考以下示範：  <iframe height="400px" width="100%" src="https://replit.com/@Charlie7779/forinBian-Li-Zhen-Lie-Yu-Zi-Chuan?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+
+</li>
+</ul>
+<h3 id="for-of"><a href="#for-of" class="headerlink" title="for...of"></a><code>for...of</code></h3><ul>
+<li>可遍歷陣列</li>
+<li>不可直接遍歷物件</li>
+</ul>
+<iframe height="400px" width="100%" src="https://replit.com/@Charlie7779/forofBian-Li?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+
+<ul>
+<li><p>可遍歷任何「可遍歷的物件」（iterable objects）</p>
+<ul>
+<li>JavaScript built-in iterable objects: Array, array-like objects (arguments, NodeList), TypedArray, Map, Set, String</li>
+<li>而Object不是iterable objects，對Object使用<code>for...of</code>會回傳<code>Error: not iterable</code></li>
+<li>iterable objects可參考<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols#the_iterable_protocol">MDN的說明</a></li>
+</ul>
+</li>
+<li><p>無法遍歷到使用「non-numeric」作為索引的值</p>
+  <iframe height="400px" width="100%" src="https://replit.com/@Charlie7779/forofWu-Fa-Bian-Li-non-numeric-properties?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+</li>
+<li><p>無法直接遍歷「包含了non-numeric索引」的陣列</p>
+  <iframe height="400px" width="100%" src="https://replit.com/@Charlie7779/forofWu-Fa-Zhi-Jie-Bian-Li-You-forofWu-Fa-Zhi-Jie-Bian-Li-Bao-Han-non-numeric-propertiesDe-Zhen-Lie?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+</li>
+<li><p>但如果先建立一個沒有「non-numeric索引」的陣列，再assign「包含了non-numeric索引」的值進去陣列裡面，這樣是可以遍歷的</p>
+  <iframe height="400px" width="100%" src="https://replit.com/@Charlie7779/forofKe-Yi-Bian-Li-Xuan-Gao-Hou-Bu-Jia-Shang-non-numeric-propertiesDe-Zhen-Lie?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+
+
+</li>
+</ul>
+<h3 id="every"><a href="#every" class="headerlink" title="every()"></a><code>every()</code></h3><ul>
+<li>可遍歷陣列</li>
+<li>不可直接遍歷物件<iframe height="400px" width="100%" src="https://replit.com/@Charlie7779/Arrayprototypeevery?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+
+
+</li>
+</ul>
+<ul>
+<li><code>every()</code>會對陣列中的每一個物件執行放在括號中的function（callback function）</li>
+<li>如果所有的物件傳入callback function後都回傳truthy value，則<code>every()</code>會回傳true，否則<code>every()</code>回傳false</li>
+<li>一旦callback function回傳falsy value，<code>every()</code>就會停止（參考上方示範碼第21行輸出的結果）</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/every#description">參考MDN的說明</a>：對空的陣列執行<code>every()</code>，不管callback function的條件是什麼，<code>every()</code>都會回傳true</li>
+<li><code>every()</code>不會對被刪除的、空的值執行callback function</li>
+</ul>
+<h3 id="some"><a href="#some" class="headerlink" title="some()"></a><code>some()</code></h3><ul>
+<li>可遍歷陣列</li>
+<li>不可直接遍歷物件</li>
+</ul>
+<iframe height="400px" width="100%" src="https://replit.com/@Charlie7779/Arrayprototypesome?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+
+<ul>
+<li>對陣列中的每一個物件執行callback function，只要有一個物件讓callback function回傳truthy value，<code>some()</code>就會回傳true</li>
+</ul>
+<h3 id="forEach"><a href="#forEach" class="headerlink" title="forEach()"></a><code>forEach()</code></h3><ul>
+<li>可遍歷陣列</li>
+<li>不可直接遍歷物件</li>
+</ul>
+<iframe height="400px" width="100%" src="https://replit.com/@Charlie7779/forEach?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+
+<ul>
+<li><code>forEach()</code>會對陣列中的每一個物件執行放在括號中的function（callback function）</li>
+<li><code>forEach()</code>不會對被刪除的、空的值執行callback function（<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach#description">MDN</a>: It is not invoked for index properties that have been deleted or are uninitialized.），可參考以下範例：  <iframe height="400px" width="100%" src="https://replit.com/@Charlie7779/forEach-invoked-count?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+
+
+</li>
+</ul>
+<h3 id="join"><a href="#join" class="headerlink" title="join()"></a><code>join()</code></h3><ul>
+<li>可遍歷陣列</li>
+<li>不可直接遍歷物件</li>
+</ul>
+<iframe height="400px" width="100%" src="https://replit.com/@Charlie7779/Arrayprototypejoin?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+
+<ul>
+<li>回傳「將陣列依照括號內條件」組合起來的字串（類型：string）</li>
+</ul>
+<h3 id="reduce"><a href="#reduce" class="headerlink" title="reduce()"></a><code>reduce()</code></h3><ul>
+<li>可遍歷陣列</li>
+<li>不可直接遍歷物件</li>
+</ul>
+<iframe height="400px" width="100%" src="https://replit.com/@Charlie7779/Arrayprototypereduce?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+
+<ul>
+<li>雖然名稱是reduce，但通常拿來做加總計算；回傳一個值（類型：number）</li>
+<li><code>reduce()</code>的callback最少需要兩個參數<code>accumulator</code>與<code>currentValue</code><ul>
+<li><code>accumulator</code>：如其名稱，代表累加下來的值；負責記住callback要回傳的值</li>
+<li><code>currentValue</code>：需額外納入<code>reduce()</code>計算過程中的數字</li>
+</ul>
+</li>
+<li><code>reduceRight()</code>則是從陣列的右側向左遍歷</li>
+</ul>
+<h2 id="會回傳新陣列"><a href="#會回傳新陣列" class="headerlink" title="會回傳新陣列"></a>會回傳新陣列</h2><h3 id="filter"><a href="#filter" class="headerlink" title="filter()"></a><code>filter()</code></h3><ul>
+<li>可遍歷陣列</li>
+<li>不可直接遍歷物件</li>
+</ul>
+<iframe height="400px" width="100%" src="https://replit.com/@Charlie7779/Arrayprototypefilter?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+
+<ul>
+<li>回傳一個新的陣列，新的陣列中包含「傳入callback function後，判定為true」的所有物件</li>
+<li>概念與<code>forEach()</code>類似：<code>filter()</code>不會對被刪除的、空的值執行callback function（<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter#description">參考MDN的說明</a>）</li>
+</ul>
+<h3 id="flat"><a href="#flat" class="headerlink" title="flat()"></a><code>flat()</code></h3><ul>
+<li>可遍歷陣列</li>
+<li>不可直接遍歷物件</li>
+</ul>
+<iframe height="400px" width="100%" src="https://replit.com/@Charlie7779/Arrayprototypeflat?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+
+<ul>
+<li>根據括號內的參數來將陣列扁平化，回傳一個新的陣列</li>
+<li>預設參數為1</li>
+<li>其他應用（<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/flat#examples">參考MDN</a>）：<ul>
+<li>參數傳入<code>Infinity</code>的話，陣列中任何深度的巢狀陣列全部都會被扁平化<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> arr = [<span class="number">1</span>, <span class="number">2</span>, [<span class="number">3</span>, <span class="number">4</span>, [<span class="number">5</span>, <span class="number">6</span>, [<span class="number">7</span>, <span class="number">8</span>, [<span class="number">9</span>, <span class="number">10</span>]]]]];</span><br><span class="line">arr.flat(<span class="literal">Infinity</span>);</span><br><span class="line"><span class="comment">// [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]</span></span><br></pre></td></tr></table></figure></li>
+<li>可以拿來去除陣列中的空位<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> arr = [<span class="number">1</span>, <span class="number">2</span>, , <span class="number">4</span>, <span class="number">5</span>];</span><br><span class="line">arr.flat();</span><br><span class="line"><span class="comment">// [1, 2, 4, 5]</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="flatMap"><a href="#flatMap" class="headerlink" title="flatMap()"></a><code>flatMap()</code></h3><p>功能上：即是<code>map()</code>加上<code>flat(1)</code>，但濃縮為一個method</p>
+<h3 id="map"><a href="#map" class="headerlink" title="map()"></a><code>map()</code></h3><ul>
+<li>可遍歷陣列</li>
+<li>不可直接遍歷物件</li>
+</ul>
+<iframe height="400px" width="100%" src="https://replit.com/@Charlie7779/map?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+
+<ul>
+<li><code>map()</code>會對陣列中的每一個物件執行放在括號中的function（callback function），並回傳一個新陣列</li>
+<li>概念與<code>forEach()</code>類似：<code>map()</code>不會對被刪除的、空的值執行callback function（<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map#description">參考MDN的說明</a>）</li>
+</ul>
+<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
+<li><a href="https://dev.to/misterkevin_js/11-ways-to-iterate-an-array-javascript-3mjg">11 ways to iterate an array in Javascript</a></li>
+<li><a href="https://www.w3schools.com/JS/js_array_iteration.asp">w3school.com: JavaScript Array Iteration Methods</a></li>
+<li><a href="https://www.geeksforgeeks.org/ways-iterating-array-javascript/">GeeksforGeeks: Ways of iterating over a array in JavaScript</a></li>
+<li><a href="https://masteringjs.io/tutorials/fundamentals/array-iterate">Mastering JS: How to Iterate through an Array in JavaScript</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
       </categories>
   </entry>
   <entry>

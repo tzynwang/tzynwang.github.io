@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>普通文組</title>
+  <icon>https://tzynwang.github.io/icon.png</icon>
+  <subtitle>Keep calm and read the docs</subtitle>
+  <link href="https://tzynwang.github.io/atom.xml" rel="self"/>
+  
+  <link href="https://tzynwang.github.io/"/>
+  <updated>2021-03-29T11:20:32.732Z</updated>
+  <id>https://tzynwang.github.io/</id>
+  
+  <author>
+    <name>Charlie (Tzu Yin)</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>「How JPEG Works」相關筆記</title>
+    <link href="https://tzynwang.github.io/2021/how-jpeg-works/"/>
+    <id>https://tzynwang.github.io/2021/how-jpeg-works/</id>
+    <published>2021-03-28T08:02:12.000Z</published>
+    <updated>2021-03-29T11:20:32.732Z</updated>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;總結&quot;&gt;&lt;a href=&quot;#總結&quot; class=&quot;headerlink&quot; title=&quot;總結&quot;&gt;&lt;/a&gt;總結&lt;/h2&gt;&lt;p&gt;問：JPEG到底是什麼？&lt;br&gt;答：實際上是一種壓縮影像的演算法&lt;/p&gt;
+&lt;p&gt;問：JPEG如何壓縮影像？&lt;br&gt;簡答：將影像從RGB轉換為Y’CbCr，捨棄多餘的顏色資訊、壓縮人眼不易察覺的部分（影像中高頻率變化的部分）後，輸出為.jpg檔案&lt;/p&gt;
+&lt;p&gt;內收關於影片組「&lt;a href=&quot;https://www.youtube.com/playlist?list=PLzH6n4zXuckoAod3z31QEST1ZaizBuNHh&quot;&gt;How JPEG Works&lt;/a&gt;」的相關筆記、JPEG詳細的壓縮過程，與其他參考資料來源。&lt;/p&gt;</summary>
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>「JavaScript陣列遍歷」相關筆記</title>
+    <link href="https://tzynwang.github.io/2021/js-array-iterate/"/>
+    <id>https://tzynwang.github.io/2021/js-array-iterate/</id>
+    <published>2021-03-27T01:37:48.000Z</published>
+    <updated>2021-03-29T11:20:32.737Z</updated>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;總結&quot;&gt;&lt;a href=&quot;#總結&quot; class=&quot;headerlink&quot; title=&quot;總結&quot;&gt;&lt;/a&gt;總結&lt;/h2&gt;&lt;p&gt;本篇文章是關於JavaScript遍歷陣列（部分方法也可直接遍歷物件）方法的筆記。&lt;br&gt;keywords: array, iterate, iteration&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;不會回傳新陣列的方式：&lt;code&gt;for&lt;/code&gt;搭配&lt;code&gt;length()&lt;/code&gt;、&lt;code&gt;while&lt;/code&gt;搭配&lt;code&gt;length()&lt;/code&gt;、&lt;code&gt;for...in&lt;/code&gt;、&lt;code&gt;for...of&lt;/code&gt;、&lt;code&gt;every()&lt;/code&gt;、&lt;code&gt;some()&lt;/code&gt;、&lt;code&gt;forEach()&lt;/code&gt;、&lt;code&gt;join&lt;/code&gt;、&lt;code&gt;reduce()&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;會回傳一個新陣列的方式：&lt;code&gt; filter()&lt;/code&gt;、&lt;code&gt;flat()&lt;/code&gt;、&lt;code&gt;flatMap()&lt;/code&gt;、&lt;code&gt;map()&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;</summary>
+    
+    
+    
+    <category term="JavaScript" scheme="https://tzynwang.github.io/categories/JavaScript/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>自主練習專案「grid-template-areas generator」技術記錄</title>
+    <link href="https://tzynwang.github.io/2021/grid-template-areas-generator-review/"/>
+    <id>https://tzynwang.github.io/2021/grid-template-areas-generator-review/</id>
+    <published>2021-03-24T04:18:30.000Z</published>
+    <updated>2021-03-29T11:20:32.731Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;總結&quot;&gt;&lt;a href=&quot;#總結&quot; class=&quot;headerlink&quot; title=&quot;總結&quot;&gt;&lt;/a&gt;總結&lt;/h2&gt;&lt;p&gt;微型專案「grid-template-areas</summary>
+        
+      
+    
+    
+    
+    <category term="CSS" scheme="https://tzynwang.github.io/categories/CSS/"/>
+    
+    
+    <category term="Side Project" scheme="https://tzynwang.github.io/tags/Side-Project/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>自主練習專案「日本文學經典50」技術記錄與反省</title>
+    <link href="https://tzynwang.github.io/2021/Japanese-50-review/"/>
+    <id>https://tzynwang.github.io/2021/Japanese-50-review/</id>
+    <published>2021-03-23T05:16:10.000Z</published>
+    <updated>2021-03-29T11:20:32.690Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;總結&quot;&gt;&lt;a href=&quot;#總結&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="CSS" scheme="https://tzynwang.github.io/categories/CSS/"/>
+    
+    
+    <category term="Side Project" scheme="https://tzynwang.github.io/tags/Side-Project/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ALPHA Camp 履歷網頁作業：內容解析</title>
+    <link href="https://tzynwang.github.io/2021/S4-A14-assignment-anatomy/"/>
+    <id>https://tzynwang.github.io/2021/S4-A14-assignment-anatomy/</id>
+    <published>2021-03-20T13:06:49.000Z</published>
+    <updated>2021-03-29T11:20:32.729Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;總結&quot;&gt;&lt;a href=&quot;#總結&quot; class=&quot;headerlink&quot; title=&quot;總結&quot;&gt;&lt;/a&gt;總結&lt;/h2&gt;&lt;p&gt;記錄在2021年ALPHA Camp學期一、三月班第三週履歷網頁作業使用到的技術、思路與開發流程。&lt;/p&gt;
+&lt;h2 id=&quot;成品&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="CSS" scheme="https://tzynwang.github.io/categories/CSS/"/>
+    
+    
+    <category term="ALPHA Camp作業" scheme="https://tzynwang.github.io/tags/ALPHA-Camp%E4%BD%9C%E6%A5%AD/"/>
+    
+  </entry>
+  
+</feed>

@@ -23,15 +23,15 @@
   </script>
 <meta name="description" content="重點整理 有重複的CSS樣式規則套用到同一個HTML元素上的時候，權重（specificity）高的樣式會覆蓋權重低的樣式設定。 原始碼中位置越下方（後發）的CSS樣式會複寫先寫出來的樣式。 樣式規則有衝突的時候，權重較高的樣式會覆蓋權重低的樣式。衝突規則的權重一樣大的時候，後發的樣式會覆蓋先寫的樣式。  SpecificitySpecificity（以降以「權重」稱之）的高低影響哪一些CSS樣式">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CSS Specificity 相關筆記">
+<meta property="og:title" content="「CSS Specificity」相關筆記">
 <meta property="og:url" content="https://tzynwang.github.io/2021/css-specificity/index.html">
 <meta property="og:site_name" content="普通文組">
 <meta property="og:description" content="重點整理 有重複的CSS樣式規則套用到同一個HTML元素上的時候，權重（specificity）高的樣式會覆蓋權重低的樣式設定。 原始碼中位置越下方（後發）的CSS樣式會複寫先寫出來的樣式。 樣式規則有衝突的時候，權重較高的樣式會覆蓋權重低的樣式。衝突規則的權重一樣大的時候，後發的樣式會覆蓋先寫的樣式。  SpecificitySpecificity（以降以「權重」稱之）的高低影響哪一些CSS樣式">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://tzynwang.github.io/2021/css-specificity/fullhouse.jpg">
 <meta property="article:published_time" content="2021-03-18T12:52:44.000Z">
-<meta property="article:modified_time" content="2021-03-19T03:51:20.409Z">
-<meta property="article:author" content="Charlie（茶）">
+<meta property="article:modified_time" content="2021-03-29T11:20:32.730Z">
+<meta property="article:author" content="Charlie (Tzu Yin)">
 <meta property="article:tag" content="hexo, hexo blog, tzyn, 普通文組">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://tzynwang.github.io/2021/css-specificity/fullhouse.jpg">
@@ -49,7 +49,7 @@
     lang   : 'en'
   };
 </script>
-<title>CSS Specificity 相關筆記 | 普通文組</title>
+<title>「CSS Specificity」相關筆記 | 普通文組</title>
   
 
 
@@ -90,6 +90,7 @@
   </style>
 </noscript>
 
+<link rel="alternate" href="/atom.xml" title="普通文組" type="application/atom+xml">
 <script>function loadCss(l){var d=document,h=d.head,s=d.createElement('link');s.rel='stylesheet';s.href=l;!function e(f){if (d.body)return f();setTimeout(function(){e(f)})}(function(){h.appendChild(s);});}loadCss('/style.css');loadCss('https://fonts.googleapis.com/css2?family=Noto+Sans+TC&family=Roboto&display=swap/css?family=Roboto:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext');loadCss('https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.2/css/all.min.css');</script><noscript><link rel="stylesheet" href="/style.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC&amp;family=Roboto&amp;display=swap/css?family=Roboto:300,300italic,400,400italic,700,700italic&amp;display=swap&amp;subset=latin,latin-ext"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.2/css/all.min.css"></noscript></head>
 
 <body itemscope="" itemtype="http://schema.org/WebPage">
@@ -131,6 +132,7 @@
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
         <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li>
         <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+        <li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section"><i class="fas fa-rss fa-fw"></i>RSS</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
         </a>
@@ -191,24 +193,29 @@
 
         <div class="site-overview-wrap sidebar-panel">
           <div class="site-author site-overview-item animated" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="Charlie（茶）" src="/images/avatar-pexels-alex-andrews-215-215.png">
-  <p class="site-author-name" itemprop="name">Charlie（茶）</p>
-  <div class="site-description" itemprop="description">希望沒有搞錯努力方向的普通人 🤪</div>
+    <img class="site-author-image" itemprop="image" alt="Charlie (Tzu Yin)" src="/images/avatar-pexels-alex-andrews-215-215.png">
+  <p class="site-author-name" itemprop="name">Charlie (Tzu Yin)</p>
+  <div class="site-description" itemprop="description">一介普通文組的學習筆記 📒</div>
 </div>
 <div class="site-state-wrap site-overview-item animated">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">19</span>
+          <span class="site-state-item-count">23</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-count">10</span>
         <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
 </div>
@@ -250,8 +257,8 @@
 
     <span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar-pexels-alex-andrews-215-215.png">
-      <meta itemprop="name" content="Charlie（茶）">
-      <meta itemprop="description" content="希望沒有搞錯努力方向的普通人 🤪">
+      <meta itemprop="name" content="Charlie (Tzu Yin)">
+      <meta itemprop="description" content="一介普通文組的學習筆記 📒">
     </span>
 
     <span hidden="" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
@@ -259,7 +266,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          CSS Specificity 相關筆記
+          「CSS Specificity」相關筆記
         </h1>
 
         <div class="post-meta-container">
@@ -277,7 +284,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-03-19 11:51:20" itemprop="dateModified" datetime="2021-03-19T11:51:20+08:00">2021-03-19</time>
+        <time title="Modified: 2021-03-29 19:20:32" itemprop="dateModified" datetime="2021-03-29T19:20:32+08:00">2021-03-29</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -307,8 +314,10 @@
 <h2 id="Specificity"><a href="#Specificity" class="headerlink" title="Specificity"></a>Specificity</h2><p>Specificity（以降以「權重」稱之）的高低影響哪一些CSS樣式會發生作用。<br>設定好的CSS沒有作用，可能就是CSS樣式的權重沒有妥善安排，導致編寫好的CSS樣式沒有如預期般套用到HTML元素上。</p>
 <p>權重從低至高順位分組如下：</p>
 <ol>
-<li>universal selector與inherited style：使用<code>*</code>選取「全部」與繼承得來的樣式，兩者的權重皆為<code>0-0-0-0-0</code>；最低的權重</li>
-<li>element selector、::pseudo-element selector：選取HTML元素或偽元素，權重為<code>0-0-0-0-1</code><ul>
+<li><p>universal selector與inherited style：使用<code>*</code>選取「全部」與繼承得來的樣式，兩者的權重皆為<code>0-0-0-0-0</code>；最低的權重</p>
+</li>
+<li><p>element selector、::pseudo-element selector：選取HTML元素或偽元素，權重為<code>0-0-0-0-1</code></p>
+<ul>
 <li><p>HTML元素：html、body、section、div、p……等HTML元素（element）</p>
 </li>
 <li><p>偽元素：</p>
@@ -319,7 +328,8 @@
 </li>
 </ul>
 </li>
-<li>.class selector、:pseudo-class selector、[attribute] selector：選取class、偽類或具有特定屬性（attribute）的HTML元素，權重為<code>0-0-0-1-0</code><ul>
+<li><p>.class selector、:pseudo-class selector、[attribute] selector：選取class、偽類或具有特定屬性（attribute）的HTML元素，權重為<code>0-0-0-1-0</code></p>
+<ul>
 <li><p>偽類：</p>
 <blockquote>
 <p>A CSS pseudo-class is a keyword added to a selector that specifies a special <strong>state</strong> of the selected element(s).</p>
@@ -330,9 +340,12 @@
 </li>
 </ul>
 </li>
-<li>#id selector：選取擁有某id的HTML元素，權重是<code>0-0-1-0-0</code></li>
-<li>inline style（比如<code>&lt;p style="color: red;"&gt;text&lt;/p&gt;</code>）：權重是<code>0-1-0-0-0</code>，不過這樣會讓原始碼的維護性變差，所以還是避免使用吧</li>
-<li><code>!important</code>：擁有最大的權重<code>1-0-0-0-0</code>，而後發的<code>!important</code>會壓過先寫出來的<code>!important</code></li>
+<li><p>#id selector：選取擁有某id的HTML元素，權重是<code>0-0-1-0-0</code></p>
+</li>
+<li><p>inline style（比如<code>&lt;p style="color: red;"&gt;text&lt;/p&gt;</code>）：權重是<code>0-1-0-0-0</code>，不過這樣會讓原始碼的維護性變差，所以還是避免使用吧</p>
+</li>
+<li><p><code>!important</code>：擁有最大的權重<code>1-0-0-0-0</code>，而後發的<code>!important</code>會壓過先寫出來的<code>!important</code></p>
+</li>
 </ol>
 <h3 id="權重的計算方式"><a href="#權重的計算方式" class="headerlink" title="權重的計算方式"></a>權重的計算方式</h3><p>參考以上劃分的六種權重分組，將選取器中屬於同一組的選擇器條件相加後進行比大小。<br>舉個🌰，假設以下兩種<code>color</code>的樣式設定位在同一份原始碼裡面：</p>
 <figure class="highlight css"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#blue</span> { <span class="comment">/* 第一組樣式 */</span></span><br><span class="line">  <span class="attribute">color</span>: blue;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">div</span> <span class="selector-tag">p</span> { <span class="comment">/* 第二組樣式 */</span></span><br><span class="line">  <span class="attribute">color</span>: red;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
@@ -502,7 +515,7 @@
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">Charlie（茶）</span>
+  <span class="author" itemprop="copyrightHolder">Charlie (Tzu Yin)</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> &amp; <a href="https://theme-next.js.org/pisces/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
