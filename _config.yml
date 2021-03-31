@@ -5,9 +5,9 @@
 # Site
 title: 普通文組
 subtitle: Keep calm and read the docs
-description: 希望沒有搞錯努力方向的普通人 🤪
+description: 一介普通文組的學習筆記 📒
 keywords: hexo, hexo blog, tzyn, 普通文組
-author: Charlie（茶）
+author: Charlie (Tzu Yin)
 since: 2021
 language: en
 timezone: 
@@ -159,3 +159,21 @@ filter_optimize:
   # set the priority of this plugin,
   # lower means it will be executed first, default of Hexo is 10
   priority: 12
+
+# RSS feed
+## https://github.com/hexojs/hexo-generator-feed
+plugins:
+  hexo-generator-feed
+feed:
+  enable: true
+  type: atom
+  path: atom.xml
+  limit: 5
+  hub:
+  content:
+  content_limit: 140
+  content_limit_delim: ' '
+  order_by: -date
+  icon: icon.png
+  autodiscovery: true
+  template:
