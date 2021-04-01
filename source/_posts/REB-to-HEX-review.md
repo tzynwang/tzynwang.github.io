@@ -57,3 +57,4 @@ os: Windows_NT 10.0.18363 win32 x64
 - https://stackoverflow.com/questions/35948669/how-to-check-if-a-value-exists-in-an-object-using-javascript
 - https://stackoverflow.com/questions/14802481/get-element-of-js-object-with-an-index
 - https://stackoverflow.com/questions/27976282/bootstrap-glyphicons-not-showing-on-local-url
+- https://www.nodejsera.com/snippets/nodejs/appendfile-sync.html：解決輸出亂飄的問題
