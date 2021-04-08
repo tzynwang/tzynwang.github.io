@@ -197,7 +197,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-count">25</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -238,6 +238,290 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope="" itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tzynwang.github.io/2021/while-loop-ajax/">
+
+    <span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar-pexels-alex-andrews-215-215.png">
+      <meta itemprop="name" content="Charlie (Tzu Yin)">
+      <meta itemprop="description" content="一介普通文組的學習筆記 📒">
+    </span>
+
+    <span hidden="" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="普通文組">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/while-loop-ajax/" class="post-title-link" itemprop="url">為什麼在瀏覽器環境中使用while loop執行ajax request讓頁面陷入凍結狀態？</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-04-08 21:10:25 / Modified: 22:52:25" itemprop="dateCreated datePublished" datetime="2021-04-08T21:10:25+08:00">2021-04-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="環境"><a href="#環境" class="headerlink" title="環境"></a>環境</h2><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Google Chrome: 89.0.4389.114 (Official Build) (64-bit)</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="原始題目"><a href="#原始題目" class="headerlink" title="原始題目"></a>原始題目</h2><p>請向 <a target="_blank" rel="noopener" href="https://randomuser.me/">RANDOM USER GENERATOR</a> 這支API索取資料，並在瀏覽器畫面上點擊按鈕後，輸出三位「只有女性」的資料。</p>
+<h2 id="遭遇問題"><a href="#遭遇問題" class="headerlink" title="遭遇問題"></a>遭遇問題</h2><p>最初想要使用以下程式碼來過濾API回傳的資料，但會讓瀏覽器分頁陷入凍結狀態：</p>
+<script src="https://gist.github.com/tzynwang/b7049eb35ec2a9950f4c48f1fdd48c28.js"></script>
+
+
+<h2 id="問題背後的脈絡梳理"><a href="#問題背後的脈絡梳理" class="headerlink" title="問題背後的脈絡梳理"></a>問題背後的脈絡梳理</h2><p>基本上Philip Roberts的影片回答了「為什麼以上程式碼會造成瀏覽器凍結？」的問題：</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/8aGhZQkoFbQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+
+<ul>
+<li>V8（Chrome的JavaScript runtime）本身僅包含call stack與heap，V8的原始碼沒有<code>setTimeout()</code>、<code>XMLHttpRequest</code>（實現ajax的API）等內容</li>
+<li><code>setTimeout()</code>與<code>XMLHttpRequest</code>並非由ECMAScript定義，在MDN文件中，這兩個功能分別由HTML Living Standard與XMLHttpRequest Living Standard規範<ul>
+<li><code>setTimeout()</code>: <a target="_blank" rel="noopener" href="https://html.spec.whatwg.org/multipage/timers-and-user-prompts.html#dom-settimeout">HTML Living Standard</a></li>
+<li><code>XMLHttpRequest</code>: <a target="_blank" rel="noopener" href="https://xhr.spec.whatwg.org/">XMLHttpRequest Living Standard</a></li>
+</ul>
+</li>
+<li><code>setTimeout()</code>與<code>XMLHttpRequest</code>的callback function會停留在callback queue，等待stack裡面的task被清空後，這些停留在callback queue的task才會被執行</li>
+<li>瀏覽器分頁當機的原因是：我請JavaScript在user array長度沒有大於4前，不停執行<code>getFemaleUser()</code>此功能<ul>
+<li>在<code>getFemaleUser()</code>中，我使用ajax技術向API請求資料，但是，「整理取得的資料」這個task會停留在callback queue中</li>
+<li>而在stack沒有清空前，callback queue是不會被推到stack被執行的</li>
+<li>stack因為while loop的條件一直為true（整理資料的task沒有被執行的話，user array的長度是不會改變的），所以while loop會一直被執行下去</li>
+<li>在程式碼加上<code>console.log()</code>觀察實際被執行的內容，可以很明顯看出<code>axios.get()</code>以內的程式碼根本沒有被執行<script src="https://gist.github.com/tzynwang/b0f95a819bf495c771c321cfaa4ecf8e.js"></script>
+<figure class="figure--center"><img src="/2021/while-loop-ajax/ajax.png" title="因為stack裡面的任務沒有清空，callback queue裡面的task永遠不會被執行"><figcaption><p>因為stack裡面的任務沒有清空，callback queue裡面的task永遠不會被執行</p></figcaption></figure>
+
+
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="結論"><a href="#結論" class="headerlink" title="結論"></a>結論</h2><ul>
+<li>我的while loop條件是根據callback queue task來決定的，但我讓callback queue中的task永遠沒有機會被執行</li>
+<li>而JavaScript的single thread特性會讓它不停地執行stack內的任務，直到stack清空之前JavaScript不會處理其他事情，所以分頁畫面凍結了，JavaScript也永遠卡在while loop裡面</li>
+<li>Jake Archibald的演講在提到Render steps時提供了相關說明，約8:55開始：<iframe width="560" height="315" src="https://www.youtube.com/embed/cCOL7MC4Pl0?start=535" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+
+
+</li>
+</ul>
+<h2 id="此問題的解決方式"><a href="#此問題的解決方式" class="headerlink" title="此問題的解決方式"></a>此問題的解決方式</h2><ul>
+<li>直接根據<a target="_blank" rel="noopener" href="https://randomuser.me/documentation#gender">RANDOM USER GENERATOR的說明文件</a>在請求的URL加上特定parameter過濾需求資料（女性、三位：<code>?gender=female&amp;results=3</code>）</li>
+<li>透過recursive讓<code>getFemaleUser()</code>在條件沒有被滿足的情況下再度呼叫<code>getFemaleUser()</code></li>
+</ul>
+<h2 id="補充"><a href="#補充" class="headerlink" title="補充"></a>補充</h2><figure class="figure--center"><img src="/2021/while-loop-ajax/setTimeout.png" title="因為stack裡面的任務沒有清空，callback queue裡面的task永遠不會被執行"><figcaption><p>因為stack裡面的任務沒有清空，callback queue裡面的task永遠不會被執行</p></figcaption></figure>
+<ul>
+<li>將<code>axios.get()</code>抽換為<code>setTimeout()</code>也會造成頁面凍結，原理與上述一致</li>
+<li><code>setTimeout()</code>的callback function（<code>arr.push("add item to array");</code>）被推到callback queue之後，<code>arr.push</code>等待stack被清空，但能讓while loop停下來的task本身就在callback queue中被stack永遠不會結束的task卡住，因此while loop永遠不會停下來<figure class="figure--center"><img src="/2021/while-loop-ajax/不要停下來.jpg"></figure>
+
+
+</li>
+</ul>
+<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://youtu.be/8aGhZQkoFbQ">What the heck is the event loop anyway? | Philip Roberts</a></li>
+<li><a target="_blank" rel="noopener" href="https://youtu.be/cCOL7MC4Pl0">Jake Archibald: In The Loop</a></li>
+<li><a target="_blank" rel="noopener" href="https://youtu.be/u1kqx6AenYw">Further Adventures of the Event Loop - Erin Zimmer</a></li>
+<li><a target="_blank" rel="noopener" href="https://pjchender.blogspot.com/2017/08/javascript-learn-event-loop-stack-queue.html">[筆記] 理解 JavaScript 中的事件循環、堆疊、佇列和併發模式（Learn event loop, stack, queue, and concurrency mode of JavaScript in depth）</a>：這篇文章內的影片全部都是Philip Roberts的演講內容，建議影片部分直接觀看Philip Roberts本人的演講錄影即可</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope="" itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tzynwang.github.io/2021/REB-to-HEX-review/">
+
+    <span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar-pexels-alex-andrews-215-215.png">
+      <meta itemprop="name" content="Charlie (Tzu Yin)">
+      <meta itemprop="description" content="一介普通文組的學習筆記 📒">
+    </span>
+
+    <span hidden="" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="普通文組">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/REB-to-HEX-review/" class="post-title-link" itemprop="url">專案「RGB to HEX converter」技術記錄</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-04-01 15:28:09" itemprop="dateCreated datePublished" datetime="2021-04-01T15:28:09+08:00">2021-04-01</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-04-08 21:14:07" itemprop="dateModified" datetime="2021-04-08T21:14:07+08:00">2021-04-08</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>將ALPHA Camp學期二之一的期末考與想要研究的技術結合起來一起練習。</p>
+<ul>
+<li>使用到的技術：<ul>
+<li><a target="_blank" rel="noopener" href="https://wiredjs.com/">Wired Elements</a>：手繪質感的web components library</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/puppeteer/puppeteer#puppeteer">Puppeteer</a>：用來爬取目標網站上的內容，並整理後輸出成.csv檔案</li>
+</ul>
+</li>
+<li>使用到的概念：<ul>
+<li><a target="_blank" rel="noopener" href="https://webaim.org/resources/contrastchecker/">Relative luminance</a>：在計算顏色的對比度（contrast ratio）時會應用到此概念，並relative luminance並不是單純的亮度（lightness）</li>
+</ul>
+</li>
+</ul>
+<h2 id="成品"><a href="#成品" class="headerlink" title="成品"></a>成品</h2><p>純網頁展示版：<a href="https://tzynwang.github.io/RGB-to-HEX/">點我</a></p>
+<figure class="figure--center"><img src="/2021/REB-to-HEX-review/demo-img.png" title="三個按鈕由左至右分別是「複製顏色代碼」、「重置回預設狀態」與「隨機產生顏色」"><figcaption><p>三個按鈕由左至右分別是「複製顏色代碼」、「重置回預設狀態」與「隨機產生顏色」</p></figcaption></figure>
+<p>彩蛋：其中有465種顏色有名字，發現機率是465 / 255^3，大約是0.003%。<br>全部的名字來源參考：<a target="_blank" rel="noopener" href="https://www.colordic.org/w">和色大辞典</a></p>
+<p>codepen展示：</p>
+<p class="codepen" data-height="265" data-theme-id="dark" data-default-tab="js,result" data-user="Charlie7779" data-slug-hash="NWdRPKa" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="wired-elements">
+  <span>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/Charlie7779/pen/NWdRPKa">
+  wired-elements</a> by Charlie (<a target="_blank" rel="noopener" href="https://codepen.io/Charlie7779">@Charlie7779</a>)
+  on <a target="_blank" rel="noopener" href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async="" src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+
+
+<h2 id="環境"><a href="#環境" class="headerlink" title="環境"></a>環境</h2><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Google Chrome: 89.0.4389.90 (Official Build) (64-bit)</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="UI-Wired-Elements"><a href="#UI-Wired-Elements" class="headerlink" title="UI: Wired Elements"></a>UI: Wired Elements</h2><p><a target="_blank" rel="noopener" href="https://wiredjs.com/">Wired Elements</a>是一套使用<a target="_blank" rel="noopener" href="https://roughjs.com/">Rough.js</a>來提供手繪質感的web components library。<br>根據官方網站的說明，Rough.js的應用範圍是「在canvas或svg元素上產生手繪線條的效果」，而Wired Elements將其與shadow DOM搭配，在每一個HTML元素中建立shadow DOM，並在shadow DOM上套用Rough.js提供的視覺效果</p>
+<h3 id="使用心得"><a href="#使用心得" class="headerlink" title="使用心得"></a>使用心得</h3><ul>
+<li>優點：以非正式的練習專案來說，可以很快地替專案打造出有一致性的視覺介面，使用起來也很簡單</li>
+<li>限制：專案中有使用到的兩種components（<code>&lt;wired-slider&gt;</code>與<code>&lt;wired-button&gt;</code>）皆不易調教尺寸<ul>
+<li>這部分可以透過下載原始碼、修改後自行host來處理（但費工成這樣不如一開始從頭處理UI設計）</li>
+<li>最後還是只有使用<code>--wired-slider-knob-color</code>來調整slider按鈕的顏色而已</li>
+</ul>
+</li>
+</ul>
+<h2 id="Scrape-Puppeteer"><a href="#Scrape-Puppeteer" class="headerlink" title="Scrape: Puppeteer"></a>Scrape: Puppeteer</h2><p>想加點跟顏色有關的小彩蛋，搜尋後再度來到<a target="_blank" rel="noopener" href="https://www.colordic.org/w">和色大辞典</a>，覺得和風色票的名字都挺有質感的，且資料結構可以很簡單地透過HEX碼來做色名：色碼對應，所以⋯⋯</p>
+<figure class="figure--center"><img src="/2021/REB-to-HEX-review/that-it-is.jpg" title="色票字典真是太方便了"><figcaption><p>色票字典真是太方便了</p></figcaption></figure>
+
+<p>但是直接複製網站的資料，其結構無法直接拿來使用：</p>
+<figure class="figure--center"><img src="/2021/REB-to-HEX-review/website-screenshot.jpg"></figure>
+<p>需要的部分只有漢字與HEX碼，且理想上資料結構應該是一行一組「色名：色碼」資料，讀取後處理也比較方便。<br>順帶一提，即使把瀏覽器的視窗寬度壓縮到極限，網站上的UI結構也沒有變成一行一組資料，沒辦法透過RDW來偷懶：</p>
+<figure class="figure--center"><img src="/2021/REB-to-HEX-review/RWD.png" title="偷雞大失敗"><figcaption><p>偷雞大失敗</p></figcaption></figure>
+<figure class="figure--center"><img src="/2021/REB-to-HEX-review/DOM.png"></figure>
+<p>不過DOM的結構很整齊，需要的文字資料也都放在<code>&lt;a&gt;</code>標籤的<code>title</code>屬性中，意思就是：</p>
+<p style="font-size: 36px; text-align: center;">可以用爬蟲處理</p>
+最後，爬完取得的資料還要可以儲存成.json或.csv格式方便取用。而把JavaScript、scraping與file save等關鍵字組合起來之後：
+<p style="font-size: 36px; text-align: center;"><a href="https://github.com/puppeteer/puppeteer/#puppeteer" target="_blank">Puppeteer</a></p>
+
+<p>完整腳本如下：</p>
+<script src="https://gist.github.com/tzynwang/b217c3f4bdccacebcc1eff2fd969e010.js"></script>
+
+
+<h2 id="Save-to-file-Node-js"><a href="#Save-to-file-Node-js" class="headerlink" title="Save to file: Node.js"></a>Save to file: Node.js</h2><ul>
+<li>一開始使用<code>appendFile</code>來儲存透過puppeteer爬到的資料時，在.csv檔案內總是會發現資料順序與爬蟲資料不一致的問題，於是改為使用<code>appendFileSync</code>來寫入資料</li>
+<li>雖然執行速度明顯降低，但可以確保最後輸出的檔案不會有順序錯誤的問題</li>
+</ul>
+<h2 id="HTML內容"><a href="#HTML內容" class="headerlink" title="HTML內容"></a>HTML內容</h2><script src="https://gist.github.com/tzynwang/6fb9c6516f164d79a44638bf0fa3e826.js"></script>
+
+<ul>
+<li>在<code>&lt;head&gt;</code>部分就引入Wired Elements模組與自定義的CSS，以利瀏覽器渲染介面</li>
+<li>因為頁面上總計只有三處用到bootstrap圖示，故<code>&lt;wired-button&gt;</code>直接使用<code>&lt;svg&gt;</code>來繪製，而不額外引入大尺寸的bootstrap模組</li>
+<li><code>&lt;footer&gt;</code>後引入papa parse模組與自定義的JavaScript；papa parse主要是配合<code>main.js</code>來匯入.csv資料，且465筆顏色的名字不會在網頁渲染完成後馬上顯示給使用者看，故載入的優先度偏低</li>
+</ul>
+<h2 id="JS內容"><a href="#JS內容" class="headerlink" title="JS內容"></a>JS內容</h2><script src="https://gist.github.com/tzynwang/e90bfbcef2570e6f051232d016143605.js"></script>
+
+<h3 id="import-color-name"><a href="#import-color-name" class="headerlink" title="// import color name"></a><code>// import color name</code></h3><p>反省：其實可以連papa parse都不使用。在透過puppeteer爬資料後，使用<code>appendFileSync</code>直接輸出一行一組「色名：色碼」的.json檔案，接著使用純JavaScript來執行ajax讀取.json資料即可：</p>
+<script src="https://gist.github.com/tzynwang/51b34ecb02809aec6afb9bc2cbd0cd88.js"></script>
+
+<h3 id="copy-button"><a href="#copy-button" class="headerlink" title="// copy button"></a><code>// copy button</code></h3><p>在grid-template-areas generator使用過的<code>select()</code>只能抓取<code>&lt;textarea&gt;</code>的資料，而本次要複製的文字是在<code>&lt;span&gt;</code>裡面，故需要換個方式來複製內容，程式碼參考<a target="_blank" rel="noopener" href="https://stackoverflow.com/a/48020189">How to copy text from a div to clipboard</a></p>
+<h3 id="lucky-button"><a href="#lucky-button" class="headerlink" title="// lucky button"></a><code>// lucky button</code></h3><p>使用<code>Math.random()</code>搭配<code>Math.floor()</code>來取0-255之間的整數亂數，取得顏色資料後再依序更新slider與<code>&lt;span&gt;</code>展示區的內容</p>
+<h3 id="reset-button"><a href="#reset-button" class="headerlink" title="// reset button"></a><code>// reset button</code></h3><p>反省：reset功能最底部的<code>textColorAdjust()</code>其實沒有必要（因為HEX碼確定為<code>#000000</code>），直接重設<code>.output</code>的背景顏色為黑色即可</p>
+<h3 id="setBackgroundColor-與setTextColor"><a href="#setBackgroundColor-與setTextColor" class="headerlink" title="setBackgroundColor()與setTextColor()"></a><code>setBackgroundColor()</code>與<code>setTextColor()</code></h3><p>純粹是為了讓上半部的JavaScript原始碼更整潔一點，所以使用function來包住兩個設定背景顏色、顏色的指令</p>
+<h3 id="rgbToHex"><a href="#rgbToHex" class="headerlink" title="rgbToHex()"></a><code>rgbToHex()</code></h3><p>將傳入的數字（資料型態是string）使用<code>parseInt</code>轉為十進位的number資料後，再透過<code>toString(16)</code>轉換為十六進位的string，最後在string.length未滿2的時候，在左邊補0</p>
+<h3 id="lookupName"><a href="#lookupName" class="headerlink" title="lookupName()"></a><code>lookupName()</code></h3><p>比對傳入的HEX碼是否在colorWithName物件中有一份副本。使用<code>Object.values(colorWithName).indexOf(hexCode)</code>查詢index是否存在。在回傳的值大於-1的情況下代表colorWithName包含該HEX碼，此時再更新<code>colorNameSpan</code>的文字內容即可。</p>
+<h3 id="luminanceCalculate-與textColorAdjust"><a href="#luminanceCalculate-與textColorAdjust" class="headerlink" title="luminanceCalculate()與textColorAdjust()"></a><code>luminanceCalculate()</code>與<code>textColorAdjust()</code></h3><p><code>luminanceCalculate()</code>的程式碼是向 <a target="_blank" rel="noopener" href="https://dev.to/alvaromontoro/building-your-own-color-contrast-checker-4j7o">Building your own color contrast checker</a> 與 <a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/9733288/how-to-programmatically-calculate-the-contrast-ratio-between-two-colors/9733420#9733420">How to programmatically calculate the contrast ratio between two colors?</a> 借來的。<code>luminanceCalculate()</code>計算完顏色的relative luminance後，傳入<code>textColorAdjust()</code>來計算「白色」與「該顏色」的相對亮度倍率，在倍率小於4時，<code>#hexCode</code>的文字顏色要轉換為黑色（<code>rgb(0, 0, 0)</code>）</p>
+<h2 id="CSS內容"><a href="#CSS內容" class="headerlink" title="CSS內容"></a>CSS內容</h2><script src="https://gist.github.com/tzynwang/a181d23bcae1e1c3e8a88859cc1394e1.js"></script>
+
+<p>搜尋日文字體的關鍵字為：「Japanese font style CC0」<br>使用的網站服務是：<a target="_blank" rel="noopener" href="https://www.freejapanesefont.com/tag/commercial-use-ok/">FREE JAPANESE FONTS</a><br>最後選定的日文字體為：<a target="_blank" rel="noopener" href="https://www.freejapanesefont.com/shirokuma-font-download/">Shirokuma</a>、<a target="_blank" rel="noopener" href="https://www.lazypolarbear.com/entry/font-shirokuma">しろくまは冬眠したい</a>（作者發布字體的初始頁面）</p>
+<h2 id="其他參考文件"><a href="#其他參考文件" class="headerlink" title="其他參考文件"></a>其他參考文件</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://www.w3.org/WAI/GL/wiki/Relative_luminance">W3C: Relative luminance</a></li>
+<li><a target="_blank" rel="noopener" href="https://webaim.org/resources/contrastchecker/">WebAIM: Contrast Checker</a></li>
+<li><a target="_blank" rel="noopener" href="https://wcc723.github.io/development/2020/03/01/puppeteer/">卡斯伯：爬蟲、E2E 測試兩相宜的好工具 - Puppeteer</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.tgwilkins.co.uk/using-puppeteer-to-transform-html-content-into-json.html">Using Puppeteer to Transform HTML content into JSON</a>：參考其三元運算子的寫法</li>
+<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/35948669/how-to-check-if-a-value-exists-in-an-object-using-javascript">How to check if a value exists in an object using JavaScript</a></li>
+<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/14802481/get-element-of-js-object-with-an-index">Get element of JS object with an index</a></li>
+<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/27976282/bootstrap-glyphicons-not-showing-on-local-url">Bootstrap Glyphicons Not Showing on Local URL</a>：最初原本打算連Bootstrap icon都要採取自行host的形式，故下載了原始碼且拖曳到專案的資料夾中。重整頁面後發現圖示皆無法正常顯示，搜尋後知道Bootstrap icon需與其字型檔案搭配才可正常使用（但字型檔案實在太大，且本次只有使用到三個圖示，故改用<code>&lt;svg&gt;</code>直接繪製）</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -358,7 +642,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-03-29 19:20:32" itemprop="dateModified" datetime="2021-03-29T19:20:32+08:00">2021-03-29</time>
+        <time title="Modified: 2021-04-07 22:00:09" itemprop="dateModified" datetime="2021-04-07T22:00:09+08:00">2021-04-07</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1346,245 +1630,6 @@ on <a target="_blank" rel="noopener" href="https://codepen.io">CodePen</a>.</spa
 <ul>
 <li><a target="_blank" rel="noopener" href="https://youtu.be/flf2vS0IoRs">Writing Good Alt Text - HTTP 203</a></li>
 <li><a target="_blank" rel="noopener" href="https://thoughtbot.com/blog/alt-vs-figcaption">Alt vs Figcaption</a></li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope="" itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://tzynwang.github.io/2021/github-actions-sitemap/">
-
-    <span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar-pexels-alex-andrews-215-215.png">
-      <meta itemprop="name" content="Charlie (Tzu Yin)">
-      <meta itemprop="description" content="一介普通文組的學習筆記 📒">
-    </span>
-
-    <span hidden="" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="普通文組">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/github-actions-sitemap/" class="post-title-link" itemprop="url">使用GitHub Actions自動產生sitemap.xml</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-03-09 10:54:00" itemprop="dateCreated datePublished" datetime="2021-03-09T10:54:00+08:00">2021-03-09</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-03-18 23:01:33" itemprop="dateModified" datetime="2021-03-18T23:01:33+08:00">2021-03-18</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-          <a href="/categories/git/" itemprop="url" rel="index"><span itemprop="name">git</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>使用GitHub Actions執行腳本，在每次透過<code>git push</code>更新網頁內容後自動產生sitemap.xml</p>
-<h2 id="版本與環境"><a href="#版本與環境" class="headerlink" title="版本與環境"></a>版本與環境</h2><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo: 5.3.0</span><br><span class="line">hexo-cli: 4.2.0</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></tbody></table></figure>
-
-<h2 id="過程記錄"><a href="#過程記錄" class="headerlink" title="過程記錄"></a>過程記錄</h2><ol>
-<li>在GitHub repository根目錄中建立資料夾<code>.github/workflows</code>，並在其中建立<code>.yml</code>格式的檔案來存放腳本</li>
-<li>腳本內容如下：<figure class="highlight yml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">Generate</span> <span class="string">xml</span> <span class="string">sitemap</span></span><br><span class="line"><span class="comment"># name會出現在Action標籤點開後，左側workflows的列表中</span></span><br><span class="line"></span><br><span class="line"><span class="attr">on:</span></span><br><span class="line">  <span class="attr">push:</span></span><br><span class="line">    <span class="attr">branches:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">main</span> </span><br><span class="line">      <span class="comment"># git push到main分支的時候，啟動以下腳本</span></span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line">  <span class="attr">sitemap_job:</span></span><br><span class="line">    <span class="attr">runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">Generate</span> <span class="string">a</span> <span class="string">sitemap</span></span><br><span class="line">    <span class="attr">steps:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Checkout</span> <span class="string">the</span> <span class="string">repo</span></span><br><span class="line">      <span class="attr">uses:</span> <span class="string">actions/checkout@v2</span></span><br><span class="line">      <span class="attr">with:</span></span><br><span class="line">        <span class="attr">fetch-depth:</span> <span class="number">0</span> </span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Generate</span> <span class="string">new</span> <span class="string">sitemap</span></span><br><span class="line">      <span class="attr">id:</span> <span class="string">sitemap</span></span><br><span class="line">      <span class="attr">uses:</span> <span class="string">cicirello/generate-sitemap@v1.6.1</span></span><br><span class="line">      <span class="attr">with:</span></span><br><span class="line">        <span class="attr">base-url-path:</span> <span class="string">https://tzynwang.github.io/action-practice/</span></span><br><span class="line">        <span class="comment"># 參考cicirello/generate-sitemap的文件，將base-url-path的值設定為要產生sitemap的URL</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Push</span> <span class="string">sitemap</span> <span class="string">to</span> <span class="string">repository</span></span><br><span class="line">    <span class="comment"># 根據cicirello/generate-sitemap文件的說明，使用者需另找方法處理透過腳本產生的sitemap.xml</span></span><br><span class="line">    <span class="comment"># 故追加一段git腳本內容，把方才在GitHub Actions VM產生出來的sitemap透過git push放到repository中</span></span><br><span class="line">      <span class="attr">run:</span> <span class="string">|</span></span><br><span class="line">        <span class="string">git</span> <span class="string">config</span> <span class="string">--global</span> <span class="string">user.name</span> <span class="string">"tzyn (GitHub Actions sitemap gen)"</span></span><br><span class="line">        <span class="string">git</span> <span class="string">config</span> <span class="string">--global</span> <span class="string">user.email</span> <span class="string">"tzyn.wang@gmail.com"</span></span><br><span class="line">        <span class="string">git</span> <span class="string">add</span> <span class="string">sitemap.xml</span></span><br><span class="line">        <span class="string">git</span> <span class="string">commit</span> <span class="string">-m</span> <span class="string">"add sitemap.xml"</span></span><br><span class="line">        <span class="string">git</span> <span class="string">push</span></span><br></pre></td></tr></tbody></table></figure></li>
-<li>在本機執行<code>git push</code>將commit內容推到GitHub上</li>
-<li>進入repository的Actions標籤，確認腳本有在執行</li>
-<li>執行完成，確認sitemap.xml也有被加到repository中</li>
-<li>在本機執行<code>git pull</code>將新產生的sitemap.xml拉本機資料夾</li>
-</ol>
-<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://github.com/cicirello/generate-sitemap#generate-sitemap">cicirello/generate-sitemap</a></li>
-<li><a target="_blank" rel="noopener" href="https://docs.github.com/en/actions/quickstart">Quickstart for GitHub Actions</a></li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope="" itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://tzynwang.github.io/2021/morden-layouts-1-line-css/">
-
-    <span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar-pexels-alex-andrews-215-215.png">
-      <meta itemprop="name" content="Charlie (Tzu Yin)">
-      <meta itemprop="description" content="一介普通文組的學習筆記 📒">
-    </span>
-
-    <span hidden="" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="普通文組">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/morden-layouts-1-line-css/" class="post-title-link" itemprop="url">「10 modern layouts in 1 line of CSS」相關筆記</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-03-07 12:36:03" itemprop="dateCreated datePublished" datetime="2021-03-07T12:36:03+08:00">2021-03-07</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-03-18 10:00:19" itemprop="dateModified" datetime="2021-03-18T10:00:19+08:00">2021-03-18</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-          <a href="/categories/CSS/" itemprop="url" rel="index"><span itemprop="name">CSS</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>關於YouTube影片「<a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=qm0IfG1GyZU">10 modern layouts in 1 line of CSS</a>」的相關筆記。</p>
-<h2 id="版本與環境"><a href="#版本與環境" class="headerlink" title="版本與環境"></a>版本與環境</h2><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Google Chrome: 89.0.4389.72 (Official Build) (64-bit)</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></tbody></table></figure>
-<h2 id="基礎"><a href="#基礎" class="headerlink" title="基礎"></a>基礎</h2><h3 id="fr-fractional-units"><a href="#fr-fractional-units" class="headerlink" title="fr (fractional units)"></a><code>fr</code> (fractional units)</h3><p>類似百分比，與百分比不同的地方是「所有使用fr來宣告尺寸的元件，這些元件會互相參考彼此的尺寸」<br>在一些非常極端的情況下可能會造成尺寸炸裂，以下列原始碼來舉例：</p>
-<p class="codepen" data-height="265" data-theme-id="dark" data-default-tab="html,result" data-user="Charlie7779" data-slug-hash="WNogyEW" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="fr">
-  <span>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/Charlie7779/pen/WNogyEW">
-  fr</a> by Charlie (<a target="_blank" rel="noopener" href="https://codepen.io/Charlie7779">@Charlie7779</a>)
-  on <a target="_blank" rel="noopener" href="https://codepen.io">CodePen</a>.</span>
-</p>
-<script async="" src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
-
-<p>在<code>&lt;div class="cyan"&gt;&lt;/div&gt;</code>中如果僅置入一段文字的話，高度為48px（4fr）<br>那麼作為1fr的<code>&lt;div class="coral"&gt;&lt;/div&gt;</code>與<code>&lt;div class="gold"&gt;&lt;/div&gt;</code>的高度就是48除以4，等於12px</p>
-<p>而當我在<code>&lt;div class="cyan"&gt;&lt;/div&gt;</code>中置入2萬個字元後，元件的高度被撐到4128px<br>而<code>&lt;div class="coral"&gt;&lt;/div&gt;</code>與<code>&lt;div class="gold"&gt;&lt;/div&gt;</code>的高度就一起因應<code>&lt;div class="cyan"&gt;&lt;/div&gt;</code>而改變，為4182除以4，等於1032px</p>
-<h3 id="auto"><a href="#auto" class="headerlink" title="auto"></a><code>auto</code></h3><p>auto spacing，根據內容自動分配寬高。<br>所以如果沒有給予元件任何內容的話，高度就會是0。</p>
-<h3 id="minmax"><a href="#minmax" class="headerlink" title="minmax()"></a><code>minmax()</code></h3><p>作用如其名稱，設定最小與最大的尺寸。</p>
-<h3 id="clamp"><a href="#clamp" class="headerlink" title="clamp()"></a><code>clamp()</code></h3><p>接受三個參數，分別設定最小（minimum value）、理想（preferred value）與最大（maximum allowed value）尺寸。</p>
-<h3 id="auto-fill與auto-fit"><a href="#auto-fill與auto-fit" class="headerlink" title="auto-fill與auto-fit"></a><code>auto-fill</code>與<code>auto-fit</code></h3><p>這篇搭配影片示範，好懂：<a target="_blank" rel="noopener" href="https://css-tricks.com/auto-sizing-columns-css-grid-auto-fill-vs-auto-fit/">Auto-Sizing Columns in CSS Grid: auto-fill vs auto-fit</a></p>
-<h2 id="影片中的10個範例"><a href="#影片中的10個範例" class="headerlink" title="影片中的10個範例"></a>影片中的10個範例</h2><h3 id="1-Super-Centered"><a href="#1-Super-Centered" class="headerlink" title="1. Super Centered"></a>1. Super Centered</h3><p><code>place-items: center</code>：放在grid父容器上，讓子元件水平＋垂直置中。<br>替代方案：在子元件加上<code>justify-self: center;</code>與<code>align-self: center;</code>屬性。</p>
-<h3 id="2-The-Deconstructed-Pancake"><a href="#2-The-Deconstructed-Pancake" class="headerlink" title="2. The Deconstructed Pancake"></a>2. The Deconstructed Pancake</h3><p>父容器設定為<code>display: flex;</code>，子元件設定為<code>flex: 0 1 &lt;baseWidth&gt;;</code>或<code>flex: 1 1 &lt;baseWidth&gt;;</code>。<br>示範碼使用<code>flex: 0 1 150px;</code>，展開來即是：</p>
-<figure class="highlight css"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">flex-grow</span>: 0;</span><br><span class="line"><span class="comment">/* 0代表不會延展 */</span></span><br><span class="line"></span><br><span class="line"><span class="selector-tag">flex-shrink</span>: 1;</span><br><span class="line"><span class="comment">/* 1代表會收縮 */</span></span><br><span class="line"></span><br><span class="line"><span class="selector-tag">flex-basis</span>: 150<span class="selector-tag">px</span>;</span><br><span class="line"><span class="comment">/* 因為示範碼在父元件上沒有指定flex-direction，故會是預設的row flow，那flex-basis影響的是flex item的寬 */</span></span><br><span class="line"><span class="comment">/* 如果flex-basis沒有設定的話，預設為0，那麼寬度會根據內容決定 */</span></span><br></pre></td></tr></tbody></table></figure>
-<p>如果設定為<code>flex: 1 1 150px;</code>的話，代表<code>flex-grow</code>為<code>1</code>，會讓子元件填滿父元件的剩餘空間。</p>
-<h3 id="3-Sidebar-Says"><a href="#3-Sidebar-Says" class="headerlink" title="3. Sidebar Says"></a>3. Sidebar Says</h3><p>父容器設定為<code>grid-template-columns: minmax(&lt;min&gt;, &lt;max&gt;)</code><br>示範碼使用<code>grid-template-columns: minmax(150px, 25%) 1fr;</code>，意思是：</p>
-<ul>
-<li>第一個欄最少150px寬、最多佔父元件25%寬</li>
-<li>第二個欄寬設定為1fr，讓其佔據剩餘的所有空間，1fr替換成auto也會有一樣的效果</li>
-</ul>
-<h3 id="4-Pancake-Stack"><a href="#4-Pancake-Stack" class="headerlink" title="4. Pancake Stack"></a>4. Pancake Stack</h3><p>父容器設定為<code>grid-template-rows: auto 1fr auto</code>，直接搞定常見的Header/Main/Footer三層排版。<br>中間的Main區塊設定為1fr有其必要：如果點開<a target="_blank" rel="noopener" href="https://codepen.io/una/pen/bGVXPWB">Pancake Stack在CodePen中的示範碼</a>，並把Main的1fr改為auto的話，版面會變成從上到下1:1:1的比例（比例壞了）。</p>
-<h3 id="5-Classic-Holy-Grail-Layout"><a href="#5-Classic-Holy-Grail-Layout" class="headerlink" title="5. Classic Holy Grail Layout"></a>5. Classic Holy Grail Layout</h3><p>父容器設定為<code>grid-template: auto 1fr auto / auto 1fr auto</code>，而這行拆開來是：</p>
-<figure class="highlight css"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">grid-template-rows</span>: <span class="selector-tag">auto</span> 1<span class="selector-tag">fr</span> <span class="selector-tag">auto</span>;</span><br><span class="line"><span class="selector-tag">grid-template-columns</span>: <span class="selector-tag">auto</span> 1<span class="selector-tag">fr</span> <span class="selector-tag">auto</span>;</span><br><span class="line"><span class="selector-tag">grid-template-areas</span>: <span class="selector-tag">none</span>;</span><br></pre></td></tr></tbody></table></figure>
-<p>子元件需各自設定要佔據多少空間：</p>
-<figure class="highlight css"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.header</span> {</span><br><span class="line">    <span class="attribute">padding</span>: <span class="number">2rem</span>;</span><br><span class="line">    <span class="attribute">grid-column</span>: <span class="number">1</span> / <span class="number">4</span>;</span><br><span class="line">    <span class="comment">/* column從line 1開始，到lin 4結束 */</span></span><br><span class="line">    <span class="comment">/* 可以換成</span></span><br><span class="line"><span class="comment">    grid-column-start: 1;</span></span><br><span class="line"><span class="comment">    grid-column-end: 4;  */</span></span><br><span class="line">  }</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.left-side</span> {</span><br><span class="line">  <span class="attribute">grid-column</span>: <span class="number">1</span> / <span class="number">2</span>;</span><br><span class="line">  <span class="comment">/* column從line 1開始，到line 2結束 */</span></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.main</span> {</span><br><span class="line">  <span class="attribute">grid-column</span>: <span class="number">2</span> / <span class="number">3</span>;</span><br><span class="line">  <span class="comment">/* column從line 2開始，到line 3結束 */</span></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.right-side</span> {</span><br><span class="line">  <span class="attribute">grid-column</span>: <span class="number">3</span> / <span class="number">4</span>;</span><br><span class="line">  <span class="comment">/* column從line 3開始，到line 4結束 */</span></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.footer</span> {</span><br><span class="line">  <span class="attribute">grid-column</span>: <span class="number">1</span> / <span class="number">4</span>;</span><br><span class="line">  <span class="comment">/* column從line 1開始，到lin 4結束 */</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-<h3 id="6-12-Span-Grid"><a href="#6-12-Span-Grid" class="headerlink" title="6. 12-Span Grid"></a>6. 12-Span Grid</h3><p><code>grid-template-columns: repeat(12, 1fr)</code><br>使用<code>repeat()</code>來取代輸入12次1fr。</p>
-<h3 id="7-RAM-Repeat-Auto-Minmax"><a href="#7-RAM-Repeat-Auto-Minmax" class="headerlink" title="7. RAM (Repeat, Auto, Minmax)"></a>7. RAM (Repeat, Auto, Minmax)</h3><p><code>grid-template-columns: repeat(auto-fit, minmax(&lt;base&gt;, 1fr))</code><br>提醒：在<code>grid-auto-flow: row;</code>（預設）的情況下，<code>&lt;base&gt;</code>設定的是子元件的欄寬。<br>示範碼的<code>auto-fit</code>讓子元件在父容器變寬時，自動填滿父元件剩餘的空間。<br>若把示範碼改為<code>auto-fill</code>，即使把父容器拉寬，子元件最大也只會伸展到150px。</p>
-<h3 id="8-Line-Up"><a href="#8-Line-Up" class="headerlink" title="8. Line Up"></a>8. Line Up</h3><p><code>justify-content: space-between</code><br>用<code>flex-direction: column;</code>搭配<code>justify-content: space-between</code>來讓卡片裡的標題與圖片頂住卡片天地，而卡片文字會垂直置中。<br>如果把<code>justify-content: space-between</code>從示範碼抽掉的話，會發現卡片圖片的位置會根據每張卡片內文字的多寡而有不同高度。</p>
-<h3 id="9-Clamping-My-Style"><a href="#9-Clamping-My-Style" class="headerlink" title="9. Clamping My Style"></a>9. Clamping My Style</h3><p><code>clamp(&lt;min&gt;, &lt;actual&gt;, &lt;max&gt;)</code><br>一行設定元件最小、理想狀態與最大的尺寸分別各是多少。<br>示範碼的<code>width: clamp(23ch, 50%, 46ch);</code>意即：讓子元件是父容器的50%寬，但最大不超過46ch、最小不低於23ch。</p>
-<p>示範碼中出現的單位<code>ch</code>根據<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Values_and_units#lengths">MDN對Relative length units</a>的解釋是：</p>
-<blockquote>
-<p>The advance measure (width) of the glyph “0” of the element’s font.</p>
-</blockquote>
-<p><a target="_blank" rel="noopener" href="https://www.w3schools.com/cssref/css_units.asp">w3schools.com版本</a>的解釋：</p>
-<blockquote>
-<p>Relative to the width of the “0” (zero)</p>
-</blockquote>
-<p>筆記：字體的大小會根據該字形中字母「0 (ZERO, U+0030)」的寬度來計算。</p>
-<p>而根據<a target="_blank" rel="noopener" href="https://meyerweb.com/eric/thoughts/2018/06/28/what-is-the-css-ch-unit/">Eric A. Meyer</a>大神對<code>ch</code>的說明：</p>
-<blockquote>
-<p>So however wide the “0” character is in a given typeface, that’s the measure of one ch.</p>
-</blockquote>
-<p>筆記：字母「0 (ZERO, U+0030)」的寬度即是一個ch代表的值。</p>
-<p>注意：雖然影片中有提到使用ch是為了控制單一行的字元數量來確保易讀性（legibility），但除非用的是monospace類型的字體，不然每個字母的寬度不一定一樣：</p>
-<blockquote>
-<p>This leads to claims that you can “make your content column 60 characters wide for maximum readability” or “size images to be a certain number of characters!” Specifically, yes if you’re using fixed-width fonts. Otherwise, mostly no.</p>
-</blockquote>
-<p>極致懶人包：因為1ch通常比「大部分」的字體寬一點點，所以如果要用ch來做單行字元數量限制，數字需比實際字元數小一些。<br>舉例：如果希望一行有80個字元，那請設定寬度為60ch。</p>
-<blockquote>
-<p>What I’ve found through random experimentation is that in proportional typefaces, <code>1ch</code> is usually wider than the average character width, usually by around 20-30%. But there are at least a few typefaces where the zero symbol is skinny with respect to the other letterforms; in such a case, 1ch is narrower than the average character width.</p>
-</blockquote>
-<blockquote>
-<p>So in general, if you want an 80-character column width and you’re going to use ch to size it, aim for about 60ch, unless you’re specifically working with a typeface that has a skinny zero.</p>
-</blockquote>
-<h3 id="10-Respect-for-Aspect"><a href="#10-Respect-for-Aspect" class="headerlink" title="10. Respect for Aspect"></a>10. Respect for Aspect</h3><p><code>aspect-ratio: &lt;width&gt; / &lt;height&gt;</code><br>一行搞定元件的比例尺，但須注意瀏覽器是否支援。<br>可參考<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/CSS/aspect-ratio#browser_compatibility">MDN</a>。</p>
-<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><iframe width="560" height="315" src="https://www.youtube.com/embed/qm0IfG1GyZU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
-
-<ul>
-<li><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=qm0IfG1GyZU">Google Chrome Developers: 10 modern layouts in 1 line of CSS</a></li>
-<li><a target="_blank" rel="noopener" href="https://1linelayouts.glitch.me/">Demo website: 1-Line Layouts</a></li>
 </ul>
 
       

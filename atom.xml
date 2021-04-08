@@ -6,7 +6,7 @@
   <link href="https://tzynwang.github.io/atom.xml" rel="self"/>
   
   <link href="https://tzynwang.github.io/"/>
-  <updated>2021-03-29T11:20:32.732Z</updated>
+  <updated>2021-04-08T14:52:25.709Z</updated>
   <id>https://tzynwang.github.io/</id>
   
   <author>
@@ -15,6 +15,57 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>為什麼在瀏覽器環境中使用while loop執行ajax request讓頁面陷入凍結狀態？</title>
+    <link href="https://tzynwang.github.io/2021/while-loop-ajax/"/>
+    <id>https://tzynwang.github.io/2021/while-loop-ajax/</id>
+    <published>2021-04-08T13:10:25.000Z</published>
+    <updated>2021-04-08T14:52:25.709Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;環境&quot;&gt;&lt;a href=&quot;#環境&quot; class=&quot;headerlink&quot; title=&quot;環境&quot;&gt;&lt;/a&gt;環境&lt;/h2&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span</summary>
+        
+      
+    
+    
+    
+    <category term="JavaScript" scheme="https://tzynwang.github.io/categories/JavaScript/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>專案「RGB to HEX converter」技術記錄</title>
+    <link href="https://tzynwang.github.io/2021/REB-to-HEX-review/"/>
+    <id>https://tzynwang.github.io/2021/REB-to-HEX-review/</id>
+    <published>2021-04-01T07:28:09.000Z</published>
+    <updated>2021-04-08T13:14:07.012Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;總結&quot;&gt;&lt;a href=&quot;#總結&quot; class=&quot;headerlink&quot; title=&quot;總結&quot;&gt;&lt;/a&gt;總結&lt;/h2&gt;&lt;p&gt;將ALPHA Camp學期二之一的期末考與想要研究的技術結合起來一起練習。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;使用到的技術：&lt;ul&gt;
+&lt;li&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    
+    <category term="Side Project" scheme="https://tzynwang.github.io/tags/Side-Project/"/>
+    
+    <category term="ALPHA Camp作業" scheme="https://tzynwang.github.io/tags/ALPHA-Camp%E4%BD%9C%E6%A5%AD/"/>
+    
+  </entry>
   
   <entry>
     <title>「How JPEG Works」相關筆記</title>
@@ -38,7 +89,7 @@
     <link href="https://tzynwang.github.io/2021/js-array-iterate/"/>
     <id>https://tzynwang.github.io/2021/js-array-iterate/</id>
     <published>2021-03-27T01:37:48.000Z</published>
-    <updated>2021-03-29T11:20:32.737Z</updated>
+    <updated>2021-04-07T14:00:09.533Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;總結&quot;&gt;&lt;a href=&quot;#總結&quot; class=&quot;headerlink&quot; title=&quot;總結&quot;&gt;&lt;/a&gt;總結&lt;/h2&gt;&lt;p&gt;本篇文章是關於JavaScript遍歷陣列（部分方法也可直接遍歷物件）方法的筆記。&lt;br&gt;keywords: array, iterate, iteration&lt;/p&gt;
@@ -76,57 +127,6 @@
     
     
     <category term="Side Project" scheme="https://tzynwang.github.io/tags/Side-Project/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>自主練習專案「日本文學經典50」技術記錄與反省</title>
-    <link href="https://tzynwang.github.io/2021/Japanese-50-review/"/>
-    <id>https://tzynwang.github.io/2021/Japanese-50-review/</id>
-    <published>2021-03-23T05:16:10.000Z</published>
-    <updated>2021-03-29T11:20:32.690Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;總結&quot;&gt;&lt;a href=&quot;#總結&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="CSS" scheme="https://tzynwang.github.io/categories/CSS/"/>
-    
-    
-    <category term="Side Project" scheme="https://tzynwang.github.io/tags/Side-Project/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ALPHA Camp 履歷網頁作業：內容解析</title>
-    <link href="https://tzynwang.github.io/2021/S4-A14-assignment-anatomy/"/>
-    <id>https://tzynwang.github.io/2021/S4-A14-assignment-anatomy/</id>
-    <published>2021-03-20T13:06:49.000Z</published>
-    <updated>2021-03-29T11:20:32.729Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;總結&quot;&gt;&lt;a href=&quot;#總結&quot; class=&quot;headerlink&quot; title=&quot;總結&quot;&gt;&lt;/a&gt;總結&lt;/h2&gt;&lt;p&gt;記錄在2021年ALPHA Camp學期一、三月班第三週履歷網頁作業使用到的技術、思路與開發流程。&lt;/p&gt;
-&lt;h2 id=&quot;成品&quot;&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="CSS" scheme="https://tzynwang.github.io/categories/CSS/"/>
-    
-    
-    <category term="ALPHA Camp作業" scheme="https://tzynwang.github.io/tags/ALPHA-Camp%E4%BD%9C%E6%A5%AD/"/>
     
   </entry>
   
