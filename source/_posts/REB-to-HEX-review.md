@@ -88,7 +88,7 @@ os: Windows_NT 10.0.18363 win32 x64
 <script src="https://gist.github.com/tzynwang/51b34ecb02809aec6afb9bc2cbd0cd88.js"></script>
 
 ### `// copy button`
-在grid-template-areas generator使用過的`select()`只能抓取`<textarea>`的資料，而本次要複製的文字是在`<span>`裡面，故需要換個方式來複製內容，程式碼參考(How to copy text from a div to clipboard)[https://stackoverflow.com/a/48020189]
+在grid-template-areas generator使用過的`select()`只能抓取`<textarea>`的資料，而本次要複製的文字是在`<span>`裡面，故需要換個方式來複製內容，程式碼參考[How to copy text from a div to clipboard](https://stackoverflow.com/a/48020189)
 
 ### `// lucky button`
 使用`Math.random()`搭配`Math.floor()`來取0-255之間的整數亂數，取得顏色資料後再依序更新slider與`<span>`展示區的內容
