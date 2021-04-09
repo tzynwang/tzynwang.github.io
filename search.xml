@@ -412,7 +412,7 @@ on <a href="https://codepen.io">CodePen</a>.</span>
 </ul>
 </li>
 <li><code>enumerable</code>: If true, the property will be enumerated by a for-in enumeration. Otherwise, the property is said to be non-enumerable.<ul>
-<li><code>enumerable</code>為<code>true</code>代表該<code>value</code>會<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...in">被<code>for...in</code>迭代到</a></li>
+<li><code>enumerable</code>為<code>true</code>代表該<code>value</code>會<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...in">被<code>for...in</code>遍歷</a></li>
 </ul>
 </li>
 <li><code>configurable</code>: If false, attempts to delete the property, change the property to be an accessor property, or change its attributes (other than [[Value]], or changing [[Writable]] to false) will fail.<ul>
@@ -1060,44 +1060,6 @@ The configuration in <code>_config.yml</code> file should be set like this:<figu
       </categories>
   </entry>
   <entry>
-    <title>Plugin&amp;#58; hexo-tag-figure</title>
-    <url>/2021/hexo-tag-figure/</url>
-    <content><![CDATA[<h2 id="Summary-of-this-post"><a href="#Summary-of-this-post" class="headerlink" title="Summary of this post"></a>Summary of this post</h2><p>This post is my notes for the following topics:</p>
-<ol>
-<li>hexo plugin: <a href="https://github.com/chawyehsu/hexo-tag-figure">hexo-tag-figure</a></li>
-<li>adding additional CSS style settings to NexT theme (by configuring <code>custom_file_path</code> in the file <code>_config.next.yml</code>)</li>
-</ol>
-<p>此篇主要是記錄<code>hexo-tag-figure</code>的使用心得，以及如何使用<code>_config.next.yml</code>中的<code>custom_file_path</code>參數設定來增加自定義CSS設定內容的相關筆記。</p>
-<h2 id="Environment"><a href="#Environment" class="headerlink" title="Environment"></a>Environment</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo-tag-figure: 0.4.1</span><br><span class="line">NexT: 8.2.1</span><br><span class="line">hexo: 5.3.0</span><br><span class="line">hexo-cli: 4.2.0</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></table></figure>
-
-<h2 id="hexo-tag-figure"><a href="#hexo-tag-figure" class="headerlink" title="hexo-tag-figure"></a>hexo-tag-figure</h2><h3 id="GitHub"><a href="#GitHub" class="headerlink" title="GitHub"></a>GitHub</h3><p><a href="https://github.com/chawyehsu/hexo-tag-figure">hexo-tag-figure</a></p>
-<h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="figure--center"><img src="/2021/hexo-tag-figure/book-cover.jpg" width="300" title="Confessions of a Young Novelist " alt="Book cover of Confessions of a Young Novelist"><figcaption><p>Confessions of a Young Novelist </p></figcaption></figure>
-
-<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;% figure figure--center 2021&#x2F;hexo-tag-figure&#x2F;book-cover.jpg 300 &quot;Confessions of a Young Novelist &#39;Book cover of Confessions of a Young Novelist&#39;&quot; %&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li><code>figure--center</code>: the <code>class name</code> of the figure element.<br>  This is the <strong>required</strong> argument, though in the end I didn’t apply customized CSS style to this class, this argument can not be skipped.</li>
-<li><code>hexo-tag-figure/book-cover.jpg</code>: the image path.<br>  Check the source code to find the path logic:  <figure class="figure--center"><img src="/2021/hexo-tag-figure/image-path.png" title="Check the image path by DevTools " alt="Screenshot of checking the image path through DevTools"><figcaption><p>Check the image path by DevTools </p></figcaption></figure>
-  (update on Feb 16 2021: I change the <code>permalink</code> setting from <code>:year/:month/:day/:title/</code> to <code>:title/</code>, thus the image path needs to be updated too. The image path in the screenshot includes <code>:year/:month/:day/:title/</code> since I previously set the <code>permalink</code> in this form 😅)<br>  Aad the permalink <code>:title/</code> as prefix to load the image.<br>  文件沒有特別針對image path做說明，從DevTools觀察了一下其他還沒使用hexo-tag-figure插入的圖片路徑，測試後發現image path要加上permalink。</li>
-<li><code>300</code>: the image width. I skip the height setting.</li>
-<li><code>Confessions of a Young Novelist</code>: the title text that is placed in <code>figcaption</code> element.<br>  Add customized font color and font size to this element.</li>
-<li><code>Book cover of Confessions of a Young Novelist</code>: the alt text for this image.</li>
-</ul>
-<h3 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h3><ol>
-<li>According to <a href="https://theme-next.js.org/docs/advanced-settings/custom-files.html">NexT’s document</a>, extra CSS settings can be added by enable the <code>custom_file_path</code> in theme config file (in my case the <code>_config.next.yml</code> in root folder). This is my configuration:<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Define custom file paths.</span></span><br><span class="line"><span class="comment"># Create your custom files in site directory `source/_data` and uncomment needed files below.</span></span><br><span class="line"><span class="attr">custom_file_path:</span></span><br><span class="line">  <span class="comment">#head: source/_data/head.njk</span></span><br><span class="line">  <span class="comment">#header: source/_data/header.njk</span></span><br><span class="line">  <span class="comment">#sidebar: source/_data/sidebar.njk</span></span><br><span class="line">  <span class="comment">#postMeta: source/_data/post-meta.njk</span></span><br><span class="line">  <span class="comment">#postBodyEnd: source/_data/post-body-end.njk</span></span><br><span class="line">  <span class="comment">#footer: source/_data/footer.njk</span></span><br><span class="line">  <span class="comment">#bodyEnd: source/_data/body-end.njk</span></span><br><span class="line">  <span class="comment">#variable: source/_data/variables.styl</span></span><br><span class="line">  <span class="comment">#mixin: source/_data/mixins.styl</span></span><br><span class="line">  <span class="attr">style:</span> <span class="string">source/_data/styles.styl</span> <span class="comment"># Enable this option by removing the &#x27;#&#x27; in the beginning of the line</span></span><br></pre></td></tr></table></figure></li>
-<li>Add the <code>styles.styl</code> file in the path <code>C:\Projects\hexo_blog\source\_data</code></li>
-<li>Add CSS settings for <code>figcaption</code> element, remove each image’s bottom margin by setting the <code>margin-button</code> to 0px. With <code>margin-button</code> set as 0px, the text underneath (the <code>figcaption</code>) will be closer to the image.<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">figcaption</span> &#123;</span><br><span class="line">    <span class="attribute">color</span>: <span class="number">#999</span>;</span><br><span class="line">    <span class="attribute">text-align</span>: center;</span><br><span class="line">    font-size: 14px; # Set to 14px to make the font size same as the text in table of content</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.post-body</span> <span class="selector-tag">img</span> &#123;</span><br><span class="line">    <span class="attribute">margin-bottom</span>: <span class="number">0px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="figure--center"><img src="/2021/hexo-tag-figure/margin-bottom-20px.jpg" title="margin-bottom 20px"><figcaption><p>margin-bottom 20px</p></figcaption></figure>
-<figure class="figure--center"><img src="/2021/hexo-tag-figure/margin-bottom-0px.jpg" title="margin-bottom 0px"><figcaption><p>margin-bottom 0px</p></figcaption></figure></li>
-<li>Save the configuration and run <code>hexo generate</code> and <code>hexo deploy</code>, done ☕</li>
-</ol>
-]]></content>
-      <categories>
-        <category>hexo</category>
-        <category>NexT (theme)</category>
-        <category>CSS</category>
-      </categories>
-  </entry>
-  <entry>
     <title>Add local search</title>
     <url>/2021/hexo-search-engine/</url>
     <content><![CDATA[<h2 id="Summary-of-this-post"><a href="#Summary-of-this-post" class="headerlink" title="Summary of this post"></a>Summary of this post</h2><p>2 ways to add local search engine to the hexo blog:</p>
@@ -1141,135 +1103,42 @@ The configuration in <code>_config.yml</code> file should be set like this:<figu
       </categories>
   </entry>
   <entry>
-    <title>「How JPEG Works」相關筆記</title>
-    <url>/2021/how-jpeg-works/</url>
-    <content><![CDATA[<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>問：JPEG到底是什麼？<br>答：實際上是一種壓縮影像的演算法</p>
-<p>問：JPEG如何壓縮影像？<br>簡答：將影像從RGB轉換為Y’CbCr，捨棄多餘的顏色資訊、壓縮人眼不易察覺的部分（影像中高頻率變化的部分）後，輸出為.jpg檔案</p>
-<p>內收關於影片組「<a href="https://www.youtube.com/playlist?list=PLzH6n4zXuckoAod3z31QEST1ZaizBuNHh">How JPEG Works</a>」的相關筆記、JPEG詳細的壓縮過程，與其他參考資料來源。</p>
-<a id="more"></a>
-
-<h2 id="Part-0-color-spaces"><a href="#Part-0-color-spaces" class="headerlink" title="Part 0: color spaces"></a>Part 0: color spaces</h2><iframe width="560" height="315" src="https://www.youtube.com/embed/LFXN9PiOGtY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-<h3 id="Color-spaces"><a href="#Color-spaces" class="headerlink" title="Color spaces"></a>Color spaces</h3><ul>
-<li>Color spaces are the ways of representing the colors in an image<ul>
-<li><span style="color: #FF0000;">R</span><span style="color: #00FF00;">G</span><span style="color: #0000FF;">B</span>: red, green and blue; most monitors use this format</li>
-<li>Y’CbCr: use by high definition video, TV broadcasting, <strong>JPEG</strong></li>
-<li><span style="color: #00FFFF">C</span><span style="color: #FF00FF">M</span><span style="color: #FFFF00">Y</span><span style="color: #000000">K</span>: cyan, magenta, yellow and black; printers use this format<ul>
-<li>01:48 用K來代表黑色是因為B已經被藍色（blue）使用了</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="Y’CbCr"><a href="#Y’CbCr" class="headerlink" title="Y’CbCr"></a>Y’CbCr</h3><ul>
-<li>Y’: luminosity from 0 to 255；明亮的程度</li>
-<li>Cb/ Cr: blue/ red chrominance values from -127 to 128；藍色／紅色的濃度<figure class="figure--center"><img src="/2021/how-jpeg-works/Y50_CbCr_Scaled.jpg" title="The CbCr plane at constant luma Y′=0.5"><figcaption><p>The CbCr plane at constant luma Y′=0.5</p></figcaption></figure>
-<figure class="figure--center"><img src="/2021/how-jpeg-works/Y'CbCr_cube.png" title="Y′CbCr color cube"><figcaption><p>Y′CbCr color cube</p></figcaption></figure></li>
-<li>05:58開始：<ul>
-<li>You’ll generally use Y’CbCr if you’re doing any kind of TV broadcasting.</li>
-<li>If you’re actually sending a stream of data to someone’s TV, you need to worry about how much compression you have about data, because it’s quite important. </li>
-<li>Y’CbCr lets you do very clever techniques by <strong>down sampling the color components</strong>, but <strong>not</strong> down sampling the luminous component; people won’t really notice this… in fact, this is the fundamental to how JPEG works.</li>
-</ul>
-</li>
-<li>Wiki: This reflects the fact that human eye is less sensitive to fine color details than to fine brightness details.<ul>
-<li>人眼「對明亮變化的察覺程度」大於「對顏色變化的察覺程度」</li>
-<li>Y’CbCr將影像的「明亮度資訊」與「顏色資訊」分開來</li>
-<li>捨棄一定程度顏色的資訊，但盡量保留影像的明亮度資訊的話，即使經過壓縮，人眼也不太容易察覺壓縮前後的差異</li>
-<li>JPEG就是使用這樣的原理來壓縮圖片的</li>
-</ul>
-</li>
-</ul>
-<h2 id="Part-1-files-and-color"><a href="#Part-1-files-and-color" class="headerlink" title="Part 1: files and color"></a>Part 1: files and color</h2><iframe width="560" height="315" src="https://www.youtube.com/embed/n_uNPbdenRs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-<h3 id="JFIF"><a href="#JFIF" class="headerlink" title="JFIF"></a>JFIF</h3><ul>
-<li>JPEG實際上並不是檔案格式，而是壓縮影像的方式；JFIF才是檔案格式</li>
-<li>JPEG File Interchange Format (JFIF) is the actual wrapper that holds the compress data.<ul>
-<li>(Wiki) JFIF is an image file format standard, the most common format for storing and transmitting photographic images on the World Wide Web.</li>
-<li>(Wiki) JFIF defines supplementary specifications for the container format that contains the image data encoded with the JPEG algorithm.</li>
-</ul>
-</li>
-<li>01:07 …really, when we’re talking about a JPEG file, we’re actually talking about a JFIF file most of the time.</li>
-</ul>
-<h3 id="frequency"><a href="#frequency" class="headerlink" title="frequency"></a>frequency</h3><ul>
-<li>01:30開始：<ul>
-<li>…we don’t see high-frequency changes in image intensity very well either. So we can get rid of some of that high-frequency information.</li>
-<li>Bits of image that change intensity very very quickly, we can kind of sorta blur out, and those things will go away, we won’t really see a difference.</li>
-</ul>
-</li>
-</ul>
-<p>筆記：人眼對於高頻率的變化並不敏銳，所以影像裡面高頻率的部分可以捨棄（壓縮）。<br>影像的頻率：指「像素變化」的程度。<br>使用<strong>越少</strong>的像素完成變化，頻率越<strong>高</strong>；使用<strong>越多</strong>的像素完成變化，頻率越<strong>低</strong>。</p>
-<ul>
-<li>Let’s say you have some region in your image that changes from white to black. If it takes many pixels to undergo that change, it’s low frequency. The fewer the pixels it takes to represent that intensity variation, the higher the frequency. Ref.: <a href="https://www.quora.com/What-are-the-low-and-high-frequencies-in-an-image?share=1">What are the low and high frequencies in an image?</a></li>
-<li>Frequency means rate of change of something. In two-dimensional signals like digital images, frequencies are rate of change of grey scale value (intensity of pixel) with respect to space. This is also called Spatial frequency. Ref.: <a href="https://www.quora.com/What-are-frequencies-in-images-Better-if-explained-with-an-example">What are frequencies in images?</a></li>
-<li>One interesting application is in the use of compression algorithms like JPEG. Here the DCT (Discrete cosine transform) is used to save more of the important parts of the image (the low frequencies) and less of the high frequencies. Ref. <a href="https://photo.stackexchange.com/questions/40401/what-does-frequency-mean-in-an-image">What does “frequency” mean in an image?</a></li>
-<li>Wiki: Human vision is much more sensitive to <strong>small variations in color (or brightness) over large areas</strong> than to the strength of <strong>high-frequency brightness variations</strong>.</li>
-</ul>
-<p>補充：對人眼來說，察覺「大範圍中小小的顏色或亮度變化」比發現「高頻率的亮度變化」容易。</p>
-<h3 id="Compression-steps"><a href="#Compression-steps" class="headerlink" title="Compression steps"></a>Compression steps</h3><ol>
-<li>Transform the image into Y’CbCr color space<ul>
-<li>Y’CbCr separate each pixel’s intensity (Y’) from color (Cb, Cr)</li>
-</ul>
-</li>
-<li>Down-sampling (chroma sub-sampling)<ul>
-<li>Wiki: reduce the spatial(空間性的) resolution of the Cb and Cr components</li>
-<li>白話文：減少影像使用的顏色數量</li>
-</ul>
-</li>
-<li>Block splitting<ul>
-<li>Wiki: depending on chroma sub-sampling, this yields Minimum Coded Unit (MCU) blocks of size 8×8 (4:4:4 when no sub-sampling), 16×8 (4:2:2), or most commonly 16×16 (4:2:0).</li>
-</ul>
-</li>
-<li>Apply DCT (discrete cosine transform)</li>
-<li>Quantization (the lossy part in JPEG compression)</li>
-<li>Huffman encoding, get the .JPG file</li>
+    <title>Plugin&amp;#58; hexo-tag-figure</title>
+    <url>/2021/hexo-tag-figure/</url>
+    <content><![CDATA[<h2 id="Summary-of-this-post"><a href="#Summary-of-this-post" class="headerlink" title="Summary of this post"></a>Summary of this post</h2><p>This post is my notes for the following topics:</p>
+<ol>
+<li>hexo plugin: <a href="https://github.com/chawyehsu/hexo-tag-figure">hexo-tag-figure</a></li>
+<li>adding additional CSS style settings to NexT theme (by configuring <code>custom_file_path</code> in the file <code>_config.next.yml</code>)</li>
 </ol>
-<h3 id="Down-sampling"><a href="#Down-sampling" class="headerlink" title="Down-sampling"></a>Down-sampling</h3><ul>
-<li>04:37開始：<ul>
-<li>One of the nice things about Y’CbCr is that human eye doesn’t really see chrominance very well. It’s certainly a much lower resolution than we see changes in intensity.</li>
-<li>Just like with TV encoding, we can massively down sample the amount of Cb and Cr that we see in the image.</li>
-</ul>
-</li>
-<li>06:14 Down-sampling is sometimes tied to the quality of the JPG that you output.<ul>
-<li>影像軟體在輸出.JPG檔案時，「品質」調整的通常就是down-sampling的程度</li>
-</ul>
-</li>
-<li>06:29 In general, most software will use a down-sample of 2 in both direction, which is 4 times less colors.</li>
-</ul>
-<h2 id="Part-2-DCT-Discrete-Cosine-Transform"><a href="#Part-2-DCT-Discrete-Cosine-Transform" class="headerlink" title="Part 2: DCT (Discrete Cosine Transform)"></a>Part 2: DCT (Discrete Cosine Transform)</h2><iframe width="560" height="315" src="https://www.youtube.com/embed/Q2aEzeMDHMA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<p>此篇主要是記錄<code>hexo-tag-figure</code>的使用心得，以及如何使用<code>_config.next.yml</code>中的<code>custom_file_path</code>參數設定來增加自定義CSS設定內容的相關筆記。</p>
+<h2 id="Environment"><a href="#Environment" class="headerlink" title="Environment"></a>Environment</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo-tag-figure: 0.4.1</span><br><span class="line">NexT: 8.2.1</span><br><span class="line">hexo: 5.3.0</span><br><span class="line">hexo-cli: 4.2.0</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></table></figure>
 
-<h3 id="DCT"><a href="#DCT" class="headerlink" title="DCT"></a>DCT</h3><ul>
-<li>02:53 …in JPEG, we can get rid of some of the higher frequency signals and the general gist of the image will still be there.</li>
-<li>03:19 What we do in JPEG is we split each image into 8 by 8 pixel groups, and each of those pixel groups is separately encoded with its own discrete cosine transform.</li>
-<li>Wiki:<ul>
-<li>Each 8 by 8 pixel group is converted to a frequency-domain representation by “normalized, two-dimensional type-II DCT”.</li>
-<li>Before computing the DCT of the pixel group, its values are shifted from a positive range to one centered on zero (from <code>[0, 255]</code> to <code>[-128, 127]</code>). This step reduces the dynamic range requirements in the DCT processing stage that follows.<figure class="figure--center"><img src="/2021/how-jpeg-works/patterns.png" title="two-dimensional DCT basis functions"><figcaption><p>two-dimensional DCT basis functions</p></figcaption></figure></li>
-<li>The DCT transforms an pixel group of input values to a linear combination of these 64 patterns (see above image). The output values are referred to as <strong>transform coefficients</strong>.</li>
+<h2 id="hexo-tag-figure"><a href="#hexo-tag-figure" class="headerlink" title="hexo-tag-figure"></a>hexo-tag-figure</h2><h3 id="GitHub"><a href="#GitHub" class="headerlink" title="GitHub"></a>GitHub</h3><p><a href="https://github.com/chawyehsu/hexo-tag-figure">hexo-tag-figure</a></p>
+<h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="figure--center"><img src="/2021/hexo-tag-figure/book-cover.jpg" width="300" title="Confessions of a Young Novelist " alt="Book cover of Confessions of a Young Novelist"><figcaption><p>Confessions of a Young Novelist </p></figcaption></figure>
+
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;% figure figure--center 2021&#x2F;hexo-tag-figure&#x2F;book-cover.jpg 300 &quot;Confessions of a Young Novelist &#39;Book cover of Confessions of a Young Novelist&#39;&quot; %&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>figure--center</code>: the <code>class name</code> of the figure element.<br>  This is the <strong>required</strong> argument, though in the end I didn’t apply customized CSS style to this class, this argument can not be skipped.</li>
+<li><code>hexo-tag-figure/book-cover.jpg</code>: the image path.<br>  Check the source code to find the path logic:  <figure class="figure--center"><img src="/2021/hexo-tag-figure/image-path.png" title="Check the image path by DevTools " alt="Screenshot of checking the image path through DevTools"><figcaption><p>Check the image path by DevTools </p></figcaption></figure>
+  (update on Feb 16 2021: I change the <code>permalink</code> setting from <code>:year/:month/:day/:title/</code> to <code>:title/</code>, thus the image path needs to be updated too. The image path in the screenshot includes <code>:year/:month/:day/:title/</code> since I previously set the <code>permalink</code> in this form 😅)<br>  Aad the permalink <code>:title/</code> as prefix to load the image.<br>  文件沒有特別針對image path做說明，從DevTools觀察了一下其他還沒使用hexo-tag-figure插入的圖片路徑，測試後發現image path要加上permalink。</li>
+<li><code>300</code>: the image width. I skip the height setting.</li>
+<li><code>Confessions of a Young Novelist</code>: the title text that is placed in <code>figcaption</code> element.<br>  Add customized font color and font size to this element.</li>
+<li><code>Book cover of Confessions of a Young Novelist</code>: the alt text for this image.</li>
 </ul>
-</li>
-</ul>
-<h3 id="Quantization"><a href="#Quantization" class="headerlink" title="Quantization"></a>Quantization</h3><ul>
-<li>08:27 After calculating the discrete cosine transform coefficients, we will try to remove the ones we don’t want. We call the process of removing the high frequency data “quantization”.</li>
-<li>Wiki: the elements in the quantization matrix control the compression ratio, with larger values producing greater compression.<ul>
-<li>白話文：DCT結束後得到的<strong>transform coefficients</strong>會根據quantization matrix繼續壓縮。quantization matrix會指示<strong>transform coefficients</strong>中每一個像素被壓縮的程度；quantization matrix中越大的數字代表越大的壓縮比例</li>
-<li>12:55 If we increase the values in the quantization table, we’re essentially operating a lower JPEG quality setting.</li>
-</ul>
-</li>
-</ul>
-<h3 id="Quantization-matrix-quantization-table"><a href="#Quantization-matrix-quantization-table" class="headerlink" title="Quantization matrix (quantization table)"></a>Quantization matrix (quantization table)</h3><p>Wiki: the quantization matrix is designed to provide more resolution to more perceivable frequency components over less perceivable components (usually lower frequencies over high frequencies) in addition to transforming as many components to 0, which can be encoded with greatest efficiency.</p>
-<p>白話文：quantization matrix會盡可能保留人眼可察覺的部分（通常是低頻率的部分），捨棄人眼察覺不出來的部分（高頻率的部分）</p>
-<h3 id="Huffman-encoding"><a href="#Huffman-encoding" class="headerlink" title="Huffman encoding"></a>Huffman encoding</h3><ul>
-<li>以zigzag的形式來編碼<strong>transform coefficients</strong></li>
-<li><strong>transform coefficients</strong>中，通常是左上角擁有較多資訊，而右下角偏向被捨棄，搭配Huffman encoding可以讓尾部大量的0一起被壓縮<ul>
-<li>10:34 We serialize them out into a long line, and we use Huffman encoding to shrink them right down.</li>
-</ul>
-</li>
-</ul>
-<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
-<li><a href="https://en.wikipedia.org/wiki/YCbCr">Wikipedia: YCbCr</a></li>
-<li><a href="https://en.wikipedia.org/wiki/JPEG">Wikipedia: JPEG</a></li>
-<li><a href="https://en.wikipedia.org/wiki/JPEG_File_Interchange_Format">Wikipedia: JPEG File Interchange Format</a></li>
-</ul>
+<h3 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h3><ol>
+<li>According to <a href="https://theme-next.js.org/docs/advanced-settings/custom-files.html">NexT’s document</a>, extra CSS settings can be added by enable the <code>custom_file_path</code> in theme config file (in my case the <code>_config.next.yml</code> in root folder). This is my configuration:<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Define custom file paths.</span></span><br><span class="line"><span class="comment"># Create your custom files in site directory `source/_data` and uncomment needed files below.</span></span><br><span class="line"><span class="attr">custom_file_path:</span></span><br><span class="line">  <span class="comment">#head: source/_data/head.njk</span></span><br><span class="line">  <span class="comment">#header: source/_data/header.njk</span></span><br><span class="line">  <span class="comment">#sidebar: source/_data/sidebar.njk</span></span><br><span class="line">  <span class="comment">#postMeta: source/_data/post-meta.njk</span></span><br><span class="line">  <span class="comment">#postBodyEnd: source/_data/post-body-end.njk</span></span><br><span class="line">  <span class="comment">#footer: source/_data/footer.njk</span></span><br><span class="line">  <span class="comment">#bodyEnd: source/_data/body-end.njk</span></span><br><span class="line">  <span class="comment">#variable: source/_data/variables.styl</span></span><br><span class="line">  <span class="comment">#mixin: source/_data/mixins.styl</span></span><br><span class="line">  <span class="attr">style:</span> <span class="string">source/_data/styles.styl</span> <span class="comment"># Enable this option by removing the &#x27;#&#x27; in the beginning of the line</span></span><br></pre></td></tr></table></figure></li>
+<li>Add the <code>styles.styl</code> file in the path <code>C:\Projects\hexo_blog\source\_data</code></li>
+<li>Add CSS settings for <code>figcaption</code> element, remove each image’s bottom margin by setting the <code>margin-button</code> to 0px. With <code>margin-button</code> set as 0px, the text underneath (the <code>figcaption</code>) will be closer to the image.<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">figcaption</span> &#123;</span><br><span class="line">    <span class="attribute">color</span>: <span class="number">#999</span>;</span><br><span class="line">    <span class="attribute">text-align</span>: center;</span><br><span class="line">    font-size: 14px; # Set to 14px to make the font size same as the text in table of content</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.post-body</span> <span class="selector-tag">img</span> &#123;</span><br><span class="line">    <span class="attribute">margin-bottom</span>: <span class="number">0px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="figure--center"><img src="/2021/hexo-tag-figure/margin-bottom-20px.jpg" title="margin-bottom 20px"><figcaption><p>margin-bottom 20px</p></figcaption></figure>
+<figure class="figure--center"><img src="/2021/hexo-tag-figure/margin-bottom-0px.jpg" title="margin-bottom 0px"><figcaption><p>margin-bottom 0px</p></figcaption></figure></li>
+<li>Save the configuration and run <code>hexo generate</code> and <code>hexo deploy</code>, done ☕</li>
+</ol>
 ]]></content>
+      <categories>
+        <category>hexo</category>
+        <category>CSS</category>
+        <category>NexT (theme)</category>
+      </categories>
   </entry>
   <entry>
     <title>「JavaScript陣列遍歷」相關筆記</title>
@@ -1541,6 +1410,137 @@ The configuration in <code>_config.yml</code> file should be set like this:<figu
       <categories>
         <category>CSS</category>
       </categories>
+  </entry>
+  <entry>
+    <title>「How JPEG Works」相關筆記</title>
+    <url>/2021/how-jpeg-works/</url>
+    <content><![CDATA[<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>問：JPEG到底是什麼？<br>答：實際上是一種壓縮影像的演算法</p>
+<p>問：JPEG如何壓縮影像？<br>簡答：將影像從RGB轉換為Y’CbCr，捨棄多餘的顏色資訊、壓縮人眼不易察覺的部分（影像中高頻率變化的部分）後，輸出為.jpg檔案</p>
+<p>內收關於影片組「<a href="https://www.youtube.com/playlist?list=PLzH6n4zXuckoAod3z31QEST1ZaizBuNHh">How JPEG Works</a>」的相關筆記、JPEG詳細的壓縮過程，與其他參考資料來源。</p>
+<a id="more"></a>
+
+<h2 id="Part-0-color-spaces"><a href="#Part-0-color-spaces" class="headerlink" title="Part 0: color spaces"></a>Part 0: color spaces</h2><iframe width="560" height="315" src="https://www.youtube.com/embed/LFXN9PiOGtY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<h3 id="Color-spaces"><a href="#Color-spaces" class="headerlink" title="Color spaces"></a>Color spaces</h3><ul>
+<li>Color spaces are the ways of representing the colors in an image<ul>
+<li><span style="color: #FF0000;">R</span><span style="color: #00FF00;">G</span><span style="color: #0000FF;">B</span>: red, green and blue; most monitors use this format</li>
+<li>Y’CbCr: use by high definition video, TV broadcasting, <strong>JPEG</strong></li>
+<li><span style="color: #00FFFF">C</span><span style="color: #FF00FF">M</span><span style="color: #FFFF00">Y</span><span style="color: #000000">K</span>: cyan, magenta, yellow and black; printers use this format<ul>
+<li>01:48 用K來代表黑色是因為B已經被藍色（blue）使用了</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="Y’CbCr"><a href="#Y’CbCr" class="headerlink" title="Y’CbCr"></a>Y’CbCr</h3><ul>
+<li>Y’: luminosity from 0 to 255；明亮的程度</li>
+<li>Cb/ Cr: blue/ red chrominance values from -127 to 128；藍色／紅色的濃度<figure class="figure--center"><img src="/2021/how-jpeg-works/Y50_CbCr_Scaled.jpg" title="The CbCr plane at constant luma Y′=0.5"><figcaption><p>The CbCr plane at constant luma Y′=0.5</p></figcaption></figure>
+<figure class="figure--center"><img src="/2021/how-jpeg-works/Y'CbCr_cube.png" title="Y′CbCr color cube"><figcaption><p>Y′CbCr color cube</p></figcaption></figure></li>
+<li>05:58開始：<ul>
+<li>You’ll generally use Y’CbCr if you’re doing any kind of TV broadcasting.</li>
+<li>If you’re actually sending a stream of data to someone’s TV, you need to worry about how much compression you have about data, because it’s quite important. </li>
+<li>Y’CbCr lets you do very clever techniques by <strong>down sampling the color components</strong>, but <strong>not</strong> down sampling the luminous component; people won’t really notice this… in fact, this is the fundamental to how JPEG works.</li>
+</ul>
+</li>
+<li>Wiki: This reflects the fact that human eye is less sensitive to fine color details than to fine brightness details.<ul>
+<li>人眼「對明亮變化的察覺程度」大於「對顏色變化的察覺程度」</li>
+<li>Y’CbCr將影像的「明亮度資訊」與「顏色資訊」分開來</li>
+<li>捨棄一定程度顏色的資訊，但盡量保留影像的明亮度資訊的話，即使經過壓縮，人眼也不太容易察覺壓縮前後的差異</li>
+<li>JPEG就是使用這樣的原理來壓縮圖片的</li>
+</ul>
+</li>
+</ul>
+<h2 id="Part-1-files-and-color"><a href="#Part-1-files-and-color" class="headerlink" title="Part 1: files and color"></a>Part 1: files and color</h2><iframe width="560" height="315" src="https://www.youtube.com/embed/n_uNPbdenRs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<h3 id="JFIF"><a href="#JFIF" class="headerlink" title="JFIF"></a>JFIF</h3><ul>
+<li>JPEG實際上並不是檔案格式，而是壓縮影像的方式；JFIF才是檔案格式</li>
+<li>JPEG File Interchange Format (JFIF) is the actual wrapper that holds the compress data.<ul>
+<li>(Wiki) JFIF is an image file format standard, the most common format for storing and transmitting photographic images on the World Wide Web.</li>
+<li>(Wiki) JFIF defines supplementary specifications for the container format that contains the image data encoded with the JPEG algorithm.</li>
+</ul>
+</li>
+<li>01:07 …really, when we’re talking about a JPEG file, we’re actually talking about a JFIF file most of the time.</li>
+</ul>
+<h3 id="frequency"><a href="#frequency" class="headerlink" title="frequency"></a>frequency</h3><ul>
+<li>01:30開始：<ul>
+<li>…we don’t see high-frequency changes in image intensity very well either. So we can get rid of some of that high-frequency information.</li>
+<li>Bits of image that change intensity very very quickly, we can kind of sorta blur out, and those things will go away, we won’t really see a difference.</li>
+</ul>
+</li>
+</ul>
+<p>筆記：人眼對於高頻率的變化並不敏銳，所以影像裡面高頻率的部分可以捨棄（壓縮）。<br>影像的頻率：指「像素變化」的程度。<br>使用<strong>越少</strong>的像素完成變化，頻率越<strong>高</strong>；使用<strong>越多</strong>的像素完成變化，頻率越<strong>低</strong>。</p>
+<ul>
+<li>Let’s say you have some region in your image that changes from white to black. If it takes many pixels to undergo that change, it’s low frequency. The fewer the pixels it takes to represent that intensity variation, the higher the frequency. Ref.: <a href="https://www.quora.com/What-are-the-low-and-high-frequencies-in-an-image?share=1">What are the low and high frequencies in an image?</a></li>
+<li>Frequency means rate of change of something. In two-dimensional signals like digital images, frequencies are rate of change of grey scale value (intensity of pixel) with respect to space. This is also called Spatial frequency. Ref.: <a href="https://www.quora.com/What-are-frequencies-in-images-Better-if-explained-with-an-example">What are frequencies in images?</a></li>
+<li>One interesting application is in the use of compression algorithms like JPEG. Here the DCT (Discrete cosine transform) is used to save more of the important parts of the image (the low frequencies) and less of the high frequencies. Ref. <a href="https://photo.stackexchange.com/questions/40401/what-does-frequency-mean-in-an-image">What does “frequency” mean in an image?</a></li>
+<li>Wiki: Human vision is much more sensitive to <strong>small variations in color (or brightness) over large areas</strong> than to the strength of <strong>high-frequency brightness variations</strong>.</li>
+</ul>
+<p>補充：對人眼來說，察覺「大範圍中小小的顏色或亮度變化」比發現「高頻率的亮度變化」容易。</p>
+<h3 id="Compression-steps"><a href="#Compression-steps" class="headerlink" title="Compression steps"></a>Compression steps</h3><ol>
+<li>Transform the image into Y’CbCr color space<ul>
+<li>Y’CbCr separate each pixel’s intensity (Y’) from color (Cb, Cr)</li>
+</ul>
+</li>
+<li>Down-sampling (chroma sub-sampling)<ul>
+<li>Wiki: reduce the spatial(空間性的) resolution of the Cb and Cr components</li>
+<li>白話文：減少影像使用的顏色數量</li>
+</ul>
+</li>
+<li>Block splitting<ul>
+<li>Wiki: depending on chroma sub-sampling, this yields Minimum Coded Unit (MCU) blocks of size 8×8 (4:4:4 when no sub-sampling), 16×8 (4:2:2), or most commonly 16×16 (4:2:0).</li>
+</ul>
+</li>
+<li>Apply DCT (discrete cosine transform)</li>
+<li>Quantization (the lossy part in JPEG compression)</li>
+<li>Huffman encoding, get the .JPG file</li>
+</ol>
+<h3 id="Down-sampling"><a href="#Down-sampling" class="headerlink" title="Down-sampling"></a>Down-sampling</h3><ul>
+<li>04:37開始：<ul>
+<li>One of the nice things about Y’CbCr is that human eye doesn’t really see chrominance very well. It’s certainly a much lower resolution than we see changes in intensity.</li>
+<li>Just like with TV encoding, we can massively down sample the amount of Cb and Cr that we see in the image.</li>
+</ul>
+</li>
+<li>06:14 Down-sampling is sometimes tied to the quality of the JPG that you output.<ul>
+<li>影像軟體在輸出.JPG檔案時，「品質」調整的通常就是down-sampling的程度</li>
+</ul>
+</li>
+<li>06:29 In general, most software will use a down-sample of 2 in both direction, which is 4 times less colors.</li>
+</ul>
+<h2 id="Part-2-DCT-Discrete-Cosine-Transform"><a href="#Part-2-DCT-Discrete-Cosine-Transform" class="headerlink" title="Part 2: DCT (Discrete Cosine Transform)"></a>Part 2: DCT (Discrete Cosine Transform)</h2><iframe width="560" height="315" src="https://www.youtube.com/embed/Q2aEzeMDHMA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<h3 id="DCT"><a href="#DCT" class="headerlink" title="DCT"></a>DCT</h3><ul>
+<li>02:53 …in JPEG, we can get rid of some of the higher frequency signals and the general gist of the image will still be there.</li>
+<li>03:19 What we do in JPEG is we split each image into 8 by 8 pixel groups, and each of those pixel groups is separately encoded with its own discrete cosine transform.</li>
+<li>Wiki:<ul>
+<li>Each 8 by 8 pixel group is converted to a frequency-domain representation by “normalized, two-dimensional type-II DCT”.</li>
+<li>Before computing the DCT of the pixel group, its values are shifted from a positive range to one centered on zero (from <code>[0, 255]</code> to <code>[-128, 127]</code>). This step reduces the dynamic range requirements in the DCT processing stage that follows.<figure class="figure--center"><img src="/2021/how-jpeg-works/patterns.png" title="two-dimensional DCT basis functions"><figcaption><p>two-dimensional DCT basis functions</p></figcaption></figure></li>
+<li>The DCT transforms an pixel group of input values to a linear combination of these 64 patterns (see above image). The output values are referred to as <strong>transform coefficients</strong>.</li>
+</ul>
+</li>
+</ul>
+<h3 id="Quantization"><a href="#Quantization" class="headerlink" title="Quantization"></a>Quantization</h3><ul>
+<li>08:27 After calculating the discrete cosine transform coefficients, we will try to remove the ones we don’t want. We call the process of removing the high frequency data “quantization”.</li>
+<li>Wiki: the elements in the quantization matrix control the compression ratio, with larger values producing greater compression.<ul>
+<li>白話文：DCT結束後得到的<strong>transform coefficients</strong>會根據quantization matrix繼續壓縮。quantization matrix會指示<strong>transform coefficients</strong>中每一個像素被壓縮的程度；quantization matrix中越大的數字代表越大的壓縮比例</li>
+<li>12:55 If we increase the values in the quantization table, we’re essentially operating a lower JPEG quality setting.</li>
+</ul>
+</li>
+</ul>
+<h3 id="Quantization-matrix-quantization-table"><a href="#Quantization-matrix-quantization-table" class="headerlink" title="Quantization matrix (quantization table)"></a>Quantization matrix (quantization table)</h3><p>Wiki: the quantization matrix is designed to provide more resolution to more perceivable frequency components over less perceivable components (usually lower frequencies over high frequencies) in addition to transforming as many components to 0, which can be encoded with greatest efficiency.</p>
+<p>白話文：quantization matrix會盡可能保留人眼可察覺的部分（通常是低頻率的部分），捨棄人眼察覺不出來的部分（高頻率的部分）</p>
+<h3 id="Huffman-encoding"><a href="#Huffman-encoding" class="headerlink" title="Huffman encoding"></a>Huffman encoding</h3><ul>
+<li>以zigzag的形式來編碼<strong>transform coefficients</strong></li>
+<li><strong>transform coefficients</strong>中，通常是左上角擁有較多資訊，而右下角偏向被捨棄，搭配Huffman encoding可以讓尾部大量的0一起被壓縮<ul>
+<li>10:34 We serialize them out into a long line, and we use Huffman encoding to shrink them right down.</li>
+</ul>
+</li>
+</ul>
+<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
+<li><a href="https://en.wikipedia.org/wiki/YCbCr">Wikipedia: YCbCr</a></li>
+<li><a href="https://en.wikipedia.org/wiki/JPEG">Wikipedia: JPEG</a></li>
+<li><a href="https://en.wikipedia.org/wiki/JPEG_File_Interchange_Format">Wikipedia: JPEG File Interchange Format</a></li>
+</ul>
+]]></content>
   </entry>
   <entry>
     <title>Theme &quot;NexT&quot; font modification</title>
