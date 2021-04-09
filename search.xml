@@ -360,7 +360,7 @@ on <a href="https://codepen.io">CodePen</a>.</span>
 <li>If you stick to using <code>const</code> only with primitive values, you avoid any confusion of re-assignment (not allowed) vs. mutation (allowed)! That’s the safest and best way to use const.</li>
 </ul>
 <h3 id="ES2015-const-is-not-about-immutability-相關筆記"><a href="#ES2015-const-is-not-about-immutability-相關筆記" class="headerlink" title="ES2015 const is not about immutability 相關筆記"></a>ES2015 const is not about immutability 相關筆記</h3><script src="https://gist.github.com/tzynwang/0945c27501de984d3aaa410bf55a08ce.js"></script>
-<p>The only thing that’s immutable here is the binding. <code>const</code> assigns a value (<code>&#123;&#125;</code>) to a variable name (<code>foo</code>), and guarantees that no rebinding will happen. ES2015 const has nothing to do with immutability of values.<br>與其理說「透過<code>const</code>宣告的陣列（或物件）不能被修改內容」，不如將<code>const</code>理解為「建立一個變數與值之間不變的binding」。</p>
+<p>The only thing that’s immutable here is the binding. <code>const</code> assigns a value (<code>&#123;&#125;</code>) to a variable name (<code>foo</code>), and guarantees that no rebinding will happen. ES2015 const has nothing to do with immutability of values.<br>與其描述為「透過<code>const</code>宣告的陣列（或物件）不能被修改內容」，不如將<code>const</code>理解為「建立一個變數與值之間不變的binding」。</p>
 <h3 id="MDN上的相關內容"><a href="#MDN上的相關內容" class="headerlink" title="MDN上的相關內容"></a>MDN上的相關內容</h3><ul>
 <li>The value of a constant can’t be changed through reassignment, and it can’t be re-declared.</li>
 <li>以<code>const</code>宣告變數的同時就得賦值<script src="https://gist.github.com/tzynwang/b92649f9945fb3cb92275cf448adb199.js"></script>
