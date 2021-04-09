@@ -32,8 +32,9 @@ os: Windows_NT 10.0.18363 win32 x64
 
 ### ES2015 const is not about immutability 相關筆記
 <script src="https://gist.github.com/tzynwang/0945c27501de984d3aaa410bf55a08ce.js"></script>
-The only thing that’s immutable here is the binding. `const` assigns a value (`{}`) to a variable name (`foo`), and guarantees that no rebinding will happen. ES2015 const has nothing to do with immutability of values.
-與其理說「透過`const`宣告的陣列（或物件）不能被修改內容」，不如將`const`理解為「建立一個變數與值之間不變的binding」。
+
+- The only thing that’s immutable here is the binding. `const` assigns a value (`{}`) to a variable name (`foo`), and guarantees that no rebinding will happen. ES2015 const has nothing to do with immutability of values.
+- 與其描述為「透過`const`宣告的陣列（或物件）不能被修改內容」，不如將`const`理解為「建立一個變數與值之間不變的binding」。
 
 ### MDN上的相關內容
 - The value of a constant can't be changed through reassignment, and it can't be re-declared.
@@ -75,7 +76,7 @@ The only thing that’s immutable here is the binding. `const` assigns a value (
   - `writable`若為`false`，代表該`value`無法被修改
   - 被`Object.freeze()`凍結的物件，其`value`的`writable`就被修改為`false`
 - `enumerable`: If true, the property will be enumerated by a for-in enumeration. Otherwise, the property is said to be non-enumerable.
-  - `enumerable`為`true`代表該`value`會[被`for...in`迭代到](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...in)
+  - `enumerable`為`true`代表該`value`會[被`for...in`遍歷](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...in)
 - `configurable`: If false, attempts to delete the property, change the property to be an accessor property, or change its attributes (other than [[Value]], or changing [[Writable]] to false) will fail.
   - `configurable`若為`false`，代表該`value`無法被刪除
   - 經`Object.freeze()`或`Object.seal()`處理過的物件，其`value`的`configurable`就被修改為`false`
