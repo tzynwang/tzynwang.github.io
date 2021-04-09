@@ -21,21 +21,27 @@
     var NexT = window.NexT || {};
     var CONFIG = {"hostname":"tzynwang.github.io","root":"/","images":"/images","scheme":"Pisces","version":"8.2.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":"enable","trigger":"auto","top_n_per_article":-1,"unescape":false,"preload":false}};
   </script>
-<meta name="description" content="Question: why adds bundle exec in the command when running jekyll server in the first time?Answer (short): to know the version of the gems that are going to use. Notebundle exec will check the Gemfile">
+<meta name="description" content="原始問題以const宣告一個陣列（或物件），為何可以在宣告完畢後繼續修改該陣列（或物件）的內容？ 事實上const的限制是「變數不能被re-assigned或re-declared」  簡答const的限制是「只能賦值一次，不能重新賦值」，不直接等同「不能修改內容」。 環境12Google Chrome: 89.0.4389.114 (Official Build) (64-bit)os: Win">
 <meta property="og:type" content="article">
-<meta property="og:title" content="bundle exec">
-<meta property="og:url" content="https://tzynwang.github.io/2021/bundle-exec/index.html">
+<meta property="og:title" content="為什麼可以修改使用const宣告的陣列（或物件）的內容？">
+<meta property="og:url" content="https://tzynwang.github.io/2021/array-mutation/index.html">
 <meta property="og:site_name" content="普通文組">
-<meta property="og:description" content="Question: why adds bundle exec in the command when running jekyll server in the first time?Answer (short): to know the version of the gems that are going to use. Notebundle exec will check the Gemfile">
+<meta property="og:description" content="原始問題以const宣告一個陣列（或物件），為何可以在宣告完畢後繼續修改該陣列（或物件）的內容？ 事實上const的限制是「變數不能被re-assigned或re-declared」  簡答const的限制是「只能賦值一次，不能重新賦值」，不直接等同「不能修改內容」。 環境12Google Chrome: 89.0.4389.114 (Official Build) (64-bit)os: Win">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-02-08T12:31:26.000Z">
-<meta property="article:modified_time" content="2021-02-18T07:44:15.504Z">
+<meta property="og:image" content="https://tzynwang.github.io/2021/array-mutation/騎士王的提問時間.jpg">
+<meta property="og:image" content="https://tzynwang.github.io/2021/array-mutation/object-freeze-demo-1.png">
+<meta property="og:image" content="https://tzynwang.github.io/2021/array-mutation/object-freeze-demo-2.png">
+<meta property="og:image" content="https://tzynwang.github.io/2021/array-mutation/object-freeze-demo-3.png">
+<meta property="og:image" content="https://tzynwang.github.io/2021/array-mutation/object-freeze-demo-4.png">
+<meta property="article:published_time" content="2021-04-09T06:23:04.000Z">
+<meta property="article:modified_time" content="2021-04-09T08:55:43.480Z">
 <meta property="article:author" content="Charlie (Tzu Yin)">
 <meta property="article:tag" content="hexo, hexo blog, tzyn, 普通文組">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://tzynwang.github.io/2021/array-mutation/騎士王的提問時間.jpg">
 
 
-<link rel="canonical" href="https://tzynwang.github.io/2021/bundle-exec/">
+<link rel="canonical" href="https://tzynwang.github.io/2021/array-mutation/">
 
 
 <script class="page-configurations">
@@ -47,7 +53,7 @@
     lang   : 'en'
   };
 </script>
-<title>bundle exec | 普通文組</title>
+<title>為什麼可以修改使用const宣告的陣列（或物件）的內容？ | 普通文組</title>
   
 
 
@@ -185,7 +191,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Note"><span class="nav-number">1.</span> <span class="nav-text">Note</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-number">2.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8E%9F%E5%A7%8B%E5%95%8F%E9%A1%8C"><span class="nav-number">1.</span> <span class="nav-text">原始問題</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B0%A1%E7%AD%94"><span class="nav-number">2.</span> <span class="nav-text">簡答</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%92%B0%E5%A2%83"><span class="nav-number">3.</span> <span class="nav-text">環境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%9C%E6%96%BCconst%E7%9A%84%E4%BA%8B%E5%AF%A6"><span class="nav-number">4.</span> <span class="nav-text">關於const的事實</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#You-Don%E2%80%99t-Know-JS-Yet-%E7%9B%B8%E9%97%9C%E7%AD%86%E8%A8%98"><span class="nav-number">4.1.</span> <span class="nav-text">You Don’t Know JS Yet 相關筆記</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MDN%E4%B8%8A%E7%9A%84%E7%9B%B8%E9%97%9C%E5%85%A7%E5%AE%B9"><span class="nav-number">4.2.</span> <span class="nav-text">MDN上的相關內容</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Object-freeze"><span class="nav-number">5.</span> <span class="nav-text">Object.freeze()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Object-seal"><span class="nav-number">6.</span> <span class="nav-text">Object.seal()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Object-preventExtensions"><span class="nav-number">7.</span> <span class="nav-text">Object.preventExtensions()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%83%E8%80%83%E6%96%87%E4%BB%B6"><span class="nav-number">8.</span> <span class="nav-text">參考文件</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -251,7 +257,7 @@
   
 
   <article itemscope="" itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://tzynwang.github.io/2021/bundle-exec/">
+    <link itemprop="mainEntityOfPage" href="https://tzynwang.github.io/2021/array-mutation/">
 
     <span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar-pexels-alex-andrews-215-215.png">
@@ -264,7 +270,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          bundle exec
+          為什麼可以修改使用const宣告的陣列（或物件）的內容？
         </h1>
 
         <div class="post-meta-container">
@@ -274,23 +280,17 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
+      
 
-      <time title="Created: 2021-02-08 20:31:26" itemprop="dateCreated datePublished" datetime="2021-02-08T20:31:26+08:00">2021-02-08</time>
+      <time title="Created: 2021-04-09 14:23:04 / Modified: 16:55:43" itemprop="dateCreated datePublished" datetime="2021-04-09T14:23:04+08:00">2021-04-09</time>
     </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-02-18 15:44:15" itemprop="dateModified" datetime="2021-02-18T15:44:15+08:00">2021-02-18</time>
-      </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
       </span>
       <span class="post-meta-item-text">In</span>
         <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-          <a href="/categories/jekyll/" itemprop="url" rel="index"><span itemprop="name">jekyll</span></a>
+          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
         </span>
     </span>
 
@@ -304,12 +304,69 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>Question: why adds <code>bundle exec</code> in the command when running jekyll server in the first time?<br>Answer (short): to know the version of the gems that are going to use.</p>
-<h2 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h2><p><code>bundle exec</code> will check the Gemfile to understand “<strong>what gems</strong> will be used” and “<strong>which version</strong> of the gems should be used”.<br>In the case that Gemfile is modified, run <code>bundle exec jekyll server</code> instead of just running <code>jekyll server</code>.</p>
-<p>第一次執行<code>jekyll server</code>要輸入<code>bundle exec jekyll server</code>，讓環境根據Gemfile查詢你的程式會用到哪些gems、並這些gems該使用哪些版本。在Gemfile沒有更新的情況下，第二次以後直接在環境輸入<code>jekyll server</code>就可以了。</p>
-<p>若有修改Gemfile的內容，則須重新執行<code>bundle exec jekyll server</code>。</p>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a target="_blank" rel="noopener" href="https://stackoverflow.com/a/16218854/15028185">What does bundle exec rake mean?</a></p>
-<p>You’re running <code>bundle exec</code> on a program. The program’s creators wrote it when <strong>certain versions of gems</strong> were available. The program <strong>Gemfile</strong> specifies the versions of the gems the creators decided to use. That is, the script was made to run correctly against these gem versions.</p>
+        <h2 id="原始問題"><a href="#原始問題" class="headerlink" title="原始問題"></a>原始問題</h2><p>以<code>const</code>宣告一個陣列（或物件），為何可以在宣告完畢後繼續修改該陣列（或物件）的內容？</p>
+<figure class="figure--center"><img src="/2021/array-mutation/騎士王的提問時間.jpg" title="事實上const的限制是「變數不能被re-assigned或re-declared」"><figcaption><p>事實上const的限制是「變數不能被re-assigned或re-declared」</p></figcaption></figure>
+
+<h2 id="簡答"><a href="#簡答" class="headerlink" title="簡答"></a>簡答</h2><p><code>const</code>的限制是「只能賦值一次，不能重新賦值」，不直接等同「不能修改內容」。</p>
+<h2 id="環境"><a href="#環境" class="headerlink" title="環境"></a>環境</h2><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Google Chrome: 89.0.4389.114 (Official Build) (64-bit)</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="關於const的事實"><a href="#關於const的事實" class="headerlink" title="關於const的事實"></a>關於<code>const</code>的事實</h2><h3 id="You-Don’t-Know-JS-Yet-相關筆記"><a href="#You-Don’t-Know-JS-Yet-相關筆記" class="headerlink" title="You Don’t Know JS Yet 相關筆記"></a>You Don’t Know JS Yet 相關筆記</h3><ul>
+<li><code>const</code>&nbsp;declared variables are not “unchangeable”, they just cannot be re-assigned.<ul>
+<li>不適合以「不能被修改」來理解透過<code>const</code>宣告的變數，而是「使用<code>const</code>宣告的變數只能被賦值一次」<script src="https://gist.github.com/tzynwang/bf4ef105981d115a11ae4eb761e34ac8.js"></script></li>
+</ul>
+</li>
+<li>It’s ill-advised to use&nbsp;<code>const</code>&nbsp;with object values, because those values can still be changed even though the variable can’t be re-assigned.<script src="https://gist.github.com/tzynwang/b7f3ee4e1e7c8936a98bb8f7fa76b634.js"></script></li>
+<li>If you stick to using <code>const</code> only with primitive values, you avoid any confusion of re-assignment (not allowed) vs. mutation (allowed)! That’s the safest and best way to use const.</li>
+</ul>
+<h3 id="MDN上的相關內容"><a href="#MDN上的相關內容" class="headerlink" title="MDN上的相關內容"></a>MDN上的相關內容</h3><ul>
+<li>The value of a constant can’t be changed through reassignment, and it can’t be re-declared.</li>
+<li>以<code>const</code>宣告變數的同時就得賦值<script src="https://gist.github.com/tzynwang/b92649f9945fb3cb92275cf448adb199.js"></script>
+
+</li>
+</ul>
+<h2 id="Object-freeze"><a href="#Object-freeze" class="headerlink" title="Object.freeze()"></a><code>Object.freeze()</code></h2><ul>
+<li>如果想要確保陣列或物件內容不被修改，可以使用<code>Object.freeze()</code><ul>
+<li>MDN: Use <code>Object.freeze()</code> to make object immutable. A frozen object can no longer be changed; freezing an object prevents new properties from being added to it, existing properties from being removed, prevents changing the enumerability, configurability, or writability of existing properties, and prevents the values of existing properties from being changed.</li>
+<li>一個陣列或物件被凍結後，無法新增或移除該陣列、物件的內容，也不可修改該陣列、物件的properties</li>
+</ul>
+</li>
+<li><code>Object.freeze()</code>不會自動套用到巢狀結構內的所有內容上，如以下範例：<script src="https://gist.github.com/tzynwang/a52efc027532899027d7d0e0c9f1cfef.js"></script>
+<figure class="figure--center"><img src="/2021/array-mutation/object-freeze-demo-1.png"></figure></li>
+<li>可透過遞迴來凍結巢狀結構物件的內容<script src="https://gist.github.com/tzynwang/e7a3cf50d030d90f05eee59257806b1e.js"></script>
+<figure class="figure--center"><img src="/2021/array-mutation/object-freeze-demo-2.png"></figure>
+
+
+</li>
+</ul>
+<h2 id="Object-seal"><a href="#Object-seal" class="headerlink" title="Object.seal()"></a><code>Object.seal()</code></h2><ul>
+<li>The Object.seal() method seals an object, preventing new properties from being added to it and marking all existing properties as non-configurable. Values of present properties can still be changed as long as they are writable.<ul>
+<li>與<code>Object.freeze()</code>的差異是，經過<code>Object.seal()</code>封閉的物件不能新增或刪除既有的內容，但內容可以被修改<script src="https://gist.github.com/tzynwang/1e8917a16a8450fb76fd5a6bd34201e9.js"></script>
+<figure class="figure--center"><img src="/2021/array-mutation/object-freeze-demo-3.png"></figure>
+
+
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="Object-preventExtensions"><a href="#Object-preventExtensions" class="headerlink" title="Object.preventExtensions()"></a><code>Object.preventExtensions()</code></h2><p><code>Object.preventExtensions()</code>只會禁止對物件新增內容，但可以刪除或修改既有內容</p>
+<script src="https://gist.github.com/tzynwang/034ffb5ed714a851cc2e35c5b8a148df.js"></script>
+<figure class="figure--center"><img src="/2021/array-mutation/object-freeze-demo-4.png"></figure>
+
+
+<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
+<li>You Don’t Know JS Yet: Get Started - 2nd Edition<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/getify/You-Dont-Know-JS/blob/2nd-ed/get-started/ch2.md">Chapter 2: Surveying JS</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/getify/You-Dont-Know-JS/blob/2nd-ed/get-started/apA.md">Appendix A: Exploring Further</a></li>
+</ul>
+</li>
+<li>MDN<ul>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const">const</a></li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/freeze">Object.freeze()</a></li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/seal">Object.seal()</a></li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/preventExtensions">Object.preventExtensions()</a></li>
+</ul>
+</li>
+<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/7509894/freezing-arrays-in-javascript">‘Freezing’ Arrays in Javascript?</a></li>
+</ul>
 
     </div>
 
@@ -323,11 +380,11 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
+                <a href="/2021/while-loop-ajax/" rel="prev" title="為什麼在瀏覽器環境中使用while loop執行ajax request會讓頁面陷入凍結狀態？">
+                  <i class="fa fa-chevron-left"></i> 為什麼在瀏覽器環境中使用while loop執行ajax request會讓頁面陷入凍結狀態？
+                </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2021/hexo-deploy/" rel="next" title="Deploy to GitHub Page">
-                  Deploy to GitHub Page <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
     </footer>

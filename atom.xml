@@ -6,7 +6,7 @@
   <link href="https://tzynwang.github.io/atom.xml" rel="self"/>
   
   <link href="https://tzynwang.github.io/"/>
-  <updated>2021-04-09T03:00:57.583Z</updated>
+  <updated>2021-04-09T08:55:43.480Z</updated>
   <id>https://tzynwang.github.io/</id>
   
   <author>
@@ -17,11 +17,34 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>為什麼在瀏覽器環境中使用while loop執行ajax request讓頁面陷入凍結狀態？</title>
+    <title>為什麼可以修改使用const宣告的陣列（或物件）的內容？</title>
+    <link href="https://tzynwang.github.io/2021/array-mutation/"/>
+    <id>https://tzynwang.github.io/2021/array-mutation/</id>
+    <published>2021-04-09T06:23:04.000Z</published>
+    <updated>2021-04-09T08:55:43.480Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;原始問題&quot;&gt;&lt;a href=&quot;#原始問題&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="JavaScript" scheme="https://tzynwang.github.io/categories/JavaScript/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>為什麼在瀏覽器環境中使用while loop執行ajax request會讓頁面陷入凍結狀態？</title>
     <link href="https://tzynwang.github.io/2021/while-loop-ajax/"/>
     <id>https://tzynwang.github.io/2021/while-loop-ajax/</id>
     <published>2021-04-08T13:10:25.000Z</published>
-    <updated>2021-04-09T03:00:57.583Z</updated>
+    <updated>2021-04-09T06:24:28.990Z</updated>
     
     
       
@@ -102,31 +125,6 @@
     
     <category term="JavaScript" scheme="https://tzynwang.github.io/categories/JavaScript/"/>
     
-    
-  </entry>
-  
-  <entry>
-    <title>自主練習專案「grid-template-areas generator」技術記錄</title>
-    <link href="https://tzynwang.github.io/2021/grid-template-areas-generator-review/"/>
-    <id>https://tzynwang.github.io/2021/grid-template-areas-generator-review/</id>
-    <published>2021-03-24T04:18:30.000Z</published>
-    <updated>2021-03-29T11:20:32.731Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;總結&quot;&gt;&lt;a href=&quot;#總結&quot; class=&quot;headerlink&quot; title=&quot;總結&quot;&gt;&lt;/a&gt;總結&lt;/h2&gt;&lt;p&gt;微型專案「grid-template-areas</summary>
-        
-      
-    
-    
-    
-    <category term="CSS" scheme="https://tzynwang.github.io/categories/CSS/"/>
-    
-    
-    <category term="Side Project" scheme="https://tzynwang.github.io/tags/Side-Project/"/>
     
   </entry>
   
