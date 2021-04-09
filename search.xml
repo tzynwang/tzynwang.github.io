@@ -360,7 +360,11 @@ on <a href="https://codepen.io">CodePen</a>.</span>
 <li>If you stick to using <code>const</code> only with primitive values, you avoid any confusion of re-assignment (not allowed) vs. mutation (allowed)! That’s the safest and best way to use const.</li>
 </ul>
 <h3 id="ES2015-const-is-not-about-immutability-相關筆記"><a href="#ES2015-const-is-not-about-immutability-相關筆記" class="headerlink" title="ES2015 const is not about immutability 相關筆記"></a>ES2015 const is not about immutability 相關筆記</h3><script src="https://gist.github.com/tzynwang/0945c27501de984d3aaa410bf55a08ce.js"></script>
-<p>The only thing that’s immutable here is the binding. <code>const</code> assigns a value (<code>&#123;&#125;</code>) to a variable name (<code>foo</code>), and guarantees that no rebinding will happen. ES2015 const has nothing to do with immutability of values.<br>與其描述為「透過<code>const</code>宣告的陣列（或物件）不能被修改內容」，不如將<code>const</code>理解為「建立一個變數與值之間不變的binding」。</p>
+
+<ul>
+<li>The only thing that’s immutable here is the binding. <code>const</code> assigns a value (<code>&#123;&#125;</code>) to a variable name (<code>foo</code>), and guarantees that no rebinding will happen. ES2015 const has nothing to do with immutability of values.</li>
+<li>與其描述為「透過<code>const</code>宣告的陣列（或物件）不能被修改內容」，不如將<code>const</code>理解為「建立一個變數與值之間不變的binding」。</li>
+</ul>
 <h3 id="MDN上的相關內容"><a href="#MDN上的相關內容" class="headerlink" title="MDN上的相關內容"></a>MDN上的相關內容</h3><ul>
 <li>The value of a constant can’t be changed through reassignment, and it can’t be re-declared.</li>
 <li>以<code>const</code>宣告變數的同時就得賦值<script src="https://gist.github.com/tzynwang/b92649f9945fb3cb92275cf448adb199.js"></script>
@@ -1056,6 +1060,44 @@ The configuration in <code>_config.yml</code> file should be set like this:<figu
       </categories>
   </entry>
   <entry>
+    <title>Plugin&amp;#58; hexo-tag-figure</title>
+    <url>/2021/hexo-tag-figure/</url>
+    <content><![CDATA[<h2 id="Summary-of-this-post"><a href="#Summary-of-this-post" class="headerlink" title="Summary of this post"></a>Summary of this post</h2><p>This post is my notes for the following topics:</p>
+<ol>
+<li>hexo plugin: <a href="https://github.com/chawyehsu/hexo-tag-figure">hexo-tag-figure</a></li>
+<li>adding additional CSS style settings to NexT theme (by configuring <code>custom_file_path</code> in the file <code>_config.next.yml</code>)</li>
+</ol>
+<p>此篇主要是記錄<code>hexo-tag-figure</code>的使用心得，以及如何使用<code>_config.next.yml</code>中的<code>custom_file_path</code>參數設定來增加自定義CSS設定內容的相關筆記。</p>
+<h2 id="Environment"><a href="#Environment" class="headerlink" title="Environment"></a>Environment</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo-tag-figure: 0.4.1</span><br><span class="line">NexT: 8.2.1</span><br><span class="line">hexo: 5.3.0</span><br><span class="line">hexo-cli: 4.2.0</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></table></figure>
+
+<h2 id="hexo-tag-figure"><a href="#hexo-tag-figure" class="headerlink" title="hexo-tag-figure"></a>hexo-tag-figure</h2><h3 id="GitHub"><a href="#GitHub" class="headerlink" title="GitHub"></a>GitHub</h3><p><a href="https://github.com/chawyehsu/hexo-tag-figure">hexo-tag-figure</a></p>
+<h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="figure--center"><img src="/2021/hexo-tag-figure/book-cover.jpg" width="300" title="Confessions of a Young Novelist " alt="Book cover of Confessions of a Young Novelist"><figcaption><p>Confessions of a Young Novelist </p></figcaption></figure>
+
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;% figure figure--center 2021&#x2F;hexo-tag-figure&#x2F;book-cover.jpg 300 &quot;Confessions of a Young Novelist &#39;Book cover of Confessions of a Young Novelist&#39;&quot; %&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>figure--center</code>: the <code>class name</code> of the figure element.<br>  This is the <strong>required</strong> argument, though in the end I didn’t apply customized CSS style to this class, this argument can not be skipped.</li>
+<li><code>hexo-tag-figure/book-cover.jpg</code>: the image path.<br>  Check the source code to find the path logic:  <figure class="figure--center"><img src="/2021/hexo-tag-figure/image-path.png" title="Check the image path by DevTools " alt="Screenshot of checking the image path through DevTools"><figcaption><p>Check the image path by DevTools </p></figcaption></figure>
+  (update on Feb 16 2021: I change the <code>permalink</code> setting from <code>:year/:month/:day/:title/</code> to <code>:title/</code>, thus the image path needs to be updated too. The image path in the screenshot includes <code>:year/:month/:day/:title/</code> since I previously set the <code>permalink</code> in this form 😅)<br>  Aad the permalink <code>:title/</code> as prefix to load the image.<br>  文件沒有特別針對image path做說明，從DevTools觀察了一下其他還沒使用hexo-tag-figure插入的圖片路徑，測試後發現image path要加上permalink。</li>
+<li><code>300</code>: the image width. I skip the height setting.</li>
+<li><code>Confessions of a Young Novelist</code>: the title text that is placed in <code>figcaption</code> element.<br>  Add customized font color and font size to this element.</li>
+<li><code>Book cover of Confessions of a Young Novelist</code>: the alt text for this image.</li>
+</ul>
+<h3 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h3><ol>
+<li>According to <a href="https://theme-next.js.org/docs/advanced-settings/custom-files.html">NexT’s document</a>, extra CSS settings can be added by enable the <code>custom_file_path</code> in theme config file (in my case the <code>_config.next.yml</code> in root folder). This is my configuration:<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Define custom file paths.</span></span><br><span class="line"><span class="comment"># Create your custom files in site directory `source/_data` and uncomment needed files below.</span></span><br><span class="line"><span class="attr">custom_file_path:</span></span><br><span class="line">  <span class="comment">#head: source/_data/head.njk</span></span><br><span class="line">  <span class="comment">#header: source/_data/header.njk</span></span><br><span class="line">  <span class="comment">#sidebar: source/_data/sidebar.njk</span></span><br><span class="line">  <span class="comment">#postMeta: source/_data/post-meta.njk</span></span><br><span class="line">  <span class="comment">#postBodyEnd: source/_data/post-body-end.njk</span></span><br><span class="line">  <span class="comment">#footer: source/_data/footer.njk</span></span><br><span class="line">  <span class="comment">#bodyEnd: source/_data/body-end.njk</span></span><br><span class="line">  <span class="comment">#variable: source/_data/variables.styl</span></span><br><span class="line">  <span class="comment">#mixin: source/_data/mixins.styl</span></span><br><span class="line">  <span class="attr">style:</span> <span class="string">source/_data/styles.styl</span> <span class="comment"># Enable this option by removing the &#x27;#&#x27; in the beginning of the line</span></span><br></pre></td></tr></table></figure></li>
+<li>Add the <code>styles.styl</code> file in the path <code>C:\Projects\hexo_blog\source\_data</code></li>
+<li>Add CSS settings for <code>figcaption</code> element, remove each image’s bottom margin by setting the <code>margin-button</code> to 0px. With <code>margin-button</code> set as 0px, the text underneath (the <code>figcaption</code>) will be closer to the image.<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">figcaption</span> &#123;</span><br><span class="line">    <span class="attribute">color</span>: <span class="number">#999</span>;</span><br><span class="line">    <span class="attribute">text-align</span>: center;</span><br><span class="line">    font-size: 14px; # Set to 14px to make the font size same as the text in table of content</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.post-body</span> <span class="selector-tag">img</span> &#123;</span><br><span class="line">    <span class="attribute">margin-bottom</span>: <span class="number">0px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="figure--center"><img src="/2021/hexo-tag-figure/margin-bottom-20px.jpg" title="margin-bottom 20px"><figcaption><p>margin-bottom 20px</p></figcaption></figure>
+<figure class="figure--center"><img src="/2021/hexo-tag-figure/margin-bottom-0px.jpg" title="margin-bottom 0px"><figcaption><p>margin-bottom 0px</p></figcaption></figure></li>
+<li>Save the configuration and run <code>hexo generate</code> and <code>hexo deploy</code>, done ☕</li>
+</ol>
+]]></content>
+      <categories>
+        <category>hexo</category>
+        <category>NexT (theme)</category>
+        <category>CSS</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Add local search</title>
     <url>/2021/hexo-search-engine/</url>
     <content><![CDATA[<h2 id="Summary-of-this-post"><a href="#Summary-of-this-post" class="headerlink" title="Summary of this post"></a>Summary of this post</h2><p>2 ways to add local search engine to the hexo blog:</p>
@@ -1096,44 +1138,6 @@ The configuration in <code>_config.yml</code> file should be set like this:<figu
       <categories>
         <category>hexo</category>
         <category>CSS</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>Plugin&amp;#58; hexo-tag-figure</title>
-    <url>/2021/hexo-tag-figure/</url>
-    <content><![CDATA[<h2 id="Summary-of-this-post"><a href="#Summary-of-this-post" class="headerlink" title="Summary of this post"></a>Summary of this post</h2><p>This post is my notes for the following topics:</p>
-<ol>
-<li>hexo plugin: <a href="https://github.com/chawyehsu/hexo-tag-figure">hexo-tag-figure</a></li>
-<li>adding additional CSS style settings to NexT theme (by configuring <code>custom_file_path</code> in the file <code>_config.next.yml</code>)</li>
-</ol>
-<p>此篇主要是記錄<code>hexo-tag-figure</code>的使用心得，以及如何使用<code>_config.next.yml</code>中的<code>custom_file_path</code>參數設定來增加自定義CSS設定內容的相關筆記。</p>
-<h2 id="Environment"><a href="#Environment" class="headerlink" title="Environment"></a>Environment</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo-tag-figure: 0.4.1</span><br><span class="line">NexT: 8.2.1</span><br><span class="line">hexo: 5.3.0</span><br><span class="line">hexo-cli: 4.2.0</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></table></figure>
-
-<h2 id="hexo-tag-figure"><a href="#hexo-tag-figure" class="headerlink" title="hexo-tag-figure"></a>hexo-tag-figure</h2><h3 id="GitHub"><a href="#GitHub" class="headerlink" title="GitHub"></a>GitHub</h3><p><a href="https://github.com/chawyehsu/hexo-tag-figure">hexo-tag-figure</a></p>
-<h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="figure--center"><img src="/2021/hexo-tag-figure/book-cover.jpg" width="300" title="Confessions of a Young Novelist " alt="Book cover of Confessions of a Young Novelist"><figcaption><p>Confessions of a Young Novelist </p></figcaption></figure>
-
-<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;% figure figure--center 2021&#x2F;hexo-tag-figure&#x2F;book-cover.jpg 300 &quot;Confessions of a Young Novelist &#39;Book cover of Confessions of a Young Novelist&#39;&quot; %&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li><code>figure--center</code>: the <code>class name</code> of the figure element.<br>  This is the <strong>required</strong> argument, though in the end I didn’t apply customized CSS style to this class, this argument can not be skipped.</li>
-<li><code>hexo-tag-figure/book-cover.jpg</code>: the image path.<br>  Check the source code to find the path logic:  <figure class="figure--center"><img src="/2021/hexo-tag-figure/image-path.png" title="Check the image path by DevTools " alt="Screenshot of checking the image path through DevTools"><figcaption><p>Check the image path by DevTools </p></figcaption></figure>
-  (update on Feb 16 2021: I change the <code>permalink</code> setting from <code>:year/:month/:day/:title/</code> to <code>:title/</code>, thus the image path needs to be updated too. The image path in the screenshot includes <code>:year/:month/:day/:title/</code> since I previously set the <code>permalink</code> in this form 😅)<br>  Aad the permalink <code>:title/</code> as prefix to load the image.<br>  文件沒有特別針對image path做說明，從DevTools觀察了一下其他還沒使用hexo-tag-figure插入的圖片路徑，測試後發現image path要加上permalink。</li>
-<li><code>300</code>: the image width. I skip the height setting.</li>
-<li><code>Confessions of a Young Novelist</code>: the title text that is placed in <code>figcaption</code> element.<br>  Add customized font color and font size to this element.</li>
-<li><code>Book cover of Confessions of a Young Novelist</code>: the alt text for this image.</li>
-</ul>
-<h3 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h3><ol>
-<li>According to <a href="https://theme-next.js.org/docs/advanced-settings/custom-files.html">NexT’s document</a>, extra CSS settings can be added by enable the <code>custom_file_path</code> in theme config file (in my case the <code>_config.next.yml</code> in root folder). This is my configuration:<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Define custom file paths.</span></span><br><span class="line"><span class="comment"># Create your custom files in site directory `source/_data` and uncomment needed files below.</span></span><br><span class="line"><span class="attr">custom_file_path:</span></span><br><span class="line">  <span class="comment">#head: source/_data/head.njk</span></span><br><span class="line">  <span class="comment">#header: source/_data/header.njk</span></span><br><span class="line">  <span class="comment">#sidebar: source/_data/sidebar.njk</span></span><br><span class="line">  <span class="comment">#postMeta: source/_data/post-meta.njk</span></span><br><span class="line">  <span class="comment">#postBodyEnd: source/_data/post-body-end.njk</span></span><br><span class="line">  <span class="comment">#footer: source/_data/footer.njk</span></span><br><span class="line">  <span class="comment">#bodyEnd: source/_data/body-end.njk</span></span><br><span class="line">  <span class="comment">#variable: source/_data/variables.styl</span></span><br><span class="line">  <span class="comment">#mixin: source/_data/mixins.styl</span></span><br><span class="line">  <span class="attr">style:</span> <span class="string">source/_data/styles.styl</span> <span class="comment"># Enable this option by removing the &#x27;#&#x27; in the beginning of the line</span></span><br></pre></td></tr></table></figure></li>
-<li>Add the <code>styles.styl</code> file in the path <code>C:\Projects\hexo_blog\source\_data</code></li>
-<li>Add CSS settings for <code>figcaption</code> element, remove each image’s bottom margin by setting the <code>margin-button</code> to 0px. With <code>margin-button</code> set as 0px, the text underneath (the <code>figcaption</code>) will be closer to the image.<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">figcaption</span> &#123;</span><br><span class="line">    <span class="attribute">color</span>: <span class="number">#999</span>;</span><br><span class="line">    <span class="attribute">text-align</span>: center;</span><br><span class="line">    font-size: 14px; # Set to 14px to make the font size same as the text in table of content</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.post-body</span> <span class="selector-tag">img</span> &#123;</span><br><span class="line">    <span class="attribute">margin-bottom</span>: <span class="number">0px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="figure--center"><img src="/2021/hexo-tag-figure/margin-bottom-20px.jpg" title="margin-bottom 20px"><figcaption><p>margin-bottom 20px</p></figcaption></figure>
-<figure class="figure--center"><img src="/2021/hexo-tag-figure/margin-bottom-0px.jpg" title="margin-bottom 0px"><figcaption><p>margin-bottom 0px</p></figcaption></figure></li>
-<li>Save the configuration and run <code>hexo generate</code> and <code>hexo deploy</code>, done ☕</li>
-</ol>
-]]></content>
-      <categories>
-        <category>hexo</category>
-        <category>CSS</category>
-        <category>NexT (theme)</category>
       </categories>
   </entry>
   <entry>
