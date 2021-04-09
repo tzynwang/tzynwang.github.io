@@ -13,7 +13,7 @@ os: Windows_NT 10.0.18363 win32 x64
 ```
 
 ## 原始題目
-請向 [RANDOM USER GENERATOR](https://randomuser.me/) 這支API索取資料，並在瀏覽器畫面上點擊按鈕後，輸出三位「只有女性」的資料。
+ALPHA Camp學期2-2：請向 [RANDOM USER GENERATOR](https://randomuser.me/) 這支API索取資料，並在瀏覽器畫面上點擊按鈕後，輸出三位「只有女性」的資料。
 
 
 ## 遭遇問題
@@ -47,11 +47,12 @@ os: Windows_NT 10.0.18363 win32 x64
 
 
 ## 此問題的解決方式
-- 直接根據[RANDOM USER GENERATOR的說明文件](https://randomuser.me/documentation#gender)在請求的URL加上特定parameter過濾需求資料（女性、三位：`?gender=female&results=3`）
+- 直接根據[RANDOM USER GENERATOR的說明文件](https://randomuser.me/documentation#gender)，在請求的URL加上特定parameter過濾需求資料（女性、三位：`?gender=female&results=3`）
 - 透過recursive讓`getFemaleUser()`在條件沒有被滿足的情況下再度呼叫`getFemaleUser()`
 
 
 ## 補充
+<script src="https://gist.github.com/tzynwang/1cf59700311f401a74042df5c76cf47f.js"></script>
 {% figure figure--center 2021/while-loop-ajax/setTimeout.png "'因為stack裡面的任務沒有清空，callback queue裡面的task永遠不會被執行'" %}
 - 將`axios.get()`抽換為`setTimeout()`也會造成頁面凍結，原理與上述一致
 - `setTimeout()`的callback function（`arr.push("add item to array");`）被推到callback queue之後，`arr.push`等待stack被清空，但能讓while loop停下來的task本身就在callback queue中被stack永遠不會結束的task卡住，因此while loop永遠不會停下來
@@ -62,4 +63,4 @@ os: Windows_NT 10.0.18363 win32 x64
 - [What the heck is the event loop anyway? | Philip Roberts](https://youtu.be/8aGhZQkoFbQ)
 - [Jake Archibald: In The Loop](https://youtu.be/cCOL7MC4Pl0)
 - [Further Adventures of the Event Loop - Erin Zimmer](https://youtu.be/u1kqx6AenYw)
-- [[筆記] 理解 JavaScript 中的事件循環、堆疊、佇列和併發模式（Learn event loop, stack, queue, and concurrency mode of JavaScript in depth）](https://pjchender.blogspot.com/2017/08/javascript-learn-event-loop-stack-queue.html)：這篇文章內的影片全部都是Philip Roberts的演講內容，建議影片部分直接觀看Philip Roberts本人的演講錄影即可
+- [[筆記] 理解 JavaScript 中的事件循環、堆疊、佇列和併發模式（Learn event loop, stack, queue, and concurrency mode of JavaScript in depth）](https://pjchender.blogspot.com/2017/08/javascript-learn-event-loop-stack-queue.html)：這篇文章內的影片全部都是Philip Roberts的演講內容，影片部分直接觀看Philip Roberts本人的演講錄影即可
