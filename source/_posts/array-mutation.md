@@ -66,7 +66,7 @@ The only thing that’s immutable here is the binding. `const` assigns a value (
 
 
 ## `Object.getOwnPropertyDescriptor()`
-回傳一個物件中，特定property的相關設定
+回傳一物件中某內容的相關設定
 <script src="https://gist.github.com/tzynwang/e0618d9ef2d4fa0b153ad6d9347ae8ee.js"></script>
 {% figure figure--center 2021/array-mutation/object-freeze-demo-5.png %}
 
