@@ -272,7 +272,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2021-04-09 14:23:04 / Modified: 16:55:43" itemprop="dateCreated datePublished" datetime="2021-04-09T14:23:04+08:00">2021-04-09</time>
+      <time title="Created: 2021-04-09 14:23:04 / Modified: 18:11:07" itemprop="dateCreated datePublished" datetime="2021-04-09T14:23:04+08:00">2021-04-09</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -307,6 +307,8 @@
 <li>It’s ill-advised to use&nbsp;<code>const</code>&nbsp;with object values, because those values can still be changed even though the variable can’t be re-assigned.<script src="https://gist.github.com/tzynwang/b7f3ee4e1e7c8936a98bb8f7fa76b634.js"></script></li>
 <li>If you stick to using <code>const</code> only with primitive values, you avoid any confusion of re-assignment (not allowed) vs. mutation (allowed)! That’s the safest and best way to use const.</li>
 </ul>
+<h3 id="ES2015-const-is-not-about-immutability-相關筆記"><a href="#ES2015-const-is-not-about-immutability-相關筆記" class="headerlink" title="ES2015 const is not about immutability 相關筆記"></a>ES2015 const is not about immutability 相關筆記</h3><script src="https://gist.github.com/tzynwang/0945c27501de984d3aaa410bf55a08ce.js"></script>
+<p>The only thing that’s immutable here is the binding. <code>const</code> assigns a value (<code>{}</code>) to a variable name (<code>foo</code>), and guarantees that no rebinding will happen. ES2015 const has nothing to do with immutability of values.<br>與其理說「透過<code>const</code>宣告的陣列（或物件）不能被修改內容」，不如將<code>const</code>理解為「建立一個變數與值之間不變的binding」。</p>
 <h3 id="MDN上的相關內容"><a href="#MDN上的相關內容" class="headerlink" title="MDN上的相關內容"></a>MDN上的相關內容</h3><ul>
 <li>The value of a constant can’t be changed through reassignment, and it can’t be re-declared.</li>
 <li>以<code>const</code>宣告變數的同時就得賦值<script src="https://gist.github.com/tzynwang/b92649f9945fb3cb92275cf448adb199.js"></script>
@@ -348,6 +350,7 @@
 <li><a target="_blank" rel="noopener" href="https://github.com/getify/You-Dont-Know-JS/blob/2nd-ed/get-started/apA.md">Appendix A: Exploring Further</a></li>
 </ul>
 </li>
+<li><a target="_blank" rel="noopener" href="https://mathiasbynens.be/notes/es6-const">ES2015 const is not about immutability</a></li>
 <li>MDN<ul>
 <li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const">const</a></li>
 <li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/freeze">Object.freeze()</a></li>
