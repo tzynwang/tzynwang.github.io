@@ -2,16 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://tzynwang.github.io/2021/while-loop-ajax/</loc>
+    <loc>https://tzynwang.github.io/2021/REB-to-HEX-review/</loc>
     
     <lastmod>2021-04-09</lastmod>
     
   </url>
   
   <url>
-    <loc>https://tzynwang.github.io/2021/REB-to-HEX-review/</loc>
+    <loc>https://tzynwang.github.io/2021/S4-A14-assignment-anatomy/</loc>
     
-    <lastmod>2021-04-08</lastmod>
+    <lastmod>2021-04-09</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://tzynwang.github.io/2021/while-loop-ajax/</loc>
+    
+    <lastmod>2021-04-09</lastmod>
     
   </url>
   
@@ -45,13 +52,6 @@
   
   <url>
     <loc>https://tzynwang.github.io/2021/css-specificity/</loc>
-    
-    <lastmod>2021-03-29</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://tzynwang.github.io/2021/S4-A14-assignment-anatomy/</loc>
     
     <lastmod>2021-03-29</lastmod>
     
@@ -228,7 +228,7 @@
   </url>
   
   <url>
-    <loc>https://tzynwang.github.io/tags/ALPHA-Camp%E4%BD%9C%E6%A5%AD/</loc>
+    <loc>https://tzynwang.github.io/tags/ALPHA-Camp-assignment/</loc>
     <lastmod>2021-04-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
