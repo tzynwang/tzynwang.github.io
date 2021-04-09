@@ -754,6 +754,29 @@ on <a href="https://codepen.io">CodePen</a>.</span>
       </categories>
   </entry>
   <entry>
+    <title>使用GitHub Actions自動產生sitemap.xml</title>
+    <url>/2021/github-actions-sitemap/</url>
+    <content><![CDATA[<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>使用GitHub Actions執行腳本，在每次透過<code>git push</code>更新網頁內容後自動產生sitemap.xml</p>
+<h2 id="版本與環境"><a href="#版本與環境" class="headerlink" title="版本與環境"></a>版本與環境</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo: 5.3.0</span><br><span class="line">hexo-cli: 4.2.0</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></table></figure>
+
+<h2 id="過程記錄"><a href="#過程記錄" class="headerlink" title="過程記錄"></a>過程記錄</h2><ol>
+<li>在GitHub repository根目錄中建立資料夾<code>.github/workflows</code>，並在其中建立<code>.yml</code>格式的檔案來存放腳本</li>
+<li>腳本內容如下：<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">Generate</span> <span class="string">xml</span> <span class="string">sitemap</span></span><br><span class="line"><span class="comment"># name會出現在Action標籤點開後，左側workflows的列表中</span></span><br><span class="line"></span><br><span class="line"><span class="attr">on:</span></span><br><span class="line">  <span class="attr">push:</span></span><br><span class="line">    <span class="attr">branches:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">main</span> </span><br><span class="line">      <span class="comment"># git push到main分支的時候，啟動以下腳本</span></span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line">  <span class="attr">sitemap_job:</span></span><br><span class="line">    <span class="attr">runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">Generate</span> <span class="string">a</span> <span class="string">sitemap</span></span><br><span class="line">    <span class="attr">steps:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Checkout</span> <span class="string">the</span> <span class="string">repo</span></span><br><span class="line">      <span class="attr">uses:</span> <span class="string">actions/checkout@v2</span></span><br><span class="line">      <span class="attr">with:</span></span><br><span class="line">        <span class="attr">fetch-depth:</span> <span class="number">0</span> </span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Generate</span> <span class="string">new</span> <span class="string">sitemap</span></span><br><span class="line">      <span class="attr">id:</span> <span class="string">sitemap</span></span><br><span class="line">      <span class="attr">uses:</span> <span class="string">cicirello/generate-sitemap@v1.6.1</span></span><br><span class="line">      <span class="attr">with:</span></span><br><span class="line">        <span class="attr">base-url-path:</span> <span class="string">https://tzynwang.github.io/action-practice/</span></span><br><span class="line">        <span class="comment"># 參考cicirello/generate-sitemap的文件，將base-url-path的值設定為要產生sitemap的URL</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Push</span> <span class="string">sitemap</span> <span class="string">to</span> <span class="string">repository</span></span><br><span class="line">    <span class="comment"># 根據cicirello/generate-sitemap文件的說明，使用者需另找方法處理透過腳本產生的sitemap.xml</span></span><br><span class="line">    <span class="comment"># 故追加一段git腳本內容，把方才在GitHub Actions VM產生出來的sitemap透過git push放到repository中</span></span><br><span class="line">      <span class="attr">run:</span> <span class="string">|</span></span><br><span class="line">        <span class="string">git</span> <span class="string">config</span> <span class="string">--global</span> <span class="string">user.name</span> <span class="string">&quot;tzyn (GitHub Actions sitemap gen)&quot;</span></span><br><span class="line">        <span class="string">git</span> <span class="string">config</span> <span class="string">--global</span> <span class="string">user.email</span> <span class="string">&quot;tzyn.wang@gmail.com&quot;</span></span><br><span class="line">        <span class="string">git</span> <span class="string">add</span> <span class="string">sitemap.xml</span></span><br><span class="line">        <span class="string">git</span> <span class="string">commit</span> <span class="string">-m</span> <span class="string">&quot;add sitemap.xml&quot;</span></span><br><span class="line">        <span class="string">git</span> <span class="string">push</span></span><br></pre></td></tr></table></figure></li>
+<li>在本機執行<code>git push</code>將commit內容推到GitHub上</li>
+<li>進入repository的Actions標籤，確認腳本有在執行</li>
+<li>執行完成，確認sitemap.xml也有被加到repository中</li>
+<li>在本機執行<code>git pull</code>將新產生的sitemap.xml拉本機資料夾</li>
+</ol>
+<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
+<li><a href="https://github.com/cicirello/generate-sitemap#generate-sitemap">cicirello/generate-sitemap</a></li>
+<li><a href="https://docs.github.com/en/actions/quickstart">Quickstart for GitHub Actions</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>git</category>
+      </categories>
+  </entry>
+  <entry>
     <title>自主練習專案「grid-template-areas generator」技術記錄</title>
     <url>/2021/grid-template-areas-generator-review/</url>
     <content><![CDATA[<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>微型專案「grid-template-areas generator」是為了不想要手動輸入多種grid-template-areas設定的產物；輸入column與row的始末後，按下generate按鈕即可產生能直接使用的grid-template-areas設定，並提供一鍵複製的功能。</p>
@@ -826,29 +849,6 @@ on <a href="https://codepen.io">CodePen</a>.</span>
       <tags>
         <tag>Side Project</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>使用GitHub Actions自動產生sitemap.xml</title>
-    <url>/2021/github-actions-sitemap/</url>
-    <content><![CDATA[<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>使用GitHub Actions執行腳本，在每次透過<code>git push</code>更新網頁內容後自動產生sitemap.xml</p>
-<h2 id="版本與環境"><a href="#版本與環境" class="headerlink" title="版本與環境"></a>版本與環境</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo: 5.3.0</span><br><span class="line">hexo-cli: 4.2.0</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></table></figure>
-
-<h2 id="過程記錄"><a href="#過程記錄" class="headerlink" title="過程記錄"></a>過程記錄</h2><ol>
-<li>在GitHub repository根目錄中建立資料夾<code>.github/workflows</code>，並在其中建立<code>.yml</code>格式的檔案來存放腳本</li>
-<li>腳本內容如下：<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">Generate</span> <span class="string">xml</span> <span class="string">sitemap</span></span><br><span class="line"><span class="comment"># name會出現在Action標籤點開後，左側workflows的列表中</span></span><br><span class="line"></span><br><span class="line"><span class="attr">on:</span></span><br><span class="line">  <span class="attr">push:</span></span><br><span class="line">    <span class="attr">branches:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">main</span> </span><br><span class="line">      <span class="comment"># git push到main分支的時候，啟動以下腳本</span></span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line">  <span class="attr">sitemap_job:</span></span><br><span class="line">    <span class="attr">runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">Generate</span> <span class="string">a</span> <span class="string">sitemap</span></span><br><span class="line">    <span class="attr">steps:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Checkout</span> <span class="string">the</span> <span class="string">repo</span></span><br><span class="line">      <span class="attr">uses:</span> <span class="string">actions/checkout@v2</span></span><br><span class="line">      <span class="attr">with:</span></span><br><span class="line">        <span class="attr">fetch-depth:</span> <span class="number">0</span> </span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Generate</span> <span class="string">new</span> <span class="string">sitemap</span></span><br><span class="line">      <span class="attr">id:</span> <span class="string">sitemap</span></span><br><span class="line">      <span class="attr">uses:</span> <span class="string">cicirello/generate-sitemap@v1.6.1</span></span><br><span class="line">      <span class="attr">with:</span></span><br><span class="line">        <span class="attr">base-url-path:</span> <span class="string">https://tzynwang.github.io/action-practice/</span></span><br><span class="line">        <span class="comment"># 參考cicirello/generate-sitemap的文件，將base-url-path的值設定為要產生sitemap的URL</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Push</span> <span class="string">sitemap</span> <span class="string">to</span> <span class="string">repository</span></span><br><span class="line">    <span class="comment"># 根據cicirello/generate-sitemap文件的說明，使用者需另找方法處理透過腳本產生的sitemap.xml</span></span><br><span class="line">    <span class="comment"># 故追加一段git腳本內容，把方才在GitHub Actions VM產生出來的sitemap透過git push放到repository中</span></span><br><span class="line">      <span class="attr">run:</span> <span class="string">|</span></span><br><span class="line">        <span class="string">git</span> <span class="string">config</span> <span class="string">--global</span> <span class="string">user.name</span> <span class="string">&quot;tzyn (GitHub Actions sitemap gen)&quot;</span></span><br><span class="line">        <span class="string">git</span> <span class="string">config</span> <span class="string">--global</span> <span class="string">user.email</span> <span class="string">&quot;tzyn.wang@gmail.com&quot;</span></span><br><span class="line">        <span class="string">git</span> <span class="string">add</span> <span class="string">sitemap.xml</span></span><br><span class="line">        <span class="string">git</span> <span class="string">commit</span> <span class="string">-m</span> <span class="string">&quot;add sitemap.xml&quot;</span></span><br><span class="line">        <span class="string">git</span> <span class="string">push</span></span><br></pre></td></tr></table></figure></li>
-<li>在本機執行<code>git push</code>將commit內容推到GitHub上</li>
-<li>進入repository的Actions標籤，確認腳本有在執行</li>
-<li>執行完成，確認sitemap.xml也有被加到repository中</li>
-<li>在本機執行<code>git pull</code>將新產生的sitemap.xml拉本機資料夾</li>
-</ol>
-<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
-<li><a href="https://github.com/cicirello/generate-sitemap#generate-sitemap">cicirello/generate-sitemap</a></li>
-<li><a href="https://docs.github.com/en/actions/quickstart">Quickstart for GitHub Actions</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>git</category>
-      </categories>
   </entry>
   <entry>
     <title>Submit to Google Search Console, SEO settings</title>
