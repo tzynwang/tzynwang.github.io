@@ -30,6 +30,11 @@ os: Windows_NT 10.0.18363 win32 x64
 <script src="https://gist.github.com/tzynwang/b7f3ee4e1e7c8936a98bb8f7fa76b634.js"></script>
 - If you stick to using `const` only with primitive values, you avoid any confusion of re-assignment (not allowed) vs. mutation (allowed)! That's the safest and best way to use const.
 
+### ES2015 const is not about immutability 相關筆記
+<script src="https://gist.github.com/tzynwang/0945c27501de984d3aaa410bf55a08ce.js"></script>
+The only thing that’s immutable here is the binding. `const` assigns a value (`{}`) to a variable name (`foo`), and guarantees that no rebinding will happen. ES2015 const has nothing to do with immutability of values.
+與其理說「透過`const`宣告的陣列（或物件）不能被修改內容」，不如將`const`理解為「建立一個變數與值之間不變的binding」。
+
 ### MDN上的相關內容
 - The value of a constant can't be changed through reassignment, and it can't be re-declared.
 - 以`const`宣告變數的同時就得賦值
@@ -64,6 +69,7 @@ os: Windows_NT 10.0.18363 win32 x64
 - You Don't Know JS Yet: Get Started - 2nd Edition
   - [Chapter 2: Surveying JS](https://github.com/getify/You-Dont-Know-JS/blob/2nd-ed/get-started/ch2.md)
   - [Appendix A: Exploring Further](https://github.com/getify/You-Dont-Know-JS/blob/2nd-ed/get-started/apA.md)
+- [ES2015 const is not about immutability](https://mathiasbynens.be/notes/es6-const)
 - MDN
   - [const](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const)
   - [Object.freeze()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/freeze)
