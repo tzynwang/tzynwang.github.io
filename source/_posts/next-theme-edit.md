@@ -3,7 +3,6 @@ title: Theme "NexT" font modification
 date: 2021-02-12 15:23:22
 categories:
 - hexo
-- NexT (theme)
 ---
 
 ## Summary of this post

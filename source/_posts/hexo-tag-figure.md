@@ -2,8 +2,7 @@
 title: Plugin&#58; hexo-tag-figure
 date: 2021-02-15 15:11:42
 categories:
-- [hexo, NexT (theme)]
-- [hexo, CSS]
+- hexo
 ---
 
 ## Summary of this post
