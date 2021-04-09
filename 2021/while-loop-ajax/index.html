@@ -21,18 +21,18 @@
     var NexT = window.NexT || {};
     var CONFIG = {"hostname":"tzynwang.github.io","root":"/","images":"/images","scheme":"Pisces","version":"8.2.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":"enable","trigger":"auto","top_n_per_article":-1,"unescape":false,"preload":false}};
   </script>
-<meta name="description" content="環境12Google Chrome: 89.0.4389.114 (Official Build) (64-bit)os: Windows_NT 10.0.18363 win32 x64 原始題目請向 RANDOM USER GENERATOR 這支API索取資料，並在瀏覽器畫面上點擊按鈕後，輸出三位「只有女性」的資料。 遭遇問題最初想要使用以下程式碼來過濾API回傳的資料，但會讓瀏覽器分頁陷入凍">
+<meta name="description" content="環境12Google Chrome: 89.0.4389.114 (Official Build) (64-bit)os: Windows_NT 10.0.18363 win32 x64 原始題目ALPHA Camp學期2-2：請向 RANDOM USER GENERATOR 這支API索取資料，並在瀏覽器畫面上點擊按鈕後，輸出三位「只有女性」的資料。 遭遇問題最初想要使用以下程式碼來過濾API回">
 <meta property="og:type" content="article">
 <meta property="og:title" content="為什麼在瀏覽器環境中使用while loop執行ajax request讓頁面陷入凍結狀態？">
 <meta property="og:url" content="https://tzynwang.github.io/2021/while-loop-ajax/index.html">
 <meta property="og:site_name" content="普通文組">
-<meta property="og:description" content="環境12Google Chrome: 89.0.4389.114 (Official Build) (64-bit)os: Windows_NT 10.0.18363 win32 x64 原始題目請向 RANDOM USER GENERATOR 這支API索取資料，並在瀏覽器畫面上點擊按鈕後，輸出三位「只有女性」的資料。 遭遇問題最初想要使用以下程式碼來過濾API回傳的資料，但會讓瀏覽器分頁陷入凍">
+<meta property="og:description" content="環境12Google Chrome: 89.0.4389.114 (Official Build) (64-bit)os: Windows_NT 10.0.18363 win32 x64 原始題目ALPHA Camp學期2-2：請向 RANDOM USER GENERATOR 這支API索取資料，並在瀏覽器畫面上點擊按鈕後，輸出三位「只有女性」的資料。 遭遇問題最初想要使用以下程式碼來過濾API回">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://tzynwang.github.io/2021/while-loop-ajax/ajax.png">
 <meta property="og:image" content="https://tzynwang.github.io/2021/while-loop-ajax/setTimeout.png">
 <meta property="og:image" content="https://tzynwang.github.io/2021/while-loop-ajax/不要停下來.jpg">
 <meta property="article:published_time" content="2021-04-08T13:10:25.000Z">
-<meta property="article:modified_time" content="2021-04-08T14:52:25.709Z">
+<meta property="article:modified_time" content="2021-04-09T03:00:57.583Z">
 <meta property="article:author" content="Charlie (Tzu Yin)">
 <meta property="article:tag" content="hexo, hexo blog, tzyn, 普通文組">
 <meta name="twitter:card" content="summary">
@@ -278,10 +278,16 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2021-04-08 21:10:25 / Modified: 22:52:25" itemprop="dateCreated datePublished" datetime="2021-04-08T21:10:25+08:00">2021-04-08</time>
+      <time title="Created: 2021-04-08 21:10:25" itemprop="dateCreated datePublished" datetime="2021-04-08T21:10:25+08:00">2021-04-08</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-04-09 11:00:57" itemprop="dateModified" datetime="2021-04-09T11:00:57+08:00">2021-04-09</time>
+      </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
@@ -303,7 +309,7 @@
     
     <div class="post-body" itemprop="articleBody">
         <h2 id="環境"><a href="#環境" class="headerlink" title="環境"></a>環境</h2><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Google Chrome: 89.0.4389.114 (Official Build) (64-bit)</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></tbody></table></figure>
-<h2 id="原始題目"><a href="#原始題目" class="headerlink" title="原始題目"></a>原始題目</h2><p>請向 <a target="_blank" rel="noopener" href="https://randomuser.me/">RANDOM USER GENERATOR</a> 這支API索取資料，並在瀏覽器畫面上點擊按鈕後，輸出三位「只有女性」的資料。</p>
+<h2 id="原始題目"><a href="#原始題目" class="headerlink" title="原始題目"></a>原始題目</h2><p>ALPHA Camp學期2-2：請向 <a target="_blank" rel="noopener" href="https://randomuser.me/">RANDOM USER GENERATOR</a> 這支API索取資料，並在瀏覽器畫面上點擊按鈕後，輸出三位「只有女性」的資料。</p>
 <h2 id="遭遇問題"><a href="#遭遇問題" class="headerlink" title="遭遇問題"></a>遭遇問題</h2><p>最初想要使用以下程式碼來過濾API回傳的資料，但會讓瀏覽器分頁陷入凍結狀態：</p>
 <script src="https://gist.github.com/tzynwang/b7049eb35ec2a9950f4c48f1fdd48c28.js"></script>
 
@@ -340,10 +346,11 @@
 </li>
 </ul>
 <h2 id="此問題的解決方式"><a href="#此問題的解決方式" class="headerlink" title="此問題的解決方式"></a>此問題的解決方式</h2><ul>
-<li>直接根據<a target="_blank" rel="noopener" href="https://randomuser.me/documentation#gender">RANDOM USER GENERATOR的說明文件</a>在請求的URL加上特定parameter過濾需求資料（女性、三位：<code>?gender=female&amp;results=3</code>）</li>
+<li>直接根據<a target="_blank" rel="noopener" href="https://randomuser.me/documentation#gender">RANDOM USER GENERATOR的說明文件</a>，在請求的URL加上特定parameter過濾需求資料（女性、三位：<code>?gender=female&amp;results=3</code>）</li>
 <li>透過recursive讓<code>getFemaleUser()</code>在條件沒有被滿足的情況下再度呼叫<code>getFemaleUser()</code></li>
 </ul>
-<h2 id="補充"><a href="#補充" class="headerlink" title="補充"></a>補充</h2><figure class="figure--center"><img src="/2021/while-loop-ajax/setTimeout.png" title="因為stack裡面的任務沒有清空，callback queue裡面的task永遠不會被執行"><figcaption><p>因為stack裡面的任務沒有清空，callback queue裡面的task永遠不會被執行</p></figcaption></figure>
+<h2 id="補充"><a href="#補充" class="headerlink" title="補充"></a>補充</h2><script src="https://gist.github.com/tzynwang/1cf59700311f401a74042df5c76cf47f.js"></script>
+<figure class="figure--center"><img src="/2021/while-loop-ajax/setTimeout.png" title="因為stack裡面的任務沒有清空，callback queue裡面的task永遠不會被執行"><figcaption><p>因為stack裡面的任務沒有清空，callback queue裡面的task永遠不會被執行</p></figcaption></figure>
 <ul>
 <li>將<code>axios.get()</code>抽換為<code>setTimeout()</code>也會造成頁面凍結，原理與上述一致</li>
 <li><code>setTimeout()</code>的callback function（<code>arr.push("add item to array");</code>）被推到callback queue之後，<code>arr.push</code>等待stack被清空，但能讓while loop停下來的task本身就在callback queue中被stack永遠不會結束的task卡住，因此while loop永遠不會停下來<figure class="figure--center"><img src="/2021/while-loop-ajax/不要停下來.jpg"></figure>
@@ -355,7 +362,7 @@
 <li><a target="_blank" rel="noopener" href="https://youtu.be/8aGhZQkoFbQ">What the heck is the event loop anyway? | Philip Roberts</a></li>
 <li><a target="_blank" rel="noopener" href="https://youtu.be/cCOL7MC4Pl0">Jake Archibald: In The Loop</a></li>
 <li><a target="_blank" rel="noopener" href="https://youtu.be/u1kqx6AenYw">Further Adventures of the Event Loop - Erin Zimmer</a></li>
-<li><a target="_blank" rel="noopener" href="https://pjchender.blogspot.com/2017/08/javascript-learn-event-loop-stack-queue.html">[筆記] 理解 JavaScript 中的事件循環、堆疊、佇列和併發模式（Learn event loop, stack, queue, and concurrency mode of JavaScript in depth）</a>：這篇文章內的影片全部都是Philip Roberts的演講內容，建議影片部分直接觀看Philip Roberts本人的演講錄影即可</li>
+<li><a target="_blank" rel="noopener" href="https://pjchender.blogspot.com/2017/08/javascript-learn-event-loop-stack-queue.html">[筆記] 理解 JavaScript 中的事件循環、堆疊、佇列和併發模式（Learn event loop, stack, queue, and concurrency mode of JavaScript in depth）</a>：這篇文章內的影片全部都是Philip Roberts的演講內容，影片部分直接觀看Philip Roberts本人的演講錄影即可</li>
 </ul>
 
     </div>
