@@ -754,29 +754,6 @@ on <a href="https://codepen.io">CodePen</a>.</span>
       </categories>
   </entry>
   <entry>
-    <title>使用GitHub Actions自動產生sitemap.xml</title>
-    <url>/2021/github-actions-sitemap/</url>
-    <content><![CDATA[<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>使用GitHub Actions執行腳本，在每次透過<code>git push</code>更新網頁內容後自動產生sitemap.xml</p>
-<h2 id="版本與環境"><a href="#版本與環境" class="headerlink" title="版本與環境"></a>版本與環境</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo: 5.3.0</span><br><span class="line">hexo-cli: 4.2.0</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></table></figure>
-
-<h2 id="過程記錄"><a href="#過程記錄" class="headerlink" title="過程記錄"></a>過程記錄</h2><ol>
-<li>在GitHub repository根目錄中建立資料夾<code>.github/workflows</code>，並在其中建立<code>.yml</code>格式的檔案來存放腳本</li>
-<li>腳本內容如下：<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">Generate</span> <span class="string">xml</span> <span class="string">sitemap</span></span><br><span class="line"><span class="comment"># name會出現在Action標籤點開後，左側workflows的列表中</span></span><br><span class="line"></span><br><span class="line"><span class="attr">on:</span></span><br><span class="line">  <span class="attr">push:</span></span><br><span class="line">    <span class="attr">branches:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">main</span> </span><br><span class="line">      <span class="comment"># git push到main分支的時候，啟動以下腳本</span></span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line">  <span class="attr">sitemap_job:</span></span><br><span class="line">    <span class="attr">runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">Generate</span> <span class="string">a</span> <span class="string">sitemap</span></span><br><span class="line">    <span class="attr">steps:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Checkout</span> <span class="string">the</span> <span class="string">repo</span></span><br><span class="line">      <span class="attr">uses:</span> <span class="string">actions/checkout@v2</span></span><br><span class="line">      <span class="attr">with:</span></span><br><span class="line">        <span class="attr">fetch-depth:</span> <span class="number">0</span> </span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Generate</span> <span class="string">new</span> <span class="string">sitemap</span></span><br><span class="line">      <span class="attr">id:</span> <span class="string">sitemap</span></span><br><span class="line">      <span class="attr">uses:</span> <span class="string">cicirello/generate-sitemap@v1.6.1</span></span><br><span class="line">      <span class="attr">with:</span></span><br><span class="line">        <span class="attr">base-url-path:</span> <span class="string">https://tzynwang.github.io/action-practice/</span></span><br><span class="line">        <span class="comment"># 參考cicirello/generate-sitemap的文件，將base-url-path的值設定為要產生sitemap的URL</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Push</span> <span class="string">sitemap</span> <span class="string">to</span> <span class="string">repository</span></span><br><span class="line">    <span class="comment"># 根據cicirello/generate-sitemap文件的說明，使用者需另找方法處理透過腳本產生的sitemap.xml</span></span><br><span class="line">    <span class="comment"># 故追加一段git腳本內容，把方才在GitHub Actions VM產生出來的sitemap透過git push放到repository中</span></span><br><span class="line">      <span class="attr">run:</span> <span class="string">|</span></span><br><span class="line">        <span class="string">git</span> <span class="string">config</span> <span class="string">--global</span> <span class="string">user.name</span> <span class="string">&quot;tzyn (GitHub Actions sitemap gen)&quot;</span></span><br><span class="line">        <span class="string">git</span> <span class="string">config</span> <span class="string">--global</span> <span class="string">user.email</span> <span class="string">&quot;tzyn.wang@gmail.com&quot;</span></span><br><span class="line">        <span class="string">git</span> <span class="string">add</span> <span class="string">sitemap.xml</span></span><br><span class="line">        <span class="string">git</span> <span class="string">commit</span> <span class="string">-m</span> <span class="string">&quot;add sitemap.xml&quot;</span></span><br><span class="line">        <span class="string">git</span> <span class="string">push</span></span><br></pre></td></tr></table></figure></li>
-<li>在本機執行<code>git push</code>將commit內容推到GitHub上</li>
-<li>進入repository的Actions標籤，確認腳本有在執行</li>
-<li>執行完成，確認sitemap.xml也有被加到repository中</li>
-<li>在本機執行<code>git pull</code>將新產生的sitemap.xml拉本機資料夾</li>
-</ol>
-<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
-<li><a href="https://github.com/cicirello/generate-sitemap#generate-sitemap">cicirello/generate-sitemap</a></li>
-<li><a href="https://docs.github.com/en/actions/quickstart">Quickstart for GitHub Actions</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>git</category>
-      </categories>
-  </entry>
-  <entry>
     <title>自主練習專案「grid-template-areas generator」技術記錄</title>
     <url>/2021/grid-template-areas-generator-review/</url>
     <content><![CDATA[<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>微型專案「grid-template-areas generator」是為了不想要手動輸入多種grid-template-areas設定的產物；輸入column與row的始末後，按下generate按鈕即可產生能直接使用的grid-template-areas設定，並提供一鍵複製的功能。</p>
@@ -849,6 +826,29 @@ on <a href="https://codepen.io">CodePen</a>.</span>
       <tags>
         <tag>Side Project</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>使用GitHub Actions自動產生sitemap.xml</title>
+    <url>/2021/github-actions-sitemap/</url>
+    <content><![CDATA[<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>使用GitHub Actions執行腳本，在每次透過<code>git push</code>更新網頁內容後自動產生sitemap.xml</p>
+<h2 id="版本與環境"><a href="#版本與環境" class="headerlink" title="版本與環境"></a>版本與環境</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo: 5.3.0</span><br><span class="line">hexo-cli: 4.2.0</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></table></figure>
+
+<h2 id="過程記錄"><a href="#過程記錄" class="headerlink" title="過程記錄"></a>過程記錄</h2><ol>
+<li>在GitHub repository根目錄中建立資料夾<code>.github/workflows</code>，並在其中建立<code>.yml</code>格式的檔案來存放腳本</li>
+<li>腳本內容如下：<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">Generate</span> <span class="string">xml</span> <span class="string">sitemap</span></span><br><span class="line"><span class="comment"># name會出現在Action標籤點開後，左側workflows的列表中</span></span><br><span class="line"></span><br><span class="line"><span class="attr">on:</span></span><br><span class="line">  <span class="attr">push:</span></span><br><span class="line">    <span class="attr">branches:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">main</span> </span><br><span class="line">      <span class="comment"># git push到main分支的時候，啟動以下腳本</span></span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line">  <span class="attr">sitemap_job:</span></span><br><span class="line">    <span class="attr">runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">Generate</span> <span class="string">a</span> <span class="string">sitemap</span></span><br><span class="line">    <span class="attr">steps:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Checkout</span> <span class="string">the</span> <span class="string">repo</span></span><br><span class="line">      <span class="attr">uses:</span> <span class="string">actions/checkout@v2</span></span><br><span class="line">      <span class="attr">with:</span></span><br><span class="line">        <span class="attr">fetch-depth:</span> <span class="number">0</span> </span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Generate</span> <span class="string">new</span> <span class="string">sitemap</span></span><br><span class="line">      <span class="attr">id:</span> <span class="string">sitemap</span></span><br><span class="line">      <span class="attr">uses:</span> <span class="string">cicirello/generate-sitemap@v1.6.1</span></span><br><span class="line">      <span class="attr">with:</span></span><br><span class="line">        <span class="attr">base-url-path:</span> <span class="string">https://tzynwang.github.io/action-practice/</span></span><br><span class="line">        <span class="comment"># 參考cicirello/generate-sitemap的文件，將base-url-path的值設定為要產生sitemap的URL</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Push</span> <span class="string">sitemap</span> <span class="string">to</span> <span class="string">repository</span></span><br><span class="line">    <span class="comment"># 根據cicirello/generate-sitemap文件的說明，使用者需另找方法處理透過腳本產生的sitemap.xml</span></span><br><span class="line">    <span class="comment"># 故追加一段git腳本內容，把方才在GitHub Actions VM產生出來的sitemap透過git push放到repository中</span></span><br><span class="line">      <span class="attr">run:</span> <span class="string">|</span></span><br><span class="line">        <span class="string">git</span> <span class="string">config</span> <span class="string">--global</span> <span class="string">user.name</span> <span class="string">&quot;tzyn (GitHub Actions sitemap gen)&quot;</span></span><br><span class="line">        <span class="string">git</span> <span class="string">config</span> <span class="string">--global</span> <span class="string">user.email</span> <span class="string">&quot;tzyn.wang@gmail.com&quot;</span></span><br><span class="line">        <span class="string">git</span> <span class="string">add</span> <span class="string">sitemap.xml</span></span><br><span class="line">        <span class="string">git</span> <span class="string">commit</span> <span class="string">-m</span> <span class="string">&quot;add sitemap.xml&quot;</span></span><br><span class="line">        <span class="string">git</span> <span class="string">push</span></span><br></pre></td></tr></table></figure></li>
+<li>在本機執行<code>git push</code>將commit內容推到GitHub上</li>
+<li>進入repository的Actions標籤，確認腳本有在執行</li>
+<li>執行完成，確認sitemap.xml也有被加到repository中</li>
+<li>在本機執行<code>git pull</code>將新產生的sitemap.xml拉本機資料夾</li>
+</ol>
+<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
+<li><a href="https://github.com/cicirello/generate-sitemap#generate-sitemap">cicirello/generate-sitemap</a></li>
+<li><a href="https://docs.github.com/en/actions/quickstart">Quickstart for GitHub Actions</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>git</category>
+      </categories>
   </entry>
   <entry>
     <title>Submit to Google Search Console, SEO settings</title>
@@ -1099,7 +1099,6 @@ The configuration in <code>_config.yml</code> file should be set like this:<figu
 ]]></content>
       <categories>
         <category>hexo</category>
-        <category>CSS</category>
       </categories>
   </entry>
   <entry>
@@ -1136,9 +1135,138 @@ The configuration in <code>_config.yml</code> file should be set like this:<figu
 ]]></content>
       <categories>
         <category>hexo</category>
-        <category>CSS</category>
-        <category>NexT (theme)</category>
       </categories>
+  </entry>
+  <entry>
+    <title>「How JPEG Works」相關筆記</title>
+    <url>/2021/how-jpeg-works/</url>
+    <content><![CDATA[<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>問：JPEG到底是什麼？<br>答：實際上是一種壓縮影像的演算法</p>
+<p>問：JPEG如何壓縮影像？<br>簡答：將影像從RGB轉換為Y’CbCr，捨棄多餘的顏色資訊、壓縮人眼不易察覺的部分（影像中高頻率變化的部分）後，輸出為.jpg檔案</p>
+<p>內收關於影片組「<a href="https://www.youtube.com/playlist?list=PLzH6n4zXuckoAod3z31QEST1ZaizBuNHh">How JPEG Works</a>」的相關筆記、JPEG詳細的壓縮過程，與其他參考資料來源。</p>
+<a id="more"></a>
+
+<h2 id="Part-0-color-spaces"><a href="#Part-0-color-spaces" class="headerlink" title="Part 0: color spaces"></a>Part 0: color spaces</h2><iframe width="560" height="315" src="https://www.youtube.com/embed/LFXN9PiOGtY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<h3 id="Color-spaces"><a href="#Color-spaces" class="headerlink" title="Color spaces"></a>Color spaces</h3><ul>
+<li>Color spaces are the ways of representing the colors in an image<ul>
+<li><span style="color: #FF0000;">R</span><span style="color: #00FF00;">G</span><span style="color: #0000FF;">B</span>: red, green and blue; most monitors use this format</li>
+<li>Y’CbCr: use by high definition video, TV broadcasting, <strong>JPEG</strong></li>
+<li><span style="color: #00FFFF">C</span><span style="color: #FF00FF">M</span><span style="color: #FFFF00">Y</span><span style="color: #000000">K</span>: cyan, magenta, yellow and black; printers use this format<ul>
+<li>01:48 用K來代表黑色是因為B已經被藍色（blue）使用了</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="Y’CbCr"><a href="#Y’CbCr" class="headerlink" title="Y’CbCr"></a>Y’CbCr</h3><ul>
+<li>Y’: luminosity from 0 to 255；明亮的程度</li>
+<li>Cb/ Cr: blue/ red chrominance values from -127 to 128；藍色／紅色的濃度<figure class="figure--center"><img src="/2021/how-jpeg-works/Y50_CbCr_Scaled.jpg" title="The CbCr plane at constant luma Y′=0.5"><figcaption><p>The CbCr plane at constant luma Y′=0.5</p></figcaption></figure>
+<figure class="figure--center"><img src="/2021/how-jpeg-works/Y'CbCr_cube.png" title="Y′CbCr color cube"><figcaption><p>Y′CbCr color cube</p></figcaption></figure></li>
+<li>05:58開始：<ul>
+<li>You’ll generally use Y’CbCr if you’re doing any kind of TV broadcasting.</li>
+<li>If you’re actually sending a stream of data to someone’s TV, you need to worry about how much compression you have about data, because it’s quite important. </li>
+<li>Y’CbCr lets you do very clever techniques by <strong>down sampling the color components</strong>, but <strong>not</strong> down sampling the luminous component; people won’t really notice this… in fact, this is the fundamental to how JPEG works.</li>
+</ul>
+</li>
+<li>Wiki: This reflects the fact that human eye is less sensitive to fine color details than to fine brightness details.<ul>
+<li>人眼「對明亮變化的察覺程度」大於「對顏色變化的察覺程度」</li>
+<li>Y’CbCr將影像的「明亮度資訊」與「顏色資訊」分開來</li>
+<li>捨棄一定程度顏色的資訊，但盡量保留影像的明亮度資訊的話，即使經過壓縮，人眼也不太容易察覺壓縮前後的差異</li>
+<li>JPEG就是使用這樣的原理來壓縮圖片的</li>
+</ul>
+</li>
+</ul>
+<h2 id="Part-1-files-and-color"><a href="#Part-1-files-and-color" class="headerlink" title="Part 1: files and color"></a>Part 1: files and color</h2><iframe width="560" height="315" src="https://www.youtube.com/embed/n_uNPbdenRs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<h3 id="JFIF"><a href="#JFIF" class="headerlink" title="JFIF"></a>JFIF</h3><ul>
+<li>JPEG實際上並不是檔案格式，而是壓縮影像的方式；JFIF才是檔案格式</li>
+<li>JPEG File Interchange Format (JFIF) is the actual wrapper that holds the compress data.<ul>
+<li>(Wiki) JFIF is an image file format standard, the most common format for storing and transmitting photographic images on the World Wide Web.</li>
+<li>(Wiki) JFIF defines supplementary specifications for the container format that contains the image data encoded with the JPEG algorithm.</li>
+</ul>
+</li>
+<li>01:07 …really, when we’re talking about a JPEG file, we’re actually talking about a JFIF file most of the time.</li>
+</ul>
+<h3 id="frequency"><a href="#frequency" class="headerlink" title="frequency"></a>frequency</h3><ul>
+<li>01:30開始：<ul>
+<li>…we don’t see high-frequency changes in image intensity very well either. So we can get rid of some of that high-frequency information.</li>
+<li>Bits of image that change intensity very very quickly, we can kind of sorta blur out, and those things will go away, we won’t really see a difference.</li>
+</ul>
+</li>
+</ul>
+<p>筆記：人眼對於高頻率的變化並不敏銳，所以影像裡面高頻率的部分可以捨棄（壓縮）。<br>影像的頻率：指「像素變化」的程度。<br>使用<strong>越少</strong>的像素完成變化，頻率越<strong>高</strong>；使用<strong>越多</strong>的像素完成變化，頻率越<strong>低</strong>。</p>
+<ul>
+<li>Let’s say you have some region in your image that changes from white to black. If it takes many pixels to undergo that change, it’s low frequency. The fewer the pixels it takes to represent that intensity variation, the higher the frequency. Ref.: <a href="https://www.quora.com/What-are-the-low-and-high-frequencies-in-an-image?share=1">What are the low and high frequencies in an image?</a></li>
+<li>Frequency means rate of change of something. In two-dimensional signals like digital images, frequencies are rate of change of grey scale value (intensity of pixel) with respect to space. This is also called Spatial frequency. Ref.: <a href="https://www.quora.com/What-are-frequencies-in-images-Better-if-explained-with-an-example">What are frequencies in images?</a></li>
+<li>One interesting application is in the use of compression algorithms like JPEG. Here the DCT (Discrete cosine transform) is used to save more of the important parts of the image (the low frequencies) and less of the high frequencies. Ref. <a href="https://photo.stackexchange.com/questions/40401/what-does-frequency-mean-in-an-image">What does “frequency” mean in an image?</a></li>
+<li>Wiki: Human vision is much more sensitive to <strong>small variations in color (or brightness) over large areas</strong> than to the strength of <strong>high-frequency brightness variations</strong>.</li>
+</ul>
+<p>補充：對人眼來說，察覺「大範圍中小小的顏色或亮度變化」比發現「高頻率的亮度變化」容易。</p>
+<h3 id="Compression-steps"><a href="#Compression-steps" class="headerlink" title="Compression steps"></a>Compression steps</h3><ol>
+<li>Transform the image into Y’CbCr color space<ul>
+<li>Y’CbCr separate each pixel’s intensity (Y’) from color (Cb, Cr)</li>
+</ul>
+</li>
+<li>Down-sampling (chroma sub-sampling)<ul>
+<li>Wiki: reduce the spatial(空間性的) resolution of the Cb and Cr components</li>
+<li>白話文：減少影像使用的顏色數量</li>
+</ul>
+</li>
+<li>Block splitting<ul>
+<li>Wiki: depending on chroma sub-sampling, this yields Minimum Coded Unit (MCU) blocks of size 8×8 (4:4:4 when no sub-sampling), 16×8 (4:2:2), or most commonly 16×16 (4:2:0).</li>
+</ul>
+</li>
+<li>Apply DCT (discrete cosine transform)</li>
+<li>Quantization (the lossy part in JPEG compression)</li>
+<li>Huffman encoding, get the .JPG file</li>
+</ol>
+<h3 id="Down-sampling"><a href="#Down-sampling" class="headerlink" title="Down-sampling"></a>Down-sampling</h3><ul>
+<li>04:37開始：<ul>
+<li>One of the nice things about Y’CbCr is that human eye doesn’t really see chrominance very well. It’s certainly a much lower resolution than we see changes in intensity.</li>
+<li>Just like with TV encoding, we can massively down sample the amount of Cb and Cr that we see in the image.</li>
+</ul>
+</li>
+<li>06:14 Down-sampling is sometimes tied to the quality of the JPG that you output.<ul>
+<li>影像軟體在輸出.JPG檔案時，「品質」調整的通常就是down-sampling的程度</li>
+</ul>
+</li>
+<li>06:29 In general, most software will use a down-sample of 2 in both direction, which is 4 times less colors.</li>
+</ul>
+<h2 id="Part-2-DCT-Discrete-Cosine-Transform"><a href="#Part-2-DCT-Discrete-Cosine-Transform" class="headerlink" title="Part 2: DCT (Discrete Cosine Transform)"></a>Part 2: DCT (Discrete Cosine Transform)</h2><iframe width="560" height="315" src="https://www.youtube.com/embed/Q2aEzeMDHMA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<h3 id="DCT"><a href="#DCT" class="headerlink" title="DCT"></a>DCT</h3><ul>
+<li>02:53 …in JPEG, we can get rid of some of the higher frequency signals and the general gist of the image will still be there.</li>
+<li>03:19 What we do in JPEG is we split each image into 8 by 8 pixel groups, and each of those pixel groups is separately encoded with its own discrete cosine transform.</li>
+<li>Wiki:<ul>
+<li>Each 8 by 8 pixel group is converted to a frequency-domain representation by “normalized, two-dimensional type-II DCT”.</li>
+<li>Before computing the DCT of the pixel group, its values are shifted from a positive range to one centered on zero (from <code>[0, 255]</code> to <code>[-128, 127]</code>). This step reduces the dynamic range requirements in the DCT processing stage that follows.<figure class="figure--center"><img src="/2021/how-jpeg-works/patterns.png" title="two-dimensional DCT basis functions"><figcaption><p>two-dimensional DCT basis functions</p></figcaption></figure></li>
+<li>The DCT transforms an pixel group of input values to a linear combination of these 64 patterns (see above image). The output values are referred to as <strong>transform coefficients</strong>.</li>
+</ul>
+</li>
+</ul>
+<h3 id="Quantization"><a href="#Quantization" class="headerlink" title="Quantization"></a>Quantization</h3><ul>
+<li>08:27 After calculating the discrete cosine transform coefficients, we will try to remove the ones we don’t want. We call the process of removing the high frequency data “quantization”.</li>
+<li>Wiki: the elements in the quantization matrix control the compression ratio, with larger values producing greater compression.<ul>
+<li>白話文：DCT結束後得到的<strong>transform coefficients</strong>會根據quantization matrix繼續壓縮。quantization matrix會指示<strong>transform coefficients</strong>中每一個像素被壓縮的程度；quantization matrix中越大的數字代表越大的壓縮比例</li>
+<li>12:55 If we increase the values in the quantization table, we’re essentially operating a lower JPEG quality setting.</li>
+</ul>
+</li>
+</ul>
+<h3 id="Quantization-matrix-quantization-table"><a href="#Quantization-matrix-quantization-table" class="headerlink" title="Quantization matrix (quantization table)"></a>Quantization matrix (quantization table)</h3><p>Wiki: the quantization matrix is designed to provide more resolution to more perceivable frequency components over less perceivable components (usually lower frequencies over high frequencies) in addition to transforming as many components to 0, which can be encoded with greatest efficiency.</p>
+<p>白話文：quantization matrix會盡可能保留人眼可察覺的部分（通常是低頻率的部分），捨棄人眼察覺不出來的部分（高頻率的部分）</p>
+<h3 id="Huffman-encoding"><a href="#Huffman-encoding" class="headerlink" title="Huffman encoding"></a>Huffman encoding</h3><ul>
+<li>以zigzag的形式來編碼<strong>transform coefficients</strong></li>
+<li><strong>transform coefficients</strong>中，通常是左上角擁有較多資訊，而右下角偏向被捨棄，搭配Huffman encoding可以讓尾部大量的0一起被壓縮<ul>
+<li>10:34 We serialize them out into a long line, and we use Huffman encoding to shrink them right down.</li>
+</ul>
+</li>
+</ul>
+<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
+<li><a href="https://en.wikipedia.org/wiki/YCbCr">Wikipedia: YCbCr</a></li>
+<li><a href="https://en.wikipedia.org/wiki/JPEG">Wikipedia: JPEG</a></li>
+<li><a href="https://en.wikipedia.org/wiki/JPEG_File_Interchange_Format">Wikipedia: JPEG File Interchange Format</a></li>
+</ul>
+]]></content>
   </entry>
   <entry>
     <title>「JavaScript陣列遍歷」相關筆記</title>
@@ -1412,137 +1540,6 @@ The configuration in <code>_config.yml</code> file should be set like this:<figu
       </categories>
   </entry>
   <entry>
-    <title>「How JPEG Works」相關筆記</title>
-    <url>/2021/how-jpeg-works/</url>
-    <content><![CDATA[<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>問：JPEG到底是什麼？<br>答：實際上是一種壓縮影像的演算法</p>
-<p>問：JPEG如何壓縮影像？<br>簡答：將影像從RGB轉換為Y’CbCr，捨棄多餘的顏色資訊、壓縮人眼不易察覺的部分（影像中高頻率變化的部分）後，輸出為.jpg檔案</p>
-<p>內收關於影片組「<a href="https://www.youtube.com/playlist?list=PLzH6n4zXuckoAod3z31QEST1ZaizBuNHh">How JPEG Works</a>」的相關筆記、JPEG詳細的壓縮過程，與其他參考資料來源。</p>
-<a id="more"></a>
-
-<h2 id="Part-0-color-spaces"><a href="#Part-0-color-spaces" class="headerlink" title="Part 0: color spaces"></a>Part 0: color spaces</h2><iframe width="560" height="315" src="https://www.youtube.com/embed/LFXN9PiOGtY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-<h3 id="Color-spaces"><a href="#Color-spaces" class="headerlink" title="Color spaces"></a>Color spaces</h3><ul>
-<li>Color spaces are the ways of representing the colors in an image<ul>
-<li><span style="color: #FF0000;">R</span><span style="color: #00FF00;">G</span><span style="color: #0000FF;">B</span>: red, green and blue; most monitors use this format</li>
-<li>Y’CbCr: use by high definition video, TV broadcasting, <strong>JPEG</strong></li>
-<li><span style="color: #00FFFF">C</span><span style="color: #FF00FF">M</span><span style="color: #FFFF00">Y</span><span style="color: #000000">K</span>: cyan, magenta, yellow and black; printers use this format<ul>
-<li>01:48 用K來代表黑色是因為B已經被藍色（blue）使用了</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="Y’CbCr"><a href="#Y’CbCr" class="headerlink" title="Y’CbCr"></a>Y’CbCr</h3><ul>
-<li>Y’: luminosity from 0 to 255；明亮的程度</li>
-<li>Cb/ Cr: blue/ red chrominance values from -127 to 128；藍色／紅色的濃度<figure class="figure--center"><img src="/2021/how-jpeg-works/Y50_CbCr_Scaled.jpg" title="The CbCr plane at constant luma Y′=0.5"><figcaption><p>The CbCr plane at constant luma Y′=0.5</p></figcaption></figure>
-<figure class="figure--center"><img src="/2021/how-jpeg-works/Y'CbCr_cube.png" title="Y′CbCr color cube"><figcaption><p>Y′CbCr color cube</p></figcaption></figure></li>
-<li>05:58開始：<ul>
-<li>You’ll generally use Y’CbCr if you’re doing any kind of TV broadcasting.</li>
-<li>If you’re actually sending a stream of data to someone’s TV, you need to worry about how much compression you have about data, because it’s quite important. </li>
-<li>Y’CbCr lets you do very clever techniques by <strong>down sampling the color components</strong>, but <strong>not</strong> down sampling the luminous component; people won’t really notice this… in fact, this is the fundamental to how JPEG works.</li>
-</ul>
-</li>
-<li>Wiki: This reflects the fact that human eye is less sensitive to fine color details than to fine brightness details.<ul>
-<li>人眼「對明亮變化的察覺程度」大於「對顏色變化的察覺程度」</li>
-<li>Y’CbCr將影像的「明亮度資訊」與「顏色資訊」分開來</li>
-<li>捨棄一定程度顏色的資訊，但盡量保留影像的明亮度資訊的話，即使經過壓縮，人眼也不太容易察覺壓縮前後的差異</li>
-<li>JPEG就是使用這樣的原理來壓縮圖片的</li>
-</ul>
-</li>
-</ul>
-<h2 id="Part-1-files-and-color"><a href="#Part-1-files-and-color" class="headerlink" title="Part 1: files and color"></a>Part 1: files and color</h2><iframe width="560" height="315" src="https://www.youtube.com/embed/n_uNPbdenRs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-<h3 id="JFIF"><a href="#JFIF" class="headerlink" title="JFIF"></a>JFIF</h3><ul>
-<li>JPEG實際上並不是檔案格式，而是壓縮影像的方式；JFIF才是檔案格式</li>
-<li>JPEG File Interchange Format (JFIF) is the actual wrapper that holds the compress data.<ul>
-<li>(Wiki) JFIF is an image file format standard, the most common format for storing and transmitting photographic images on the World Wide Web.</li>
-<li>(Wiki) JFIF defines supplementary specifications for the container format that contains the image data encoded with the JPEG algorithm.</li>
-</ul>
-</li>
-<li>01:07 …really, when we’re talking about a JPEG file, we’re actually talking about a JFIF file most of the time.</li>
-</ul>
-<h3 id="frequency"><a href="#frequency" class="headerlink" title="frequency"></a>frequency</h3><ul>
-<li>01:30開始：<ul>
-<li>…we don’t see high-frequency changes in image intensity very well either. So we can get rid of some of that high-frequency information.</li>
-<li>Bits of image that change intensity very very quickly, we can kind of sorta blur out, and those things will go away, we won’t really see a difference.</li>
-</ul>
-</li>
-</ul>
-<p>筆記：人眼對於高頻率的變化並不敏銳，所以影像裡面高頻率的部分可以捨棄（壓縮）。<br>影像的頻率：指「像素變化」的程度。<br>使用<strong>越少</strong>的像素完成變化，頻率越<strong>高</strong>；使用<strong>越多</strong>的像素完成變化，頻率越<strong>低</strong>。</p>
-<ul>
-<li>Let’s say you have some region in your image that changes from white to black. If it takes many pixels to undergo that change, it’s low frequency. The fewer the pixels it takes to represent that intensity variation, the higher the frequency. Ref.: <a href="https://www.quora.com/What-are-the-low-and-high-frequencies-in-an-image?share=1">What are the low and high frequencies in an image?</a></li>
-<li>Frequency means rate of change of something. In two-dimensional signals like digital images, frequencies are rate of change of grey scale value (intensity of pixel) with respect to space. This is also called Spatial frequency. Ref.: <a href="https://www.quora.com/What-are-frequencies-in-images-Better-if-explained-with-an-example">What are frequencies in images?</a></li>
-<li>One interesting application is in the use of compression algorithms like JPEG. Here the DCT (Discrete cosine transform) is used to save more of the important parts of the image (the low frequencies) and less of the high frequencies. Ref. <a href="https://photo.stackexchange.com/questions/40401/what-does-frequency-mean-in-an-image">What does “frequency” mean in an image?</a></li>
-<li>Wiki: Human vision is much more sensitive to <strong>small variations in color (or brightness) over large areas</strong> than to the strength of <strong>high-frequency brightness variations</strong>.</li>
-</ul>
-<p>補充：對人眼來說，察覺「大範圍中小小的顏色或亮度變化」比發現「高頻率的亮度變化」容易。</p>
-<h3 id="Compression-steps"><a href="#Compression-steps" class="headerlink" title="Compression steps"></a>Compression steps</h3><ol>
-<li>Transform the image into Y’CbCr color space<ul>
-<li>Y’CbCr separate each pixel’s intensity (Y’) from color (Cb, Cr)</li>
-</ul>
-</li>
-<li>Down-sampling (chroma sub-sampling)<ul>
-<li>Wiki: reduce the spatial(空間性的) resolution of the Cb and Cr components</li>
-<li>白話文：減少影像使用的顏色數量</li>
-</ul>
-</li>
-<li>Block splitting<ul>
-<li>Wiki: depending on chroma sub-sampling, this yields Minimum Coded Unit (MCU) blocks of size 8×8 (4:4:4 when no sub-sampling), 16×8 (4:2:2), or most commonly 16×16 (4:2:0).</li>
-</ul>
-</li>
-<li>Apply DCT (discrete cosine transform)</li>
-<li>Quantization (the lossy part in JPEG compression)</li>
-<li>Huffman encoding, get the .JPG file</li>
-</ol>
-<h3 id="Down-sampling"><a href="#Down-sampling" class="headerlink" title="Down-sampling"></a>Down-sampling</h3><ul>
-<li>04:37開始：<ul>
-<li>One of the nice things about Y’CbCr is that human eye doesn’t really see chrominance very well. It’s certainly a much lower resolution than we see changes in intensity.</li>
-<li>Just like with TV encoding, we can massively down sample the amount of Cb and Cr that we see in the image.</li>
-</ul>
-</li>
-<li>06:14 Down-sampling is sometimes tied to the quality of the JPG that you output.<ul>
-<li>影像軟體在輸出.JPG檔案時，「品質」調整的通常就是down-sampling的程度</li>
-</ul>
-</li>
-<li>06:29 In general, most software will use a down-sample of 2 in both direction, which is 4 times less colors.</li>
-</ul>
-<h2 id="Part-2-DCT-Discrete-Cosine-Transform"><a href="#Part-2-DCT-Discrete-Cosine-Transform" class="headerlink" title="Part 2: DCT (Discrete Cosine Transform)"></a>Part 2: DCT (Discrete Cosine Transform)</h2><iframe width="560" height="315" src="https://www.youtube.com/embed/Q2aEzeMDHMA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-<h3 id="DCT"><a href="#DCT" class="headerlink" title="DCT"></a>DCT</h3><ul>
-<li>02:53 …in JPEG, we can get rid of some of the higher frequency signals and the general gist of the image will still be there.</li>
-<li>03:19 What we do in JPEG is we split each image into 8 by 8 pixel groups, and each of those pixel groups is separately encoded with its own discrete cosine transform.</li>
-<li>Wiki:<ul>
-<li>Each 8 by 8 pixel group is converted to a frequency-domain representation by “normalized, two-dimensional type-II DCT”.</li>
-<li>Before computing the DCT of the pixel group, its values are shifted from a positive range to one centered on zero (from <code>[0, 255]</code> to <code>[-128, 127]</code>). This step reduces the dynamic range requirements in the DCT processing stage that follows.<figure class="figure--center"><img src="/2021/how-jpeg-works/patterns.png" title="two-dimensional DCT basis functions"><figcaption><p>two-dimensional DCT basis functions</p></figcaption></figure></li>
-<li>The DCT transforms an pixel group of input values to a linear combination of these 64 patterns (see above image). The output values are referred to as <strong>transform coefficients</strong>.</li>
-</ul>
-</li>
-</ul>
-<h3 id="Quantization"><a href="#Quantization" class="headerlink" title="Quantization"></a>Quantization</h3><ul>
-<li>08:27 After calculating the discrete cosine transform coefficients, we will try to remove the ones we don’t want. We call the process of removing the high frequency data “quantization”.</li>
-<li>Wiki: the elements in the quantization matrix control the compression ratio, with larger values producing greater compression.<ul>
-<li>白話文：DCT結束後得到的<strong>transform coefficients</strong>會根據quantization matrix繼續壓縮。quantization matrix會指示<strong>transform coefficients</strong>中每一個像素被壓縮的程度；quantization matrix中越大的數字代表越大的壓縮比例</li>
-<li>12:55 If we increase the values in the quantization table, we’re essentially operating a lower JPEG quality setting.</li>
-</ul>
-</li>
-</ul>
-<h3 id="Quantization-matrix-quantization-table"><a href="#Quantization-matrix-quantization-table" class="headerlink" title="Quantization matrix (quantization table)"></a>Quantization matrix (quantization table)</h3><p>Wiki: the quantization matrix is designed to provide more resolution to more perceivable frequency components over less perceivable components (usually lower frequencies over high frequencies) in addition to transforming as many components to 0, which can be encoded with greatest efficiency.</p>
-<p>白話文：quantization matrix會盡可能保留人眼可察覺的部分（通常是低頻率的部分），捨棄人眼察覺不出來的部分（高頻率的部分）</p>
-<h3 id="Huffman-encoding"><a href="#Huffman-encoding" class="headerlink" title="Huffman encoding"></a>Huffman encoding</h3><ul>
-<li>以zigzag的形式來編碼<strong>transform coefficients</strong></li>
-<li><strong>transform coefficients</strong>中，通常是左上角擁有較多資訊，而右下角偏向被捨棄，搭配Huffman encoding可以讓尾部大量的0一起被壓縮<ul>
-<li>10:34 We serialize them out into a long line, and we use Huffman encoding to shrink them right down.</li>
-</ul>
-</li>
-</ul>
-<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
-<li><a href="https://en.wikipedia.org/wiki/YCbCr">Wikipedia: YCbCr</a></li>
-<li><a href="https://en.wikipedia.org/wiki/JPEG">Wikipedia: JPEG</a></li>
-<li><a href="https://en.wikipedia.org/wiki/JPEG_File_Interchange_Format">Wikipedia: JPEG File Interchange Format</a></li>
-</ul>
-]]></content>
-  </entry>
-  <entry>
     <title>Theme &quot;NexT&quot; font modification</title>
     <url>/2021/next-theme-edit/</url>
     <content><![CDATA[<h2 id="Summary-of-this-post"><a href="#Summary-of-this-post" class="headerlink" title="Summary of this post"></a>Summary of this post</h2><p>Want to update the <strong>font-size</strong>, <strong>font-family</strong> (for the Chinese character) and <strong>color</strong> settings for my hexo blog. Done some searching and find out the contents in <code>base.styl</code> and <code>Pisces.styl</code> needs to be modified to fullfil my requirements.<br>I know this may not be the best choice (since <a href="https://theme-next.js.org/docs/getting-started/configuration.html">NexT’s docs</a> suggests using Alternate Config ,<code>_config.next.yml</code>, to apply modification) while at least this works…😣</p>
@@ -1587,7 +1584,6 @@ The configuration in <code>_config.yml</code> file should be set like this:<figu
 ]]></content>
       <categories>
         <category>hexo</category>
-        <category>NexT (theme)</category>
       </categories>
   </entry>
   <entry>
