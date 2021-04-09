@@ -3,7 +3,6 @@ title: Add local search
 date: 2021-02-17 09:07:53
 categories:
 - hexo
-- CSS
 ---
 
 ## Summary of this post
