@@ -54,7 +54,7 @@ The only thing that’s immutable here is the binding. `const` assigns a value (
 
 ## `Object.seal()`
 - The Object.seal() method seals an object, preventing new properties from being added to it and marking all existing properties as non-configurable. Values of present properties can still be changed as long as they are writable.
-  - 與`Object.freeze()`的差異是，經過`Object.seal()`封閉的物件不能新增或刪除既有的內容，但內容可以被修改
+  - 與`Object.freeze()`的差異是，經`Object.seal()`封閉的物件，不能對其新增或刪除內容，但封閉前就存在的內容可以被修改
   <script src="https://gist.github.com/tzynwang/1e8917a16a8450fb76fd5a6bd34201e9.js"></script>
   {% figure figure--center 2021/array-mutation/object-freeze-demo-3.png %}
 
@@ -63,6 +63,32 @@ The only thing that’s immutable here is the binding. `const` assigns a value (
 `Object.preventExtensions()`只會禁止對物件新增內容，但可以刪除或修改既有內容
 <script src="https://gist.github.com/tzynwang/034ffb5ed714a851cc2e35c5b8a148df.js"></script>
 {% figure figure--center 2021/array-mutation/object-freeze-demo-4.png %}
+
+
+## `Object.getOwnPropertyDescriptor()`
+回傳一個物件中，特定property的相關設定
+<script src="https://gist.github.com/tzynwang/e0618d9ef2d4fa0b153ad6d9347ae8ee.js"></script>
+{% figure figure--center 2021/array-mutation/object-freeze-demo-5.png %}
+
+參考[ECMAScript Specification, Table 3: Attributes of a Data Property](https://tc39.es/ecma262/#table-data-property-attributes)：
+- `writable`: If false, attempts by ECMAScript code to change the property's [[Value]] attribute using [[Set]] will not succeed.
+  - `writable`若為`false`，代表該`value`無法被修改
+  - 被`Object.freeze()`凍結的物件，其`value`的`writable`就被修改為`false`
+- `enumerable`: If true, the property will be enumerated by a for-in enumeration. Otherwise, the property is said to be non-enumerable.
+  - `enumerable`為`true`代表該`value`會[被`for...in`迭代到](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...in)
+- `configurable`: If false, attempts to delete the property, change the property to be an accessor property, or change its attributes (other than [[Value]], or changing [[Writable]] to false) will fail.
+  - `configurable`若為`false`，代表該`value`無法被刪除
+  - 經`Object.freeze()`或`Object.seal()`處理過的物件，其`value`的`configurable`就被修改為`false`
+{% figure figure--center 2021/array-mutation/attributes-of-data-property.png %}
+
+
+## 補充：無法解凍或再開封
+[Opposite of Object.freeze or Object.seal in JavaScript](https://stackoverflow.com/questions/19293321/opposite-of-object-freeze-or-object-seal-in-javascript)
+
+> Freezing an object is the ultimate form of lock-down. Once an object has been frozen it cannot be unfrozen – nor can it be tampered in any manner. This is the best way to make sure that your objects will stay exactly as you left them, indefinitely
+
+- `Object.freeze()`與`Object.seal()`是不可逆的程序，一旦一個物件（或陣列）被凍結或封閉，該物件就無法回到凍結（或封閉）前的狀態
+- 可以透過[`Object.assign()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign)來製作該物件（或陣列）的副本，再修改其內容
 
 
 ## 參考文件
@@ -75,4 +101,5 @@ The only thing that’s immutable here is the binding. `const` assigns a value (
   - [Object.freeze()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/freeze)
   - [Object.seal()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/seal)
   - [Object.preventExtensions()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/preventExtensions)
+  - [Object.getOwnPropertyDescriptor()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/getOwnPropertyDescriptor)
 - ['Freezing' Arrays in Javascript?](https://stackoverflow.com/questions/7509894/freezing-arrays-in-javascript)
