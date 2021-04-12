@@ -6,7 +6,7 @@
   <link href="https://tzynwang.github.io/atom.xml" rel="self"/>
   
   <link href="https://tzynwang.github.io/"/>
-  <updated>2021-04-09T13:25:13.016Z</updated>
+  <updated>2021-04-12T13:27:30.103Z</updated>
   <id>https://tzynwang.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>「setTimeout() difference between parameters as string or function」相關筆記</title>
+    <link href="https://tzynwang.github.io/2021/settimeout-args/"/>
+    <id>https://tzynwang.github.io/2021/settimeout-args/</id>
+    <published>2021-04-12T12:27:31.000Z</published>
+    <updated>2021-04-12T13:27:30.103Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;原始問題&quot;&gt;&lt;a href=&quot;#原始問題&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="JavaScript" scheme="https://tzynwang.github.io/categories/JavaScript/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>為什麼可以修改使用const宣告的陣列（或物件）的內容？</title>
@@ -103,27 +126,6 @@
 &lt;p&gt;內收關於影片組「&lt;a href=&quot;https://www.youtube.com/playlist?list=PLzH6n4zXuckoAod3z31QEST1ZaizBuNHh&quot;&gt;How JPEG Works&lt;/a&gt;」的相關筆記、JPEG詳細的壓縮過程，與其他參考資料來源。&lt;/p&gt;</summary>
     
     
-    
-    
-  </entry>
-  
-  <entry>
-    <title>「JavaScript陣列遍歷」相關筆記</title>
-    <link href="https://tzynwang.github.io/2021/js-array-iterate/"/>
-    <id>https://tzynwang.github.io/2021/js-array-iterate/</id>
-    <published>2021-03-27T01:37:48.000Z</published>
-    <updated>2021-04-07T14:00:09.533Z</updated>
-    
-    
-    <summary type="html">&lt;h2 id=&quot;總結&quot;&gt;&lt;a href=&quot;#總結&quot; class=&quot;headerlink&quot; title=&quot;總結&quot;&gt;&lt;/a&gt;總結&lt;/h2&gt;&lt;p&gt;本篇文章是關於JavaScript遍歷陣列（部分方法也可直接遍歷物件）方法的筆記。&lt;br&gt;keywords: array, iterate, iteration&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;不會回傳新陣列的方式：&lt;code&gt;for&lt;/code&gt;搭配&lt;code&gt;length()&lt;/code&gt;、&lt;code&gt;while&lt;/code&gt;搭配&lt;code&gt;length()&lt;/code&gt;、&lt;code&gt;for...in&lt;/code&gt;、&lt;code&gt;for...of&lt;/code&gt;、&lt;code&gt;every()&lt;/code&gt;、&lt;code&gt;some()&lt;/code&gt;、&lt;code&gt;forEach()&lt;/code&gt;、&lt;code&gt;join&lt;/code&gt;、&lt;code&gt;reduce()&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;會回傳一個新陣列的方式：&lt;code&gt; filter()&lt;/code&gt;、&lt;code&gt;flat()&lt;/code&gt;、&lt;code&gt;flatMap()&lt;/code&gt;、&lt;code&gt;map()&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;</summary>
-    
-    
-    
-    <category term="JavaScript" scheme="https://tzynwang.github.io/categories/JavaScript/"/>
     
     
   </entry>

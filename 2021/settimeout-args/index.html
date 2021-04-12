@@ -21,21 +21,23 @@
     var NexT = window.NexT || {};
     var CONFIG = {"hostname":"tzynwang.github.io","root":"/","images":"/images","scheme":"Pisces","version":"8.2.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":"enable","trigger":"auto","top_n_per_article":-1,"unescape":false,"preload":false}};
   </script>
-<meta name="description" content="To view the draft posts (in the source\_drafts folder) on localhost:4000, just run hexo server --draft.Set render_drafts as true in _config.yml will make hexo generate generate the posts in source\_dr">
+<meta name="description" content="原始問題setTimeout()傳入「與函式一致的字串」作為參數時，為何輸出的結果與「直接傳入函式」不同？ 第一組程式碼： 123456// 傳入與函式內容一樣的字串作為參數setTimeout(console.log(&amp;#x27;first&amp;#x27;), 0)console.log(&amp;#x27;second&amp;#x27;);// 輸出結果：// >> first// >>">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Display draft post">
-<meta property="og:url" content="https://tzynwang.github.io/2021/hexo-drafts/index.html">
+<meta property="og:title" content="「setTimeout() difference between parameters as string or function」相關筆記">
+<meta property="og:url" content="https://tzynwang.github.io/2021/settimeout-args/index.html">
 <meta property="og:site_name" content="普通文組">
-<meta property="og:description" content="To view the draft posts (in the source\_drafts folder) on localhost:4000, just run hexo server --draft.Set render_drafts as true in _config.yml will make hexo generate generate the posts in source\_dr">
+<meta property="og:description" content="原始問題setTimeout()傳入「與函式一致的字串」作為參數時，為何輸出的結果與「直接傳入函式」不同？ 第一組程式碼： 123456// 傳入與函式內容一樣的字串作為參數setTimeout(console.log(&amp;#x27;first&amp;#x27;), 0)console.log(&amp;#x27;second&amp;#x27;);// 輸出結果：// >> first// >>">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-02-19T06:25:20.000Z">
-<meta property="article:modified_time" content="2021-02-19T06:41:50.535Z">
+<meta property="og:image" content="https://tzynwang.github.io/2021/settimeout-args/JS-in-browser.png">
+<meta property="article:published_time" content="2021-04-12T12:27:31.000Z">
+<meta property="article:modified_time" content="2021-04-12T13:27:30.103Z">
 <meta property="article:author" content="Charlie (Tzu Yin)">
 <meta property="article:tag" content="hexo, hexo blog, tzyn, 普通文組">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://tzynwang.github.io/2021/settimeout-args/JS-in-browser.png">
 
 
-<link rel="canonical" href="https://tzynwang.github.io/2021/hexo-drafts/">
+<link rel="canonical" href="https://tzynwang.github.io/2021/settimeout-args/">
 
 
 <script class="page-configurations">
@@ -47,7 +49,7 @@
     lang   : 'en'
   };
 </script>
-<title>Display draft post | 普通文組</title>
+<title>「setTimeout() difference between parameters as string or function」相關筆記 | 普通文組</title>
   
 
 
@@ -185,7 +187,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Environment"><span class="nav-number">1.</span> <span class="nav-text">Environment</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-number">2.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8E%9F%E5%A7%8B%E5%95%8F%E9%A1%8C"><span class="nav-number">1.</span> <span class="nav-text">原始問題</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E6%9E%90"><span class="nav-number">1.1.</span> <span class="nav-text">解析</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%A8%E8%BF%B4%E5%9C%88%E5%85%A7"><span class="nav-number">2.</span> <span class="nav-text">在迴圈內</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E6%9E%90-1"><span class="nav-number">2.1.</span> <span class="nav-text">解析</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%83%E8%80%83%E6%96%87%E4%BB%B6"><span class="nav-number">3.</span> <span class="nav-text">參考文件</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -251,7 +253,7 @@
   
 
   <article itemscope="" itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://tzynwang.github.io/2021/hexo-drafts/">
+    <link itemprop="mainEntityOfPage" href="https://tzynwang.github.io/2021/settimeout-args/">
 
     <span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar-pexels-alex-andrews-215-215.png">
@@ -264,7 +266,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Display draft post
+          「setTimeout() difference between parameters as string or function」相關筆記
         </h1>
 
         <div class="post-meta-container">
@@ -276,7 +278,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2021-02-19 14:25:20 / Modified: 14:41:50" itemprop="dateCreated datePublished" datetime="2021-02-19T14:25:20+08:00">2021-02-19</time>
+      <time title="Created: 2021-04-12 20:27:31 / Modified: 21:27:30" itemprop="dateCreated datePublished" datetime="2021-04-12T20:27:31+08:00">2021-04-12</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -284,7 +286,7 @@
       </span>
       <span class="post-meta-item-text">In</span>
         <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-          <a href="/categories/hexo/" itemprop="url" rel="index"><span itemprop="name">hexo</span></a>
+          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
         </span>
     </span>
 
@@ -298,14 +300,57 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>To view the draft posts (in the <code>source\_drafts</code> folder) on localhost:4000, just run <code>hexo server --draft</code>.<br>Set <code>render_drafts</code> as <code>true</code> in <code>_config.yml</code> will make <code>hexo generate</code> generate the posts in <code>source\_drafts</code> into <code>public</code> folder, which means the draft posts will be deployed to GitHub page by <code>hexo deploy</code>.<br>No needs to set <code>render_drafts</code> as <code>true</code> to view the draft posts on localhost, running <code>hexo server --draft</code> is enough.</p>
-<p><code>_config.yml</code>中的<code>render_drafts</code>設定為<code>true</code>的話，執行<code>hexo generate</code>時，資料夾<code>source\_drafts</code>內的檔案也會被生成到<code>public</code>資料夾中。<br>在這個情況下執行<code>hexo deploy</code>就會把草稿文章推到GitHub Page上。</p>
-<p>只是想要在localhost:4000上瀏覽草稿的話，執行<code>hexo server --draft</code>即可，不用修改<code>render_drafts</code>的值。<br>hexo官方文件對<code>render_drafts</code>的說明比較簡短，一開始以為設定成<code>true</code>只是代表<code>hexo server</code>會渲染草稿……😇</p>
-<h2 id="Environment"><a href="#Environment" class="headerlink" title="Environment"></a>Environment</h2><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo: 5.3.0</span><br><span class="line">hexo-cli: 4.2.0</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></tbody></table></figure>
+        <h2 id="原始問題"><a href="#原始問題" class="headerlink" title="原始問題"></a>原始問題</h2><p><code>setTimeout()</code>傳入「與函式一致的字串」作為參數時，為何輸出的結果與「直接傳入函式」不同？</p>
+<p>第一組程式碼：</p>
+<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 傳入與函式內容一樣的字串作為參數</span></span><br><span class="line"><span class="built_in">setTimeout</span>(<span class="built_in">console</span>.log(<span class="string">'first'</span>), <span class="number">0</span>)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'second'</span>);</span><br><span class="line"><span class="comment">// 輸出結果：</span></span><br><span class="line"><span class="comment">// &gt;&gt; first</span></span><br><span class="line"><span class="comment">// &gt;&gt; second</span></span><br></pre></td></tr></tbody></table></figure>
+<p>第二組程式碼：</p>
+<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 直接傳入函式作為參數</span></span><br><span class="line"><span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> <span class="built_in">console</span>.log(<span class="string">'first'</span>), <span class="number">0</span>)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'second'</span>);</span><br><span class="line"><span class="comment">// 輸出結果：</span></span><br><span class="line"><span class="comment">// &gt;&gt; second</span></span><br><span class="line"><span class="comment">// &gt;&gt; first</span></span><br></pre></td></tr></tbody></table></figure>
+<h3 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h3><ul>
+<li>第一組程式碼的<code>console.log('first')</code>沒有被視為函式，而是被視為一組字串，此組字串在編譯後會被執行</li>
+<li>MDN（說明頁面中稱之為<code>code</code>）對於字串參數的說明：<code>setTimeout()</code> allows you to include a string, which is compiled and executed when the timer expires.</li>
+<li>第一組程式碼實際上做的事情：<ol>
+<li><code>setTimeout()</code>沒有收到任何函式作為參數，沒有任何函式被延遲執行</li>
+<li><code>setTimeout()</code>內的<code>console.log('first')</code>被執行，輸出<code>first</code></li>
+<li><code>setTimeout()</code>收到的是「執行<code>console.log('first')</code>後回傳的值」，也就是<code>undefined</code></li>
+<li><code>console.log('second')</code>被執行，輸出<code>second</code></li>
+</ol>
+</li>
+<li>第二組程式碼實際上做的事情：<ol>
+<li><code>setTimeout()</code>收到一組匿名函式，該匿名函式被延後執行</li>
+<li><code>console.log('second')</code>被執行，輸出<code>second</code></li>
+<li>call stack已經沒有其他任務，被<code>setTimeout()</code>延後的匿名函式（<code>console.log('first')</code>）此時可以執行了，輸出<code>first</code>到console上</li>
+</ol>
+</li>
+</ul>
+<h2 id="在迴圈內"><a href="#在迴圈內" class="headerlink" title="在迴圈內"></a>在迴圈內</h2><p>第三組程式碼：</p>
+<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">2</span>; i++) {</span><br><span class="line">    <span class="built_in">setTimeout</span>(<span class="built_in">console</span>.log(i))</span><br><span class="line">}</span><br><span class="line"><span class="comment">// 輸出結果：</span></span><br><span class="line"><span class="comment">// &gt;&gt; 0</span></span><br><span class="line"><span class="comment">// &gt;&gt; 1</span></span><br><span class="line"><span class="comment">// &gt;&gt; 39607 (timeoutID) (在DevTool執行才會有這行輸出)</span></span><br><span class="line"><span class="comment">// 在Node.js環境執行此段程式碼會回傳TypeError : Callback must be a function. Received undefined</span></span><br></pre></td></tr></tbody></table></figure>
+<p>第四組程式碼：</p>
+<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">2</span>; i++) {</span><br><span class="line">    <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> <span class="built_in">console</span>.log(i))</span><br><span class="line">}</span><br><span class="line"><span class="comment">// 輸出結果：</span></span><br><span class="line"><span class="comment">// &gt;&gt; 39670 (timeoutID) (在DevTool執行才會有這行輸出，以Node.js執行不會有這行)</span></span><br><span class="line"><span class="comment">// &gt;&gt; 2</span></span><br><span class="line"><span class="comment">// &gt;&gt; 2</span></span><br></pre></td></tr></tbody></table></figure>
+<h3 id="解析-1"><a href="#解析-1" class="headerlink" title="解析"></a>解析</h3><ul>
+<li>第三組程式碼實際上做的事情：<ol>
+<li>i為0，迴圈第一次執行，<code>console.log(i)</code>為字串參數，執行後輸出i</li>
+<li>i增加為1，迴圈第二次執行，<code>console.log(i)</code>為字串參數，執行後輸出i</li>
+<li>i增加為2，迴圈條件不成立，迴圈停止</li>
+</ol>
+</li>
+<li>第四組程式碼實際上做的事情：<ol>
+<li>i為0，迴圈第一次執行，函式<code>console.log(i)</code>被延後，停在callback queue中等待call stack清空</li>
+<li>i增加為1，迴圈第二次執行，函式<code>console.log(i)</code>被延後，停在callback queue中等待call stack清空</li>
+<li>i增加為2，迴圈條件不成立，迴圈停止</li>
+<li>call stack已空，輪到callback queue中的callback function被執行</li>
+<li>i為2，迴圈第一次執行時被延後的<code>console.log(i)</code>輸出i</li>
+<li>i為2，迴圈第二次執行時被延後的<code>console.log(i)</code>輸出i</li>
+</ol>
+</li>
+</ul>
+<figure class="figure--center"><img src="/2021/settimeout-args/JS-in-browser.png" title="瀏覽器環境圖，取自：How JavaScript works: an overview of the engine, the runtime, and the call stack"><figcaption><p>瀏覽器環境圖，取自：How JavaScript works: an overview of the engine, the runtime, and the call stack</p></figcaption></figure>
 
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://hexo.io/docs/commands#Display-drafts">hexo: Commands/Display drafts</a></li>
-<li><a target="_blank" rel="noopener" href="https://hexo.io/docs/configuration#Writing">hexo: Configuration/Writing</a></li>
+
+<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/54259645/javascript-code-executes-differently-for-settimeout-when-a-function-is-passed-as">Javascript code executes differently for setTimeout when a function is passed as argument</a></li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setTimeout">MDN: WindowOrWorkerGlobalScope.setTimeout()</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.sessionstack.com/how-does-javascript-actually-work-part-1-b0bacc073cf">How JavaScript works: an overview of the engine, the runtime, and the call stack</a></li>
+<li><a target="_blank" rel="noopener" href="https://youtu.be/Nzokr6Boeaw">JavaScript for-loops are… complicated - HTTP203</a></li>
 </ul>
 
     </div>
@@ -320,14 +365,11 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2021/git-workflow/" rel="prev" title="Git workflow">
-                  <i class="fa fa-chevron-left"></i> Git workflow
+                <a href="/2021/array-mutation/" rel="prev" title="為什麼可以修改使用const宣告的陣列（或物件）的內容？">
+                  <i class="fa fa-chevron-left"></i> 為什麼可以修改使用const宣告的陣列（或物件）的內容？
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2021/chrome-89-css/" rel="next" title="DevTools與CSS有關的新功能（Chrome 89）">
-                  DevTools與CSS有關的新功能（Chrome 89） <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
     </footer>
