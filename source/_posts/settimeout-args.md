@@ -42,7 +42,7 @@ console.log('second');
   1. `console.log('second')`被執行，輸出`second`
   1. call stack已經沒有其他任務，被`setTimeout()`延後的匿名函式（`console.log('first')`）此時可以執行了，輸出`first`到console上
 
-## 在迴圈內
+## 延伸問題：在迴圈內
 第三組程式碼：
 ```JavaScript
 for (var i = 0; i < 2; i++) {
