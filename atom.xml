@@ -6,7 +6,7 @@
   <link href="https://tzynwang.github.io/atom.xml" rel="self"/>
   
   <link href="https://tzynwang.github.io/"/>
-  <updated>2021-04-12T13:27:30.103Z</updated>
+  <updated>2021-04-13T13:58:43.324Z</updated>
   <id>https://tzynwang.github.io/</id>
   
   <author>
@@ -17,11 +17,32 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>「X-Frame-Options、Same-origin policy、Cross-Origin Resource Sharing」相關筆記</title>
+    <link href="https://tzynwang.github.io/2021/cross-origin-resource-sharing/"/>
+    <id>https://tzynwang.github.io/2021/cross-origin-resource-sharing/</id>
+    <published>2021-04-13T10:09:25.000Z</published>
+    <updated>2021-04-13T13:58:43.324Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;原始問題&quot;&gt;&lt;a href=&quot;#原始問題&quot; class=&quot;headerlink&quot; title=&quot;原始問題&quot;&gt;&lt;/a&gt;原始問題&lt;/h2&gt;&lt;p&gt;在&lt;a</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
     <title>「setTimeout() difference between parameters as string or function」相關筆記</title>
     <link href="https://tzynwang.github.io/2021/settimeout-args/"/>
     <id>https://tzynwang.github.io/2021/settimeout-args/</id>
     <published>2021-04-12T12:27:31.000Z</published>
-    <updated>2021-04-12T13:27:30.103Z</updated>
+    <updated>2021-04-13T10:15:19.939Z</updated>
     
     
       
@@ -110,23 +131,6 @@
     <category term="Side Project" scheme="https://tzynwang.github.io/tags/Side-Project/"/>
     
     <category term="ALPHA Camp assignment" scheme="https://tzynwang.github.io/tags/ALPHA-Camp-assignment/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>「How JPEG Works」相關筆記</title>
-    <link href="https://tzynwang.github.io/2021/how-jpeg-works/"/>
-    <id>https://tzynwang.github.io/2021/how-jpeg-works/</id>
-    <published>2021-03-28T08:02:12.000Z</published>
-    <updated>2021-03-29T11:20:32.732Z</updated>
-    
-    
-    <summary type="html">&lt;h2 id=&quot;總結&quot;&gt;&lt;a href=&quot;#總結&quot; class=&quot;headerlink&quot; title=&quot;總結&quot;&gt;&lt;/a&gt;總結&lt;/h2&gt;&lt;p&gt;問：JPEG到底是什麼？&lt;br&gt;答：實際上是一種壓縮影像的演算法&lt;/p&gt;
-&lt;p&gt;問：JPEG如何壓縮影像？&lt;br&gt;簡答：將影像從RGB轉換為Y’CbCr，捨棄多餘的顏色資訊、壓縮人眼不易察覺的部分（影像中高頻率變化的部分）後，輸出為.jpg檔案&lt;/p&gt;
-&lt;p&gt;內收關於影片組「&lt;a href=&quot;https://www.youtube.com/playlist?list=PLzH6n4zXuckoAod3z31QEST1ZaizBuNHh&quot;&gt;How JPEG Works&lt;/a&gt;」的相關筆記、JPEG詳細的壓縮過程，與其他參考資料來源。&lt;/p&gt;</summary>
-    
-    
-    
     
   </entry>
   
