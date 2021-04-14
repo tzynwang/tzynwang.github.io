@@ -6,7 +6,7 @@
   <link href="https://tzynwang.github.io/atom.xml" rel="self"/>
   
   <link href="https://tzynwang.github.io/"/>
-  <updated>2021-04-13T13:58:43.324Z</updated>
+  <updated>2021-04-14T13:49:39.034Z</updated>
   <id>https://tzynwang.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>再訪event loop</title>
+    <link href="https://tzynwang.github.io/2021/further-adventures-of-the-event-loop/"/>
+    <id>https://tzynwang.github.io/2021/further-adventures-of-the-event-loop/</id>
+    <published>2021-04-14T06:02:39.000Z</published>
+    <updated>2021-04-14T13:49:39.034Z</updated>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;總結&quot;&gt;&lt;a href=&quot;#總結&quot; class=&quot;headerlink&quot; title=&quot;總結&quot;&gt;&lt;/a&gt;總結&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;瀏覽器中的JavaScript環境（runtime）包含standard stack、microtask queue與(macro)task queue&lt;/li&gt;
+&lt;li&gt;簡化後的瀏覽器event loop流程如下：&lt;ol&gt;
+&lt;li&gt;處理standard stack中的&lt;strong&gt;所有&lt;/strong&gt;任務&lt;/li&gt;
+&lt;li&gt;standard stack清空後，開始處理microtask queue中的&lt;strong&gt;所有&lt;/strong&gt;任務&lt;/li&gt;
+&lt;li&gt;microtask queue清空後，開始處理(macro)task queue中的&lt;strong&gt;一個&lt;/strong&gt;任務&lt;/li&gt;
+&lt;li&gt;一次event loop中可能有複數個(macro)task queue，event loop會執行每一個(macro)task queue中&lt;strong&gt;最早&lt;/strong&gt;被加進來的&lt;strong&gt;一個&lt;/strong&gt;任務&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</summary>
+    
+    
+    
+    <category term="JavaScript" scheme="https://tzynwang.github.io/categories/JavaScript/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>「X-Frame-Options、Same-origin policy、Cross-Origin Resource Sharing」相關筆記</title>
@@ -103,34 +129,6 @@
     
     <category term="JavaScript" scheme="https://tzynwang.github.io/categories/JavaScript/"/>
     
-    
-  </entry>
-  
-  <entry>
-    <title>專案「RGB to HEX converter」技術記錄</title>
-    <link href="https://tzynwang.github.io/2021/REB-to-HEX-review/"/>
-    <id>https://tzynwang.github.io/2021/REB-to-HEX-review/</id>
-    <published>2021-04-01T07:28:09.000Z</published>
-    <updated>2021-04-09T05:20:23.857Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;總結&quot;&gt;&lt;a href=&quot;#總結&quot; class=&quot;headerlink&quot; title=&quot;總結&quot;&gt;&lt;/a&gt;總結&lt;/h2&gt;&lt;p&gt;將ALPHA Camp學期二之一的期末考與想要研究的技術結合起來一起練習。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;使用到的技術：&lt;ul&gt;
-&lt;li&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    
-    <category term="Side Project" scheme="https://tzynwang.github.io/tags/Side-Project/"/>
-    
-    <category term="ALPHA Camp assignment" scheme="https://tzynwang.github.io/tags/ALPHA-Camp-assignment/"/>
     
   </entry>
   
