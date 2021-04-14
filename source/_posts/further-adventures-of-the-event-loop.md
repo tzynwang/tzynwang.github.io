@@ -108,6 +108,8 @@ button.click();
   1. `function second ()`結束，，`button.click()`還在執行（task stack還未清空），還未輪到microtask
   1. `button.click()`結束
   1. task stack空了，執行microtask queue中的`console.log('listener 1')`與`console.log('microtask 2')`
+- 在第一組程式碼中，`function first ()`結束後task stack就淨空了，故可以去處理microtask queue中的任務
+- 而第二組程式碼則是：`function first ()`結束了，但`button.click()`還沒完，因為還有一個`function second ()`需執行；`function second ()`執行完畢後，`button.click()`才算完全結束，可以從task stack上移除，這時候才能處理microtask queue中的任務
 
 
 ## 影片摘要：Scheduling Tasks
