@@ -30,7 +30,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://tzynwang.github.io/2021/further-adventures-of-the-event-loop/u1kqx6AenYw-00-14-00.jpg">
 <meta property="article:published_time" content="2021-04-14T06:02:39.000Z">
-<meta property="article:modified_time" content="2021-04-14T13:49:39.034Z">
+<meta property="article:modified_time" content="2021-04-14T14:01:20.523Z">
 <meta property="article:author" content="Charlie (Tzu Yin)">
 <meta property="article:tag" content="hexo, hexo blog, tzyn, 普通文組">
 <meta name="twitter:card" content="summary">
@@ -278,7 +278,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2021-04-14 14:02:39 / Modified: 21:49:39" itemprop="dateCreated datePublished" datetime="2021-04-14T14:02:39+08:00">2021-04-14</time>
+      <time title="Created: 2021-04-14 14:02:39 / Modified: 22:01:20" itemprop="dateCreated datePublished" datetime="2021-04-14T14:02:39+08:00">2021-04-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -401,6 +401,8 @@
 <li>task stack空了，執行microtask queue中的<code>console.log('listener 1')</code>與<code>console.log('microtask 2')</code></li>
 </ol>
 </li>
+<li>在第一組程式碼中，<code>function first ()</code>結束後task stack就淨空了，故可以去處理microtask queue中的任務</li>
+<li>而第二組程式碼則是：<code>function first ()</code>結束了，但<code>button.click()</code>還沒完，因為還有一個<code>function second ()</code>需執行；<code>function second ()</code>執行完畢後，<code>button.click()</code>才算完全結束，可以從task stack上移除，這時候才能處理microtask queue中的任務</li>
 </ul>
 <h2 id="影片摘要：Scheduling-Tasks"><a href="#影片摘要：Scheduling-Tasks" class="headerlink" title="影片摘要：Scheduling Tasks"></a>影片摘要：Scheduling Tasks</h2><iframe width="560" height="315" src="https://www.youtube.com/embed/8eHInw9_U8k" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
 
