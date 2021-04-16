@@ -197,7 +197,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">29</span>
+          <span class="site-state-item-count">30</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -238,6 +238,263 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope="" itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tzynwang.github.io/2021/vanilla-js-pagination/">
+
+    <span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar-pexels-alex-andrews-215-215.png">
+      <meta itemprop="name" content="Charlie (Tzu Yin)">
+      <meta itemprop="description" content="一介普通文組的學習筆記 📒">
+    </span>
+
+    <span hidden="" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="普通文組">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/vanilla-js-pagination/" class="post-title-link" itemprop="url">自主練習「純手工pagination」技術記錄</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-04-15 19:29:46" itemprop="dateCreated datePublished" datetime="2021-04-15T19:29:46+08:00">2021-04-15</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-04-16 14:40:15" itemprop="dateModified" datetime="2021-04-16T14:40:15+08:00">2021-04-16</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2021/vanilla-js-pagination/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/vanilla-js-pagination/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>練習為pagination加上JavaScript，使其可與使用者互動。</p>
+<ul>
+<li>使用到的技術<ul>
+<li>DOM Traversing: parent, siblings</li>
+</ul>
+</li>
+<li>新學習到的概念<ul>
+<li><code>pointer-events: none</code></li>
+<li><code>parseInt()</code>與<code>Number()</code>的差異</li>
+</ul>
+</li>
+</ul>
+<h2 id="成品"><a href="#成品" class="headerlink" title="成品"></a>成品</h2><p class="codepen" data-height="265" data-theme-id="dark" data-default-tab="js,result" data-user="Charlie7779" data-slug-hash="yLgEJyr" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="pagination practice">
+  <span>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/Charlie7779/pen/yLgEJyr">
+  pagination practice</a> by Charlie (<a target="_blank" rel="noopener" href="https://codepen.io/Charlie7779">@Charlie7779</a>)
+  on <a target="_blank" rel="noopener" href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async="" src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+
+<h2 id="環境"><a href="#環境" class="headerlink" title="環境"></a>環境</h2><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Google Chrome: 90.0.4430.72 (Official Build) (64-bit)</span><br><span class="line">Bootstrap: 5.0.0-beta3</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h2><ol>
+<li>使用<a target="_blank" rel="noopener" href="https://getbootstrap.com/docs/5.0/components/pagination/">Bootstrap: Pagination</a>的HTML原始碼，並移除不需要的部分<ul>
+<li><code>aria-label</code>在練習中用不到，移除</li>
+<li><code>&lt;li&gt;</code>使用JavaScript產生，全部移除；加上備註，提示內容會由JavaScript處理</li>
+<li>整理完畢後，HTML部分的原始碼如下<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">nav</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"pagination justify-content-center"</span> <span class="attr">id</span>=<span class="string">"pagination"</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- generated by JavaScript --&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">nav</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure></li>
+</ul>
+</li>
+<li>粗略分解任務：「使用者與pagination互動時，會發生什麼事情？」<ul>
+<li>點選previous或next來前進、後退</li>
+<li>直接點選頁數來進行換頁</li>
+<li>抵達頁數的「頭」或「尾」後，繼續點選previous或next不會有任何事情發生</li>
+<li>換頁後，畫面須呈現相對應的內容</li>
+</ul>
+</li>
+<li>將以上任務流程精緻化<ul>
+<li>「點選previous或next來前進、後退」與「直接點選頁數來進行換頁」<ul>
+<li>需監聽滑鼠點擊事件</li>
+<li>需判定滑鼠點擊的目標是previous、next或頁數</li>
+<li>要判定使用者點擊pagination後會在「哪一頁」</li>
+</ul>
+</li>
+<li>previous或next與頁數頭尾互動事件：<ul>
+<li>使用者抵達首尾頁後，點擊previous或next不可繼續前進或後退</li>
+<li>使用者不在首尾頁時，previous或next應恢復功能</li>
+</ul>
+</li>
+<li>換頁後，畫面須呈現相對應的內容<ul>
+<li>要判定使用者點擊pagination後會在「哪一頁」</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>使用程式碼滿足以上列出的需求</li>
+</ol>
+<h2 id="JavaScript原始碼"><a href="#JavaScript原始碼" class="headerlink" title="JavaScript原始碼"></a>JavaScript原始碼</h2><h3 id="全域變數"><a href="#全域變數" class="headerlink" title="全域變數"></a>全域變數</h3><script src="https://gist.github.com/tzynwang/f7fa03af729005ba9c3f1c6f470fd0f0.js"></script>
+
+<ul>
+<li><code>pageCount</code>：儲存總頁數的變數；除了直接賦值外，也可承接其他function回傳的值。比如在ALPHA Camp的練習情境中，<code>pageCount</code>可承接「電影總數（80筆）除以每一頁的電影數量（12筆）後無條件進位」此情境的總頁數數量（pagination應展示7頁）</li>
+<li><code>initialPage</code>：畫面載入時，預設顯示的頁面；在本練習中預設顯示第1頁</li>
+</ul>
+<h3 id="dynamicallyGeneratePage-page"><a href="#dynamicallyGeneratePage-page" class="headerlink" title="dynamicallyGeneratePage (page)"></a><code>dynamicallyGeneratePage (page)</code></h3><p>目的：根據傳入的總頁數（page）數量來產生pagination；比如傳入8，即要產生8頁的pagination</p>
+<script src="https://gist.github.com/tzynwang/cdc5647b1c895d53dbf376fac78b8905.js"></script>
+
+<ul>
+<li>第3行：加入Previous按鈕。而因為起始頁是第一頁（<code>initialPage</code>設定為1），故Previous按鈕預設是不會有任何功能的（不可繼續前進），所以在<code>&lt;li&gt;</code>加上<code>.disabled</code></li>
+<li>第4-8行：加入頁數，頁數根據傳入<code>dynamicallyGeneratePage()</code>的參數決定。並將<code>initialPage</code>加上<code>.active</code>，標記其為起始頁</li>
+<li>第9行：加入Next按鈕</li>
+<li>第10行：將第三行到第九行的內容放進<code>pagination</code>（<code>document.querySelector('#pagination')</code>）中</li>
+<li>第11行：設定<code>display</code>（<code>document.querySelector('#display')</code>）內容</li>
+<li>關於<code>data-page</code>：使用<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLOrForeignElement/dataset">dataset</a>為每一個<code>&lt;a&gt;</code>元素加上<code>data-page</code>，讀取<code>data-page</code>的值即可判定該<code>&lt;a&gt;</code>為Previous、Next或頁數按鈕</li>
+</ul>
+<h3 id="innerHTMLContent-page"><a href="#innerHTMLContent-page" class="headerlink" title="innerHTMLContent (page)"></a><code>innerHTMLContent (page)</code></h3><p>目的：根據傳入的頁數，產生對應的畫面內容</p>
+<script src="https://gist.github.com/tzynwang/50676fa823ed5435fa251833e215d88a.js"></script>
+
+<ul>
+<li>第4行：根據傳入的<code>page</code>來產生相對應的頁數</li>
+<li>第5行：使用<a target="_blank" rel="noopener" href="https://picsum.photos/">Lorem Picsum</a>透過id<a target="_blank" rel="noopener" href="https://picsum.photos/images">指定特定圖片</a>的服務，根據傳入的<code>page</code>來產生圖片，達成換頁換圖的效果</li>
+<li>第7行：<code>innerHTMLContent()</code>回傳的值可直接賦予<code>innerHTML</code></li>
+</ul>
+<h3 id="paginationStatusUpdate-event"><a href="#paginationStatusUpdate-event" class="headerlink" title="paginationStatusUpdate (event)"></a><code>paginationStatusUpdate (event)</code></h3><p>目的：根據使用者點擊的目標，更新pagination的狀態；並呼叫<code>innerHTMLContent()</code>來修改畫面內容</p>
+<script src="https://gist.github.com/tzynwang/ae875b2df97e736f08edd53093dcd13d.js"></script>
+
+<ul>
+<li>第2行：<code>const pageData = event.target.dataset.page</code><ul>
+<li>點擊事件發生後，抓取「被點擊的目標」其<code>data-page</code>的值，每一個<code>&lt;a&gt;</code>元素的<code>data-page</code>是透過<code>dynamicallyGeneratePage()</code>產生的</li>
+<li>點擊到Previous時，<code>pageData</code>為<code>p</code>；點擊到Next時，<code>pageData</code>為<code>n</code></li>
+<li>點擊到處於<code>disabled</code>狀態的Previous與Next時，<code>pageData</code>為<code>undefined</code>，理由如下：<ul>
+<li>參考Bootstrap 5.0.0-beta3的原始碼可得知<code>.page-item.disabled .page-link</code>的設定為<figure class="highlight css"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.page-item</span><span class="selector-class">.disabled</span> <span class="selector-class">.page-link</span> {</span><br><span class="line">  <span class="attribute">color</span>: <span class="number">#6c757d</span>;</span><br><span class="line">  <span class="attribute">pointer-events</span>: none;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="number">#fff</span>;</span><br><span class="line">  <span class="attribute">border-color</span>: <span class="number">#dee2e6</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+注意這段選取器的作用對象是.page-item.disabled下的「.page-link」，而HTML結構如下<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"page-item disabled"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">"page-link"</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">data-page</span>=<span class="string">"p"</span>&gt;</span>Previous<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+所以<code>pointer-events: none;</code>實際作用的對象是<code>&lt;a&gt;</code></li>
+<li>根據<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/CSS/pointer-events#values">MDN的規格</a>，<code>pointer-events</code>設定為<code>none</code>時，該元素（在本練習中為<code>&lt;a&gt;</code>）無法成為滑鼠游標點擊事件的目標（原文：The element is never the target of pointer events.）</li>
+<li>所以在Previous與Next處於<code>disabled</code>時，<code>&lt;a&gt;</code>不會成為滑鼠游標點擊事件的目標；在這樣的情況下，游標點擊事件會觸發的目標會變成該元素的親元素（在本練習中為<code>&lt;li&gt;</code>）（原文：In these circumstances, pointer events will trigger event listeners on this parent element as appropriate on their way to/from the descendant during the event capture/bubble phases.）</li>
+<li>而<code>&lt;li&gt;</code>沒有設定<code>pageData</code>，所以當我想要取<code>&lt;li&gt;</code>的<code>pageData</code>的值的時候，我會得到<code>undefined</code></li>
+</ul>
+</li>
+<li>結論：<code>pageData</code>的值有以下可能性<ul>
+<li><code>undefined</code>：代表Previous與Next處於<code>disabled</code>的狀態</li>
+<li><code>p</code>或<code>n</code>：當Previous與Next不處於<code>disabled</code>時，點擊Previous或Next會讓<code>pageData</code>的值為<code>p</code>或<code>n</code></li>
+<li>頁數的數字：當使用者點擊頁數時，<code>pageData</code>的值就是該頁數的數字，但資料型態會是<code>String</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>第3行：<code>const activePage = document.querySelector('#pagination li.active')</code><ul>
+<li>取「處於<code>active</code>狀態」的<code>&lt;li&gt;</code></li>
+</ul>
+</li>
+<li>第4行：<code>const activePageNumber = activePage.firstElementChild.dataset.page</code><ul>
+<li>會取得點擊事件發生時，處於<code>active</code>狀態的<code>&lt;li&gt;</code>其子元素<code>&lt;a&gt;</code>的<code>data-page</code>資料</li>
+<li>舉例：若目前<code>.active</code>的是第1頁，而我點了第4頁，<code>activePageNumber</code>的值會是1</li>
+</ul>
+</li>
+<li>第5-6行：固定取得Previous<code>&lt;li&gt;</code>與Next<code>&lt;li&gt;</code>，因為<code>.disabled</code>與<code>.active</code>是在<code>&lt;li&gt;</code>上操作的</li>
+<li>第8行開始的<code>switch (pageData)</code>：<ul>
+<li><code>case undefined</code>：代表使用者在Previous或Next處於<code>disabled</code>時點擊這兩個按鈕，這時不應該再繼續執行翻頁的動作，故直接<code>return</code>，什麼事都不發生</li>
+<li><code>case "p"</code>：<ul>
+<li>代表使用者點擊Previous時，此按鈕不處於<code>disabled</code>狀態，所以Previous應該帶領使用者前往上一頁</li>
+<li>第12行代表「點擊Previous時從最後一頁離開」，這時Next就不應繼續處於<code>disabled</code>狀態，故需移除<code>.disabled</code></li>
+<li>第14-16行：代表「點擊Previous時正在通過第二頁」，而從第二頁往前移動後，就會位在第一頁，位在第一頁後就不可繼續往前翻頁了，所以Previous要加上<code>.disabled</code>，進入<code>disabled</code>狀態</li>
+<li>第18-19行：若點擊Previous時，Previous不符合第12-16行列出的條件，就進行「移除目前處於<code>active</code>頁數的<code>.active</code>，並為前一頁加上<code>.active</code>」</li>
+<li>第20行：因為移動到前一頁了，所以<code>display</code>的內容也要更新，換成前一頁（activePageNumber - 1）的內容</li>
+</ul>
+</li>
+<li><code>case "n"</code>：換頁的邏輯與Previous相反<ul>
+<li>第23行代表「點擊Next時從第一頁離開」，這時Previous就不應繼續處於<code>disabled</code>狀態，故需移除<code>.disabled</code></li>
+<li>第25-27行：代表「點擊Next時正在通過倒數第二頁」，而從倒數第二頁往後移動後，就會位在最末頁，位在最末頁後就不可繼續往後翻頁了，所以Next要加上<code>.disabled</code>，進入<code>disabled</code>狀態</li>
+<li>第29-31行：若點擊Next時，Next不符合第23-27行列出的條件，就進行「移除目前處於<code>active</code>頁數的<code>.active</code>，並為下一頁加上<code>.active</code>」</li>
+</ul>
+</li>
+<li><code>default</code>：代表<code>pageData</code>不屬於上述任何一種狀態，亦即使用者直接點選了頁數<ul>
+<li>第34行：移除<code>activePage</code>的<code>active</code>狀態</li>
+<li>第35行：為<code>event.target</code>（被滑鼠點選到）的<code>parentElement</code>（即是<code>&lt;li&gt;</code>）加上<code>active</code>狀態</li>
+<li>第36行：更新<code>display</code>的內容</li>
+<li>第38-40行：使用者點選到最末頁時，Next要變為<code>disabled</code>狀態</li>
+<li>第42-44行：使用者點選到第一頁時，Previous要變為<code>disabled</code>狀態</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="bonus-track：parseInt-與Number-的差別"><a href="#bonus-track：parseInt-與Number-的差別" class="headerlink" title="bonus track：parseInt()與Number()的差別"></a>bonus track：<code>parseInt()</code>與<code>Number()</code>的差別</h2><ul>
+<li>在過去的專案與練習中，習慣直接使用<code>parseInt()</code>來將字串解析（parsing）為數字，本次改為使用<code>Number()</code>來將字串型變（type converting）為數字</li>
+<li>雖然這兩者都可以回傳我需要的資料，但好奇這其中是否有差異，而經過搜尋後得知：</li>
+<li><code>Number()</code>做的事：convert<ul>
+<li><a target="_blank" rel="noopener" href="http://es5.github.io/#x15.7.1">Annotated ECMAScript 5.1</a>: When <code>Number</code> is called as a <strong>function</strong> (rather than as a constructor), it performs a <strong>type conversion</strong>.</li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">MDN</a>: Values of <strong>other types</strong> can <strong>be converted to numbers</strong> using the <code>Number()</code> function.</li>
+</ul>
+</li>
+<li><code>parseInt()</code>做的事：parse，而非convert<ul>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/parseInt">MDN</a>: The <code>Number.parseInt()</code> method <strong>parses</strong> a <strong>string</strong> argument and returns an integer of the specified radix or base.</li>
+</ul>
+</li>
+<li>結論：雖然都可以透過傳入<code>String</code>得到<code>Number</code>，但<code>parseInt()</code>與<code>Number()</code>處理的手法並不一樣</li>
+</ul>
+<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://www.javascripttutorial.net/dom/traversing/">JavaScript DOM Traversing</a><ul>
+<li><a target="_blank" rel="noopener" href="https://www.javascripttutorial.net/dom/traversing/get-siblings-of-an-element/">Get Siblings of an Element</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.javascripttutorial.net/dom/traversing/get-the-parent-of-an-element/">Get the Parent of an Element</a></li>
+</ul>
+</li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/CSS/pointer-events#values">MDN: pointer-events</a></li>
+<li><a target="_blank" rel="noopener" href="https://thisthat.dev/number-constructor-vs-parse-int/">Number() vs parseInt()</a></li>
+<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/4090518/what-is-the-difference-between-parseint-and-number">What is the difference between parseInt() and Number()?</a></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1539,177 +1796,6 @@ on <a target="_blank" rel="noopener" href="https://codepen.io">CodePen</a>.</spa
 <li><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=rhzKDrUiJVk">Learn Regular Expressions In 20 Minutes</a></li>
 <li><a target="_blank" rel="noopener" href="https://regexr.com/">RegExr: Learn, Build, &amp; Test RegEx</a>：會顯示有依附關係的reg exr</li>
 <li><a target="_blank" rel="noopener" href="https://regex101.com/">regular expressions 101</a>：有附debugger</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope="" itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://tzynwang.github.io/2021/Japanese-50-review/">
-
-    <span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar-pexels-alex-andrews-215-215.png">
-      <meta itemprop="name" content="Charlie (Tzu Yin)">
-      <meta itemprop="description" content="一介普通文組的學習筆記 📒">
-    </span>
-
-    <span hidden="" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="普通文組">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/Japanese-50-review/" class="post-title-link" itemprop="url">自主練習專案「日本文學經典50」技術記錄與反省</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-03-23 13:16:10" itemprop="dateCreated datePublished" datetime="2021-03-23T13:16:10+08:00">2021-03-23</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-03-29 19:20:32" itemprop="dateModified" datetime="2021-03-29T19:20:32+08:00">2021-03-29</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-          <a href="/categories/CSS/" itemprop="url" rel="index"><span itemprop="name">CSS</span></a>
-        </span>
-    </span>
-
-  
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus: </span>
-    
-    <a title="disqus" href="/2021/Japanese-50-review/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/Japanese-50-review/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>微型專案「日本文學經典50」是在閱讀完《一生必讀的50本日本文學名著》後，覺得書末一口氣展示50本經典的排版讓人印象深刻，決定以該圖為範本練習CSS grid排版</p>
-<figure class="figure--center"><img src="/2021/Japanese-50-review/Japanese-50.PNG"></figure>
-
-
-<h2 id="成品"><a href="#成品" class="headerlink" title="成品"></a>成品</h2><p>純網頁展示版：<a href="https://tzynwang.github.io/Japanese-literature-50/">點我</a></p>
-<figure class="figure--center"><img src="/2021/Japanese-50-review/prj-demo.gif"></figure>
-
-
-<h2 id="版本與環境"><a href="#版本與環境" class="headerlink" title="版本與環境"></a>版本與環境</h2><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Google Chrome: 89.0.4389.90 (Official Build) (64-bit)</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></tbody></table></figure>
-<h2 id="JS內容"><a href="#JS內容" class="headerlink" title="JS內容"></a>JS內容</h2><script src="https://gist.github.com/tzynwang/3916e8975b303a87353c69a81539ba6b.js"></script>
-
-<h2 id="JS技術記錄"><a href="#JS技術記錄" class="headerlink" title="JS技術記錄"></a>JS技術記錄</h2><h3 id="將資料與HTML分離"><a href="#將資料與HTML分離" class="headerlink" title="將資料與HTML分離"></a>將資料與HTML分離</h3><ul>
-<li>將專案會用到的文字內容（著作、作者與年份的文字資料）從HTML原始碼中抽離，另外建立一個.csv檔案來儲存這些文字資料；選擇將內容與結構分開是為了讓HTML原始碼看起來更乾淨</li>
-<li>使用JavaScript來讀取、並把文字內容插入DOM物件</li>
-</ul>
-<h3 id="從資料庫讀取資料"><a href="#從資料庫讀取資料" class="headerlink" title="從資料庫讀取資料"></a>從資料庫讀取資料</h3><ul>
-<li>專案會用到的文字內容被存放到csv檔案（資料庫）中，經過搜尋關鍵字「JavaScript read server side csv」後，得知可以使用<strong>ajax</strong>來實現需求<ul>
-<li>參考：<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/3567369/reading-server-side-file-with-javascript">Reading Server Side file with Javascript</a></li>
-</ul>
-</li>
-<li>jQuery library可以達成這個目標，不過檔案大小有90kb，且除了ajax以外沒有打算使用jQuery提供的其他功能，故繼續搜尋，發現<a target="_blank" rel="noopener" href="https://www.papaparse.com/">Papa Parse</a>可以處理專案需求，檔案也比jQuery小（50kb），所以最後決定使用Papa Parse</li>
-</ul>
-<h4 id="什麼是ajax"><a href="#什麼是ajax" class="headerlink" title="什麼是ajax"></a>什麼是ajax</h4><iframe width="560" height="315" src="https://www.youtube.com/embed/dQcBs4S-wEQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
-
-<blockquote>
-<p>(00:39) We can talk to the outside world and make changes on our website, have something happen that <strong>interact with the server</strong>, but maybe it doesn’t reload our entire page.</p>
-</blockquote>
-<blockquote>
-<p>(00:50) ajax allows us to do that.</p>
-</blockquote>
-<p>ajax可以在「不重新載入整個網頁」的情況下，<strong>向server side索取資料</strong>後，配合JavaScript修改DOM的內容（或樣式）；在本專案的應用情境則是：讀取server上的csv檔案內容後，把檔案內容根據一定的規則放入適當的DOM物件中。</p>
-<h2 id="HTML內容"><a href="#HTML內容" class="headerlink" title="HTML內容"></a>HTML內容</h2><p>因為把文字資料與HTML區隔開了，所以HTML原始碼挺空曠的：</p>
-<script src="https://gist.github.com/tzynwang/74b572e9e22be4064b5c90f468a2fa38.js"></script>
-
-<ul>
-<li>一口氣產生50個<code>&lt;div&gt;</code>（且50個div的class分別從c-1數到c-50）的emmet是：  <figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(.item.c-$)*50</span><br></pre></td></tr></tbody></table></figure></li>
-<li>設計每一個<code>&lt;div&gt;</code>擁有不同編號的c-$ class是為了讓JS在讀取依照年代排列的出版品資料後，可以從1到50格<code>&lt;div&gt;</code>依序插入文字</li>
-<li>在不同寬度的版面下，50個<code>&lt;div&gt;</code>會分別呈現三欄、四欄或五欄寬的排列，且偶數行要進行順序反轉；前述兩個需求都需要透過配合CSS內容來完成，而每一個.item都擁有與其順位一致的.c-$ class的話（比如順位二的.item就會有.c-2的class），就可以使用CSS來選取特定順位的<code>&lt;div&gt;</code>並修改其排版位置</li>
-</ul>
-<h2 id="CSS內容"><a href="#CSS內容" class="headerlink" title="CSS內容"></a>CSS內容</h2><h3 id="基本設定"><a href="#基本設定" class="headerlink" title="基本設定"></a>基本設定</h3><script src="https://gist.github.com/tzynwang/dc01878c945e0dc7f90ff6c88cc18268.js"></script>
-
-<h3 id="三欄版面"><a href="#三欄版面" class="headerlink" title="三欄版面"></a>三欄版面</h3><script src="https://gist.github.com/tzynwang/ec6016dd7e365965c4a1e637201b9f63.js"></script>
-
-<p>四欄與五欄排版主要不同的內容在於grid-template-areas的佈局，以及偶數行反轉排列的.c-$不一樣</p>
-<h2 id="CSS技術記錄"><a href="#CSS技術記錄" class="headerlink" title="CSS技術記錄"></a>CSS技術記錄</h2><h3 id="lt-input-gt-搭配-lt-label-gt-控制全部的蓋版元素"><a href="#lt-input-gt-搭配-lt-label-gt-控制全部的蓋版元素" class="headerlink" title="<input>搭配<label>控制全部的蓋版元素"></a><code>&lt;input&gt;</code>搭配<code>&lt;label&gt;</code>控制全部的蓋版元素</h3><p>發想：既然可以透過純CSS做出一鍵切換「亮色／暗色模式」的話，想要「一鍵開啟全部的蓋板物件」的話，把input:checked後執行的「filter: invert()」換成「修改蓋板物件的top位置」就好</p>
-<h3 id="repeat-y處理大範圍背景"><a href="#repeat-y處理大範圍背景" class="headerlink" title="repeat-y處理大範圍背景"></a>repeat-y處理大範圍背景</h3><p>發想：</p>
-<ul>
-<li>假如窗簾繩使用一張48x2000px尺寸、且背景要透明的圖片的話，檔案大小會影響載入與顯示的速度</li>
-<li>那麼，既然窗簾繩「線段」的部分可以重複、只有「末端」的花樣要不同的話，就使用repeat-y來重複「線段」部分使用的背景圖片，並用<code>::after</code>來放置「末端」</li>
-</ul>
-<h3 id="Sass相關筆記"><a href="#Sass相關筆記" class="headerlink" title="Sass相關筆記"></a>Sass相關筆記</h3><ul>
-<li>瀏覽器無法直接處理.scss檔案，VS Code需安裝sass compiler外掛來將.scss檔案處理為.css</li>
-<li>（本次沒有用到）Sass的變數由$宣告，比如<code>$primaryColor: #008AD8;</code>，使用的時候就像是：  <figure class="highlight scss"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$primaryColor</span>: <span class="number">#008AD8</span>;</span><br><span class="line"><span class="selector-class">.btn</span> {</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="variable">$primaryColor</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure></li>
-<li>（本次沒有用到）Sass支援巢狀結構：  <figure class="highlight scss"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> {</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="number">#ccc</span>;</span><br><span class="line">  <span class="selector-tag">button</span> {</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="number">#333</span>;</span><br><span class="line">    <span class="attribute">color</span>: <span class="number">#fff</span>;</span><br><span class="line">  }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-  等同CSS的：  <figure class="highlight css"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> {</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="number">#ccc</span>;</span><br><span class="line">}</span><br><span class="line"><span class="selector-tag">div</span> <span class="selector-tag">button</span> {</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="number">#333</span>;</span><br><span class="line">  <span class="attribute">color</span>: <span class="number">#fff</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure></li>
-<li>pseudo-classes與pseudo-elements可以搭配&amp;使用，比如：  <figure class="highlight scss"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">button</span> {</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="number">#333</span>;</span><br><span class="line">  <span class="attribute">color</span>: <span class="number">#fff</span>;</span><br><span class="line">  &amp;<span class="selector-pseudo">:hover</span> {</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="number">#ff00ff</span>;</span><br><span class="line">  }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-  等同CSS的：  <figure class="highlight css"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">button</span> {</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="number">#333</span>;</span><br><span class="line">  <span class="attribute">color</span>: <span class="number">#fff</span>;</span><br><span class="line">}</span><br><span class="line"><span class="selector-tag">button</span><span class="selector-pseudo">:hover</span> {</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="number">#ff00ff</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure></li>
-<li>（本次沒有用到）匯入：主檔案使用<code>@use "模組路徑"</code>（不需加上<code>.scss</code>）、而模組的檔案名稱要由底線（<code>_</code>）開頭：  <figure class="highlight scss"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 主檔案</span></span><br><span class="line"><span class="keyword">@use</span> <span class="string">"./_header"</span></span><br></pre></td></tr></tbody></table></figure>
-  <figure class="highlight scss"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 此為模組，檔案名稱為：_header.scss</span></span><br><span class="line"><span class="selector-tag">header</span> {</span><br><span class="line">  <span class="attribute">color</span>: <span class="number">#333</span>;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="number">#eee</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure></li>
-<li><code>@mixin</code>：概念類似JavaScript的function；注意呼叫（<code>@include</code>）mixin的時候，要在mixin名稱後面加上<code>()</code>與<code>;</code>  <figure class="highlight scss"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// mixin使用@mixin開頭，用@include使用</span></span><br><span class="line"><span class="comment">// 以下範例的mixin名稱為「flexXYcenter」</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">@mixin</span> flexXYcenter() {</span><br><span class="line">  <span class="attribute">display</span>: flex;</span><br><span class="line">  justify-contents: center;</span><br><span class="line">  <span class="attribute">align-items</span>: center;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">body</span> {</span><br><span class="line">  <span class="keyword">@include</span> flexXYcenter();</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-<ul>
-<li>mixin可以接受參數，注意參數也要使用<code>$</code>開頭：  <figure class="highlight scss"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@mixin</span> flexXYcenter(<span class="variable">$direction</span>) {</span><br><span class="line">  <span class="attribute">display</span>: flex;</span><br><span class="line">  justify-contents: center;</span><br><span class="line">  <span class="attribute">align-items</span>: center;</span><br><span class="line">  <span class="attribute">flex-direction</span>: <span class="variable">$direction</span>; <span class="comment">// 使用參數決定要flex row或flex column</span></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">body</span> {</span><br><span class="line">  <span class="keyword">@include</span> flexXYcenter(column);</span><br><span class="line">  <span class="comment">// flex-direction: column;</span></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">main {</span><br><span class="line">  <span class="keyword">@include</span> flexXYcenter(row);</span><br><span class="line">  <span class="comment">// flex-direction: row;</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure></li>
-<li>mixin可以接受複數個參數：  <figure class="highlight scss"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@mixin</span> flexXYcenter(<span class="variable">$direction</span>, <span class="variable">$color</span>) {</span><br><span class="line">  <span class="attribute">display</span>: flex;</span><br><span class="line">  justify-contents: center;</span><br><span class="line">  <span class="attribute">align-items</span>: center;</span><br><span class="line">  <span class="attribute">flex-direction</span>: <span class="variable">$direction</span>; <span class="comment">// 使用參數決定要flex row或flex column</span></span><br><span class="line">  <span class="attribute">color</span>: <span class="variable">$color</span>; <span class="comment">// 使用參數決定文字顏色</span></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">main {</span><br><span class="line">  <span class="keyword">@include</span> flexXYcenter(row, <span class="number">#ccc</span>);</span><br><span class="line">  <span class="comment">// 等同以下內容：</span></span><br><span class="line">  <span class="comment">// display: flex;</span></span><br><span class="line">  <span class="comment">// justify-contents: center;</span></span><br><span class="line">  <span class="comment">// align-items: center;</span></span><br><span class="line">  <span class="comment">// flex-direction: row;</span></span><br><span class="line">  <span class="comment">// color: #ccc;</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure></li>
-</ul>
-</li>
-<li><code>@extend</code>：可以理解成「繼承、延續」既有的內容  <figure class="highlight scss"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span> {</span><br><span class="line">  <span class="keyword">@include</span> flexXYcenter(row, <span class="number">#ccc</span>);</span><br><span class="line">}</span><br><span class="line">main {</span><br><span class="line">  <span class="keyword">@extend</span> body;</span><br><span class="line">  <span class="comment">// 然後處理其他任何除了body已經寫過、或是要覆寫的properties</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-
-</li>
-</ul>
-<h2 id="反省"><a href="#反省" class="headerlink" title="反省"></a>反省</h2><ul>
-<li>沒有先畫wireframe就開始動手編寫原始碼，grid處理完之後，發現不管是要調整整體的平衡或是追加內容都顯得很麻煩⋯⋯之後的練習還是盡量避免不規劃就動手做的模式</li>
-<li>一開始的目的是想要練習CSS grid，但此專案的排版其實用CSS flex就可以達成了，儘管可以用gird排版、但不確定這是不是最好的做法</li>
-<li>UI的設計感沒有統一，素材都是找到後直接套用；蓋板的深綠色物件風格與背景以及右側窗簾繩不一致</li>
-</ul>
-<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
-<li>和風配色參考：配色パターン中<a target="_blank" rel="noopener" href="https://www.colordic.org/colorscheme">和色大辞典</a>的部分</li>
-<li><a target="_blank" rel="noopener" href="https://youtu.be/Zz6eOVaaelI">Learn Sass In 20 Minutes</a></li>
 </ul>
 
       

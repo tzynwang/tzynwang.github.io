@@ -6,7 +6,7 @@
   <link href="https://tzynwang.github.io/atom.xml" rel="self"/>
   
   <link href="https://tzynwang.github.io/"/>
-  <updated>2021-04-14T14:01:20.523Z</updated>
+  <updated>2021-04-16T06:40:15.437Z</updated>
   <id>https://tzynwang.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>自主練習「純手工pagination」技術記錄</title>
+    <link href="https://tzynwang.github.io/2021/vanilla-js-pagination/"/>
+    <id>https://tzynwang.github.io/2021/vanilla-js-pagination/</id>
+    <published>2021-04-15T11:29:46.000Z</published>
+    <updated>2021-04-16T06:40:15.437Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;總結&quot;&gt;&lt;a href=&quot;#總結&quot; class=&quot;headerlink&quot; title=&quot;總結&quot;&gt;&lt;/a&gt;總結&lt;/h2&gt;&lt;p&gt;練習為pagination加上JavaScript，使其可與使用者互動。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;使用到的技術&lt;ul&gt;
+&lt;li&gt;DOM</summary>
+        
+      
+    
+    
+    
+    <category term="JavaScript" scheme="https://tzynwang.github.io/categories/JavaScript/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>再訪event loop</title>
@@ -99,29 +125,6 @@
         
         
     <summary type="html">&lt;h2 id=&quot;原始問題&quot;&gt;&lt;a href=&quot;#原始問題&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="JavaScript" scheme="https://tzynwang.github.io/categories/JavaScript/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>為什麼在瀏覽器環境中使用while loop執行ajax request會讓頁面陷入凍結狀態？</title>
-    <link href="https://tzynwang.github.io/2021/while-loop-ajax/"/>
-    <id>https://tzynwang.github.io/2021/while-loop-ajax/</id>
-    <published>2021-04-08T13:10:25.000Z</published>
-    <updated>2021-04-09T06:24:28.990Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;環境&quot;&gt;&lt;a href=&quot;#環境&quot; class=&quot;headerlink&quot; title=&quot;環境&quot;&gt;&lt;/a&gt;環境&lt;/h2&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span</summary>
         
       
     

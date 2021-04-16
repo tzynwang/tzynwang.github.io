@@ -1,0 +1,614 @@
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/menu_book-black-18dp.svg" color="#222">
+  <meta name="google-site-verification" content="VEtprY6Mg0dYcw0VAEYAu_Btg_JvCVg1tl_gKrS4CNI">
+
+
+
+
+
+
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"tzynwang.github.io","root":"/","images":"/images","scheme":"Pisces","version":"8.2.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqus","storage":true,"lazyload":false,"nav":null,"activeClass":"disqus"},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":"enable","trigger":"auto","top_n_per_article":-1,"unescape":false,"preload":false}};
+  </script>
+<meta name="description" content="總結練習為pagination加上JavaScript，使其可與使用者互動。  使用到的技術 DOM Traversing: parent, siblings   新學習到的概念 pointer-events: none parseInt()與Number()的差異    成品   See the Pen    pagination practice by Charlie (@Charlie777">
+<meta property="og:type" content="article">
+<meta property="og:title" content="自主練習「純手工pagination」技術記錄">
+<meta property="og:url" content="https://tzynwang.github.io/2021/vanilla-js-pagination/index.html">
+<meta property="og:site_name" content="普通文組">
+<meta property="og:description" content="總結練習為pagination加上JavaScript，使其可與使用者互動。  使用到的技術 DOM Traversing: parent, siblings   新學習到的概念 pointer-events: none parseInt()與Number()的差異    成品   See the Pen    pagination practice by Charlie (@Charlie777">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-04-15T11:29:46.000Z">
+<meta property="article:modified_time" content="2021-04-16T06:40:15.437Z">
+<meta property="article:author" content="Charlie (Tzu Yin)">
+<meta property="article:tag" content="hexo, hexo blog, tzyn, 普通文組">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://tzynwang.github.io/2021/vanilla-js-pagination/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+<title>自主練習「純手工pagination」技術記錄 | 普通文組</title>
+  
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="普通文組" type="application/atom+xml">
+<script>function loadCss(l){var d=document,h=d.head,s=d.createElement('link');s.rel='stylesheet';s.href=l;!function e(f){if (d.body)return f();setTimeout(function(){e(f)})}(function(){h.appendChild(s);});}loadCss('/style.css');loadCss('https://fonts.googleapis.com/css2?family=Noto+Sans+TC&family=Roboto&display=swap/css?family=Roboto:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext');loadCss('https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.2/css/all.min.css');</script><noscript><link rel="stylesheet" href="/style.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC&amp;family=Roboto&amp;display=swap/css?family=Roboto:300,300italic,400,400italic,700,700italic&amp;display=swap&amp;subset=latin,latin-ext"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.2/css/all.min.css"></noscript></head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">普通文組</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Keep calm and read the docs</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+        <li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section"><i class="fas fa-rss fa-fw"></i>RSS</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80" placeholder="Searching..." spellcheck="false" type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B8%BD%E7%B5%90"><span class="nav-number">1.</span> <span class="nav-text">總結</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%88%90%E5%93%81"><span class="nav-number">2.</span> <span class="nav-text">成品</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%92%B0%E5%A2%83"><span class="nav-number">3.</span> <span class="nav-text">環境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%81%E7%A8%8B"><span class="nav-number">4.</span> <span class="nav-text">流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JavaScript%E5%8E%9F%E5%A7%8B%E7%A2%BC"><span class="nav-number">5.</span> <span class="nav-text">JavaScript原始碼</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%A8%E5%9F%9F%E8%AE%8A%E6%95%B8"><span class="nav-number">5.1.</span> <span class="nav-text">全域變數</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dynamicallyGeneratePage-page"><span class="nav-number">5.2.</span> <span class="nav-text">dynamicallyGeneratePage (page)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#innerHTMLContent-page"><span class="nav-number">5.3.</span> <span class="nav-text">innerHTMLContent (page)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#paginationStatusUpdate-event"><span class="nav-number">5.4.</span> <span class="nav-text">paginationStatusUpdate (event)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bonus-track%EF%BC%9AparseInt-%E8%88%87Number-%E7%9A%84%E5%B7%AE%E5%88%A5"><span class="nav-number">6.</span> <span class="nav-text">bonus track：parseInt()與Number()的差別</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%83%E8%80%83%E6%96%87%E4%BB%B6"><span class="nav-number">7.</span> <span class="nav-text">參考文件</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Charlie (Tzu Yin)" src="/images/avatar-pexels-alex-andrews-215-215.png">
+  <p class="site-author-name" itemprop="name">Charlie (Tzu Yin)</p>
+  <div class="site-description" itemprop="description">一介普通文組的學習筆記 📒</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">30</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope="" itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://tzynwang.github.io/2021/vanilla-js-pagination/">
+
+    <span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar-pexels-alex-andrews-215-215.png">
+      <meta itemprop="name" content="Charlie (Tzu Yin)">
+      <meta itemprop="description" content="一介普通文組的學習筆記 📒">
+    </span>
+
+    <span hidden="" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="普通文組">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          自主練習「純手工pagination」技術記錄
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-04-15 19:29:46" itemprop="dateCreated datePublished" datetime="2021-04-15T19:29:46+08:00">2021-04-15</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-04-16 14:40:15" itemprop="dateModified" datetime="2021-04-16T14:40:15+08:00">2021-04-16</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2021/vanilla-js-pagination/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/vanilla-js-pagination/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>練習為pagination加上JavaScript，使其可與使用者互動。</p>
+<ul>
+<li>使用到的技術<ul>
+<li>DOM Traversing: parent, siblings</li>
+</ul>
+</li>
+<li>新學習到的概念<ul>
+<li><code>pointer-events: none</code></li>
+<li><code>parseInt()</code>與<code>Number()</code>的差異</li>
+</ul>
+</li>
+</ul>
+<h2 id="成品"><a href="#成品" class="headerlink" title="成品"></a>成品</h2><p class="codepen" data-height="265" data-theme-id="dark" data-default-tab="js,result" data-user="Charlie7779" data-slug-hash="yLgEJyr" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="pagination practice">
+  <span>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/Charlie7779/pen/yLgEJyr">
+  pagination practice</a> by Charlie (<a target="_blank" rel="noopener" href="https://codepen.io/Charlie7779">@Charlie7779</a>)
+  on <a target="_blank" rel="noopener" href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async="" src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+
+<h2 id="環境"><a href="#環境" class="headerlink" title="環境"></a>環境</h2><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Google Chrome: 90.0.4430.72 (Official Build) (64-bit)</span><br><span class="line">Bootstrap: 5.0.0-beta3</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h2><ol>
+<li>使用<a target="_blank" rel="noopener" href="https://getbootstrap.com/docs/5.0/components/pagination/">Bootstrap: Pagination</a>的HTML原始碼，並移除不需要的部分<ul>
+<li><code>aria-label</code>在練習中用不到，移除</li>
+<li><code>&lt;li&gt;</code>使用JavaScript產生，全部移除；加上備註，提示內容會由JavaScript處理</li>
+<li>整理完畢後，HTML部分的原始碼如下<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">nav</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"pagination justify-content-center"</span> <span class="attr">id</span>=<span class="string">"pagination"</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- generated by JavaScript --&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">nav</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure></li>
+</ul>
+</li>
+<li>粗略分解任務：「使用者與pagination互動時，會發生什麼事情？」<ul>
+<li>點選previous或next來前進、後退</li>
+<li>直接點選頁數來進行換頁</li>
+<li>抵達頁數的「頭」或「尾」後，繼續點選previous或next不會有任何事情發生</li>
+<li>換頁後，畫面須呈現相對應的內容</li>
+</ul>
+</li>
+<li>將以上任務流程精緻化<ul>
+<li>「點選previous或next來前進、後退」與「直接點選頁數來進行換頁」<ul>
+<li>需監聽滑鼠點擊事件</li>
+<li>需判定滑鼠點擊的目標是previous、next或頁數</li>
+<li>要判定使用者點擊pagination後會在「哪一頁」</li>
+</ul>
+</li>
+<li>previous或next與頁數頭尾互動事件：<ul>
+<li>使用者抵達首尾頁後，點擊previous或next不可繼續前進或後退</li>
+<li>使用者不在首尾頁時，previous或next應恢復功能</li>
+</ul>
+</li>
+<li>換頁後，畫面須呈現相對應的內容<ul>
+<li>要判定使用者點擊pagination後會在「哪一頁」</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>使用程式碼滿足以上列出的需求</li>
+</ol>
+<h2 id="JavaScript原始碼"><a href="#JavaScript原始碼" class="headerlink" title="JavaScript原始碼"></a>JavaScript原始碼</h2><h3 id="全域變數"><a href="#全域變數" class="headerlink" title="全域變數"></a>全域變數</h3><script src="https://gist.github.com/tzynwang/f7fa03af729005ba9c3f1c6f470fd0f0.js"></script>
+
+<ul>
+<li><code>pageCount</code>：儲存總頁數的變數；除了直接賦值外，也可承接其他function回傳的值。比如在ALPHA Camp的練習情境中，<code>pageCount</code>可承接「電影總數（80筆）除以每一頁的電影數量（12筆）後無條件進位」此情境的總頁數數量（pagination應展示7頁）</li>
+<li><code>initialPage</code>：畫面載入時，預設顯示的頁面；在本練習中預設顯示第1頁</li>
+</ul>
+<h3 id="dynamicallyGeneratePage-page"><a href="#dynamicallyGeneratePage-page" class="headerlink" title="dynamicallyGeneratePage (page)"></a><code>dynamicallyGeneratePage (page)</code></h3><p>目的：根據傳入的總頁數（page）數量來產生pagination；比如傳入8，即要產生8頁的pagination</p>
+<script src="https://gist.github.com/tzynwang/cdc5647b1c895d53dbf376fac78b8905.js"></script>
+
+<ul>
+<li>第3行：加入Previous按鈕。而因為起始頁是第一頁（<code>initialPage</code>設定為1），故Previous按鈕預設是不會有任何功能的（不可繼續前進），所以在<code>&lt;li&gt;</code>加上<code>.disabled</code></li>
+<li>第4-8行：加入頁數，頁數根據傳入<code>dynamicallyGeneratePage()</code>的參數決定。並將<code>initialPage</code>加上<code>.active</code>，標記其為起始頁</li>
+<li>第9行：加入Next按鈕</li>
+<li>第10行：將第三行到第九行的內容放進<code>pagination</code>（<code>document.querySelector('#pagination')</code>）中</li>
+<li>第11行：設定<code>display</code>（<code>document.querySelector('#display')</code>）內容</li>
+<li>關於<code>data-page</code>：使用<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLOrForeignElement/dataset">dataset</a>為每一個<code>&lt;a&gt;</code>元素加上<code>data-page</code>，讀取<code>data-page</code>的值即可判定該<code>&lt;a&gt;</code>為Previous、Next或頁數按鈕</li>
+</ul>
+<h3 id="innerHTMLContent-page"><a href="#innerHTMLContent-page" class="headerlink" title="innerHTMLContent (page)"></a><code>innerHTMLContent (page)</code></h3><p>目的：根據傳入的頁數，產生對應的畫面內容</p>
+<script src="https://gist.github.com/tzynwang/50676fa823ed5435fa251833e215d88a.js"></script>
+
+<ul>
+<li>第4行：根據傳入的<code>page</code>來產生相對應的頁數</li>
+<li>第5行：使用<a target="_blank" rel="noopener" href="https://picsum.photos/">Lorem Picsum</a>透過id<a target="_blank" rel="noopener" href="https://picsum.photos/images">指定特定圖片</a>的服務，根據傳入的<code>page</code>來產生圖片，達成換頁換圖的效果</li>
+<li>第7行：<code>innerHTMLContent()</code>回傳的值可直接賦予<code>innerHTML</code></li>
+</ul>
+<h3 id="paginationStatusUpdate-event"><a href="#paginationStatusUpdate-event" class="headerlink" title="paginationStatusUpdate (event)"></a><code>paginationStatusUpdate (event)</code></h3><p>目的：根據使用者點擊的目標，更新pagination的狀態；並呼叫<code>innerHTMLContent()</code>來修改畫面內容</p>
+<script src="https://gist.github.com/tzynwang/ae875b2df97e736f08edd53093dcd13d.js"></script>
+
+<ul>
+<li>第2行：<code>const pageData = event.target.dataset.page</code><ul>
+<li>點擊事件發生後，抓取「被點擊的目標」其<code>data-page</code>的值，每一個<code>&lt;a&gt;</code>元素的<code>data-page</code>是透過<code>dynamicallyGeneratePage()</code>產生的</li>
+<li>點擊到Previous時，<code>pageData</code>為<code>p</code>；點擊到Next時，<code>pageData</code>為<code>n</code></li>
+<li>點擊到處於<code>disabled</code>狀態的Previous與Next時，<code>pageData</code>為<code>undefined</code>，理由如下：<ul>
+<li>參考Bootstrap 5.0.0-beta3的原始碼可得知<code>.page-item.disabled .page-link</code>的設定為<figure class="highlight css"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.page-item</span><span class="selector-class">.disabled</span> <span class="selector-class">.page-link</span> {</span><br><span class="line">  <span class="attribute">color</span>: <span class="number">#6c757d</span>;</span><br><span class="line">  <span class="attribute">pointer-events</span>: none;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="number">#fff</span>;</span><br><span class="line">  <span class="attribute">border-color</span>: <span class="number">#dee2e6</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+注意這段選取器的作用對象是.page-item.disabled下的「.page-link」，而HTML結構如下<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"page-item disabled"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">"page-link"</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">data-page</span>=<span class="string">"p"</span>&gt;</span>Previous<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+所以<code>pointer-events: none;</code>實際作用的對象是<code>&lt;a&gt;</code></li>
+<li>根據<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/CSS/pointer-events#values">MDN的規格</a>，<code>pointer-events</code>設定為<code>none</code>時，該元素（在本練習中為<code>&lt;a&gt;</code>）無法成為滑鼠游標點擊事件的目標（原文：The element is never the target of pointer events.）</li>
+<li>所以在Previous與Next處於<code>disabled</code>時，<code>&lt;a&gt;</code>不會成為滑鼠游標點擊事件的目標；在這樣的情況下，游標點擊事件會觸發的目標會變成該元素的親元素（在本練習中為<code>&lt;li&gt;</code>）（原文：In these circumstances, pointer events will trigger event listeners on this parent element as appropriate on their way to/from the descendant during the event capture/bubble phases.）</li>
+<li>而<code>&lt;li&gt;</code>沒有設定<code>pageData</code>，所以當我想要取<code>&lt;li&gt;</code>的<code>pageData</code>的值的時候，我會得到<code>undefined</code></li>
+</ul>
+</li>
+<li>結論：<code>pageData</code>的值有以下可能性<ul>
+<li><code>undefined</code>：代表Previous與Next處於<code>disabled</code>的狀態</li>
+<li><code>p</code>或<code>n</code>：當Previous與Next不處於<code>disabled</code>時，點擊Previous或Next會讓<code>pageData</code>的值為<code>p</code>或<code>n</code></li>
+<li>頁數的數字：當使用者點擊頁數時，<code>pageData</code>的值就是該頁數的數字，但資料型態會是<code>String</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>第3行：<code>const activePage = document.querySelector('#pagination li.active')</code><ul>
+<li>取「處於<code>active</code>狀態」的<code>&lt;li&gt;</code></li>
+</ul>
+</li>
+<li>第4行：<code>const activePageNumber = activePage.firstElementChild.dataset.page</code><ul>
+<li>會取得點擊事件發生時，處於<code>active</code>狀態的<code>&lt;li&gt;</code>其子元素<code>&lt;a&gt;</code>的<code>data-page</code>資料</li>
+<li>舉例：若目前<code>.active</code>的是第1頁，而我點了第4頁，<code>activePageNumber</code>的值會是1</li>
+</ul>
+</li>
+<li>第5-6行：固定取得Previous<code>&lt;li&gt;</code>與Next<code>&lt;li&gt;</code>，因為<code>.disabled</code>與<code>.active</code>是在<code>&lt;li&gt;</code>上操作的</li>
+<li>第8行開始的<code>switch (pageData)</code>：<ul>
+<li><code>case undefined</code>：代表使用者在Previous或Next處於<code>disabled</code>時點擊這兩個按鈕，這時不應該再繼續執行翻頁的動作，故直接<code>return</code>，什麼事都不發生</li>
+<li><code>case "p"</code>：<ul>
+<li>代表使用者點擊Previous時，此按鈕不處於<code>disabled</code>狀態，所以Previous應該帶領使用者前往上一頁</li>
+<li>第12行代表「點擊Previous時從最後一頁離開」，這時Next就不應繼續處於<code>disabled</code>狀態，故需移除<code>.disabled</code></li>
+<li>第14-16行：代表「點擊Previous時正在通過第二頁」，而從第二頁往前移動後，就會位在第一頁，位在第一頁後就不可繼續往前翻頁了，所以Previous要加上<code>.disabled</code>，進入<code>disabled</code>狀態</li>
+<li>第18-19行：若點擊Previous時，Previous不符合第12-16行列出的條件，就進行「移除目前處於<code>active</code>頁數的<code>.active</code>，並為前一頁加上<code>.active</code>」</li>
+<li>第20行：因為移動到前一頁了，所以<code>display</code>的內容也要更新，換成前一頁（activePageNumber - 1）的內容</li>
+</ul>
+</li>
+<li><code>case "n"</code>：換頁的邏輯與Previous相反<ul>
+<li>第23行代表「點擊Next時從第一頁離開」，這時Previous就不應繼續處於<code>disabled</code>狀態，故需移除<code>.disabled</code></li>
+<li>第25-27行：代表「點擊Next時正在通過倒數第二頁」，而從倒數第二頁往後移動後，就會位在最末頁，位在最末頁後就不可繼續往後翻頁了，所以Next要加上<code>.disabled</code>，進入<code>disabled</code>狀態</li>
+<li>第29-31行：若點擊Next時，Next不符合第23-27行列出的條件，就進行「移除目前處於<code>active</code>頁數的<code>.active</code>，並為下一頁加上<code>.active</code>」</li>
+</ul>
+</li>
+<li><code>default</code>：代表<code>pageData</code>不屬於上述任何一種狀態，亦即使用者直接點選了頁數<ul>
+<li>第34行：移除<code>activePage</code>的<code>active</code>狀態</li>
+<li>第35行：為<code>event.target</code>（被滑鼠點選到）的<code>parentElement</code>（即是<code>&lt;li&gt;</code>）加上<code>active</code>狀態</li>
+<li>第36行：更新<code>display</code>的內容</li>
+<li>第38-40行：使用者點選到最末頁時，Next要變為<code>disabled</code>狀態</li>
+<li>第42-44行：使用者點選到第一頁時，Previous要變為<code>disabled</code>狀態</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="bonus-track：parseInt-與Number-的差別"><a href="#bonus-track：parseInt-與Number-的差別" class="headerlink" title="bonus track：parseInt()與Number()的差別"></a>bonus track：<code>parseInt()</code>與<code>Number()</code>的差別</h2><ul>
+<li>在過去的專案與練習中，習慣直接使用<code>parseInt()</code>來將字串解析（parsing）為數字，本次改為使用<code>Number()</code>來將字串型變（type converting）為數字</li>
+<li>雖然這兩者都可以回傳我需要的資料，但好奇這其中是否有差異，而經過搜尋後得知：</li>
+<li><code>Number()</code>做的事：convert<ul>
+<li><a target="_blank" rel="noopener" href="http://es5.github.io/#x15.7.1">Annotated ECMAScript 5.1</a>: When <code>Number</code> is called as a <strong>function</strong> (rather than as a constructor), it performs a <strong>type conversion</strong>.</li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">MDN</a>: Values of <strong>other types</strong> can <strong>be converted to numbers</strong> using the <code>Number()</code> function.</li>
+</ul>
+</li>
+<li><code>parseInt()</code>做的事：parse，而非convert<ul>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/parseInt">MDN</a>: The <code>Number.parseInt()</code> method <strong>parses</strong> a <strong>string</strong> argument and returns an integer of the specified radix or base.</li>
+</ul>
+</li>
+<li>結論：雖然都可以透過傳入<code>String</code>得到<code>Number</code>，但<code>parseInt()</code>與<code>Number()</code>處理的手法並不一樣</li>
+</ul>
+<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://www.javascripttutorial.net/dom/traversing/">JavaScript DOM Traversing</a><ul>
+<li><a target="_blank" rel="noopener" href="https://www.javascripttutorial.net/dom/traversing/get-siblings-of-an-element/">Get Siblings of an Element</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.javascripttutorial.net/dom/traversing/get-the-parent-of-an-element/">Get the Parent of an Element</a></li>
+</ul>
+</li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/CSS/pointer-events#values">MDN: pointer-events</a></li>
+<li><a target="_blank" rel="noopener" href="https://thisthat.dev/number-constructor-vs-parse-int/">Number() vs parseInt()</a></li>
+<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/4090518/what-is-the-difference-between-parseint-and-number">What is the difference between parseInt() and Number()?</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/further-adventures-of-the-event-loop/" rel="prev" title="再訪event loop">
+                  <i class="fa fa-chevron-left"></i> 再訪event loop
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    
+  <div class="comments" id="disqus_thread">
+    <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  © 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Charlie (Tzu Yin)</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> &amp; <a href="https://theme-next.js.org/pisces/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+
+
+  
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+<script src="/bundle.js"></script><script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://tzyn-hexo.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+;
+
+  var disqus_config = function() {
+    this.page.url = "https://tzynwang.github.io/2021/vanilla-js-pagination/";
+    this.page.identifier = "2021/vanilla-js-pagination/";
+    this.page.title = "自主練習「純手工pagination」技術記錄";
+    };
+  NexT.utils.loadComments('#disqus_thread', () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: disqus_config
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://tzyn-hexo.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
+</script></body></html>
