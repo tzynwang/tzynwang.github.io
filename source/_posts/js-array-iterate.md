@@ -11,7 +11,7 @@ tags:
 keywords: array, iterate, iteration
 
 - 不會回傳新陣列的方式：`for`搭配`length()`、`while`搭配`length()`、`for...in`、`for...of`、`every()`、`some()`、`forEach()`、`join`、`reduce()`
-- 會回傳一個新陣列的方式：` filter()`、`flat()`、`flatMap()`、`map()`
+- 會回傳一個新陣列的方式：`filter()`、`flat()`、`flatMap()`、`map()`
 
 <!--more-->
 
