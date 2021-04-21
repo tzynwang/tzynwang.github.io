@@ -6,6 +6,9 @@ categories:
 tags:
 ---
 
+2021/2/21更新：
+經同學提醒`replace()`只會處理目標字串中的「第一組」目標，亦即：當我要處理的字串中包含重複的字母時，使用`replace()`來處理字串可能會導致非預期結果（因為`replace()`只會處理「符合目標的第一個字母」），故追加新解法。
+
 ## 總結
 記錄2021年ALPHA Camp學期2-1（四月班）第一週課程「JavaScript核心觀念」作業中有使用到的技術與相關筆記。
 
@@ -24,6 +27,7 @@ tags:
   - [Array.prototype.indexOf()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf)：回傳第一個符合搜尋目標的index
   - [Array.prototype.forEach()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach)：對陣列中的每一個項目執行傳入的function
   - [Array.prototype.push()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push)：新增一內容到陣列最尾端
+  - [Array.prototype.pop()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/pop)：移除陣列「最末端」的「一個」內容
 
 <!-- more -->
 
@@ -84,7 +88,11 @@ console.log(name)
 - 遍歷字串
 - 字串中除了首二位的字母外，其他字母都替換為`*`
 
-解法：
+2021/4/21更新：
+以下「舊版解法」不盡然正確，因為`replace()`只會處理「第一個」符合目標的字母。
+如果`name`中有重複的單字，那麼「其餘的」字母都不會被處理到；在這裡使用`replace()`來進行字串操作並不是最佳解。
+
+舊版解法：
 ```JavaScript
 for (const n in name) {
   if (n > 1) name = name.replace(name.charAt(n),'*')
@@ -92,7 +100,7 @@ for (const n in name) {
 console.log(name) // Be*****
 ```
 
-包裝為函式：
+舊版解法包裝為函式：
 ```JavaScript
 function encodeName (name, replaceTo, startIndex = 2, endIndex = name.length) {
   for (const n in name) {
@@ -122,9 +130,37 @@ console.log(encodeName('Bernard', '*')) // Be*****
 
   function encodeName (name, replaceTo, startIndex = 2, endIndex = name.length) {...}
   // 將擁有預設值的parameters往後挪，這樣encodeName('Morgan', '*')即可正常執行，不會覆蓋到startIndex與endIndex的預設值
-```
+  ```
 - 可參考[MDN: Parameters without defaults after default parameters](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Default_parameters#parameters_without_defaults_after_default_parameters)
+- 舊版解法的問題：
+  - 假設我要從「第三個」字母以後開始打碼：
+  ```JavaScript
+  let name = 'Bernard'
+  for (const n in name) {
+    if (n > 2) name = name.replace(name.charAt(n),'*')
+  }
 
+  console.log(name)) // Be***r*
+  ```
+  舊版的解法會輸出`Be***r*`，因為：
+  - 當`name`遍歷到`name.charAt(5)`的時候，取得的字母是「r」
+  - `replace()`收到的指示是「把`r`替換為`*`」，但`replace()`的特性是「抓到第一個符合條件的結果後，後續一致的結果都不會去理會他」
+  - 結果`Bernard`中的第一個`r`（不應該被替換）被`replace()`替換了，而第二個（應該要被替換的）`r`還是維持原狀
+
+2021/4/21追加新解法（直接包裝為函示）
+```JavaScript
+function encodeName (name, replaceTo = '*', startIndex = 0, endIndex = 2) {
+  const partialName = name.substring(startIndex, endIndex)
+  const replace = replaceTo.repeat(name.length - endIndex)
+  return `${partialName}${replace}`
+}
+
+name = encodeName(name)
+console.log(name) // Be*****
+```
+解析：
+- 使用`substring()`來取得「保留原狀、不打碼」的段落
+- 使用`repeat()`來根據「`name`扣除不打碼部位後，剩下的長度」來產生相對應數量的`*`
 
 ### Q3：加密信箱
 要求：
