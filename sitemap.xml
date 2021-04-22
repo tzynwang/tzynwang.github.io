@@ -2,6 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://tzynwang.github.io/2021/list-style-type-not-working-on-ios-chrome/</loc>
+    
+    <lastmod>2021-04-22</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://tzynwang.github.io/2021/js-array-iterate/</loc>
+    
+    <lastmod>2021-04-21</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://tzynwang.github.io/2021/js-shallow-copy-deep-copy/</loc>
+    
+    <lastmod>2021-04-21</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://tzynwang.github.io/2021/S1-note/</loc>
+    
+    <lastmod>2021-04-21</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://tzynwang.github.io/2021/vanilla-js-pagination/</loc>
     
     <lastmod>2021-04-16</lastmod>
@@ -82,13 +110,6 @@
     <loc>https://tzynwang.github.io/2021/S4-A14-assignment-anatomy/</loc>
     
     <lastmod>2021-04-09</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://tzynwang.github.io/2021/js-array-iterate/</loc>
-    
-    <lastmod>2021-04-07</lastmod>
     
   </url>
   
@@ -249,7 +270,7 @@
 
   <url>
     <loc>https://tzynwang.github.io/</loc>
-    <lastmod>2021-04-16</lastmod>
+    <lastmod>2021-04-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -257,14 +278,14 @@
   
   <url>
     <loc>https://tzynwang.github.io/tags/Side-Project/</loc>
-    <lastmod>2021-04-16</lastmod>
+    <lastmod>2021-04-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://tzynwang.github.io/tags/ALPHA-Camp-assignment/</loc>
-    <lastmod>2021-04-16</lastmod>
+    <lastmod>2021-04-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
@@ -273,56 +294,56 @@
   
   <url>
     <loc>https://tzynwang.github.io/categories/CSS/</loc>
-    <lastmod>2021-04-16</lastmod>
+    <lastmod>2021-04-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://tzynwang.github.io/categories/hexo/</loc>
-    <lastmod>2021-04-16</lastmod>
+    <lastmod>2021-04-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://tzynwang.github.io/categories/JavaScript/</loc>
-    <lastmod>2021-04-16</lastmod>
+    <lastmod>2021-04-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://tzynwang.github.io/categories/jekyll/</loc>
-    <lastmod>2021-04-16</lastmod>
+    <lastmod>2021-04-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://tzynwang.github.io/categories/DevTools/</loc>
-    <lastmod>2021-04-16</lastmod>
+    <lastmod>2021-04-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://tzynwang.github.io/categories/git/</loc>
-    <lastmod>2021-04-16</lastmod>
+    <lastmod>2021-04-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://tzynwang.github.io/categories/VSCode/</loc>
-    <lastmod>2021-04-16</lastmod>
+    <lastmod>2021-04-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://tzynwang.github.io/categories/Web-accessibility/</loc>
-    <lastmod>2021-04-16</lastmod>
+    <lastmod>2021-04-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>

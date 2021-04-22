@@ -197,7 +197,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">30</span>
+          <span class="site-state-item-count">33</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -238,6 +238,409 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope="" itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tzynwang.github.io/2021/vs-code-extensions-snippets/">
+
+    <span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar-pexels-alex-andrews-215-215.png">
+      <meta itemprop="name" content="Charlie (Tzu Yin)">
+      <meta itemprop="description" content="一介普通文組的學習筆記 📒">
+    </span>
+
+    <span hidden="" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="普通文組">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/vs-code-extensions-snippets/" class="post-title-link" itemprop="url">VSCode擴充套件（Extensions）與自訂snippets</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-03-04 09:27:50" itemprop="dateCreated datePublished" datetime="2021-03-04T09:27:50+08:00">2021-03-04</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-03-07 15:18:12" itemprop="dateModified" datetime="2021-03-07T15:18:12+08:00">2021-03-07</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+          <a href="/categories/VSCode/" itemprop="url" rel="index"><span itemprop="name">VSCode</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2021/vs-code-extensions-snippets/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/vs-code-extensions-snippets/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>記錄一些目前有在使用的VSCode擴充套件，與自訂snippets的步驟筆記。</p>
+<h2 id="版本與環境"><a href="#版本與環境" class="headerlink" title="版本與環境"></a>版本與環境</h2><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">VSCode: 1.53.2 (user setup)</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="擴充套件（Extensions）"><a href="#擴充套件（Extensions）" class="headerlink" title="擴充套件（Extensions）"></a>擴充套件（Extensions）</h2><h3 id="Bracket-Pair-Colorizer-2"><a href="#Bracket-Pair-Colorizer-2" class="headerlink" title="Bracket Pair Colorizer 2"></a>Bracket Pair Colorizer 2</h3><p>套件網址：<a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=CoenraadS.bracket-pair-colorizer-2">https://marketplace.visualstudio.com/items?itemName=CoenraadS.bracket-pair-colorizer-2</a><br>幫成對的括號套用相同的顏色，方便辨識。<br>根據<a target="_blank" rel="noopener" href="https://github.com/CoenraadS/Bracket-Pair-Colorizer-2#faq">官方Q&amp;A</a>的內容，2代改善了執行速度與正確性，其餘設定與1代看起來沒什麼差異。</p>
+<p>如果要修改套件設定的話，可參考以下gif：</p>
+<figure class="figure--center"><img src="/2021/vs-code-extensions-snippets/extension-setting.gif"></figure>
+
+<h3 id="indent-rainbow"><a href="#indent-rainbow" class="headerlink" title="indent-rainbow"></a>indent-rainbow</h3><p>套件網址：<a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=oderwat.indent-rainbow">https://marketplace.visualstudio.com/items?itemName=oderwat.indent-rainbow</a><br>幫縮排區域套上顏色，縮排尺寸不正確時顯示為紅色，如下圖。</p>
+<figure class="figure--center"><img src="/2021/vs-code-extensions-snippets/incorrect-space.png"></figure>
+
+<h3 id="Lorem-Picsum-photos-snippets"><a href="#Lorem-Picsum-photos-snippets" class="headerlink" title="Lorem Picsum photos snippets"></a>Lorem Picsum photos snippets</h3><p>套件網址：<a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=huang-an-sheng.lorem-picsum-photos-snippets">https://marketplace.visualstudio.com/items?itemName=huang-an-sheng.lorem-picsum-photos-snippets</a><br>練習切版時直接在html檔案中輸入<code>picsum</code>即可帶出有假圖的<code>&lt;img&gt;</code>標籤。</p>
+<figure class="figure--center"><img src="/2021/vs-code-extensions-snippets/lorem-piscum.gif"></figure>
+<ul>
+<li>輸入<code>picsum</code>後直接按下<code>tab</code>會產生帶一張固定id假圖的標籤<code>&lt;img src="https://picsum.photos/id/684/600/400" alt=""&gt;</code><ul>
+<li>需要隨機圖片的話，把圖片網址改為<code>https://picsum.photos/{width}/{height}?random={seed}</code></li>
+<li><code>{width}</code>代表圖片寬度（單位px），<code>{height}</code>代表圖片高度（單位px），<code>{seed}</code>為正整數</li>
+<li>假圖網址加上不同的<code>{seed}</code>會讓每一組網址產生不同的圖片，參考下圖：<figure class="figure--center"><img src="/2021/vs-code-extensions-snippets/lorem-picsum.png"></figure></li>
+<li>第一列圖片的網址由左至右分別是<code>https://picsum.photos/600/400?random=1</code>、<code>https://picsum.photos/600/400?random=2</code>、<code>https://picsum.photos/600/400?random=3</code>、<code>https://picsum.photos/600/400?random=4</code>，第二列圖片的網址統一使用<code>https://picsum.photos/600/400?random</code></li>
+<li>第二列的圖片在每次重新整理網頁時都會更新，但會是四張一樣的圖</li>
+</ul>
+</li>
+<li><code>picsum-grayscale</code>：灰階假圖</li>
+<li><code>picsum-blur</code>：有模糊效果的假圖</li>
+<li><code>picsum-square</code>：正方形假圖</li>
+<li><code>picsum-grayscale-blur</code>：灰階加模糊效果</li>
+<li>其餘預設效果可參考套件的說明內容</li>
+</ul>
+<h3 id="Live-Server"><a href="#Live-Server" class="headerlink" title="Live Server"></a>Live Server</h3><p>套件網址：<a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer">https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer</a><br>安裝完畢後，VSCode右下角會出現Go Live按鈕，點下啟動Live Server。<br>預設可以在<code>localhost:5500</code>即時看到VSCode的檔案（修改檔案內容後，存檔、重新整理<code>localhost:5500</code>上的頁面，才會看到修改內容）。</p>
+<h3 id="Code-Spell-Checker"><a href="#Code-Spell-Checker" class="headerlink" title="Code Spell Checker"></a>Code Spell Checker</h3><p>套件網址：<a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker">https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker</a><br>支援CamelCase，並且偵測到拼寫不正確的單字時，會提供建議用字，如下圖：</p>
+<figure class="figure--center"><img src="/2021/vs-code-extensions-snippets/code-spell-checker.gif"></figure>
+
+
+<h2 id="自訂snippets"><a href="#自訂snippets" class="headerlink" title="自訂snippets"></a>自訂snippets</h2><p>自訂了一個帶有bootstrap5 CSS與JS CDN連結的html樣板。</p>
+<ol>
+<li>從<a target="_blank" rel="noopener" href="https://getbootstrap.com/docs/5.0/getting-started/introduction/#starter-template">bootstrap5官方文件</a>複製html樣板內容</li>
+<li>開啟VSCode，按下F1，輸入「snippets」，選擇「Preferences: Configure User Snippets」<figure class="figure--center"><img src="/2021/vs-code-extensions-snippets/snippets-edit-0.png"></figure></li>
+<li>因為要建立的是html樣板，故輸入html，意即建立給html文件使用的snippets<figure class="figure--center"><img src="/2021/vs-code-extensions-snippets/snippets-edit-1.png"></figure></li>
+<li>另外一個開啟html.json的方式是依序點選「畫面右上角的File（Mac版為Code） &gt;&gt; Preferences &gt;&gt; User Snippets」後，輸入html開啟html.json<figure class="figure--center"><img src="/2021/vs-code-extensions-snippets/snippets-edit-another-path.png"></figure></li>
+<li>在html.json檔案中貼上bootstrap5的html樣板內容<figure class="figure--center"><img src="/2021/vs-code-extensions-snippets/snippets-edit-content.png"></figure>
+<ul>
+<li>圖中第16行<code>bootstrap5 template</code>代表snippets名稱</li>
+<li>第17行<code>prefix</code>的值代表呼叫snippets的快速鍵，為了避免跟VSCode預設的html樣板起衝突，設定為<code>!!</code></li>
+<li>第18至35行<code>body</code>的值代表snippets的內容，每一行後面須加上半形逗號<code>,</code>分隔內容</li>
+<li>第36行<code>description</code>是輸入快速鍵時出現在snippets選單的說明內容，請參考下圖<figure class="figure--center"><img src="/2021/vs-code-extensions-snippets/snippets-enter-hotkey.png"></figure>
+原始碼如下：<figure class="highlight"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">"bootstrap5 template": {</span><br><span class="line">    "prefix": "!!",</span><br><span class="line">    "body": [</span><br><span class="line">        "&lt;!doctype html&gt;",</span><br><span class="line">        "&lt;html lang=\"en\"&gt;",</span><br><span class="line">        "    &lt;head&gt;",</span><br><span class="line">        "        &lt;meta charset=\"utf-8\"&gt;",</span><br><span class="line">        "        &lt;meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"&gt;",</span><br><span class="line">        "",</span><br><span class="line">        "        &lt;!-- Bootstrap CSS --&gt;",</span><br><span class="line">        "        &lt;link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css\" rel=\"stylesheet\" integrity=\"sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl\" crossorigin=\"anonymous\"&gt;",</span><br><span class="line">        "",</span><br><span class="line">        "        &lt;title&gt;Hello, world!&lt;/title&gt;",</span><br><span class="line">        "    &lt;/head&gt;",</span><br><span class="line">        "    &lt;body&gt;",</span><br><span class="line">        "        &lt;!-- Option 1: Bootstrap Bundle with Popper --&gt;",</span><br><span class="line">        "        &lt;script src=\"https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js\" integrity=\"sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0\" crossorigin=\"anonymous\"&gt;&lt;/script&gt;",</span><br><span class="line">        "    &lt;/body&gt;",</span><br><span class="line">        <span class="string">"&lt;/html&gt;"</span></span><br><span class="line">    ],</span><br><span class="line">    "description": "bootstrap5 template"</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure></li>
+</ul>
+</li>
+<li>以上內容輸入完畢後，存檔，之後即可在html格式的檔案中輸入快速鍵<code>!!</code>並按下<code>tab</code>來套用剛才自訂的snippets內容<figure class="figure--center"><img src="/2021/vs-code-extensions-snippets/snippets-done.png"></figure>
+
+
+</li>
+</ol>
+<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://wcc723.github.io/development/2020/12/13/vscode-extension/">12 個前端愛用的 VSCode 擴充套件</a></li>
+<li><a target="_blank" rel="noopener" href="https://tw.alphacamp.co/blog/visual-studio-code-editor-tutorial-and-extensions">VSCode快速安裝教學，推薦常用外掛擴充套件</a></li>
+<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/a/29973358/15028185">How do you format code in Visual Studio Code (VSCode)</a></li>
+<li><a target="_blank" rel="noopener" href="https://code.visualstudio.com/docs/editor/userdefinedsnippets#_create-your-own-snippets">Visual Studio Code: Create your own snippets</a></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope="" itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tzynwang.github.io/2021/chrome-89-css/">
+
+    <span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar-pexels-alex-andrews-215-215.png">
+      <meta itemprop="name" content="Charlie (Tzu Yin)">
+      <meta itemprop="description" content="一介普通文組的學習筆記 📒">
+    </span>
+
+    <span hidden="" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="普通文組">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/chrome-89-css/" class="post-title-link" itemprop="url">DevTools與CSS有關的新功能（Chrome 89）</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-03-03 19:22:14" itemprop="dateCreated datePublished" datetime="2021-03-03T19:22:14+08:00">2021-03-03</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-03-15 15:10:58" itemprop="dateModified" datetime="2021-03-15T15:10:58+08:00">2021-03-15</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+          <a href="/categories/CSS/" itemprop="url" rel="index"><span itemprop="name">CSS</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+          <a href="/categories/DevTools/" itemprop="url" rel="index"><span itemprop="name">DevTools</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2021/chrome-89-css/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/chrome-89-css/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>本篇是記錄Chrome 89的DevTools中，CSS相關新功能的筆記。</p>
+<h2 id="版本與環境"><a href="#版本與環境" class="headerlink" title="版本與環境"></a>版本與環境</h2><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Google Chrome: 89.0.4389.72 (Official Build) (64-bit)</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="DevTools中與CSS相關的新內容（Chrome-89）"><a href="#DevTools中與CSS相關的新內容（Chrome-89）" class="headerlink" title="DevTools中與CSS相關的新內容（Chrome 89）"></a>DevTools中與CSS相關的新內容（Chrome 89）</h2><h3 id="直接對node截圖"><a href="#直接對node截圖" class="headerlink" title="直接對node截圖"></a>直接對node截圖</h3><p>原文連結：<a target="_blank" rel="noopener" href="https://developers.google.com/web/updates/2021/01/devtools#node-screenshot">https://developers.google.com/web/updates/2021/01/devtools#node-screenshot</a></p>
+<figure class="figure--center"><img src="/2021/chrome-89-css/node-screenshot.jpg"></figure>
+<p>在node上點擊右鍵，選擇Capture node screenshot後，截圖就會下載到本機。</p>
+<h3 id="可直接套用偽類-target至元件上"><a href="#可直接套用偽類-target至元件上" class="headerlink" title="可直接套用偽類:target至元件上"></a>可直接套用偽類:target至元件上</h3><p>原文連結：<a target="_blank" rel="noopener" href="https://developers.google.com/web/updates/2021/01/devtools#force-target">https://developers.google.com/web/updates/2021/01/devtools#force-target</a></p>
+<figure class="figure--center"><img src="/2021/chrome-89-css/target.jpg" title="可直接套用:target偽類 " alt="The screenshot of DevTools"><figcaption><p>可直接套用:target偽類 </p></figcaption></figure>
+<p>不用點擊連結，即可套用<code>:target</code>到元件上。<br>打開DevTools，點選Elements標籤，點選元件後按下:hov按鈕，即可展開支援套用的偽類（pseudo-element）清單。<br>選擇<code>:target</code>後，即可直接觀察相關的CSS表現內容。</p>
+<figure class="figure--center"><img src="/2021/chrome-89-css/target-example.jpg"></figure>
+<figure class="figure--center"><img src="/2021/chrome-89-css/target-example-select.jpg"></figure>
+
+<p>以上兩張螢幕截圖用到的原始碼：</p>
+<p class="codepen" data-height="300" data-theme-id="dark" data-default-tab="html,result" data-user="Charlie7779" data-slug-hash="abBKWNL" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title=":target">
+  <span>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/Charlie7779/pen/abBKWNL">
+  :target</a> by Charlie (<a target="_blank" rel="noopener" href="https://codepen.io/Charlie7779">@Charlie7779</a>)
+  on <a target="_blank" rel="noopener" href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async="" src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+
+<h3 id="直接在DevTools裡面複製元件"><a href="#直接在DevTools裡面複製元件" class="headerlink" title="直接在DevTools裡面複製元件"></a>直接在DevTools裡面複製元件</h3><p>原文連結：<a target="_blank" rel="noopener" href="https://developers.google.com/web/updates/2021/01/devtools#duplicate-element">https://developers.google.com/web/updates/2021/01/devtools#duplicate-element</a></p>
+<figure class="figure--center"><img src="/2021/chrome-89-css/duplicate-element.jpg"></figure>
+<figure class="figure--center"><img src="/2021/chrome-89-css/duplicate-element-after.jpg"></figure>
+<p>在元件上按下右鍵選擇Duplicate element後，該元件的副本就會出現在被拷貝的元件下方。<br>支援快速鍵，點選元件後按下<code>Shift</code>+ <code>Alt</code>+ ⬇️（Windows）或<code>Shift</code>+ <code>Option</code>+ ⬇️（Mac）即可拷貝元件。</p>
+<h3 id="支援color-picker"><a href="#支援color-picker" class="headerlink" title="支援color picker"></a>支援color picker</h3><p>原文連結：<a target="_blank" rel="noopener" href="https://developers.google.com/web/updates/2021/01/devtools#color-picker">https://developers.google.com/web/updates/2021/01/devtools#color-picker</a><br>並且如果按住<code>Shift</code>後以滑鼠左鍵點擊顏色方塊的話，可以切換為不同的顏色編碼格式（RGBA、HSLA、Hex）</p>
+<h3 id="複製元件的CSS內容"><a href="#複製元件的CSS內容" class="headerlink" title="複製元件的CSS內容"></a>複製元件的CSS內容</h3><p>原文連結：<a target="_blank" rel="noopener" href="https://developers.google.com/web/updates/2021/01/devtools#copy-css">https://developers.google.com/web/updates/2021/01/devtools#copy-css</a><br>在Styles區塊對元件的CSS設定按下右鍵，可複製CSS內容。</p>
+<figure class="figure--center"><img src="/2021/chrome-89-css/copy-CSS-properties.jpg"></figure>
+<p>如果是在選取器位置按下右鍵的話，會出現以下選項：</p>
+<ul>
+<li>Copy selector：複製選取器，上圖水藍色部分</li>
+<li>Copy rule：複製CSS規則，上圖黃色部分</li>
+<li>Copy all declarations：複製選取器與CSS規則，上圖水藍色加上黃色部分</li>
+</ul>
+<figure class="figure--center"><img src="/2021/chrome-89-css/copy-CSS-properties-1.jpg"></figure>
+<p>如果是在中括號<code>{}</code>區塊按下右鍵的話，選項如下：</p>
+<ul>
+<li>Copy declaration：複製紅框與粉框部分</li>
+<li>Copy property：複製紅框部分</li>
+<li>Copy value：複製粉框部分</li>
+<li>Copy rule：複製水藍色加上黃色部分</li>
+<li>Copy all declarations：僅複製黃色部分</li>
+</ul>
+<h3 id="字體編輯面板（Experimental-features）"><a href="#字體編輯面板（Experimental-features）" class="headerlink" title="字體編輯面板（Experimental features）"></a>字體編輯面板（Experimental features）</h3><p>原文連結：<a target="_blank" rel="noopener" href="https://developers.google.com/web/updates/2021/01/devtools#font">https://developers.google.com/web/updates/2021/01/devtools#font</a></p>
+<figure class="figure--center"><img src="/2021/chrome-89-css/font-editor.jpg"></figure>
+<p>點選上圖紅框內的字體圖示，可即時調整字體設計。</p>
+<h3 id="flexbox-debug工具（Experimental-features）"><a href="#flexbox-debug工具（Experimental-features）" class="headerlink" title="flexbox debug工具（Experimental features）"></a>flexbox debug工具（Experimental features）</h3><p>原文連結：<a target="_blank" rel="noopener" href="https://developers.google.com/web/updates/2021/01/devtools#flexbox">https://developers.google.com/web/updates/2021/01/devtools#flexbox</a></p>
+<figure class="figure--center"><img src="/2021/chrome-89-css/flexbox-gap.jpg"></figure>
+<figure class="figure--center"><img src="/2021/chrome-89-css/flexbox-align-items.jpg"></figure>
+<p>有<code>display: flex;</code>特性的元件，右側會顯示flex圖示。<br>滑鼠移動到flex相關的特性上，會在畫面中顯示提示。上圖分別是滑鼠指向<code>gap</code>與<code>align-items</code>。</p>
+<h2 id="附錄"><a href="#附錄" class="headerlink" title="附錄"></a>附錄</h2><h3 id="開啟Experimental-features"><a href="#開啟Experimental-features" class="headerlink" title="開啟Experimental features"></a>開啟Experimental features</h3><figure class="figure--center"><img src="/2021/chrome-89-css/experimental-features.jpg"></figure>
+<figure class="figure--center"><img src="/2021/chrome-89-css/experimental-features-1.jpg"></figure>
+<p>點選DevTools的齒輪圖示（設定），移動到Experiments標籤，勾選需要開啟的相關功能。<br>設定完畢後需關閉、重新啟動DevTools來套用設定。</p>
+<h3 id="檢查Chrome的版本"><a href="#檢查Chrome的版本" class="headerlink" title="檢查Chrome的版本"></a>檢查Chrome的版本</h3><figure class="figure--center"><img src="/2021/chrome-89-css/check-chrome-version.png" title="More icon >> Help >> About Google Chrome " alt="The screenshot of displaying the path to check Chrome"><figcaption><p>More icon &gt;&gt; Help &gt;&gt; About Google Chrome </p></figcaption></figure>
+<figure class="figure--center"><img src="/2021/chrome-89-css/chrome-version-info.png" title="點選About Google Chrome後，即可看到Chrome版本 " alt="The screenshot of Chrome version information"><figcaption><p>點選About Google Chrome後，即可看到Chrome版本 </p></figcaption></figure>
+<p>打開Chrome後，點選畫面右上角的垂直排列三點按鈕，依序選擇幫助、關於，點開關於後即可看到Chrome版本資訊。</p>
+<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://www.w3schools.com/cssref/sel_target.asp">CSS :target Selector</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.google.com/chrome/update/">How to check Chrome’s version</a></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope="" itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tzynwang.github.io/2021/hexo-drafts/">
+
+    <span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar-pexels-alex-andrews-215-215.png">
+      <meta itemprop="name" content="Charlie (Tzu Yin)">
+      <meta itemprop="description" content="一介普通文組的學習筆記 📒">
+    </span>
+
+    <span hidden="" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="普通文組">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/hexo-drafts/" class="post-title-link" itemprop="url">Display draft post</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-02-19 14:25:20 / Modified: 14:41:50" itemprop="dateCreated datePublished" datetime="2021-02-19T14:25:20+08:00">2021-02-19</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+          <a href="/categories/hexo/" itemprop="url" rel="index"><span itemprop="name">hexo</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2021/hexo-drafts/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/hexo-drafts/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>To view the draft posts (in the <code>source\_drafts</code> folder) on localhost:4000, just run <code>hexo server --draft</code>.<br>Set <code>render_drafts</code> as <code>true</code> in <code>_config.yml</code> will make <code>hexo generate</code> generate the posts in <code>source\_drafts</code> into <code>public</code> folder, which means the draft posts will be deployed to GitHub page by <code>hexo deploy</code>.<br>No needs to set <code>render_drafts</code> as <code>true</code> to view the draft posts on localhost, running <code>hexo server --draft</code> is enough.</p>
+<p><code>_config.yml</code>中的<code>render_drafts</code>設定為<code>true</code>的話，執行<code>hexo generate</code>時，資料夾<code>source\_drafts</code>內的檔案也會被生成到<code>public</code>資料夾中。<br>在這個情況下執行<code>hexo deploy</code>就會把草稿文章推到GitHub Page上。</p>
+<p>只是想要在localhost:4000上瀏覽草稿的話，執行<code>hexo server --draft</code>即可，不用修改<code>render_drafts</code>的值。<br>hexo官方文件對<code>render_drafts</code>的說明比較簡短，一開始以為設定成<code>true</code>只是代表<code>hexo server</code>會渲染草稿……😇</p>
+<h2 id="Environment"><a href="#Environment" class="headerlink" title="Environment"></a>Environment</h2><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo: 5.3.0</span><br><span class="line">hexo-cli: 4.2.0</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://hexo.io/docs/commands#Display-drafts">hexo: Commands/Display drafts</a></li>
+<li><a target="_blank" rel="noopener" href="https://hexo.io/docs/configuration#Writing">hexo: Configuration/Writing</a></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1081,380 +1484,8 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope="" itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://tzynwang.github.io/2021/hexo-Google-Search-Console/">
-
-    <span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar-pexels-alex-andrews-215-215.png">
-      <meta itemprop="name" content="Charlie (Tzu Yin)">
-      <meta itemprop="description" content="一介普通文組的學習筆記 📒">
-    </span>
-
-    <span hidden="" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="普通文組">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/hexo-Google-Search-Console/" class="post-title-link" itemprop="url">Submit to Google Search Console, SEO settings</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-02-11 17:03:29" itemprop="dateCreated datePublished" datetime="2021-02-11T17:03:29+08:00">2021-02-11</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-02-18 20:43:01" itemprop="dateModified" datetime="2021-02-18T20:43:01+08:00">2021-02-18</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-          <a href="/categories/hexo/" itemprop="url" rel="index"><span itemprop="name">hexo</span></a>
-        </span>
-    </span>
-
-  
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus: </span>
-    
-    <a title="disqus" href="/2021/hexo-Google-Search-Console/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/hexo-Google-Search-Console/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="Summary-of-this-post"><a href="#Summary-of-this-post" class="headerlink" title="Summary of this post"></a>Summary of this post</h2><p>Q: How to make sure Google Search can find my hexo blog that has been deployed on GitHub Page?<br>A: Submit your hexo blog to <a target="_blank" rel="noopener" href="https://search.google.com/search-console/welcome">Google Search Console</a> by:</p>
-<ol>
-<li>Add <code>HTML tag</code> into hexo blog’s <code>&lt;head&gt;&lt;/head&gt;</code></li>
-<li>Provide hexo blog’s <code>sitemap.xml</code> to Google</li>
-</ol>
-<p>為了讓Google可以搜尋到hexo部落格，需把<code>HTML tag</code>（HTML標記、中繼標籤）加到<code>&lt;head&gt;&lt;/head&gt;</code>，並提交<code>sitemap.xml</code>給<a target="_blank" rel="noopener" href="https://search.google.com/search-console/welcome">Google Search Console</a>。</p>
-<h2 id="Enviroment"><a href="#Enviroment" class="headerlink" title="Enviroment"></a>Enviroment</h2><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo: 5.3.0</span><br><span class="line">NexT: 8.2.1</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></tbody></table></figure>
-<h2 id="About-config-next-yml"><a href="#About-config-next-yml" class="headerlink" title="About _config.next.yml"></a>About _config.next.yml</h2><p>I use <a target="_blank" rel="noopener" href="https://theme-next.js.org/docs/getting-started/configuration.html#config-name-yml">Alternate Theme Config</a> to apply the theme modification according to the suggestion from NexT official document.</p>
-<h2 id="Add-HTML-tag"><a href="#Add-HTML-tag" class="headerlink" title="Add HTML tag"></a>Add HTML tag</h2><ol>
-<li>Visit <a target="_blank" rel="noopener" href="https://search.google.com/search-console/welcome">Google Search Console</a>, enter the URL of hexo blog into right hand side column.<br><img src="/2021/hexo-Google-Search-Console/Enter-hexo-blog-URL-to-Google-Search-Console.png" alt="Enter hexo blog URL"></li>
-<li>Select and copy the HTML tag.<br><img src="/2021/hexo-Google-Search-Console/Copy-HTML-tag.png" alt="Select and copy the HTML tag provide by Google Search Console"></li>
-<li>Open the file <code>_config.next.yml</code>, navigate to the part <code># SEO Settings</code>, paste the HTML tag “content” part as the value of the key <code>google_site_verification</code><br>For example, this is the whole HTML tag contents you’ve copied:<br><code>&lt;meta name="google-site-verification" content="(a string includes letters, numbers and _)" /&gt;</code><br>Just paste the content part into <code>_config.next.yml</code>, like the below code block shows:<figure class="highlight yaml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ---------------------------------------------------------------</span></span><br><span class="line"><span class="comment"># SEO Settings</span></span><br><span class="line"><span class="comment"># See: https://theme-next.js.org/docs/theme-settings/seo</span></span><br><span class="line"><span class="comment"># ---------------------------------------------------------------</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Google Webmaster tools verification.</span></span><br><span class="line"><span class="attr">google_site_verification:</span> <span class="string">(a</span> <span class="string">string</span> <span class="string">includes</span> <span class="string">letters,</span> <span class="string">numbers</span> <span class="string">and</span> <span class="string">_)</span> <span class="string">/&gt;</span></span><br></pre></td></tr></tbody></table></figure></li>
-<li>Launch cmd.exe, move to the hexo blog folder, run <code>hexo clean &amp;&amp; hexo generate</code></li>
-<li>Open the file <code>index.html</code> in <code>public</code> folder, the HTML tag should appear between the <code>&lt;head&gt;&lt;/head&gt;</code> tag</li>
-<li>Run <code>hexo deploy</code> to deploy modification to GitHub Page</li>
-<li>Back to Google Search Console and click “Verify”<br><img src="/2021/hexo-Google-Search-Console/Verify-hexo-blog-after-adding-HTML-tag.png" alt="Click the Verify button after adding the HTML tag"></li>
-<li>One of the two parts of Google SEO setting has finished, have a cup of tea ☕</li>
-</ol>
-<p>個人目前使用的是8.2.1版的NexT，<code>_config.next.yml</code>已內建支援<code>google_site_verification</code>。<br>在Google Search Console取得HTML tag後，將content的內容貼上即可。</p>
-<p><code>_config.next.yml</code>若沒有這個參數的話，則手動將整個HTML tag貼到<code>\themes\hexo-theme-next\layout\_partials\head</code>資料夾的<code>head</code>檔案中，如下圖：<br><img src="/2021/hexo-Google-Search-Console/Manually-add-HTML-tag-to-NexT-theme.png" alt="Manually add the Google Search Console HTML tag into NexT theme css head file"></p>
-<h2 id="Provide-sitemap-xml"><a href="#Provide-sitemap-xml" class="headerlink" title="Provide sitemap.xml"></a>Provide sitemap.xml</h2><ol>
-<li>Launch cmd.exe, move to the hexo blog folder, run <code>npm install hexo-generator-sitemap --save</code></li>
-<li>Open the <code>_config.yml</code> file in the root of hexo blog, enter the following contents:<figure class="highlight yaml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">sitemap:</span></span><br><span class="line">  <span class="attr">path:</span> <span class="string">sitemap.xml</span></span><br><span class="line">  <span class="attr">template:</span> <span class="comment"># Custom template path. Leave it as blank if no custom template is used</span></span><br><span class="line">  <span class="attr">rel:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">tags:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">categories:</span> <span class="literal">true</span></span><br></pre></td></tr></tbody></table></figure></li>
-<li>run <code>hexo generate</code> to generate the file <code>sitemap.xml</code></li>
-<li>Upload <code>sitemap.xml</code> to hexo blog’s GitHub repository <code>master</code> branch</li>
-<li>Visit Google Search Console. Enter “sitemap.xml” and click “Submit”<br><img src="/2021/hexo-Google-Search-Console/Submit-sitemap.png" alt="Provide sitemap.xml to Googls Search Console"></li>
-<li>Done. The whole Google SEO setting has completed 🎉</li>
-</ol>
-<h2 id="Run-Mobile-Friendly-Test"><a href="#Run-Mobile-Friendly-Test" class="headerlink" title="Run Mobile-Friendly Test"></a>Run Mobile-Friendly Test</h2><p>Got an error message when running Google’s <a target="_blank" rel="noopener" href="https://search.google.com/test/mobile-friendly">Mobile-Friendly Test</a> in the first time:</p>
-<blockquote>
-<p>Refused to apply style from (tl;dr) because its MIME type (‘text/html’) is not a supported stylesheet MIME type, and strict MIME checking is enabled.</p>
-</blockquote>
-<p><img src="/2021/hexo-Google-Search-Console/Mobile-Friendly-Test-error-message.png" alt="Mobile-Friendly Test error message"></p>
-<p>Q: How I fixed this problem?<br>A: Open <code>_config.next.yml</code> and update the <code>host</code> value in <code># Font Settings</code> part correctly.</p>
-<figure class="highlight yaml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">font:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># Uri of fonts host, e.g. https://fonts.googleapis.com (Default).</span></span><br><span class="line">  <span class="attr">host:</span> <span class="string">https://fonts.googleapis.com/css2?family=Noto+Sans+TC&amp;family=Roboto&amp;display=swap</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># Font options:</span></span><br><span class="line">  <span class="comment"># `external: true` will load this font family from `host` above.</span></span><br><span class="line">  <span class="comment"># `family: Times New Roman`. Without any quotes.</span></span><br><span class="line">  <span class="comment"># `size: x.x`. Use `em` as unit. Default: 1 (16px)</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># Global font settings used for all elements inside &lt;body&gt;.</span></span><br><span class="line">  <span class="attr">global:</span></span><br><span class="line">    <span class="attr">external:</span> <span class="literal">true</span></span><br></pre></td></tr></tbody></table></figure>
-<p>Run the test again and get greenlight.<br><img src="/2021/hexo-Google-Search-Console/Pass-Mobile-Friendly-Test.png" alt="Pass the Mobile-Friendly Test without andy error message"><br>🎉🎉🎉</p>
-<h2 id="Bonus-I-forget-the-HTML-tag-contents"><a href="#Bonus-I-forget-the-HTML-tag-contents" class="headerlink" title="Bonus: I forget the HTML tag contents"></a>Bonus: I forget the HTML tag contents</h2><ol>
-<li>Visit Google Search Console, click “Settings” in the left side menu<br><img src="/2021/hexo-Google-Search-Console/User-setting.png" alt="User settings in Google Search Console"></li>
-<li>Click “User”, and then click “User management”<br><img src="/2021/hexo-Google-Search-Console/User-setting-user-management.png" alt="User management in Google Search Console"></li>
-<li>HTML tag contents are display in the management console<br><img src="/2021/hexo-Google-Search-Console/View-HTML-tag-contents.png" alt="View HTML tag contents"></li>
-</ol>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://theme-next.js.org/docs/theme-settings/seo#Google-Webmaster-Tools">NexT: Google Webmaster Tools</a></li>
-<li><a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo-generator-sitemap">hexojs/hexo-generator-sitemap</a></li>
-<li><a target="_blank" rel="noopener" href="https://brooke01.github.io/tecblog/2020/04/26/hexo-generator-sitemap/">hexo-generator-sitemap</a></li>
-<li><a target="_blank" rel="noopener" href="https://hsiangfeng.github.io/hexo/20190514/2072033203/">Hexo搜尋引擎優化</a></li>
-<li><a target="_blank" rel="noopener" href="https://askie.today/upload-sitemap-google-search-console-seo-hexo-blog/">輕鬆地提交 Hexo 部落格的 Sitemap.xml 到 Google Search Console</a></li>
-<li><a target="_blank" rel="noopener" href="https://hoxis.github.io/Hexo+Next%20SEO%E4%BC%98%E5%8C%96.html">Hexo博客Next主题SEO优化方法</a></li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope="" itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://tzynwang.github.io/2021/hexo-deploy/">
-
-    <span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar-pexels-alex-andrews-215-215.png">
-      <meta itemprop="name" content="Charlie (Tzu Yin)">
-      <meta itemprop="description" content="一介普通文組的學習筆記 📒">
-    </span>
-
-    <span hidden="" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="普通文組">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/hexo-deploy/" class="post-title-link" itemprop="url">Deploy to GitHub Page</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-02-10 19:00:23" itemprop="dateCreated datePublished" datetime="2021-02-10T19:00:23+08:00">2021-02-10</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-02-18 20:46:02" itemprop="dateModified" datetime="2021-02-18T20:46:02+08:00">2021-02-18</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-          <a href="/categories/hexo/" itemprop="url" rel="index"><span itemprop="name">hexo</span></a>
-        </span>
-    </span>
-
-  
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus: </span>
-    
-    <a title="disqus" href="/2021/hexo-deploy/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/hexo-deploy/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="Summary-of-this-post"><a href="#Summary-of-this-post" class="headerlink" title="Summary of this post"></a>Summary of this post</h2><p>This post describes my whole workflow about deploying hexo blog from local to GitHub Page 🛫<br>記錄了自己把hexo blog從本機部屬到GitHub Pages的過程，寫得比hexo官方文件詳細一些。<br>沒有對官方文件提出improvement是因為這些內容可能太繁瑣了 🤣</p>
-<h2 id="Environment"><a href="#Environment" class="headerlink" title="Environment"></a>Environment</h2><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hexo: 5.3.0</span><br><span class="line">hexo-cli: 4.2.0</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br><span class="line">git: 2.30.0.windows.2</span><br></pre></td></tr></tbody></table></figure>
-
-<h2 id="Workflow"><a href="#Workflow" class="headerlink" title="Workflow"></a>Workflow</h2><h3 id="Download-and-install-Git"><a href="#Download-and-install-Git" class="headerlink" title="Download and install Git"></a>Download and install Git</h3><p>Download link: <a target="_blank" rel="noopener" href="https://git-scm.com/downloads">https://git-scm.com/downloads</a><br>The version I downloaded is “Git-2.30.1-64-bit.exe”. Double clicks the .exe file to install Git on the computer.</p>
-<h3 id="Create-repository-on-GitHub"><a href="#Create-repository-on-GitHub" class="headerlink" title="Create repository on GitHub"></a>Create repository on GitHub</h3><p>💡 The repository should be named in the format <code>&lt;GitHub username&gt;.github.io</code>.<br>For example, if the username is “johndoe”, then the repository should be named as “johndoe.github.io”.</p>
-<h3 id="Update-config-yml"><a href="#Update-config-yml" class="headerlink" title="Update _config.yml"></a>Update _config.yml</h3><p>Open the file <code>_config.yml</code> in the root of hexo blog folder.<br>Update the value of <code>url</code> and <code>deploy</code> keys.</p>
-<figure class="highlight yaml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># URL</span></span><br><span class="line"><span class="attr">url:</span> <span class="string">https://&lt;GitHub</span> <span class="string">username&gt;.github.io</span></span><br><span class="line"><span class="attr">root:</span> <span class="string">/</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Deployment</span></span><br><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">https://github.com/&lt;GitHub</span> <span class="string">username&gt;/&lt;GitHub</span> <span class="string">username&gt;.github.io.git</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">master</span></span><br></pre></td></tr></tbody></table></figure>
-<p>For example, if the username is “johndoe”, then the contents in <code>_config.yml</code> should be:</p>
-<figure class="highlight yaml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># URL</span></span><br><span class="line"><span class="attr">url:</span> <span class="string">https://johndoe.github.io</span></span><br><span class="line"><span class="attr">root:</span> <span class="string">/</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Deployment</span></span><br><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">https://github.com/johndoe/johndoe.github.io.git</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">master</span></span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="To-deploy-hexo-blog"><a href="#To-deploy-hexo-blog" class="headerlink" title="To deploy hexo blog"></a>To deploy hexo blog</h3><ol>
-<li>Open cmd.exe, move to hexo blog. In my case I enter <code>cd C:\Projects\hexo_blog</code>, this is the location that store my hexo blog contents</li>
-<li>In cmd.exe, enter <code>git init</code> to <a target="_blank" rel="noopener" href="https://git-scm.com/docs/git-init">create a empty Git repository</a>. If Windows is set to <a target="_blank" rel="noopener" href="https://support.microsoft.com/en-us/windows/show-hidden-files-0320fe58-0117-fd59-6851-9b7f9840fdb2">show the hidden files</a>, a <code>.git</code> folder can be viewed after running the <code>git init</code> command.</li>
-<li>Enter <code>git checkout -b source</code> to create a branch call “source”</li>
-<li>Enter <code>git add .</code> to stage everything that are going to be committed (except the folders, files that are ignored by <code>.gitignore</code> file)</li>
-<li>Enter <code>git commit -m "initial commit"</code></li>
-<li>Enter <code>git push https://github.com/tzynwang/&lt;GitHub username&gt;.github.io.git source</code>, this will push all the files that are staged to the “source” branch on the GitHub repository</li>
-<li>Add a file <code>.github/workflows/pages.yml</code> to the “source” branch on the GitHub repository.<br><img src="/2021/hexo-deploy/add-new-file-to-repository-00.png" alt="Add new file through GitHub webpage interface"><br><img src="/2021/hexo-deploy/add-new-file-to-repository-01.png" alt="Enter the name for the new-add file"></li>
-<li>Add the following contents to the file <code>.github/workflows/pages.yml</code>:<figure class="highlight yaml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">Pages</span></span><br><span class="line"></span><br><span class="line"><span class="attr">on:</span></span><br><span class="line">  <span class="attr">push:</span></span><br><span class="line">    <span class="attr">branches:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">source</span>  <span class="comment"># default branch</span></span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line">  <span class="attr">pages:</span></span><br><span class="line">    <span class="attr">runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line">    <span class="attr">steps:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">uses:</span> <span class="string">actions/checkout@v2</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Use</span> <span class="string">Node.js</span> <span class="number">12.</span><span class="string">x</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">actions/setup-node@v1</span></span><br><span class="line">        <span class="attr">with:</span></span><br><span class="line">          <span class="attr">node-version:</span> <span class="string">'12.x'</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Cache</span> <span class="string">NPM</span> <span class="string">dependencies</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">actions/cache@v2</span></span><br><span class="line">        <span class="attr">with:</span></span><br><span class="line">          <span class="attr">path:</span> <span class="string">node_modules</span></span><br><span class="line">          <span class="attr">key:</span> <span class="string">${{</span> <span class="string">runner.OS</span> <span class="string">}}-npm-cache</span></span><br><span class="line">          <span class="attr">restore-keys:</span> <span class="string">|</span></span><br><span class="line">            <span class="string">${{</span> <span class="string">runner.OS</span> <span class="string">}}-npm-cache</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Install</span> <span class="string">Dependencies</span></span><br><span class="line">        <span class="attr">run:</span> <span class="string">npm</span> <span class="string">install</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Build</span></span><br><span class="line">        <span class="attr">run:</span> <span class="string">npm</span> <span class="string">run</span> <span class="string">build</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Deploy</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">peaceiris/actions-gh-pages@v3</span></span><br><span class="line">        <span class="attr">with:</span></span><br><span class="line">          <span class="attr">github_token:</span> <span class="string">${{</span> <span class="string">secrets.GITHUB_TOKEN</span> <span class="string">}}</span></span><br><span class="line">          <span class="attr">publish_dir:</span> <span class="string">./public</span></span><br><span class="line">          <span class="attr">publish_branch:</span> <span class="string">master</span>  <span class="comment"># deploying branch</span></span><br></pre></td></tr></tbody></table></figure></li>
-<li>Back to cmd.exe, run <code>hexo clean</code>, and then <code>hexo generate</code></li>
-<li>After <code>hexo generate</code>, a folder “public” will be created</li>
-<li>Enter <code>hexo deploy</code>, this command will push the contents from local folder “public” to the branch “master” on GitHub repository. You don’t need to create the branch “master” yourself, <code>hexo deploy</code> will handle this<br>💡 There will be 2 branches on the repository, one is “source” and another is “master”. The “master” branch contains the contents that will be rendered on your GitHub Pages</li>
-<li>After <code>hexo deploy</code> is completed, go to the “Settings” page for the repository. Change the Source of GitHub Pages to Branch “master”<br><img src="/2021/hexo-deploy/config-github-pages-setting-00.png" alt="Click the &quot;Setting&quot; tab on GitHub repository"><br><img src="/2021/hexo-deploy/config-github-pages-setting-01.png" alt="Config the GitHub Pages setting"></li>
-<li>Navigate to the URL <code>https://&lt;GitHub username&gt;.github.io/</code> to view your hexo blog ☕</li>
-</ol>
-<h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><ul>
-<li>Do not add <code>""</code> for the value of <code>root</code> and <code>theme</code> in the <code>_config.yml</code> file. Just wrote the value like following:<figure class="highlight yaml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Extensions</span></span><br><span class="line"><span class="comment">## Plugins: https://hexo.io/plugins/</span></span><br><span class="line"><span class="comment">## Themes: https://hexo.io/themes/</span></span><br><span class="line"><span class="attr">theme:</span> <span class="string">next</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># URL</span></span><br><span class="line"><span class="comment">## If your site is put in a subdirectory, set url as 'http://example.com/child' and root as '/child/'</span></span><br><span class="line"><span class="attr">url:</span> <span class="string">https://tzynwang.github.io</span></span><br><span class="line"><span class="attr">root:</span> <span class="string">/</span></span><br></pre></td></tr></tbody></table></figure></li>
-<li>To update blog contents (e.g. add new post), run <code>hexo generate</code> plus <code>hexo deploy</code>.<br><code>git commit</code> and <code>git push</code> the local content to “source” branch is not required for updating the blog contents on GitHub Pages.</li>
-<li>The branch name “source” and “master” can be changed to other preferred names.<ul>
-<li>Make sure to update the contents in <code>.github/workflows/pages.yml</code> file and the <code>_config.yml</code> file that exists in the root folder.</li>
-<li>For example, if I want to <code>git push</code> the contents to the “development” branch, and <code>hexo deploy</code> to the “publish” branch, the <code>.github/workflows/pages.yml</code> file should be updated as follow:<figure class="highlight yaml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">Pages</span></span><br><span class="line"></span><br><span class="line"><span class="attr">on:</span></span><br><span class="line">  <span class="attr">push:</span></span><br><span class="line">    <span class="attr">branches:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">development</span></span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line">  <span class="attr">pages:</span></span><br><span class="line">    <span class="attr">runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line">    <span class="attr">steps:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">uses:</span> <span class="string">actions/checkout@v2</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Use</span> <span class="string">Node.js</span> <span class="number">12.</span><span class="string">x</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">actions/setup-node@v1</span></span><br><span class="line">        <span class="attr">with:</span></span><br><span class="line">          <span class="attr">node-version:</span> <span class="string">'12.x'</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Cache</span> <span class="string">NPM</span> <span class="string">dependencies</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">actions/cache@v2</span></span><br><span class="line">        <span class="attr">with:</span></span><br><span class="line">          <span class="attr">path:</span> <span class="string">node_modules</span></span><br><span class="line">          <span class="attr">key:</span> <span class="string">${{</span> <span class="string">runner.OS</span> <span class="string">}}-npm-cache</span></span><br><span class="line">          <span class="attr">restore-keys:</span> <span class="string">|</span></span><br><span class="line">            <span class="string">${{</span> <span class="string">runner.OS</span> <span class="string">}}-npm-cache</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Install</span> <span class="string">Dependencies</span></span><br><span class="line">        <span class="attr">run:</span> <span class="string">npm</span> <span class="string">install</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Build</span></span><br><span class="line">        <span class="attr">run:</span> <span class="string">npm</span> <span class="string">run</span> <span class="string">build</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Deploy</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">peaceiris/actions-gh-pages@v3</span></span><br><span class="line">        <span class="attr">with:</span></span><br><span class="line">          <span class="attr">github_token:</span> <span class="string">${{</span> <span class="string">secrets.GITHUB_TOKEN</span> <span class="string">}}</span></span><br><span class="line">          <span class="attr">publish_dir:</span> <span class="string">./public</span></span><br><span class="line">          <span class="attr">publish_branch:</span> <span class="string">publish</span></span><br></pre></td></tr></tbody></table></figure>
-The configuration in <code>_config.yml</code> file should be set like this:<figure class="highlight yaml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Deployment</span></span><br><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">publish</span></span><br></pre></td></tr></tbody></table></figure>
-
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a target="_blank" rel="noopener" href="https://hexo.io/docs/github-pages">hexo: GitHub Pages</a></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope="" itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://tzynwang.github.io/2021/bundle-exec/">
-
-    <span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar-pexels-alex-andrews-215-215.png">
-      <meta itemprop="name" content="Charlie (Tzu Yin)">
-      <meta itemprop="description" content="一介普通文組的學習筆記 📒">
-    </span>
-
-    <span hidden="" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="普通文組">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/bundle-exec/" class="post-title-link" itemprop="url">bundle exec</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-02-08 20:31:26" itemprop="dateCreated datePublished" datetime="2021-02-08T20:31:26+08:00">2021-02-08</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-02-18 15:44:15" itemprop="dateModified" datetime="2021-02-18T15:44:15+08:00">2021-02-18</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-          <a href="/categories/jekyll/" itemprop="url" rel="index"><span itemprop="name">jekyll</span></a>
-        </span>
-    </span>
-
-  
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus: </span>
-    
-    <a title="disqus" href="/2021/bundle-exec/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/bundle-exec/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>Question: why adds <code>bundle exec</code> in the command when running jekyll server in the first time?<br>Answer (short): to know the version of the gems that are going to use.</p>
-<h2 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h2><p><code>bundle exec</code> will check the Gemfile to understand “<strong>what gems</strong> will be used” and “<strong>which version</strong> of the gems should be used”.<br>In the case that Gemfile is modified, run <code>bundle exec jekyll server</code> instead of just running <code>jekyll server</code>.</p>
-<p>第一次執行<code>jekyll server</code>要輸入<code>bundle exec jekyll server</code>，讓環境根據Gemfile查詢你的程式會用到哪些gems、並這些gems該使用哪些版本。在Gemfile沒有更新的情況下，第二次以後直接在環境輸入<code>jekyll server</code>就可以了。</p>
-<p>若有修改Gemfile的內容，則須重新執行<code>bundle exec jekyll server</code>。</p>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a target="_blank" rel="noopener" href="https://stackoverflow.com/a/16218854/15028185">What does bundle exec rake mean?</a></p>
-<p>You’re running <code>bundle exec</code> on a program. The program’s creators wrote it when <strong>certain versions of gems</strong> were available. The program <strong>Gemfile</strong> specifies the versions of the gems the creators decided to use. That is, the script was made to run correctly against these gem versions.</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
