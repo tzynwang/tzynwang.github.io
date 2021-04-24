@@ -6,7 +6,7 @@
   <link href="https://tzynwang.github.io/atom.xml" rel="self"/>
   
   <link href="https://tzynwang.github.io/"/>
-  <updated>2021-04-22T07:35:55.248Z</updated>
+  <updated>2021-04-24T11:00:30.805Z</updated>
   <id>https://tzynwang.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>「Inside look at modern web browser」相關筆記</title>
+    <link href="https://tzynwang.github.io/2021/inside-look-at-modern-web-browser-notes/"/>
+    <id>https://tzynwang.github.io/2021/inside-look-at-modern-web-browser-notes/</id>
+    <published>2021-04-23T03:54:43.000Z</published>
+    <updated>2021-04-24T11:00:30.805Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;總結&quot;&gt;&lt;a href=&quot;#總結&quot; class=&quot;headerlink&quot; title=&quot;總結&quot;&gt;&lt;/a&gt;總結&lt;/h2&gt;&lt;p&gt;此為「Inside look at modern web</summary>
+        
+      
+    
+    
+    
+    <category term="Browser" scheme="https://tzynwang.github.io/categories/Browser/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>為什麼iOS上的Chrome沒有呈現設定好的list-style-type</title>
@@ -116,32 +139,6 @@
 &lt;li&gt;DOM</summary>
         
       
-    
-    
-    
-    <category term="JavaScript" scheme="https://tzynwang.github.io/categories/JavaScript/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>再訪event loop</title>
-    <link href="https://tzynwang.github.io/2021/further-adventures-of-the-event-loop/"/>
-    <id>https://tzynwang.github.io/2021/further-adventures-of-the-event-loop/</id>
-    <published>2021-04-14T06:02:39.000Z</published>
-    <updated>2021-04-14T14:01:20.523Z</updated>
-    
-    
-    <summary type="html">&lt;h2 id=&quot;總結&quot;&gt;&lt;a href=&quot;#總結&quot; class=&quot;headerlink&quot; title=&quot;總結&quot;&gt;&lt;/a&gt;總結&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;瀏覽器中的JavaScript環境（runtime）包含standard stack、microtask queue與(macro)task queue&lt;/li&gt;
-&lt;li&gt;簡化後的瀏覽器event loop流程如下：&lt;ol&gt;
-&lt;li&gt;處理standard stack中的&lt;strong&gt;所有&lt;/strong&gt;任務&lt;/li&gt;
-&lt;li&gt;standard stack清空後，開始處理microtask queue中的&lt;strong&gt;所有&lt;/strong&gt;任務&lt;/li&gt;
-&lt;li&gt;microtask queue清空後，開始處理(macro)task queue中的&lt;strong&gt;一個&lt;/strong&gt;任務&lt;/li&gt;
-&lt;li&gt;一次event loop中可能有複數個(macro)task queue，event loop會執行每一個(macro)task queue中&lt;strong&gt;最早&lt;/strong&gt;被加進來的&lt;strong&gt;一個&lt;/strong&gt;任務&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;/ul&gt;</summary>
     
     
     
