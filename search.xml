@@ -1,6 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Alpha Camp「2-2 社群名單」技術記錄</title>
+    <url>/2021/2-2-api-social-list-note/</url>
+    <content><![CDATA[<p class="codepen" data-height="265" data-theme-id="dark" data-default-tab="js,result" data-user="Charlie7779" data-slug-hash="ExZJLzG" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="2-2 社群名單">
+  <span>See the Pen <a href="https://codepen.io/Charlie7779/pen/ExZJLzG">
+  2-2 社群名單</a> by Charlie (<a href="https://codepen.io/Charlie7779">@Charlie7779</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+
+<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>在本作業中實作的相關功能：</p>
+<ul>
+<li>分頁（pagination）</li>
+<li>可在list與grid顯示模式之間切換</li>
+<li>簡易搜尋</li>
+</ul>
+<p>本次運用的技術：</p>
+<ul>
+<li>Spread syntax (<code>...</code>)</li>
+<li>將功能分拆為view（管理顯示相關的程式碼）與controller（管理流程、資料處理相關的程式碼），以及使用data、config與elementObject來分類資料，增進原始碼的易讀性</li>
+</ul>
+<h2 id="下一步"><a href="#下一步" class="headerlink" title="下一步"></a>下一步</h2><p>導入service worker與cache API：</p>
+<ul>
+<li>將透過axios取得的資料儲存起來，這樣僅需在首次開啟APP時透過axios索取API回傳的資料，之後可直接使用已經儲存下來的資料即可，不須再發出的request</li>
+<li>讓APP在沒有網路的狀態下也可進行一定程度的操作</li>
+</ul>
+<h2 id="相關筆記"><a href="#相關筆記" class="headerlink" title="相關筆記"></a>相關筆記</h2><h3 id="分頁（pagination）"><a href="#分頁（pagination）" class="headerlink" title="分頁（pagination）"></a>分頁（pagination）</h3><ul>
+<li>除單純的數字頁以外，也實作了「前一頁」與「下一頁」的頁面移動按鈕</li>
+<li>邏輯分流：<ul>
+<li>點擊「前一頁」時：「抵達第一頁」或「離開最後一頁」時，需disable「第一頁」或解除「最末頁」的disable狀態</li>
+<li>點擊「下一頁」時：邏輯與「前一頁」相反，「抵達最末頁」或「離開第一頁」時，需disable「最末頁」或解除「第一頁」的disable狀態</li>
+<li>點擊「第一頁」或「最末頁」：除disable「前一頁」或「下一頁」外，本次透過<code>document.querySelector(&#39;.page-item.active&#39;).classList.remove(&#39;active&#39;)</code>的方式來解除換頁前處在active狀態的頁數</li>
+<li>其他頁數：解除「前一頁」與「下一頁」的disable狀態，也解除換頁前處在active狀態的頁數</li>
+</ul>
+</li>
+</ul>
+<h3 id="切換顯示模式"><a href="#切換顯示模式" class="headerlink" title="切換顯示模式"></a>切換顯示模式</h3><ul>
+<li>將不同顯示模式的每頁頁數設定在config中（<code>config.displaySettings</code>）</li>
+<li>點擊list或grid模式的按鈕後，根據config中的顯示狀態產生每頁內容與分頁（<code>view.updateUI()</code>）</li>
+<li>因list每一頁顯示的使用者數量（12）較grid多（9），故以grid顯示時的總頁數會大於list；所以處在grid狀態時，使用者在pagination上的頁數可能會超出list的極限值，故使用<code>controller.setMaxPageNumber()</code>來避免「狀態切換後，可能會造成pagination頁數溢位」的問題</li>
+</ul>
+<h3 id="簡易搜尋"><a href="#簡易搜尋" class="headerlink" title="簡易搜尋"></a>簡易搜尋</h3><ul>
+<li>設置<code>searchingStatus</code>，進行顯示模式切換的時候才能根據搜尋狀態與否抓取相對應的資料（全部的使用者／搜尋結果）</li>
+<li>根據搜尋結果（無／有）在畫面上進行提示（<code>No matching result(s)</code>／<code>$&#123;quantity&#125; result(s) of keyword(s)</code>）</li>
+<li>使用者點擊<code>Clear Search Results</code>按鈕後，清除搜尋結果，離開搜尋狀態（更新<code>searchingStatus</code>）</li>
+</ul>
+<h3 id="Spread-syntax"><a href="#Spread-syntax" class="headerlink" title="Spread syntax"></a>Spread syntax</h3><ul>
+<li>應用：透過axois取回資料後，使用spread syntax將資料展開、加進<code>allUsersData</code>陣列中<ul>
+<li><code>data.allUsersData.push(...response.data.results)</code></li>
+<li>功能與forEach相同，但因為不需要對個別內容進行加工，故使用spread syntax直接展開存入陣列</li>
+</ul>
+</li>
+</ul>
+<h3 id="原始碼分類管理"><a href="#原始碼分類管理" class="headerlink" title="原始碼分類管理"></a>原始碼分類管理</h3><script src="https://gist.github.com/tzynwang/a398bbe0721b8199f03347ce03d3b490.js"></script>
+
+
+<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_objects/Object/values">MDN: Object.values(obj)</a><br>回傳一個陣列，其中包含obj中所有key-value pair的value</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/min">MDN: Math.min(value0, value1, … , valueN)</a><br>回傳傳入的values中最小的值，若要傳入陣列，可搭配spread syntax（<code>Math.min(...array1)</code>）</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/Trim">MDN: String.prototype.trim()</a><br>會回傳一組「移除原本字串頭尾空白鍵的」新字串，不影響原本的字串</li>
+</ul>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>ALPHA Camp assignment</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>自主練習專案「日本文學經典50」技術記錄與反省</title>
     <url>/2021/Japanese-50-review/</url>
     <content><![CDATA[<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>微型專案「日本文學經典50」是在閱讀完《一生必讀的50本日本文學名著》後，覺得書末一口氣展示50本經典的排版讓人印象深刻，決定以該圖為範本練習CSS grid排版</p>
@@ -180,8 +249,8 @@
 </ul>
 ]]></content>
       <tags>
-        <tag>Side Project</tag>
         <tag>ALPHA Camp assignment</tag>
+        <tag>Side Project</tag>
       </tags>
   </entry>
   <entry>

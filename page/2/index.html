@@ -197,7 +197,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">34</span>
+          <span class="site-state-item-count">35</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -238,6 +238,155 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope="" itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tzynwang.github.io/2021/while-loop-ajax/">
+
+    <span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar-pexels-alex-andrews-215-215.png">
+      <meta itemprop="name" content="Charlie (Tzu Yin)">
+      <meta itemprop="description" content="一介普通文組的學習筆記 📒">
+    </span>
+
+    <span hidden="" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="普通文組">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/while-loop-ajax/" class="post-title-link" itemprop="url">為什麼在瀏覽器環境中使用while loop執行ajax request會讓頁面陷入凍結狀態？</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-04-08 21:10:25" itemprop="dateCreated datePublished" datetime="2021-04-08T21:10:25+08:00">2021-04-08</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-04-09 14:24:28" itemprop="dateModified" datetime="2021-04-09T14:24:28+08:00">2021-04-09</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2021/while-loop-ajax/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/while-loop-ajax/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="環境"><a href="#環境" class="headerlink" title="環境"></a>環境</h2><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Google Chrome: 89.0.4389.114 (Official Build) (64-bit)</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="原始題目"><a href="#原始題目" class="headerlink" title="原始題目"></a>原始題目</h2><p>ALPHA Camp學期2-2：請向 <a target="_blank" rel="noopener" href="https://randomuser.me/">RANDOM USER GENERATOR</a> 這支API索取資料，並在瀏覽器畫面上點擊按鈕後，輸出三位「只有女性」的資料。</p>
+<h2 id="遭遇問題"><a href="#遭遇問題" class="headerlink" title="遭遇問題"></a>遭遇問題</h2><p>最初想要使用以下程式碼來過濾API回傳的資料，但會讓瀏覽器分頁陷入凍結狀態：</p>
+<script src="https://gist.github.com/tzynwang/b7049eb35ec2a9950f4c48f1fdd48c28.js"></script>
+
+
+<h2 id="問題背後的脈絡梳理"><a href="#問題背後的脈絡梳理" class="headerlink" title="問題背後的脈絡梳理"></a>問題背後的脈絡梳理</h2><p>基本上Philip Roberts的影片回答了「為什麼以上程式碼會造成瀏覽器凍結？」的問題：</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/8aGhZQkoFbQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+
+<ul>
+<li>V8（Chrome的JavaScript runtime）本身僅包含call stack與heap，V8的原始碼沒有<code>setTimeout()</code>、<code>XMLHttpRequest</code>（實現ajax的API）等內容</li>
+<li><code>setTimeout()</code>與<code>XMLHttpRequest</code>並非由ECMAScript定義，在MDN文件中，這兩個功能分別由HTML Living Standard與XMLHttpRequest Living Standard規範<ul>
+<li><code>setTimeout()</code>: <a target="_blank" rel="noopener" href="https://html.spec.whatwg.org/multipage/timers-and-user-prompts.html#dom-settimeout">HTML Living Standard</a></li>
+<li><code>XMLHttpRequest</code>: <a target="_blank" rel="noopener" href="https://xhr.spec.whatwg.org/">XMLHttpRequest Living Standard</a></li>
+</ul>
+</li>
+<li><code>setTimeout()</code>與<code>XMLHttpRequest</code>的callback function會停留在callback queue，等待stack裡面的task被清空後，這些停留在callback queue的task才會被執行</li>
+<li>瀏覽器分頁當機的原因是：我請JavaScript在user array長度沒有大於4前，不停執行<code>getFemaleUser()</code>此功能<ul>
+<li>在<code>getFemaleUser()</code>中，我使用ajax技術向API請求資料，但是，「整理取得的資料」這個task會停留在callback queue中</li>
+<li>而在stack沒有清空前，callback queue是不會被推到stack被執行的</li>
+<li>stack因為while loop的條件一直為true（整理資料的task沒有被執行的話，user array的長度是不會改變的），所以while loop會一直被執行下去</li>
+<li>在程式碼加上<code>console.log()</code>觀察實際被執行的內容，可以很明顯看出<code>axios.get()</code>以內的程式碼根本沒有被執行<script src="https://gist.github.com/tzynwang/b0f95a819bf495c771c321cfaa4ecf8e.js"></script>
+<figure class="figure--center"><img src="/2021/while-loop-ajax/ajax.png" title="因為stack裡面的任務沒有清空，callback queue裡面的task永遠不會被執行"><figcaption><p>因為stack裡面的任務沒有清空，callback queue裡面的task永遠不會被執行</p></figcaption></figure>
+
+
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="結論"><a href="#結論" class="headerlink" title="結論"></a>結論</h2><ul>
+<li>我的while loop條件是根據callback queue task來決定的，但我讓callback queue中的task永遠沒有機會被執行</li>
+<li>而JavaScript的single thread特性會讓它不停地執行stack內的任務，直到stack清空之前JavaScript不會處理其他事情，所以分頁畫面凍結了，JavaScript也永遠卡在while loop裡面</li>
+<li>Jake Archibald的演講在提到Render steps時提供了相關說明，約8:55開始：<iframe width="560" height="315" src="https://www.youtube.com/embed/cCOL7MC4Pl0?start=535" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+
+
+</li>
+</ul>
+<h2 id="此問題的解決方式"><a href="#此問題的解決方式" class="headerlink" title="此問題的解決方式"></a>此問題的解決方式</h2><ul>
+<li>直接根據<a target="_blank" rel="noopener" href="https://randomuser.me/documentation#gender">RANDOM USER GENERATOR的說明文件</a>，在請求的URL加上特定parameter過濾需求資料（女性、三位：<code>?gender=female&amp;results=3</code>）</li>
+<li>透過recursive讓<code>getFemaleUser()</code>在條件沒有被滿足的情況下再度呼叫<code>getFemaleUser()</code></li>
+</ul>
+<h2 id="補充"><a href="#補充" class="headerlink" title="補充"></a>補充</h2><script src="https://gist.github.com/tzynwang/1cf59700311f401a74042df5c76cf47f.js"></script>
+<figure class="figure--center"><img src="/2021/while-loop-ajax/setTimeout.png" title="因為stack裡面的任務沒有清空，callback queue裡面的task永遠不會被執行"><figcaption><p>因為stack裡面的任務沒有清空，callback queue裡面的task永遠不會被執行</p></figcaption></figure>
+<ul>
+<li>將<code>axios.get()</code>抽換為<code>setTimeout()</code>也會造成頁面凍結，原理與上述一致</li>
+<li><code>setTimeout()</code>的callback function（<code>arr.push("add item to array");</code>）被推到callback queue之後，<code>arr.push</code>等待stack被清空，但能讓while loop停下來的task本身就在callback queue中被stack永遠不會結束的task卡住，因此while loop永遠不會停下來<figure class="figure--center"><img src="/2021/while-loop-ajax/不要停下來.jpg"></figure>
+
+
+</li>
+</ul>
+<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://youtu.be/8aGhZQkoFbQ">What the heck is the event loop anyway? | Philip Roberts</a></li>
+<li><a target="_blank" rel="noopener" href="https://youtu.be/cCOL7MC4Pl0">Jake Archibald: In The Loop</a></li>
+<li><a target="_blank" rel="noopener" href="https://youtu.be/u1kqx6AenYw">Further Adventures of the Event Loop - Erin Zimmer</a></li>
+<li><a target="_blank" rel="noopener" href="https://pjchender.blogspot.com/2017/08/javascript-learn-event-loop-stack-queue.html">[筆記] 理解 JavaScript 中的事件循環、堆疊、佇列和併發模式（Learn event loop, stack, queue, and concurrency mode of JavaScript in depth）</a>：這篇文章內的影片全部都是Philip Roberts的演講內容，影片部分直接觀看Philip Roberts本人的演講錄影即可</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1628,114 +1777,6 @@ on <a target="_blank" rel="noopener" href="https://codepen.io">CodePen</a>.</spa
 <ul>
 <li><a target="_blank" rel="noopener" href="https://youtu.be/flf2vS0IoRs">Writing Good Alt Text - HTTP 203</a></li>
 <li><a target="_blank" rel="noopener" href="https://thoughtbot.com/blog/alt-vs-figcaption">Alt vs Figcaption</a></li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope="" itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://tzynwang.github.io/2021/github-actions-sitemap/">
-
-    <span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar-pexels-alex-andrews-215-215.png">
-      <meta itemprop="name" content="Charlie (Tzu Yin)">
-      <meta itemprop="description" content="一介普通文組的學習筆記 📒">
-    </span>
-
-    <span hidden="" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="普通文組">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/github-actions-sitemap/" class="post-title-link" itemprop="url">使用GitHub Actions自動產生sitemap.xml</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-03-09 10:54:00" itemprop="dateCreated datePublished" datetime="2021-03-09T10:54:00+08:00">2021-03-09</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-03-18 23:01:33" itemprop="dateModified" datetime="2021-03-18T23:01:33+08:00">2021-03-18</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-          <a href="/categories/git/" itemprop="url" rel="index"><span itemprop="name">git</span></a>
-        </span>
-    </span>
-
-  
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus: </span>
-    
-    <a title="disqus" href="/2021/github-actions-sitemap/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/github-actions-sitemap/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>使用GitHub Actions執行腳本，在每次透過<code>git push</code>更新網頁內容後自動產生sitemap.xml</p>
-<h2 id="版本與環境"><a href="#版本與環境" class="headerlink" title="版本與環境"></a>版本與環境</h2><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo: 5.3.0</span><br><span class="line">hexo-cli: 4.2.0</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></tbody></table></figure>
-
-<h2 id="過程記錄"><a href="#過程記錄" class="headerlink" title="過程記錄"></a>過程記錄</h2><ol>
-<li>在GitHub repository根目錄中建立資料夾<code>.github/workflows</code>，並在其中建立<code>.yml</code>格式的檔案來存放腳本</li>
-<li>腳本內容如下：<figure class="highlight yml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">Generate</span> <span class="string">xml</span> <span class="string">sitemap</span></span><br><span class="line"><span class="comment"># name會出現在Action標籤點開後，左側workflows的列表中</span></span><br><span class="line"></span><br><span class="line"><span class="attr">on:</span></span><br><span class="line">  <span class="attr">push:</span></span><br><span class="line">    <span class="attr">branches:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">main</span> </span><br><span class="line">      <span class="comment"># git push到main分支的時候，啟動以下腳本</span></span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line">  <span class="attr">sitemap_job:</span></span><br><span class="line">    <span class="attr">runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">Generate</span> <span class="string">a</span> <span class="string">sitemap</span></span><br><span class="line">    <span class="attr">steps:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Checkout</span> <span class="string">the</span> <span class="string">repo</span></span><br><span class="line">      <span class="attr">uses:</span> <span class="string">actions/checkout@v2</span></span><br><span class="line">      <span class="attr">with:</span></span><br><span class="line">        <span class="attr">fetch-depth:</span> <span class="number">0</span> </span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Generate</span> <span class="string">new</span> <span class="string">sitemap</span></span><br><span class="line">      <span class="attr">id:</span> <span class="string">sitemap</span></span><br><span class="line">      <span class="attr">uses:</span> <span class="string">cicirello/generate-sitemap@v1.6.1</span></span><br><span class="line">      <span class="attr">with:</span></span><br><span class="line">        <span class="attr">base-url-path:</span> <span class="string">https://tzynwang.github.io/action-practice/</span></span><br><span class="line">        <span class="comment"># 參考cicirello/generate-sitemap的文件，將base-url-path的值設定為要產生sitemap的URL</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Push</span> <span class="string">sitemap</span> <span class="string">to</span> <span class="string">repository</span></span><br><span class="line">    <span class="comment"># 根據cicirello/generate-sitemap文件的說明，使用者需另找方法處理透過腳本產生的sitemap.xml</span></span><br><span class="line">    <span class="comment"># 故追加一段git腳本內容，把方才在GitHub Actions VM產生出來的sitemap透過git push放到repository中</span></span><br><span class="line">      <span class="attr">run:</span> <span class="string">|</span></span><br><span class="line">        <span class="string">git</span> <span class="string">config</span> <span class="string">--global</span> <span class="string">user.name</span> <span class="string">"tzyn (GitHub Actions sitemap gen)"</span></span><br><span class="line">        <span class="string">git</span> <span class="string">config</span> <span class="string">--global</span> <span class="string">user.email</span> <span class="string">"tzyn.wang@gmail.com"</span></span><br><span class="line">        <span class="string">git</span> <span class="string">add</span> <span class="string">sitemap.xml</span></span><br><span class="line">        <span class="string">git</span> <span class="string">commit</span> <span class="string">-m</span> <span class="string">"add sitemap.xml"</span></span><br><span class="line">        <span class="string">git</span> <span class="string">push</span></span><br></pre></td></tr></tbody></table></figure></li>
-<li>在本機執行<code>git push</code>將commit內容推到GitHub上</li>
-<li>進入repository的Actions標籤，確認腳本有在執行</li>
-<li>執行完成，確認sitemap.xml也有被加到repository中</li>
-<li>在本機執行<code>git pull</code>將新產生的sitemap.xml拉本機資料夾</li>
-</ol>
-<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://github.com/cicirello/generate-sitemap#generate-sitemap">cicirello/generate-sitemap</a></li>
-<li><a target="_blank" rel="noopener" href="https://docs.github.com/en/actions/quickstart">Quickstart for GitHub Actions</a></li>
 </ul>
 
       

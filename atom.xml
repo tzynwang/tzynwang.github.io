@@ -6,7 +6,7 @@
   <link href="https://tzynwang.github.io/atom.xml" rel="self"/>
   
   <link href="https://tzynwang.github.io/"/>
-  <updated>2021-04-24T11:00:30.805Z</updated>
+  <updated>2021-05-04T14:02:33.144Z</updated>
   <id>https://tzynwang.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Alpha Camp「2-2 社群名單」技術記錄</title>
+    <link href="https://tzynwang.github.io/2021/2-2-api-social-list-note/"/>
+    <id>https://tzynwang.github.io/2021/2-2-api-social-list-note/</id>
+    <published>2021-05-04T11:59:34.000Z</published>
+    <updated>2021-05-04T14:02:33.144Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p class=&quot;codepen&quot; data-height=&quot;265&quot; data-theme-id=&quot;dark&quot; data-default-tab=&quot;js,result&quot; data-user=&quot;Charlie7779&quot; data-slug-hash=&quot;ExZJLzG&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="JavaScript" scheme="https://tzynwang.github.io/categories/JavaScript/"/>
+    
+    
+    <category term="ALPHA Camp assignment" scheme="https://tzynwang.github.io/tags/ALPHA-Camp-assignment/"/>
+    
+  </entry>
   
   <entry>
     <title>「Inside look at modern web browser」相關筆記</title>
@@ -111,32 +136,6 @@
         
         
     <summary type="html">&lt;h2 id=&quot;總結&quot;&gt;&lt;a href=&quot;#總結&quot; class=&quot;headerlink&quot; title=&quot;總結&quot;&gt;&lt;/a&gt;總結&lt;/h2&gt;&lt;p&gt;對Primitive types與Structural</summary>
-        
-      
-    
-    
-    
-    <category term="JavaScript" scheme="https://tzynwang.github.io/categories/JavaScript/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>自主練習「純手工pagination」技術記錄</title>
-    <link href="https://tzynwang.github.io/2021/vanilla-js-pagination/"/>
-    <id>https://tzynwang.github.io/2021/vanilla-js-pagination/</id>
-    <published>2021-04-15T11:29:46.000Z</published>
-    <updated>2021-04-16T06:40:15.437Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;總結&quot;&gt;&lt;a href=&quot;#總結&quot; class=&quot;headerlink&quot; title=&quot;總結&quot;&gt;&lt;/a&gt;總結&lt;/h2&gt;&lt;p&gt;練習為pagination加上JavaScript，使其可與使用者互動。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;使用到的技術&lt;ul&gt;
-&lt;li&gt;DOM</summary>
         
       
     
