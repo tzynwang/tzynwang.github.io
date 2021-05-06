@@ -29,7 +29,7 @@
 <meta property="og:description" content="總結本篇文章是關於JavaScript遍歷陣列（部分方法也可直接遍歷物件）方法的筆記。keywords: array, iterate, iteration  不會回傳新陣列的方式：for搭配length()、while搭配length()、for...in、for...of、every()、some()、forEach()、join、reduce() 會回傳一個新陣列的方式：filter()、f">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-03-27T01:37:48.000Z">
-<meta property="article:modified_time" content="2021-04-21T17:55:36.779Z">
+<meta property="article:modified_time" content="2021-05-06T02:44:17.208Z">
 <meta property="article:author" content="Charlie (Tzu Yin)">
 <meta property="article:tag" content="hexo, hexo blog, tzyn, 普通文組">
 <meta name="twitter:card" content="summary">
@@ -282,7 +282,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-04-22 01:55:36" itemprop="dateModified" datetime="2021-04-22T01:55:36+08:00">2021-04-22</time>
+        <time title="Modified: 2021-05-06 10:44:17" itemprop="dateModified" datetime="2021-05-06T10:44:17+08:00">2021-05-06</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -455,14 +455,23 @@
 <iframe height="400px" width="100%" src="https://replit.com/@Charlie7779/Arrayprototypereduce?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
 
 <ul>
-<li>雖然名稱是reduce，但通常拿來做加總計算；回傳一個值（類型：number）</li>
+<li>回傳「陣列經過<code>reduce()</code>後」的單一個值，不影響原始陣列的內容</li>
 <li><code>reduce()</code>的callback最少需要兩個參數<code>accumulator</code>與<code>currentValue</code><ul>
-<li><code>accumulator</code>：如其名稱，代表累加下來的值；負責記住callback要回傳的值</li>
-<li><code>currentValue</code>：需額外納入<code>reduce()</code>計算過程中的數字</li>
+<li><code>accumulator</code>：負責記住callback function回傳的值</li>
+<li><code>currentValue</code>：每一回遍歷的陣列元素（MDN: The current element being processed in the array.）</li>
 </ul>
 </li>
 <li><code>reduceRight()</code>則是從陣列的右側向左遍歷</li>
 </ul>
+<p>2021/5/6更新<br>應用：可篩選出一個陣列中長度最長的單字</p>
+<script src="https://gist.github.com/tzynwang/6611fe122e2923e5d22b545f084eebc3.js"></script>
+
+<p>筆記：</p>
+<ul>
+<li>letterArray中的每一個單字會依序成為<code>currentWord</code>，而當<code>currentWord.length </code>大於<code>longestWord.length</code>的時候，<code>longestWord</code>的值就會被更新為<code>currentWord</code></li>
+<li>遍歷結束後，回傳<code>longestWord</code>（該陣列中最長的單字）</li>
+</ul>
+<p>參考：<a target="_blank" rel="noopener" href="https://www.freecodecamp.org/news/three-ways-to-find-the-longest-word-in-a-string-in-javascript-a2fb04c9757c/">Find the Longest Word With the reduce() Method</a></p>
 <h2 id="會回傳新陣列"><a href="#會回傳新陣列" class="headerlink" title="會回傳新陣列"></a>會回傳新陣列</h2><h3 id="filter"><a href="#filter" class="headerlink" title="filter()"></a><code>filter()</code></h3><ul>
 <li>可遍歷陣列</li>
 <li>不可直接遍歷物件</li>
