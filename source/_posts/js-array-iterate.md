@@ -153,11 +153,21 @@ let function = (item) => console.log(item)
 
 <iframe height="400px" width="100%" src="https://replit.com/@Charlie7779/Arrayprototypereduce?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
 
-- 雖然名稱是reduce，但通常拿來做加總計算；回傳一個值（類型：number）
+- 回傳「陣列經過`reduce()`後」的單一個值，不影響原始陣列的內容
 - `reduce()`的callback最少需要兩個參數`accumulator`與`currentValue`
-    - `accumulator`：如其名稱，代表累加下來的值；負責記住callback要回傳的值
-    - `currentValue`：需額外納入`reduce()`計算過程中的數字
+    - `accumulator`：負責記住callback function回傳的值
+    - `currentValue`：每一回遍歷的陣列元素（MDN: The current element being processed in the array.）
 - `reduceRight()`則是從陣列的右側向左遍歷
+
+2021/5/6更新
+應用：可篩選出一個陣列中長度最長的單字
+<script src="https://gist.github.com/tzynwang/6611fe122e2923e5d22b545f084eebc3.js"></script>
+
+筆記：
+- letterArray中的每一個單字會依序成為`currentWord`，而當`currentWord.length `大於`longestWord.length`的時候，`longestWord`的值就會被更新為`currentWord`
+- 遍歷結束後，回傳`longestWord`（該陣列中最長的單字）
+
+參考：[Find the Longest Word With the reduce() Method](https://www.freecodecamp.org/news/three-ways-to-find-the-longest-word-in-a-string-in-javascript-a2fb04c9757c/)
 
 
 ## 會回傳新陣列
