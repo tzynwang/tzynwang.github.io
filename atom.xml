@@ -6,7 +6,7 @@
   <link href="https://tzynwang.github.io/atom.xml" rel="self"/>
   
   <link href="https://tzynwang.github.io/"/>
-  <updated>2021-05-05T07:37:31.316Z</updated>
+  <updated>2021-05-22T06:12:58.815Z</updated>
   <id>https://tzynwang.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>「git stop tracking files」相關筆記</title>
+    <link href="https://tzynwang.github.io/2021/git-remove-file-from-tracking/"/>
+    <id>https://tzynwang.github.io/2021/git-remove-file-from-tracking/</id>
+    <published>2021-05-22T05:47:48.000Z</published>
+    <updated>2021-05-22T06:12:58.815Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;總結&quot;&gt;&lt;a href=&quot;#總結&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="git" scheme="https://tzynwang.github.io/categories/git/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>Alpha Camp「2-1 電影清單之按讚與刪除」技術記錄</title>
@@ -108,42 +131,6 @@
     
     
     <category term="CSS" scheme="https://tzynwang.github.io/categories/CSS/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>ALPHA Camp 2-1 S1作業：技術筆記</title>
-    <link href="https://tzynwang.github.io/2021/S1-note/"/>
-    <id>https://tzynwang.github.io/2021/S1-note/</id>
-    <published>2021-04-20T01:42:02.000Z</published>
-    <updated>2021-04-21T17:55:36.779Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;2021/4/21更新：&lt;br&gt;經同學提醒&lt;code&gt;replace()&lt;/code&gt;只會處理目標字串中的「第一組」目標，亦即：當我要處理的字串中包含重複的字母時，使用&lt;code&gt;replace()&lt;/code&gt;來處理字串可能會導致非預期結果（因為&lt;code&gt;replace()&lt;/code&gt;只會處理「符合目標的第一個字母」），故追加新解法。&lt;/p&gt;
-&lt;h2 id=&quot;總結&quot;&gt;&lt;a href=&quot;#總結&quot; class=&quot;headerlink&quot; title=&quot;總結&quot;&gt;&lt;/a&gt;總結&lt;/h2&gt;&lt;p&gt;記錄2021年ALPHA Camp學期2-1（四月班）第一週課程「JavaScript核心觀念」作業中有使用到的技術與相關筆記。&lt;/p&gt;
-&lt;p&gt;使用到的&lt;code&gt;methods&lt;/code&gt;一覽：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/floor&quot;&gt;Math.floor()&lt;/a&gt;：取最大整數&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random&quot;&gt;Math.random()&lt;/a&gt;：注意&lt;code&gt;Math.random() * X&lt;/code&gt;的範圍是&lt;code&gt;0&lt;/code&gt;到&lt;code&gt;X - 1&lt;/code&gt;（不包含&lt;code&gt;X&lt;/code&gt;本身）&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/fromCharCode&quot;&gt;String.fromCharCode()&lt;/a&gt;：根據傳入Unicode回傳相對應的string&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/padStart&quot;&gt;String.prototype.padStart()&lt;/a&gt;：補位用&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace&quot;&gt;String.prototype.replace()&lt;/a&gt;：將字串中符合比對的段落更換為指定內容後，回傳新字串&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/charAt&quot;&gt;String.prototype.charAt()&lt;/a&gt;：回傳位在指定index位置的字串&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/substring&quot;&gt;String.prototype.substring()&lt;/a&gt;：回傳指定範圍內的字串&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/indexOf&quot;&gt;String.prototype.indexOf()&lt;/a&gt;：回傳第一個符合搜尋目標的index&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice&quot;&gt;Array.prototype.splice()&lt;/a&gt;：在本次作業情境中，被用來刪除陣列內容（沒有執行插入）&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes&quot;&gt;Array.prototype.includes()&lt;/a&gt;：檢查陣列中是否有指定內容&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter&quot;&gt;Array.prototype.filter()&lt;/a&gt;：將所有傳入的內容進行篩選動作，回傳符合篩選條件的內容&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf&quot;&gt;Array.prototype.indexOf()&lt;/a&gt;：回傳第一個符合搜尋目標的index&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach&quot;&gt;Array.prototype.forEach()&lt;/a&gt;：對陣列中的每一個項目執行傳入的function&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push&quot;&gt;Array.prototype.push()&lt;/a&gt;：新增一內容到陣列最尾端&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/pop&quot;&gt;Array.prototype.pop()&lt;/a&gt;：移除陣列「最末端」的「一個」內容&lt;/li&gt;
-&lt;/ul&gt;</summary>
-    
-    
-    
-    <category term="JavaScript" scheme="https://tzynwang.github.io/categories/JavaScript/"/>
     
     
   </entry>
