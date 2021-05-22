@@ -24,7 +24,7 @@ tags:
 ### controller.updateRating()
 監聽`<div id="dataPanel">`的點擊事件，若使用者點選到「讚」或「爛」按鈕時，透過`HTMLTableRowElement.rowIndex`來取得點擊事件發生在`<table>`中的哪一行`row`上（可從`rowIndex`推斷使用者點選的是哪一部電影），進而更新`data.movies`中相對應電影的分數。
 
-其他解法：也可直接在「讚」或「爛」按鈕上使用`dataset`0賦予電影的`id`，點擊事件發生後就可透過`data.id`來取得點擊事件發生在哪一部電影身上
+其他解法：也可直接在「讚」或「爛」按鈕上使用`dataset`賦予電影的`id`，點擊事件發生後就可透過`data.id`來取得點擊事件發生在哪一部電影身上
 
 ### controller.updateDeleteStatus()
 使用者點選表格右端的X按鈕刪除電影後，透過`controller.updateDeleteStatus()`將被點擊電影的`deleteFlag`設定為`true`，用意是：在使用者進行介面語系切換後，`deleteFlag`為`true`的電影就不應該繼續出現在畫面上（`view.generateTableContents()`中會透過`filter()`篩選出`deleteFlag`不為`true`的電影）
