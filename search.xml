@@ -17,7 +17,7 @@
 <li>i18n（實作英文與中文介面的切換）</li>
 </ul>
 <h2 id="筆記"><a href="#筆記" class="headerlink" title="筆記"></a>筆記</h2><h3 id="controller-updateRating"><a href="#controller-updateRating" class="headerlink" title="controller.updateRating()"></a>controller.updateRating()</h3><p>監聽<code>&lt;div id=&quot;dataPanel&quot;&gt;</code>的點擊事件，若使用者點選到「讚」或「爛」按鈕時，透過<code>HTMLTableRowElement.rowIndex</code>來取得點擊事件發生在<code>&lt;table&gt;</code>中的哪一行<code>row</code>上（可從<code>rowIndex</code>推斷使用者點選的是哪一部電影），進而更新<code>data.movies</code>中相對應電影的分數。</p>
-<p>其他解法：也可直接在「讚」或「爛」按鈕上使用<code>dataset</code>0賦予電影的<code>id</code>，點擊事件發生後就可透過<code>data.id</code>來取得點擊事件發生在哪一部電影身上</p>
+<p>其他解法：也可直接在「讚」或「爛」按鈕上使用<code>dataset</code>賦予電影的<code>id</code>，點擊事件發生後就可透過<code>data.id</code>來取得點擊事件發生在哪一部電影身上</p>
 <h3 id="controller-updateDeleteStatus"><a href="#controller-updateDeleteStatus" class="headerlink" title="controller.updateDeleteStatus()"></a>controller.updateDeleteStatus()</h3><p>使用者點選表格右端的X按鈕刪除電影後，透過<code>controller.updateDeleteStatus()</code>將被點擊電影的<code>deleteFlag</code>設定為<code>true</code>，用意是：在使用者進行介面語系切換後，<code>deleteFlag</code>為<code>true</code>的電影就不應該繼續出現在畫面上（<code>view.generateTableContents()</code>中會透過<code>filter()</code>篩選出<code>deleteFlag</code>不為<code>true</code>的電影）</p>
 <h3 id="view-fontSizeToggle"><a href="#view-fontSizeToggle" class="headerlink" title="view.fontSizeToggle()"></a>view.fontSizeToggle()</h3><p>筆記：切換顯示語言後，發覺儘管font-size數值相同，英文字體的尺寸在視覺上比中文字體小不少，故使用<code>view.fontSizeToggle()</code>來根據當下顯示的語言調整畫面中的字體大小</p>
 <h3 id="view-generatePosterModal"><a href="#view-generatePosterModal" class="headerlink" title="view.generatePosterModal()"></a>view.generatePosterModal()</h3><p>筆記：過去的作業多半是先將空的modal寫進HTML，待點擊事件發生後再使用JavaScript更新modal中的內容；本次改用「點擊事件發生後，再根據被點擊的目標產生相對應的modal（內容）」，相較以前作法，點擊後及時產生modal的好處是使用者不會看到一閃而逝的舊內容。</p>
@@ -1109,8 +1109,9 @@ on <a href="https://codepen.io">CodePen</a>.</span>
 </ol>
 <h3 id="補充"><a href="#補充" class="headerlink" title="補充"></a>補充</h3><p>在部分討論串中看到<code>git rm -r --cached &lt;filename&gt;</code>的指令，其中的<code>-r</code>意義如下：</p>
 <blockquote>
-<p>Allow <strong>recursive removal</strong> when a leading directory name is given.<br>出處：<a href="https://git-scm.com/docs/git-rm#Documentation/git-rm.txt--r">git official documentation: rm</a></p>
+<p>Allow <strong>recursive removal</strong> when a leading directory name is given.</p>
 </blockquote>
+<p>出處：<a href="https://git-scm.com/docs/git-rm#Documentation/git-rm.txt--r">git official documentation: rm</a></p>
 <h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
 <li><a href="https://stackoverflow.com/questions/24290358/remove-a-folder-from-git-tracking/">StackOverFlow: Remove a folder from git tracking</a></li>
 <li><a href="https://git-scm.com/docs/gitignore/2.22.0">git official documentation: gitignore</a></li>

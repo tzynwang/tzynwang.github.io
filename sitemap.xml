@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://tzynwang.github.io/2021/2-1-movie-list-i18n-note/</loc>
+    
+    <lastmod>2021-05-22</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://tzynwang.github.io/2021/git-remove-file-from-tracking/</loc>
     
     <lastmod>2021-05-22</lastmod>
@@ -12,13 +19,6 @@
     <loc>https://tzynwang.github.io/2021/js-array-iterate/</loc>
     
     <lastmod>2021-05-06</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://tzynwang.github.io/2021/2-1-movie-list-i18n-note/</loc>
-    
-    <lastmod>2021-05-05</lastmod>
     
   </url>
   
