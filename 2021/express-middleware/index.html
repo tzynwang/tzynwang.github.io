@@ -21,23 +21,23 @@
     var NexT = window.NexT || {};
     var CONFIG = {"hostname":"tzynwang.github.io","root":"/","images":"/images","scheme":"Pisces","version":"8.2.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqus","storage":true,"lazyload":false,"nav":null,"activeClass":"disqus"},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":"enable","trigger":"auto","top_n_per_article":-1,"unescape":false,"preload":false}};
   </script>
-<meta name="description" content="原始問題setTimeout()傳入「與函式一致的字串」作為參數時，為何輸出的結果與「直接傳入函式」不同？ 第一組程式碼： 123456// 傳入與函式內容一樣的字串作為參數setTimeout(console.log(&amp;#x27;first&amp;#x27;), 0)console.log(&amp;#x27;second&amp;#x27;);// 輸出結果：// >> first// >>">
+<meta name="description" content="總結在本作業中實作的相關功能：  透過Express middleware偵測發送給localhost:3000的請求 將每一筆對localhost:3000的請求（request）時間、方法、路由與回應時間輸出到終端上；形式如：2021-05-23 13:00:20 | GET from / | total time: 117ms 將以上記錄寫入純文字檔案中，並使用者可下載此份檔案 專案GitH">
 <meta property="og:type" content="article">
-<meta property="og:title" content="「setTimeout() difference between parameters as string or function」相關筆記">
-<meta property="og:url" content="https://tzynwang.github.io/2021/settimeout-args/index.html">
+<meta property="og:title" content="Alpha Camp「2-3 middleware實作練習」技術記錄">
+<meta property="og:url" content="https://tzynwang.github.io/2021/express-middleware/index.html">
 <meta property="og:site_name" content="普通文組">
-<meta property="og:description" content="原始問題setTimeout()傳入「與函式一致的字串」作為參數時，為何輸出的結果與「直接傳入函式」不同？ 第一組程式碼： 123456// 傳入與函式內容一樣的字串作為參數setTimeout(console.log(&amp;#x27;first&amp;#x27;), 0)console.log(&amp;#x27;second&amp;#x27;);// 輸出結果：// >> first// >>">
+<meta property="og:description" content="總結在本作業中實作的相關功能：  透過Express middleware偵測發送給localhost:3000的請求 將每一筆對localhost:3000的請求（request）時間、方法、路由與回應時間輸出到終端上；形式如：2021-05-23 13:00:20 | GET from / | total time: 117ms 將以上記錄寫入純文字檔案中，並使用者可下載此份檔案 專案GitH">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://tzynwang.github.io/2021/settimeout-args/JS-in-browser.png">
-<meta property="article:published_time" content="2021-04-12T12:27:31.000Z">
-<meta property="article:modified_time" content="2021-04-13T10:15:19.939Z">
+<meta property="og:image" content="https://tzynwang.github.io/2021/express-middleware/assignment-screenshot.png">
+<meta property="article:published_time" content="2021-05-23T04:53:23.000Z">
+<meta property="article:modified_time" content="2021-05-23T06:57:54.564Z">
 <meta property="article:author" content="Charlie (Tzu Yin)">
 <meta property="article:tag" content="hexo, hexo blog, tzyn, 普通文組">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://tzynwang.github.io/2021/settimeout-args/JS-in-browser.png">
+<meta name="twitter:image" content="https://tzynwang.github.io/2021/express-middleware/assignment-screenshot.png">
 
 
-<link rel="canonical" href="https://tzynwang.github.io/2021/settimeout-args/">
+<link rel="canonical" href="https://tzynwang.github.io/2021/express-middleware/">
 
 
 <script class="page-configurations">
@@ -49,7 +49,7 @@
     lang   : 'en'
   };
 </script>
-<title>「setTimeout() difference between parameters as string or function」相關筆記 | 普通文組</title>
+<title>Alpha Camp「2-3 middleware實作練習」技術記錄 | 普通文組</title>
   
 
 
@@ -187,7 +187,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8E%9F%E5%A7%8B%E5%95%8F%E9%A1%8C"><span class="nav-number">1.</span> <span class="nav-text">原始問題</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E6%9E%90"><span class="nav-number">1.1.</span> <span class="nav-text">解析</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BB%B6%E4%BC%B8%E5%95%8F%E9%A1%8C%EF%BC%9A%E5%9C%A8%E8%BF%B4%E5%9C%88%E5%85%A7"><span class="nav-number">2.</span> <span class="nav-text">延伸問題：在迴圈內</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E6%9E%90-1"><span class="nav-number">2.1.</span> <span class="nav-text">解析</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%83%E8%80%83%E6%96%87%E4%BB%B6"><span class="nav-number">3.</span> <span class="nav-text">參考文件</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B8%BD%E7%B5%90"><span class="nav-number">1.</span> <span class="nav-text">總結</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%92%B0%E5%A2%83"><span class="nav-number">2.</span> <span class="nav-text">環境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AD%86%E8%A8%98"><span class="nav-number">3.</span> <span class="nav-text">筆記</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%88%E6%A1%88%E7%B5%90%E6%A7%8B"><span class="nav-number">3.1.</span> <span class="nav-text">專案結構</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#app-js%E5%85%A7%E5%AE%B9"><span class="nav-number">3.2.</span> <span class="nav-text">app.js內容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#scripts-logRequest-js%E5%85%A7%E5%AE%B9"><span class="nav-number">3.3.</span> <span class="nav-text">scripts/logRequest.js內容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#scripts-saveToFile-js%E5%85%A7%E5%AE%B9"><span class="nav-number">3.4.</span> <span class="nav-text">scripts/saveToFile.js內容</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%83%E8%80%83%E6%96%87%E4%BB%B6"><span class="nav-number">4.</span> <span class="nav-text">參考文件</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -253,7 +253,7 @@
   
 
   <article itemscope="" itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://tzynwang.github.io/2021/settimeout-args/">
+    <link itemprop="mainEntityOfPage" href="https://tzynwang.github.io/2021/express-middleware/">
 
     <span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar-pexels-alex-andrews-215-215.png">
@@ -266,7 +266,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          「setTimeout() difference between parameters as string or function」相關筆記
+          Alpha Camp「2-3 middleware實作練習」技術記錄
         </h1>
 
         <div class="post-meta-container">
@@ -276,23 +276,17 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
+      
 
-      <time title="Created: 2021-04-12 20:27:31" itemprop="dateCreated datePublished" datetime="2021-04-12T20:27:31+08:00">2021-04-12</time>
+      <time title="Created: 2021-05-23 12:53:23 / Modified: 14:57:54" itemprop="dateCreated datePublished" datetime="2021-05-23T12:53:23+08:00">2021-05-23</time>
     </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-04-13 18:15:19" itemprop="dateModified" datetime="2021-04-13T18:15:19+08:00">2021-04-13</time>
-      </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
       </span>
       <span class="post-meta-item-text">In</span>
         <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+          <a href="/categories/Express/" itemprop="url" rel="index"><span itemprop="name">Express</span></a>
         </span>
     </span>
 
@@ -305,8 +299,8 @@
       </span>
       <span class="post-meta-item-text">Disqus: </span>
     
-    <a title="disqus" href="/2021/settimeout-args/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/settimeout-args/" itemprop="commentCount"></span>
+    <a title="disqus" href="/2021/express-middleware/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/express-middleware/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -320,57 +314,74 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h2 id="原始問題"><a href="#原始問題" class="headerlink" title="原始問題"></a>原始問題</h2><p><code>setTimeout()</code>傳入「與函式一致的字串」作為參數時，為何輸出的結果與「直接傳入函式」不同？</p>
-<p>第一組程式碼：</p>
-<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 傳入與函式內容一樣的字串作為參數</span></span><br><span class="line"><span class="built_in">setTimeout</span>(<span class="built_in">console</span>.log(<span class="string">'first'</span>), <span class="number">0</span>)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'second'</span>);</span><br><span class="line"><span class="comment">// 輸出結果：</span></span><br><span class="line"><span class="comment">// &gt;&gt; first</span></span><br><span class="line"><span class="comment">// &gt;&gt; second</span></span><br></pre></td></tr></tbody></table></figure>
-<p>第二組程式碼：</p>
-<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 直接傳入函式作為參數</span></span><br><span class="line"><span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> <span class="built_in">console</span>.log(<span class="string">'first'</span>), <span class="number">0</span>)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'second'</span>);</span><br><span class="line"><span class="comment">// 輸出結果：</span></span><br><span class="line"><span class="comment">// &gt;&gt; second</span></span><br><span class="line"><span class="comment">// &gt;&gt; first</span></span><br></pre></td></tr></tbody></table></figure>
-<h3 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h3><ul>
-<li>第一組程式碼的<code>console.log('first')</code>沒有被視為函式，而是被視為一組字串，此組字串在編譯後會被執行</li>
-<li>MDN（說明頁面中稱之為<code>code</code>）對於字串參數的說明：<code>setTimeout()</code> allows you to include a string, which is compiled and executed when the timer expires.</li>
-<li>第一組程式碼實際上做的事情：<ol>
-<li><code>setTimeout()</code>沒有收到任何函式作為參數，沒有任何函式被延遲執行</li>
-<li><code>setTimeout()</code>內的<code>console.log('first')</code>被執行，輸出<code>first</code></li>
-<li><code>setTimeout()</code>收到的是「執行<code>console.log('first')</code>後回傳的值」，也就是<code>undefined</code></li>
-<li><code>console.log('second')</code>被執行，輸出<code>second</code></li>
-</ol>
-</li>
-<li>第二組程式碼實際上做的事情：<ol>
-<li><code>setTimeout()</code>收到一組匿名函式，該匿名函式被延後執行</li>
-<li><code>console.log('second')</code>被執行，輸出<code>second</code></li>
-<li>call stack已經沒有其他任務，被<code>setTimeout()</code>延後的匿名函式（<code>console.log('first')</code>）此時可以執行了，輸出<code>first</code>到console上</li>
-</ol>
+        <h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>在本作業中實作的相關功能：</p>
+<ul>
+<li>透過Express middleware偵測發送給<code>localhost:3000</code>的請求</li>
+<li>將每一筆對<code>localhost:3000</code>的請求（request）時間、方法、路由與回應時間輸出到終端上；形式如：<code>2021-05-23 13:00:20 | GET from / | total time: 117ms</code></li>
+<li>將以上記錄寫入純文字檔案中，並使用者可下載此份檔案</li>
+<li>專案GitHub：<a target="_blank" rel="noopener" href="https://github.com/tzynwang/ac_assignment_2-3_middleware#readme">tzynwang/ac_assignment_2-3_middleware</a></li>
+</ul>
+<figure class="figure--center"><img src="/2021/express-middleware/assignment-screenshot.png" title="操作畫面截圖"><figcaption><p>操作畫面截圖</p></figcaption></figure>
+
+<h2 id="環境"><a href="#環境" class="headerlink" title="環境"></a>環境</h2><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">node: 12.20.2</span><br><span class="line">express: 4.17.1</span><br><span class="line">express-handlebars: 5.3.2</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="筆記"><a href="#筆記" class="headerlink" title="筆記"></a>筆記</h2><h3 id="專案結構"><a href="#專案結構" class="headerlink" title="專案結構"></a>專案結構</h3><figure class="highlight text"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">├─ requestLogs</span><br><span class="line">|   └─ requestLogs.txt</span><br><span class="line">├─ scripts</span><br><span class="line">|   ├─ logRequest.js</span><br><span class="line">|   └─ saveToFile.js</span><br><span class="line">├─ views</span><br><span class="line">|   ├─ layouts</span><br><span class="line">|   |  └─ main.handlebars</span><br><span class="line">|   └─ index.handlebars</span><br><span class="line">└─ app.js</span><br></pre></td></tr></tbody></table></figure>
+<ul>
+<li><code>requestLogs/requestLogs.txt</code>：記錄每一次請求的文字檔案</li>
+<li><code>scripts/logRequest.js</code>：記錄每一次請求的日期、時間、方法與路由，除了輸出到終端外，也會呼叫<code>saveToFile()</code>來將以上內容寫入檔案中</li>
+<li><code>scripts/saveToFile.js</code>：負責寫入檔案的動作</li>
+<li><code>views</code>資料夾：提供瀏覽器介面來讓使用者與此app互動</li>
+<li><code>app.js</code>：載入middleware，並根據路由給予不同的回應</li>
+</ul>
+<h3 id="app-js內容"><a href="#app-js內容" class="headerlink" title="app.js內容"></a>app.js內容</h3><script src="https://gist.github.com/tzynwang/427b059b4444ac99377d9fda7afe0ed3.js"></script>
+
+<p>第11行：Application-level middleware（app層級的middleware）</p>
+<ul>
+<li>The function is executed every time the app receives a request (when middleware isn’t mounted with any path).</li>
+<li>出處：<a target="_blank" rel="noopener" href="http://expressjs.com/en/guide/using-middleware.html#middleware.application">Express official document: Application-level middleware</a></li>
+<li>宣告<code>app.use(logRequest)</code>讓所有的請求都會經過該middleware</li>
+</ul>
+<p>第47-54行：下載功能（<code>app.post('/download', () =&gt; {...})</code>）</p>
+<ul>
+<li>48行：指定欲下載的檔案的路徑</li>
+<li>49行：取得當下時間</li>
+<li>50行：透過<code>.toISOString()</code>將Date物件轉換為字串，再使用<code>.slice(0, 10)</code>取出日期部分</li>
+<li>51行：使用<code>.toLocaleTimeString()</code>來取timeStart的時間部分，因為想要取24小時制的時間，故<code>option</code>部分加上<code>hour12: false</code>指定輸出24小時制的時間；參考<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleTimeString#using_options">MDN: Date.prototype.toLocaleTimeString() – Using options</a>；最後搭配<code>.split(':').join('')</code>將時間字串從<code>HH:MM:SS</code>的格式轉為<code>HHMMSS</code></li>
+<li>52行：宣告檔案名稱格式</li>
+<li>53行：<code>res.download()</code> 第一個變數為檔案路徑，第二個變數為檔案名稱；可參考<a target="_blank" rel="noopener" href="http://expressjs.com/en/api.html#res.download">Express official document: res.download()</a></li>
+</ul>
+<h3 id="scripts-logRequest-js內容"><a href="#scripts-logRequest-js內容" class="headerlink" title="scripts/logRequest.js內容"></a>scripts/logRequest.js內容</h3><script src="https://gist.github.com/tzynwang/84d5282f68abfd5e60aa36d94fbe84b7.js"></script>
+
+<p>第13行：<code>res.locals.logs = {...}</code></p>
+<ul>
+<li>路由只接受<code>res</code>或<code>req</code>這兩種參數，無法透過middleware的<code>next()</code>來傳遞變數</li>
+<li>將變數賦予<code>res.locals</code>後，即可在每一個路由中透過<code>res.locals</code>取出需要的值；相關概念的說明可參考以下影片（9:25開始相關段落）<iframe width="560" height="315" src="https://www.youtube.com/embed/lY6icfhap2o?start=565" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+
 </li>
 </ul>
-<h2 id="延伸問題：在迴圈內"><a href="#延伸問題：在迴圈內" class="headerlink" title="延伸問題：在迴圈內"></a>延伸問題：在迴圈內</h2><p>第三組程式碼：</p>
-<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">2</span>; i++) {</span><br><span class="line">    <span class="built_in">setTimeout</span>(<span class="built_in">console</span>.log(i))</span><br><span class="line">}</span><br><span class="line"><span class="comment">// 輸出結果：</span></span><br><span class="line"><span class="comment">// &gt;&gt; 0</span></span><br><span class="line"><span class="comment">// &gt;&gt; 1</span></span><br><span class="line"><span class="comment">// &gt;&gt; 39607 (timeoutID) (在DevTool執行才會有這行輸出)</span></span><br><span class="line"><span class="comment">// 在Node.js環境執行此段程式碼會回傳TypeError : Callback must be a function. Received undefined</span></span><br></pre></td></tr></tbody></table></figure>
-<p>第四組程式碼：</p>
-<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">2</span>; i++) {</span><br><span class="line">    <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> <span class="built_in">console</span>.log(i))</span><br><span class="line">}</span><br><span class="line"><span class="comment">// 輸出結果：</span></span><br><span class="line"><span class="comment">// &gt;&gt; 39670 (timeoutID) (在DevTool執行才會有這行輸出，以Node.js執行不會有這行)</span></span><br><span class="line"><span class="comment">// &gt;&gt; 2</span></span><br><span class="line"><span class="comment">// &gt;&gt; 2</span></span><br></pre></td></tr></tbody></table></figure>
-<h3 id="解析-1"><a href="#解析-1" class="headerlink" title="解析"></a>解析</h3><ul>
-<li>第三組程式碼實際上做的事情：<ol>
-<li>i為0，迴圈第一次執行，<code>console.log(i)</code>為字串參數，執行後輸出i</li>
-<li>i增加為1，迴圈第二次執行，<code>console.log(i)</code>為字串參數，執行後輸出i</li>
-<li>i增加為2，迴圈條件不成立，迴圈停止</li>
-</ol>
-</li>
-<li>第四組程式碼實際上做的事情：<ol>
-<li>i為0，迴圈第一次執行，函式<code>console.log(i)</code>被延後，停在callback queue中等待call stack清空</li>
-<li>i增加為1，迴圈第二次執行，函式<code>console.log(i)</code>被延後，停在callback queue中等待call stack清空</li>
-<li>i增加為2，迴圈條件不成立，迴圈停止</li>
-<li>call stack已空，輪到callback queue中的callback function被執行</li>
-<li>i為2，迴圈第一次執行時被延後的<code>console.log(i)</code>輸出i</li>
-<li>i為2，迴圈第二次執行時被延後的<code>console.log(i)</code>輸出i</li>
-</ol>
-</li>
+<p>第14行：<code>res.on('finish')</code>或<code>res.on('close')</code></p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://nodejs.org/api/http.html#http_event_finish">Event finish</a>: Emitted <strong>when the response has been sent</strong>. More specifically, this event is emitted when the last segment of the response headers and body have been handed off to the operating system for transmission over the network. <strong>It does not imply that the client has received anything yet.</strong> 送出回應後即觸發，不考慮客戶端是否真的有收到回應</li>
+<li><a target="_blank" rel="noopener" href="https://nodejs.org/api/http.html#http_event_close_1">Event close</a>: Indicates that the <strong>response is completed</strong>, or its underlying connection was terminated prematurely (before the response completion).</li>
+<li>如果只是為計算「伺服器收到請求到發出回應」的時間的話，使用<code>res.on('finish')</code>即可</li>
 </ul>
-<figure class="figure--center"><img src="/2021/settimeout-args/JS-in-browser.png" title="瀏覽器環境圖，取自：How JavaScript works: an overview of the engine, the runtime, and the call stack"><figcaption><p>瀏覽器環境圖，取自：How JavaScript works: an overview of the engine, the runtime, and the call stack</p></figcaption></figure>
+<h3 id="scripts-saveToFile-js內容"><a href="#scripts-saveToFile-js內容" class="headerlink" title="scripts/saveToFile.js內容"></a>scripts/saveToFile.js內容</h3><script src="https://gist.github.com/tzynwang/15a3ac5e5ff573117c8a8070109adc54.js"></script>
 
-
+<ul>
+<li>第4行：<code>fs.appendFile()</code>使用方式可參考：<a target="_blank" rel="noopener" href="https://nodejs.org/docs/latest-v12.x/api/fs.html#fs_fs_appendfile_path_data_options_callback">Node.js: fs.appendFile(path, data[, options], callback)</a></li>
+</ul>
 <h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/54259645/javascript-code-executes-differently-for-settimeout-when-a-function-is-passed-as">Javascript code executes differently for setTimeout when a function is passed as argument</a></li>
-<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setTimeout">MDN: WindowOrWorkerGlobalScope.setTimeout()</a></li>
-<li><a target="_blank" rel="noopener" href="https://blog.sessionstack.com/how-does-javascript-actually-work-part-1-b0bacc073cf">How JavaScript works: an overview of the engine, the runtime, and the call stack</a></li>
-<li><a target="_blank" rel="noopener" href="https://youtu.be/Nzokr6Boeaw">JavaScript for-loops are… complicated - HTTP203</a></li>
+<li>Express official document: <ul>
+<li><a target="_blank" rel="noopener" href="http://expressjs.com/en/api.html#res.download">res.download()</a></li>
+<li><a target="_blank" rel="noopener" href="http://expressjs.com/en/api.html#res.locals">res.locals</a></li>
+</ul>
+</li>
+<li>StackOverFlow:<ul>
+<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/7288814/download-a-file-from-nodejs-server-using-express">Download a file from NodeJS Server using Express</a></li>
+<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/38273555/what-events-should-i-handle-in-express-response-stream-object-to-handle-when-t">What events should I handle in express response (stream) object to handle when the response finishes?</a></li>
+<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/19793723/can-i-send-data-via-express-next-function">Can I send data via express next() function?</a></li>
+<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/347551/what-tool-to-use-to-draw-file-tree-diagram">What tool to use to draw file tree diagram</a>：Windows系統直接在終端輸入tree就可以產生資料夾的樹狀結構資料了，不用安裝其他工具</li>
+</ul>
+</li>
 </ul>
 
     </div>
@@ -385,14 +396,11 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2021/array-mutation/" rel="prev" title="為什麼可以修改使用const宣告的陣列（或物件）的內容？">
-                  <i class="fa fa-chevron-left"></i> 為什麼可以修改使用const宣告的陣列（或物件）的內容？
+                <a href="/2021/git-remove-file-from-tracking/" rel="prev" title="「git stop tracking files」相關筆記">
+                  <i class="fa fa-chevron-left"></i> 「git stop tracking files」相關筆記
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2021/cross-origin-resource-sharing/" rel="next" title="「X-Frame-Options、Same-origin policy、Cross-Origin Resource Sharing」相關筆記">
-                  「X-Frame-Options、Same-origin policy、Cross-Origin Resource Sharing」相關筆記 <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
     </footer>
@@ -487,9 +495,9 @@
 ;
 
   var disqus_config = function() {
-    this.page.url = "https://tzynwang.github.io/2021/settimeout-args/";
-    this.page.identifier = "2021/settimeout-args/";
-    this.page.title = "「setTimeout() difference between parameters as string or function」相關筆記";
+    this.page.url = "https://tzynwang.github.io/2021/express-middleware/";
+    this.page.identifier = "2021/express-middleware/";
+    this.page.title = "Alpha Camp「2-3 middleware實作練習」技術記錄";
     };
   NexT.utils.loadComments('#disqus_thread', () => {
     if (window.DISQUS) {

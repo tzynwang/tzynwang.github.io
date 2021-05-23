@@ -197,14 +197,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">39</span>
+          <span class="site-state-item-count">40</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">12</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
@@ -238,6 +238,162 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope="" itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tzynwang.github.io/2021/express-middleware/">
+
+    <span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar-pexels-alex-andrews-215-215.png">
+      <meta itemprop="name" content="Charlie (Tzu Yin)">
+      <meta itemprop="description" content="一介普通文組的學習筆記 📒">
+    </span>
+
+    <span hidden="" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="普通文組">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/express-middleware/" class="post-title-link" itemprop="url">Alpha Camp「2-3 middleware實作練習」技術記錄</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-05-23 12:53:23 / Modified: 14:57:54" itemprop="dateCreated datePublished" datetime="2021-05-23T12:53:23+08:00">2021-05-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+          <a href="/categories/Express/" itemprop="url" rel="index"><span itemprop="name">Express</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2021/express-middleware/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/express-middleware/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>在本作業中實作的相關功能：</p>
+<ul>
+<li>透過Express middleware偵測發送給<code>localhost:3000</code>的請求</li>
+<li>將每一筆對<code>localhost:3000</code>的請求（request）時間、方法、路由與回應時間輸出到終端上；形式如：<code>2021-05-23 13:00:20 | GET from / | total time: 117ms</code></li>
+<li>將以上記錄寫入純文字檔案中，並使用者可下載此份檔案</li>
+<li>專案GitHub：<a target="_blank" rel="noopener" href="https://github.com/tzynwang/ac_assignment_2-3_middleware#readme">tzynwang/ac_assignment_2-3_middleware</a></li>
+</ul>
+<figure class="figure--center"><img src="/2021/express-middleware/assignment-screenshot.png" title="操作畫面截圖"><figcaption><p>操作畫面截圖</p></figcaption></figure>
+
+<h2 id="環境"><a href="#環境" class="headerlink" title="環境"></a>環境</h2><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">node: 12.20.2</span><br><span class="line">express: 4.17.1</span><br><span class="line">express-handlebars: 5.3.2</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="筆記"><a href="#筆記" class="headerlink" title="筆記"></a>筆記</h2><h3 id="專案結構"><a href="#專案結構" class="headerlink" title="專案結構"></a>專案結構</h3><figure class="highlight text"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">├─ requestLogs</span><br><span class="line">|   └─ requestLogs.txt</span><br><span class="line">├─ scripts</span><br><span class="line">|   ├─ logRequest.js</span><br><span class="line">|   └─ saveToFile.js</span><br><span class="line">├─ views</span><br><span class="line">|   ├─ layouts</span><br><span class="line">|   |  └─ main.handlebars</span><br><span class="line">|   └─ index.handlebars</span><br><span class="line">└─ app.js</span><br></pre></td></tr></tbody></table></figure>
+<ul>
+<li><code>requestLogs/requestLogs.txt</code>：記錄每一次請求的文字檔案</li>
+<li><code>scripts/logRequest.js</code>：記錄每一次請求的日期、時間、方法與路由，除了輸出到終端外，也會呼叫<code>saveToFile()</code>來將以上內容寫入檔案中</li>
+<li><code>scripts/saveToFile.js</code>：負責寫入檔案的動作</li>
+<li><code>views</code>資料夾：提供瀏覽器介面來讓使用者與此app互動</li>
+<li><code>app.js</code>：載入middleware，並根據路由給予不同的回應</li>
+</ul>
+<h3 id="app-js內容"><a href="#app-js內容" class="headerlink" title="app.js內容"></a>app.js內容</h3><script src="https://gist.github.com/tzynwang/427b059b4444ac99377d9fda7afe0ed3.js"></script>
+
+<p>第11行：Application-level middleware（app層級的middleware）</p>
+<ul>
+<li>The function is executed every time the app receives a request (when middleware isn’t mounted with any path).</li>
+<li>出處：<a target="_blank" rel="noopener" href="http://expressjs.com/en/guide/using-middleware.html#middleware.application">Express official document: Application-level middleware</a></li>
+<li>宣告<code>app.use(logRequest)</code>讓所有的請求都會經過該middleware</li>
+</ul>
+<p>第47-54行：下載功能（<code>app.post('/download', () =&gt; {...})</code>）</p>
+<ul>
+<li>48行：指定欲下載的檔案的路徑</li>
+<li>49行：取得當下時間</li>
+<li>50行：透過<code>.toISOString()</code>將Date物件轉換為字串，再使用<code>.slice(0, 10)</code>取出日期部分</li>
+<li>51行：使用<code>.toLocaleTimeString()</code>來取timeStart的時間部分，因為想要取24小時制的時間，故<code>option</code>部分加上<code>hour12: false</code>指定輸出24小時制的時間；參考<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleTimeString#using_options">MDN: Date.prototype.toLocaleTimeString() – Using options</a>；最後搭配<code>.split(':').join('')</code>將時間字串從<code>HH:MM:SS</code>的格式轉為<code>HHMMSS</code></li>
+<li>52行：宣告檔案名稱格式</li>
+<li>53行：<code>res.download()</code> 第一個變數為檔案路徑，第二個變數為檔案名稱；可參考<a target="_blank" rel="noopener" href="http://expressjs.com/en/api.html#res.download">Express official document: res.download()</a></li>
+</ul>
+<h3 id="scripts-logRequest-js內容"><a href="#scripts-logRequest-js內容" class="headerlink" title="scripts/logRequest.js內容"></a>scripts/logRequest.js內容</h3><script src="https://gist.github.com/tzynwang/84d5282f68abfd5e60aa36d94fbe84b7.js"></script>
+
+<p>第13行：<code>res.locals.logs = {...}</code></p>
+<ul>
+<li>路由只接受<code>res</code>或<code>req</code>這兩種參數，無法透過middleware的<code>next()</code>來傳遞變數</li>
+<li>將變數賦予<code>res.locals</code>後，即可在每一個路由中透過<code>res.locals</code>取出需要的值；相關概念的說明可參考以下影片（9:25開始相關段落）<iframe width="560" height="315" src="https://www.youtube.com/embed/lY6icfhap2o?start=565" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+
+</li>
+</ul>
+<p>第14行：<code>res.on('finish')</code>或<code>res.on('close')</code></p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://nodejs.org/api/http.html#http_event_finish">Event finish</a>: Emitted <strong>when the response has been sent</strong>. More specifically, this event is emitted when the last segment of the response headers and body have been handed off to the operating system for transmission over the network. <strong>It does not imply that the client has received anything yet.</strong> 送出回應後即觸發，不考慮客戶端是否真的有收到回應</li>
+<li><a target="_blank" rel="noopener" href="https://nodejs.org/api/http.html#http_event_close_1">Event close</a>: Indicates that the <strong>response is completed</strong>, or its underlying connection was terminated prematurely (before the response completion).</li>
+<li>如果只是為計算「伺服器收到請求到發出回應」的時間的話，使用<code>res.on('finish')</code>即可</li>
+</ul>
+<h3 id="scripts-saveToFile-js內容"><a href="#scripts-saveToFile-js內容" class="headerlink" title="scripts/saveToFile.js內容"></a>scripts/saveToFile.js內容</h3><script src="https://gist.github.com/tzynwang/15a3ac5e5ff573117c8a8070109adc54.js"></script>
+
+<ul>
+<li>第4行：<code>fs.appendFile()</code>使用方式可參考：<a target="_blank" rel="noopener" href="https://nodejs.org/docs/latest-v12.x/api/fs.html#fs_fs_appendfile_path_data_options_callback">Node.js: fs.appendFile(path, data[, options], callback)</a></li>
+</ul>
+<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
+<li>Express official document: <ul>
+<li><a target="_blank" rel="noopener" href="http://expressjs.com/en/api.html#res.download">res.download()</a></li>
+<li><a target="_blank" rel="noopener" href="http://expressjs.com/en/api.html#res.locals">res.locals</a></li>
+</ul>
+</li>
+<li>StackOverFlow:<ul>
+<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/7288814/download-a-file-from-nodejs-server-using-express">Download a file from NodeJS Server using Express</a></li>
+<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/38273555/what-events-should-i-handle-in-express-response-stream-object-to-handle-when-t">What events should I handle in express response (stream) object to handle when the response finishes?</a></li>
+<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/19793723/can-i-send-data-via-express-next-function">Can I send data via express next() function?</a></li>
+<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/347551/what-tool-to-use-to-draw-file-tree-diagram">What tool to use to draw file tree diagram</a>：Windows系統直接在終端輸入tree就可以產生資料夾的樹狀結構資料了，不用安裝其他工具</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1682,263 +1838,6 @@
 <li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/122102/what-is-the-most-efficient-way-to-deep-clone-an-object-in-javascript">What is the most efficient way to deep clone an object in JavaScript?</a></li>
 <li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/639514/how-can-i-get-the-memory-address-of-a-javascript-variable">How can I get the memory address of a JavaScript variable?</a></li>
 <li><a target="_blank" rel="noopener" href="https://hashnode.com/post/how-to-get-the-variable-memory-address-in-nodejs-cjq83mnya00yh1vs2czf9vwne">How to get the variable’ memory address in node.js?</a></li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope="" itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://tzynwang.github.io/2021/vanilla-js-pagination/">
-
-    <span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar-pexels-alex-andrews-215-215.png">
-      <meta itemprop="name" content="Charlie (Tzu Yin)">
-      <meta itemprop="description" content="一介普通文組的學習筆記 📒">
-    </span>
-
-    <span hidden="" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="普通文組">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/vanilla-js-pagination/" class="post-title-link" itemprop="url">自主練習「純手工pagination」技術記錄</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-04-15 19:29:46" itemprop="dateCreated datePublished" datetime="2021-04-15T19:29:46+08:00">2021-04-15</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-04-16 14:40:15" itemprop="dateModified" datetime="2021-04-16T14:40:15+08:00">2021-04-16</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
-        </span>
-    </span>
-
-  
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus: </span>
-    
-    <a title="disqus" href="/2021/vanilla-js-pagination/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/vanilla-js-pagination/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>練習為pagination加上JavaScript，使其可與使用者互動。</p>
-<ul>
-<li>使用到的技術<ul>
-<li>DOM Traversing: parent, siblings</li>
-</ul>
-</li>
-<li>新學習到的概念<ul>
-<li><code>pointer-events: none</code></li>
-<li><code>parseInt()</code>與<code>Number()</code>的差異</li>
-</ul>
-</li>
-</ul>
-<h2 id="成品"><a href="#成品" class="headerlink" title="成品"></a>成品</h2><p class="codepen" data-height="265" data-theme-id="dark" data-default-tab="js,result" data-user="Charlie7779" data-slug-hash="yLgEJyr" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="pagination practice">
-  <span>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/Charlie7779/pen/yLgEJyr">
-  pagination practice</a> by Charlie (<a target="_blank" rel="noopener" href="https://codepen.io/Charlie7779">@Charlie7779</a>)
-  on <a target="_blank" rel="noopener" href="https://codepen.io">CodePen</a>.</span>
-</p>
-<script async="" src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
-
-<h2 id="環境"><a href="#環境" class="headerlink" title="環境"></a>環境</h2><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Google Chrome: 90.0.4430.72 (Official Build) (64-bit)</span><br><span class="line">Bootstrap: 5.0.0-beta3</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></tbody></table></figure>
-<h2 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h2><ol>
-<li>使用<a target="_blank" rel="noopener" href="https://getbootstrap.com/docs/5.0/components/pagination/">Bootstrap: Pagination</a>的HTML原始碼，並移除不需要的部分<ul>
-<li><code>aria-label</code>在練習中用不到，移除</li>
-<li><code>&lt;li&gt;</code>使用JavaScript產生，全部移除；加上備註，提示內容會由JavaScript處理</li>
-<li>整理完畢後，HTML部分的原始碼如下<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">nav</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"pagination justify-content-center"</span> <span class="attr">id</span>=<span class="string">"pagination"</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- generated by JavaScript --&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">nav</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure></li>
-</ul>
-</li>
-<li>粗略分解任務：「使用者與pagination互動時，會發生什麼事情？」<ul>
-<li>點選previous或next來前進、後退</li>
-<li>直接點選頁數來進行換頁</li>
-<li>抵達頁數的「頭」或「尾」後，繼續點選previous或next不會有任何事情發生</li>
-<li>換頁後，畫面須呈現相對應的內容</li>
-</ul>
-</li>
-<li>將以上任務流程精緻化<ul>
-<li>「點選previous或next來前進、後退」與「直接點選頁數來進行換頁」<ul>
-<li>需監聽滑鼠點擊事件</li>
-<li>需判定滑鼠點擊的目標是previous、next或頁數</li>
-<li>要判定使用者點擊pagination後會在「哪一頁」</li>
-</ul>
-</li>
-<li>previous或next與頁數頭尾互動事件：<ul>
-<li>使用者抵達首尾頁後，點擊previous或next不可繼續前進或後退</li>
-<li>使用者不在首尾頁時，previous或next應恢復功能</li>
-</ul>
-</li>
-<li>換頁後，畫面須呈現相對應的內容<ul>
-<li>要判定使用者點擊pagination後會在「哪一頁」</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>使用程式碼滿足以上列出的需求</li>
-</ol>
-<h2 id="JavaScript原始碼"><a href="#JavaScript原始碼" class="headerlink" title="JavaScript原始碼"></a>JavaScript原始碼</h2><h3 id="全域變數"><a href="#全域變數" class="headerlink" title="全域變數"></a>全域變數</h3><script src="https://gist.github.com/tzynwang/f7fa03af729005ba9c3f1c6f470fd0f0.js"></script>
-
-<ul>
-<li><code>pageCount</code>：儲存總頁數的變數；除了直接賦值外，也可承接其他function回傳的值。比如在ALPHA Camp的練習情境中，<code>pageCount</code>可承接「電影總數（80筆）除以每一頁的電影數量（12筆）後無條件進位」此情境的總頁數數量（pagination應展示7頁）</li>
-<li><code>initialPage</code>：畫面載入時，預設顯示的頁面；在本練習中預設顯示第1頁</li>
-</ul>
-<h3 id="dynamicallyGeneratePage-page"><a href="#dynamicallyGeneratePage-page" class="headerlink" title="dynamicallyGeneratePage (page)"></a><code>dynamicallyGeneratePage (page)</code></h3><p>目的：根據傳入的總頁數（page）數量來產生pagination；比如傳入8，即要產生8頁的pagination</p>
-<script src="https://gist.github.com/tzynwang/cdc5647b1c895d53dbf376fac78b8905.js"></script>
-
-<ul>
-<li>第3行：加入Previous按鈕。而因為起始頁是第一頁（<code>initialPage</code>設定為1），故Previous按鈕預設是不會有任何功能的（不可繼續前進），所以在<code>&lt;li&gt;</code>加上<code>.disabled</code></li>
-<li>第4-8行：加入頁數，頁數根據傳入<code>dynamicallyGeneratePage()</code>的參數決定。並將<code>initialPage</code>加上<code>.active</code>，標記其為起始頁</li>
-<li>第9行：加入Next按鈕</li>
-<li>第10行：將第三行到第九行的內容放進<code>pagination</code>（<code>document.querySelector('#pagination')</code>）中</li>
-<li>第11行：設定<code>display</code>（<code>document.querySelector('#display')</code>）內容</li>
-<li>關於<code>data-page</code>：使用<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLOrForeignElement/dataset">dataset</a>為每一個<code>&lt;a&gt;</code>元素加上<code>data-page</code>，讀取<code>data-page</code>的值即可判定該<code>&lt;a&gt;</code>為Previous、Next或頁數按鈕</li>
-</ul>
-<h3 id="innerHTMLContent-page"><a href="#innerHTMLContent-page" class="headerlink" title="innerHTMLContent (page)"></a><code>innerHTMLContent (page)</code></h3><p>目的：根據傳入的頁數，產生對應的畫面內容</p>
-<script src="https://gist.github.com/tzynwang/50676fa823ed5435fa251833e215d88a.js"></script>
-
-<ul>
-<li>第4行：根據傳入的<code>page</code>來產生相對應的頁數</li>
-<li>第5行：使用<a target="_blank" rel="noopener" href="https://picsum.photos/">Lorem Picsum</a>透過id<a target="_blank" rel="noopener" href="https://picsum.photos/images">指定特定圖片</a>的服務，根據傳入的<code>page</code>來產生圖片，達成換頁換圖的效果</li>
-<li>第7行：<code>innerHTMLContent()</code>回傳的值可直接賦予<code>innerHTML</code></li>
-</ul>
-<h3 id="paginationStatusUpdate-event"><a href="#paginationStatusUpdate-event" class="headerlink" title="paginationStatusUpdate (event)"></a><code>paginationStatusUpdate (event)</code></h3><p>目的：根據使用者點擊的目標，更新pagination的狀態；並呼叫<code>innerHTMLContent()</code>來修改畫面內容</p>
-<script src="https://gist.github.com/tzynwang/ae875b2df97e736f08edd53093dcd13d.js"></script>
-
-<ul>
-<li>第2行：<code>const pageData = event.target.dataset.page</code><ul>
-<li>點擊事件發生後，抓取「被點擊的目標」其<code>data-page</code>的值，每一個<code>&lt;a&gt;</code>元素的<code>data-page</code>是透過<code>dynamicallyGeneratePage()</code>產生的</li>
-<li>點擊到Previous時，<code>pageData</code>為<code>p</code>；點擊到Next時，<code>pageData</code>為<code>n</code></li>
-<li>點擊到處於<code>disabled</code>狀態的Previous與Next時，<code>pageData</code>為<code>undefined</code>，理由如下：<ul>
-<li>參考Bootstrap 5.0.0-beta3的原始碼可得知<code>.page-item.disabled .page-link</code>的設定為<figure class="highlight css"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.page-item</span><span class="selector-class">.disabled</span> <span class="selector-class">.page-link</span> {</span><br><span class="line">  <span class="attribute">color</span>: <span class="number">#6c757d</span>;</span><br><span class="line">  <span class="attribute">pointer-events</span>: none;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="number">#fff</span>;</span><br><span class="line">  <span class="attribute">border-color</span>: <span class="number">#dee2e6</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-注意這段選取器的作用對象是.page-item.disabled下的「.page-link」，而HTML結構如下<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"page-item disabled"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">"page-link"</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">data-page</span>=<span class="string">"p"</span>&gt;</span>Previous<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
-所以<code>pointer-events: none;</code>實際作用的對象是<code>&lt;a&gt;</code></li>
-<li>根據<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/CSS/pointer-events#values">MDN的規格</a>，<code>pointer-events</code>設定為<code>none</code>時，該元素（在本練習中為<code>&lt;a&gt;</code>）無法成為滑鼠游標點擊事件的目標（原文：The element is never the target of pointer events.）</li>
-<li>所以在Previous與Next處於<code>disabled</code>時，<code>&lt;a&gt;</code>不會成為滑鼠游標點擊事件的目標；在這樣的情況下，游標點擊事件會觸發的目標會變成該元素的親元素（在本練習中為<code>&lt;li&gt;</code>）（原文：In these circumstances, pointer events will trigger event listeners on this parent element as appropriate on their way to/from the descendant during the event capture/bubble phases.）</li>
-<li>而<code>&lt;li&gt;</code>沒有設定<code>pageData</code>，所以當我想要取<code>&lt;li&gt;</code>的<code>pageData</code>的值的時候，我會得到<code>undefined</code></li>
-</ul>
-</li>
-<li>結論：<code>pageData</code>的值有以下可能性<ul>
-<li><code>undefined</code>：代表Previous與Next處於<code>disabled</code>的狀態</li>
-<li><code>p</code>或<code>n</code>：當Previous與Next不處於<code>disabled</code>時，點擊Previous或Next會讓<code>pageData</code>的值為<code>p</code>或<code>n</code></li>
-<li>頁數的數字：當使用者點擊頁數時，<code>pageData</code>的值就是該頁數的數字，但資料型態會是<code>String</code></li>
-</ul>
-</li>
-</ul>
-</li>
-<li>第3行：<code>const activePage = document.querySelector('#pagination li.active')</code><ul>
-<li>取「處於<code>active</code>狀態」的<code>&lt;li&gt;</code></li>
-</ul>
-</li>
-<li>第4行：<code>const activePageNumber = activePage.firstElementChild.dataset.page</code><ul>
-<li>會取得點擊事件發生時，處於<code>active</code>狀態的<code>&lt;li&gt;</code>其子元素<code>&lt;a&gt;</code>的<code>data-page</code>資料</li>
-<li>舉例：若目前<code>.active</code>的是第1頁，而我點了第4頁，<code>activePageNumber</code>的值會是1</li>
-</ul>
-</li>
-<li>第5-6行：固定取得Previous<code>&lt;li&gt;</code>與Next<code>&lt;li&gt;</code>，因為<code>.disabled</code>與<code>.active</code>是在<code>&lt;li&gt;</code>上操作的</li>
-<li>第8行開始的<code>switch (pageData)</code>：<ul>
-<li><code>case undefined</code>：代表使用者在Previous或Next處於<code>disabled</code>時點擊這兩個按鈕，這時不應該再繼續執行翻頁的動作，故直接<code>return</code>，什麼事都不發生</li>
-<li><code>case "p"</code>：<ul>
-<li>代表使用者點擊Previous時，此按鈕不處於<code>disabled</code>狀態，所以Previous應該帶領使用者前往上一頁</li>
-<li>第12行代表「點擊Previous時從最後一頁離開」，這時Next就不應繼續處於<code>disabled</code>狀態，故需移除<code>.disabled</code></li>
-<li>第14-16行：代表「點擊Previous時正在通過第二頁」，而從第二頁往前移動後，就會位在第一頁，位在第一頁後就不可繼續往前翻頁了，所以Previous要加上<code>.disabled</code>，進入<code>disabled</code>狀態</li>
-<li>第18-19行：若點擊Previous時，Previous不符合第12-16行列出的條件，就進行「移除目前處於<code>active</code>頁數的<code>.active</code>，並為前一頁加上<code>.active</code>」</li>
-<li>第20行：因為移動到前一頁了，所以<code>display</code>的內容也要更新，換成前一頁（activePageNumber - 1）的內容</li>
-</ul>
-</li>
-<li><code>case "n"</code>：換頁的邏輯與Previous相反<ul>
-<li>第23行代表「點擊Next時從第一頁離開」，這時Previous就不應繼續處於<code>disabled</code>狀態，故需移除<code>.disabled</code></li>
-<li>第25-27行：代表「點擊Next時正在通過倒數第二頁」，而從倒數第二頁往後移動後，就會位在最末頁，位在最末頁後就不可繼續往後翻頁了，所以Next要加上<code>.disabled</code>，進入<code>disabled</code>狀態</li>
-<li>第29-31行：若點擊Next時，Next不符合第23-27行列出的條件，就進行「移除目前處於<code>active</code>頁數的<code>.active</code>，並為下一頁加上<code>.active</code>」</li>
-</ul>
-</li>
-<li><code>default</code>：代表<code>pageData</code>不屬於上述任何一種狀態，亦即使用者直接點選了頁數<ul>
-<li>第34行：移除<code>activePage</code>的<code>active</code>狀態</li>
-<li>第35行：為<code>event.target</code>（被滑鼠點選到）的<code>parentElement</code>（即是<code>&lt;li&gt;</code>）加上<code>active</code>狀態</li>
-<li>第36行：更新<code>display</code>的內容</li>
-<li>第38-40行：使用者點選到最末頁時，Next要變為<code>disabled</code>狀態</li>
-<li>第42-44行：使用者點選到第一頁時，Previous要變為<code>disabled</code>狀態</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="bonus-track：parseInt-與Number-的差別"><a href="#bonus-track：parseInt-與Number-的差別" class="headerlink" title="bonus track：parseInt()與Number()的差別"></a>bonus track：<code>parseInt()</code>與<code>Number()</code>的差別</h2><ul>
-<li>在過去的專案與練習中，習慣直接使用<code>parseInt()</code>來將字串解析（parsing）為數字，本次改為使用<code>Number()</code>來將字串型變（type converting）為數字</li>
-<li>雖然這兩者都可以回傳我需要的資料，但好奇這其中是否有差異，而經過搜尋後得知：</li>
-<li><code>Number()</code>做的事：convert<ul>
-<li><a target="_blank" rel="noopener" href="http://es5.github.io/#x15.7.1">Annotated ECMAScript 5.1</a>: When <code>Number</code> is called as a <strong>function</strong> (rather than as a constructor), it performs a <strong>type conversion</strong>.</li>
-<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">MDN</a>: Values of <strong>other types</strong> can <strong>be converted to numbers</strong> using the <code>Number()</code> function.</li>
-</ul>
-</li>
-<li><code>parseInt()</code>做的事：parse，而非convert<ul>
-<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/parseInt">MDN</a>: The <code>Number.parseInt()</code> method <strong>parses</strong> a <strong>string</strong> argument and returns an integer of the specified radix or base.</li>
-</ul>
-</li>
-<li>結論：雖然都可以透過傳入<code>String</code>得到<code>Number</code>，但<code>parseInt()</code>與<code>Number()</code>處理的手法並不一樣</li>
-</ul>
-<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://www.javascripttutorial.net/dom/traversing/">JavaScript DOM Traversing</a><ul>
-<li><a target="_blank" rel="noopener" href="https://www.javascripttutorial.net/dom/traversing/get-siblings-of-an-element/">Get Siblings of an Element</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.javascripttutorial.net/dom/traversing/get-the-parent-of-an-element/">Get the Parent of an Element</a></li>
-</ul>
-</li>
-<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/CSS/pointer-events#values">MDN: pointer-events</a></li>
-<li><a target="_blank" rel="noopener" href="https://thisthat.dev/number-constructor-vs-parse-int/">Number() vs parseInt()</a></li>
-<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/4090518/what-is-the-difference-between-parseint-and-number">What is the difference between parseInt() and Number()?</a></li>
 </ul>
 
       
