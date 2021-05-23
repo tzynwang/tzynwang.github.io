@@ -40,6 +40,54 @@
   </entry>
   
   <entry>
+    <title>「Express Handlebars 取得父層變數內容」相關筆記</title>
+    <link href="https://tzynwang.github.io/2021/express-handlebars-access-variable-in-parent-scope/"/>
+    <id>https://tzynwang.github.io/2021/express-handlebars-access-variable-in-parent-scope/</id>
+    <published>2021-05-14T13:11:16.000Z</published>
+    <updated>2021-05-22T06:17:00.961Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;問題描述&quot;&gt;&lt;a href=&quot;#問題描述&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="Express Handlebars" scheme="https://tzynwang.github.io/categories/Express-Handlebars/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>「重設表單（form reset）」相關筆記</title>
+    <link href="https://tzynwang.github.io/2021/form-reset/"/>
+    <id>https://tzynwang.github.io/2021/form-reset/</id>
+    <published>2021-05-13T06:27:11.000Z</published>
+    <updated>2021-05-23T04:46:29.956Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;總結&quot;&gt;&lt;a href=&quot;#總結&quot; class=&quot;headerlink&quot; title=&quot;總結&quot;&gt;&lt;/a&gt;總結&lt;/h2&gt;&lt;p&gt;HTML本身即支援兩種重設表單&lt;strong&gt;全部&lt;/strong&gt;內容的方法：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Form</summary>
+        
+      
+    
+    
+    
+    <category term="HTML" scheme="https://tzynwang.github.io/categories/HTML/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>Alpha Camp「2-1 電影清單之按讚與刪除」技術記錄</title>
     <link href="https://tzynwang.github.io/2021/2-1-movie-list-i18n-note/"/>
     <id>https://tzynwang.github.io/2021/2-1-movie-list-i18n-note/</id>
@@ -86,52 +134,6 @@
     
     
     <category term="ALPHA Camp assignment" scheme="https://tzynwang.github.io/tags/ALPHA-Camp-assignment/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>「Inside look at modern web browser」相關筆記</title>
-    <link href="https://tzynwang.github.io/2021/inside-look-at-modern-web-browser-notes/"/>
-    <id>https://tzynwang.github.io/2021/inside-look-at-modern-web-browser-notes/</id>
-    <published>2021-04-23T03:54:43.000Z</published>
-    <updated>2021-04-24T11:00:30.805Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;總結&quot;&gt;&lt;a href=&quot;#總結&quot; class=&quot;headerlink&quot; title=&quot;總結&quot;&gt;&lt;/a&gt;總結&lt;/h2&gt;&lt;p&gt;此為「Inside look at modern web</summary>
-        
-      
-    
-    
-    
-    <category term="Browser" scheme="https://tzynwang.github.io/categories/Browser/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>為什麼iOS上的Chrome沒有呈現設定好的list-style-type</title>
-    <link href="https://tzynwang.github.io/2021/list-style-type-not-working-on-ios-chrome/"/>
-    <id>https://tzynwang.github.io/2021/list-style-type-not-working-on-ios-chrome/</id>
-    <published>2021-04-22T03:53:12.000Z</published>
-    <updated>2021-04-22T07:35:55.248Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;figure class=&quot;figure--center&quot;&gt;&lt;img src=&quot;/2021/list-style-type-not-working-on-ios-chrome/ask.jpg&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="CSS" scheme="https://tzynwang.github.io/categories/CSS/"/>
-    
     
   </entry>
   

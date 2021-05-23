@@ -197,14 +197,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">37</span>
+          <span class="site-state-item-count">39</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-count">11</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
@@ -238,6 +238,337 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope="" itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tzynwang.github.io/2021/further-adventures-of-the-event-loop/">
+
+    <span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar-pexels-alex-andrews-215-215.png">
+      <meta itemprop="name" content="Charlie (Tzu Yin)">
+      <meta itemprop="description" content="一介普通文組的學習筆記 📒">
+    </span>
+
+    <span hidden="" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="普通文組">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/further-adventures-of-the-event-loop/" class="post-title-link" itemprop="url">再訪event loop</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-04-14 14:02:39" itemprop="dateCreated datePublished" datetime="2021-04-14T14:02:39+08:00">2021-04-14</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-04-24 19:00:24" itemprop="dateModified" datetime="2021-04-24T19:00:24+08:00">2021-04-24</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2021/further-adventures-of-the-event-loop/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/further-adventures-of-the-event-loop/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><ul>
+<li>瀏覽器中的JavaScript環境（runtime）包含standard stack、microtask queue與(macro)task queue</li>
+<li>簡化後的瀏覽器event loop流程如下：<ol>
+<li>處理standard stack中的<strong>所有</strong>任務</li>
+<li>standard stack清空後，開始處理microtask queue中的<strong>所有</strong>任務</li>
+<li>microtask queue清空後，開始處理(macro)task queue中的<strong>一個</strong>任務</li>
+<li>一次event loop中可能有複數個(macro)task queue，event loop會執行每一個(macro)task queue中<strong>最早</strong>被加進來的<strong>一個</strong>任務</li>
+</ol>
+</li>
+</ul>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/further-adventures-of-the-event-loop/#more" rel="contents">
+                Read more »
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope="" itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tzynwang.github.io/2021/cross-origin-resource-sharing/">
+
+    <span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar-pexels-alex-andrews-215-215.png">
+      <meta itemprop="name" content="Charlie (Tzu Yin)">
+      <meta itemprop="description" content="一介普通文組的學習筆記 📒">
+    </span>
+
+    <span hidden="" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="普通文組">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/cross-origin-resource-sharing/" class="post-title-link" itemprop="url">「X-Frame-Options、Same-origin policy、Cross-Origin Resource Sharing」相關筆記</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-04-13 18:09:25" itemprop="dateCreated datePublished" datetime="2021-04-13T18:09:25+08:00">2021-04-13</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-04-24 18:58:04" itemprop="dateModified" datetime="2021-04-24T18:58:04+08:00">2021-04-24</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+          <a href="/categories/Browser/" itemprop="url" rel="index"><span itemprop="name">Browser</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2021/cross-origin-resource-sharing/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/cross-origin-resource-sharing/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="原始問題"><a href="#原始問題" class="headerlink" title="原始問題"></a>原始問題</h2><p>在<a target="_blank" rel="noopener" href="https://codepen.io/Charlie7779/pen/MWJgKrP">作品</a>中插入Linkedin、Facebook與Instagram的超連結，為什麼在codepen右側欄位中點選這些超連結無法前往該網站？</p>
+<figure class="figure--center"><img src="/2021/cross-origin-resource-sharing/codepen-screenshot.png" title="在codepen的輸出視窗點擊超連結，無法連線至該網站"><figcaption><p>在codepen的輸出視窗點擊超連結，無法連線至該網站</p></figcaption></figure>
+
+
+<h2 id="簡答"><a href="#簡答" class="headerlink" title="簡答"></a>簡答</h2><p>根據DevTool Console顯示的錯誤訊息，codepen.io將<code>X-Frame-Options</code>設定為<code>sameorigin</code>，故無法在codepen.io的<code>&lt;iframe&gt;</code>中開啟不同來源（origin）的網站（Linkedin、Facebook或Instagram）</p>
+<h2 id="環境"><a href="#環境" class="headerlink" title="環境"></a>環境</h2><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Google Chrome: 89.0.4389.114 (Official Build) (64-bit)</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="X-Frame-Options"><a href="#X-Frame-Options" class="headerlink" title="X-Frame-Options"></a>X-Frame-Options</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options">MDN</a>: This indicate whether or not a browser should be allowed to render a page in a <code>&lt;frame&gt;</code>, <code>&lt;iframe&gt;</code>, <code>&lt;embed&gt;</code> or <code>&lt;object&gt;</code>.<ul>
+<li><code>deny</code>: The page cannot be displayed in a frame, regardless of the site attempting to do so.</li>
+<li><code>sameorigin</code>: The page can only be displayed in a frame on the same origin as the page itself.</li>
+<li><code>deny</code>不允許載入任何頁面，而<code>sameorigin</code>允許載入同源的頁面</li>
+<li>將作品原始碼中超連結的<code>href</code>修改為codepen.io上其他作品的連結的話，可以在右側輸出欄位連線到該作品</li>
+</ul>
+</li>
+</ul>
+<h3 id="問題解析"><a href="#問題解析" class="headerlink" title="問題解析"></a>問題解析</h3><ul>
+<li>在codepen.io處於Editor View模式時，作品是透過codepen.io網站中的<code>&lt;iframe&gt;</code>來展示</li>
+<li>codepen.io將<code>X-Frame-Options</code>設定為<code>sameorigin</code>，而Linkedin、Facebook或Instagram與codepen.io並不屬於相同來源，故無法在codepen.io的<code>&lt;iframe&gt;</code>中開啟這些網站<figure class="figure--center"><img src="/2021/cross-origin-resource-sharing/codepen-iframe.png" title="Editor View模式下，作品透過codepen.io網站中的iframe元素展示"><figcaption><p>Editor View模式下，作品透過codepen.io網站中的iframe元素展示</p></figcaption></figure></li>
+<li>如果使用debug mode來開啟codepen.io上的作品，此時作品不再透過<code>&lt;iframe&gt;</code>展示，且瀏覽器通常允許cross-origin writes（下述），故可正常連線至其他網站<figure class="figure--center"><img src="/2021/cross-origin-resource-sharing/codepen-debug-mode.png" title="使用Debug Mode開啟作品時，作品本身即是一個完整的HTML文件，而非嵌於codepen.io網站中的部分內容"><figcaption><p>使用Debug Mode開啟作品時，作品本身即是一個完整的HTML文件，而非嵌於codepen.io網站中的部分內容</p></figcaption></figure>
+
+
+</li>
+</ul>
+<h2 id="定義Same-origin-policy"><a href="#定義Same-origin-policy" class="headerlink" title="定義Same-origin policy"></a>定義Same-origin policy</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy">MDN</a>: The same-origin policy is a critical security mechanism that restricts how a document (or script) loaded from one origin can interact with a resource from another origin.</li>
+<li><a target="_blank" rel="noopener" href="https://web.dev/cross-origin-resource-sharing/">Google Developers</a>: The browser’s same-origin policy <strong>blocks</strong> reading a resource from a <strong>different origin</strong>.</li>
+<li><a target="_blank" rel="noopener" href="https://youtu.be/KaEj_qZgiKY?t=227">CSRF Introduction and what is the Same-Origin Policy</a>: Same-origin policy prevents scripts from one origin to access private data on another origin.</li>
+</ul>
+<h3 id="定義origin"><a href="#定義origin" class="headerlink" title="定義origin"></a>定義origin</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy#definition_of_an_origin">MDN</a>: Two URLs have the same origin if the protocol, port (if specified), and host are the same for both.<ul>
+<li>Compares <code>http://store.company.com/dir/page.html</code> with the following URLs:<table>
+<tbody><tr>
+  <th>URL</th>
+  <th>Outcome</th>
+  <th>Reason</th>
+</tr>
+<tr>
+  <td>http://store.company.com/dir2/other.html</td>
+  <td>Same origin</td>
+  <td>Only the path differs</td>
+</tr>
+<tr>
+  <td>http://store.company.com/dir/inner/another.html</td>
+  <td>Same origin</td>
+  <td>Only the path differs</td>
+</tr>
+<tr>
+  <td>https://store.company.com/page.html</td>
+  <td>Failure</td>
+  <td>Different protocol</td>
+</tr>
+<tr>
+  <td>http://news.company.com/dir/page.html</td>
+  <td>Failure    </td>
+  <td>Different host</td>
+</tr>
+<tr>
+  <td>http://store.company.com:81/dir/page.html</td>
+  <td>Failure</td>
+  <td>Different port (http:// is port 80 by default)</td>
+</tr>
+</tbody></table>
+
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="筆記"><a href="#筆記" class="headerlink" title="筆記"></a>筆記</h3><ul>
+<li>Same-origin policy是瀏覽器提供的安全政策，會限制一個網站只能與相同來源的文件或script互動</li>
+<li>何謂相同來源？兩組URL若符合以下條件，則視為屬於同樣來源：<ul>
+<li>擁有相同的protocol（都是HTTP或HTTPS）</li>
+<li>擁有相同的host（domain）</li>
+<li>擁有相同的port</li>
+</ul>
+</li>
+</ul>
+<h3 id="例外"><a href="#例外" class="headerlink" title="例外"></a>例外</h3><p>參考<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy#cross-origin_network_access">MDN: Cross-origin network access</a></p>
+<ul>
+<li>瀏覽器通常允許cross-origin writes（顯示資料），比如：開啟不同來源的網站，或是送出表單</li>
+<li>瀏覽器通常允許cross-origin embedding，比如：<ul>
+<li>透過<code>&lt;script src="…"&gt;&lt;/script&gt;</code>嵌入不同來源的JavaScript</li>
+<li>透過<code>&lt;link rel="stylesheet" href="…"&gt;</code>嵌入不同來源的CSS</li>
+<li>使用<code>@font-face</code>載入不同來源的字型資源</li>
+<li>使用<code>&lt;audio&gt;</code>、<code>&lt;img&gt;</code>、<code>&lt;video&gt;</code>、<code>&lt;iframe&gt;</code>、<code>&lt;object&gt;</code>或<code>&lt;embed&gt;</code>載入不同來源網站的資源</li>
+</ul>
+</li>
+</ul>
+<h2 id="定義Cross-Origin-Resource-Sharing-CORS"><a href="#定義Cross-Origin-Resource-Sharing-CORS" class="headerlink" title="定義Cross-Origin Resource Sharing (CORS)"></a>定義Cross-Origin Resource Sharing (CORS)</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS">MDN</a>: CORS is an <strong>HTTP-header based mechanism</strong> that allows a server to indicate any other origins (domain, scheme, or port) than its own from which a browser should permit loading of resources.</li>
+<li><a target="_blank" rel="noopener" href="https://web.dev/cross-origin-resource-sharing/">Google Developers</a>: Enabling CORS lets the server tell the browser it’s permitted to use an additional origin.</li>
+<li>When you want to get a public resource from a different origin, the resource-providing server needs to tell the browser “This origin where the request is coming from can access my resource”. The browser remembers that and allows cross-origin resource sharing.</li>
+</ul>
+<h3 id="筆記-1"><a href="#筆記-1" class="headerlink" title="筆記"></a>筆記</h3><p>流程如下：</p>
+<ol>
+<li>設定server的HTTP response headers來讓瀏覽器知道可以執行CORS<ul>
+<li>以Express為例：加上<code>cors()</code><figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>)</span><br><span class="line"><span class="keyword">var</span> cors = <span class="built_in">require</span>(<span class="string">'cors'</span>)</span><br><span class="line"><span class="keyword">var</span> app = express()</span><br><span class="line"></span><br><span class="line">app.use(cors()) <span class="comment">// 讓server允許CORS</span></span><br><span class="line"></span><br><span class="line">app.get(<span class="string">'/products/:id'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">req, res, next</span>) </span>{</span><br><span class="line">  res.json({<span class="attr">msg</span>: <span class="string">'This is CORS-enabled for all origins!'</span>})</span><br><span class="line">})</span><br><span class="line"></span><br><span class="line">app.listen(<span class="number">80</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>{</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'CORS-enabled web server listening on port 80'</span>)</span><br><span class="line">})</span><br></pre></td></tr></tbody></table></figure></li>
+</ul>
+</li>
+<li>透過瀏覽器發出request的時候，header需包含<code>Origin</code>資訊<ul>
+<li>透過<code>fetch()</code> API發出的request預設就會包含<code>Origin</code>，參考<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch#supplying_request_options">MDN: Supplying request options</a></li>
+<li>或是加上<code>{mode: 'cors'}</code>確保request header包含<code>Origin</code></li>
+<li>重點仍然是server端要允許CORS，參考<a target="_blank" rel="noopener" href="https://stackoverflow.com/a/40063679/15028185">Allow Access-Control-Allow-Origin header using HTML5 fetch API</a></li>
+</ul>
+</li>
+<li>server收到包含<code>Origin</code>資訊的header、並server本身允許CORS時，server發出的response header就會包含<code>Access-Control-Allow-Origin</code>的key-value pair；<code>*</code>代表允許來自任何URL的CORS，或是字串（僅允許特定URL進行CORS）</li>
+<li>瀏覽器收到response header，並<code>Access-Control-Allow-Origin</code>的值允許客戶端CORS的話，就會將server回覆的內容提供給客戶端</li>
+</ol>
+<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
+<li>YouTube:<ul>
+<li><a target="_blank" rel="noopener" href="https://youtu.be/4KHiSt0oLJ0">CORS in 100 Seconds</a></li>
+<li><a target="_blank" rel="noopener" href="https://youtu.be/KaEj_qZgiKY">CSRF Introduction and what is the Same-Origin Policy? - web 0x04</a></li>
+</ul>
+</li>
+<li>Google Developers:<ul>
+<li><a target="_blank" rel="noopener" href="https://web.dev/cross-origin-resource-sharing/">Cross-Origin Resource Sharing (CORS)</a></li>
+<li><a target="_blank" rel="noopener" href="https://developers.google.com/web/ilt/pwa/working-with-the-fetch-api#cross-origin_requests">Cross-origin requests</a></li>
+</ul>
+</li>
+<li>Express:<ul>
+<li><a target="_blank" rel="noopener" href="https://expressjs.com/en/resources/middleware/cors.html">cors()</a></li>
+<li><a target="_blank" rel="noopener" href="https://node-cors-client.netlify.app/">What happens without CORS?</a></li>
+</ul>
+</li>
+<li>其他參考資源<ul>
+<li><a target="_blank" rel="noopener" href="https://www.moxio.com/blog/12/how-to-make-a-cross-domain-request-in-javascript-using-cors">How to make a cross domain request in JavaScript using CORS</a></li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1400,482 +1731,6 @@ on <a target="_blank" rel="noopener" href="https://codepen.io">CodePen</a>.</spa
 <h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
 <li>和風配色參考：配色パターン中<a target="_blank" rel="noopener" href="https://www.colordic.org/colorscheme">和色大辞典</a>的部分</li>
 <li><a target="_blank" rel="noopener" href="https://youtu.be/Zz6eOVaaelI">Learn Sass In 20 Minutes</a></li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope="" itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://tzynwang.github.io/2021/S4-A14-assignment-anatomy/">
-
-    <span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar-pexels-alex-andrews-215-215.png">
-      <meta itemprop="name" content="Charlie (Tzu Yin)">
-      <meta itemprop="description" content="一介普通文組的學習筆記 📒">
-    </span>
-
-    <span hidden="" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="普通文組">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/S4-A14-assignment-anatomy/" class="post-title-link" itemprop="url">ALPHA Camp 履歷網頁作業：內容解析</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-03-20 21:06:49" itemprop="dateCreated datePublished" datetime="2021-03-20T21:06:49+08:00">2021-03-20</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-04-09 13:20:22" itemprop="dateModified" datetime="2021-04-09T13:20:22+08:00">2021-04-09</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-          <a href="/categories/CSS/" itemprop="url" rel="index"><span itemprop="name">CSS</span></a>
-        </span>
-    </span>
-
-  
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus: </span>
-    
-    <a title="disqus" href="/2021/S4-A14-assignment-anatomy/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/S4-A14-assignment-anatomy/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>記錄在2021年ALPHA Camp學期一、三月班第三週履歷網頁作業使用到的技術、思路與開發流程。</p>
-<h2 id="成品"><a href="#成品" class="headerlink" title="成品"></a>成品</h2><ul>
-<li>純網頁展示版：<a href="https://tzynwang.github.io/S4-A14-assignment-anatomy/" target="_blank">點我</a></li>
-<li>codepen展示：<p class="codepen" data-height="265" data-theme-id="dark" data-default-tab="css,result" data-user="Charlie7779" data-slug-hash="zYogoWZ" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="S4 A14 為客戶打造履歷網頁">
-<span>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/Charlie7779/pen/zYogoWZ">
-S4 A14 為客戶打造履歷網頁</a> by Charlie (<a target="_blank" rel="noopener" href="https://codepen.io/Charlie7779">@Charlie7779</a>)
-on <a target="_blank" rel="noopener" href="https://codepen.io">CodePen</a>.</span>
-</p>
-<script async="" src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
-
-
-</li>
-</ul>
-<h2 id="版本與環境"><a href="#版本與環境" class="headerlink" title="版本與環境"></a>版本與環境</h2><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Google Chrome: 89.0.4389.90 (Official Build) (64-bit)</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></tbody></table></figure>
-<h2 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h2><ol>
-<li>雖然課程還沒有要求成品需有RDW效果，但因為已經知道原理、也在之前做過的微型專案實作過RDW，故本次作業要求自己做出（至少）手機與桌機兩種版面</li>
-<li>還沒有實際使用純CSS做出一鍵切換「亮色／暗色模式」的效果，但已經知道原理，決定在本次作業中實踐此功能</li>
-<li>將視覺動線統一為F字形（由上到下、從左到右）。且因網站內容基本上都是英語，橫向三欄平分畫面寬度後，寬度可能不足、導致內文頻繁換行，故不採用示範網站使用的三欄並排排版</li>
-<li>對自己配色沒自信，決定直接到課程中提到的 <a target="_blank" rel="noopener" href="https://color.adobe.com/explore">Adobe Color: EXPLORE</a> 搜尋以紅色為主的色票。最後挑了藍＋紅（配合作業用照片的印象）且彩度較低的組合：<a target="_blank" rel="noopener" href="https://color.adobe.com/Cadmium%20Red%20Deep-color-theme-10212225">Cadmium Red Deep</a></li>
-<li>使用Figma勾勒出<a target="_blank" rel="noopener" href="https://www.figma.com/file/cfK4C3Jt8CgvVqEZiXlRaX/S4-A14-%E7%82%BA%E5%AE%A2%E6%88%B6%E6%89%93%E9%80%A0%E5%B1%A5%E6%AD%B7%E7%B6%B2%E9%A0%81-wireframe?node-id=0:1">wireframe</a>，桌機的版面配置與手機橫放後一樣，故沒有特別畫出桌機的wireframe</li>
-</ol>
-<h2 id="HTML架構"><a href="#HTML架構" class="headerlink" title="HTML架構"></a>HTML架構</h2><ul>
-<li>照片、姓名與連結組合放在<code>&lt;header&gt;</code>區塊</li>
-<li>自我介紹文字、技能與工作經驗放在<code>&lt;main&gt;</code>區塊</li>
-<li>底部<code>&lt;footer&gt;</code>區塊</li>
-<li>在所有的裝置上，<code>&lt;footer&gt;</code>都會在畫面的最底部，但手機直持或橫持會影響<code>&lt;header&gt;</code>與<code>&lt;main&gt;</code>要垂直還是水平排列，故外加了一個<code>&lt;div class="container"&gt;</code>來打包<code>&lt;header&gt;</code>與<code>&lt;main&gt;</code>，並使用<code>flex-direction</code>來控制<code>&lt;header&gt;</code>與<code>&lt;main&gt;</code>在不同裝置上的排列方向</li>
-<li>為配合CSS選取器的邏輯，控制「亮色／暗色模式」的<code>&lt;input&gt;</code>、<code>&lt;label&gt;</code>組放在<code>&lt;div class="container"&gt;</code>上方（<code>&lt;input&gt;</code>、<code>&lt;label&gt;</code>組的階層與<code>&lt;div class="container"&gt;</code>一致）</li>
-</ul>
-<p>最終<code>&lt;body&gt;</code>內容如下：</p>
-<script src="https://gist.github.com/tzynwang/bac46a0e8166ded1cc18d837c816c718.js"></script>
-
-<h2 id="CSS內容解析"><a href="#CSS內容解析" class="headerlink" title="CSS內容解析"></a>CSS內容解析</h2><h3 id="通用樣式"><a href="#通用樣式" class="headerlink" title="通用樣式"></a>通用樣式</h3><script src="https://gist.github.com/tzynwang/d21d76dc229a53dad1c956d255b8fb38.js"></script>
-
-<ul>
-<li>字體<ul>
-<li>因作業會上傳到codepen，故不採取self-host，而是直接<code>@import</code>由Google提供的字體服務</li>
-<li>履歷內容文字多，並想呈現較專業的感覺，故挑選有襯線的<code>Newsreader</code>作為主字體<ul>
-<li><code>Newsreader</code>的<a target="_blank" rel="noopener" href="https://fonts.google.com/specimen/Newsreader?preview.text_type=custom#about">說明</a>也提到字體本身適合應用在需要閱讀的情境：primarily intended for continuous on-screen reading in content-rich environments.</li>
-</ul>
-</li>
-<li>姓名的部分挑選<code>Kristi</code>，想營造手動簽名的視覺效果</li>
-</ul>
-</li>
-<li>全域設定（<code>*</code>）<ul>
-<li>手動重設<code>margin</code>與<code>padding</code>為<code>0</code>、<code>box-sizing</code>設定為<code>border-box</code>，避免干擾後續排版作業</li>
-<li>考量到後續可能會更改用色，選擇使用關鍵字（<code>var()</code>）來控制顏色</li>
-</ul>
-</li>
-<li><code>&lt;div class="container"&gt;</code>：一般狀態下使用淺色背景（<code>var(--light)</code>）搭配深色文字（<code>var(--dark)</code>）</li>
-<li><code>header, main</code>：使用<code>padding</code>將內容往內推移，避免文字過於靠近邊緣，降低易讀性</li>
-<li><code>main</code>：除了<code>padding</code>之外，加上<code>max-width</code>限制文字不會因為螢幕較寬而延伸到底</li>
-<li><code>h2</code>：因有多個<code>h2</code>出現在網頁上，且樣式不會配合畫面改變尺寸或<code>margin</code>、<code>padding</code>等，故放在通用樣式區域宣告</li>
-</ul>
-<h3 id="header"><a href="#header" class="headerlink" title="header"></a><code>header</code></h3><script src="https://gist.github.com/tzynwang/702cfae7a67818c5ba0153f2358229f6.js"></script>
-
-<ul>
-<li><p><code>header</code>與<code>.avatar</code>：為了在各種版面下都能簡單的處理水平置中，直接使用<code>display: flex;</code>搭配<code>flex-direction: column;</code>與<code>align-items: center;</code>來做讓<code>header</code>與<code>.avatar</code>下所有的內容都呈現水平置中</p>
-</li>
-<li><p><code>img</code>：與wireframe的設計不同，最後決定拿掉履歷照片的<code>border-radius: 50%;</code>，因為最終成品一眼望過去只有照片是圓形反而覺得有點突兀</p>
-</li>
-<li><p><code>h1</code>：加上<code>transform: rotate(-5deg);</code>讓文字稍微向右上角抬起，增加一點活躍感；並配合<code>margin-bottom: 8px;</code>來製造空間，稍稍推開下方的連結組合</p>
-<ul>
-<li>最終並沒有實作wireframe中「讓姓名重疊到照片上」的排版，因目前只想到可以使用<code>position: absolute;</code>來控制，但這樣會難以處理RWD下欄位寬度浮動時的水平置中問題，故暫時放棄此設計</li>
-<li>更新：將<code>&lt;h1&gt;</code>包在一層<code>&lt;div&gt;</code>內，設定<code>&lt;div&gt;</code>為<code>position: absolute;</code>，然後加上<code>display: flex;</code>來控制<code>&lt;h1&gt;</code>的水平位置即可<p class="codepen" data-height="265" data-theme-id="dark" data-default-tab="css,result" data-user="Charlie7779" data-slug-hash="MWJgKrP" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="S4 A14 為客戶打造履歷網頁 bonus track">
-<span>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/Charlie7779/pen/MWJgKrP">
-S4 A14 為客戶打造履歷網頁 bonus track</a> by Charlie (<a target="_blank" rel="noopener" href="https://codepen.io/Charlie7779">@Charlie7779</a>)
-on <a target="_blank" rel="noopener" href="https://codepen.io">CodePen</a>.</span>
-</p>
-<script async="" src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script></li>
-<li>照片下方的半透明底色使用兩層背景實現：第一層背景是<code>url("相片路徑")</code>、第二層背景是使用<code>linear-gradient()</code>繪製的半透明區塊</li>
-</ul>
-</li>
-<li><p><code>header ul</code>：使用<code>list-style: none;</code>移除預設的圓點樣式；加上<code>display: flex;</code>讓連結們水平排列；使用<code>header ul</code>選取器是因為整份履歷中還有其他部位使用到<code>ul</code>元件，不加上<code>header</code>會導致其他區塊的<code>ul</code>排版走山</p>
-</li>
-<li><p><code>header ul li</code>：加上<code>margin: 16px;</code>來讓按鈕之間保持距離</p>
-<ul>
-<li>更新修正：因為<code>header ul</code>已經是flex container，其中包含的<code>&lt;li&gt;</code>元素會成為flex item，<a target="_blank" rel="noopener" href="https://drafts.csswg.org/css-flexbox-1/#flex-items">而flex item有block的特性</a>，故不需要再對<code>header ul li</code>加上<code>display: inline-block;</code>來撐開Y軸（高度）</li>
-</ul>
-</li>
-<li><p><code>header ul li:last-child</code>：<code>display: none;</code>讓連結群組最尾端的印表機圖示預設為不顯示，再往下的CSS設定會配合<code>@media</code>讓印表機圖示在適當的裝置上呈現出來</p>
-</li>
-<li><p><code>a</code>：因為有三種顏色狀態，故加上<code>transition: 0.3s;</code>讓換色過程有0.3秒的漸變時間</p>
-</li>
-<li><p><code>a:link</code>、<code>a:visited</code>、<code>a:hover</code>、<code>a:active</code>：剛好可以使用色票中的主、輔與亮點顏色；樣式撰寫的順序為LVHA的理由參考之前記錄過的<a href="https://tzynwang.github.io/2021/css-specificity/" target="_blank">CSS Specificity 相關筆記</a></p>
-</li>
-</ul>
-<h3 id="main"><a href="#main" class="headerlink" title="main"></a><code>main</code></h3><script src="https://gist.github.com/tzynwang/ed13c13882860c3133090b37a5734b18.js"></script>
-
-<ul>
-<li><code>main section</code>：首先對<code>&lt;main&gt;</code>包含的三個<code>&lt;section&gt;</code>加上<code>margin-bottom: 16px;</code>，製造區塊之間的距離</li>
-<li><code>.about p, .skills p, .experiences ul li</code>：一口氣撐開三個區塊的文字與清單排版的行高，偷懶一點可寫成<code>main p, main ul li</code>，不過，因為想維持樣式表內容撰寫的一致性，最後還是選擇統一使用「.class HTML元素」的寫法</li>
-<li><code>.skills span</code>：在技能區塊中使用<code>&lt;span&gt;</code>包裹住想要上色的文字</li>
-<li><code>.experiences div</code>：工作經驗區塊中總計有三項子項目，因為只是要處理排版，沒有到語意上需要使用<code>&lt;section&gt;</code>的程度，故使用<code>&lt;div&gt;</code>將三個項目各自包起來，並給予<code>margin-bottom: 8px;</code>撐開項目之間的距離</li>
-<li><code>.experiences p</code>：工作經驗中「任職公司」的部分使用<code>&lt;p&gt;</code>來處理（職稱與負責項目分別屬於<code>&lt;span&gt;</code>與<code>&lt;li&gt;</code>），稍微放大字體，並套用主色、讓其凸顯於其他文字內容之上</li>
-<li><code>.experiences span</code>：職稱部分使用<code>display: inline-block;</code>搭配<code>padding: 2px 8px;</code>來撐開<code>&lt;span&gt;</code>的Y軸高，做成徽章樣式；另外、因為每一項工作經驗只有一個職稱，故使用<code>margin: 4px 0px;</code>移除X軸空間，但保持與上下HTML元素的距離</li>
-<li><code>.experiences ul li</code>：使用<code>"\21A0  "</code>設定清單項目的樣式，並透過<code>inside</code>讓清單項目不外擴</li>
-</ul>
-<h3 id="footer"><a href="#footer" class="headerlink" title="footer"></a><code>footer</code></h3><script src="https://gist.github.com/tzynwang/1d2b5895b99b8e4bce98f673669cfe8e.js"></script>
-
-<ul>
-<li><code>&lt;footer&gt;</code>是block物件，直接使用<code>height</code>撐開高度後，配合<code>display: flex;</code>、<code>justify-content: center;</code>與<code>align-items: center;</code>讓裡面的文字XY軸置中；並使用<code>background-color: var(--primary);</code>填色</li>
-</ul>
-<h3 id="手機橫持的排版"><a href="#手機橫持的排版" class="headerlink" title="手機橫持的排版"></a>手機橫持的排版</h3><script src="https://gist.github.com/tzynwang/1ccc83d8adc6299c68c39a10365b9662.js"></script>
-
-<p><code>min-width: 568px</code>是iPhone SE橫持的寬度，以此為基準，開始處理第二種版面</p>
-<ul>
-<li><code>.container</code>：使用<code>display: flex;</code>讓<code>&lt;header&gt;</code>與<code>&lt;main&gt;</code>水平排列，並總高度設定為「螢幕視高（100vh）扣掉<code>&lt;footer&gt;</code>的36px」，把<code>&lt;footer&gt;</code>固定在畫面最底</li>
-<li><code>header</code>與<code>main</code>則各佔據4成與6成的寬度，並使用<code>overflow: auto;</code>在「內容超出容器高度後，出現捲軸，可透過捲動來瀏覽超出容器高度的內容」</li>
-<li><code>h1</code>：稍微縮小字體，避免姓名過大造成版面在視覺上的不平衡</li>
-</ul>
-<h3 id="平板的排版"><a href="#平板的排版" class="headerlink" title="平板的排版"></a>平板的排版</h3><script src="https://gist.github.com/tzynwang/c9dc2bf49e03e48e10a501966c42e145.js"></script>
-
-<p><code>min-width: 768px</code>是iPad直立的寬度，以此為基準，開始處理第三種版面<br>將<code>header</code>與<code>main</code>的寬度比例改為3比7；並因為顯示區域變大，所以稍微增加內容內推的距離，<code>padding</code>提高為32px、<code>h1</code>稍稍放大（4rem）</p>
-<h3 id="桌上裝置顯示印表機圖示"><a href="#桌上裝置顯示印表機圖示" class="headerlink" title="桌上裝置顯示印表機圖示"></a>桌上裝置顯示印表機圖示</h3><script src="https://gist.github.com/tzynwang/47d368d116e011d2d075c7042807fb9e.js"></script>
-
-<p>設定<code>min-width: 768px</code>以上後要顯示連結群組最尾端的印表機圖示，小缺點是這個break point會讓橫持的iPad Pro也看得到印表機……（ ˘･з･）</p>
-<h3 id="亮色／暗色模式"><a href="#亮色／暗色模式" class="headerlink" title="亮色／暗色模式"></a>亮色／暗色模式</h3><script src="https://gist.github.com/tzynwang/8facdb6989a9e4e4441ff5b6fddf9a71.js"></script>
-
-<p>簡短說明如何使用純CSS做出「亮色／暗色模式」切換的效果：</p>
-<ol>
-<li>使用<code>&lt;input type="checkbox"&gt;</code>搭配<code>&lt;label&gt;</code>並使用<code>position: fixed;</code>固定位置，<code>&lt;input&gt;</code>放在可視畫面之外，<code>&lt;label&gt;</code>留在畫面右下角（小版面）或右上方（中型以上版面）讓使用者點擊</li>
-<li><code>&lt;label&gt;</code>被點擊後，使用CSS選取器<code>:checked</code>搭配<code>filter: invert(100%);</code>來為畫面上的顏色套上負片效果</li>
-<li>關於<code>filter: invert(100%);</code>的視覺效果，可參考之前做過的微型專案：<a href="https://tzynwang.github.io/CSS-filter-property/" target="_blank">CSS filter Property</a></li>
-</ol>
-<p>較詳細說明如下：</p>
-<ul>
-<li><code>#dark, #darkLabel</code>：使用<code>position: fixed;</code>固定<code>&lt;input type="checkbox" id="dark"&gt;</code>與<code>&lt;label for="dark" id="darkLabel"&gt;</code>的位置</li>
-<li><code>#dark</code>：幫<code>&lt;label&gt;</code>和<code>&lt;input&gt;</code>定位時，這兩項元素的位置是參考<code>&lt;body&gt;</code>來偏移，所以將<code>&lt;input&gt;</code>的位置設定為<code>top: -2rem;</code>、<code>left: -2rem;</code>來把核取方塊推到視覺範圍之外<ul>
-<li>入門可參考YouTube影片：<a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=6jwl-XEpXLk&amp;list=PLqivELodHt3iL9PgGHg0_EF86FwdiqCre&amp;index=13">金魚都能懂網頁設計入門 : Fixed 定位</a></li>
-<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/CSS/position#values">MDN對<code>fixed</code>的說明</a>：It is positioned relative to the initial containing block established by the viewport, except when one of its ancestors has a transform, perspective, or filter property set to something other than none, in which case that ancestor behaves as the containing block. 而因為<code>&lt;label&gt;</code>和<code>&lt;input&gt;</code>之上就是<code>&lt;body&gt;</code>了，所以在這份作業中不用擔心其他元素會被拿來當作定位參考的問題</li>
-</ul>
-</li>
-<li><code>#darkLabel</code>：使用<code>opacity: 0.8;</code>讓按鈕在視覺上不要那麼厚重；加上<code>z-index: 1;</code>確保按鈕不會被其他元素覆蓋掉；而因為在亮色／暗色之間切換時會改變按鈕顏色，故補上<code>transition: 0.3s;</code>讓顏色轉換的過程不要太突兀；而<code>display: flex;</code>、<code>justify-content: center;</code>與<code>align-items: center;</code>讓按鈕中的圖示XY軸置中</li>
-<li><code>#darkLabel svg</code>：按鈕中的圖示用<code>fill: var(--light);</code>來填入顏色</li>
-<li><code>#dark:checked~#darkLabel</code>：在<code>&lt;input type="checkbox" id="dark"&gt;</code>被勾選後，<code>&lt;label for="dark" id="darkLabel"&gt;</code>按鈕本身的顏色要變淺（<code>background-color: var(--medium);</code>），並按鈕陰影因為整體畫面的背景顏色變深，所以也要改的亮一點（<code>box-shadow: 0px 0px 8px var(--light);</code>）</li>
-<li><code>#dark:checked~#darkLabel svg</code>：原理同上，按鈕本身顏色變淺的話，按鈕內的圖示顏色要加深（<code>fill: var(--dark);</code>）</li>
-<li><code>#dark:checked~#darkLabel svg path</code>：用選取器抓取<code>&lt;svg&gt;</code>圖示裡面的<code>&lt;path&gt;</code>元素，修改其<code>d</code>值讓圖示形狀從月亮變為太陽<ul>
-<li>參考：<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/42227012/css-change-d-property-of-path">CSS change d property of <path> - Stack Overflow</path></a></li>
-</ul>
-</li>
-<li><code>#dark:checked~.container, #dark:checked~footer</code>：使用<code>filter: invert(100%);</code>來讓<code>.container</code>與<code>footer</code>元素的顏色負片化，而<code>hue-rotate(180deg)</code>讓顏色在負片化之後讓色相「轉回」原點</li>
-<li><code>#dark:checked~.container header .avatar img, #dark:checked~footer p span</code>：把「不要負片」的元素選取起來，套用<code>filter: hue-rotate(-180deg) invert(100%);</code>把顏色負片回去（抵銷掉負片效果）</li>
-<li>上述CSS原始碼第51行開始：使用<code>@media</code>讓切換「亮色／暗色模式」的按鈕在手機橫持以上的版面停留在畫面右上方（<code>top: 0;</code>與<code>right: 60px;</code>），並修改<code>width</code>與<code>height</code>讓按鈕變成窄長方形</li>
-</ul>
-<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://youtu.be/5aJTVV-rlBw">Pure CSS3 Dark Mode Effects For Website | CSS Only Night mode</a></li>
-<li><a target="_blank" rel="noopener" href="https://youtu.be/qimopjP6YoM">Full Dark Mode with only 1 CSS PROPERTY?!</a></li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope="" itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://tzynwang.github.io/2021/css-specificity/">
-
-    <span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar-pexels-alex-andrews-215-215.png">
-      <meta itemprop="name" content="Charlie (Tzu Yin)">
-      <meta itemprop="description" content="一介普通文組的學習筆記 📒">
-    </span>
-
-    <span hidden="" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="普通文組">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/css-specificity/" class="post-title-link" itemprop="url">「CSS Specificity」相關筆記</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-03-18 20:52:44" itemprop="dateCreated datePublished" datetime="2021-03-18T20:52:44+08:00">2021-03-18</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-03-29 19:20:32" itemprop="dateModified" datetime="2021-03-29T19:20:32+08:00">2021-03-29</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-          <a href="/categories/CSS/" itemprop="url" rel="index"><span itemprop="name">CSS</span></a>
-        </span>
-    </span>
-
-  
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus: </span>
-    
-    <a title="disqus" href="/2021/css-specificity/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/css-specificity/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="重點整理"><a href="#重點整理" class="headerlink" title="重點整理"></a>重點整理</h2><ul>
-<li>有重複的CSS樣式規則套用到同一個HTML元素上的時候，權重（specificity）高的樣式會覆蓋權重低的樣式設定。</li>
-<li>原始碼中位置越下方（後發）的CSS樣式會複寫先寫出來的樣式。</li>
-<li>樣式規則有衝突的時候，權重較高的樣式會覆蓋權重低的樣式。衝突規則的權重一樣大的時候，後發的樣式會覆蓋先寫的樣式。</li>
-</ul>
-<h2 id="Specificity"><a href="#Specificity" class="headerlink" title="Specificity"></a>Specificity</h2><p>Specificity（以降以「權重」稱之）的高低影響哪一些CSS樣式會發生作用。<br>設定好的CSS沒有作用，可能就是CSS樣式的權重沒有妥善安排，導致編寫好的CSS樣式沒有如預期般套用到HTML元素上。</p>
-<p>權重從低至高順位分組如下：</p>
-<ol>
-<li><p>universal selector與inherited style：使用<code>*</code>選取「全部」與繼承得來的樣式，兩者的權重皆為<code>0-0-0-0-0</code>；最低的權重</p>
-</li>
-<li><p>element selector、::pseudo-element selector：選取HTML元素或偽元素，權重為<code>0-0-0-0-1</code></p>
-<ul>
-<li><p>HTML元素：html、body、section、div、p……等HTML元素（element）</p>
-</li>
-<li><p>偽元素：</p>
-<blockquote>
-<p>A CSS pseudo-element is a keyword added to a selector that lets you style a specific <strong>part</strong> of the selected element(s).</p>
-</blockquote>
-<p>參考<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-elements">MDN</a>，偽元素指的是HTML元素的「某一個部份」，較常見的大概是<code>::after</code>、<code>::before</code>與<code>::first-letter</code></p>
-</li>
-</ul>
-</li>
-<li><p>.class selector、:pseudo-class selector、[attribute] selector：選取class、偽類或具有特定屬性（attribute）的HTML元素，權重為<code>0-0-0-1-0</code></p>
-<ul>
-<li><p>偽類：</p>
-<blockquote>
-<p>A CSS pseudo-class is a keyword added to a selector that specifies a special <strong>state</strong> of the selected element(s).</p>
-</blockquote>
-<p>參考<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes">MDN</a>，偽類指的是HTML元素的「某一種狀態」，最常見的大概是<code>:hover</code></p>
-</li>
-<li><p>屬性：參考<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes">MDN</a>，以<code>input[type="checkbox"]</code>為例，就是「選取所有是checkbox特性的input元素」</p>
-</li>
-</ul>
-</li>
-<li><p>#id selector：選取擁有某id的HTML元素，權重是<code>0-0-1-0-0</code></p>
-</li>
-<li><p>inline style（比如<code>&lt;p style="color: red;"&gt;text&lt;/p&gt;</code>）：權重是<code>0-1-0-0-0</code>，不過這樣會讓原始碼的維護性變差，所以還是避免使用吧</p>
-</li>
-<li><p><code>!important</code>：擁有最大的權重<code>1-0-0-0-0</code>，而後發的<code>!important</code>會壓過先寫出來的<code>!important</code></p>
-</li>
-</ol>
-<h3 id="權重的計算方式"><a href="#權重的計算方式" class="headerlink" title="權重的計算方式"></a>權重的計算方式</h3><p>參考以上劃分的六種權重分組，將選取器中屬於同一組的選擇器條件相加後進行比大小。<br>舉個🌰，假設以下兩種<code>color</code>的樣式設定位在同一份原始碼裡面：</p>
-<figure class="highlight css"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#blue</span> { <span class="comment">/* 第一組樣式 */</span></span><br><span class="line">  <span class="attribute">color</span>: blue;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">div</span> <span class="selector-tag">p</span> { <span class="comment">/* 第二組樣式 */</span></span><br><span class="line">  <span class="attribute">color</span>: red;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-<p>而HTML內容如下：</p>
-<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span> <span class="attr">id</span>=<span class="string">"blue"</span>&gt;</span>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consectetur, magnam!<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
-<p>第一組樣式的選取器為#id一個，權重為：0-0-1-0-0<br>第二組樣式的選取器為HTML元素兩個，權重為：0-0-0-0-2<br>第一組樣式的權重大於第二組，故以上的<code>&lt;p&gt;</code>會是藍色：</p>
-<p class="codepen" data-height="265" data-theme-id="dark" data-default-tab="html,result" data-user="Charlie7779" data-slug-hash="vYyqpLy" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="css specificity">
-  <span>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/Charlie7779/pen/vYyqpLy">
-  css specificity</a> by Charlie (<a target="_blank" rel="noopener" href="https://codepen.io/Charlie7779">@Charlie7779</a>)
-  on <a target="_blank" rel="noopener" href="https://codepen.io">CodePen</a>.</span>
-</p>
-<script async="" src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
-<p></p>
-<script async="" src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
-
-<p>需注意的是，CSS的權重並<strong>不是十進位制</strong>，選取五十個.class做出來的CSS樣式也比不過選取一個#id宣告出來的樣式。<br>舉個🌰，假設以下兩種<code>background-color</code>的樣式設定位在同一份原始碼裡面：</p>
-<figure class="highlight css"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#yellow</span> {</span><br><span class="line">  <span class="attribute">background-color</span>: yellow;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.c1</span> <span class="selector-class">.c2</span> <span class="selector-class">.c3</span> <span class="selector-class">.c4</span> <span class="selector-class">.c5</span> <span class="selector-class">.c6</span> <span class="selector-class">.c7</span> <span class="selector-class">.c8</span> <span class="selector-class">.c9</span> <span class="selector-class">.c10</span> <span class="selector-class">.c11</span> {</span><br><span class="line">  <span class="attribute">background-color</span>: green;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-<p>而HTML內容如下：</p>
-<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"c1"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"c2"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"c3"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"c4"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"c5"</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"c6"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"c7"</span>&gt;</span></span><br><span class="line">              <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"c8"</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"c9"</span>&gt;</span></span><br><span class="line">                  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"c10"</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"c11"</span> <span class="attr">id</span>=<span class="string">"yellow"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">              <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
-<p>那麼該<code>&lt;div&gt;</code>的背景顏色會是黃色：</p>
-<p class="codepen" data-height="265" data-theme-id="dark" data-default-tab="html,result" data-user="Charlie7779" data-slug-hash="vYywoqR" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="css specificity">
-  <span>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/Charlie7779/pen/vYywoqR">
-  css specificity</a> by Charlie (<a target="_blank" rel="noopener" href="https://codepen.io/Charlie7779">@Charlie7779</a>)
-  on <a target="_blank" rel="noopener" href="https://codepen.io">CodePen</a>.</span>
-</p>
-<script async="" src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
-<p></p>
-<script async="" src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
-
-<p>在CSS Specificity的宇宙裡，團結起來的五十個<code>.筷子</code>還是會被<code>#●門</code>夾爆的。</p>
-<h3 id="快速判別樣式的權重"><a href="#快速判別樣式的權重" class="headerlink" title="快速判別樣式的權重"></a>快速判別樣式的權重</h3><ul>
-<li><code>!important</code>最大，有複數個<code>!important</code>就看哪一段樣式最後被執行</li>
-<li>element贏不過.class與[attribute]，.class與[attribute]贏不過#id</li>
-<li>使用人家寫好的計算機：<a target="_blank" rel="noopener" href="https://specificity.keegan.st/">Specificity Calculator</a></li>
-</ul>
-<figure class="figure--center"><img src="/2021/css-specificity/fullhouse.jpg" title="在CSS Specificity的宇宙裡，就算你爸變兔子.class也打不過#id"><figcaption><p>在CSS Specificity的宇宙裡，就算你爸變兔子.class也打不過#id</p></figcaption></figure>
-
-
-<h2 id="權重相等時，後發覆蓋先寫的樣式"><a href="#權重相等時，後發覆蓋先寫的樣式" class="headerlink" title="權重相等時，後發覆蓋先寫的樣式"></a>權重相等時，後發覆蓋先寫的樣式</h2><p>假設<code>style.css</code>的內容如下：</p>
-<figure class="highlight css"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">p</span> {</span><br><span class="line">  <span class="attribute">color</span>: blue;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-<p>而HTML內容如下：</p>
-<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"./style.css"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line">    p {</span><br><span class="line">      color: green;</span><br><span class="line">    }</span><br><span class="line">  <span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consectetur, magnam!<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
-<p>因為<code>&lt;style&gt;</code>比<code>&lt;link rel="stylesheet" href="./style.css"&gt;</code>晚執行，所以<code>&lt;p&gt;</code>會是綠色（按下<span style="color: #21a243;">▶</span>執行程式碼看結果）：</p>
-<iframe height="400px" width="100%" src="https://replit.com/@Charlie7779/css-specificity-style-after-link?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
-
-<p>而如果調換<code>&lt;style&gt;</code>與<code>&lt;link rel="stylesheet" href="./style.css"&gt;</code>的順序：</p>
-<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line">    p {</span><br><span class="line">      color: green;</span><br><span class="line">    }</span><br><span class="line">  <span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"./style.css"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consectetur, magnam!<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
-<p><code>&lt;p&gt;</code>就會是藍色（按下<span style="color: #21a243;">▶</span>執行程式碼看結果）：</p>
-<iframe height="400px" width="100%" src="https://replit.com/@Charlie7779/css-specificity-link-after-style?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
-
-
-<h3 id="LVHA"><a href="#LVHA" class="headerlink" title="LVHA"></a>LVHA</h3><p>問：為什麼超連結的CSS樣式最好以「link-visited-hover-active」的順序從上到下書寫？<br>答：因為樣式權重相等的時候，後發的樣式會覆蓋先寫的內容。<br>假設使用「link-hover-active-visited」的順序來設定CSS樣式：</p>
-<figure class="highlight css"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">a</span><span class="selector-pseudo">:link</span> {</span><br><span class="line">  <span class="attribute">color</span>: blue;</span><br><span class="line">}</span><br><span class="line"><span class="selector-tag">a</span><span class="selector-pseudo">:hover</span> {</span><br><span class="line">  <span class="attribute">color</span>: aqua;</span><br><span class="line">}</span><br><span class="line"><span class="selector-tag">a</span><span class="selector-pseudo">:active</span> {</span><br><span class="line">  <span class="attribute">color</span>: red;</span><br><span class="line">}</span><br><span class="line"><span class="selector-tag">a</span><span class="selector-pseudo">:visited</span> {</span><br><span class="line">  <span class="attribute">color</span>: purple;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-<p>那一個被點擊過的（<code>:visited</code>）超連結，即使在<code>:hover</code>或<code>:active</code>的狀態，也不會被套上<code>:hover</code>或<code>:active</code>的樣式，因為<code>:hover</code>與<code>:active</code>通通被<code>:visited</code>的樣式蓋過去了。<br>點擊過以下範例的超連結後，即使把游標停留在連結上，文字也不會變為水藍色：</p>
-<p class="codepen" data-height="265" data-theme-id="dark" data-default-tab="css,result" data-user="Charlie7779" data-slug-hash="abBgEQN" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="LHAV">
-  <span>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/Charlie7779/pen/abBgEQN">
-  LHAV</a> by Charlie (<a target="_blank" rel="noopener" href="https://codepen.io/Charlie7779">@Charlie7779</a>)
-  on <a target="_blank" rel="noopener" href="https://codepen.io">CodePen</a>.</span>
-</p>
-<script async="" src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
-
-<p>但如果把樣式順序修改如下：</p>
-<figure class="highlight css"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">a</span><span class="selector-pseudo">:link</span> {</span><br><span class="line">  <span class="attribute">color</span>: blue;</span><br><span class="line">}</span><br><span class="line"><span class="selector-tag">a</span><span class="selector-pseudo">:visited</span> {</span><br><span class="line">  <span class="attribute">color</span>: purple;</span><br><span class="line">}</span><br><span class="line"><span class="selector-tag">a</span><span class="selector-pseudo">:hover</span> {</span><br><span class="line">  <span class="attribute">color</span>: aqua;</span><br><span class="line">}</span><br><span class="line"><span class="selector-tag">a</span><span class="selector-pseudo">:active</span> {</span><br><span class="line">  <span class="attribute">color</span>: red;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-<p>這個超連結就可以表現出四種不同狀態的樣式。<br>先點擊以下範例的超連結，超連結的文字會變成紫色，但因為<code>:hover</code>與<code>:active</code>的樣式順序在<code>:visited</code>以下，所以當游標停留在連結上（狀態為<code>:hover</code>）時，文字會變成水藍色；而點下超連結（狀態為<code>:active</code>）時，文字會變成紅色：</p>
-<p class="codepen" data-height="265" data-theme-id="dark" data-default-tab="css,result" data-user="Charlie7779" data-slug-hash="xxRopME" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="LVHA">
-  <span>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/Charlie7779/pen/xxRopME">
-  LVHA</a> by Charlie (<a target="_blank" rel="noopener" href="https://codepen.io/Charlie7779">@Charlie7779</a>)
-  on <a target="_blank" rel="noopener" href="https://codepen.io">CodePen</a>.</span>
-</p>
-<script async="" src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
-
-
-<h2 id="規則衝突時，後發覆蓋先寫的樣式"><a href="#規則衝突時，後發覆蓋先寫的樣式" class="headerlink" title="規則衝突時，後發覆蓋先寫的樣式"></a>規則衝突時，後發覆蓋先寫的樣式</h2><p>舉個🌰，假設以下兩種針對<code>&lt;p&gt;</code>的樣式設定位在同一份原始碼裡面：</p>
-<figure class="highlight css"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">p</span> {</span><br><span class="line">  <span class="attribute">color</span>: red;</span><br><span class="line">  <span class="attribute">background</span>: blue;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">p</span> {</span><br><span class="line">  <span class="attribute">color</span>: yellow;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-<p>衝突的規則只有<code>color</code>，<code>background</code>不受影響，所以最後<code>&lt;p&gt;</code>的樣式會是「藍色背景、黃色文字」：</p>
-<p class="codepen" data-height="265" data-theme-id="dark" data-default-tab="html,result" data-user="Charlie7779" data-slug-hash="PobrEQQ" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="css specificity">
-  <span>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/Charlie7779/pen/PobrEQQ">
-  css specificity</a> by Charlie (<a target="_blank" rel="noopener" href="https://codepen.io/Charlie7779">@Charlie7779</a>)
-  on <a target="_blank" rel="noopener" href="https://codepen.io">CodePen</a>.</span>
-</p>
-<script async="" src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
-
-
-<h2 id="透過繼承得到的樣式，權重是0-0-0-0-0"><a href="#透過繼承得到的樣式，權重是0-0-0-0-0" class="headerlink" title="透過繼承得到的樣式，權重是0-0-0-0-0"></a>透過繼承得到的樣式，權重是0-0-0-0-0</h2><p>舉個🌰，假設以下兩種樣式設定位在同一份原始碼裡面：</p>
-<figure class="highlight css"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#parent</span> {</span><br><span class="line">  <span class="attribute">color</span>: green;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">h1</span> {</span><br><span class="line">  <span class="attribute">color</span>: red;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-<p>而HTML內容如下：</p>
-<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span> <span class="attr">id</span>=<span class="string">"parent"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>A Title<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
-<p><code>&lt;h1&gt;</code>從<code>&lt;body id="parent"&gt;</code>繼承到的文字色彩樣式會被CSS樣式表中的<code>h1</code>覆蓋掉（樣式<code>h1</code>的權重是0-0-0-0-1），<code>&lt;h1&gt;A Title&lt;/h1&gt;</code>會是紅色：</p>
-<p class="codepen" data-height="265" data-theme-id="dark" data-default-tab="html,result" data-user="Charlie7779" data-slug-hash="vYyqRXo" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="inherited styles">
-  <span>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/Charlie7779/pen/vYyqRXo">
-  inherited styles</a> by Charlie (<a target="_blank" rel="noopener" href="https://codepen.io/Charlie7779">@Charlie7779</a>)
-  on <a target="_blank" rel="noopener" href="https://codepen.io">CodePen</a>.</span>
-</p>
-<script async="" src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
-
-
-<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://www.smashingmagazine.com/2007/07/css-specificity-things-you-should-know/">CSS Specificity: Things You Should Know</a></li>
-<li><a target="_blank" rel="noopener" href="https://meyerweb.com/eric/css/link-specificity.html">Link Specificity: I tried to apply CSS to my hyperlinks and the hovering didn’t work</a></li>
-<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity#directly_targeted_elements_vs._inherited_styles">MDN: Directly targeted elements vs. inherited styles</a></li>
-<li><a target="_blank" rel="noopener" href="https://cssspecificity.com/">CSS Specificity with icons inspired by “The Shining”</a></li>
 </ul>
 
       

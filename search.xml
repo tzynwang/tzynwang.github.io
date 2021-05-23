@@ -775,6 +775,87 @@ on <a href="https://codepen.io">CodePen</a>.</span>
       </categories>
   </entry>
   <entry>
+    <title>「Edit Files With Workspaces」相關筆記</title>
+    <url>/2021/edit-files-with-workspaces/</url>
+    <content><![CDATA[<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>這篇文章是在處理ALPHA Camp 學期1 S3 A11作業「試用開發者工具」時，嘗試搭配DevTools，避免作業過程中意外重新整理網頁，造成作業進度遺失的問題。</p>
+<p>DevTools確實可以解決上述問題。<br>但為了要讓DevTools可以隨時儲存我的修改進度，需要先將作業範例檔案git clone回本機，然後再透過DevTools開啟作業資料夾，給予DevTools權限來記錄我對作業進行的修改。</p>
+<h2 id="版本與環境"><a href="#版本與環境" class="headerlink" title="版本與環境"></a>版本與環境</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Google Chrome: 89.0.4389.82 (Official Build) (x86_64)</span><br><span class="line">ox: macOS Big Suf Version 11.1</span><br></pre></td></tr></table></figure>
+
+<h2 id="流程與筆記"><a href="#流程與筆記" class="headerlink" title="流程與筆記"></a>流程與筆記</h2><ol>
+<li>觀察ALPHA Camp提供的作業連結（<a href="https://alphacamp.github.io/css-facebook/">https://alphacamp.github.io/css-facebook/</a>），推測作業範例應該是用GitHub Pages發布的，嘗試搜尋「ALPHA Camp github」，運氣不錯，作業的repo是公開的</li>
+<li>把作業範例git clone回本機</li>
+<li>用VSCode開啟作業範例，使用VSCode的擴充套件「<a href="https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer">Live Server</a>」讓index.html在localhost:5500動起來</li>
+<li>參考官方文件的說明（<a href="https://developers.google.com/web/tools/chrome-devtools/workspaces#devtools">「Set up DevTools」</a>），開啟DevTools後，點選功能分頁中的「Sources」</li>
+<li>進入子選項「Filesystem」，點選「+ Add folder to workspace」，選擇作業所在的資料夾<br> 備註：在流程第二步，我選擇將作業clone回桌面的css-facebook資料夾，故在這一步，我要在DevTools中選擇開啟位在桌面的css-facebook資料夾</li>
+<li>在DevTools跳出權限請求視窗時，選擇給予DevTools權限來修改本機檔案</li>
+<li>在沒有開錯資料夾、沒有出現其他問題的情況下，Filesystem區域會出現資料夾css-facebook，點開資料夾會看到index.html與style.css兩個檔案，並style.css的檔案圖示右下角會有綠點 <figure class="figure--center"><img src="/2021/edit-files-with-workspaces/file-mapping-success.png"></figure></li>
+<li>綠點代表現在透過DevTools對網頁做的CSS更動都會儲存到style.css中，這樣即使改到一半重新整理網頁，先前的CSS修改也不會消失</li>
+</ol>
+<h3 id="注意事項"><a href="#注意事項" class="headerlink" title="注意事項"></a>注意事項</h3><p>在DevTools的Elements標籤下修改的HTML內容不會被保存下來，想要保存對HTML的變更，請移動到Sources標籤去修改index.html</p>
+<figure class="figure--center"><img src="/2021/edit-files-with-workspaces/why-it-isnt-saved.png"></figure>
+
+<p>問：為什麼我在Elements修改網頁的內文不像修改CSS會被保存下來？<br>答：因為在Elements標籤下做的修改都是改到DOM，不是改到HTML。<br>瀏覽器取得HTML後，解析、並搭配CSS與JS來決定最後呈現給使用者看的內容會長什麼樣子，使用者看到、並用Elements操作（修改）的東西是DOM。<br>而這些DOM最終為什麼會以這些樣子呈現在網頁上，是綜合了HTML、CSS與JS互相搭配的結果，DevTools很難知道它到底該把使用者對DOM做的修改內容記錄到HTML、CSS或是JS檔案中。</p>
+<p>更詳細的解說可參考：<a href="https://developers.google.com/web/tools/chrome-devtools/workspaces#why">Save an HTML change to disk: Why it doesn’t work</a></p>
+<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><p><a href="https://developers.google.com/web/tools/chrome-devtools/workspaces">Edit Files With Workspaces</a></p>
+]]></content>
+      <categories>
+        <category>DevTools</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>「重設表單（form reset）」相關筆記</title>
+    <url>/2021/form-reset/</url>
+    <content><![CDATA[<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>HTML本身即支援兩種重設表單<strong>全部</strong>內容的方法：</p>
+<ul>
+<li>Form <code>reset()</code>：作用在表單物件上（<code>formObject.reset()</code>）</li>
+<li>Input <code>type=&quot;reset&quot;</code>：設置在表單的<code>&lt;input&gt;</code>上，點擊後觸發</li>
+</ul>
+<p>定義重設：將input欄位的值<strong>重置為預設值</strong></p>
+<h2 id="環境"><a href="#環境" class="headerlink" title="環境"></a>環境</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Google Chrome: 90.0.4430.93 (Official Build) (x86_64)</span><br><span class="line">ox: macOS Big Suf Version 11.1</span><br></pre></td></tr></table></figure>
+<h2 id="範例展示"><a href="#範例展示" class="headerlink" title="範例展示"></a>範例展示</h2><p class="codepen" data-height="265" data-theme-id="dark" data-default-tab="html,result" data-user="Charlie7779" data-slug-hash="YzZwRxa" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="form reset">
+  <span>See the Pen <a href="https://codepen.io/Charlie7779/pen/YzZwRxa">
+  form reset</a> by Charlie (<a href="https://codepen.io/Charlie7779">@Charlie7779</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+
+<h2 id="reset"><a href="#reset" class="headerlink" title="reset()"></a><code>reset()</code></h2><ul>
+<li>對<code>formObject</code>使用，即會將該表單所有的input欄位都重設回預設值</li>
+<li><code>formObject</code>：HTML中的<code>&lt;form&gt;</code>物件（The Form object represents an HTML <code>&lt;form&gt;</code> element.），可透過<code>document.querySelector()</code>抓取</li>
+</ul>
+<h3 id="與-lt-button-gt-搭配"><a href="#與-lt-button-gt-搭配" class="headerlink" title="與&lt;button&gt;搭配"></a>與<code>&lt;button&gt;</code>搭配</h3><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- HTML部分 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">class</span>=<span class="string">&quot;first&quot;</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 省略部分內容 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">&quot;resetFirst&quot;</span>&gt;</span>Reset<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// JavaScript部分</span></span><br><span class="line"><span class="built_in">document</span>.querySelector(<span class="string">&quot;#resetFirst&quot;</span>).addEventListener(<span class="string">&quot;click&quot;</span>, <span class="function">(<span class="params">event</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">document</span>.querySelector(<span class="string">&quot;.first&quot;</span>).reset();</span><br><span class="line">  event.preventDefault();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>解說：</p>
+<ul>
+<li>監聽<code>&lt;button&gt;</code>的點擊事件，點擊事件發生後，抓取<code>formObject</code>，套用<code>reset()</code></li>
+<li>因<code>&lt;button&gt;</code>沒有設置任和<code>type</code>內容，故默認為<code>type=&quot;submit&quot;</code>，所以在示範中加上<code>event.preventDefault()</code>來避免送出表單的動作<blockquote>
+<p><a href="https://developer.mozilla.org/en-US/docs/Learn/Forms/Basic_native_form_controls#actual_buttons">MDN</a>: For <code>&lt;button&gt;</code> elements, omitting the type attribute (or an invalid value of type) results in a submit button.</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="type-quot-reset-quot"><a href="#type-quot-reset-quot" class="headerlink" title="type=&quot;reset&quot;"></a><code>type=&quot;reset&quot;</code></h2><h3 id="與-lt-input-gt-搭配"><a href="#與-lt-input-gt-搭配" class="headerlink" title="與&lt;input&gt;搭配"></a>與<code>&lt;input&gt;</code>搭配</h3><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- HTML部分 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">form</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 省略部分內容 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;reset&quot;</span> <span class="attr">value</span>=<span class="string">&quot;Reset by type=<span class="symbol">&amp;quot;</span>reest<span class="symbol">&amp;quot;</span>&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>直接將<code>&lt;input&gt;</code>設置為<code>type=&quot;reset&quot;</code>即可，點擊後即會自動執行「重設表單中所有input欄位內容」的動作</li>
+<li>沒有設定<code>value</code>的話，預設顯示文字<code>Reset</code>；可透過設定<code>value</code>的值來修改顯示在按鈕中的文字</li>
+<li>不需額外設置JavaScript</li>
+</ul>
+<h3 id="與-lt-button-gt-搭配-1"><a href="#與-lt-button-gt-搭配-1" class="headerlink" title="與&lt;button&gt;搭配"></a>與<code>&lt;button&gt;</code>搭配</h3><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- HTML部分 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">form</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 省略部分內容 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">&quot;reset&quot;</span>&gt;</span>Reset<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>效果與設置<code>input type=&quot;reset&quot;</code>相同，點擊後即會重設表單中所有input欄位內容</li>
+<li>不需額外設置JavaScript</li>
+</ul>
+<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
+<li><a href="https://www.w3schools.com/jsref/met_form_reset.asp">W3Schools: Form reset() Method</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/reset">MDN: input type=”reset”</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Learn/Forms/Basic_native_form_controls#actual_buttons">MDN: Basic native form controls – Actual buttons</a></li>
+<li><a href="https://stackoverflow.com/a/9760424/15028185">Quotation marks in HTML attribute values?</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>HTML</category>
+      </categories>
+  </entry>
+  <entry>
     <title>「CSS Specificity」相關筆記</title>
     <url>/2021/css-specificity/</url>
     <content><![CDATA[<h2 id="重點整理"><a href="#重點整理" class="headerlink" title="重點整理"></a>重點整理</h2><ul>
@@ -925,31 +1006,40 @@ on <a href="https://codepen.io">CodePen</a>.</span>
       </categories>
   </entry>
   <entry>
-    <title>「Edit Files With Workspaces」相關筆記</title>
-    <url>/2021/edit-files-with-workspaces/</url>
-    <content><![CDATA[<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>這篇文章是在處理ALPHA Camp 學期1 S3 A11作業「試用開發者工具」時，嘗試搭配DevTools，避免作業過程中意外重新整理網頁，造成作業進度遺失的問題。</p>
-<p>DevTools確實可以解決上述問題。<br>但為了要讓DevTools可以隨時儲存我的修改進度，需要先將作業範例檔案git clone回本機，然後再透過DevTools開啟作業資料夾，給予DevTools權限來記錄我對作業進行的修改。</p>
-<h2 id="版本與環境"><a href="#版本與環境" class="headerlink" title="版本與環境"></a>版本與環境</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Google Chrome: 89.0.4389.82 (Official Build) (x86_64)</span><br><span class="line">ox: macOS Big Suf Version 11.1</span><br></pre></td></tr></table></figure>
+    <title>「Express Handlebars 取得父層變數內容」相關筆記</title>
+    <url>/2021/express-handlebars-access-variable-in-parent-scope/</url>
+    <content><![CDATA[<h2 id="問題描述"><a href="#問題描述" class="headerlink" title="問題描述"></a>問題描述</h2><ul>
+<li>情境：在express-handlebars中使用原生的<code>each</code>搭配handlebars-helpers的<code>is</code>進行條件判斷，進而渲染出一組<code>&lt;select&gt;</code><ul>
+<li><code>&lt;select&gt;</code>中的每一個<code>&lt;option&gt;</code>都是一種餐廳類型（舉例：日本料理、酒吧、美式餐廳等）</li>
+<li>（由<code>app.js</code>傳遞給<code>edit.handlebars</code>的變數）<code>categories</code>為餐廳類型的陣列資料，<code>restaurant</code>為物件變數，可透過<code>restaurant.category</code>來取得該餐廳的餐廳類型</li>
+<li>當<code>each</code>迴圈中<code>this</code>的值與<code>restaurant.category</code>一致時，pre-selected該<code>&lt;option&gt;</code><figure class="figure--center"><img src="/2021/express-handlebars-access-variable-in-parent-scope/pre-selected.png" title="select欄位應預設選擇該餐廳的類型"><figcaption><p>select欄位應預設選擇該餐廳的類型</p></figcaption></figure></li>
+</ul>
+</li>
+<li>問題：檢查最終的DOM內容，發現並<strong>沒有</strong>渲染出應該要預先被選擇的<code>&lt;option&gt;</code></li>
+<li>行為不如預期的原始碼：<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// app.js端</span></span><br><span class="line">app.get(<span class="string">&#x27;/restaurants/:id/edit&#x27;</span>, <span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> id = <span class="built_in">Number</span>(req.params.id)</span><br><span class="line">  <span class="keyword">const</span> targetRestaurant = restaurantList.results.find(<span class="function">(<span class="params">restaurant</span>) =&gt;</span> restaurant.id === id)</span><br><span class="line">  <span class="keyword">const</span> categories = []</span><br><span class="line">  restaurantList.results.forEach(<span class="function"><span class="params">restaurant</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (!categories.includes(restaurant.category)) &#123;</span><br><span class="line">      categories.push(restaurant.category)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">  res.render(<span class="string">&#x27;edit&#x27;</span>, &#123; <span class="attr">restaurant</span>: targetRestaurant, categories &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- handlebars端 --&gt;</span></span><br><span class="line">&#123;&#123;#each categories&#125;&#125;</span><br><span class="line">  &#123;&#123;#is this restaurant.category)&#125;&#125;</span><br><span class="line">  <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;&#123;&#123;this&#125;&#125;&quot;</span> <span class="attr">selected</span>&gt;</span>&#123;&#123;this&#125;&#125;<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">  &#123;&#123;else&#125;&#125;</span><br><span class="line">  <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;&#123;&#123;this&#125;&#125;&quot;</span>&gt;</span>&#123;&#123;this&#125;&#125;<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">  &#123;&#123;/is&#125;&#125;</span><br><span class="line">&#123;&#123;/each&#125;&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="流程與筆記"><a href="#流程與筆記" class="headerlink" title="流程與筆記"></a>流程與筆記</h2><ol>
-<li>觀察ALPHA Camp提供的作業連結（<a href="https://alphacamp.github.io/css-facebook/">https://alphacamp.github.io/css-facebook/</a>），推測作業範例應該是用GitHub Pages發布的，嘗試搜尋「ALPHA Camp github」，運氣不錯，作業的repo是公開的</li>
-<li>把作業範例git clone回本機</li>
-<li>用VSCode開啟作業範例，使用VSCode的擴充套件「<a href="https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer">Live Server</a>」讓index.html在localhost:5500動起來</li>
-<li>參考官方文件的說明（<a href="https://developers.google.com/web/tools/chrome-devtools/workspaces#devtools">「Set up DevTools」</a>），開啟DevTools後，點選功能分頁中的「Sources」</li>
-<li>進入子選項「Filesystem」，點選「+ Add folder to workspace」，選擇作業所在的資料夾<br> 備註：在流程第二步，我選擇將作業clone回桌面的css-facebook資料夾，故在這一步，我要在DevTools中選擇開啟位在桌面的css-facebook資料夾</li>
-<li>在DevTools跳出權限請求視窗時，選擇給予DevTools權限來修改本機檔案</li>
-<li>在沒有開錯資料夾、沒有出現其他問題的情況下，Filesystem區域會出現資料夾css-facebook，點開資料夾會看到index.html與style.css兩個檔案，並style.css的檔案圖示右下角會有綠點 <figure class="figure--center"><img src="/2021/edit-files-with-workspaces/file-mapping-success.png"></figure></li>
-<li>綠點代表現在透過DevTools對網頁做的CSS更動都會儲存到style.css中，這樣即使改到一半重新整理網頁，先前的CSS修改也不會消失</li>
-</ol>
-<h3 id="注意事項"><a href="#注意事項" class="headerlink" title="注意事項"></a>注意事項</h3><p>在DevTools的Elements標籤下修改的HTML內容不會被保存下來，想要保存對HTML的變更，請移動到Sources標籤去修改index.html</p>
-<figure class="figure--center"><img src="/2021/edit-files-with-workspaces/why-it-isnt-saved.png"></figure>
+</li>
+</ul>
+<h2 id="環境"><a href="#環境" class="headerlink" title="環境"></a>環境</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">express-handlebars: 5.3.2</span><br><span class="line">handlebars-helpers: 0.10.0</span><br></pre></td></tr></table></figure>
 
-<p>問：為什麼我在Elements修改網頁的內文不像修改CSS會被保存下來？<br>答：因為在Elements標籤下做的修改都是改到DOM，不是改到HTML。<br>瀏覽器取得HTML後，解析、並搭配CSS與JS來決定最後呈現給使用者看的內容會長什麼樣子，使用者看到、並用Elements操作（修改）的東西是DOM。<br>而這些DOM最終為什麼會以這些樣子呈現在網頁上，是綜合了HTML、CSS與JS互相搭配的結果，DevTools很難知道它到底該把使用者對DOM做的修改內容記錄到HTML、CSS或是JS檔案中。</p>
-<p>更詳細的解說可參考：<a href="https://developers.google.com/web/tools/chrome-devtools/workspaces#why">Save an HTML change to disk: Why it doesn’t work</a></p>
-<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><p><a href="https://developers.google.com/web/tools/chrome-devtools/workspaces">Edit Files With Workspaces</a></p>
+<h2 id="解決方式"><a href="#解決方式" class="headerlink" title="解決方式"></a>解決方式</h2><p>將handlebars端的內容修改如下（<code>restaurant.category</code>加上<code>../</code>）：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- handlebars端 --&gt;</span></span><br><span class="line">&#123;&#123;#each categories&#125;&#125;</span><br><span class="line">  &#123;&#123;#is this ../restaurant.category)&#125;&#125;</span><br><span class="line">  <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;&#123;&#123;this&#125;&#125;&quot;</span> <span class="attr">selected</span>&gt;</span>&#123;&#123;this&#125;&#125;<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">  &#123;&#123;else&#125;&#125;</span><br><span class="line">  <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;&#123;&#123;this&#125;&#125;&quot;</span>&gt;</span>&#123;&#123;this&#125;&#125;<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">  &#123;&#123;/is&#125;&#125;</span><br><span class="line">&#123;&#123;/each&#125;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>參考Handlebars官方文件的說明：</p>
+<blockquote>
+<p>Some helpers like <code>#with</code> and <code>#each</code> allow you to <strong>dive into nested objects</strong>. When you include <code>../</code> segments in your path, Handlebars will change back into the <strong>parent context</strong>.</p>
+</blockquote>
+<p>在巢狀結構中，使用<code>../</code>來取得上一層變數的內容</p>
+<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
+<li><a href="https://handlebarsjs.com/guide/expressions.html#changing-the-context">Handlebars: Changing the context</a></li>
+<li><a href="https://stackoverflow.com/questions/13645084/access-a-variable-outside-the-scope-of-a-handlebars-js-each-loop">Access a variable outside the scope of a Handlebars.js each loop</a></li>
+<li><a href="https://stackoverflow.com/a/12297980/15028185">Access properties of the parent with a Handlebars ‘each’ loop</a></li>
+<li><a href="https://eruditeness.news.blog/2019/08/28/node-js%E5%88%9D%E5%AD%B8%E7%AD%86%E8%A8%9810-%E5%9C%A8express-handlebars%E4%B8%AD%E8%BC%95%E9%AC%86%E5%BB%BA%E7%AB%8B%E5%AE%A2%E8%A3%BDhelperhandlebars-custom-helpers/">Node.js初學筆記10: 在express-handlebars中輕鬆建立客製helper(handlebars custom helpers)</a></li>
+</ul>
 ]]></content>
       <categories>
-        <category>DevTools</category>
+        <category>Express Handlebars</category>
       </categories>
   </entry>
   <entry>
@@ -1161,29 +1251,6 @@ on <a href="https://codepen.io">CodePen</a>.</span>
       </categories>
   </entry>
   <entry>
-    <title>使用GitHub Actions自動產生sitemap.xml</title>
-    <url>/2021/github-actions-sitemap/</url>
-    <content><![CDATA[<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>使用GitHub Actions執行腳本，在每次透過<code>git push</code>更新網頁內容後自動產生sitemap.xml</p>
-<h2 id="版本與環境"><a href="#版本與環境" class="headerlink" title="版本與環境"></a>版本與環境</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo: 5.3.0</span><br><span class="line">hexo-cli: 4.2.0</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></table></figure>
-
-<h2 id="過程記錄"><a href="#過程記錄" class="headerlink" title="過程記錄"></a>過程記錄</h2><ol>
-<li>在GitHub repository根目錄中建立資料夾<code>.github/workflows</code>，並在其中建立<code>.yml</code>格式的檔案來存放腳本</li>
-<li>腳本內容如下：<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">Generate</span> <span class="string">xml</span> <span class="string">sitemap</span></span><br><span class="line"><span class="comment"># name會出現在Action標籤點開後，左側workflows的列表中</span></span><br><span class="line"></span><br><span class="line"><span class="attr">on:</span></span><br><span class="line">  <span class="attr">push:</span></span><br><span class="line">    <span class="attr">branches:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">main</span> </span><br><span class="line">      <span class="comment"># git push到main分支的時候，啟動以下腳本</span></span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line">  <span class="attr">sitemap_job:</span></span><br><span class="line">    <span class="attr">runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">Generate</span> <span class="string">a</span> <span class="string">sitemap</span></span><br><span class="line">    <span class="attr">steps:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Checkout</span> <span class="string">the</span> <span class="string">repo</span></span><br><span class="line">      <span class="attr">uses:</span> <span class="string">actions/checkout@v2</span></span><br><span class="line">      <span class="attr">with:</span></span><br><span class="line">        <span class="attr">fetch-depth:</span> <span class="number">0</span> </span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Generate</span> <span class="string">new</span> <span class="string">sitemap</span></span><br><span class="line">      <span class="attr">id:</span> <span class="string">sitemap</span></span><br><span class="line">      <span class="attr">uses:</span> <span class="string">cicirello/generate-sitemap@v1.6.1</span></span><br><span class="line">      <span class="attr">with:</span></span><br><span class="line">        <span class="attr">base-url-path:</span> <span class="string">https://tzynwang.github.io/action-practice/</span></span><br><span class="line">        <span class="comment"># 參考cicirello/generate-sitemap的文件，將base-url-path的值設定為要產生sitemap的URL</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Push</span> <span class="string">sitemap</span> <span class="string">to</span> <span class="string">repository</span></span><br><span class="line">    <span class="comment"># 根據cicirello/generate-sitemap文件的說明，使用者需另找方法處理透過腳本產生的sitemap.xml</span></span><br><span class="line">    <span class="comment"># 故追加一段git腳本內容，把方才在GitHub Actions VM產生出來的sitemap透過git push放到repository中</span></span><br><span class="line">      <span class="attr">run:</span> <span class="string">|</span></span><br><span class="line">        <span class="string">git</span> <span class="string">config</span> <span class="string">--global</span> <span class="string">user.name</span> <span class="string">&quot;tzyn (GitHub Actions sitemap gen)&quot;</span></span><br><span class="line">        <span class="string">git</span> <span class="string">config</span> <span class="string">--global</span> <span class="string">user.email</span> <span class="string">&quot;tzyn.wang@gmail.com&quot;</span></span><br><span class="line">        <span class="string">git</span> <span class="string">add</span> <span class="string">sitemap.xml</span></span><br><span class="line">        <span class="string">git</span> <span class="string">commit</span> <span class="string">-m</span> <span class="string">&quot;add sitemap.xml&quot;</span></span><br><span class="line">        <span class="string">git</span> <span class="string">push</span></span><br></pre></td></tr></table></figure></li>
-<li>在本機執行<code>git push</code>將commit內容推到GitHub上</li>
-<li>進入repository的Actions標籤，確認腳本有在執行</li>
-<li>執行完成，確認sitemap.xml也有被加到repository中</li>
-<li>在本機執行<code>git pull</code>將新產生的sitemap.xml拉本機資料夾</li>
-</ol>
-<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
-<li><a href="https://github.com/cicirello/generate-sitemap#generate-sitemap">cicirello/generate-sitemap</a></li>
-<li><a href="https://docs.github.com/en/actions/quickstart">Quickstart for GitHub Actions</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>git</category>
-      </categories>
-  </entry>
-  <entry>
     <title>自主練習專案「grid-template-areas generator」技術記錄</title>
     <url>/2021/grid-template-areas-generator-review/</url>
     <content><![CDATA[<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>微型專案「grid-template-areas generator」是為了不想要手動輸入多種grid-template-areas設定的產物；輸入column與row的始末後，按下generate按鈕即可產生能直接使用的grid-template-areas設定，並提供一鍵複製的功能。</p>
@@ -1256,6 +1323,29 @@ on <a href="https://codepen.io">CodePen</a>.</span>
       <tags>
         <tag>Side Project</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>使用GitHub Actions自動產生sitemap.xml</title>
+    <url>/2021/github-actions-sitemap/</url>
+    <content><![CDATA[<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>使用GitHub Actions執行腳本，在每次透過<code>git push</code>更新網頁內容後自動產生sitemap.xml</p>
+<h2 id="版本與環境"><a href="#版本與環境" class="headerlink" title="版本與環境"></a>版本與環境</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo: 5.3.0</span><br><span class="line">hexo-cli: 4.2.0</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></table></figure>
+
+<h2 id="過程記錄"><a href="#過程記錄" class="headerlink" title="過程記錄"></a>過程記錄</h2><ol>
+<li>在GitHub repository根目錄中建立資料夾<code>.github/workflows</code>，並在其中建立<code>.yml</code>格式的檔案來存放腳本</li>
+<li>腳本內容如下：<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">Generate</span> <span class="string">xml</span> <span class="string">sitemap</span></span><br><span class="line"><span class="comment"># name會出現在Action標籤點開後，左側workflows的列表中</span></span><br><span class="line"></span><br><span class="line"><span class="attr">on:</span></span><br><span class="line">  <span class="attr">push:</span></span><br><span class="line">    <span class="attr">branches:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">main</span> </span><br><span class="line">      <span class="comment"># git push到main分支的時候，啟動以下腳本</span></span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line">  <span class="attr">sitemap_job:</span></span><br><span class="line">    <span class="attr">runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">Generate</span> <span class="string">a</span> <span class="string">sitemap</span></span><br><span class="line">    <span class="attr">steps:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Checkout</span> <span class="string">the</span> <span class="string">repo</span></span><br><span class="line">      <span class="attr">uses:</span> <span class="string">actions/checkout@v2</span></span><br><span class="line">      <span class="attr">with:</span></span><br><span class="line">        <span class="attr">fetch-depth:</span> <span class="number">0</span> </span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Generate</span> <span class="string">new</span> <span class="string">sitemap</span></span><br><span class="line">      <span class="attr">id:</span> <span class="string">sitemap</span></span><br><span class="line">      <span class="attr">uses:</span> <span class="string">cicirello/generate-sitemap@v1.6.1</span></span><br><span class="line">      <span class="attr">with:</span></span><br><span class="line">        <span class="attr">base-url-path:</span> <span class="string">https://tzynwang.github.io/action-practice/</span></span><br><span class="line">        <span class="comment"># 參考cicirello/generate-sitemap的文件，將base-url-path的值設定為要產生sitemap的URL</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Push</span> <span class="string">sitemap</span> <span class="string">to</span> <span class="string">repository</span></span><br><span class="line">    <span class="comment"># 根據cicirello/generate-sitemap文件的說明，使用者需另找方法處理透過腳本產生的sitemap.xml</span></span><br><span class="line">    <span class="comment"># 故追加一段git腳本內容，把方才在GitHub Actions VM產生出來的sitemap透過git push放到repository中</span></span><br><span class="line">      <span class="attr">run:</span> <span class="string">|</span></span><br><span class="line">        <span class="string">git</span> <span class="string">config</span> <span class="string">--global</span> <span class="string">user.name</span> <span class="string">&quot;tzyn (GitHub Actions sitemap gen)&quot;</span></span><br><span class="line">        <span class="string">git</span> <span class="string">config</span> <span class="string">--global</span> <span class="string">user.email</span> <span class="string">&quot;tzyn.wang@gmail.com&quot;</span></span><br><span class="line">        <span class="string">git</span> <span class="string">add</span> <span class="string">sitemap.xml</span></span><br><span class="line">        <span class="string">git</span> <span class="string">commit</span> <span class="string">-m</span> <span class="string">&quot;add sitemap.xml&quot;</span></span><br><span class="line">        <span class="string">git</span> <span class="string">push</span></span><br></pre></td></tr></table></figure></li>
+<li>在本機執行<code>git push</code>將commit內容推到GitHub上</li>
+<li>進入repository的Actions標籤，確認腳本有在執行</li>
+<li>執行完成，確認sitemap.xml也有被加到repository中</li>
+<li>在本機執行<code>git pull</code>將新產生的sitemap.xml拉本機資料夾</li>
+</ol>
+<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
+<li><a href="https://github.com/cicirello/generate-sitemap#generate-sitemap">cicirello/generate-sitemap</a></li>
+<li><a href="https://docs.github.com/en/actions/quickstart">Quickstart for GitHub Actions</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>git</category>
+      </categories>
   </entry>
   <entry>
     <title>Submit to Google Search Console, SEO settings</title>
@@ -1450,23 +1540,6 @@ The configuration in <code>_config.yml</code> file should be set like this:<figu
       </categories>
   </entry>
   <entry>
-    <title>Display draft post</title>
-    <url>/2021/hexo-drafts/</url>
-    <content><![CDATA[<p>To view the draft posts (in the <code>source\_drafts</code> folder) on localhost:4000, just run <code>hexo server --draft</code>.<br>Set <code>render_drafts</code> as <code>true</code> in <code>_config.yml</code> will make <code>hexo generate</code> generate the posts in <code>source\_drafts</code> into <code>public</code> folder, which means the draft posts will be deployed to GitHub page by <code>hexo deploy</code>.<br>No needs to set <code>render_drafts</code> as <code>true</code> to view the draft posts on localhost, running <code>hexo server --draft</code> is enough.</p>
-<p><code>_config.yml</code>中的<code>render_drafts</code>設定為<code>true</code>的話，執行<code>hexo generate</code>時，資料夾<code>source\_drafts</code>內的檔案也會被生成到<code>public</code>資料夾中。<br>在這個情況下執行<code>hexo deploy</code>就會把草稿文章推到GitHub Page上。</p>
-<p>只是想要在localhost:4000上瀏覽草稿的話，執行<code>hexo server --draft</code>即可，不用修改<code>render_drafts</code>的值。<br>hexo官方文件對<code>render_drafts</code>的說明比較簡短，一開始以為設定成<code>true</code>只是代表<code>hexo server</code>會渲染草稿……😇</p>
-<h2 id="Environment"><a href="#Environment" class="headerlink" title="Environment"></a>Environment</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo: 5.3.0</span><br><span class="line">hexo-cli: 4.2.0</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></table></figure>
-
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
-<li><a href="https://hexo.io/docs/commands#Display-drafts">hexo: Commands/Display drafts</a></li>
-<li><a href="https://hexo.io/docs/configuration#Writing">hexo: Configuration/Writing</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>hexo</category>
-      </categories>
-  </entry>
-  <entry>
     <title>Add local search</title>
     <url>/2021/hexo-search-engine/</url>
     <content><![CDATA[<h2 id="Summary-of-this-post"><a href="#Summary-of-this-post" class="headerlink" title="Summary of this post"></a>Summary of this post</h2><p>2 ways to add local search engine to the hexo blog:</p>
@@ -1503,6 +1576,23 @@ The configuration in <code>_config.yml</code> file should be set like this:<figu
 
 <h2 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h2><p>I decide to use <code>hexo-generator-searchdb</code> instead of adding another page to handle the search engine.<br>Prefer the way that NexT theme handles the search engine, it opens a searching tab on the current page. Users don’t need to navigate to another page for doing content searching.</p>
 <h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://blog.johnwu.cc/article/hexo-google-custom-search.html">Hexo - 自訂站內搜尋 (Google Custom Search)</a></p>
+]]></content>
+      <categories>
+        <category>hexo</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Display draft post</title>
+    <url>/2021/hexo-drafts/</url>
+    <content><![CDATA[<p>To view the draft posts (in the <code>source\_drafts</code> folder) on localhost:4000, just run <code>hexo server --draft</code>.<br>Set <code>render_drafts</code> as <code>true</code> in <code>_config.yml</code> will make <code>hexo generate</code> generate the posts in <code>source\_drafts</code> into <code>public</code> folder, which means the draft posts will be deployed to GitHub page by <code>hexo deploy</code>.<br>No needs to set <code>render_drafts</code> as <code>true</code> to view the draft posts on localhost, running <code>hexo server --draft</code> is enough.</p>
+<p><code>_config.yml</code>中的<code>render_drafts</code>設定為<code>true</code>的話，執行<code>hexo generate</code>時，資料夾<code>source\_drafts</code>內的檔案也會被生成到<code>public</code>資料夾中。<br>在這個情況下執行<code>hexo deploy</code>就會把草稿文章推到GitHub Page上。</p>
+<p>只是想要在localhost:4000上瀏覽草稿的話，執行<code>hexo server --draft</code>即可，不用修改<code>render_drafts</code>的值。<br>hexo官方文件對<code>render_drafts</code>的說明比較簡短，一開始以為設定成<code>true</code>只是代表<code>hexo server</code>會渲染草稿……😇</p>
+<h2 id="Environment"><a href="#Environment" class="headerlink" title="Environment"></a>Environment</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo: 5.3.0</span><br><span class="line">hexo-cli: 4.2.0</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></table></figure>
+
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
+<li><a href="https://hexo.io/docs/commands#Display-drafts">hexo: Commands/Display drafts</a></li>
+<li><a href="https://hexo.io/docs/configuration#Writing">hexo: Configuration/Writing</a></li>
+</ul>
 ]]></content>
       <categories>
         <category>hexo</category>
@@ -1969,48 +2059,6 @@ The configuration in <code>_config.yml</code> file should be set like this:<figu
       </categories>
   </entry>
   <entry>
-    <title>為什麼iOS上的Chrome沒有呈現設定好的list-style-type</title>
-    <url>/2021/list-style-type-not-working-on-ios-chrome/</url>
-    <content><![CDATA[<figure class="figure--center"><img src="/2021/list-style-type-not-working-on-ios-chrome/ask.jpg" title="一種Chrome，各自表述渲染結果"><figcaption><p>一種Chrome，各自表述渲染結果</p></figcaption></figure>
-
-<h2 id="環境"><a href="#環境" class="headerlink" title="環境"></a>環境</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Google Chrome (Desktop): 90.0.4430.85 (Official Build) (64-bit)</span><br><span class="line">Google Chrome (iOS): 87.0.4280.163</span><br></pre></td></tr></table></figure>
-<h2 id="原始問題"><a href="#原始問題" class="headerlink" title="原始問題"></a>原始問題</h2><p>HTML內容如下：</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">&quot;thumbs-up&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>Apple<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>Banana<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>Cherry<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>而CSS樣式設定如下：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-id">#thumbs-up</span> <span class="selector-tag">li</span> &#123;</span><br><span class="line">  <span class="attribute">list-style-type</span>: <span class="string">&quot;\1F44D&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>在電腦版的Chrome有正常顯示清單圖示「👍」，但切換到手機版的Chrome，顯示的卻是「●」。</p>
-<figure class="figure--center"><img src="/2021/list-style-type-not-working-on-ios-chrome/desktop-screenshot.jpg" title="電腦版畫面"><figcaption><p>電腦版畫面</p></figcaption></figure>
-<figure class="figure--center"><img src="/2021/list-style-type-not-working-on-ios-chrome/ios-screenshot.png" title="手機版畫面"><figcaption><p>手機版畫面</p></figcaption></figure>
-<p>同一份CSS樣式，同樣都用Chrome來瀏覽，為何<code>&lt;li&gt;</code>的樣式不同？</p>
-<h2 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h2><ul>
-<li>電腦版Chrome的browser engine是Blink</li>
-<li>但手機板Chrome的browser engine是WebKit<ul>
-<li><a href="https://en.wikipedia.org/wiki/Google_Chrome">Wikipedia</a>: Chrome is available on Apple’s mobile iOS operating system as Google Chrome for iOS. In accordance with Apple’s requirements for browsers released through their App Store, <strong>this version of Chrome uses the iOS WebKit</strong> – which is Apple’s own mobile rendering engine and components, developed for their Safari browser – therefore it is restricted from using Google’s own V8 JavaScript engine.</li>
-</ul>
-</li>
-<li>而根據MDN文件，WebKit並不支援以<code>&lt;string&gt; value</code>設定<code>list-style-type</code>樣式，所以手機版的Chrome無法處理<code>list-style-type: &quot;\1F44D&quot;;</code><figure class="figure--center"><img src="/2021/list-style-type-not-working-on-ios-chrome/browser-support.png" title="WebKit並不支援以string作為list-style-type的值"><figcaption><p>WebKit並不支援以string作為list-style-type的值</p></figcaption></figure></li>
-<li><code>list-style-type: &quot;\1F44D&quot;;</code>沒有作用的話，<a href="https://trac.webkit.org/browser/trunk/Source/WebCore/css/html.css">WebKit的user agent stylesheet</a>內容就會取而代之，其樣式設定如下：<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* lists */</span></span><br><span class="line"><span class="selector-tag">ul</span>, <span class="selector-tag">menu</span>, <span class="selector-tag">dir</span> &#123;</span><br><span class="line">    <span class="attribute">display</span>: block;</span><br><span class="line">    <span class="attribute">list-style-type</span>: disc;</span><br><span class="line">    <span class="attribute">-webkit-margin-before</span>: <span class="number">1</span>__qem;</span><br><span class="line">    <span class="attribute">-webkit-margin-after</span>: <span class="number">1em</span>;</span><br><span class="line">    <span class="attribute">-webkit-margin-start</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">-webkit-margin-end</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">-webkit-padding-start</span>: <span class="number">40px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>所以透過iOS版的Chrome只會看到「●」，而不是使用<code>&lt;string&gt; value</code>指定的「👍」樣式</li>
-</ul>
-<h2 id="使用-before來實作"><a href="#使用-before來實作" class="headerlink" title="使用::before來實作"></a>使用::before來實作</h2><p>HTML內容不變，CSS樣式改為以下內容：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-id">#thumbs-up</span> &#123;</span><br><span class="line">  <span class="attribute">padding-inline-start</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="comment">/* 將&lt;li&gt;樣式的空間移除，使&lt;li&gt;（包含樣式與內文）向畫面左方靠攏 */</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-id">#thumbs-up</span> <span class="selector-tag">li</span> &#123;</span><br><span class="line">  <span class="attribute">list-style</span>: none;</span><br><span class="line">  <span class="comment">/* 移除&lt;li&gt;樣式 */</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-id">#thumbs-up</span> <span class="selector-tag">li</span><span class="selector-pseudo">::before</span> &#123;</span><br><span class="line">  <span class="attribute">content</span>: <span class="string">&quot;👍 &quot;</span>;</span><br><span class="line">  <span class="comment">/* 使用content搭配::before來填入樣式內容 */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>實際結果如下：</p>
-<figure class="figure--center"><img src="/2021/list-style-type-not-working-on-ios-chrome/ios-screenshot-before-content.png" title="iOS裝置也可看到自定義的li樣式了"><figcaption><p>iOS裝置也可看到自定義的li樣式了</p></figcaption></figure>
-
-
-<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
-<li>感謝ALPHA Camp政治助教的回覆：<figure class="figure--center"><img src="/2021/list-style-type-not-working-on-ios-chrome/AC-reply.png" title="在幾乎所有的瀏覽器都支援偽元素::before的情況下，設定::before的content比較能確保li的樣式可以好好呈現在使用者眼前"><figcaption><p>在幾乎所有的瀏覽器都支援偽元素::before的情況下，設定::before的content比較能確保li的樣式可以好好呈現在使用者眼前</p></figcaption></figure></li>
-<li><a href="https://coliss.com/articles/build-websites/operation/css/user-agent-stylesheets.html">各ブラウザごとのデフォルトのスタイルシート、user agent stylesheetのまとめ -Chrome, Safari, Firefox, Edge</a></li>
-<li><a href="https://trac.webkit.org/browser/trunk/Source/WebCore/css/html.css">webkit/trunk/Source/WebCore/css/html.css</a></li>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/list-style-type">MDN: list-style-type</a></li>
-<li><a href="https://web.dev/css-marker-pseudo-element/">web.dev: Custom bullets with CSS ::marker</a>：須注意WebKit目前僅支援修改<code>::marker</code>的<code>color</code>與<code>font-size</code>，<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/::marker#browser_compatibility">參考MDN</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>CSS</category>
-      </categories>
-  </entry>
-  <entry>
     <title>「10 modern layouts in 1 line of CSS」相關筆記</title>
     <url>/2021/morden-layouts-1-line-css/</url>
     <content><![CDATA[<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>關於YouTube影片「<a href="https://www.youtube.com/watch?v=qm0IfG1GyZU">10 modern layouts in 1 line of CSS</a>」的相關筆記。</p>
@@ -2085,6 +2133,48 @@ The configuration in <code>_config.yml</code> file should be set like this:<figu
       </categories>
   </entry>
   <entry>
+    <title>為什麼iOS上的Chrome沒有呈現設定好的list-style-type</title>
+    <url>/2021/list-style-type-not-working-on-ios-chrome/</url>
+    <content><![CDATA[<figure class="figure--center"><img src="/2021/list-style-type-not-working-on-ios-chrome/ask.jpg" title="一種Chrome，各自表述渲染結果"><figcaption><p>一種Chrome，各自表述渲染結果</p></figcaption></figure>
+
+<h2 id="環境"><a href="#環境" class="headerlink" title="環境"></a>環境</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Google Chrome (Desktop): 90.0.4430.85 (Official Build) (64-bit)</span><br><span class="line">Google Chrome (iOS): 87.0.4280.163</span><br></pre></td></tr></table></figure>
+<h2 id="原始問題"><a href="#原始問題" class="headerlink" title="原始問題"></a>原始問題</h2><p>HTML內容如下：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">&quot;thumbs-up&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>Apple<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>Banana<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>Cherry<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>而CSS樣式設定如下：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-id">#thumbs-up</span> <span class="selector-tag">li</span> &#123;</span><br><span class="line">  <span class="attribute">list-style-type</span>: <span class="string">&quot;\1F44D&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在電腦版的Chrome有正常顯示清單圖示「👍」，但切換到手機版的Chrome，顯示的卻是「●」。</p>
+<figure class="figure--center"><img src="/2021/list-style-type-not-working-on-ios-chrome/desktop-screenshot.jpg" title="電腦版畫面"><figcaption><p>電腦版畫面</p></figcaption></figure>
+<figure class="figure--center"><img src="/2021/list-style-type-not-working-on-ios-chrome/ios-screenshot.png" title="手機版畫面"><figcaption><p>手機版畫面</p></figcaption></figure>
+<p>同一份CSS樣式，同樣都用Chrome來瀏覽，為何<code>&lt;li&gt;</code>的樣式不同？</p>
+<h2 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h2><ul>
+<li>電腦版Chrome的browser engine是Blink</li>
+<li>但手機板Chrome的browser engine是WebKit<ul>
+<li><a href="https://en.wikipedia.org/wiki/Google_Chrome">Wikipedia</a>: Chrome is available on Apple’s mobile iOS operating system as Google Chrome for iOS. In accordance with Apple’s requirements for browsers released through their App Store, <strong>this version of Chrome uses the iOS WebKit</strong> – which is Apple’s own mobile rendering engine and components, developed for their Safari browser – therefore it is restricted from using Google’s own V8 JavaScript engine.</li>
+</ul>
+</li>
+<li>而根據MDN文件，WebKit並不支援以<code>&lt;string&gt; value</code>設定<code>list-style-type</code>樣式，所以手機版的Chrome無法處理<code>list-style-type: &quot;\1F44D&quot;;</code><figure class="figure--center"><img src="/2021/list-style-type-not-working-on-ios-chrome/browser-support.png" title="WebKit並不支援以string作為list-style-type的值"><figcaption><p>WebKit並不支援以string作為list-style-type的值</p></figcaption></figure></li>
+<li><code>list-style-type: &quot;\1F44D&quot;;</code>沒有作用的話，<a href="https://trac.webkit.org/browser/trunk/Source/WebCore/css/html.css">WebKit的user agent stylesheet</a>內容就會取而代之，其樣式設定如下：<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* lists */</span></span><br><span class="line"><span class="selector-tag">ul</span>, <span class="selector-tag">menu</span>, <span class="selector-tag">dir</span> &#123;</span><br><span class="line">    <span class="attribute">display</span>: block;</span><br><span class="line">    <span class="attribute">list-style-type</span>: disc;</span><br><span class="line">    <span class="attribute">-webkit-margin-before</span>: <span class="number">1</span>__qem;</span><br><span class="line">    <span class="attribute">-webkit-margin-after</span>: <span class="number">1em</span>;</span><br><span class="line">    <span class="attribute">-webkit-margin-start</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">-webkit-margin-end</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">-webkit-padding-start</span>: <span class="number">40px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>所以透過iOS版的Chrome只會看到「●」，而不是使用<code>&lt;string&gt; value</code>指定的「👍」樣式</li>
+</ul>
+<h2 id="使用-before來實作"><a href="#使用-before來實作" class="headerlink" title="使用::before來實作"></a>使用::before來實作</h2><p>HTML內容不變，CSS樣式改為以下內容：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-id">#thumbs-up</span> &#123;</span><br><span class="line">  <span class="attribute">padding-inline-start</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="comment">/* 將&lt;li&gt;樣式的空間移除，使&lt;li&gt;（包含樣式與內文）向畫面左方靠攏 */</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-id">#thumbs-up</span> <span class="selector-tag">li</span> &#123;</span><br><span class="line">  <span class="attribute">list-style</span>: none;</span><br><span class="line">  <span class="comment">/* 移除&lt;li&gt;樣式 */</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-id">#thumbs-up</span> <span class="selector-tag">li</span><span class="selector-pseudo">::before</span> &#123;</span><br><span class="line">  <span class="attribute">content</span>: <span class="string">&quot;👍 &quot;</span>;</span><br><span class="line">  <span class="comment">/* 使用content搭配::before來填入樣式內容 */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>實際結果如下：</p>
+<figure class="figure--center"><img src="/2021/list-style-type-not-working-on-ios-chrome/ios-screenshot-before-content.png" title="iOS裝置也可看到自定義的li樣式了"><figcaption><p>iOS裝置也可看到自定義的li樣式了</p></figcaption></figure>
+
+
+<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
+<li>感謝ALPHA Camp政治助教的回覆：<figure class="figure--center"><img src="/2021/list-style-type-not-working-on-ios-chrome/AC-reply.png" title="在幾乎所有的瀏覽器都支援偽元素::before的情況下，設定::before的content比較能確保li的樣式可以好好呈現在使用者眼前"><figcaption><p>在幾乎所有的瀏覽器都支援偽元素::before的情況下，設定::before的content比較能確保li的樣式可以好好呈現在使用者眼前</p></figcaption></figure></li>
+<li><a href="https://coliss.com/articles/build-websites/operation/css/user-agent-stylesheets.html">各ブラウザごとのデフォルトのスタイルシート、user agent stylesheetのまとめ -Chrome, Safari, Firefox, Edge</a></li>
+<li><a href="https://trac.webkit.org/browser/trunk/Source/WebCore/css/html.css">webkit/trunk/Source/WebCore/css/html.css</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/list-style-type">MDN: list-style-type</a></li>
+<li><a href="https://web.dev/css-marker-pseudo-element/">web.dev: Custom bullets with CSS ::marker</a>：須注意WebKit目前僅支援修改<code>::marker</code>的<code>color</code>與<code>font-size</code>，<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/::marker#browser_compatibility">參考MDN</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>CSS</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Theme &quot;NexT&quot; font modification</title>
     <url>/2021/next-theme-edit/</url>
     <content><![CDATA[<h2 id="Summary-of-this-post"><a href="#Summary-of-this-post" class="headerlink" title="Summary of this post"></a>Summary of this post</h2><p>Want to update the <strong>font-size</strong>, <strong>font-family</strong> (for the Chinese character) and <strong>color</strong> settings for my hexo blog. Done some searching and find out the contents in <code>base.styl</code> and <code>Pisces.styl</code> needs to be modified to fullfil my requirements.<br>I know this may not be the best choice (since <a href="https://theme-next.js.org/docs/getting-started/configuration.html">NexT’s docs</a> suggests using Alternate Config ,<code>_config.next.yml</code>, to apply modification) while at least this works…😣</p>
@@ -2129,66 +2219,6 @@ The configuration in <code>_config.yml</code> file should be set like this:<figu
 ]]></content>
       <categories>
         <category>hexo</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>「setTimeout() difference between parameters as string or function」相關筆記</title>
-    <url>/2021/settimeout-args/</url>
-    <content><![CDATA[<h2 id="原始問題"><a href="#原始問題" class="headerlink" title="原始問題"></a>原始問題</h2><p><code>setTimeout()</code>傳入「與函式一致的字串」作為參數時，為何輸出的結果與「直接傳入函式」不同？</p>
-<p>第一組程式碼：</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 傳入與函式內容一樣的字串作為參數</span></span><br><span class="line"><span class="built_in">setTimeout</span>(<span class="built_in">console</span>.log(<span class="string">&#x27;first&#x27;</span>), <span class="number">0</span>)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;second&#x27;</span>);</span><br><span class="line"><span class="comment">// 輸出結果：</span></span><br><span class="line"><span class="comment">// &gt;&gt; first</span></span><br><span class="line"><span class="comment">// &gt;&gt; second</span></span><br></pre></td></tr></table></figure>
-<p>第二組程式碼：</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 直接傳入函式作為參數</span></span><br><span class="line"><span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> <span class="built_in">console</span>.log(<span class="string">&#x27;first&#x27;</span>), <span class="number">0</span>)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;second&#x27;</span>);</span><br><span class="line"><span class="comment">// 輸出結果：</span></span><br><span class="line"><span class="comment">// &gt;&gt; second</span></span><br><span class="line"><span class="comment">// &gt;&gt; first</span></span><br></pre></td></tr></table></figure>
-<h3 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h3><ul>
-<li>第一組程式碼的<code>console.log(&#39;first&#39;)</code>沒有被視為函式，而是被視為一組字串，此組字串在編譯後會被執行</li>
-<li>MDN（說明頁面中稱之為<code>code</code>）對於字串參數的說明：<code>setTimeout()</code> allows you to include a string, which is compiled and executed when the timer expires.</li>
-<li>第一組程式碼實際上做的事情：<ol>
-<li><code>setTimeout()</code>沒有收到任何函式作為參數，沒有任何函式被延遲執行</li>
-<li><code>setTimeout()</code>內的<code>console.log(&#39;first&#39;)</code>被執行，輸出<code>first</code></li>
-<li><code>setTimeout()</code>收到的是「執行<code>console.log(&#39;first&#39;)</code>後回傳的值」，也就是<code>undefined</code></li>
-<li><code>console.log(&#39;second&#39;)</code>被執行，輸出<code>second</code></li>
-</ol>
-</li>
-<li>第二組程式碼實際上做的事情：<ol>
-<li><code>setTimeout()</code>收到一組匿名函式，該匿名函式被延後執行</li>
-<li><code>console.log(&#39;second&#39;)</code>被執行，輸出<code>second</code></li>
-<li>call stack已經沒有其他任務，被<code>setTimeout()</code>延後的匿名函式（<code>console.log(&#39;first&#39;)</code>）此時可以執行了，輸出<code>first</code>到console上</li>
-</ol>
-</li>
-</ul>
-<h2 id="延伸問題：在迴圈內"><a href="#延伸問題：在迴圈內" class="headerlink" title="延伸問題：在迴圈內"></a>延伸問題：在迴圈內</h2><p>第三組程式碼：</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">2</span>; i++) &#123;</span><br><span class="line">    <span class="built_in">setTimeout</span>(<span class="built_in">console</span>.log(i))</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 輸出結果：</span></span><br><span class="line"><span class="comment">// &gt;&gt; 0</span></span><br><span class="line"><span class="comment">// &gt;&gt; 1</span></span><br><span class="line"><span class="comment">// &gt;&gt; 39607 (timeoutID) (在DevTool執行才會有這行輸出)</span></span><br><span class="line"><span class="comment">// 在Node.js環境執行此段程式碼會回傳TypeError : Callback must be a function. Received undefined</span></span><br></pre></td></tr></table></figure>
-<p>第四組程式碼：</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">2</span>; i++) &#123;</span><br><span class="line">    <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> <span class="built_in">console</span>.log(i))</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 輸出結果：</span></span><br><span class="line"><span class="comment">// &gt;&gt; 39670 (timeoutID) (在DevTool執行才會有這行輸出，以Node.js執行不會有這行)</span></span><br><span class="line"><span class="comment">// &gt;&gt; 2</span></span><br><span class="line"><span class="comment">// &gt;&gt; 2</span></span><br></pre></td></tr></table></figure>
-<h3 id="解析-1"><a href="#解析-1" class="headerlink" title="解析"></a>解析</h3><ul>
-<li>第三組程式碼實際上做的事情：<ol>
-<li>i為0，迴圈第一次執行，<code>console.log(i)</code>為字串參數，執行後輸出i</li>
-<li>i增加為1，迴圈第二次執行，<code>console.log(i)</code>為字串參數，執行後輸出i</li>
-<li>i增加為2，迴圈條件不成立，迴圈停止</li>
-</ol>
-</li>
-<li>第四組程式碼實際上做的事情：<ol>
-<li>i為0，迴圈第一次執行，函式<code>console.log(i)</code>被延後，停在callback queue中等待call stack清空</li>
-<li>i增加為1，迴圈第二次執行，函式<code>console.log(i)</code>被延後，停在callback queue中等待call stack清空</li>
-<li>i增加為2，迴圈條件不成立，迴圈停止</li>
-<li>call stack已空，輪到callback queue中的callback function被執行</li>
-<li>i為2，迴圈第一次執行時被延後的<code>console.log(i)</code>輸出i</li>
-<li>i為2，迴圈第二次執行時被延後的<code>console.log(i)</code>輸出i</li>
-</ol>
-</li>
-</ul>
-<figure class="figure--center"><img src="/2021/settimeout-args/JS-in-browser.png" title="瀏覽器環境圖，取自：How JavaScript works: an overview of the engine, the runtime, and the call stack"><figcaption><p>瀏覽器環境圖，取自：How JavaScript works: an overview of the engine, the runtime, and the call stack</p></figcaption></figure>
-
-
-<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
-<li><a href="https://stackoverflow.com/questions/54259645/javascript-code-executes-differently-for-settimeout-when-a-function-is-passed-as">Javascript code executes differently for setTimeout when a function is passed as argument</a></li>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setTimeout">MDN: WindowOrWorkerGlobalScope.setTimeout()</a></li>
-<li><a href="https://blog.sessionstack.com/how-does-javascript-actually-work-part-1-b0bacc073cf">How JavaScript works: an overview of the engine, the runtime, and the call stack</a></li>
-<li><a href="https://youtu.be/Nzokr6Boeaw">JavaScript for-loops are… complicated - HTTP203</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>JavaScript</category>
       </categories>
   </entry>
   <entry>
@@ -2357,6 +2387,66 @@ The configuration in <code>_config.yml</code> file should be set like this:<figu
 <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/pointer-events#values">MDN: pointer-events</a></li>
 <li><a href="https://thisthat.dev/number-constructor-vs-parse-int/">Number() vs parseInt()</a></li>
 <li><a href="https://stackoverflow.com/questions/4090518/what-is-the-difference-between-parseint-and-number">What is the difference between parseInt() and Number()?</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>「setTimeout() difference between parameters as string or function」相關筆記</title>
+    <url>/2021/settimeout-args/</url>
+    <content><![CDATA[<h2 id="原始問題"><a href="#原始問題" class="headerlink" title="原始問題"></a>原始問題</h2><p><code>setTimeout()</code>傳入「與函式一致的字串」作為參數時，為何輸出的結果與「直接傳入函式」不同？</p>
+<p>第一組程式碼：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 傳入與函式內容一樣的字串作為參數</span></span><br><span class="line"><span class="built_in">setTimeout</span>(<span class="built_in">console</span>.log(<span class="string">&#x27;first&#x27;</span>), <span class="number">0</span>)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;second&#x27;</span>);</span><br><span class="line"><span class="comment">// 輸出結果：</span></span><br><span class="line"><span class="comment">// &gt;&gt; first</span></span><br><span class="line"><span class="comment">// &gt;&gt; second</span></span><br></pre></td></tr></table></figure>
+<p>第二組程式碼：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 直接傳入函式作為參數</span></span><br><span class="line"><span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> <span class="built_in">console</span>.log(<span class="string">&#x27;first&#x27;</span>), <span class="number">0</span>)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;second&#x27;</span>);</span><br><span class="line"><span class="comment">// 輸出結果：</span></span><br><span class="line"><span class="comment">// &gt;&gt; second</span></span><br><span class="line"><span class="comment">// &gt;&gt; first</span></span><br></pre></td></tr></table></figure>
+<h3 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h3><ul>
+<li>第一組程式碼的<code>console.log(&#39;first&#39;)</code>沒有被視為函式，而是被視為一組字串，此組字串在編譯後會被執行</li>
+<li>MDN（說明頁面中稱之為<code>code</code>）對於字串參數的說明：<code>setTimeout()</code> allows you to include a string, which is compiled and executed when the timer expires.</li>
+<li>第一組程式碼實際上做的事情：<ol>
+<li><code>setTimeout()</code>沒有收到任何函式作為參數，沒有任何函式被延遲執行</li>
+<li><code>setTimeout()</code>內的<code>console.log(&#39;first&#39;)</code>被執行，輸出<code>first</code></li>
+<li><code>setTimeout()</code>收到的是「執行<code>console.log(&#39;first&#39;)</code>後回傳的值」，也就是<code>undefined</code></li>
+<li><code>console.log(&#39;second&#39;)</code>被執行，輸出<code>second</code></li>
+</ol>
+</li>
+<li>第二組程式碼實際上做的事情：<ol>
+<li><code>setTimeout()</code>收到一組匿名函式，該匿名函式被延後執行</li>
+<li><code>console.log(&#39;second&#39;)</code>被執行，輸出<code>second</code></li>
+<li>call stack已經沒有其他任務，被<code>setTimeout()</code>延後的匿名函式（<code>console.log(&#39;first&#39;)</code>）此時可以執行了，輸出<code>first</code>到console上</li>
+</ol>
+</li>
+</ul>
+<h2 id="延伸問題：在迴圈內"><a href="#延伸問題：在迴圈內" class="headerlink" title="延伸問題：在迴圈內"></a>延伸問題：在迴圈內</h2><p>第三組程式碼：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">2</span>; i++) &#123;</span><br><span class="line">    <span class="built_in">setTimeout</span>(<span class="built_in">console</span>.log(i))</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 輸出結果：</span></span><br><span class="line"><span class="comment">// &gt;&gt; 0</span></span><br><span class="line"><span class="comment">// &gt;&gt; 1</span></span><br><span class="line"><span class="comment">// &gt;&gt; 39607 (timeoutID) (在DevTool執行才會有這行輸出)</span></span><br><span class="line"><span class="comment">// 在Node.js環境執行此段程式碼會回傳TypeError : Callback must be a function. Received undefined</span></span><br></pre></td></tr></table></figure>
+<p>第四組程式碼：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">2</span>; i++) &#123;</span><br><span class="line">    <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> <span class="built_in">console</span>.log(i))</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 輸出結果：</span></span><br><span class="line"><span class="comment">// &gt;&gt; 39670 (timeoutID) (在DevTool執行才會有這行輸出，以Node.js執行不會有這行)</span></span><br><span class="line"><span class="comment">// &gt;&gt; 2</span></span><br><span class="line"><span class="comment">// &gt;&gt; 2</span></span><br></pre></td></tr></table></figure>
+<h3 id="解析-1"><a href="#解析-1" class="headerlink" title="解析"></a>解析</h3><ul>
+<li>第三組程式碼實際上做的事情：<ol>
+<li>i為0，迴圈第一次執行，<code>console.log(i)</code>為字串參數，執行後輸出i</li>
+<li>i增加為1，迴圈第二次執行，<code>console.log(i)</code>為字串參數，執行後輸出i</li>
+<li>i增加為2，迴圈條件不成立，迴圈停止</li>
+</ol>
+</li>
+<li>第四組程式碼實際上做的事情：<ol>
+<li>i為0，迴圈第一次執行，函式<code>console.log(i)</code>被延後，停在callback queue中等待call stack清空</li>
+<li>i增加為1，迴圈第二次執行，函式<code>console.log(i)</code>被延後，停在callback queue中等待call stack清空</li>
+<li>i增加為2，迴圈條件不成立，迴圈停止</li>
+<li>call stack已空，輪到callback queue中的callback function被執行</li>
+<li>i為2，迴圈第一次執行時被延後的<code>console.log(i)</code>輸出i</li>
+<li>i為2，迴圈第二次執行時被延後的<code>console.log(i)</code>輸出i</li>
+</ol>
+</li>
+</ul>
+<figure class="figure--center"><img src="/2021/settimeout-args/JS-in-browser.png" title="瀏覽器環境圖，取自：How JavaScript works: an overview of the engine, the runtime, and the call stack"><figcaption><p>瀏覽器環境圖，取自：How JavaScript works: an overview of the engine, the runtime, and the call stack</p></figcaption></figure>
+
+
+<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
+<li><a href="https://stackoverflow.com/questions/54259645/javascript-code-executes-differently-for-settimeout-when-a-function-is-passed-as">Javascript code executes differently for setTimeout when a function is passed as argument</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setTimeout">MDN: WindowOrWorkerGlobalScope.setTimeout()</a></li>
+<li><a href="https://blog.sessionstack.com/how-does-javascript-actually-work-part-1-b0bacc073cf">How JavaScript works: an overview of the engine, the runtime, and the call stack</a></li>
+<li><a href="https://youtu.be/Nzokr6Boeaw">JavaScript for-loops are… complicated - HTTP203</a></li>
 </ul>
 ]]></content>
       <categories>
