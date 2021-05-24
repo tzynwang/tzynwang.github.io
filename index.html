@@ -197,14 +197,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">40</span>
+          <span class="site-state-item-count">41</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-count">11</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
@@ -238,6 +238,144 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope="" itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tzynwang.github.io/2021/mongoose-note/">
+
+    <span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar-pexels-alex-andrews-215-215.png">
+      <meta itemprop="name" content="Charlie (Tzu Yin)">
+      <meta itemprop="description" content="一介普通文組的學習筆記 📒">
+    </span>
+
+    <span hidden="" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="普通文組">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/mongoose-note/" class="post-title-link" itemprop="url">Alpha Camp「2-3 老爸的私房錢（簡易記帳APP）」技術記錄</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-05-24 13:38:45 / Modified: 15:23:08" itemprop="dateCreated datePublished" datetime="2021-05-24T13:38:45+08:00">2021-05-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2021/mongoose-note/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/mongoose-note/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>以下是本次作業處理到的主要問題：</p>
+<ul>
+<li>透過一行腳本在多個資料庫個別產生種子資料</li>
+<li>透過mongoose在mongoDB中join兩組collections之間的資料</li>
+<li>使用axios進行ajax請求，根據使用者選擇的組別顯示相對應的帳目資料（例：選擇「休閒娛樂」的帳目資料，則畫面僅會顯示該類別的帳目，並消費總金額會同步更新）</li>
+</ul>
+<h2 id="環境"><a href="#環境" class="headerlink" title="環境"></a>環境</h2><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">node: 12.20.2</span><br><span class="line">express: 4.17.1</span><br><span class="line">express-handlebars: 5.3.2</span><br><span class="line">mongoose: 5.12.9</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="筆記"><a href="#筆記" class="headerlink" title="筆記"></a>筆記</h2><h3 id="專案結構"><a href="#專案結構" class="headerlink" title="專案結構"></a>專案結構</h3><figure class="figure--center"><img src="/2021/mongoose-note/structure.png" title="本次專案的完整結構圖"><figcaption><p>本次專案的完整結構圖</p></figcaption></figure>
+
+<h3 id="透過一行腳本在多個資料庫個別產生種子資料"><a href="#透過一行腳本在多個資料庫個別產生種子資料" class="headerlink" title="透過一行腳本在多個資料庫個別產生種子資料"></a>透過一行腳本在多個資料庫個別產生種子資料</h3><p><code>npm run</code>腳本如右：<code>"seed": "node models/seeds/categorySeeder.js &amp;&amp; node models/seeds/recordSeeder.js"</code><br>兩份種子腳本的原始碼如下：</p>
+<script src="https://gist.github.com/tzynwang/1ff4db97c6defc36b0a2517f13066353.js"></script>
+
+<script src="https://gist.github.com/tzynwang/24a97dfb59507d16988598e5766380ec.js"></script>
+
+<ul>
+<li><code>node models/seeds/categorySeeder.js</code>執行完畢後，需確保腳本停止，方可開始執行<code>node models/seeds/recordSeeder.js</code></li>
+<li>在<code>categorySeeder.js</code>中，待<code>Categories.create()</code>完成後，串接<code>.then()</code>來停止db連線</li>
+<li><code>categorySeeder.js</code>結束後，開始執行<code>recordSeeder.js</code></li>
+<li>根據MDN的<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach#polyfill"><code>forEach()</code> polyfill</a>，<code>forEach()</code>並沒有await callback function的機制，故改使用<code>for...of</code>來進行迴圈；相關參考文件如下：<ul>
+<li><a target="_blank" rel="noopener" href="https://www.itread01.com/content/1553973607.html">為什麽 array.foreach 不支持 async/await</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.coreycleary.me/why-does-async-await-in-a-foreach-not-actually-await">Why does async/await in a .forEach not actually await?</a></li>
+<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/37576685/using-async-await-with-a-foreach-loop">Using async/await with a forEach loop</a></li>
+</ul>
+</li>
+<li>待<code>for...of</code>執行完畢後，再關閉db連線，結束<code>recordSeeder.js</code></li>
+</ul>
+<h3 id="對mongoDB進行類似SQL資料庫的join指令"><a href="#對mongoDB進行類似SQL資料庫的join指令" class="headerlink" title="對mongoDB進行類似SQL資料庫的join指令"></a>對mongoDB進行類似SQL資料庫的join指令</h3><script src="https://gist.github.com/tzynwang/623afbb2e2537e196f5c08897f674a94.js"></script>
+
+<ul>
+<li>第49行的<code>results</code>，在前端透過axios接收後進行<code>console.log(response.data)</code>的內容如下：<figure class="highlight json"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">{</span><br><span class="line">    <span class="attr">"_id"</span>: <span class="string">"60a3a3f66d1cf025c09c5714"</span>,</span><br><span class="line">    <span class="attr">"name"</span>: <span class="string">"早餐"</span>,</span><br><span class="line">    <span class="attr">"category"</span>: <span class="string">"餐飲食品"</span>,</span><br><span class="line">    <span class="attr">"date"</span>: <span class="string">"2021-05-18"</span>,</span><br><span class="line">    <span class="attr">"amount"</span>: <span class="number">80</span>,</span><br><span class="line">    <span class="attr">"__v"</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="attr">"iconPair"</span>: [</span><br><span class="line">        {</span><br><span class="line">            <span class="attr">"_id"</span>: <span class="string">"60a3a865b6ccf51988c7cf9b"</span>,</span><br><span class="line">            <span class="attr">"name"</span>: <span class="string">"餐飲食品"</span>,</span><br><span class="line">            <span class="attr">"icon"</span>: <span class="string">"&lt;i class=\"bi bi-cup-straw\"&gt;&lt;/i&gt;"</span>,</span><br><span class="line">            <span class="attr">"__v"</span>: <span class="number">0</span></span><br><span class="line">        }</span><br><span class="line">    ]</span><br><span class="line">}</span><br><span class="line">{</span><br><span class="line">    <span class="attr">"_id"</span>: <span class="string">"60a3a3f66d1cf025c09c5715"</span>,</span><br><span class="line">    <span class="attr">"name"</span>: <span class="string">"午餐"</span>,</span><br><span class="line">    <span class="attr">"category"</span>: <span class="string">"餐飲食品"</span>,</span><br><span class="line">    <span class="attr">"date"</span>: <span class="string">"2021-05-18"</span>,</span><br><span class="line">    <span class="attr">"amount"</span>: <span class="number">120</span>,</span><br><span class="line">    <span class="attr">"__v"</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="attr">"iconPair"</span>: [</span><br><span class="line">        {</span><br><span class="line">            <span class="attr">"_id"</span>: <span class="string">"60a3a865b6ccf51988c7cf9b"</span>,</span><br><span class="line">            <span class="attr">"name"</span>: <span class="string">"餐飲食品"</span>,</span><br><span class="line">            <span class="attr">"icon"</span>: <span class="string">"&lt;i class=\"bi bi-cup-straw\"&gt;&lt;/i&gt;"</span>,</span><br><span class="line">            <span class="attr">"__v"</span>: <span class="number">0</span></span><br><span class="line">        }</span><br><span class="line">    ]</span><br><span class="line">}</span><br><span class="line">{</span><br><span class="line">    <span class="attr">"_id"</span>: <span class="string">"60a3a3f66d1cf025c09c5716"</span>,</span><br><span class="line">    <span class="attr">"name"</span>: <span class="string">"晚餐"</span>,</span><br><span class="line">    <span class="attr">"category"</span>: <span class="string">"餐飲食品"</span>,</span><br><span class="line">    <span class="attr">"date"</span>: <span class="string">"2021-05-18"</span>,</span><br><span class="line">    <span class="attr">"amount"</span>: <span class="number">100</span>,</span><br><span class="line">    <span class="attr">"__v"</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="attr">"iconPair"</span>: [</span><br><span class="line">        {</span><br><span class="line">            <span class="attr">"_id"</span>: <span class="string">"60a3a865b6ccf51988c7cf9b"</span>,</span><br><span class="line">            <span class="attr">"name"</span>: <span class="string">"餐飲食品"</span>,</span><br><span class="line">            <span class="attr">"icon"</span>: <span class="string">"&lt;i class=\"bi bi-cup-straw\"&gt;&lt;/i&gt;"</span>,</span><br><span class="line">            <span class="attr">"__v"</span>: <span class="number">0</span></span><br><span class="line">        }</span><br><span class="line">    ]</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+使用<code>$lookup</code>關聯出的結果可透過鍵值<code>iconPair</code>取得</li>
+<li>相關參考文件：<ul>
+<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/36805784/how-to-join-two-collections-in-mongoose">How to join two collections in mongoose</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.mongodb.com/manual/reference/operator/aggregation/lookup/">$lookup (aggregation)</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.mongodb.com/manual/reference/operator/aggregation/sum/">$sum (aggregation)</a>：<code>$sum</code>可搭配<code>aggregation</code>來直接回傳某欄位的總計值，本次未使用</li>
+</ul>
+</li>
+</ul>
+<h3 id="使用axios進行ajax請求"><a href="#使用axios進行ajax請求" class="headerlink" title="使用axios進行ajax請求"></a>使用axios進行ajax請求</h3><figure class="figure--center"><img src="/2021/mongoose-note/demo.gif" title="使用ajax來請求特定帳目群組的資料"><figcaption><p>使用ajax來請求特定帳目群組的資料</p></figcaption></figure>
+
+<script src="https://gist.github.com/tzynwang/5bcb2c3c5e5868bad34b8549277e4878.js"></script>
+
+<ul>
+<li>若使用axios進行POST request的話，需搭配<code>body-parser</code>，並加上<code>app.use(bodyParser.json())</code>，否則無法取得POST request送出的資料<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// app.js中需加入以下兩組middleware</span></span><br><span class="line">app.use(bodyParser.json())</span><br><span class="line">app.use(bodyParser.urlencoded({<span class="attr">extended</span>: <span class="literal">true</span>}))</span><br></pre></td></tr></tbody></table></figure></li>
+<li>參考文件如下：<ul>
+<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/40859299/axios-post-request-body-is-empty-object">Axios post request.body is empty object</a></li>
+<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/51143730/axios-posting-empty-request">Axios posting empty request</a></li>
+<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/55593431/cant-receive-data-from-axios-on-api">Can’t receive data from axios on API</a></li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1685,180 +1823,8 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope="" itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://tzynwang.github.io/2021/js-shallow-copy-deep-copy/">
-
-    <span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar-pexels-alex-andrews-215-215.png">
-      <meta itemprop="name" content="Charlie (Tzu Yin)">
-      <meta itemprop="description" content="一介普通文組的學習筆記 📒">
-    </span>
-
-    <span hidden="" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="普通文組">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/js-shallow-copy-deep-copy/" class="post-title-link" itemprop="url">「pass by value、pass by reference、深拷貝」相關筆記</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-04-18 16:43:24" itemprop="dateCreated datePublished" datetime="2021-04-18T16:43:24+08:00">2021-04-18</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-04-22 01:55:36" itemprop="dateModified" datetime="2021-04-22T01:55:36+08:00">2021-04-22</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
-        </span>
-    </span>
-
-  
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus: </span>
-    
-    <a title="disqus" href="/2021/js-shallow-copy-deep-copy/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/js-shallow-copy-deep-copy/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>對Primitive types與Structural types的資料使用等號進行「賦值」的動作時，賦予的內容分別是值本身（value）或記憶體中的位置（reference）：</p>
-<ul>
-<li>Primitive types（<code>undefined</code>、<code>Boolean</code>、<code>Number</code>、<code>BigInt</code>、<code>String</code>、<code>Symbol</code>）：pass by value，可直接透過「賦值」拷貝（淺拷貝，shallow copy）</li>
-<li>Structural types（<code>Object</code>、<code>Function</code>）：pass by reference，要完全拷貝其內容需執行深拷貝（deep copy）</li>
-</ul>
-<h2 id="Pass-by-value"><a href="#Pass-by-value" class="headerlink" title="Pass by value"></a>Pass by value</h2><ul>
-<li>將基本類別的資料從一個變數「賦值」到另外一個變數的時候，傳遞的是「值」本身（pass by value）</li>
-<li>參考以下程式碼，在將<code>bag</code>的值<code>apples</code>賦予<code>pocket</code>時，傳遞給<code>pocket</code>的是<code>bag</code>的值（<code>apples</code>）<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> bag = <span class="string">'apples'</span></span><br><span class="line"><span class="keyword">let</span> pocket = bag</span><br><span class="line">bag = <span class="string">'oranges'</span></span><br><span class="line"><span class="built_in">console</span>.log(pocket) <span class="comment">// output: apples</span></span><br></pre></td></tr></tbody></table></figure>
-<ul>
-<li><code>pocket</code>的<code>apples</code>與<code>bag</code>的<code>apples</code>分別位在記憶體中不同的空間，實際上是兩筆值為<code>apples</code>的資料</li>
-<li>所以，即使對<code>bag</code>賦予一組新的值<code>oranges</code>，也不會影響到<code>pocket</code>的值</li>
-</ul>
-</li>
-</ul>
-<h2 id="Pass-by-reference"><a href="#Pass-by-reference" class="headerlink" title="Pass by reference"></a>Pass by reference</h2><ul>
-<li>將<code>Object</code>與<code>function</code>類型的資料從一個變數「賦值」到另外一個變數的時候，傳遞的是「記憶體中的位置」（pass by reference）</li>
-<li>參考以下程式碼，<code>container1</code>與<code>container2</code>兩個變數「指向」同一筆資料<code>{apple: 6}</code>；修改<code>container1</code>「指向」的內容後，呼叫「指向同一筆資料」的<code>container2</code>就會看到被修改後的內容，即是<code>{apple: 3}</code><figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> container1 = {<span class="attr">apple</span>: <span class="number">6</span>}</span><br><span class="line"><span class="keyword">const</span> container2 = container1</span><br><span class="line">container1.apple = <span class="number">3</span></span><br><span class="line"><span class="built_in">console</span>.log(container2) <span class="comment">// output: {apple: 3}</span></span><br></pre></td></tr></tbody></table></figure>
-
-</li>
-</ul>
-<h2 id="深拷貝（deep-copy）"><a href="#深拷貝（deep-copy）" class="headerlink" title="深拷貝（deep copy）"></a>深拷貝（deep copy）</h2><p>概念如下：透過對<code>container1</code>進行深拷貝來取得<code>container2</code>的話⋯⋯</p>
-<ul>
-<li><code>container2</code>就會是一個完全獨立的新物件，對<code>container2</code>進行任何修改都不會影響到<code>container1</code></li>
-<li>反之亦然，對<code>container1</code>進行任何修改都不會影響到<code>container2</code>的內容</li>
-<li><code>container1</code>與<code>container2</code>分別指向記憶體中<strong>不同的位置</strong></li>
-</ul>
-<h3 id="JSON-stringify搭配JSON-parse"><a href="#JSON-stringify搭配JSON-parse" class="headerlink" title="JSON.stringify搭配JSON.parse"></a><code>JSON.stringify</code>搭配<code>JSON.parse</code></h3><p>把需要進行深拷貝的目標傳入<code>JSON.stringify</code>，再將<code>JSON.stringify</code>回傳的JSON string傳入<code>JSON.parse()</code>重建為JavaScript物件（或值）</p>
-<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> container1 = {<span class="attr">apple</span>: <span class="number">6</span>}</span><br><span class="line"><span class="keyword">const</span> jsonString = <span class="built_in">JSON</span>.stringify(container1) <span class="comment">// 取得JSON string化的container1</span></span><br><span class="line"><span class="keyword">const</span> container2 = <span class="built_in">JSON</span>.parse(jsonString)     <span class="comment">// 將JSON string化的container1重建為JavaScript物件，得到與container1無關的container2</span></span><br><span class="line">container1.apple = <span class="number">3</span></span><br><span class="line"><span class="built_in">console</span>.log(container2) <span class="comment">// output: {apple: 6}</span></span><br></pre></td></tr></tbody></table></figure>
-<p><code>JSON.stringify</code>的特性：</p>
-<ul>
-<li>無法處理<code>circular reference</code>（循環參考）與<code>BigInt</code>（<code>JSON.stringify</code>會丟出<code>TypeError</code>）</li>
-<li>無法處理<code>undefined</code>、<code>Function</code>或<code>Symbol</code><ul>
-<li>若是在處理<code>array</code>時發現以上三種資料，這三種類型的資料會被轉換為<code>null</code></li>
-<li>若是在處理<code>object</code>時發現以上三種資料，這三種類型的資料會被略過</li>
-<li><code>Symbol</code>-keyed會被略過</li>
-<li><code>undefined</code>與<code>Function</code>會讓<code>JSON.stringify</code>回傳<code>undefined</code></li>
-<li>MDN原文：<code>undefined</code>, <code>Function</code>s, and <code>Symbol</code>s are not valid JSON values. If any such values are encountered during conversion they are either omitted (when found in an object) or changed to <code>null</code> (when found in an array). <code>JSON.stringify()</code> can return <code>undefined</code> when passing in “pure” values like <code>JSON.stringify(function(){})</code> or <code>JSON.stringify(undefined)</code>.</li>
-</ul>
-</li>
-<li>傳入<code>JSON.stringify</code>的<code>Infinity</code>、<code>NaN</code>與<code>null</code>都會被視為<code>null</code><ul>
-<li>MDN原文：The numbers <code>Infinity</code> and <code>NaN</code>, as well as the value <code>null</code>, are all considered <code>null</code>.</li>
-</ul>
-</li>
-<li>只會處理<code>Object</code>中<code>enumerable</code>的部分<ul>
-<li>MDN原文：All the other <code>Object</code> instances (including <code>Map</code>, <code>Set</code>, <code>WeakMap</code>, and <code>WeakSet</code>) will have only their enumerable properties serialized.</li>
-</ul>
-</li>
-</ul>
-<p><code>JSON.parse</code>的使用注意事項：</p>
-<ul>
-<li>無法處理trailing commas<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">JSON</span>.parse(<span class="string">'[1, 2, 3, 4, ]'</span>)</span><br><span class="line"><span class="built_in">JSON</span>.parse(<span class="string">'{"foo" : 1, }'</span>)</span><br><span class="line"><span class="comment">// both will throw a SyntaxError</span></span><br></pre></td></tr></tbody></table></figure></li>
-<li>僅允許單引號<code>'</code>包覆雙引號<code>"</code>，反過來使用雙引號包覆單引號會丟出<code>SyntaxError</code><figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">JSON</span>.parse(<span class="string">'[1, 5, "false"]'</span>); </span><br><span class="line"><span class="comment">// output: [1, 5, "false"]</span></span><br><span class="line"><span class="built_in">JSON</span>.parse(<span class="string">"[1, 5, 'false']"</span>);</span><br><span class="line"><span class="comment">// will throw a SyntaxError</span></span><br></pre></td></tr></tbody></table></figure>
-
-</li>
-</ul>
-<h3 id="使用Lodash的-cloneDeep"><a href="#使用Lodash的-cloneDeep" class="headerlink" title="使用Lodash的_.cloneDeep"></a>使用<a target="_blank" rel="noopener" href="https://lodash.com/">Lodash</a>的<code>_.cloneDeep</code></h3><p>文件：<a target="_blank" rel="noopener" href="https://docs-lodash.com/v4/clone-deep/">https://docs-lodash.com/v4/clone-deep/</a></p>
-<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> container1 = [{ <span class="attr">apple</span>: <span class="number">6</span> }, { <span class="attr">orange</span>: <span class="number">2</span> }]</span><br><span class="line"><span class="keyword">const</span> container2 = _.cloneDeep(container1)</span><br><span class="line"></span><br><span class="line">container1[<span class="number">0</span>].apple = <span class="number">3</span></span><br><span class="line"><span class="built_in">console</span>.log(container1) <span class="comment">// [{ apple: 3 }, { orange: 2 }]</span></span><br><span class="line"><span class="built_in">console</span>.log(container2) <span class="comment">// [{ apple: 6 }, { orange: 2 }]</span></span><br></pre></td></tr></tbody></table></figure>
-<h3 id="使用jQuery的-extend"><a href="#使用jQuery的-extend" class="headerlink" title="使用jQuery的$.extend"></a>使用<a target="_blank" rel="noopener" href="https://jquery.com/">jQuery</a>的<code>$.extend</code></h3><p>文件：<a target="_blank" rel="noopener" href="https://api.jquery.com/jquery.extend/">https://api.jquery.com/jquery.extend/</a></p>
-<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> container1 = [{ <span class="attr">apple</span>: <span class="number">6</span> }, { <span class="attr">orange</span>: <span class="number">2</span> }]</span><br><span class="line"><span class="keyword">const</span> container2 = $.extend(<span class="literal">true</span>, [], container1);</span><br><span class="line"></span><br><span class="line">container1[<span class="number">0</span>].apple = <span class="number">3</span></span><br><span class="line"><span class="built_in">console</span>.log(container1) <span class="comment">// [{ apple: 3 }, { orange: 2 }]</span></span><br><span class="line"><span class="built_in">console</span>.log(container2) <span class="comment">// [{ apple: 6 }, { orange: 2 }]</span></span><br></pre></td></tr></tbody></table></figure>
-<h3 id="Node-js-Serialization-API"><a href="#Node-js-Serialization-API" class="headerlink" title="Node.js: Serialization API"></a>Node.js: Serialization API</h3><p>文件：<a target="_blank" rel="noopener" href="https://nodejs.org/api/all.html#v8_serialization_api">https://nodejs.org/api/all.html#v8_serialization_api</a></p>
-<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> v8 = <span class="built_in">require</span>(<span class="string">'v8'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> structuredClone = <span class="function"><span class="params">obj</span> =&gt;</span> {</span><br><span class="line">  <span class="keyword">return</span> v8.deserialize(v8.serialize(obj));</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-<h3 id="The-structured-clone-algorithm"><a href="#The-structured-clone-algorithm" class="headerlink" title="The structured clone algorithm"></a>The structured clone algorithm</h3><p>參考：<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Structured_clone_algorithm">https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Structured_clone_algorithm</a><br>尚未於瀏覽器中實現。</p>
-<h2 id="bonus-track-CPython-id-in-JavaScript"><a href="#bonus-track-CPython-id-in-JavaScript" class="headerlink" title="bonus track: CPython id() in JavaScript?"></a>bonus track: CPython <a target="_blank" rel="noopener" href="https://docs.python.org/3/library/functions.html#id">id()</a> in JavaScript?</h2><p>提問：CPython的<code>id()</code>會回傳物件在記憶體中的位置，JavaScript有類似的功能嗎？<br>簡答：沒有。<br>詳答：</p>
-<ul>
-<li>If it would be possible at all, it would be very <strong>dependent on the javascript engine</strong>. The more modern javascript engine compile their code using a <a target="_blank" rel="noopener" href="https://hacks.mozilla.org/2017/02/a-crash-course-in-just-in-time-jit-compilers/">just in time compiler</a> and messing with their internal variables would be either bad for performance, or bad for stability.</li>
-<li>Here’s an easier reason for why you can’t get a variable’s memory address: JS is a safe language for the web, which abstracts away not only the hardware, but also the OS and browser. There are <strong>only high-level concepts by design</strong>, because lower-level stuff does not have to matter at all.</li>
-</ul>
-<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#data_and_structure_types">MDN: Data and Structure types</a></li>
-<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify">MDN: JSON.stringify()</a></li>
-<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse">MDN: JSON.parse()</a></li>
-<li><a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/articles/10223178">前端三十 - 成為更好的前端工程師系列：14. [JS] 深拷貝是什麼？如何實現？</a></li>
-<li><a target="_blank" rel="noopener" href="https://awdr74100.github.io/2019-10-24-javascript-deepcopy/">Roya’s Blog: JavaScript 淺拷貝 (Shallow Copy) 與深拷貝 (Deep Copy)</a></li>
-<li><a target="_blank" rel="noopener" href="https://kanboo.github.io/2018/01/27/JS-ShallowCopy-DeepCopy/">Kanboo Notes: JS-淺拷貝(Shallow Copy) VS 深拷貝(Deep Copy)</a></li>
-<li><a target="_blank" rel="noopener" href="https://pjchender.blogspot.com/2016/03/javascriptby-referenceby-value.html">[筆記] 談談 JavaScript 中 by reference 和 by value 的重要觀念</a></li>
-<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/122102/what-is-the-most-efficient-way-to-deep-clone-an-object-in-javascript">What is the most efficient way to deep clone an object in JavaScript?</a></li>
-<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/639514/how-can-i-get-the-memory-address-of-a-javascript-variable">How can I get the memory address of a JavaScript variable?</a></li>
-<li><a target="_blank" rel="noopener" href="https://hashnode.com/post/how-to-get-the-variable-memory-address-in-nodejs-cjq83mnya00yh1vs2czf9vwne">How to get the variable’ memory address in node.js?</a></li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">…</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">…</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 

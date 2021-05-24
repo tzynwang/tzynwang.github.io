@@ -21,36 +21,31 @@
     var NexT = window.NexT || {};
     var CONFIG = {"hostname":"tzynwang.github.io","root":"/","images":"/images","scheme":"Pisces","version":"8.2.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqus","storage":true,"lazyload":false,"nav":null,"activeClass":"disqus"},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":"enable","trigger":"auto","top_n_per_article":-1,"unescape":false,"preload":false}};
   </script>
-<meta name="description" content="總結這篇文章是在處理ALPHA Camp 學期1 S3 A11作業「試用開發者工具」時，嘗試搭配DevTools，避免作業過程中意外重新整理網頁，造成作業進度遺失的問題。 DevTools確實可以解決上述問題。但為了要讓DevTools可以隨時儲存我的修改進度，需要先將作業範例檔案git clone回本機，然後再透過DevTools開啟作業資料夾，給予DevTools權限來記錄我對作業進行的修改。">
-<meta property="og:type" content="article">
-<meta property="og:title" content="「Edit Files With Workspaces」相關筆記">
-<meta property="og:url" content="https://tzynwang.github.io/2021/edit-files-with-workspaces/index.html">
+<meta name="description" content="一介普通文組的學習筆記 📒">
+<meta property="og:type" content="website">
+<meta property="og:title" content="普通文組">
+<meta property="og:url" content="https://tzynwang.github.io/page/5/index.html">
 <meta property="og:site_name" content="普通文組">
-<meta property="og:description" content="總結這篇文章是在處理ALPHA Camp 學期1 S3 A11作業「試用開發者工具」時，嘗試搭配DevTools，避免作業過程中意外重新整理網頁，造成作業進度遺失的問題。 DevTools確實可以解決上述問題。但為了要讓DevTools可以隨時儲存我的修改進度，需要先將作業範例檔案git clone回本機，然後再透過DevTools開啟作業資料夾，給予DevTools權限來記錄我對作業進行的修改。">
+<meta property="og:description" content="一介普通文組的學習筆記 📒">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://tzynwang.github.io/2021/edit-files-with-workspaces/file-mapping-success.png">
-<meta property="og:image" content="https://tzynwang.github.io/2021/edit-files-with-workspaces/why-it-isnt-saved.png">
-<meta property="article:published_time" content="2021-03-11T06:03:04.000Z">
-<meta property="article:modified_time" content="2021-03-15T07:10:58.121Z">
 <meta property="article:author" content="Charlie (Tzu Yin)">
 <meta property="article:tag" content="hexo, hexo blog, tzyn, 普通文組">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://tzynwang.github.io/2021/edit-files-with-workspaces/file-mapping-success.png">
 
 
-<link rel="canonical" href="https://tzynwang.github.io/2021/edit-files-with-workspaces/">
+<link rel="canonical" href="https://tzynwang.github.io/page/5/">
 
 
 <script class="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : false,
-    isPost : true,
+    isHome : true,
+    isPost : false,
     lang   : 'en'
   };
 </script>
-<title>「Edit Files With Workspaces」相關筆記 | 普通文組</title>
+<title>普通文組</title>
   
 
 
@@ -175,7 +170,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+    <div class="sidebar-inner sidebar-overview-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           Table of Contents
@@ -188,7 +183,6 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B8%BD%E7%B5%90"><span class="nav-number">1.</span> <span class="nav-text">總結</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%89%88%E6%9C%AC%E8%88%87%E7%92%B0%E5%A2%83"><span class="nav-number">2.</span> <span class="nav-text">版本與環境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%81%E7%A8%8B%E8%88%87%E7%AD%86%E8%A8%98"><span class="nav-number">3.</span> <span class="nav-text">流程與筆記</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A0%85"><span class="nav-number">3.1.</span> <span class="nav-text">注意事項</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%83%E8%80%83%E6%96%87%E4%BB%B6"><span class="nav-number">4.</span> <span class="nav-text">參考文件</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -243,18 +237,17 @@
 </noscript>
 
 
-    <div class="main-inner post posts-expand">
+    <div class="main-inner index posts-expand">
 
-
-  
+    
 
 
 <div class="post-block">
   
   
 
-  <article itemscope="" itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://tzynwang.github.io/2021/edit-files-with-workspaces/">
+  <article itemscope="" itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tzynwang.github.io/2021/bundle-exec/">
 
     <span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar-pexels-alex-andrews-215-215.png">
@@ -266,9 +259,9 @@
       <meta itemprop="name" content="普通文組">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          「Edit Files With Workspaces」相關筆記
-        </h1>
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/bundle-exec/" class="post-title-link" itemprop="url">bundle exec</a>
+        </h2>
 
         <div class="post-meta-container">
           <div class="post-meta">
@@ -278,14 +271,14 @@
       </span>
       <span class="post-meta-item-text">Posted on</span>
 
-      <time title="Created: 2021-03-11 14:03:04" itemprop="dateCreated datePublished" datetime="2021-03-11T14:03:04+08:00">2021-03-11</time>
+      <time title="Created: 2021-02-08 20:31:26" itemprop="dateCreated datePublished" datetime="2021-02-08T20:31:26+08:00">2021-02-08</time>
     </span>
       <span class="post-meta-item">
         <span class="post-meta-item-icon">
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-03-15 15:10:58" itemprop="dateModified" datetime="2021-03-15T15:10:58+08:00">2021-03-15</time>
+        <time title="Modified: 2021-02-18 15:44:15" itemprop="dateModified" datetime="2021-02-18T15:44:15+08:00">2021-02-18</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -293,7 +286,7 @@
       </span>
       <span class="post-meta-item-text">In</span>
         <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-          <a href="/categories/DevTools/" itemprop="url" rel="index"><span itemprop="name">DevTools</span></a>
+          <a href="/categories/jekyll/" itemprop="url" rel="index"><span itemprop="name">jekyll</span></a>
         </span>
     </span>
 
@@ -306,8 +299,8 @@
       </span>
       <span class="post-meta-item-text">Disqus: </span>
     
-    <a title="disqus" href="/2021/edit-files-with-workspaces/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/edit-files-with-workspaces/" itemprop="commentCount"></span>
+    <a title="disqus" href="/2021/bundle-exec/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/bundle-exec/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -321,27 +314,14 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>這篇文章是在處理ALPHA Camp 學期1 S3 A11作業「試用開發者工具」時，嘗試搭配DevTools，避免作業過程中意外重新整理網頁，造成作業進度遺失的問題。</p>
-<p>DevTools確實可以解決上述問題。<br>但為了要讓DevTools可以隨時儲存我的修改進度，需要先將作業範例檔案git clone回本機，然後再透過DevTools開啟作業資料夾，給予DevTools權限來記錄我對作業進行的修改。</p>
-<h2 id="版本與環境"><a href="#版本與環境" class="headerlink" title="版本與環境"></a>版本與環境</h2><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Google Chrome: 89.0.4389.82 (Official Build) (x86_64)</span><br><span class="line">ox: macOS Big Suf Version 11.1</span><br></pre></td></tr></tbody></table></figure>
+          <p>Question: why adds <code>bundle exec</code> in the command when running jekyll server in the first time?<br>Answer (short): to know the version of the gems that are going to use.</p>
+<h2 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h2><p><code>bundle exec</code> will check the Gemfile to understand “<strong>what gems</strong> will be used” and “<strong>which version</strong> of the gems should be used”.<br>In the case that Gemfile is modified, run <code>bundle exec jekyll server</code> instead of just running <code>jekyll server</code>.</p>
+<p>第一次執行<code>jekyll server</code>要輸入<code>bundle exec jekyll server</code>，讓環境根據Gemfile查詢你的程式會用到哪些gems、並這些gems該使用哪些版本。在Gemfile沒有更新的情況下，第二次以後直接在環境輸入<code>jekyll server</code>就可以了。</p>
+<p>若有修改Gemfile的內容，則須重新執行<code>bundle exec jekyll server</code>。</p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a target="_blank" rel="noopener" href="https://stackoverflow.com/a/16218854/15028185">What does bundle exec rake mean?</a></p>
+<p>You’re running <code>bundle exec</code> on a program. The program’s creators wrote it when <strong>certain versions of gems</strong> were available. The program <strong>Gemfile</strong> specifies the versions of the gems the creators decided to use. That is, the script was made to run correctly against these gem versions.</p>
 
-<h2 id="流程與筆記"><a href="#流程與筆記" class="headerlink" title="流程與筆記"></a>流程與筆記</h2><ol>
-<li>觀察ALPHA Camp提供的作業連結（<a target="_blank" rel="noopener" href="https://alphacamp.github.io/css-facebook/">https://alphacamp.github.io/css-facebook/</a>），推測作業範例應該是用GitHub Pages發布的，嘗試搜尋「ALPHA Camp github」，運氣不錯，作業的repo是公開的</li>
-<li>把作業範例git clone回本機</li>
-<li>用VSCode開啟作業範例，使用VSCode的擴充套件「<a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer">Live Server</a>」讓index.html在localhost:5500動起來</li>
-<li>參考官方文件的說明（<a target="_blank" rel="noopener" href="https://developers.google.com/web/tools/chrome-devtools/workspaces#devtools">「Set up DevTools」</a>），開啟DevTools後，點選功能分頁中的「Sources」</li>
-<li>進入子選項「Filesystem」，點選「+ Add folder to workspace」，選擇作業所在的資料夾<br> 備註：在流程第二步，我選擇將作業clone回桌面的css-facebook資料夾，故在這一步，我要在DevTools中選擇開啟位在桌面的css-facebook資料夾</li>
-<li>在DevTools跳出權限請求視窗時，選擇給予DevTools權限來修改本機檔案</li>
-<li>在沒有開錯資料夾、沒有出現其他問題的情況下，Filesystem區域會出現資料夾css-facebook，點開資料夾會看到index.html與style.css兩個檔案，並style.css的檔案圖示右下角會有綠點 <figure class="figure--center"><img src="/2021/edit-files-with-workspaces/file-mapping-success.png"></figure></li>
-<li>綠點代表現在透過DevTools對網頁做的CSS更動都會儲存到style.css中，這樣即使改到一半重新整理網頁，先前的CSS修改也不會消失</li>
-</ol>
-<h3 id="注意事項"><a href="#注意事項" class="headerlink" title="注意事項"></a>注意事項</h3><p>在DevTools的Elements標籤下修改的HTML內容不會被保存下來，想要保存對HTML的變更，請移動到Sources標籤去修改index.html</p>
-<figure class="figure--center"><img src="/2021/edit-files-with-workspaces/why-it-isnt-saved.png"></figure>
-
-<p>問：為什麼我在Elements修改網頁的內文不像修改CSS會被保存下來？<br>答：因為在Elements標籤下做的修改都是改到DOM，不是改到HTML。<br>瀏覽器取得HTML後，解析、並搭配CSS與JS來決定最後呈現給使用者看的內容會長什麼樣子，使用者看到、並用Elements操作（修改）的東西是DOM。<br>而這些DOM最終為什麼會以這些樣子呈現在網頁上，是綜合了HTML、CSS與JS互相搭配的結果，DevTools很難知道它到底該把使用者對DOM做的修改內容記錄到HTML、CSS或是JS檔案中。</p>
-<p>更詳細的解說可參考：<a target="_blank" rel="noopener" href="https://developers.google.com/web/tools/chrome-devtools/workspaces#why">Save an HTML change to disk: Why it doesn’t work</a></p>
-<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><p><a target="_blank" rel="noopener" href="https://developers.google.com/web/tools/chrome-devtools/workspaces">Edit Files With Workspaces</a></p>
-
+      
     </div>
 
     
@@ -349,21 +329,8 @@
     
 
     <footer class="post-footer">
-
-        
-
-          <div class="post-nav">
-            <div class="post-nav-item">
-                <a href="/2021/writing-good-alt-text/" rel="prev" title="「Writing Good Alt Text - HTTP 203」相關筆記">
-                  <i class="fa fa-chevron-left"></i> 「Writing Good Alt Text - HTTP 203」相關筆記
-                </a>
-            </div>
-            <div class="post-nav-item">
-                <a href="/2021/css-specificity/" rel="next" title="「CSS Specificity」相關筆記">
-                  「CSS Specificity」相關筆記 <i class="fa fa-chevron-right"></i>
-                </a>
-            </div>
-          </div>
+        <div class="post-eof"></div>
+      
     </footer>
   </article>
 </div>
@@ -371,13 +338,10 @@
 
 
 
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">…</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span>
+  </nav>
 
-
-    
-  <div class="comments" id="disqus_thread">
-    <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
-  </div>
-  
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -443,7 +407,6 @@
 
 
 
-
 <script src="/bundle.js"></script><script>
   function loadCount() {
     var d = document, s = d.createElement('script');
@@ -453,24 +416,4 @@
   }
   // defer loading until the whole page loading is completed
   window.addEventListener('load', loadCount, false);
-;
-
-  var disqus_config = function() {
-    this.page.url = "https://tzynwang.github.io/2021/edit-files-with-workspaces/";
-    this.page.identifier = "2021/edit-files-with-workspaces/";
-    this.page.title = "「Edit Files With Workspaces」相關筆記";
-    };
-  NexT.utils.loadComments('#disqus_thread', () => {
-    if (window.DISQUS) {
-      DISQUS.reset({
-        reload: true,
-        config: disqus_config
-      });
-    } else {
-      var d = document, s = d.createElement('script');
-      s.src = 'https://tzyn-hexo.disqus.com/embed.js';
-      s.setAttribute('data-timestamp', '' + +new Date());
-      (d.head || d.body).appendChild(s);
-    }
-  });
 </script></body></html>

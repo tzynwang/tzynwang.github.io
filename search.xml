@@ -1425,6 +1425,35 @@ on <a href="https://codepen.io">CodePen</a>.</span>
       </tags>
   </entry>
   <entry>
+    <title>Add 404 page</title>
+    <url>/2021/hexo-add-404/</url>
+    <content><![CDATA[<h2 id="Summary-of-this-post"><a href="#Summary-of-this-post" class="headerlink" title="Summary of this post"></a>Summary of this post</h2><p>The workflow of adding a 404 handling page for the hexo blog.</p>
+<figure class="figure--center"><img src="/2021/hexo-add-404/404-page-for-hexo-blog.jpg" title="The 404 page"><figcaption><p>The 404 page</p></figcaption></figure>
+
+
+<h2 id="Environment"><a href="#Environment" class="headerlink" title="Environment"></a>Environment</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo: 5.3.0</span><br><span class="line">hexo-cli: 4.2.0</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></table></figure>
+
+<h2 id="Workflow"><a href="#Workflow" class="headerlink" title="Workflow"></a>Workflow</h2><ol>
+<li>Create a 404.md file in the <code>source</code> folder<figure class="figure--center"><img src="/2021/hexo-add-404/location-of-404-page.jpg" title="Add the 404.md in the source folder of hexo blog " alt="The screenshot to display file location of 404.md file for the hexo blog"><figcaption><p>Add the 404.md in the source folder of hexo blog </p></figcaption></figure></li>
+<li>Add page content for the 404.md file:<ul>
+<li><code>permalink: /404.html</code> in line 3 is <strong>required</strong>.</li>
+<li>Fill in the correct URL (<code>https://&lt;your GitHub username&gt;.github.io/</code>) for redirection in line 9 and line 19</li>
+<li>The value of <code>countTime</code> in line 12 can be updated to the preferred waiting time. I just leave the waiting time as 5 seconds without changing it.<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: 404</span><br><span class="line">permalink: /404.html</span><br><span class="line">---</span><br><span class="line"></span><br><span class="line"><span class="section">## Page not exists</span></span><br><span class="line">The page you are looking for does not exist.</span><br><span class="line">Will bring you back to the homepage in <span class="xml"><span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">&quot;timeout&quot;</span>&gt;</span></span>5<span class="xml"><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span> second(s).</span><br><span class="line">Or [<span class="string">click this link</span>](<span class="link">https://&lt;your GitHub username&gt;.github.io/</span>) to go back to the homepage immediately.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span></span><br><span class="line">let countTime = 5;</span><br><span class="line"></span><br><span class="line">function count() &#123;</span><br><span class="line">  </span><br><span class="line">  document.getElementById(&#x27;timeout&#x27;).textContent = countTime;</span><br><span class="line">  countTime -= 1;</span><br><span class="line">  if(countTime === 0)&#123;</span><br><span class="line"><span class="code">    location.href = &quot;https://&lt;your GitHub username&gt;.github.io/&quot;;</span></span><br><span class="line"><span class="code">  &#125;</span></span><br><span class="line"><span class="code">  setTimeout(() =&gt; &#123;</span></span><br><span class="line"><span class="code">    count();</span></span><br><span class="line"><span class="code">  &#125;, 1000);</span></span><br><span class="line"><span class="code">&#125;</span></span><br><span class="line"><span class="code"></span></span><br><span class="line"><span class="code">count();</span></span><br><span class="line"><span class="code">&lt;/script&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>Save the file. Run <code>hexo generate</code> and <code>hexo deploy</code> to push the 404 handle page to the repository. Done ☕</li>
+</ol>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
+<li>For the copy:<br>  <a href="https://codepen.io/kdbkapsere/pen/oNXLbqQ">404 Page by Kasper De Bruyne</a></li>
+<li>For the <code>404.md</code> file location and the instruction of deployment:<br>  <a href="https://github.com/ppoffice/hexo-theme-icarus/issues/66#issuecomment-165919312">https://github.com/ppoffice/hexo-theme-icarus/issues/66#issuecomment-165919312</a></li>
+<li>For the JavaScript of auto-redirect:<br>  <a href="https://ithelp.ithome.com.tw/articles/10249685">(23) 試著學 Hexo - SEO 篇 - 新增你的 404 頁面</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>hexo</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Submit to Google Search Console, SEO settings</title>
     <url>/2021/hexo-Google-Search-Console/</url>
     <content><![CDATA[<h2 id="Summary-of-this-post"><a href="#Summary-of-this-post" class="headerlink" title="Summary of this post"></a>Summary of this post</h2><p>Q: How to make sure Google Search can find my hexo blog that has been deployed on GitHub Page?<br>A: Submit your hexo blog to <a href="https://search.google.com/search-console/welcome">Google Search Console</a> by:</p>
@@ -1475,35 +1504,6 @@ on <a href="https://codepen.io">CodePen</a>.</span>
 <li><a href="https://hsiangfeng.github.io/hexo/20190514/2072033203/">Hexo搜尋引擎優化</a></li>
 <li><a href="https://askie.today/upload-sitemap-google-search-console-seo-hexo-blog/">輕鬆地提交 Hexo 部落格的 Sitemap.xml 到 Google Search Console</a></li>
 <li><a href="https://hoxis.github.io/Hexo+Next%20SEO%E4%BC%98%E5%8C%96.html">Hexo博客Next主题SEO优化方法</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>hexo</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>Add 404 page</title>
-    <url>/2021/hexo-add-404/</url>
-    <content><![CDATA[<h2 id="Summary-of-this-post"><a href="#Summary-of-this-post" class="headerlink" title="Summary of this post"></a>Summary of this post</h2><p>The workflow of adding a 404 handling page for the hexo blog.</p>
-<figure class="figure--center"><img src="/2021/hexo-add-404/404-page-for-hexo-blog.jpg" title="The 404 page"><figcaption><p>The 404 page</p></figcaption></figure>
-
-
-<h2 id="Environment"><a href="#Environment" class="headerlink" title="Environment"></a>Environment</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo: 5.3.0</span><br><span class="line">hexo-cli: 4.2.0</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></table></figure>
-
-<h2 id="Workflow"><a href="#Workflow" class="headerlink" title="Workflow"></a>Workflow</h2><ol>
-<li>Create a 404.md file in the <code>source</code> folder<figure class="figure--center"><img src="/2021/hexo-add-404/location-of-404-page.jpg" title="Add the 404.md in the source folder of hexo blog " alt="The screenshot to display file location of 404.md file for the hexo blog"><figcaption><p>Add the 404.md in the source folder of hexo blog </p></figcaption></figure></li>
-<li>Add page content for the 404.md file:<ul>
-<li><code>permalink: /404.html</code> in line 3 is <strong>required</strong>.</li>
-<li>Fill in the correct URL (<code>https://&lt;your GitHub username&gt;.github.io/</code>) for redirection in line 9 and line 19</li>
-<li>The value of <code>countTime</code> in line 12 can be updated to the preferred waiting time. I just leave the waiting time as 5 seconds without changing it.<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: 404</span><br><span class="line">permalink: /404.html</span><br><span class="line">---</span><br><span class="line"></span><br><span class="line"><span class="section">## Page not exists</span></span><br><span class="line">The page you are looking for does not exist.</span><br><span class="line">Will bring you back to the homepage in <span class="xml"><span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">&quot;timeout&quot;</span>&gt;</span></span>5<span class="xml"><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span> second(s).</span><br><span class="line">Or [<span class="string">click this link</span>](<span class="link">https://&lt;your GitHub username&gt;.github.io/</span>) to go back to the homepage immediately.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span></span><br><span class="line">let countTime = 5;</span><br><span class="line"></span><br><span class="line">function count() &#123;</span><br><span class="line">  </span><br><span class="line">  document.getElementById(&#x27;timeout&#x27;).textContent = countTime;</span><br><span class="line">  countTime -= 1;</span><br><span class="line">  if(countTime === 0)&#123;</span><br><span class="line"><span class="code">    location.href = &quot;https://&lt;your GitHub username&gt;.github.io/&quot;;</span></span><br><span class="line"><span class="code">  &#125;</span></span><br><span class="line"><span class="code">  setTimeout(() =&gt; &#123;</span></span><br><span class="line"><span class="code">    count();</span></span><br><span class="line"><span class="code">  &#125;, 1000);</span></span><br><span class="line"><span class="code">&#125;</span></span><br><span class="line"><span class="code"></span></span><br><span class="line"><span class="code">count();</span></span><br><span class="line"><span class="code">&lt;/script&gt;</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li>Save the file. Run <code>hexo generate</code> and <code>hexo deploy</code> to push the 404 handle page to the repository. Done ☕</li>
-</ol>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
-<li>For the copy:<br>  <a href="https://codepen.io/kdbkapsere/pen/oNXLbqQ">404 Page by Kasper De Bruyne</a></li>
-<li>For the <code>404.md</code> file location and the instruction of deployment:<br>  <a href="https://github.com/ppoffice/hexo-theme-icarus/issues/66#issuecomment-165919312">https://github.com/ppoffice/hexo-theme-icarus/issues/66#issuecomment-165919312</a></li>
-<li>For the JavaScript of auto-redirect:<br>  <a href="https://ithelp.ithome.com.tw/articles/10249685">(23) 試著學 Hexo - SEO 篇 - 新增你的 404 頁面</a></li>
 </ul>
 ]]></content>
       <categories>
@@ -2178,6 +2178,65 @@ The configuration in <code>_config.yml</code> file should be set like this:<figu
       </categories>
   </entry>
   <entry>
+    <title>Alpha Camp「2-3 老爸的私房錢（簡易記帳APP）」技術記錄</title>
+    <url>/2021/mongoose-note/</url>
+    <content><![CDATA[<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>以下是本次作業處理到的主要問題：</p>
+<ul>
+<li>透過一行腳本在多個資料庫個別產生種子資料</li>
+<li>透過mongoose在mongoDB中join兩組collections之間的資料</li>
+<li>使用axios進行ajax請求，根據使用者選擇的組別顯示相對應的帳目資料（例：選擇「休閒娛樂」的帳目資料，則畫面僅會顯示該類別的帳目，並消費總金額會同步更新）</li>
+</ul>
+<h2 id="環境"><a href="#環境" class="headerlink" title="環境"></a>環境</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">node: 12.20.2</span><br><span class="line">express: 4.17.1</span><br><span class="line">express-handlebars: 5.3.2</span><br><span class="line">mongoose: 5.12.9</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></table></figure>
+<h2 id="筆記"><a href="#筆記" class="headerlink" title="筆記"></a>筆記</h2><h3 id="專案結構"><a href="#專案結構" class="headerlink" title="專案結構"></a>專案結構</h3><figure class="figure--center"><img src="/2021/mongoose-note/structure.png" title="本次專案的完整結構圖"><figcaption><p>本次專案的完整結構圖</p></figcaption></figure>
+
+<h3 id="透過一行腳本在多個資料庫個別產生種子資料"><a href="#透過一行腳本在多個資料庫個別產生種子資料" class="headerlink" title="透過一行腳本在多個資料庫個別產生種子資料"></a>透過一行腳本在多個資料庫個別產生種子資料</h3><p><code>npm run</code>腳本如右：<code>&quot;seed&quot;: &quot;node models/seeds/categorySeeder.js &amp;&amp; node models/seeds/recordSeeder.js&quot;</code><br>兩份種子腳本的原始碼如下：</p>
+<script src="https://gist.github.com/tzynwang/1ff4db97c6defc36b0a2517f13066353.js"></script>
+
+<script src="https://gist.github.com/tzynwang/24a97dfb59507d16988598e5766380ec.js"></script>
+
+<ul>
+<li><code>node models/seeds/categorySeeder.js</code>執行完畢後，需確保腳本停止，方可開始執行<code>node models/seeds/recordSeeder.js</code></li>
+<li>在<code>categorySeeder.js</code>中，待<code>Categories.create()</code>完成後，串接<code>.then()</code>來停止db連線</li>
+<li><code>categorySeeder.js</code>結束後，開始執行<code>recordSeeder.js</code></li>
+<li>根據MDN的<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach#polyfill"><code>forEach()</code> polyfill</a>，<code>forEach()</code>並沒有await callback function的機制，故改使用<code>for...of</code>來進行迴圈；相關參考文件如下：<ul>
+<li><a href="https://www.itread01.com/content/1553973607.html">為什麽 array.foreach 不支持 async/await</a></li>
+<li><a href="https://www.coreycleary.me/why-does-async-await-in-a-foreach-not-actually-await">Why does async/await in a .forEach not actually await?</a></li>
+<li><a href="https://stackoverflow.com/questions/37576685/using-async-await-with-a-foreach-loop">Using async/await with a forEach loop</a></li>
+</ul>
+</li>
+<li>待<code>for...of</code>執行完畢後，再關閉db連線，結束<code>recordSeeder.js</code></li>
+</ul>
+<h3 id="對mongoDB進行類似SQL資料庫的join指令"><a href="#對mongoDB進行類似SQL資料庫的join指令" class="headerlink" title="對mongoDB進行類似SQL資料庫的join指令"></a>對mongoDB進行類似SQL資料庫的join指令</h3><script src="https://gist.github.com/tzynwang/623afbb2e2537e196f5c08897f674a94.js"></script>
+
+<ul>
+<li>第49行的<code>results</code>，在前端透過axios接收後進行<code>console.log(response.data)</code>的內容如下：<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">&quot;_id&quot;</span>: <span class="string">&quot;60a3a3f66d1cf025c09c5714&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;name&quot;</span>: <span class="string">&quot;早餐&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;category&quot;</span>: <span class="string">&quot;餐飲食品&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;date&quot;</span>: <span class="string">&quot;2021-05-18&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;amount&quot;</span>: <span class="number">80</span>,</span><br><span class="line">    <span class="attr">&quot;__v&quot;</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="attr">&quot;iconPair&quot;</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">&quot;_id&quot;</span>: <span class="string">&quot;60a3a865b6ccf51988c7cf9b&quot;</span>,</span><br><span class="line">            <span class="attr">&quot;name&quot;</span>: <span class="string">&quot;餐飲食品&quot;</span>,</span><br><span class="line">            <span class="attr">&quot;icon&quot;</span>: <span class="string">&quot;&lt;i class=\&quot;bi bi-cup-straw\&quot;&gt;&lt;/i&gt;&quot;</span>,</span><br><span class="line">            <span class="attr">&quot;__v&quot;</span>: <span class="number">0</span></span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br><span class="line">&#123;</span><br><span class="line">    <span class="attr">&quot;_id&quot;</span>: <span class="string">&quot;60a3a3f66d1cf025c09c5715&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;name&quot;</span>: <span class="string">&quot;午餐&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;category&quot;</span>: <span class="string">&quot;餐飲食品&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;date&quot;</span>: <span class="string">&quot;2021-05-18&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;amount&quot;</span>: <span class="number">120</span>,</span><br><span class="line">    <span class="attr">&quot;__v&quot;</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="attr">&quot;iconPair&quot;</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">&quot;_id&quot;</span>: <span class="string">&quot;60a3a865b6ccf51988c7cf9b&quot;</span>,</span><br><span class="line">            <span class="attr">&quot;name&quot;</span>: <span class="string">&quot;餐飲食品&quot;</span>,</span><br><span class="line">            <span class="attr">&quot;icon&quot;</span>: <span class="string">&quot;&lt;i class=\&quot;bi bi-cup-straw\&quot;&gt;&lt;/i&gt;&quot;</span>,</span><br><span class="line">            <span class="attr">&quot;__v&quot;</span>: <span class="number">0</span></span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br><span class="line">&#123;</span><br><span class="line">    <span class="attr">&quot;_id&quot;</span>: <span class="string">&quot;60a3a3f66d1cf025c09c5716&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;name&quot;</span>: <span class="string">&quot;晚餐&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;category&quot;</span>: <span class="string">&quot;餐飲食品&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;date&quot;</span>: <span class="string">&quot;2021-05-18&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;amount&quot;</span>: <span class="number">100</span>,</span><br><span class="line">    <span class="attr">&quot;__v&quot;</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="attr">&quot;iconPair&quot;</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">&quot;_id&quot;</span>: <span class="string">&quot;60a3a865b6ccf51988c7cf9b&quot;</span>,</span><br><span class="line">            <span class="attr">&quot;name&quot;</span>: <span class="string">&quot;餐飲食品&quot;</span>,</span><br><span class="line">            <span class="attr">&quot;icon&quot;</span>: <span class="string">&quot;&lt;i class=\&quot;bi bi-cup-straw\&quot;&gt;&lt;/i&gt;&quot;</span>,</span><br><span class="line">            <span class="attr">&quot;__v&quot;</span>: <span class="number">0</span></span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+使用<code>$lookup</code>關聯出的結果可透過鍵值<code>iconPair</code>取得</li>
+<li>相關參考文件：<ul>
+<li><a href="https://stackoverflow.com/questions/36805784/how-to-join-two-collections-in-mongoose">How to join two collections in mongoose</a></li>
+<li><a href="https://docs.mongodb.com/manual/reference/operator/aggregation/lookup/">$lookup (aggregation)</a></li>
+<li><a href="https://docs.mongodb.com/manual/reference/operator/aggregation/sum/">$sum (aggregation)</a>：<code>$sum</code>可搭配<code>aggregation</code>來直接回傳某欄位的總計值，本次未使用</li>
+</ul>
+</li>
+</ul>
+<h3 id="使用axios進行ajax請求"><a href="#使用axios進行ajax請求" class="headerlink" title="使用axios進行ajax請求"></a>使用axios進行ajax請求</h3><figure class="figure--center"><img src="/2021/mongoose-note/demo.gif" title="使用ajax來請求特定帳目群組的資料"><figcaption><p>使用ajax來請求特定帳目群組的資料</p></figcaption></figure>
+
+<script src="https://gist.github.com/tzynwang/5bcb2c3c5e5868bad34b8549277e4878.js"></script>
+
+<ul>
+<li>若使用axios進行POST request的話，需搭配<code>body-parser</code>，並加上<code>app.use(bodyParser.json())</code>，否則無法取得POST request送出的資料<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// app.js中需加入以下兩組middleware</span></span><br><span class="line">app.use(bodyParser.json())</span><br><span class="line">app.use(bodyParser.urlencoded(&#123;<span class="attr">extended</span>: <span class="literal">true</span>&#125;))</span><br></pre></td></tr></table></figure></li>
+<li>參考文件如下：<ul>
+<li><a href="https://stackoverflow.com/questions/40859299/axios-post-request-body-is-empty-object">Axios post request.body is empty object</a></li>
+<li><a href="https://stackoverflow.com/questions/51143730/axios-posting-empty-request">Axios posting empty request</a></li>
+<li><a href="https://stackoverflow.com/questions/55593431/cant-receive-data-from-axios-on-api">Can’t receive data from axios on API</a></li>
+</ul>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+  </entry>
+  <entry>
     <title>「10 modern layouts in 1 line of CSS」相關筆記</title>
     <url>/2021/morden-layouts-1-line-css/</url>
     <content><![CDATA[<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>關於YouTube影片「<a href="https://www.youtube.com/watch?v=qm0IfG1GyZU">10 modern layouts in 1 line of CSS</a>」的相關筆記。</p>
@@ -2695,7 +2754,7 @@ The configuration in <code>_config.yml</code> file should be set like this:<figu
 </ul>
 ]]></content>
       <categories>
-        <category>Web accessibility</category>
+        <category>HTML</category>
       </categories>
   </entry>
   <entry>

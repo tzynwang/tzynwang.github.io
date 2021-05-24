@@ -6,7 +6,7 @@
   <link href="https://tzynwang.github.io/atom.xml" rel="self"/>
   
   <link href="https://tzynwang.github.io/"/>
-  <updated>2021-05-23T06:57:54.564Z</updated>
+  <updated>2021-05-24T07:23:08.614Z</updated>
   <id>https://tzynwang.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Alpha Camp「2-3 老爸的私房錢（簡易記帳APP）」技術記錄</title>
+    <link href="https://tzynwang.github.io/2021/mongoose-note/"/>
+    <id>https://tzynwang.github.io/2021/mongoose-note/</id>
+    <published>2021-05-24T05:38:45.000Z</published>
+    <updated>2021-05-24T07:23:08.614Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;總結&quot;&gt;&lt;a href=&quot;#總結&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="JavaScript" scheme="https://tzynwang.github.io/categories/JavaScript/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>Alpha Camp「2-3 middleware實作練習」技術記錄</title>
@@ -109,31 +132,6 @@
     
     <category term="HTML" scheme="https://tzynwang.github.io/categories/HTML/"/>
     
-    
-  </entry>
-  
-  <entry>
-    <title>Alpha Camp「2-1 電影清單之按讚與刪除」技術記錄</title>
-    <link href="https://tzynwang.github.io/2021/2-1-movie-list-i18n-note/"/>
-    <id>https://tzynwang.github.io/2021/2-1-movie-list-i18n-note/</id>
-    <published>2021-05-05T06:56:06.000Z</published>
-    <updated>2021-05-22T06:16:10.862Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p class=&quot;codepen&quot; data-height=&quot;265&quot; data-theme-id=&quot;dark&quot; data-default-tab=&quot;js,result&quot; data-user=&quot;Charlie7779&quot; data-slug-hash=&quot;YzNmOGY&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="JavaScript" scheme="https://tzynwang.github.io/categories/JavaScript/"/>
-    
-    
-    <category term="ALPHA Camp assignment" scheme="https://tzynwang.github.io/tags/ALPHA-Camp-assignment/"/>
     
   </entry>
   
