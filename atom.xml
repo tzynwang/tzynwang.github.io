@@ -6,7 +6,7 @@
   <link href="https://tzynwang.github.io/atom.xml" rel="self"/>
   
   <link href="https://tzynwang.github.io/"/>
-  <updated>2021-05-24T07:23:08.614Z</updated>
+  <updated>2021-05-25T11:42:52.687Z</updated>
   <id>https://tzynwang.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>為什麼使用innerHTML對元素新增內容後，該元素「子代」的事件監聽器失效？</title>
+    <link href="https://tzynwang.github.io/2021/innerHTML-destroy-event-listener/"/>
+    <id>https://tzynwang.github.io/2021/innerHTML-destroy-event-listener/</id>
+    <published>2021-05-25T10:32:01.000Z</published>
+    <updated>2021-05-25T11:42:52.687Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;問題描述&quot;&gt;&lt;a href=&quot;#問題描述&quot; class=&quot;headerlink&quot; title=&quot;問題描述&quot;&gt;&lt;/a&gt;問題描述&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;對&lt;code&gt;&amp;lt;button</summary>
+        
+      
+    
+    
+    
+    <category term="JavaScript" scheme="https://tzynwang.github.io/categories/JavaScript/"/>
+    
+    <category term="HTML" scheme="https://tzynwang.github.io/categories/HTML/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>Alpha Camp「2-3 老爸的私房錢（簡易記帳APP）」技術記錄</title>
@@ -44,7 +70,7 @@
     <link href="https://tzynwang.github.io/2021/express-middleware/"/>
     <id>https://tzynwang.github.io/2021/express-middleware/</id>
     <published>2021-05-23T04:53:23.000Z</published>
-    <updated>2021-05-23T06:57:54.564Z</updated>
+    <updated>2021-05-25T11:35:00.772Z</updated>
     
     
       
@@ -58,6 +84,8 @@
       
     
     
+    
+    <category term="JavaScript" scheme="https://tzynwang.github.io/categories/JavaScript/"/>
     
     <category term="Express" scheme="https://tzynwang.github.io/categories/Express/"/>
     
@@ -106,31 +134,6 @@
     
     
     <category term="Express Handlebars" scheme="https://tzynwang.github.io/categories/Express-Handlebars/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>「重設表單（form reset）」相關筆記</title>
-    <link href="https://tzynwang.github.io/2021/form-reset/"/>
-    <id>https://tzynwang.github.io/2021/form-reset/</id>
-    <published>2021-05-13T06:27:11.000Z</published>
-    <updated>2021-05-23T04:46:29.956Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;總結&quot;&gt;&lt;a href=&quot;#總結&quot; class=&quot;headerlink&quot; title=&quot;總結&quot;&gt;&lt;/a&gt;總結&lt;/h2&gt;&lt;p&gt;HTML本身即支援兩種重設表單&lt;strong&gt;全部&lt;/strong&gt;內容的方法：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Form</summary>
-        
-      
-    
-    
-    
-    <category term="HTML" scheme="https://tzynwang.github.io/categories/HTML/"/>
     
     
   </entry>

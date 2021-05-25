@@ -1063,6 +1063,7 @@ on <a href="https://codepen.io">CodePen</a>.</span>
 </ul>
 ]]></content>
       <categories>
+        <category>JavaScript</category>
         <category>Express</category>
       </categories>
   </entry>
@@ -1425,35 +1426,6 @@ on <a href="https://codepen.io">CodePen</a>.</span>
       </tags>
   </entry>
   <entry>
-    <title>Add 404 page</title>
-    <url>/2021/hexo-add-404/</url>
-    <content><![CDATA[<h2 id="Summary-of-this-post"><a href="#Summary-of-this-post" class="headerlink" title="Summary of this post"></a>Summary of this post</h2><p>The workflow of adding a 404 handling page for the hexo blog.</p>
-<figure class="figure--center"><img src="/2021/hexo-add-404/404-page-for-hexo-blog.jpg" title="The 404 page"><figcaption><p>The 404 page</p></figcaption></figure>
-
-
-<h2 id="Environment"><a href="#Environment" class="headerlink" title="Environment"></a>Environment</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo: 5.3.0</span><br><span class="line">hexo-cli: 4.2.0</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></table></figure>
-
-<h2 id="Workflow"><a href="#Workflow" class="headerlink" title="Workflow"></a>Workflow</h2><ol>
-<li>Create a 404.md file in the <code>source</code> folder<figure class="figure--center"><img src="/2021/hexo-add-404/location-of-404-page.jpg" title="Add the 404.md in the source folder of hexo blog " alt="The screenshot to display file location of 404.md file for the hexo blog"><figcaption><p>Add the 404.md in the source folder of hexo blog </p></figcaption></figure></li>
-<li>Add page content for the 404.md file:<ul>
-<li><code>permalink: /404.html</code> in line 3 is <strong>required</strong>.</li>
-<li>Fill in the correct URL (<code>https://&lt;your GitHub username&gt;.github.io/</code>) for redirection in line 9 and line 19</li>
-<li>The value of <code>countTime</code> in line 12 can be updated to the preferred waiting time. I just leave the waiting time as 5 seconds without changing it.<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: 404</span><br><span class="line">permalink: /404.html</span><br><span class="line">---</span><br><span class="line"></span><br><span class="line"><span class="section">## Page not exists</span></span><br><span class="line">The page you are looking for does not exist.</span><br><span class="line">Will bring you back to the homepage in <span class="xml"><span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">&quot;timeout&quot;</span>&gt;</span></span>5<span class="xml"><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span> second(s).</span><br><span class="line">Or [<span class="string">click this link</span>](<span class="link">https://&lt;your GitHub username&gt;.github.io/</span>) to go back to the homepage immediately.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span></span><br><span class="line">let countTime = 5;</span><br><span class="line"></span><br><span class="line">function count() &#123;</span><br><span class="line">  </span><br><span class="line">  document.getElementById(&#x27;timeout&#x27;).textContent = countTime;</span><br><span class="line">  countTime -= 1;</span><br><span class="line">  if(countTime === 0)&#123;</span><br><span class="line"><span class="code">    location.href = &quot;https://&lt;your GitHub username&gt;.github.io/&quot;;</span></span><br><span class="line"><span class="code">  &#125;</span></span><br><span class="line"><span class="code">  setTimeout(() =&gt; &#123;</span></span><br><span class="line"><span class="code">    count();</span></span><br><span class="line"><span class="code">  &#125;, 1000);</span></span><br><span class="line"><span class="code">&#125;</span></span><br><span class="line"><span class="code"></span></span><br><span class="line"><span class="code">count();</span></span><br><span class="line"><span class="code">&lt;/script&gt;</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li>Save the file. Run <code>hexo generate</code> and <code>hexo deploy</code> to push the 404 handle page to the repository. Done ☕</li>
-</ol>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
-<li>For the copy:<br>  <a href="https://codepen.io/kdbkapsere/pen/oNXLbqQ">404 Page by Kasper De Bruyne</a></li>
-<li>For the <code>404.md</code> file location and the instruction of deployment:<br>  <a href="https://github.com/ppoffice/hexo-theme-icarus/issues/66#issuecomment-165919312">https://github.com/ppoffice/hexo-theme-icarus/issues/66#issuecomment-165919312</a></li>
-<li>For the JavaScript of auto-redirect:<br>  <a href="https://ithelp.ithome.com.tw/articles/10249685">(23) 試著學 Hexo - SEO 篇 - 新增你的 404 頁面</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>hexo</category>
-      </categories>
-  </entry>
-  <entry>
     <title>Submit to Google Search Console, SEO settings</title>
     <url>/2021/hexo-Google-Search-Console/</url>
     <content><![CDATA[<h2 id="Summary-of-this-post"><a href="#Summary-of-this-post" class="headerlink" title="Summary of this post"></a>Summary of this post</h2><p>Q: How to make sure Google Search can find my hexo blog that has been deployed on GitHub Page?<br>A: Submit your hexo blog to <a href="https://search.google.com/search-console/welcome">Google Search Console</a> by:</p>
@@ -1504,6 +1476,35 @@ on <a href="https://codepen.io">CodePen</a>.</span>
 <li><a href="https://hsiangfeng.github.io/hexo/20190514/2072033203/">Hexo搜尋引擎優化</a></li>
 <li><a href="https://askie.today/upload-sitemap-google-search-console-seo-hexo-blog/">輕鬆地提交 Hexo 部落格的 Sitemap.xml 到 Google Search Console</a></li>
 <li><a href="https://hoxis.github.io/Hexo+Next%20SEO%E4%BC%98%E5%8C%96.html">Hexo博客Next主题SEO优化方法</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>hexo</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Add 404 page</title>
+    <url>/2021/hexo-add-404/</url>
+    <content><![CDATA[<h2 id="Summary-of-this-post"><a href="#Summary-of-this-post" class="headerlink" title="Summary of this post"></a>Summary of this post</h2><p>The workflow of adding a 404 handling page for the hexo blog.</p>
+<figure class="figure--center"><img src="/2021/hexo-add-404/404-page-for-hexo-blog.jpg" title="The 404 page"><figcaption><p>The 404 page</p></figcaption></figure>
+
+
+<h2 id="Environment"><a href="#Environment" class="headerlink" title="Environment"></a>Environment</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo: 5.3.0</span><br><span class="line">hexo-cli: 4.2.0</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></table></figure>
+
+<h2 id="Workflow"><a href="#Workflow" class="headerlink" title="Workflow"></a>Workflow</h2><ol>
+<li>Create a 404.md file in the <code>source</code> folder<figure class="figure--center"><img src="/2021/hexo-add-404/location-of-404-page.jpg" title="Add the 404.md in the source folder of hexo blog " alt="The screenshot to display file location of 404.md file for the hexo blog"><figcaption><p>Add the 404.md in the source folder of hexo blog </p></figcaption></figure></li>
+<li>Add page content for the 404.md file:<ul>
+<li><code>permalink: /404.html</code> in line 3 is <strong>required</strong>.</li>
+<li>Fill in the correct URL (<code>https://&lt;your GitHub username&gt;.github.io/</code>) for redirection in line 9 and line 19</li>
+<li>The value of <code>countTime</code> in line 12 can be updated to the preferred waiting time. I just leave the waiting time as 5 seconds without changing it.<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: 404</span><br><span class="line">permalink: /404.html</span><br><span class="line">---</span><br><span class="line"></span><br><span class="line"><span class="section">## Page not exists</span></span><br><span class="line">The page you are looking for does not exist.</span><br><span class="line">Will bring you back to the homepage in <span class="xml"><span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">&quot;timeout&quot;</span>&gt;</span></span>5<span class="xml"><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span> second(s).</span><br><span class="line">Or [<span class="string">click this link</span>](<span class="link">https://&lt;your GitHub username&gt;.github.io/</span>) to go back to the homepage immediately.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span></span><br><span class="line">let countTime = 5;</span><br><span class="line"></span><br><span class="line">function count() &#123;</span><br><span class="line">  </span><br><span class="line">  document.getElementById(&#x27;timeout&#x27;).textContent = countTime;</span><br><span class="line">  countTime -= 1;</span><br><span class="line">  if(countTime === 0)&#123;</span><br><span class="line"><span class="code">    location.href = &quot;https://&lt;your GitHub username&gt;.github.io/&quot;;</span></span><br><span class="line"><span class="code">  &#125;</span></span><br><span class="line"><span class="code">  setTimeout(() =&gt; &#123;</span></span><br><span class="line"><span class="code">    count();</span></span><br><span class="line"><span class="code">  &#125;, 1000);</span></span><br><span class="line"><span class="code">&#125;</span></span><br><span class="line"><span class="code"></span></span><br><span class="line"><span class="code">count();</span></span><br><span class="line"><span class="code">&lt;/script&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>Save the file. Run <code>hexo generate</code> and <code>hexo deploy</code> to push the 404 handle page to the repository. Done ☕</li>
+</ol>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
+<li>For the copy:<br>  <a href="https://codepen.io/kdbkapsere/pen/oNXLbqQ">404 Page by Kasper De Bruyne</a></li>
+<li>For the <code>404.md</code> file location and the instruction of deployment:<br>  <a href="https://github.com/ppoffice/hexo-theme-icarus/issues/66#issuecomment-165919312">https://github.com/ppoffice/hexo-theme-icarus/issues/66#issuecomment-165919312</a></li>
+<li>For the JavaScript of auto-redirect:<br>  <a href="https://ithelp.ithome.com.tw/articles/10249685">(23) 試著學 Hexo - SEO 篇 - 新增你的 404 頁面</a></li>
 </ul>
 ]]></content>
       <categories>
@@ -1841,6 +1842,84 @@ The configuration in <code>_config.yml</code> file should be set like this:<figu
 <li><a href="https://en.wikipedia.org/wiki/JPEG_File_Interchange_Format">Wikipedia: JPEG File Interchange Format</a></li>
 </ul>
 ]]></content>
+  </entry>
+  <entry>
+    <title>為什麼使用innerHTML對元素新增內容後，該元素「子代」的事件監聽器失效？</title>
+    <url>/2021/innerHTML-destroy-event-listener/</url>
+    <content><![CDATA[<h2 id="問題描述"><a href="#問題描述" class="headerlink" title="問題描述"></a>問題描述</h2><ol>
+<li>對<code>&lt;button id=&quot;alert&quot;&gt;alert(&#39;hello world&#39;)&lt;/button&gt;</code>加上事件監聽器，使其被點擊後會出現alert訊息</li>
+<li>透過<code>innerHTML</code>對<code>&lt;div id=&quot;target&quot;&gt;</code>新增一個<code>&lt;span&gt;</code>標籤（不對<code>&lt;button id=&quot;alert&quot;&gt;</code>進行任何處理），但<strong>新增完畢</strong>後，點擊<code>&lt;button id=&quot;alert&quot;&gt;</code>卻<strong>無法出現alert訊息了</strong></li>
+<li>示範用原始碼如下：<p class="codepen" data-height="265" data-theme-id="dark" data-default-tab="js,result" data-user="Charlie7779" data-slug-hash="JjWJdBW" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="innerHTML destroying descendants' event listeners">
+<span>See the Pen <a href="https://codepen.io/Charlie7779/pen/JjWJdBW">
+innerHTML destroying descendants' event listeners</a> by Charlie (<a href="https://codepen.io/Charlie7779">@Charlie7779</a>)
+on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+
+
+</li>
+</ol>
+<h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2><ul>
+<li><code>innerHTML</code>實際上是「移除原本的內容後，以新的內容取代之」</li>
+<li>就算是新增，也會觸發上述的「移除─新增」機制，綁定好的事件監聽器的子代元素也會一起被移除</li>
+</ul>
+<blockquote>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML#value">MDN</a>: Setting the value of innerHTML <strong>removes all of the element’s descendants</strong> and replaces them with nodes constructed by parsing the HTML given in the string htmlString.</p>
+</blockquote>
+<ul>
+<li>在示範用的程式碼中，點擊<code>&lt;button id=&quot;replace&quot;&gt;</code>對<code>&lt;div id=&quot;target&quot;&gt;</code>新增一個<code>&lt;span&gt;</code>後，原先綁定了事件監聽器的<code>&lt;button id=&quot;alert&quot;&gt;</code>已被移除，並被一個新的<code>&lt;button id=&quot;alert&quot;&gt;</code>取代</li>
+<li>新的<code>&lt;button id=&quot;alert&quot;&gt;</code>沒有任何事件監聽器，故點擊後不會出現alert訊息</li>
+</ul>
+<h2 id="解決方式"><a href="#解決方式" class="headerlink" title="解決方式"></a>解決方式</h2><h3 id="createElement-搭配appendChild"><a href="#createElement-搭配appendChild" class="headerlink" title="createElement()搭配appendChild()"></a>createElement()搭配appendChild()</h3><p class="codepen" data-height="265" data-theme-id="dark" data-default-tab="js,result" data-user="Charlie7779" data-slug-hash="jOBwbEE" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="appendChild">
+  <span>See the Pen <a href="https://codepen.io/Charlie7779/pen/jOBwbEE">
+  appendChild</a> by Charlie (<a href="https://codepen.io/Charlie7779">@Charlie7779</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+
+<ul>
+<li>透過<code>let span = document.createElement(&quot;span&quot;)</code>建立一個<code>&lt;span&gt;</code>元素</li>
+<li>使用<code>textContent</code>設定<code>span</code>的文字內容</li>
+<li>執行<code>target.appendChild(span)</code>將<code>span</code>加為<code>target</code>的子代元素</li>
+</ul>
+<blockquote>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/API/Node/appendChild">MDN</a>: The <code>Node.appendChild()</code> method <strong>adds a node to the end of the list of children</strong> of a specified parent node.</p>
+</blockquote>
+<h3 id="insertAdjacentHTML"><a href="#insertAdjacentHTML" class="headerlink" title="insertAdjacentHTML()"></a>insertAdjacentHTML()</h3><p class="codepen" data-height="265" data-theme-id="dark" data-default-tab="js,result" data-user="Charlie7779" data-slug-hash="GRWEpoP" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="insertAdjacentHTML()">
+  <span>See the Pen <a href="https://codepen.io/Charlie7779/pen/GRWEpoP">
+  insertAdjacentHTML()</a> by Charlie (<a href="https://codepen.io/Charlie7779">@Charlie7779</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+
+<p>關於<code>element.insertAdjacentHTML(position, text)</code>：</p>
+<ul>
+<li><code>position</code>參數以下四選一：<ul>
+<li><code>beforebegin</code>：在<code>element</code>前插入<code>text</code></li>
+<li><code>afterbegin</code>：在<code>element</code>內部、第一個childNode前插入<code>text</code></li>
+<li><code>beforeend</code>：在<code>element</code>內部、最後的childNode後插入<code>text</code></li>
+<li><code>afterend</code>：在<code>element</code>後插入<code>text</code></li>
+</ul>
+</li>
+<li><code>text</code>：會被轉換為HTML節點，可使用template literal</li>
+</ul>
+<p class="codepen" data-height="265" data-theme-id="dark" data-default-tab="js,result" data-user="Charlie7779" data-slug-hash="eYvRpvv" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="insertAdjacentHTML() -- position">
+  <span>See the Pen <a href="https://codepen.io/Charlie7779/pen/eYvRpvv">
+  insertAdjacentHTML() -- position</a> by Charlie (<a href="https://codepen.io/Charlie7779">@Charlie7779</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+
+<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/insertAdjacentHTML">MDN: Element.insertAdjacentHTML()</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Node/appendChild">MDN: Node.appendChild()</a></li>
+<li><a href="https://stackoverflow.com/questions/595808/is-it-possible-to-append-to-innerhtml-without-destroying-descendants-event-list">StackOverFlow: Is it possible to append to innerHTML without destroying descendants’ event listeners?</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+        <category>HTML</category>
+      </categories>
   </entry>
   <entry>
     <title>「JavaScript陣列遍歷」相關筆記</title>

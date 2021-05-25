@@ -197,7 +197,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">41</span>
+          <span class="site-state-item-count">42</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -238,6 +238,166 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope="" itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tzynwang.github.io/2021/innerHTML-destroy-event-listener/">
+
+    <span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar-pexels-alex-andrews-215-215.png">
+      <meta itemprop="name" content="Charlie (Tzu Yin)">
+      <meta itemprop="description" content="一介普通文組的學習筆記 📒">
+    </span>
+
+    <span hidden="" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="普通文組">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/innerHTML-destroy-event-listener/" class="post-title-link" itemprop="url">為什麼使用innerHTML對元素新增內容後，該元素「子代」的事件監聽器失效？</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-05-25 18:32:01 / Modified: 19:42:52" itemprop="dateCreated datePublished" datetime="2021-05-25T18:32:01+08:00">2021-05-25</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+          <a href="/categories/HTML/" itemprop="url" rel="index"><span itemprop="name">HTML</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2021/innerHTML-destroy-event-listener/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/innerHTML-destroy-event-listener/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="問題描述"><a href="#問題描述" class="headerlink" title="問題描述"></a>問題描述</h2><ol>
+<li>對<code>&lt;button id="alert"&gt;alert('hello world')&lt;/button&gt;</code>加上事件監聽器，使其被點擊後會出現alert訊息</li>
+<li>透過<code>innerHTML</code>對<code>&lt;div id="target"&gt;</code>新增一個<code>&lt;span&gt;</code>標籤（不對<code>&lt;button id="alert"&gt;</code>進行任何處理），但<strong>新增完畢</strong>後，點擊<code>&lt;button id="alert"&gt;</code>卻<strong>無法出現alert訊息了</strong></li>
+<li>示範用原始碼如下：<p class="codepen" data-height="265" data-theme-id="dark" data-default-tab="js,result" data-user="Charlie7779" data-slug-hash="JjWJdBW" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="innerHTML destroying descendants' event listeners">
+<span>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/Charlie7779/pen/JjWJdBW">
+innerHTML destroying descendants' event listeners</a> by Charlie (<a target="_blank" rel="noopener" href="https://codepen.io/Charlie7779">@Charlie7779</a>)
+on <a target="_blank" rel="noopener" href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async="" src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+
+
+</li>
+</ol>
+<h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2><ul>
+<li><code>innerHTML</code>實際上是「移除原本的內容後，以新的內容取代之」</li>
+<li>就算是新增，也會觸發上述的「移除─新增」機制，綁定好的事件監聽器的子代元素也會一起被移除</li>
+</ul>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML#value">MDN</a>: Setting the value of innerHTML <strong>removes all of the element’s descendants</strong> and replaces them with nodes constructed by parsing the HTML given in the string htmlString.</p>
+</blockquote>
+<ul>
+<li>在示範用的程式碼中，點擊<code>&lt;button id="replace"&gt;</code>對<code>&lt;div id="target"&gt;</code>新增一個<code>&lt;span&gt;</code>後，原先綁定了事件監聽器的<code>&lt;button id="alert"&gt;</code>已被移除，並被一個新的<code>&lt;button id="alert"&gt;</code>取代</li>
+<li>新的<code>&lt;button id="alert"&gt;</code>沒有任何事件監聽器，故點擊後不會出現alert訊息</li>
+</ul>
+<h2 id="解決方式"><a href="#解決方式" class="headerlink" title="解決方式"></a>解決方式</h2><h3 id="createElement-搭配appendChild"><a href="#createElement-搭配appendChild" class="headerlink" title="createElement()搭配appendChild()"></a>createElement()搭配appendChild()</h3><p class="codepen" data-height="265" data-theme-id="dark" data-default-tab="js,result" data-user="Charlie7779" data-slug-hash="jOBwbEE" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="appendChild">
+  <span>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/Charlie7779/pen/jOBwbEE">
+  appendChild</a> by Charlie (<a target="_blank" rel="noopener" href="https://codepen.io/Charlie7779">@Charlie7779</a>)
+  on <a target="_blank" rel="noopener" href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async="" src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+
+<ul>
+<li>透過<code>let span = document.createElement("span")</code>建立一個<code>&lt;span&gt;</code>元素</li>
+<li>使用<code>textContent</code>設定<code>span</code>的文字內容</li>
+<li>執行<code>target.appendChild(span)</code>將<code>span</code>加為<code>target</code>的子代元素</li>
+</ul>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/Node/appendChild">MDN</a>: The <code>Node.appendChild()</code> method <strong>adds a node to the end of the list of children</strong> of a specified parent node.</p>
+</blockquote>
+<h3 id="insertAdjacentHTML"><a href="#insertAdjacentHTML" class="headerlink" title="insertAdjacentHTML()"></a>insertAdjacentHTML()</h3><p class="codepen" data-height="265" data-theme-id="dark" data-default-tab="js,result" data-user="Charlie7779" data-slug-hash="GRWEpoP" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="insertAdjacentHTML()">
+  <span>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/Charlie7779/pen/GRWEpoP">
+  insertAdjacentHTML()</a> by Charlie (<a target="_blank" rel="noopener" href="https://codepen.io/Charlie7779">@Charlie7779</a>)
+  on <a target="_blank" rel="noopener" href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async="" src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+
+<p>關於<code>element.insertAdjacentHTML(position, text)</code>：</p>
+<ul>
+<li><code>position</code>參數以下四選一：<ul>
+<li><code>beforebegin</code>：在<code>element</code>前插入<code>text</code></li>
+<li><code>afterbegin</code>：在<code>element</code>內部、第一個childNode前插入<code>text</code></li>
+<li><code>beforeend</code>：在<code>element</code>內部、最後的childNode後插入<code>text</code></li>
+<li><code>afterend</code>：在<code>element</code>後插入<code>text</code></li>
+</ul>
+</li>
+<li><code>text</code>：會被轉換為HTML節點，可使用template literal</li>
+</ul>
+<p class="codepen" data-height="265" data-theme-id="dark" data-default-tab="js,result" data-user="Charlie7779" data-slug-hash="eYvRpvv" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="insertAdjacentHTML() -- position">
+  <span>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/Charlie7779/pen/eYvRpvv">
+  insertAdjacentHTML() -- position</a> by Charlie (<a target="_blank" rel="noopener" href="https://codepen.io/Charlie7779">@Charlie7779</a>)
+  on <a target="_blank" rel="noopener" href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async="" src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+
+<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/Element/insertAdjacentHTML">MDN: Element.insertAdjacentHTML()</a></li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/Node/appendChild">MDN: Node.appendChild()</a></li>
+<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/595808/is-it-possible-to-append-to-innerhtml-without-destroying-descendants-event-list">StackOverFlow: Is it possible to append to innerHTML without destroying descendants’ event listeners?</a></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -408,15 +568,25 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2021-05-23 12:53:23 / Modified: 14:57:54" itemprop="dateCreated datePublished" datetime="2021-05-23T12:53:23+08:00">2021-05-23</time>
+      <time title="Created: 2021-05-23 12:53:23" itemprop="dateCreated datePublished" datetime="2021-05-23T12:53:23+08:00">2021-05-23</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-05-25 19:35:00" itemprop="dateModified" datetime="2021-05-25T19:35:00+08:00">2021-05-25</time>
+      </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
       </span>
       <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+        </span>
+          , 
         <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
           <a href="/categories/Express/" itemprop="url" rel="index"><span itemprop="name">Express</span></a>
         </span>
@@ -1686,126 +1856,6 @@
 <li><a target="_blank" rel="noopener" href="https://web.dev/css-marker-pseudo-element/">web.dev: Custom bullets with CSS ::marker</a>：須注意WebKit目前僅支援修改<code>::marker</code>的<code>color</code>與<code>font-size</code>，<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/CSS/::marker#browser_compatibility">參考MDN</a></li>
 </ul>
 
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope="" itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://tzynwang.github.io/2021/S1-note/">
-
-    <span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar-pexels-alex-andrews-215-215.png">
-      <meta itemprop="name" content="Charlie (Tzu Yin)">
-      <meta itemprop="description" content="一介普通文組的學習筆記 📒">
-    </span>
-
-    <span hidden="" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="普通文組">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/S1-note/" class="post-title-link" itemprop="url">ALPHA Camp 2-1 S1作業：技術筆記</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-04-20 09:42:02" itemprop="dateCreated datePublished" datetime="2021-04-20T09:42:02+08:00">2021-04-20</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-04-22 01:55:36" itemprop="dateModified" datetime="2021-04-22T01:55:36+08:00">2021-04-22</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
-        </span>
-    </span>
-
-  
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus: </span>
-    
-    <a title="disqus" href="/2021/S1-note/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/S1-note/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>2021/4/21更新：<br>經同學提醒<code>replace()</code>只會處理目標字串中的「第一組」目標，亦即：當我要處理的字串中包含重複的字母時，使用<code>replace()</code>來處理字串可能會導致非預期結果（因為<code>replace()</code>只會處理「符合目標的第一個字母」），故追加新解法。</p>
-<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>記錄2021年ALPHA Camp學期2-1（四月班）第一週課程「JavaScript核心觀念」作業中有使用到的技術與相關筆記。</p>
-<p>使用到的<code>methods</code>一覽：</p>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/floor">Math.floor()</a>：取最大整數</li>
-<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random">Math.random()</a>：注意<code>Math.random() * X</code>的範圍是<code>0</code>到<code>X - 1</code>（不包含<code>X</code>本身）</li>
-<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/fromCharCode">String.fromCharCode()</a>：根據傳入Unicode回傳相對應的string</li>
-<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/padStart">String.prototype.padStart()</a>：補位用</li>
-<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace">String.prototype.replace()</a>：將字串中符合比對的段落更換為指定內容後，回傳新字串</li>
-<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/charAt">String.prototype.charAt()</a>：回傳位在指定index位置的字串</li>
-<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/substring">String.prototype.substring()</a>：回傳指定範圍內的字串</li>
-<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/indexOf">String.prototype.indexOf()</a>：回傳第一個符合搜尋目標的index</li>
-<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice">Array.prototype.splice()</a>：在本次作業情境中，被用來刪除陣列內容（沒有執行插入）</li>
-<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes">Array.prototype.includes()</a>：檢查陣列中是否有指定內容</li>
-<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter">Array.prototype.filter()</a>：將所有傳入的內容進行篩選動作，回傳符合篩選條件的內容</li>
-<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf">Array.prototype.indexOf()</a>：回傳第一個符合搜尋目標的index</li>
-<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach">Array.prototype.forEach()</a>：對陣列中的每一個項目執行傳入的function</li>
-<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push">Array.prototype.push()</a>：新增一內容到陣列最尾端</li>
-<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/pop">Array.prototype.pop()</a>：移除陣列「最末端」的「一個」內容</li>
-</ul>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/S1-note/#more" rel="contents">
-                Read more »
-              </a>
-            </div>
-          <!--/noindex-->
-        
       
     </div>
 

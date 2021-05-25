@@ -197,7 +197,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">41</span>
+          <span class="site-state-item-count">42</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -238,6 +238,126 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope="" itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tzynwang.github.io/2021/S1-note/">
+
+    <span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar-pexels-alex-andrews-215-215.png">
+      <meta itemprop="name" content="Charlie (Tzu Yin)">
+      <meta itemprop="description" content="一介普通文組的學習筆記 📒">
+    </span>
+
+    <span hidden="" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="普通文組">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/S1-note/" class="post-title-link" itemprop="url">ALPHA Camp 2-1 S1作業：技術筆記</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-04-20 09:42:02" itemprop="dateCreated datePublished" datetime="2021-04-20T09:42:02+08:00">2021-04-20</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-04-22 01:55:36" itemprop="dateModified" datetime="2021-04-22T01:55:36+08:00">2021-04-22</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2021/S1-note/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/S1-note/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>2021/4/21更新：<br>經同學提醒<code>replace()</code>只會處理目標字串中的「第一組」目標，亦即：當我要處理的字串中包含重複的字母時，使用<code>replace()</code>來處理字串可能會導致非預期結果（因為<code>replace()</code>只會處理「符合目標的第一個字母」），故追加新解法。</p>
+<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>記錄2021年ALPHA Camp學期2-1（四月班）第一週課程「JavaScript核心觀念」作業中有使用到的技術與相關筆記。</p>
+<p>使用到的<code>methods</code>一覽：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/floor">Math.floor()</a>：取最大整數</li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random">Math.random()</a>：注意<code>Math.random() * X</code>的範圍是<code>0</code>到<code>X - 1</code>（不包含<code>X</code>本身）</li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/fromCharCode">String.fromCharCode()</a>：根據傳入Unicode回傳相對應的string</li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/padStart">String.prototype.padStart()</a>：補位用</li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace">String.prototype.replace()</a>：將字串中符合比對的段落更換為指定內容後，回傳新字串</li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/charAt">String.prototype.charAt()</a>：回傳位在指定index位置的字串</li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/substring">String.prototype.substring()</a>：回傳指定範圍內的字串</li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/indexOf">String.prototype.indexOf()</a>：回傳第一個符合搜尋目標的index</li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice">Array.prototype.splice()</a>：在本次作業情境中，被用來刪除陣列內容（沒有執行插入）</li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes">Array.prototype.includes()</a>：檢查陣列中是否有指定內容</li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter">Array.prototype.filter()</a>：將所有傳入的內容進行篩選動作，回傳符合篩選條件的內容</li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf">Array.prototype.indexOf()</a>：回傳第一個符合搜尋目標的index</li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach">Array.prototype.forEach()</a>：對陣列中的每一個項目執行傳入的function</li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push">Array.prototype.push()</a>：新增一內容到陣列最尾端</li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/pop">Array.prototype.pop()</a>：移除陣列「最末端」的「一個」內容</li>
+</ul>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/S1-note/#more" rel="contents">
+                Read more »
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1725,111 +1845,6 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2021/how-jpeg-works/#more" rel="contents">
-                Read more »
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope="" itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://tzynwang.github.io/2021/js-array-iterate/">
-
-    <span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar-pexels-alex-andrews-215-215.png">
-      <meta itemprop="name" content="Charlie (Tzu Yin)">
-      <meta itemprop="description" content="一介普通文組的學習筆記 📒">
-    </span>
-
-    <span hidden="" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="普通文組">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/js-array-iterate/" class="post-title-link" itemprop="url">「JavaScript陣列遍歷」相關筆記</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-03-27 09:37:48" itemprop="dateCreated datePublished" datetime="2021-03-27T09:37:48+08:00">2021-03-27</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-05-06 10:44:17" itemprop="dateModified" datetime="2021-05-06T10:44:17+08:00">2021-05-06</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
-        </span>
-    </span>
-
-  
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus: </span>
-    
-    <a title="disqus" href="/2021/js-array-iterate/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/js-array-iterate/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>本篇文章是關於JavaScript遍歷陣列（部分方法也可直接遍歷物件）方法的筆記。<br>keywords: array, iterate, iteration</p>
-<ul>
-<li>不會回傳新陣列的方式：<code>for</code>搭配<code>length()</code>、<code>while</code>搭配<code>length()</code>、<code>for...in</code>、<code>for...of</code>、<code>every()</code>、<code>some()</code>、<code>forEach()</code>、<code>join</code>、<code>reduce()</code></li>
-<li>會回傳一個新陣列的方式：<code>filter()</code>、<code>flat()</code>、<code>flatMap()</code>、<code>map()</code></li>
-</ul>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/js-array-iterate/#more" rel="contents">
                 Read more »
               </a>
             </div>
