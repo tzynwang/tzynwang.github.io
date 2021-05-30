@@ -197,7 +197,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">42</span>
+          <span class="site-state-item-count">43</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -238,6 +238,127 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope="" itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tzynwang.github.io/2021/list-style-type-not-working-on-ios-chrome/">
+
+    <span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar-pexels-alex-andrews-215-215.png">
+      <meta itemprop="name" content="Charlie (Tzu Yin)">
+      <meta itemprop="description" content="一介普通文組的學習筆記 📒">
+    </span>
+
+    <span hidden="" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="普通文組">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/list-style-type-not-working-on-ios-chrome/" class="post-title-link" itemprop="url">為什麼iOS上的Chrome沒有呈現設定好的list-style-type</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-04-22 11:53:12 / Modified: 15:35:55" itemprop="dateCreated datePublished" datetime="2021-04-22T11:53:12+08:00">2021-04-22</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+          <a href="/categories/CSS/" itemprop="url" rel="index"><span itemprop="name">CSS</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2021/list-style-type-not-working-on-ios-chrome/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/list-style-type-not-working-on-ios-chrome/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <figure class="figure--center"><img src="/2021/list-style-type-not-working-on-ios-chrome/ask.jpg" title="一種Chrome，各自表述渲染結果"><figcaption><p>一種Chrome，各自表述渲染結果</p></figcaption></figure>
+
+<h2 id="環境"><a href="#環境" class="headerlink" title="環境"></a>環境</h2><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Google Chrome (Desktop): 90.0.4430.85 (Official Build) (64-bit)</span><br><span class="line">Google Chrome (iOS): 87.0.4280.163</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="原始問題"><a href="#原始問題" class="headerlink" title="原始問題"></a>原始問題</h2><p>HTML內容如下：</p>
+<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">"thumbs-up"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>Apple<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>Banana<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>Cherry<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+<p>而CSS樣式設定如下：</p>
+<figure class="highlight css"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#thumbs-up</span> <span class="selector-tag">li</span> {</span><br><span class="line">  <span class="attribute">list-style-type</span>: <span class="string">"\1F44D"</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>在電腦版的Chrome有正常顯示清單圖示「👍」，但切換到手機版的Chrome，顯示的卻是「●」。</p>
+<figure class="figure--center"><img src="/2021/list-style-type-not-working-on-ios-chrome/desktop-screenshot.jpg" title="電腦版畫面"><figcaption><p>電腦版畫面</p></figcaption></figure>
+<figure class="figure--center"><img src="/2021/list-style-type-not-working-on-ios-chrome/ios-screenshot.png" title="手機版畫面"><figcaption><p>手機版畫面</p></figcaption></figure>
+<p>同一份CSS樣式，同樣都用Chrome來瀏覽，為何<code>&lt;li&gt;</code>的樣式不同？</p>
+<h2 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h2><ul>
+<li>電腦版Chrome的browser engine是Blink</li>
+<li>但手機板Chrome的browser engine是WebKit<ul>
+<li><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Google_Chrome">Wikipedia</a>: Chrome is available on Apple’s mobile iOS operating system as Google Chrome for iOS. In accordance with Apple’s requirements for browsers released through their App Store, <strong>this version of Chrome uses the iOS WebKit</strong> – which is Apple’s own mobile rendering engine and components, developed for their Safari browser – therefore it is restricted from using Google’s own V8 JavaScript engine.</li>
+</ul>
+</li>
+<li>而根據MDN文件，WebKit並不支援以<code>&lt;string&gt; value</code>設定<code>list-style-type</code>樣式，所以手機版的Chrome無法處理<code>list-style-type: "\1F44D";</code><figure class="figure--center"><img src="/2021/list-style-type-not-working-on-ios-chrome/browser-support.png" title="WebKit並不支援以string作為list-style-type的值"><figcaption><p>WebKit並不支援以string作為list-style-type的值</p></figcaption></figure></li>
+<li><code>list-style-type: "\1F44D";</code>沒有作用的話，<a target="_blank" rel="noopener" href="https://trac.webkit.org/browser/trunk/Source/WebCore/css/html.css">WebKit的user agent stylesheet</a>內容就會取而代之，其樣式設定如下：<figure class="highlight css"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* lists */</span></span><br><span class="line"><span class="selector-tag">ul</span>, <span class="selector-tag">menu</span>, <span class="selector-tag">dir</span> {</span><br><span class="line">    <span class="attribute">display</span>: block;</span><br><span class="line">    <span class="attribute">list-style-type</span>: disc;</span><br><span class="line">    <span class="attribute">-webkit-margin-before</span>: <span class="number">1</span>__qem;</span><br><span class="line">    <span class="attribute">-webkit-margin-after</span>: <span class="number">1em</span>;</span><br><span class="line">    <span class="attribute">-webkit-margin-start</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">-webkit-margin-end</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">-webkit-padding-start</span>: <span class="number">40px</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure></li>
+<li>所以透過iOS版的Chrome只會看到「●」，而不是使用<code>&lt;string&gt; value</code>指定的「👍」樣式</li>
+</ul>
+<h2 id="使用-before來實作"><a href="#使用-before來實作" class="headerlink" title="使用::before來實作"></a>使用::before來實作</h2><p>HTML內容不變，CSS樣式改為以下內容：</p>
+<figure class="highlight css"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#thumbs-up</span> {</span><br><span class="line">  <span class="attribute">padding-inline-start</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="comment">/* 將&lt;li&gt;樣式的空間移除，使&lt;li&gt;（包含樣式與內文）向畫面左方靠攏 */</span></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="selector-id">#thumbs-up</span> <span class="selector-tag">li</span> {</span><br><span class="line">  <span class="attribute">list-style</span>: none;</span><br><span class="line">  <span class="comment">/* 移除&lt;li&gt;樣式 */</span></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="selector-id">#thumbs-up</span> <span class="selector-tag">li</span><span class="selector-pseudo">::before</span> {</span><br><span class="line">  <span class="attribute">content</span>: <span class="string">"👍 "</span>;</span><br><span class="line">  <span class="comment">/* 使用content搭配::before來填入樣式內容 */</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>實際結果如下：</p>
+<figure class="figure--center"><img src="/2021/list-style-type-not-working-on-ios-chrome/ios-screenshot-before-content.png" title="iOS裝置也可看到自定義的li樣式了"><figcaption><p>iOS裝置也可看到自定義的li樣式了</p></figcaption></figure>
+
+
+<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
+<li>感謝ALPHA Camp政治助教的回覆：<figure class="figure--center"><img src="/2021/list-style-type-not-working-on-ios-chrome/AC-reply.png" title="在幾乎所有的瀏覽器都支援偽元素::before的情況下，設定::before的content比較能確保li的樣式可以好好呈現在使用者眼前"><figcaption><p>在幾乎所有的瀏覽器都支援偽元素::before的情況下，設定::before的content比較能確保li的樣式可以好好呈現在使用者眼前</p></figcaption></figure></li>
+<li><a target="_blank" rel="noopener" href="https://coliss.com/articles/build-websites/operation/css/user-agent-stylesheets.html">各ブラウザごとのデフォルトのスタイルシート、user agent stylesheetのまとめ -Chrome, Safari, Firefox, Edge</a></li>
+<li><a target="_blank" rel="noopener" href="https://trac.webkit.org/browser/trunk/Source/WebCore/css/html.css">webkit/trunk/Source/WebCore/css/html.css</a></li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/CSS/list-style-type">MDN: list-style-type</a></li>
+<li><a target="_blank" rel="noopener" href="https://web.dev/css-marker-pseudo-element/">web.dev: Custom bullets with CSS ::marker</a>：須注意WebKit目前僅支援修改<code>::marker</code>的<code>color</code>與<code>font-size</code>，<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/CSS/::marker#browser_compatibility">參考MDN</a></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1756,100 +1877,6 @@
 <li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/27976282/bootstrap-glyphicons-not-showing-on-local-url">Bootstrap Glyphicons Not Showing on Local URL</a>：最初原本打算連Bootstrap icon都要採取自行host的形式，故下載了原始碼且拖曳到專案的資料夾中。重整頁面後發現圖示皆無法正常顯示，搜尋後知道Bootstrap icon需與其字型檔案搭配才可正常使用（但字型檔案實在太大，且本次只有使用到三個圖示，故改用<code>&lt;svg&gt;</code>直接繪製）</li>
 </ul>
 
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope="" itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://tzynwang.github.io/2021/how-jpeg-works/">
-
-    <span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar-pexels-alex-andrews-215-215.png">
-      <meta itemprop="name" content="Charlie (Tzu Yin)">
-      <meta itemprop="description" content="一介普通文組的學習筆記 📒">
-    </span>
-
-    <span hidden="" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="普通文組">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/how-jpeg-works/" class="post-title-link" itemprop="url">「How JPEG Works」相關筆記</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-03-28 16:02:12" itemprop="dateCreated datePublished" datetime="2021-03-28T16:02:12+08:00">2021-03-28</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-03-29 19:20:32" itemprop="dateModified" datetime="2021-03-29T19:20:32+08:00">2021-03-29</time>
-      </span>
-
-  
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus: </span>
-    
-    <a title="disqus" href="/2021/how-jpeg-works/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/how-jpeg-works/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>問：JPEG到底是什麼？<br>答：實際上是一種壓縮影像的演算法</p>
-<p>問：JPEG如何壓縮影像？<br>簡答：將影像從RGB轉換為Y’CbCr，捨棄多餘的顏色資訊、壓縮人眼不易察覺的部分（影像中高頻率變化的部分）後，輸出為.jpg檔案</p>
-<p>內收關於影片組「<a target="_blank" rel="noopener" href="https://www.youtube.com/playlist?list=PLzH6n4zXuckoAod3z31QEST1ZaizBuNHh">How JPEG Works</a>」的相關筆記、JPEG詳細的壓縮過程，與其他參考資料來源。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/how-jpeg-works/#more" rel="contents">
-                Read more »
-              </a>
-            </div>
-          <!--/noindex-->
-        
       
     </div>
 

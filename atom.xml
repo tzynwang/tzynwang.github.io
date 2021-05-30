@@ -6,7 +6,7 @@
   <link href="https://tzynwang.github.io/atom.xml" rel="self"/>
   
   <link href="https://tzynwang.github.io/"/>
-  <updated>2021-05-25T11:42:52.687Z</updated>
+  <updated>2021-05-30T06:02:17.723Z</updated>
   <id>https://tzynwang.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Alpha Camp「2-2 電影清單」技術記錄</title>
+    <link href="https://tzynwang.github.io/2021/2-2-movie-list-note/"/>
+    <id>https://tzynwang.github.io/2021/2-2-movie-list-note/</id>
+    <published>2021-05-29T06:26:16.000Z</published>
+    <updated>2021-05-30T06:02:17.723Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;總結&quot;&gt;&lt;a href=&quot;#總結&quot; class=&quot;headerlink&quot; title=&quot;總結&quot;&gt;&lt;/a&gt;總結&lt;/h2&gt;&lt;p&gt;本次實作了以下功能：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;搜尋電影（名稱），並在結果畫面中highlight使用者鍵入的關鍵字&lt;figure</summary>
+        
+      
+    
+    
+    
+    <category term="JavaScript" scheme="https://tzynwang.github.io/categories/JavaScript/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>為什麼使用innerHTML對元素新增內容後，該元素「子代」的事件監聽器失效？</title>
@@ -111,29 +136,6 @@
     
     
     <category term="git" scheme="https://tzynwang.github.io/categories/git/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>「Express Handlebars 取得父層變數內容」相關筆記</title>
-    <link href="https://tzynwang.github.io/2021/express-handlebars-access-variable-in-parent-scope/"/>
-    <id>https://tzynwang.github.io/2021/express-handlebars-access-variable-in-parent-scope/</id>
-    <published>2021-05-14T13:11:16.000Z</published>
-    <updated>2021-05-22T06:17:00.961Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;問題描述&quot;&gt;&lt;a href=&quot;#問題描述&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="Express Handlebars" scheme="https://tzynwang.github.io/categories/Express-Handlebars/"/>
     
     
   </entry>
