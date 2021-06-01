@@ -34,6 +34,75 @@
       </tags>
   </entry>
   <entry>
+    <title>Alpha Camp「2-2 社群名單」技術記錄</title>
+    <url>/2021/2-2-api-social-list-note/</url>
+    <content><![CDATA[<p class="codepen" data-height="265" data-theme-id="dark" data-default-tab="js,result" data-user="Charlie7779" data-slug-hash="ExZJLzG" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="2-2 社群名單">
+  <span>See the Pen <a href="https://codepen.io/Charlie7779/pen/ExZJLzG">
+  2-2 社群名單</a> by Charlie (<a href="https://codepen.io/Charlie7779">@Charlie7779</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+
+<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>在本作業中實作的相關功能：</p>
+<ul>
+<li>分頁（pagination）</li>
+<li>可在list與grid顯示模式之間切換</li>
+<li>簡易搜尋</li>
+</ul>
+<p>本次運用的技術：</p>
+<ul>
+<li>Spread syntax (<code>...</code>)</li>
+<li>將功能分拆為view（管理顯示相關的程式碼）與controller（管理流程、資料處理相關的程式碼），以及使用data、config與elementObject來分類資料，增進原始碼的易讀性</li>
+</ul>
+<h2 id="下一步"><a href="#下一步" class="headerlink" title="下一步"></a>下一步</h2><p>導入service worker與cache API：</p>
+<ul>
+<li>將透過axios取得的資料儲存起來，這樣僅需在首次開啟APP時透過axios索取API回傳的資料，之後可直接使用已經儲存下來的資料即可，不須再發出的request</li>
+<li>讓APP在沒有網路的狀態下也可進行一定程度的操作</li>
+</ul>
+<h2 id="相關筆記"><a href="#相關筆記" class="headerlink" title="相關筆記"></a>相關筆記</h2><h3 id="分頁（pagination）"><a href="#分頁（pagination）" class="headerlink" title="分頁（pagination）"></a>分頁（pagination）</h3><ul>
+<li>除單純的數字頁以外，也實作了「前一頁」與「下一頁」的頁面移動按鈕</li>
+<li>邏輯分流：<ul>
+<li>點擊「前一頁」時：「抵達第一頁」或「離開最後一頁」時，需disable「第一頁」或解除「最末頁」的disable狀態</li>
+<li>點擊「下一頁」時：邏輯與「前一頁」相反，「抵達最末頁」或「離開第一頁」時，需disable「最末頁」或解除「第一頁」的disable狀態</li>
+<li>點擊「第一頁」或「最末頁」：除disable「前一頁」或「下一頁」外，本次透過<code>document.querySelector(&#39;.page-item.active&#39;).classList.remove(&#39;active&#39;)</code>的方式來解除換頁前處在active狀態的頁數</li>
+<li>其他頁數：解除「前一頁」與「下一頁」的disable狀態，也解除換頁前處在active狀態的頁數</li>
+</ul>
+</li>
+</ul>
+<h3 id="切換顯示模式"><a href="#切換顯示模式" class="headerlink" title="切換顯示模式"></a>切換顯示模式</h3><ul>
+<li>將不同顯示模式的每頁頁數設定在config中（<code>config.displaySettings</code>）</li>
+<li>點擊list或grid模式的按鈕後，根據config中的顯示狀態產生每頁內容與分頁（<code>view.updateUI()</code>）</li>
+<li>因list每一頁顯示的使用者數量（12）較grid多（9），故以grid顯示時的總頁數會大於list；所以處在grid狀態時，使用者在pagination上的頁數可能會超出list的極限值，故使用<code>controller.setMaxPageNumber()</code>來避免「狀態切換後，可能會造成pagination頁數溢位」的問題</li>
+</ul>
+<h3 id="簡易搜尋"><a href="#簡易搜尋" class="headerlink" title="簡易搜尋"></a>簡易搜尋</h3><ul>
+<li>設置<code>searchingStatus</code>，進行顯示模式切換的時候才能根據搜尋狀態與否抓取相對應的資料（全部的使用者／搜尋結果）</li>
+<li>根據搜尋結果（無／有）在畫面上進行提示（<code>No matching result(s)</code>／<code>$&#123;quantity&#125; result(s) of keyword(s)</code>）</li>
+<li>使用者點擊<code>Clear Search Results</code>按鈕後，清除搜尋結果，離開搜尋狀態（更新<code>searchingStatus</code>）</li>
+</ul>
+<h3 id="Spread-syntax"><a href="#Spread-syntax" class="headerlink" title="Spread syntax"></a>Spread syntax</h3><ul>
+<li>應用：透過axois取回資料後，使用spread syntax將資料展開、加進<code>allUsersData</code>陣列中<ul>
+<li><code>data.allUsersData.push(...response.data.results)</code></li>
+<li>功能與forEach相同，但因為不需要對個別內容進行加工，故使用spread syntax直接展開存入陣列</li>
+</ul>
+</li>
+</ul>
+<h3 id="原始碼分類管理"><a href="#原始碼分類管理" class="headerlink" title="原始碼分類管理"></a>原始碼分類管理</h3><script src="https://gist.github.com/tzynwang/a398bbe0721b8199f03347ce03d3b490.js"></script>
+
+
+<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_objects/Object/values">MDN: Object.values(obj)</a><br>回傳一個陣列，其中包含obj中所有key-value pair的value</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/min">MDN: Math.min(value0, value1, … , valueN)</a><br>回傳傳入的values中最小的值，若要傳入陣列，可搭配spread syntax（<code>Math.min(...array1)</code>）</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/Trim">MDN: String.prototype.trim()</a><br>會回傳一組「移除原本字串頭尾空白鍵的」新字串，不影響原本的字串</li>
+</ul>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>ALPHA Camp assignment</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Alpha Camp「2-2 電影清單」技術記錄</title>
     <url>/2021/2-2-movie-list-note/</url>
     <content><![CDATA[<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>本次實作了以下功能：</p>
@@ -113,75 +182,6 @@
       <categories>
         <category>JavaScript</category>
       </categories>
-  </entry>
-  <entry>
-    <title>Alpha Camp「2-2 社群名單」技術記錄</title>
-    <url>/2021/2-2-api-social-list-note/</url>
-    <content><![CDATA[<p class="codepen" data-height="265" data-theme-id="dark" data-default-tab="js,result" data-user="Charlie7779" data-slug-hash="ExZJLzG" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="2-2 社群名單">
-  <span>See the Pen <a href="https://codepen.io/Charlie7779/pen/ExZJLzG">
-  2-2 社群名單</a> by Charlie (<a href="https://codepen.io/Charlie7779">@Charlie7779</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
-</p>
-<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
-
-<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>在本作業中實作的相關功能：</p>
-<ul>
-<li>分頁（pagination）</li>
-<li>可在list與grid顯示模式之間切換</li>
-<li>簡易搜尋</li>
-</ul>
-<p>本次運用的技術：</p>
-<ul>
-<li>Spread syntax (<code>...</code>)</li>
-<li>將功能分拆為view（管理顯示相關的程式碼）與controller（管理流程、資料處理相關的程式碼），以及使用data、config與elementObject來分類資料，增進原始碼的易讀性</li>
-</ul>
-<h2 id="下一步"><a href="#下一步" class="headerlink" title="下一步"></a>下一步</h2><p>導入service worker與cache API：</p>
-<ul>
-<li>將透過axios取得的資料儲存起來，這樣僅需在首次開啟APP時透過axios索取API回傳的資料，之後可直接使用已經儲存下來的資料即可，不須再發出的request</li>
-<li>讓APP在沒有網路的狀態下也可進行一定程度的操作</li>
-</ul>
-<h2 id="相關筆記"><a href="#相關筆記" class="headerlink" title="相關筆記"></a>相關筆記</h2><h3 id="分頁（pagination）"><a href="#分頁（pagination）" class="headerlink" title="分頁（pagination）"></a>分頁（pagination）</h3><ul>
-<li>除單純的數字頁以外，也實作了「前一頁」與「下一頁」的頁面移動按鈕</li>
-<li>邏輯分流：<ul>
-<li>點擊「前一頁」時：「抵達第一頁」或「離開最後一頁」時，需disable「第一頁」或解除「最末頁」的disable狀態</li>
-<li>點擊「下一頁」時：邏輯與「前一頁」相反，「抵達最末頁」或「離開第一頁」時，需disable「最末頁」或解除「第一頁」的disable狀態</li>
-<li>點擊「第一頁」或「最末頁」：除disable「前一頁」或「下一頁」外，本次透過<code>document.querySelector(&#39;.page-item.active&#39;).classList.remove(&#39;active&#39;)</code>的方式來解除換頁前處在active狀態的頁數</li>
-<li>其他頁數：解除「前一頁」與「下一頁」的disable狀態，也解除換頁前處在active狀態的頁數</li>
-</ul>
-</li>
-</ul>
-<h3 id="切換顯示模式"><a href="#切換顯示模式" class="headerlink" title="切換顯示模式"></a>切換顯示模式</h3><ul>
-<li>將不同顯示模式的每頁頁數設定在config中（<code>config.displaySettings</code>）</li>
-<li>點擊list或grid模式的按鈕後，根據config中的顯示狀態產生每頁內容與分頁（<code>view.updateUI()</code>）</li>
-<li>因list每一頁顯示的使用者數量（12）較grid多（9），故以grid顯示時的總頁數會大於list；所以處在grid狀態時，使用者在pagination上的頁數可能會超出list的極限值，故使用<code>controller.setMaxPageNumber()</code>來避免「狀態切換後，可能會造成pagination頁數溢位」的問題</li>
-</ul>
-<h3 id="簡易搜尋"><a href="#簡易搜尋" class="headerlink" title="簡易搜尋"></a>簡易搜尋</h3><ul>
-<li>設置<code>searchingStatus</code>，進行顯示模式切換的時候才能根據搜尋狀態與否抓取相對應的資料（全部的使用者／搜尋結果）</li>
-<li>根據搜尋結果（無／有）在畫面上進行提示（<code>No matching result(s)</code>／<code>$&#123;quantity&#125; result(s) of keyword(s)</code>）</li>
-<li>使用者點擊<code>Clear Search Results</code>按鈕後，清除搜尋結果，離開搜尋狀態（更新<code>searchingStatus</code>）</li>
-</ul>
-<h3 id="Spread-syntax"><a href="#Spread-syntax" class="headerlink" title="Spread syntax"></a>Spread syntax</h3><ul>
-<li>應用：透過axois取回資料後，使用spread syntax將資料展開、加進<code>allUsersData</code>陣列中<ul>
-<li><code>data.allUsersData.push(...response.data.results)</code></li>
-<li>功能與forEach相同，但因為不需要對個別內容進行加工，故使用spread syntax直接展開存入陣列</li>
-</ul>
-</li>
-</ul>
-<h3 id="原始碼分類管理"><a href="#原始碼分類管理" class="headerlink" title="原始碼分類管理"></a>原始碼分類管理</h3><script src="https://gist.github.com/tzynwang/a398bbe0721b8199f03347ce03d3b490.js"></script>
-
-
-<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_objects/Object/values">MDN: Object.values(obj)</a><br>回傳一個陣列，其中包含obj中所有key-value pair的value</li>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/min">MDN: Math.min(value0, value1, … , valueN)</a><br>回傳傳入的values中最小的值，若要傳入陣列，可搭配spread syntax（<code>Math.min(...array1)</code>）</li>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/Trim">MDN: String.prototype.trim()</a><br>會回傳一組「移除原本字串頭尾空白鍵的」新字串，不影響原本的字串</li>
-</ul>
-]]></content>
-      <categories>
-        <category>JavaScript</category>
-      </categories>
-      <tags>
-        <tag>ALPHA Camp assignment</tag>
-      </tags>
   </entry>
   <entry>
     <title>自主練習專案「日本文學經典50」技術記錄與反省</title>
@@ -287,7 +287,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="成品"><a href="#成品" class="headerlink" title="成品"></a>成品</h2><p>純網頁展示版：<a href="https://tzynwang.github.io/RGB-to-HEX/">點我</a></p>
+<h2 id="成品"><a href="#成品" class="headerlink" title="成品"></a>成品</h2><p>純網頁展示版：<a href="https://tzynwang.github.io/Practice_RGB-to-HEX/">點我</a></p>
 <figure class="figure--center"><img src="/2021/REB-to-HEX-review/demo-img.png" title="三個按鈕由左至右分別是「複製顏色代碼」、「重置回預設狀態」與「隨機產生顏色」"><figcaption><p>三個按鈕由左至右分別是「複製顏色代碼」、「重置回預設狀態」與「隨機產生顏色」</p></figcaption></figure>
 <p>彩蛋：其中有465種顏色有名字，發現機率是465 / 255^3，大約是0.003%。<br>全部的名字來源參考：<a href="https://www.colordic.org/w">和色大辞典</a></p>
 <p>codepen展示：</p>
@@ -366,117 +366,6 @@
         <tag>ALPHA Camp assignment</tag>
         <tag>Side Project</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>為什麼可以修改使用const宣告的陣列（或物件）的內容？</title>
-    <url>/2021/array-mutation/</url>
-    <content><![CDATA[<h2 id="原始問題"><a href="#原始問題" class="headerlink" title="原始問題"></a>原始問題</h2><p>以<code>const</code>宣告一個陣列（或物件），為何可以在宣告完畢後繼續修改該陣列（或物件）的內容？</p>
-<figure class="figure--center"><img src="/2021/array-mutation/騎士王的提問時間.jpg" title="事實上const的限制是「變數不能被re-assigned或re-declared」"><figcaption><p>事實上const的限制是「變數不能被re-assigned或re-declared」</p></figcaption></figure>
-
-<h2 id="簡答"><a href="#簡答" class="headerlink" title="簡答"></a>簡答</h2><p><code>const</code>的限制是「只能賦值一次，不能重新賦值」，不直接等同「不能修改內容」。</p>
-<h2 id="環境"><a href="#環境" class="headerlink" title="環境"></a>環境</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Google Chrome: 89.0.4389.114 (Official Build) (64-bit)</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></table></figure>
-<h2 id="關於const的事實"><a href="#關於const的事實" class="headerlink" title="關於const的事實"></a>關於<code>const</code>的事實</h2><h3 id="You-Don’t-Know-JS-Yet-相關筆記"><a href="#You-Don’t-Know-JS-Yet-相關筆記" class="headerlink" title="You Don’t Know JS Yet 相關筆記"></a>You Don’t Know JS Yet 相關筆記</h3><ul>
-<li><code>const</code> declared variables are not “unchangeable”, they just cannot be re-assigned.<ul>
-<li>不適合以「不能被修改」來理解透過<code>const</code>宣告的變數，而是「使用<code>const</code>宣告的變數只能被賦值一次」<script src="https://gist.github.com/tzynwang/bf4ef105981d115a11ae4eb761e34ac8.js"></script></li>
-</ul>
-</li>
-<li>It’s ill-advised to use <code>const</code> with object values, because those values can still be changed even though the variable can’t be re-assigned.<script src="https://gist.github.com/tzynwang/b7f3ee4e1e7c8936a98bb8f7fa76b634.js"></script></li>
-<li>If you stick to using <code>const</code> only with primitive values, you avoid any confusion of re-assignment (not allowed) vs. mutation (allowed)! That’s the safest and best way to use const.</li>
-</ul>
-<h3 id="ES2015-const-is-not-about-immutability-相關筆記"><a href="#ES2015-const-is-not-about-immutability-相關筆記" class="headerlink" title="ES2015 const is not about immutability 相關筆記"></a>ES2015 const is not about immutability 相關筆記</h3><script src="https://gist.github.com/tzynwang/0945c27501de984d3aaa410bf55a08ce.js"></script>
-
-<ul>
-<li>The only thing that’s immutable here is the binding. <code>const</code> assigns a value (<code>&#123;&#125;</code>) to a variable name (<code>foo</code>), and guarantees that no rebinding will happen. ES2015 const has nothing to do with immutability of values.</li>
-<li>與其描述為「透過<code>const</code>宣告的陣列（或物件）不能被修改內容」，不如將<code>const</code>理解為「建立一個變數與值之間不變的binding」。</li>
-</ul>
-<h3 id="MDN上的相關內容"><a href="#MDN上的相關內容" class="headerlink" title="MDN上的相關內容"></a>MDN上的相關內容</h3><ul>
-<li>The value of a constant can’t be changed through reassignment, and it can’t be re-declared.</li>
-<li>以<code>const</code>宣告變數的同時就得賦值<script src="https://gist.github.com/tzynwang/b92649f9945fb3cb92275cf448adb199.js"></script>
-
-</li>
-</ul>
-<h2 id="Object-freeze"><a href="#Object-freeze" class="headerlink" title="Object.freeze()"></a><code>Object.freeze()</code></h2><ul>
-<li>如果想要確保陣列或物件內容不被修改，可以使用<code>Object.freeze()</code><ul>
-<li>MDN: Use <code>Object.freeze()</code> to make object immutable. A frozen object can no longer be changed; freezing an object prevents new properties from being added to it, existing properties from being removed, prevents changing the enumerability, configurability, or writability of existing properties, and prevents the values of existing properties from being changed.</li>
-<li>一個陣列或物件被凍結後，無法新增或移除該陣列、物件的內容，也不可修改該陣列、物件的properties</li>
-</ul>
-</li>
-<li><code>Object.freeze()</code>不會自動套用到巢狀結構內的所有內容上，如以下範例：<script src="https://gist.github.com/tzynwang/a52efc027532899027d7d0e0c9f1cfef.js"></script>
-<figure class="figure--center"><img src="/2021/array-mutation/object-freeze-demo-1.png"></figure></li>
-<li>可透過遞迴來凍結巢狀結構物件的內容<script src="https://gist.github.com/tzynwang/e7a3cf50d030d90f05eee59257806b1e.js"></script>
-<figure class="figure--center"><img src="/2021/array-mutation/object-freeze-demo-2.png"></figure>
-
-
-</li>
-</ul>
-<h2 id="Object-seal"><a href="#Object-seal" class="headerlink" title="Object.seal()"></a><code>Object.seal()</code></h2><ul>
-<li>The Object.seal() method seals an object, preventing new properties from being added to it and marking all existing properties as non-configurable. Values of present properties can still be changed as long as they are writable.<ul>
-<li>與<code>Object.freeze()</code>的差異是，經<code>Object.seal()</code>封閉的物件，不能對其新增或刪除內容，但封閉前就存在的內容可以被修改<script src="https://gist.github.com/tzynwang/1e8917a16a8450fb76fd5a6bd34201e9.js"></script>
-<figure class="figure--center"><img src="/2021/array-mutation/object-freeze-demo-3.png"></figure>
-
-
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="Object-preventExtensions"><a href="#Object-preventExtensions" class="headerlink" title="Object.preventExtensions()"></a><code>Object.preventExtensions()</code></h2><p><code>Object.preventExtensions()</code>只會禁止對物件新增內容，但可以刪除或修改既有內容</p>
-<script src="https://gist.github.com/tzynwang/034ffb5ed714a851cc2e35c5b8a148df.js"></script>
-<figure class="figure--center"><img src="/2021/array-mutation/object-freeze-demo-4.png"></figure>
-
-
-<h2 id="Object-getOwnPropertyDescriptor"><a href="#Object-getOwnPropertyDescriptor" class="headerlink" title="Object.getOwnPropertyDescriptor()"></a><code>Object.getOwnPropertyDescriptor()</code></h2><p>回傳一物件中某內容的相關設定</p>
-<script src="https://gist.github.com/tzynwang/e0618d9ef2d4fa0b153ad6d9347ae8ee.js"></script>
-<figure class="figure--center"><img src="/2021/array-mutation/object-freeze-demo-5.png"></figure>
-
-<p>參考<a href="https://tc39.es/ecma262/#table-data-property-attributes">ECMAScript Specification, Table 3: Attributes of a Data Property</a>：</p>
-<ul>
-<li><code>writable</code>: If false, attempts by ECMAScript code to change the property’s [[Value]] attribute using [[Set]] will not succeed.<ul>
-<li><code>writable</code>若為<code>false</code>，代表該<code>value</code>無法被修改</li>
-<li>被<code>Object.freeze()</code>凍結的物件，其<code>value</code>的<code>writable</code>就被修改為<code>false</code></li>
-</ul>
-</li>
-<li><code>enumerable</code>: If true, the property will be enumerated by a for-in enumeration. Otherwise, the property is said to be non-enumerable.<ul>
-<li><code>enumerable</code>為<code>true</code>代表該<code>value</code>會<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...in">被<code>for...in</code>遍歷</a></li>
-</ul>
-</li>
-<li><code>configurable</code>: If false, attempts to delete the property, change the property to be an accessor property, or change its attributes (other than [[Value]], or changing [[Writable]] to false) will fail.<ul>
-<li><code>configurable</code>若為<code>false</code>，代表該<code>value</code>無法被刪除</li>
-<li>經<code>Object.freeze()</code>或<code>Object.seal()</code>處理過的物件，其<code>value</code>的<code>configurable</code>就被修改為<code>false</code><figure class="figure--center"><img src="/2021/array-mutation/attributes-of-data-property.png"></figure>
-
-
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="補充：無法解凍或再開封"><a href="#補充：無法解凍或再開封" class="headerlink" title="補充：無法解凍或再開封"></a>補充：無法解凍或再開封</h2><p><a href="https://stackoverflow.com/questions/19293321/opposite-of-object-freeze-or-object-seal-in-javascript">Opposite of Object.freeze or Object.seal in JavaScript</a></p>
-<blockquote>
-<p>Freezing an object is the ultimate form of lock-down. Once an object has been frozen it cannot be unfrozen – nor can it be tampered in any manner. This is the best way to make sure that your objects will stay exactly as you left them, indefinitely</p>
-</blockquote>
-<ul>
-<li><code>Object.freeze()</code>與<code>Object.seal()</code>是不可逆的程序，一旦一個物件（或陣列）被凍結或封閉，該物件就無法回到凍結（或封閉）前的狀態</li>
-<li>可以透過<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign"><code>Object.assign()</code></a>來製作該物件（或陣列）的副本，再修改其內容</li>
-</ul>
-<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
-<li>You Don’t Know JS Yet: Get Started - 2nd Edition<ul>
-<li><a href="https://github.com/getify/You-Dont-Know-JS/blob/2nd-ed/get-started/ch2.md">Chapter 2: Surveying JS</a></li>
-<li><a href="https://github.com/getify/You-Dont-Know-JS/blob/2nd-ed/get-started/apA.md">Appendix A: Exploring Further</a></li>
-</ul>
-</li>
-<li><a href="https://mathiasbynens.be/notes/es6-const">ES2015 const is not about immutability</a></li>
-<li>MDN<ul>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const">const</a></li>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/freeze">Object.freeze()</a></li>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/seal">Object.seal()</a></li>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/preventExtensions">Object.preventExtensions()</a></li>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/getOwnPropertyDescriptor">Object.getOwnPropertyDescriptor()</a></li>
-</ul>
-</li>
-<li><a href="https://stackoverflow.com/questions/7509894/freezing-arrays-in-javascript">‘Freezing’ Arrays in Javascript?</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>JavaScript</category>
-      </categories>
   </entry>
   <entry>
     <title>ALPHA Camp 履歷網頁作業：內容解析</title>
@@ -636,6 +525,117 @@ on <a href="https://codepen.io">CodePen</a>.</span>
       <tags>
         <tag>ALPHA Camp assignment</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>為什麼可以修改使用const宣告的陣列（或物件）的內容？</title>
+    <url>/2021/array-mutation/</url>
+    <content><![CDATA[<h2 id="原始問題"><a href="#原始問題" class="headerlink" title="原始問題"></a>原始問題</h2><p>以<code>const</code>宣告一個陣列（或物件），為何可以在宣告完畢後繼續修改該陣列（或物件）的內容？</p>
+<figure class="figure--center"><img src="/2021/array-mutation/騎士王的提問時間.jpg" title="事實上const的限制是「變數不能被re-assigned或re-declared」"><figcaption><p>事實上const的限制是「變數不能被re-assigned或re-declared」</p></figcaption></figure>
+
+<h2 id="簡答"><a href="#簡答" class="headerlink" title="簡答"></a>簡答</h2><p><code>const</code>的限制是「只能賦值一次，不能重新賦值」，不直接等同「不能修改內容」。</p>
+<h2 id="環境"><a href="#環境" class="headerlink" title="環境"></a>環境</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Google Chrome: 89.0.4389.114 (Official Build) (64-bit)</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></table></figure>
+<h2 id="關於const的事實"><a href="#關於const的事實" class="headerlink" title="關於const的事實"></a>關於<code>const</code>的事實</h2><h3 id="You-Don’t-Know-JS-Yet-相關筆記"><a href="#You-Don’t-Know-JS-Yet-相關筆記" class="headerlink" title="You Don’t Know JS Yet 相關筆記"></a>You Don’t Know JS Yet 相關筆記</h3><ul>
+<li><code>const</code> declared variables are not “unchangeable”, they just cannot be re-assigned.<ul>
+<li>不適合以「不能被修改」來理解透過<code>const</code>宣告的變數，而是「使用<code>const</code>宣告的變數只能被賦值一次」<script src="https://gist.github.com/tzynwang/bf4ef105981d115a11ae4eb761e34ac8.js"></script></li>
+</ul>
+</li>
+<li>It’s ill-advised to use <code>const</code> with object values, because those values can still be changed even though the variable can’t be re-assigned.<script src="https://gist.github.com/tzynwang/b7f3ee4e1e7c8936a98bb8f7fa76b634.js"></script></li>
+<li>If you stick to using <code>const</code> only with primitive values, you avoid any confusion of re-assignment (not allowed) vs. mutation (allowed)! That’s the safest and best way to use const.</li>
+</ul>
+<h3 id="ES2015-const-is-not-about-immutability-相關筆記"><a href="#ES2015-const-is-not-about-immutability-相關筆記" class="headerlink" title="ES2015 const is not about immutability 相關筆記"></a>ES2015 const is not about immutability 相關筆記</h3><script src="https://gist.github.com/tzynwang/0945c27501de984d3aaa410bf55a08ce.js"></script>
+
+<ul>
+<li>The only thing that’s immutable here is the binding. <code>const</code> assigns a value (<code>&#123;&#125;</code>) to a variable name (<code>foo</code>), and guarantees that no rebinding will happen. ES2015 const has nothing to do with immutability of values.</li>
+<li>與其描述為「透過<code>const</code>宣告的陣列（或物件）不能被修改內容」，不如將<code>const</code>理解為「建立一個變數與值之間不變的binding」。</li>
+</ul>
+<h3 id="MDN上的相關內容"><a href="#MDN上的相關內容" class="headerlink" title="MDN上的相關內容"></a>MDN上的相關內容</h3><ul>
+<li>The value of a constant can’t be changed through reassignment, and it can’t be re-declared.</li>
+<li>以<code>const</code>宣告變數的同時就得賦值<script src="https://gist.github.com/tzynwang/b92649f9945fb3cb92275cf448adb199.js"></script>
+
+</li>
+</ul>
+<h2 id="Object-freeze"><a href="#Object-freeze" class="headerlink" title="Object.freeze()"></a><code>Object.freeze()</code></h2><ul>
+<li>如果想要確保陣列或物件內容不被修改，可以使用<code>Object.freeze()</code><ul>
+<li>MDN: Use <code>Object.freeze()</code> to make object immutable. A frozen object can no longer be changed; freezing an object prevents new properties from being added to it, existing properties from being removed, prevents changing the enumerability, configurability, or writability of existing properties, and prevents the values of existing properties from being changed.</li>
+<li>一個陣列或物件被凍結後，無法新增或移除該陣列、物件的內容，也不可修改該陣列、物件的properties</li>
+</ul>
+</li>
+<li><code>Object.freeze()</code>不會自動套用到巢狀結構內的所有內容上，如以下範例：<script src="https://gist.github.com/tzynwang/a52efc027532899027d7d0e0c9f1cfef.js"></script>
+<figure class="figure--center"><img src="/2021/array-mutation/object-freeze-demo-1.png"></figure></li>
+<li>可透過遞迴來凍結巢狀結構物件的內容<script src="https://gist.github.com/tzynwang/e7a3cf50d030d90f05eee59257806b1e.js"></script>
+<figure class="figure--center"><img src="/2021/array-mutation/object-freeze-demo-2.png"></figure>
+
+
+</li>
+</ul>
+<h2 id="Object-seal"><a href="#Object-seal" class="headerlink" title="Object.seal()"></a><code>Object.seal()</code></h2><ul>
+<li>The Object.seal() method seals an object, preventing new properties from being added to it and marking all existing properties as non-configurable. Values of present properties can still be changed as long as they are writable.<ul>
+<li>與<code>Object.freeze()</code>的差異是，經<code>Object.seal()</code>封閉的物件，不能對其新增或刪除內容，但封閉前就存在的內容可以被修改<script src="https://gist.github.com/tzynwang/1e8917a16a8450fb76fd5a6bd34201e9.js"></script>
+<figure class="figure--center"><img src="/2021/array-mutation/object-freeze-demo-3.png"></figure>
+
+
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="Object-preventExtensions"><a href="#Object-preventExtensions" class="headerlink" title="Object.preventExtensions()"></a><code>Object.preventExtensions()</code></h2><p><code>Object.preventExtensions()</code>只會禁止對物件新增內容，但可以刪除或修改既有內容</p>
+<script src="https://gist.github.com/tzynwang/034ffb5ed714a851cc2e35c5b8a148df.js"></script>
+<figure class="figure--center"><img src="/2021/array-mutation/object-freeze-demo-4.png"></figure>
+
+
+<h2 id="Object-getOwnPropertyDescriptor"><a href="#Object-getOwnPropertyDescriptor" class="headerlink" title="Object.getOwnPropertyDescriptor()"></a><code>Object.getOwnPropertyDescriptor()</code></h2><p>回傳一物件中某內容的相關設定</p>
+<script src="https://gist.github.com/tzynwang/e0618d9ef2d4fa0b153ad6d9347ae8ee.js"></script>
+<figure class="figure--center"><img src="/2021/array-mutation/object-freeze-demo-5.png"></figure>
+
+<p>參考<a href="https://tc39.es/ecma262/#table-data-property-attributes">ECMAScript Specification, Table 3: Attributes of a Data Property</a>：</p>
+<ul>
+<li><code>writable</code>: If false, attempts by ECMAScript code to change the property’s [[Value]] attribute using [[Set]] will not succeed.<ul>
+<li><code>writable</code>若為<code>false</code>，代表該<code>value</code>無法被修改</li>
+<li>被<code>Object.freeze()</code>凍結的物件，其<code>value</code>的<code>writable</code>就被修改為<code>false</code></li>
+</ul>
+</li>
+<li><code>enumerable</code>: If true, the property will be enumerated by a for-in enumeration. Otherwise, the property is said to be non-enumerable.<ul>
+<li><code>enumerable</code>為<code>true</code>代表該<code>value</code>會<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...in">被<code>for...in</code>遍歷</a></li>
+</ul>
+</li>
+<li><code>configurable</code>: If false, attempts to delete the property, change the property to be an accessor property, or change its attributes (other than [[Value]], or changing [[Writable]] to false) will fail.<ul>
+<li><code>configurable</code>若為<code>false</code>，代表該<code>value</code>無法被刪除</li>
+<li>經<code>Object.freeze()</code>或<code>Object.seal()</code>處理過的物件，其<code>value</code>的<code>configurable</code>就被修改為<code>false</code><figure class="figure--center"><img src="/2021/array-mutation/attributes-of-data-property.png"></figure>
+
+
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="補充：無法解凍或再開封"><a href="#補充：無法解凍或再開封" class="headerlink" title="補充：無法解凍或再開封"></a>補充：無法解凍或再開封</h2><p><a href="https://stackoverflow.com/questions/19293321/opposite-of-object-freeze-or-object-seal-in-javascript">Opposite of Object.freeze or Object.seal in JavaScript</a></p>
+<blockquote>
+<p>Freezing an object is the ultimate form of lock-down. Once an object has been frozen it cannot be unfrozen – nor can it be tampered in any manner. This is the best way to make sure that your objects will stay exactly as you left them, indefinitely</p>
+</blockquote>
+<ul>
+<li><code>Object.freeze()</code>與<code>Object.seal()</code>是不可逆的程序，一旦一個物件（或陣列）被凍結或封閉，該物件就無法回到凍結（或封閉）前的狀態</li>
+<li>可以透過<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign"><code>Object.assign()</code></a>來製作該物件（或陣列）的副本，再修改其內容</li>
+</ul>
+<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
+<li>You Don’t Know JS Yet: Get Started - 2nd Edition<ul>
+<li><a href="https://github.com/getify/You-Dont-Know-JS/blob/2nd-ed/get-started/ch2.md">Chapter 2: Surveying JS</a></li>
+<li><a href="https://github.com/getify/You-Dont-Know-JS/blob/2nd-ed/get-started/apA.md">Appendix A: Exploring Further</a></li>
+</ul>
+</li>
+<li><a href="https://mathiasbynens.be/notes/es6-const">ES2015 const is not about immutability</a></li>
+<li>MDN<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const">const</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/freeze">Object.freeze()</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/seal">Object.seal()</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/preventExtensions">Object.preventExtensions()</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/getOwnPropertyDescriptor">Object.getOwnPropertyDescriptor()</a></li>
+</ul>
+</li>
+<li><a href="https://stackoverflow.com/questions/7509894/freezing-arrays-in-javascript">‘Freezing’ Arrays in Javascript?</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
   </entry>
   <entry>
     <title>bundle exec</title>
@@ -856,71 +856,6 @@ on <a href="https://codepen.io">CodePen</a>.</span>
       </categories>
   </entry>
   <entry>
-    <title>「Edit Files With Workspaces」相關筆記</title>
-    <url>/2021/edit-files-with-workspaces/</url>
-    <content><![CDATA[<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>這篇文章是在處理ALPHA Camp 學期1 S3 A11作業「試用開發者工具」時，嘗試搭配DevTools，避免作業過程中意外重新整理網頁，造成作業進度遺失的問題。</p>
-<p>DevTools確實可以解決上述問題。<br>但為了要讓DevTools可以隨時儲存我的修改進度，需要先將作業範例檔案git clone回本機，然後再透過DevTools開啟作業資料夾，給予DevTools權限來記錄我對作業進行的修改。</p>
-<h2 id="版本與環境"><a href="#版本與環境" class="headerlink" title="版本與環境"></a>版本與環境</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Google Chrome: 89.0.4389.82 (Official Build) (x86_64)</span><br><span class="line">ox: macOS Big Suf Version 11.1</span><br></pre></td></tr></table></figure>
-
-<h2 id="流程與筆記"><a href="#流程與筆記" class="headerlink" title="流程與筆記"></a>流程與筆記</h2><ol>
-<li>觀察ALPHA Camp提供的作業連結（<a href="https://alphacamp.github.io/css-facebook/">https://alphacamp.github.io/css-facebook/</a>），推測作業範例應該是用GitHub Pages發布的，嘗試搜尋「ALPHA Camp github」，運氣不錯，作業的repo是公開的</li>
-<li>把作業範例git clone回本機</li>
-<li>用VSCode開啟作業範例，使用VSCode的擴充套件「<a href="https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer">Live Server</a>」讓index.html在localhost:5500動起來</li>
-<li>參考官方文件的說明（<a href="https://developers.google.com/web/tools/chrome-devtools/workspaces#devtools">「Set up DevTools」</a>），開啟DevTools後，點選功能分頁中的「Sources」</li>
-<li>進入子選項「Filesystem」，點選「+ Add folder to workspace」，選擇作業所在的資料夾<br> 備註：在流程第二步，我選擇將作業clone回桌面的css-facebook資料夾，故在這一步，我要在DevTools中選擇開啟位在桌面的css-facebook資料夾</li>
-<li>在DevTools跳出權限請求視窗時，選擇給予DevTools權限來修改本機檔案</li>
-<li>在沒有開錯資料夾、沒有出現其他問題的情況下，Filesystem區域會出現資料夾css-facebook，點開資料夾會看到index.html與style.css兩個檔案，並style.css的檔案圖示右下角會有綠點 <figure class="figure--center"><img src="/2021/edit-files-with-workspaces/file-mapping-success.png"></figure></li>
-<li>綠點代表現在透過DevTools對網頁做的CSS更動都會儲存到style.css中，這樣即使改到一半重新整理網頁，先前的CSS修改也不會消失</li>
-</ol>
-<h3 id="注意事項"><a href="#注意事項" class="headerlink" title="注意事項"></a>注意事項</h3><p>在DevTools的Elements標籤下修改的HTML內容不會被保存下來，想要保存對HTML的變更，請移動到Sources標籤去修改index.html</p>
-<figure class="figure--center"><img src="/2021/edit-files-with-workspaces/why-it-isnt-saved.png"></figure>
-
-<p>問：為什麼我在Elements修改網頁的內文不像修改CSS會被保存下來？<br>答：因為在Elements標籤下做的修改都是改到DOM，不是改到HTML。<br>瀏覽器取得HTML後，解析、並搭配CSS與JS來決定最後呈現給使用者看的內容會長什麼樣子，使用者看到、並用Elements操作（修改）的東西是DOM。<br>而這些DOM最終為什麼會以這些樣子呈現在網頁上，是綜合了HTML、CSS與JS互相搭配的結果，DevTools很難知道它到底該把使用者對DOM做的修改內容記錄到HTML、CSS或是JS檔案中。</p>
-<p>更詳細的解說可參考：<a href="https://developers.google.com/web/tools/chrome-devtools/workspaces#why">Save an HTML change to disk: Why it doesn’t work</a></p>
-<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><p><a href="https://developers.google.com/web/tools/chrome-devtools/workspaces">Edit Files With Workspaces</a></p>
-]]></content>
-      <categories>
-        <category>DevTools</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>「Express Handlebars 取得父層變數內容」相關筆記</title>
-    <url>/2021/express-handlebars-access-variable-in-parent-scope/</url>
-    <content><![CDATA[<h2 id="問題描述"><a href="#問題描述" class="headerlink" title="問題描述"></a>問題描述</h2><ul>
-<li>情境：在express-handlebars中使用原生的<code>each</code>搭配handlebars-helpers的<code>is</code>進行條件判斷，進而渲染出一組<code>&lt;select&gt;</code><ul>
-<li><code>&lt;select&gt;</code>中的每一個<code>&lt;option&gt;</code>都是一種餐廳類型（舉例：日本料理、酒吧、美式餐廳等）</li>
-<li>（由<code>app.js</code>傳遞給<code>edit.handlebars</code>的變數）<code>categories</code>為餐廳類型的陣列資料，<code>restaurant</code>為物件變數，可透過<code>restaurant.category</code>來取得該餐廳的餐廳類型</li>
-<li>當<code>each</code>迴圈中<code>this</code>的值與<code>restaurant.category</code>一致時，pre-selected該<code>&lt;option&gt;</code><figure class="figure--center"><img src="/2021/express-handlebars-access-variable-in-parent-scope/pre-selected.png" title="select欄位應預設選擇該餐廳的類型"><figcaption><p>select欄位應預設選擇該餐廳的類型</p></figcaption></figure></li>
-</ul>
-</li>
-<li>問題：檢查最終的DOM內容，發現並<strong>沒有</strong>渲染出應該要預先被選擇的<code>&lt;option&gt;</code></li>
-<li>行為不如預期的原始碼：<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// app.js端</span></span><br><span class="line">app.get(<span class="string">&#x27;/restaurants/:id/edit&#x27;</span>, <span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> id = <span class="built_in">Number</span>(req.params.id)</span><br><span class="line">  <span class="keyword">const</span> targetRestaurant = restaurantList.results.find(<span class="function">(<span class="params">restaurant</span>) =&gt;</span> restaurant.id === id)</span><br><span class="line">  <span class="keyword">const</span> categories = []</span><br><span class="line">  restaurantList.results.forEach(<span class="function"><span class="params">restaurant</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (!categories.includes(restaurant.category)) &#123;</span><br><span class="line">      categories.push(restaurant.category)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">  res.render(<span class="string">&#x27;edit&#x27;</span>, &#123; <span class="attr">restaurant</span>: targetRestaurant, categories &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- handlebars端 --&gt;</span></span><br><span class="line">&#123;&#123;#each categories&#125;&#125;</span><br><span class="line">  &#123;&#123;#is this restaurant.category)&#125;&#125;</span><br><span class="line">  <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;&#123;&#123;this&#125;&#125;&quot;</span> <span class="attr">selected</span>&gt;</span>&#123;&#123;this&#125;&#125;<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">  &#123;&#123;else&#125;&#125;</span><br><span class="line">  <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;&#123;&#123;this&#125;&#125;&quot;</span>&gt;</span>&#123;&#123;this&#125;&#125;<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">  &#123;&#123;/is&#125;&#125;</span><br><span class="line">&#123;&#123;/each&#125;&#125;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h2 id="環境"><a href="#環境" class="headerlink" title="環境"></a>環境</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">express-handlebars: 5.3.2</span><br><span class="line">handlebars-helpers: 0.10.0</span><br></pre></td></tr></table></figure>
-
-<h2 id="解決方式"><a href="#解決方式" class="headerlink" title="解決方式"></a>解決方式</h2><p>將handlebars端的內容修改如下（<code>restaurant.category</code>加上<code>../</code>）：</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- handlebars端 --&gt;</span></span><br><span class="line">&#123;&#123;#each categories&#125;&#125;</span><br><span class="line">  &#123;&#123;#is this ../restaurant.category)&#125;&#125;</span><br><span class="line">  <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;&#123;&#123;this&#125;&#125;&quot;</span> <span class="attr">selected</span>&gt;</span>&#123;&#123;this&#125;&#125;<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">  &#123;&#123;else&#125;&#125;</span><br><span class="line">  <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;&#123;&#123;this&#125;&#125;&quot;</span>&gt;</span>&#123;&#123;this&#125;&#125;<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">  &#123;&#123;/is&#125;&#125;</span><br><span class="line">&#123;&#123;/each&#125;&#125;</span><br></pre></td></tr></table></figure>
-
-<p>參考Handlebars官方文件的說明：</p>
-<blockquote>
-<p>Some helpers like <code>#with</code> and <code>#each</code> allow you to <strong>dive into nested objects</strong>. When you include <code>../</code> segments in your path, Handlebars will change back into the <strong>parent context</strong>.</p>
-</blockquote>
-<p>在巢狀結構中，使用<code>../</code>來取得上一層變數的內容</p>
-<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
-<li><a href="https://handlebarsjs.com/guide/expressions.html#changing-the-context">Handlebars: Changing the context</a></li>
-<li><a href="https://stackoverflow.com/questions/13645084/access-a-variable-outside-the-scope-of-a-handlebars-js-each-loop">Access a variable outside the scope of a Handlebars.js each loop</a></li>
-<li><a href="https://stackoverflow.com/a/12297980/15028185">Access properties of the parent with a Handlebars ‘each’ loop</a></li>
-<li><a href="https://eruditeness.news.blog/2019/08/28/node-js%E5%88%9D%E5%AD%B8%E7%AD%86%E8%A8%9810-%E5%9C%A8express-handlebars%E4%B8%AD%E8%BC%95%E9%AC%86%E5%BB%BA%E7%AB%8B%E5%AE%A2%E8%A3%BDhelperhandlebars-custom-helpers/">Node.js初學筆記10: 在express-handlebars中輕鬆建立客製helper(handlebars custom helpers)</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>Express Handlebars</category>
-      </categories>
-  </entry>
-  <entry>
     <title>「CSS Specificity」相關筆記</title>
     <url>/2021/css-specificity/</url>
     <content><![CDATA[<h2 id="重點整理"><a href="#重點整理" class="headerlink" title="重點整理"></a>重點整理</h2><ul>
@@ -1071,6 +1006,71 @@ on <a href="https://codepen.io">CodePen</a>.</span>
       </categories>
   </entry>
   <entry>
+    <title>「Edit Files With Workspaces」相關筆記</title>
+    <url>/2021/edit-files-with-workspaces/</url>
+    <content><![CDATA[<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>這篇文章是在處理ALPHA Camp 學期1 S3 A11作業「試用開發者工具」時，嘗試搭配DevTools，避免作業過程中意外重新整理網頁，造成作業進度遺失的問題。</p>
+<p>DevTools確實可以解決上述問題。<br>但為了要讓DevTools可以隨時儲存我的修改進度，需要先將作業範例檔案git clone回本機，然後再透過DevTools開啟作業資料夾，給予DevTools權限來記錄我對作業進行的修改。</p>
+<h2 id="版本與環境"><a href="#版本與環境" class="headerlink" title="版本與環境"></a>版本與環境</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Google Chrome: 89.0.4389.82 (Official Build) (x86_64)</span><br><span class="line">ox: macOS Big Suf Version 11.1</span><br></pre></td></tr></table></figure>
+
+<h2 id="流程與筆記"><a href="#流程與筆記" class="headerlink" title="流程與筆記"></a>流程與筆記</h2><ol>
+<li>觀察ALPHA Camp提供的作業連結（<a href="https://alphacamp.github.io/css-facebook/">https://alphacamp.github.io/css-facebook/</a>），推測作業範例應該是用GitHub Pages發布的，嘗試搜尋「ALPHA Camp github」，運氣不錯，作業的repo是公開的</li>
+<li>把作業範例git clone回本機</li>
+<li>用VSCode開啟作業範例，使用VSCode的擴充套件「<a href="https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer">Live Server</a>」讓index.html在localhost:5500動起來</li>
+<li>參考官方文件的說明（<a href="https://developers.google.com/web/tools/chrome-devtools/workspaces#devtools">「Set up DevTools」</a>），開啟DevTools後，點選功能分頁中的「Sources」</li>
+<li>進入子選項「Filesystem」，點選「+ Add folder to workspace」，選擇作業所在的資料夾<br> 備註：在流程第二步，我選擇將作業clone回桌面的css-facebook資料夾，故在這一步，我要在DevTools中選擇開啟位在桌面的css-facebook資料夾</li>
+<li>在DevTools跳出權限請求視窗時，選擇給予DevTools權限來修改本機檔案</li>
+<li>在沒有開錯資料夾、沒有出現其他問題的情況下，Filesystem區域會出現資料夾css-facebook，點開資料夾會看到index.html與style.css兩個檔案，並style.css的檔案圖示右下角會有綠點 <figure class="figure--center"><img src="/2021/edit-files-with-workspaces/file-mapping-success.png"></figure></li>
+<li>綠點代表現在透過DevTools對網頁做的CSS更動都會儲存到style.css中，這樣即使改到一半重新整理網頁，先前的CSS修改也不會消失</li>
+</ol>
+<h3 id="注意事項"><a href="#注意事項" class="headerlink" title="注意事項"></a>注意事項</h3><p>在DevTools的Elements標籤下修改的HTML內容不會被保存下來，想要保存對HTML的變更，請移動到Sources標籤去修改index.html</p>
+<figure class="figure--center"><img src="/2021/edit-files-with-workspaces/why-it-isnt-saved.png"></figure>
+
+<p>問：為什麼我在Elements修改網頁的內文不像修改CSS會被保存下來？<br>答：因為在Elements標籤下做的修改都是改到DOM，不是改到HTML。<br>瀏覽器取得HTML後，解析、並搭配CSS與JS來決定最後呈現給使用者看的內容會長什麼樣子，使用者看到、並用Elements操作（修改）的東西是DOM。<br>而這些DOM最終為什麼會以這些樣子呈現在網頁上，是綜合了HTML、CSS與JS互相搭配的結果，DevTools很難知道它到底該把使用者對DOM做的修改內容記錄到HTML、CSS或是JS檔案中。</p>
+<p>更詳細的解說可參考：<a href="https://developers.google.com/web/tools/chrome-devtools/workspaces#why">Save an HTML change to disk: Why it doesn’t work</a></p>
+<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><p><a href="https://developers.google.com/web/tools/chrome-devtools/workspaces">Edit Files With Workspaces</a></p>
+]]></content>
+      <categories>
+        <category>DevTools</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>「Express Handlebars 取得父層變數內容」相關筆記</title>
+    <url>/2021/express-handlebars-access-variable-in-parent-scope/</url>
+    <content><![CDATA[<h2 id="問題描述"><a href="#問題描述" class="headerlink" title="問題描述"></a>問題描述</h2><ul>
+<li>情境：在express-handlebars中使用原生的<code>each</code>搭配handlebars-helpers的<code>is</code>進行條件判斷，進而渲染出一組<code>&lt;select&gt;</code><ul>
+<li><code>&lt;select&gt;</code>中的每一個<code>&lt;option&gt;</code>都是一種餐廳類型（舉例：日本料理、酒吧、美式餐廳等）</li>
+<li>（由<code>app.js</code>傳遞給<code>edit.handlebars</code>的變數）<code>categories</code>為餐廳類型的陣列資料，<code>restaurant</code>為物件變數，可透過<code>restaurant.category</code>來取得該餐廳的餐廳類型</li>
+<li>當<code>each</code>迴圈中<code>this</code>的值與<code>restaurant.category</code>一致時，pre-selected該<code>&lt;option&gt;</code><figure class="figure--center"><img src="/2021/express-handlebars-access-variable-in-parent-scope/pre-selected.png" title="select欄位應預設選擇該餐廳的類型"><figcaption><p>select欄位應預設選擇該餐廳的類型</p></figcaption></figure></li>
+</ul>
+</li>
+<li>問題：檢查最終的DOM內容，發現並<strong>沒有</strong>渲染出應該要預先被選擇的<code>&lt;option&gt;</code></li>
+<li>行為不如預期的原始碼：<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// app.js端</span></span><br><span class="line">app.get(<span class="string">&#x27;/restaurants/:id/edit&#x27;</span>, <span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> id = <span class="built_in">Number</span>(req.params.id)</span><br><span class="line">  <span class="keyword">const</span> targetRestaurant = restaurantList.results.find(<span class="function">(<span class="params">restaurant</span>) =&gt;</span> restaurant.id === id)</span><br><span class="line">  <span class="keyword">const</span> categories = []</span><br><span class="line">  restaurantList.results.forEach(<span class="function"><span class="params">restaurant</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (!categories.includes(restaurant.category)) &#123;</span><br><span class="line">      categories.push(restaurant.category)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">  res.render(<span class="string">&#x27;edit&#x27;</span>, &#123; <span class="attr">restaurant</span>: targetRestaurant, categories &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- handlebars端 --&gt;</span></span><br><span class="line">&#123;&#123;#each categories&#125;&#125;</span><br><span class="line">  &#123;&#123;#is this restaurant.category)&#125;&#125;</span><br><span class="line">  <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;&#123;&#123;this&#125;&#125;&quot;</span> <span class="attr">selected</span>&gt;</span>&#123;&#123;this&#125;&#125;<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">  &#123;&#123;else&#125;&#125;</span><br><span class="line">  <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;&#123;&#123;this&#125;&#125;&quot;</span>&gt;</span>&#123;&#123;this&#125;&#125;<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">  &#123;&#123;/is&#125;&#125;</span><br><span class="line">&#123;&#123;/each&#125;&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="環境"><a href="#環境" class="headerlink" title="環境"></a>環境</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">express-handlebars: 5.3.2</span><br><span class="line">handlebars-helpers: 0.10.0</span><br></pre></td></tr></table></figure>
+
+<h2 id="解決方式"><a href="#解決方式" class="headerlink" title="解決方式"></a>解決方式</h2><p>將handlebars端的內容修改如下（<code>restaurant.category</code>加上<code>../</code>）：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- handlebars端 --&gt;</span></span><br><span class="line">&#123;&#123;#each categories&#125;&#125;</span><br><span class="line">  &#123;&#123;#is this ../restaurant.category)&#125;&#125;</span><br><span class="line">  <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;&#123;&#123;this&#125;&#125;&quot;</span> <span class="attr">selected</span>&gt;</span>&#123;&#123;this&#125;&#125;<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">  &#123;&#123;else&#125;&#125;</span><br><span class="line">  <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;&#123;&#123;this&#125;&#125;&quot;</span>&gt;</span>&#123;&#123;this&#125;&#125;<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">  &#123;&#123;/is&#125;&#125;</span><br><span class="line">&#123;&#123;/each&#125;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>參考Handlebars官方文件的說明：</p>
+<blockquote>
+<p>Some helpers like <code>#with</code> and <code>#each</code> allow you to <strong>dive into nested objects</strong>. When you include <code>../</code> segments in your path, Handlebars will change back into the <strong>parent context</strong>.</p>
+</blockquote>
+<p>在巢狀結構中，使用<code>../</code>來取得上一層變數的內容</p>
+<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
+<li><a href="https://handlebarsjs.com/guide/expressions.html#changing-the-context">Handlebars: Changing the context</a></li>
+<li><a href="https://stackoverflow.com/questions/13645084/access-a-variable-outside-the-scope-of-a-handlebars-js-each-loop">Access a variable outside the scope of a Handlebars.js each loop</a></li>
+<li><a href="https://stackoverflow.com/a/12297980/15028185">Access properties of the parent with a Handlebars ‘each’ loop</a></li>
+<li><a href="https://eruditeness.news.blog/2019/08/28/node-js%E5%88%9D%E5%AD%B8%E7%AD%86%E8%A8%9810-%E5%9C%A8express-handlebars%E4%B8%AD%E8%BC%95%E9%AC%86%E5%BB%BA%E7%AB%8B%E5%AE%A2%E8%A3%BDhelperhandlebars-custom-helpers/">Node.js初學筆記10: 在express-handlebars中輕鬆建立客製helper(handlebars custom helpers)</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Express Handlebars</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Alpha Camp「2-3 middleware實作練習」技術記錄</title>
     <url>/2021/express-middleware/</url>
     <content><![CDATA[<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>在本作業中實作的相關功能：</p>
@@ -1146,6 +1146,59 @@ on <a href="https://codepen.io">CodePen</a>.</span>
       <categories>
         <category>JavaScript</category>
         <category>Express</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>「重設表單（form reset）」相關筆記</title>
+    <url>/2021/form-reset/</url>
+    <content><![CDATA[<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>HTML本身即支援兩種重設表單<strong>全部</strong>內容的方法：</p>
+<ul>
+<li>Form <code>reset()</code>：作用在表單物件上（<code>formObject.reset()</code>）</li>
+<li>Input <code>type=&quot;reset&quot;</code>：設置在表單的<code>&lt;input&gt;</code>上，點擊後觸發</li>
+</ul>
+<p>定義重設：將input欄位的值<strong>重置為預設值</strong></p>
+<h2 id="環境"><a href="#環境" class="headerlink" title="環境"></a>環境</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Google Chrome: 90.0.4430.93 (Official Build) (x86_64)</span><br><span class="line">ox: macOS Big Suf Version 11.1</span><br></pre></td></tr></table></figure>
+<h2 id="範例展示"><a href="#範例展示" class="headerlink" title="範例展示"></a>範例展示</h2><p class="codepen" data-height="265" data-theme-id="dark" data-default-tab="html,result" data-user="Charlie7779" data-slug-hash="YzZwRxa" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="form reset">
+  <span>See the Pen <a href="https://codepen.io/Charlie7779/pen/YzZwRxa">
+  form reset</a> by Charlie (<a href="https://codepen.io/Charlie7779">@Charlie7779</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+
+<h2 id="reset"><a href="#reset" class="headerlink" title="reset()"></a><code>reset()</code></h2><ul>
+<li>對<code>formObject</code>使用，即會將該表單所有的input欄位都重設回預設值</li>
+<li><code>formObject</code>：HTML中的<code>&lt;form&gt;</code>物件（The Form object represents an HTML <code>&lt;form&gt;</code> element.），可透過<code>document.querySelector()</code>抓取</li>
+</ul>
+<h3 id="與-lt-button-gt-搭配"><a href="#與-lt-button-gt-搭配" class="headerlink" title="與&lt;button&gt;搭配"></a>與<code>&lt;button&gt;</code>搭配</h3><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- HTML部分 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">class</span>=<span class="string">&quot;first&quot;</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 省略部分內容 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">&quot;resetFirst&quot;</span>&gt;</span>Reset<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// JavaScript部分</span></span><br><span class="line"><span class="built_in">document</span>.querySelector(<span class="string">&quot;#resetFirst&quot;</span>).addEventListener(<span class="string">&quot;click&quot;</span>, <span class="function">(<span class="params">event</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">document</span>.querySelector(<span class="string">&quot;.first&quot;</span>).reset();</span><br><span class="line">  event.preventDefault();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>解說：</p>
+<ul>
+<li>監聽<code>&lt;button&gt;</code>的點擊事件，點擊事件發生後，抓取<code>formObject</code>，套用<code>reset()</code></li>
+<li>因<code>&lt;button&gt;</code>沒有設置任和<code>type</code>內容，故默認為<code>type=&quot;submit&quot;</code>，所以在示範中加上<code>event.preventDefault()</code>來避免送出表單的動作<blockquote>
+<p><a href="https://developer.mozilla.org/en-US/docs/Learn/Forms/Basic_native_form_controls#actual_buttons">MDN</a>: For <code>&lt;button&gt;</code> elements, omitting the type attribute (or an invalid value of type) results in a submit button.</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="type-quot-reset-quot"><a href="#type-quot-reset-quot" class="headerlink" title="type=&quot;reset&quot;"></a><code>type=&quot;reset&quot;</code></h2><h3 id="與-lt-input-gt-搭配"><a href="#與-lt-input-gt-搭配" class="headerlink" title="與&lt;input&gt;搭配"></a>與<code>&lt;input&gt;</code>搭配</h3><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- HTML部分 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">form</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 省略部分內容 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;reset&quot;</span> <span class="attr">value</span>=<span class="string">&quot;Reset by type=<span class="symbol">&amp;quot;</span>reest<span class="symbol">&amp;quot;</span>&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>直接將<code>&lt;input&gt;</code>設置為<code>type=&quot;reset&quot;</code>即可，點擊後即會自動執行「重設表單中所有input欄位內容」的動作</li>
+<li>沒有設定<code>value</code>的話，預設顯示文字<code>Reset</code>；可透過設定<code>value</code>的值來修改顯示在按鈕中的文字</li>
+<li>不需額外設置JavaScript</li>
+</ul>
+<h3 id="與-lt-button-gt-搭配-1"><a href="#與-lt-button-gt-搭配-1" class="headerlink" title="與&lt;button&gt;搭配"></a>與<code>&lt;button&gt;</code>搭配</h3><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- HTML部分 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">form</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 省略部分內容 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">&quot;reset&quot;</span>&gt;</span>Reset<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>效果與設置<code>input type=&quot;reset&quot;</code>相同，點擊後即會重設表單中所有input欄位內容</li>
+<li>不需額外設置JavaScript</li>
+</ul>
+<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
+<li><a href="https://www.w3schools.com/jsref/met_form_reset.asp">W3Schools: Form reset() Method</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/reset">MDN: input type=”reset”</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Learn/Forms/Basic_native_form_controls#actual_buttons">MDN: Basic native form controls – Actual buttons</a></li>
+<li><a href="https://stackoverflow.com/a/9760424/15028185">Quotation marks in HTML attribute values?</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>HTML</category>
       </categories>
   </entry>
   <entry>
@@ -1277,59 +1330,6 @@ on <a href="https://codepen.io">CodePen</a>.</span>
       </categories>
   </entry>
   <entry>
-    <title>「重設表單（form reset）」相關筆記</title>
-    <url>/2021/form-reset/</url>
-    <content><![CDATA[<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>HTML本身即支援兩種重設表單<strong>全部</strong>內容的方法：</p>
-<ul>
-<li>Form <code>reset()</code>：作用在表單物件上（<code>formObject.reset()</code>）</li>
-<li>Input <code>type=&quot;reset&quot;</code>：設置在表單的<code>&lt;input&gt;</code>上，點擊後觸發</li>
-</ul>
-<p>定義重設：將input欄位的值<strong>重置為預設值</strong></p>
-<h2 id="環境"><a href="#環境" class="headerlink" title="環境"></a>環境</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Google Chrome: 90.0.4430.93 (Official Build) (x86_64)</span><br><span class="line">ox: macOS Big Suf Version 11.1</span><br></pre></td></tr></table></figure>
-<h2 id="範例展示"><a href="#範例展示" class="headerlink" title="範例展示"></a>範例展示</h2><p class="codepen" data-height="265" data-theme-id="dark" data-default-tab="html,result" data-user="Charlie7779" data-slug-hash="YzZwRxa" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="form reset">
-  <span>See the Pen <a href="https://codepen.io/Charlie7779/pen/YzZwRxa">
-  form reset</a> by Charlie (<a href="https://codepen.io/Charlie7779">@Charlie7779</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
-</p>
-<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
-
-<h2 id="reset"><a href="#reset" class="headerlink" title="reset()"></a><code>reset()</code></h2><ul>
-<li>對<code>formObject</code>使用，即會將該表單所有的input欄位都重設回預設值</li>
-<li><code>formObject</code>：HTML中的<code>&lt;form&gt;</code>物件（The Form object represents an HTML <code>&lt;form&gt;</code> element.），可透過<code>document.querySelector()</code>抓取</li>
-</ul>
-<h3 id="與-lt-button-gt-搭配"><a href="#與-lt-button-gt-搭配" class="headerlink" title="與&lt;button&gt;搭配"></a>與<code>&lt;button&gt;</code>搭配</h3><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- HTML部分 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">class</span>=<span class="string">&quot;first&quot;</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 省略部分內容 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">&quot;resetFirst&quot;</span>&gt;</span>Reset<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// JavaScript部分</span></span><br><span class="line"><span class="built_in">document</span>.querySelector(<span class="string">&quot;#resetFirst&quot;</span>).addEventListener(<span class="string">&quot;click&quot;</span>, <span class="function">(<span class="params">event</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">document</span>.querySelector(<span class="string">&quot;.first&quot;</span>).reset();</span><br><span class="line">  event.preventDefault();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>解說：</p>
-<ul>
-<li>監聽<code>&lt;button&gt;</code>的點擊事件，點擊事件發生後，抓取<code>formObject</code>，套用<code>reset()</code></li>
-<li>因<code>&lt;button&gt;</code>沒有設置任和<code>type</code>內容，故默認為<code>type=&quot;submit&quot;</code>，所以在示範中加上<code>event.preventDefault()</code>來避免送出表單的動作<blockquote>
-<p><a href="https://developer.mozilla.org/en-US/docs/Learn/Forms/Basic_native_form_controls#actual_buttons">MDN</a>: For <code>&lt;button&gt;</code> elements, omitting the type attribute (or an invalid value of type) results in a submit button.</p>
-</blockquote>
-</li>
-</ul>
-<h2 id="type-quot-reset-quot"><a href="#type-quot-reset-quot" class="headerlink" title="type=&quot;reset&quot;"></a><code>type=&quot;reset&quot;</code></h2><h3 id="與-lt-input-gt-搭配"><a href="#與-lt-input-gt-搭配" class="headerlink" title="與&lt;input&gt;搭配"></a>與<code>&lt;input&gt;</code>搭配</h3><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- HTML部分 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">form</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 省略部分內容 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;reset&quot;</span> <span class="attr">value</span>=<span class="string">&quot;Reset by type=<span class="symbol">&amp;quot;</span>reest<span class="symbol">&amp;quot;</span>&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>直接將<code>&lt;input&gt;</code>設置為<code>type=&quot;reset&quot;</code>即可，點擊後即會自動執行「重設表單中所有input欄位內容」的動作</li>
-<li>沒有設定<code>value</code>的話，預設顯示文字<code>Reset</code>；可透過設定<code>value</code>的值來修改顯示在按鈕中的文字</li>
-<li>不需額外設置JavaScript</li>
-</ul>
-<h3 id="與-lt-button-gt-搭配-1"><a href="#與-lt-button-gt-搭配-1" class="headerlink" title="與&lt;button&gt;搭配"></a>與<code>&lt;button&gt;</code>搭配</h3><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- HTML部分 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">form</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 省略部分內容 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">&quot;reset&quot;</span>&gt;</span>Reset<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>效果與設置<code>input type=&quot;reset&quot;</code>相同，點擊後即會重設表單中所有input欄位內容</li>
-<li>不需額外設置JavaScript</li>
-</ul>
-<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
-<li><a href="https://www.w3schools.com/jsref/met_form_reset.asp">W3Schools: Form reset() Method</a></li>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/reset">MDN: input type=”reset”</a></li>
-<li><a href="https://developer.mozilla.org/en-US/docs/Learn/Forms/Basic_native_form_controls#actual_buttons">MDN: Basic native form controls – Actual buttons</a></li>
-<li><a href="https://stackoverflow.com/a/9760424/15028185">Quotation marks in HTML attribute values?</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>HTML</category>
-      </categories>
-  </entry>
-  <entry>
     <title>「git stop tracking files」相關筆記</title>
     <url>/2021/git-remove-file-from-tracking/</url>
     <content><![CDATA[<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><ul>
@@ -1410,6 +1410,29 @@ on <a href="https://codepen.io">CodePen</a>.</span>
       </categories>
   </entry>
   <entry>
+    <title>使用GitHub Actions自動產生sitemap.xml</title>
+    <url>/2021/github-actions-sitemap/</url>
+    <content><![CDATA[<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>使用GitHub Actions執行腳本，在每次透過<code>git push</code>更新網頁內容後自動產生sitemap.xml</p>
+<h2 id="版本與環境"><a href="#版本與環境" class="headerlink" title="版本與環境"></a>版本與環境</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo: 5.3.0</span><br><span class="line">hexo-cli: 4.2.0</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></table></figure>
+
+<h2 id="過程記錄"><a href="#過程記錄" class="headerlink" title="過程記錄"></a>過程記錄</h2><ol>
+<li>在GitHub repository根目錄中建立資料夾<code>.github/workflows</code>，並在其中建立<code>.yml</code>格式的檔案來存放腳本</li>
+<li>腳本內容如下：<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">Generate</span> <span class="string">xml</span> <span class="string">sitemap</span></span><br><span class="line"><span class="comment"># name會出現在Action標籤點開後，左側workflows的列表中</span></span><br><span class="line"></span><br><span class="line"><span class="attr">on:</span></span><br><span class="line">  <span class="attr">push:</span></span><br><span class="line">    <span class="attr">branches:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">main</span> </span><br><span class="line">      <span class="comment"># git push到main分支的時候，啟動以下腳本</span></span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line">  <span class="attr">sitemap_job:</span></span><br><span class="line">    <span class="attr">runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">Generate</span> <span class="string">a</span> <span class="string">sitemap</span></span><br><span class="line">    <span class="attr">steps:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Checkout</span> <span class="string">the</span> <span class="string">repo</span></span><br><span class="line">      <span class="attr">uses:</span> <span class="string">actions/checkout@v2</span></span><br><span class="line">      <span class="attr">with:</span></span><br><span class="line">        <span class="attr">fetch-depth:</span> <span class="number">0</span> </span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Generate</span> <span class="string">new</span> <span class="string">sitemap</span></span><br><span class="line">      <span class="attr">id:</span> <span class="string">sitemap</span></span><br><span class="line">      <span class="attr">uses:</span> <span class="string">cicirello/generate-sitemap@v1.6.1</span></span><br><span class="line">      <span class="attr">with:</span></span><br><span class="line">        <span class="attr">base-url-path:</span> <span class="string">https://tzynwang.github.io/action-practice/</span></span><br><span class="line">        <span class="comment"># 參考cicirello/generate-sitemap的文件，將base-url-path的值設定為要產生sitemap的URL</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Push</span> <span class="string">sitemap</span> <span class="string">to</span> <span class="string">repository</span></span><br><span class="line">    <span class="comment"># 根據cicirello/generate-sitemap文件的說明，使用者需另找方法處理透過腳本產生的sitemap.xml</span></span><br><span class="line">    <span class="comment"># 故追加一段git腳本內容，把方才在GitHub Actions VM產生出來的sitemap透過git push放到repository中</span></span><br><span class="line">      <span class="attr">run:</span> <span class="string">|</span></span><br><span class="line">        <span class="string">git</span> <span class="string">config</span> <span class="string">--global</span> <span class="string">user.name</span> <span class="string">&quot;tzyn (GitHub Actions sitemap gen)&quot;</span></span><br><span class="line">        <span class="string">git</span> <span class="string">config</span> <span class="string">--global</span> <span class="string">user.email</span> <span class="string">&quot;tzyn.wang@gmail.com&quot;</span></span><br><span class="line">        <span class="string">git</span> <span class="string">add</span> <span class="string">sitemap.xml</span></span><br><span class="line">        <span class="string">git</span> <span class="string">commit</span> <span class="string">-m</span> <span class="string">&quot;add sitemap.xml&quot;</span></span><br><span class="line">        <span class="string">git</span> <span class="string">push</span></span><br></pre></td></tr></table></figure></li>
+<li>在本機執行<code>git push</code>將commit內容推到GitHub上</li>
+<li>進入repository的Actions標籤，確認腳本有在執行</li>
+<li>執行完成，確認sitemap.xml也有被加到repository中</li>
+<li>在本機執行<code>git pull</code>將新產生的sitemap.xml拉本機資料夾</li>
+</ol>
+<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
+<li><a href="https://github.com/cicirello/generate-sitemap#generate-sitemap">cicirello/generate-sitemap</a></li>
+<li><a href="https://docs.github.com/en/actions/quickstart">Quickstart for GitHub Actions</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>git</category>
+      </categories>
+  </entry>
+  <entry>
     <title>自主練習專案「grid-template-areas generator」技術記錄</title>
     <url>/2021/grid-template-areas-generator-review/</url>
     <content><![CDATA[<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>微型專案「grid-template-areas generator」是為了不想要手動輸入多種grid-template-areas設定的產物；輸入column與row的始末後，按下generate按鈕即可產生能直接使用的grid-template-areas設定，並提供一鍵複製的功能。</p>
@@ -1482,29 +1505,6 @@ on <a href="https://codepen.io">CodePen</a>.</span>
       <tags>
         <tag>Side Project</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>使用GitHub Actions自動產生sitemap.xml</title>
-    <url>/2021/github-actions-sitemap/</url>
-    <content><![CDATA[<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>使用GitHub Actions執行腳本，在每次透過<code>git push</code>更新網頁內容後自動產生sitemap.xml</p>
-<h2 id="版本與環境"><a href="#版本與環境" class="headerlink" title="版本與環境"></a>版本與環境</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo: 5.3.0</span><br><span class="line">hexo-cli: 4.2.0</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></table></figure>
-
-<h2 id="過程記錄"><a href="#過程記錄" class="headerlink" title="過程記錄"></a>過程記錄</h2><ol>
-<li>在GitHub repository根目錄中建立資料夾<code>.github/workflows</code>，並在其中建立<code>.yml</code>格式的檔案來存放腳本</li>
-<li>腳本內容如下：<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">Generate</span> <span class="string">xml</span> <span class="string">sitemap</span></span><br><span class="line"><span class="comment"># name會出現在Action標籤點開後，左側workflows的列表中</span></span><br><span class="line"></span><br><span class="line"><span class="attr">on:</span></span><br><span class="line">  <span class="attr">push:</span></span><br><span class="line">    <span class="attr">branches:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">main</span> </span><br><span class="line">      <span class="comment"># git push到main分支的時候，啟動以下腳本</span></span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line">  <span class="attr">sitemap_job:</span></span><br><span class="line">    <span class="attr">runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">Generate</span> <span class="string">a</span> <span class="string">sitemap</span></span><br><span class="line">    <span class="attr">steps:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Checkout</span> <span class="string">the</span> <span class="string">repo</span></span><br><span class="line">      <span class="attr">uses:</span> <span class="string">actions/checkout@v2</span></span><br><span class="line">      <span class="attr">with:</span></span><br><span class="line">        <span class="attr">fetch-depth:</span> <span class="number">0</span> </span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Generate</span> <span class="string">new</span> <span class="string">sitemap</span></span><br><span class="line">      <span class="attr">id:</span> <span class="string">sitemap</span></span><br><span class="line">      <span class="attr">uses:</span> <span class="string">cicirello/generate-sitemap@v1.6.1</span></span><br><span class="line">      <span class="attr">with:</span></span><br><span class="line">        <span class="attr">base-url-path:</span> <span class="string">https://tzynwang.github.io/action-practice/</span></span><br><span class="line">        <span class="comment"># 參考cicirello/generate-sitemap的文件，將base-url-path的值設定為要產生sitemap的URL</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Push</span> <span class="string">sitemap</span> <span class="string">to</span> <span class="string">repository</span></span><br><span class="line">    <span class="comment"># 根據cicirello/generate-sitemap文件的說明，使用者需另找方法處理透過腳本產生的sitemap.xml</span></span><br><span class="line">    <span class="comment"># 故追加一段git腳本內容，把方才在GitHub Actions VM產生出來的sitemap透過git push放到repository中</span></span><br><span class="line">      <span class="attr">run:</span> <span class="string">|</span></span><br><span class="line">        <span class="string">git</span> <span class="string">config</span> <span class="string">--global</span> <span class="string">user.name</span> <span class="string">&quot;tzyn (GitHub Actions sitemap gen)&quot;</span></span><br><span class="line">        <span class="string">git</span> <span class="string">config</span> <span class="string">--global</span> <span class="string">user.email</span> <span class="string">&quot;tzyn.wang@gmail.com&quot;</span></span><br><span class="line">        <span class="string">git</span> <span class="string">add</span> <span class="string">sitemap.xml</span></span><br><span class="line">        <span class="string">git</span> <span class="string">commit</span> <span class="string">-m</span> <span class="string">&quot;add sitemap.xml&quot;</span></span><br><span class="line">        <span class="string">git</span> <span class="string">push</span></span><br></pre></td></tr></table></figure></li>
-<li>在本機執行<code>git push</code>將commit內容推到GitHub上</li>
-<li>進入repository的Actions標籤，確認腳本有在執行</li>
-<li>執行完成，確認sitemap.xml也有被加到repository中</li>
-<li>在本機執行<code>git pull</code>將新產生的sitemap.xml拉本機資料夾</li>
-</ol>
-<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
-<li><a href="https://github.com/cicirello/generate-sitemap#generate-sitemap">cicirello/generate-sitemap</a></li>
-<li><a href="https://docs.github.com/en/actions/quickstart">Quickstart for GitHub Actions</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>git</category>
-      </categories>
   </entry>
   <entry>
     <title>Submit to Google Search Console, SEO settings</title>
@@ -1608,6 +1608,51 @@ on <a href="https://codepen.io">CodePen</a>.</span>
       </categories>
   </entry>
   <entry>
+    <title>Contribution workflow note&amp;#58; document update</title>
+    <url>/2021/hexo-contribution-workflow/</url>
+    <content><![CDATA[<p>This a note for participating hexo’s contribution (for improving the documentation in English and traditional Chinese).<br>參與了hexo說明文件的改善協作，記錄一下整個流程。<br>不過pr因為提出的改善建議已經過時（<a href="https://github.com/hexojs/hexo/issues/4267#issuecomment-778646141">hexo 4.2.1已支援Noje.js 14</a>）所以並沒有被接受 🤣</p>
+<h2 id="Preparing-works"><a href="#Preparing-works" class="headerlink" title="Preparing works"></a>Preparing works</h2><ul>
+<li>Read the <a href="https://hexo.io/docs/contributing">hexo’s official guide for contributing</a></li>
+<li>Understand what is “Fork” in git workflow: <a href="https://docs.github.com/en/github/getting-started-with-github/fork-a-repo">GitHub Docs: Fork a repo</a></li>
+<li>Understand how to create a branch in CLI: <a href="https://www.datree.io/resources/git-create-branch">Git create branch [a Git commands tutorial]</a></li>
+</ul>
+<h2 id="Environment"><a href="#Environment" class="headerlink" title="Environment"></a>Environment</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo: 5.3.0</span><br><span class="line">hexo-cli: 4.2.0</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></table></figure>
+
+<h2 id="Workflow"><a href="#Workflow" class="headerlink" title="Workflow"></a>Workflow</h2><ol>
+<li>Fork <a href="https://github.com/hexojs/hexo">hexojs/site</a><br><img src="/2021/hexo-contribution-workflow/fork-hexo-site.png" alt="Click &quot;Fork&quot; button"></li>
+<li>Open cmd.exe, move to <code>C:\Projects\hexo_contributing</code> by entering <code>cd C:\Projects\hexo_contributing</code> (since I want to store the hexojs/site repo in this location on my computer).</li>
+<li>Enter <code>git init</code> to <a href="https://git-scm.com/docs/git-init">create a empty Git repository</a> in this folder.</li>
+<li>Follow the instruction on hexo’s contribution document:<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;tzynwang&#x2F;site.git</span><br><span class="line">cd site</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure></li>
+<li>Dive into the <code>\site\source</code> folder. Update the contents in English and traditional Chinese documents</li>
+<li>Run <code>hexo server</code> to have a live previwing, checking the pages I’d updated and make sure nothing was mess-up</li>
+<li>Create a branch call “update-node-js-version-suggestion” by entering <code>git checkout -b update-node-js-version-suggestion</code> in cmd.exe</li>
+<li>Push the modification from local to GitHub by <code>git push https://github.com/tzynwang/site.git update-node-js-version-suggestion</code></li>
+<li>Create a pull request on GitHub page, describe what changes I’d applied to the documents.</li>
+</ol>
+<h2 id="Result"><a href="#Result" class="headerlink" title="Result"></a>Result</h2><p><a href="https://github.com/hexojs/hexo/issues/4267#issuecomment-778646141">Receive a comment</a> which indicated the improvement is out of date (my bad), thus remove the pr from GitHub. Here’s the flow:</p>
+<ol>
+<li>Click the <a href="https://github.com/hexojs/hexo/pulls">“Pull requests” tab in hexojs/site</a>, click the pr I’d sent<br><img src="/2021/hexo-contribution-workflow/close-pr-00.png" alt="Navigate to the Pull request tab in hexojs/site repository"></li>
+<li>Scroll to the page bottom, add the comment to describe the reason of closing the pr. Click the button “Close with comment”<br><img src="/2021/hexo-contribution-workflow/close-pr-01.png" alt="Comment the reason for closing the pull-request before closing it"></li>
+<li>Click the button “Delete branch” (since it has no useage now)<br><img src="/2021/hexo-contribution-workflow/close-pr-02.png" alt="Delete the branch from GitHub repository"></li>
+<li>The branch has been deleted<br><img src="/2021/hexo-contribution-workflow/close-pr-03.png" alt="The screenshot after deleting a branch"><br>Done 😌</li>
+</ol>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p>About how to use indicator characters (<code>:</code>) in yaml file and bracket (<code>[]</code>) in markdown file:</p>
+<ul>
+<li><a href="https://riptutorial.com/yaml/example/25838/escaping-characters">yaml Escaping Characters</a></li>
+<li><a href="https://stackoverflow.com/a/19086251/15028185">How to escape indicator characters (i.e. : or - ) in YAML</a></li>
+<li><a href="https://stackoverflow.com/a/43011868/15028185">How to escape backslash bracket ([) in Markdown?</a></li>
+</ul>
+<p>About cancel, delete, remove a GitHub pull request:</p>
+<ul>
+<li><a href="https://stackoverflow.com/a/10142727/15028185">How to cancel a pull request on github?</a></li>
+<li><a href="https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/closing-a-pull-request">GitHub Docs: Closing a pull request</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>hexo</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Deploy to GitHub Page</title>
     <url>/2021/hexo-deploy/</url>
     <content><![CDATA[<h2 id="Summary-of-this-post"><a href="#Summary-of-this-post" class="headerlink" title="Summary of this post"></a>Summary of this post</h2><p>This post describes my whole workflow about deploying hexo blog from local to GitHub Page 🛫<br>記錄了自己把hexo blog從本機部屬到GitHub Pages的過程，寫得比hexo官方文件詳細一些。<br>沒有對官方文件提出improvement是因為這些內容可能太繁瑣了 🤣</p>
@@ -1654,44 +1699,16 @@ The configuration in <code>_config.yml</code> file should be set like this:<figu
       </categories>
   </entry>
   <entry>
-    <title>Contribution workflow note&amp;#58; document update</title>
-    <url>/2021/hexo-contribution-workflow/</url>
-    <content><![CDATA[<p>This a note for participating hexo’s contribution (for improving the documentation in English and traditional Chinese).<br>參與了hexo說明文件的改善協作，記錄一下整個流程。<br>不過pr因為提出的改善建議已經過時（<a href="https://github.com/hexojs/hexo/issues/4267#issuecomment-778646141">hexo 4.2.1已支援Noje.js 14</a>）所以並沒有被接受 🤣</p>
-<h2 id="Preparing-works"><a href="#Preparing-works" class="headerlink" title="Preparing works"></a>Preparing works</h2><ul>
-<li>Read the <a href="https://hexo.io/docs/contributing">hexo’s official guide for contributing</a></li>
-<li>Understand what is “Fork” in git workflow: <a href="https://docs.github.com/en/github/getting-started-with-github/fork-a-repo">GitHub Docs: Fork a repo</a></li>
-<li>Understand how to create a branch in CLI: <a href="https://www.datree.io/resources/git-create-branch">Git create branch [a Git commands tutorial]</a></li>
-</ul>
+    <title>Display draft post</title>
+    <url>/2021/hexo-drafts/</url>
+    <content><![CDATA[<p>To view the draft posts (in the <code>source\_drafts</code> folder) on localhost:4000, just run <code>hexo server --draft</code>.<br>Set <code>render_drafts</code> as <code>true</code> in <code>_config.yml</code> will make <code>hexo generate</code> generate the posts in <code>source\_drafts</code> into <code>public</code> folder, which means the draft posts will be deployed to GitHub page by <code>hexo deploy</code>.<br>No needs to set <code>render_drafts</code> as <code>true</code> to view the draft posts on localhost, running <code>hexo server --draft</code> is enough.</p>
+<p><code>_config.yml</code>中的<code>render_drafts</code>設定為<code>true</code>的話，執行<code>hexo generate</code>時，資料夾<code>source\_drafts</code>內的檔案也會被生成到<code>public</code>資料夾中。<br>在這個情況下執行<code>hexo deploy</code>就會把草稿文章推到GitHub Page上。</p>
+<p>只是想要在localhost:4000上瀏覽草稿的話，執行<code>hexo server --draft</code>即可，不用修改<code>render_drafts</code>的值。<br>hexo官方文件對<code>render_drafts</code>的說明比較簡短，一開始以為設定成<code>true</code>只是代表<code>hexo server</code>會渲染草稿……😇</p>
 <h2 id="Environment"><a href="#Environment" class="headerlink" title="Environment"></a>Environment</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo: 5.3.0</span><br><span class="line">hexo-cli: 4.2.0</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></table></figure>
 
-<h2 id="Workflow"><a href="#Workflow" class="headerlink" title="Workflow"></a>Workflow</h2><ol>
-<li>Fork <a href="https://github.com/hexojs/hexo">hexojs/site</a><br><img src="/2021/hexo-contribution-workflow/fork-hexo-site.png" alt="Click &quot;Fork&quot; button"></li>
-<li>Open cmd.exe, move to <code>C:\Projects\hexo_contributing</code> by entering <code>cd C:\Projects\hexo_contributing</code> (since I want to store the hexojs/site repo in this location on my computer).</li>
-<li>Enter <code>git init</code> to <a href="https://git-scm.com/docs/git-init">create a empty Git repository</a> in this folder.</li>
-<li>Follow the instruction on hexo’s contribution document:<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;tzynwang&#x2F;site.git</span><br><span class="line">cd site</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure></li>
-<li>Dive into the <code>\site\source</code> folder. Update the contents in English and traditional Chinese documents</li>
-<li>Run <code>hexo server</code> to have a live previwing, checking the pages I’d updated and make sure nothing was mess-up</li>
-<li>Create a branch call “update-node-js-version-suggestion” by entering <code>git checkout -b update-node-js-version-suggestion</code> in cmd.exe</li>
-<li>Push the modification from local to GitHub by <code>git push https://github.com/tzynwang/site.git update-node-js-version-suggestion</code></li>
-<li>Create a pull request on GitHub page, describe what changes I’d applied to the documents.</li>
-</ol>
-<h2 id="Result"><a href="#Result" class="headerlink" title="Result"></a>Result</h2><p><a href="https://github.com/hexojs/hexo/issues/4267#issuecomment-778646141">Receive a comment</a> which indicated the improvement is out of date (my bad), thus remove the pr from GitHub. Here’s the flow:</p>
-<ol>
-<li>Click the <a href="https://github.com/hexojs/hexo/pulls">“Pull requests” tab in hexojs/site</a>, click the pr I’d sent<br><img src="/2021/hexo-contribution-workflow/close-pr-00.png" alt="Navigate to the Pull request tab in hexojs/site repository"></li>
-<li>Scroll to the page bottom, add the comment to describe the reason of closing the pr. Click the button “Close with comment”<br><img src="/2021/hexo-contribution-workflow/close-pr-01.png" alt="Comment the reason for closing the pull-request before closing it"></li>
-<li>Click the button “Delete branch” (since it has no useage now)<br><img src="/2021/hexo-contribution-workflow/close-pr-02.png" alt="Delete the branch from GitHub repository"></li>
-<li>The branch has been deleted<br><img src="/2021/hexo-contribution-workflow/close-pr-03.png" alt="The screenshot after deleting a branch"><br>Done 😌</li>
-</ol>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p>About how to use indicator characters (<code>:</code>) in yaml file and bracket (<code>[]</code>) in markdown file:</p>
-<ul>
-<li><a href="https://riptutorial.com/yaml/example/25838/escaping-characters">yaml Escaping Characters</a></li>
-<li><a href="https://stackoverflow.com/a/19086251/15028185">How to escape indicator characters (i.e. : or - ) in YAML</a></li>
-<li><a href="https://stackoverflow.com/a/43011868/15028185">How to escape backslash bracket ([) in Markdown?</a></li>
-</ul>
-<p>About cancel, delete, remove a GitHub pull request:</p>
-<ul>
-<li><a href="https://stackoverflow.com/a/10142727/15028185">How to cancel a pull request on github?</a></li>
-<li><a href="https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/closing-a-pull-request">GitHub Docs: Closing a pull request</a></li>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
+<li><a href="https://hexo.io/docs/commands#Display-drafts">hexo: Commands/Display drafts</a></li>
+<li><a href="https://hexo.io/docs/configuration#Writing">hexo: Configuration/Writing</a></li>
 </ul>
 ]]></content>
       <categories>
@@ -1741,17 +1758,36 @@ The configuration in <code>_config.yml</code> file should be set like this:<figu
       </categories>
   </entry>
   <entry>
-    <title>Display draft post</title>
-    <url>/2021/hexo-drafts/</url>
-    <content><![CDATA[<p>To view the draft posts (in the <code>source\_drafts</code> folder) on localhost:4000, just run <code>hexo server --draft</code>.<br>Set <code>render_drafts</code> as <code>true</code> in <code>_config.yml</code> will make <code>hexo generate</code> generate the posts in <code>source\_drafts</code> into <code>public</code> folder, which means the draft posts will be deployed to GitHub page by <code>hexo deploy</code>.<br>No needs to set <code>render_drafts</code> as <code>true</code> to view the draft posts on localhost, running <code>hexo server --draft</code> is enough.</p>
-<p><code>_config.yml</code>中的<code>render_drafts</code>設定為<code>true</code>的話，執行<code>hexo generate</code>時，資料夾<code>source\_drafts</code>內的檔案也會被生成到<code>public</code>資料夾中。<br>在這個情況下執行<code>hexo deploy</code>就會把草稿文章推到GitHub Page上。</p>
-<p>只是想要在localhost:4000上瀏覽草稿的話，執行<code>hexo server --draft</code>即可，不用修改<code>render_drafts</code>的值。<br>hexo官方文件對<code>render_drafts</code>的說明比較簡短，一開始以為設定成<code>true</code>只是代表<code>hexo server</code>會渲染草稿……😇</p>
-<h2 id="Environment"><a href="#Environment" class="headerlink" title="Environment"></a>Environment</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo: 5.3.0</span><br><span class="line">hexo-cli: 4.2.0</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></table></figure>
+    <title>Plugin&amp;#58; hexo-tag-figure</title>
+    <url>/2021/hexo-tag-figure/</url>
+    <content><![CDATA[<h2 id="Summary-of-this-post"><a href="#Summary-of-this-post" class="headerlink" title="Summary of this post"></a>Summary of this post</h2><p>This post is my notes for the following topics:</p>
+<ol>
+<li>hexo plugin: <a href="https://github.com/chawyehsu/hexo-tag-figure">hexo-tag-figure</a></li>
+<li>adding additional CSS style settings to NexT theme (by configuring <code>custom_file_path</code> in the file <code>_config.next.yml</code>)</li>
+</ol>
+<p>此篇主要是記錄<code>hexo-tag-figure</code>的使用心得，以及如何使用<code>_config.next.yml</code>中的<code>custom_file_path</code>參數設定來增加自定義CSS設定內容的相關筆記。</p>
+<h2 id="Environment"><a href="#Environment" class="headerlink" title="Environment"></a>Environment</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo-tag-figure: 0.4.1</span><br><span class="line">NexT: 8.2.1</span><br><span class="line">hexo: 5.3.0</span><br><span class="line">hexo-cli: 4.2.0</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></table></figure>
 
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
-<li><a href="https://hexo.io/docs/commands#Display-drafts">hexo: Commands/Display drafts</a></li>
-<li><a href="https://hexo.io/docs/configuration#Writing">hexo: Configuration/Writing</a></li>
+<h2 id="hexo-tag-figure"><a href="#hexo-tag-figure" class="headerlink" title="hexo-tag-figure"></a>hexo-tag-figure</h2><h3 id="GitHub"><a href="#GitHub" class="headerlink" title="GitHub"></a>GitHub</h3><p><a href="https://github.com/chawyehsu/hexo-tag-figure">hexo-tag-figure</a></p>
+<h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="figure--center"><img src="/2021/hexo-tag-figure/book-cover.jpg" width="300" title="Confessions of a Young Novelist " alt="Book cover of Confessions of a Young Novelist"><figcaption><p>Confessions of a Young Novelist </p></figcaption></figure>
+
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;% figure figure--center 2021&#x2F;hexo-tag-figure&#x2F;book-cover.jpg 300 &quot;Confessions of a Young Novelist &#39;Book cover of Confessions of a Young Novelist&#39;&quot; %&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>figure--center</code>: the <code>class name</code> of the figure element.<br>  This is the <strong>required</strong> argument, though in the end I didn’t apply customized CSS style to this class, this argument can not be skipped.</li>
+<li><code>hexo-tag-figure/book-cover.jpg</code>: the image path.<br>  Check the source code to find the path logic:  <figure class="figure--center"><img src="/2021/hexo-tag-figure/image-path.png" title="Check the image path by DevTools " alt="Screenshot of checking the image path through DevTools"><figcaption><p>Check the image path by DevTools </p></figcaption></figure>
+  (update on Feb 16 2021: I change the <code>permalink</code> setting from <code>:year/:month/:day/:title/</code> to <code>:title/</code>, thus the image path needs to be updated too. The image path in the screenshot includes <code>:year/:month/:day/:title/</code> since I previously set the <code>permalink</code> in this form 😅)<br>  Aad the permalink <code>:title/</code> as prefix to load the image.<br>  文件沒有特別針對image path做說明，從DevTools觀察了一下其他還沒使用hexo-tag-figure插入的圖片路徑，測試後發現image path要加上permalink。</li>
+<li><code>300</code>: the image width. I skip the height setting.</li>
+<li><code>Confessions of a Young Novelist</code>: the title text that is placed in <code>figcaption</code> element.<br>  Add customized font color and font size to this element.</li>
+<li><code>Book cover of Confessions of a Young Novelist</code>: the alt text for this image.</li>
 </ul>
+<h3 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h3><ol>
+<li>According to <a href="https://theme-next.js.org/docs/advanced-settings/custom-files.html">NexT’s document</a>, extra CSS settings can be added by enable the <code>custom_file_path</code> in theme config file (in my case the <code>_config.next.yml</code> in root folder). This is my configuration:<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Define custom file paths.</span></span><br><span class="line"><span class="comment"># Create your custom files in site directory `source/_data` and uncomment needed files below.</span></span><br><span class="line"><span class="attr">custom_file_path:</span></span><br><span class="line">  <span class="comment">#head: source/_data/head.njk</span></span><br><span class="line">  <span class="comment">#header: source/_data/header.njk</span></span><br><span class="line">  <span class="comment">#sidebar: source/_data/sidebar.njk</span></span><br><span class="line">  <span class="comment">#postMeta: source/_data/post-meta.njk</span></span><br><span class="line">  <span class="comment">#postBodyEnd: source/_data/post-body-end.njk</span></span><br><span class="line">  <span class="comment">#footer: source/_data/footer.njk</span></span><br><span class="line">  <span class="comment">#bodyEnd: source/_data/body-end.njk</span></span><br><span class="line">  <span class="comment">#variable: source/_data/variables.styl</span></span><br><span class="line">  <span class="comment">#mixin: source/_data/mixins.styl</span></span><br><span class="line">  <span class="attr">style:</span> <span class="string">source/_data/styles.styl</span> <span class="comment"># Enable this option by removing the &#x27;#&#x27; in the beginning of the line</span></span><br></pre></td></tr></table></figure></li>
+<li>Add the <code>styles.styl</code> file in the path <code>C:\Projects\hexo_blog\source\_data</code></li>
+<li>Add CSS settings for <code>figcaption</code> element, remove each image’s bottom margin by setting the <code>margin-button</code> to 0px. With <code>margin-button</code> set as 0px, the text underneath (the <code>figcaption</code>) will be closer to the image.<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">figcaption</span> &#123;</span><br><span class="line">    <span class="attribute">color</span>: <span class="number">#999</span>;</span><br><span class="line">    <span class="attribute">text-align</span>: center;</span><br><span class="line">    font-size: 14px; # Set to 14px to make the font size same as the text in table of content</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.post-body</span> <span class="selector-tag">img</span> &#123;</span><br><span class="line">    <span class="attribute">margin-bottom</span>: <span class="number">0px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="figure--center"><img src="/2021/hexo-tag-figure/margin-bottom-20px.jpg" title="margin-bottom 20px"><figcaption><p>margin-bottom 20px</p></figcaption></figure>
+<figure class="figure--center"><img src="/2021/hexo-tag-figure/margin-bottom-0px.jpg" title="margin-bottom 0px"><figcaption><p>margin-bottom 0px</p></figcaption></figure></li>
+<li>Save the configuration and run <code>hexo generate</code> and <code>hexo deploy</code>, done ☕</li>
+</ol>
 ]]></content>
       <categories>
         <category>hexo</category>
@@ -1887,42 +1923,6 @@ The configuration in <code>_config.yml</code> file should be set like this:<figu
 <li><a href="https://en.wikipedia.org/wiki/JPEG_File_Interchange_Format">Wikipedia: JPEG File Interchange Format</a></li>
 </ul>
 ]]></content>
-  </entry>
-  <entry>
-    <title>Plugin&amp;#58; hexo-tag-figure</title>
-    <url>/2021/hexo-tag-figure/</url>
-    <content><![CDATA[<h2 id="Summary-of-this-post"><a href="#Summary-of-this-post" class="headerlink" title="Summary of this post"></a>Summary of this post</h2><p>This post is my notes for the following topics:</p>
-<ol>
-<li>hexo plugin: <a href="https://github.com/chawyehsu/hexo-tag-figure">hexo-tag-figure</a></li>
-<li>adding additional CSS style settings to NexT theme (by configuring <code>custom_file_path</code> in the file <code>_config.next.yml</code>)</li>
-</ol>
-<p>此篇主要是記錄<code>hexo-tag-figure</code>的使用心得，以及如何使用<code>_config.next.yml</code>中的<code>custom_file_path</code>參數設定來增加自定義CSS設定內容的相關筆記。</p>
-<h2 id="Environment"><a href="#Environment" class="headerlink" title="Environment"></a>Environment</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo-tag-figure: 0.4.1</span><br><span class="line">NexT: 8.2.1</span><br><span class="line">hexo: 5.3.0</span><br><span class="line">hexo-cli: 4.2.0</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></table></figure>
-
-<h2 id="hexo-tag-figure"><a href="#hexo-tag-figure" class="headerlink" title="hexo-tag-figure"></a>hexo-tag-figure</h2><h3 id="GitHub"><a href="#GitHub" class="headerlink" title="GitHub"></a>GitHub</h3><p><a href="https://github.com/chawyehsu/hexo-tag-figure">hexo-tag-figure</a></p>
-<h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="figure--center"><img src="/2021/hexo-tag-figure/book-cover.jpg" width="300" title="Confessions of a Young Novelist " alt="Book cover of Confessions of a Young Novelist"><figcaption><p>Confessions of a Young Novelist </p></figcaption></figure>
-
-<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;% figure figure--center 2021&#x2F;hexo-tag-figure&#x2F;book-cover.jpg 300 &quot;Confessions of a Young Novelist &#39;Book cover of Confessions of a Young Novelist&#39;&quot; %&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li><code>figure--center</code>: the <code>class name</code> of the figure element.<br>  This is the <strong>required</strong> argument, though in the end I didn’t apply customized CSS style to this class, this argument can not be skipped.</li>
-<li><code>hexo-tag-figure/book-cover.jpg</code>: the image path.<br>  Check the source code to find the path logic:  <figure class="figure--center"><img src="/2021/hexo-tag-figure/image-path.png" title="Check the image path by DevTools " alt="Screenshot of checking the image path through DevTools"><figcaption><p>Check the image path by DevTools </p></figcaption></figure>
-  (update on Feb 16 2021: I change the <code>permalink</code> setting from <code>:year/:month/:day/:title/</code> to <code>:title/</code>, thus the image path needs to be updated too. The image path in the screenshot includes <code>:year/:month/:day/:title/</code> since I previously set the <code>permalink</code> in this form 😅)<br>  Aad the permalink <code>:title/</code> as prefix to load the image.<br>  文件沒有特別針對image path做說明，從DevTools觀察了一下其他還沒使用hexo-tag-figure插入的圖片路徑，測試後發現image path要加上permalink。</li>
-<li><code>300</code>: the image width. I skip the height setting.</li>
-<li><code>Confessions of a Young Novelist</code>: the title text that is placed in <code>figcaption</code> element.<br>  Add customized font color and font size to this element.</li>
-<li><code>Book cover of Confessions of a Young Novelist</code>: the alt text for this image.</li>
-</ul>
-<h3 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h3><ol>
-<li>According to <a href="https://theme-next.js.org/docs/advanced-settings/custom-files.html">NexT’s document</a>, extra CSS settings can be added by enable the <code>custom_file_path</code> in theme config file (in my case the <code>_config.next.yml</code> in root folder). This is my configuration:<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Define custom file paths.</span></span><br><span class="line"><span class="comment"># Create your custom files in site directory `source/_data` and uncomment needed files below.</span></span><br><span class="line"><span class="attr">custom_file_path:</span></span><br><span class="line">  <span class="comment">#head: source/_data/head.njk</span></span><br><span class="line">  <span class="comment">#header: source/_data/header.njk</span></span><br><span class="line">  <span class="comment">#sidebar: source/_data/sidebar.njk</span></span><br><span class="line">  <span class="comment">#postMeta: source/_data/post-meta.njk</span></span><br><span class="line">  <span class="comment">#postBodyEnd: source/_data/post-body-end.njk</span></span><br><span class="line">  <span class="comment">#footer: source/_data/footer.njk</span></span><br><span class="line">  <span class="comment">#bodyEnd: source/_data/body-end.njk</span></span><br><span class="line">  <span class="comment">#variable: source/_data/variables.styl</span></span><br><span class="line">  <span class="comment">#mixin: source/_data/mixins.styl</span></span><br><span class="line">  <span class="attr">style:</span> <span class="string">source/_data/styles.styl</span> <span class="comment"># Enable this option by removing the &#x27;#&#x27; in the beginning of the line</span></span><br></pre></td></tr></table></figure></li>
-<li>Add the <code>styles.styl</code> file in the path <code>C:\Projects\hexo_blog\source\_data</code></li>
-<li>Add CSS settings for <code>figcaption</code> element, remove each image’s bottom margin by setting the <code>margin-button</code> to 0px. With <code>margin-button</code> set as 0px, the text underneath (the <code>figcaption</code>) will be closer to the image.<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">figcaption</span> &#123;</span><br><span class="line">    <span class="attribute">color</span>: <span class="number">#999</span>;</span><br><span class="line">    <span class="attribute">text-align</span>: center;</span><br><span class="line">    font-size: 14px; # Set to 14px to make the font size same as the text in table of content</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.post-body</span> <span class="selector-tag">img</span> &#123;</span><br><span class="line">    <span class="attribute">margin-bottom</span>: <span class="number">0px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="figure--center"><img src="/2021/hexo-tag-figure/margin-bottom-20px.jpg" title="margin-bottom 20px"><figcaption><p>margin-bottom 20px</p></figcaption></figure>
-<figure class="figure--center"><img src="/2021/hexo-tag-figure/margin-bottom-0px.jpg" title="margin-bottom 0px"><figcaption><p>margin-bottom 0px</p></figcaption></figure></li>
-<li>Save the configuration and run <code>hexo generate</code> and <code>hexo deploy</code>, done ☕</li>
-</ol>
-]]></content>
-      <categories>
-        <category>hexo</category>
-      </categories>
   </entry>
   <entry>
     <title>為什麼使用innerHTML對元素新增內容後，該元素「子代」的事件監聽器失效？</title>
@@ -2296,80 +2296,6 @@ on <a href="https://codepen.io">CodePen</a>.</span>
       </categories>
   </entry>
   <entry>
-    <title>「10 modern layouts in 1 line of CSS」相關筆記</title>
-    <url>/2021/morden-layouts-1-line-css/</url>
-    <content><![CDATA[<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>關於YouTube影片「<a href="https://www.youtube.com/watch?v=qm0IfG1GyZU">10 modern layouts in 1 line of CSS</a>」的相關筆記。</p>
-<h2 id="版本與環境"><a href="#版本與環境" class="headerlink" title="版本與環境"></a>版本與環境</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Google Chrome: 89.0.4389.72 (Official Build) (64-bit)</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></table></figure>
-<h2 id="基礎"><a href="#基礎" class="headerlink" title="基礎"></a>基礎</h2><h3 id="fr-fractional-units"><a href="#fr-fractional-units" class="headerlink" title="fr (fractional units)"></a><code>fr</code> (fractional units)</h3><p>類似百分比，與百分比不同的地方是「所有使用fr來宣告尺寸的元件，這些元件會互相參考彼此的尺寸」<br>在一些非常極端的情況下可能會造成尺寸炸裂，以下列原始碼來舉例：</p>
-<p class="codepen" data-height="265" data-theme-id="dark" data-default-tab="html,result" data-user="Charlie7779" data-slug-hash="WNogyEW" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="fr">
-  <span>See the Pen <a href="https://codepen.io/Charlie7779/pen/WNogyEW">
-  fr</a> by Charlie (<a href="https://codepen.io/Charlie7779">@Charlie7779</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
-</p>
-<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
-
-<p>在<code>&lt;div class=&quot;cyan&quot;&gt;&lt;/div&gt;</code>中如果僅置入一段文字的話，高度為48px（4fr）<br>那麼作為1fr的<code>&lt;div class=&quot;coral&quot;&gt;&lt;/div&gt;</code>與<code>&lt;div class=&quot;gold&quot;&gt;&lt;/div&gt;</code>的高度就是48除以4，等於12px</p>
-<p>而當我在<code>&lt;div class=&quot;cyan&quot;&gt;&lt;/div&gt;</code>中置入2萬個字元後，元件的高度被撐到4128px<br>而<code>&lt;div class=&quot;coral&quot;&gt;&lt;/div&gt;</code>與<code>&lt;div class=&quot;gold&quot;&gt;&lt;/div&gt;</code>的高度就一起因應<code>&lt;div class=&quot;cyan&quot;&gt;&lt;/div&gt;</code>而改變，為4182除以4，等於1032px</p>
-<h3 id="auto"><a href="#auto" class="headerlink" title="auto"></a><code>auto</code></h3><p>auto spacing，根據內容自動分配寬高。<br>所以如果沒有給予元件任何內容的話，高度就會是0。</p>
-<h3 id="minmax"><a href="#minmax" class="headerlink" title="minmax()"></a><code>minmax()</code></h3><p>作用如其名稱，設定最小與最大的尺寸。</p>
-<h3 id="clamp"><a href="#clamp" class="headerlink" title="clamp()"></a><code>clamp()</code></h3><p>接受三個參數，分別設定最小（minimum value）、理想（preferred value）與最大（maximum allowed value）尺寸。</p>
-<h3 id="auto-fill與auto-fit"><a href="#auto-fill與auto-fit" class="headerlink" title="auto-fill與auto-fit"></a><code>auto-fill</code>與<code>auto-fit</code></h3><p>這篇搭配影片示範，好懂：<a href="https://css-tricks.com/auto-sizing-columns-css-grid-auto-fill-vs-auto-fit/">Auto-Sizing Columns in CSS Grid: auto-fill vs auto-fit</a></p>
-<h2 id="影片中的10個範例"><a href="#影片中的10個範例" class="headerlink" title="影片中的10個範例"></a>影片中的10個範例</h2><h3 id="1-Super-Centered"><a href="#1-Super-Centered" class="headerlink" title="1. Super Centered"></a>1. Super Centered</h3><p><code>place-items: center</code>：放在grid父容器上，讓子元件水平＋垂直置中。<br>替代方案：在子元件加上<code>justify-self: center;</code>與<code>align-self: center;</code>屬性。</p>
-<h3 id="2-The-Deconstructed-Pancake"><a href="#2-The-Deconstructed-Pancake" class="headerlink" title="2. The Deconstructed Pancake"></a>2. The Deconstructed Pancake</h3><p>父容器設定為<code>display: flex;</code>，子元件設定為<code>flex: 0 1 &lt;baseWidth&gt;;</code>或<code>flex: 1 1 &lt;baseWidth&gt;;</code>。<br>示範碼使用<code>flex: 0 1 150px;</code>，展開來即是：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">flex-grow</span>: 0;</span><br><span class="line"><span class="comment">/* 0代表不會延展 */</span></span><br><span class="line"></span><br><span class="line"><span class="selector-tag">flex-shrink</span>: 1;</span><br><span class="line"><span class="comment">/* 1代表會收縮 */</span></span><br><span class="line"></span><br><span class="line"><span class="selector-tag">flex-basis</span>: 150<span class="selector-tag">px</span>;</span><br><span class="line"><span class="comment">/* 因為示範碼在父元件上沒有指定flex-direction，故會是預設的row flow，那flex-basis影響的是flex item的寬 */</span></span><br><span class="line"><span class="comment">/* 如果flex-basis沒有設定的話，預設為0，那麼寬度會根據內容決定 */</span></span><br></pre></td></tr></table></figure>
-<p>如果設定為<code>flex: 1 1 150px;</code>的話，代表<code>flex-grow</code>為<code>1</code>，會讓子元件填滿父元件的剩餘空間。</p>
-<h3 id="3-Sidebar-Says"><a href="#3-Sidebar-Says" class="headerlink" title="3. Sidebar Says"></a>3. Sidebar Says</h3><p>父容器設定為<code>grid-template-columns: minmax(&lt;min&gt;, &lt;max&gt;)</code><br>示範碼使用<code>grid-template-columns: minmax(150px, 25%) 1fr;</code>，意思是：</p>
-<ul>
-<li>第一個欄最少150px寬、最多佔父元件25%寬</li>
-<li>第二個欄寬設定為1fr，讓其佔據剩餘的所有空間，1fr替換成auto也會有一樣的效果</li>
-</ul>
-<h3 id="4-Pancake-Stack"><a href="#4-Pancake-Stack" class="headerlink" title="4. Pancake Stack"></a>4. Pancake Stack</h3><p>父容器設定為<code>grid-template-rows: auto 1fr auto</code>，直接搞定常見的Header/Main/Footer三層排版。<br>中間的Main區塊設定為1fr有其必要：如果點開<a href="https://codepen.io/una/pen/bGVXPWB">Pancake Stack在CodePen中的示範碼</a>，並把Main的1fr改為auto的話，版面會變成從上到下1:1:1的比例（比例壞了）。</p>
-<h3 id="5-Classic-Holy-Grail-Layout"><a href="#5-Classic-Holy-Grail-Layout" class="headerlink" title="5. Classic Holy Grail Layout"></a>5. Classic Holy Grail Layout</h3><p>父容器設定為<code>grid-template: auto 1fr auto / auto 1fr auto</code>，而這行拆開來是：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">grid-template-rows</span>: <span class="selector-tag">auto</span> 1<span class="selector-tag">fr</span> <span class="selector-tag">auto</span>;</span><br><span class="line"><span class="selector-tag">grid-template-columns</span>: <span class="selector-tag">auto</span> 1<span class="selector-tag">fr</span> <span class="selector-tag">auto</span>;</span><br><span class="line"><span class="selector-tag">grid-template-areas</span>: <span class="selector-tag">none</span>;</span><br></pre></td></tr></table></figure>
-<p>子元件需各自設定要佔據多少空間：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.header</span> &#123;</span><br><span class="line">    <span class="attribute">padding</span>: <span class="number">2rem</span>;</span><br><span class="line">    <span class="attribute">grid-column</span>: <span class="number">1</span> / <span class="number">4</span>;</span><br><span class="line">    <span class="comment">/* column從line 1開始，到lin 4結束 */</span></span><br><span class="line">    <span class="comment">/* 可以換成</span></span><br><span class="line"><span class="comment">    grid-column-start: 1;</span></span><br><span class="line"><span class="comment">    grid-column-end: 4;  */</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.left-side</span> &#123;</span><br><span class="line">  <span class="attribute">grid-column</span>: <span class="number">1</span> / <span class="number">2</span>;</span><br><span class="line">  <span class="comment">/* column從line 1開始，到line 2結束 */</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.main</span> &#123;</span><br><span class="line">  <span class="attribute">grid-column</span>: <span class="number">2</span> / <span class="number">3</span>;</span><br><span class="line">  <span class="comment">/* column從line 2開始，到line 3結束 */</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.right-side</span> &#123;</span><br><span class="line">  <span class="attribute">grid-column</span>: <span class="number">3</span> / <span class="number">4</span>;</span><br><span class="line">  <span class="comment">/* column從line 3開始，到line 4結束 */</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.footer</span> &#123;</span><br><span class="line">  <span class="attribute">grid-column</span>: <span class="number">1</span> / <span class="number">4</span>;</span><br><span class="line">  <span class="comment">/* column從line 1開始，到lin 4結束 */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="6-12-Span-Grid"><a href="#6-12-Span-Grid" class="headerlink" title="6. 12-Span Grid"></a>6. 12-Span Grid</h3><p><code>grid-template-columns: repeat(12, 1fr)</code><br>使用<code>repeat()</code>來取代輸入12次1fr。</p>
-<h3 id="7-RAM-Repeat-Auto-Minmax"><a href="#7-RAM-Repeat-Auto-Minmax" class="headerlink" title="7. RAM (Repeat, Auto, Minmax)"></a>7. RAM (Repeat, Auto, Minmax)</h3><p><code>grid-template-columns: repeat(auto-fit, minmax(&lt;base&gt;, 1fr))</code><br>提醒：在<code>grid-auto-flow: row;</code>（預設）的情況下，<code>&lt;base&gt;</code>設定的是子元件的欄寬。<br>示範碼的<code>auto-fit</code>讓子元件在父容器變寬時，自動填滿父元件剩餘的空間。<br>若把示範碼改為<code>auto-fill</code>，即使把父容器拉寬，子元件最大也只會伸展到150px。</p>
-<h3 id="8-Line-Up"><a href="#8-Line-Up" class="headerlink" title="8. Line Up"></a>8. Line Up</h3><p><code>justify-content: space-between</code><br>用<code>flex-direction: column;</code>搭配<code>justify-content: space-between</code>來讓卡片裡的標題與圖片頂住卡片天地，而卡片文字會垂直置中。<br>如果把<code>justify-content: space-between</code>從示範碼抽掉的話，會發現卡片圖片的位置會根據每張卡片內文字的多寡而有不同高度。</p>
-<h3 id="9-Clamping-My-Style"><a href="#9-Clamping-My-Style" class="headerlink" title="9. Clamping My Style"></a>9. Clamping My Style</h3><p><code>clamp(&lt;min&gt;, &lt;actual&gt;, &lt;max&gt;)</code><br>一行設定元件最小、理想狀態與最大的尺寸分別各是多少。<br>示範碼的<code>width: clamp(23ch, 50%, 46ch);</code>意即：讓子元件是父容器的50%寬，但最大不超過46ch、最小不低於23ch。</p>
-<p>示範碼中出現的單位<code>ch</code>根據<a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Values_and_units#lengths">MDN對Relative length units</a>的解釋是：</p>
-<blockquote>
-<p>The advance measure (width) of the glyph “0” of the element’s font.</p>
-</blockquote>
-<p><a href="https://www.w3schools.com/cssref/css_units.asp">w3schools.com版本</a>的解釋：</p>
-<blockquote>
-<p>Relative to the width of the “0” (zero)</p>
-</blockquote>
-<p>筆記：字體的大小會根據該字形中字母「0 (ZERO, U+0030)」的寬度來計算。</p>
-<p>而根據<a href="https://meyerweb.com/eric/thoughts/2018/06/28/what-is-the-css-ch-unit/">Eric A. Meyer</a>大神對<code>ch</code>的說明：</p>
-<blockquote>
-<p>So however wide the “0” character is in a given typeface, that’s the measure of one ch.</p>
-</blockquote>
-<p>筆記：字母「0 (ZERO, U+0030)」的寬度即是一個ch代表的值。</p>
-<p>注意：雖然影片中有提到使用ch是為了控制單一行的字元數量來確保易讀性（legibility），但除非用的是monospace類型的字體，不然每個字母的寬度不一定一樣：</p>
-<blockquote>
-<p>This leads to claims that you can “make your content column 60 characters wide for maximum readability” or “size images to be a certain number of characters!” Specifically, yes if you’re using fixed-width fonts. Otherwise, mostly no.</p>
-</blockquote>
-<p>極致懶人包：因為1ch通常比「大部分」的字體寬一點點，所以如果要用ch來做單行字元數量限制，數字需比實際字元數小一些。<br>舉例：如果希望一行有80個字元，那請設定寬度為60ch。</p>
-<blockquote>
-<p>What I’ve found through random experimentation is that in proportional typefaces, <code>1ch</code> is usually wider than the average character width, usually by around 20-30%. But there are at least a few typefaces where the zero symbol is skinny with respect to the other letterforms; in such a case, 1ch is narrower than the average character width.</p>
-</blockquote>
-<blockquote>
-<p>So in general, if you want an 80-character column width and you’re going to use ch to size it, aim for about 60ch, unless you’re specifically working with a typeface that has a skinny zero.</p>
-</blockquote>
-<h3 id="10-Respect-for-Aspect"><a href="#10-Respect-for-Aspect" class="headerlink" title="10. Respect for Aspect"></a>10. Respect for Aspect</h3><p><code>aspect-ratio: &lt;width&gt; / &lt;height&gt;</code><br>一行搞定元件的比例尺，但須注意瀏覽器是否支援。<br>可參考<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/aspect-ratio#browser_compatibility">MDN</a>。</p>
-<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><iframe width="560" height="315" src="https://www.youtube.com/embed/qm0IfG1GyZU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-<ul>
-<li><a href="https://www.youtube.com/watch?v=qm0IfG1GyZU">Google Chrome Developers: 10 modern layouts in 1 line of CSS</a></li>
-<li><a href="https://1linelayouts.glitch.me/">Demo website: 1-Line Layouts</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>CSS</category>
-      </categories>
-  </entry>
-  <entry>
     <title>為什麼iOS上的Chrome沒有呈現設定好的list-style-type</title>
     <url>/2021/list-style-type-not-working-on-ios-chrome/</url>
     <content><![CDATA[<figure class="figure--center"><img src="/2021/list-style-type-not-working-on-ios-chrome/ask.jpg" title="一種Chrome，各自表述渲染結果"><figcaption><p>一種Chrome，各自表述渲染結果</p></figcaption></figure>
@@ -2471,6 +2397,80 @@ on <a href="https://codepen.io">CodePen</a>.</span>
       </categories>
   </entry>
   <entry>
+    <title>「10 modern layouts in 1 line of CSS」相關筆記</title>
+    <url>/2021/morden-layouts-1-line-css/</url>
+    <content><![CDATA[<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>關於YouTube影片「<a href="https://www.youtube.com/watch?v=qm0IfG1GyZU">10 modern layouts in 1 line of CSS</a>」的相關筆記。</p>
+<h2 id="版本與環境"><a href="#版本與環境" class="headerlink" title="版本與環境"></a>版本與環境</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Google Chrome: 89.0.4389.72 (Official Build) (64-bit)</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></table></figure>
+<h2 id="基礎"><a href="#基礎" class="headerlink" title="基礎"></a>基礎</h2><h3 id="fr-fractional-units"><a href="#fr-fractional-units" class="headerlink" title="fr (fractional units)"></a><code>fr</code> (fractional units)</h3><p>類似百分比，與百分比不同的地方是「所有使用fr來宣告尺寸的元件，這些元件會互相參考彼此的尺寸」<br>在一些非常極端的情況下可能會造成尺寸炸裂，以下列原始碼來舉例：</p>
+<p class="codepen" data-height="265" data-theme-id="dark" data-default-tab="html,result" data-user="Charlie7779" data-slug-hash="WNogyEW" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="fr">
+  <span>See the Pen <a href="https://codepen.io/Charlie7779/pen/WNogyEW">
+  fr</a> by Charlie (<a href="https://codepen.io/Charlie7779">@Charlie7779</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+
+<p>在<code>&lt;div class=&quot;cyan&quot;&gt;&lt;/div&gt;</code>中如果僅置入一段文字的話，高度為48px（4fr）<br>那麼作為1fr的<code>&lt;div class=&quot;coral&quot;&gt;&lt;/div&gt;</code>與<code>&lt;div class=&quot;gold&quot;&gt;&lt;/div&gt;</code>的高度就是48除以4，等於12px</p>
+<p>而當我在<code>&lt;div class=&quot;cyan&quot;&gt;&lt;/div&gt;</code>中置入2萬個字元後，元件的高度被撐到4128px<br>而<code>&lt;div class=&quot;coral&quot;&gt;&lt;/div&gt;</code>與<code>&lt;div class=&quot;gold&quot;&gt;&lt;/div&gt;</code>的高度就一起因應<code>&lt;div class=&quot;cyan&quot;&gt;&lt;/div&gt;</code>而改變，為4182除以4，等於1032px</p>
+<h3 id="auto"><a href="#auto" class="headerlink" title="auto"></a><code>auto</code></h3><p>auto spacing，根據內容自動分配寬高。<br>所以如果沒有給予元件任何內容的話，高度就會是0。</p>
+<h3 id="minmax"><a href="#minmax" class="headerlink" title="minmax()"></a><code>minmax()</code></h3><p>作用如其名稱，設定最小與最大的尺寸。</p>
+<h3 id="clamp"><a href="#clamp" class="headerlink" title="clamp()"></a><code>clamp()</code></h3><p>接受三個參數，分別設定最小（minimum value）、理想（preferred value）與最大（maximum allowed value）尺寸。</p>
+<h3 id="auto-fill與auto-fit"><a href="#auto-fill與auto-fit" class="headerlink" title="auto-fill與auto-fit"></a><code>auto-fill</code>與<code>auto-fit</code></h3><p>這篇搭配影片示範，好懂：<a href="https://css-tricks.com/auto-sizing-columns-css-grid-auto-fill-vs-auto-fit/">Auto-Sizing Columns in CSS Grid: auto-fill vs auto-fit</a></p>
+<h2 id="影片中的10個範例"><a href="#影片中的10個範例" class="headerlink" title="影片中的10個範例"></a>影片中的10個範例</h2><h3 id="1-Super-Centered"><a href="#1-Super-Centered" class="headerlink" title="1. Super Centered"></a>1. Super Centered</h3><p><code>place-items: center</code>：放在grid父容器上，讓子元件水平＋垂直置中。<br>替代方案：在子元件加上<code>justify-self: center;</code>與<code>align-self: center;</code>屬性。</p>
+<h3 id="2-The-Deconstructed-Pancake"><a href="#2-The-Deconstructed-Pancake" class="headerlink" title="2. The Deconstructed Pancake"></a>2. The Deconstructed Pancake</h3><p>父容器設定為<code>display: flex;</code>，子元件設定為<code>flex: 0 1 &lt;baseWidth&gt;;</code>或<code>flex: 1 1 &lt;baseWidth&gt;;</code>。<br>示範碼使用<code>flex: 0 1 150px;</code>，展開來即是：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">flex-grow</span>: 0;</span><br><span class="line"><span class="comment">/* 0代表不會延展 */</span></span><br><span class="line"></span><br><span class="line"><span class="selector-tag">flex-shrink</span>: 1;</span><br><span class="line"><span class="comment">/* 1代表會收縮 */</span></span><br><span class="line"></span><br><span class="line"><span class="selector-tag">flex-basis</span>: 150<span class="selector-tag">px</span>;</span><br><span class="line"><span class="comment">/* 因為示範碼在父元件上沒有指定flex-direction，故會是預設的row flow，那flex-basis影響的是flex item的寬 */</span></span><br><span class="line"><span class="comment">/* 如果flex-basis沒有設定的話，預設為0，那麼寬度會根據內容決定 */</span></span><br></pre></td></tr></table></figure>
+<p>如果設定為<code>flex: 1 1 150px;</code>的話，代表<code>flex-grow</code>為<code>1</code>，會讓子元件填滿父元件的剩餘空間。</p>
+<h3 id="3-Sidebar-Says"><a href="#3-Sidebar-Says" class="headerlink" title="3. Sidebar Says"></a>3. Sidebar Says</h3><p>父容器設定為<code>grid-template-columns: minmax(&lt;min&gt;, &lt;max&gt;)</code><br>示範碼使用<code>grid-template-columns: minmax(150px, 25%) 1fr;</code>，意思是：</p>
+<ul>
+<li>第一個欄最少150px寬、最多佔父元件25%寬</li>
+<li>第二個欄寬設定為1fr，讓其佔據剩餘的所有空間，1fr替換成auto也會有一樣的效果</li>
+</ul>
+<h3 id="4-Pancake-Stack"><a href="#4-Pancake-Stack" class="headerlink" title="4. Pancake Stack"></a>4. Pancake Stack</h3><p>父容器設定為<code>grid-template-rows: auto 1fr auto</code>，直接搞定常見的Header/Main/Footer三層排版。<br>中間的Main區塊設定為1fr有其必要：如果點開<a href="https://codepen.io/una/pen/bGVXPWB">Pancake Stack在CodePen中的示範碼</a>，並把Main的1fr改為auto的話，版面會變成從上到下1:1:1的比例（比例壞了）。</p>
+<h3 id="5-Classic-Holy-Grail-Layout"><a href="#5-Classic-Holy-Grail-Layout" class="headerlink" title="5. Classic Holy Grail Layout"></a>5. Classic Holy Grail Layout</h3><p>父容器設定為<code>grid-template: auto 1fr auto / auto 1fr auto</code>，而這行拆開來是：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">grid-template-rows</span>: <span class="selector-tag">auto</span> 1<span class="selector-tag">fr</span> <span class="selector-tag">auto</span>;</span><br><span class="line"><span class="selector-tag">grid-template-columns</span>: <span class="selector-tag">auto</span> 1<span class="selector-tag">fr</span> <span class="selector-tag">auto</span>;</span><br><span class="line"><span class="selector-tag">grid-template-areas</span>: <span class="selector-tag">none</span>;</span><br></pre></td></tr></table></figure>
+<p>子元件需各自設定要佔據多少空間：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.header</span> &#123;</span><br><span class="line">    <span class="attribute">padding</span>: <span class="number">2rem</span>;</span><br><span class="line">    <span class="attribute">grid-column</span>: <span class="number">1</span> / <span class="number">4</span>;</span><br><span class="line">    <span class="comment">/* column從line 1開始，到lin 4結束 */</span></span><br><span class="line">    <span class="comment">/* 可以換成</span></span><br><span class="line"><span class="comment">    grid-column-start: 1;</span></span><br><span class="line"><span class="comment">    grid-column-end: 4;  */</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.left-side</span> &#123;</span><br><span class="line">  <span class="attribute">grid-column</span>: <span class="number">1</span> / <span class="number">2</span>;</span><br><span class="line">  <span class="comment">/* column從line 1開始，到line 2結束 */</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.main</span> &#123;</span><br><span class="line">  <span class="attribute">grid-column</span>: <span class="number">2</span> / <span class="number">3</span>;</span><br><span class="line">  <span class="comment">/* column從line 2開始，到line 3結束 */</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.right-side</span> &#123;</span><br><span class="line">  <span class="attribute">grid-column</span>: <span class="number">3</span> / <span class="number">4</span>;</span><br><span class="line">  <span class="comment">/* column從line 3開始，到line 4結束 */</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.footer</span> &#123;</span><br><span class="line">  <span class="attribute">grid-column</span>: <span class="number">1</span> / <span class="number">4</span>;</span><br><span class="line">  <span class="comment">/* column從line 1開始，到lin 4結束 */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="6-12-Span-Grid"><a href="#6-12-Span-Grid" class="headerlink" title="6. 12-Span Grid"></a>6. 12-Span Grid</h3><p><code>grid-template-columns: repeat(12, 1fr)</code><br>使用<code>repeat()</code>來取代輸入12次1fr。</p>
+<h3 id="7-RAM-Repeat-Auto-Minmax"><a href="#7-RAM-Repeat-Auto-Minmax" class="headerlink" title="7. RAM (Repeat, Auto, Minmax)"></a>7. RAM (Repeat, Auto, Minmax)</h3><p><code>grid-template-columns: repeat(auto-fit, minmax(&lt;base&gt;, 1fr))</code><br>提醒：在<code>grid-auto-flow: row;</code>（預設）的情況下，<code>&lt;base&gt;</code>設定的是子元件的欄寬。<br>示範碼的<code>auto-fit</code>讓子元件在父容器變寬時，自動填滿父元件剩餘的空間。<br>若把示範碼改為<code>auto-fill</code>，即使把父容器拉寬，子元件最大也只會伸展到150px。</p>
+<h3 id="8-Line-Up"><a href="#8-Line-Up" class="headerlink" title="8. Line Up"></a>8. Line Up</h3><p><code>justify-content: space-between</code><br>用<code>flex-direction: column;</code>搭配<code>justify-content: space-between</code>來讓卡片裡的標題與圖片頂住卡片天地，而卡片文字會垂直置中。<br>如果把<code>justify-content: space-between</code>從示範碼抽掉的話，會發現卡片圖片的位置會根據每張卡片內文字的多寡而有不同高度。</p>
+<h3 id="9-Clamping-My-Style"><a href="#9-Clamping-My-Style" class="headerlink" title="9. Clamping My Style"></a>9. Clamping My Style</h3><p><code>clamp(&lt;min&gt;, &lt;actual&gt;, &lt;max&gt;)</code><br>一行設定元件最小、理想狀態與最大的尺寸分別各是多少。<br>示範碼的<code>width: clamp(23ch, 50%, 46ch);</code>意即：讓子元件是父容器的50%寬，但最大不超過46ch、最小不低於23ch。</p>
+<p>示範碼中出現的單位<code>ch</code>根據<a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Values_and_units#lengths">MDN對Relative length units</a>的解釋是：</p>
+<blockquote>
+<p>The advance measure (width) of the glyph “0” of the element’s font.</p>
+</blockquote>
+<p><a href="https://www.w3schools.com/cssref/css_units.asp">w3schools.com版本</a>的解釋：</p>
+<blockquote>
+<p>Relative to the width of the “0” (zero)</p>
+</blockquote>
+<p>筆記：字體的大小會根據該字形中字母「0 (ZERO, U+0030)」的寬度來計算。</p>
+<p>而根據<a href="https://meyerweb.com/eric/thoughts/2018/06/28/what-is-the-css-ch-unit/">Eric A. Meyer</a>大神對<code>ch</code>的說明：</p>
+<blockquote>
+<p>So however wide the “0” character is in a given typeface, that’s the measure of one ch.</p>
+</blockquote>
+<p>筆記：字母「0 (ZERO, U+0030)」的寬度即是一個ch代表的值。</p>
+<p>注意：雖然影片中有提到使用ch是為了控制單一行的字元數量來確保易讀性（legibility），但除非用的是monospace類型的字體，不然每個字母的寬度不一定一樣：</p>
+<blockquote>
+<p>This leads to claims that you can “make your content column 60 characters wide for maximum readability” or “size images to be a certain number of characters!” Specifically, yes if you’re using fixed-width fonts. Otherwise, mostly no.</p>
+</blockquote>
+<p>極致懶人包：因為1ch通常比「大部分」的字體寬一點點，所以如果要用ch來做單行字元數量限制，數字需比實際字元數小一些。<br>舉例：如果希望一行有80個字元，那請設定寬度為60ch。</p>
+<blockquote>
+<p>What I’ve found through random experimentation is that in proportional typefaces, <code>1ch</code> is usually wider than the average character width, usually by around 20-30%. But there are at least a few typefaces where the zero symbol is skinny with respect to the other letterforms; in such a case, 1ch is narrower than the average character width.</p>
+</blockquote>
+<blockquote>
+<p>So in general, if you want an 80-character column width and you’re going to use ch to size it, aim for about 60ch, unless you’re specifically working with a typeface that has a skinny zero.</p>
+</blockquote>
+<h3 id="10-Respect-for-Aspect"><a href="#10-Respect-for-Aspect" class="headerlink" title="10. Respect for Aspect"></a>10. Respect for Aspect</h3><p><code>aspect-ratio: &lt;width&gt; / &lt;height&gt;</code><br>一行搞定元件的比例尺，但須注意瀏覽器是否支援。<br>可參考<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/aspect-ratio#browser_compatibility">MDN</a>。</p>
+<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><iframe width="560" height="315" src="https://www.youtube.com/embed/qm0IfG1GyZU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<ul>
+<li><a href="https://www.youtube.com/watch?v=qm0IfG1GyZU">Google Chrome Developers: 10 modern layouts in 1 line of CSS</a></li>
+<li><a href="https://1linelayouts.glitch.me/">Demo website: 1-Line Layouts</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>CSS</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Theme &quot;NexT&quot; font modification</title>
     <url>/2021/next-theme-edit/</url>
     <content><![CDATA[<h2 id="Summary-of-this-post"><a href="#Summary-of-this-post" class="headerlink" title="Summary of this post"></a>Summary of this post</h2><p>Want to update the <strong>font-size</strong>, <strong>font-family</strong> (for the Chinese character) and <strong>color</strong> settings for my hexo blog. Done some searching and find out the contents in <code>base.styl</code> and <code>Pisces.styl</code> needs to be modified to fullfil my requirements.<br>I know this may not be the best choice (since <a href="https://theme-next.js.org/docs/getting-started/configuration.html">NexT’s docs</a> suggests using Alternate Config ,<code>_config.next.yml</code>, to apply modification) while at least this works…😣</p>
@@ -2515,6 +2515,66 @@ on <a href="https://codepen.io">CodePen</a>.</span>
 ]]></content>
       <categories>
         <category>hexo</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>「setTimeout() difference between parameters as string or function」相關筆記</title>
+    <url>/2021/settimeout-args/</url>
+    <content><![CDATA[<h2 id="原始問題"><a href="#原始問題" class="headerlink" title="原始問題"></a>原始問題</h2><p><code>setTimeout()</code>傳入「與函式一致的字串」作為參數時，為何輸出的結果與「直接傳入函式」不同？</p>
+<p>第一組程式碼：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 傳入與函式內容一樣的字串作為參數</span></span><br><span class="line"><span class="built_in">setTimeout</span>(<span class="built_in">console</span>.log(<span class="string">&#x27;first&#x27;</span>), <span class="number">0</span>)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;second&#x27;</span>);</span><br><span class="line"><span class="comment">// 輸出結果：</span></span><br><span class="line"><span class="comment">// &gt;&gt; first</span></span><br><span class="line"><span class="comment">// &gt;&gt; second</span></span><br></pre></td></tr></table></figure>
+<p>第二組程式碼：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 直接傳入函式作為參數</span></span><br><span class="line"><span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> <span class="built_in">console</span>.log(<span class="string">&#x27;first&#x27;</span>), <span class="number">0</span>)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;second&#x27;</span>);</span><br><span class="line"><span class="comment">// 輸出結果：</span></span><br><span class="line"><span class="comment">// &gt;&gt; second</span></span><br><span class="line"><span class="comment">// &gt;&gt; first</span></span><br></pre></td></tr></table></figure>
+<h3 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h3><ul>
+<li>第一組程式碼的<code>console.log(&#39;first&#39;)</code>沒有被視為函式，而是被視為一組字串，此組字串在編譯後會被執行</li>
+<li>MDN（說明頁面中稱之為<code>code</code>）對於字串參數的說明：<code>setTimeout()</code> allows you to include a string, which is compiled and executed when the timer expires.</li>
+<li>第一組程式碼實際上做的事情：<ol>
+<li><code>setTimeout()</code>沒有收到任何函式作為參數，沒有任何函式被延遲執行</li>
+<li><code>setTimeout()</code>內的<code>console.log(&#39;first&#39;)</code>被執行，輸出<code>first</code></li>
+<li><code>setTimeout()</code>收到的是「執行<code>console.log(&#39;first&#39;)</code>後回傳的值」，也就是<code>undefined</code></li>
+<li><code>console.log(&#39;second&#39;)</code>被執行，輸出<code>second</code></li>
+</ol>
+</li>
+<li>第二組程式碼實際上做的事情：<ol>
+<li><code>setTimeout()</code>收到一組匿名函式，該匿名函式被延後執行</li>
+<li><code>console.log(&#39;second&#39;)</code>被執行，輸出<code>second</code></li>
+<li>call stack已經沒有其他任務，被<code>setTimeout()</code>延後的匿名函式（<code>console.log(&#39;first&#39;)</code>）此時可以執行了，輸出<code>first</code>到console上</li>
+</ol>
+</li>
+</ul>
+<h2 id="延伸問題：在迴圈內"><a href="#延伸問題：在迴圈內" class="headerlink" title="延伸問題：在迴圈內"></a>延伸問題：在迴圈內</h2><p>第三組程式碼：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">2</span>; i++) &#123;</span><br><span class="line">    <span class="built_in">setTimeout</span>(<span class="built_in">console</span>.log(i))</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 輸出結果：</span></span><br><span class="line"><span class="comment">// &gt;&gt; 0</span></span><br><span class="line"><span class="comment">// &gt;&gt; 1</span></span><br><span class="line"><span class="comment">// &gt;&gt; 39607 (timeoutID) (在DevTool執行才會有這行輸出)</span></span><br><span class="line"><span class="comment">// 在Node.js環境執行此段程式碼會回傳TypeError : Callback must be a function. Received undefined</span></span><br></pre></td></tr></table></figure>
+<p>第四組程式碼：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">2</span>; i++) &#123;</span><br><span class="line">    <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> <span class="built_in">console</span>.log(i))</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 輸出結果：</span></span><br><span class="line"><span class="comment">// &gt;&gt; 39670 (timeoutID) (在DevTool執行才會有這行輸出，以Node.js執行不會有這行)</span></span><br><span class="line"><span class="comment">// &gt;&gt; 2</span></span><br><span class="line"><span class="comment">// &gt;&gt; 2</span></span><br></pre></td></tr></table></figure>
+<h3 id="解析-1"><a href="#解析-1" class="headerlink" title="解析"></a>解析</h3><ul>
+<li>第三組程式碼實際上做的事情：<ol>
+<li>i為0，迴圈第一次執行，<code>console.log(i)</code>為字串參數，執行後輸出i</li>
+<li>i增加為1，迴圈第二次執行，<code>console.log(i)</code>為字串參數，執行後輸出i</li>
+<li>i增加為2，迴圈條件不成立，迴圈停止</li>
+</ol>
+</li>
+<li>第四組程式碼實際上做的事情：<ol>
+<li>i為0，迴圈第一次執行，函式<code>console.log(i)</code>被延後，停在callback queue中等待call stack清空</li>
+<li>i增加為1，迴圈第二次執行，函式<code>console.log(i)</code>被延後，停在callback queue中等待call stack清空</li>
+<li>i增加為2，迴圈條件不成立，迴圈停止</li>
+<li>call stack已空，輪到callback queue中的callback function被執行</li>
+<li>i為2，迴圈第一次執行時被延後的<code>console.log(i)</code>輸出i</li>
+<li>i為2，迴圈第二次執行時被延後的<code>console.log(i)</code>輸出i</li>
+</ol>
+</li>
+</ul>
+<figure class="figure--center"><img src="/2021/settimeout-args/JS-in-browser.png" title="瀏覽器環境圖，取自：How JavaScript works: an overview of the engine, the runtime, and the call stack"><figcaption><p>瀏覽器環境圖，取自：How JavaScript works: an overview of the engine, the runtime, and the call stack</p></figcaption></figure>
+
+
+<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
+<li><a href="https://stackoverflow.com/questions/54259645/javascript-code-executes-differently-for-settimeout-when-a-function-is-passed-as">Javascript code executes differently for setTimeout when a function is passed as argument</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setTimeout">MDN: WindowOrWorkerGlobalScope.setTimeout()</a></li>
+<li><a href="https://blog.sessionstack.com/how-does-javascript-actually-work-part-1-b0bacc073cf">How JavaScript works: an overview of the engine, the runtime, and the call stack</a></li>
+<li><a href="https://youtu.be/Nzokr6Boeaw">JavaScript for-loops are… complicated - HTTP203</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
       </categories>
   </entry>
   <entry>
@@ -2690,63 +2750,69 @@ on <a href="https://codepen.io">CodePen</a>.</span>
       </categories>
   </entry>
   <entry>
-    <title>「setTimeout() difference between parameters as string or function」相關筆記</title>
-    <url>/2021/settimeout-args/</url>
-    <content><![CDATA[<h2 id="原始問題"><a href="#原始問題" class="headerlink" title="原始問題"></a>原始問題</h2><p><code>setTimeout()</code>傳入「與函式一致的字串」作為參數時，為何輸出的結果與「直接傳入函式」不同？</p>
-<p>第一組程式碼：</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 傳入與函式內容一樣的字串作為參數</span></span><br><span class="line"><span class="built_in">setTimeout</span>(<span class="built_in">console</span>.log(<span class="string">&#x27;first&#x27;</span>), <span class="number">0</span>)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;second&#x27;</span>);</span><br><span class="line"><span class="comment">// 輸出結果：</span></span><br><span class="line"><span class="comment">// &gt;&gt; first</span></span><br><span class="line"><span class="comment">// &gt;&gt; second</span></span><br></pre></td></tr></table></figure>
-<p>第二組程式碼：</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 直接傳入函式作為參數</span></span><br><span class="line"><span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> <span class="built_in">console</span>.log(<span class="string">&#x27;first&#x27;</span>), <span class="number">0</span>)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;second&#x27;</span>);</span><br><span class="line"><span class="comment">// 輸出結果：</span></span><br><span class="line"><span class="comment">// &gt;&gt; second</span></span><br><span class="line"><span class="comment">// &gt;&gt; first</span></span><br></pre></td></tr></table></figure>
-<h3 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h3><ul>
-<li>第一組程式碼的<code>console.log(&#39;first&#39;)</code>沒有被視為函式，而是被視為一組字串，此組字串在編譯後會被執行</li>
-<li>MDN（說明頁面中稱之為<code>code</code>）對於字串參數的說明：<code>setTimeout()</code> allows you to include a string, which is compiled and executed when the timer expires.</li>
-<li>第一組程式碼實際上做的事情：<ol>
-<li><code>setTimeout()</code>沒有收到任何函式作為參數，沒有任何函式被延遲執行</li>
-<li><code>setTimeout()</code>內的<code>console.log(&#39;first&#39;)</code>被執行，輸出<code>first</code></li>
-<li><code>setTimeout()</code>收到的是「執行<code>console.log(&#39;first&#39;)</code>後回傳的值」，也就是<code>undefined</code></li>
-<li><code>console.log(&#39;second&#39;)</code>被執行，輸出<code>second</code></li>
-</ol>
-</li>
-<li>第二組程式碼實際上做的事情：<ol>
-<li><code>setTimeout()</code>收到一組匿名函式，該匿名函式被延後執行</li>
-<li><code>console.log(&#39;second&#39;)</code>被執行，輸出<code>second</code></li>
-<li>call stack已經沒有其他任務，被<code>setTimeout()</code>延後的匿名函式（<code>console.log(&#39;first&#39;)</code>）此時可以執行了，輸出<code>first</code>到console上</li>
-</ol>
-</li>
+    <title>VSCode擴充套件（Extensions）與自訂snippets</title>
+    <url>/2021/vs-code-extensions-snippets/</url>
+    <content><![CDATA[<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>記錄一些目前有在使用的VSCode擴充套件，與自訂snippets的步驟筆記。</p>
+<h2 id="版本與環境"><a href="#版本與環境" class="headerlink" title="版本與環境"></a>版本與環境</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">VSCode: 1.53.2 (user setup)</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></table></figure>
+
+<h2 id="擴充套件（Extensions）"><a href="#擴充套件（Extensions）" class="headerlink" title="擴充套件（Extensions）"></a>擴充套件（Extensions）</h2><h3 id="Bracket-Pair-Colorizer-2"><a href="#Bracket-Pair-Colorizer-2" class="headerlink" title="Bracket Pair Colorizer 2"></a>Bracket Pair Colorizer 2</h3><p>套件網址：<a href="https://marketplace.visualstudio.com/items?itemName=CoenraadS.bracket-pair-colorizer-2">https://marketplace.visualstudio.com/items?itemName=CoenraadS.bracket-pair-colorizer-2</a><br>幫成對的括號套用相同的顏色，方便辨識。<br>根據<a href="https://github.com/CoenraadS/Bracket-Pair-Colorizer-2#faq">官方Q&amp;A</a>的內容，2代改善了執行速度與正確性，其餘設定與1代看起來沒什麼差異。</p>
+<p>如果要修改套件設定的話，可參考以下gif：</p>
+<figure class="figure--center"><img src="/2021/vs-code-extensions-snippets/extension-setting.gif"></figure>
+
+<h3 id="indent-rainbow"><a href="#indent-rainbow" class="headerlink" title="indent-rainbow"></a>indent-rainbow</h3><p>套件網址：<a href="https://marketplace.visualstudio.com/items?itemName=oderwat.indent-rainbow">https://marketplace.visualstudio.com/items?itemName=oderwat.indent-rainbow</a><br>幫縮排區域套上顏色，縮排尺寸不正確時顯示為紅色，如下圖。</p>
+<figure class="figure--center"><img src="/2021/vs-code-extensions-snippets/incorrect-space.png"></figure>
+
+<h3 id="Lorem-Picsum-photos-snippets"><a href="#Lorem-Picsum-photos-snippets" class="headerlink" title="Lorem Picsum photos snippets"></a>Lorem Picsum photos snippets</h3><p>套件網址：<a href="https://marketplace.visualstudio.com/items?itemName=huang-an-sheng.lorem-picsum-photos-snippets">https://marketplace.visualstudio.com/items?itemName=huang-an-sheng.lorem-picsum-photos-snippets</a><br>練習切版時直接在html檔案中輸入<code>picsum</code>即可帶出有假圖的<code>&lt;img&gt;</code>標籤。</p>
+<figure class="figure--center"><img src="/2021/vs-code-extensions-snippets/lorem-piscum.gif"></figure>
+<ul>
+<li>輸入<code>picsum</code>後直接按下<code>tab</code>會產生帶一張固定id假圖的標籤<code>&lt;img src=&quot;https://picsum.photos/id/684/600/400&quot; alt=&quot;&quot;&gt;</code><ul>
+<li>需要隨機圖片的話，把圖片網址改為<code>https://picsum.photos/&#123;width&#125;/&#123;height&#125;?random=&#123;seed&#125;</code></li>
+<li><code>&#123;width&#125;</code>代表圖片寬度（單位px），<code>&#123;height&#125;</code>代表圖片高度（單位px），<code>&#123;seed&#125;</code>為正整數</li>
+<li>假圖網址加上不同的<code>&#123;seed&#125;</code>會讓每一組網址產生不同的圖片，參考下圖：<figure class="figure--center"><img src="/2021/vs-code-extensions-snippets/lorem-picsum.png"></figure></li>
+<li>第一列圖片的網址由左至右分別是<code>https://picsum.photos/600/400?random=1</code>、<code>https://picsum.photos/600/400?random=2</code>、<code>https://picsum.photos/600/400?random=3</code>、<code>https://picsum.photos/600/400?random=4</code>，第二列圖片的網址統一使用<code>https://picsum.photos/600/400?random</code></li>
+<li>第二列的圖片在每次重新整理網頁時都會更新，但會是四張一樣的圖</li>
 </ul>
-<h2 id="延伸問題：在迴圈內"><a href="#延伸問題：在迴圈內" class="headerlink" title="延伸問題：在迴圈內"></a>延伸問題：在迴圈內</h2><p>第三組程式碼：</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">2</span>; i++) &#123;</span><br><span class="line">    <span class="built_in">setTimeout</span>(<span class="built_in">console</span>.log(i))</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 輸出結果：</span></span><br><span class="line"><span class="comment">// &gt;&gt; 0</span></span><br><span class="line"><span class="comment">// &gt;&gt; 1</span></span><br><span class="line"><span class="comment">// &gt;&gt; 39607 (timeoutID) (在DevTool執行才會有這行輸出)</span></span><br><span class="line"><span class="comment">// 在Node.js環境執行此段程式碼會回傳TypeError : Callback must be a function. Received undefined</span></span><br></pre></td></tr></table></figure>
-<p>第四組程式碼：</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">2</span>; i++) &#123;</span><br><span class="line">    <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> <span class="built_in">console</span>.log(i))</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 輸出結果：</span></span><br><span class="line"><span class="comment">// &gt;&gt; 39670 (timeoutID) (在DevTool執行才會有這行輸出，以Node.js執行不會有這行)</span></span><br><span class="line"><span class="comment">// &gt;&gt; 2</span></span><br><span class="line"><span class="comment">// &gt;&gt; 2</span></span><br></pre></td></tr></table></figure>
-<h3 id="解析-1"><a href="#解析-1" class="headerlink" title="解析"></a>解析</h3><ul>
-<li>第三組程式碼實際上做的事情：<ol>
-<li>i為0，迴圈第一次執行，<code>console.log(i)</code>為字串參數，執行後輸出i</li>
-<li>i增加為1，迴圈第二次執行，<code>console.log(i)</code>為字串參數，執行後輸出i</li>
-<li>i增加為2，迴圈條件不成立，迴圈停止</li>
-</ol>
 </li>
-<li>第四組程式碼實際上做的事情：<ol>
-<li>i為0，迴圈第一次執行，函式<code>console.log(i)</code>被延後，停在callback queue中等待call stack清空</li>
-<li>i增加為1，迴圈第二次執行，函式<code>console.log(i)</code>被延後，停在callback queue中等待call stack清空</li>
-<li>i增加為2，迴圈條件不成立，迴圈停止</li>
-<li>call stack已空，輪到callback queue中的callback function被執行</li>
-<li>i為2，迴圈第一次執行時被延後的<code>console.log(i)</code>輸出i</li>
-<li>i為2，迴圈第二次執行時被延後的<code>console.log(i)</code>輸出i</li>
-</ol>
-</li>
+<li><code>picsum-grayscale</code>：灰階假圖</li>
+<li><code>picsum-blur</code>：有模糊效果的假圖</li>
+<li><code>picsum-square</code>：正方形假圖</li>
+<li><code>picsum-grayscale-blur</code>：灰階加模糊效果</li>
+<li>其餘預設效果可參考套件的說明內容</li>
 </ul>
-<figure class="figure--center"><img src="/2021/settimeout-args/JS-in-browser.png" title="瀏覽器環境圖，取自：How JavaScript works: an overview of the engine, the runtime, and the call stack"><figcaption><p>瀏覽器環境圖，取自：How JavaScript works: an overview of the engine, the runtime, and the call stack</p></figcaption></figure>
+<h3 id="Live-Server"><a href="#Live-Server" class="headerlink" title="Live Server"></a>Live Server</h3><p>套件網址：<a href="https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer">https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer</a><br>安裝完畢後，VSCode右下角會出現Go Live按鈕，點下啟動Live Server。<br>預設可以在<code>localhost:5500</code>即時看到VSCode的檔案（修改檔案內容後，存檔、重新整理<code>localhost:5500</code>上的頁面，才會看到修改內容）。</p>
+<h3 id="Code-Spell-Checker"><a href="#Code-Spell-Checker" class="headerlink" title="Code Spell Checker"></a>Code Spell Checker</h3><p>套件網址：<a href="https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker">https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker</a><br>支援CamelCase，並且偵測到拼寫不正確的單字時，會提供建議用字，如下圖：</p>
+<figure class="figure--center"><img src="/2021/vs-code-extensions-snippets/code-spell-checker.gif"></figure>
 
 
+<h2 id="自訂snippets"><a href="#自訂snippets" class="headerlink" title="自訂snippets"></a>自訂snippets</h2><p>自訂了一個帶有bootstrap5 CSS與JS CDN連結的html樣板。</p>
+<ol>
+<li>從<a href="https://getbootstrap.com/docs/5.0/getting-started/introduction/#starter-template">bootstrap5官方文件</a>複製html樣板內容</li>
+<li>開啟VSCode，按下F1，輸入「snippets」，選擇「Preferences: Configure User Snippets」<figure class="figure--center"><img src="/2021/vs-code-extensions-snippets/snippets-edit-0.png"></figure></li>
+<li>因為要建立的是html樣板，故輸入html，意即建立給html文件使用的snippets<figure class="figure--center"><img src="/2021/vs-code-extensions-snippets/snippets-edit-1.png"></figure></li>
+<li>另外一個開啟html.json的方式是依序點選「畫面右上角的File（Mac版為Code） &gt;&gt; Preferences &gt;&gt; User Snippets」後，輸入html開啟html.json<figure class="figure--center"><img src="/2021/vs-code-extensions-snippets/snippets-edit-another-path.png"></figure></li>
+<li>在html.json檔案中貼上bootstrap5的html樣板內容<figure class="figure--center"><img src="/2021/vs-code-extensions-snippets/snippets-edit-content.png"></figure>
+<ul>
+<li>圖中第16行<code>bootstrap5 template</code>代表snippets名稱</li>
+<li>第17行<code>prefix</code>的值代表呼叫snippets的快速鍵，為了避免跟VSCode預設的html樣板起衝突，設定為<code>!!</code></li>
+<li>第18至35行<code>body</code>的值代表snippets的內容，每一行後面須加上半形逗號<code>,</code>分隔內容</li>
+<li>第36行<code>description</code>是輸入快速鍵時出現在snippets選單的說明內容，請參考下圖<figure class="figure--center"><img src="/2021/vs-code-extensions-snippets/snippets-enter-hotkey.png"></figure>
+原始碼如下：<figure class="highlight"><table><tr><td class="code"><pre><span class="line">&quot;bootstrap5 template&quot;: &#123;</span><br><span class="line">    &quot;prefix&quot;: &quot;!!&quot;,</span><br><span class="line">    &quot;body&quot;: [</span><br><span class="line">        &quot;&lt;!doctype html&gt;&quot;,</span><br><span class="line">        &quot;&lt;html lang=\&quot;en\&quot;&gt;&quot;,</span><br><span class="line">        &quot;    &lt;head&gt;&quot;,</span><br><span class="line">        &quot;        &lt;meta charset=\&quot;utf-8\&quot;&gt;&quot;,</span><br><span class="line">        &quot;        &lt;meta name=\&quot;viewport\&quot; content=\&quot;width=device-width, initial-scale=1\&quot;&gt;&quot;,</span><br><span class="line">        &quot;&quot;,</span><br><span class="line">        &quot;        &lt;!-- Bootstrap CSS --&gt;&quot;,</span><br><span class="line">        &quot;        &lt;link href=\&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css\&quot; rel=\&quot;stylesheet\&quot; integrity=\&quot;sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl\&quot; crossorigin=\&quot;anonymous\&quot;&gt;&quot;,</span><br><span class="line">        &quot;&quot;,</span><br><span class="line">        &quot;        &lt;title&gt;Hello, world!&lt;/title&gt;&quot;,</span><br><span class="line">        &quot;    &lt;/head&gt;&quot;,</span><br><span class="line">        &quot;    &lt;body&gt;&quot;,</span><br><span class="line">        &quot;        &lt;!-- Option 1: Bootstrap Bundle with Popper --&gt;&quot;,</span><br><span class="line">        &quot;        &lt;script src=\&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js\&quot; integrity=\&quot;sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0\&quot; crossorigin=\&quot;anonymous\&quot;&gt;&lt;/script&gt;&quot;,</span><br><span class="line">        &quot;    &lt;/body&gt;&quot;,</span><br><span class="line">        <span class="string">&quot;&lt;/html&gt;&quot;</span></span><br><span class="line">    ],</span><br><span class="line">    &quot;description&quot;: &quot;bootstrap5 template&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>以上內容輸入完畢後，存檔，之後即可在html格式的檔案中輸入快速鍵<code>!!</code>並按下<code>tab</code>來套用剛才自訂的snippets內容<figure class="figure--center"><img src="/2021/vs-code-extensions-snippets/snippets-done.png"></figure>
+
+
+</li>
+</ol>
 <h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
-<li><a href="https://stackoverflow.com/questions/54259645/javascript-code-executes-differently-for-settimeout-when-a-function-is-passed-as">Javascript code executes differently for setTimeout when a function is passed as argument</a></li>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setTimeout">MDN: WindowOrWorkerGlobalScope.setTimeout()</a></li>
-<li><a href="https://blog.sessionstack.com/how-does-javascript-actually-work-part-1-b0bacc073cf">How JavaScript works: an overview of the engine, the runtime, and the call stack</a></li>
-<li><a href="https://youtu.be/Nzokr6Boeaw">JavaScript for-loops are… complicated - HTTP203</a></li>
+<li><a href="https://wcc723.github.io/development/2020/12/13/vscode-extension/">12 個前端愛用的 VSCode 擴充套件</a></li>
+<li><a href="https://tw.alphacamp.co/blog/visual-studio-code-editor-tutorial-and-extensions">VSCode快速安裝教學，推薦常用外掛擴充套件</a></li>
+<li><a href="https://stackoverflow.com/a/29973358/15028185">How do you format code in Visual Studio Code (VSCode)</a></li>
+<li><a href="https://code.visualstudio.com/docs/editor/userdefinedsnippets#_create-your-own-snippets">Visual Studio Code: Create your own snippets</a></li>
 </ul>
 ]]></content>
       <categories>
-        <category>JavaScript</category>
+        <category>VSCode</category>
       </categories>
   </entry>
   <entry>
@@ -2811,72 +2877,6 @@ on <a href="https://codepen.io">CodePen</a>.</span>
 ]]></content>
       <categories>
         <category>JavaScript</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>VSCode擴充套件（Extensions）與自訂snippets</title>
-    <url>/2021/vs-code-extensions-snippets/</url>
-    <content><![CDATA[<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>記錄一些目前有在使用的VSCode擴充套件，與自訂snippets的步驟筆記。</p>
-<h2 id="版本與環境"><a href="#版本與環境" class="headerlink" title="版本與環境"></a>版本與環境</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">VSCode: 1.53.2 (user setup)</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></table></figure>
-
-<h2 id="擴充套件（Extensions）"><a href="#擴充套件（Extensions）" class="headerlink" title="擴充套件（Extensions）"></a>擴充套件（Extensions）</h2><h3 id="Bracket-Pair-Colorizer-2"><a href="#Bracket-Pair-Colorizer-2" class="headerlink" title="Bracket Pair Colorizer 2"></a>Bracket Pair Colorizer 2</h3><p>套件網址：<a href="https://marketplace.visualstudio.com/items?itemName=CoenraadS.bracket-pair-colorizer-2">https://marketplace.visualstudio.com/items?itemName=CoenraadS.bracket-pair-colorizer-2</a><br>幫成對的括號套用相同的顏色，方便辨識。<br>根據<a href="https://github.com/CoenraadS/Bracket-Pair-Colorizer-2#faq">官方Q&amp;A</a>的內容，2代改善了執行速度與正確性，其餘設定與1代看起來沒什麼差異。</p>
-<p>如果要修改套件設定的話，可參考以下gif：</p>
-<figure class="figure--center"><img src="/2021/vs-code-extensions-snippets/extension-setting.gif"></figure>
-
-<h3 id="indent-rainbow"><a href="#indent-rainbow" class="headerlink" title="indent-rainbow"></a>indent-rainbow</h3><p>套件網址：<a href="https://marketplace.visualstudio.com/items?itemName=oderwat.indent-rainbow">https://marketplace.visualstudio.com/items?itemName=oderwat.indent-rainbow</a><br>幫縮排區域套上顏色，縮排尺寸不正確時顯示為紅色，如下圖。</p>
-<figure class="figure--center"><img src="/2021/vs-code-extensions-snippets/incorrect-space.png"></figure>
-
-<h3 id="Lorem-Picsum-photos-snippets"><a href="#Lorem-Picsum-photos-snippets" class="headerlink" title="Lorem Picsum photos snippets"></a>Lorem Picsum photos snippets</h3><p>套件網址：<a href="https://marketplace.visualstudio.com/items?itemName=huang-an-sheng.lorem-picsum-photos-snippets">https://marketplace.visualstudio.com/items?itemName=huang-an-sheng.lorem-picsum-photos-snippets</a><br>練習切版時直接在html檔案中輸入<code>picsum</code>即可帶出有假圖的<code>&lt;img&gt;</code>標籤。</p>
-<figure class="figure--center"><img src="/2021/vs-code-extensions-snippets/lorem-piscum.gif"></figure>
-<ul>
-<li>輸入<code>picsum</code>後直接按下<code>tab</code>會產生帶一張固定id假圖的標籤<code>&lt;img src=&quot;https://picsum.photos/id/684/600/400&quot; alt=&quot;&quot;&gt;</code><ul>
-<li>需要隨機圖片的話，把圖片網址改為<code>https://picsum.photos/&#123;width&#125;/&#123;height&#125;?random=&#123;seed&#125;</code></li>
-<li><code>&#123;width&#125;</code>代表圖片寬度（單位px），<code>&#123;height&#125;</code>代表圖片高度（單位px），<code>&#123;seed&#125;</code>為正整數</li>
-<li>假圖網址加上不同的<code>&#123;seed&#125;</code>會讓每一組網址產生不同的圖片，參考下圖：<figure class="figure--center"><img src="/2021/vs-code-extensions-snippets/lorem-picsum.png"></figure></li>
-<li>第一列圖片的網址由左至右分別是<code>https://picsum.photos/600/400?random=1</code>、<code>https://picsum.photos/600/400?random=2</code>、<code>https://picsum.photos/600/400?random=3</code>、<code>https://picsum.photos/600/400?random=4</code>，第二列圖片的網址統一使用<code>https://picsum.photos/600/400?random</code></li>
-<li>第二列的圖片在每次重新整理網頁時都會更新，但會是四張一樣的圖</li>
-</ul>
-</li>
-<li><code>picsum-grayscale</code>：灰階假圖</li>
-<li><code>picsum-blur</code>：有模糊效果的假圖</li>
-<li><code>picsum-square</code>：正方形假圖</li>
-<li><code>picsum-grayscale-blur</code>：灰階加模糊效果</li>
-<li>其餘預設效果可參考套件的說明內容</li>
-</ul>
-<h3 id="Live-Server"><a href="#Live-Server" class="headerlink" title="Live Server"></a>Live Server</h3><p>套件網址：<a href="https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer">https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer</a><br>安裝完畢後，VSCode右下角會出現Go Live按鈕，點下啟動Live Server。<br>預設可以在<code>localhost:5500</code>即時看到VSCode的檔案（修改檔案內容後，存檔、重新整理<code>localhost:5500</code>上的頁面，才會看到修改內容）。</p>
-<h3 id="Code-Spell-Checker"><a href="#Code-Spell-Checker" class="headerlink" title="Code Spell Checker"></a>Code Spell Checker</h3><p>套件網址：<a href="https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker">https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker</a><br>支援CamelCase，並且偵測到拼寫不正確的單字時，會提供建議用字，如下圖：</p>
-<figure class="figure--center"><img src="/2021/vs-code-extensions-snippets/code-spell-checker.gif"></figure>
-
-
-<h2 id="自訂snippets"><a href="#自訂snippets" class="headerlink" title="自訂snippets"></a>自訂snippets</h2><p>自訂了一個帶有bootstrap5 CSS與JS CDN連結的html樣板。</p>
-<ol>
-<li>從<a href="https://getbootstrap.com/docs/5.0/getting-started/introduction/#starter-template">bootstrap5官方文件</a>複製html樣板內容</li>
-<li>開啟VSCode，按下F1，輸入「snippets」，選擇「Preferences: Configure User Snippets」<figure class="figure--center"><img src="/2021/vs-code-extensions-snippets/snippets-edit-0.png"></figure></li>
-<li>因為要建立的是html樣板，故輸入html，意即建立給html文件使用的snippets<figure class="figure--center"><img src="/2021/vs-code-extensions-snippets/snippets-edit-1.png"></figure></li>
-<li>另外一個開啟html.json的方式是依序點選「畫面右上角的File（Mac版為Code） &gt;&gt; Preferences &gt;&gt; User Snippets」後，輸入html開啟html.json<figure class="figure--center"><img src="/2021/vs-code-extensions-snippets/snippets-edit-another-path.png"></figure></li>
-<li>在html.json檔案中貼上bootstrap5的html樣板內容<figure class="figure--center"><img src="/2021/vs-code-extensions-snippets/snippets-edit-content.png"></figure>
-<ul>
-<li>圖中第16行<code>bootstrap5 template</code>代表snippets名稱</li>
-<li>第17行<code>prefix</code>的值代表呼叫snippets的快速鍵，為了避免跟VSCode預設的html樣板起衝突，設定為<code>!!</code></li>
-<li>第18至35行<code>body</code>的值代表snippets的內容，每一行後面須加上半形逗號<code>,</code>分隔內容</li>
-<li>第36行<code>description</code>是輸入快速鍵時出現在snippets選單的說明內容，請參考下圖<figure class="figure--center"><img src="/2021/vs-code-extensions-snippets/snippets-enter-hotkey.png"></figure>
-原始碼如下：<figure class="highlight"><table><tr><td class="code"><pre><span class="line">&quot;bootstrap5 template&quot;: &#123;</span><br><span class="line">    &quot;prefix&quot;: &quot;!!&quot;,</span><br><span class="line">    &quot;body&quot;: [</span><br><span class="line">        &quot;&lt;!doctype html&gt;&quot;,</span><br><span class="line">        &quot;&lt;html lang=\&quot;en\&quot;&gt;&quot;,</span><br><span class="line">        &quot;    &lt;head&gt;&quot;,</span><br><span class="line">        &quot;        &lt;meta charset=\&quot;utf-8\&quot;&gt;&quot;,</span><br><span class="line">        &quot;        &lt;meta name=\&quot;viewport\&quot; content=\&quot;width=device-width, initial-scale=1\&quot;&gt;&quot;,</span><br><span class="line">        &quot;&quot;,</span><br><span class="line">        &quot;        &lt;!-- Bootstrap CSS --&gt;&quot;,</span><br><span class="line">        &quot;        &lt;link href=\&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css\&quot; rel=\&quot;stylesheet\&quot; integrity=\&quot;sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl\&quot; crossorigin=\&quot;anonymous\&quot;&gt;&quot;,</span><br><span class="line">        &quot;&quot;,</span><br><span class="line">        &quot;        &lt;title&gt;Hello, world!&lt;/title&gt;&quot;,</span><br><span class="line">        &quot;    &lt;/head&gt;&quot;,</span><br><span class="line">        &quot;    &lt;body&gt;&quot;,</span><br><span class="line">        &quot;        &lt;!-- Option 1: Bootstrap Bundle with Popper --&gt;&quot;,</span><br><span class="line">        &quot;        &lt;script src=\&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js\&quot; integrity=\&quot;sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0\&quot; crossorigin=\&quot;anonymous\&quot;&gt;&lt;/script&gt;&quot;,</span><br><span class="line">        &quot;    &lt;/body&gt;&quot;,</span><br><span class="line">        <span class="string">&quot;&lt;/html&gt;&quot;</span></span><br><span class="line">    ],</span><br><span class="line">    &quot;description&quot;: &quot;bootstrap5 template&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li>以上內容輸入完畢後，存檔，之後即可在html格式的檔案中輸入快速鍵<code>!!</code>並按下<code>tab</code>來套用剛才自訂的snippets內容<figure class="figure--center"><img src="/2021/vs-code-extensions-snippets/snippets-done.png"></figure>
-
-
-</li>
-</ol>
-<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
-<li><a href="https://wcc723.github.io/development/2020/12/13/vscode-extension/">12 個前端愛用的 VSCode 擴充套件</a></li>
-<li><a href="https://tw.alphacamp.co/blog/visual-studio-code-editor-tutorial-and-extensions">VSCode快速安裝教學，推薦常用外掛擴充套件</a></li>
-<li><a href="https://stackoverflow.com/a/29973358/15028185">How do you format code in Visual Studio Code (VSCode)</a></li>
-<li><a href="https://code.visualstudio.com/docs/editor/userdefinedsnippets#_create-your-own-snippets">Visual Studio Code: Create your own snippets</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>VSCode</category>
       </categories>
   </entry>
   <entry>
