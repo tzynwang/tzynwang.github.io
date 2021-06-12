@@ -9,8 +9,9 @@ layout: about
 <h2>Side projects</h2>
 
 - <a target="_blank" href="https://tzynwang.github.io/SideProject_CSS-filter-property/">CSS filter Property</a>：由貓來示範不同的CSS濾鏡效果 🐈
-- <a target="_blank" href="SideProject_Japanese-literature-50">日本文學經典50</a>：致敬[《一生必讀的50本日本文學名著》](https://www.cite.com.tw/book?id=71265)書末的歷代經典名著表格 📚
+- <a target="_blank" href="https://tzynwang.github.io/SideProject_Japanese-literature-50">日本文學經典50</a>：致敬[《一生必讀的50本日本文學名著》](https://www.cite.com.tw/book?id=71265)書末的歷代經典名著表格 📚
 - [grid-template-areas generator](https://codepen.io/Charlie7779/pen/qBqGbpm)：貫徹DRY，從撰寫可以重複使用的小工具開始 🔨
+- <a target="_blank" href="https://tzynwang.github.io/Practice_tic-tac-toe/">Tic Tac Toe</a>：井字遊戲，包含PVP或PVC模式 ⭕❌
 
 <h2>Credit</h2>
 

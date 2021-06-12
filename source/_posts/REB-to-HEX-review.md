@@ -17,7 +17,7 @@ tags:
 
 
 ## 成品
-純網頁展示版：[點我](https://tzynwang.github.io/RGB-to-HEX/)
+純網頁展示版：[點我](https://tzynwang.github.io/Practice_RGB-to-HEX/)
 {% figure figure--center 2021/REB-to-HEX-review/demo-img.png "'三個按鈕由左至右分別是「複製顏色代碼」、「重置回預設狀態」與「隨機產生顏色」'" %}
 彩蛋：其中有465種顏色有名字，發現機率是465 / 255^3，大約是0.003%。
 全部的名字來源參考：[和色大辞典](https://www.colordic.org/w)
