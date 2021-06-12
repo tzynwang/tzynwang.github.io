@@ -6,7 +6,7 @@
   <link href="https://tzynwang.github.io/atom.xml" rel="self"/>
   
   <link href="https://tzynwang.github.io/"/>
-  <updated>2021-05-30T06:02:17.723Z</updated>
+  <updated>2021-06-12T05:19:20.202Z</updated>
   <id>https://tzynwang.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>「webpack環境設置步驟」相關筆記</title>
+    <link href="https://tzynwang.github.io/2021/webpack-note/"/>
+    <id>https://tzynwang.github.io/2021/webpack-note/</id>
+    <published>2021-06-12T03:02:00.000Z</published>
+    <updated>2021-06-12T05:19:20.202Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;總結&quot;&gt;&lt;a href=&quot;#總結&quot; class=&quot;headerlink&quot; title=&quot;總結&quot;&gt;&lt;/a&gt;總結&lt;/h2&gt;&lt;p&gt;使用webpack（本次搭配axios與vue）開發前端web APP時的環境相關設置筆記&lt;/p&gt;
+&lt;h2 id=&quot;環境&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="webpack" scheme="https://tzynwang.github.io/categories/webpack/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>Alpha Camp「2-2 電影清單」技術記錄</title>
@@ -113,29 +137,6 @@
     <category term="JavaScript" scheme="https://tzynwang.github.io/categories/JavaScript/"/>
     
     <category term="Express" scheme="https://tzynwang.github.io/categories/Express/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>「git stop tracking files」相關筆記</title>
-    <link href="https://tzynwang.github.io/2021/git-remove-file-from-tracking/"/>
-    <id>https://tzynwang.github.io/2021/git-remove-file-from-tracking/</id>
-    <published>2021-05-22T05:47:48.000Z</published>
-    <updated>2021-05-22T06:14:30.920Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;總結&quot;&gt;&lt;a href=&quot;#總結&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="git" scheme="https://tzynwang.github.io/categories/git/"/>
     
     
   </entry>
