@@ -47,6 +47,35 @@ os: Windows_NT 10.0.18363 win32 x64
 ## 資料夾結構
 {% figure figure--center 2021/webpack-note/webpack-folder-structure.png "'Folder structure'" %}
 
+## 補充：若須導入.css
+1. 安裝`css-loader`與`mini-css-extract-plugin`（`npm i css-loader mini-css-extract-plugin -D`）
+1. 在`index.js`中匯入.css檔案
+  ```JavaScript
+  import './bootstrap.bundle'
+  import './bootstrap.css'
+  import './style.css'
+  ```
+1. `webpack.config.js`加入以下內容：
+  ```JavaScript
+  const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+
+  module.exports = {
+    plugins: [
+      new MiniCssExtractPlugin()
+    ],
+    module: {
+      rules: [
+        {
+          test: /\.css$/i,
+          use: [MiniCssExtractPlugin.loader, 'css-loader']
+        }
+      ]
+    }
+  }
+  ```
+  - [MiniCssExtractPlugin](https://webpack.js.org/plugins/mini-css-extract-plugin/)：此plugin會在執行`npm run build`時將（匯入index.js的）.css檔案獨立出來，並嵌入`index.html`中（預設在`<head>`尾端，可透過[`insert`參數](https://webpack.js.org/plugins/mini-css-extract-plugin/#insert)修改）
+  - [Webpack config: Module Rule.test](https://webpack.js.org/configuration/module/#ruletest): Include all modules that pass test assertion. If you supply a `Rule.test` option, you cannot also supply a `Rule.resource`. 
+
 
 ## 參考文件
 - [Webpack 5: Getting Started](https://webpack.js.org/guides/getting-started/)
