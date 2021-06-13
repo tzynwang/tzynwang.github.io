@@ -270,10 +270,16 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2021-06-12 11:02:00 / Modified: 13:19:20" itemprop="dateCreated datePublished" datetime="2021-06-12T11:02:00+08:00">2021-06-12</time>
+      <time title="Created: 2021-06-12 11:02:00" itemprop="dateCreated datePublished" datetime="2021-06-12T11:02:00+08:00">2021-06-12</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-06-13 11:11:05" itemprop="dateModified" datetime="2021-06-13T11:11:05+08:00">2021-06-13</time>
+      </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
@@ -343,6 +349,16 @@
 <script src="https://gist.github.com/tzynwang/96051f1c7bdded10f79ad3caeaf838be.js"></script>
 
 <p>並且<code>main.js</code>已經根據<code>webpack.config.js</code>中<code>HtmlWebpackPlugin</code>的設定，自動嵌入<code>&lt;body&gt;</code>底部<br>使用webpack進行打包的步驟到此結束</p>
+</li>
+</ol>
+<h3 id="若須導入-css"><a href="#若須導入-css" class="headerlink" title="若須導入.css"></a>若須導入.css</h3><ol>
+<li>安裝<code>css-loader</code>與<code>mini-css-extract-plugin</code>（<code>npm i css-loader mini-css-extract-plugin -D</code>）</li>
+<li>在<code>index.js</code>中匯入.css檔案<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">'./bootstrap.bundle'</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">'./bootstrap.css'</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">'./style.css'</span></span><br></pre></td></tr></tbody></table></figure></li>
+<li><code>webpack.config.js</code>加入以下內容：<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> MiniCssExtractPlugin = <span class="built_in">require</span>(<span class="string">'mini-css-extract-plugin'</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = {</span><br><span class="line">  plugins: [</span><br><span class="line">    <span class="keyword">new</span> MiniCssExtractPlugin()</span><br><span class="line">  ],</span><br><span class="line">  <span class="built_in">module</span>: {</span><br><span class="line">    rules: [</span><br><span class="line">      {</span><br><span class="line">        test: <span class="regexp">/\.css$/i</span>,</span><br><span class="line">        use: [MiniCssExtractPlugin.loader, <span class="string">'css-loader'</span>]</span><br><span class="line">      }</span><br><span class="line">    ]</span><br><span class="line">  }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://webpack.js.org/plugins/mini-css-extract-plugin/">MiniCssExtractPlugin</a>：此plugin會在執行<code>npm run build</code>時將（匯入index.js的）.css檔案獨立出來，並嵌入<code>index.html</code>中（預設在<code>&lt;head&gt;</code>尾端，可透過<a target="_blank" rel="noopener" href="https://webpack.js.org/plugins/mini-css-extract-plugin/#insert"><code>insert</code>參數</a>修改）</li>
+<li><a target="_blank" rel="noopener" href="https://webpack.js.org/configuration/module/#ruletest">Webpack config: Module Rule.test</a>: Include all modules that pass test assertion. If you supply a <code>Rule.test</code> option, you cannot also supply a <code>Rule.resource</code>. </li>
+</ul>
 </li>
 </ol>
 <h2 id="資料夾結構"><a href="#資料夾結構" class="headerlink" title="資料夾結構"></a>資料夾結構</h2><figure class="figure--center"><img src="/2021/webpack-note/webpack-folder-structure.png" title="Folder structure"><figcaption><p>Folder structure</p></figcaption></figure>
