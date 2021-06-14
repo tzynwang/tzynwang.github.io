@@ -638,6 +638,45 @@ on <a href="https://codepen.io">CodePen</a>.</span>
       </categories>
   </entry>
   <entry>
+    <title>「產生順序數陣列」相關筆記</title>
+    <url>/2021/array-with-serial-number/</url>
+    <content><![CDATA[<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>使用<code>Array() constructor</code>、<code>Array.prototype.keys()</code>與<code>Array.from()</code>來建立一個陣列，該陣列包含從小到大的順序數列，如<code>[1, 2, 3, 4, 5, 6, 7]</code></p>
+<h2 id="筆記"><a href="#筆記" class="headerlink" title="筆記"></a>筆記</h2><h3 id="Array-constructor"><a href="#Array-constructor" class="headerlink" title="Array() constructor"></a>Array() constructor</h3><p>傳入陣列長度，會得到對應該陣列長度的空陣列</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> x = <span class="built_in">Array</span>(<span class="number">7</span>)</span><br><span class="line"><span class="comment">// x為[empty × 7]</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>MDN: If the only argument passed to the Array constructor is an <strong>integer between 0 and 2^32 - 1 (inclusive)</strong>, this returns a new JavaScript array with its <strong>length property set to that number</strong> (Note: this implies an array of arrayLength empty slots, not slots with actual undefined values). If the argument is any other number, a RangeError exception is thrown.</p>
+</blockquote>
+<h3 id="Array-prototype-keys"><a href="#Array-prototype-keys" class="headerlink" title="Array.prototype.keys()"></a>Array.prototype.keys()</h3><p>此功能會回傳「Array Iterator object」，並非單純的陣列</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> array1 = [<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>]</span><br><span class="line"><span class="keyword">const</span> iterator = array1.keys()</span><br><span class="line"><span class="comment">// 呼叫iterator的話，會得到Array Iterator Object，而非陣列</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">const</span> key <span class="keyword">of</span> iterator) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(key) <span class="comment">// 依序印出0、1、2</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Array-from"><a href="#Array-from" class="headerlink" title="Array.from()"></a>Array.from()</h3><p>配合<code>Array.prototype.keys()</code>回傳的Array Iterator Object，回傳該Array Iterator Object的淺拷貝陣列</p>
+<blockquote>
+<p>MDN: The <code>Array.from()</code> static method creates a <strong>new, shallow-copied Array instance</strong> from an array-like or iterable object.</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> serialNumber = <span class="built_in">Array</span>.from(<span class="built_in">Array</span>(<span class="number">7</span>).keys(), <span class="function"><span class="params">element</span> =&gt;</span> element + <span class="number">1</span>)</span><br><span class="line"><span class="built_in">console</span>.log(serialNumber)</span><br><span class="line"><span class="comment">// 印出 Array [1, 2, 3, 4, 5, 6, 7]</span></span><br></pre></td></tr></table></figure>
+<p>步驟拆解如下：</p>
+<ol>
+<li><code>Array(7)</code>得到一個長度為7的空陣列</li>
+<li><code>Array(7).keys()</code>得到一個Array Iterator Object，若使用<code>for...of</code>迴圈印出此物件的內容的話，會依序印出0、1、2、3、4、5、6</li>
+<li><code>Array.from(Array(7).keys(), element =&gt; element + 1)</code>中的<code>element =&gt; element + 1</code>是傳入<code>Array.from()</code>的Map function，會依序作用在陣列中的每一個項目上<ul>
+<li>而傳入的Map function要做的事情是「為陣列中的每一個項目 +1」</li>
+<li>所以最後<code>Array.from()</code>回傳的陣列會是從1開始，而非0</li>
+<li><code>element =&gt; element + 1</code>是以下原始碼的精簡版本：<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">(element) =&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> element + <span class="number">1</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 簡化為</span></span><br><span class="line">element =&gt; &#123; <span class="keyword">return</span> element + <span class="number">1</span> &#125;</span><br><span class="line"><span class="comment">// 簡化為</span></span><br><span class="line">element =&gt; element + <span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Array">Array() constructor</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/keys">Array.prototype.keys()</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/from">Array.from()</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+  </entry>
+  <entry>
     <title>bundle exec</title>
     <url>/2021/bundle-exec/</url>
     <content><![CDATA[<p>Question: why adds <code>bundle exec</code> in the command when running jekyll server in the first time?<br>Answer (short): to know the version of the gems that are going to use.</p>
@@ -1034,6 +1073,43 @@ on <a href="https://codepen.io">CodePen</a>.</span>
       </categories>
   </entry>
   <entry>
+    <title>「Express Handlebars 取得父層變數內容」相關筆記</title>
+    <url>/2021/express-handlebars-access-variable-in-parent-scope/</url>
+    <content><![CDATA[<h2 id="問題描述"><a href="#問題描述" class="headerlink" title="問題描述"></a>問題描述</h2><ul>
+<li>情境：在express-handlebars中使用原生的<code>each</code>搭配handlebars-helpers的<code>is</code>進行條件判斷，進而渲染出一組<code>&lt;select&gt;</code><ul>
+<li><code>&lt;select&gt;</code>中的每一個<code>&lt;option&gt;</code>都是一種餐廳類型（舉例：日本料理、酒吧、美式餐廳等）</li>
+<li>（由<code>app.js</code>傳遞給<code>edit.handlebars</code>的變數）<code>categories</code>為餐廳類型的陣列資料，<code>restaurant</code>為物件變數，可透過<code>restaurant.category</code>來取得該餐廳的餐廳類型</li>
+<li>當<code>each</code>迴圈中<code>this</code>的值與<code>restaurant.category</code>一致時，pre-selected該<code>&lt;option&gt;</code><figure class="figure--center"><img src="/2021/express-handlebars-access-variable-in-parent-scope/pre-selected.png" title="select欄位應預設選擇該餐廳的類型"><figcaption><p>select欄位應預設選擇該餐廳的類型</p></figcaption></figure></li>
+</ul>
+</li>
+<li>問題：檢查最終的DOM內容，發現並<strong>沒有</strong>渲染出應該要預先被選擇的<code>&lt;option&gt;</code></li>
+<li>行為不如預期的原始碼：<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// app.js端</span></span><br><span class="line">app.get(<span class="string">&#x27;/restaurants/:id/edit&#x27;</span>, <span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> id = <span class="built_in">Number</span>(req.params.id)</span><br><span class="line">  <span class="keyword">const</span> targetRestaurant = restaurantList.results.find(<span class="function">(<span class="params">restaurant</span>) =&gt;</span> restaurant.id === id)</span><br><span class="line">  <span class="keyword">const</span> categories = []</span><br><span class="line">  restaurantList.results.forEach(<span class="function"><span class="params">restaurant</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (!categories.includes(restaurant.category)) &#123;</span><br><span class="line">      categories.push(restaurant.category)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">  res.render(<span class="string">&#x27;edit&#x27;</span>, &#123; <span class="attr">restaurant</span>: targetRestaurant, categories &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- handlebars端 --&gt;</span></span><br><span class="line">&#123;&#123;#each categories&#125;&#125;</span><br><span class="line">  &#123;&#123;#is this restaurant.category)&#125;&#125;</span><br><span class="line">  <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;&#123;&#123;this&#125;&#125;&quot;</span> <span class="attr">selected</span>&gt;</span>&#123;&#123;this&#125;&#125;<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">  &#123;&#123;else&#125;&#125;</span><br><span class="line">  <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;&#123;&#123;this&#125;&#125;&quot;</span>&gt;</span>&#123;&#123;this&#125;&#125;<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">  &#123;&#123;/is&#125;&#125;</span><br><span class="line">&#123;&#123;/each&#125;&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="環境"><a href="#環境" class="headerlink" title="環境"></a>環境</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">express-handlebars: 5.3.2</span><br><span class="line">handlebars-helpers: 0.10.0</span><br></pre></td></tr></table></figure>
+
+<h2 id="解決方式"><a href="#解決方式" class="headerlink" title="解決方式"></a>解決方式</h2><p>將handlebars端的內容修改如下（<code>restaurant.category</code>加上<code>../</code>）：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- handlebars端 --&gt;</span></span><br><span class="line">&#123;&#123;#each categories&#125;&#125;</span><br><span class="line">  &#123;&#123;#is this ../restaurant.category)&#125;&#125;</span><br><span class="line">  <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;&#123;&#123;this&#125;&#125;&quot;</span> <span class="attr">selected</span>&gt;</span>&#123;&#123;this&#125;&#125;<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">  &#123;&#123;else&#125;&#125;</span><br><span class="line">  <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;&#123;&#123;this&#125;&#125;&quot;</span>&gt;</span>&#123;&#123;this&#125;&#125;<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">  &#123;&#123;/is&#125;&#125;</span><br><span class="line">&#123;&#123;/each&#125;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>參考Handlebars官方文件的說明：</p>
+<blockquote>
+<p>Some helpers like <code>#with</code> and <code>#each</code> allow you to <strong>dive into nested objects</strong>. When you include <code>../</code> segments in your path, Handlebars will change back into the <strong>parent context</strong>.</p>
+</blockquote>
+<p>在巢狀結構中，使用<code>../</code>來取得上一層變數的內容</p>
+<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
+<li><a href="https://handlebarsjs.com/guide/expressions.html#changing-the-context">Handlebars: Changing the context</a></li>
+<li><a href="https://stackoverflow.com/questions/13645084/access-a-variable-outside-the-scope-of-a-handlebars-js-each-loop">Access a variable outside the scope of a Handlebars.js each loop</a></li>
+<li><a href="https://stackoverflow.com/a/12297980/15028185">Access properties of the parent with a Handlebars ‘each’ loop</a></li>
+<li><a href="https://eruditeness.news.blog/2019/08/28/node-js%E5%88%9D%E5%AD%B8%E7%AD%86%E8%A8%9810-%E5%9C%A8express-handlebars%E4%B8%AD%E8%BC%95%E9%AC%86%E5%BB%BA%E7%AB%8B%E5%AE%A2%E8%A3%BDhelperhandlebars-custom-helpers/">Node.js初學筆記10: 在express-handlebars中輕鬆建立客製helper(handlebars custom helpers)</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Express Handlebars</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Alpha Camp「2-3 middleware實作練習」技術記錄</title>
     <url>/2021/express-middleware/</url>
     <content><![CDATA[<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>在本作業中實作的相關功能：</p>
@@ -1109,43 +1185,6 @@ on <a href="https://codepen.io">CodePen</a>.</span>
       <categories>
         <category>JavaScript</category>
         <category>Express</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>「Express Handlebars 取得父層變數內容」相關筆記</title>
-    <url>/2021/express-handlebars-access-variable-in-parent-scope/</url>
-    <content><![CDATA[<h2 id="問題描述"><a href="#問題描述" class="headerlink" title="問題描述"></a>問題描述</h2><ul>
-<li>情境：在express-handlebars中使用原生的<code>each</code>搭配handlebars-helpers的<code>is</code>進行條件判斷，進而渲染出一組<code>&lt;select&gt;</code><ul>
-<li><code>&lt;select&gt;</code>中的每一個<code>&lt;option&gt;</code>都是一種餐廳類型（舉例：日本料理、酒吧、美式餐廳等）</li>
-<li>（由<code>app.js</code>傳遞給<code>edit.handlebars</code>的變數）<code>categories</code>為餐廳類型的陣列資料，<code>restaurant</code>為物件變數，可透過<code>restaurant.category</code>來取得該餐廳的餐廳類型</li>
-<li>當<code>each</code>迴圈中<code>this</code>的值與<code>restaurant.category</code>一致時，pre-selected該<code>&lt;option&gt;</code><figure class="figure--center"><img src="/2021/express-handlebars-access-variable-in-parent-scope/pre-selected.png" title="select欄位應預設選擇該餐廳的類型"><figcaption><p>select欄位應預設選擇該餐廳的類型</p></figcaption></figure></li>
-</ul>
-</li>
-<li>問題：檢查最終的DOM內容，發現並<strong>沒有</strong>渲染出應該要預先被選擇的<code>&lt;option&gt;</code></li>
-<li>行為不如預期的原始碼：<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// app.js端</span></span><br><span class="line">app.get(<span class="string">&#x27;/restaurants/:id/edit&#x27;</span>, <span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> id = <span class="built_in">Number</span>(req.params.id)</span><br><span class="line">  <span class="keyword">const</span> targetRestaurant = restaurantList.results.find(<span class="function">(<span class="params">restaurant</span>) =&gt;</span> restaurant.id === id)</span><br><span class="line">  <span class="keyword">const</span> categories = []</span><br><span class="line">  restaurantList.results.forEach(<span class="function"><span class="params">restaurant</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (!categories.includes(restaurant.category)) &#123;</span><br><span class="line">      categories.push(restaurant.category)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">  res.render(<span class="string">&#x27;edit&#x27;</span>, &#123; <span class="attr">restaurant</span>: targetRestaurant, categories &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- handlebars端 --&gt;</span></span><br><span class="line">&#123;&#123;#each categories&#125;&#125;</span><br><span class="line">  &#123;&#123;#is this restaurant.category)&#125;&#125;</span><br><span class="line">  <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;&#123;&#123;this&#125;&#125;&quot;</span> <span class="attr">selected</span>&gt;</span>&#123;&#123;this&#125;&#125;<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">  &#123;&#123;else&#125;&#125;</span><br><span class="line">  <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;&#123;&#123;this&#125;&#125;&quot;</span>&gt;</span>&#123;&#123;this&#125;&#125;<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">  &#123;&#123;/is&#125;&#125;</span><br><span class="line">&#123;&#123;/each&#125;&#125;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h2 id="環境"><a href="#環境" class="headerlink" title="環境"></a>環境</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">express-handlebars: 5.3.2</span><br><span class="line">handlebars-helpers: 0.10.0</span><br></pre></td></tr></table></figure>
-
-<h2 id="解決方式"><a href="#解決方式" class="headerlink" title="解決方式"></a>解決方式</h2><p>將handlebars端的內容修改如下（<code>restaurant.category</code>加上<code>../</code>）：</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- handlebars端 --&gt;</span></span><br><span class="line">&#123;&#123;#each categories&#125;&#125;</span><br><span class="line">  &#123;&#123;#is this ../restaurant.category)&#125;&#125;</span><br><span class="line">  <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;&#123;&#123;this&#125;&#125;&quot;</span> <span class="attr">selected</span>&gt;</span>&#123;&#123;this&#125;&#125;<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">  &#123;&#123;else&#125;&#125;</span><br><span class="line">  <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;&#123;&#123;this&#125;&#125;&quot;</span>&gt;</span>&#123;&#123;this&#125;&#125;<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">  &#123;&#123;/is&#125;&#125;</span><br><span class="line">&#123;&#123;/each&#125;&#125;</span><br></pre></td></tr></table></figure>
-
-<p>參考Handlebars官方文件的說明：</p>
-<blockquote>
-<p>Some helpers like <code>#with</code> and <code>#each</code> allow you to <strong>dive into nested objects</strong>. When you include <code>../</code> segments in your path, Handlebars will change back into the <strong>parent context</strong>.</p>
-</blockquote>
-<p>在巢狀結構中，使用<code>../</code>來取得上一層變數的內容</p>
-<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
-<li><a href="https://handlebarsjs.com/guide/expressions.html#changing-the-context">Handlebars: Changing the context</a></li>
-<li><a href="https://stackoverflow.com/questions/13645084/access-a-variable-outside-the-scope-of-a-handlebars-js-each-loop">Access a variable outside the scope of a Handlebars.js each loop</a></li>
-<li><a href="https://stackoverflow.com/a/12297980/15028185">Access properties of the parent with a Handlebars ‘each’ loop</a></li>
-<li><a href="https://eruditeness.news.blog/2019/08/28/node-js%E5%88%9D%E5%AD%B8%E7%AD%86%E8%A8%9810-%E5%9C%A8express-handlebars%E4%B8%AD%E8%BC%95%E9%AC%86%E5%BB%BA%E7%AB%8B%E5%AE%A2%E8%A3%BDhelperhandlebars-custom-helpers/">Node.js初學筆記10: 在express-handlebars中輕鬆建立客製helper(handlebars custom helpers)</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>Express Handlebars</category>
       </categories>
   </entry>
   <entry>
@@ -1507,35 +1546,6 @@ on <a href="https://codepen.io">CodePen</a>.</span>
       </tags>
   </entry>
   <entry>
-    <title>Add 404 page</title>
-    <url>/2021/hexo-add-404/</url>
-    <content><![CDATA[<h2 id="Summary-of-this-post"><a href="#Summary-of-this-post" class="headerlink" title="Summary of this post"></a>Summary of this post</h2><p>The workflow of adding a 404 handling page for the hexo blog.</p>
-<figure class="figure--center"><img src="/2021/hexo-add-404/404-page-for-hexo-blog.jpg" title="The 404 page"><figcaption><p>The 404 page</p></figcaption></figure>
-
-
-<h2 id="Environment"><a href="#Environment" class="headerlink" title="Environment"></a>Environment</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo: 5.3.0</span><br><span class="line">hexo-cli: 4.2.0</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></table></figure>
-
-<h2 id="Workflow"><a href="#Workflow" class="headerlink" title="Workflow"></a>Workflow</h2><ol>
-<li>Create a 404.md file in the <code>source</code> folder<figure class="figure--center"><img src="/2021/hexo-add-404/location-of-404-page.jpg" title="Add the 404.md in the source folder of hexo blog " alt="The screenshot to display file location of 404.md file for the hexo blog"><figcaption><p>Add the 404.md in the source folder of hexo blog </p></figcaption></figure></li>
-<li>Add page content for the 404.md file:<ul>
-<li><code>permalink: /404.html</code> in line 3 is <strong>required</strong>.</li>
-<li>Fill in the correct URL (<code>https://&lt;your GitHub username&gt;.github.io/</code>) for redirection in line 9 and line 19</li>
-<li>The value of <code>countTime</code> in line 12 can be updated to the preferred waiting time. I just leave the waiting time as 5 seconds without changing it.<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: 404</span><br><span class="line">permalink: /404.html</span><br><span class="line">---</span><br><span class="line"></span><br><span class="line"><span class="section">## Page not exists</span></span><br><span class="line">The page you are looking for does not exist.</span><br><span class="line">Will bring you back to the homepage in <span class="xml"><span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">&quot;timeout&quot;</span>&gt;</span></span>5<span class="xml"><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span> second(s).</span><br><span class="line">Or [<span class="string">click this link</span>](<span class="link">https://&lt;your GitHub username&gt;.github.io/</span>) to go back to the homepage immediately.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span></span><br><span class="line">let countTime = 5;</span><br><span class="line"></span><br><span class="line">function count() &#123;</span><br><span class="line">  </span><br><span class="line">  document.getElementById(&#x27;timeout&#x27;).textContent = countTime;</span><br><span class="line">  countTime -= 1;</span><br><span class="line">  if(countTime === 0)&#123;</span><br><span class="line"><span class="code">    location.href = &quot;https://&lt;your GitHub username&gt;.github.io/&quot;;</span></span><br><span class="line"><span class="code">  &#125;</span></span><br><span class="line"><span class="code">  setTimeout(() =&gt; &#123;</span></span><br><span class="line"><span class="code">    count();</span></span><br><span class="line"><span class="code">  &#125;, 1000);</span></span><br><span class="line"><span class="code">&#125;</span></span><br><span class="line"><span class="code"></span></span><br><span class="line"><span class="code">count();</span></span><br><span class="line"><span class="code">&lt;/script&gt;</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li>Save the file. Run <code>hexo generate</code> and <code>hexo deploy</code> to push the 404 handle page to the repository. Done ☕</li>
-</ol>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
-<li>For the copy:<br>  <a href="https://codepen.io/kdbkapsere/pen/oNXLbqQ">404 Page by Kasper De Bruyne</a></li>
-<li>For the <code>404.md</code> file location and the instruction of deployment:<br>  <a href="https://github.com/ppoffice/hexo-theme-icarus/issues/66#issuecomment-165919312">https://github.com/ppoffice/hexo-theme-icarus/issues/66#issuecomment-165919312</a></li>
-<li>For the JavaScript of auto-redirect:<br>  <a href="https://ithelp.ithome.com.tw/articles/10249685">(23) 試著學 Hexo - SEO 篇 - 新增你的 404 頁面</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>hexo</category>
-      </categories>
-  </entry>
-  <entry>
     <title>Submit to Google Search Console, SEO settings</title>
     <url>/2021/hexo-Google-Search-Console/</url>
     <content><![CDATA[<h2 id="Summary-of-this-post"><a href="#Summary-of-this-post" class="headerlink" title="Summary of this post"></a>Summary of this post</h2><p>Q: How to make sure Google Search can find my hexo blog that has been deployed on GitHub Page?<br>A: Submit your hexo blog to <a href="https://search.google.com/search-console/welcome">Google Search Console</a> by:</p>
@@ -1586,6 +1596,35 @@ on <a href="https://codepen.io">CodePen</a>.</span>
 <li><a href="https://hsiangfeng.github.io/hexo/20190514/2072033203/">Hexo搜尋引擎優化</a></li>
 <li><a href="https://askie.today/upload-sitemap-google-search-console-seo-hexo-blog/">輕鬆地提交 Hexo 部落格的 Sitemap.xml 到 Google Search Console</a></li>
 <li><a href="https://hoxis.github.io/Hexo+Next%20SEO%E4%BC%98%E5%8C%96.html">Hexo博客Next主题SEO优化方法</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>hexo</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Add 404 page</title>
+    <url>/2021/hexo-add-404/</url>
+    <content><![CDATA[<h2 id="Summary-of-this-post"><a href="#Summary-of-this-post" class="headerlink" title="Summary of this post"></a>Summary of this post</h2><p>The workflow of adding a 404 handling page for the hexo blog.</p>
+<figure class="figure--center"><img src="/2021/hexo-add-404/404-page-for-hexo-blog.jpg" title="The 404 page"><figcaption><p>The 404 page</p></figcaption></figure>
+
+
+<h2 id="Environment"><a href="#Environment" class="headerlink" title="Environment"></a>Environment</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo: 5.3.0</span><br><span class="line">hexo-cli: 4.2.0</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></table></figure>
+
+<h2 id="Workflow"><a href="#Workflow" class="headerlink" title="Workflow"></a>Workflow</h2><ol>
+<li>Create a 404.md file in the <code>source</code> folder<figure class="figure--center"><img src="/2021/hexo-add-404/location-of-404-page.jpg" title="Add the 404.md in the source folder of hexo blog " alt="The screenshot to display file location of 404.md file for the hexo blog"><figcaption><p>Add the 404.md in the source folder of hexo blog </p></figcaption></figure></li>
+<li>Add page content for the 404.md file:<ul>
+<li><code>permalink: /404.html</code> in line 3 is <strong>required</strong>.</li>
+<li>Fill in the correct URL (<code>https://&lt;your GitHub username&gt;.github.io/</code>) for redirection in line 9 and line 19</li>
+<li>The value of <code>countTime</code> in line 12 can be updated to the preferred waiting time. I just leave the waiting time as 5 seconds without changing it.<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: 404</span><br><span class="line">permalink: /404.html</span><br><span class="line">---</span><br><span class="line"></span><br><span class="line"><span class="section">## Page not exists</span></span><br><span class="line">The page you are looking for does not exist.</span><br><span class="line">Will bring you back to the homepage in <span class="xml"><span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">&quot;timeout&quot;</span>&gt;</span></span>5<span class="xml"><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span> second(s).</span><br><span class="line">Or [<span class="string">click this link</span>](<span class="link">https://&lt;your GitHub username&gt;.github.io/</span>) to go back to the homepage immediately.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span></span><br><span class="line">let countTime = 5;</span><br><span class="line"></span><br><span class="line">function count() &#123;</span><br><span class="line">  </span><br><span class="line">  document.getElementById(&#x27;timeout&#x27;).textContent = countTime;</span><br><span class="line">  countTime -= 1;</span><br><span class="line">  if(countTime === 0)&#123;</span><br><span class="line"><span class="code">    location.href = &quot;https://&lt;your GitHub username&gt;.github.io/&quot;;</span></span><br><span class="line"><span class="code">  &#125;</span></span><br><span class="line"><span class="code">  setTimeout(() =&gt; &#123;</span></span><br><span class="line"><span class="code">    count();</span></span><br><span class="line"><span class="code">  &#125;, 1000);</span></span><br><span class="line"><span class="code">&#125;</span></span><br><span class="line"><span class="code"></span></span><br><span class="line"><span class="code">count();</span></span><br><span class="line"><span class="code">&lt;/script&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>Save the file. Run <code>hexo generate</code> and <code>hexo deploy</code> to push the 404 handle page to the repository. Done ☕</li>
+</ol>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
+<li>For the copy:<br>  <a href="https://codepen.io/kdbkapsere/pen/oNXLbqQ">404 Page by Kasper De Bruyne</a></li>
+<li>For the <code>404.md</code> file location and the instruction of deployment:<br>  <a href="https://github.com/ppoffice/hexo-theme-icarus/issues/66#issuecomment-165919312">https://github.com/ppoffice/hexo-theme-icarus/issues/66#issuecomment-165919312</a></li>
+<li>For the JavaScript of auto-redirect:<br>  <a href="https://ithelp.ithome.com.tw/articles/10249685">(23) 試著學 Hexo - SEO 篇 - 新增你的 404 頁面</a></li>
 </ul>
 ]]></content>
       <categories>

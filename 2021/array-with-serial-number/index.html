@@ -21,25 +21,21 @@
     var NexT = window.NexT || {};
     var CONFIG = {"hostname":"tzynwang.github.io","root":"/","images":"/images","scheme":"Pisces","version":"8.2.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqus","storage":true,"lazyload":false,"nav":null,"activeClass":"disqus"},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":"enable","trigger":"auto","top_n_per_article":-1,"unescape":false,"preload":false}};
   </script>
-<meta name="description" content="環境12Google Chrome: 89.0.4389.114 (Official Build) (64-bit)os: Windows_NT 10.0.18363 win32 x64 原始題目ALPHA Camp學期2-2：請向 RANDOM USER GENERATOR 這支API索取資料，並在瀏覽器畫面上點擊按鈕後，輸出三位「只有女性」的資料。 遭遇問題最初想要使用以下程式碼來過濾API回">
+<meta name="description" content="總結使用Array() constructor、Array.prototype.keys()與Array.from()來建立一個陣列，該陣列包含從小到大的順序數列，如[1, 2, 3, 4, 5, 6, 7] 筆記Array() constructor傳入陣列長度，會得到對應該陣列長度的空陣列 12let x = Array(7)// x為[empty × 7]  MDN: If the only">
 <meta property="og:type" content="article">
-<meta property="og:title" content="為什麼在瀏覽器環境中使用while loop執行ajax request會讓頁面陷入凍結狀態？">
-<meta property="og:url" content="https://tzynwang.github.io/2021/while-loop-ajax/index.html">
+<meta property="og:title" content="「產生順序數陣列」相關筆記">
+<meta property="og:url" content="https://tzynwang.github.io/2021/array-with-serial-number/index.html">
 <meta property="og:site_name" content="普通文組">
-<meta property="og:description" content="環境12Google Chrome: 89.0.4389.114 (Official Build) (64-bit)os: Windows_NT 10.0.18363 win32 x64 原始題目ALPHA Camp學期2-2：請向 RANDOM USER GENERATOR 這支API索取資料，並在瀏覽器畫面上點擊按鈕後，輸出三位「只有女性」的資料。 遭遇問題最初想要使用以下程式碼來過濾API回">
+<meta property="og:description" content="總結使用Array() constructor、Array.prototype.keys()與Array.from()來建立一個陣列，該陣列包含從小到大的順序數列，如[1, 2, 3, 4, 5, 6, 7] 筆記Array() constructor傳入陣列長度，會得到對應該陣列長度的空陣列 12let x = Array(7)// x為[empty × 7]  MDN: If the only">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://tzynwang.github.io/2021/while-loop-ajax/ajax.png">
-<meta property="og:image" content="https://tzynwang.github.io/2021/while-loop-ajax/setTimeout.png">
-<meta property="og:image" content="https://tzynwang.github.io/2021/while-loop-ajax/不要停下來.jpg">
-<meta property="article:published_time" content="2021-04-08T13:10:25.000Z">
-<meta property="article:modified_time" content="2021-04-09T06:24:28.990Z">
+<meta property="article:published_time" content="2021-06-14T10:27:20.000Z">
+<meta property="article:modified_time" content="2021-06-14T11:00:00.734Z">
 <meta property="article:author" content="Charlie (Tzu Yin)">
 <meta property="article:tag" content="hexo, hexo blog, tzyn, 普通文組">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://tzynwang.github.io/2021/while-loop-ajax/ajax.png">
 
 
-<link rel="canonical" href="https://tzynwang.github.io/2021/while-loop-ajax/">
+<link rel="canonical" href="https://tzynwang.github.io/2021/array-with-serial-number/">
 
 
 <script class="page-configurations">
@@ -51,7 +47,7 @@
     lang   : 'en'
   };
 </script>
-<title>為什麼在瀏覽器環境中使用while loop執行ajax request會讓頁面陷入凍結狀態？ | 普通文組</title>
+<title>「產生順序數陣列」相關筆記 | 普通文組</title>
   
 
 
@@ -189,7 +185,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%92%B0%E5%A2%83"><span class="nav-number">1.</span> <span class="nav-text">環境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8E%9F%E5%A7%8B%E9%A1%8C%E7%9B%AE"><span class="nav-number">2.</span> <span class="nav-text">原始題目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%81%AD%E9%81%87%E5%95%8F%E9%A1%8C"><span class="nav-number">3.</span> <span class="nav-text">遭遇問題</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%95%8F%E9%A1%8C%E8%83%8C%E5%BE%8C%E7%9A%84%E8%84%88%E7%B5%A1%E6%A2%B3%E7%90%86"><span class="nav-number">4.</span> <span class="nav-text">問題背後的脈絡梳理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B5%90%E8%AB%96"><span class="nav-number">5.</span> <span class="nav-text">結論</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AD%A4%E5%95%8F%E9%A1%8C%E7%9A%84%E8%A7%A3%E6%B1%BA%E6%96%B9%E5%BC%8F"><span class="nav-number">6.</span> <span class="nav-text">此問題的解決方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A3%9C%E5%85%85"><span class="nav-number">7.</span> <span class="nav-text">補充</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%83%E8%80%83%E6%96%87%E4%BB%B6"><span class="nav-number">8.</span> <span class="nav-text">參考文件</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B8%BD%E7%B5%90"><span class="nav-number">1.</span> <span class="nav-text">總結</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AD%86%E8%A8%98"><span class="nav-number">2.</span> <span class="nav-text">筆記</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Array-constructor"><span class="nav-number">2.1.</span> <span class="nav-text">Array() constructor</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Array-prototype-keys"><span class="nav-number">2.2.</span> <span class="nav-text">Array.prototype.keys()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Array-from"><span class="nav-number">2.3.</span> <span class="nav-text">Array.from()</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%83%E8%80%83%E6%96%87%E4%BB%B6"><span class="nav-number">3.</span> <span class="nav-text">參考文件</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -255,7 +251,7 @@
   
 
   <article itemscope="" itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://tzynwang.github.io/2021/while-loop-ajax/">
+    <link itemprop="mainEntityOfPage" href="https://tzynwang.github.io/2021/array-with-serial-number/">
 
     <span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar-pexels-alex-andrews-215-215.png">
@@ -268,7 +264,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          為什麼在瀏覽器環境中使用while loop執行ajax request會讓頁面陷入凍結狀態？
+          「產生順序數陣列」相關筆記
         </h1>
 
         <div class="post-meta-container">
@@ -278,16 +274,10 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
+      
 
-      <time title="Created: 2021-04-08 21:10:25" itemprop="dateCreated datePublished" datetime="2021-04-08T21:10:25+08:00">2021-04-08</time>
+      <time title="Created: 2021-06-14 18:27:20 / Modified: 19:00:00" itemprop="dateCreated datePublished" datetime="2021-06-14T18:27:20+08:00">2021-06-14</time>
     </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-04-09 14:24:28" itemprop="dateModified" datetime="2021-04-09T14:24:28+08:00">2021-04-09</time>
-      </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
@@ -307,8 +297,8 @@
       </span>
       <span class="post-meta-item-text">Disqus: </span>
     
-    <a title="disqus" href="/2021/while-loop-ajax/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/while-loop-ajax/" itemprop="commentCount"></span>
+    <a title="disqus" href="/2021/array-with-serial-number/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/array-with-serial-number/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -322,61 +312,36 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h2 id="環境"><a href="#環境" class="headerlink" title="環境"></a>環境</h2><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Google Chrome: 89.0.4389.114 (Official Build) (64-bit)</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></tbody></table></figure>
-<h2 id="原始題目"><a href="#原始題目" class="headerlink" title="原始題目"></a>原始題目</h2><p>ALPHA Camp學期2-2：請向 <a target="_blank" rel="noopener" href="https://randomuser.me/">RANDOM USER GENERATOR</a> 這支API索取資料，並在瀏覽器畫面上點擊按鈕後，輸出三位「只有女性」的資料。</p>
-<h2 id="遭遇問題"><a href="#遭遇問題" class="headerlink" title="遭遇問題"></a>遭遇問題</h2><p>最初想要使用以下程式碼來過濾API回傳的資料，但會讓瀏覽器分頁陷入凍結狀態：</p>
-<script src="https://gist.github.com/tzynwang/b7049eb35ec2a9950f4c48f1fdd48c28.js"></script>
-
-
-<h2 id="問題背後的脈絡梳理"><a href="#問題背後的脈絡梳理" class="headerlink" title="問題背後的脈絡梳理"></a>問題背後的脈絡梳理</h2><p>基本上Philip Roberts的影片回答了「為什麼以上程式碼會造成瀏覽器凍結？」的問題：</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/8aGhZQkoFbQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
-
-<ul>
-<li>V8（Chrome的JavaScript runtime）本身僅包含call stack與heap，V8的原始碼沒有<code>setTimeout()</code>、<code>XMLHttpRequest</code>（實現ajax的API）等內容</li>
-<li><code>setTimeout()</code>與<code>XMLHttpRequest</code>並非由ECMAScript定義，在MDN文件中，這兩個功能分別由HTML Living Standard與XMLHttpRequest Living Standard規範<ul>
-<li><code>setTimeout()</code>: <a target="_blank" rel="noopener" href="https://html.spec.whatwg.org/multipage/timers-and-user-prompts.html#dom-settimeout">HTML Living Standard</a></li>
-<li><code>XMLHttpRequest</code>: <a target="_blank" rel="noopener" href="https://xhr.spec.whatwg.org/">XMLHttpRequest Living Standard</a></li>
-</ul>
-</li>
-<li><code>setTimeout()</code>與<code>XMLHttpRequest</code>的callback function會停留在callback queue，等待stack裡面的task被清空後，這些停留在callback queue的task才會被執行</li>
-<li>瀏覽器分頁當機的原因是：我請JavaScript在user array長度沒有大於4前，不停執行<code>getFemaleUser()</code>此功能<ul>
-<li>在<code>getFemaleUser()</code>中，我使用ajax技術向API請求資料，但是，「整理取得的資料」這個task會停留在callback queue中</li>
-<li>而在stack沒有清空前，callback queue是不會被推到stack被執行的</li>
-<li>stack因為while loop的條件一直為true（整理資料的task沒有被執行的話，user array的長度是不會改變的），所以while loop會一直被執行下去</li>
-<li>在程式碼加上<code>console.log()</code>觀察實際被執行的內容，可以很明顯看出<code>axios.get()</code>以內的程式碼根本沒有被執行<script src="https://gist.github.com/tzynwang/b0f95a819bf495c771c321cfaa4ecf8e.js"></script>
-<figure class="figure--center"><img src="/2021/while-loop-ajax/ajax.png" title="因為stack裡面的任務沒有清空，callback queue裡面的task永遠不會被執行"><figcaption><p>因為stack裡面的任務沒有清空，callback queue裡面的task永遠不會被執行</p></figcaption></figure>
-
+        <h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>使用<code>Array() constructor</code>、<code>Array.prototype.keys()</code>與<code>Array.from()</code>來建立一個陣列，該陣列包含從小到大的順序數列，如<code>[1, 2, 3, 4, 5, 6, 7]</code></p>
+<h2 id="筆記"><a href="#筆記" class="headerlink" title="筆記"></a>筆記</h2><h3 id="Array-constructor"><a href="#Array-constructor" class="headerlink" title="Array() constructor"></a>Array() constructor</h3><p>傳入陣列長度，會得到對應該陣列長度的空陣列</p>
+<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> x = <span class="built_in">Array</span>(<span class="number">7</span>)</span><br><span class="line"><span class="comment">// x為[empty × 7]</span></span><br></pre></td></tr></tbody></table></figure>
+<blockquote>
+<p>MDN: If the only argument passed to the Array constructor is an <strong>integer between 0 and 2^32 - 1 (inclusive)</strong>, this returns a new JavaScript array with its <strong>length property set to that number</strong> (Note: this implies an array of arrayLength empty slots, not slots with actual undefined values). If the argument is any other number, a RangeError exception is thrown.</p>
+</blockquote>
+<h3 id="Array-prototype-keys"><a href="#Array-prototype-keys" class="headerlink" title="Array.prototype.keys()"></a>Array.prototype.keys()</h3><p>此功能會回傳「Array Iterator object」，並非單純的陣列</p>
+<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> array1 = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>]</span><br><span class="line"><span class="keyword">const</span> iterator = array1.keys()</span><br><span class="line"><span class="comment">// 呼叫iterator的話，會得到Array Iterator Object，而非陣列</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">const</span> key <span class="keyword">of</span> iterator) {</span><br><span class="line">  <span class="built_in">console</span>.log(key) <span class="comment">// 依序印出0、1、2</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="Array-from"><a href="#Array-from" class="headerlink" title="Array.from()"></a>Array.from()</h3><p>配合<code>Array.prototype.keys()</code>回傳的Array Iterator Object，回傳該Array Iterator Object的淺拷貝陣列</p>
+<blockquote>
+<p>MDN: The <code>Array.from()</code> static method creates a <strong>new, shallow-copied Array instance</strong> from an array-like or iterable object.</p>
+</blockquote>
+<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> serialNumber = <span class="built_in">Array</span>.from(<span class="built_in">Array</span>(<span class="number">7</span>).keys(), <span class="function"><span class="params">element</span> =&gt;</span> element + <span class="number">1</span>)</span><br><span class="line"><span class="built_in">console</span>.log(serialNumber)</span><br><span class="line"><span class="comment">// 印出 Array [1, 2, 3, 4, 5, 6, 7]</span></span><br></pre></td></tr></tbody></table></figure>
+<p>步驟拆解如下：</p>
+<ol>
+<li><code>Array(7)</code>得到一個長度為7的空陣列</li>
+<li><code>Array(7).keys()</code>得到一個Array Iterator Object，若使用<code>for...of</code>迴圈印出此物件的內容的話，會依序印出0、1、2、3、4、5、6</li>
+<li><code>Array.from(Array(7).keys(), element =&gt; element + 1)</code>中的<code>element =&gt; element + 1</code>是傳入<code>Array.from()</code>的Map function，會依序作用在陣列中的每一個項目上<ul>
+<li>而傳入的Map function要做的事情是「為陣列中的每一個項目 +1」</li>
+<li>所以最後<code>Array.from()</code>回傳的陣列會是從1開始，而非0</li>
+<li><code>element =&gt; element + 1</code>是以下原始碼的精簡版本：<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">(element) =&gt; {</span><br><span class="line">  <span class="keyword">return</span> element + <span class="number">1</span></span><br><span class="line">}</span><br><span class="line"><span class="comment">// 簡化為</span></span><br><span class="line">element =&gt; { <span class="keyword">return</span> element + <span class="number">1</span> }</span><br><span class="line"><span class="comment">// 簡化為</span></span><br><span class="line">element =&gt; element + <span class="number">1</span></span><br></pre></td></tr></tbody></table></figure>
 
 </li>
 </ul>
 </li>
-</ul>
-<h2 id="結論"><a href="#結論" class="headerlink" title="結論"></a>結論</h2><ul>
-<li>我的while loop條件是根據callback queue task來決定的，但我讓callback queue中的task永遠沒有機會被執行</li>
-<li>而JavaScript的single thread特性會讓它不停地執行stack內的任務，直到stack清空之前JavaScript不會處理其他事情，所以分頁畫面凍結了，JavaScript也永遠卡在while loop裡面</li>
-<li>Jake Archibald的演講在提到Render steps時提供了相關說明，約8:55開始：<iframe width="560" height="315" src="https://www.youtube.com/embed/cCOL7MC4Pl0?start=535" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
-
-
-</li>
-</ul>
-<h2 id="此問題的解決方式"><a href="#此問題的解決方式" class="headerlink" title="此問題的解決方式"></a>此問題的解決方式</h2><ul>
-<li>直接根據<a target="_blank" rel="noopener" href="https://randomuser.me/documentation#gender">RANDOM USER GENERATOR的說明文件</a>，在請求的URL加上特定parameter過濾需求資料（女性、三位：<code>?gender=female&amp;results=3</code>）</li>
-<li>透過recursive讓<code>getFemaleUser()</code>在條件沒有被滿足的情況下再度呼叫<code>getFemaleUser()</code></li>
-</ul>
-<h2 id="補充"><a href="#補充" class="headerlink" title="補充"></a>補充</h2><script src="https://gist.github.com/tzynwang/1cf59700311f401a74042df5c76cf47f.js"></script>
-<figure class="figure--center"><img src="/2021/while-loop-ajax/setTimeout.png" title="因為stack裡面的任務沒有清空，callback queue裡面的task永遠不會被執行"><figcaption><p>因為stack裡面的任務沒有清空，callback queue裡面的task永遠不會被執行</p></figcaption></figure>
-<ul>
-<li>將<code>axios.get()</code>抽換為<code>setTimeout()</code>也會造成頁面凍結，原理與上述一致</li>
-<li><code>setTimeout()</code>的callback function（<code>arr.push("add item to array");</code>）被推到callback queue之後，<code>arr.push</code>等待stack被清空，但能讓while loop停下來的task本身就在callback queue中被stack永遠不會結束的task卡住，因此while loop永遠不會停下來<figure class="figure--center"><img src="/2021/while-loop-ajax/不要停下來.jpg"></figure>
-
-
-</li>
-</ul>
+</ol>
 <h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://youtu.be/8aGhZQkoFbQ">What the heck is the event loop anyway? | Philip Roberts</a></li>
-<li><a target="_blank" rel="noopener" href="https://youtu.be/cCOL7MC4Pl0">Jake Archibald: In The Loop</a></li>
-<li><a target="_blank" rel="noopener" href="https://youtu.be/u1kqx6AenYw">Further Adventures of the Event Loop - Erin Zimmer</a></li>
-<li><a target="_blank" rel="noopener" href="https://pjchender.blogspot.com/2017/08/javascript-learn-event-loop-stack-queue.html">[筆記] 理解 JavaScript 中的事件循環、堆疊、佇列和併發模式（Learn event loop, stack, queue, and concurrency mode of JavaScript in depth）</a>：這篇文章內的影片全部都是Philip Roberts的演講內容，影片部分直接觀看Philip Roberts本人的演講錄影即可</li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Array">Array() constructor</a></li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/keys">Array.prototype.keys()</a></li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/from">Array.from()</a></li>
 </ul>
 
     </div>
@@ -391,14 +356,11 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2021/REB-to-HEX-review/" rel="prev" title="專案「RGB to HEX converter」技術記錄">
-                  <i class="fa fa-chevron-left"></i> 專案「RGB to HEX converter」技術記錄
+                <a href="/2021/webpack-note/" rel="prev" title="「webpack環境設置步驟」相關筆記">
+                  <i class="fa fa-chevron-left"></i> 「webpack環境設置步驟」相關筆記
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2021/array-mutation/" rel="next" title="為什麼可以修改使用const宣告的陣列（或物件）的內容？">
-                  為什麼可以修改使用const宣告的陣列（或物件）的內容？ <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
     </footer>
@@ -493,9 +455,9 @@
 ;
 
   var disqus_config = function() {
-    this.page.url = "https://tzynwang.github.io/2021/while-loop-ajax/";
-    this.page.identifier = "2021/while-loop-ajax/";
-    this.page.title = "為什麼在瀏覽器環境中使用while loop執行ajax request會讓頁面陷入凍結狀態？";
+    this.page.url = "https://tzynwang.github.io/2021/array-with-serial-number/";
+    this.page.identifier = "2021/array-with-serial-number/";
+    this.page.title = "「產生順序數陣列」相關筆記";
     };
   NexT.utils.loadComments('#disqus_thread', () => {
     if (window.DISQUS) {
