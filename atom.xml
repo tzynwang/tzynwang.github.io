@@ -6,7 +6,7 @@
   <link href="https://tzynwang.github.io/atom.xml" rel="self"/>
   
   <link href="https://tzynwang.github.io/"/>
-  <updated>2021-06-14T11:00:00.734Z</updated>
+  <updated>2021-06-17T08:28:21.864Z</updated>
   <id>https://tzynwang.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>「電影清單（Vue版本）」技術記錄</title>
+    <link href="https://tzynwang.github.io/2021/vue-movie-list/"/>
+    <id>https://tzynwang.github.io/2021/vue-movie-list/</id>
+    <published>2021-06-17T06:13:19.000Z</published>
+    <updated>2021-06-17T08:28:21.864Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;總結&quot;&gt;&lt;a href=&quot;#總結&quot; class=&quot;headerlink&quot; title=&quot;總結&quot;&gt;&lt;/a&gt;總結&lt;/h2&gt;&lt;p&gt;專案網址：&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="CSS" scheme="https://tzynwang.github.io/categories/CSS/"/>
+    
+    <category term="JavaScript" scheme="https://tzynwang.github.io/categories/JavaScript/"/>
+    
+    <category term="Vue" scheme="https://tzynwang.github.io/categories/Vue/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>「產生順序數陣列」相關筆記</title>
@@ -110,29 +137,6 @@
     <category term="JavaScript" scheme="https://tzynwang.github.io/categories/JavaScript/"/>
     
     <category term="HTML" scheme="https://tzynwang.github.io/categories/HTML/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Alpha Camp「2-3 老爸的私房錢（簡易記帳APP）」技術記錄</title>
-    <link href="https://tzynwang.github.io/2021/mongoose-note/"/>
-    <id>https://tzynwang.github.io/2021/mongoose-note/</id>
-    <published>2021-05-24T05:38:45.000Z</published>
-    <updated>2021-05-24T07:23:08.614Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;總結&quot;&gt;&lt;a href=&quot;#總結&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="JavaScript" scheme="https://tzynwang.github.io/categories/JavaScript/"/>
     
     
   </entry>

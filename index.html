@@ -197,14 +197,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">45</span>
+          <span class="site-state-item-count">46</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-count">13</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
@@ -238,6 +238,157 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope="" itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tzynwang.github.io/2021/vue-movie-list/">
+
+    <span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar-pexels-alex-andrews-215-215.png">
+      <meta itemprop="name" content="Charlie (Tzu Yin)">
+      <meta itemprop="description" content="一介普通文組的學習筆記 📒">
+    </span>
+
+    <span hidden="" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="普通文組">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/vue-movie-list/" class="post-title-link" itemprop="url">「電影清單（Vue版本）」技術記錄</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-06-17 14:13:19 / Modified: 16:28:21" itemprop="dateCreated datePublished" datetime="2021-06-17T14:13:19+08:00">2021-06-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+          <a href="/categories/CSS/" itemprop="url" rel="index"><span itemprop="name">CSS</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+          <a href="/categories/Vue/" itemprop="url" rel="index"><span itemprop="name">Vue</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2021/vue-movie-list/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/vue-movie-list/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>專案網址：<a href="https://tzynwang.github.io/vue-movie-list/">https://tzynwang.github.io/vue-movie-list/</a><br>根據<a href="https://tzynwang.github.io/ac_practice_2-2_movie_list/">白板JavaScript版本的電影清單</a>，以Vue框架重現外觀、分頁與搜尋功能（本篇筆記發布時尚未實作出切換顯示模式與根據電影主題進行篩選的功能）</p>
+<h2 id="環境"><a href="#環境" class="headerlink" title="環境"></a>環境</h2><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Vue.js: 2.6.14</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="筆記"><a href="#筆記" class="headerlink" title="筆記"></a>筆記</h2><h3 id="HTML部分"><a href="#HTML部分" class="headerlink" title="HTML部分"></a>HTML部分</h3><script src="https://gist.github.com/tzynwang/a7bb3f86e1283060074132e1415dbd66.js"></script>
+
+<ul>
+<li><p><code>&lt;a class="nav-link" @click="updateAppState(page)" :href="</code>#/${page}<code>"&gt;{{ page }}&lt;/a&gt;</code></p>
+<blockquote>
+<p>Alpha Camp：在HTML裡面，本來就可以用#針對同一頁面的區部內容下錨點，以前你可能只看過#all這樣的寫法，但<strong>在前端框架裡有特殊的路由設計</strong>，會<strong>加上斜線寫成#/all</strong>，可以再搭配<strong>前端路由</strong>去做變化。之後講到前端路由時會進一步說明，這邊請你先跟著做。</p>
+</blockquote>
+<p>搜尋課程內容後看來<code>#/${page}</code>似乎要搭配Vue Router才能發揮完整功能，本次練習中先照抄</p>
+</li>
+<li><p><code>&lt;input type="text" id="userInput" @change="getRawInput()" @keyup.enter="updateAppState('search')"&gt;</code><br><code>@change="getRawInput()</code>：在change Event發生時觸發Vue methods <code>getRawInput()</code>；而根據<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event">MDN說明</a>，對<code>&lt;input type="text"&gt;</code>來說，change Event會在元素失去焦點的時候觸發（MDN: <strong>When the element loses focus after its value was changed</strong>, but not committed (e.g., after editing the value of <code>&lt;textarea&gt;</code> or <code>&lt;input type="text"&gt;</code>)）<br><code>@keyup.enter="updateAppState('search')</code>：在放開Enter鍵後觸發Vue methods <code>updateAppState('search')</code></p>
+</li>
+<li><p><code>&lt;div class="card" :style="{ backgroundImage: 'url(' + movie.image + ')' }"&gt;</code>：直接將電影海報設定為<code>&lt;div&gt;</code>背景，搭配CSS的:hover pseudo-class做出移動後放大的效果</p>
+</li>
+<li><p><code>&lt;input type="checkbox" class="hide-input" :id="movie.id" @change="addFavorite(movie.id)" :checked="movie.favorite"&gt;</code>與<code>&lt;label :for="movie.id"&gt;&lt;i class="bi" :class="{ 'bi-star-fill': movie.favorite, 'bi-star': !movie.favorite }"&gt;&lt;/i&gt;&lt;/label&gt;</code>：使用<code>&lt;input type="checkbox"&gt;</code>搭配change Event觸發「將電影加入最愛清單」的功能；並根據movie.favorite狀態控制CSS class，決定顯示空心或實心的星星圖示</p>
+</li>
+<li><p>pagination部分：直接透過<code>:class="{ active: page === currentPage }"</code>控制要帶有active class的分頁<code>&lt;li&gt;</code></p>
+</li>
+</ul>
+<h3 id="JavaScript部分"><a href="#JavaScript部分" class="headerlink" title="JavaScript部分"></a>JavaScript部分</h3><script src="https://gist.github.com/tzynwang/ca8dc67f61b1f807aaeac29cff836a7c.js"></script>
+
+<h4 id="main-js"><a href="#main-js" class="headerlink" title="main.js"></a>main.js</h4><ul>
+<li><code>async created()</code>：在Vue instance的<code>created</code>階段從localStorage撈取movies資料／若無則進行fetch後建立movies資料；需要加上async/await確保fetch流程結束，再進行localStorage相關的操作</li>
+<li><code>updateAppState()</code>：<code>this.currentPage = 1</code>是為了確保在home/favorite之間切換時不會造成無法顯示內容的問題（例：於home第7頁進入favorite，若currentPage沒有重置的話，computed中的<code>moviesByPage()</code>撈取favorite為true的電影陣列不一定有到7頁長，故無法正確顯示favorite頁面）</li>
+<li><code>paginationArray()</code>：使用<code>Math.ceil()</code>進行無條件進位<br>補充：本次練習沒有用到，不過處理無條件捨去的<code>Math.floor()</code>可為<code>~~</code>替代<br><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/5971645/what-is-the-double-tilde-operator-in-javascript">What is the “double tilde” (~~) operator in JavaScript?</a><br><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/4055633/what-does-double-tilde-do-in-javascript">What does ~~ (“double tilde”) do in Javascript?</a></li>
+<li><code>watch: movies</code>：監控this.movies資料的變化，資料變化後需更新localStorage中儲存的movies資料</li>
+</ul>
+<h4 id="config-js衍伸筆記"><a href="#config-js衍伸筆記" class="headerlink" title="config.js衍伸筆記"></a>config.js衍伸筆記</h4><p class="codepen" data-height="265" data-theme-id="dark" data-default-tab="js,result" data-user="Charlie7779" data-slug-hash="YzZdmWE" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="object undefined this">
+  <span>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/Charlie7779/pen/YzZdmWE">
+  object undefined this</a> by Charlie (<a target="_blank" rel="noopener" href="https://codepen.io/Charlie7779">@Charlie7779</a>)
+  on <a target="_blank" rel="noopener" href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async="" src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+
+<ol>
+<li><p>問：在呼叫<code>URL2.INDEX_URL</code>與<code>URL2.POSTER_URL</code>的時候，得到的內容分別是<code>undefined/api/v1/movies/</code>與<code>undefined/posters/</code>，為何<code>this.BASE_URL</code>的值會是<code>undefined</code>，而不是定義好的<code>https://movie-list.alphacamp.io</code>？<br>答：沒有在function內呼叫<code>this</code>的話，<code>this</code>會是目前執行環境的<code>ThisBinding</code>，（若是在瀏覽器環境的話）<code>this</code>就會是<code>window</code>；而<code>window</code>中沒有<code>BASE_URL</code>，自然會回傳<code>undefined</code></p>
+</li>
+<li><p>問：第三個function <code>POSTER_URL()</code>沒有<code>get</code>關鍵字，在呼叫的時候會直接回傳<code>POSTER_URL() { return this.BASE_URL + "/posters/"; }</code>，可為什麼會是回傳一整串字串，而不是只有<code>return</code>後的內容<code>this.BASE_URL + "/posters/"</code>？<br>答：<code>POSTER_URL()</code>只是一個普通的function，寫成<code>document.querySelector("#URL1 .POSTER_URL").innerHTML = URL1.POSTER_URL</code>並沒有執行它，改成<code>document.querySelector("#URL1 .POSTER_URL").innerHTML = URL1.POSTER_URL()</code>就正常了；只有<code>URL1.POSTER_URL</code>的話就跟<code>POSTER_URL.valueOf()</code>的結果一樣</p>
+</li>
+<li><p>問：get的用意？<br>答：getter其實就相當於<code>POSTER_URL()</code>，就是你read此property時，會執行此function<br><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/get">MDN</a>: The <code>get</code> syntax binds an object property to a function that will be called when that property is looked up.</p>
+<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 使用getter</span></span><br><span class="line"><span class="keyword">const</span> obj = {</span><br><span class="line">  log: [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>],</span><br><span class="line">  <span class="keyword">get</span> <span class="title">latest</span>() {</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">this</span>.log.length === <span class="number">0</span>) {</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">undefined</span></span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.log[<span class="built_in">this</span>.log.length - <span class="number">1</span>]</span><br><span class="line">  }</span><br><span class="line">};</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(obj.latest) <span class="comment">// expected output: "c"</span></span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 不使用getter，直接執行obj.latest()</span></span><br><span class="line"><span class="comment">// 注意與上方的程式碼差在latest後有無()</span></span><br><span class="line"><span class="keyword">const</span> obj = {</span><br><span class="line">  log: [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>],</span><br><span class="line">  <span class="function"><span class="title">latest</span>(<span class="params"></span>)</span> {</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">this</span>.log.length === <span class="number">0</span>) {</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">undefined</span></span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.log[<span class="built_in">this</span>.log.length - <span class="number">1</span>]</span><br><span class="line">  }</span><br><span class="line">};</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(obj.latest()) <span class="comment">// expected output: "c"  </span></span><br></pre></td></tr></tbody></table></figure>
+<h3 id="CSS部分"><a href="#CSS部分" class="headerlink" title="CSS部分"></a>CSS部分</h3><script src="https://gist.github.com/tzynwang/8081cf997807c7bbca6e0fb292c299a7.js"></script>
+</li>
+</ol>
+<ul>
+<li>需注意的部分：若要做出滑鼠hover後背景圖片放大的效果，就不可使用<code>background-size: container;</code>或<code>background-size: cover;</code>，必須使用百分比來控制背景圖片尺寸；參考討論串：<br><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/31718598/transition-on-background-size-doesnt-work">Transition on background-size doesn’t work</a><br><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/37879221/background-size-transition-not-work-in-chrome">Background-size transition not work in Chrome</a><blockquote>
+<p>The reason why this is not working is that background-size is not animatable (or at least shouldn’t be) when using a keyword such as <code>cover</code>, <code>contain</code> or <code>auto</code>. Keyword values are not animatable.</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="補充參考文件"><a href="#補充參考文件" class="headerlink" title="補充參考文件"></a>補充參考文件</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/42705930/error-unnecessary-use-of-boolean-literals-in-conditional-expression-no-unneeded">error Unnecessary use of boolean literals in conditional expression no-unneeded-ternary</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/tzynwang/vue-movie-list">電影清單（Vue版本）專案原始碼</a></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1494,121 +1645,6 @@ on <a target="_blank" rel="noopener" href="https://codepen.io">CodePen</a>.</spa
 <li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/reset">MDN: input type=”reset”</a></li>
 <li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Learn/Forms/Basic_native_form_controls#actual_buttons">MDN: Basic native form controls – Actual buttons</a></li>
 <li><a target="_blank" rel="noopener" href="https://stackoverflow.com/a/9760424/15028185">Quotation marks in HTML attribute values?</a></li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope="" itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://tzynwang.github.io/2021/2-1-movie-list-i18n-note/">
-
-    <span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar-pexels-alex-andrews-215-215.png">
-      <meta itemprop="name" content="Charlie (Tzu Yin)">
-      <meta itemprop="description" content="一介普通文組的學習筆記 📒">
-    </span>
-
-    <span hidden="" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="普通文組">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/2-1-movie-list-i18n-note/" class="post-title-link" itemprop="url">Alpha Camp「2-1 電影清單之按讚與刪除」技術記錄</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-05-05 14:56:06" itemprop="dateCreated datePublished" datetime="2021-05-05T14:56:06+08:00">2021-05-05</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-05-22 14:16:10" itemprop="dateModified" datetime="2021-05-22T14:16:10+08:00">2021-05-22</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
-        </span>
-    </span>
-
-  
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus: </span>
-    
-    <a title="disqus" href="/2021/2-1-movie-list-i18n-note/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/2-1-movie-list-i18n-note/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p class="codepen" data-height="265" data-theme-id="dark" data-default-tab="js,result" data-user="Charlie7779" data-slug-hash="YzNmOGY" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="A22: My Favorite Movies：按讚與刪除">
-  <span>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/Charlie7779/pen/YzNmOGY">
-  A22: My Favorite Movies：按讚與刪除</a> by Charlie (<a target="_blank" rel="noopener" href="https://codepen.io/Charlie7779">@Charlie7779</a>)
-  on <a target="_blank" rel="noopener" href="https://codepen.io">CodePen</a>.</span>
-</p>
-<script async="" src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
-
-<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>本次作業中實作的功能：</p>
-<ul>
-<li>根據點擊次數記錄電影分數（尚未導入Cache或Storage API，分頁關掉後即失去記錄）</li>
-<li>點擊X按鈕後，自畫面上移除該部電影的資訊</li>
-<li>i18n（實作英文與中文介面的切換）</li>
-</ul>
-<h2 id="筆記"><a href="#筆記" class="headerlink" title="筆記"></a>筆記</h2><h3 id="controller-updateRating"><a href="#controller-updateRating" class="headerlink" title="controller.updateRating()"></a>controller.updateRating()</h3><p>監聽<code>&lt;div id="dataPanel"&gt;</code>的點擊事件，若使用者點選到「讚」或「爛」按鈕時，透過<code>HTMLTableRowElement.rowIndex</code>來取得點擊事件發生在<code>&lt;table&gt;</code>中的哪一行<code>row</code>上（可從<code>rowIndex</code>推斷使用者點選的是哪一部電影），進而更新<code>data.movies</code>中相對應電影的分數。</p>
-<p>其他解法：也可直接在「讚」或「爛」按鈕上使用<code>dataset</code>賦予電影的<code>id</code>，點擊事件發生後就可透過<code>data.id</code>來取得點擊事件發生在哪一部電影身上</p>
-<h3 id="controller-updateDeleteStatus"><a href="#controller-updateDeleteStatus" class="headerlink" title="controller.updateDeleteStatus()"></a>controller.updateDeleteStatus()</h3><p>使用者點選表格右端的X按鈕刪除電影後，透過<code>controller.updateDeleteStatus()</code>將被點擊電影的<code>deleteFlag</code>設定為<code>true</code>，用意是：在使用者進行介面語系切換後，<code>deleteFlag</code>為<code>true</code>的電影就不應該繼續出現在畫面上（<code>view.generateTableContents()</code>中會透過<code>filter()</code>篩選出<code>deleteFlag</code>不為<code>true</code>的電影）</p>
-<h3 id="view-fontSizeToggle"><a href="#view-fontSizeToggle" class="headerlink" title="view.fontSizeToggle()"></a>view.fontSizeToggle()</h3><p>筆記：切換顯示語言後，發覺儘管font-size數值相同，英文字體的尺寸在視覺上比中文字體小不少，故使用<code>view.fontSizeToggle()</code>來根據當下顯示的語言調整畫面中的字體大小</p>
-<h3 id="view-generatePosterModal"><a href="#view-generatePosterModal" class="headerlink" title="view.generatePosterModal()"></a>view.generatePosterModal()</h3><p>筆記：過去的作業多半是先將空的modal寫進HTML，待點擊事件發生後再使用JavaScript更新modal中的內容；本次改用「點擊事件發生後，再根據被點擊的目標產生相對應的modal（內容）」，相較以前作法，點擊後及時產生modal的好處是使用者不會看到一閃而逝的舊內容。</p>
-<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/Element/closest">Element.closest(selectors)</a><br>從<code>Element</code>開始往根部搜尋<code>selectors</code>，本次作業應用於<code>controller.updateRating()</code>中</li>
-<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableRowElement/rowIndex">HTMLTableRowElement.rowIndex</a><br>取一個<code>table row</code>在整體<code>&lt;table&gt;</code>中的<code>rowIndex</code></li>
 </ul>
 
       

@@ -1,0 +1,508 @@
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/menu_book-black-18dp.svg" color="#222">
+  <meta name="google-site-verification" content="VEtprY6Mg0dYcw0VAEYAu_Btg_JvCVg1tl_gKrS4CNI">
+
+
+
+
+
+
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"tzynwang.github.io","root":"/","images":"/images","scheme":"Pisces","version":"8.2.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqus","storage":true,"lazyload":false,"nav":null,"activeClass":"disqus"},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":"enable","trigger":"auto","top_n_per_article":-1,"unescape":false,"preload":false}};
+  </script>
+<meta name="description" content="總結專案網址：https://tzynwang.github.io/vue-movie-list/根據白板JavaScript版本的電影清單，以Vue框架重現外觀、分頁與搜尋功能（本篇筆記發布時尚未實作出切換顯示模式與根據電影主題進行篩選的功能） 環境12Vue.js: 2.6.14os: Windows_NT 10.0.18363 win32 x64 筆記HTML部分   <a class">
+<meta property="og:type" content="article">
+<meta property="og:title" content="「電影清單（Vue版本）」技術記錄">
+<meta property="og:url" content="https://tzynwang.github.io/2021/vue-movie-list/index.html">
+<meta property="og:site_name" content="普通文組">
+<meta property="og:description" content="總結專案網址：https://tzynwang.github.io/vue-movie-list/根據白板JavaScript版本的電影清單，以Vue框架重現外觀、分頁與搜尋功能（本篇筆記發布時尚未實作出切換顯示模式與根據電影主題進行篩選的功能） 環境12Vue.js: 2.6.14os: Windows_NT 10.0.18363 win32 x64 筆記HTML部分   <a class">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-06-17T06:13:19.000Z">
+<meta property="article:modified_time" content="2021-06-17T08:28:21.864Z">
+<meta property="article:author" content="Charlie (Tzu Yin)">
+<meta property="article:tag" content="hexo, hexo blog, tzyn, 普通文組">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://tzynwang.github.io/2021/vue-movie-list/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+<title>「電影清單（Vue版本）」技術記錄 | 普通文組</title>
+  
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="普通文組" type="application/atom+xml">
+<script>function loadCss(l){var d=document,h=d.head,s=d.createElement('link');s.rel='stylesheet';s.href=l;!function e(f){if (d.body)return f();setTimeout(function(){e(f)})}(function(){h.appendChild(s);});}loadCss('/style.css');loadCss('https://fonts.googleapis.com/css2?family=Noto+Sans+TC&family=Roboto&display=swap/css?family=Roboto:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext');loadCss('https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.2/css/all.min.css');</script><noscript><link rel="stylesheet" href="/style.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC&amp;family=Roboto&amp;display=swap/css?family=Roboto:300,300italic,400,400italic,700,700italic&amp;display=swap&amp;subset=latin,latin-ext"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.2/css/all.min.css"></noscript></head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">普通文組</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Keep calm and read the docs</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+        <li class="menu-item menu-item-rss"><a href="/atom.xml" rel="section"><i class="fas fa-rss fa-fw"></i>RSS</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80" placeholder="Searching..." spellcheck="false" type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B8%BD%E7%B5%90"><span class="nav-number">1.</span> <span class="nav-text">總結</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%92%B0%E5%A2%83"><span class="nav-number">2.</span> <span class="nav-text">環境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AD%86%E8%A8%98"><span class="nav-number">3.</span> <span class="nav-text">筆記</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#HTML%E9%83%A8%E5%88%86"><span class="nav-number">3.1.</span> <span class="nav-text">HTML部分</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JavaScript%E9%83%A8%E5%88%86"><span class="nav-number">3.2.</span> <span class="nav-text">JavaScript部分</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#main-js"><span class="nav-number">3.2.1.</span> <span class="nav-text">main.js</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#config-js%E8%A1%8D%E4%BC%B8%E7%AD%86%E8%A8%98"><span class="nav-number">3.2.2.</span> <span class="nav-text">config.js衍伸筆記</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CSS%E9%83%A8%E5%88%86"><span class="nav-number">3.3.</span> <span class="nav-text">CSS部分</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A3%9C%E5%85%85%E5%8F%83%E8%80%83%E6%96%87%E4%BB%B6"><span class="nav-number">4.</span> <span class="nav-text">補充參考文件</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Charlie (Tzu Yin)" src="/images/avatar-pexels-alex-andrews-215-215.png">
+  <p class="site-author-name" itemprop="name">Charlie (Tzu Yin)</p>
+  <div class="site-description" itemprop="description">一介普通文組的學習筆記 📒</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">46</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope="" itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://tzynwang.github.io/2021/vue-movie-list/">
+
+    <span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar-pexels-alex-andrews-215-215.png">
+      <meta itemprop="name" content="Charlie (Tzu Yin)">
+      <meta itemprop="description" content="一介普通文組的學習筆記 📒">
+    </span>
+
+    <span hidden="" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="普通文組">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          「電影清單（Vue版本）」技術記錄
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-06-17 14:13:19 / Modified: 16:28:21" itemprop="dateCreated datePublished" datetime="2021-06-17T14:13:19+08:00">2021-06-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+          <a href="/categories/CSS/" itemprop="url" rel="index"><span itemprop="name">CSS</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+          <a href="/categories/Vue/" itemprop="url" rel="index"><span itemprop="name">Vue</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2021/vue-movie-list/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/vue-movie-list/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>專案網址：<a href="https://tzynwang.github.io/vue-movie-list/">https://tzynwang.github.io/vue-movie-list/</a><br>根據<a href="https://tzynwang.github.io/ac_practice_2-2_movie_list/">白板JavaScript版本的電影清單</a>，以Vue框架重現外觀、分頁與搜尋功能（本篇筆記發布時尚未實作出切換顯示模式與根據電影主題進行篩選的功能）</p>
+<h2 id="環境"><a href="#環境" class="headerlink" title="環境"></a>環境</h2><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Vue.js: 2.6.14</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="筆記"><a href="#筆記" class="headerlink" title="筆記"></a>筆記</h2><h3 id="HTML部分"><a href="#HTML部分" class="headerlink" title="HTML部分"></a>HTML部分</h3><script src="https://gist.github.com/tzynwang/a7bb3f86e1283060074132e1415dbd66.js"></script>
+
+<ul>
+<li><p><code>&lt;a class="nav-link" @click="updateAppState(page)" :href="</code>#/${page}<code>"&gt;{{ page }}&lt;/a&gt;</code></p>
+<blockquote>
+<p>Alpha Camp：在HTML裡面，本來就可以用#針對同一頁面的區部內容下錨點，以前你可能只看過#all這樣的寫法，但<strong>在前端框架裡有特殊的路由設計</strong>，會<strong>加上斜線寫成#/all</strong>，可以再搭配<strong>前端路由</strong>去做變化。之後講到前端路由時會進一步說明，這邊請你先跟著做。</p>
+</blockquote>
+<p>搜尋課程內容後看來<code>#/${page}</code>似乎要搭配Vue Router才能發揮完整功能，本次練習中先照抄</p>
+</li>
+<li><p><code>&lt;input type="text" id="userInput" @change="getRawInput()" @keyup.enter="updateAppState('search')"&gt;</code><br><code>@change="getRawInput()</code>：在change Event發生時觸發Vue methods <code>getRawInput()</code>；而根據<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event">MDN說明</a>，對<code>&lt;input type="text"&gt;</code>來說，change Event會在元素失去焦點的時候觸發（MDN: <strong>When the element loses focus after its value was changed</strong>, but not committed (e.g., after editing the value of <code>&lt;textarea&gt;</code> or <code>&lt;input type="text"&gt;</code>)）<br><code>@keyup.enter="updateAppState('search')</code>：在放開Enter鍵後觸發Vue methods <code>updateAppState('search')</code></p>
+</li>
+<li><p><code>&lt;div class="card" :style="{ backgroundImage: 'url(' + movie.image + ')' }"&gt;</code>：直接將電影海報設定為<code>&lt;div&gt;</code>背景，搭配CSS的:hover pseudo-class做出移動後放大的效果</p>
+</li>
+<li><p><code>&lt;input type="checkbox" class="hide-input" :id="movie.id" @change="addFavorite(movie.id)" :checked="movie.favorite"&gt;</code>與<code>&lt;label :for="movie.id"&gt;&lt;i class="bi" :class="{ 'bi-star-fill': movie.favorite, 'bi-star': !movie.favorite }"&gt;&lt;/i&gt;&lt;/label&gt;</code>：使用<code>&lt;input type="checkbox"&gt;</code>搭配change Event觸發「將電影加入最愛清單」的功能；並根據movie.favorite狀態控制CSS class，決定顯示空心或實心的星星圖示</p>
+</li>
+<li><p>pagination部分：直接透過<code>:class="{ active: page === currentPage }"</code>控制要帶有active class的分頁<code>&lt;li&gt;</code></p>
+</li>
+</ul>
+<h3 id="JavaScript部分"><a href="#JavaScript部分" class="headerlink" title="JavaScript部分"></a>JavaScript部分</h3><script src="https://gist.github.com/tzynwang/ca8dc67f61b1f807aaeac29cff836a7c.js"></script>
+
+<h4 id="main-js"><a href="#main-js" class="headerlink" title="main.js"></a>main.js</h4><ul>
+<li><code>async created()</code>：在Vue instance的<code>created</code>階段從localStorage撈取movies資料／若無則進行fetch後建立movies資料；需要加上async/await確保fetch流程結束，再進行localStorage相關的操作</li>
+<li><code>updateAppState()</code>：<code>this.currentPage = 1</code>是為了確保在home/favorite之間切換時不會造成無法顯示內容的問題（例：於home第7頁進入favorite，若currentPage沒有重置的話，computed中的<code>moviesByPage()</code>撈取favorite為true的電影陣列不一定有到7頁長，故無法正確顯示favorite頁面）</li>
+<li><code>paginationArray()</code>：使用<code>Math.ceil()</code>進行無條件進位<br>補充：本次練習沒有用到，不過處理無條件捨去的<code>Math.floor()</code>可為<code>~~</code>替代<br><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/5971645/what-is-the-double-tilde-operator-in-javascript">What is the “double tilde” (~~) operator in JavaScript?</a><br><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/4055633/what-does-double-tilde-do-in-javascript">What does ~~ (“double tilde”) do in Javascript?</a></li>
+<li><code>watch: movies</code>：監控this.movies資料的變化，資料變化後需更新localStorage中儲存的movies資料</li>
+</ul>
+<h4 id="config-js衍伸筆記"><a href="#config-js衍伸筆記" class="headerlink" title="config.js衍伸筆記"></a>config.js衍伸筆記</h4><p class="codepen" data-height="265" data-theme-id="dark" data-default-tab="js,result" data-user="Charlie7779" data-slug-hash="YzZdmWE" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="object undefined this">
+  <span>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/Charlie7779/pen/YzZdmWE">
+  object undefined this</a> by Charlie (<a target="_blank" rel="noopener" href="https://codepen.io/Charlie7779">@Charlie7779</a>)
+  on <a target="_blank" rel="noopener" href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async="" src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+
+<ol>
+<li><p>問：在呼叫<code>URL2.INDEX_URL</code>與<code>URL2.POSTER_URL</code>的時候，得到的內容分別是<code>undefined/api/v1/movies/</code>與<code>undefined/posters/</code>，為何<code>this.BASE_URL</code>的值會是<code>undefined</code>，而不是定義好的<code>https://movie-list.alphacamp.io</code>？<br>答：沒有在function內呼叫<code>this</code>的話，<code>this</code>會是目前執行環境的<code>ThisBinding</code>，（若是在瀏覽器環境的話）<code>this</code>就會是<code>window</code>；而<code>window</code>中沒有<code>BASE_URL</code>，自然會回傳<code>undefined</code></p>
+</li>
+<li><p>問：第三個function <code>POSTER_URL()</code>沒有<code>get</code>關鍵字，在呼叫的時候會直接回傳<code>POSTER_URL() { return this.BASE_URL + "/posters/"; }</code>，可為什麼會是回傳一整串字串，而不是只有<code>return</code>後的內容<code>this.BASE_URL + "/posters/"</code>？<br>答：<code>POSTER_URL()</code>只是一個普通的function，寫成<code>document.querySelector("#URL1 .POSTER_URL").innerHTML = URL1.POSTER_URL</code>並沒有執行它，改成<code>document.querySelector("#URL1 .POSTER_URL").innerHTML = URL1.POSTER_URL()</code>就正常了；只有<code>URL1.POSTER_URL</code>的話就跟<code>POSTER_URL.valueOf()</code>的結果一樣</p>
+</li>
+<li><p>問：get的用意？<br>答：getter其實就相當於<code>POSTER_URL()</code>，就是你read此property時，會執行此function<br><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/get">MDN</a>: The <code>get</code> syntax binds an object property to a function that will be called when that property is looked up.</p>
+<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 使用getter</span></span><br><span class="line"><span class="keyword">const</span> obj = {</span><br><span class="line">  log: [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>],</span><br><span class="line">  <span class="keyword">get</span> <span class="title">latest</span>() {</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">this</span>.log.length === <span class="number">0</span>) {</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">undefined</span></span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.log[<span class="built_in">this</span>.log.length - <span class="number">1</span>]</span><br><span class="line">  }</span><br><span class="line">};</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(obj.latest) <span class="comment">// expected output: "c"</span></span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 不使用getter，直接執行obj.latest()</span></span><br><span class="line"><span class="comment">// 注意與上方的程式碼差在latest後有無()</span></span><br><span class="line"><span class="keyword">const</span> obj = {</span><br><span class="line">  log: [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>],</span><br><span class="line">  <span class="function"><span class="title">latest</span>(<span class="params"></span>)</span> {</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">this</span>.log.length === <span class="number">0</span>) {</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">undefined</span></span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.log[<span class="built_in">this</span>.log.length - <span class="number">1</span>]</span><br><span class="line">  }</span><br><span class="line">};</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(obj.latest()) <span class="comment">// expected output: "c"  </span></span><br></pre></td></tr></tbody></table></figure>
+<h3 id="CSS部分"><a href="#CSS部分" class="headerlink" title="CSS部分"></a>CSS部分</h3><script src="https://gist.github.com/tzynwang/8081cf997807c7bbca6e0fb292c299a7.js"></script>
+</li>
+</ol>
+<ul>
+<li>需注意的部分：若要做出滑鼠hover後背景圖片放大的效果，就不可使用<code>background-size: container;</code>或<code>background-size: cover;</code>，必須使用百分比來控制背景圖片尺寸；參考討論串：<br><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/31718598/transition-on-background-size-doesnt-work">Transition on background-size doesn’t work</a><br><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/37879221/background-size-transition-not-work-in-chrome">Background-size transition not work in Chrome</a><blockquote>
+<p>The reason why this is not working is that background-size is not animatable (or at least shouldn’t be) when using a keyword such as <code>cover</code>, <code>contain</code> or <code>auto</code>. Keyword values are not animatable.</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="補充參考文件"><a href="#補充參考文件" class="headerlink" title="補充參考文件"></a>補充參考文件</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/42705930/error-unnecessary-use-of-boolean-literals-in-conditional-expression-no-unneeded">error Unnecessary use of boolean literals in conditional expression no-unneeded-ternary</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/tzynwang/vue-movie-list">電影清單（Vue版本）專案原始碼</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/array-with-serial-number/" rel="prev" title="「產生順序數陣列」相關筆記">
+                  <i class="fa fa-chevron-left"></i> 「產生順序數陣列」相關筆記
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    
+  <div class="comments" id="disqus_thread">
+    <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  © 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Charlie (Tzu Yin)</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> &amp; <a href="https://theme-next.js.org/pisces/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+
+
+  
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+<script src="/bundle.js"></script><script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://tzyn-hexo.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+;
+
+  var disqus_config = function() {
+    this.page.url = "https://tzynwang.github.io/2021/vue-movie-list/";
+    this.page.identifier = "2021/vue-movie-list/";
+    this.page.title = "「電影清單（Vue版本）」技術記錄";
+    };
+  NexT.utils.loadComments('#disqus_thread', () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: disqus_config
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://tzyn-hexo.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
+</script></body></html>

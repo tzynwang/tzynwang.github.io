@@ -197,14 +197,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">45</span>
+          <span class="site-state-item-count">46</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-count">13</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
@@ -238,6 +238,129 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope="" itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tzynwang.github.io/2021/writing-good-alt-text/">
+
+    <span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar-pexels-alex-andrews-215-215.png">
+      <meta itemprop="name" content="Charlie (Tzu Yin)">
+      <meta itemprop="description" content="一介普通文組的學習筆記 📒">
+    </span>
+
+    <span hidden="" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="普通文組">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/writing-good-alt-text/" class="post-title-link" itemprop="url">「Writing Good Alt Text - HTTP 203」相關筆記</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-03-09 12:17:45" itemprop="dateCreated datePublished" datetime="2021-03-09T12:17:45+08:00">2021-03-09</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-05-24 12:34:13" itemprop="dateModified" datetime="2021-05-24T12:34:13+08:00">2021-05-24</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+          <a href="/categories/HTML/" itemprop="url" rel="index"><span itemprop="name">HTML</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2021/writing-good-alt-text/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/writing-good-alt-text/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>關於YouTube影片「Writing Good Alt Text - HTTP 203」的相關筆記。</p>
+<h2 id="筆記"><a href="#筆記" class="headerlink" title="筆記"></a>筆記</h2><p>00:51 What alt text should I use for image like this one?<br>提問：（影片範例為講者頭像，而頭像的）alt內容到底該寫些什麼？</p>
+<p>02:02 It depends, this is always the answer in tech.<br>回答：alt內容須根據上下文脈絡決定。<br>而如果不曉得圖片是應用在哪些情境，就不容易決定合適的alt內容（02:12）。</p>
+<p>以02:44舉的例子來看，假設文章是關於兩個旅社之間的糾紛，那附圖的alt內容可為：「當事者旅社之照片」。<br>而文章若是在討論腳踏車使用率的上升，那附圖的alt應配合主題，轉而描述圖片中的腳踏車（與其行為）。</p>
+<p>03:26 Now the image has a caption equivalent to the alt, it’s best to make the alt an empty string.<br>但參考影片留言的內容：</p>
+<blockquote>
+<p>leaving the alt attribute empty will hide the image from screen readers.<br><code>alt=""</code>的時候，screen reader會跳過該圖片。除非是裝飾性素材（如背景圖片），否則不適合讓alt為空白。</p>
+</blockquote>
+<blockquote>
+<p>In general, alt and figcaption should not be the same. Alt descriptions should be functional; figcaption descriptions should be editorial or illustrative.</p>
+</blockquote>
+<p>綜合05:23的內容</p>
+<blockquote>
+<p>Emotion matters</p>
+</blockquote>
+<p>講者是否戴眼鏡對（圖片）瀏覽者來說並非重點，但講者躲在植物後面的動作有引導出這張頭像照片的特殊之處。<br>故alt內容可為：「講者俏皮地躲在植物後」。</p>
+<p>小結論：<code>&lt;figcaption&gt;</code>為editorial或illustrative導向，而alt用來做（圖片的）功能性描述。</p>
+<p>而何謂editorial與illustrative，參考<a target="_blank" rel="noopener" href="https://thoughtbot.com/blog/alt-vs-figcaption">Alt vs Figcaption</a>：</p>
+<blockquote>
+<p>Editorial or illustrative descriptions can convey the who, what, when, where, and/or why of an image contextualizing it alongside other content on the page. This may be information that isn’t apparent from just looking at the image.</p>
+</blockquote>
+<p>我流解讀：描述的事圖片帶出的故事。</p>
+<p>最後，關於上下文對alt的影響程度，可參考 07:34 Does the skin color of the speaker matter?<br>影片中的立場：如果講者談論的是與種族相關的演講題目，這或許重要到需在alt中註明。</p>
+<h2 id="補充：-lt-figcaption-gt-的用途"><a href="#補充：-lt-figcaption-gt-的用途" class="headerlink" title="補充：<figcaption>的用途"></a>補充：<code>&lt;figcaption&gt;</code>的用途</h2><p>除了提供圖片說明以外，也可以作為<code>blockquote</code>或引用文獻時拿來標註出處、說明引用來源。<br><code>&lt;figcaption&gt;</code>是block物件，可搭配<code>&lt;small&gt;</code>或<code>&lt;cite&gt;</code>（使用情境：註明來源），也可作為照片的拍攝時間標籤（搭配<code>&lt;time&gt;</code>）使用。</p>
+<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><iframe width="320" height="180" src="https://www.youtube.com/embed/flf2vS0IoRs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+
+<ul>
+<li><a target="_blank" rel="noopener" href="https://youtu.be/flf2vS0IoRs">Writing Good Alt Text - HTTP 203</a></li>
+<li><a target="_blank" rel="noopener" href="https://thoughtbot.com/blog/alt-vs-figcaption">Alt vs Figcaption</a></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1371,106 +1494,6 @@
 <figure class="figure--center"><img src="/2021/hexo-tag-figure/margin-bottom-0px.jpg" title="margin-bottom 0px"><figcaption><p>margin-bottom 0px</p></figcaption></figure></li>
 <li>Save the configuration and run <code>hexo generate</code> and <code>hexo deploy</code>, done ☕</li>
 </ol>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope="" itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://tzynwang.github.io/2021/hexo-category-hierarchy/">
-
-    <span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar-pexels-alex-andrews-215-215.png">
-      <meta itemprop="name" content="Charlie (Tzu Yin)">
-      <meta itemprop="description" content="一介普通文組的學習筆記 📒">
-    </span>
-
-    <span hidden="" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="普通文組">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/hexo-category-hierarchy/" class="post-title-link" itemprop="url">Category hierarchy</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-02-15 09:38:00" itemprop="dateCreated datePublished" datetime="2021-02-15T09:38:00+08:00">2021-02-15</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-02-18 20:36:30" itemprop="dateModified" datetime="2021-02-18T20:36:30+08:00">2021-02-18</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-          <a href="/categories/hexo/" itemprop="url" rel="index"><span itemprop="name">hexo</span></a>
-        </span>
-    </span>
-
-  
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus: </span>
-    
-    <a title="disqus" href="/2021/hexo-category-hierarchy/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/hexo-category-hierarchy/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="Summary-of-this-post"><a href="#Summary-of-this-post" class="headerlink" title="Summary of this post"></a>Summary of this post</h2><p>An introduction to hexo’s category hierarchy.</p>
-<h3 id="Categories-with-hierarchy"><a href="#Categories-with-hierarchy" class="headerlink" title="Categories with hierarchy"></a>Categories with hierarchy</h3><figure class="highlight yaml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># categories:</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">Fruit</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">Apple</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Result:</span></span><br><span class="line"><span class="string">└──</span> <span class="string">Fruit</span></span><br><span class="line">    <span class="string">└──</span> <span class="string">Apple</span></span><br></pre></td></tr></tbody></table></figure>
-<h3 id="Categories-without-hierarchy-no-hierarchy-parallel"><a href="#Categories-without-hierarchy-no-hierarchy-parallel" class="headerlink" title="Categories without hierarchy (no hierarchy, parallel)"></a>Categories without hierarchy (no hierarchy, parallel)</h3><figure class="highlight yaml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># categories:</span></span><br><span class="line"><span class="bullet">-</span> [<span class="string">Fruit</span>, <span class="string">Apple</span>] </span><br><span class="line"><span class="bullet">-</span> [<span class="string">Vegetable</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># Result:</span></span><br><span class="line"><span class="string">├──</span> <span class="string">Fruit</span></span><br><span class="line"><span class="string">|</span>   <span class="string">└──</span> <span class="string">Apple</span></span><br><span class="line"><span class="string">└──</span> <span class="string">Vegetable</span></span><br></pre></td></tr></tbody></table></figure>
-<h3 id="Multiple-parallel-categories"><a href="#Multiple-parallel-categories" class="headerlink" title="Multiple parallel categories"></a>Multiple parallel categories</h3><figure class="highlight yaml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># categories:</span></span><br><span class="line"><span class="bullet">-</span> [<span class="string">Fruit</span>, <span class="string">Apple</span>]</span><br><span class="line"><span class="bullet">-</span> [<span class="string">Fruit</span>, <span class="string">Orange</span>]</span><br><span class="line"><span class="bullet">-</span> [<span class="string">Vegetable</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># Result:</span></span><br><span class="line"><span class="string">├──</span> <span class="string">Fruit</span></span><br><span class="line"><span class="string">|</span>   <span class="string">└──</span> <span class="string">Apple</span></span><br><span class="line"><span class="string">|</span>   <span class="string">└──</span> <span class="string">Orange</span></span><br><span class="line"><span class="string">└──</span> <span class="string">Vegetable</span></span><br></pre></td></tr></tbody></table></figure>
-<h3 id="Sub-sub-category"><a href="#Sub-sub-category" class="headerlink" title="Sub-sub-category"></a>Sub-sub-category</h3><figure class="highlight yaml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># categories:</span></span><br><span class="line"><span class="bullet">-</span> [<span class="string">Fruit</span>, <span class="string">Apple</span>, <span class="string">Apple</span> <span class="string">seed</span>]</span><br><span class="line"><span class="bullet">-</span> [<span class="string">Vegetable</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># Result:</span></span><br><span class="line"><span class="string">├──</span> <span class="string">Fruit</span></span><br><span class="line"><span class="string">|</span>   <span class="string">└──</span> <span class="string">Apple</span></span><br><span class="line"><span class="string">|</span>      <span class="string">└──</span> <span class="string">Apple</span> <span class="string">Seed</span></span><br><span class="line"><span class="string">└──</span> <span class="string">Vegetable</span></span><br></pre></td></tr></tbody></table></figure>
-
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a target="_blank" rel="noopener" href="https://hexo.io/docs/front-matter#Categories-amp-Tags">hexo: Front-matter/Categories &amp; Tags</a></p>
 
       
     </div>
