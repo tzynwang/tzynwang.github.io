@@ -1,6 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Alpha Camp「2-2 社群名單」技術記錄</title>
+    <url>/2021/2-2-api-social-list-note/</url>
+    <content><![CDATA[<p class="codepen" data-height="265" data-theme-id="dark" data-default-tab="js,result" data-user="Charlie7779" data-slug-hash="ExZJLzG" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="2-2 社群名單">
+  <span>See the Pen <a href="https://codepen.io/Charlie7779/pen/ExZJLzG">
+  2-2 社群名單</a> by Charlie (<a href="https://codepen.io/Charlie7779">@Charlie7779</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+
+<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>在本作業中實作的相關功能：</p>
+<ul>
+<li>分頁（pagination）</li>
+<li>可在list與grid顯示模式之間切換</li>
+<li>簡易搜尋</li>
+</ul>
+<p>本次運用的技術：</p>
+<ul>
+<li>Spread syntax (<code>...</code>)</li>
+<li>將功能分拆為view（管理顯示相關的程式碼）與controller（管理流程、資料處理相關的程式碼），以及使用data、config與elementObject來分類資料，增進原始碼的易讀性</li>
+</ul>
+<h2 id="下一步"><a href="#下一步" class="headerlink" title="下一步"></a>下一步</h2><p>導入service worker與cache API：</p>
+<ul>
+<li>將透過axios取得的資料儲存起來，這樣僅需在首次開啟APP時透過axios索取API回傳的資料，之後可直接使用已經儲存下來的資料即可，不須再發出的request</li>
+<li>讓APP在沒有網路的狀態下也可進行一定程度的操作</li>
+</ul>
+<h2 id="相關筆記"><a href="#相關筆記" class="headerlink" title="相關筆記"></a>相關筆記</h2><h3 id="分頁（pagination）"><a href="#分頁（pagination）" class="headerlink" title="分頁（pagination）"></a>分頁（pagination）</h3><ul>
+<li>除單純的數字頁以外，也實作了「前一頁」與「下一頁」的頁面移動按鈕</li>
+<li>邏輯分流：<ul>
+<li>點擊「前一頁」時：「抵達第一頁」或「離開最後一頁」時，需disable「第一頁」或解除「最末頁」的disable狀態</li>
+<li>點擊「下一頁」時：邏輯與「前一頁」相反，「抵達最末頁」或「離開第一頁」時，需disable「最末頁」或解除「第一頁」的disable狀態</li>
+<li>點擊「第一頁」或「最末頁」：除disable「前一頁」或「下一頁」外，本次透過<code>document.querySelector(&#39;.page-item.active&#39;).classList.remove(&#39;active&#39;)</code>的方式來解除換頁前處在active狀態的頁數</li>
+<li>其他頁數：解除「前一頁」與「下一頁」的disable狀態，也解除換頁前處在active狀態的頁數</li>
+</ul>
+</li>
+</ul>
+<h3 id="切換顯示模式"><a href="#切換顯示模式" class="headerlink" title="切換顯示模式"></a>切換顯示模式</h3><ul>
+<li>將不同顯示模式的每頁頁數設定在config中（<code>config.displaySettings</code>）</li>
+<li>點擊list或grid模式的按鈕後，根據config中的顯示狀態產生每頁內容與分頁（<code>view.updateUI()</code>）</li>
+<li>因list每一頁顯示的使用者數量（12）較grid多（9），故以grid顯示時的總頁數會大於list；所以處在grid狀態時，使用者在pagination上的頁數可能會超出list的極限值，故使用<code>controller.setMaxPageNumber()</code>來避免「狀態切換後，可能會造成pagination頁數溢位」的問題</li>
+</ul>
+<h3 id="簡易搜尋"><a href="#簡易搜尋" class="headerlink" title="簡易搜尋"></a>簡易搜尋</h3><ul>
+<li>設置<code>searchingStatus</code>，進行顯示模式切換的時候才能根據搜尋狀態與否抓取相對應的資料（全部的使用者／搜尋結果）</li>
+<li>根據搜尋結果（無／有）在畫面上進行提示（<code>No matching result(s)</code>／<code>$&#123;quantity&#125; result(s) of keyword(s)</code>）</li>
+<li>使用者點擊<code>Clear Search Results</code>按鈕後，清除搜尋結果，離開搜尋狀態（更新<code>searchingStatus</code>）</li>
+</ul>
+<h3 id="Spread-syntax"><a href="#Spread-syntax" class="headerlink" title="Spread syntax"></a>Spread syntax</h3><ul>
+<li>應用：透過axois取回資料後，使用spread syntax將資料展開、加進<code>allUsersData</code>陣列中<ul>
+<li><code>data.allUsersData.push(...response.data.results)</code></li>
+<li>功能與forEach相同，但因為不需要對個別內容進行加工，故使用spread syntax直接展開存入陣列</li>
+</ul>
+</li>
+</ul>
+<h3 id="原始碼分類管理"><a href="#原始碼分類管理" class="headerlink" title="原始碼分類管理"></a>原始碼分類管理</h3><script src="https://gist.github.com/tzynwang/a398bbe0721b8199f03347ce03d3b490.js"></script>
+
+
+<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_objects/Object/values">MDN: Object.values(obj)</a><br>回傳一個陣列，其中包含obj中所有key-value pair的value</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/min">MDN: Math.min(value0, value1, … , valueN)</a><br>回傳傳入的values中最小的值，若要傳入陣列，可搭配spread syntax（<code>Math.min(...array1)</code>）</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/Trim">MDN: String.prototype.trim()</a><br>會回傳一組「移除原本字串頭尾空白鍵的」新字串，不影響原本的字串</li>
+</ul>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>ALPHA Camp assignment</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Alpha Camp「2-1 電影清單之按讚與刪除」技術記錄</title>
     <url>/2021/2-1-movie-list-i18n-note/</url>
     <content><![CDATA[<p class="codepen" data-height="265" data-theme-id="dark" data-default-tab="js,result" data-user="Charlie7779" data-slug-hash="YzNmOGY" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="A22: My Favorite Movies：按讚與刪除">
@@ -113,75 +182,6 @@
       <categories>
         <category>JavaScript</category>
       </categories>
-  </entry>
-  <entry>
-    <title>Alpha Camp「2-2 社群名單」技術記錄</title>
-    <url>/2021/2-2-api-social-list-note/</url>
-    <content><![CDATA[<p class="codepen" data-height="265" data-theme-id="dark" data-default-tab="js,result" data-user="Charlie7779" data-slug-hash="ExZJLzG" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="2-2 社群名單">
-  <span>See the Pen <a href="https://codepen.io/Charlie7779/pen/ExZJLzG">
-  2-2 社群名單</a> by Charlie (<a href="https://codepen.io/Charlie7779">@Charlie7779</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
-</p>
-<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
-
-<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>在本作業中實作的相關功能：</p>
-<ul>
-<li>分頁（pagination）</li>
-<li>可在list與grid顯示模式之間切換</li>
-<li>簡易搜尋</li>
-</ul>
-<p>本次運用的技術：</p>
-<ul>
-<li>Spread syntax (<code>...</code>)</li>
-<li>將功能分拆為view（管理顯示相關的程式碼）與controller（管理流程、資料處理相關的程式碼），以及使用data、config與elementObject來分類資料，增進原始碼的易讀性</li>
-</ul>
-<h2 id="下一步"><a href="#下一步" class="headerlink" title="下一步"></a>下一步</h2><p>導入service worker與cache API：</p>
-<ul>
-<li>將透過axios取得的資料儲存起來，這樣僅需在首次開啟APP時透過axios索取API回傳的資料，之後可直接使用已經儲存下來的資料即可，不須再發出的request</li>
-<li>讓APP在沒有網路的狀態下也可進行一定程度的操作</li>
-</ul>
-<h2 id="相關筆記"><a href="#相關筆記" class="headerlink" title="相關筆記"></a>相關筆記</h2><h3 id="分頁（pagination）"><a href="#分頁（pagination）" class="headerlink" title="分頁（pagination）"></a>分頁（pagination）</h3><ul>
-<li>除單純的數字頁以外，也實作了「前一頁」與「下一頁」的頁面移動按鈕</li>
-<li>邏輯分流：<ul>
-<li>點擊「前一頁」時：「抵達第一頁」或「離開最後一頁」時，需disable「第一頁」或解除「最末頁」的disable狀態</li>
-<li>點擊「下一頁」時：邏輯與「前一頁」相反，「抵達最末頁」或「離開第一頁」時，需disable「最末頁」或解除「第一頁」的disable狀態</li>
-<li>點擊「第一頁」或「最末頁」：除disable「前一頁」或「下一頁」外，本次透過<code>document.querySelector(&#39;.page-item.active&#39;).classList.remove(&#39;active&#39;)</code>的方式來解除換頁前處在active狀態的頁數</li>
-<li>其他頁數：解除「前一頁」與「下一頁」的disable狀態，也解除換頁前處在active狀態的頁數</li>
-</ul>
-</li>
-</ul>
-<h3 id="切換顯示模式"><a href="#切換顯示模式" class="headerlink" title="切換顯示模式"></a>切換顯示模式</h3><ul>
-<li>將不同顯示模式的每頁頁數設定在config中（<code>config.displaySettings</code>）</li>
-<li>點擊list或grid模式的按鈕後，根據config中的顯示狀態產生每頁內容與分頁（<code>view.updateUI()</code>）</li>
-<li>因list每一頁顯示的使用者數量（12）較grid多（9），故以grid顯示時的總頁數會大於list；所以處在grid狀態時，使用者在pagination上的頁數可能會超出list的極限值，故使用<code>controller.setMaxPageNumber()</code>來避免「狀態切換後，可能會造成pagination頁數溢位」的問題</li>
-</ul>
-<h3 id="簡易搜尋"><a href="#簡易搜尋" class="headerlink" title="簡易搜尋"></a>簡易搜尋</h3><ul>
-<li>設置<code>searchingStatus</code>，進行顯示模式切換的時候才能根據搜尋狀態與否抓取相對應的資料（全部的使用者／搜尋結果）</li>
-<li>根據搜尋結果（無／有）在畫面上進行提示（<code>No matching result(s)</code>／<code>$&#123;quantity&#125; result(s) of keyword(s)</code>）</li>
-<li>使用者點擊<code>Clear Search Results</code>按鈕後，清除搜尋結果，離開搜尋狀態（更新<code>searchingStatus</code>）</li>
-</ul>
-<h3 id="Spread-syntax"><a href="#Spread-syntax" class="headerlink" title="Spread syntax"></a>Spread syntax</h3><ul>
-<li>應用：透過axois取回資料後，使用spread syntax將資料展開、加進<code>allUsersData</code>陣列中<ul>
-<li><code>data.allUsersData.push(...response.data.results)</code></li>
-<li>功能與forEach相同，但因為不需要對個別內容進行加工，故使用spread syntax直接展開存入陣列</li>
-</ul>
-</li>
-</ul>
-<h3 id="原始碼分類管理"><a href="#原始碼分類管理" class="headerlink" title="原始碼分類管理"></a>原始碼分類管理</h3><script src="https://gist.github.com/tzynwang/a398bbe0721b8199f03347ce03d3b490.js"></script>
-
-
-<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_objects/Object/values">MDN: Object.values(obj)</a><br>回傳一個陣列，其中包含obj中所有key-value pair的value</li>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/min">MDN: Math.min(value0, value1, … , valueN)</a><br>回傳傳入的values中最小的值，若要傳入陣列，可搭配spread syntax（<code>Math.min(...array1)</code>）</li>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/Trim">MDN: String.prototype.trim()</a><br>會回傳一組「移除原本字串頭尾空白鍵的」新字串，不影響原本的字串</li>
-</ul>
-]]></content>
-      <categories>
-        <category>JavaScript</category>
-      </categories>
-      <tags>
-        <tag>ALPHA Camp assignment</tag>
-      </tags>
   </entry>
   <entry>
     <title>自主練習專案「日本文學經典50」技術記錄與反省</title>
@@ -368,6 +368,117 @@
       </tags>
   </entry>
   <entry>
+    <title>為什麼可以修改使用const宣告的陣列（或物件）的內容？</title>
+    <url>/2021/array-mutation/</url>
+    <content><![CDATA[<h2 id="原始問題"><a href="#原始問題" class="headerlink" title="原始問題"></a>原始問題</h2><p>以<code>const</code>宣告一個陣列（或物件），為何可以在宣告完畢後繼續修改該陣列（或物件）的內容？</p>
+<figure class="figure--center"><img src="/2021/array-mutation/騎士王的提問時間.jpg" title="事實上const的限制是「變數不能被re-assigned或re-declared」"><figcaption><p>事實上const的限制是「變數不能被re-assigned或re-declared」</p></figcaption></figure>
+
+<h2 id="簡答"><a href="#簡答" class="headerlink" title="簡答"></a>簡答</h2><p><code>const</code>的限制是「只能賦值一次，不能重新賦值」，不直接等同「不能修改內容」。</p>
+<h2 id="環境"><a href="#環境" class="headerlink" title="環境"></a>環境</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Google Chrome: 89.0.4389.114 (Official Build) (64-bit)</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></table></figure>
+<h2 id="關於const的事實"><a href="#關於const的事實" class="headerlink" title="關於const的事實"></a>關於<code>const</code>的事實</h2><h3 id="You-Don’t-Know-JS-Yet-相關筆記"><a href="#You-Don’t-Know-JS-Yet-相關筆記" class="headerlink" title="You Don’t Know JS Yet 相關筆記"></a>You Don’t Know JS Yet 相關筆記</h3><ul>
+<li><code>const</code> declared variables are not “unchangeable”, they just cannot be re-assigned.<ul>
+<li>不適合以「不能被修改」來理解透過<code>const</code>宣告的變數，而是「使用<code>const</code>宣告的變數只能被賦值一次」<script src="https://gist.github.com/tzynwang/bf4ef105981d115a11ae4eb761e34ac8.js"></script></li>
+</ul>
+</li>
+<li>It’s ill-advised to use <code>const</code> with object values, because those values can still be changed even though the variable can’t be re-assigned.<script src="https://gist.github.com/tzynwang/b7f3ee4e1e7c8936a98bb8f7fa76b634.js"></script></li>
+<li>If you stick to using <code>const</code> only with primitive values, you avoid any confusion of re-assignment (not allowed) vs. mutation (allowed)! That’s the safest and best way to use const.</li>
+</ul>
+<h3 id="ES2015-const-is-not-about-immutability-相關筆記"><a href="#ES2015-const-is-not-about-immutability-相關筆記" class="headerlink" title="ES2015 const is not about immutability 相關筆記"></a>ES2015 const is not about immutability 相關筆記</h3><script src="https://gist.github.com/tzynwang/0945c27501de984d3aaa410bf55a08ce.js"></script>
+
+<ul>
+<li>The only thing that’s immutable here is the binding. <code>const</code> assigns a value (<code>&#123;&#125;</code>) to a variable name (<code>foo</code>), and guarantees that no rebinding will happen. ES2015 const has nothing to do with immutability of values.</li>
+<li>與其描述為「透過<code>const</code>宣告的陣列（或物件）不能被修改內容」，不如將<code>const</code>理解為「建立一個變數與值之間不變的binding」。</li>
+</ul>
+<h3 id="MDN上的相關內容"><a href="#MDN上的相關內容" class="headerlink" title="MDN上的相關內容"></a>MDN上的相關內容</h3><ul>
+<li>The value of a constant can’t be changed through reassignment, and it can’t be re-declared.</li>
+<li>以<code>const</code>宣告變數的同時就得賦值<script src="https://gist.github.com/tzynwang/b92649f9945fb3cb92275cf448adb199.js"></script>
+
+</li>
+</ul>
+<h2 id="Object-freeze"><a href="#Object-freeze" class="headerlink" title="Object.freeze()"></a><code>Object.freeze()</code></h2><ul>
+<li>如果想要確保陣列或物件內容不被修改，可以使用<code>Object.freeze()</code><ul>
+<li>MDN: Use <code>Object.freeze()</code> to make object immutable. A frozen object can no longer be changed; freezing an object prevents new properties from being added to it, existing properties from being removed, prevents changing the enumerability, configurability, or writability of existing properties, and prevents the values of existing properties from being changed.</li>
+<li>一個陣列或物件被凍結後，無法新增或移除該陣列、物件的內容，也不可修改該陣列、物件的properties</li>
+</ul>
+</li>
+<li><code>Object.freeze()</code>不會自動套用到巢狀結構內的所有內容上，如以下範例：<script src="https://gist.github.com/tzynwang/a52efc027532899027d7d0e0c9f1cfef.js"></script>
+<figure class="figure--center"><img src="/2021/array-mutation/object-freeze-demo-1.png"></figure></li>
+<li>可透過遞迴來凍結巢狀結構物件的內容<script src="https://gist.github.com/tzynwang/e7a3cf50d030d90f05eee59257806b1e.js"></script>
+<figure class="figure--center"><img src="/2021/array-mutation/object-freeze-demo-2.png"></figure>
+
+
+</li>
+</ul>
+<h2 id="Object-seal"><a href="#Object-seal" class="headerlink" title="Object.seal()"></a><code>Object.seal()</code></h2><ul>
+<li>The Object.seal() method seals an object, preventing new properties from being added to it and marking all existing properties as non-configurable. Values of present properties can still be changed as long as they are writable.<ul>
+<li>與<code>Object.freeze()</code>的差異是，經<code>Object.seal()</code>封閉的物件，不能對其新增或刪除內容，但封閉前就存在的內容可以被修改<script src="https://gist.github.com/tzynwang/1e8917a16a8450fb76fd5a6bd34201e9.js"></script>
+<figure class="figure--center"><img src="/2021/array-mutation/object-freeze-demo-3.png"></figure>
+
+
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="Object-preventExtensions"><a href="#Object-preventExtensions" class="headerlink" title="Object.preventExtensions()"></a><code>Object.preventExtensions()</code></h2><p><code>Object.preventExtensions()</code>只會禁止對物件新增內容，但可以刪除或修改既有內容</p>
+<script src="https://gist.github.com/tzynwang/034ffb5ed714a851cc2e35c5b8a148df.js"></script>
+<figure class="figure--center"><img src="/2021/array-mutation/object-freeze-demo-4.png"></figure>
+
+
+<h2 id="Object-getOwnPropertyDescriptor"><a href="#Object-getOwnPropertyDescriptor" class="headerlink" title="Object.getOwnPropertyDescriptor()"></a><code>Object.getOwnPropertyDescriptor()</code></h2><p>回傳一物件中某內容的相關設定</p>
+<script src="https://gist.github.com/tzynwang/e0618d9ef2d4fa0b153ad6d9347ae8ee.js"></script>
+<figure class="figure--center"><img src="/2021/array-mutation/object-freeze-demo-5.png"></figure>
+
+<p>參考<a href="https://tc39.es/ecma262/#table-data-property-attributes">ECMAScript Specification, Table 3: Attributes of a Data Property</a>：</p>
+<ul>
+<li><code>writable</code>: If false, attempts by ECMAScript code to change the property’s [[Value]] attribute using [[Set]] will not succeed.<ul>
+<li><code>writable</code>若為<code>false</code>，代表該<code>value</code>無法被修改</li>
+<li>被<code>Object.freeze()</code>凍結的物件，其<code>value</code>的<code>writable</code>就被修改為<code>false</code></li>
+</ul>
+</li>
+<li><code>enumerable</code>: If true, the property will be enumerated by a for-in enumeration. Otherwise, the property is said to be non-enumerable.<ul>
+<li><code>enumerable</code>為<code>true</code>代表該<code>value</code>會<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...in">被<code>for...in</code>遍歷</a></li>
+</ul>
+</li>
+<li><code>configurable</code>: If false, attempts to delete the property, change the property to be an accessor property, or change its attributes (other than [[Value]], or changing [[Writable]] to false) will fail.<ul>
+<li><code>configurable</code>若為<code>false</code>，代表該<code>value</code>無法被刪除</li>
+<li>經<code>Object.freeze()</code>或<code>Object.seal()</code>處理過的物件，其<code>value</code>的<code>configurable</code>就被修改為<code>false</code><figure class="figure--center"><img src="/2021/array-mutation/attributes-of-data-property.png"></figure>
+
+
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="補充：無法解凍或再開封"><a href="#補充：無法解凍或再開封" class="headerlink" title="補充：無法解凍或再開封"></a>補充：無法解凍或再開封</h2><p><a href="https://stackoverflow.com/questions/19293321/opposite-of-object-freeze-or-object-seal-in-javascript">Opposite of Object.freeze or Object.seal in JavaScript</a></p>
+<blockquote>
+<p>Freezing an object is the ultimate form of lock-down. Once an object has been frozen it cannot be unfrozen – nor can it be tampered in any manner. This is the best way to make sure that your objects will stay exactly as you left them, indefinitely</p>
+</blockquote>
+<ul>
+<li><code>Object.freeze()</code>與<code>Object.seal()</code>是不可逆的程序，一旦一個物件（或陣列）被凍結或封閉，該物件就無法回到凍結（或封閉）前的狀態</li>
+<li>可以透過<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign"><code>Object.assign()</code></a>來製作該物件（或陣列）的副本，再修改其內容</li>
+</ul>
+<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
+<li>You Don’t Know JS Yet: Get Started - 2nd Edition<ul>
+<li><a href="https://github.com/getify/You-Dont-Know-JS/blob/2nd-ed/get-started/ch2.md">Chapter 2: Surveying JS</a></li>
+<li><a href="https://github.com/getify/You-Dont-Know-JS/blob/2nd-ed/get-started/apA.md">Appendix A: Exploring Further</a></li>
+</ul>
+</li>
+<li><a href="https://mathiasbynens.be/notes/es6-const">ES2015 const is not about immutability</a></li>
+<li>MDN<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const">const</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/freeze">Object.freeze()</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/seal">Object.seal()</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/preventExtensions">Object.preventExtensions()</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/getOwnPropertyDescriptor">Object.getOwnPropertyDescriptor()</a></li>
+</ul>
+</li>
+<li><a href="https://stackoverflow.com/questions/7509894/freezing-arrays-in-javascript">‘Freezing’ Arrays in Javascript?</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+  </entry>
+  <entry>
     <title>ALPHA Camp 履歷網頁作業：內容解析</title>
     <url>/2021/S4-A14-assignment-anatomy/</url>
     <content><![CDATA[<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>記錄在2021年ALPHA Camp學期一、三月班第三週履歷網頁作業使用到的技術、思路與開發流程。</p>
@@ -527,117 +638,6 @@ on <a href="https://codepen.io">CodePen</a>.</span>
       </tags>
   </entry>
   <entry>
-    <title>為什麼可以修改使用const宣告的陣列（或物件）的內容？</title>
-    <url>/2021/array-mutation/</url>
-    <content><![CDATA[<h2 id="原始問題"><a href="#原始問題" class="headerlink" title="原始問題"></a>原始問題</h2><p>以<code>const</code>宣告一個陣列（或物件），為何可以在宣告完畢後繼續修改該陣列（或物件）的內容？</p>
-<figure class="figure--center"><img src="/2021/array-mutation/騎士王的提問時間.jpg" title="事實上const的限制是「變數不能被re-assigned或re-declared」"><figcaption><p>事實上const的限制是「變數不能被re-assigned或re-declared」</p></figcaption></figure>
-
-<h2 id="簡答"><a href="#簡答" class="headerlink" title="簡答"></a>簡答</h2><p><code>const</code>的限制是「只能賦值一次，不能重新賦值」，不直接等同「不能修改內容」。</p>
-<h2 id="環境"><a href="#環境" class="headerlink" title="環境"></a>環境</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Google Chrome: 89.0.4389.114 (Official Build) (64-bit)</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></table></figure>
-<h2 id="關於const的事實"><a href="#關於const的事實" class="headerlink" title="關於const的事實"></a>關於<code>const</code>的事實</h2><h3 id="You-Don’t-Know-JS-Yet-相關筆記"><a href="#You-Don’t-Know-JS-Yet-相關筆記" class="headerlink" title="You Don’t Know JS Yet 相關筆記"></a>You Don’t Know JS Yet 相關筆記</h3><ul>
-<li><code>const</code> declared variables are not “unchangeable”, they just cannot be re-assigned.<ul>
-<li>不適合以「不能被修改」來理解透過<code>const</code>宣告的變數，而是「使用<code>const</code>宣告的變數只能被賦值一次」<script src="https://gist.github.com/tzynwang/bf4ef105981d115a11ae4eb761e34ac8.js"></script></li>
-</ul>
-</li>
-<li>It’s ill-advised to use <code>const</code> with object values, because those values can still be changed even though the variable can’t be re-assigned.<script src="https://gist.github.com/tzynwang/b7f3ee4e1e7c8936a98bb8f7fa76b634.js"></script></li>
-<li>If you stick to using <code>const</code> only with primitive values, you avoid any confusion of re-assignment (not allowed) vs. mutation (allowed)! That’s the safest and best way to use const.</li>
-</ul>
-<h3 id="ES2015-const-is-not-about-immutability-相關筆記"><a href="#ES2015-const-is-not-about-immutability-相關筆記" class="headerlink" title="ES2015 const is not about immutability 相關筆記"></a>ES2015 const is not about immutability 相關筆記</h3><script src="https://gist.github.com/tzynwang/0945c27501de984d3aaa410bf55a08ce.js"></script>
-
-<ul>
-<li>The only thing that’s immutable here is the binding. <code>const</code> assigns a value (<code>&#123;&#125;</code>) to a variable name (<code>foo</code>), and guarantees that no rebinding will happen. ES2015 const has nothing to do with immutability of values.</li>
-<li>與其描述為「透過<code>const</code>宣告的陣列（或物件）不能被修改內容」，不如將<code>const</code>理解為「建立一個變數與值之間不變的binding」。</li>
-</ul>
-<h3 id="MDN上的相關內容"><a href="#MDN上的相關內容" class="headerlink" title="MDN上的相關內容"></a>MDN上的相關內容</h3><ul>
-<li>The value of a constant can’t be changed through reassignment, and it can’t be re-declared.</li>
-<li>以<code>const</code>宣告變數的同時就得賦值<script src="https://gist.github.com/tzynwang/b92649f9945fb3cb92275cf448adb199.js"></script>
-
-</li>
-</ul>
-<h2 id="Object-freeze"><a href="#Object-freeze" class="headerlink" title="Object.freeze()"></a><code>Object.freeze()</code></h2><ul>
-<li>如果想要確保陣列或物件內容不被修改，可以使用<code>Object.freeze()</code><ul>
-<li>MDN: Use <code>Object.freeze()</code> to make object immutable. A frozen object can no longer be changed; freezing an object prevents new properties from being added to it, existing properties from being removed, prevents changing the enumerability, configurability, or writability of existing properties, and prevents the values of existing properties from being changed.</li>
-<li>一個陣列或物件被凍結後，無法新增或移除該陣列、物件的內容，也不可修改該陣列、物件的properties</li>
-</ul>
-</li>
-<li><code>Object.freeze()</code>不會自動套用到巢狀結構內的所有內容上，如以下範例：<script src="https://gist.github.com/tzynwang/a52efc027532899027d7d0e0c9f1cfef.js"></script>
-<figure class="figure--center"><img src="/2021/array-mutation/object-freeze-demo-1.png"></figure></li>
-<li>可透過遞迴來凍結巢狀結構物件的內容<script src="https://gist.github.com/tzynwang/e7a3cf50d030d90f05eee59257806b1e.js"></script>
-<figure class="figure--center"><img src="/2021/array-mutation/object-freeze-demo-2.png"></figure>
-
-
-</li>
-</ul>
-<h2 id="Object-seal"><a href="#Object-seal" class="headerlink" title="Object.seal()"></a><code>Object.seal()</code></h2><ul>
-<li>The Object.seal() method seals an object, preventing new properties from being added to it and marking all existing properties as non-configurable. Values of present properties can still be changed as long as they are writable.<ul>
-<li>與<code>Object.freeze()</code>的差異是，經<code>Object.seal()</code>封閉的物件，不能對其新增或刪除內容，但封閉前就存在的內容可以被修改<script src="https://gist.github.com/tzynwang/1e8917a16a8450fb76fd5a6bd34201e9.js"></script>
-<figure class="figure--center"><img src="/2021/array-mutation/object-freeze-demo-3.png"></figure>
-
-
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="Object-preventExtensions"><a href="#Object-preventExtensions" class="headerlink" title="Object.preventExtensions()"></a><code>Object.preventExtensions()</code></h2><p><code>Object.preventExtensions()</code>只會禁止對物件新增內容，但可以刪除或修改既有內容</p>
-<script src="https://gist.github.com/tzynwang/034ffb5ed714a851cc2e35c5b8a148df.js"></script>
-<figure class="figure--center"><img src="/2021/array-mutation/object-freeze-demo-4.png"></figure>
-
-
-<h2 id="Object-getOwnPropertyDescriptor"><a href="#Object-getOwnPropertyDescriptor" class="headerlink" title="Object.getOwnPropertyDescriptor()"></a><code>Object.getOwnPropertyDescriptor()</code></h2><p>回傳一物件中某內容的相關設定</p>
-<script src="https://gist.github.com/tzynwang/e0618d9ef2d4fa0b153ad6d9347ae8ee.js"></script>
-<figure class="figure--center"><img src="/2021/array-mutation/object-freeze-demo-5.png"></figure>
-
-<p>參考<a href="https://tc39.es/ecma262/#table-data-property-attributes">ECMAScript Specification, Table 3: Attributes of a Data Property</a>：</p>
-<ul>
-<li><code>writable</code>: If false, attempts by ECMAScript code to change the property’s [[Value]] attribute using [[Set]] will not succeed.<ul>
-<li><code>writable</code>若為<code>false</code>，代表該<code>value</code>無法被修改</li>
-<li>被<code>Object.freeze()</code>凍結的物件，其<code>value</code>的<code>writable</code>就被修改為<code>false</code></li>
-</ul>
-</li>
-<li><code>enumerable</code>: If true, the property will be enumerated by a for-in enumeration. Otherwise, the property is said to be non-enumerable.<ul>
-<li><code>enumerable</code>為<code>true</code>代表該<code>value</code>會<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...in">被<code>for...in</code>遍歷</a></li>
-</ul>
-</li>
-<li><code>configurable</code>: If false, attempts to delete the property, change the property to be an accessor property, or change its attributes (other than [[Value]], or changing [[Writable]] to false) will fail.<ul>
-<li><code>configurable</code>若為<code>false</code>，代表該<code>value</code>無法被刪除</li>
-<li>經<code>Object.freeze()</code>或<code>Object.seal()</code>處理過的物件，其<code>value</code>的<code>configurable</code>就被修改為<code>false</code><figure class="figure--center"><img src="/2021/array-mutation/attributes-of-data-property.png"></figure>
-
-
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="補充：無法解凍或再開封"><a href="#補充：無法解凍或再開封" class="headerlink" title="補充：無法解凍或再開封"></a>補充：無法解凍或再開封</h2><p><a href="https://stackoverflow.com/questions/19293321/opposite-of-object-freeze-or-object-seal-in-javascript">Opposite of Object.freeze or Object.seal in JavaScript</a></p>
-<blockquote>
-<p>Freezing an object is the ultimate form of lock-down. Once an object has been frozen it cannot be unfrozen – nor can it be tampered in any manner. This is the best way to make sure that your objects will stay exactly as you left them, indefinitely</p>
-</blockquote>
-<ul>
-<li><code>Object.freeze()</code>與<code>Object.seal()</code>是不可逆的程序，一旦一個物件（或陣列）被凍結或封閉，該物件就無法回到凍結（或封閉）前的狀態</li>
-<li>可以透過<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign"><code>Object.assign()</code></a>來製作該物件（或陣列）的副本，再修改其內容</li>
-</ul>
-<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
-<li>You Don’t Know JS Yet: Get Started - 2nd Edition<ul>
-<li><a href="https://github.com/getify/You-Dont-Know-JS/blob/2nd-ed/get-started/ch2.md">Chapter 2: Surveying JS</a></li>
-<li><a href="https://github.com/getify/You-Dont-Know-JS/blob/2nd-ed/get-started/apA.md">Appendix A: Exploring Further</a></li>
-</ul>
-</li>
-<li><a href="https://mathiasbynens.be/notes/es6-const">ES2015 const is not about immutability</a></li>
-<li>MDN<ul>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const">const</a></li>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/freeze">Object.freeze()</a></li>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/seal">Object.seal()</a></li>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/preventExtensions">Object.preventExtensions()</a></li>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/getOwnPropertyDescriptor">Object.getOwnPropertyDescriptor()</a></li>
-</ul>
-</li>
-<li><a href="https://stackoverflow.com/questions/7509894/freezing-arrays-in-javascript">‘Freezing’ Arrays in Javascript?</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>JavaScript</category>
-      </categories>
-  </entry>
-  <entry>
     <title>「產生順序數陣列」相關筆記</title>
     <url>/2021/array-with-serial-number/</url>
     <content><![CDATA[<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>使用<code>Array() constructor</code>、<code>Array.prototype.keys()</code>與<code>Array.from()</code>來建立一個陣列，該陣列包含從小到大的順序數列，如<code>[1, 2, 3, 4, 5, 6, 7]</code></p>
@@ -674,20 +674,6 @@ on <a href="https://codepen.io">CodePen</a>.</span>
 ]]></content>
       <categories>
         <category>JavaScript</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>bundle exec</title>
-    <url>/2021/bundle-exec/</url>
-    <content><![CDATA[<p>Question: why adds <code>bundle exec</code> in the command when running jekyll server in the first time?<br>Answer (short): to know the version of the gems that are going to use.</p>
-<h2 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h2><p><code>bundle exec</code> will check the Gemfile to understand “<strong>what gems</strong> will be used” and “<strong>which version</strong> of the gems should be used”.<br>In the case that Gemfile is modified, run <code>bundle exec jekyll server</code> instead of just running <code>jekyll server</code>.</p>
-<p>第一次執行<code>jekyll server</code>要輸入<code>bundle exec jekyll server</code>，讓環境根據Gemfile查詢你的程式會用到哪些gems、並這些gems該使用哪些版本。在Gemfile沒有更新的情況下，第二次以後直接在環境輸入<code>jekyll server</code>就可以了。</p>
-<p>若有修改Gemfile的內容，則須重新執行<code>bundle exec jekyll server</code>。</p>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://stackoverflow.com/a/16218854/15028185">What does bundle exec rake mean?</a></p>
-<p>You’re running <code>bundle exec</code> on a program. The program’s creators wrote it when <strong>certain versions of gems</strong> were available. The program <strong>Gemfile</strong> specifies the versions of the gems the creators decided to use. That is, the script was made to run correctly against these gem versions.</p>
-]]></content>
-      <categories>
-        <category>jekyll</category>
       </categories>
   </entry>
   <entry>
@@ -756,6 +742,20 @@ on <a href="https://codepen.io">CodePen</a>.</span>
       <categories>
         <category>CSS</category>
         <category>DevTools</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>bundle exec</title>
+    <url>/2021/bundle-exec/</url>
+    <content><![CDATA[<p>Question: why adds <code>bundle exec</code> in the command when running jekyll server in the first time?<br>Answer (short): to know the version of the gems that are going to use.</p>
+<h2 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h2><p><code>bundle exec</code> will check the Gemfile to understand “<strong>what gems</strong> will be used” and “<strong>which version</strong> of the gems should be used”.<br>In the case that Gemfile is modified, run <code>bundle exec jekyll server</code> instead of just running <code>jekyll server</code>.</p>
+<p>第一次執行<code>jekyll server</code>要輸入<code>bundle exec jekyll server</code>，讓環境根據Gemfile查詢你的程式會用到哪些gems、並這些gems該使用哪些版本。在Gemfile沒有更新的情況下，第二次以後直接在環境輸入<code>jekyll server</code>就可以了。</p>
+<p>若有修改Gemfile的內容，則須重新執行<code>bundle exec jekyll server</code>。</p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://stackoverflow.com/a/16218854/15028185">What does bundle exec rake mean?</a></p>
+<p>You’re running <code>bundle exec</code> on a program. The program’s creators wrote it when <strong>certain versions of gems</strong> were available. The program <strong>Gemfile</strong> specifies the versions of the gems the creators decided to use. That is, the script was made to run correctly against these gem versions.</p>
+]]></content>
+      <categories>
+        <category>jekyll</category>
       </categories>
   </entry>
   <entry>
@@ -1188,6 +1188,75 @@ on <a href="https://codepen.io">CodePen</a>.</span>
       </categories>
   </entry>
   <entry>
+    <title>從零開始重寫：餐廳清單（Express版）</title>
+    <url>/2021/express-restaurant-list/</url>
+    <content><![CDATA[<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>試著從頭開始重新練習一次Express、Express handlebars與Mongoose相關內容，本篇筆記主要記錄練習途中遭遇到的問題、解法與日後可能會回頭參考的相關內容</p>
+<h2 id="環境"><a href="#環境" class="headerlink" title="環境"></a>環境</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">express: 4.17.1</span><br><span class="line">express-fileupload: 1.2.1</span><br><span class="line">express-handlebars: 5.3.2</span><br><span class="line">mongoose: 5.12.14</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></table></figure>
+<h2 id="app-js"><a href="#app-js" class="headerlink" title="app.js"></a>app.js</h2><script src="https://gist.github.com/tzynwang/97709d3b1d83e3ff4505924a09d819f4.js"></script>
+
+<ul>
+<li>20-21行：為了處理使用者上傳的餐廳圖片，使用套件<code>express-fileupload</code>（<a href="https://www.npmjs.com/package/express-fileupload">npm</a>）<ul>
+<li>參考<a href="https://github.com/richardgirges/express-fileupload/tree/master/example#basic-file-upload">官方示範</a>，HTML的form元素須加上<code>encType=&quot;multipart/form-data&quot;</code>才能取到圖片資料</li>
+<li>注意：是透過<code>req.files</code>而非<code>req.body</code>來取使用者上傳的圖片資料</li>
+<li>取出<code>req.files.&lt;input name&gt;.mimetype</code>與<code>req.files.&lt;input name&gt;.data</code>來存入資料庫</li>
+</ul>
+</li>
+<li>26行helpers部分：本次使用自定義的helpers來配合Express handlebars，接觸過Vue的computed後比較能理解helpers的運作模式了<ul>
+<li>注意呼叫自定義的helpers<strong>不需要加上#</strong>，在模板中直接傳入helpers與參數即可，比如：</li>
+<li><code>&lt;img src=&quot;&#123;&#123;toImage this.image.contentType this.image.data.buffer&#125;&#125;&quot;&gt;</code></li>
+<li><code>&lt;option &#123;&#123;ifEquals this ../restaurant.category&#125;&#125;&gt;&lt;/option&gt;</code></li>
+</ul>
+</li>
+<li>39行開始：對比之前的作業多半使用<code>.then()</code>進行串接，本次基本上都改用await/async語法糖來處理資料庫端相關的行為<ul>
+<li><code>await Restaurant.find(&#123; deleteFlag: false &#125;).sort(&#123; _id: -1 &#125;).lean()</code>：取所有<code>deleteFlag</code>為<code>false</code>的內容，並根據<code>_id</code>逆向排列</li>
+</ul>
+</li>
+<li>48行開始：本次實作出「根據使用者選取的欄位來限制搜尋範圍」之功能，<code>keyword</code>為使用者輸入的關鍵字、<code>field</code>為使用者指定要進行搜尋的欄位範圍<ul>
+<li>52-53行：無法在<code>mongoose.find()</code>直接使用template literal，故改為「建立一個空物件，物件的鍵根據<code>field</code>決定，物件的值為<code>new RegExp(keyword, &#39;i&#39;)</code>」，並將該物件作為條件傳入<code>.find()</code>中</li>
+<li>57行：偷懶行為，直接將<code>field</code>的中文對應名稱物件宣告在這邊，並傳入顯示搜尋結果的<code>index</code>模板</li>
+</ul>
+</li>
+<li>第71行：<code>await Restaurant.find().distinct(&#39;category&#39;).lean()</code><ul>
+<li>取出所有不重複的<code>category</code>的值</li>
+<li><a href="https://stackoverflow.com/questions/30020946/mongoose-returning-unique-result-set-with-no-duplicate-entries">Mongoose: Returning unique result set with no duplicate entries</a>: use <code>find</code> to establish the query and then chain a call to <code>distinct</code> on the resulting query object to get the unique result.</li>
+<li><a href="https://mongoosejs.com/docs/api.html#query_Query-distinct">Mongoose: Query.prototype.distinct()</a>: Declares or executes a <code>distinct()</code> operation.</li>
+<li><a href="https://www.w3schools.com/sql/sql_distinct.asp">SQL SELECT DISTINCT Statement</a>: The <code>SELECT DISTINCT</code> statement is used to <strong>return only distinct (different) values</strong>.</li>
+</ul>
+</li>
+<li>99-104行：若使用者選擇自行上傳餐廳圖片（<code>if (req.files)</code>）的話，取圖片的<code>data</code>與<code>mimetype</code>存入DB中，若使用者沒有上傳圖片的話，則自動安排一張預設的餐廳圖片url給<code>image_url</code>欄位</li>
+<li>第152行：使用<code>.findOne()</code>來取出<code>document</code>型態的資料，之後才可配合<code>.save()</code>將修改完的資料存回DB中<ul>
+<li><a href="https://mongoosejs.com/docs/documents.html#documents-vs-models">Mongoose: Documents vs Models</a>: <code>Document</code> and <code>Model</code> are distinct classes in Mongoose. The <code>Model</code> class is a subclass of the <code>Document</code> class. When you use the <code>Model</code> constructor, you create a new <code>document</code>.</li>
+<li>When you load documents from MongoDB using model functions like <code>findOne()</code>, you get a Mongoose <code>document</code> back.</li>
+</ul>
+</li>
+</ul>
+<h2 id="DB-schema"><a href="#DB-schema" class="headerlink" title="DB schema"></a>DB schema</h2><script src="https://gist.github.com/tzynwang/935464602cb71801e3b1c63acce9eb76.js"></script>
+
+<ul>
+<li>image欄位的內容參考<a href="https://stackoverflow.com/questions/27353346/saving-image-with-mongoose">Saving image with mongoose</a></li>
+<li>deleteFlag預設為<code>false</code>（<code>default: false</code>），參考<a href="https://mongoosejs.com/docs/defaults.html">Mongoose: Declaring Defaults in Your Schema</a></li>
+</ul>
+<h2 id="DB-seeder"><a href="#DB-seeder" class="headerlink" title="DB seeder"></a>DB seeder</h2><script src="https://gist.github.com/tzynwang/7585b5fbe4fcdfa38aecfaf72276f832.js"></script>
+
+<ul>
+<li>2-3行：讀取<code>.json</code>資料</li>
+<li>第15行開始：改用async/await語法糖包裝<code>Restaurant.create()</code></li>
+<li>31行：seeder寫入完畢後，呼叫<code>db.close()</code>結束連線</li>
+</ul>
+<h2 id="模板部分"><a href="#模板部分" class="headerlink" title="模板部分"></a>模板部分</h2><figure class="highlight handlebars"><table><tr><td class="code"><pre><span class="line"><span class="template-tag">&#123;&#123;#<span class="name"><span class="builtin-name">if</span></span> searchCheck&#125;&#125;</span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;/scripts/searchCheck.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line"><span class="template-tag">&#123;&#123;/<span class="name"><span class="builtin-name">if</span></span>&#125;&#125;</span></span><br></pre></td></tr></table></figure>
+<p>目前僅有<code>/</code>與<code>/search</code>路由回傳<code>searchCheck: true</code>，故<code>searchCheck.js</code>只會在這兩個頁面被載入</p>
+<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
+<li><a href="https://stackoverflow.com/questions/58189365/async-await-in-nodejs-mongoose">Async/await in Nodejs + Mongoose</a></li>
+<li><a href="https://stackoverflow.com/questions/8499633/how-to-display-base64-images-in-html">How to display Base64 images in HTML?</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Express Handlebars</category>
+        <category>Express</category>
+        <category>Mongoose</category>
+      </categories>
+  </entry>
+  <entry>
     <title>「重設表單（form reset）」相關筆記</title>
     <url>/2021/form-reset/</url>
     <content><![CDATA[<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>HTML本身即支援兩種重設表單<strong>全部</strong>內容的方法：</p>
@@ -1369,45 +1438,6 @@ on <a href="https://codepen.io">CodePen</a>.</span>
       </categories>
   </entry>
   <entry>
-    <title>Git workflow</title>
-    <url>/2021/git-workflow/</url>
-    <content><![CDATA[<h2 id="Summary-of-this-post"><a href="#Summary-of-this-post" class="headerlink" title="Summary of this post"></a>Summary of this post</h2><p>A note for 2 types of the git workflow:</p>
-<ol>
-<li>Create a GitHub repository first, then clone it to local to work</li>
-<li>Work on local first, then create a GitHub repository to push local work to it</li>
-</ol>
-<p>先<code>git clone</code>一個空的repository再開始本機作業會省事一點。</p>
-<h2 id="Environment"><a href="#Environment" class="headerlink" title="Environment"></a>Environment</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git: 2.30.0.windows.2</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></table></figure>
-
-<h2 id="Workflow-git-clone-first"><a href="#Workflow-git-clone-first" class="headerlink" title="Workflow: git clone first"></a>Workflow: git clone first</h2><ol>
-<li>Create a repository on GitHub</li>
-<li>Copy the repository URL <code>https://github.com/&lt;username&gt;/&lt;repository-name&gt;.git</code></li>
-<li>Launch cmd.exe, move to the preferred location, run <code>git clone &lt;repository URL&gt;</code></li>
-<li>Move to the folder by <code>cd &lt;repository-name&gt;</code></li>
-<li>Complete the work in local folder, run <code>git add .</code> and <code>git commit</code></li>
-<li>Run <code>git push</code> to push the local work to the GitHub repository</li>
-</ol>
-<p>Note: no need to config the <code>remote</code> and <code>branch</code> manually, <code>git clone</code> will take care these.<br>先<code>git clone</code>一個空的repository可以省略手動設定remote跟branch的步驟。</p>
-<h2 id="Workflow-local-work-first"><a href="#Workflow-local-work-first" class="headerlink" title="Workflow: local work first"></a>Workflow: local work first</h2><ol>
-<li>Complete the work locally</li>
-<li>Create a repository on GitHub</li>
-<li>Run <code>git init</code> in the local working folder</li>
-<li>Run the following command to add remote URL: <code>git remote add &lt;short-name-for-repository&gt; &lt;url-for-repository&gt;</code><br>For example: <code>git remote add origin https://github.com/tzynwang/hello.git</code></li>
-<li>Run <code>git add .</code> and <code>git commit</code></li>
-<li>Run <code>git push --set-upstream origin master</code> to push local content to GitHub repository</li>
-</ol>
-<p>Note: need to config <code>git remote</code> and <code>git push --set-upstream</code> manually<br>如果先在本機執行作業前沒有先<code>git clone</code>一個空的repository，那麼<code>git init</code>後必須手動執行<code>git remote add</code>，第一次<code>git push</code>時也須加上<code>--set-upstream origin master</code></p>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
-<li><a href="https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes">Git Basics - Working with Remotes</a></li>
-<li><a href="https://github.com/git-guides/git-remote">Git Guides: Git Remote</a></li>
-<li><a href="https://github.com/git-guides/git-push">Git Guides: Git Push</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>git</category>
-      </categories>
-  </entry>
-  <entry>
     <title>「git stop tracking files」相關筆記</title>
     <url>/2021/git-remove-file-from-tracking/</url>
     <content><![CDATA[<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><ul>
@@ -1442,6 +1472,45 @@ on <a href="https://codepen.io">CodePen</a>.</span>
 <h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
 <li><a href="https://stackoverflow.com/questions/24290358/remove-a-folder-from-git-tracking/">StackOverFlow: Remove a folder from git tracking</a></li>
 <li><a href="https://git-scm.com/docs/gitignore/2.22.0">git official documentation: gitignore</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>git</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Git workflow</title>
+    <url>/2021/git-workflow/</url>
+    <content><![CDATA[<h2 id="Summary-of-this-post"><a href="#Summary-of-this-post" class="headerlink" title="Summary of this post"></a>Summary of this post</h2><p>A note for 2 types of the git workflow:</p>
+<ol>
+<li>Create a GitHub repository first, then clone it to local to work</li>
+<li>Work on local first, then create a GitHub repository to push local work to it</li>
+</ol>
+<p>先<code>git clone</code>一個空的repository再開始本機作業會省事一點。</p>
+<h2 id="Environment"><a href="#Environment" class="headerlink" title="Environment"></a>Environment</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git: 2.30.0.windows.2</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></table></figure>
+
+<h2 id="Workflow-git-clone-first"><a href="#Workflow-git-clone-first" class="headerlink" title="Workflow: git clone first"></a>Workflow: git clone first</h2><ol>
+<li>Create a repository on GitHub</li>
+<li>Copy the repository URL <code>https://github.com/&lt;username&gt;/&lt;repository-name&gt;.git</code></li>
+<li>Launch cmd.exe, move to the preferred location, run <code>git clone &lt;repository URL&gt;</code></li>
+<li>Move to the folder by <code>cd &lt;repository-name&gt;</code></li>
+<li>Complete the work in local folder, run <code>git add .</code> and <code>git commit</code></li>
+<li>Run <code>git push</code> to push the local work to the GitHub repository</li>
+</ol>
+<p>Note: no need to config the <code>remote</code> and <code>branch</code> manually, <code>git clone</code> will take care these.<br>先<code>git clone</code>一個空的repository可以省略手動設定remote跟branch的步驟。</p>
+<h2 id="Workflow-local-work-first"><a href="#Workflow-local-work-first" class="headerlink" title="Workflow: local work first"></a>Workflow: local work first</h2><ol>
+<li>Complete the work locally</li>
+<li>Create a repository on GitHub</li>
+<li>Run <code>git init</code> in the local working folder</li>
+<li>Run the following command to add remote URL: <code>git remote add &lt;short-name-for-repository&gt; &lt;url-for-repository&gt;</code><br>For example: <code>git remote add origin https://github.com/tzynwang/hello.git</code></li>
+<li>Run <code>git add .</code> and <code>git commit</code></li>
+<li>Run <code>git push --set-upstream origin master</code> to push local content to GitHub repository</li>
+</ol>
+<p>Note: need to config <code>git remote</code> and <code>git push --set-upstream</code> manually<br>如果先在本機執行作業前沒有先<code>git clone</code>一個空的repository，那麼<code>git init</code>後必須手動執行<code>git remote add</code>，第一次<code>git push</code>時也須加上<code>--set-upstream origin master</code></p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
+<li><a href="https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes">Git Basics - Working with Remotes</a></li>
+<li><a href="https://github.com/git-guides/git-remote">Git Guides: Git Remote</a></li>
+<li><a href="https://github.com/git-guides/git-push">Git Guides: Git Push</a></li>
 </ul>
 ]]></content>
       <categories>
@@ -1546,35 +1615,6 @@ on <a href="https://codepen.io">CodePen</a>.</span>
       </tags>
   </entry>
   <entry>
-    <title>Add 404 page</title>
-    <url>/2021/hexo-add-404/</url>
-    <content><![CDATA[<h2 id="Summary-of-this-post"><a href="#Summary-of-this-post" class="headerlink" title="Summary of this post"></a>Summary of this post</h2><p>The workflow of adding a 404 handling page for the hexo blog.</p>
-<figure class="figure--center"><img src="/2021/hexo-add-404/404-page-for-hexo-blog.jpg" title="The 404 page"><figcaption><p>The 404 page</p></figcaption></figure>
-
-
-<h2 id="Environment"><a href="#Environment" class="headerlink" title="Environment"></a>Environment</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo: 5.3.0</span><br><span class="line">hexo-cli: 4.2.0</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></table></figure>
-
-<h2 id="Workflow"><a href="#Workflow" class="headerlink" title="Workflow"></a>Workflow</h2><ol>
-<li>Create a 404.md file in the <code>source</code> folder<figure class="figure--center"><img src="/2021/hexo-add-404/location-of-404-page.jpg" title="Add the 404.md in the source folder of hexo blog " alt="The screenshot to display file location of 404.md file for the hexo blog"><figcaption><p>Add the 404.md in the source folder of hexo blog </p></figcaption></figure></li>
-<li>Add page content for the 404.md file:<ul>
-<li><code>permalink: /404.html</code> in line 3 is <strong>required</strong>.</li>
-<li>Fill in the correct URL (<code>https://&lt;your GitHub username&gt;.github.io/</code>) for redirection in line 9 and line 19</li>
-<li>The value of <code>countTime</code> in line 12 can be updated to the preferred waiting time. I just leave the waiting time as 5 seconds without changing it.<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: 404</span><br><span class="line">permalink: /404.html</span><br><span class="line">---</span><br><span class="line"></span><br><span class="line"><span class="section">## Page not exists</span></span><br><span class="line">The page you are looking for does not exist.</span><br><span class="line">Will bring you back to the homepage in <span class="xml"><span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">&quot;timeout&quot;</span>&gt;</span></span>5<span class="xml"><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span> second(s).</span><br><span class="line">Or [<span class="string">click this link</span>](<span class="link">https://&lt;your GitHub username&gt;.github.io/</span>) to go back to the homepage immediately.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span></span><br><span class="line">let countTime = 5;</span><br><span class="line"></span><br><span class="line">function count() &#123;</span><br><span class="line">  </span><br><span class="line">  document.getElementById(&#x27;timeout&#x27;).textContent = countTime;</span><br><span class="line">  countTime -= 1;</span><br><span class="line">  if(countTime === 0)&#123;</span><br><span class="line"><span class="code">    location.href = &quot;https://&lt;your GitHub username&gt;.github.io/&quot;;</span></span><br><span class="line"><span class="code">  &#125;</span></span><br><span class="line"><span class="code">  setTimeout(() =&gt; &#123;</span></span><br><span class="line"><span class="code">    count();</span></span><br><span class="line"><span class="code">  &#125;, 1000);</span></span><br><span class="line"><span class="code">&#125;</span></span><br><span class="line"><span class="code"></span></span><br><span class="line"><span class="code">count();</span></span><br><span class="line"><span class="code">&lt;/script&gt;</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li>Save the file. Run <code>hexo generate</code> and <code>hexo deploy</code> to push the 404 handle page to the repository. Done ☕</li>
-</ol>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
-<li>For the copy:<br>  <a href="https://codepen.io/kdbkapsere/pen/oNXLbqQ">404 Page by Kasper De Bruyne</a></li>
-<li>For the <code>404.md</code> file location and the instruction of deployment:<br>  <a href="https://github.com/ppoffice/hexo-theme-icarus/issues/66#issuecomment-165919312">https://github.com/ppoffice/hexo-theme-icarus/issues/66#issuecomment-165919312</a></li>
-<li>For the JavaScript of auto-redirect:<br>  <a href="https://ithelp.ithome.com.tw/articles/10249685">(23) 試著學 Hexo - SEO 篇 - 新增你的 404 頁面</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>hexo</category>
-      </categories>
-  </entry>
-  <entry>
     <title>Submit to Google Search Console, SEO settings</title>
     <url>/2021/hexo-Google-Search-Console/</url>
     <content><![CDATA[<h2 id="Summary-of-this-post"><a href="#Summary-of-this-post" class="headerlink" title="Summary of this post"></a>Summary of this post</h2><p>Q: How to make sure Google Search can find my hexo blog that has been deployed on GitHub Page?<br>A: Submit your hexo blog to <a href="https://search.google.com/search-console/welcome">Google Search Console</a> by:</p>
@@ -1632,6 +1672,35 @@ on <a href="https://codepen.io">CodePen</a>.</span>
       </categories>
   </entry>
   <entry>
+    <title>Add 404 page</title>
+    <url>/2021/hexo-add-404/</url>
+    <content><![CDATA[<h2 id="Summary-of-this-post"><a href="#Summary-of-this-post" class="headerlink" title="Summary of this post"></a>Summary of this post</h2><p>The workflow of adding a 404 handling page for the hexo blog.</p>
+<figure class="figure--center"><img src="/2021/hexo-add-404/404-page-for-hexo-blog.jpg" title="The 404 page"><figcaption><p>The 404 page</p></figcaption></figure>
+
+
+<h2 id="Environment"><a href="#Environment" class="headerlink" title="Environment"></a>Environment</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo: 5.3.0</span><br><span class="line">hexo-cli: 4.2.0</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></table></figure>
+
+<h2 id="Workflow"><a href="#Workflow" class="headerlink" title="Workflow"></a>Workflow</h2><ol>
+<li>Create a 404.md file in the <code>source</code> folder<figure class="figure--center"><img src="/2021/hexo-add-404/location-of-404-page.jpg" title="Add the 404.md in the source folder of hexo blog " alt="The screenshot to display file location of 404.md file for the hexo blog"><figcaption><p>Add the 404.md in the source folder of hexo blog </p></figcaption></figure></li>
+<li>Add page content for the 404.md file:<ul>
+<li><code>permalink: /404.html</code> in line 3 is <strong>required</strong>.</li>
+<li>Fill in the correct URL (<code>https://&lt;your GitHub username&gt;.github.io/</code>) for redirection in line 9 and line 19</li>
+<li>The value of <code>countTime</code> in line 12 can be updated to the preferred waiting time. I just leave the waiting time as 5 seconds without changing it.<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: 404</span><br><span class="line">permalink: /404.html</span><br><span class="line">---</span><br><span class="line"></span><br><span class="line"><span class="section">## Page not exists</span></span><br><span class="line">The page you are looking for does not exist.</span><br><span class="line">Will bring you back to the homepage in <span class="xml"><span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">&quot;timeout&quot;</span>&gt;</span></span>5<span class="xml"><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span> second(s).</span><br><span class="line">Or [<span class="string">click this link</span>](<span class="link">https://&lt;your GitHub username&gt;.github.io/</span>) to go back to the homepage immediately.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span></span><br><span class="line">let countTime = 5;</span><br><span class="line"></span><br><span class="line">function count() &#123;</span><br><span class="line">  </span><br><span class="line">  document.getElementById(&#x27;timeout&#x27;).textContent = countTime;</span><br><span class="line">  countTime -= 1;</span><br><span class="line">  if(countTime === 0)&#123;</span><br><span class="line"><span class="code">    location.href = &quot;https://&lt;your GitHub username&gt;.github.io/&quot;;</span></span><br><span class="line"><span class="code">  &#125;</span></span><br><span class="line"><span class="code">  setTimeout(() =&gt; &#123;</span></span><br><span class="line"><span class="code">    count();</span></span><br><span class="line"><span class="code">  &#125;, 1000);</span></span><br><span class="line"><span class="code">&#125;</span></span><br><span class="line"><span class="code"></span></span><br><span class="line"><span class="code">count();</span></span><br><span class="line"><span class="code">&lt;/script&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>Save the file. Run <code>hexo generate</code> and <code>hexo deploy</code> to push the 404 handle page to the repository. Done ☕</li>
+</ol>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
+<li>For the copy:<br>  <a href="https://codepen.io/kdbkapsere/pen/oNXLbqQ">404 Page by Kasper De Bruyne</a></li>
+<li>For the <code>404.md</code> file location and the instruction of deployment:<br>  <a href="https://github.com/ppoffice/hexo-theme-icarus/issues/66#issuecomment-165919312">https://github.com/ppoffice/hexo-theme-icarus/issues/66#issuecomment-165919312</a></li>
+<li>For the JavaScript of auto-redirect:<br>  <a href="https://ithelp.ithome.com.tw/articles/10249685">(23) 試著學 Hexo - SEO 篇 - 新增你的 404 頁面</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>hexo</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Category hierarchy</title>
     <url>/2021/hexo-category-hierarchy/</url>
     <content><![CDATA[<h2 id="Summary-of-this-post"><a href="#Summary-of-this-post" class="headerlink" title="Summary of this post"></a>Summary of this post</h2><p>An introduction to hexo’s category hierarchy.</p>
@@ -1641,51 +1710,6 @@ on <a href="https://codepen.io">CodePen</a>.</span>
 <h3 id="Sub-sub-category"><a href="#Sub-sub-category" class="headerlink" title="Sub-sub-category"></a>Sub-sub-category</h3><figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># categories:</span></span><br><span class="line"><span class="bullet">-</span> [<span class="string">Fruit</span>, <span class="string">Apple</span>, <span class="string">Apple</span> <span class="string">seed</span>]</span><br><span class="line"><span class="bullet">-</span> [<span class="string">Vegetable</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># Result:</span></span><br><span class="line"><span class="string">├──</span> <span class="string">Fruit</span></span><br><span class="line"><span class="string">|</span>   <span class="string">└──</span> <span class="string">Apple</span></span><br><span class="line"><span class="string">|</span>      <span class="string">└──</span> <span class="string">Apple</span> <span class="string">Seed</span></span><br><span class="line"><span class="string">└──</span> <span class="string">Vegetable</span></span><br></pre></td></tr></table></figure>
 
 <h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://hexo.io/docs/front-matter#Categories-amp-Tags">hexo: Front-matter/Categories &amp; Tags</a></p>
-]]></content>
-      <categories>
-        <category>hexo</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>Contribution workflow note&amp;#58; document update</title>
-    <url>/2021/hexo-contribution-workflow/</url>
-    <content><![CDATA[<p>This a note for participating hexo’s contribution (for improving the documentation in English and traditional Chinese).<br>參與了hexo說明文件的改善協作，記錄一下整個流程。<br>不過pr因為提出的改善建議已經過時（<a href="https://github.com/hexojs/hexo/issues/4267#issuecomment-778646141">hexo 4.2.1已支援Noje.js 14</a>）所以並沒有被接受 🤣</p>
-<h2 id="Preparing-works"><a href="#Preparing-works" class="headerlink" title="Preparing works"></a>Preparing works</h2><ul>
-<li>Read the <a href="https://hexo.io/docs/contributing">hexo’s official guide for contributing</a></li>
-<li>Understand what is “Fork” in git workflow: <a href="https://docs.github.com/en/github/getting-started-with-github/fork-a-repo">GitHub Docs: Fork a repo</a></li>
-<li>Understand how to create a branch in CLI: <a href="https://www.datree.io/resources/git-create-branch">Git create branch [a Git commands tutorial]</a></li>
-</ul>
-<h2 id="Environment"><a href="#Environment" class="headerlink" title="Environment"></a>Environment</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo: 5.3.0</span><br><span class="line">hexo-cli: 4.2.0</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></table></figure>
-
-<h2 id="Workflow"><a href="#Workflow" class="headerlink" title="Workflow"></a>Workflow</h2><ol>
-<li>Fork <a href="https://github.com/hexojs/hexo">hexojs/site</a><br><img src="/2021/hexo-contribution-workflow/fork-hexo-site.png" alt="Click &quot;Fork&quot; button"></li>
-<li>Open cmd.exe, move to <code>C:\Projects\hexo_contributing</code> by entering <code>cd C:\Projects\hexo_contributing</code> (since I want to store the hexojs/site repo in this location on my computer).</li>
-<li>Enter <code>git init</code> to <a href="https://git-scm.com/docs/git-init">create a empty Git repository</a> in this folder.</li>
-<li>Follow the instruction on hexo’s contribution document:<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;tzynwang&#x2F;site.git</span><br><span class="line">cd site</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure></li>
-<li>Dive into the <code>\site\source</code> folder. Update the contents in English and traditional Chinese documents</li>
-<li>Run <code>hexo server</code> to have a live previwing, checking the pages I’d updated and make sure nothing was mess-up</li>
-<li>Create a branch call “update-node-js-version-suggestion” by entering <code>git checkout -b update-node-js-version-suggestion</code> in cmd.exe</li>
-<li>Push the modification from local to GitHub by <code>git push https://github.com/tzynwang/site.git update-node-js-version-suggestion</code></li>
-<li>Create a pull request on GitHub page, describe what changes I’d applied to the documents.</li>
-</ol>
-<h2 id="Result"><a href="#Result" class="headerlink" title="Result"></a>Result</h2><p><a href="https://github.com/hexojs/hexo/issues/4267#issuecomment-778646141">Receive a comment</a> which indicated the improvement is out of date (my bad), thus remove the pr from GitHub. Here’s the flow:</p>
-<ol>
-<li>Click the <a href="https://github.com/hexojs/hexo/pulls">“Pull requests” tab in hexojs/site</a>, click the pr I’d sent<br><img src="/2021/hexo-contribution-workflow/close-pr-00.png" alt="Navigate to the Pull request tab in hexojs/site repository"></li>
-<li>Scroll to the page bottom, add the comment to describe the reason of closing the pr. Click the button “Close with comment”<br><img src="/2021/hexo-contribution-workflow/close-pr-01.png" alt="Comment the reason for closing the pull-request before closing it"></li>
-<li>Click the button “Delete branch” (since it has no useage now)<br><img src="/2021/hexo-contribution-workflow/close-pr-02.png" alt="Delete the branch from GitHub repository"></li>
-<li>The branch has been deleted<br><img src="/2021/hexo-contribution-workflow/close-pr-03.png" alt="The screenshot after deleting a branch"><br>Done 😌</li>
-</ol>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p>About how to use indicator characters (<code>:</code>) in yaml file and bracket (<code>[]</code>) in markdown file:</p>
-<ul>
-<li><a href="https://riptutorial.com/yaml/example/25838/escaping-characters">yaml Escaping Characters</a></li>
-<li><a href="https://stackoverflow.com/a/19086251/15028185">How to escape indicator characters (i.e. : or - ) in YAML</a></li>
-<li><a href="https://stackoverflow.com/a/43011868/15028185">How to escape backslash bracket ([) in Markdown?</a></li>
-</ul>
-<p>About cancel, delete, remove a GitHub pull request:</p>
-<ul>
-<li><a href="https://stackoverflow.com/a/10142727/15028185">How to cancel a pull request on github?</a></li>
-<li><a href="https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/closing-a-pull-request">GitHub Docs: Closing a pull request</a></li>
-</ul>
 ]]></content>
       <categories>
         <category>hexo</category>
@@ -1748,6 +1772,51 @@ The configuration in <code>_config.yml</code> file should be set like this:<figu
 <h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
 <li><a href="https://hexo.io/docs/commands#Display-drafts">hexo: Commands/Display drafts</a></li>
 <li><a href="https://hexo.io/docs/configuration#Writing">hexo: Configuration/Writing</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>hexo</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Contribution workflow note&amp;#58; document update</title>
+    <url>/2021/hexo-contribution-workflow/</url>
+    <content><![CDATA[<p>This a note for participating hexo’s contribution (for improving the documentation in English and traditional Chinese).<br>參與了hexo說明文件的改善協作，記錄一下整個流程。<br>不過pr因為提出的改善建議已經過時（<a href="https://github.com/hexojs/hexo/issues/4267#issuecomment-778646141">hexo 4.2.1已支援Noje.js 14</a>）所以並沒有被接受 🤣</p>
+<h2 id="Preparing-works"><a href="#Preparing-works" class="headerlink" title="Preparing works"></a>Preparing works</h2><ul>
+<li>Read the <a href="https://hexo.io/docs/contributing">hexo’s official guide for contributing</a></li>
+<li>Understand what is “Fork” in git workflow: <a href="https://docs.github.com/en/github/getting-started-with-github/fork-a-repo">GitHub Docs: Fork a repo</a></li>
+<li>Understand how to create a branch in CLI: <a href="https://www.datree.io/resources/git-create-branch">Git create branch [a Git commands tutorial]</a></li>
+</ul>
+<h2 id="Environment"><a href="#Environment" class="headerlink" title="Environment"></a>Environment</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo: 5.3.0</span><br><span class="line">hexo-cli: 4.2.0</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></table></figure>
+
+<h2 id="Workflow"><a href="#Workflow" class="headerlink" title="Workflow"></a>Workflow</h2><ol>
+<li>Fork <a href="https://github.com/hexojs/hexo">hexojs/site</a><br><img src="/2021/hexo-contribution-workflow/fork-hexo-site.png" alt="Click &quot;Fork&quot; button"></li>
+<li>Open cmd.exe, move to <code>C:\Projects\hexo_contributing</code> by entering <code>cd C:\Projects\hexo_contributing</code> (since I want to store the hexojs/site repo in this location on my computer).</li>
+<li>Enter <code>git init</code> to <a href="https://git-scm.com/docs/git-init">create a empty Git repository</a> in this folder.</li>
+<li>Follow the instruction on hexo’s contribution document:<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;tzynwang&#x2F;site.git</span><br><span class="line">cd site</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure></li>
+<li>Dive into the <code>\site\source</code> folder. Update the contents in English and traditional Chinese documents</li>
+<li>Run <code>hexo server</code> to have a live previwing, checking the pages I’d updated and make sure nothing was mess-up</li>
+<li>Create a branch call “update-node-js-version-suggestion” by entering <code>git checkout -b update-node-js-version-suggestion</code> in cmd.exe</li>
+<li>Push the modification from local to GitHub by <code>git push https://github.com/tzynwang/site.git update-node-js-version-suggestion</code></li>
+<li>Create a pull request on GitHub page, describe what changes I’d applied to the documents.</li>
+</ol>
+<h2 id="Result"><a href="#Result" class="headerlink" title="Result"></a>Result</h2><p><a href="https://github.com/hexojs/hexo/issues/4267#issuecomment-778646141">Receive a comment</a> which indicated the improvement is out of date (my bad), thus remove the pr from GitHub. Here’s the flow:</p>
+<ol>
+<li>Click the <a href="https://github.com/hexojs/hexo/pulls">“Pull requests” tab in hexojs/site</a>, click the pr I’d sent<br><img src="/2021/hexo-contribution-workflow/close-pr-00.png" alt="Navigate to the Pull request tab in hexojs/site repository"></li>
+<li>Scroll to the page bottom, add the comment to describe the reason of closing the pr. Click the button “Close with comment”<br><img src="/2021/hexo-contribution-workflow/close-pr-01.png" alt="Comment the reason for closing the pull-request before closing it"></li>
+<li>Click the button “Delete branch” (since it has no useage now)<br><img src="/2021/hexo-contribution-workflow/close-pr-02.png" alt="Delete the branch from GitHub repository"></li>
+<li>The branch has been deleted<br><img src="/2021/hexo-contribution-workflow/close-pr-03.png" alt="The screenshot after deleting a branch"><br>Done 😌</li>
+</ol>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p>About how to use indicator characters (<code>:</code>) in yaml file and bracket (<code>[]</code>) in markdown file:</p>
+<ul>
+<li><a href="https://riptutorial.com/yaml/example/25838/escaping-characters">yaml Escaping Characters</a></li>
+<li><a href="https://stackoverflow.com/a/19086251/15028185">How to escape indicator characters (i.e. : or - ) in YAML</a></li>
+<li><a href="https://stackoverflow.com/a/43011868/15028185">How to escape backslash bracket ([) in Markdown?</a></li>
+</ul>
+<p>About cancel, delete, remove a GitHub pull request:</p>
+<ul>
+<li><a href="https://stackoverflow.com/a/10142727/15028185">How to cancel a pull request on github?</a></li>
+<li><a href="https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/closing-a-pull-request">GitHub Docs: Closing a pull request</a></li>
 </ul>
 ]]></content>
       <categories>
@@ -2789,6 +2858,72 @@ on <a href="https://codepen.io">CodePen</a>.</span>
       </categories>
   </entry>
   <entry>
+    <title>VSCode擴充套件（Extensions）與自訂snippets</title>
+    <url>/2021/vs-code-extensions-snippets/</url>
+    <content><![CDATA[<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>記錄一些目前有在使用的VSCode擴充套件，與自訂snippets的步驟筆記。</p>
+<h2 id="版本與環境"><a href="#版本與環境" class="headerlink" title="版本與環境"></a>版本與環境</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">VSCode: 1.53.2 (user setup)</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></table></figure>
+
+<h2 id="擴充套件（Extensions）"><a href="#擴充套件（Extensions）" class="headerlink" title="擴充套件（Extensions）"></a>擴充套件（Extensions）</h2><h3 id="Bracket-Pair-Colorizer-2"><a href="#Bracket-Pair-Colorizer-2" class="headerlink" title="Bracket Pair Colorizer 2"></a>Bracket Pair Colorizer 2</h3><p>套件網址：<a href="https://marketplace.visualstudio.com/items?itemName=CoenraadS.bracket-pair-colorizer-2">https://marketplace.visualstudio.com/items?itemName=CoenraadS.bracket-pair-colorizer-2</a><br>幫成對的括號套用相同的顏色，方便辨識。<br>根據<a href="https://github.com/CoenraadS/Bracket-Pair-Colorizer-2#faq">官方Q&amp;A</a>的內容，2代改善了執行速度與正確性，其餘設定與1代看起來沒什麼差異。</p>
+<p>如果要修改套件設定的話，可參考以下gif：</p>
+<figure class="figure--center"><img src="/2021/vs-code-extensions-snippets/extension-setting.gif"></figure>
+
+<h3 id="indent-rainbow"><a href="#indent-rainbow" class="headerlink" title="indent-rainbow"></a>indent-rainbow</h3><p>套件網址：<a href="https://marketplace.visualstudio.com/items?itemName=oderwat.indent-rainbow">https://marketplace.visualstudio.com/items?itemName=oderwat.indent-rainbow</a><br>幫縮排區域套上顏色，縮排尺寸不正確時顯示為紅色，如下圖。</p>
+<figure class="figure--center"><img src="/2021/vs-code-extensions-snippets/incorrect-space.png"></figure>
+
+<h3 id="Lorem-Picsum-photos-snippets"><a href="#Lorem-Picsum-photos-snippets" class="headerlink" title="Lorem Picsum photos snippets"></a>Lorem Picsum photos snippets</h3><p>套件網址：<a href="https://marketplace.visualstudio.com/items?itemName=huang-an-sheng.lorem-picsum-photos-snippets">https://marketplace.visualstudio.com/items?itemName=huang-an-sheng.lorem-picsum-photos-snippets</a><br>練習切版時直接在html檔案中輸入<code>picsum</code>即可帶出有假圖的<code>&lt;img&gt;</code>標籤。</p>
+<figure class="figure--center"><img src="/2021/vs-code-extensions-snippets/lorem-piscum.gif"></figure>
+<ul>
+<li>輸入<code>picsum</code>後直接按下<code>tab</code>會產生帶一張固定id假圖的標籤<code>&lt;img src=&quot;https://picsum.photos/id/684/600/400&quot; alt=&quot;&quot;&gt;</code><ul>
+<li>需要隨機圖片的話，把圖片網址改為<code>https://picsum.photos/&#123;width&#125;/&#123;height&#125;?random=&#123;seed&#125;</code></li>
+<li><code>&#123;width&#125;</code>代表圖片寬度（單位px），<code>&#123;height&#125;</code>代表圖片高度（單位px），<code>&#123;seed&#125;</code>為正整數</li>
+<li>假圖網址加上不同的<code>&#123;seed&#125;</code>會讓每一組網址產生不同的圖片，參考下圖：<figure class="figure--center"><img src="/2021/vs-code-extensions-snippets/lorem-picsum.png"></figure></li>
+<li>第一列圖片的網址由左至右分別是<code>https://picsum.photos/600/400?random=1</code>、<code>https://picsum.photos/600/400?random=2</code>、<code>https://picsum.photos/600/400?random=3</code>、<code>https://picsum.photos/600/400?random=4</code>，第二列圖片的網址統一使用<code>https://picsum.photos/600/400?random</code></li>
+<li>第二列的圖片在每次重新整理網頁時都會更新，但會是四張一樣的圖</li>
+</ul>
+</li>
+<li><code>picsum-grayscale</code>：灰階假圖</li>
+<li><code>picsum-blur</code>：有模糊效果的假圖</li>
+<li><code>picsum-square</code>：正方形假圖</li>
+<li><code>picsum-grayscale-blur</code>：灰階加模糊效果</li>
+<li>其餘預設效果可參考套件的說明內容</li>
+</ul>
+<h3 id="Live-Server"><a href="#Live-Server" class="headerlink" title="Live Server"></a>Live Server</h3><p>套件網址：<a href="https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer">https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer</a><br>安裝完畢後，VSCode右下角會出現Go Live按鈕，點下啟動Live Server。<br>預設可以在<code>localhost:5500</code>即時看到VSCode的檔案（修改檔案內容後，存檔、重新整理<code>localhost:5500</code>上的頁面，才會看到修改內容）。</p>
+<h3 id="Code-Spell-Checker"><a href="#Code-Spell-Checker" class="headerlink" title="Code Spell Checker"></a>Code Spell Checker</h3><p>套件網址：<a href="https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker">https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker</a><br>支援CamelCase，並且偵測到拼寫不正確的單字時，會提供建議用字，如下圖：</p>
+<figure class="figure--center"><img src="/2021/vs-code-extensions-snippets/code-spell-checker.gif"></figure>
+
+
+<h2 id="自訂snippets"><a href="#自訂snippets" class="headerlink" title="自訂snippets"></a>自訂snippets</h2><p>自訂了一個帶有bootstrap5 CSS與JS CDN連結的html樣板。</p>
+<ol>
+<li>從<a href="https://getbootstrap.com/docs/5.0/getting-started/introduction/#starter-template">bootstrap5官方文件</a>複製html樣板內容</li>
+<li>開啟VSCode，按下F1，輸入「snippets」，選擇「Preferences: Configure User Snippets」<figure class="figure--center"><img src="/2021/vs-code-extensions-snippets/snippets-edit-0.png"></figure></li>
+<li>因為要建立的是html樣板，故輸入html，意即建立給html文件使用的snippets<figure class="figure--center"><img src="/2021/vs-code-extensions-snippets/snippets-edit-1.png"></figure></li>
+<li>另外一個開啟html.json的方式是依序點選「畫面右上角的File（Mac版為Code） &gt;&gt; Preferences &gt;&gt; User Snippets」後，輸入html開啟html.json<figure class="figure--center"><img src="/2021/vs-code-extensions-snippets/snippets-edit-another-path.png"></figure></li>
+<li>在html.json檔案中貼上bootstrap5的html樣板內容<figure class="figure--center"><img src="/2021/vs-code-extensions-snippets/snippets-edit-content.png"></figure>
+<ul>
+<li>圖中第16行<code>bootstrap5 template</code>代表snippets名稱</li>
+<li>第17行<code>prefix</code>的值代表呼叫snippets的快速鍵，為了避免跟VSCode預設的html樣板起衝突，設定為<code>!!</code></li>
+<li>第18至35行<code>body</code>的值代表snippets的內容，每一行後面須加上半形逗號<code>,</code>分隔內容</li>
+<li>第36行<code>description</code>是輸入快速鍵時出現在snippets選單的說明內容，請參考下圖<figure class="figure--center"><img src="/2021/vs-code-extensions-snippets/snippets-enter-hotkey.png"></figure>
+原始碼如下：<figure class="highlight"><table><tr><td class="code"><pre><span class="line">&quot;bootstrap5 template&quot;: &#123;</span><br><span class="line">    &quot;prefix&quot;: &quot;!!&quot;,</span><br><span class="line">    &quot;body&quot;: [</span><br><span class="line">        &quot;&lt;!doctype html&gt;&quot;,</span><br><span class="line">        &quot;&lt;html lang=\&quot;en\&quot;&gt;&quot;,</span><br><span class="line">        &quot;    &lt;head&gt;&quot;,</span><br><span class="line">        &quot;        &lt;meta charset=\&quot;utf-8\&quot;&gt;&quot;,</span><br><span class="line">        &quot;        &lt;meta name=\&quot;viewport\&quot; content=\&quot;width=device-width, initial-scale=1\&quot;&gt;&quot;,</span><br><span class="line">        &quot;&quot;,</span><br><span class="line">        &quot;        &lt;!-- Bootstrap CSS --&gt;&quot;,</span><br><span class="line">        &quot;        &lt;link href=\&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css\&quot; rel=\&quot;stylesheet\&quot; integrity=\&quot;sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl\&quot; crossorigin=\&quot;anonymous\&quot;&gt;&quot;,</span><br><span class="line">        &quot;&quot;,</span><br><span class="line">        &quot;        &lt;title&gt;Hello, world!&lt;/title&gt;&quot;,</span><br><span class="line">        &quot;    &lt;/head&gt;&quot;,</span><br><span class="line">        &quot;    &lt;body&gt;&quot;,</span><br><span class="line">        &quot;        &lt;!-- Option 1: Bootstrap Bundle with Popper --&gt;&quot;,</span><br><span class="line">        &quot;        &lt;script src=\&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js\&quot; integrity=\&quot;sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0\&quot; crossorigin=\&quot;anonymous\&quot;&gt;&lt;/script&gt;&quot;,</span><br><span class="line">        &quot;    &lt;/body&gt;&quot;,</span><br><span class="line">        <span class="string">&quot;&lt;/html&gt;&quot;</span></span><br><span class="line">    ],</span><br><span class="line">    &quot;description&quot;: &quot;bootstrap5 template&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>以上內容輸入完畢後，存檔，之後即可在html格式的檔案中輸入快速鍵<code>!!</code>並按下<code>tab</code>來套用剛才自訂的snippets內容<figure class="figure--center"><img src="/2021/vs-code-extensions-snippets/snippets-done.png"></figure>
+
+
+</li>
+</ol>
+<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
+<li><a href="https://wcc723.github.io/development/2020/12/13/vscode-extension/">12 個前端愛用的 VSCode 擴充套件</a></li>
+<li><a href="https://tw.alphacamp.co/blog/visual-studio-code-editor-tutorial-and-extensions">VSCode快速安裝教學，推薦常用外掛擴充套件</a></li>
+<li><a href="https://stackoverflow.com/a/29973358/15028185">How do you format code in Visual Studio Code (VSCode)</a></li>
+<li><a href="https://code.visualstudio.com/docs/editor/userdefinedsnippets#_create-your-own-snippets">Visual Studio Code: Create your own snippets</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>VSCode</category>
+      </categories>
+  </entry>
+  <entry>
     <title>「電影清單（Vue版本）」技術記錄</title>
     <url>/2021/vue-movie-list/</url>
     <content><![CDATA[<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>專案網址：<a href="https://tzynwang.github.io/vue-movie-list/">https://tzynwang.github.io/vue-movie-list/</a><br>根據<a href="https://tzynwang.github.io/ac_practice_2-2_movie_list/">白板JavaScript版本的電影清單</a>，以Vue框架重現外觀、分頁與搜尋功能（本篇筆記發布時尚未實作出切換顯示模式與根據電影主題進行篩選的功能）</p>
@@ -2916,6 +3051,44 @@ on <a href="https://codepen.io">CodePen</a>.</span>
       </categories>
   </entry>
   <entry>
+    <title>「Writing Good Alt Text - HTTP 203」相關筆記</title>
+    <url>/2021/writing-good-alt-text/</url>
+    <content><![CDATA[<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>關於YouTube影片「Writing Good Alt Text - HTTP 203」的相關筆記。</p>
+<h2 id="筆記"><a href="#筆記" class="headerlink" title="筆記"></a>筆記</h2><p>00:51 What alt text should I use for image like this one?<br>提問：（影片範例為講者頭像，而頭像的）alt內容到底該寫些什麼？</p>
+<p>02:02 It depends, this is always the answer in tech.<br>回答：alt內容須根據上下文脈絡決定。<br>而如果不曉得圖片是應用在哪些情境，就不容易決定合適的alt內容（02:12）。</p>
+<p>以02:44舉的例子來看，假設文章是關於兩個旅社之間的糾紛，那附圖的alt內容可為：「當事者旅社之照片」。<br>而文章若是在討論腳踏車使用率的上升，那附圖的alt應配合主題，轉而描述圖片中的腳踏車（與其行為）。</p>
+<p>03:26 Now the image has a caption equivalent to the alt, it’s best to make the alt an empty string.<br>但參考影片留言的內容：</p>
+<blockquote>
+<p>leaving the alt attribute empty will hide the image from screen readers.<br><code>alt=&quot;&quot;</code>的時候，screen reader會跳過該圖片。除非是裝飾性素材（如背景圖片），否則不適合讓alt為空白。</p>
+</blockquote>
+<blockquote>
+<p>In general, alt and figcaption should not be the same. Alt descriptions should be functional; figcaption descriptions should be editorial or illustrative.</p>
+</blockquote>
+<p>綜合05:23的內容</p>
+<blockquote>
+<p>Emotion matters</p>
+</blockquote>
+<p>講者是否戴眼鏡對（圖片）瀏覽者來說並非重點，但講者躲在植物後面的動作有引導出這張頭像照片的特殊之處。<br>故alt內容可為：「講者俏皮地躲在植物後」。</p>
+<p>小結論：<code>&lt;figcaption&gt;</code>為editorial或illustrative導向，而alt用來做（圖片的）功能性描述。</p>
+<p>而何謂editorial與illustrative，參考<a href="https://thoughtbot.com/blog/alt-vs-figcaption">Alt vs Figcaption</a>：</p>
+<blockquote>
+<p>Editorial or illustrative descriptions can convey the who, what, when, where, and/or why of an image contextualizing it alongside other content on the page. This may be information that isn’t apparent from just looking at the image.</p>
+</blockquote>
+<p>我流解讀：描述的事圖片帶出的故事。</p>
+<p>最後，關於上下文對alt的影響程度，可參考 07:34 Does the skin color of the speaker matter?<br>影片中的立場：如果講者談論的是與種族相關的演講題目，這或許重要到需在alt中註明。</p>
+<h2 id="補充：-lt-figcaption-gt-的用途"><a href="#補充：-lt-figcaption-gt-的用途" class="headerlink" title="補充：&lt;figcaption&gt;的用途"></a>補充：<code>&lt;figcaption&gt;</code>的用途</h2><p>除了提供圖片說明以外，也可以作為<code>blockquote</code>或引用文獻時拿來標註出處、說明引用來源。<br><code>&lt;figcaption&gt;</code>是block物件，可搭配<code>&lt;small&gt;</code>或<code>&lt;cite&gt;</code>（使用情境：註明來源），也可作為照片的拍攝時間標籤（搭配<code>&lt;time&gt;</code>）使用。</p>
+<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><iframe width="320" height="180" src="https://www.youtube.com/embed/flf2vS0IoRs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<ul>
+<li><a href="https://youtu.be/flf2vS0IoRs">Writing Good Alt Text - HTTP 203</a></li>
+<li><a href="https://thoughtbot.com/blog/alt-vs-figcaption">Alt vs Figcaption</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>HTML</category>
+      </categories>
+  </entry>
+  <entry>
     <title>為什麼在瀏覽器環境中使用while loop執行ajax request會讓頁面陷入凍結狀態？</title>
     <url>/2021/while-loop-ajax/</url>
     <content><![CDATA[<h2 id="環境"><a href="#環境" class="headerlink" title="環境"></a>環境</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Google Chrome: 89.0.4389.114 (Official Build) (64-bit)</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></table></figure>
@@ -2977,110 +3150,6 @@ on <a href="https://codepen.io">CodePen</a>.</span>
 ]]></content>
       <categories>
         <category>JavaScript</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>「Writing Good Alt Text - HTTP 203」相關筆記</title>
-    <url>/2021/writing-good-alt-text/</url>
-    <content><![CDATA[<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>關於YouTube影片「Writing Good Alt Text - HTTP 203」的相關筆記。</p>
-<h2 id="筆記"><a href="#筆記" class="headerlink" title="筆記"></a>筆記</h2><p>00:51 What alt text should I use for image like this one?<br>提問：（影片範例為講者頭像，而頭像的）alt內容到底該寫些什麼？</p>
-<p>02:02 It depends, this is always the answer in tech.<br>回答：alt內容須根據上下文脈絡決定。<br>而如果不曉得圖片是應用在哪些情境，就不容易決定合適的alt內容（02:12）。</p>
-<p>以02:44舉的例子來看，假設文章是關於兩個旅社之間的糾紛，那附圖的alt內容可為：「當事者旅社之照片」。<br>而文章若是在討論腳踏車使用率的上升，那附圖的alt應配合主題，轉而描述圖片中的腳踏車（與其行為）。</p>
-<p>03:26 Now the image has a caption equivalent to the alt, it’s best to make the alt an empty string.<br>但參考影片留言的內容：</p>
-<blockquote>
-<p>leaving the alt attribute empty will hide the image from screen readers.<br><code>alt=&quot;&quot;</code>的時候，screen reader會跳過該圖片。除非是裝飾性素材（如背景圖片），否則不適合讓alt為空白。</p>
-</blockquote>
-<blockquote>
-<p>In general, alt and figcaption should not be the same. Alt descriptions should be functional; figcaption descriptions should be editorial or illustrative.</p>
-</blockquote>
-<p>綜合05:23的內容</p>
-<blockquote>
-<p>Emotion matters</p>
-</blockquote>
-<p>講者是否戴眼鏡對（圖片）瀏覽者來說並非重點，但講者躲在植物後面的動作有引導出這張頭像照片的特殊之處。<br>故alt內容可為：「講者俏皮地躲在植物後」。</p>
-<p>小結論：<code>&lt;figcaption&gt;</code>為editorial或illustrative導向，而alt用來做（圖片的）功能性描述。</p>
-<p>而何謂editorial與illustrative，參考<a href="https://thoughtbot.com/blog/alt-vs-figcaption">Alt vs Figcaption</a>：</p>
-<blockquote>
-<p>Editorial or illustrative descriptions can convey the who, what, when, where, and/or why of an image contextualizing it alongside other content on the page. This may be information that isn’t apparent from just looking at the image.</p>
-</blockquote>
-<p>我流解讀：描述的事圖片帶出的故事。</p>
-<p>最後，關於上下文對alt的影響程度，可參考 07:34 Does the skin color of the speaker matter?<br>影片中的立場：如果講者談論的是與種族相關的演講題目，這或許重要到需在alt中註明。</p>
-<h2 id="補充：-lt-figcaption-gt-的用途"><a href="#補充：-lt-figcaption-gt-的用途" class="headerlink" title="補充：&lt;figcaption&gt;的用途"></a>補充：<code>&lt;figcaption&gt;</code>的用途</h2><p>除了提供圖片說明以外，也可以作為<code>blockquote</code>或引用文獻時拿來標註出處、說明引用來源。<br><code>&lt;figcaption&gt;</code>是block物件，可搭配<code>&lt;small&gt;</code>或<code>&lt;cite&gt;</code>（使用情境：註明來源），也可作為照片的拍攝時間標籤（搭配<code>&lt;time&gt;</code>）使用。</p>
-<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><iframe width="320" height="180" src="https://www.youtube.com/embed/flf2vS0IoRs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-<ul>
-<li><a href="https://youtu.be/flf2vS0IoRs">Writing Good Alt Text - HTTP 203</a></li>
-<li><a href="https://thoughtbot.com/blog/alt-vs-figcaption">Alt vs Figcaption</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>HTML</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>VSCode擴充套件（Extensions）與自訂snippets</title>
-    <url>/2021/vs-code-extensions-snippets/</url>
-    <content><![CDATA[<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>記錄一些目前有在使用的VSCode擴充套件，與自訂snippets的步驟筆記。</p>
-<h2 id="版本與環境"><a href="#版本與環境" class="headerlink" title="版本與環境"></a>版本與環境</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">VSCode: 1.53.2 (user setup)</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></table></figure>
-
-<h2 id="擴充套件（Extensions）"><a href="#擴充套件（Extensions）" class="headerlink" title="擴充套件（Extensions）"></a>擴充套件（Extensions）</h2><h3 id="Bracket-Pair-Colorizer-2"><a href="#Bracket-Pair-Colorizer-2" class="headerlink" title="Bracket Pair Colorizer 2"></a>Bracket Pair Colorizer 2</h3><p>套件網址：<a href="https://marketplace.visualstudio.com/items?itemName=CoenraadS.bracket-pair-colorizer-2">https://marketplace.visualstudio.com/items?itemName=CoenraadS.bracket-pair-colorizer-2</a><br>幫成對的括號套用相同的顏色，方便辨識。<br>根據<a href="https://github.com/CoenraadS/Bracket-Pair-Colorizer-2#faq">官方Q&amp;A</a>的內容，2代改善了執行速度與正確性，其餘設定與1代看起來沒什麼差異。</p>
-<p>如果要修改套件設定的話，可參考以下gif：</p>
-<figure class="figure--center"><img src="/2021/vs-code-extensions-snippets/extension-setting.gif"></figure>
-
-<h3 id="indent-rainbow"><a href="#indent-rainbow" class="headerlink" title="indent-rainbow"></a>indent-rainbow</h3><p>套件網址：<a href="https://marketplace.visualstudio.com/items?itemName=oderwat.indent-rainbow">https://marketplace.visualstudio.com/items?itemName=oderwat.indent-rainbow</a><br>幫縮排區域套上顏色，縮排尺寸不正確時顯示為紅色，如下圖。</p>
-<figure class="figure--center"><img src="/2021/vs-code-extensions-snippets/incorrect-space.png"></figure>
-
-<h3 id="Lorem-Picsum-photos-snippets"><a href="#Lorem-Picsum-photos-snippets" class="headerlink" title="Lorem Picsum photos snippets"></a>Lorem Picsum photos snippets</h3><p>套件網址：<a href="https://marketplace.visualstudio.com/items?itemName=huang-an-sheng.lorem-picsum-photos-snippets">https://marketplace.visualstudio.com/items?itemName=huang-an-sheng.lorem-picsum-photos-snippets</a><br>練習切版時直接在html檔案中輸入<code>picsum</code>即可帶出有假圖的<code>&lt;img&gt;</code>標籤。</p>
-<figure class="figure--center"><img src="/2021/vs-code-extensions-snippets/lorem-piscum.gif"></figure>
-<ul>
-<li>輸入<code>picsum</code>後直接按下<code>tab</code>會產生帶一張固定id假圖的標籤<code>&lt;img src=&quot;https://picsum.photos/id/684/600/400&quot; alt=&quot;&quot;&gt;</code><ul>
-<li>需要隨機圖片的話，把圖片網址改為<code>https://picsum.photos/&#123;width&#125;/&#123;height&#125;?random=&#123;seed&#125;</code></li>
-<li><code>&#123;width&#125;</code>代表圖片寬度（單位px），<code>&#123;height&#125;</code>代表圖片高度（單位px），<code>&#123;seed&#125;</code>為正整數</li>
-<li>假圖網址加上不同的<code>&#123;seed&#125;</code>會讓每一組網址產生不同的圖片，參考下圖：<figure class="figure--center"><img src="/2021/vs-code-extensions-snippets/lorem-picsum.png"></figure></li>
-<li>第一列圖片的網址由左至右分別是<code>https://picsum.photos/600/400?random=1</code>、<code>https://picsum.photos/600/400?random=2</code>、<code>https://picsum.photos/600/400?random=3</code>、<code>https://picsum.photos/600/400?random=4</code>，第二列圖片的網址統一使用<code>https://picsum.photos/600/400?random</code></li>
-<li>第二列的圖片在每次重新整理網頁時都會更新，但會是四張一樣的圖</li>
-</ul>
-</li>
-<li><code>picsum-grayscale</code>：灰階假圖</li>
-<li><code>picsum-blur</code>：有模糊效果的假圖</li>
-<li><code>picsum-square</code>：正方形假圖</li>
-<li><code>picsum-grayscale-blur</code>：灰階加模糊效果</li>
-<li>其餘預設效果可參考套件的說明內容</li>
-</ul>
-<h3 id="Live-Server"><a href="#Live-Server" class="headerlink" title="Live Server"></a>Live Server</h3><p>套件網址：<a href="https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer">https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer</a><br>安裝完畢後，VSCode右下角會出現Go Live按鈕，點下啟動Live Server。<br>預設可以在<code>localhost:5500</code>即時看到VSCode的檔案（修改檔案內容後，存檔、重新整理<code>localhost:5500</code>上的頁面，才會看到修改內容）。</p>
-<h3 id="Code-Spell-Checker"><a href="#Code-Spell-Checker" class="headerlink" title="Code Spell Checker"></a>Code Spell Checker</h3><p>套件網址：<a href="https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker">https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker</a><br>支援CamelCase，並且偵測到拼寫不正確的單字時，會提供建議用字，如下圖：</p>
-<figure class="figure--center"><img src="/2021/vs-code-extensions-snippets/code-spell-checker.gif"></figure>
-
-
-<h2 id="自訂snippets"><a href="#自訂snippets" class="headerlink" title="自訂snippets"></a>自訂snippets</h2><p>自訂了一個帶有bootstrap5 CSS與JS CDN連結的html樣板。</p>
-<ol>
-<li>從<a href="https://getbootstrap.com/docs/5.0/getting-started/introduction/#starter-template">bootstrap5官方文件</a>複製html樣板內容</li>
-<li>開啟VSCode，按下F1，輸入「snippets」，選擇「Preferences: Configure User Snippets」<figure class="figure--center"><img src="/2021/vs-code-extensions-snippets/snippets-edit-0.png"></figure></li>
-<li>因為要建立的是html樣板，故輸入html，意即建立給html文件使用的snippets<figure class="figure--center"><img src="/2021/vs-code-extensions-snippets/snippets-edit-1.png"></figure></li>
-<li>另外一個開啟html.json的方式是依序點選「畫面右上角的File（Mac版為Code） &gt;&gt; Preferences &gt;&gt; User Snippets」後，輸入html開啟html.json<figure class="figure--center"><img src="/2021/vs-code-extensions-snippets/snippets-edit-another-path.png"></figure></li>
-<li>在html.json檔案中貼上bootstrap5的html樣板內容<figure class="figure--center"><img src="/2021/vs-code-extensions-snippets/snippets-edit-content.png"></figure>
-<ul>
-<li>圖中第16行<code>bootstrap5 template</code>代表snippets名稱</li>
-<li>第17行<code>prefix</code>的值代表呼叫snippets的快速鍵，為了避免跟VSCode預設的html樣板起衝突，設定為<code>!!</code></li>
-<li>第18至35行<code>body</code>的值代表snippets的內容，每一行後面須加上半形逗號<code>,</code>分隔內容</li>
-<li>第36行<code>description</code>是輸入快速鍵時出現在snippets選單的說明內容，請參考下圖<figure class="figure--center"><img src="/2021/vs-code-extensions-snippets/snippets-enter-hotkey.png"></figure>
-原始碼如下：<figure class="highlight"><table><tr><td class="code"><pre><span class="line">&quot;bootstrap5 template&quot;: &#123;</span><br><span class="line">    &quot;prefix&quot;: &quot;!!&quot;,</span><br><span class="line">    &quot;body&quot;: [</span><br><span class="line">        &quot;&lt;!doctype html&gt;&quot;,</span><br><span class="line">        &quot;&lt;html lang=\&quot;en\&quot;&gt;&quot;,</span><br><span class="line">        &quot;    &lt;head&gt;&quot;,</span><br><span class="line">        &quot;        &lt;meta charset=\&quot;utf-8\&quot;&gt;&quot;,</span><br><span class="line">        &quot;        &lt;meta name=\&quot;viewport\&quot; content=\&quot;width=device-width, initial-scale=1\&quot;&gt;&quot;,</span><br><span class="line">        &quot;&quot;,</span><br><span class="line">        &quot;        &lt;!-- Bootstrap CSS --&gt;&quot;,</span><br><span class="line">        &quot;        &lt;link href=\&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css\&quot; rel=\&quot;stylesheet\&quot; integrity=\&quot;sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl\&quot; crossorigin=\&quot;anonymous\&quot;&gt;&quot;,</span><br><span class="line">        &quot;&quot;,</span><br><span class="line">        &quot;        &lt;title&gt;Hello, world!&lt;/title&gt;&quot;,</span><br><span class="line">        &quot;    &lt;/head&gt;&quot;,</span><br><span class="line">        &quot;    &lt;body&gt;&quot;,</span><br><span class="line">        &quot;        &lt;!-- Option 1: Bootstrap Bundle with Popper --&gt;&quot;,</span><br><span class="line">        &quot;        &lt;script src=\&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js\&quot; integrity=\&quot;sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0\&quot; crossorigin=\&quot;anonymous\&quot;&gt;&lt;/script&gt;&quot;,</span><br><span class="line">        &quot;    &lt;/body&gt;&quot;,</span><br><span class="line">        <span class="string">&quot;&lt;/html&gt;&quot;</span></span><br><span class="line">    ],</span><br><span class="line">    &quot;description&quot;: &quot;bootstrap5 template&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li>以上內容輸入完畢後，存檔，之後即可在html格式的檔案中輸入快速鍵<code>!!</code>並按下<code>tab</code>來套用剛才自訂的snippets內容<figure class="figure--center"><img src="/2021/vs-code-extensions-snippets/snippets-done.png"></figure>
-
-
-</li>
-</ol>
-<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
-<li><a href="https://wcc723.github.io/development/2020/12/13/vscode-extension/">12 個前端愛用的 VSCode 擴充套件</a></li>
-<li><a href="https://tw.alphacamp.co/blog/visual-studio-code-editor-tutorial-and-extensions">VSCode快速安裝教學，推薦常用外掛擴充套件</a></li>
-<li><a href="https://stackoverflow.com/a/29973358/15028185">How do you format code in Visual Studio Code (VSCode)</a></li>
-<li><a href="https://code.visualstudio.com/docs/editor/userdefinedsnippets#_create-your-own-snippets">Visual Studio Code: Create your own snippets</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>VSCode</category>
       </categories>
   </entry>
   <entry>

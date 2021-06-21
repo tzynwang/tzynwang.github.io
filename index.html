@@ -197,14 +197,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">46</span>
+          <span class="site-state-item-count">47</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-count">14</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
@@ -238,6 +238,160 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope="" itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tzynwang.github.io/2021/express-restaurant-list/">
+
+    <span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar-pexels-alex-andrews-215-215.png">
+      <meta itemprop="name" content="Charlie (Tzu Yin)">
+      <meta itemprop="description" content="一介普通文組的學習筆記 📒">
+    </span>
+
+    <span hidden="" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="普通文組">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/express-restaurant-list/" class="post-title-link" itemprop="url">從零開始重寫：餐廳清單（Express版）</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-06-21 15:47:32 / Modified: 16:45:40" itemprop="dateCreated datePublished" datetime="2021-06-21T15:47:32+08:00">2021-06-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+          <a href="/categories/Express-Handlebars/" itemprop="url" rel="index"><span itemprop="name">Express Handlebars</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+          <a href="/categories/Express/" itemprop="url" rel="index"><span itemprop="name">Express</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+          <a href="/categories/Mongoose/" itemprop="url" rel="index"><span itemprop="name">Mongoose</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2021/express-restaurant-list/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/express-restaurant-list/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>試著從頭開始重新練習一次Express、Express handlebars與Mongoose相關內容，本篇筆記主要記錄練習途中遭遇到的問題、解法與日後可能會回頭參考的相關內容</p>
+<h2 id="環境"><a href="#環境" class="headerlink" title="環境"></a>環境</h2><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">express: 4.17.1</span><br><span class="line">express-fileupload: 1.2.1</span><br><span class="line">express-handlebars: 5.3.2</span><br><span class="line">mongoose: 5.12.14</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="app-js"><a href="#app-js" class="headerlink" title="app.js"></a>app.js</h2><script src="https://gist.github.com/tzynwang/97709d3b1d83e3ff4505924a09d819f4.js"></script>
+
+<ul>
+<li>20-21行：為了處理使用者上傳的餐廳圖片，使用套件<code>express-fileupload</code>（<a target="_blank" rel="noopener" href="https://www.npmjs.com/package/express-fileupload">npm</a>）<ul>
+<li>參考<a target="_blank" rel="noopener" href="https://github.com/richardgirges/express-fileupload/tree/master/example#basic-file-upload">官方示範</a>，HTML的form元素須加上<code>encType="multipart/form-data"</code>才能取到圖片資料</li>
+<li>注意：是透過<code>req.files</code>而非<code>req.body</code>來取使用者上傳的圖片資料</li>
+<li>取出<code>req.files.&lt;input name&gt;.mimetype</code>與<code>req.files.&lt;input name&gt;.data</code>來存入資料庫</li>
+</ul>
+</li>
+<li>26行helpers部分：本次使用自定義的helpers來配合Express handlebars，接觸過Vue的computed後比較能理解helpers的運作模式了<ul>
+<li>注意呼叫自定義的helpers<strong>不需要加上#</strong>，在模板中直接傳入helpers與參數即可，比如：</li>
+<li><code>&lt;img src="{{toImage this.image.contentType this.image.data.buffer}}"&gt;</code></li>
+<li><code>&lt;option {{ifEquals this ../restaurant.category}}&gt;&lt;/option&gt;</code></li>
+</ul>
+</li>
+<li>39行開始：對比之前的作業多半使用<code>.then()</code>進行串接，本次基本上都改用await/async語法糖來處理資料庫端相關的行為<ul>
+<li><code>await Restaurant.find({ deleteFlag: false }).sort({ _id: -1 }).lean()</code>：取所有<code>deleteFlag</code>為<code>false</code>的內容，並根據<code>_id</code>逆向排列</li>
+</ul>
+</li>
+<li>48行開始：本次實作出「根據使用者選取的欄位來限制搜尋範圍」之功能，<code>keyword</code>為使用者輸入的關鍵字、<code>field</code>為使用者指定要進行搜尋的欄位範圍<ul>
+<li>52-53行：無法在<code>mongoose.find()</code>直接使用template literal，故改為「建立一個空物件，物件的鍵根據<code>field</code>決定，物件的值為<code>new RegExp(keyword, 'i')</code>」，並將該物件作為條件傳入<code>.find()</code>中</li>
+<li>57行：偷懶行為，直接將<code>field</code>的中文對應名稱物件宣告在這邊，並傳入顯示搜尋結果的<code>index</code>模板</li>
+</ul>
+</li>
+<li>第71行：<code>await Restaurant.find().distinct('category').lean()</code><ul>
+<li>取出所有不重複的<code>category</code>的值</li>
+<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/30020946/mongoose-returning-unique-result-set-with-no-duplicate-entries">Mongoose: Returning unique result set with no duplicate entries</a>: use <code>find</code> to establish the query and then chain a call to <code>distinct</code> on the resulting query object to get the unique result.</li>
+<li><a target="_blank" rel="noopener" href="https://mongoosejs.com/docs/api.html#query_Query-distinct">Mongoose: Query.prototype.distinct()</a>: Declares or executes a <code>distinct()</code> operation.</li>
+<li><a target="_blank" rel="noopener" href="https://www.w3schools.com/sql/sql_distinct.asp">SQL SELECT DISTINCT Statement</a>: The <code>SELECT DISTINCT</code> statement is used to <strong>return only distinct (different) values</strong>.</li>
+</ul>
+</li>
+<li>99-104行：若使用者選擇自行上傳餐廳圖片（<code>if (req.files)</code>）的話，取圖片的<code>data</code>與<code>mimetype</code>存入DB中，若使用者沒有上傳圖片的話，則自動安排一張預設的餐廳圖片url給<code>image_url</code>欄位</li>
+<li>第152行：使用<code>.findOne()</code>來取出<code>document</code>型態的資料，之後才可配合<code>.save()</code>將修改完的資料存回DB中<ul>
+<li><a target="_blank" rel="noopener" href="https://mongoosejs.com/docs/documents.html#documents-vs-models">Mongoose: Documents vs Models</a>: <code>Document</code> and <code>Model</code> are distinct classes in Mongoose. The <code>Model</code> class is a subclass of the <code>Document</code> class. When you use the <code>Model</code> constructor, you create a new <code>document</code>.</li>
+<li>When you load documents from MongoDB using model functions like <code>findOne()</code>, you get a Mongoose <code>document</code> back.</li>
+</ul>
+</li>
+</ul>
+<h2 id="DB-schema"><a href="#DB-schema" class="headerlink" title="DB schema"></a>DB schema</h2><script src="https://gist.github.com/tzynwang/935464602cb71801e3b1c63acce9eb76.js"></script>
+
+<ul>
+<li>image欄位的內容參考<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/27353346/saving-image-with-mongoose">Saving image with mongoose</a></li>
+<li>deleteFlag預設為<code>false</code>（<code>default: false</code>），參考<a target="_blank" rel="noopener" href="https://mongoosejs.com/docs/defaults.html">Mongoose: Declaring Defaults in Your Schema</a></li>
+</ul>
+<h2 id="DB-seeder"><a href="#DB-seeder" class="headerlink" title="DB seeder"></a>DB seeder</h2><script src="https://gist.github.com/tzynwang/7585b5fbe4fcdfa38aecfaf72276f832.js"></script>
+
+<ul>
+<li>2-3行：讀取<code>.json</code>資料</li>
+<li>第15行開始：改用async/await語法糖包裝<code>Restaurant.create()</code></li>
+<li>31行：seeder寫入完畢後，呼叫<code>db.close()</code>結束連線</li>
+</ul>
+<h2 id="模板部分"><a href="#模板部分" class="headerlink" title="模板部分"></a>模板部分</h2><figure class="highlight handlebars"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="template-tag">{{#<span class="name"><span class="builtin-name">if</span></span> searchCheck}}</span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"/scripts/searchCheck.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line"><span class="template-tag">{{/<span class="name"><span class="builtin-name">if</span></span>}}</span></span><br></pre></td></tr></tbody></table></figure>
+<p>目前僅有<code>/</code>與<code>/search</code>路由回傳<code>searchCheck: true</code>，故<code>searchCheck.js</code>只會在這兩個頁面被載入</p>
+<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/58189365/async-await-in-nodejs-mongoose">Async/await in Nodejs + Mongoose</a></li>
+<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/8499633/how-to-display-base64-images-in-html">How to display Base64 images in HTML?</a></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1507,144 +1661,6 @@ on <a target="_blank" rel="noopener" href="https://codepen.io">CodePen</a>.</spa
 <li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/13645084/access-a-variable-outside-the-scope-of-a-handlebars-js-each-loop">Access a variable outside the scope of a Handlebars.js each loop</a></li>
 <li><a target="_blank" rel="noopener" href="https://stackoverflow.com/a/12297980/15028185">Access properties of the parent with a Handlebars ‘each’ loop</a></li>
 <li><a target="_blank" rel="noopener" href="https://eruditeness.news.blog/2019/08/28/node-js%E5%88%9D%E5%AD%B8%E7%AD%86%E8%A8%9810-%E5%9C%A8express-handlebars%E4%B8%AD%E8%BC%95%E9%AC%86%E5%BB%BA%E7%AB%8B%E5%AE%A2%E8%A3%BDhelperhandlebars-custom-helpers/">Node.js初學筆記10: 在express-handlebars中輕鬆建立客製helper(handlebars custom helpers)</a></li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope="" itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://tzynwang.github.io/2021/form-reset/">
-
-    <span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar-pexels-alex-andrews-215-215.png">
-      <meta itemprop="name" content="Charlie (Tzu Yin)">
-      <meta itemprop="description" content="一介普通文組的學習筆記 📒">
-    </span>
-
-    <span hidden="" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="普通文組">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/form-reset/" class="post-title-link" itemprop="url">「重設表單（form reset）」相關筆記</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-05-13 14:27:11" itemprop="dateCreated datePublished" datetime="2021-05-13T14:27:11+08:00">2021-05-13</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-05-23 12:46:29" itemprop="dateModified" datetime="2021-05-23T12:46:29+08:00">2021-05-23</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-          <a href="/categories/HTML/" itemprop="url" rel="index"><span itemprop="name">HTML</span></a>
-        </span>
-    </span>
-
-  
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus: </span>
-    
-    <a title="disqus" href="/2021/form-reset/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/form-reset/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>HTML本身即支援兩種重設表單<strong>全部</strong>內容的方法：</p>
-<ul>
-<li>Form <code>reset()</code>：作用在表單物件上（<code>formObject.reset()</code>）</li>
-<li>Input <code>type="reset"</code>：設置在表單的<code>&lt;input&gt;</code>上，點擊後觸發</li>
-</ul>
-<p>定義重設：將input欄位的值<strong>重置為預設值</strong></p>
-<h2 id="環境"><a href="#環境" class="headerlink" title="環境"></a>環境</h2><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Google Chrome: 90.0.4430.93 (Official Build) (x86_64)</span><br><span class="line">ox: macOS Big Suf Version 11.1</span><br></pre></td></tr></tbody></table></figure>
-<h2 id="範例展示"><a href="#範例展示" class="headerlink" title="範例展示"></a>範例展示</h2><p class="codepen" data-height="265" data-theme-id="dark" data-default-tab="html,result" data-user="Charlie7779" data-slug-hash="YzZwRxa" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="form reset">
-  <span>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/Charlie7779/pen/YzZwRxa">
-  form reset</a> by Charlie (<a target="_blank" rel="noopener" href="https://codepen.io/Charlie7779">@Charlie7779</a>)
-  on <a target="_blank" rel="noopener" href="https://codepen.io">CodePen</a>.</span>
-</p>
-<script async="" src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
-
-<h2 id="reset"><a href="#reset" class="headerlink" title="reset()"></a><code>reset()</code></h2><ul>
-<li>對<code>formObject</code>使用，即會將該表單所有的input欄位都重設回預設值</li>
-<li><code>formObject</code>：HTML中的<code>&lt;form&gt;</code>物件（The Form object represents an HTML <code>&lt;form&gt;</code> element.），可透過<code>document.querySelector()</code>抓取</li>
-</ul>
-<h3 id="與-lt-button-gt-搭配"><a href="#與-lt-button-gt-搭配" class="headerlink" title="與<button>搭配"></a>與<code>&lt;button&gt;</code>搭配</h3><figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- HTML部分 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">class</span>=<span class="string">"first"</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 省略部分內容 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"resetFirst"</span>&gt;</span>Reset<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
-<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// JavaScript部分</span></span><br><span class="line"><span class="built_in">document</span>.querySelector(<span class="string">"#resetFirst"</span>).addEventListener(<span class="string">"click"</span>, <span class="function">(<span class="params">event</span>) =&gt;</span> {</span><br><span class="line">  <span class="built_in">document</span>.querySelector(<span class="string">".first"</span>).reset();</span><br><span class="line">  event.preventDefault();</span><br><span class="line">});</span><br></pre></td></tr></tbody></table></figure>
-<p>解說：</p>
-<ul>
-<li>監聽<code>&lt;button&gt;</code>的點擊事件，點擊事件發生後，抓取<code>formObject</code>，套用<code>reset()</code></li>
-<li>因<code>&lt;button&gt;</code>沒有設置任和<code>type</code>內容，故默認為<code>type="submit"</code>，所以在示範中加上<code>event.preventDefault()</code>來避免送出表單的動作<blockquote>
-<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Learn/Forms/Basic_native_form_controls#actual_buttons">MDN</a>: For <code>&lt;button&gt;</code> elements, omitting the type attribute (or an invalid value of type) results in a submit button.</p>
-</blockquote>
-</li>
-</ul>
-<h2 id="type-quot-reset-quot"><a href="#type-quot-reset-quot" class="headerlink" title="type=&quot;reset&quot;"></a><code>type="reset"</code></h2><h3 id="與-lt-input-gt-搭配"><a href="#與-lt-input-gt-搭配" class="headerlink" title="與<input>搭配"></a>與<code>&lt;input&gt;</code>搭配</h3><figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- HTML部分 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">form</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 省略部分內容 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"reset"</span> <span class="attr">value</span>=<span class="string">"Reset by type=<span class="symbol">&amp;quot;</span>reest<span class="symbol">&amp;quot;</span>"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
-<ul>
-<li>直接將<code>&lt;input&gt;</code>設置為<code>type="reset"</code>即可，點擊後即會自動執行「重設表單中所有input欄位內容」的動作</li>
-<li>沒有設定<code>value</code>的話，預設顯示文字<code>Reset</code>；可透過設定<code>value</code>的值來修改顯示在按鈕中的文字</li>
-<li>不需額外設置JavaScript</li>
-</ul>
-<h3 id="與-lt-button-gt-搭配-1"><a href="#與-lt-button-gt-搭配-1" class="headerlink" title="與<button>搭配"></a>與<code>&lt;button&gt;</code>搭配</h3><figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- HTML部分 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">form</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 省略部分內容 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"reset"</span>&gt;</span>Reset<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
-<ul>
-<li>效果與設置<code>input type="reset"</code>相同，點擊後即會重設表單中所有input欄位內容</li>
-<li>不需額外設置JavaScript</li>
-</ul>
-<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://www.w3schools.com/jsref/met_form_reset.asp">W3Schools: Form reset() Method</a></li>
-<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/reset">MDN: input type=”reset”</a></li>
-<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Learn/Forms/Basic_native_form_controls#actual_buttons">MDN: Basic native form controls – Actual buttons</a></li>
-<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/a/9760424/15028185">Quotation marks in HTML attribute values?</a></li>
 </ul>
 
       

@@ -6,7 +6,7 @@
   <link href="https://tzynwang.github.io/atom.xml" rel="self"/>
   
   <link href="https://tzynwang.github.io/"/>
-  <updated>2021-06-17T08:28:21.864Z</updated>
+  <updated>2021-06-21T08:45:40.257Z</updated>
   <id>https://tzynwang.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>從零開始重寫：餐廳清單（Express版）</title>
+    <link href="https://tzynwang.github.io/2021/express-restaurant-list/"/>
+    <id>https://tzynwang.github.io/2021/express-restaurant-list/</id>
+    <published>2021-06-21T07:47:32.000Z</published>
+    <updated>2021-06-21T08:45:40.257Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;總結&quot;&gt;&lt;a href=&quot;#總結&quot; class=&quot;headerlink&quot; title=&quot;總結&quot;&gt;&lt;/a&gt;總結&lt;/h2&gt;&lt;p&gt;試著從頭開始重新練習一次Express、Express</summary>
+        
+      
+    
+    
+    
+    <category term="Express Handlebars" scheme="https://tzynwang.github.io/categories/Express-Handlebars/"/>
+    
+    <category term="Express" scheme="https://tzynwang.github.io/categories/Express/"/>
+    
+    <category term="Mongoose" scheme="https://tzynwang.github.io/categories/Mongoose/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>「電影清單（Vue版本）」技術記錄</title>
@@ -111,32 +138,6 @@
     
     
     <category term="JavaScript" scheme="https://tzynwang.github.io/categories/JavaScript/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>為什麼使用innerHTML對元素新增內容後，該元素「子代」的事件監聽器失效？</title>
-    <link href="https://tzynwang.github.io/2021/innerHTML-destroy-event-listener/"/>
-    <id>https://tzynwang.github.io/2021/innerHTML-destroy-event-listener/</id>
-    <published>2021-05-25T10:32:01.000Z</published>
-    <updated>2021-05-25T11:42:52.687Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;問題描述&quot;&gt;&lt;a href=&quot;#問題描述&quot; class=&quot;headerlink&quot; title=&quot;問題描述&quot;&gt;&lt;/a&gt;問題描述&lt;/h2&gt;&lt;ol&gt;
-&lt;li&gt;對&lt;code&gt;&amp;lt;button</summary>
-        
-      
-    
-    
-    
-    <category term="JavaScript" scheme="https://tzynwang.github.io/categories/JavaScript/"/>
-    
-    <category term="HTML" scheme="https://tzynwang.github.io/categories/HTML/"/>
     
     
   </entry>

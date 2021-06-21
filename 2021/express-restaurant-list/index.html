@@ -21,21 +21,21 @@
     var NexT = window.NexT || {};
     var CONFIG = {"hostname":"tzynwang.github.io","root":"/","images":"/images","scheme":"Pisces","version":"8.2.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqus","storage":true,"lazyload":false,"nav":null,"activeClass":"disqus"},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":"enable","trigger":"auto","top_n_per_article":-1,"unescape":false,"preload":false}};
   </script>
-<meta name="description" content="Summary of this postAn introduction to hexo’s category hierarchy. Categories with hierarchy1234567# categories:- Fruit- Apple# Result:└── Fruit    └── Apple Categories without hierarchy (no hierarchy,">
+<meta name="description" content="總結試著從頭開始重新練習一次Express、Express handlebars與Mongoose相關內容，本篇筆記主要記錄練習途中遭遇到的問題、解法與日後可能會回頭參考的相關內容 環境12345express: 4.17.1express-fileupload: 1.2.1express-handlebars: 5.3.2mongoose: 5.12.14os: Windows_NT 10.0.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Category hierarchy">
-<meta property="og:url" content="https://tzynwang.github.io/2021/hexo-category-hierarchy/index.html">
+<meta property="og:title" content="從零開始重寫：餐廳清單（Express版）">
+<meta property="og:url" content="https://tzynwang.github.io/2021/express-restaurant-list/index.html">
 <meta property="og:site_name" content="普通文組">
-<meta property="og:description" content="Summary of this postAn introduction to hexo’s category hierarchy. Categories with hierarchy1234567# categories:- Fruit- Apple# Result:└── Fruit    └── Apple Categories without hierarchy (no hierarchy,">
+<meta property="og:description" content="總結試著從頭開始重新練習一次Express、Express handlebars與Mongoose相關內容，本篇筆記主要記錄練習途中遭遇到的問題、解法與日後可能會回頭參考的相關內容 環境12345express: 4.17.1express-fileupload: 1.2.1express-handlebars: 5.3.2mongoose: 5.12.14os: Windows_NT 10.0.">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-02-15T01:38:00.000Z">
-<meta property="article:modified_time" content="2021-02-18T12:36:30.386Z">
+<meta property="article:published_time" content="2021-06-21T07:47:32.000Z">
+<meta property="article:modified_time" content="2021-06-21T08:45:40.257Z">
 <meta property="article:author" content="Charlie (Tzu Yin)">
 <meta property="article:tag" content="hexo, hexo blog, tzyn, 普通文組">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://tzynwang.github.io/2021/hexo-category-hierarchy/">
+<link rel="canonical" href="https://tzynwang.github.io/2021/express-restaurant-list/">
 
 
 <script class="page-configurations">
@@ -47,7 +47,7 @@
     lang   : 'en'
   };
 </script>
-<title>Category hierarchy | 普通文組</title>
+<title>從零開始重寫：餐廳清單（Express版） | 普通文組</title>
   
 
 
@@ -185,7 +185,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Summary-of-this-post"><span class="nav-number">1.</span> <span class="nav-text">Summary of this post</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Categories-with-hierarchy"><span class="nav-number">1.1.</span> <span class="nav-text">Categories with hierarchy</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Categories-without-hierarchy-no-hierarchy-parallel"><span class="nav-number">1.2.</span> <span class="nav-text">Categories without hierarchy (no hierarchy, parallel)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Multiple-parallel-categories"><span class="nav-number">1.3.</span> <span class="nav-text">Multiple parallel categories</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sub-sub-category"><span class="nav-number">1.4.</span> <span class="nav-text">Sub-sub-category</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-number">2.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B8%BD%E7%B5%90"><span class="nav-number">1.</span> <span class="nav-text">總結</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%92%B0%E5%A2%83"><span class="nav-number">2.</span> <span class="nav-text">環境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#app-js"><span class="nav-number">3.</span> <span class="nav-text">app.js</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DB-schema"><span class="nav-number">4.</span> <span class="nav-text">DB schema</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DB-seeder"><span class="nav-number">5.</span> <span class="nav-text">DB seeder</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E6%9D%BF%E9%83%A8%E5%88%86"><span class="nav-number">6.</span> <span class="nav-text">模板部分</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%83%E8%80%83%E6%96%87%E4%BB%B6"><span class="nav-number">7.</span> <span class="nav-text">參考文件</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -251,7 +251,7 @@
   
 
   <article itemscope="" itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://tzynwang.github.io/2021/hexo-category-hierarchy/">
+    <link itemprop="mainEntityOfPage" href="https://tzynwang.github.io/2021/express-restaurant-list/">
 
     <span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar-pexels-alex-andrews-215-215.png">
@@ -264,7 +264,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Category hierarchy
+          從零開始重寫：餐廳清單（Express版）
         </h1>
 
         <div class="post-meta-container">
@@ -274,23 +274,25 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
+      
 
-      <time title="Created: 2021-02-15 09:38:00" itemprop="dateCreated datePublished" datetime="2021-02-15T09:38:00+08:00">2021-02-15</time>
+      <time title="Created: 2021-06-21 15:47:32 / Modified: 16:45:40" itemprop="dateCreated datePublished" datetime="2021-06-21T15:47:32+08:00">2021-06-21</time>
     </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-02-18 20:36:30" itemprop="dateModified" datetime="2021-02-18T20:36:30+08:00">2021-02-18</time>
-      </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
       </span>
       <span class="post-meta-item-text">In</span>
         <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-          <a href="/categories/hexo/" itemprop="url" rel="index"><span itemprop="name">hexo</span></a>
+          <a href="/categories/Express-Handlebars/" itemprop="url" rel="index"><span itemprop="name">Express Handlebars</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+          <a href="/categories/Express/" itemprop="url" rel="index"><span itemprop="name">Express</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+          <a href="/categories/Mongoose/" itemprop="url" rel="index"><span itemprop="name">Mongoose</span></a>
         </span>
     </span>
 
@@ -303,8 +305,8 @@
       </span>
       <span class="post-meta-item-text">Disqus: </span>
     
-    <a title="disqus" href="/2021/hexo-category-hierarchy/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/hexo-category-hierarchy/" itemprop="commentCount"></span>
+    <a title="disqus" href="/2021/express-restaurant-list/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/express-restaurant-list/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -318,13 +320,65 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h2 id="Summary-of-this-post"><a href="#Summary-of-this-post" class="headerlink" title="Summary of this post"></a>Summary of this post</h2><p>An introduction to hexo’s category hierarchy.</p>
-<h3 id="Categories-with-hierarchy"><a href="#Categories-with-hierarchy" class="headerlink" title="Categories with hierarchy"></a>Categories with hierarchy</h3><figure class="highlight yaml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># categories:</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">Fruit</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">Apple</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Result:</span></span><br><span class="line"><span class="string">└──</span> <span class="string">Fruit</span></span><br><span class="line">    <span class="string">└──</span> <span class="string">Apple</span></span><br></pre></td></tr></tbody></table></figure>
-<h3 id="Categories-without-hierarchy-no-hierarchy-parallel"><a href="#Categories-without-hierarchy-no-hierarchy-parallel" class="headerlink" title="Categories without hierarchy (no hierarchy, parallel)"></a>Categories without hierarchy (no hierarchy, parallel)</h3><figure class="highlight yaml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># categories:</span></span><br><span class="line"><span class="bullet">-</span> [<span class="string">Fruit</span>, <span class="string">Apple</span>] </span><br><span class="line"><span class="bullet">-</span> [<span class="string">Vegetable</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># Result:</span></span><br><span class="line"><span class="string">├──</span> <span class="string">Fruit</span></span><br><span class="line"><span class="string">|</span>   <span class="string">└──</span> <span class="string">Apple</span></span><br><span class="line"><span class="string">└──</span> <span class="string">Vegetable</span></span><br></pre></td></tr></tbody></table></figure>
-<h3 id="Multiple-parallel-categories"><a href="#Multiple-parallel-categories" class="headerlink" title="Multiple parallel categories"></a>Multiple parallel categories</h3><figure class="highlight yaml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># categories:</span></span><br><span class="line"><span class="bullet">-</span> [<span class="string">Fruit</span>, <span class="string">Apple</span>]</span><br><span class="line"><span class="bullet">-</span> [<span class="string">Fruit</span>, <span class="string">Orange</span>]</span><br><span class="line"><span class="bullet">-</span> [<span class="string">Vegetable</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># Result:</span></span><br><span class="line"><span class="string">├──</span> <span class="string">Fruit</span></span><br><span class="line"><span class="string">|</span>   <span class="string">└──</span> <span class="string">Apple</span></span><br><span class="line"><span class="string">|</span>   <span class="string">└──</span> <span class="string">Orange</span></span><br><span class="line"><span class="string">└──</span> <span class="string">Vegetable</span></span><br></pre></td></tr></tbody></table></figure>
-<h3 id="Sub-sub-category"><a href="#Sub-sub-category" class="headerlink" title="Sub-sub-category"></a>Sub-sub-category</h3><figure class="highlight yaml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># categories:</span></span><br><span class="line"><span class="bullet">-</span> [<span class="string">Fruit</span>, <span class="string">Apple</span>, <span class="string">Apple</span> <span class="string">seed</span>]</span><br><span class="line"><span class="bullet">-</span> [<span class="string">Vegetable</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># Result:</span></span><br><span class="line"><span class="string">├──</span> <span class="string">Fruit</span></span><br><span class="line"><span class="string">|</span>   <span class="string">└──</span> <span class="string">Apple</span></span><br><span class="line"><span class="string">|</span>      <span class="string">└──</span> <span class="string">Apple</span> <span class="string">Seed</span></span><br><span class="line"><span class="string">└──</span> <span class="string">Vegetable</span></span><br></pre></td></tr></tbody></table></figure>
+        <h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>試著從頭開始重新練習一次Express、Express handlebars與Mongoose相關內容，本篇筆記主要記錄練習途中遭遇到的問題、解法與日後可能會回頭參考的相關內容</p>
+<h2 id="環境"><a href="#環境" class="headerlink" title="環境"></a>環境</h2><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">express: 4.17.1</span><br><span class="line">express-fileupload: 1.2.1</span><br><span class="line">express-handlebars: 5.3.2</span><br><span class="line">mongoose: 5.12.14</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="app-js"><a href="#app-js" class="headerlink" title="app.js"></a>app.js</h2><script src="https://gist.github.com/tzynwang/97709d3b1d83e3ff4505924a09d819f4.js"></script>
 
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a target="_blank" rel="noopener" href="https://hexo.io/docs/front-matter#Categories-amp-Tags">hexo: Front-matter/Categories &amp; Tags</a></p>
+<ul>
+<li>20-21行：為了處理使用者上傳的餐廳圖片，使用套件<code>express-fileupload</code>（<a target="_blank" rel="noopener" href="https://www.npmjs.com/package/express-fileupload">npm</a>）<ul>
+<li>參考<a target="_blank" rel="noopener" href="https://github.com/richardgirges/express-fileupload/tree/master/example#basic-file-upload">官方示範</a>，HTML的form元素須加上<code>encType="multipart/form-data"</code>才能取到圖片資料</li>
+<li>注意：是透過<code>req.files</code>而非<code>req.body</code>來取使用者上傳的圖片資料</li>
+<li>取出<code>req.files.&lt;input name&gt;.mimetype</code>與<code>req.files.&lt;input name&gt;.data</code>來存入資料庫</li>
+</ul>
+</li>
+<li>26行helpers部分：本次使用自定義的helpers來配合Express handlebars，接觸過Vue的computed後比較能理解helpers的運作模式了<ul>
+<li>注意呼叫自定義的helpers<strong>不需要加上#</strong>，在模板中直接傳入helpers與參數即可，比如：</li>
+<li><code>&lt;img src="{{toImage this.image.contentType this.image.data.buffer}}"&gt;</code></li>
+<li><code>&lt;option {{ifEquals this ../restaurant.category}}&gt;&lt;/option&gt;</code></li>
+</ul>
+</li>
+<li>39行開始：對比之前的作業多半使用<code>.then()</code>進行串接，本次基本上都改用await/async語法糖來處理資料庫端相關的行為<ul>
+<li><code>await Restaurant.find({ deleteFlag: false }).sort({ _id: -1 }).lean()</code>：取所有<code>deleteFlag</code>為<code>false</code>的內容，並根據<code>_id</code>逆向排列</li>
+</ul>
+</li>
+<li>48行開始：本次實作出「根據使用者選取的欄位來限制搜尋範圍」之功能，<code>keyword</code>為使用者輸入的關鍵字、<code>field</code>為使用者指定要進行搜尋的欄位範圍<ul>
+<li>52-53行：無法在<code>mongoose.find()</code>直接使用template literal，故改為「建立一個空物件，物件的鍵根據<code>field</code>決定，物件的值為<code>new RegExp(keyword, 'i')</code>」，並將該物件作為條件傳入<code>.find()</code>中</li>
+<li>57行：偷懶行為，直接將<code>field</code>的中文對應名稱物件宣告在這邊，並傳入顯示搜尋結果的<code>index</code>模板</li>
+</ul>
+</li>
+<li>第71行：<code>await Restaurant.find().distinct('category').lean()</code><ul>
+<li>取出所有不重複的<code>category</code>的值</li>
+<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/30020946/mongoose-returning-unique-result-set-with-no-duplicate-entries">Mongoose: Returning unique result set with no duplicate entries</a>: use <code>find</code> to establish the query and then chain a call to <code>distinct</code> on the resulting query object to get the unique result.</li>
+<li><a target="_blank" rel="noopener" href="https://mongoosejs.com/docs/api.html#query_Query-distinct">Mongoose: Query.prototype.distinct()</a>: Declares or executes a <code>distinct()</code> operation.</li>
+<li><a target="_blank" rel="noopener" href="https://www.w3schools.com/sql/sql_distinct.asp">SQL SELECT DISTINCT Statement</a>: The <code>SELECT DISTINCT</code> statement is used to <strong>return only distinct (different) values</strong>.</li>
+</ul>
+</li>
+<li>99-104行：若使用者選擇自行上傳餐廳圖片（<code>if (req.files)</code>）的話，取圖片的<code>data</code>與<code>mimetype</code>存入DB中，若使用者沒有上傳圖片的話，則自動安排一張預設的餐廳圖片url給<code>image_url</code>欄位</li>
+<li>第152行：使用<code>.findOne()</code>來取出<code>document</code>型態的資料，之後才可配合<code>.save()</code>將修改完的資料存回DB中<ul>
+<li><a target="_blank" rel="noopener" href="https://mongoosejs.com/docs/documents.html#documents-vs-models">Mongoose: Documents vs Models</a>: <code>Document</code> and <code>Model</code> are distinct classes in Mongoose. The <code>Model</code> class is a subclass of the <code>Document</code> class. When you use the <code>Model</code> constructor, you create a new <code>document</code>.</li>
+<li>When you load documents from MongoDB using model functions like <code>findOne()</code>, you get a Mongoose <code>document</code> back.</li>
+</ul>
+</li>
+</ul>
+<h2 id="DB-schema"><a href="#DB-schema" class="headerlink" title="DB schema"></a>DB schema</h2><script src="https://gist.github.com/tzynwang/935464602cb71801e3b1c63acce9eb76.js"></script>
+
+<ul>
+<li>image欄位的內容參考<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/27353346/saving-image-with-mongoose">Saving image with mongoose</a></li>
+<li>deleteFlag預設為<code>false</code>（<code>default: false</code>），參考<a target="_blank" rel="noopener" href="https://mongoosejs.com/docs/defaults.html">Mongoose: Declaring Defaults in Your Schema</a></li>
+</ul>
+<h2 id="DB-seeder"><a href="#DB-seeder" class="headerlink" title="DB seeder"></a>DB seeder</h2><script src="https://gist.github.com/tzynwang/7585b5fbe4fcdfa38aecfaf72276f832.js"></script>
+
+<ul>
+<li>2-3行：讀取<code>.json</code>資料</li>
+<li>第15行開始：改用async/await語法糖包裝<code>Restaurant.create()</code></li>
+<li>31行：seeder寫入完畢後，呼叫<code>db.close()</code>結束連線</li>
+</ul>
+<h2 id="模板部分"><a href="#模板部分" class="headerlink" title="模板部分"></a>模板部分</h2><figure class="highlight handlebars"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="template-tag">{{#<span class="name"><span class="builtin-name">if</span></span> searchCheck}}</span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"/scripts/searchCheck.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line"><span class="template-tag">{{/<span class="name"><span class="builtin-name">if</span></span>}}</span></span><br></pre></td></tr></tbody></table></figure>
+<p>目前僅有<code>/</code>與<code>/search</code>路由回傳<code>searchCheck: true</code>，故<code>searchCheck.js</code>只會在這兩個頁面被載入</p>
+<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/58189365/async-await-in-nodejs-mongoose">Async/await in Nodejs + Mongoose</a></li>
+<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/8499633/how-to-display-base64-images-in-html">How to display Base64 images in HTML?</a></li>
+</ul>
 
     </div>
 
@@ -338,14 +392,11 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2021/hexo-contribution-workflow/" rel="prev" title="Contribution workflow note: document update">
-                  <i class="fa fa-chevron-left"></i> Contribution workflow note: document update
+                <a href="/2021/vue-movie-list/" rel="prev" title="「電影清單（Vue版本）」技術記錄">
+                  <i class="fa fa-chevron-left"></i> 「電影清單（Vue版本）」技術記錄
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2021/hexo-tag-figure/" rel="next" title="Plugin: hexo-tag-figure">
-                  Plugin: hexo-tag-figure <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
     </footer>
@@ -440,9 +491,9 @@
 ;
 
   var disqus_config = function() {
-    this.page.url = "https://tzynwang.github.io/2021/hexo-category-hierarchy/";
-    this.page.identifier = "2021/hexo-category-hierarchy/";
-    this.page.title = "Category hierarchy";
+    this.page.url = "https://tzynwang.github.io/2021/express-restaurant-list/";
+    this.page.identifier = "2021/express-restaurant-list/";
+    this.page.title = "從零開始重寫：餐廳清單（Express版）";
     };
   NexT.utils.loadComments('#disqus_thread', () => {
     if (window.DISQUS) {
