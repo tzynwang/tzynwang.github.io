@@ -6,7 +6,7 @@
   <link href="https://tzynwang.github.io/atom.xml" rel="self"/>
   
   <link href="https://tzynwang.github.io/"/>
-  <updated>2021-06-21T08:45:40.257Z</updated>
+  <updated>2021-06-22T06:58:13.339Z</updated>
   <id>https://tzynwang.github.io/</id>
   
   <author>
@@ -17,11 +17,36 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>從零開始重寫：餐廳清單（Express版）</title>
+    <title>從零開始重寫：餐廳清單（Express版）路由、METHODS重構</title>
+    <link href="https://tzynwang.github.io/2021/express-restaurant-list-1/"/>
+    <id>https://tzynwang.github.io/2021/express-restaurant-list-1/</id>
+    <published>2021-06-22T06:06:28.000Z</published>
+    <updated>2021-06-22T06:58:13.339Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;總結&quot;&gt;&lt;a href=&quot;#總結&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="Express" scheme="https://tzynwang.github.io/categories/Express/"/>
+    
+    <category term="HTML" scheme="https://tzynwang.github.io/categories/HTML/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>從零開始重寫：餐廳清單（Express版）基礎功能與架構</title>
     <link href="https://tzynwang.github.io/2021/express-restaurant-list/"/>
     <id>https://tzynwang.github.io/2021/express-restaurant-list/</id>
     <published>2021-06-21T07:47:32.000Z</published>
-    <updated>2021-06-21T08:45:40.257Z</updated>
+    <updated>2021-06-22T06:05:28.981Z</updated>
     
     
       
@@ -113,31 +138,6 @@
     
     
     <category term="webpack" scheme="https://tzynwang.github.io/categories/webpack/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Alpha Camp「2-2 電影清單」技術記錄</title>
-    <link href="https://tzynwang.github.io/2021/2-2-movie-list-note/"/>
-    <id>https://tzynwang.github.io/2021/2-2-movie-list-note/</id>
-    <published>2021-05-29T06:26:16.000Z</published>
-    <updated>2021-05-30T06:02:17.723Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;總結&quot;&gt;&lt;a href=&quot;#總結&quot; class=&quot;headerlink&quot; title=&quot;總結&quot;&gt;&lt;/a&gt;總結&lt;/h2&gt;&lt;p&gt;本次實作了以下功能：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;搜尋電影（名稱），並在結果畫面中highlight使用者鍵入的關鍵字&lt;figure</summary>
-        
-      
-    
-    
-    
-    <category term="JavaScript" scheme="https://tzynwang.github.io/categories/JavaScript/"/>
     
     
   </entry>

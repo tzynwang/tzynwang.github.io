@@ -1,6 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Alpha Camp「2-1 電影清單之按讚與刪除」技術記錄</title>
+    <url>/2021/2-1-movie-list-i18n-note/</url>
+    <content><![CDATA[<p class="codepen" data-height="265" data-theme-id="dark" data-default-tab="js,result" data-user="Charlie7779" data-slug-hash="YzNmOGY" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="A22: My Favorite Movies：按讚與刪除">
+  <span>See the Pen <a href="https://codepen.io/Charlie7779/pen/YzNmOGY">
+  A22: My Favorite Movies：按讚與刪除</a> by Charlie (<a href="https://codepen.io/Charlie7779">@Charlie7779</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+
+<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>本次作業中實作的功能：</p>
+<ul>
+<li>根據點擊次數記錄電影分數（尚未導入Cache或Storage API，分頁關掉後即失去記錄）</li>
+<li>點擊X按鈕後，自畫面上移除該部電影的資訊</li>
+<li>i18n（實作英文與中文介面的切換）</li>
+</ul>
+<h2 id="筆記"><a href="#筆記" class="headerlink" title="筆記"></a>筆記</h2><h3 id="controller-updateRating"><a href="#controller-updateRating" class="headerlink" title="controller.updateRating()"></a>controller.updateRating()</h3><p>監聽<code>&lt;div id=&quot;dataPanel&quot;&gt;</code>的點擊事件，若使用者點選到「讚」或「爛」按鈕時，透過<code>HTMLTableRowElement.rowIndex</code>來取得點擊事件發生在<code>&lt;table&gt;</code>中的哪一行<code>row</code>上（可從<code>rowIndex</code>推斷使用者點選的是哪一部電影），進而更新<code>data.movies</code>中相對應電影的分數。</p>
+<p>其他解法：也可直接在「讚」或「爛」按鈕上使用<code>dataset</code>賦予電影的<code>id</code>，點擊事件發生後就可透過<code>data.id</code>來取得點擊事件發生在哪一部電影身上</p>
+<h3 id="controller-updateDeleteStatus"><a href="#controller-updateDeleteStatus" class="headerlink" title="controller.updateDeleteStatus()"></a>controller.updateDeleteStatus()</h3><p>使用者點選表格右端的X按鈕刪除電影後，透過<code>controller.updateDeleteStatus()</code>將被點擊電影的<code>deleteFlag</code>設定為<code>true</code>，用意是：在使用者進行介面語系切換後，<code>deleteFlag</code>為<code>true</code>的電影就不應該繼續出現在畫面上（<code>view.generateTableContents()</code>中會透過<code>filter()</code>篩選出<code>deleteFlag</code>不為<code>true</code>的電影）</p>
+<h3 id="view-fontSizeToggle"><a href="#view-fontSizeToggle" class="headerlink" title="view.fontSizeToggle()"></a>view.fontSizeToggle()</h3><p>筆記：切換顯示語言後，發覺儘管font-size數值相同，英文字體的尺寸在視覺上比中文字體小不少，故使用<code>view.fontSizeToggle()</code>來根據當下顯示的語言調整畫面中的字體大小</p>
+<h3 id="view-generatePosterModal"><a href="#view-generatePosterModal" class="headerlink" title="view.generatePosterModal()"></a>view.generatePosterModal()</h3><p>筆記：過去的作業多半是先將空的modal寫進HTML，待點擊事件發生後再使用JavaScript更新modal中的內容；本次改用「點擊事件發生後，再根據被點擊的目標產生相對應的modal（內容）」，相較以前作法，點擊後及時產生modal的好處是使用者不會看到一閃而逝的舊內容。</p>
+<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/closest">Element.closest(selectors)</a><br>從<code>Element</code>開始往根部搜尋<code>selectors</code>，本次作業應用於<code>controller.updateRating()</code>中</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableRowElement/rowIndex">HTMLTableRowElement.rowIndex</a><br>取一個<code>table row</code>在整體<code>&lt;table&gt;</code>中的<code>rowIndex</code></li>
+</ul>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>ALPHA Camp assignment</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Alpha Camp「2-2 社群名單」技術記錄</title>
     <url>/2021/2-2-api-social-list-note/</url>
     <content><![CDATA[<p class="codepen" data-height="265" data-theme-id="dark" data-default-tab="js,result" data-user="Charlie7779" data-slug-hash="ExZJLzG" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="2-2 社群名單">
@@ -60,39 +93,6 @@
 <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_objects/Object/values">MDN: Object.values(obj)</a><br>回傳一個陣列，其中包含obj中所有key-value pair的value</li>
 <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/min">MDN: Math.min(value0, value1, … , valueN)</a><br>回傳傳入的values中最小的值，若要傳入陣列，可搭配spread syntax（<code>Math.min(...array1)</code>）</li>
 <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/Trim">MDN: String.prototype.trim()</a><br>會回傳一組「移除原本字串頭尾空白鍵的」新字串，不影響原本的字串</li>
-</ul>
-]]></content>
-      <categories>
-        <category>JavaScript</category>
-      </categories>
-      <tags>
-        <tag>ALPHA Camp assignment</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Alpha Camp「2-1 電影清單之按讚與刪除」技術記錄</title>
-    <url>/2021/2-1-movie-list-i18n-note/</url>
-    <content><![CDATA[<p class="codepen" data-height="265" data-theme-id="dark" data-default-tab="js,result" data-user="Charlie7779" data-slug-hash="YzNmOGY" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="A22: My Favorite Movies：按讚與刪除">
-  <span>See the Pen <a href="https://codepen.io/Charlie7779/pen/YzNmOGY">
-  A22: My Favorite Movies：按讚與刪除</a> by Charlie (<a href="https://codepen.io/Charlie7779">@Charlie7779</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
-</p>
-<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
-
-<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>本次作業中實作的功能：</p>
-<ul>
-<li>根據點擊次數記錄電影分數（尚未導入Cache或Storage API，分頁關掉後即失去記錄）</li>
-<li>點擊X按鈕後，自畫面上移除該部電影的資訊</li>
-<li>i18n（實作英文與中文介面的切換）</li>
-</ul>
-<h2 id="筆記"><a href="#筆記" class="headerlink" title="筆記"></a>筆記</h2><h3 id="controller-updateRating"><a href="#controller-updateRating" class="headerlink" title="controller.updateRating()"></a>controller.updateRating()</h3><p>監聽<code>&lt;div id=&quot;dataPanel&quot;&gt;</code>的點擊事件，若使用者點選到「讚」或「爛」按鈕時，透過<code>HTMLTableRowElement.rowIndex</code>來取得點擊事件發生在<code>&lt;table&gt;</code>中的哪一行<code>row</code>上（可從<code>rowIndex</code>推斷使用者點選的是哪一部電影），進而更新<code>data.movies</code>中相對應電影的分數。</p>
-<p>其他解法：也可直接在「讚」或「爛」按鈕上使用<code>dataset</code>賦予電影的<code>id</code>，點擊事件發生後就可透過<code>data.id</code>來取得點擊事件發生在哪一部電影身上</p>
-<h3 id="controller-updateDeleteStatus"><a href="#controller-updateDeleteStatus" class="headerlink" title="controller.updateDeleteStatus()"></a>controller.updateDeleteStatus()</h3><p>使用者點選表格右端的X按鈕刪除電影後，透過<code>controller.updateDeleteStatus()</code>將被點擊電影的<code>deleteFlag</code>設定為<code>true</code>，用意是：在使用者進行介面語系切換後，<code>deleteFlag</code>為<code>true</code>的電影就不應該繼續出現在畫面上（<code>view.generateTableContents()</code>中會透過<code>filter()</code>篩選出<code>deleteFlag</code>不為<code>true</code>的電影）</p>
-<h3 id="view-fontSizeToggle"><a href="#view-fontSizeToggle" class="headerlink" title="view.fontSizeToggle()"></a>view.fontSizeToggle()</h3><p>筆記：切換顯示語言後，發覺儘管font-size數值相同，英文字體的尺寸在視覺上比中文字體小不少，故使用<code>view.fontSizeToggle()</code>來根據當下顯示的語言調整畫面中的字體大小</p>
-<h3 id="view-generatePosterModal"><a href="#view-generatePosterModal" class="headerlink" title="view.generatePosterModal()"></a>view.generatePosterModal()</h3><p>筆記：過去的作業多半是先將空的modal寫進HTML，待點擊事件發生後再使用JavaScript更新modal中的內容；本次改用「點擊事件發生後，再根據被點擊的目標產生相對應的modal（內容）」，相較以前作法，點擊後及時產生modal的好處是使用者不會看到一閃而逝的舊內容。</p>
-<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/closest">Element.closest(selectors)</a><br>從<code>Element</code>開始往根部搜尋<code>selectors</code>，本次作業應用於<code>controller.updateRating()</code>中</li>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableRowElement/rowIndex">HTMLTableRowElement.rowIndex</a><br>取一個<code>table row</code>在整體<code>&lt;table&gt;</code>中的<code>rowIndex</code></li>
 </ul>
 ]]></content>
       <categories>
@@ -368,117 +368,6 @@
       </tags>
   </entry>
   <entry>
-    <title>為什麼可以修改使用const宣告的陣列（或物件）的內容？</title>
-    <url>/2021/array-mutation/</url>
-    <content><![CDATA[<h2 id="原始問題"><a href="#原始問題" class="headerlink" title="原始問題"></a>原始問題</h2><p>以<code>const</code>宣告一個陣列（或物件），為何可以在宣告完畢後繼續修改該陣列（或物件）的內容？</p>
-<figure class="figure--center"><img src="/2021/array-mutation/騎士王的提問時間.jpg" title="事實上const的限制是「變數不能被re-assigned或re-declared」"><figcaption><p>事實上const的限制是「變數不能被re-assigned或re-declared」</p></figcaption></figure>
-
-<h2 id="簡答"><a href="#簡答" class="headerlink" title="簡答"></a>簡答</h2><p><code>const</code>的限制是「只能賦值一次，不能重新賦值」，不直接等同「不能修改內容」。</p>
-<h2 id="環境"><a href="#環境" class="headerlink" title="環境"></a>環境</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Google Chrome: 89.0.4389.114 (Official Build) (64-bit)</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></table></figure>
-<h2 id="關於const的事實"><a href="#關於const的事實" class="headerlink" title="關於const的事實"></a>關於<code>const</code>的事實</h2><h3 id="You-Don’t-Know-JS-Yet-相關筆記"><a href="#You-Don’t-Know-JS-Yet-相關筆記" class="headerlink" title="You Don’t Know JS Yet 相關筆記"></a>You Don’t Know JS Yet 相關筆記</h3><ul>
-<li><code>const</code> declared variables are not “unchangeable”, they just cannot be re-assigned.<ul>
-<li>不適合以「不能被修改」來理解透過<code>const</code>宣告的變數，而是「使用<code>const</code>宣告的變數只能被賦值一次」<script src="https://gist.github.com/tzynwang/bf4ef105981d115a11ae4eb761e34ac8.js"></script></li>
-</ul>
-</li>
-<li>It’s ill-advised to use <code>const</code> with object values, because those values can still be changed even though the variable can’t be re-assigned.<script src="https://gist.github.com/tzynwang/b7f3ee4e1e7c8936a98bb8f7fa76b634.js"></script></li>
-<li>If you stick to using <code>const</code> only with primitive values, you avoid any confusion of re-assignment (not allowed) vs. mutation (allowed)! That’s the safest and best way to use const.</li>
-</ul>
-<h3 id="ES2015-const-is-not-about-immutability-相關筆記"><a href="#ES2015-const-is-not-about-immutability-相關筆記" class="headerlink" title="ES2015 const is not about immutability 相關筆記"></a>ES2015 const is not about immutability 相關筆記</h3><script src="https://gist.github.com/tzynwang/0945c27501de984d3aaa410bf55a08ce.js"></script>
-
-<ul>
-<li>The only thing that’s immutable here is the binding. <code>const</code> assigns a value (<code>&#123;&#125;</code>) to a variable name (<code>foo</code>), and guarantees that no rebinding will happen. ES2015 const has nothing to do with immutability of values.</li>
-<li>與其描述為「透過<code>const</code>宣告的陣列（或物件）不能被修改內容」，不如將<code>const</code>理解為「建立一個變數與值之間不變的binding」。</li>
-</ul>
-<h3 id="MDN上的相關內容"><a href="#MDN上的相關內容" class="headerlink" title="MDN上的相關內容"></a>MDN上的相關內容</h3><ul>
-<li>The value of a constant can’t be changed through reassignment, and it can’t be re-declared.</li>
-<li>以<code>const</code>宣告變數的同時就得賦值<script src="https://gist.github.com/tzynwang/b92649f9945fb3cb92275cf448adb199.js"></script>
-
-</li>
-</ul>
-<h2 id="Object-freeze"><a href="#Object-freeze" class="headerlink" title="Object.freeze()"></a><code>Object.freeze()</code></h2><ul>
-<li>如果想要確保陣列或物件內容不被修改，可以使用<code>Object.freeze()</code><ul>
-<li>MDN: Use <code>Object.freeze()</code> to make object immutable. A frozen object can no longer be changed; freezing an object prevents new properties from being added to it, existing properties from being removed, prevents changing the enumerability, configurability, or writability of existing properties, and prevents the values of existing properties from being changed.</li>
-<li>一個陣列或物件被凍結後，無法新增或移除該陣列、物件的內容，也不可修改該陣列、物件的properties</li>
-</ul>
-</li>
-<li><code>Object.freeze()</code>不會自動套用到巢狀結構內的所有內容上，如以下範例：<script src="https://gist.github.com/tzynwang/a52efc027532899027d7d0e0c9f1cfef.js"></script>
-<figure class="figure--center"><img src="/2021/array-mutation/object-freeze-demo-1.png"></figure></li>
-<li>可透過遞迴來凍結巢狀結構物件的內容<script src="https://gist.github.com/tzynwang/e7a3cf50d030d90f05eee59257806b1e.js"></script>
-<figure class="figure--center"><img src="/2021/array-mutation/object-freeze-demo-2.png"></figure>
-
-
-</li>
-</ul>
-<h2 id="Object-seal"><a href="#Object-seal" class="headerlink" title="Object.seal()"></a><code>Object.seal()</code></h2><ul>
-<li>The Object.seal() method seals an object, preventing new properties from being added to it and marking all existing properties as non-configurable. Values of present properties can still be changed as long as they are writable.<ul>
-<li>與<code>Object.freeze()</code>的差異是，經<code>Object.seal()</code>封閉的物件，不能對其新增或刪除內容，但封閉前就存在的內容可以被修改<script src="https://gist.github.com/tzynwang/1e8917a16a8450fb76fd5a6bd34201e9.js"></script>
-<figure class="figure--center"><img src="/2021/array-mutation/object-freeze-demo-3.png"></figure>
-
-
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="Object-preventExtensions"><a href="#Object-preventExtensions" class="headerlink" title="Object.preventExtensions()"></a><code>Object.preventExtensions()</code></h2><p><code>Object.preventExtensions()</code>只會禁止對物件新增內容，但可以刪除或修改既有內容</p>
-<script src="https://gist.github.com/tzynwang/034ffb5ed714a851cc2e35c5b8a148df.js"></script>
-<figure class="figure--center"><img src="/2021/array-mutation/object-freeze-demo-4.png"></figure>
-
-
-<h2 id="Object-getOwnPropertyDescriptor"><a href="#Object-getOwnPropertyDescriptor" class="headerlink" title="Object.getOwnPropertyDescriptor()"></a><code>Object.getOwnPropertyDescriptor()</code></h2><p>回傳一物件中某內容的相關設定</p>
-<script src="https://gist.github.com/tzynwang/e0618d9ef2d4fa0b153ad6d9347ae8ee.js"></script>
-<figure class="figure--center"><img src="/2021/array-mutation/object-freeze-demo-5.png"></figure>
-
-<p>參考<a href="https://tc39.es/ecma262/#table-data-property-attributes">ECMAScript Specification, Table 3: Attributes of a Data Property</a>：</p>
-<ul>
-<li><code>writable</code>: If false, attempts by ECMAScript code to change the property’s [[Value]] attribute using [[Set]] will not succeed.<ul>
-<li><code>writable</code>若為<code>false</code>，代表該<code>value</code>無法被修改</li>
-<li>被<code>Object.freeze()</code>凍結的物件，其<code>value</code>的<code>writable</code>就被修改為<code>false</code></li>
-</ul>
-</li>
-<li><code>enumerable</code>: If true, the property will be enumerated by a for-in enumeration. Otherwise, the property is said to be non-enumerable.<ul>
-<li><code>enumerable</code>為<code>true</code>代表該<code>value</code>會<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...in">被<code>for...in</code>遍歷</a></li>
-</ul>
-</li>
-<li><code>configurable</code>: If false, attempts to delete the property, change the property to be an accessor property, or change its attributes (other than [[Value]], or changing [[Writable]] to false) will fail.<ul>
-<li><code>configurable</code>若為<code>false</code>，代表該<code>value</code>無法被刪除</li>
-<li>經<code>Object.freeze()</code>或<code>Object.seal()</code>處理過的物件，其<code>value</code>的<code>configurable</code>就被修改為<code>false</code><figure class="figure--center"><img src="/2021/array-mutation/attributes-of-data-property.png"></figure>
-
-
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="補充：無法解凍或再開封"><a href="#補充：無法解凍或再開封" class="headerlink" title="補充：無法解凍或再開封"></a>補充：無法解凍或再開封</h2><p><a href="https://stackoverflow.com/questions/19293321/opposite-of-object-freeze-or-object-seal-in-javascript">Opposite of Object.freeze or Object.seal in JavaScript</a></p>
-<blockquote>
-<p>Freezing an object is the ultimate form of lock-down. Once an object has been frozen it cannot be unfrozen – nor can it be tampered in any manner. This is the best way to make sure that your objects will stay exactly as you left them, indefinitely</p>
-</blockquote>
-<ul>
-<li><code>Object.freeze()</code>與<code>Object.seal()</code>是不可逆的程序，一旦一個物件（或陣列）被凍結或封閉，該物件就無法回到凍結（或封閉）前的狀態</li>
-<li>可以透過<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign"><code>Object.assign()</code></a>來製作該物件（或陣列）的副本，再修改其內容</li>
-</ul>
-<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
-<li>You Don’t Know JS Yet: Get Started - 2nd Edition<ul>
-<li><a href="https://github.com/getify/You-Dont-Know-JS/blob/2nd-ed/get-started/ch2.md">Chapter 2: Surveying JS</a></li>
-<li><a href="https://github.com/getify/You-Dont-Know-JS/blob/2nd-ed/get-started/apA.md">Appendix A: Exploring Further</a></li>
-</ul>
-</li>
-<li><a href="https://mathiasbynens.be/notes/es6-const">ES2015 const is not about immutability</a></li>
-<li>MDN<ul>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const">const</a></li>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/freeze">Object.freeze()</a></li>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/seal">Object.seal()</a></li>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/preventExtensions">Object.preventExtensions()</a></li>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/getOwnPropertyDescriptor">Object.getOwnPropertyDescriptor()</a></li>
-</ul>
-</li>
-<li><a href="https://stackoverflow.com/questions/7509894/freezing-arrays-in-javascript">‘Freezing’ Arrays in Javascript?</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>JavaScript</category>
-      </categories>
-  </entry>
-  <entry>
     <title>ALPHA Camp 履歷網頁作業：內容解析</title>
     <url>/2021/S4-A14-assignment-anatomy/</url>
     <content><![CDATA[<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>記錄在2021年ALPHA Camp學期一、三月班第三週履歷網頁作業使用到的技術、思路與開發流程。</p>
@@ -638,6 +527,117 @@ on <a href="https://codepen.io">CodePen</a>.</span>
       </tags>
   </entry>
   <entry>
+    <title>為什麼可以修改使用const宣告的陣列（或物件）的內容？</title>
+    <url>/2021/array-mutation/</url>
+    <content><![CDATA[<h2 id="原始問題"><a href="#原始問題" class="headerlink" title="原始問題"></a>原始問題</h2><p>以<code>const</code>宣告一個陣列（或物件），為何可以在宣告完畢後繼續修改該陣列（或物件）的內容？</p>
+<figure class="figure--center"><img src="/2021/array-mutation/騎士王的提問時間.jpg" title="事實上const的限制是「變數不能被re-assigned或re-declared」"><figcaption><p>事實上const的限制是「變數不能被re-assigned或re-declared」</p></figcaption></figure>
+
+<h2 id="簡答"><a href="#簡答" class="headerlink" title="簡答"></a>簡答</h2><p><code>const</code>的限制是「只能賦值一次，不能重新賦值」，不直接等同「不能修改內容」。</p>
+<h2 id="環境"><a href="#環境" class="headerlink" title="環境"></a>環境</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Google Chrome: 89.0.4389.114 (Official Build) (64-bit)</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></table></figure>
+<h2 id="關於const的事實"><a href="#關於const的事實" class="headerlink" title="關於const的事實"></a>關於<code>const</code>的事實</h2><h3 id="You-Don’t-Know-JS-Yet-相關筆記"><a href="#You-Don’t-Know-JS-Yet-相關筆記" class="headerlink" title="You Don’t Know JS Yet 相關筆記"></a>You Don’t Know JS Yet 相關筆記</h3><ul>
+<li><code>const</code> declared variables are not “unchangeable”, they just cannot be re-assigned.<ul>
+<li>不適合以「不能被修改」來理解透過<code>const</code>宣告的變數，而是「使用<code>const</code>宣告的變數只能被賦值一次」<script src="https://gist.github.com/tzynwang/bf4ef105981d115a11ae4eb761e34ac8.js"></script></li>
+</ul>
+</li>
+<li>It’s ill-advised to use <code>const</code> with object values, because those values can still be changed even though the variable can’t be re-assigned.<script src="https://gist.github.com/tzynwang/b7f3ee4e1e7c8936a98bb8f7fa76b634.js"></script></li>
+<li>If you stick to using <code>const</code> only with primitive values, you avoid any confusion of re-assignment (not allowed) vs. mutation (allowed)! That’s the safest and best way to use const.</li>
+</ul>
+<h3 id="ES2015-const-is-not-about-immutability-相關筆記"><a href="#ES2015-const-is-not-about-immutability-相關筆記" class="headerlink" title="ES2015 const is not about immutability 相關筆記"></a>ES2015 const is not about immutability 相關筆記</h3><script src="https://gist.github.com/tzynwang/0945c27501de984d3aaa410bf55a08ce.js"></script>
+
+<ul>
+<li>The only thing that’s immutable here is the binding. <code>const</code> assigns a value (<code>&#123;&#125;</code>) to a variable name (<code>foo</code>), and guarantees that no rebinding will happen. ES2015 const has nothing to do with immutability of values.</li>
+<li>與其描述為「透過<code>const</code>宣告的陣列（或物件）不能被修改內容」，不如將<code>const</code>理解為「建立一個變數與值之間不變的binding」。</li>
+</ul>
+<h3 id="MDN上的相關內容"><a href="#MDN上的相關內容" class="headerlink" title="MDN上的相關內容"></a>MDN上的相關內容</h3><ul>
+<li>The value of a constant can’t be changed through reassignment, and it can’t be re-declared.</li>
+<li>以<code>const</code>宣告變數的同時就得賦值<script src="https://gist.github.com/tzynwang/b92649f9945fb3cb92275cf448adb199.js"></script>
+
+</li>
+</ul>
+<h2 id="Object-freeze"><a href="#Object-freeze" class="headerlink" title="Object.freeze()"></a><code>Object.freeze()</code></h2><ul>
+<li>如果想要確保陣列或物件內容不被修改，可以使用<code>Object.freeze()</code><ul>
+<li>MDN: Use <code>Object.freeze()</code> to make object immutable. A frozen object can no longer be changed; freezing an object prevents new properties from being added to it, existing properties from being removed, prevents changing the enumerability, configurability, or writability of existing properties, and prevents the values of existing properties from being changed.</li>
+<li>一個陣列或物件被凍結後，無法新增或移除該陣列、物件的內容，也不可修改該陣列、物件的properties</li>
+</ul>
+</li>
+<li><code>Object.freeze()</code>不會自動套用到巢狀結構內的所有內容上，如以下範例：<script src="https://gist.github.com/tzynwang/a52efc027532899027d7d0e0c9f1cfef.js"></script>
+<figure class="figure--center"><img src="/2021/array-mutation/object-freeze-demo-1.png"></figure></li>
+<li>可透過遞迴來凍結巢狀結構物件的內容<script src="https://gist.github.com/tzynwang/e7a3cf50d030d90f05eee59257806b1e.js"></script>
+<figure class="figure--center"><img src="/2021/array-mutation/object-freeze-demo-2.png"></figure>
+
+
+</li>
+</ul>
+<h2 id="Object-seal"><a href="#Object-seal" class="headerlink" title="Object.seal()"></a><code>Object.seal()</code></h2><ul>
+<li>The Object.seal() method seals an object, preventing new properties from being added to it and marking all existing properties as non-configurable. Values of present properties can still be changed as long as they are writable.<ul>
+<li>與<code>Object.freeze()</code>的差異是，經<code>Object.seal()</code>封閉的物件，不能對其新增或刪除內容，但封閉前就存在的內容可以被修改<script src="https://gist.github.com/tzynwang/1e8917a16a8450fb76fd5a6bd34201e9.js"></script>
+<figure class="figure--center"><img src="/2021/array-mutation/object-freeze-demo-3.png"></figure>
+
+
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="Object-preventExtensions"><a href="#Object-preventExtensions" class="headerlink" title="Object.preventExtensions()"></a><code>Object.preventExtensions()</code></h2><p><code>Object.preventExtensions()</code>只會禁止對物件新增內容，但可以刪除或修改既有內容</p>
+<script src="https://gist.github.com/tzynwang/034ffb5ed714a851cc2e35c5b8a148df.js"></script>
+<figure class="figure--center"><img src="/2021/array-mutation/object-freeze-demo-4.png"></figure>
+
+
+<h2 id="Object-getOwnPropertyDescriptor"><a href="#Object-getOwnPropertyDescriptor" class="headerlink" title="Object.getOwnPropertyDescriptor()"></a><code>Object.getOwnPropertyDescriptor()</code></h2><p>回傳一物件中某內容的相關設定</p>
+<script src="https://gist.github.com/tzynwang/e0618d9ef2d4fa0b153ad6d9347ae8ee.js"></script>
+<figure class="figure--center"><img src="/2021/array-mutation/object-freeze-demo-5.png"></figure>
+
+<p>參考<a href="https://tc39.es/ecma262/#table-data-property-attributes">ECMAScript Specification, Table 3: Attributes of a Data Property</a>：</p>
+<ul>
+<li><code>writable</code>: If false, attempts by ECMAScript code to change the property’s [[Value]] attribute using [[Set]] will not succeed.<ul>
+<li><code>writable</code>若為<code>false</code>，代表該<code>value</code>無法被修改</li>
+<li>被<code>Object.freeze()</code>凍結的物件，其<code>value</code>的<code>writable</code>就被修改為<code>false</code></li>
+</ul>
+</li>
+<li><code>enumerable</code>: If true, the property will be enumerated by a for-in enumeration. Otherwise, the property is said to be non-enumerable.<ul>
+<li><code>enumerable</code>為<code>true</code>代表該<code>value</code>會<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...in">被<code>for...in</code>遍歷</a></li>
+</ul>
+</li>
+<li><code>configurable</code>: If false, attempts to delete the property, change the property to be an accessor property, or change its attributes (other than [[Value]], or changing [[Writable]] to false) will fail.<ul>
+<li><code>configurable</code>若為<code>false</code>，代表該<code>value</code>無法被刪除</li>
+<li>經<code>Object.freeze()</code>或<code>Object.seal()</code>處理過的物件，其<code>value</code>的<code>configurable</code>就被修改為<code>false</code><figure class="figure--center"><img src="/2021/array-mutation/attributes-of-data-property.png"></figure>
+
+
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="補充：無法解凍或再開封"><a href="#補充：無法解凍或再開封" class="headerlink" title="補充：無法解凍或再開封"></a>補充：無法解凍或再開封</h2><p><a href="https://stackoverflow.com/questions/19293321/opposite-of-object-freeze-or-object-seal-in-javascript">Opposite of Object.freeze or Object.seal in JavaScript</a></p>
+<blockquote>
+<p>Freezing an object is the ultimate form of lock-down. Once an object has been frozen it cannot be unfrozen – nor can it be tampered in any manner. This is the best way to make sure that your objects will stay exactly as you left them, indefinitely</p>
+</blockquote>
+<ul>
+<li><code>Object.freeze()</code>與<code>Object.seal()</code>是不可逆的程序，一旦一個物件（或陣列）被凍結或封閉，該物件就無法回到凍結（或封閉）前的狀態</li>
+<li>可以透過<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign"><code>Object.assign()</code></a>來製作該物件（或陣列）的副本，再修改其內容</li>
+</ul>
+<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
+<li>You Don’t Know JS Yet: Get Started - 2nd Edition<ul>
+<li><a href="https://github.com/getify/You-Dont-Know-JS/blob/2nd-ed/get-started/ch2.md">Chapter 2: Surveying JS</a></li>
+<li><a href="https://github.com/getify/You-Dont-Know-JS/blob/2nd-ed/get-started/apA.md">Appendix A: Exploring Further</a></li>
+</ul>
+</li>
+<li><a href="https://mathiasbynens.be/notes/es6-const">ES2015 const is not about immutability</a></li>
+<li>MDN<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const">const</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/freeze">Object.freeze()</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/seal">Object.seal()</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/preventExtensions">Object.preventExtensions()</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/getOwnPropertyDescriptor">Object.getOwnPropertyDescriptor()</a></li>
+</ul>
+</li>
+<li><a href="https://stackoverflow.com/questions/7509894/freezing-arrays-in-javascript">‘Freezing’ Arrays in Javascript?</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+  </entry>
+  <entry>
     <title>「產生順序數陣列」相關筆記</title>
     <url>/2021/array-with-serial-number/</url>
     <content><![CDATA[<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>使用<code>Array() constructor</code>、<code>Array.prototype.keys()</code>與<code>Array.from()</code>來建立一個陣列，該陣列包含從小到大的順序數列，如<code>[1, 2, 3, 4, 5, 6, 7]</code></p>
@@ -674,6 +674,20 @@ on <a href="https://codepen.io">CodePen</a>.</span>
 ]]></content>
       <categories>
         <category>JavaScript</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>bundle exec</title>
+    <url>/2021/bundle-exec/</url>
+    <content><![CDATA[<p>Question: why adds <code>bundle exec</code> in the command when running jekyll server in the first time?<br>Answer (short): to know the version of the gems that are going to use.</p>
+<h2 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h2><p><code>bundle exec</code> will check the Gemfile to understand “<strong>what gems</strong> will be used” and “<strong>which version</strong> of the gems should be used”.<br>In the case that Gemfile is modified, run <code>bundle exec jekyll server</code> instead of just running <code>jekyll server</code>.</p>
+<p>第一次執行<code>jekyll server</code>要輸入<code>bundle exec jekyll server</code>，讓環境根據Gemfile查詢你的程式會用到哪些gems、並這些gems該使用哪些版本。在Gemfile沒有更新的情況下，第二次以後直接在環境輸入<code>jekyll server</code>就可以了。</p>
+<p>若有修改Gemfile的內容，則須重新執行<code>bundle exec jekyll server</code>。</p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://stackoverflow.com/a/16218854/15028185">What does bundle exec rake mean?</a></p>
+<p>You’re running <code>bundle exec</code> on a program. The program’s creators wrote it when <strong>certain versions of gems</strong> were available. The program <strong>Gemfile</strong> specifies the versions of the gems the creators decided to use. That is, the script was made to run correctly against these gem versions.</p>
+]]></content>
+      <categories>
+        <category>jekyll</category>
       </categories>
   </entry>
   <entry>
@@ -742,20 +756,6 @@ on <a href="https://codepen.io">CodePen</a>.</span>
       <categories>
         <category>CSS</category>
         <category>DevTools</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>bundle exec</title>
-    <url>/2021/bundle-exec/</url>
-    <content><![CDATA[<p>Question: why adds <code>bundle exec</code> in the command when running jekyll server in the first time?<br>Answer (short): to know the version of the gems that are going to use.</p>
-<h2 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h2><p><code>bundle exec</code> will check the Gemfile to understand “<strong>what gems</strong> will be used” and “<strong>which version</strong> of the gems should be used”.<br>In the case that Gemfile is modified, run <code>bundle exec jekyll server</code> instead of just running <code>jekyll server</code>.</p>
-<p>第一次執行<code>jekyll server</code>要輸入<code>bundle exec jekyll server</code>，讓環境根據Gemfile查詢你的程式會用到哪些gems、並這些gems該使用哪些版本。在Gemfile沒有更新的情況下，第二次以後直接在環境輸入<code>jekyll server</code>就可以了。</p>
-<p>若有修改Gemfile的內容，則須重新執行<code>bundle exec jekyll server</code>。</p>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://stackoverflow.com/a/16218854/15028185">What does bundle exec rake mean?</a></p>
-<p>You’re running <code>bundle exec</code> on a program. The program’s creators wrote it when <strong>certain versions of gems</strong> were available. The program <strong>Gemfile</strong> specifies the versions of the gems the creators decided to use. That is, the script was made to run correctly against these gem versions.</p>
-]]></content>
-      <categories>
-        <category>jekyll</category>
       </categories>
   </entry>
   <entry>
@@ -1188,7 +1188,82 @@ on <a href="https://codepen.io">CodePen</a>.</span>
       </categories>
   </entry>
   <entry>
-    <title>從零開始重寫：餐廳清單（Express版）</title>
+    <title>從零開始重寫：餐廳清單（Express版）路由、METHODS重構</title>
+    <url>/2021/express-restaurant-list-1/</url>
+    <content><![CDATA[<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>本篇為餐廳清單（Express版）的路由、METHODS重構，以及使用<code>browserify</code>搭配<code>axios</code>實現in-browser <code>require()</code>之相關筆記</p>
+<h2 id="環境"><a href="#環境" class="headerlink" title="環境"></a>環境</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">browserify: 17.0.0</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></table></figure>
+<h2 id="筆記"><a href="#筆記" class="headerlink" title="筆記"></a>筆記</h2><figure class="figure--center"><img src="/2021/express-restaurant-list-1/folderStructure.png" title="重構後的資料夾結構"><figcaption><p>重構後的資料夾結構</p></figcaption></figure>
+
+<h3 id="路由重構"><a href="#路由重構" class="headerlink" title="路由重構"></a>路由重構</h3><script src="https://gist.github.com/tzynwang/708c0d129d912f54e8043e62cb9e751a.js"></script>
+
+<h4 id="app-js"><a href="#app-js" class="headerlink" title="app.js"></a>app.js</h4><ul>
+<li>第6行：將DB連線設定搬移到config資料夾中</li>
+<li>13-15行：為配合axios的POST request，將<code>body-parser</code>加回來</li>
+<li>37-38行：將路由移動到routes資料夾中</li>
+</ul>
+<h4 id="routes-index-js"><a href="#routes-index-js" class="headerlink" title="routes/index.js"></a>routes/index.js</h4><ul>
+<li>4-5行：routes/modules中的home.js與restaurants.js皆分別在檔案結尾進行<code>module.exports = router</code>，讓index.js可引用之</li>
+<li>7-8行：分別將對<code>/</code>與<code>/restaurant</code>的請求導向<code>home</code>與<code>restaurant</code></li>
+<li>第10行：將index.js本身也進行匯出，使app.js可使用之（app.js中第37行）</li>
+</ul>
+<h3 id="METHODS重構"><a href="#METHODS重構" class="headerlink" title="METHODS重構"></a>METHODS重構</h3><ul>
+<li><p>參考app.js第33-34行，引用<code>method-override</code>後，使用override using a query value的方式複寫METHOD<br><a href="http://expressjs.com/en/resources/middleware/method-override.html">官方說明</a>：</p>
+<blockquote>
+<p>To use a query string value to override the method, specify the query string key as a string argument to the methodOverride function. To then make the call, send a <strong>POST request</strong> to a URL with the overridden method as the value of that query string key. This method of using a query value would typically be used in conjunction with plain HTML <code>&lt;form&gt;</code> elements when trying to support legacy browsers but still use newer methods.</p>
+</blockquote>
+<p>官方示範程式碼：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">&#x27;express&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> methodOverride = <span class="built_in">require</span>(<span class="string">&#x27;method-override&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> app = express()</span><br><span class="line"></span><br><span class="line"><span class="comment">// override with POST having ?_method=DELETE</span></span><br><span class="line">app.use(methodOverride(<span class="string">&#x27;_method&#x27;</span>))</span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">method</span>=<span class="string">&quot;POST&quot;</span> <span class="attr">action</span>=<span class="string">&quot;/resource?_method=DELETE&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span>&gt;</span>Delete resource<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li><p>將form action設定完畢後，原本的POST request就會（根據query string value）被覆寫為DELETE與PUT等METHOD</p>
+</li>
+<li><p>之後即可在後端使用<code>router.delete</code>或<code>router.put</code>等方式處理相關請求</p>
+</li>
+</ul>
+<h3 id="browserify流程記錄"><a href="#browserify流程記錄" class="headerlink" title="browserify流程記錄"></a>browserify流程記錄</h3><ol>
+<li>安裝browserify與axios</li>
+<li>在public/scripts資料夾中建立一檔案sort.js，內容如下</li>
+</ol>
+<script src="https://gist.github.com/tzynwang/f034770c2ca9f0cc16edc449f44a1f94.js"></script>
+
+
+<ol>
+<li>在沒有搭配browserify的情況下，直接引用sort.js檔案會在瀏覽器console看到<code>ReferenceError: require is not defined</code>此錯誤訊息，相關討論參考：<a href="https://stackoverflow.com/questions/19059580/client-on-node-js-uncaught-referenceerror-require-is-not-defined">Client on Node.js: Uncaught ReferenceError: require is not defined</a></li>
+<li>參考browserify的<a href="https://github.com/browserify/browserify#example">GitHub README</a>，在終端輸入<code>browserify public/scripts/sort.js &gt; public/scripts/sortBundle.js</code>將sort.js與axios等額外require的模組bundle在一起</li>
+<li>最終在前端網頁引用<code>sortBundle.js</code>此檔案，錯誤訊息消失，問題解決</li>
+</ol>
+<h2 id="補充"><a href="#補充" class="headerlink" title="補充"></a>補充</h2><h3 id="Method-PATCH-PUT"><a href="#Method-PATCH-PUT" class="headerlink" title="Method: PATCH, PUT"></a>Method: PATCH, PUT</h3><ul>
+<li>A <code>PATCH</code> request is considered a set of <strong>instructions on how to modify a resource</strong>. Contrast this with <code>PUT</code>; which is a complete <strong>representation of a resource</strong>.</li>
+<li>A <code>PATCH</code> is <strong>not necessarily idempotent</strong>, although it can be. Contrast this with <code>PUT</code>; which is <strong>always idempotent</strong>. The word “idempotent” means that any number of repeated, identical requests will leave the resource in the same state. (不像<code>POST</code> request如果連續發送可能會變成多筆訂單，多次發送<code>PUT</code> request不會有類似的後遺症)</li>
+<li>Calling <code>PUT</code> method <strong>once or several times successively has the same effect</strong> (that is no side effect), this method is <strong>idempotent</strong>; whereas successive identical <code>POST</code> requests may have additional effects, akin to placing an order several times.</li>
+</ul>
+<h3 id="Idempotent"><a href="#Idempotent" class="headerlink" title="Idempotent"></a>Idempotent</h3><ul>
+<li>Description of common <strong>idempotent methods</strong>: GET, HEAD, PUT, DELETE, OPTIONS, TRACE</li>
+<li>Description of common <strong>non-idempotent</strong> methods: POST,PATCH, CONNECT<ul>
+<li>Reference: <a href="https://developer.mozilla.org/en-US/docs/Glossary/Idempotent">https://developer.mozilla.org/en-US/docs/Glossary/Idempotent</a></li>
+</ul>
+</li>
+<li>A request method is considered “idempotent” if the intended effect on the server of multiple identical requests with that method is the same as the effect for a single such request. (對server打一次或多次的結果如果都一樣，該HTTP method就會被認為是idempotent) Of the request methods defined by this specification, PUT, DELETE, and safe request methods (GET, HEAD, OPTIONS) are idempotent.<ul>
+<li>Reference: <a href="https://datatracker.ietf.org/doc/html/rfc7231#section-4.2.2">https://datatracker.ietf.org/doc/html/rfc7231#section-4.2.2</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
+<li><a href="https://stackoverflow.com/questions/6971583/node-style-require-for-in-browser-javascript/11588570">Node-style require for in-browser javascript?</a></li>
+<li><a href="https://github.com/browserify/browserify#browserify">GitHub: browserify</a></li>
+<li>MDN<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/PATCH">PATCH</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/PUT">PUT</a></li>
+</ul>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Express</category>
+        <category>HTML</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>從零開始重寫：餐廳清單（Express版）基礎功能與架構</title>
     <url>/2021/express-restaurant-list/</url>
     <content><![CDATA[<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>試著從頭開始重新練習一次Express、Express handlebars與Mongoose相關內容，本篇筆記主要記錄練習途中遭遇到的問題、解法與日後可能會回頭參考的相關內容</p>
 <h2 id="環境"><a href="#環境" class="headerlink" title="環境"></a>環境</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">express: 4.17.1</span><br><span class="line">express-fileupload: 1.2.1</span><br><span class="line">express-handlebars: 5.3.2</span><br><span class="line">mongoose: 5.12.14</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></table></figure>
@@ -1716,6 +1791,51 @@ on <a href="https://codepen.io">CodePen</a>.</span>
       </categories>
   </entry>
   <entry>
+    <title>Contribution workflow note&amp;#58; document update</title>
+    <url>/2021/hexo-contribution-workflow/</url>
+    <content><![CDATA[<p>This a note for participating hexo’s contribution (for improving the documentation in English and traditional Chinese).<br>參與了hexo說明文件的改善協作，記錄一下整個流程。<br>不過pr因為提出的改善建議已經過時（<a href="https://github.com/hexojs/hexo/issues/4267#issuecomment-778646141">hexo 4.2.1已支援Noje.js 14</a>）所以並沒有被接受 🤣</p>
+<h2 id="Preparing-works"><a href="#Preparing-works" class="headerlink" title="Preparing works"></a>Preparing works</h2><ul>
+<li>Read the <a href="https://hexo.io/docs/contributing">hexo’s official guide for contributing</a></li>
+<li>Understand what is “Fork” in git workflow: <a href="https://docs.github.com/en/github/getting-started-with-github/fork-a-repo">GitHub Docs: Fork a repo</a></li>
+<li>Understand how to create a branch in CLI: <a href="https://www.datree.io/resources/git-create-branch">Git create branch [a Git commands tutorial]</a></li>
+</ul>
+<h2 id="Environment"><a href="#Environment" class="headerlink" title="Environment"></a>Environment</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo: 5.3.0</span><br><span class="line">hexo-cli: 4.2.0</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></table></figure>
+
+<h2 id="Workflow"><a href="#Workflow" class="headerlink" title="Workflow"></a>Workflow</h2><ol>
+<li>Fork <a href="https://github.com/hexojs/hexo">hexojs/site</a><br><img src="/2021/hexo-contribution-workflow/fork-hexo-site.png" alt="Click &quot;Fork&quot; button"></li>
+<li>Open cmd.exe, move to <code>C:\Projects\hexo_contributing</code> by entering <code>cd C:\Projects\hexo_contributing</code> (since I want to store the hexojs/site repo in this location on my computer).</li>
+<li>Enter <code>git init</code> to <a href="https://git-scm.com/docs/git-init">create a empty Git repository</a> in this folder.</li>
+<li>Follow the instruction on hexo’s contribution document:<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;tzynwang&#x2F;site.git</span><br><span class="line">cd site</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure></li>
+<li>Dive into the <code>\site\source</code> folder. Update the contents in English and traditional Chinese documents</li>
+<li>Run <code>hexo server</code> to have a live previwing, checking the pages I’d updated and make sure nothing was mess-up</li>
+<li>Create a branch call “update-node-js-version-suggestion” by entering <code>git checkout -b update-node-js-version-suggestion</code> in cmd.exe</li>
+<li>Push the modification from local to GitHub by <code>git push https://github.com/tzynwang/site.git update-node-js-version-suggestion</code></li>
+<li>Create a pull request on GitHub page, describe what changes I’d applied to the documents.</li>
+</ol>
+<h2 id="Result"><a href="#Result" class="headerlink" title="Result"></a>Result</h2><p><a href="https://github.com/hexojs/hexo/issues/4267#issuecomment-778646141">Receive a comment</a> which indicated the improvement is out of date (my bad), thus remove the pr from GitHub. Here’s the flow:</p>
+<ol>
+<li>Click the <a href="https://github.com/hexojs/hexo/pulls">“Pull requests” tab in hexojs/site</a>, click the pr I’d sent<br><img src="/2021/hexo-contribution-workflow/close-pr-00.png" alt="Navigate to the Pull request tab in hexojs/site repository"></li>
+<li>Scroll to the page bottom, add the comment to describe the reason of closing the pr. Click the button “Close with comment”<br><img src="/2021/hexo-contribution-workflow/close-pr-01.png" alt="Comment the reason for closing the pull-request before closing it"></li>
+<li>Click the button “Delete branch” (since it has no useage now)<br><img src="/2021/hexo-contribution-workflow/close-pr-02.png" alt="Delete the branch from GitHub repository"></li>
+<li>The branch has been deleted<br><img src="/2021/hexo-contribution-workflow/close-pr-03.png" alt="The screenshot after deleting a branch"><br>Done 😌</li>
+</ol>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p>About how to use indicator characters (<code>:</code>) in yaml file and bracket (<code>[]</code>) in markdown file:</p>
+<ul>
+<li><a href="https://riptutorial.com/yaml/example/25838/escaping-characters">yaml Escaping Characters</a></li>
+<li><a href="https://stackoverflow.com/a/19086251/15028185">How to escape indicator characters (i.e. : or - ) in YAML</a></li>
+<li><a href="https://stackoverflow.com/a/43011868/15028185">How to escape backslash bracket ([) in Markdown?</a></li>
+</ul>
+<p>About cancel, delete, remove a GitHub pull request:</p>
+<ul>
+<li><a href="https://stackoverflow.com/a/10142727/15028185">How to cancel a pull request on github?</a></li>
+<li><a href="https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/closing-a-pull-request">GitHub Docs: Closing a pull request</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>hexo</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Deploy to GitHub Page</title>
     <url>/2021/hexo-deploy/</url>
     <content><![CDATA[<h2 id="Summary-of-this-post"><a href="#Summary-of-this-post" class="headerlink" title="Summary of this post"></a>Summary of this post</h2><p>This post describes my whole workflow about deploying hexo blog from local to GitHub Page 🛫<br>記錄了自己把hexo blog從本機部屬到GitHub Pages的過程，寫得比hexo官方文件詳細一些。<br>沒有對官方文件提出improvement是因為這些內容可能太繁瑣了 🤣</p>
@@ -1772,51 +1892,6 @@ The configuration in <code>_config.yml</code> file should be set like this:<figu
 <h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
 <li><a href="https://hexo.io/docs/commands#Display-drafts">hexo: Commands/Display drafts</a></li>
 <li><a href="https://hexo.io/docs/configuration#Writing">hexo: Configuration/Writing</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>hexo</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>Contribution workflow note&amp;#58; document update</title>
-    <url>/2021/hexo-contribution-workflow/</url>
-    <content><![CDATA[<p>This a note for participating hexo’s contribution (for improving the documentation in English and traditional Chinese).<br>參與了hexo說明文件的改善協作，記錄一下整個流程。<br>不過pr因為提出的改善建議已經過時（<a href="https://github.com/hexojs/hexo/issues/4267#issuecomment-778646141">hexo 4.2.1已支援Noje.js 14</a>）所以並沒有被接受 🤣</p>
-<h2 id="Preparing-works"><a href="#Preparing-works" class="headerlink" title="Preparing works"></a>Preparing works</h2><ul>
-<li>Read the <a href="https://hexo.io/docs/contributing">hexo’s official guide for contributing</a></li>
-<li>Understand what is “Fork” in git workflow: <a href="https://docs.github.com/en/github/getting-started-with-github/fork-a-repo">GitHub Docs: Fork a repo</a></li>
-<li>Understand how to create a branch in CLI: <a href="https://www.datree.io/resources/git-create-branch">Git create branch [a Git commands tutorial]</a></li>
-</ul>
-<h2 id="Environment"><a href="#Environment" class="headerlink" title="Environment"></a>Environment</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo: 5.3.0</span><br><span class="line">hexo-cli: 4.2.0</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></table></figure>
-
-<h2 id="Workflow"><a href="#Workflow" class="headerlink" title="Workflow"></a>Workflow</h2><ol>
-<li>Fork <a href="https://github.com/hexojs/hexo">hexojs/site</a><br><img src="/2021/hexo-contribution-workflow/fork-hexo-site.png" alt="Click &quot;Fork&quot; button"></li>
-<li>Open cmd.exe, move to <code>C:\Projects\hexo_contributing</code> by entering <code>cd C:\Projects\hexo_contributing</code> (since I want to store the hexojs/site repo in this location on my computer).</li>
-<li>Enter <code>git init</code> to <a href="https://git-scm.com/docs/git-init">create a empty Git repository</a> in this folder.</li>
-<li>Follow the instruction on hexo’s contribution document:<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;tzynwang&#x2F;site.git</span><br><span class="line">cd site</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure></li>
-<li>Dive into the <code>\site\source</code> folder. Update the contents in English and traditional Chinese documents</li>
-<li>Run <code>hexo server</code> to have a live previwing, checking the pages I’d updated and make sure nothing was mess-up</li>
-<li>Create a branch call “update-node-js-version-suggestion” by entering <code>git checkout -b update-node-js-version-suggestion</code> in cmd.exe</li>
-<li>Push the modification from local to GitHub by <code>git push https://github.com/tzynwang/site.git update-node-js-version-suggestion</code></li>
-<li>Create a pull request on GitHub page, describe what changes I’d applied to the documents.</li>
-</ol>
-<h2 id="Result"><a href="#Result" class="headerlink" title="Result"></a>Result</h2><p><a href="https://github.com/hexojs/hexo/issues/4267#issuecomment-778646141">Receive a comment</a> which indicated the improvement is out of date (my bad), thus remove the pr from GitHub. Here’s the flow:</p>
-<ol>
-<li>Click the <a href="https://github.com/hexojs/hexo/pulls">“Pull requests” tab in hexojs/site</a>, click the pr I’d sent<br><img src="/2021/hexo-contribution-workflow/close-pr-00.png" alt="Navigate to the Pull request tab in hexojs/site repository"></li>
-<li>Scroll to the page bottom, add the comment to describe the reason of closing the pr. Click the button “Close with comment”<br><img src="/2021/hexo-contribution-workflow/close-pr-01.png" alt="Comment the reason for closing the pull-request before closing it"></li>
-<li>Click the button “Delete branch” (since it has no useage now)<br><img src="/2021/hexo-contribution-workflow/close-pr-02.png" alt="Delete the branch from GitHub repository"></li>
-<li>The branch has been deleted<br><img src="/2021/hexo-contribution-workflow/close-pr-03.png" alt="The screenshot after deleting a branch"><br>Done 😌</li>
-</ol>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p>About how to use indicator characters (<code>:</code>) in yaml file and bracket (<code>[]</code>) in markdown file:</p>
-<ul>
-<li><a href="https://riptutorial.com/yaml/example/25838/escaping-characters">yaml Escaping Characters</a></li>
-<li><a href="https://stackoverflow.com/a/19086251/15028185">How to escape indicator characters (i.e. : or - ) in YAML</a></li>
-<li><a href="https://stackoverflow.com/a/43011868/15028185">How to escape backslash bracket ([) in Markdown?</a></li>
-</ul>
-<p>About cancel, delete, remove a GitHub pull request:</p>
-<ul>
-<li><a href="https://stackoverflow.com/a/10142727/15028185">How to cancel a pull request on github?</a></li>
-<li><a href="https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/closing-a-pull-request">GitHub Docs: Closing a pull request</a></li>
 </ul>
 ]]></content>
       <categories>
@@ -3051,44 +3126,6 @@ on <a href="https://codepen.io">CodePen</a>.</span>
       </categories>
   </entry>
   <entry>
-    <title>「Writing Good Alt Text - HTTP 203」相關筆記</title>
-    <url>/2021/writing-good-alt-text/</url>
-    <content><![CDATA[<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>關於YouTube影片「Writing Good Alt Text - HTTP 203」的相關筆記。</p>
-<h2 id="筆記"><a href="#筆記" class="headerlink" title="筆記"></a>筆記</h2><p>00:51 What alt text should I use for image like this one?<br>提問：（影片範例為講者頭像，而頭像的）alt內容到底該寫些什麼？</p>
-<p>02:02 It depends, this is always the answer in tech.<br>回答：alt內容須根據上下文脈絡決定。<br>而如果不曉得圖片是應用在哪些情境，就不容易決定合適的alt內容（02:12）。</p>
-<p>以02:44舉的例子來看，假設文章是關於兩個旅社之間的糾紛，那附圖的alt內容可為：「當事者旅社之照片」。<br>而文章若是在討論腳踏車使用率的上升，那附圖的alt應配合主題，轉而描述圖片中的腳踏車（與其行為）。</p>
-<p>03:26 Now the image has a caption equivalent to the alt, it’s best to make the alt an empty string.<br>但參考影片留言的內容：</p>
-<blockquote>
-<p>leaving the alt attribute empty will hide the image from screen readers.<br><code>alt=&quot;&quot;</code>的時候，screen reader會跳過該圖片。除非是裝飾性素材（如背景圖片），否則不適合讓alt為空白。</p>
-</blockquote>
-<blockquote>
-<p>In general, alt and figcaption should not be the same. Alt descriptions should be functional; figcaption descriptions should be editorial or illustrative.</p>
-</blockquote>
-<p>綜合05:23的內容</p>
-<blockquote>
-<p>Emotion matters</p>
-</blockquote>
-<p>講者是否戴眼鏡對（圖片）瀏覽者來說並非重點，但講者躲在植物後面的動作有引導出這張頭像照片的特殊之處。<br>故alt內容可為：「講者俏皮地躲在植物後」。</p>
-<p>小結論：<code>&lt;figcaption&gt;</code>為editorial或illustrative導向，而alt用來做（圖片的）功能性描述。</p>
-<p>而何謂editorial與illustrative，參考<a href="https://thoughtbot.com/blog/alt-vs-figcaption">Alt vs Figcaption</a>：</p>
-<blockquote>
-<p>Editorial or illustrative descriptions can convey the who, what, when, where, and/or why of an image contextualizing it alongside other content on the page. This may be information that isn’t apparent from just looking at the image.</p>
-</blockquote>
-<p>我流解讀：描述的事圖片帶出的故事。</p>
-<p>最後，關於上下文對alt的影響程度，可參考 07:34 Does the skin color of the speaker matter?<br>影片中的立場：如果講者談論的是與種族相關的演講題目，這或許重要到需在alt中註明。</p>
-<h2 id="補充：-lt-figcaption-gt-的用途"><a href="#補充：-lt-figcaption-gt-的用途" class="headerlink" title="補充：&lt;figcaption&gt;的用途"></a>補充：<code>&lt;figcaption&gt;</code>的用途</h2><p>除了提供圖片說明以外，也可以作為<code>blockquote</code>或引用文獻時拿來標註出處、說明引用來源。<br><code>&lt;figcaption&gt;</code>是block物件，可搭配<code>&lt;small&gt;</code>或<code>&lt;cite&gt;</code>（使用情境：註明來源），也可作為照片的拍攝時間標籤（搭配<code>&lt;time&gt;</code>）使用。</p>
-<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><iframe width="320" height="180" src="https://www.youtube.com/embed/flf2vS0IoRs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-<ul>
-<li><a href="https://youtu.be/flf2vS0IoRs">Writing Good Alt Text - HTTP 203</a></li>
-<li><a href="https://thoughtbot.com/blog/alt-vs-figcaption">Alt vs Figcaption</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>HTML</category>
-      </categories>
-  </entry>
-  <entry>
     <title>為什麼在瀏覽器環境中使用while loop執行ajax request會讓頁面陷入凍結狀態？</title>
     <url>/2021/while-loop-ajax/</url>
     <content><![CDATA[<h2 id="環境"><a href="#環境" class="headerlink" title="環境"></a>環境</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Google Chrome: 89.0.4389.114 (Official Build) (64-bit)</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></table></figure>
@@ -3150,6 +3187,44 @@ on <a href="https://codepen.io">CodePen</a>.</span>
 ]]></content>
       <categories>
         <category>JavaScript</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>「Writing Good Alt Text - HTTP 203」相關筆記</title>
+    <url>/2021/writing-good-alt-text/</url>
+    <content><![CDATA[<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>關於YouTube影片「Writing Good Alt Text - HTTP 203」的相關筆記。</p>
+<h2 id="筆記"><a href="#筆記" class="headerlink" title="筆記"></a>筆記</h2><p>00:51 What alt text should I use for image like this one?<br>提問：（影片範例為講者頭像，而頭像的）alt內容到底該寫些什麼？</p>
+<p>02:02 It depends, this is always the answer in tech.<br>回答：alt內容須根據上下文脈絡決定。<br>而如果不曉得圖片是應用在哪些情境，就不容易決定合適的alt內容（02:12）。</p>
+<p>以02:44舉的例子來看，假設文章是關於兩個旅社之間的糾紛，那附圖的alt內容可為：「當事者旅社之照片」。<br>而文章若是在討論腳踏車使用率的上升，那附圖的alt應配合主題，轉而描述圖片中的腳踏車（與其行為）。</p>
+<p>03:26 Now the image has a caption equivalent to the alt, it’s best to make the alt an empty string.<br>但參考影片留言的內容：</p>
+<blockquote>
+<p>leaving the alt attribute empty will hide the image from screen readers.<br><code>alt=&quot;&quot;</code>的時候，screen reader會跳過該圖片。除非是裝飾性素材（如背景圖片），否則不適合讓alt為空白。</p>
+</blockquote>
+<blockquote>
+<p>In general, alt and figcaption should not be the same. Alt descriptions should be functional; figcaption descriptions should be editorial or illustrative.</p>
+</blockquote>
+<p>綜合05:23的內容</p>
+<blockquote>
+<p>Emotion matters</p>
+</blockquote>
+<p>講者是否戴眼鏡對（圖片）瀏覽者來說並非重點，但講者躲在植物後面的動作有引導出這張頭像照片的特殊之處。<br>故alt內容可為：「講者俏皮地躲在植物後」。</p>
+<p>小結論：<code>&lt;figcaption&gt;</code>為editorial或illustrative導向，而alt用來做（圖片的）功能性描述。</p>
+<p>而何謂editorial與illustrative，參考<a href="https://thoughtbot.com/blog/alt-vs-figcaption">Alt vs Figcaption</a>：</p>
+<blockquote>
+<p>Editorial or illustrative descriptions can convey the who, what, when, where, and/or why of an image contextualizing it alongside other content on the page. This may be information that isn’t apparent from just looking at the image.</p>
+</blockquote>
+<p>我流解讀：描述的事圖片帶出的故事。</p>
+<p>最後，關於上下文對alt的影響程度，可參考 07:34 Does the skin color of the speaker matter?<br>影片中的立場：如果講者談論的是與種族相關的演講題目，這或許重要到需在alt中註明。</p>
+<h2 id="補充：-lt-figcaption-gt-的用途"><a href="#補充：-lt-figcaption-gt-的用途" class="headerlink" title="補充：&lt;figcaption&gt;的用途"></a>補充：<code>&lt;figcaption&gt;</code>的用途</h2><p>除了提供圖片說明以外，也可以作為<code>blockquote</code>或引用文獻時拿來標註出處、說明引用來源。<br><code>&lt;figcaption&gt;</code>是block物件，可搭配<code>&lt;small&gt;</code>或<code>&lt;cite&gt;</code>（使用情境：註明來源），也可作為照片的拍攝時間標籤（搭配<code>&lt;time&gt;</code>）使用。</p>
+<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><iframe width="320" height="180" src="https://www.youtube.com/embed/flf2vS0IoRs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<ul>
+<li><a href="https://youtu.be/flf2vS0IoRs">Writing Good Alt Text - HTTP 203</a></li>
+<li><a href="https://thoughtbot.com/blog/alt-vs-figcaption">Alt vs Figcaption</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>HTML</category>
       </categories>
   </entry>
   <entry>

@@ -23,13 +23,13 @@
   </script>
 <meta name="description" content="總結試著從頭開始重新練習一次Express、Express handlebars與Mongoose相關內容，本篇筆記主要記錄練習途中遭遇到的問題、解法與日後可能會回頭參考的相關內容 環境12345express: 4.17.1express-fileupload: 1.2.1express-handlebars: 5.3.2mongoose: 5.12.14os: Windows_NT 10.0.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="從零開始重寫：餐廳清單（Express版）">
+<meta property="og:title" content="從零開始重寫：餐廳清單（Express版）基礎功能與架構">
 <meta property="og:url" content="https://tzynwang.github.io/2021/express-restaurant-list/index.html">
 <meta property="og:site_name" content="普通文組">
 <meta property="og:description" content="總結試著從頭開始重新練習一次Express、Express handlebars與Mongoose相關內容，本篇筆記主要記錄練習途中遭遇到的問題、解法與日後可能會回頭參考的相關內容 環境12345express: 4.17.1express-fileupload: 1.2.1express-handlebars: 5.3.2mongoose: 5.12.14os: Windows_NT 10.0.">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-06-21T07:47:32.000Z">
-<meta property="article:modified_time" content="2021-06-21T08:45:40.257Z">
+<meta property="article:modified_time" content="2021-06-22T06:05:28.981Z">
 <meta property="article:author" content="Charlie (Tzu Yin)">
 <meta property="article:tag" content="hexo, hexo blog, tzyn, 普通文組">
 <meta name="twitter:card" content="summary">
@@ -47,7 +47,7 @@
     lang   : 'en'
   };
 </script>
-<title>從零開始重寫：餐廳清單（Express版） | 普通文組</title>
+<title>從零開始重寫：餐廳清單（Express版）基礎功能與架構 | 普通文組</title>
   
 
 
@@ -200,7 +200,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">47</span>
+          <span class="site-state-item-count">48</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -264,7 +264,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          從零開始重寫：餐廳清單（Express版）
+          從零開始重寫：餐廳清單（Express版）基礎功能與架構
         </h1>
 
         <div class="post-meta-container">
@@ -274,10 +274,16 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2021-06-21 15:47:32 / Modified: 16:45:40" itemprop="dateCreated datePublished" datetime="2021-06-21T15:47:32+08:00">2021-06-21</time>
+      <time title="Created: 2021-06-21 15:47:32" itemprop="dateCreated datePublished" datetime="2021-06-21T15:47:32+08:00">2021-06-21</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-06-22 14:05:28" itemprop="dateModified" datetime="2021-06-22T14:05:28+08:00">2021-06-22</time>
+      </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
@@ -397,6 +403,9 @@
                 </a>
             </div>
             <div class="post-nav-item">
+                <a href="/2021/express-restaurant-list-1/" rel="next" title="從零開始重寫：餐廳清單（Express版）路由、METHODS重構">
+                  從零開始重寫：餐廳清單（Express版）路由、METHODS重構 <i class="fa fa-chevron-right"></i>
+                </a>
             </div>
           </div>
     </footer>
@@ -493,7 +502,7 @@
   var disqus_config = function() {
     this.page.url = "https://tzynwang.github.io/2021/express-restaurant-list/";
     this.page.identifier = "2021/express-restaurant-list/";
-    this.page.title = "從零開始重寫：餐廳清單（Express版）";
+    this.page.title = "從零開始重寫：餐廳清單（Express版）基礎功能與架構";
     };
   NexT.utils.loadComments('#disqus_thread', () => {
     if (window.DISQUS) {
