@@ -197,14 +197,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">48</span>
+          <span class="site-state-item-count">49</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-count">15</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
@@ -238,6 +238,126 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope="" itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tzynwang.github.io/2021/git-remove-file-from-tracking/">
+
+    <span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar-pexels-alex-andrews-215-215.png">
+      <meta itemprop="name" content="Charlie (Tzu Yin)">
+      <meta itemprop="description" content="一介普通文組的學習筆記 📒">
+    </span>
+
+    <span hidden="" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="普通文組">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/git-remove-file-from-tracking/" class="post-title-link" itemprop="url">「git stop tracking files」相關筆記</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-05-22 13:47:48 / Modified: 14:14:30" itemprop="dateCreated datePublished" datetime="2021-05-22T13:47:48+08:00">2021-05-22</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+          <a href="/categories/git/" itemprop="url" rel="index"><span itemprop="name">git</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2021/git-remove-file-from-tracking/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/git-remove-file-from-tracking/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><ul>
+<li>如果在<code>.gitignore</code>建立前就已經讓git追蹤（tracking）該檔案的話，即使後來將該檔案加入<code>.gitignore</code>清單內，也<strong>不會讓git自動停止追蹤該檔案</strong></li>
+<li>可使用<code>git rm --cached &lt;該檔案&gt;</code>讓git僅停止追蹤，且不從硬碟中移除該檔案</li>
+</ul>
+<h2 id="環境"><a href="#環境" class="headerlink" title="環境"></a>環境</h2><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git: 2.30.0.windows.2</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="筆記"><a href="#筆記" class="headerlink" title="筆記"></a>筆記</h2><h3 id="注意事項"><a href="#注意事項" class="headerlink" title="注意事項"></a>注意事項</h3><ul>
+<li><p>若該檔案是在「已經被git追蹤」的情況下被加到.gitignore，git不會自動停止追蹤該檔案；官方文件說明如下：</p>
+<blockquote>
+<p>A gitignore file specifies intentionally untracked files that Git should ignore. <strong>Files already tracked by Git are not affected.</strong></p>
+</blockquote>
+<blockquote>
+<p>The purpose of gitignore files is to ensure that <strong>certain files not tracked by Git remain untracked</strong>. To stop tracking a file that is currently tracked, use <code>git rm --cached</code>.</p>
+</blockquote>
+</li>
+<li><p>透過<code>git rm --cached &lt;不想要繼續被git追蹤的檔案&gt;</code>並執行<code>git commit</code>與<code>git push</code>後，若該檔案已經被推至GitHub等儲存空間，該檔案會被刪除</p>
+</li>
+</ul>
+<h3 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h3><p>參考Remove a folder from git tracking討論串中<a target="_blank" rel="noopener" href="https://stackoverflow.com/a/54481162/15028185">lukehillonline的回覆</a>，以下是「使git停止追蹤某檔案，但不使該檔案從硬碟中被移除」的流程：</p>
+<ol>
+<li>備份該檔案，並將備份移動到git不會追蹤到的資料夾外</li>
+<li>執行<code>git rm --cached &lt;不想要繼續被git追蹤的檔案&gt;</code>、<code>git commit</code>與<code>git push</code></li>
+<li>將該檔案加入<code>.gitignore</code>清單內</li>
+<li>如果需要的話，將該檔案移動回資料夾中</li>
+</ol>
+<h3 id="補充"><a href="#補充" class="headerlink" title="補充"></a>補充</h3><p>在部分討論串中看到<code>git rm -r --cached &lt;filename&gt;</code>的指令，其中的<code>-r</code>意義如下：</p>
+<blockquote>
+<p>Allow <strong>recursive removal</strong> when a leading directory name is given.</p>
+</blockquote>
+<p>出處：<a target="_blank" rel="noopener" href="https://git-scm.com/docs/git-rm#Documentation/git-rm.txt--r">git official documentation: rm</a></p>
+<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/24290358/remove-a-folder-from-git-tracking/">StackOverFlow: Remove a folder from git tracking</a></li>
+<li><a target="_blank" rel="noopener" href="https://git-scm.com/docs/gitignore/2.22.0">git official documentation: gitignore</a></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1821,116 +1941,6 @@
 <li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/4090518/what-is-the-difference-between-parseint-and-number">What is the difference between parseInt() and Number()?</a></li>
 </ul>
 
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope="" itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://tzynwang.github.io/2021/further-adventures-of-the-event-loop/">
-
-    <span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar-pexels-alex-andrews-215-215.png">
-      <meta itemprop="name" content="Charlie (Tzu Yin)">
-      <meta itemprop="description" content="一介普通文組的學習筆記 📒">
-    </span>
-
-    <span hidden="" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="普通文組">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/further-adventures-of-the-event-loop/" class="post-title-link" itemprop="url">再訪event loop</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-04-14 14:02:39" itemprop="dateCreated datePublished" datetime="2021-04-14T14:02:39+08:00">2021-04-14</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-04-24 19:00:24" itemprop="dateModified" datetime="2021-04-24T19:00:24+08:00">2021-04-24</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
-        </span>
-    </span>
-
-  
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus: </span>
-    
-    <a title="disqus" href="/2021/further-adventures-of-the-event-loop/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/further-adventures-of-the-event-loop/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><ul>
-<li>瀏覽器中的JavaScript環境（runtime）包含standard stack、microtask queue與(macro)task queue</li>
-<li>簡化後的瀏覽器event loop流程如下：<ol>
-<li>處理standard stack中的<strong>所有</strong>任務</li>
-<li>standard stack清空後，開始處理microtask queue中的<strong>所有</strong>任務</li>
-<li>microtask queue清空後，開始處理(macro)task queue中的<strong>一個</strong>任務</li>
-<li>一次event loop中可能有複數個(macro)task queue，event loop會執行每一個(macro)task queue中<strong>最早</strong>被加進來的<strong>一個</strong>任務</li>
-</ol>
-</li>
-</ul>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/further-adventures-of-the-event-loop/#more" rel="contents">
-                Read more »
-              </a>
-            </div>
-          <!--/noindex-->
-        
       
     </div>
 

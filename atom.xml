@@ -6,7 +6,7 @@
   <link href="https://tzynwang.github.io/atom.xml" rel="self"/>
   
   <link href="https://tzynwang.github.io/"/>
-  <updated>2021-06-22T06:58:13.339Z</updated>
+  <updated>2021-06-23T09:40:15.257Z</updated>
   <id>https://tzynwang.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>TODO：「部屬Express.js App至Heroku」</title>
+    <link href="https://tzynwang.github.io/2021/heroku-deploy-note/"/>
+    <id>https://tzynwang.github.io/2021/heroku-deploy-note/</id>
+    <published>2021-06-23T07:48:43.000Z</published>
+    <updated>2021-06-23T09:40:15.257Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;總結&quot;&gt;&lt;a href=&quot;#總結&quot; class=&quot;headerlink&quot; title=&quot;總結&quot;&gt;&lt;/a&gt;總結&lt;/h2&gt;&lt;p&gt;重跑三次流程後依舊未解之兩個問題：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;確定Heroku的Config</summary>
+        
+      
+    
+    
+    
+    <category term="Heroku" scheme="https://tzynwang.github.io/categories/Heroku/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>從零開始重寫：餐廳清單（Express版）路由、METHODS重構</title>
@@ -114,30 +139,6 @@
     
     
     <category term="JavaScript" scheme="https://tzynwang.github.io/categories/JavaScript/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>「webpack環境設置步驟」相關筆記</title>
-    <link href="https://tzynwang.github.io/2021/webpack-note/"/>
-    <id>https://tzynwang.github.io/2021/webpack-note/</id>
-    <published>2021-06-12T03:02:00.000Z</published>
-    <updated>2021-06-13T03:13:46.035Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;總結&quot;&gt;&lt;a href=&quot;#總結&quot; class=&quot;headerlink&quot; title=&quot;總結&quot;&gt;&lt;/a&gt;總結&lt;/h2&gt;&lt;p&gt;使用webpack（本次搭配axios與vue）開發前端web APP時的環境相關設置筆記&lt;/p&gt;
-&lt;h2 id=&quot;環境&quot;&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="webpack" scheme="https://tzynwang.github.io/categories/webpack/"/>
     
     
   </entry>
