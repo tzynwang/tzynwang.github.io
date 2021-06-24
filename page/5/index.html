@@ -197,7 +197,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">49</span>
+          <span class="site-state-item-count">50</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -238,6 +238,124 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope="" itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tzynwang.github.io/2021/git-workflow/">
+
+    <span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar-pexels-alex-andrews-215-215.png">
+      <meta itemprop="name" content="Charlie (Tzu Yin)">
+      <meta itemprop="description" content="一介普通文組的學習筆記 📒">
+    </span>
+
+    <span hidden="" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="普通文組">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/git-workflow/" class="post-title-link" itemprop="url">Git workflow</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-02-19 11:03:13 / Modified: 11:51:56" itemprop="dateCreated datePublished" datetime="2021-02-19T11:03:13+08:00">2021-02-19</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+          <a href="/categories/git/" itemprop="url" rel="index"><span itemprop="name">git</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2021/git-workflow/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/git-workflow/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="Summary-of-this-post"><a href="#Summary-of-this-post" class="headerlink" title="Summary of this post"></a>Summary of this post</h2><p>A note for 2 types of the git workflow:</p>
+<ol>
+<li>Create a GitHub repository first, then clone it to local to work</li>
+<li>Work on local first, then create a GitHub repository to push local work to it</li>
+</ol>
+<p>先<code>git clone</code>一個空的repository再開始本機作業會省事一點。</p>
+<h2 id="Environment"><a href="#Environment" class="headerlink" title="Environment"></a>Environment</h2><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git: 2.30.0.windows.2</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="Workflow-git-clone-first"><a href="#Workflow-git-clone-first" class="headerlink" title="Workflow: git clone first"></a>Workflow: git clone first</h2><ol>
+<li>Create a repository on GitHub</li>
+<li>Copy the repository URL <code>https://github.com/&lt;username&gt;/&lt;repository-name&gt;.git</code></li>
+<li>Launch cmd.exe, move to the preferred location, run <code>git clone &lt;repository URL&gt;</code></li>
+<li>Move to the folder by <code>cd &lt;repository-name&gt;</code></li>
+<li>Complete the work in local folder, run <code>git add .</code> and <code>git commit</code></li>
+<li>Run <code>git push</code> to push the local work to the GitHub repository</li>
+</ol>
+<p>Note: no need to config the <code>remote</code> and <code>branch</code> manually, <code>git clone</code> will take care these.<br>先<code>git clone</code>一個空的repository可以省略手動設定remote跟branch的步驟。</p>
+<h2 id="Workflow-local-work-first"><a href="#Workflow-local-work-first" class="headerlink" title="Workflow: local work first"></a>Workflow: local work first</h2><ol>
+<li>Complete the work locally</li>
+<li>Create a repository on GitHub</li>
+<li>Run <code>git init</code> in the local working folder</li>
+<li>Run the following command to add remote URL: <code>git remote add &lt;short-name-for-repository&gt; &lt;url-for-repository&gt;</code><br>For example: <code>git remote add origin https://github.com/tzynwang/hello.git</code></li>
+<li>Run <code>git add .</code> and <code>git commit</code></li>
+<li>Run <code>git push --set-upstream origin master</code> to push local content to GitHub repository</li>
+</ol>
+<p>Note: need to config <code>git remote</code> and <code>git push --set-upstream</code> manually<br>如果先在本機執行作業前沒有先<code>git clone</code>一個空的repository，那麼<code>git init</code>後必須手動執行<code>git remote add</code>，第一次<code>git push</code>時也須加上<code>--set-upstream origin master</code></p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes">Git Basics - Working with Remotes</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/git-guides/git-remote">Git Guides: Git Remote</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/git-guides/git-push">Git Guides: Git Push</a></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 

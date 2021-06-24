@@ -6,7 +6,7 @@
   <link href="https://tzynwang.github.io/atom.xml" rel="self"/>
   
   <link href="https://tzynwang.github.io/"/>
-  <updated>2021-06-23T09:40:15.257Z</updated>
+  <updated>2021-06-24T07:38:12.121Z</updated>
   <id>https://tzynwang.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>「使用passport middleware實作登入系統」相關筆記</title>
+    <link href="https://tzynwang.github.io/2021/express-passport-login-note/"/>
+    <id>https://tzynwang.github.io/2021/express-passport-login-note/</id>
+    <published>2021-06-24T05:41:18.000Z</published>
+    <updated>2021-06-24T07:38:12.121Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;總結&quot;&gt;&lt;a href=&quot;#總結&quot; class=&quot;headerlink&quot; title=&quot;總結&quot;&gt;&lt;/a&gt;總結&lt;/h2&gt;&lt;p&gt;本次練習包含以下幾個主要功能：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;使用&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="Express" scheme="https://tzynwang.github.io/categories/Express/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>TODO：「部屬Express.js App至Heroku」</title>
@@ -116,29 +141,6 @@
     <category term="JavaScript" scheme="https://tzynwang.github.io/categories/JavaScript/"/>
     
     <category term="Vue" scheme="https://tzynwang.github.io/categories/Vue/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>「產生順序數陣列」相關筆記</title>
-    <link href="https://tzynwang.github.io/2021/array-with-serial-number/"/>
-    <id>https://tzynwang.github.io/2021/array-with-serial-number/</id>
-    <published>2021-06-14T10:27:20.000Z</published>
-    <updated>2021-06-14T11:00:00.734Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;總結&quot;&gt;&lt;a href=&quot;#總結&quot; class=&quot;headerlink&quot; title=&quot;總結&quot;&gt;&lt;/a&gt;總結&lt;/h2&gt;&lt;p&gt;使用&lt;code&gt;Array()</summary>
-        
-      
-    
-    
-    
-    <category term="JavaScript" scheme="https://tzynwang.github.io/categories/JavaScript/"/>
     
     
   </entry>

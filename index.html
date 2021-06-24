@@ -197,7 +197,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">49</span>
+          <span class="site-state-item-count">50</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -238,6 +238,186 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope="" itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tzynwang.github.io/2021/express-passport-login-note/">
+
+    <span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar-pexels-alex-andrews-215-215.png">
+      <meta itemprop="name" content="Charlie (Tzu Yin)">
+      <meta itemprop="description" content="一介普通文組的學習筆記 📒">
+    </span>
+
+    <span hidden="" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="普通文組">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/express-passport-login-note/" class="post-title-link" itemprop="url">「使用passport middleware實作登入系統」相關筆記</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-06-24 13:41:18 / Modified: 15:38:12" itemprop="dateCreated datePublished" datetime="2021-06-24T13:41:18+08:00">2021-06-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+          <a href="/categories/Express/" itemprop="url" rel="index"><span itemprop="name">Express</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2021/express-passport-login-note/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/express-passport-login-note/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>本次練習包含以下幾個主要功能：</p>
+<ul>
+<li>使用<a target="_blank" rel="noopener" href="https://www.npmjs.com/package/passport">passport</a>來驗證使用者輸入的登入資訊（帳號、密碼）是否有效<ul>
+<li>並<code>passport.authenticate()</code>會接手處理驗證成功／失敗的redirect endpoint</li>
+<li>搭配<code>req.isAuthenticated()</code>設計middleware來控制登入前後可視之畫面（例：登入前不可查看/dashboard頁面、登入後無法查看/user/login頁面）</li>
+</ul>
+</li>
+<li>使用<a target="_blank" rel="noopener" href="https://www.npmjs.com/package/connect-flash">connect-flash</a>搭配express-handlebars的partial來實現<code>res.redirect()</code>後顯示錯誤訊息的功能</li>
+</ul>
+<h2 id="環境"><a href="#環境" class="headerlink" title="環境"></a>環境</h2><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">passport: 0.4.1</span><br><span class="line">passport-local: 1.0.0</span><br><span class="line">express: 4.17.1</span><br><span class="line">express-session: 1.17.2</span><br><span class="line">connect-flash: 0.1.1</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="筆記"><a href="#筆記" class="headerlink" title="筆記"></a>筆記</h2><h3 id="app-js"><a href="#app-js" class="headerlink" title="app.js"></a>app.js</h3><script src="https://gist.github.com/tzynwang/afaa354b51d99a02994f11bf0d11b993.js"></script>
+
+<ul>
+<li>13行開始：參考<a target="_blank" rel="noopener" href="https://www.npmjs.com/package/passport#middleware">passport的官方示範</a>，將<code>resave</code>與<code>saveUninitialized</code>兩個參數都設定為<code>true</code><ul>
+<li>根據<a target="_blank" rel="noopener" href="https://www.npmjs.com/package/express-session">express-session的官方文件</a>：</li>
+<li><code>resave</code>: Forces the session to be saved back to the session store, even if the session was never modified during the request.</li>
+<li><code>saveUninitialized</code>: Forces a session that is “uninitialized” to be saved to the store. A session is uninitialized when it is new but not modified.</li>
+</ul>
+</li>
+<li>21行開始<ul>
+<li><code>res.locals.successMessage = req.flash('successMessage')</code>: Every view will have access to any error or success messages that you flash.<br>Ref.: <a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/23160743/how-to-send-flash-messages-in-express-4-0">How to send flash messages in Express 4.0?</a></li>
+<li><code>res.locals</code>: An object that contains response <strong>local variables scoped to the request</strong>, and therefore <strong>available only to the view(s) rendered</strong> during that request / response cycle (if any). Otherwise, this property is identical to <code>app.locals</code>.<br>Ref.: <a target="_blank" rel="noopener" href="http://expressjs.com/en/api.html#res.locals">Express: res.locals</a></li>
+<li>須注意<code>req.flash('error')</code>此名稱為passport專用，將error修改為其他名稱後，passport <code>done()</code>的錯誤訊息就無法顯示</li>
+</ul>
+</li>
+</ul>
+<h3 id="config-passport-js"><a href="#config-passport-js" class="headerlink" title="config/passport.js"></a>config/passport.js</h3><script src="https://gist.github.com/tzynwang/cc3b3e679e73660fff218cbbe3897fa5.js"></script>
+
+<ul>
+<li>說明：<code>function loginVerify(passport)</code>匯出後由<code>app.js</code> require後使用，參考<code>app.js</code>原始碼33-34行</li>
+<li>第6行的<code>{ usernameField: 'email' }</code><ul>
+<li>By default, LocalStrategy expects to find credentials in parameters named <code>username</code> and <code>password</code>. If your site prefers to name these fields differently, options are available to change the defaults.</li>
+<li>登入表單中的username與password name欄位若不是<code>name="username"</code>與<code>name="password"</code>的話，可額外指定要讀取的表格欄位，<code>{ usernameField: 'email' }</code>的意思即是使用登入表單中的<code>name="email"</code>欄位作為<code>usernameField</code></li>
+</ul>
+</li>
+<li>第9行的<code>{ message: 'User not exist' }</code>：其中<code>'User not exist'</code>會由<code>req.flash('error')</code>顯示</li>
+<li><code>done(null, user)</code>與<code>done(null, false)</code><ul>
+<li><code>done(null, user)</code>: If the credentials are valid, the verify callback invokes <code>done()</code> to <strong>supply Passport with the user that authenticated</strong>.</li>
+<li><code>done(null, false)</code>: If the credentials are not valid, <code>done()</code> should be <strong>invoked with false instead of a user</strong> to indicate an authentication failure.</li>
+</ul>
+</li>
+<li><code>serializeUser</code>與<code>deserializeUser</code><ul>
+<li>16行：Only the <code>user.id</code> is serialized to the session, keeping the amount of data stored within the session small.</li>
+<li>20行：When subsequent requests are received, this ID (<code>user.id</code>) is used to find the user, <strong>which will be restored to <code>req.user</code></strong>.</li>
+<li>Ref.: <a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/27637609/understanding-passport-serialize-deserialize">Understanding passport serialize deserialize</a><br>Q: Where does <code>user.id</code> go after <code>passport.serializeUser</code> has been called?<br>A: The <code>user.id</code> is <strong>saved in the session</strong>, and is later used to retrieve the whole object via the <code>deserializeUser</code> function. <code>serializeUser</code> determines which data of the user object should be stored in the session.</li>
+</ul>
+</li>
+</ul>
+<h3 id="config-auto-js"><a href="#config-auto-js" class="headerlink" title="config/auto.js"></a>config/auto.js</h3><script src="https://gist.github.com/tzynwang/a33766a251de5bfc93c51333d34ebc3b.js"></script>
+
+<ul>
+<li>關於<code>.isAuthenticated()</code><figure class="figure--center"><img src="/2021/express-passport-login-note/it_just_works_king_crimson.jpg" title="We just don't have it in the docs"><figcaption><p>We just don't have it in the docs</p></figcaption></figure>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/38820251/how-is-req-isauthenticated-in-passport-js-implemented">How is req.isAuthenticated() in Passport JS implemented?</a><br>For any request, you can check if a user <strong>is authenticated or not</strong> by using this method.</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/jaredhanson/passport/issues/683">No Mention of isAuthenticated() in docs #683</a><br>There is no bug… The thing is that the <code>isAuthenticated()</code> and <code>isUnauthenticated()</code> functions are not mentioned anywhere in the docs.</li>
+</ul>
+</li>
+<li>在<code>routes/home.js</code>與<code>routes/user.js</code>中作為middleware使用<ul>
+<li><code>isLoggedIn</code>：若使用者已登入，則可繼續前往該endpoint；反之若使用者未登入的話，則導向<code>/user/login</code>，並顯示提示訊息（<code>Please log in to view this page.</code>）</li>
+<li><code>notLoggedIn</code>：若使用者在已經登入的情況下前往<code>/user/login</code>或<code>/user/register</code>，則自動導回<code>/dashboard</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="routes-modules"><a href="#routes-modules" class="headerlink" title="routes/modules"></a>routes/modules</h3><script src="https://gist.github.com/tzynwang/46da1a3a1881b339c4151444527b12a9.js"></script>
+
+<ul>
+<li>home.js<ul>
+<li>第12行<code>res.render('dashboard', { user: req.user.username })</code>：通過登入驗證的使用者資料會被儲存在<code>req.user</code>中，要在<code>dashboard</code>模板中顯示<code>username</code>的話，從<code>req.user</code>中取<code>username</code>的值即可</li>
+</ul>
+</li>
+<li>user.js<ul>
+<li>21-25行：直接由<code>passport.authenticate('local', { ... })</code>接管登入驗證的程序，驗證成功的話導向<code>/dashboard</code>，失敗則導回<code>/user/login</code>，並因為<code>failureFlash</code>設定為<code>true</code>，<code>login</code>模板會根據config/passport.js中設定的條件顯示相對應的錯誤訊息（<code>{ message: 'User not exist' }</code>與<code>{ message: 'Password incorrect' }</code>）</li>
+<li>Setting the <code>failureFlash</code> option to <code>true</code> instructs Passport to flash an error message using the message given by the strategy’s verify callback, if any. 需注意views/partials中的<code>{{#if error}}</code>不可換成其他名稱，<code>req.flash('error')</code>中的<code>'error'</code>也不可換（換了就無法顯示訊息）</li>
+<li><code>req.logout()</code>: Passport exposes a <code>logout()</code> function on <code>req</code> that can be called from any route handler which needs to terminate a login session. Invoking <code>logout()</code> will <strong>remove the <code>req.user</code> property and clear the login session (if any)</strong>.</li>
+</ul>
+</li>
+</ul>
+<h3 id="views-partials"><a href="#views-partials" class="headerlink" title="views/partials"></a>views/partials</h3><script src="https://gist.github.com/tzynwang/0b6189f1dc961b792690202dde873773.js"></script>
+
+<ul>
+<li>使用partials時的views資料夾結構：<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">/views</span><br><span class="line">  /layouts</span><br><span class="line">    main.handlebars</span><br><span class="line">  /partials</span><br><span class="line">    messages.handlebars</span><br><span class="line">  dashboard.handlebars</span><br><span class="line">  index.handlebars</span><br><span class="line">  login.handlebars</span><br><span class="line">  register.handlebars</span><br></pre></td></tr></tbody></table></figure></li>
+<li>使用方式：設定好partials內容後，將<code>{{&gt; 檔案名稱}}</code>（例：<code>{{&gt; messages}}</code>）插回其餘模板即可</li>
+<li>會自動根據<code>{{#if 參數是否為true}}</code>來決定顯示哪些partials內容，舉例：若passport.js中的<code>done()</code>回傳error的話，partials檔案<code>messages.handlebars</code>中的24-29行即會顯示在<code>login</code>或<code>register</code>模板中</li>
+</ul>
+<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://www.passportjs.org/docs/">Passport: Documentation</a></li>
+<li>YouTube教學<ul>
+<li><a target="_blank" rel="noopener" href="https://youtu.be/6FOq4cUdH8k">Node.js With Passport Authentication | Full Project</a></li>
+<li><a target="_blank" rel="noopener" href="https://youtu.be/W5Tb1MIeg-I">Build a Login System in NodeJS with Passport.js Authentication | A NodeJS Tutorial</a></li>
+</ul>
+</li>
+<li><a target="_blank" rel="noopener" href="http://cythilya.blogspot.com/2015/08/node-handlebars.html">Node - 使用模版引擎 Handlebars</a></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1540,172 +1720,6 @@ on <a target="_blank" rel="noopener" href="https://codepen.io">CodePen</a>.</spa
 <li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/40859299/axios-post-request-body-is-empty-object">Axios post request.body is empty object</a></li>
 <li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/51143730/axios-posting-empty-request">Axios posting empty request</a></li>
 <li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/55593431/cant-receive-data-from-axios-on-api">Can’t receive data from axios on API</a></li>
-</ul>
-</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope="" itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://tzynwang.github.io/2021/express-middleware/">
-
-    <span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar-pexels-alex-andrews-215-215.png">
-      <meta itemprop="name" content="Charlie (Tzu Yin)">
-      <meta itemprop="description" content="一介普通文組的學習筆記 📒">
-    </span>
-
-    <span hidden="" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="普通文組">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/express-middleware/" class="post-title-link" itemprop="url">Alpha Camp「2-3 middleware實作練習」技術記錄</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-05-23 12:53:23" itemprop="dateCreated datePublished" datetime="2021-05-23T12:53:23+08:00">2021-05-23</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-05-25 19:35:00" itemprop="dateModified" datetime="2021-05-25T19:35:00+08:00">2021-05-25</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-          <a href="/categories/Express/" itemprop="url" rel="index"><span itemprop="name">Express</span></a>
-        </span>
-    </span>
-
-  
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus: </span>
-    
-    <a title="disqus" href="/2021/express-middleware/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/express-middleware/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>在本作業中實作的相關功能：</p>
-<ul>
-<li>透過Express middleware偵測發送給<code>localhost:3000</code>的請求</li>
-<li>將每一筆對<code>localhost:3000</code>的請求（request）時間、方法、路由與回應時間輸出到終端上；形式如：<code>2021-05-23 13:00:20 | GET from / | total time: 117ms</code></li>
-<li>將以上記錄寫入純文字檔案中，並使用者可下載此份檔案</li>
-<li>專案GitHub：<a target="_blank" rel="noopener" href="https://github.com/tzynwang/ac_assignment_2-3_middleware#readme">tzynwang/ac_assignment_2-3_middleware</a></li>
-</ul>
-<figure class="figure--center"><img src="/2021/express-middleware/assignment-screenshot.png" title="操作畫面截圖"><figcaption><p>操作畫面截圖</p></figcaption></figure>
-
-<h2 id="環境"><a href="#環境" class="headerlink" title="環境"></a>環境</h2><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">node: 12.20.2</span><br><span class="line">express: 4.17.1</span><br><span class="line">express-handlebars: 5.3.2</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></tbody></table></figure>
-<h2 id="筆記"><a href="#筆記" class="headerlink" title="筆記"></a>筆記</h2><h3 id="專案結構"><a href="#專案結構" class="headerlink" title="專案結構"></a>專案結構</h3><figure class="highlight text"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">├─ requestLogs</span><br><span class="line">|   └─ requestLogs.txt</span><br><span class="line">├─ scripts</span><br><span class="line">|   ├─ logRequest.js</span><br><span class="line">|   └─ saveToFile.js</span><br><span class="line">├─ views</span><br><span class="line">|   ├─ layouts</span><br><span class="line">|   |  └─ main.handlebars</span><br><span class="line">|   └─ index.handlebars</span><br><span class="line">└─ app.js</span><br></pre></td></tr></tbody></table></figure>
-<ul>
-<li><code>requestLogs/requestLogs.txt</code>：記錄每一次請求的文字檔案</li>
-<li><code>scripts/logRequest.js</code>：記錄每一次請求的日期、時間、方法與路由，除了輸出到終端外，也會呼叫<code>saveToFile()</code>來將以上內容寫入檔案中</li>
-<li><code>scripts/saveToFile.js</code>：負責寫入檔案的動作</li>
-<li><code>views</code>資料夾：提供瀏覽器介面來讓使用者與此app互動</li>
-<li><code>app.js</code>：載入middleware，並根據路由給予不同的回應</li>
-</ul>
-<h3 id="app-js內容"><a href="#app-js內容" class="headerlink" title="app.js內容"></a>app.js內容</h3><script src="https://gist.github.com/tzynwang/427b059b4444ac99377d9fda7afe0ed3.js"></script>
-
-<p>第11行：Application-level middleware（app層級的middleware）</p>
-<ul>
-<li>The function is executed every time the app receives a request (when middleware isn’t mounted with any path).</li>
-<li>出處：<a target="_blank" rel="noopener" href="http://expressjs.com/en/guide/using-middleware.html#middleware.application">Express official document: Application-level middleware</a></li>
-<li>宣告<code>app.use(logRequest)</code>讓所有的請求都會經過該middleware</li>
-</ul>
-<p>第47-54行：下載功能（<code>app.post('/download', () =&gt; {...})</code>）</p>
-<ul>
-<li>48行：指定欲下載的檔案的路徑</li>
-<li>49行：取得當下時間</li>
-<li>50行：透過<code>.toISOString()</code>將Date物件轉換為字串，再使用<code>.slice(0, 10)</code>取出日期部分</li>
-<li>51行：使用<code>.toLocaleTimeString()</code>來取timeStart的時間部分，因為想要取24小時制的時間，故<code>option</code>部分加上<code>hour12: false</code>指定輸出24小時制的時間；參考<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleTimeString#using_options">MDN: Date.prototype.toLocaleTimeString() – Using options</a>；最後搭配<code>.split(':').join('')</code>將時間字串從<code>HH:MM:SS</code>的格式轉為<code>HHMMSS</code></li>
-<li>52行：宣告檔案名稱格式</li>
-<li>53行：<code>res.download()</code> 第一個變數為檔案路徑，第二個變數為檔案名稱；可參考<a target="_blank" rel="noopener" href="http://expressjs.com/en/api.html#res.download">Express official document: res.download()</a></li>
-</ul>
-<h3 id="scripts-logRequest-js內容"><a href="#scripts-logRequest-js內容" class="headerlink" title="scripts/logRequest.js內容"></a>scripts/logRequest.js內容</h3><script src="https://gist.github.com/tzynwang/84d5282f68abfd5e60aa36d94fbe84b7.js"></script>
-
-<p>第13行：<code>res.locals.logs = {...}</code></p>
-<ul>
-<li>路由只接受<code>res</code>或<code>req</code>這兩種參數，無法透過middleware的<code>next()</code>來傳遞變數</li>
-<li>將變數賦予<code>res.locals</code>後，即可在每一個路由中透過<code>res.locals</code>取出需要的值；相關概念的說明可參考以下影片（9:25開始相關段落）<iframe width="560" height="315" src="https://www.youtube.com/embed/lY6icfhap2o?start=565" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
-
-</li>
-</ul>
-<p>第14行：<code>res.on('finish')</code>或<code>res.on('close')</code></p>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://nodejs.org/api/http.html#http_event_finish">Event finish</a>: Emitted <strong>when the response has been sent</strong>. More specifically, this event is emitted when the last segment of the response headers and body have been handed off to the operating system for transmission over the network. <strong>It does not imply that the client has received anything yet.</strong> 送出回應後即觸發，不考慮客戶端是否真的有收到回應</li>
-<li><a target="_blank" rel="noopener" href="https://nodejs.org/api/http.html#http_event_close_1">Event close</a>: Indicates that the <strong>response is completed</strong>, or its underlying connection was terminated prematurely (before the response completion).</li>
-<li>如果只是為計算「伺服器收到請求到發出回應」的時間的話，使用<code>res.on('finish')</code>即可</li>
-</ul>
-<h3 id="scripts-saveToFile-js內容"><a href="#scripts-saveToFile-js內容" class="headerlink" title="scripts/saveToFile.js內容"></a>scripts/saveToFile.js內容</h3><script src="https://gist.github.com/tzynwang/15a3ac5e5ff573117c8a8070109adc54.js"></script>
-
-<ul>
-<li>第4行：<code>fs.appendFile()</code>使用方式可參考：<a target="_blank" rel="noopener" href="https://nodejs.org/docs/latest-v12.x/api/fs.html#fs_fs_appendfile_path_data_options_callback">Node.js: fs.appendFile(path, data[, options], callback)</a></li>
-</ul>
-<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
-<li>Express official document: <ul>
-<li><a target="_blank" rel="noopener" href="http://expressjs.com/en/api.html#res.download">res.download()</a></li>
-<li><a target="_blank" rel="noopener" href="http://expressjs.com/en/api.html#res.locals">res.locals</a></li>
-</ul>
-</li>
-<li>StackOverFlow:<ul>
-<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/7288814/download-a-file-from-nodejs-server-using-express">Download a file from NodeJS Server using Express</a></li>
-<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/38273555/what-events-should-i-handle-in-express-response-stream-object-to-handle-when-t">What events should I handle in express response (stream) object to handle when the response finishes?</a></li>
-<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/19793723/can-i-send-data-via-express-next-function">Can I send data via express next() function?</a></li>
-<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/347551/what-tool-to-use-to-draw-file-tree-diagram">What tool to use to draw file tree diagram</a>：Windows系統直接在終端輸入tree就可以產生資料夾的樹狀結構資料了，不用安裝其他工具</li>
 </ul>
 </li>
 </ul>
