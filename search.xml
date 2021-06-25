@@ -895,6 +895,34 @@ on <a href="https://codepen.io">CodePen</a>.</span>
       </categories>
   </entry>
   <entry>
+    <title>「Edit Files With Workspaces」相關筆記</title>
+    <url>/2021/edit-files-with-workspaces/</url>
+    <content><![CDATA[<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>這篇文章是在處理ALPHA Camp 學期1 S3 A11作業「試用開發者工具」時，嘗試搭配DevTools，避免作業過程中意外重新整理網頁，造成作業進度遺失的問題。</p>
+<p>DevTools確實可以解決上述問題。<br>但為了要讓DevTools可以隨時儲存我的修改進度，需要先將作業範例檔案git clone回本機，然後再透過DevTools開啟作業資料夾，給予DevTools權限來記錄我對作業進行的修改。</p>
+<h2 id="版本與環境"><a href="#版本與環境" class="headerlink" title="版本與環境"></a>版本與環境</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Google Chrome: 89.0.4389.82 (Official Build) (x86_64)</span><br><span class="line">ox: macOS Big Suf Version 11.1</span><br></pre></td></tr></table></figure>
+
+<h2 id="流程與筆記"><a href="#流程與筆記" class="headerlink" title="流程與筆記"></a>流程與筆記</h2><ol>
+<li>觀察ALPHA Camp提供的作業連結（<a href="https://alphacamp.github.io/css-facebook/">https://alphacamp.github.io/css-facebook/</a>），推測作業範例應該是用GitHub Pages發布的，嘗試搜尋「ALPHA Camp github」，運氣不錯，作業的repo是公開的</li>
+<li>把作業範例git clone回本機</li>
+<li>用VSCode開啟作業範例，使用VSCode的擴充套件「<a href="https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer">Live Server</a>」讓index.html在localhost:5500動起來</li>
+<li>參考官方文件的說明（<a href="https://developers.google.com/web/tools/chrome-devtools/workspaces#devtools">「Set up DevTools」</a>），開啟DevTools後，點選功能分頁中的「Sources」</li>
+<li>進入子選項「Filesystem」，點選「+ Add folder to workspace」，選擇作業所在的資料夾<br> 備註：在流程第二步，我選擇將作業clone回桌面的css-facebook資料夾，故在這一步，我要在DevTools中選擇開啟位在桌面的css-facebook資料夾</li>
+<li>在DevTools跳出權限請求視窗時，選擇給予DevTools權限來修改本機檔案</li>
+<li>在沒有開錯資料夾、沒有出現其他問題的情況下，Filesystem區域會出現資料夾css-facebook，點開資料夾會看到index.html與style.css兩個檔案，並style.css的檔案圖示右下角會有綠點 <figure class="figure--center"><img src="/2021/edit-files-with-workspaces/file-mapping-success.png"></figure></li>
+<li>綠點代表現在透過DevTools對網頁做的CSS更動都會儲存到style.css中，這樣即使改到一半重新整理網頁，先前的CSS修改也不會消失</li>
+</ol>
+<h3 id="注意事項"><a href="#注意事項" class="headerlink" title="注意事項"></a>注意事項</h3><p>在DevTools的Elements標籤下修改的HTML內容不會被保存下來，想要保存對HTML的變更，請移動到Sources標籤去修改index.html</p>
+<figure class="figure--center"><img src="/2021/edit-files-with-workspaces/why-it-isnt-saved.png"></figure>
+
+<p>問：為什麼我在Elements修改網頁的內文不像修改CSS會被保存下來？<br>答：因為在Elements標籤下做的修改都是改到DOM，不是改到HTML。<br>瀏覽器取得HTML後，解析、並搭配CSS與JS來決定最後呈現給使用者看的內容會長什麼樣子，使用者看到、並用Elements操作（修改）的東西是DOM。<br>而這些DOM最終為什麼會以這些樣子呈現在網頁上，是綜合了HTML、CSS與JS互相搭配的結果，DevTools很難知道它到底該把使用者對DOM做的修改內容記錄到HTML、CSS或是JS檔案中。</p>
+<p>更詳細的解說可參考：<a href="https://developers.google.com/web/tools/chrome-devtools/workspaces#why">Save an HTML change to disk: Why it doesn’t work</a></p>
+<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><p><a href="https://developers.google.com/web/tools/chrome-devtools/workspaces">Edit Files With Workspaces</a></p>
+]]></content>
+      <categories>
+        <category>DevTools</category>
+      </categories>
+  </entry>
+  <entry>
     <title>「CSS Specificity」相關筆記</title>
     <url>/2021/css-specificity/</url>
     <content><![CDATA[<h2 id="重點整理"><a href="#重點整理" class="headerlink" title="重點整理"></a>重點整理</h2><ul>
@@ -1045,31 +1073,73 @@ on <a href="https://codepen.io">CodePen</a>.</span>
       </categories>
   </entry>
   <entry>
-    <title>「Edit Files With Workspaces」相關筆記</title>
-    <url>/2021/edit-files-with-workspaces/</url>
-    <content><![CDATA[<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>這篇文章是在處理ALPHA Camp 學期1 S3 A11作業「試用開發者工具」時，嘗試搭配DevTools，避免作業過程中意外重新整理網頁，造成作業進度遺失的問題。</p>
-<p>DevTools確實可以解決上述問題。<br>但為了要讓DevTools可以隨時儲存我的修改進度，需要先將作業範例檔案git clone回本機，然後再透過DevTools開啟作業資料夾，給予DevTools權限來記錄我對作業進行的修改。</p>
-<h2 id="版本與環境"><a href="#版本與環境" class="headerlink" title="版本與環境"></a>版本與環境</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Google Chrome: 89.0.4389.82 (Official Build) (x86_64)</span><br><span class="line">ox: macOS Big Suf Version 11.1</span><br></pre></td></tr></table></figure>
-
-<h2 id="流程與筆記"><a href="#流程與筆記" class="headerlink" title="流程與筆記"></a>流程與筆記</h2><ol>
-<li>觀察ALPHA Camp提供的作業連結（<a href="https://alphacamp.github.io/css-facebook/">https://alphacamp.github.io/css-facebook/</a>），推測作業範例應該是用GitHub Pages發布的，嘗試搜尋「ALPHA Camp github」，運氣不錯，作業的repo是公開的</li>
-<li>把作業範例git clone回本機</li>
-<li>用VSCode開啟作業範例，使用VSCode的擴充套件「<a href="https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer">Live Server</a>」讓index.html在localhost:5500動起來</li>
-<li>參考官方文件的說明（<a href="https://developers.google.com/web/tools/chrome-devtools/workspaces#devtools">「Set up DevTools」</a>），開啟DevTools後，點選功能分頁中的「Sources」</li>
-<li>進入子選項「Filesystem」，點選「+ Add folder to workspace」，選擇作業所在的資料夾<br> 備註：在流程第二步，我選擇將作業clone回桌面的css-facebook資料夾，故在這一步，我要在DevTools中選擇開啟位在桌面的css-facebook資料夾</li>
-<li>在DevTools跳出權限請求視窗時，選擇給予DevTools權限來修改本機檔案</li>
-<li>在沒有開錯資料夾、沒有出現其他問題的情況下，Filesystem區域會出現資料夾css-facebook，點開資料夾會看到index.html與style.css兩個檔案，並style.css的檔案圖示右下角會有綠點 <figure class="figure--center"><img src="/2021/edit-files-with-workspaces/file-mapping-success.png"></figure></li>
-<li>綠點代表現在透過DevTools對網頁做的CSS更動都會儲存到style.css中，這樣即使改到一半重新整理網頁，先前的CSS修改也不會消失</li>
+    <title>「部屬Express.js App至Google App Engine」相關筆記</title>
+    <url>/2021/express-app-deploy-gcp/</url>
+    <content><![CDATA[<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><ul>
+<li>同樣是在搭配使用MongoDB的情境下，整體流程比感覺比部屬至Heroku簡單許多</li>
+<li>缺點：無法處理「對資料庫導入種子資料」的需求；雖然App Engine提供<code>runtime: custom</code>與<code>Dockerfile</code>來處理一定程度的客製化需求，但無法配合<code>docker-compose.yml</code>來安裝mongoDB</li>
+</ul>
+<h2 id="環境"><a href="#環境" class="headerlink" title="環境"></a>環境</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Google Cloud SDK: 346.0.0</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></table></figure>
+<h2 id="部屬前設定"><a href="#部屬前設定" class="headerlink" title="部屬前設定"></a>部屬前設定</h2><h3 id="app-js"><a href="#app-js" class="headerlink" title="app.js"></a>app.js</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 新增process.env.PORT，讓App可以讀取Google App Engine分配的埠號</span></span><br><span class="line"><span class="keyword">const</span> port = process.env.PORT || <span class="number">5000</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 追加以下內容</span></span><br><span class="line">app.set(<span class="string">&#x27;trust proxy&#x27;</span>, <span class="literal">true</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>關於<code>app.set(&#39;trust proxy&#39;, true)</code><ul>
+<li>參考官方文件內容：<a href="https://cloud.google.com/appengine/docs/standard/nodejs/runtime#https_and_forwarding_proxies">HTTPS and forwarding proxies</a></li>
+<li>App Engine terminates HTTPS connections at the load balancer and forwards requests to your application. Some applications need to determine the original request IP and protocol. The user’s IP address is available in the standard X-Forwarded-For header. Applications that require this information should configure their web framework to trust the proxy.</li>
+<li>With Express.js, use the trust proxy setting: <code>app.set(&#39;trust proxy&#39;, true)</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="config-mongoose-js"><a href="#config-mongoose-js" class="headerlink" title="config/mongoose.js"></a>config/mongoose.js</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 於config/mongoose.js中追加process.env.MONGODB_URI</span></span><br><span class="line"><span class="keyword">const</span> MONGODB_URI = process.env.MONGODB_URI || <span class="string">&#x27;mongodb://localhost/login-passport&#x27;</span></span><br><span class="line">mongoose.connect(MONGODB_URI, &#123; ... &#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="app-yaml"><a href="#app-yaml" class="headerlink" title="app.yaml"></a>app.yaml</h3><figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">runtime:</span> <span class="string">nodejs12</span></span><br><span class="line"><span class="attr">env_variables:</span></span><br><span class="line">  <span class="attr">MONGODB_URI:</span> <span class="string">&#x27;mongodb+srv://&lt;DB使用者帳號&gt;:&lt;DB密碼&gt;@&lt;MongoDB cluster名稱&gt;.8glc1.mongodb.net/&lt;MongoDB cluster名稱&gt;?retryWrites=true&amp;w=majority&#x27;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>app.yaml</code>檔案位於專案的根目錄</li>
+<li>參考官方文件：<a href="https://cloud.google.com/appengine/docs/standard/nodejs/runtime">Node.js Runtime Environment</a></li>
+</ul>
+<h3 id="package-json"><a href="#package-json" class="headerlink" title="package.json"></a>package.json</h3><figure class="highlight"><table><tr><td class="code"><pre><span class="line">&quot;scripts&quot;: &#123;</span><br><span class="line">  &quot;start&quot;: &quot;node app.js&quot;</span><br><span class="line">&#125;,</span><br><span class="line">&quot;engines&quot;: &#123;</span><br><span class="line">  &quot;node&quot;: &quot;^12.0.0&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Google App Engine預設執行<code>node server.js</code>來啟動App，可以透過package.json中的<code>start</code> scripts修改執行內容（本次練習中改為<code>node app.js</code>）</li>
+<li>參考<a href="https://cloud.google.com/appengine/docs/standard/nodejs/runtime#application_startup">官方文件</a>：By default, the runtime starts your application by running <code>node server.js</code>. If you specify a start script in your <code>package.json</code> file, the runtime <strong>runs the specified start script instead</strong>.</li>
+</ul>
+<h2 id="部屬流程"><a href="#部屬流程" class="headerlink" title="部屬流程"></a>部屬流程</h2><ol>
+<li><p>在Google Cloud Platform建立新專案</p>
+</li>
+<li><p>安裝Google Cloud SDK</p>
+<ul>
+<li>官方說明文件：<a href="https://cloud.google.com/sdk/docs/install">https://cloud.google.com/sdk/docs/install</a></li>
+<li>Google Cloud SDK需搭配Python，安裝SDK時勾選Install Bundled Python選項即可，不須另外自行安裝Python</li>
+</ul>
+</li>
+<li><p>安裝完畢後，移動到要部屬到Google App Engine的專案的資料夾，在終端機輸入<code>gcloud init</code></p>
+</li>
+<li><p>完成布署前設定後，即可執行<code>gcloud app deploy</code>，部屬完畢後終端機會顯示App URL（類似<code>https://&lt;專案ID&gt;.de.r.appspot.com/</code>），可直接開啟該URL瀏覽專案</p>
+</li>
+<li><p>若URL打開後沒有載入任何內容，則進入App Engine→版本→診斷→記錄檔中查看錯誤訊息</p>
+<figure class="figure--center"><img src="/2021/express-app-deploy-gcp/gcp_AppEngine_Version.png"></figure>
+<figure class="figure--center"><img src="/2021/express-app-deploy-gcp/gcp_log.png"></figure>
+</li>
+<li><p>部屬練習結果：</p>
+<ul>
+<li>Login practice: <a href="https://complete-verve-317814.de.r.appspot.com/">https://complete-verve-317814.de.r.appspot.com/</a></li>
+<li>Movie list (Express.js): <a href="https://academic-genius-317809.de.r.appspot.com/">https://academic-genius-317809.de.r.appspot.com/</a></li>
+</ul>
+</li>
 </ol>
-<h3 id="注意事項"><a href="#注意事項" class="headerlink" title="注意事項"></a>注意事項</h3><p>在DevTools的Elements標籤下修改的HTML內容不會被保存下來，想要保存對HTML的變更，請移動到Sources標籤去修改index.html</p>
-<figure class="figure--center"><img src="/2021/edit-files-with-workspaces/why-it-isnt-saved.png"></figure>
-
-<p>問：為什麼我在Elements修改網頁的內文不像修改CSS會被保存下來？<br>答：因為在Elements標籤下做的修改都是改到DOM，不是改到HTML。<br>瀏覽器取得HTML後，解析、並搭配CSS與JS來決定最後呈現給使用者看的內容會長什麼樣子，使用者看到、並用Elements操作（修改）的東西是DOM。<br>而這些DOM最終為什麼會以這些樣子呈現在網頁上，是綜合了HTML、CSS與JS互相搭配的結果，DevTools很難知道它到底該把使用者對DOM做的修改內容記錄到HTML、CSS或是JS檔案中。</p>
-<p>更詳細的解說可參考：<a href="https://developers.google.com/web/tools/chrome-devtools/workspaces#why">Save an HTML change to disk: Why it doesn’t work</a></p>
-<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><p><a href="https://developers.google.com/web/tools/chrome-devtools/workspaces">Edit Files With Workspaces</a></p>
+<h2 id="關於種子資料"><a href="#關於種子資料" class="headerlink" title="關於種子資料"></a>關於種子資料</h2><ul>
+<li>原本以為可以僅靠<code>Dockerfile</code>來處理<code>npm run seed</code>，不過實際執行後得到錯誤訊息<code>MongooseServerSelectionError: connect ECONNREFUSED 127.0.0.1:27017</code></li>
+<li>錯誤訊息的意義：環境中沒有安裝MongoDB<ul>
+<li><a href="https://stackoverflow.com/questions/46523321/mongoerror-connect-econnrefused-127-0-0-127017">MongoError: connect ECONNREFUSED 127.0.0.1:27017</a>: This happened probably because the <strong>MongoDB service isn’t started</strong>.</li>
+</ul>
+</li>
+<li>然而Google App Engine並不支援<code>docker-compose</code>，故無法進行「安裝MongoDB後導入種子資料」此需求，參考討論串：<ul>
+<li><a href="https://stackoverflow.com/questions/63782456/docker-compose-yml-in-google-cloud-run">docker-compose.yml in Google Cloud Run</a></li>
+<li><a href="https://stackoverflow.com/questions/63223193/google-app-engine-run-command-after-deploy">Google App Engine run command after deploy</a></li>
+<li><a href="https://stackoverflow.com/questions/39877521/using-docker-compose-within-google-app-engine">Using Docker compose within Google App Engine</a></li>
+</ul>
+</li>
+</ul>
 ]]></content>
       <categories>
-        <category>DevTools</category>
+        <category>Express</category>
       </categories>
   </entry>
   <entry>
@@ -1427,8 +1497,8 @@ on <a href="https://codepen.io">CodePen</a>.</span>
 </ul>
 ]]></content>
       <categories>
-        <category>Express Handlebars</category>
         <category>Express</category>
+        <category>Express Handlebars</category>
         <category>Mongoose</category>
       </categories>
   </entry>

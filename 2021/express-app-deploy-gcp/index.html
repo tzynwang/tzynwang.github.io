@@ -21,23 +21,24 @@
     var NexT = window.NexT || {};
     var CONFIG = {"hostname":"tzynwang.github.io","root":"/","images":"/images","scheme":"Pisces","version":"8.2.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqus","storage":true,"lazyload":false,"nav":null,"activeClass":"disqus"},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":"enable","trigger":"auto","top_n_per_article":-1,"unescape":false,"preload":false}};
   </script>
-<meta name="description" content="總結使用webpack（本次搭配axios與vue）開發前端web APP時的環境相關設置筆記 環境1234webpack: 5.38.1webpack-cli: 4.7.2vue: 2.6.14os: Windows_NT 10.0.18363 win32 x64 步驟 移動到專案資料夾內，在終端機輸入npm init -y  -y可跳過所有關於package.json的設定問題 npm-ini">
+<meta name="description" content="總結 同樣是在搭配使用MongoDB的情境下，整體流程比感覺比部屬至Heroku簡單許多 缺點：無法處理「對資料庫導入種子資料」的需求；雖然App Engine提供runtime: custom與Dockerfile來處理一定程度的客製化需求，但無法配合docker-compose.yml來安裝mongoDB  環境12Google Cloud SDK: 346.0.0os: Windows_NT">
 <meta property="og:type" content="article">
-<meta property="og:title" content="「webpack環境設置步驟」相關筆記">
-<meta property="og:url" content="https://tzynwang.github.io/2021/webpack-note/index.html">
+<meta property="og:title" content="「部屬Express.js App至Google App Engine」相關筆記">
+<meta property="og:url" content="https://tzynwang.github.io/2021/express-app-deploy-gcp/index.html">
 <meta property="og:site_name" content="普通文組">
-<meta property="og:description" content="總結使用webpack（本次搭配axios與vue）開發前端web APP時的環境相關設置筆記 環境1234webpack: 5.38.1webpack-cli: 4.7.2vue: 2.6.14os: Windows_NT 10.0.18363 win32 x64 步驟 移動到專案資料夾內，在終端機輸入npm init -y  -y可跳過所有關於package.json的設定問題 npm-ini">
+<meta property="og:description" content="總結 同樣是在搭配使用MongoDB的情境下，整體流程比感覺比部屬至Heroku簡單許多 缺點：無法處理「對資料庫導入種子資料」的需求；雖然App Engine提供runtime: custom與Dockerfile來處理一定程度的客製化需求，但無法配合docker-compose.yml來安裝mongoDB  環境12Google Cloud SDK: 346.0.0os: Windows_NT">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://tzynwang.github.io/2021/webpack-note/webpack-folder-structure.png">
-<meta property="article:published_time" content="2021-06-12T03:02:00.000Z">
-<meta property="article:modified_time" content="2021-06-13T03:13:46.035Z">
+<meta property="og:image" content="https://tzynwang.github.io/2021/express-app-deploy-gcp/gcp_AppEngine_Version.png">
+<meta property="og:image" content="https://tzynwang.github.io/2021/express-app-deploy-gcp/gcp_log.png">
+<meta property="article:published_time" content="2021-06-25T06:06:51.000Z">
+<meta property="article:modified_time" content="2021-06-25T07:10:50.030Z">
 <meta property="article:author" content="Charlie (Tzu Yin)">
 <meta property="article:tag" content="hexo, hexo blog, tzyn, 普通文組">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://tzynwang.github.io/2021/webpack-note/webpack-folder-structure.png">
+<meta name="twitter:image" content="https://tzynwang.github.io/2021/express-app-deploy-gcp/gcp_AppEngine_Version.png">
 
 
-<link rel="canonical" href="https://tzynwang.github.io/2021/webpack-note/">
+<link rel="canonical" href="https://tzynwang.github.io/2021/express-app-deploy-gcp/">
 
 
 <script class="page-configurations">
@@ -49,7 +50,7 @@
     lang   : 'en'
   };
 </script>
-<title>「webpack環境設置步驟」相關筆記 | 普通文組</title>
+<title>「部屬Express.js App至Google App Engine」相關筆記 | 普通文組</title>
   
 
 
@@ -187,7 +188,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B8%BD%E7%B5%90"><span class="nav-number">1.</span> <span class="nav-text">總結</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%92%B0%E5%A2%83"><span class="nav-number">2.</span> <span class="nav-text">環境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AD%A5%E9%A9%9F"><span class="nav-number">3.</span> <span class="nav-text">步驟</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B3%87%E6%96%99%E5%A4%BE%E7%B5%90%E6%A7%8B"><span class="nav-number">4.</span> <span class="nav-text">資料夾結構</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A3%9C%E5%85%85%EF%BC%9A%E8%8B%A5%E9%A0%88%E5%B0%8E%E5%85%A5-css"><span class="nav-number">5.</span> <span class="nav-text">補充：若須導入.css</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%83%E8%80%83%E6%96%87%E4%BB%B6"><span class="nav-number">6.</span> <span class="nav-text">參考文件</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B8%BD%E7%B5%90"><span class="nav-number">1.</span> <span class="nav-text">總結</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%92%B0%E5%A2%83"><span class="nav-number">2.</span> <span class="nav-text">環境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%83%A8%E5%B1%AC%E5%89%8D%E8%A8%AD%E5%AE%9A"><span class="nav-number">3.</span> <span class="nav-text">部屬前設定</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#app-js"><span class="nav-number">3.1.</span> <span class="nav-text">app.js</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#config-mongoose-js"><span class="nav-number">3.2.</span> <span class="nav-text">config/mongoose.js</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#app-yaml"><span class="nav-number">3.3.</span> <span class="nav-text">app.yaml</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#package-json"><span class="nav-number">3.4.</span> <span class="nav-text">package.json</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%83%A8%E5%B1%AC%E6%B5%81%E7%A8%8B"><span class="nav-number">4.</span> <span class="nav-text">部屬流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%9C%E6%96%BC%E7%A8%AE%E5%AD%90%E8%B3%87%E6%96%99"><span class="nav-number">5.</span> <span class="nav-text">關於種子資料</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -253,7 +254,7 @@
   
 
   <article itemscope="" itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://tzynwang.github.io/2021/webpack-note/">
+    <link itemprop="mainEntityOfPage" href="https://tzynwang.github.io/2021/express-app-deploy-gcp/">
 
     <span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar-pexels-alex-andrews-215-215.png">
@@ -266,7 +267,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          「webpack環境設置步驟」相關筆記
+          「部屬Express.js App至Google App Engine」相關筆記
         </h1>
 
         <div class="post-meta-container">
@@ -276,23 +277,17 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
+      
 
-      <time title="Created: 2021-06-12 11:02:00" itemprop="dateCreated datePublished" datetime="2021-06-12T11:02:00+08:00">2021-06-12</time>
+      <time title="Created: 2021-06-25 14:06:51 / Modified: 15:10:50" itemprop="dateCreated datePublished" datetime="2021-06-25T14:06:51+08:00">2021-06-25</time>
     </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-06-13 11:13:46" itemprop="dateModified" datetime="2021-06-13T11:13:46+08:00">2021-06-13</time>
-      </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
       </span>
       <span class="post-meta-item-text">In</span>
         <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-          <a href="/categories/webpack/" itemprop="url" rel="index"><span itemprop="name">webpack</span></a>
+          <a href="/categories/Express/" itemprop="url" rel="index"><span itemprop="name">Express</span></a>
         </span>
     </span>
 
@@ -305,8 +300,8 @@
       </span>
       <span class="post-meta-item-text">Disqus: </span>
     
-    <a title="disqus" href="/2021/webpack-note/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/webpack-note/" itemprop="commentCount"></span>
+    <a title="disqus" href="/2021/express-app-deploy-gcp/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/express-app-deploy-gcp/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -320,58 +315,67 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>使用webpack（本次搭配axios與vue）開發前端web APP時的環境相關設置筆記</p>
-<h2 id="環境"><a href="#環境" class="headerlink" title="環境"></a>環境</h2><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">webpack: 5.38.1</span><br><span class="line">webpack-cli: 4.7.2</span><br><span class="line">vue: 2.6.14</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></tbody></table></figure>
-<h2 id="步驟"><a href="#步驟" class="headerlink" title="步驟"></a>步驟</h2><ol>
-<li><p>移動到專案資料夾內，在終端機輸入<code>npm init -y</code></p>
+        <h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><ul>
+<li>同樣是在搭配使用MongoDB的情境下，整體流程比感覺比部屬至Heroku簡單許多</li>
+<li>缺點：無法處理「對資料庫導入種子資料」的需求；雖然App Engine提供<code>runtime: custom</code>與<code>Dockerfile</code>來處理一定程度的客製化需求，但無法配合<code>docker-compose.yml</code>來安裝mongoDB</li>
+</ul>
+<h2 id="環境"><a href="#環境" class="headerlink" title="環境"></a>環境</h2><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Google Cloud SDK: 346.0.0</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="部屬前設定"><a href="#部屬前設定" class="headerlink" title="部屬前設定"></a>部屬前設定</h2><h3 id="app-js"><a href="#app-js" class="headerlink" title="app.js"></a>app.js</h3><figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 新增process.env.PORT，讓App可以讀取Google App Engine分配的埠號</span></span><br><span class="line"><span class="keyword">const</span> port = process.env.PORT || <span class="number">5000</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 追加以下內容</span></span><br><span class="line">app.set(<span class="string">'trust proxy'</span>, <span class="literal">true</span>)</span><br></pre></td></tr></tbody></table></figure>
 <ul>
-<li><code>-y</code>可跳過所有關於<code>package.json</code>的設定問題</li>
-<li><a target="_blank" rel="noopener" href="https://docs.npmjs.com/cli/v6/commands/npm-init">npm-init</a>: If the initializer is omitted (by just calling <code>npm init</code>), init will fall back to legacy init behavior. It will <strong>ask you a bunch of questions</strong>, and then write a <code>package.json</code> for you. You can also use <code>-y</code>/<code>--yes</code> to <strong>skip the questionnaire</strong> altogether.</li>
+<li>關於<code>app.set('trust proxy', true)</code><ul>
+<li>參考官方文件內容：<a target="_blank" rel="noopener" href="https://cloud.google.com/appengine/docs/standard/nodejs/runtime#https_and_forwarding_proxies">HTTPS and forwarding proxies</a></li>
+<li>App Engine terminates HTTPS connections at the load balancer and forwards requests to your application. Some applications need to determine the original request IP and protocol. The user’s IP address is available in the standard X-Forwarded-For header. Applications that require this information should configure their web framework to trust the proxy.</li>
+<li>With Express.js, use the trust proxy setting: <code>app.set('trust proxy', true)</code></li>
 </ul>
 </li>
-<li><p>安裝<code>webpack</code>、<code>webpack-cli</code>、<code>axios</code>、<code>vue</code>與<code>html-webpack-plugin</code></p>
+</ul>
+<h3 id="config-mongoose-js"><a href="#config-mongoose-js" class="headerlink" title="config/mongoose.js"></a>config/mongoose.js</h3><figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 於config/mongoose.js中追加process.env.MONGODB_URI</span></span><br><span class="line"><span class="keyword">const</span> MONGODB_URI = process.env.MONGODB_URI || <span class="string">'mongodb://localhost/login-passport'</span></span><br><span class="line">mongoose.connect(MONGODB_URI, { ... })</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="app-yaml"><a href="#app-yaml" class="headerlink" title="app.yaml"></a>app.yaml</h3><figure class="highlight yaml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">runtime:</span> <span class="string">nodejs12</span></span><br><span class="line"><span class="attr">env_variables:</span></span><br><span class="line">  <span class="attr">MONGODB_URI:</span> <span class="string">'mongodb+srv://&lt;DB使用者帳號&gt;:&lt;DB密碼&gt;@&lt;MongoDB cluster名稱&gt;.8glc1.mongodb.net/&lt;MongoDB cluster名稱&gt;?retryWrites=true&amp;w=majority'</span></span><br></pre></td></tr></tbody></table></figure>
 <ul>
-<li><code>npm install &lt;package name&gt; --save-dev</code></li>
-<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/22891211/what-is-the-difference-between-save-and-save-dev">What is the difference between –save and –save-dev?</a></li>
-<li><a target="_blank" rel="noopener" href="https://docs.npmjs.com/cli/v6/configuring-npm/package-json#devdependencies">npm: devDependencies</a>: If someone is planning on downloading and using your module in their program, then they probably <strong>don’t want or need to download and build the external test or documentation framework</strong> that you use. In this case, it’s best to map these additional items in a <strong>devDependencies</strong> object.</li>
+<li><code>app.yaml</code>檔案位於專案的根目錄</li>
+<li>參考官方文件：<a target="_blank" rel="noopener" href="https://cloud.google.com/appengine/docs/standard/nodejs/runtime">Node.js Runtime Environment</a></li>
+</ul>
+<h3 id="package-json"><a href="#package-json" class="headerlink" title="package.json"></a>package.json</h3><figure class="highlight"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">"scripts": {</span><br><span class="line">  "start": "node app.js"</span><br><span class="line">},</span><br><span class="line">"engines": {</span><br><span class="line">  "node": "^12.0.0"</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<ul>
+<li>Google App Engine預設執行<code>node server.js</code>來啟動App，可以透過package.json中的<code>start</code> scripts修改執行內容（本次練習中改為<code>node app.js</code>）</li>
+<li>參考<a target="_blank" rel="noopener" href="https://cloud.google.com/appengine/docs/standard/nodejs/runtime#application_startup">官方文件</a>：By default, the runtime starts your application by running <code>node server.js</code>. If you specify a start script in your <code>package.json</code> file, the runtime <strong>runs the specified start script instead</strong>.</li>
+</ul>
+<h2 id="部屬流程"><a href="#部屬流程" class="headerlink" title="部屬流程"></a>部屬流程</h2><ol>
+<li><p>在Google Cloud Platform建立新專案</p>
+</li>
+<li><p>安裝Google Cloud SDK</p>
+<ul>
+<li>官方說明文件：<a target="_blank" rel="noopener" href="https://cloud.google.com/sdk/docs/install">https://cloud.google.com/sdk/docs/install</a></li>
+<li>Google Cloud SDK需搭配Python，安裝SDK時勾選Install Bundled Python選項即可，不須另外自行安裝Python</li>
 </ul>
 </li>
-<li><p><code>package.json</code>設定如下：</p>
-<script src="https://gist.github.com/tzynwang/0036ecd4516c978467fe64266791de26.js"></script>
-
+<li><p>安裝完畢後，移動到要部屬到Google App Engine的專案的資料夾，在終端機輸入<code>gcloud init</code></p>
+</li>
+<li><p>完成布署前設定後，即可執行<code>gcloud app deploy</code>，部屬完畢後終端機會顯示App URL（類似<code>https://&lt;專案ID&gt;.de.r.appspot.com/</code>），可直接開啟該URL瀏覽專案</p>
+</li>
+<li><p>若URL打開後沒有載入任何內容，則進入App Engine→版本→診斷→記錄檔中查看錯誤訊息</p>
+<figure class="figure--center"><img src="/2021/express-app-deploy-gcp/gcp_AppEngine_Version.png"></figure>
+<figure class="figure--center"><img src="/2021/express-app-deploy-gcp/gcp_log.png"></figure>
+</li>
+<li><p>部屬練習結果：</p>
 <ul>
-<li><a target="_blank" rel="noopener" href="https://webpack.js.org/configuration/watch/"><code>webpack --watch</code></a>: This means that after the initial build, webpack will <strong>continue to watch for changes</strong> in any of the resolved files. 執行<code>npm run watch</code>的話，webpack會自動更新修改後的src內容；搭配vs code liver server的話，就能及時觀察到修正後的結果</li>
+<li>Login practice: <a target="_blank" rel="noopener" href="https://complete-verve-317814.de.r.appspot.com/">https://complete-verve-317814.de.r.appspot.com/</a></li>
+<li>Movie list (Express.js): <a target="_blank" rel="noopener" href="https://academic-genius-317809.de.r.appspot.com/">https://academic-genius-317809.de.r.appspot.com/</a></li>
 </ul>
-</li>
-<li><p>在根目錄中建立<code>webpack.config.js</code>，（在專案需要使用vue的情況下）設定如下：</p>
-<script src="https://gist.github.com/tzynwang/8dadd59d8eb258d7843727f7bbcd4419.js"></script>
-</li>
-<li><p>在根目錄中建立資料夾<code>src</code>，其中的檔案名稱需與<code>webpack.config.js</code>搭配，故使用<code>index.js</code>與<code>template.html</code></p>
-<script src="https://gist.github.com/tzynwang/948dbc4dea908a2cc27b874949a35383.js"></script>
-
-<script src="https://gist.github.com/tzynwang/2bf0bd73c4f25713752a3c7decd13385.js"></script>
-</li>
-<li><p>在終端機執行<code>npm run build</code>後，根目錄中出現資料夾<code>dist</code>，內有<code>index.html</code>與<code>main.js</code></p>
-<script src="https://gist.github.com/tzynwang/96051f1c7bdded10f79ad3caeaf838be.js"></script>
-
-<p>並且<code>main.js</code>已經根據<code>webpack.config.js</code>中<code>HtmlWebpackPlugin</code>的設定，自動嵌入<code>&lt;body&gt;</code>底部<br>使用webpack進行打包的步驟到此結束</p>
 </li>
 </ol>
-<h2 id="資料夾結構"><a href="#資料夾結構" class="headerlink" title="資料夾結構"></a>資料夾結構</h2><figure class="figure--center"><img src="/2021/webpack-note/webpack-folder-structure.png" title="Folder structure"><figcaption><p>Folder structure</p></figcaption></figure>
-
-<h2 id="補充：若須導入-css"><a href="#補充：若須導入-css" class="headerlink" title="補充：若須導入.css"></a>補充：若須導入.css</h2><ol>
-<li>安裝<code>css-loader</code>與<code>mini-css-extract-plugin</code>（<code>npm i css-loader mini-css-extract-plugin -D</code>）</li>
-<li>在<code>index.js</code>中匯入.css檔案<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">'./bootstrap.bundle'</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">'./bootstrap.css'</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">'./style.css'</span></span><br></pre></td></tr></tbody></table></figure></li>
-<li><code>webpack.config.js</code>加入以下內容：<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> MiniCssExtractPlugin = <span class="built_in">require</span>(<span class="string">'mini-css-extract-plugin'</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = {</span><br><span class="line">  plugins: [</span><br><span class="line">    <span class="keyword">new</span> MiniCssExtractPlugin()</span><br><span class="line">  ],</span><br><span class="line">  <span class="built_in">module</span>: {</span><br><span class="line">    rules: [</span><br><span class="line">      {</span><br><span class="line">        test: <span class="regexp">/\.css$/i</span>,</span><br><span class="line">        use: [MiniCssExtractPlugin.loader, <span class="string">'css-loader'</span>]</span><br><span class="line">      }</span><br><span class="line">    ]</span><br><span class="line">  }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://webpack.js.org/plugins/mini-css-extract-plugin/">MiniCssExtractPlugin</a>：此plugin會在執行<code>npm run build</code>時將（匯入index.js的）.css檔案獨立出來，並嵌入<code>index.html</code>中（預設在<code>&lt;head&gt;</code>尾端，可透過<a target="_blank" rel="noopener" href="https://webpack.js.org/plugins/mini-css-extract-plugin/#insert"><code>insert</code>參數</a>修改）</li>
-<li><a target="_blank" rel="noopener" href="https://webpack.js.org/configuration/module/#ruletest">Webpack config: Module Rule.test</a>: Include all modules that pass test assertion. If you supply a <code>Rule.test</code> option, you cannot also supply a <code>Rule.resource</code>. </li>
+<h2 id="關於種子資料"><a href="#關於種子資料" class="headerlink" title="關於種子資料"></a>關於種子資料</h2><ul>
+<li>原本以為可以僅靠<code>Dockerfile</code>來處理<code>npm run seed</code>，不過實際執行後得到錯誤訊息<code>MongooseServerSelectionError: connect ECONNREFUSED 127.0.0.1:27017</code></li>
+<li>錯誤訊息的意義：環境中沒有安裝MongoDB<ul>
+<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/46523321/mongoerror-connect-econnrefused-127-0-0-127017">MongoError: connect ECONNREFUSED 127.0.0.1:27017</a>: This happened probably because the <strong>MongoDB service isn’t started</strong>.</li>
 </ul>
 </li>
-</ol>
-<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://webpack.js.org/guides/getting-started/">Webpack 5: Getting Started</a></li>
-<li><a target="_blank" rel="noopener" href="https://github.com/jantimon/html-webpack-plugin#readme">HTML Webpack Plugin</a></li>
+<li>然而Google App Engine並不支援<code>docker-compose</code>，故無法進行「安裝MongoDB後導入種子資料」此需求，參考討論串：<ul>
+<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/63782456/docker-compose-yml-in-google-cloud-run">docker-compose.yml in Google Cloud Run</a></li>
+<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/63223193/google-app-engine-run-command-after-deploy">Google App Engine run command after deploy</a></li>
+<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/39877521/using-docker-compose-within-google-app-engine">Using Docker compose within Google App Engine</a></li>
+</ul>
+</li>
 </ul>
 
     </div>
@@ -386,14 +390,11 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2021/2-2-movie-list-note/" rel="prev" title="Alpha Camp「2-2 電影清單」技術記錄">
-                  <i class="fa fa-chevron-left"></i> Alpha Camp「2-2 電影清單」技術記錄
+                <a href="/2021/express-passport-login-note/" rel="prev" title="「使用passport middleware實作登入系統」相關筆記">
+                  <i class="fa fa-chevron-left"></i> 「使用passport middleware實作登入系統」相關筆記
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2021/array-with-serial-number/" rel="next" title="「產生順序數陣列」相關筆記">
-                  「產生順序數陣列」相關筆記 <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
     </footer>
@@ -488,9 +489,9 @@
 ;
 
   var disqus_config = function() {
-    this.page.url = "https://tzynwang.github.io/2021/webpack-note/";
-    this.page.identifier = "2021/webpack-note/";
-    this.page.title = "「webpack環境設置步驟」相關筆記";
+    this.page.url = "https://tzynwang.github.io/2021/express-app-deploy-gcp/";
+    this.page.identifier = "2021/express-app-deploy-gcp/";
+    this.page.title = "「部屬Express.js App至Google App Engine」相關筆記";
     };
   NexT.utils.loadComments('#disqus_thread', () => {
     if (window.DISQUS) {

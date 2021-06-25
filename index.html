@@ -197,7 +197,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">50</span>
+          <span class="site-state-item-count">51</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -238,6 +238,155 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope="" itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tzynwang.github.io/2021/express-app-deploy-gcp/">
+
+    <span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar-pexels-alex-andrews-215-215.png">
+      <meta itemprop="name" content="Charlie (Tzu Yin)">
+      <meta itemprop="description" content="一介普通文組的學習筆記 📒">
+    </span>
+
+    <span hidden="" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="普通文組">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/express-app-deploy-gcp/" class="post-title-link" itemprop="url">「部屬Express.js App至Google App Engine」相關筆記</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-06-25 14:06:51 / Modified: 15:10:50" itemprop="dateCreated datePublished" datetime="2021-06-25T14:06:51+08:00">2021-06-25</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+          <a href="/categories/Express/" itemprop="url" rel="index"><span itemprop="name">Express</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2021/express-app-deploy-gcp/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/express-app-deploy-gcp/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><ul>
+<li>同樣是在搭配使用MongoDB的情境下，整體流程比感覺比部屬至Heroku簡單許多</li>
+<li>缺點：無法處理「對資料庫導入種子資料」的需求；雖然App Engine提供<code>runtime: custom</code>與<code>Dockerfile</code>來處理一定程度的客製化需求，但無法配合<code>docker-compose.yml</code>來安裝mongoDB</li>
+</ul>
+<h2 id="環境"><a href="#環境" class="headerlink" title="環境"></a>環境</h2><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Google Cloud SDK: 346.0.0</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="部屬前設定"><a href="#部屬前設定" class="headerlink" title="部屬前設定"></a>部屬前設定</h2><h3 id="app-js"><a href="#app-js" class="headerlink" title="app.js"></a>app.js</h3><figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 新增process.env.PORT，讓App可以讀取Google App Engine分配的埠號</span></span><br><span class="line"><span class="keyword">const</span> port = process.env.PORT || <span class="number">5000</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 追加以下內容</span></span><br><span class="line">app.set(<span class="string">'trust proxy'</span>, <span class="literal">true</span>)</span><br></pre></td></tr></tbody></table></figure>
+<ul>
+<li>關於<code>app.set('trust proxy', true)</code><ul>
+<li>參考官方文件內容：<a target="_blank" rel="noopener" href="https://cloud.google.com/appengine/docs/standard/nodejs/runtime#https_and_forwarding_proxies">HTTPS and forwarding proxies</a></li>
+<li>App Engine terminates HTTPS connections at the load balancer and forwards requests to your application. Some applications need to determine the original request IP and protocol. The user’s IP address is available in the standard X-Forwarded-For header. Applications that require this information should configure their web framework to trust the proxy.</li>
+<li>With Express.js, use the trust proxy setting: <code>app.set('trust proxy', true)</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="config-mongoose-js"><a href="#config-mongoose-js" class="headerlink" title="config/mongoose.js"></a>config/mongoose.js</h3><figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 於config/mongoose.js中追加process.env.MONGODB_URI</span></span><br><span class="line"><span class="keyword">const</span> MONGODB_URI = process.env.MONGODB_URI || <span class="string">'mongodb://localhost/login-passport'</span></span><br><span class="line">mongoose.connect(MONGODB_URI, { ... })</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="app-yaml"><a href="#app-yaml" class="headerlink" title="app.yaml"></a>app.yaml</h3><figure class="highlight yaml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">runtime:</span> <span class="string">nodejs12</span></span><br><span class="line"><span class="attr">env_variables:</span></span><br><span class="line">  <span class="attr">MONGODB_URI:</span> <span class="string">'mongodb+srv://&lt;DB使用者帳號&gt;:&lt;DB密碼&gt;@&lt;MongoDB cluster名稱&gt;.8glc1.mongodb.net/&lt;MongoDB cluster名稱&gt;?retryWrites=true&amp;w=majority'</span></span><br></pre></td></tr></tbody></table></figure>
+<ul>
+<li><code>app.yaml</code>檔案位於專案的根目錄</li>
+<li>參考官方文件：<a target="_blank" rel="noopener" href="https://cloud.google.com/appengine/docs/standard/nodejs/runtime">Node.js Runtime Environment</a></li>
+</ul>
+<h3 id="package-json"><a href="#package-json" class="headerlink" title="package.json"></a>package.json</h3><figure class="highlight"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">"scripts": {</span><br><span class="line">  "start": "node app.js"</span><br><span class="line">},</span><br><span class="line">"engines": {</span><br><span class="line">  "node": "^12.0.0"</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<ul>
+<li>Google App Engine預設執行<code>node server.js</code>來啟動App，可以透過package.json中的<code>start</code> scripts修改執行內容（本次練習中改為<code>node app.js</code>）</li>
+<li>參考<a target="_blank" rel="noopener" href="https://cloud.google.com/appengine/docs/standard/nodejs/runtime#application_startup">官方文件</a>：By default, the runtime starts your application by running <code>node server.js</code>. If you specify a start script in your <code>package.json</code> file, the runtime <strong>runs the specified start script instead</strong>.</li>
+</ul>
+<h2 id="部屬流程"><a href="#部屬流程" class="headerlink" title="部屬流程"></a>部屬流程</h2><ol>
+<li><p>在Google Cloud Platform建立新專案</p>
+</li>
+<li><p>安裝Google Cloud SDK</p>
+<ul>
+<li>官方說明文件：<a target="_blank" rel="noopener" href="https://cloud.google.com/sdk/docs/install">https://cloud.google.com/sdk/docs/install</a></li>
+<li>Google Cloud SDK需搭配Python，安裝SDK時勾選Install Bundled Python選項即可，不須另外自行安裝Python</li>
+</ul>
+</li>
+<li><p>安裝完畢後，移動到要部屬到Google App Engine的專案的資料夾，在終端機輸入<code>gcloud init</code></p>
+</li>
+<li><p>完成布署前設定後，即可執行<code>gcloud app deploy</code>，部屬完畢後終端機會顯示App URL（類似<code>https://&lt;專案ID&gt;.de.r.appspot.com/</code>），可直接開啟該URL瀏覽專案</p>
+</li>
+<li><p>若URL打開後沒有載入任何內容，則進入App Engine→版本→診斷→記錄檔中查看錯誤訊息</p>
+<figure class="figure--center"><img src="/2021/express-app-deploy-gcp/gcp_AppEngine_Version.png"></figure>
+<figure class="figure--center"><img src="/2021/express-app-deploy-gcp/gcp_log.png"></figure>
+</li>
+<li><p>部屬練習結果：</p>
+<ul>
+<li>Login practice: <a target="_blank" rel="noopener" href="https://complete-verve-317814.de.r.appspot.com/">https://complete-verve-317814.de.r.appspot.com/</a></li>
+<li>Movie list (Express.js): <a target="_blank" rel="noopener" href="https://academic-genius-317809.de.r.appspot.com/">https://academic-genius-317809.de.r.appspot.com/</a></li>
+</ul>
+</li>
+</ol>
+<h2 id="關於種子資料"><a href="#關於種子資料" class="headerlink" title="關於種子資料"></a>關於種子資料</h2><ul>
+<li>原本以為可以僅靠<code>Dockerfile</code>來處理<code>npm run seed</code>，不過實際執行後得到錯誤訊息<code>MongooseServerSelectionError: connect ECONNREFUSED 127.0.0.1:27017</code></li>
+<li>錯誤訊息的意義：環境中沒有安裝MongoDB<ul>
+<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/46523321/mongoerror-connect-econnrefused-127-0-0-127017">MongoError: connect ECONNREFUSED 127.0.0.1:27017</a>: This happened probably because the <strong>MongoDB service isn’t started</strong>.</li>
+</ul>
+</li>
+<li>然而Google App Engine並不支援<code>docker-compose</code>，故無法進行「安裝MongoDB後導入種子資料」此需求，參考討論串：<ul>
+<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/63782456/docker-compose-yml-in-google-cloud-run">docker-compose.yml in Google Cloud Run</a></li>
+<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/63223193/google-app-engine-run-command-after-deploy">Google App Engine run command after deploy</a></li>
+<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/39877521/using-docker-compose-within-google-app-engine">Using Docker compose within Google App Engine</a></li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -749,11 +898,11 @@
       </span>
       <span class="post-meta-item-text">In</span>
         <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-          <a href="/categories/Express-Handlebars/" itemprop="url" rel="index"><span itemprop="name">Express Handlebars</span></a>
+          <a href="/categories/Express/" itemprop="url" rel="index"><span itemprop="name">Express</span></a>
         </span>
           , 
         <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-          <a href="/categories/Express/" itemprop="url" rel="index"><span itemprop="name">Express</span></a>
+          <a href="/categories/Express-Handlebars/" itemprop="url" rel="index"><span itemprop="name">Express Handlebars</span></a>
         </span>
           , 
         <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
@@ -1603,146 +1752,8 @@ on <a target="_blank" rel="noopener" href="https://codepen.io">CodePen</a>.</spa
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope="" itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://tzynwang.github.io/2021/mongoose-note/">
-
-    <span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar-pexels-alex-andrews-215-215.png">
-      <meta itemprop="name" content="Charlie (Tzu Yin)">
-      <meta itemprop="description" content="一介普通文組的學習筆記 📒">
-    </span>
-
-    <span hidden="" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="普通文組">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/mongoose-note/" class="post-title-link" itemprop="url">Alpha Camp「2-3 老爸的私房錢（簡易記帳APP）」技術記錄</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2021-05-24 13:38:45 / Modified: 15:23:08" itemprop="dateCreated datePublished" datetime="2021-05-24T13:38:45+08:00">2021-05-24</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
-        </span>
-    </span>
-
-  
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus: </span>
-    
-    <a title="disqus" href="/2021/mongoose-note/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/mongoose-note/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>以下是本次作業處理到的主要問題：</p>
-<ul>
-<li>透過一行腳本在多個資料庫個別產生種子資料</li>
-<li>透過mongoose在mongoDB中join兩組collections之間的資料</li>
-<li>使用axios進行ajax請求，根據使用者選擇的組別顯示相對應的帳目資料（例：選擇「休閒娛樂」的帳目資料，則畫面僅會顯示該類別的帳目，並消費總金額會同步更新）</li>
-</ul>
-<h2 id="環境"><a href="#環境" class="headerlink" title="環境"></a>環境</h2><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">node: 12.20.2</span><br><span class="line">express: 4.17.1</span><br><span class="line">express-handlebars: 5.3.2</span><br><span class="line">mongoose: 5.12.9</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></tbody></table></figure>
-<h2 id="筆記"><a href="#筆記" class="headerlink" title="筆記"></a>筆記</h2><h3 id="專案結構"><a href="#專案結構" class="headerlink" title="專案結構"></a>專案結構</h3><figure class="figure--center"><img src="/2021/mongoose-note/structure.png" title="本次專案的完整結構圖"><figcaption><p>本次專案的完整結構圖</p></figcaption></figure>
-
-<h3 id="透過一行腳本在多個資料庫個別產生種子資料"><a href="#透過一行腳本在多個資料庫個別產生種子資料" class="headerlink" title="透過一行腳本在多個資料庫個別產生種子資料"></a>透過一行腳本在多個資料庫個別產生種子資料</h3><p><code>npm run</code>腳本如右：<code>"seed": "node models/seeds/categorySeeder.js &amp;&amp; node models/seeds/recordSeeder.js"</code><br>兩份種子腳本的原始碼如下：</p>
-<script src="https://gist.github.com/tzynwang/1ff4db97c6defc36b0a2517f13066353.js"></script>
-
-<script src="https://gist.github.com/tzynwang/24a97dfb59507d16988598e5766380ec.js"></script>
-
-<ul>
-<li><code>node models/seeds/categorySeeder.js</code>執行完畢後，需確保腳本停止，方可開始執行<code>node models/seeds/recordSeeder.js</code></li>
-<li>在<code>categorySeeder.js</code>中，待<code>Categories.create()</code>完成後，串接<code>.then()</code>來停止db連線</li>
-<li><code>categorySeeder.js</code>結束後，開始執行<code>recordSeeder.js</code></li>
-<li>根據MDN的<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach#polyfill"><code>forEach()</code> polyfill</a>，<code>forEach()</code>並沒有await callback function的機制，故改使用<code>for...of</code>來進行迴圈；相關參考文件如下：<ul>
-<li><a target="_blank" rel="noopener" href="https://www.itread01.com/content/1553973607.html">為什麽 array.foreach 不支持 async/await</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.coreycleary.me/why-does-async-await-in-a-foreach-not-actually-await">Why does async/await in a .forEach not actually await?</a></li>
-<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/37576685/using-async-await-with-a-foreach-loop">Using async/await with a forEach loop</a></li>
-</ul>
-</li>
-<li>待<code>for...of</code>執行完畢後，再關閉db連線，結束<code>recordSeeder.js</code></li>
-</ul>
-<h3 id="對mongoDB進行類似SQL資料庫的join指令"><a href="#對mongoDB進行類似SQL資料庫的join指令" class="headerlink" title="對mongoDB進行類似SQL資料庫的join指令"></a>對mongoDB進行類似SQL資料庫的join指令</h3><script src="https://gist.github.com/tzynwang/623afbb2e2537e196f5c08897f674a94.js"></script>
-
-<ul>
-<li>第49行的<code>results</code>，在前端透過axios接收後進行<code>console.log(response.data)</code>的內容如下：<figure class="highlight json"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">{</span><br><span class="line">    <span class="attr">"_id"</span>: <span class="string">"60a3a3f66d1cf025c09c5714"</span>,</span><br><span class="line">    <span class="attr">"name"</span>: <span class="string">"早餐"</span>,</span><br><span class="line">    <span class="attr">"category"</span>: <span class="string">"餐飲食品"</span>,</span><br><span class="line">    <span class="attr">"date"</span>: <span class="string">"2021-05-18"</span>,</span><br><span class="line">    <span class="attr">"amount"</span>: <span class="number">80</span>,</span><br><span class="line">    <span class="attr">"__v"</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="attr">"iconPair"</span>: [</span><br><span class="line">        {</span><br><span class="line">            <span class="attr">"_id"</span>: <span class="string">"60a3a865b6ccf51988c7cf9b"</span>,</span><br><span class="line">            <span class="attr">"name"</span>: <span class="string">"餐飲食品"</span>,</span><br><span class="line">            <span class="attr">"icon"</span>: <span class="string">"&lt;i class=\"bi bi-cup-straw\"&gt;&lt;/i&gt;"</span>,</span><br><span class="line">            <span class="attr">"__v"</span>: <span class="number">0</span></span><br><span class="line">        }</span><br><span class="line">    ]</span><br><span class="line">}</span><br><span class="line">{</span><br><span class="line">    <span class="attr">"_id"</span>: <span class="string">"60a3a3f66d1cf025c09c5715"</span>,</span><br><span class="line">    <span class="attr">"name"</span>: <span class="string">"午餐"</span>,</span><br><span class="line">    <span class="attr">"category"</span>: <span class="string">"餐飲食品"</span>,</span><br><span class="line">    <span class="attr">"date"</span>: <span class="string">"2021-05-18"</span>,</span><br><span class="line">    <span class="attr">"amount"</span>: <span class="number">120</span>,</span><br><span class="line">    <span class="attr">"__v"</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="attr">"iconPair"</span>: [</span><br><span class="line">        {</span><br><span class="line">            <span class="attr">"_id"</span>: <span class="string">"60a3a865b6ccf51988c7cf9b"</span>,</span><br><span class="line">            <span class="attr">"name"</span>: <span class="string">"餐飲食品"</span>,</span><br><span class="line">            <span class="attr">"icon"</span>: <span class="string">"&lt;i class=\"bi bi-cup-straw\"&gt;&lt;/i&gt;"</span>,</span><br><span class="line">            <span class="attr">"__v"</span>: <span class="number">0</span></span><br><span class="line">        }</span><br><span class="line">    ]</span><br><span class="line">}</span><br><span class="line">{</span><br><span class="line">    <span class="attr">"_id"</span>: <span class="string">"60a3a3f66d1cf025c09c5716"</span>,</span><br><span class="line">    <span class="attr">"name"</span>: <span class="string">"晚餐"</span>,</span><br><span class="line">    <span class="attr">"category"</span>: <span class="string">"餐飲食品"</span>,</span><br><span class="line">    <span class="attr">"date"</span>: <span class="string">"2021-05-18"</span>,</span><br><span class="line">    <span class="attr">"amount"</span>: <span class="number">100</span>,</span><br><span class="line">    <span class="attr">"__v"</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="attr">"iconPair"</span>: [</span><br><span class="line">        {</span><br><span class="line">            <span class="attr">"_id"</span>: <span class="string">"60a3a865b6ccf51988c7cf9b"</span>,</span><br><span class="line">            <span class="attr">"name"</span>: <span class="string">"餐飲食品"</span>,</span><br><span class="line">            <span class="attr">"icon"</span>: <span class="string">"&lt;i class=\"bi bi-cup-straw\"&gt;&lt;/i&gt;"</span>,</span><br><span class="line">            <span class="attr">"__v"</span>: <span class="number">0</span></span><br><span class="line">        }</span><br><span class="line">    ]</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-使用<code>$lookup</code>關聯出的結果可透過鍵值<code>iconPair</code>取得</li>
-<li>相關參考文件：<ul>
-<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/36805784/how-to-join-two-collections-in-mongoose">How to join two collections in mongoose</a></li>
-<li><a target="_blank" rel="noopener" href="https://docs.mongodb.com/manual/reference/operator/aggregation/lookup/">$lookup (aggregation)</a></li>
-<li><a target="_blank" rel="noopener" href="https://docs.mongodb.com/manual/reference/operator/aggregation/sum/">$sum (aggregation)</a>：<code>$sum</code>可搭配<code>aggregation</code>來直接回傳某欄位的總計值，本次未使用</li>
-</ul>
-</li>
-</ul>
-<h3 id="使用axios進行ajax請求"><a href="#使用axios進行ajax請求" class="headerlink" title="使用axios進行ajax請求"></a>使用axios進行ajax請求</h3><figure class="figure--center"><img src="/2021/mongoose-note/demo.gif" title="使用ajax來請求特定帳目群組的資料"><figcaption><p>使用ajax來請求特定帳目群組的資料</p></figcaption></figure>
-
-<script src="https://gist.github.com/tzynwang/5bcb2c3c5e5868bad34b8549277e4878.js"></script>
-
-<ul>
-<li>若使用axios進行POST request的話，需搭配<code>body-parser</code>，並加上<code>app.use(bodyParser.json())</code>，否則無法取得POST request送出的資料<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// app.js中需加入以下兩組middleware</span></span><br><span class="line">app.use(bodyParser.json())</span><br><span class="line">app.use(bodyParser.urlencoded({<span class="attr">extended</span>: <span class="literal">true</span>}))</span><br></pre></td></tr></tbody></table></figure></li>
-<li>參考文件如下：<ul>
-<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/40859299/axios-post-request-body-is-empty-object">Axios post request.body is empty object</a></li>
-<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/51143730/axios-posting-empty-request">Axios posting empty request</a></li>
-<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/55593431/cant-receive-data-from-axios-on-api">Can’t receive data from axios on API</a></li>
-</ul>
-</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">…</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">…</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 

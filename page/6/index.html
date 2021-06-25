@@ -24,7 +24,7 @@
 <meta name="description" content="一介普通文組的學習筆記 📒">
 <meta property="og:type" content="website">
 <meta property="og:title" content="普通文組">
-<meta property="og:url" content="https://tzynwang.github.io/archives/2021/05/index.html">
+<meta property="og:url" content="https://tzynwang.github.io/page/6/index.html">
 <meta property="og:site_name" content="普通文組">
 <meta property="og:description" content="一介普通文組的學習筆記 📒">
 <meta property="og:locale" content="en_US">
@@ -33,19 +33,19 @@
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://tzynwang.github.io/archives/2021/05/">
+<link rel="canonical" href="https://tzynwang.github.io/page/6/">
 
 
 <script class="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : false,
+    isHome : true,
     isPost : false,
     lang   : 'en'
   };
 </script>
-<title>Archive | 普通文組</title>
+<title>普通文組</title>
   
 
 
@@ -237,192 +237,110 @@
 </noscript>
 
 
-    <div class="main-inner archive posts-collapse">
+    <div class="main-inner index posts-expand">
+
+    
 
 
+<div class="post-block">
   
   
+
+  <article itemscope="" itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tzynwang.github.io/2021/bundle-exec/">
+
+    <span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar-pexels-alex-andrews-215-215.png">
+      <meta itemprop="name" content="Charlie (Tzu Yin)">
+      <meta itemprop="description" content="一介普通文組的學習筆記 📒">
+    </span>
+
+    <span hidden="" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="普通文組">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/bundle-exec/" class="post-title-link" itemprop="url">bundle exec</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-02-08 20:31:26" itemprop="dateCreated datePublished" datetime="2021-02-08T20:31:26+08:00">2021-02-08</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-02-18 15:44:15" itemprop="dateModified" datetime="2021-02-18T15:44:15+08:00">2021-02-18</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+          <a href="/categories/jekyll/" itemprop="url" rel="index"><span itemprop="name">jekyll</span></a>
+        </span>
+    </span>
+
   
-  <div class="post-block">
-    <div class="post-content">
-      <div class="collection-title">
-        
-        <span class="collection-header">Nice! 51 posts in total. Keep on posting.</span>
-      </div>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2021/bundle-exec/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/bundle-exec/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>Question: why adds <code>bundle exec</code> in the command when running jekyll server in the first time?<br>Answer (short): to know the version of the gems that are going to use.</p>
+<h2 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h2><p><code>bundle exec</code> will check the Gemfile to understand “<strong>what gems</strong> will be used” and “<strong>which version</strong> of the gems should be used”.<br>In the case that Gemfile is modified, run <code>bundle exec jekyll server</code> instead of just running <code>jekyll server</code>.</p>
+<p>第一次執行<code>jekyll server</code>要輸入<code>bundle exec jekyll server</code>，讓環境根據Gemfile查詢你的程式會用到哪些gems、並這些gems該使用哪些版本。在Gemfile沒有更新的情況下，第二次以後直接在環境輸入<code>jekyll server</code>就可以了。</p>
+<p>若有修改Gemfile的內容，則須重新執行<code>bundle exec jekyll server</code>。</p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a target="_blank" rel="noopener" href="https://stackoverflow.com/a/16218854/15028185">What does bundle exec rake mean?</a></p>
+<p>You’re running <code>bundle exec</code> on a program. The program’s creators wrote it when <strong>certain versions of gems</strong> were available. The program <strong>Gemfile</strong> specifies the versions of the gems the creators decided to use. That is, the script was made to run correctly against these gem versions.</p>
 
       
-    <div class="collection-year">
-      <span class="collection-header">2021</span>
     </div>
 
-  <article itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated" datetime="2021-05-29T14:26:16+08:00" content="2021-05-29">
-          05-29
-        </time>
-      </div>
+    
+    
+    
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/2-2-movie-list-note/" itemprop="url">
-            <span itemprop="name">Alpha Camp「2-2 電影清單」技術記錄</span>
-          </a>
-      </div>
-
+    <footer class="post-footer">
+        <div class="post-eof"></div>
       
-    </header>
+    </footer>
   </article>
-
-  <article itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated" datetime="2021-05-25T18:32:01+08:00" content="2021-05-25">
-          05-25
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/innerHTML-destroy-event-listener/" itemprop="url">
-            <span itemprop="name">為什麼使用innerHTML對元素新增內容後，該元素「子代」的事件監聽器失效？</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated" datetime="2021-05-24T13:38:45+08:00" content="2021-05-24">
-          05-24
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/mongoose-note/" itemprop="url">
-            <span itemprop="name">Alpha Camp「2-3 老爸的私房錢（簡易記帳APP）」技術記錄</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated" datetime="2021-05-23T12:53:23+08:00" content="2021-05-23">
-          05-23
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/express-middleware/" itemprop="url">
-            <span itemprop="name">Alpha Camp「2-3 middleware實作練習」技術記錄</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated" datetime="2021-05-22T13:47:48+08:00" content="2021-05-22">
-          05-22
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/git-remove-file-from-tracking/" itemprop="url">
-            <span itemprop="name">「git stop tracking files」相關筆記</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated" datetime="2021-05-14T21:11:16+08:00" content="2021-05-14">
-          05-14
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/express-handlebars-access-variable-in-parent-scope/" itemprop="url">
-            <span itemprop="name">「Express Handlebars 取得父層變數內容」相關筆記</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated" datetime="2021-05-13T14:27:11+08:00" content="2021-05-13">
-          05-13
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/form-reset/" itemprop="url">
-            <span itemprop="name">「重設表單（form reset）」相關筆記</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated" datetime="2021-05-05T14:56:06+08:00" content="2021-05-05">
-          05-05
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/2-1-movie-list-i18n-note/" itemprop="url">
-            <span itemprop="name">Alpha Camp「2-1 電影清單之按讚與刪除」技術記錄</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated" datetime="2021-05-04T19:59:34+08:00" content="2021-05-04">
-          05-04
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/2-2-api-social-list-note/" itemprop="url">
-            <span itemprop="name">Alpha Camp「2-2 社群名單」技術記錄</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
+</div>
 
 
-    </div>
-  </div>
-  
-  
-  
+
+
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">…</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span>
+  </nav>
 
 
 <script>
