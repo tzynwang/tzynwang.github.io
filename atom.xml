@@ -6,7 +6,7 @@
   <link href="https://tzynwang.github.io/atom.xml" rel="self"/>
   
   <link href="https://tzynwang.github.io/"/>
-  <updated>2021-06-25T07:10:50.030Z</updated>
+  <updated>2021-06-30T06:45:18.159Z</updated>
   <id>https://tzynwang.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>「使用passport處理FB、Google第三方登入」相關筆記</title>
+    <link href="https://tzynwang.github.io/2021/express-passport-facebook-google/"/>
+    <id>https://tzynwang.github.io/2021/express-passport-facebook-google/</id>
+    <published>2021-06-30T04:59:56.000Z</published>
+    <updated>2021-06-30T06:45:18.159Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;總結&quot;&gt;&lt;a href=&quot;#總結&quot; class=&quot;headerlink&quot; title=&quot;總結&quot;&gt;&lt;/a&gt;總結&lt;/h2&gt;&lt;p&gt;使用npm package</summary>
+        
+      
+    
+    
+    
+    <category term="Express" scheme="https://tzynwang.github.io/categories/Express/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>「部屬Express.js App至Google App Engine」相關筆記</title>
@@ -110,33 +133,6 @@
     <category term="Express" scheme="https://tzynwang.github.io/categories/Express/"/>
     
     <category term="HTML" scheme="https://tzynwang.github.io/categories/HTML/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>從零開始重寫：餐廳清單（Express版）基礎功能與架構</title>
-    <link href="https://tzynwang.github.io/2021/express-restaurant-list/"/>
-    <id>https://tzynwang.github.io/2021/express-restaurant-list/</id>
-    <published>2021-06-21T07:47:32.000Z</published>
-    <updated>2021-06-22T06:05:28.981Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;總結&quot;&gt;&lt;a href=&quot;#總結&quot; class=&quot;headerlink&quot; title=&quot;總結&quot;&gt;&lt;/a&gt;總結&lt;/h2&gt;&lt;p&gt;試著從頭開始重新練習一次Express、Express</summary>
-        
-      
-    
-    
-    
-    <category term="Express" scheme="https://tzynwang.github.io/categories/Express/"/>
-    
-    <category term="Express Handlebars" scheme="https://tzynwang.github.io/categories/Express-Handlebars/"/>
-    
-    <category term="Mongoose" scheme="https://tzynwang.github.io/categories/Mongoose/"/>
     
     
   </entry>
