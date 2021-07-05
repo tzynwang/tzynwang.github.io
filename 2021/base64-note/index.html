@@ -30,7 +30,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://tzynwang.github.io/2021/base64-note/base64example.png">
 <meta property="article:published_time" content="2021-07-05T03:18:25.000Z">
-<meta property="article:modified_time" content="2021-07-05T05:43:57.577Z">
+<meta property="article:modified_time" content="2021-07-05T05:58:17.117Z">
 <meta property="article:author" content="Charlie (Tzu Yin)">
 <meta property="article:tag" content="hexo, hexo blog, tzyn, 普通文組">
 <meta name="twitter:card" content="summary">
@@ -278,7 +278,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2021-07-05 11:18:25 / Modified: 13:43:57" itemprop="dateCreated datePublished" datetime="2021-07-05T11:18:25+08:00">2021-07-05</time>
+      <time title="Created: 2021-07-05 11:18:25 / Modified: 13:58:17" itemprop="dateCreated datePublished" datetime="2021-07-05T11:18:25+08:00">2021-07-05</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -322,19 +322,28 @@
 </ul>
 </li>
 <li>維基百科：一種基於64個可列印字元來<strong>表示二進位資料</strong>的表示方法。</li>
+<li>From <a target="_blank" rel="noopener" href="https://elmah.io/tools/base64-image-encoder/">elmah.io</a>: Base64 is an encoding algorithm that <strong>converts any characters, binary data, and even images or sound files into a readable string</strong>, which can be saved or transported over the network without data loss. The characters generated from Base64 encoding consist of Latin letters, digits, plus, and slash.</li>
 </ul>
 <blockquote>
 <p>小結論：base64是一種編碼方式，可以把二進位資料轉換成純文字；透過base64編碼後得到的純文字串，可以再解碼變回二進位資料。</p>
 </blockquote>
 <h3 id="base64要解決什麼問題？"><a href="#base64要解決什麼問題？" class="headerlink" title="base64要解決什麼問題？"></a>base64要解決什麼問題？</h3><ul>
-<li>Wiki:<ul>
+<li><p>Wiki:</p>
+<ul>
 <li>Base64 is designed <strong>to carry data</strong> stored in binary formats <strong>across channels that only reliably support text content</strong>.</li>
 <li>Base64 is particularly prevalent on the World Wide Web where its uses include the ability <strong>to embed image files</strong> (or other binary assets) <strong>inside textual assets</strong> such as <strong>HTML</strong> and <strong>CSS files</strong>.</li>
 <li>Base64 is also widely used for <strong>sending e-mail attachments</strong>. This is required because SMTP (in its <strong>original form</strong>) was designed to transport <strong>7-bit ASCII characters only</strong>.</li>
 </ul>
 </li>
-<li>Text-based protocols (according to <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Binary_protocol">Wiki</a>):<ul>
+<li><p>Text-based protocols (according to <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Binary_protocol">Wiki</a>):</p>
+<ul>
 <li>IRC, old versions of SMTP, HTTP/1.1</li>
+</ul>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://elmah.io/tools/base64-image-encoder/">elmah.io</a>:</p>
+<ul>
+<li>Base64 is most commonly used as a MIME (Multipurpose Internet Mail Extensions) transfer encoding for email.</li>
+<li>Base64 <strong>images</strong> are primarily used to embed image data within other formats like HTML, CSS, or JSON. By including image data within an HTML document, <strong>the browser doesn’t need to make an additional web request</strong> to fetch the file, since the image is already embedded in the HTML document. A Base64 representation of an image is larger than a separate image and the string gets very long for large images.</li>
 </ul>
 </li>
 </ul>

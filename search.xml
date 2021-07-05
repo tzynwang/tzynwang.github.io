@@ -638,6 +638,73 @@ on <a href="https://codepen.io">CodePen</a>.</span>
       </categories>
   </entry>
   <entry>
+    <title>「Base64」相關筆記</title>
+    <url>/2021/base64-note/</url>
+    <content><![CDATA[<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>發現自己還沒有辦法流暢地解釋「Base64到底是什麼？」，此篇為查找相關資料後整理的筆記</p>
+<h2 id="筆記"><a href="#筆記" class="headerlink" title="筆記"></a>筆記</h2><h3 id="base64是什麼？"><a href="#base64是什麼？" class="headerlink" title="base64是什麼？"></a>base64是什麼？</h3><ul>
+<li>Wiki: In programming, Base64 is a group of <strong>binary-to-text encoding schemes</strong> that represent binary data (more specifically, a sequence of <strong>8-bit bytes</strong>) in an <strong>ASCII string format</strong> by translating the data into a radix-64 representation.<ul>
+<li>A binary-to-text encoding is <strong>encoding of data in plain text</strong>.</li>
+<li>（引用自維基百科）Encoding、編碼是一種「資訊從一種形式轉換為另一種形式」的過程；解碼則是編碼的逆過程。</li>
+</ul>
+</li>
+<li>維基百科：一種基於64個可列印字元來<strong>表示二進位資料</strong>的表示方法。</li>
+<li>From <a href="https://elmah.io/tools/base64-image-encoder/">elmah.io</a>: Base64 is an encoding algorithm that <strong>converts any characters, binary data, and even images or sound files into a readable string</strong>, which can be saved or transported over the network without data loss. The characters generated from Base64 encoding consist of Latin letters, digits, plus, and slash.</li>
+</ul>
+<blockquote>
+<p>小結論：base64是一種編碼方式，可以把二進位資料轉換成純文字；透過base64編碼後得到的純文字串，可以再解碼變回二進位資料。</p>
+</blockquote>
+<h3 id="base64要解決什麼問題？"><a href="#base64要解決什麼問題？" class="headerlink" title="base64要解決什麼問題？"></a>base64要解決什麼問題？</h3><ul>
+<li><p>Wiki:</p>
+<ul>
+<li>Base64 is designed <strong>to carry data</strong> stored in binary formats <strong>across channels that only reliably support text content</strong>.</li>
+<li>Base64 is particularly prevalent on the World Wide Web where its uses include the ability <strong>to embed image files</strong> (or other binary assets) <strong>inside textual assets</strong> such as <strong>HTML</strong> and <strong>CSS files</strong>.</li>
+<li>Base64 is also widely used for <strong>sending e-mail attachments</strong>. This is required because SMTP (in its <strong>original form</strong>) was designed to transport <strong>7-bit ASCII characters only</strong>.</li>
+</ul>
+</li>
+<li><p>Text-based protocols (according to <a href="https://en.wikipedia.org/wiki/Binary_protocol">Wiki</a>):</p>
+<ul>
+<li>IRC, old versions of SMTP, HTTP/1.1</li>
+</ul>
+</li>
+<li><p><a href="https://elmah.io/tools/base64-image-encoder/">elmah.io</a>:</p>
+<ul>
+<li>Base64 is most commonly used as a MIME (Multipurpose Internet Mail Extensions) transfer encoding for email.</li>
+<li>Base64 <strong>images</strong> are primarily used to embed image data within other formats like HTML, CSS, or JSON. By including image data within an HTML document, <strong>the browser doesn’t need to make an additional web request</strong> to fetch the file, since the image is already embedded in the HTML document. A Base64 representation of an image is larger than a separate image and the string gets very long for large images.</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>小結論：base64讓早期的SMTP與HTTP/1.1也可以傳送二進位資料</p>
+</blockquote>
+<h3 id="轉換範例"><a href="#轉換範例" class="headerlink" title="轉換範例"></a>轉換範例</h3><figure class="figure--center"><img src="/2021/base64-note/base64example.png" title="Base64轉換示意圖，取自中文維基百科"><figcaption><p>Base64轉換示意圖，取自中文維基百科</p></figcaption></figure>
+<ol>
+<li>字母M、a、n先個別轉換為ASCII編碼，得到十進位數字77、97與110</li>
+<li>再將這三個十進位數字各自轉為二進位數字後，得到<code>01001101</code>、<code>01100001</code>與<code>01101110</code>，合併為<code>010011010110000101101110</code>，總計為24位元的資料</li>
+<li>將<code>010011010110000101101110</code>分拆為4組各為6位元的資料：<code>010011</code>、<code>101011</code>、<code>000101</code>與<code>101110</code></li>
+<li>上述4組二進位數字轉回十進位，再對照ASCII，得到英文單字T、W、F、u</li>
+<li>單字<code>Man</code>透過base64編碼後，得到字串<code>TWFu</code></li>
+</ol>
+<h3 id="補充"><a href="#補充" class="headerlink" title="補充"></a>補充</h3><ul>
+<li>Wiki: This encoding causes <strong>an overhead of 33–36%</strong> (33% by the encoding itself; up to 3% more by the inserted line breaks). 進行base64編碼後，檔案大小會上升</li>
+<li>Wiki: The data URI scheme can use Base64 to represent file contents. For instance, background images and fonts can be specified in a CSS stylesheet file as <code>data: URIs</code>, instead of being supplied in separate files.<ul>
+<li>參考<a href="https://css-tricks.com/data-uris/">CSS-Tricks</a>：<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* CSS */</span></span><br><span class="line"><span class="selector-tag">li</span> &#123;</span><br><span class="line">  <span class="attribute">background</span>:</span><br><span class="line">    <span class="built_in">url</span>(data:image/gif;base64,R0lGODlhEAAQAMQAAORHHOVSKudfOulrSOp3WOyDZu6QdvCchPGolfO0o/XBs/fNwfjZ0frl3/zy7////wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAkAABAALAAAAAAQABAAAAVVICSOZGlCQAosJ6mu7fiyZeKqNKToQGDsM8hBADgUXoGAiqhSvp5QAnQKGIgUhwFUYLCVDFCrKUE1lBavAViFIDlTImbKC5Gm2hB0SlBCBMQiB0UjIQA7)</span><br><span class="line">    no-repeat</span><br><span class="line">    left center;</span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">5px</span> <span class="number">0</span> <span class="number">5px</span> <span class="number">25px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- HTML img element --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;data:image/gif;base64,R0lGODlhEAAQAMQAAORHHOVSKudfOulrSOp3WOyDZu6QdvCchPGolfO0o/XBs/fNwfjZ0frl3/zy7////wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAkAABAALAAAAAAQABAAAAVVICSOZGlCQAosJ6mu7fiyZeKqNKToQGDsM8hBADgUXoGAiqhSvp5QAnQKGIgUhwFUYLCVDFCrKUE1lBavAViFIDlTImbKC5Gm2hB0SlBCBMQiB0UjIQA7&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;star&quot;</span> <span class="attr">width</span>=<span class="string">&quot;16&quot;</span> <span class="attr">height</span>=<span class="string">&quot;16&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
+<li><a href="https://en.wikipedia.org/wiki/Base64">Wikipedia: Base64</a></li>
+<li><a href="https://zh.wikipedia.org/wiki/Base64">維基百科：Base64（基底64）</a></li>
+<li><a href="https://youtu.be/8qkxeZmKmOY">YouTube: What is Base64?</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Data exchange format</category>
+      </categories>
+  </entry>
+  <entry>
     <title>「產生順序數陣列」相關筆記</title>
     <url>/2021/array-with-serial-number/</url>
     <content><![CDATA[<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>使用<code>Array() constructor</code>、<code>Array.prototype.keys()</code>與<code>Array.from()</code>來建立一個陣列，該陣列包含從小到大的順序數列，如<code>[1, 2, 3, 4, 5, 6, 7]</code></p>
@@ -674,64 +741,6 @@ on <a href="https://codepen.io">CodePen</a>.</span>
 ]]></content>
       <categories>
         <category>JavaScript</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>「Base64」相關筆記</title>
-    <url>/2021/base64-note/</url>
-    <content><![CDATA[<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>發現自己還沒有辦法流暢地解釋「Base64到底是什麼？」，此篇為查找相關資料後整理的筆記</p>
-<h2 id="筆記"><a href="#筆記" class="headerlink" title="筆記"></a>筆記</h2><h3 id="base64是什麼？"><a href="#base64是什麼？" class="headerlink" title="base64是什麼？"></a>base64是什麼？</h3><ul>
-<li>Wiki: In programming, Base64 is a group of <strong>binary-to-text encoding schemes</strong> that represent binary data (more specifically, a sequence of <strong>8-bit bytes</strong>) in an <strong>ASCII string format</strong> by translating the data into a radix-64 representation.<ul>
-<li>A binary-to-text encoding is <strong>encoding of data in plain text</strong>.</li>
-<li>（引用自維基百科）Encoding、編碼是一種「資訊從一種形式轉換為另一種形式」的過程；解碼則是編碼的逆過程。</li>
-</ul>
-</li>
-<li>維基百科：一種基於64個可列印字元來<strong>表示二進位資料</strong>的表示方法。</li>
-</ul>
-<blockquote>
-<p>小結論：base64是一種編碼方式，可以把二進位資料轉換成純文字；透過base64編碼後得到的純文字串，可以再解碼變回二進位資料。</p>
-</blockquote>
-<h3 id="base64要解決什麼問題？"><a href="#base64要解決什麼問題？" class="headerlink" title="base64要解決什麼問題？"></a>base64要解決什麼問題？</h3><ul>
-<li>Wiki:<ul>
-<li>Base64 is designed <strong>to carry data</strong> stored in binary formats <strong>across channels that only reliably support text content</strong>.</li>
-<li>Base64 is particularly prevalent on the World Wide Web where its uses include the ability <strong>to embed image files</strong> (or other binary assets) <strong>inside textual assets</strong> such as <strong>HTML</strong> and <strong>CSS files</strong>.</li>
-<li>Base64 is also widely used for <strong>sending e-mail attachments</strong>. This is required because SMTP (in its <strong>original form</strong>) was designed to transport <strong>7-bit ASCII characters only</strong>.</li>
-</ul>
-</li>
-<li>Text-based protocols (according to <a href="https://en.wikipedia.org/wiki/Binary_protocol">Wiki</a>):<ul>
-<li>IRC, old versions of SMTP, HTTP/1.1</li>
-</ul>
-</li>
-</ul>
-<blockquote>
-<p>小結論：base64讓早期的SMTP與HTTP/1.1也可以傳送二進位資料</p>
-</blockquote>
-<h3 id="轉換範例"><a href="#轉換範例" class="headerlink" title="轉換範例"></a>轉換範例</h3><figure class="figure--center"><img src="/2021/base64-note/base64example.png" title="Base64轉換示意圖，取自中文維基百科"><figcaption><p>Base64轉換示意圖，取自中文維基百科</p></figcaption></figure>
-<ol>
-<li>字母M、a、n先個別轉換為ASCII編碼，得到十進位數字77、97與110</li>
-<li>再將這三個十進位數字各自轉為二進位數字後，得到<code>01001101</code>、<code>01100001</code>與<code>01101110</code>，合併為<code>010011010110000101101110</code>，總計為24位元的資料</li>
-<li>將<code>010011010110000101101110</code>分拆為4組各為6位元的資料：<code>010011</code>、<code>101011</code>、<code>000101</code>與<code>101110</code></li>
-<li>上述4組二進位數字轉回十進位，再對照ASCII，得到英文單字T、W、F、u</li>
-<li>單字<code>Man</code>透過base64編碼後，得到字串<code>TWFu</code></li>
-</ol>
-<h3 id="補充"><a href="#補充" class="headerlink" title="補充"></a>補充</h3><ul>
-<li>Wiki: This encoding causes <strong>an overhead of 33–36%</strong> (33% by the encoding itself; up to 3% more by the inserted line breaks). 進行base64編碼後，檔案大小會上升</li>
-<li>Wiki: The data URI scheme can use Base64 to represent file contents. For instance, background images and fonts can be specified in a CSS stylesheet file as <code>data: URIs</code>, instead of being supplied in separate files.<ul>
-<li>參考<a href="https://css-tricks.com/data-uris/">CSS-Tricks</a>：<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* CSS */</span></span><br><span class="line"><span class="selector-tag">li</span> &#123;</span><br><span class="line">  <span class="attribute">background</span>:</span><br><span class="line">    <span class="built_in">url</span>(data:image/gif;base64,R0lGODlhEAAQAMQAAORHHOVSKudfOulrSOp3WOyDZu6QdvCchPGolfO0o/XBs/fNwfjZ0frl3/zy7////wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAkAABAALAAAAAAQABAAAAVVICSOZGlCQAosJ6mu7fiyZeKqNKToQGDsM8hBADgUXoGAiqhSvp5QAnQKGIgUhwFUYLCVDFCrKUE1lBavAViFIDlTImbKC5Gm2hB0SlBCBMQiB0UjIQA7)</span><br><span class="line">    no-repeat</span><br><span class="line">    left center;</span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">5px</span> <span class="number">0</span> <span class="number">5px</span> <span class="number">25px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- HTML img element --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;data:image/gif;base64,R0lGODlhEAAQAMQAAORHHOVSKudfOulrSOp3WOyDZu6QdvCchPGolfO0o/XBs/fNwfjZ0frl3/zy7////wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAkAABAALAAAAAAQABAAAAVVICSOZGlCQAosJ6mu7fiyZeKqNKToQGDsM8hBADgUXoGAiqhSvp5QAnQKGIgUhwFUYLCVDFCrKUE1lBavAViFIDlTImbKC5Gm2hB0SlBCBMQiB0UjIQA7&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;star&quot;</span> <span class="attr">width</span>=<span class="string">&quot;16&quot;</span> <span class="attr">height</span>=<span class="string">&quot;16&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
-<li><a href="https://en.wikipedia.org/wiki/Base64">Wikipedia: Base64</a></li>
-<li><a href="https://zh.wikipedia.org/wiki/Base64">維基百科：Base64（基底64）</a></li>
-<li><a href="https://youtu.be/8qkxeZmKmOY">YouTube: What is Base64?</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>Data exchange format</category>
       </categories>
   </entry>
   <entry>
@@ -1131,76 +1140,6 @@ on <a href="https://codepen.io">CodePen</a>.</span>
       </categories>
   </entry>
   <entry>
-    <title>「部屬Express.js App至Google App Engine」相關筆記</title>
-    <url>/2021/express-app-deploy-gcp/</url>
-    <content><![CDATA[<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><ul>
-<li>同樣是在搭配使用MongoDB的情境下，整體流程比感覺比部屬至Heroku簡單許多</li>
-<li>缺點：無法處理「對資料庫導入種子資料」的需求；雖然App Engine提供<code>runtime: custom</code>與<code>Dockerfile</code>來處理一定程度的客製化需求，但無法配合<code>docker-compose.yml</code>來安裝mongoDB</li>
-</ul>
-<h2 id="環境"><a href="#環境" class="headerlink" title="環境"></a>環境</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Google Cloud SDK: 346.0.0</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></table></figure>
-<h2 id="部屬前設定"><a href="#部屬前設定" class="headerlink" title="部屬前設定"></a>部屬前設定</h2><h3 id="app-js"><a href="#app-js" class="headerlink" title="app.js"></a>app.js</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 新增process.env.PORT，讓App可以讀取Google App Engine分配的埠號</span></span><br><span class="line"><span class="keyword">const</span> port = process.env.PORT || <span class="number">5000</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 追加以下內容</span></span><br><span class="line">app.set(<span class="string">&#x27;trust proxy&#x27;</span>, <span class="literal">true</span>)</span><br></pre></td></tr></table></figure>
-<ul>
-<li>關於<code>app.set(&#39;trust proxy&#39;, true)</code><ul>
-<li>參考官方文件內容：<a href="https://cloud.google.com/appengine/docs/standard/nodejs/runtime#https_and_forwarding_proxies">HTTPS and forwarding proxies</a></li>
-<li>App Engine terminates HTTPS connections at the load balancer and forwards requests to your application. Some applications need to determine the original request IP and protocol. The user’s IP address is available in the standard X-Forwarded-For header. Applications that require this information should configure their web framework to trust the proxy.</li>
-<li>With Express.js, use the trust proxy setting: <code>app.set(&#39;trust proxy&#39;, true)</code></li>
-</ul>
-</li>
-</ul>
-<h3 id="config-mongoose-js"><a href="#config-mongoose-js" class="headerlink" title="config/mongoose.js"></a>config/mongoose.js</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 於config/mongoose.js中追加process.env.MONGODB_URI</span></span><br><span class="line"><span class="keyword">const</span> MONGODB_URI = process.env.MONGODB_URI || <span class="string">&#x27;mongodb://localhost/login-passport&#x27;</span></span><br><span class="line">mongoose.connect(MONGODB_URI, &#123; ... &#125;)</span><br></pre></td></tr></table></figure>
-<h3 id="app-yaml"><a href="#app-yaml" class="headerlink" title="app.yaml"></a>app.yaml</h3><figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">runtime:</span> <span class="string">nodejs12</span></span><br><span class="line"><span class="attr">env_variables:</span></span><br><span class="line">  <span class="attr">MONGODB_URI:</span> <span class="string">&#x27;mongodb+srv://&lt;DB使用者帳號&gt;:&lt;DB密碼&gt;@&lt;MongoDB cluster名稱&gt;.8glc1.mongodb.net/&lt;MongoDB cluster名稱&gt;?retryWrites=true&amp;w=majority&#x27;</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li><code>app.yaml</code>檔案位於專案的根目錄</li>
-<li>參考官方文件：<a href="https://cloud.google.com/appengine/docs/standard/nodejs/runtime">Node.js Runtime Environment</a></li>
-</ul>
-<h3 id="package-json"><a href="#package-json" class="headerlink" title="package.json"></a>package.json</h3><figure class="highlight"><table><tr><td class="code"><pre><span class="line">&quot;scripts&quot;: &#123;</span><br><span class="line">  &quot;start&quot;: &quot;node app.js&quot;</span><br><span class="line">&#125;,</span><br><span class="line">&quot;engines&quot;: &#123;</span><br><span class="line">  &quot;node&quot;: &quot;^12.0.0&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>Google App Engine預設執行<code>node server.js</code>來啟動App，可以透過package.json中的<code>start</code> scripts修改執行內容（本次練習中改為<code>node app.js</code>）</li>
-<li>參考<a href="https://cloud.google.com/appengine/docs/standard/nodejs/runtime#application_startup">官方文件</a>：By default, the runtime starts your application by running <code>node server.js</code>. If you specify a start script in your <code>package.json</code> file, the runtime <strong>runs the specified start script instead</strong>.</li>
-</ul>
-<h2 id="部屬流程"><a href="#部屬流程" class="headerlink" title="部屬流程"></a>部屬流程</h2><ol>
-<li><p>在Google Cloud Platform建立新專案</p>
-</li>
-<li><p>安裝Google Cloud SDK</p>
-<ul>
-<li>官方說明文件：<a href="https://cloud.google.com/sdk/docs/install">https://cloud.google.com/sdk/docs/install</a></li>
-<li>Google Cloud SDK需搭配Python，安裝SDK時勾選Install Bundled Python選項即可，不須另外自行安裝Python</li>
-</ul>
-</li>
-<li><p>安裝完畢後，移動到要部屬到Google App Engine的專案的資料夾，在終端機輸入<code>gcloud init</code></p>
-</li>
-<li><p>完成布署前設定後，即可執行<code>gcloud app deploy</code>，部屬完畢後終端機會顯示App URL（類似<code>https://&lt;專案ID&gt;.de.r.appspot.com/</code>），可直接開啟該URL瀏覽專案</p>
-</li>
-<li><p>若URL打開後沒有載入任何內容，則進入App Engine→版本→診斷→記錄檔中查看錯誤訊息</p>
-<figure class="figure--center"><img src="/2021/express-app-deploy-gcp/gcp_AppEngine_Version.png"></figure>
-<figure class="figure--center"><img src="/2021/express-app-deploy-gcp/gcp_log.png"></figure>
-</li>
-<li><p>部屬練習結果：</p>
-<ul>
-<li>Login practice: <a href="https://complete-verve-317814.de.r.appspot.com/">https://complete-verve-317814.de.r.appspot.com/</a></li>
-<li>Movie list (Express.js): <a href="https://academic-genius-317809.de.r.appspot.com/">https://academic-genius-317809.de.r.appspot.com/</a></li>
-</ul>
-</li>
-</ol>
-<h2 id="關於種子資料"><a href="#關於種子資料" class="headerlink" title="關於種子資料"></a>關於種子資料</h2><ul>
-<li>原本以為可以僅靠<code>Dockerfile</code>來處理<code>npm run seed</code>，不過實際執行後得到錯誤訊息<code>MongooseServerSelectionError: connect ECONNREFUSED 127.0.0.1:27017</code></li>
-<li>錯誤訊息的意義：環境中沒有安裝MongoDB<ul>
-<li><a href="https://stackoverflow.com/questions/46523321/mongoerror-connect-econnrefused-127-0-0-127017">MongoError: connect ECONNREFUSED 127.0.0.1:27017</a>: This happened probably because the <strong>MongoDB service isn’t started</strong>.</li>
-</ul>
-</li>
-<li>然而Google App Engine並不支援<code>docker-compose</code>，故無法進行「安裝MongoDB後導入種子資料」此需求，參考討論串：<ul>
-<li><a href="https://stackoverflow.com/questions/63782456/docker-compose-yml-in-google-cloud-run">docker-compose.yml in Google Cloud Run</a></li>
-<li><a href="https://stackoverflow.com/questions/63223193/google-app-engine-run-command-after-deploy">Google App Engine run command after deploy</a></li>
-<li><a href="https://stackoverflow.com/questions/39877521/using-docker-compose-within-google-app-engine">Using Docker compose within Google App Engine</a></li>
-</ul>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Express</category>
-      </categories>
-  </entry>
-  <entry>
     <title>「Express Handlebars 取得父層變數內容」相關筆記</title>
     <url>/2021/express-handlebars-access-variable-in-parent-scope/</url>
     <content><![CDATA[<h2 id="問題描述"><a href="#問題描述" class="headerlink" title="問題描述"></a>問題描述</h2><ul>
@@ -1492,78 +1431,73 @@ on <a href="https://codepen.io">CodePen</a>.</span>
       </categories>
   </entry>
   <entry>
-    <title>從零開始重寫：餐廳清單（Express版）路由、METHODS重構</title>
-    <url>/2021/express-restaurant-list-1/</url>
-    <content><![CDATA[<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>本篇為餐廳清單（Express版）的路由、METHODS重構，以及使用<code>browserify</code>搭配<code>axios</code>實現in-browser <code>require()</code>之相關筆記</p>
-<h2 id="環境"><a href="#環境" class="headerlink" title="環境"></a>環境</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">browserify: 17.0.0</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></table></figure>
-<h2 id="筆記"><a href="#筆記" class="headerlink" title="筆記"></a>筆記</h2><figure class="figure--center"><img src="/2021/express-restaurant-list-1/folderStructure.png" title="重構後的資料夾結構"><figcaption><p>重構後的資料夾結構</p></figcaption></figure>
-
-<h3 id="路由重構"><a href="#路由重構" class="headerlink" title="路由重構"></a>路由重構</h3><script src="https://gist.github.com/tzynwang/708c0d129d912f54e8043e62cb9e751a.js"></script>
-
-<h4 id="app-js"><a href="#app-js" class="headerlink" title="app.js"></a>app.js</h4><ul>
-<li>第6行：將DB連線設定搬移到config資料夾中</li>
-<li>13-15行：為配合axios的POST request，將<code>body-parser</code>加回來</li>
-<li>37-38行：將路由移動到routes資料夾中</li>
+    <title>「部屬Express.js App至Google App Engine」相關筆記</title>
+    <url>/2021/express-app-deploy-gcp/</url>
+    <content><![CDATA[<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><ul>
+<li>同樣是在搭配使用MongoDB的情境下，整體流程比感覺比部屬至Heroku簡單許多</li>
+<li>缺點：無法處理「對資料庫導入種子資料」的需求；雖然App Engine提供<code>runtime: custom</code>與<code>Dockerfile</code>來處理一定程度的客製化需求，但無法配合<code>docker-compose.yml</code>來安裝mongoDB</li>
 </ul>
-<h4 id="routes-index-js"><a href="#routes-index-js" class="headerlink" title="routes/index.js"></a>routes/index.js</h4><ul>
-<li>4-5行：routes/modules中的home.js與restaurants.js皆分別在檔案結尾進行<code>module.exports = router</code>，讓index.js可引用之</li>
-<li>7-8行：分別將對<code>/</code>與<code>/restaurant</code>的請求導向<code>home</code>與<code>restaurant</code></li>
-<li>第10行：將index.js本身也進行匯出，使app.js可使用之（app.js中第37行）</li>
+<h2 id="環境"><a href="#環境" class="headerlink" title="環境"></a>環境</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Google Cloud SDK: 346.0.0</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></table></figure>
+<h2 id="部屬前設定"><a href="#部屬前設定" class="headerlink" title="部屬前設定"></a>部屬前設定</h2><h3 id="app-js"><a href="#app-js" class="headerlink" title="app.js"></a>app.js</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 新增process.env.PORT，讓App可以讀取Google App Engine分配的埠號</span></span><br><span class="line"><span class="keyword">const</span> port = process.env.PORT || <span class="number">5000</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 追加以下內容</span></span><br><span class="line">app.set(<span class="string">&#x27;trust proxy&#x27;</span>, <span class="literal">true</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>關於<code>app.set(&#39;trust proxy&#39;, true)</code><ul>
+<li>參考官方文件內容：<a href="https://cloud.google.com/appengine/docs/standard/nodejs/runtime#https_and_forwarding_proxies">HTTPS and forwarding proxies</a></li>
+<li>App Engine terminates HTTPS connections at the load balancer and forwards requests to your application. Some applications need to determine the original request IP and protocol. The user’s IP address is available in the standard X-Forwarded-For header. Applications that require this information should configure their web framework to trust the proxy.</li>
+<li>With Express.js, use the trust proxy setting: <code>app.set(&#39;trust proxy&#39;, true)</code></li>
 </ul>
-<h3 id="METHODS重構"><a href="#METHODS重構" class="headerlink" title="METHODS重構"></a>METHODS重構</h3><ul>
-<li><p>參考app.js第33-34行，引用<code>method-override</code>後，使用override using a query value的方式複寫METHOD<br><a href="http://expressjs.com/en/resources/middleware/method-override.html">官方說明</a>：</p>
-<blockquote>
-<p>To use a query string value to override the method, specify the query string key as a string argument to the methodOverride function. To then make the call, send a <strong>POST request</strong> to a URL with the overridden method as the value of that query string key. This method of using a query value would typically be used in conjunction with plain HTML <code>&lt;form&gt;</code> elements when trying to support legacy browsers but still use newer methods.</p>
-</blockquote>
-<p>官方示範程式碼：</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">&#x27;express&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> methodOverride = <span class="built_in">require</span>(<span class="string">&#x27;method-override&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> app = express()</span><br><span class="line"></span><br><span class="line"><span class="comment">// override with POST having ?_method=DELETE</span></span><br><span class="line">app.use(methodOverride(<span class="string">&#x27;_method&#x27;</span>))</span><br></pre></td></tr></table></figure>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">method</span>=<span class="string">&quot;POST&quot;</span> <span class="attr">action</span>=<span class="string">&quot;/resource?_method=DELETE&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span>&gt;</span>Delete resource<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
-<li><p>將form action設定完畢後，原本的POST request就會（根據query string value）被覆寫為DELETE與PUT等METHOD</p>
-</li>
-<li><p>之後即可在後端使用<code>router.delete</code>或<code>router.put</code>等方式處理相關請求</p>
 </li>
 </ul>
-<h3 id="browserify流程記錄"><a href="#browserify流程記錄" class="headerlink" title="browserify流程記錄"></a>browserify流程記錄</h3><ol>
-<li>安裝browserify與axios</li>
-<li>在public/scripts資料夾中建立一檔案sort.js，內容如下</li>
+<h3 id="config-mongoose-js"><a href="#config-mongoose-js" class="headerlink" title="config/mongoose.js"></a>config/mongoose.js</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 於config/mongoose.js中追加process.env.MONGODB_URI</span></span><br><span class="line"><span class="keyword">const</span> MONGODB_URI = process.env.MONGODB_URI || <span class="string">&#x27;mongodb://localhost/login-passport&#x27;</span></span><br><span class="line">mongoose.connect(MONGODB_URI, &#123; ... &#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="app-yaml"><a href="#app-yaml" class="headerlink" title="app.yaml"></a>app.yaml</h3><figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">runtime:</span> <span class="string">nodejs12</span></span><br><span class="line"><span class="attr">env_variables:</span></span><br><span class="line">  <span class="attr">MONGODB_URI:</span> <span class="string">&#x27;mongodb+srv://&lt;DB使用者帳號&gt;:&lt;DB密碼&gt;@&lt;MongoDB cluster名稱&gt;.8glc1.mongodb.net/&lt;MongoDB cluster名稱&gt;?retryWrites=true&amp;w=majority&#x27;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>app.yaml</code>檔案位於專案的根目錄</li>
+<li>參考官方文件：<a href="https://cloud.google.com/appengine/docs/standard/nodejs/runtime">Node.js Runtime Environment</a></li>
+</ul>
+<h3 id="package-json"><a href="#package-json" class="headerlink" title="package.json"></a>package.json</h3><figure class="highlight"><table><tr><td class="code"><pre><span class="line">&quot;scripts&quot;: &#123;</span><br><span class="line">  &quot;start&quot;: &quot;node app.js&quot;</span><br><span class="line">&#125;,</span><br><span class="line">&quot;engines&quot;: &#123;</span><br><span class="line">  &quot;node&quot;: &quot;^12.0.0&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Google App Engine預設執行<code>node server.js</code>來啟動App，可以透過package.json中的<code>start</code> scripts修改執行內容（本次練習中改為<code>node app.js</code>）</li>
+<li>參考<a href="https://cloud.google.com/appengine/docs/standard/nodejs/runtime#application_startup">官方文件</a>：By default, the runtime starts your application by running <code>node server.js</code>. If you specify a start script in your <code>package.json</code> file, the runtime <strong>runs the specified start script instead</strong>.</li>
+</ul>
+<h2 id="部屬流程"><a href="#部屬流程" class="headerlink" title="部屬流程"></a>部屬流程</h2><ol>
+<li><p>在Google Cloud Platform建立新專案</p>
+</li>
+<li><p>安裝Google Cloud SDK</p>
+<ul>
+<li>官方說明文件：<a href="https://cloud.google.com/sdk/docs/install">https://cloud.google.com/sdk/docs/install</a></li>
+<li>Google Cloud SDK需搭配Python，安裝SDK時勾選Install Bundled Python選項即可，不須另外自行安裝Python</li>
+</ul>
+</li>
+<li><p>安裝完畢後，移動到要部屬到Google App Engine的專案的資料夾，在終端機輸入<code>gcloud init</code></p>
+</li>
+<li><p>完成布署前設定後，即可執行<code>gcloud app deploy</code>，部屬完畢後終端機會顯示App URL（類似<code>https://&lt;專案ID&gt;.de.r.appspot.com/</code>），可直接開啟該URL瀏覽專案</p>
+</li>
+<li><p>若URL打開後沒有載入任何內容，則進入App Engine→版本→診斷→記錄檔中查看錯誤訊息</p>
+<figure class="figure--center"><img src="/2021/express-app-deploy-gcp/gcp_AppEngine_Version.png"></figure>
+<figure class="figure--center"><img src="/2021/express-app-deploy-gcp/gcp_log.png"></figure>
+</li>
+<li><p>部屬練習結果：</p>
+<ul>
+<li>Login practice: <a href="https://complete-verve-317814.de.r.appspot.com/">https://complete-verve-317814.de.r.appspot.com/</a></li>
+<li>Movie list (Express.js): <a href="https://academic-genius-317809.de.r.appspot.com/">https://academic-genius-317809.de.r.appspot.com/</a></li>
+</ul>
+</li>
 </ol>
-<script src="https://gist.github.com/tzynwang/f034770c2ca9f0cc16edc449f44a1f94.js"></script>
-
-
-<ol>
-<li>在沒有搭配browserify的情況下，直接引用sort.js檔案會在瀏覽器console看到<code>ReferenceError: require is not defined</code>此錯誤訊息，相關討論參考：<a href="https://stackoverflow.com/questions/19059580/client-on-node-js-uncaught-referenceerror-require-is-not-defined">Client on Node.js: Uncaught ReferenceError: require is not defined</a></li>
-<li>參考browserify的<a href="https://github.com/browserify/browserify#example">GitHub README</a>，在終端輸入<code>browserify public/scripts/sort.js &gt; public/scripts/sortBundle.js</code>將sort.js與axios等額外require的模組bundle在一起</li>
-<li>最終在前端網頁引用<code>sortBundle.js</code>此檔案，錯誤訊息消失，問題解決</li>
-</ol>
-<h2 id="補充"><a href="#補充" class="headerlink" title="補充"></a>補充</h2><h3 id="Method-PATCH-PUT"><a href="#Method-PATCH-PUT" class="headerlink" title="Method: PATCH, PUT"></a>Method: PATCH, PUT</h3><ul>
-<li>A <code>PATCH</code> request is considered a set of <strong>instructions on how to modify a resource</strong>. Contrast this with <code>PUT</code>; which is a complete <strong>representation of a resource</strong>.</li>
-<li>A <code>PATCH</code> is <strong>not necessarily idempotent</strong>, although it can be. Contrast this with <code>PUT</code>; which is <strong>always idempotent</strong>. The word “idempotent” means that any number of repeated, identical requests will leave the resource in the same state. (不像<code>POST</code> request如果連續發送可能會變成多筆訂單，多次發送<code>PUT</code> request不會有類似的後遺症)</li>
-<li>Calling <code>PUT</code> method <strong>once or several times successively has the same effect</strong> (that is no side effect), this method is <strong>idempotent</strong>; whereas successive identical <code>POST</code> requests may have additional effects, akin to placing an order several times.</li>
-</ul>
-<h3 id="Idempotent"><a href="#Idempotent" class="headerlink" title="Idempotent"></a>Idempotent</h3><ul>
-<li>Description of common <strong>idempotent methods</strong>: GET, HEAD, PUT, DELETE, OPTIONS, TRACE</li>
-<li>Description of common <strong>non-idempotent</strong> methods: POST,PATCH, CONNECT<ul>
-<li>Reference: <a href="https://developer.mozilla.org/en-US/docs/Glossary/Idempotent">https://developer.mozilla.org/en-US/docs/Glossary/Idempotent</a></li>
+<h2 id="關於種子資料"><a href="#關於種子資料" class="headerlink" title="關於種子資料"></a>關於種子資料</h2><ul>
+<li>原本以為可以僅靠<code>Dockerfile</code>來處理<code>npm run seed</code>，不過實際執行後得到錯誤訊息<code>MongooseServerSelectionError: connect ECONNREFUSED 127.0.0.1:27017</code></li>
+<li>錯誤訊息的意義：環境中沒有安裝MongoDB<ul>
+<li><a href="https://stackoverflow.com/questions/46523321/mongoerror-connect-econnrefused-127-0-0-127017">MongoError: connect ECONNREFUSED 127.0.0.1:27017</a>: This happened probably because the <strong>MongoDB service isn’t started</strong>.</li>
 </ul>
 </li>
-<li>A request method is considered “idempotent” if the intended effect on the server of multiple identical requests with that method is the same as the effect for a single such request. (對server打一次或多次的結果如果都一樣，該HTTP method就會被認為是idempotent) Of the request methods defined by this specification, PUT, DELETE, and safe request methods (GET, HEAD, OPTIONS) are idempotent.<ul>
-<li>Reference: <a href="https://datatracker.ietf.org/doc/html/rfc7231#section-4.2.2">https://datatracker.ietf.org/doc/html/rfc7231#section-4.2.2</a></li>
-</ul>
-</li>
-</ul>
-<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
-<li><a href="https://stackoverflow.com/questions/6971583/node-style-require-for-in-browser-javascript/11588570">Node-style require for in-browser javascript?</a></li>
-<li><a href="https://github.com/browserify/browserify#browserify">GitHub: browserify</a></li>
-<li>MDN<ul>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/PATCH">PATCH</a></li>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/PUT">PUT</a></li>
+<li>然而Google App Engine並不支援<code>docker-compose</code>，故無法進行「安裝MongoDB後導入種子資料」此需求，參考討論串：<ul>
+<li><a href="https://stackoverflow.com/questions/63782456/docker-compose-yml-in-google-cloud-run">docker-compose.yml in Google Cloud Run</a></li>
+<li><a href="https://stackoverflow.com/questions/63223193/google-app-engine-run-command-after-deploy">Google App Engine run command after deploy</a></li>
+<li><a href="https://stackoverflow.com/questions/39877521/using-docker-compose-within-google-app-engine">Using Docker compose within Google App Engine</a></li>
 </ul>
 </li>
 </ul>
 ]]></content>
       <categories>
         <category>Express</category>
-        <category>HTML</category>
       </categories>
   </entry>
   <entry>
@@ -1630,8 +1564,8 @@ on <a href="https://codepen.io">CodePen</a>.</span>
 </ul>
 ]]></content>
       <categories>
-        <category>Express</category>
         <category>Express Handlebars</category>
+        <category>Express</category>
         <category>Mongoose</category>
       </categories>
   </entry>
@@ -2928,6 +2862,81 @@ on <a href="https://codepen.io">CodePen</a>.</span>
 ]]></content>
       <categories>
         <category>JavaScript</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>從零開始重寫：餐廳清單（Express版）路由、METHODS重構</title>
+    <url>/2021/express-restaurant-list-1/</url>
+    <content><![CDATA[<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>本篇為餐廳清單（Express版）的路由、METHODS重構，以及使用<code>browserify</code>搭配<code>axios</code>實現in-browser <code>require()</code>之相關筆記</p>
+<h2 id="環境"><a href="#環境" class="headerlink" title="環境"></a>環境</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">browserify: 17.0.0</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></table></figure>
+<h2 id="筆記"><a href="#筆記" class="headerlink" title="筆記"></a>筆記</h2><figure class="figure--center"><img src="/2021/express-restaurant-list-1/folderStructure.png" title="重構後的資料夾結構"><figcaption><p>重構後的資料夾結構</p></figcaption></figure>
+
+<h3 id="路由重構"><a href="#路由重構" class="headerlink" title="路由重構"></a>路由重構</h3><script src="https://gist.github.com/tzynwang/708c0d129d912f54e8043e62cb9e751a.js"></script>
+
+<h4 id="app-js"><a href="#app-js" class="headerlink" title="app.js"></a>app.js</h4><ul>
+<li>第6行：將DB連線設定搬移到config資料夾中</li>
+<li>13-15行：為配合axios的POST request，將<code>body-parser</code>加回來</li>
+<li>37-38行：將路由移動到routes資料夾中</li>
+</ul>
+<h4 id="routes-index-js"><a href="#routes-index-js" class="headerlink" title="routes/index.js"></a>routes/index.js</h4><ul>
+<li>4-5行：routes/modules中的home.js與restaurants.js皆分別在檔案結尾進行<code>module.exports = router</code>，讓index.js可引用之</li>
+<li>7-8行：分別將對<code>/</code>與<code>/restaurant</code>的請求導向<code>home</code>與<code>restaurant</code></li>
+<li>第10行：將index.js本身也進行匯出，使app.js可使用之（app.js中第37行）</li>
+</ul>
+<h3 id="METHODS重構"><a href="#METHODS重構" class="headerlink" title="METHODS重構"></a>METHODS重構</h3><ul>
+<li><p>參考app.js第33-34行，引用<code>method-override</code>後，使用override using a query value的方式複寫METHOD<br><a href="http://expressjs.com/en/resources/middleware/method-override.html">官方說明</a>：</p>
+<blockquote>
+<p>To use a query string value to override the method, specify the query string key as a string argument to the methodOverride function. To then make the call, send a <strong>POST request</strong> to a URL with the overridden method as the value of that query string key. This method of using a query value would typically be used in conjunction with plain HTML <code>&lt;form&gt;</code> elements when trying to support legacy browsers but still use newer methods.</p>
+</blockquote>
+<p>官方示範程式碼：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">&#x27;express&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> methodOverride = <span class="built_in">require</span>(<span class="string">&#x27;method-override&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> app = express()</span><br><span class="line"></span><br><span class="line"><span class="comment">// override with POST having ?_method=DELETE</span></span><br><span class="line">app.use(methodOverride(<span class="string">&#x27;_method&#x27;</span>))</span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">method</span>=<span class="string">&quot;POST&quot;</span> <span class="attr">action</span>=<span class="string">&quot;/resource?_method=DELETE&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span>&gt;</span>Delete resource<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li><p>將form action設定完畢後，原本的POST request就會（根據query string value）被覆寫為DELETE與PUT等METHOD</p>
+</li>
+<li><p>之後即可在後端使用<code>router.delete</code>或<code>router.put</code>等方式處理相關請求</p>
+</li>
+</ul>
+<h3 id="browserify流程記錄"><a href="#browserify流程記錄" class="headerlink" title="browserify流程記錄"></a>browserify流程記錄</h3><ol>
+<li>安裝browserify與axios</li>
+<li>在public/scripts資料夾中建立一檔案sort.js，內容如下</li>
+</ol>
+<script src="https://gist.github.com/tzynwang/f034770c2ca9f0cc16edc449f44a1f94.js"></script>
+
+
+<ol>
+<li>在沒有搭配browserify的情況下，直接引用sort.js檔案會在瀏覽器console看到<code>ReferenceError: require is not defined</code>此錯誤訊息，相關討論參考：<a href="https://stackoverflow.com/questions/19059580/client-on-node-js-uncaught-referenceerror-require-is-not-defined">Client on Node.js: Uncaught ReferenceError: require is not defined</a></li>
+<li>參考browserify的<a href="https://github.com/browserify/browserify#example">GitHub README</a>，在終端輸入<code>browserify public/scripts/sort.js &gt; public/scripts/sortBundle.js</code>將sort.js與axios等額外require的模組bundle在一起</li>
+<li>最終在前端網頁引用<code>sortBundle.js</code>此檔案，錯誤訊息消失，問題解決</li>
+</ol>
+<h2 id="補充"><a href="#補充" class="headerlink" title="補充"></a>補充</h2><h3 id="Method-PATCH-PUT"><a href="#Method-PATCH-PUT" class="headerlink" title="Method: PATCH, PUT"></a>Method: PATCH, PUT</h3><ul>
+<li>A <code>PATCH</code> request is considered a set of <strong>instructions on how to modify a resource</strong>. Contrast this with <code>PUT</code>; which is a complete <strong>representation of a resource</strong>.</li>
+<li>A <code>PATCH</code> is <strong>not necessarily idempotent</strong>, although it can be. Contrast this with <code>PUT</code>; which is <strong>always idempotent</strong>. The word “idempotent” means that any number of repeated, identical requests will leave the resource in the same state. (不像<code>POST</code> request如果連續發送可能會變成多筆訂單，多次發送<code>PUT</code> request不會有類似的後遺症)</li>
+<li>Calling <code>PUT</code> method <strong>once or several times successively has the same effect</strong> (that is no side effect), this method is <strong>idempotent</strong>; whereas successive identical <code>POST</code> requests may have additional effects, akin to placing an order several times.</li>
+</ul>
+<h3 id="Idempotent"><a href="#Idempotent" class="headerlink" title="Idempotent"></a>Idempotent</h3><ul>
+<li>Description of common <strong>idempotent methods</strong>: GET, HEAD, PUT, DELETE, OPTIONS, TRACE</li>
+<li>Description of common <strong>non-idempotent</strong> methods: POST,PATCH, CONNECT<ul>
+<li>Reference: <a href="https://developer.mozilla.org/en-US/docs/Glossary/Idempotent">https://developer.mozilla.org/en-US/docs/Glossary/Idempotent</a></li>
+</ul>
+</li>
+<li>A request method is considered “idempotent” if the intended effect on the server of multiple identical requests with that method is the same as the effect for a single such request. (對server打一次或多次的結果如果都一樣，該HTTP method就會被認為是idempotent) Of the request methods defined by this specification, PUT, DELETE, and safe request methods (GET, HEAD, OPTIONS) are idempotent.<ul>
+<li>Reference: <a href="https://datatracker.ietf.org/doc/html/rfc7231#section-4.2.2">https://datatracker.ietf.org/doc/html/rfc7231#section-4.2.2</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
+<li><a href="https://stackoverflow.com/questions/6971583/node-style-require-for-in-browser-javascript/11588570">Node-style require for in-browser javascript?</a></li>
+<li><a href="https://github.com/browserify/browserify#browserify">GitHub: browserify</a></li>
+<li>MDN<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/PATCH">PATCH</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/PUT">PUT</a></li>
+</ul>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Express</category>
+        <category>HTML</category>
       </categories>
   </entry>
   <entry>
