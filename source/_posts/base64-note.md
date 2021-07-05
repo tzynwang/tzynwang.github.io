@@ -1,0 +1,62 @@
+---
+title: 「Base64」相關筆記
+date: 2021-07-05 11:18:25
+categories:
+- Data exchange format
+tags:
+---
+
+## 總結
+發現自己還沒有辦法流暢地解釋「Base64到底是什麼？」，此篇為查找相關資料後整理的筆記
+
+## 筆記
+### base64是什麼？
+- Wiki: In programming, Base64 is a group of **binary-to-text encoding schemes** that represent binary data (more specifically, a sequence of **8-bit bytes**) in an **ASCII string format** by translating the data into a radix-64 representation.
+  - A binary-to-text encoding is **encoding of data in plain text**.
+  - （引用自維基百科）Encoding、編碼是一種「資訊從一種形式轉換為另一種形式」的過程；解碼則是編碼的逆過程。
+- 維基百科：一種基於64個可列印字元來**表示二進位資料**的表示方法。
+
+> 小結論：base64是一種編碼方式，可以把二進位資料轉換成純文字；透過base64編碼後得到的純文字串，可以再解碼變回二進位資料。
+
+### base64要解決什麼問題？
+- Wiki:
+  - Base64 is designed **to carry data** stored in binary formats **across channels that only reliably support text content**.
+  - Base64 is particularly prevalent on the World Wide Web where its uses include the ability **to embed image files** (or other binary assets) **inside textual assets** such as **HTML** and **CSS files**.
+  - Base64 is also widely used for **sending e-mail attachments**. This is required because SMTP (in its **original form**) was designed to transport **7-bit ASCII characters only**.
+- Text-based protocols (according to [Wiki](https://en.wikipedia.org/wiki/Binary_protocol)):
+  - IRC, old versions of SMTP, HTTP/1.1
+
+> 小結論：base64讓早期的SMTP與HTTP/1.1也可以傳送二進位資料
+
+### 轉換範例
+{% figure figure--center 2021/base64-note/base64example.png "'Base64轉換示意圖，取自中文維基百科'" %}
+1. 字母M、a、n先個別轉換為ASCII編碼，得到十進位數字77、97與110
+1. 再將這三個十進位數字各自轉為二進位數字後，得到`01001101`、`01100001`與`01101110`，合併為`010011010110000101101110`，總計為24位元的資料
+1. 將`010011010110000101101110`分拆為4組各為6位元的資料：`010011`、`101011`、`000101`與`101110`
+1. 上述4組二進位數字轉回十進位，再對照ASCII，得到英文單字T、W、F、u
+1. 單字`Man`透過base64編碼後，得到字串`TWFu`
+
+### 補充
+- Wiki: This encoding causes **an overhead of 33–36%** (33% by the encoding itself; up to 3% more by the inserted line breaks). 進行base64編碼後，檔案大小會上升
+- Wiki: The data URI scheme can use Base64 to represent file contents. For instance, background images and fonts can be specified in a CSS stylesheet file as `data: URIs`, instead of being supplied in separate files.
+  - 參考[CSS-Tricks](https://css-tricks.com/data-uris/)：
+  ```CSS
+  /* CSS */
+  li {
+    background:
+      url(data:image/gif;base64,R0lGODlhEAAQAMQAAORHHOVSKudfOulrSOp3WOyDZu6QdvCchPGolfO0o/XBs/fNwfjZ0frl3/zy7////wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAkAABAALAAAAAAQABAAAAVVICSOZGlCQAosJ6mu7fiyZeKqNKToQGDsM8hBADgUXoGAiqhSvp5QAnQKGIgUhwFUYLCVDFCrKUE1lBavAViFIDlTImbKC5Gm2hB0SlBCBMQiB0UjIQA7)
+      no-repeat
+      left center;
+    padding: 5px 0 5px 25px;
+  }
+  ```
+  ```HTML
+  <!-- HTML img element -->
+  <img src="data:image/gif;base64,R0lGODlhEAAQAMQAAORHHOVSKudfOulrSOp3WOyDZu6QdvCchPGolfO0o/XBs/fNwfjZ0frl3/zy7////wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAkAABAALAAAAAAQABAAAAVVICSOZGlCQAosJ6mu7fiyZeKqNKToQGDsM8hBADgUXoGAiqhSvp5QAnQKGIgUhwFUYLCVDFCrKUE1lBavAViFIDlTImbKC5Gm2hB0SlBCBMQiB0UjIQA7" alt="star" width="16" height="16">
+  ```
+
+
+## 參考文件
+- [Wikipedia: Base64](https://en.wikipedia.org/wiki/Base64)
+- [維基百科：Base64（基底64）](https://zh.wikipedia.org/wiki/Base64)
+- [YouTube: What is Base64?](https://youtu.be/8qkxeZmKmOY)
