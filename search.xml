@@ -677,6 +677,64 @@ on <a href="https://codepen.io">CodePen</a>.</span>
       </categories>
   </entry>
   <entry>
+    <title>「Base64」相關筆記</title>
+    <url>/2021/base64-note/</url>
+    <content><![CDATA[<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>發現自己還沒有辦法流暢地解釋「Base64到底是什麼？」，此篇為查找相關資料後整理的筆記</p>
+<h2 id="筆記"><a href="#筆記" class="headerlink" title="筆記"></a>筆記</h2><h3 id="base64是什麼？"><a href="#base64是什麼？" class="headerlink" title="base64是什麼？"></a>base64是什麼？</h3><ul>
+<li>Wiki: In programming, Base64 is a group of <strong>binary-to-text encoding schemes</strong> that represent binary data (more specifically, a sequence of <strong>8-bit bytes</strong>) in an <strong>ASCII string format</strong> by translating the data into a radix-64 representation.<ul>
+<li>A binary-to-text encoding is <strong>encoding of data in plain text</strong>.</li>
+<li>（引用自維基百科）Encoding、編碼是一種「資訊從一種形式轉換為另一種形式」的過程；解碼則是編碼的逆過程。</li>
+</ul>
+</li>
+<li>維基百科：一種基於64個可列印字元來<strong>表示二進位資料</strong>的表示方法。</li>
+</ul>
+<blockquote>
+<p>小結論：base64是一種編碼方式，可以把二進位資料轉換成純文字；透過base64編碼後得到的純文字串，可以再解碼變回二進位資料。</p>
+</blockquote>
+<h3 id="base64要解決什麼問題？"><a href="#base64要解決什麼問題？" class="headerlink" title="base64要解決什麼問題？"></a>base64要解決什麼問題？</h3><ul>
+<li>Wiki:<ul>
+<li>Base64 is designed <strong>to carry data</strong> stored in binary formats <strong>across channels that only reliably support text content</strong>.</li>
+<li>Base64 is particularly prevalent on the World Wide Web where its uses include the ability <strong>to embed image files</strong> (or other binary assets) <strong>inside textual assets</strong> such as <strong>HTML</strong> and <strong>CSS files</strong>.</li>
+<li>Base64 is also widely used for <strong>sending e-mail attachments</strong>. This is required because SMTP (in its <strong>original form</strong>) was designed to transport <strong>7-bit ASCII characters only</strong>.</li>
+</ul>
+</li>
+<li>Text-based protocols (according to <a href="https://en.wikipedia.org/wiki/Binary_protocol">Wiki</a>):<ul>
+<li>IRC, old versions of SMTP, HTTP/1.1</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>小結論：base64讓早期的SMTP與HTTP/1.1也可以傳送二進位資料</p>
+</blockquote>
+<h3 id="轉換範例"><a href="#轉換範例" class="headerlink" title="轉換範例"></a>轉換範例</h3><figure class="figure--center"><img src="/2021/base64-note/base64example.png" title="Base64轉換示意圖，取自中文維基百科"><figcaption><p>Base64轉換示意圖，取自中文維基百科</p></figcaption></figure>
+<ol>
+<li>字母M、a、n先個別轉換為ASCII編碼，得到十進位數字77、97與110</li>
+<li>再將這三個十進位數字各自轉為二進位數字後，得到<code>01001101</code>、<code>01100001</code>與<code>01101110</code>，合併為<code>010011010110000101101110</code>，總計為24位元的資料</li>
+<li>將<code>010011010110000101101110</code>分拆為4組各為6位元的資料：<code>010011</code>、<code>101011</code>、<code>000101</code>與<code>101110</code></li>
+<li>上述4組二進位數字轉回十進位，再對照ASCII，得到英文單字T、W、F、u</li>
+<li>單字<code>Man</code>透過base64編碼後，得到字串<code>TWFu</code></li>
+</ol>
+<h3 id="補充"><a href="#補充" class="headerlink" title="補充"></a>補充</h3><ul>
+<li>Wiki: This encoding causes <strong>an overhead of 33–36%</strong> (33% by the encoding itself; up to 3% more by the inserted line breaks). 進行base64編碼後，檔案大小會上升</li>
+<li>Wiki: The data URI scheme can use Base64 to represent file contents. For instance, background images and fonts can be specified in a CSS stylesheet file as <code>data: URIs</code>, instead of being supplied in separate files.<ul>
+<li>參考<a href="https://css-tricks.com/data-uris/">CSS-Tricks</a>：<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* CSS */</span></span><br><span class="line"><span class="selector-tag">li</span> &#123;</span><br><span class="line">  <span class="attribute">background</span>:</span><br><span class="line">    <span class="built_in">url</span>(data:image/gif;base64,R0lGODlhEAAQAMQAAORHHOVSKudfOulrSOp3WOyDZu6QdvCchPGolfO0o/XBs/fNwfjZ0frl3/zy7////wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAkAABAALAAAAAAQABAAAAVVICSOZGlCQAosJ6mu7fiyZeKqNKToQGDsM8hBADgUXoGAiqhSvp5QAnQKGIgUhwFUYLCVDFCrKUE1lBavAViFIDlTImbKC5Gm2hB0SlBCBMQiB0UjIQA7)</span><br><span class="line">    no-repeat</span><br><span class="line">    left center;</span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">5px</span> <span class="number">0</span> <span class="number">5px</span> <span class="number">25px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- HTML img element --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;data:image/gif;base64,R0lGODlhEAAQAMQAAORHHOVSKudfOulrSOp3WOyDZu6QdvCchPGolfO0o/XBs/fNwfjZ0frl3/zy7////wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAkAABAALAAAAAAQABAAAAVVICSOZGlCQAosJ6mu7fiyZeKqNKToQGDsM8hBADgUXoGAiqhSvp5QAnQKGIgUhwFUYLCVDFCrKUE1lBavAViFIDlTImbKC5Gm2hB0SlBCBMQiB0UjIQA7&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;star&quot;</span> <span class="attr">width</span>=<span class="string">&quot;16&quot;</span> <span class="attr">height</span>=<span class="string">&quot;16&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
+<li><a href="https://en.wikipedia.org/wiki/Base64">Wikipedia: Base64</a></li>
+<li><a href="https://zh.wikipedia.org/wiki/Base64">維基百科：Base64（基底64）</a></li>
+<li><a href="https://youtu.be/8qkxeZmKmOY">YouTube: What is Base64?</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Data exchange format</category>
+      </categories>
+  </entry>
+  <entry>
     <title>bundle exec</title>
     <url>/2021/bundle-exec/</url>
     <content><![CDATA[<p>Question: why adds <code>bundle exec</code> in the command when running jekyll server in the first time?<br>Answer (short): to know the version of the gems that are going to use.</p>

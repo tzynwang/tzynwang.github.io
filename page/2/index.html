@@ -197,14 +197,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">52</span>
+          <span class="site-state-item-count">53</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-count">16</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
@@ -238,6 +238,172 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope="" itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tzynwang.github.io/2021/2-2-movie-list-note/">
+
+    <span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar-pexels-alex-andrews-215-215.png">
+      <meta itemprop="name" content="Charlie (Tzu Yin)">
+      <meta itemprop="description" content="一介普通文組的學習筆記 📒">
+    </span>
+
+    <span hidden="" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="普通文組">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/2-2-movie-list-note/" class="post-title-link" itemprop="url">Alpha Camp「2-2 電影清單」技術記錄</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-05-29 14:26:16" itemprop="dateCreated datePublished" datetime="2021-05-29T14:26:16+08:00">2021-05-29</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-05-30 14:02:17" itemprop="dateModified" datetime="2021-05-30T14:02:17+08:00">2021-05-30</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2021/2-2-movie-list-note/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/2-2-movie-list-note/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>本次實作了以下功能：</p>
+<ul>
+<li>搜尋電影（名稱），並在結果畫面中highlight使用者鍵入的關鍵字<figure class="figure--center"><img src="/2021/2-2-movie-list-note/searchAndHighlight.gif" title="search and highlight demonstration gif"><figcaption><p>search and highlight demonstration gif</p></figcaption></figure></li>
+<li>使用者可在主畫面（All movies）點擊星星按鈕來儲存「喜歡」的電影，可在喜愛清單（Favorite movies）瀏覽所有「喜歡」的電影<figure class="figure--center"><img src="/2021/2-2-movie-list-note/favorite.gif" title="add movie to favorite list demonstration gif"><figcaption><p>add movie to favorite list demonstration gif</p></figcaption></figure></li>
+<li>根據使用者勾選的「電影類型」來篩選出相對應的電影，支援同時篩選複數類型<figure class="figure--center"><img src="/2021/2-2-movie-list-note/filter.gif" title="filter feature demonstration gif"><figcaption><p>filter feature demonstration gif</p></figcaption></figure></li>
+<li>（僅限主畫面）點擊電影資料卡（modal）中的類型徽章（badge），會篩選出屬於該類型的電影<figure class="figure--center"><img src="/2021/2-2-movie-list-note/filterByModalBadges.gif" title="trigger filter by genres badges in each movie" alt="s modal card demonstration gif"><figcaption><p>trigger filter by genres badges in each movie</p></figcaption></figure>
+
+</li>
+</ul>
+<p>主要練習到的技術：</p>
+<ul>
+<li>MVC design</li>
+<li>JavaScript modules</li>
+<li><code>window.localStorage</code></li>
+</ul>
+<p>成品展示：<a href="https://tzynwang.github.io/ac_practice_2-2_movie_list/">https://tzynwang.github.io/ac_practice_2-2_movie_list/</a><br>原始碼：<a target="_blank" rel="noopener" href="https://github.com/tzynwang/ac_practice_2-2_movie_list">https://github.com/tzynwang/ac_practice_2-2_movie_list</a><br>專案結構：</p>
+<figure class="figure--center"><img src="/2021/2-2-movie-list-note/folderStructure.png" title="folder structure"><figcaption><p>folder structure</p></figcaption></figure>
+
+<h2 id="畫面與CSS"><a href="#畫面與CSS" class="headerlink" title="畫面與CSS"></a>畫面與CSS</h2><ul>
+<li>僅分拆為主畫面與喜愛清單兩份<code>.html</code>檔案</li>
+<li>外觀使用<a target="_blank" rel="noopener" href="https://bootswatch.com/">Bootswatch的Superhero視覺主題</a></li>
+<li>除頂端的導覽列以外，電影清單、點擊Detail按鈕後顯示的卡片（modal）與分頁皆透過JavaScript產生</li>
+<li>為卡片右側的電影描述文字欄位設定為<code>overflow-y: auto;</code>，維持卡片一慣高度<figure class="figure--center"><img src="/2021/2-2-movie-list-note/movieDescriptionOverflowY.jpg" title="set movie description column overflow-y attribute as auto"><figcaption><p>set movie description column overflow-y attribute as auto</p></figcaption></figure></li>
+<li>為電影的類型徽章與分頁加上<code>cursor: pointer;</code>，提供「此物件可互動」的提示</li>
+</ul>
+<h2 id="JavaScript部分"><a href="#JavaScript部分" class="headerlink" title="JavaScript部分"></a>JavaScript部分</h2><h3 id="規劃"><a href="#規劃" class="headerlink" title="規劃"></a>規劃</h3><ul>
+<li>根據MVC概念將函式分類到view與controller模組（module）中；view負責與視覺畫面有關的功能，controller負責與資料處理相關的功能</li>
+<li>model模組負責儲存專案使用到的資料物件與設定</li>
+<li>單純檢驗「使用者輸入的資料是否有效」的功能，歸類到utilities模組中（不進行任何資料處理，僅根據條件執行判斷）</li>
+<li>interaction模組中包含各種組合view與controller功能的函式，此模組內的函式皆以<strong>名詞描述</strong>或<strong>動詞+名詞</strong>的形式命名，讓開發者一眼就能知道該函式的目的</li>
+<li>index.html與favorite.html僅匯入interaction模組的功能，不直接與view、controller模組內的功能互動</li>
+</ul>
+<h3 id="controller-js"><a href="#controller-js" class="headerlink" title="controller.js"></a>controller.js</h3><script src="https://gist.github.com/tzynwang/fcda3bff6d518e9b1c3982fa7c7268d4.js"></script>
+
+<ul>
+<li><code>fetchData()</code>僅執行「使用axios取得某API提供的資料」之功能，處理API資料的工作會交由其他函式來進行</li>
+<li><code>localStorage</code>僅能儲存<code>strings</code>類型的資料，故<code>localStorage.getItem()</code>時需搭配<code>JSON.stringify()</code>，而透過<code>localStorage.getItem()</code>取出的資料，需使用<code>JSON.parse()</code>將字串轉回JavaScript物件</li>
+</ul>
+<h3 id="view-js"><a href="#view-js" class="headerlink" title="view.js"></a>view.js</h3><script src="https://gist.github.com/tzynwang/0cd46b3f99b83824a40c23cdc9718ee4.js"></script>
+
+<ul>
+<li><code>displayFilterBadges()</code>中的<code>Object.entries(obj)</code>會回傳一陣列，陣列內容為<code>obj</code>中所有key-value pair</li>
+</ul>
+<h3 id="interaction-js"><a href="#interaction-js" class="headerlink" title="interaction.js"></a>interaction.js</h3><script src="https://gist.github.com/tzynwang/c0c60c0caca7a5d18ed9cf305c0b38c0.js"></script>
+
+<ul>
+<li>關於<strong>搜尋與篩選功能不並存</strong>的設計：<ul>
+<li>篩選行為的目的：想要瀏覽特定類型的電影</li>
+<li>搜尋行為的目的：想要搜尋「名字好像是……」的電影</li>
+<li>因兩種行為的目的不太相同，故最後採取互不相容的設計；搜尋時不支援篩選，篩選後進行搜尋、會重置篩選記錄</li>
+</ul>
+</li>
+</ul>
+<h3 id="index-js與favorite-js"><a href="#index-js與favorite-js" class="headerlink" title="index.js與favorite.js"></a>index.js與favorite.js</h3><p>index.html與favorite.html會使用到的JavaScript都先在interaction整理過了，直接匯入interaction模組的功能即可</p>
+<script src="https://gist.github.com/tzynwang/eb19d1d54ca8cea325e8fdabc15954f9.js"></script>
+
+<script src="https://gist.github.com/tzynwang/1d7a65f5888e64ba8de2dcc4c4dfd68c.js"></script>
+
+<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
+<li>MDN<ul>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules">JavaScript modules</a></li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage">Window.localStorage</a></li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp#description">RegExp: constructor</a></li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/entries">Object.entries()</a></li>
+</ul>
+</li>
+<li>StackOverFlow<ul>
+<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/48980380/returning-data-from-axios-api">Returning data from Axios API</a></li>
+<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/14220321/how-to-return-the-response-from-an-asynchronous-call">How to return the response from an asynchronous call?</a></li>
+<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/46715484/correct-async-function-export-in-node-js">Correct async function export in node.js</a></li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1733,127 +1899,6 @@ on <a target="_blank" rel="noopener" href="https://codepen.io">CodePen</a>.</spa
 </li>
 <li><a target="_blank" rel="noopener" href="https://csstriggers.com/">CSS Triggers</a></li>
 <li><a target="_blank" rel="noopener" href="https://developers.google.com/web/fundamentals/performance/rendering/stick-to-compositor-only-properties-and-manage-layer-count">Stick to Compositor-Only Properties and Manage Layer Count</a></li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope="" itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://tzynwang.github.io/2021/list-style-type-not-working-on-ios-chrome/">
-
-    <span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar-pexels-alex-andrews-215-215.png">
-      <meta itemprop="name" content="Charlie (Tzu Yin)">
-      <meta itemprop="description" content="一介普通文組的學習筆記 📒">
-    </span>
-
-    <span hidden="" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="普通文組">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/list-style-type-not-working-on-ios-chrome/" class="post-title-link" itemprop="url">為什麼iOS上的Chrome沒有呈現設定好的list-style-type</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2021-04-22 11:53:12 / Modified: 15:35:55" itemprop="dateCreated datePublished" datetime="2021-04-22T11:53:12+08:00">2021-04-22</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-          <a href="/categories/CSS/" itemprop="url" rel="index"><span itemprop="name">CSS</span></a>
-        </span>
-    </span>
-
-  
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus: </span>
-    
-    <a title="disqus" href="/2021/list-style-type-not-working-on-ios-chrome/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/list-style-type-not-working-on-ios-chrome/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <figure class="figure--center"><img src="/2021/list-style-type-not-working-on-ios-chrome/ask.jpg" title="一種Chrome，各自表述渲染結果"><figcaption><p>一種Chrome，各自表述渲染結果</p></figcaption></figure>
-
-<h2 id="環境"><a href="#環境" class="headerlink" title="環境"></a>環境</h2><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Google Chrome (Desktop): 90.0.4430.85 (Official Build) (64-bit)</span><br><span class="line">Google Chrome (iOS): 87.0.4280.163</span><br></pre></td></tr></tbody></table></figure>
-<h2 id="原始問題"><a href="#原始問題" class="headerlink" title="原始問題"></a>原始問題</h2><p>HTML內容如下：</p>
-<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">"thumbs-up"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>Apple<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>Banana<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>Cherry<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
-<p>而CSS樣式設定如下：</p>
-<figure class="highlight css"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#thumbs-up</span> <span class="selector-tag">li</span> {</span><br><span class="line">  <span class="attribute">list-style-type</span>: <span class="string">"\1F44D"</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-<p>在電腦版的Chrome有正常顯示清單圖示「👍」，但切換到手機版的Chrome，顯示的卻是「●」。</p>
-<figure class="figure--center"><img src="/2021/list-style-type-not-working-on-ios-chrome/desktop-screenshot.jpg" title="電腦版畫面"><figcaption><p>電腦版畫面</p></figcaption></figure>
-<figure class="figure--center"><img src="/2021/list-style-type-not-working-on-ios-chrome/ios-screenshot.png" title="手機版畫面"><figcaption><p>手機版畫面</p></figcaption></figure>
-<p>同一份CSS樣式，同樣都用Chrome來瀏覽，為何<code>&lt;li&gt;</code>的樣式不同？</p>
-<h2 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h2><ul>
-<li>電腦版Chrome的browser engine是Blink</li>
-<li>但手機板Chrome的browser engine是WebKit<ul>
-<li><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Google_Chrome">Wikipedia</a>: Chrome is available on Apple’s mobile iOS operating system as Google Chrome for iOS. In accordance with Apple’s requirements for browsers released through their App Store, <strong>this version of Chrome uses the iOS WebKit</strong> – which is Apple’s own mobile rendering engine and components, developed for their Safari browser – therefore it is restricted from using Google’s own V8 JavaScript engine.</li>
-</ul>
-</li>
-<li>而根據MDN文件，WebKit並不支援以<code>&lt;string&gt; value</code>設定<code>list-style-type</code>樣式，所以手機版的Chrome無法處理<code>list-style-type: "\1F44D";</code><figure class="figure--center"><img src="/2021/list-style-type-not-working-on-ios-chrome/browser-support.png" title="WebKit並不支援以string作為list-style-type的值"><figcaption><p>WebKit並不支援以string作為list-style-type的值</p></figcaption></figure></li>
-<li><code>list-style-type: "\1F44D";</code>沒有作用的話，<a target="_blank" rel="noopener" href="https://trac.webkit.org/browser/trunk/Source/WebCore/css/html.css">WebKit的user agent stylesheet</a>內容就會取而代之，其樣式設定如下：<figure class="highlight css"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* lists */</span></span><br><span class="line"><span class="selector-tag">ul</span>, <span class="selector-tag">menu</span>, <span class="selector-tag">dir</span> {</span><br><span class="line">    <span class="attribute">display</span>: block;</span><br><span class="line">    <span class="attribute">list-style-type</span>: disc;</span><br><span class="line">    <span class="attribute">-webkit-margin-before</span>: <span class="number">1</span>__qem;</span><br><span class="line">    <span class="attribute">-webkit-margin-after</span>: <span class="number">1em</span>;</span><br><span class="line">    <span class="attribute">-webkit-margin-start</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">-webkit-margin-end</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">-webkit-padding-start</span>: <span class="number">40px</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure></li>
-<li>所以透過iOS版的Chrome只會看到「●」，而不是使用<code>&lt;string&gt; value</code>指定的「👍」樣式</li>
-</ul>
-<h2 id="使用-before來實作"><a href="#使用-before來實作" class="headerlink" title="使用::before來實作"></a>使用::before來實作</h2><p>HTML內容不變，CSS樣式改為以下內容：</p>
-<figure class="highlight css"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#thumbs-up</span> {</span><br><span class="line">  <span class="attribute">padding-inline-start</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="comment">/* 將&lt;li&gt;樣式的空間移除，使&lt;li&gt;（包含樣式與內文）向畫面左方靠攏 */</span></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="selector-id">#thumbs-up</span> <span class="selector-tag">li</span> {</span><br><span class="line">  <span class="attribute">list-style</span>: none;</span><br><span class="line">  <span class="comment">/* 移除&lt;li&gt;樣式 */</span></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="selector-id">#thumbs-up</span> <span class="selector-tag">li</span><span class="selector-pseudo">::before</span> {</span><br><span class="line">  <span class="attribute">content</span>: <span class="string">"👍 "</span>;</span><br><span class="line">  <span class="comment">/* 使用content搭配::before來填入樣式內容 */</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-<p>實際結果如下：</p>
-<figure class="figure--center"><img src="/2021/list-style-type-not-working-on-ios-chrome/ios-screenshot-before-content.png" title="iOS裝置也可看到自定義的li樣式了"><figcaption><p>iOS裝置也可看到自定義的li樣式了</p></figcaption></figure>
-
-
-<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
-<li>感謝ALPHA Camp政治助教的回覆：<figure class="figure--center"><img src="/2021/list-style-type-not-working-on-ios-chrome/AC-reply.png" title="在幾乎所有的瀏覽器都支援偽元素::before的情況下，設定::before的content比較能確保li的樣式可以好好呈現在使用者眼前"><figcaption><p>在幾乎所有的瀏覽器都支援偽元素::before的情況下，設定::before的content比較能確保li的樣式可以好好呈現在使用者眼前</p></figcaption></figure></li>
-<li><a target="_blank" rel="noopener" href="https://coliss.com/articles/build-websites/operation/css/user-agent-stylesheets.html">各ブラウザごとのデフォルトのスタイルシート、user agent stylesheetのまとめ -Chrome, Safari, Firefox, Edge</a></li>
-<li><a target="_blank" rel="noopener" href="https://trac.webkit.org/browser/trunk/Source/WebCore/css/html.css">webkit/trunk/Source/WebCore/css/html.css</a></li>
-<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/CSS/list-style-type">MDN: list-style-type</a></li>
-<li><a target="_blank" rel="noopener" href="https://web.dev/css-marker-pseudo-element/">web.dev: Custom bullets with CSS ::marker</a>：須注意WebKit目前僅支援修改<code>::marker</code>的<code>color</code>與<code>font-size</code>，<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/CSS/::marker#browser_compatibility">參考MDN</a></li>
 </ul>
 
       

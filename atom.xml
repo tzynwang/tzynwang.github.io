@@ -6,7 +6,7 @@
   <link href="https://tzynwang.github.io/atom.xml" rel="self"/>
   
   <link href="https://tzynwang.github.io/"/>
-  <updated>2021-07-01T02:19:13.335Z</updated>
+  <updated>2021-07-05T05:43:57.577Z</updated>
   <id>https://tzynwang.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>「Base64」相關筆記</title>
+    <link href="https://tzynwang.github.io/2021/base64-note/"/>
+    <id>https://tzynwang.github.io/2021/base64-note/</id>
+    <published>2021-07-05T03:18:25.000Z</published>
+    <updated>2021-07-05T05:43:57.577Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;總結&quot;&gt;&lt;a href=&quot;#總結&quot; class=&quot;headerlink&quot; title=&quot;總結&quot;&gt;&lt;/a&gt;總結&lt;/h2&gt;&lt;p&gt;發現自己還沒有辦法流暢地解釋「Base64到底是什麼？」，此篇為查找相關資料後整理的筆記&lt;/p&gt;
+&lt;h2 id=&quot;筆記&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="Data exchange format" scheme="https://tzynwang.github.io/categories/Data-exchange-format/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>「使用passport處理FB、Google第三方登入」相關筆記</title>
@@ -108,31 +132,6 @@
     
     
     <category term="Heroku" scheme="https://tzynwang.github.io/categories/Heroku/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>從零開始重寫：餐廳清單（Express版）路由、METHODS重構</title>
-    <link href="https://tzynwang.github.io/2021/express-restaurant-list-1/"/>
-    <id>https://tzynwang.github.io/2021/express-restaurant-list-1/</id>
-    <published>2021-06-22T06:06:28.000Z</published>
-    <updated>2021-06-22T06:58:13.339Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;總結&quot;&gt;&lt;a href=&quot;#總結&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="Express" scheme="https://tzynwang.github.io/categories/Express/"/>
-    
-    <category term="HTML" scheme="https://tzynwang.github.io/categories/HTML/"/>
     
     
   </entry>
