@@ -15,6 +15,7 @@ tags:
   - A binary-to-text encoding is **encoding of data in plain text**.
   - （引用自維基百科）Encoding、編碼是一種「資訊從一種形式轉換為另一種形式」的過程；解碼則是編碼的逆過程。
 - 維基百科：一種基於64個可列印字元來**表示二進位資料**的表示方法。
+- From [elmah.io](https://elmah.io/tools/base64-image-encoder/): Base64 is an encoding algorithm that **converts any characters, binary data, and even images or sound files into a readable string**, which can be saved or transported over the network without data loss. The characters generated from Base64 encoding consist of Latin letters, digits, plus, and slash.
 
 > 小結論：base64是一種編碼方式，可以把二進位資料轉換成純文字；透過base64編碼後得到的純文字串，可以再解碼變回二進位資料。
 
@@ -25,6 +26,10 @@ tags:
   - Base64 is also widely used for **sending e-mail attachments**. This is required because SMTP (in its **original form**) was designed to transport **7-bit ASCII characters only**.
 - Text-based protocols (according to [Wiki](https://en.wikipedia.org/wiki/Binary_protocol)):
   - IRC, old versions of SMTP, HTTP/1.1
+
+- [elmah.io](https://elmah.io/tools/base64-image-encoder/):
+  - Base64 is most commonly used as a MIME (Multipurpose Internet Mail Extensions) transfer encoding for email.
+  - Base64 **images** are primarily used to embed image data within other formats like HTML, CSS, or JSON. By including image data within an HTML document, **the browser doesn't need to make an additional web request** to fetch the file, since the image is already embedded in the HTML document. A Base64 representation of an image is larger than a separate image and the string gets very long for large images.
 
 > 小結論：base64讓早期的SMTP與HTTP/1.1也可以傳送二進位資料
 
