@@ -31,7 +31,6 @@ tags:
   - Base64 is most commonly used as a MIME (Multipurpose Internet Mail Extensions) transfer encoding for email.
   - Base64 **images** are primarily used to embed image data within other formats like HTML, CSS, or JSON. By including image data within an HTML document, **the browser doesn't need to make an additional web request** to fetch the file, since the image is already embedded in the HTML document. A Base64 representation of an image is larger than a separate image and the string gets very long for large images.
 
-> 小結論：base64讓早期的SMTP與HTTP/1.1也可以傳送二進位資料
 
 ### 轉換範例
 {% figure figure--center 2021/base64-note/base64example.png "'Base64轉換示意圖，取自中文維基百科'" %}
