@@ -197,7 +197,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">53</span>
+          <span class="site-state-item-count">54</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -238,6 +238,165 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope="" itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tzynwang.github.io/2021/morden-layouts-1-line-css/">
+
+    <span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar-pexels-alex-andrews-215-215.png">
+      <meta itemprop="name" content="Charlie (Tzu Yin)">
+      <meta itemprop="description" content="一介普通文組的學習筆記 📒">
+    </span>
+
+    <span hidden="" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="普通文組">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/morden-layouts-1-line-css/" class="post-title-link" itemprop="url">「10 modern layouts in 1 line of CSS」相關筆記</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-03-07 12:36:03" itemprop="dateCreated datePublished" datetime="2021-03-07T12:36:03+08:00">2021-03-07</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-03-18 10:00:19" itemprop="dateModified" datetime="2021-03-18T10:00:19+08:00">2021-03-18</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+          <a href="/categories/CSS/" itemprop="url" rel="index"><span itemprop="name">CSS</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2021/morden-layouts-1-line-css/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/morden-layouts-1-line-css/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>關於YouTube影片「<a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=qm0IfG1GyZU">10 modern layouts in 1 line of CSS</a>」的相關筆記。</p>
+<h2 id="版本與環境"><a href="#版本與環境" class="headerlink" title="版本與環境"></a>版本與環境</h2><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Google Chrome: 89.0.4389.72 (Official Build) (64-bit)</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="基礎"><a href="#基礎" class="headerlink" title="基礎"></a>基礎</h2><h3 id="fr-fractional-units"><a href="#fr-fractional-units" class="headerlink" title="fr (fractional units)"></a><code>fr</code> (fractional units)</h3><p>類似百分比，與百分比不同的地方是「所有使用fr來宣告尺寸的元件，這些元件會互相參考彼此的尺寸」<br>在一些非常極端的情況下可能會造成尺寸炸裂，以下列原始碼來舉例：</p>
+<p class="codepen" data-height="265" data-theme-id="dark" data-default-tab="html,result" data-user="Charlie7779" data-slug-hash="WNogyEW" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="fr">
+  <span>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/Charlie7779/pen/WNogyEW">
+  fr</a> by Charlie (<a target="_blank" rel="noopener" href="https://codepen.io/Charlie7779">@Charlie7779</a>)
+  on <a target="_blank" rel="noopener" href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async="" src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+
+<p>在<code>&lt;div class="cyan"&gt;&lt;/div&gt;</code>中如果僅置入一段文字的話，高度為48px（4fr）<br>那麼作為1fr的<code>&lt;div class="coral"&gt;&lt;/div&gt;</code>與<code>&lt;div class="gold"&gt;&lt;/div&gt;</code>的高度就是48除以4，等於12px</p>
+<p>而當我在<code>&lt;div class="cyan"&gt;&lt;/div&gt;</code>中置入2萬個字元後，元件的高度被撐到4128px<br>而<code>&lt;div class="coral"&gt;&lt;/div&gt;</code>與<code>&lt;div class="gold"&gt;&lt;/div&gt;</code>的高度就一起因應<code>&lt;div class="cyan"&gt;&lt;/div&gt;</code>而改變，為4182除以4，等於1032px</p>
+<h3 id="auto"><a href="#auto" class="headerlink" title="auto"></a><code>auto</code></h3><p>auto spacing，根據內容自動分配寬高。<br>所以如果沒有給予元件任何內容的話，高度就會是0。</p>
+<h3 id="minmax"><a href="#minmax" class="headerlink" title="minmax()"></a><code>minmax()</code></h3><p>作用如其名稱，設定最小與最大的尺寸。</p>
+<h3 id="clamp"><a href="#clamp" class="headerlink" title="clamp()"></a><code>clamp()</code></h3><p>接受三個參數，分別設定最小（minimum value）、理想（preferred value）與最大（maximum allowed value）尺寸。</p>
+<h3 id="auto-fill與auto-fit"><a href="#auto-fill與auto-fit" class="headerlink" title="auto-fill與auto-fit"></a><code>auto-fill</code>與<code>auto-fit</code></h3><p>這篇搭配影片示範，好懂：<a target="_blank" rel="noopener" href="https://css-tricks.com/auto-sizing-columns-css-grid-auto-fill-vs-auto-fit/">Auto-Sizing Columns in CSS Grid: auto-fill vs auto-fit</a></p>
+<h2 id="影片中的10個範例"><a href="#影片中的10個範例" class="headerlink" title="影片中的10個範例"></a>影片中的10個範例</h2><h3 id="1-Super-Centered"><a href="#1-Super-Centered" class="headerlink" title="1. Super Centered"></a>1. Super Centered</h3><p><code>place-items: center</code>：放在grid父容器上，讓子元件水平＋垂直置中。<br>替代方案：在子元件加上<code>justify-self: center;</code>與<code>align-self: center;</code>屬性。</p>
+<h3 id="2-The-Deconstructed-Pancake"><a href="#2-The-Deconstructed-Pancake" class="headerlink" title="2. The Deconstructed Pancake"></a>2. The Deconstructed Pancake</h3><p>父容器設定為<code>display: flex;</code>，子元件設定為<code>flex: 0 1 &lt;baseWidth&gt;;</code>或<code>flex: 1 1 &lt;baseWidth&gt;;</code>。<br>示範碼使用<code>flex: 0 1 150px;</code>，展開來即是：</p>
+<figure class="highlight css"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">flex-grow</span>: 0;</span><br><span class="line"><span class="comment">/* 0代表不會延展 */</span></span><br><span class="line"></span><br><span class="line"><span class="selector-tag">flex-shrink</span>: 1;</span><br><span class="line"><span class="comment">/* 1代表會收縮 */</span></span><br><span class="line"></span><br><span class="line"><span class="selector-tag">flex-basis</span>: 150<span class="selector-tag">px</span>;</span><br><span class="line"><span class="comment">/* 因為示範碼在父元件上沒有指定flex-direction，故會是預設的row flow，那flex-basis影響的是flex item的寬 */</span></span><br><span class="line"><span class="comment">/* 如果flex-basis沒有設定的話，預設為0，那麼寬度會根據內容決定 */</span></span><br></pre></td></tr></tbody></table></figure>
+<p>如果設定為<code>flex: 1 1 150px;</code>的話，代表<code>flex-grow</code>為<code>1</code>，會讓子元件填滿父元件的剩餘空間。</p>
+<h3 id="3-Sidebar-Says"><a href="#3-Sidebar-Says" class="headerlink" title="3. Sidebar Says"></a>3. Sidebar Says</h3><p>父容器設定為<code>grid-template-columns: minmax(&lt;min&gt;, &lt;max&gt;)</code><br>示範碼使用<code>grid-template-columns: minmax(150px, 25%) 1fr;</code>，意思是：</p>
+<ul>
+<li>第一個欄最少150px寬、最多佔父元件25%寬</li>
+<li>第二個欄寬設定為1fr，讓其佔據剩餘的所有空間，1fr替換成auto也會有一樣的效果</li>
+</ul>
+<h3 id="4-Pancake-Stack"><a href="#4-Pancake-Stack" class="headerlink" title="4. Pancake Stack"></a>4. Pancake Stack</h3><p>父容器設定為<code>grid-template-rows: auto 1fr auto</code>，直接搞定常見的Header/Main/Footer三層排版。<br>中間的Main區塊設定為1fr有其必要：如果點開<a target="_blank" rel="noopener" href="https://codepen.io/una/pen/bGVXPWB">Pancake Stack在CodePen中的示範碼</a>，並把Main的1fr改為auto的話，版面會變成從上到下1:1:1的比例（比例壞了）。</p>
+<h3 id="5-Classic-Holy-Grail-Layout"><a href="#5-Classic-Holy-Grail-Layout" class="headerlink" title="5. Classic Holy Grail Layout"></a>5. Classic Holy Grail Layout</h3><p>父容器設定為<code>grid-template: auto 1fr auto / auto 1fr auto</code>，而這行拆開來是：</p>
+<figure class="highlight css"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">grid-template-rows</span>: <span class="selector-tag">auto</span> 1<span class="selector-tag">fr</span> <span class="selector-tag">auto</span>;</span><br><span class="line"><span class="selector-tag">grid-template-columns</span>: <span class="selector-tag">auto</span> 1<span class="selector-tag">fr</span> <span class="selector-tag">auto</span>;</span><br><span class="line"><span class="selector-tag">grid-template-areas</span>: <span class="selector-tag">none</span>;</span><br></pre></td></tr></tbody></table></figure>
+<p>子元件需各自設定要佔據多少空間：</p>
+<figure class="highlight css"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.header</span> {</span><br><span class="line">    <span class="attribute">padding</span>: <span class="number">2rem</span>;</span><br><span class="line">    <span class="attribute">grid-column</span>: <span class="number">1</span> / <span class="number">4</span>;</span><br><span class="line">    <span class="comment">/* column從line 1開始，到lin 4結束 */</span></span><br><span class="line">    <span class="comment">/* 可以換成</span></span><br><span class="line"><span class="comment">    grid-column-start: 1;</span></span><br><span class="line"><span class="comment">    grid-column-end: 4;  */</span></span><br><span class="line">  }</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.left-side</span> {</span><br><span class="line">  <span class="attribute">grid-column</span>: <span class="number">1</span> / <span class="number">2</span>;</span><br><span class="line">  <span class="comment">/* column從line 1開始，到line 2結束 */</span></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.main</span> {</span><br><span class="line">  <span class="attribute">grid-column</span>: <span class="number">2</span> / <span class="number">3</span>;</span><br><span class="line">  <span class="comment">/* column從line 2開始，到line 3結束 */</span></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.right-side</span> {</span><br><span class="line">  <span class="attribute">grid-column</span>: <span class="number">3</span> / <span class="number">4</span>;</span><br><span class="line">  <span class="comment">/* column從line 3開始，到line 4結束 */</span></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.footer</span> {</span><br><span class="line">  <span class="attribute">grid-column</span>: <span class="number">1</span> / <span class="number">4</span>;</span><br><span class="line">  <span class="comment">/* column從line 1開始，到lin 4結束 */</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="6-12-Span-Grid"><a href="#6-12-Span-Grid" class="headerlink" title="6. 12-Span Grid"></a>6. 12-Span Grid</h3><p><code>grid-template-columns: repeat(12, 1fr)</code><br>使用<code>repeat()</code>來取代輸入12次1fr。</p>
+<h3 id="7-RAM-Repeat-Auto-Minmax"><a href="#7-RAM-Repeat-Auto-Minmax" class="headerlink" title="7. RAM (Repeat, Auto, Minmax)"></a>7. RAM (Repeat, Auto, Minmax)</h3><p><code>grid-template-columns: repeat(auto-fit, minmax(&lt;base&gt;, 1fr))</code><br>提醒：在<code>grid-auto-flow: row;</code>（預設）的情況下，<code>&lt;base&gt;</code>設定的是子元件的欄寬。<br>示範碼的<code>auto-fit</code>讓子元件在父容器變寬時，自動填滿父元件剩餘的空間。<br>若把示範碼改為<code>auto-fill</code>，即使把父容器拉寬，子元件最大也只會伸展到150px。</p>
+<h3 id="8-Line-Up"><a href="#8-Line-Up" class="headerlink" title="8. Line Up"></a>8. Line Up</h3><p><code>justify-content: space-between</code><br>用<code>flex-direction: column;</code>搭配<code>justify-content: space-between</code>來讓卡片裡的標題與圖片頂住卡片天地，而卡片文字會垂直置中。<br>如果把<code>justify-content: space-between</code>從示範碼抽掉的話，會發現卡片圖片的位置會根據每張卡片內文字的多寡而有不同高度。</p>
+<h3 id="9-Clamping-My-Style"><a href="#9-Clamping-My-Style" class="headerlink" title="9. Clamping My Style"></a>9. Clamping My Style</h3><p><code>clamp(&lt;min&gt;, &lt;actual&gt;, &lt;max&gt;)</code><br>一行設定元件最小、理想狀態與最大的尺寸分別各是多少。<br>示範碼的<code>width: clamp(23ch, 50%, 46ch);</code>意即：讓子元件是父容器的50%寬，但最大不超過46ch、最小不低於23ch。</p>
+<p>示範碼中出現的單位<code>ch</code>根據<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Values_and_units#lengths">MDN對Relative length units</a>的解釋是：</p>
+<blockquote>
+<p>The advance measure (width) of the glyph “0” of the element’s font.</p>
+</blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.w3schools.com/cssref/css_units.asp">w3schools.com版本</a>的解釋：</p>
+<blockquote>
+<p>Relative to the width of the “0” (zero)</p>
+</blockquote>
+<p>筆記：字體的大小會根據該字形中字母「0 (ZERO, U+0030)」的寬度來計算。</p>
+<p>而根據<a target="_blank" rel="noopener" href="https://meyerweb.com/eric/thoughts/2018/06/28/what-is-the-css-ch-unit/">Eric A. Meyer</a>大神對<code>ch</code>的說明：</p>
+<blockquote>
+<p>So however wide the “0” character is in a given typeface, that’s the measure of one ch.</p>
+</blockquote>
+<p>筆記：字母「0 (ZERO, U+0030)」的寬度即是一個ch代表的值。</p>
+<p>注意：雖然影片中有提到使用ch是為了控制單一行的字元數量來確保易讀性（legibility），但除非用的是monospace類型的字體，不然每個字母的寬度不一定一樣：</p>
+<blockquote>
+<p>This leads to claims that you can “make your content column 60 characters wide for maximum readability” or “size images to be a certain number of characters!” Specifically, yes if you’re using fixed-width fonts. Otherwise, mostly no.</p>
+</blockquote>
+<p>極致懶人包：因為1ch通常比「大部分」的字體寬一點點，所以如果要用ch來做單行字元數量限制，數字需比實際字元數小一些。<br>舉例：如果希望一行有80個字元，那請設定寬度為60ch。</p>
+<blockquote>
+<p>What I’ve found through random experimentation is that in proportional typefaces, <code>1ch</code> is usually wider than the average character width, usually by around 20-30%. But there are at least a few typefaces where the zero symbol is skinny with respect to the other letterforms; in such a case, 1ch is narrower than the average character width.</p>
+</blockquote>
+<blockquote>
+<p>So in general, if you want an 80-character column width and you’re going to use ch to size it, aim for about 60ch, unless you’re specifically working with a typeface that has a skinny zero.</p>
+</blockquote>
+<h3 id="10-Respect-for-Aspect"><a href="#10-Respect-for-Aspect" class="headerlink" title="10. Respect for Aspect"></a>10. Respect for Aspect</h3><p><code>aspect-ratio: &lt;width&gt; / &lt;height&gt;</code><br>一行搞定元件的比例尺，但須注意瀏覽器是否支援。<br>可參考<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/CSS/aspect-ratio#browser_compatibility">MDN</a>。</p>
+<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><iframe width="560" height="315" src="https://www.youtube.com/embed/qm0IfG1GyZU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=qm0IfG1GyZU">Google Chrome Developers: 10 modern layouts in 1 line of CSS</a></li>
+<li><a target="_blank" rel="noopener" href="https://1linelayouts.glitch.me/">Demo website: 1-Line Layouts</a></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1333,138 +1492,6 @@
 <ul>
 <li><a target="_blank" rel="noopener" href="https://stackoverflow.com/a/10142727/15028185">How to cancel a pull request on github?</a></li>
 <li><a target="_blank" rel="noopener" href="https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/closing-a-pull-request">GitHub Docs: Closing a pull request</a></li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope="" itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://tzynwang.github.io/2021/next-theme-edit/">
-
-    <span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar-pexels-alex-andrews-215-215.png">
-      <meta itemprop="name" content="Charlie (Tzu Yin)">
-      <meta itemprop="description" content="一介普通文組的學習筆記 📒">
-    </span>
-
-    <span hidden="" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="普通文組">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/next-theme-edit/" class="post-title-link" itemprop="url">Theme "NexT" font modification</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-02-12 15:23:22" itemprop="dateCreated datePublished" datetime="2021-02-12T15:23:22+08:00">2021-02-12</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-04-09 21:28:56" itemprop="dateModified" datetime="2021-04-09T21:28:56+08:00">2021-04-09</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-          <a href="/categories/hexo/" itemprop="url" rel="index"><span itemprop="name">hexo</span></a>
-        </span>
-    </span>
-
-  
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus: </span>
-    
-    <a title="disqus" href="/2021/next-theme-edit/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/next-theme-edit/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="Summary-of-this-post"><a href="#Summary-of-this-post" class="headerlink" title="Summary of this post"></a>Summary of this post</h2><p>Want to update the <strong>font-size</strong>, <strong>font-family</strong> (for the Chinese character) and <strong>color</strong> settings for my hexo blog. Done some searching and find out the contents in <code>base.styl</code> and <code>Pisces.styl</code> needs to be modified to fullfil my requirements.<br>I know this may not be the best choice (since <a target="_blank" rel="noopener" href="https://theme-next.js.org/docs/getting-started/configuration.html">NexT’s docs</a> suggests using Alternate Config ,<code>_config.next.yml</code>, to apply modification) while at least this works…😣</p>
-<p>為了修改字體尺寸、字型（主要是中文字體）與版面顏色設定，調整了<code>base.styl</code>與<code>Pisces.styl</code>的內容。<br>只需要修改英語字型的話，更改<code>_config.next.yml</code>中<code># Font Settings</code>的段落即可。</p>
-<h2 id="Environment"><a href="#Environment" class="headerlink" title="Environment"></a>Environment</h2><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo: 5.3.0</span><br><span class="line">NexT: 8.2.1</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></tbody></table></figure>
-
-<h2 id="Modification-in-base-styl"><a href="#Modification-in-base-styl" class="headerlink" title="Modification in base.styl"></a>Modification in base.styl</h2><p>File path: <code>\themes\next\source\css\_variables</code></p>
-<h3 id="Color-system"><a href="#Color-system" class="headerlink" title="Color system"></a>Color system</h3><figure class="highlight"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Color system</span></span><br><span class="line"><span class="comment">// --------------------------------------------------</span></span><br><span class="line">$whitesmoke   = #F5F3ED;</span><br><span class="line">$blue         = #ADBDC4;</span><br></pre></td></tr></tbody></table></figure>
-<p>Set <span style="background-color:#F5F3ED">Isabelline  (#F5F3ED)</span> for <code>$whitesmoke</code>, and use <span style="background-color:#ADBDC4">Opal (#ADBDC4)</span> to replace the default <code>$blue</code>.<br>Color scheme reference: <a target="_blank" rel="noopener" href="https://www.schemecolor.com/elegant-and-classic.php">elegant-and-classic</a></p>
-<h3 id="Text-color"><a href="#Text-color" class="headerlink" title="Text color"></a>Text color</h3><figure class="highlight"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Global text color on &lt;body&gt;</span></span><br><span class="line">$text-color                   = $black-dim;</span><br></pre></td></tr></tbody></table></figure>
-<p>Change the text color from <code>$black-light</code> to <code>$black-dim</code>, lower the color value to make the contents more readable.</p>
-<h3 id="Font-family"><a href="#Font-family" class="headerlink" title="Font family"></a>Font family</h3><h4 id="Chinese-font-family-setting"><a href="#Chinese-font-family-setting" class="headerlink" title="Chinese font family setting"></a>Chinese font family setting</h4><figure class="highlight"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Font families.</span></span><br><span class="line">$font-family-chinese      = 'Noto Sans TC';</span><br></pre></td></tr></tbody></table></figure>
-<p>沒有特別喜歡NexT預設的中文字型PingFang SC與Microsoft YaHei，決定更換成Google的Noto Sans TC。<br>將<code>$font-family-chinese</code>的值改成<code>Noto Sans TC</code>後，到<a target="_blank" rel="noopener" href="https://fonts.google.com/">Google Fonts</a>選取要使用的字體。<br>取得host URI後，將<code>_config.next.yml</code>中<code>host</code>的值設定為Google Fonts提供的URI。</p>
-<h4 id="English-font-family-setting"><a href="#English-font-family-setting" class="headerlink" title="English font family setting"></a>English font family setting</h4><p>English font can be easily config in <code>_config.next.yml</code>, just update the “Font Settings” part.</p>
-<figure class="highlight yaml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ---------------------------------------------------------------</span></span><br><span class="line"><span class="comment"># Font Settings</span></span><br><span class="line"><span class="comment"># ---------------------------------------------------------------</span></span><br><span class="line"><span class="attr">font:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">host:</span> <span class="string">https://fonts.googleapis.com/css2?family=Noto+Sans+TC&amp;family=Roboto&amp;display=swap</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># Global font settings used for all elements inside &lt;body&gt;.</span></span><br><span class="line">  <span class="attr">global:</span></span><br><span class="line">    <span class="attr">external:</span> <span class="literal">true</span></span><br><span class="line">    <span class="attr">family:</span> <span class="string">Roboto</span></span><br><span class="line">    <span class="attr">size:</span></span><br></pre></td></tr></tbody></table></figure>
-<p>⚗️ Anatomy:</p>
-<ul>
-<li>Set <code>external: true</code> to load the font family from <code>host</code>.</li>
-<li>Go to <a target="_blank" rel="noopener" href="https://fonts.google.com/">Google Fonts</a> to get the host URI for “Roboto”.<ol>
-<li>Search for the font family “Roboto”</li>
-<li>Click “+ Select this style”</li>
-<li>Click the button “View your selected families” on the top-right side on the screen</li>
-<li>Copy <code>link href</code>, paste as the value for “host” key in <code>_config.next.yml</code></li>
-<li>Here’s the screenshot for reference:<br><img src="/2021/next-theme-edit/steps-to-get-font-host-uri.png" alt="3 steps to get the font hosting URI from Google Fonts"></li>
-</ol>
-</li>
-</ul>
-<p>💡 Hint:<br>In my case, I also add “Noto Sans TC” to the selected families, so the host URI becomes to <code>https://fonts.googleapis.com/css2?family=Noto+Sans+TC&amp;family=Roboto&amp;display=swap</code>.<br>The URI includes two families “Noto Sans TC” and “Roboto”.</p>
-<h3 id="Font-size"><a href="#Font-size" class="headerlink" title="Font size"></a>Font size</h3><figure class="highlight"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Font size</span></span><br><span class="line">$font-size-medium         = .95em;</span><br><span class="line">$font-size-large          = 1em;</span><br><span class="line">$font-size-larger         = 1.125em;</span><br><span class="line">$font-size-largest        = 1.25em;</span><br></pre></td></tr></tbody></table></figure>
-<p>Reduce the size scale for blog content and titles.</p>
-<h2 id="Modification-in-Pisces-styl"><a href="#Modification-in-Pisces-styl" class="headerlink" title="Modification in Pisces.styl"></a>Modification in Pisces.styl</h2><p>File path: <code>\themes\next\source\css\_variables\Pisces.styl</code></p>
-<h3 id="Body-background-color"><a href="#Body-background-color" class="headerlink" title="Body background color"></a>Body background color</h3><figure class="highlight"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Settings for some of the most global styles.</span></span><br><span class="line"><span class="comment">// --------------------------------------------------</span></span><br><span class="line">$body-bg-color                = #CFC9BD;</span><br></pre></td></tr></tbody></table></figure>
-<p>Set the background color to <span style="background-color:#CFC9BD">Pastel Gray (#CFC9BD)</span> to provide a slightly elegant smell (😂) to this blog.<br>Color scheme reference: <a target="_blank" rel="noopener" href="https://www.schemecolor.com/elegant-and-classic.php">elegant-and-classic</a></p>
-<h3 id="Sidebar-menu-color-setting"><a href="#Sidebar-menu-color-setting" class="headerlink" title="Sidebar (menu) color setting"></a>Sidebar (menu) color setting</h3><figure class="highlight"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Sidebar</span></span><br><span class="line">$sidebar-nav-hover-color          = $blue;</span><br><span class="line">$sidebar-highlight                = $blue;</span><br></pre></td></tr></tbody></table></figure>
-<p>Change the hover and highlight color of “Table of Contents” into <code>$blue</code>:<br><img src="/2021/next-theme-edit/sidebar-highlight-and-hover-color.png" alt="sidebar (menu) hover and highlight color changes to blue"></p>
-<h3 id="Sidebar-menu-image-setting"><a href="#Sidebar-menu-image-setting" class="headerlink" title="Sidebar (menu) image setting"></a>Sidebar (menu) image setting</h3><figure class="highlight"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Sidebar</span></span><br><span class="line"><span class="comment">// --------------------------------------------------</span></span><br><span class="line">$site-author-image-border-width   = 0px;</span><br></pre></td></tr></tbody></table></figure>
-<p>I think the border around the blog author image creates a little bit conflict to the whole theme style (since the <code>site-author-image</code> seems to be the only place that appears the border). Removes the border by setting the <code>$site-author-image-border-width</code> to 0px.<br>Below is the before-after comprehensive:<br><img src="/2021/next-theme-edit/author-image-border-adjust.png" alt="Author image with and without the border"><br>覺得整體視覺上只有側欄的影像有加邊界反而不太協調，決定拿掉。</p>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/dpdpdppp/article/details/102387532">hexo(Next主题)修改文字大小</a></li>
-<li><a target="_blank" rel="noopener" href="https://zenreal.github.io/posts/10345/">Hexo NexT主題將網站字體改為宋體</a></li>
 </ul>
 
       

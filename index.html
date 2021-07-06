@@ -197,7 +197,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">53</span>
+          <span class="site-state-item-count">54</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -247,6 +247,119 @@
   
 
   <article itemscope="" itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tzynwang.github.io/2021/mongoose-multiple-condition-search/">
+
+    <span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar-pexels-alex-andrews-215-215.png">
+      <meta itemprop="name" content="Charlie (Tzu Yin)">
+      <meta itemprop="description" content="一介普通文組的學習筆記 📒">
+    </span>
+
+    <span hidden="" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="普通文組">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/mongoose-multiple-condition-search/" class="post-title-link" itemprop="url">從零開始重寫：餐廳清單（Express版）複數條件篩選</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-07-06 15:25:04 / Modified: 15:57:07" itemprop="dateCreated datePublished" datetime="2021-07-06T15:25:04+08:00">2021-07-06</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+          <a href="/categories/Mongoose/" itemprop="url" rel="index"><span itemprop="name">Mongoose</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2021/mongoose-multiple-condition-search/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/mongoose-multiple-condition-search/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>實作了「使用者勾選餐廳類別後，根據使用者勾選的類別顯示相對應的內容，並支援複數類別檢索」，記錄一下如何透過mongoose執行相關的搜尋操作</p>
+<figure class="figure--center"><img src="/2021/mongoose-multiple-condition-search/filterDemo.gif" title="功能展示"><figcaption><p>功能展示</p></figcaption></figure>
+
+
+<h2 id="環境"><a href="#環境" class="headerlink" title="環境"></a>環境</h2><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mongoose: 5.12.14</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="筆記"><a href="#筆記" class="headerlink" title="筆記"></a>筆記</h2><h3 id="前端filter-js"><a href="#前端filter-js" class="headerlink" title="前端filter.js"></a>前端filter.js</h3><script src="https://gist.github.com/tzynwang/575200d7844107259bc11c89733f5b2c.js"></script>
+
+<ul>
+<li>第7行：取畫面中所有被勾選起來的選項</li>
+<li>第9行：將nodeList整理為只剩下勾選內容的乾淨陣列，假設使用者勾選類別「美式餐廳」與「酒吧」，那麼<code>selected</code>內容即為<code>['美式餐廳', '酒吧']</code></li>
+<li>第11行：等同<code>const payload = { selected: selected }</code></li>
+<li>12-16行：透過axios對<code>/restaurant/filter</code>發送POST請求，夾帶<code>data: payload</code></li>
+<li>17行：載入loading spinner</li>
+<li>19行：根據<code>/restaurant/filter</code>回傳的資料重新渲染畫面</li>
+</ul>
+<h3 id="後端restaurant-js"><a href="#後端restaurant-js" class="headerlink" title="後端restaurant.js"></a>後端restaurant.js</h3><script src="https://gist.github.com/tzynwang/6229f2d31c1b7bebf0ce5a6cb9dc3b14.js"></script>
+
+<ul>
+<li>第2行：<code>selected</code>內容與前端filter.js的<code>selected</code>一致；假如使用者勾選類別「美式餐廳」與「酒吧」，那麼這裡<code>selected</code>的內容即為<code>['美式餐廳', '酒吧']</code></li>
+<li>第3行：為了配合mongoose的<code>.or()</code>，將<code>selected</code>加工為<code>[ { category: '美式餐廳' }, { category: '酒吧' } ]</code>的形式，放入<code>.or()</code>中的意思即為「搜尋category為美式餐廳或是咖啡的Document」<br><code>const conditions = selected.map(category =&gt; ({ category }))</code>等同<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> conditions = selected.map(<span class="function"><span class="params">category</span> =&gt;</span> {</span><br><span class="line">  <span class="keyword">return</span> { <span class="attr">category</span>: category }</span><br><span class="line">})</span><br></pre></td></tr></tbody></table></figure></li>
+<li>第7行：根據<code>selected.length</code>判斷使用者是否有勾選任何篩選類別，如果「一個類別都沒有勾選」的話，視同停止篩選行為，故回傳該使用者擁有的所有餐廳；反之在使用者「有勾選類別」的情況下，就根據使用者勾選的類別進行篩選</li>
+</ul>
+<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/45072255/axios-post-array-data">axios post array data</a></li>
+<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/7382207/mongooses-find-method-with-or-condition-does-not-work-properly">Mongoose’s find method with $or condition does not work properly</a></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope="" itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="https://tzynwang.github.io/2021/base64-note/">
 
     <span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -270,10 +383,16 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2021-07-05 11:18:25 / Modified: 13:58:17" itemprop="dateCreated datePublished" datetime="2021-07-05T11:18:25+08:00">2021-07-05</time>
+      <time title="Created: 2021-07-05 11:18:25" itemprop="dateCreated datePublished" datetime="2021-07-05T11:18:25+08:00">2021-07-05</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-07-06 15:27:25" itemprop="dateModified" datetime="2021-07-06T15:27:25+08:00">2021-07-06</time>
+      </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
@@ -341,9 +460,6 @@
 </ul>
 </li>
 </ul>
-<blockquote>
-<p>小結論：base64讓早期的SMTP與HTTP/1.1也可以傳送二進位資料</p>
-</blockquote>
 <h3 id="轉換範例"><a href="#轉換範例" class="headerlink" title="轉換範例"></a>轉換範例</h3><figure class="figure--center"><img src="/2021/base64-note/base64example.png" title="Base64轉換示意圖，取自中文維基百科"><figcaption><p>Base64轉換示意圖，取自中文維基百科</p></figcaption></figure>
 <ol>
 <li>字母M、a、n先個別轉換為ASCII編碼，得到十進位數字77、97與110</li>
@@ -1204,11 +1320,11 @@
       </span>
       <span class="post-meta-item-text">In</span>
         <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-          <a href="/categories/Express-Handlebars/" itemprop="url" rel="index"><span itemprop="name">Express Handlebars</span></a>
+          <a href="/categories/Express/" itemprop="url" rel="index"><span itemprop="name">Express</span></a>
         </span>
           , 
         <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-          <a href="/categories/Express/" itemprop="url" rel="index"><span itemprop="name">Express</span></a>
+          <a href="/categories/Express-Handlebars/" itemprop="url" rel="index"><span itemprop="name">Express Handlebars</span></a>
         </span>
           , 
         <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
@@ -1567,152 +1683,6 @@
 <li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Array">Array() constructor</a></li>
 <li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/keys">Array.prototype.keys()</a></li>
 <li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/from">Array.from()</a></li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope="" itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://tzynwang.github.io/2021/webpack-note/">
-
-    <span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar-pexels-alex-andrews-215-215.png">
-      <meta itemprop="name" content="Charlie (Tzu Yin)">
-      <meta itemprop="description" content="一介普通文組的學習筆記 📒">
-    </span>
-
-    <span hidden="" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="普通文組">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/webpack-note/" class="post-title-link" itemprop="url">「webpack環境設置步驟」相關筆記</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-06-12 11:02:00" itemprop="dateCreated datePublished" datetime="2021-06-12T11:02:00+08:00">2021-06-12</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-06-13 11:13:46" itemprop="dateModified" datetime="2021-06-13T11:13:46+08:00">2021-06-13</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-          <a href="/categories/webpack/" itemprop="url" rel="index"><span itemprop="name">webpack</span></a>
-        </span>
-    </span>
-
-  
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus: </span>
-    
-    <a title="disqus" href="/2021/webpack-note/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/webpack-note/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>使用webpack（本次搭配axios與vue）開發前端web APP時的環境相關設置筆記</p>
-<h2 id="環境"><a href="#環境" class="headerlink" title="環境"></a>環境</h2><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">webpack: 5.38.1</span><br><span class="line">webpack-cli: 4.7.2</span><br><span class="line">vue: 2.6.14</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></tbody></table></figure>
-<h2 id="步驟"><a href="#步驟" class="headerlink" title="步驟"></a>步驟</h2><ol>
-<li><p>移動到專案資料夾內，在終端機輸入<code>npm init -y</code></p>
-<ul>
-<li><code>-y</code>可跳過所有關於<code>package.json</code>的設定問題</li>
-<li><a target="_blank" rel="noopener" href="https://docs.npmjs.com/cli/v6/commands/npm-init">npm-init</a>: If the initializer is omitted (by just calling <code>npm init</code>), init will fall back to legacy init behavior. It will <strong>ask you a bunch of questions</strong>, and then write a <code>package.json</code> for you. You can also use <code>-y</code>/<code>--yes</code> to <strong>skip the questionnaire</strong> altogether.</li>
-</ul>
-</li>
-<li><p>安裝<code>webpack</code>、<code>webpack-cli</code>、<code>axios</code>、<code>vue</code>與<code>html-webpack-plugin</code></p>
-<ul>
-<li><code>npm install &lt;package name&gt; --save-dev</code></li>
-<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/22891211/what-is-the-difference-between-save-and-save-dev">What is the difference between –save and –save-dev?</a></li>
-<li><a target="_blank" rel="noopener" href="https://docs.npmjs.com/cli/v6/configuring-npm/package-json#devdependencies">npm: devDependencies</a>: If someone is planning on downloading and using your module in their program, then they probably <strong>don’t want or need to download and build the external test or documentation framework</strong> that you use. In this case, it’s best to map these additional items in a <strong>devDependencies</strong> object.</li>
-</ul>
-</li>
-<li><p><code>package.json</code>設定如下：</p>
-<script src="https://gist.github.com/tzynwang/0036ecd4516c978467fe64266791de26.js"></script>
-
-<ul>
-<li><a target="_blank" rel="noopener" href="https://webpack.js.org/configuration/watch/"><code>webpack --watch</code></a>: This means that after the initial build, webpack will <strong>continue to watch for changes</strong> in any of the resolved files. 執行<code>npm run watch</code>的話，webpack會自動更新修改後的src內容；搭配vs code liver server的話，就能及時觀察到修正後的結果</li>
-</ul>
-</li>
-<li><p>在根目錄中建立<code>webpack.config.js</code>，（在專案需要使用vue的情況下）設定如下：</p>
-<script src="https://gist.github.com/tzynwang/8dadd59d8eb258d7843727f7bbcd4419.js"></script>
-</li>
-<li><p>在根目錄中建立資料夾<code>src</code>，其中的檔案名稱需與<code>webpack.config.js</code>搭配，故使用<code>index.js</code>與<code>template.html</code></p>
-<script src="https://gist.github.com/tzynwang/948dbc4dea908a2cc27b874949a35383.js"></script>
-
-<script src="https://gist.github.com/tzynwang/2bf0bd73c4f25713752a3c7decd13385.js"></script>
-</li>
-<li><p>在終端機執行<code>npm run build</code>後，根目錄中出現資料夾<code>dist</code>，內有<code>index.html</code>與<code>main.js</code></p>
-<script src="https://gist.github.com/tzynwang/96051f1c7bdded10f79ad3caeaf838be.js"></script>
-
-<p>並且<code>main.js</code>已經根據<code>webpack.config.js</code>中<code>HtmlWebpackPlugin</code>的設定，自動嵌入<code>&lt;body&gt;</code>底部<br>使用webpack進行打包的步驟到此結束</p>
-</li>
-</ol>
-<h2 id="資料夾結構"><a href="#資料夾結構" class="headerlink" title="資料夾結構"></a>資料夾結構</h2><figure class="figure--center"><img src="/2021/webpack-note/webpack-folder-structure.png" title="Folder structure"><figcaption><p>Folder structure</p></figcaption></figure>
-
-<h2 id="補充：若須導入-css"><a href="#補充：若須導入-css" class="headerlink" title="補充：若須導入.css"></a>補充：若須導入.css</h2><ol>
-<li>安裝<code>css-loader</code>與<code>mini-css-extract-plugin</code>（<code>npm i css-loader mini-css-extract-plugin -D</code>）</li>
-<li>在<code>index.js</code>中匯入.css檔案<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">'./bootstrap.bundle'</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">'./bootstrap.css'</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">'./style.css'</span></span><br></pre></td></tr></tbody></table></figure></li>
-<li><code>webpack.config.js</code>加入以下內容：<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> MiniCssExtractPlugin = <span class="built_in">require</span>(<span class="string">'mini-css-extract-plugin'</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = {</span><br><span class="line">  plugins: [</span><br><span class="line">    <span class="keyword">new</span> MiniCssExtractPlugin()</span><br><span class="line">  ],</span><br><span class="line">  <span class="built_in">module</span>: {</span><br><span class="line">    rules: [</span><br><span class="line">      {</span><br><span class="line">        test: <span class="regexp">/\.css$/i</span>,</span><br><span class="line">        use: [MiniCssExtractPlugin.loader, <span class="string">'css-loader'</span>]</span><br><span class="line">      }</span><br><span class="line">    ]</span><br><span class="line">  }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://webpack.js.org/plugins/mini-css-extract-plugin/">MiniCssExtractPlugin</a>：此plugin會在執行<code>npm run build</code>時將（匯入index.js的）.css檔案獨立出來，並嵌入<code>index.html</code>中（預設在<code>&lt;head&gt;</code>尾端，可透過<a target="_blank" rel="noopener" href="https://webpack.js.org/plugins/mini-css-extract-plugin/#insert"><code>insert</code>參數</a>修改）</li>
-<li><a target="_blank" rel="noopener" href="https://webpack.js.org/configuration/module/#ruletest">Webpack config: Module Rule.test</a>: Include all modules that pass test assertion. If you supply a <code>Rule.test</code> option, you cannot also supply a <code>Rule.resource</code>. </li>
-</ul>
-</li>
-</ol>
-<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://webpack.js.org/guides/getting-started/">Webpack 5: Getting Started</a></li>
-<li><a target="_blank" rel="noopener" href="https://github.com/jantimon/html-webpack-plugin#readme">HTML Webpack Plugin</a></li>
 </ul>
 
       

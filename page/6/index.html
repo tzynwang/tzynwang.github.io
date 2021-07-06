@@ -197,7 +197,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">53</span>
+          <span class="site-state-item-count">54</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -238,6 +238,138 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope="" itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tzynwang.github.io/2021/next-theme-edit/">
+
+    <span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar-pexels-alex-andrews-215-215.png">
+      <meta itemprop="name" content="Charlie (Tzu Yin)">
+      <meta itemprop="description" content="一介普通文組的學習筆記 📒">
+    </span>
+
+    <span hidden="" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="普通文組">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/next-theme-edit/" class="post-title-link" itemprop="url">Theme "NexT" font modification</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-02-12 15:23:22" itemprop="dateCreated datePublished" datetime="2021-02-12T15:23:22+08:00">2021-02-12</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-04-09 21:28:56" itemprop="dateModified" datetime="2021-04-09T21:28:56+08:00">2021-04-09</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+          <a href="/categories/hexo/" itemprop="url" rel="index"><span itemprop="name">hexo</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2021/next-theme-edit/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/next-theme-edit/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="Summary-of-this-post"><a href="#Summary-of-this-post" class="headerlink" title="Summary of this post"></a>Summary of this post</h2><p>Want to update the <strong>font-size</strong>, <strong>font-family</strong> (for the Chinese character) and <strong>color</strong> settings for my hexo blog. Done some searching and find out the contents in <code>base.styl</code> and <code>Pisces.styl</code> needs to be modified to fullfil my requirements.<br>I know this may not be the best choice (since <a target="_blank" rel="noopener" href="https://theme-next.js.org/docs/getting-started/configuration.html">NexT’s docs</a> suggests using Alternate Config ,<code>_config.next.yml</code>, to apply modification) while at least this works…😣</p>
+<p>為了修改字體尺寸、字型（主要是中文字體）與版面顏色設定，調整了<code>base.styl</code>與<code>Pisces.styl</code>的內容。<br>只需要修改英語字型的話，更改<code>_config.next.yml</code>中<code># Font Settings</code>的段落即可。</p>
+<h2 id="Environment"><a href="#Environment" class="headerlink" title="Environment"></a>Environment</h2><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo: 5.3.0</span><br><span class="line">NexT: 8.2.1</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="Modification-in-base-styl"><a href="#Modification-in-base-styl" class="headerlink" title="Modification in base.styl"></a>Modification in base.styl</h2><p>File path: <code>\themes\next\source\css\_variables</code></p>
+<h3 id="Color-system"><a href="#Color-system" class="headerlink" title="Color system"></a>Color system</h3><figure class="highlight"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Color system</span></span><br><span class="line"><span class="comment">// --------------------------------------------------</span></span><br><span class="line">$whitesmoke   = #F5F3ED;</span><br><span class="line">$blue         = #ADBDC4;</span><br></pre></td></tr></tbody></table></figure>
+<p>Set <span style="background-color:#F5F3ED">Isabelline  (#F5F3ED)</span> for <code>$whitesmoke</code>, and use <span style="background-color:#ADBDC4">Opal (#ADBDC4)</span> to replace the default <code>$blue</code>.<br>Color scheme reference: <a target="_blank" rel="noopener" href="https://www.schemecolor.com/elegant-and-classic.php">elegant-and-classic</a></p>
+<h3 id="Text-color"><a href="#Text-color" class="headerlink" title="Text color"></a>Text color</h3><figure class="highlight"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Global text color on &lt;body&gt;</span></span><br><span class="line">$text-color                   = $black-dim;</span><br></pre></td></tr></tbody></table></figure>
+<p>Change the text color from <code>$black-light</code> to <code>$black-dim</code>, lower the color value to make the contents more readable.</p>
+<h3 id="Font-family"><a href="#Font-family" class="headerlink" title="Font family"></a>Font family</h3><h4 id="Chinese-font-family-setting"><a href="#Chinese-font-family-setting" class="headerlink" title="Chinese font family setting"></a>Chinese font family setting</h4><figure class="highlight"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Font families.</span></span><br><span class="line">$font-family-chinese      = 'Noto Sans TC';</span><br></pre></td></tr></tbody></table></figure>
+<p>沒有特別喜歡NexT預設的中文字型PingFang SC與Microsoft YaHei，決定更換成Google的Noto Sans TC。<br>將<code>$font-family-chinese</code>的值改成<code>Noto Sans TC</code>後，到<a target="_blank" rel="noopener" href="https://fonts.google.com/">Google Fonts</a>選取要使用的字體。<br>取得host URI後，將<code>_config.next.yml</code>中<code>host</code>的值設定為Google Fonts提供的URI。</p>
+<h4 id="English-font-family-setting"><a href="#English-font-family-setting" class="headerlink" title="English font family setting"></a>English font family setting</h4><p>English font can be easily config in <code>_config.next.yml</code>, just update the “Font Settings” part.</p>
+<figure class="highlight yaml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ---------------------------------------------------------------</span></span><br><span class="line"><span class="comment"># Font Settings</span></span><br><span class="line"><span class="comment"># ---------------------------------------------------------------</span></span><br><span class="line"><span class="attr">font:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">host:</span> <span class="string">https://fonts.googleapis.com/css2?family=Noto+Sans+TC&amp;family=Roboto&amp;display=swap</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># Global font settings used for all elements inside &lt;body&gt;.</span></span><br><span class="line">  <span class="attr">global:</span></span><br><span class="line">    <span class="attr">external:</span> <span class="literal">true</span></span><br><span class="line">    <span class="attr">family:</span> <span class="string">Roboto</span></span><br><span class="line">    <span class="attr">size:</span></span><br></pre></td></tr></tbody></table></figure>
+<p>⚗️ Anatomy:</p>
+<ul>
+<li>Set <code>external: true</code> to load the font family from <code>host</code>.</li>
+<li>Go to <a target="_blank" rel="noopener" href="https://fonts.google.com/">Google Fonts</a> to get the host URI for “Roboto”.<ol>
+<li>Search for the font family “Roboto”</li>
+<li>Click “+ Select this style”</li>
+<li>Click the button “View your selected families” on the top-right side on the screen</li>
+<li>Copy <code>link href</code>, paste as the value for “host” key in <code>_config.next.yml</code></li>
+<li>Here’s the screenshot for reference:<br><img src="/2021/next-theme-edit/steps-to-get-font-host-uri.png" alt="3 steps to get the font hosting URI from Google Fonts"></li>
+</ol>
+</li>
+</ul>
+<p>💡 Hint:<br>In my case, I also add “Noto Sans TC” to the selected families, so the host URI becomes to <code>https://fonts.googleapis.com/css2?family=Noto+Sans+TC&amp;family=Roboto&amp;display=swap</code>.<br>The URI includes two families “Noto Sans TC” and “Roboto”.</p>
+<h3 id="Font-size"><a href="#Font-size" class="headerlink" title="Font size"></a>Font size</h3><figure class="highlight"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Font size</span></span><br><span class="line">$font-size-medium         = .95em;</span><br><span class="line">$font-size-large          = 1em;</span><br><span class="line">$font-size-larger         = 1.125em;</span><br><span class="line">$font-size-largest        = 1.25em;</span><br></pre></td></tr></tbody></table></figure>
+<p>Reduce the size scale for blog content and titles.</p>
+<h2 id="Modification-in-Pisces-styl"><a href="#Modification-in-Pisces-styl" class="headerlink" title="Modification in Pisces.styl"></a>Modification in Pisces.styl</h2><p>File path: <code>\themes\next\source\css\_variables\Pisces.styl</code></p>
+<h3 id="Body-background-color"><a href="#Body-background-color" class="headerlink" title="Body background color"></a>Body background color</h3><figure class="highlight"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Settings for some of the most global styles.</span></span><br><span class="line"><span class="comment">// --------------------------------------------------</span></span><br><span class="line">$body-bg-color                = #CFC9BD;</span><br></pre></td></tr></tbody></table></figure>
+<p>Set the background color to <span style="background-color:#CFC9BD">Pastel Gray (#CFC9BD)</span> to provide a slightly elegant smell (😂) to this blog.<br>Color scheme reference: <a target="_blank" rel="noopener" href="https://www.schemecolor.com/elegant-and-classic.php">elegant-and-classic</a></p>
+<h3 id="Sidebar-menu-color-setting"><a href="#Sidebar-menu-color-setting" class="headerlink" title="Sidebar (menu) color setting"></a>Sidebar (menu) color setting</h3><figure class="highlight"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Sidebar</span></span><br><span class="line">$sidebar-nav-hover-color          = $blue;</span><br><span class="line">$sidebar-highlight                = $blue;</span><br></pre></td></tr></tbody></table></figure>
+<p>Change the hover and highlight color of “Table of Contents” into <code>$blue</code>:<br><img src="/2021/next-theme-edit/sidebar-highlight-and-hover-color.png" alt="sidebar (menu) hover and highlight color changes to blue"></p>
+<h3 id="Sidebar-menu-image-setting"><a href="#Sidebar-menu-image-setting" class="headerlink" title="Sidebar (menu) image setting"></a>Sidebar (menu) image setting</h3><figure class="highlight"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Sidebar</span></span><br><span class="line"><span class="comment">// --------------------------------------------------</span></span><br><span class="line">$site-author-image-border-width   = 0px;</span><br></pre></td></tr></tbody></table></figure>
+<p>I think the border around the blog author image creates a little bit conflict to the whole theme style (since the <code>site-author-image</code> seems to be the only place that appears the border). Removes the border by setting the <code>$site-author-image-border-width</code> to 0px.<br>Below is the before-after comprehensive:<br><img src="/2021/next-theme-edit/author-image-border-adjust.png" alt="Author image with and without the border"><br>覺得整體視覺上只有側欄的影像有加邊界反而不太協調，決定拿掉。</p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/dpdpdppp/article/details/102387532">hexo(Next主题)修改文字大小</a></li>
+<li><a target="_blank" rel="noopener" href="https://zenreal.github.io/posts/10345/">Hexo NexT主題將網站字體改為宋體</a></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
