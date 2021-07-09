@@ -197,7 +197,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">54</span>
+          <span class="site-state-item-count">55</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -238,6 +238,144 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope="" itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tzynwang.github.io/2021/express-reset-password/">
+
+    <span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar-pexels-alex-andrews-215-215.png">
+      <meta itemprop="name" content="Charlie (Tzu Yin)">
+      <meta itemprop="description" content="一介普通文組的學習筆記 📒">
+    </span>
+
+    <span hidden="" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="普通文組">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/express-reset-password/" class="post-title-link" itemprop="url">「重設密碼（Express.js）」技術記錄</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-07-09 16:09:02 / Modified: 17:21:16" itemprop="dateCreated datePublished" datetime="2021-07-09T16:09:02+08:00">2021-07-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+          <a href="/categories/Express/" itemprop="url" rel="index"><span itemprop="name">Express</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2021/express-reset-password/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/express-reset-password/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>使用套件<code>jsonwebtoken</code>與<code>nodemailer</code>替記帳APP實作重設密碼之功能<br>密碼重設流程大方向如下：</p>
+<ol>
+<li>使用者點選「忘記密碼」</li>
+<li>請使用者輸入當初註冊的Email，若有效，則發出一封包含「重設密碼連結」的Email給該信箱</li>
+<li>使用者收信、點選重設密碼連結後，該連結導向APP的重設密碼路由</li>
+<li>使用者更新密碼，更新成功後，跳轉回APP登入路由，使用者可使用新密碼登入APP</li>
+</ol>
+<h2 id="環境"><a href="#環境" class="headerlink" title="環境"></a>環境</h2><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">express: 4.17.1</span><br><span class="line">jsonwebtoken: 8.5.1</span><br><span class="line">nodemailer: 6.6.2</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="注意事項"><a href="#注意事項" class="headerlink" title="注意事項"></a>注意事項</h2><ul>
+<li>重設密碼之連結須為一次性<ul>
+<li>若該連結已用於重設密碼，之後點開該連結無法再度重設密碼</li>
+</ul>
+</li>
+<li>重設連結需有時效性</li>
+<li>要可以辨識出「現在是哪一個使用者要重設密碼」</li>
+</ul>
+<h2 id="實作"><a href="#實作" class="headerlink" title="實作"></a>實作</h2><ol>
+<li>向DB查詢使用者輸入的Email是否為已經註冊過的Email，若已註冊，則使用<code>jsonwebtoken</code>將該使用者的Email與hash-password encode為一組金鑰</li>
+<li>搭配<code>nodemailer</code>發送一封包含重設密碼URL的信件給該使用者，URL中包含步驟一產生的金鑰<ul>
+<li>使用<code>nodemailer</code>的<code>gmail service</code>時若出現錯誤訊息<code>Invalid login: 535-5.7.8 Username and Password not accepted</code>，則至Google Account中允許<code>Less secure app access</code></li>
+<li>解決方式參考：<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/59188483/error-invalid-login-535-5-7-8-username-and-password-not-accepted">Error: Invalid login: 535-5.7.8 Username and Password not accepted</a></li>
+</ul>
+</li>
+<li>使用者點選信件中的重設密碼URL後，後端檢驗該request夾帶的金鑰內容<ul>
+<li>將金鑰decode，若decode失敗則代表金鑰本身無效（被竄改、惡意測試等），將使用者導回重設密碼的頁面</li>
+<li>decode後確認該Email是否存在DB中</li>
+<li>decode後確認hash-password的值是否與目前DB中該Email的hash-password一致<ul>
+<li>一致：代表該使用者還未重設密碼</li>
+<li>不一致：代表密碼已經被重設過了</li>
+<li>以上讓金鑰成為一次性使用的實作方式借鑑：<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/43719615/jwt-and-one-time-tokens">JWT and one-time tokens?</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>若以上檢驗皆無問題，則讓使用者重設密碼；密碼重設後將使用者引導回登入頁面，並提示使用者密碼已更新成功</li>
+</ol>
+<h2 id="原始碼"><a href="#原始碼" class="headerlink" title="原始碼"></a>原始碼</h2><script src="https://gist.github.com/tzynwang/dce39172362a8690084407ae0dd08121.js"></script>
+
+
+<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
+<li><p>npm packages:</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.npmjs.com/package/jsonwebtoken">jsonwebtoken</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.npmjs.com/package/nodemailer">nodemailer</a></li>
+</ul>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/43719615/jwt-and-one-time-tokens">JWT and one-time tokens?</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://www.jbspeakr.cc/howto-single-use-jwt/">Single-Use Tokens w/ JWT</a></p>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1565,124 +1703,6 @@
 <h2 id="補充參考文件"><a href="#補充參考文件" class="headerlink" title="補充參考文件"></a>補充參考文件</h2><ul>
 <li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/42705930/error-unnecessary-use-of-boolean-literals-in-conditional-expression-no-unneeded">error Unnecessary use of boolean literals in conditional expression no-unneeded-ternary</a></li>
 <li><a target="_blank" rel="noopener" href="https://github.com/tzynwang/vue-movie-list">電影清單（Vue版本）專案原始碼</a></li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope="" itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://tzynwang.github.io/2021/array-with-serial-number/">
-
-    <span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar-pexels-alex-andrews-215-215.png">
-      <meta itemprop="name" content="Charlie (Tzu Yin)">
-      <meta itemprop="description" content="一介普通文組的學習筆記 📒">
-    </span>
-
-    <span hidden="" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="普通文組">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/array-with-serial-number/" class="post-title-link" itemprop="url">「產生順序數陣列」相關筆記</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2021-06-14 18:27:20 / Modified: 19:00:00" itemprop="dateCreated datePublished" datetime="2021-06-14T18:27:20+08:00">2021-06-14</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
-        </span>
-    </span>
-
-  
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus: </span>
-    
-    <a title="disqus" href="/2021/array-with-serial-number/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/array-with-serial-number/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>使用<code>Array() constructor</code>、<code>Array.prototype.keys()</code>與<code>Array.from()</code>來建立一個陣列，該陣列包含從小到大的順序數列，如<code>[1, 2, 3, 4, 5, 6, 7]</code></p>
-<h2 id="筆記"><a href="#筆記" class="headerlink" title="筆記"></a>筆記</h2><h3 id="Array-constructor"><a href="#Array-constructor" class="headerlink" title="Array() constructor"></a>Array() constructor</h3><p>傳入陣列長度，會得到對應該陣列長度的空陣列</p>
-<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> x = <span class="built_in">Array</span>(<span class="number">7</span>)</span><br><span class="line"><span class="comment">// x為[empty × 7]</span></span><br></pre></td></tr></tbody></table></figure>
-<blockquote>
-<p>MDN: If the only argument passed to the Array constructor is an <strong>integer between 0 and 2^32 - 1 (inclusive)</strong>, this returns a new JavaScript array with its <strong>length property set to that number</strong> (Note: this implies an array of arrayLength empty slots, not slots with actual undefined values). If the argument is any other number, a RangeError exception is thrown.</p>
-</blockquote>
-<h3 id="Array-prototype-keys"><a href="#Array-prototype-keys" class="headerlink" title="Array.prototype.keys()"></a>Array.prototype.keys()</h3><p>此功能會回傳「Array Iterator object」，並非單純的陣列</p>
-<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> array1 = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>]</span><br><span class="line"><span class="keyword">const</span> iterator = array1.keys()</span><br><span class="line"><span class="comment">// 呼叫iterator的話，會得到Array Iterator Object，而非陣列</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">const</span> key <span class="keyword">of</span> iterator) {</span><br><span class="line">  <span class="built_in">console</span>.log(key) <span class="comment">// 依序印出0、1、2</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-<h3 id="Array-from"><a href="#Array-from" class="headerlink" title="Array.from()"></a>Array.from()</h3><p>配合<code>Array.prototype.keys()</code>回傳的Array Iterator Object，回傳該Array Iterator Object的淺拷貝陣列</p>
-<blockquote>
-<p>MDN: The <code>Array.from()</code> static method creates a <strong>new, shallow-copied Array instance</strong> from an array-like or iterable object.</p>
-</blockquote>
-<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> serialNumber = <span class="built_in">Array</span>.from(<span class="built_in">Array</span>(<span class="number">7</span>).keys(), <span class="function"><span class="params">element</span> =&gt;</span> element + <span class="number">1</span>)</span><br><span class="line"><span class="built_in">console</span>.log(serialNumber)</span><br><span class="line"><span class="comment">// 印出 Array [1, 2, 3, 4, 5, 6, 7]</span></span><br></pre></td></tr></tbody></table></figure>
-<p>步驟拆解如下：</p>
-<ol>
-<li><code>Array(7)</code>得到一個長度為7的空陣列</li>
-<li><code>Array(7).keys()</code>得到一個Array Iterator Object，若使用<code>for...of</code>迴圈印出此物件的內容的話，會依序印出0、1、2、3、4、5、6</li>
-<li><code>Array.from(Array(7).keys(), element =&gt; element + 1)</code>中的<code>element =&gt; element + 1</code>是傳入<code>Array.from()</code>的Map function，會依序作用在陣列中的每一個項目上<ul>
-<li>而傳入的Map function要做的事情是「為陣列中的每一個項目 +1」</li>
-<li>所以最後<code>Array.from()</code>回傳的陣列會是從1開始，而非0</li>
-<li><code>element =&gt; element + 1</code>是以下原始碼的精簡版本：<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">(element) =&gt; {</span><br><span class="line">  <span class="keyword">return</span> element + <span class="number">1</span></span><br><span class="line">}</span><br><span class="line"><span class="comment">// 簡化為</span></span><br><span class="line">element =&gt; { <span class="keyword">return</span> element + <span class="number">1</span> }</span><br><span class="line"><span class="comment">// 簡化為</span></span><br><span class="line">element =&gt; element + <span class="number">1</span></span><br></pre></td></tr></tbody></table></figure>
-
-</li>
-</ul>
-</li>
-</ol>
-<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Array">Array() constructor</a></li>
-<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/keys">Array.prototype.keys()</a></li>
-<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/from">Array.from()</a></li>
 </ul>
 
       

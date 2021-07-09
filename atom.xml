@@ -6,7 +6,7 @@
   <link href="https://tzynwang.github.io/atom.xml" rel="self"/>
   
   <link href="https://tzynwang.github.io/"/>
-  <updated>2021-07-06T07:57:07.353Z</updated>
+  <updated>2021-07-09T09:21:16.362Z</updated>
   <id>https://tzynwang.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>「重設密碼（Express.js）」技術記錄</title>
+    <link href="https://tzynwang.github.io/2021/express-reset-password/"/>
+    <id>https://tzynwang.github.io/2021/express-reset-password/</id>
+    <published>2021-07-09T08:09:02.000Z</published>
+    <updated>2021-07-09T09:21:16.362Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;總結&quot;&gt;&lt;a href=&quot;#總結&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="Express" scheme="https://tzynwang.github.io/categories/Express/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>從零開始重寫：餐廳清單（Express版）複數條件篩選</title>
@@ -99,31 +122,6 @@
         
         
     <summary type="html">&lt;h2 id=&quot;總結&quot;&gt;&lt;a href=&quot;#總結&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="Express" scheme="https://tzynwang.github.io/categories/Express/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>「使用passport middleware實作登入系統」相關筆記</title>
-    <link href="https://tzynwang.github.io/2021/express-passport-login-note/"/>
-    <id>https://tzynwang.github.io/2021/express-passport-login-note/</id>
-    <published>2021-06-24T05:41:18.000Z</published>
-    <updated>2021-06-24T07:38:12.121Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;總結&quot;&gt;&lt;a href=&quot;#總結&quot; class=&quot;headerlink&quot; title=&quot;總結&quot;&gt;&lt;/a&gt;總結&lt;/h2&gt;&lt;p&gt;本次練習包含以下幾個主要功能：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;使用&lt;a</summary>
         
       
     

@@ -197,7 +197,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">54</span>
+          <span class="site-state-item-count">55</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -238,6 +238,151 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope="" itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tzynwang.github.io/2021/2-2-api-social-list-note/">
+
+    <span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar-pexels-alex-andrews-215-215.png">
+      <meta itemprop="name" content="Charlie (Tzu Yin)">
+      <meta itemprop="description" content="一介普通文組的學習筆記 📒">
+    </span>
+
+    <span hidden="" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="普通文組">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/2-2-api-social-list-note/" class="post-title-link" itemprop="url">Alpha Camp「2-2 社群名單」技術記錄</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-05-04 19:59:34 / Modified: 22:02:33" itemprop="dateCreated datePublished" datetime="2021-05-04T19:59:34+08:00">2021-05-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2021/2-2-api-social-list-note/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/2-2-api-social-list-note/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p class="codepen" data-height="265" data-theme-id="dark" data-default-tab="js,result" data-user="Charlie7779" data-slug-hash="ExZJLzG" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="2-2 社群名單">
+  <span>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/Charlie7779/pen/ExZJLzG">
+  2-2 社群名單</a> by Charlie (<a target="_blank" rel="noopener" href="https://codepen.io/Charlie7779">@Charlie7779</a>)
+  on <a target="_blank" rel="noopener" href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async="" src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+
+<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>在本作業中實作的相關功能：</p>
+<ul>
+<li>分頁（pagination）</li>
+<li>可在list與grid顯示模式之間切換</li>
+<li>簡易搜尋</li>
+</ul>
+<p>本次運用的技術：</p>
+<ul>
+<li>Spread syntax (<code>...</code>)</li>
+<li>將功能分拆為view（管理顯示相關的程式碼）與controller（管理流程、資料處理相關的程式碼），以及使用data、config與elementObject來分類資料，增進原始碼的易讀性</li>
+</ul>
+<h2 id="下一步"><a href="#下一步" class="headerlink" title="下一步"></a>下一步</h2><p>導入service worker與cache API：</p>
+<ul>
+<li>將透過axios取得的資料儲存起來，這樣僅需在首次開啟APP時透過axios索取API回傳的資料，之後可直接使用已經儲存下來的資料即可，不須再發出的request</li>
+<li>讓APP在沒有網路的狀態下也可進行一定程度的操作</li>
+</ul>
+<h2 id="相關筆記"><a href="#相關筆記" class="headerlink" title="相關筆記"></a>相關筆記</h2><h3 id="分頁（pagination）"><a href="#分頁（pagination）" class="headerlink" title="分頁（pagination）"></a>分頁（pagination）</h3><ul>
+<li>除單純的數字頁以外，也實作了「前一頁」與「下一頁」的頁面移動按鈕</li>
+<li>邏輯分流：<ul>
+<li>點擊「前一頁」時：「抵達第一頁」或「離開最後一頁」時，需disable「第一頁」或解除「最末頁」的disable狀態</li>
+<li>點擊「下一頁」時：邏輯與「前一頁」相反，「抵達最末頁」或「離開第一頁」時，需disable「最末頁」或解除「第一頁」的disable狀態</li>
+<li>點擊「第一頁」或「最末頁」：除disable「前一頁」或「下一頁」外，本次透過<code>document.querySelector('.page-item.active').classList.remove('active')</code>的方式來解除換頁前處在active狀態的頁數</li>
+<li>其他頁數：解除「前一頁」與「下一頁」的disable狀態，也解除換頁前處在active狀態的頁數</li>
+</ul>
+</li>
+</ul>
+<h3 id="切換顯示模式"><a href="#切換顯示模式" class="headerlink" title="切換顯示模式"></a>切換顯示模式</h3><ul>
+<li>將不同顯示模式的每頁頁數設定在config中（<code>config.displaySettings</code>）</li>
+<li>點擊list或grid模式的按鈕後，根據config中的顯示狀態產生每頁內容與分頁（<code>view.updateUI()</code>）</li>
+<li>因list每一頁顯示的使用者數量（12）較grid多（9），故以grid顯示時的總頁數會大於list；所以處在grid狀態時，使用者在pagination上的頁數可能會超出list的極限值，故使用<code>controller.setMaxPageNumber()</code>來避免「狀態切換後，可能會造成pagination頁數溢位」的問題</li>
+</ul>
+<h3 id="簡易搜尋"><a href="#簡易搜尋" class="headerlink" title="簡易搜尋"></a>簡易搜尋</h3><ul>
+<li>設置<code>searchingStatus</code>，進行顯示模式切換的時候才能根據搜尋狀態與否抓取相對應的資料（全部的使用者／搜尋結果）</li>
+<li>根據搜尋結果（無／有）在畫面上進行提示（<code>No matching result(s)</code>／<code>${quantity} result(s) of keyword(s)</code>）</li>
+<li>使用者點擊<code>Clear Search Results</code>按鈕後，清除搜尋結果，離開搜尋狀態（更新<code>searchingStatus</code>）</li>
+</ul>
+<h3 id="Spread-syntax"><a href="#Spread-syntax" class="headerlink" title="Spread syntax"></a>Spread syntax</h3><ul>
+<li>應用：透過axois取回資料後，使用spread syntax將資料展開、加進<code>allUsersData</code>陣列中<ul>
+<li><code>data.allUsersData.push(...response.data.results)</code></li>
+<li>功能與forEach相同，但因為不需要對個別內容進行加工，故使用spread syntax直接展開存入陣列</li>
+</ul>
+</li>
+</ul>
+<h3 id="原始碼分類管理"><a href="#原始碼分類管理" class="headerlink" title="原始碼分類管理"></a>原始碼分類管理</h3><script src="https://gist.github.com/tzynwang/a398bbe0721b8199f03347ce03d3b490.js"></script>
+
+
+<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_objects/Object/values">MDN: Object.values(obj)</a><br>回傳一個陣列，其中包含obj中所有key-value pair的value</li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/min">MDN: Math.min(value0, value1, … , valueN)</a><br>回傳傳入的values中最小的值，若要傳入陣列，可搭配spread syntax（<code>Math.min(...array1)</code>）</li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/Trim">MDN: String.prototype.trim()</a><br>會回傳一組「移除原本字串頭尾空白鍵的」新字串，不影響原本的字串</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1965,155 +2110,6 @@
 </ul>
 </li>
 <li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/7509894/freezing-arrays-in-javascript">‘Freezing’ Arrays in Javascript?</a></li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope="" itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://tzynwang.github.io/2021/while-loop-ajax/">
-
-    <span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar-pexels-alex-andrews-215-215.png">
-      <meta itemprop="name" content="Charlie (Tzu Yin)">
-      <meta itemprop="description" content="一介普通文組的學習筆記 📒">
-    </span>
-
-    <span hidden="" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="普通文組">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/while-loop-ajax/" class="post-title-link" itemprop="url">為什麼在瀏覽器環境中使用while loop執行ajax request會讓頁面陷入凍結狀態？</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-04-08 21:10:25" itemprop="dateCreated datePublished" datetime="2021-04-08T21:10:25+08:00">2021-04-08</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-04-09 14:24:28" itemprop="dateModified" datetime="2021-04-09T14:24:28+08:00">2021-04-09</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
-        </span>
-    </span>
-
-  
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus: </span>
-    
-    <a title="disqus" href="/2021/while-loop-ajax/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/while-loop-ajax/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="環境"><a href="#環境" class="headerlink" title="環境"></a>環境</h2><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Google Chrome: 89.0.4389.114 (Official Build) (64-bit)</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></tbody></table></figure>
-<h2 id="原始題目"><a href="#原始題目" class="headerlink" title="原始題目"></a>原始題目</h2><p>ALPHA Camp學期2-2：請向 <a target="_blank" rel="noopener" href="https://randomuser.me/">RANDOM USER GENERATOR</a> 這支API索取資料，並在瀏覽器畫面上點擊按鈕後，輸出三位「只有女性」的資料。</p>
-<h2 id="遭遇問題"><a href="#遭遇問題" class="headerlink" title="遭遇問題"></a>遭遇問題</h2><p>最初想要使用以下程式碼來過濾API回傳的資料，但會讓瀏覽器分頁陷入凍結狀態：</p>
-<script src="https://gist.github.com/tzynwang/b7049eb35ec2a9950f4c48f1fdd48c28.js"></script>
-
-
-<h2 id="問題背後的脈絡梳理"><a href="#問題背後的脈絡梳理" class="headerlink" title="問題背後的脈絡梳理"></a>問題背後的脈絡梳理</h2><p>基本上Philip Roberts的影片回答了「為什麼以上程式碼會造成瀏覽器凍結？」的問題：</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/8aGhZQkoFbQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
-
-<ul>
-<li>V8（Chrome的JavaScript runtime）本身僅包含call stack與heap，V8的原始碼沒有<code>setTimeout()</code>、<code>XMLHttpRequest</code>（實現ajax的API）等內容</li>
-<li><code>setTimeout()</code>與<code>XMLHttpRequest</code>並非由ECMAScript定義，在MDN文件中，這兩個功能分別由HTML Living Standard與XMLHttpRequest Living Standard規範<ul>
-<li><code>setTimeout()</code>: <a target="_blank" rel="noopener" href="https://html.spec.whatwg.org/multipage/timers-and-user-prompts.html#dom-settimeout">HTML Living Standard</a></li>
-<li><code>XMLHttpRequest</code>: <a target="_blank" rel="noopener" href="https://xhr.spec.whatwg.org/">XMLHttpRequest Living Standard</a></li>
-</ul>
-</li>
-<li><code>setTimeout()</code>與<code>XMLHttpRequest</code>的callback function會停留在callback queue，等待stack裡面的task被清空後，這些停留在callback queue的task才會被執行</li>
-<li>瀏覽器分頁當機的原因是：我請JavaScript在user array長度沒有大於4前，不停執行<code>getFemaleUser()</code>此功能<ul>
-<li>在<code>getFemaleUser()</code>中，我使用ajax技術向API請求資料，但是，「整理取得的資料」這個task會停留在callback queue中</li>
-<li>而在stack沒有清空前，callback queue是不會被推到stack被執行的</li>
-<li>stack因為while loop的條件一直為true（整理資料的task沒有被執行的話，user array的長度是不會改變的），所以while loop會一直被執行下去</li>
-<li>在程式碼加上<code>console.log()</code>觀察實際被執行的內容，可以很明顯看出<code>axios.get()</code>以內的程式碼根本沒有被執行<script src="https://gist.github.com/tzynwang/b0f95a819bf495c771c321cfaa4ecf8e.js"></script>
-<figure class="figure--center"><img src="/2021/while-loop-ajax/ajax.png" title="因為stack裡面的任務沒有清空，callback queue裡面的task永遠不會被執行"><figcaption><p>因為stack裡面的任務沒有清空，callback queue裡面的task永遠不會被執行</p></figcaption></figure>
-
-
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="結論"><a href="#結論" class="headerlink" title="結論"></a>結論</h2><ul>
-<li>我的while loop條件是根據callback queue task來決定的，但我讓callback queue中的task永遠沒有機會被執行</li>
-<li>而JavaScript的single thread特性會讓它不停地執行stack內的任務，直到stack清空之前JavaScript不會處理其他事情，所以分頁畫面凍結了，JavaScript也永遠卡在while loop裡面</li>
-<li>Jake Archibald的演講在提到Render steps時提供了相關說明，約8:55開始：<iframe width="560" height="315" src="https://www.youtube.com/embed/cCOL7MC4Pl0?start=535" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
-
-
-</li>
-</ul>
-<h2 id="此問題的解決方式"><a href="#此問題的解決方式" class="headerlink" title="此問題的解決方式"></a>此問題的解決方式</h2><ul>
-<li>直接根據<a target="_blank" rel="noopener" href="https://randomuser.me/documentation#gender">RANDOM USER GENERATOR的說明文件</a>，在請求的URL加上特定parameter過濾需求資料（女性、三位：<code>?gender=female&amp;results=3</code>）</li>
-<li>透過recursive讓<code>getFemaleUser()</code>在條件沒有被滿足的情況下再度呼叫<code>getFemaleUser()</code></li>
-</ul>
-<h2 id="補充"><a href="#補充" class="headerlink" title="補充"></a>補充</h2><script src="https://gist.github.com/tzynwang/1cf59700311f401a74042df5c76cf47f.js"></script>
-<figure class="figure--center"><img src="/2021/while-loop-ajax/setTimeout.png" title="因為stack裡面的任務沒有清空，callback queue裡面的task永遠不會被執行"><figcaption><p>因為stack裡面的任務沒有清空，callback queue裡面的task永遠不會被執行</p></figcaption></figure>
-<ul>
-<li>將<code>axios.get()</code>抽換為<code>setTimeout()</code>也會造成頁面凍結，原理與上述一致</li>
-<li><code>setTimeout()</code>的callback function（<code>arr.push("add item to array");</code>）被推到callback queue之後，<code>arr.push</code>等待stack被清空，但能讓while loop停下來的task本身就在callback queue中被stack永遠不會結束的task卡住，因此while loop永遠不會停下來<figure class="figure--center"><img src="/2021/while-loop-ajax/不要停下來.jpg"></figure>
-
-
-</li>
-</ul>
-<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://youtu.be/8aGhZQkoFbQ">What the heck is the event loop anyway? | Philip Roberts</a></li>
-<li><a target="_blank" rel="noopener" href="https://youtu.be/cCOL7MC4Pl0">Jake Archibald: In The Loop</a></li>
-<li><a target="_blank" rel="noopener" href="https://youtu.be/u1kqx6AenYw">Further Adventures of the Event Loop - Erin Zimmer</a></li>
-<li><a target="_blank" rel="noopener" href="https://pjchender.blogspot.com/2017/08/javascript-learn-event-loop-stack-queue.html">[筆記] 理解 JavaScript 中的事件循環、堆疊、佇列和併發模式（Learn event loop, stack, queue, and concurrency mode of JavaScript in depth）</a>：這篇文章內的影片全部都是Philip Roberts的演講內容，影片部分直接觀看Philip Roberts本人的演講錄影即可</li>
 </ul>
 
       
