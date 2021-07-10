@@ -1,5 +1,5 @@
 ---
-title: 「重設密碼（Express.js）」技術記錄
+title: 作業功能擴充：為老爸的私房錢新增「重設密碼」之功能
 date: 2021-07-09 16:09:02
 categories:
 - Express
@@ -7,7 +7,7 @@ tags:
 ---
 
 ## 總結
-使用套件`jsonwebtoken`與`nodemailer`替記帳APP實作重設密碼之功能
+使用套件`jsonwebtoken`與`nodemailer`替[老爸的私房錢（簡易記帳APP）](https://tzynwang.github.io/2021/mongoose-note/)實作重設密碼之功能
 密碼重設流程大方向如下：
 1. 使用者點選「忘記密碼」
 1. 請使用者輸入當初註冊的Email，若有效，則發出一封包含「重設密碼連結」的Email給該信箱
@@ -52,6 +52,5 @@ os: Windows_NT 10.0.18363 win32 x64
 - npm packages:
   - [jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken)
   - [nodemailer](https://www.npmjs.com/package/nodemailer)
-
 - [JWT and one-time tokens?](https://stackoverflow.com/questions/43719615/jwt-and-one-time-tokens)
 - [Single-Use Tokens w/ JWT](https://www.jbspeakr.cc/howto-single-use-jwt/)
