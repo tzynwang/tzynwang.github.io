@@ -197,7 +197,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">55</span>
+          <span class="site-state-item-count">56</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -238,6 +238,121 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope="" itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tzynwang.github.io/2021/2-1-movie-list-i18n-note/">
+
+    <span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar-pexels-alex-andrews-215-215.png">
+      <meta itemprop="name" content="Charlie (Tzu Yin)">
+      <meta itemprop="description" content="一介普通文組的學習筆記 📒">
+    </span>
+
+    <span hidden="" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="普通文組">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/2-1-movie-list-i18n-note/" class="post-title-link" itemprop="url">Alpha Camp「2-1 電影清單之按讚與刪除」技術記錄</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-05-05 14:56:06" itemprop="dateCreated datePublished" datetime="2021-05-05T14:56:06+08:00">2021-05-05</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-05-22 14:16:10" itemprop="dateModified" datetime="2021-05-22T14:16:10+08:00">2021-05-22</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2021/2-1-movie-list-i18n-note/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/2-1-movie-list-i18n-note/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p class="codepen" data-height="265" data-theme-id="dark" data-default-tab="js,result" data-user="Charlie7779" data-slug-hash="YzNmOGY" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="A22: My Favorite Movies：按讚與刪除">
+  <span>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/Charlie7779/pen/YzNmOGY">
+  A22: My Favorite Movies：按讚與刪除</a> by Charlie (<a target="_blank" rel="noopener" href="https://codepen.io/Charlie7779">@Charlie7779</a>)
+  on <a target="_blank" rel="noopener" href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async="" src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+
+<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>本次作業中實作的功能：</p>
+<ul>
+<li>根據點擊次數記錄電影分數（尚未導入Cache或Storage API，分頁關掉後即失去記錄）</li>
+<li>點擊X按鈕後，自畫面上移除該部電影的資訊</li>
+<li>i18n（實作英文與中文介面的切換）</li>
+</ul>
+<h2 id="筆記"><a href="#筆記" class="headerlink" title="筆記"></a>筆記</h2><h3 id="controller-updateRating"><a href="#controller-updateRating" class="headerlink" title="controller.updateRating()"></a>controller.updateRating()</h3><p>監聽<code>&lt;div id="dataPanel"&gt;</code>的點擊事件，若使用者點選到「讚」或「爛」按鈕時，透過<code>HTMLTableRowElement.rowIndex</code>來取得點擊事件發生在<code>&lt;table&gt;</code>中的哪一行<code>row</code>上（可從<code>rowIndex</code>推斷使用者點選的是哪一部電影），進而更新<code>data.movies</code>中相對應電影的分數。</p>
+<p>其他解法：也可直接在「讚」或「爛」按鈕上使用<code>dataset</code>賦予電影的<code>id</code>，點擊事件發生後就可透過<code>data.id</code>來取得點擊事件發生在哪一部電影身上</p>
+<h3 id="controller-updateDeleteStatus"><a href="#controller-updateDeleteStatus" class="headerlink" title="controller.updateDeleteStatus()"></a>controller.updateDeleteStatus()</h3><p>使用者點選表格右端的X按鈕刪除電影後，透過<code>controller.updateDeleteStatus()</code>將被點擊電影的<code>deleteFlag</code>設定為<code>true</code>，用意是：在使用者進行介面語系切換後，<code>deleteFlag</code>為<code>true</code>的電影就不應該繼續出現在畫面上（<code>view.generateTableContents()</code>中會透過<code>filter()</code>篩選出<code>deleteFlag</code>不為<code>true</code>的電影）</p>
+<h3 id="view-fontSizeToggle"><a href="#view-fontSizeToggle" class="headerlink" title="view.fontSizeToggle()"></a>view.fontSizeToggle()</h3><p>筆記：切換顯示語言後，發覺儘管font-size數值相同，英文字體的尺寸在視覺上比中文字體小不少，故使用<code>view.fontSizeToggle()</code>來根據當下顯示的語言調整畫面中的字體大小</p>
+<h3 id="view-generatePosterModal"><a href="#view-generatePosterModal" class="headerlink" title="view.generatePosterModal()"></a>view.generatePosterModal()</h3><p>筆記：過去的作業多半是先將空的modal寫進HTML，待點擊事件發生後再使用JavaScript更新modal中的內容；本次改用「點擊事件發生後，再根據被點擊的目標產生相對應的modal（內容）」，相較以前作法，點擊後及時產生modal的好處是使用者不會看到一閃而逝的舊內容。</p>
+<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/Element/closest">Element.closest(selectors)</a><br>從<code>Element</code>開始往根部搜尋<code>selectors</code>，本次作業應用於<code>controller.updateRating()</code>中</li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableRowElement/rowIndex">HTMLTableRowElement.rowIndex</a><br>取一個<code>table row</code>在整體<code>&lt;table&gt;</code>中的<code>rowIndex</code></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1920,196 +2035,6 @@
 <li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setTimeout">MDN: WindowOrWorkerGlobalScope.setTimeout()</a></li>
 <li><a target="_blank" rel="noopener" href="https://blog.sessionstack.com/how-does-javascript-actually-work-part-1-b0bacc073cf">How JavaScript works: an overview of the engine, the runtime, and the call stack</a></li>
 <li><a target="_blank" rel="noopener" href="https://youtu.be/Nzokr6Boeaw">JavaScript for-loops are… complicated - HTTP203</a></li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope="" itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://tzynwang.github.io/2021/array-mutation/">
-
-    <span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar-pexels-alex-andrews-215-215.png">
-      <meta itemprop="name" content="Charlie (Tzu Yin)">
-      <meta itemprop="description" content="一介普通文組的學習筆記 📒">
-    </span>
-
-    <span hidden="" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="普通文組">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/array-mutation/" class="post-title-link" itemprop="url">為什麼可以修改使用const宣告的陣列（或物件）的內容？</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2021-04-09 14:23:04 / Modified: 21:25:13" itemprop="dateCreated datePublished" datetime="2021-04-09T14:23:04+08:00">2021-04-09</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-          <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
-        </span>
-    </span>
-
-  
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus: </span>
-    
-    <a title="disqus" href="/2021/array-mutation/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/array-mutation/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="原始問題"><a href="#原始問題" class="headerlink" title="原始問題"></a>原始問題</h2><p>以<code>const</code>宣告一個陣列（或物件），為何可以在宣告完畢後繼續修改該陣列（或物件）的內容？</p>
-<figure class="figure--center"><img src="/2021/array-mutation/騎士王的提問時間.jpg" title="事實上const的限制是「變數不能被re-assigned或re-declared」"><figcaption><p>事實上const的限制是「變數不能被re-assigned或re-declared」</p></figcaption></figure>
-
-<h2 id="簡答"><a href="#簡答" class="headerlink" title="簡答"></a>簡答</h2><p><code>const</code>的限制是「只能賦值一次，不能重新賦值」，不直接等同「不能修改內容」。</p>
-<h2 id="環境"><a href="#環境" class="headerlink" title="環境"></a>環境</h2><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Google Chrome: 89.0.4389.114 (Official Build) (64-bit)</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></tbody></table></figure>
-<h2 id="關於const的事實"><a href="#關於const的事實" class="headerlink" title="關於const的事實"></a>關於<code>const</code>的事實</h2><h3 id="You-Don’t-Know-JS-Yet-相關筆記"><a href="#You-Don’t-Know-JS-Yet-相關筆記" class="headerlink" title="You Don’t Know JS Yet 相關筆記"></a>You Don’t Know JS Yet 相關筆記</h3><ul>
-<li><code>const</code>&nbsp;declared variables are not “unchangeable”, they just cannot be re-assigned.<ul>
-<li>不適合以「不能被修改」來理解透過<code>const</code>宣告的變數，而是「使用<code>const</code>宣告的變數只能被賦值一次」<script src="https://gist.github.com/tzynwang/bf4ef105981d115a11ae4eb761e34ac8.js"></script></li>
-</ul>
-</li>
-<li>It’s ill-advised to use&nbsp;<code>const</code>&nbsp;with object values, because those values can still be changed even though the variable can’t be re-assigned.<script src="https://gist.github.com/tzynwang/b7f3ee4e1e7c8936a98bb8f7fa76b634.js"></script></li>
-<li>If you stick to using <code>const</code> only with primitive values, you avoid any confusion of re-assignment (not allowed) vs. mutation (allowed)! That’s the safest and best way to use const.</li>
-</ul>
-<h3 id="ES2015-const-is-not-about-immutability-相關筆記"><a href="#ES2015-const-is-not-about-immutability-相關筆記" class="headerlink" title="ES2015 const is not about immutability 相關筆記"></a>ES2015 const is not about immutability 相關筆記</h3><script src="https://gist.github.com/tzynwang/0945c27501de984d3aaa410bf55a08ce.js"></script>
-
-<ul>
-<li>The only thing that’s immutable here is the binding. <code>const</code> assigns a value (<code>{}</code>) to a variable name (<code>foo</code>), and guarantees that no rebinding will happen. ES2015 const has nothing to do with immutability of values.</li>
-<li>與其描述為「透過<code>const</code>宣告的陣列（或物件）不能被修改內容」，不如將<code>const</code>理解為「建立一個變數與值之間不變的binding」。</li>
-</ul>
-<h3 id="MDN上的相關內容"><a href="#MDN上的相關內容" class="headerlink" title="MDN上的相關內容"></a>MDN上的相關內容</h3><ul>
-<li>The value of a constant can’t be changed through reassignment, and it can’t be re-declared.</li>
-<li>以<code>const</code>宣告變數的同時就得賦值<script src="https://gist.github.com/tzynwang/b92649f9945fb3cb92275cf448adb199.js"></script>
-
-</li>
-</ul>
-<h2 id="Object-freeze"><a href="#Object-freeze" class="headerlink" title="Object.freeze()"></a><code>Object.freeze()</code></h2><ul>
-<li>如果想要確保陣列或物件內容不被修改，可以使用<code>Object.freeze()</code><ul>
-<li>MDN: Use <code>Object.freeze()</code> to make object immutable. A frozen object can no longer be changed; freezing an object prevents new properties from being added to it, existing properties from being removed, prevents changing the enumerability, configurability, or writability of existing properties, and prevents the values of existing properties from being changed.</li>
-<li>一個陣列或物件被凍結後，無法新增或移除該陣列、物件的內容，也不可修改該陣列、物件的properties</li>
-</ul>
-</li>
-<li><code>Object.freeze()</code>不會自動套用到巢狀結構內的所有內容上，如以下範例：<script src="https://gist.github.com/tzynwang/a52efc027532899027d7d0e0c9f1cfef.js"></script>
-<figure class="figure--center"><img src="/2021/array-mutation/object-freeze-demo-1.png"></figure></li>
-<li>可透過遞迴來凍結巢狀結構物件的內容<script src="https://gist.github.com/tzynwang/e7a3cf50d030d90f05eee59257806b1e.js"></script>
-<figure class="figure--center"><img src="/2021/array-mutation/object-freeze-demo-2.png"></figure>
-
-
-</li>
-</ul>
-<h2 id="Object-seal"><a href="#Object-seal" class="headerlink" title="Object.seal()"></a><code>Object.seal()</code></h2><ul>
-<li>The Object.seal() method seals an object, preventing new properties from being added to it and marking all existing properties as non-configurable. Values of present properties can still be changed as long as they are writable.<ul>
-<li>與<code>Object.freeze()</code>的差異是，經<code>Object.seal()</code>封閉的物件，不能對其新增或刪除內容，但封閉前就存在的內容可以被修改<script src="https://gist.github.com/tzynwang/1e8917a16a8450fb76fd5a6bd34201e9.js"></script>
-<figure class="figure--center"><img src="/2021/array-mutation/object-freeze-demo-3.png"></figure>
-
-
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="Object-preventExtensions"><a href="#Object-preventExtensions" class="headerlink" title="Object.preventExtensions()"></a><code>Object.preventExtensions()</code></h2><p><code>Object.preventExtensions()</code>只會禁止對物件新增內容，但可以刪除或修改既有內容</p>
-<script src="https://gist.github.com/tzynwang/034ffb5ed714a851cc2e35c5b8a148df.js"></script>
-<figure class="figure--center"><img src="/2021/array-mutation/object-freeze-demo-4.png"></figure>
-
-
-<h2 id="Object-getOwnPropertyDescriptor"><a href="#Object-getOwnPropertyDescriptor" class="headerlink" title="Object.getOwnPropertyDescriptor()"></a><code>Object.getOwnPropertyDescriptor()</code></h2><p>回傳一物件中某內容的相關設定</p>
-<script src="https://gist.github.com/tzynwang/e0618d9ef2d4fa0b153ad6d9347ae8ee.js"></script>
-<figure class="figure--center"><img src="/2021/array-mutation/object-freeze-demo-5.png"></figure>
-
-<p>參考<a target="_blank" rel="noopener" href="https://tc39.es/ecma262/#table-data-property-attributes">ECMAScript Specification, Table 3: Attributes of a Data Property</a>：</p>
-<ul>
-<li><code>writable</code>: If false, attempts by ECMAScript code to change the property’s [[Value]] attribute using [[Set]] will not succeed.<ul>
-<li><code>writable</code>若為<code>false</code>，代表該<code>value</code>無法被修改</li>
-<li>被<code>Object.freeze()</code>凍結的物件，其<code>value</code>的<code>writable</code>就被修改為<code>false</code></li>
-</ul>
-</li>
-<li><code>enumerable</code>: If true, the property will be enumerated by a for-in enumeration. Otherwise, the property is said to be non-enumerable.<ul>
-<li><code>enumerable</code>為<code>true</code>代表該<code>value</code>會<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...in">被<code>for...in</code>遍歷</a></li>
-</ul>
-</li>
-<li><code>configurable</code>: If false, attempts to delete the property, change the property to be an accessor property, or change its attributes (other than [[Value]], or changing [[Writable]] to false) will fail.<ul>
-<li><code>configurable</code>若為<code>false</code>，代表該<code>value</code>無法被刪除</li>
-<li>經<code>Object.freeze()</code>或<code>Object.seal()</code>處理過的物件，其<code>value</code>的<code>configurable</code>就被修改為<code>false</code><figure class="figure--center"><img src="/2021/array-mutation/attributes-of-data-property.png"></figure>
-
-
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="補充：無法解凍或再開封"><a href="#補充：無法解凍或再開封" class="headerlink" title="補充：無法解凍或再開封"></a>補充：無法解凍或再開封</h2><p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/19293321/opposite-of-object-freeze-or-object-seal-in-javascript">Opposite of Object.freeze or Object.seal in JavaScript</a></p>
-<blockquote>
-<p>Freezing an object is the ultimate form of lock-down. Once an object has been frozen it cannot be unfrozen – nor can it be tampered in any manner. This is the best way to make sure that your objects will stay exactly as you left them, indefinitely</p>
-</blockquote>
-<ul>
-<li><code>Object.freeze()</code>與<code>Object.seal()</code>是不可逆的程序，一旦一個物件（或陣列）被凍結或封閉，該物件就無法回到凍結（或封閉）前的狀態</li>
-<li>可以透過<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign"><code>Object.assign()</code></a>來製作該物件（或陣列）的副本，再修改其內容</li>
-</ul>
-<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
-<li>You Don’t Know JS Yet: Get Started - 2nd Edition<ul>
-<li><a target="_blank" rel="noopener" href="https://github.com/getify/You-Dont-Know-JS/blob/2nd-ed/get-started/ch2.md">Chapter 2: Surveying JS</a></li>
-<li><a target="_blank" rel="noopener" href="https://github.com/getify/You-Dont-Know-JS/blob/2nd-ed/get-started/apA.md">Appendix A: Exploring Further</a></li>
-</ul>
-</li>
-<li><a target="_blank" rel="noopener" href="https://mathiasbynens.be/notes/es6-const">ES2015 const is not about immutability</a></li>
-<li>MDN<ul>
-<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const">const</a></li>
-<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/freeze">Object.freeze()</a></li>
-<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/seal">Object.seal()</a></li>
-<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/preventExtensions">Object.preventExtensions()</a></li>
-<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/getOwnPropertyDescriptor">Object.getOwnPropertyDescriptor()</a></li>
-</ul>
-</li>
-<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/7509894/freezing-arrays-in-javascript">‘Freezing’ Arrays in Javascript?</a></li>
 </ul>
 
       

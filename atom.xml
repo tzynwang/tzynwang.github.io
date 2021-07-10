@@ -6,7 +6,7 @@
   <link href="https://tzynwang.github.io/atom.xml" rel="self"/>
   
   <link href="https://tzynwang.github.io/"/>
-  <updated>2021-07-09T09:21:16.362Z</updated>
+  <updated>2021-07-10T08:50:15.918Z</updated>
   <id>https://tzynwang.github.io/</id>
   
   <author>
@@ -17,18 +17,41 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>「重設密碼（Express.js）」技術記錄</title>
+    <title>作業功能擴充：讓老爸的私房錢「可以記住使用者的登入狀態」</title>
+    <link href="https://tzynwang.github.io/2021/express-login-remember-me/"/>
+    <id>https://tzynwang.github.io/2021/express-login-remember-me/</id>
+    <published>2021-07-10T07:13:24.000Z</published>
+    <updated>2021-07-10T08:50:15.918Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;總結&quot;&gt;&lt;a href=&quot;#總結&quot; class=&quot;headerlink&quot; title=&quot;總結&quot;&gt;&lt;/a&gt;總結&lt;/h2&gt;&lt;p&gt;實作的部分因為直接使用套件&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="Express" scheme="https://tzynwang.github.io/categories/Express/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>作業功能擴充：為老爸的私房錢新增「重設密碼」之功能</title>
     <link href="https://tzynwang.github.io/2021/express-reset-password/"/>
     <id>https://tzynwang.github.io/2021/express-reset-password/</id>
     <published>2021-07-09T08:09:02.000Z</published>
-    <updated>2021-07-09T09:21:16.362Z</updated>
+    <updated>2021-07-10T07:12:40.677Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h2 id=&quot;總結&quot;&gt;&lt;a href=&quot;#總結&quot; class=&quot;headerlink&quot;</summary>
+    <summary type="html">&lt;h2 id=&quot;總結&quot;&gt;&lt;a href=&quot;#總結&quot; class=&quot;headerlink&quot; title=&quot;總結&quot;&gt;&lt;/a&gt;總結&lt;/h2&gt;&lt;p&gt;使用套件&lt;code&gt;jsonwebtoken&lt;/code&gt;與&lt;code&gt;nodemailer&lt;/code&gt;替&lt;a</summary>
         
       
     
@@ -99,29 +122,6 @@
         
         
     <summary type="html">&lt;h2 id=&quot;總結&quot;&gt;&lt;a href=&quot;#總結&quot; class=&quot;headerlink&quot; title=&quot;總結&quot;&gt;&lt;/a&gt;總結&lt;/h2&gt;&lt;p&gt;使用npm package</summary>
-        
-      
-    
-    
-    
-    <category term="Express" scheme="https://tzynwang.github.io/categories/Express/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>「部屬Express.js App至Google App Engine」相關筆記</title>
-    <link href="https://tzynwang.github.io/2021/express-app-deploy-gcp/"/>
-    <id>https://tzynwang.github.io/2021/express-app-deploy-gcp/</id>
-    <published>2021-06-25T06:06:51.000Z</published>
-    <updated>2021-06-25T07:10:50.030Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;總結&quot;&gt;&lt;a href=&quot;#總結&quot; class=&quot;headerlink&quot;</summary>
         
       
     
