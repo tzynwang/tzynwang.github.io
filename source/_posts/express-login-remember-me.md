@@ -37,6 +37,12 @@ os: Windows_NT 10.0.18363 win32 x64
    - 參考「[Where does express js save session details?](https://stackoverflow.com/questions/23821302/where-does-express-js-save-session-details)」，在沒有任何設定的情況下，Express.js伺服器會把sessions儲存在RAM中，所以重啟伺服器後，已登入的使用者也會被踢回登入畫面
    - 而如果把sessions保存在Redis或MongoDB等資料庫裡面的話，重啟Web APP的伺服器也不會失去sessions資料，已登入的使用者會繼續維持登入狀態
 
+- [express-session](https://github.com/expressjs/session#express-session)
+  - 參考「[Understanding Sessions and Local Authentication in Express with Passport and MongoDb](https://mianlabs.com/2018/05/09/understanding-sessions-and-local-authentication-in-express-with-passport-and-mongodb/)」
+  - An **Express.js middleware** used for **persisting sessions across stateless HTTP requests**.
+  - Sessions are used for **storing data about a user** and presenting dynamic data based on a user’s identity. They rely upon **saving session data to a cookie** that is sent to the user’s browser and then received back in future user requests.
+  - This module expands the Express.js `request` object with the `session` property (among other things), which itself is an object that can be used by other middleware.
+  - By default it uses a `MemoryStore`, an in-memory key-value database not intended for production use, to store the session data. But you can and should plug in another memory store middleware when deploying a serious product.
 
 ### 關於cookies
 - 保存在使用者的瀏覽器中，開啟Chrome瀏覽器的DevTools切換到Application分頁，即可看到cookies
