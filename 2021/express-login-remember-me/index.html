@@ -30,7 +30,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://tzynwang.github.io/2021/express-login-remember-me/sessionsInDB.png">
 <meta property="article:published_time" content="2021-07-10T07:13:24.000Z">
-<meta property="article:modified_time" content="2021-07-10T08:50:15.918Z">
+<meta property="article:modified_time" content="2021-07-11T10:06:51.264Z">
 <meta property="article:author" content="Charlie (Tzu Yin)">
 <meta property="article:tag" content="hexo, hexo blog, tzyn, 普通文組">
 <meta name="twitter:card" content="summary">
@@ -202,7 +202,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">56</span>
+          <span class="site-state-item-count">57</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -276,10 +276,16 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2021-07-10 15:13:24 / Modified: 16:50:15" itemprop="dateCreated datePublished" datetime="2021-07-10T15:13:24+08:00">2021-07-10</time>
+      <time title="Created: 2021-07-10 15:13:24" itemprop="dateCreated datePublished" datetime="2021-07-10T15:13:24+08:00">2021-07-10</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-07-11 18:06:51" itemprop="dateModified" datetime="2021-07-11T18:06:51+08:00">2021-07-11</time>
+      </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
@@ -332,11 +338,22 @@
 <li>問題：如果今天要打造一個「能維持使用者登入狀態」的Web APP，勢必需要其他技術協助</li>
 </ul>
 <h3 id="關於sessions"><a href="#關於sessions" class="headerlink" title="關於sessions"></a>關於sessions</h3><ul>
-<li>sessions<strong>不是</strong>Chrome DevTools打開來切換到Application分頁看到的session storage</li>
-<li>sessions儲存在伺服器端，不存在使用者的瀏覽器中<ul>
+<li><p>sessions<strong>不是</strong>Chrome DevTools打開來切換到Application分頁看到的session storage</p>
+</li>
+<li><p>sessions儲存在伺服器端，不存在使用者的瀏覽器中</p>
+<ul>
 <li>而sessions實際究竟儲存在Express.js伺服器的「哪裡」則是根據開發者的設定決定</li>
 <li>參考「<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/23821302/where-does-express-js-save-session-details">Where does express js save session details?</a>」，在沒有任何設定的情況下，Express.js伺服器會把sessions儲存在RAM中，所以重啟伺服器後，已登入的使用者也會被踢回登入畫面</li>
 <li>而如果把sessions保存在Redis或MongoDB等資料庫裡面的話，重啟Web APP的伺服器也不會失去sessions資料，已登入的使用者會繼續維持登入狀態</li>
+</ul>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://github.com/expressjs/session#express-session">express-session</a></p>
+<ul>
+<li>參考「<a target="_blank" rel="noopener" href="https://mianlabs.com/2018/05/09/understanding-sessions-and-local-authentication-in-express-with-passport-and-mongodb/">Understanding Sessions and Local Authentication in Express with Passport and MongoDb</a>」</li>
+<li>An <strong>Express.js middleware</strong> used for <strong>persisting sessions across stateless HTTP requests</strong>.</li>
+<li>Sessions are used for <strong>storing data about a user</strong> and presenting dynamic data based on a user’s identity. They rely upon <strong>saving session data to a cookie</strong> that is sent to the user’s browser and then received back in future user requests.</li>
+<li>This module expands the Express.js <code>request</code> object with the <code>session</code> property (among other things), which itself is an object that can be used by other middleware.</li>
+<li>By default it uses a <code>MemoryStore</code>, an in-memory key-value database not intended for production use, to store the session data. But you can and should plug in another memory store middleware when deploying a serious product.</li>
 </ul>
 </li>
 </ul>
@@ -399,6 +416,9 @@
                 </a>
             </div>
             <div class="post-nav-item">
+                <a href="/2021/express-chartjs-exceljs/" rel="next" title="作業功能擴充：為老爸的私房錢新增開支圖表、將開支紀錄下載為Excel檔案">
+                  作業功能擴充：為老爸的私房錢新增開支圖表、將開支紀錄下載為Excel檔案 <i class="fa fa-chevron-right"></i>
+                </a>
             </div>
           </div>
     </footer>

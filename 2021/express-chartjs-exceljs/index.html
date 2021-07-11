@@ -21,21 +21,23 @@
     var NexT = window.NexT || {};
     var CONFIG = {"hostname":"tzynwang.github.io","root":"/","images":"/images","scheme":"Pisces","version":"8.2.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqus","storage":true,"lazyload":false,"nav":null,"activeClass":"disqus"},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":"enable","trigger":"auto","top_n_per_article":-1,"unescape":false,"preload":false}};
   </script>
-<meta name="description" content="Summary of this postAn introduction to hexo’s category hierarchy. Categories with hierarchy1234567# categories:- Fruit- Apple# Result:└── Fruit    └── Apple Categories without hierarchy (no hierarchy,">
+<meta name="description" content="總結圖表套件：chart.js（官方文件）生成Excel之套件：exceljs（npm） 圖表成品示意  環境123chart.js: 3.4.1exceljs: 4.2.1os: Windows_NT 10.0.18363 win32 x64 圖表部分 需求： 使用者登入記帳APP時，若當月有任何記帳資料的話，顯示開支圖表；若該月份還未有任何記帳資料，則不會顯示圖表 使用者可以在首頁篩選不同月份">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Category hierarchy">
-<meta property="og:url" content="https://tzynwang.github.io/2021/hexo-category-hierarchy/index.html">
+<meta property="og:title" content="作業功能擴充：為老爸的私房錢新增開支圖表、將開支紀錄下載為Excel檔案">
+<meta property="og:url" content="https://tzynwang.github.io/2021/express-chartjs-exceljs/index.html">
 <meta property="og:site_name" content="普通文組">
-<meta property="og:description" content="Summary of this postAn introduction to hexo’s category hierarchy. Categories with hierarchy1234567# categories:- Fruit- Apple# Result:└── Fruit    └── Apple Categories without hierarchy (no hierarchy,">
+<meta property="og:description" content="總結圖表套件：chart.js（官方文件）生成Excel之套件：exceljs（npm） 圖表成品示意  環境123chart.js: 3.4.1exceljs: 4.2.1os: Windows_NT 10.0.18363 win32 x64 圖表部分 需求： 使用者登入記帳APP時，若當月有任何記帳資料的話，顯示開支圖表；若該月份還未有任何記帳資料，則不會顯示圖表 使用者可以在首頁篩選不同月份">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-02-15T01:38:00.000Z">
-<meta property="article:modified_time" content="2021-02-18T12:36:30.386Z">
+<meta property="og:image" content="https://tzynwang.github.io/2021/express-chartjs-exceljs/chartDemo.png">
+<meta property="article:published_time" content="2021-07-11T10:08:08.000Z">
+<meta property="article:modified_time" content="2021-07-11T11:34:08.614Z">
 <meta property="article:author" content="Charlie (Tzu Yin)">
 <meta property="article:tag" content="hexo, hexo blog, tzyn, 普通文組">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://tzynwang.github.io/2021/express-chartjs-exceljs/chartDemo.png">
 
 
-<link rel="canonical" href="https://tzynwang.github.io/2021/hexo-category-hierarchy/">
+<link rel="canonical" href="https://tzynwang.github.io/2021/express-chartjs-exceljs/">
 
 
 <script class="page-configurations">
@@ -47,7 +49,7 @@
     lang   : 'en'
   };
 </script>
-<title>Category hierarchy | 普通文組</title>
+<title>作業功能擴充：為老爸的私房錢新增開支圖表、將開支紀錄下載為Excel檔案 | 普通文組</title>
   
 
 
@@ -185,7 +187,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Summary-of-this-post"><span class="nav-number">1.</span> <span class="nav-text">Summary of this post</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Categories-with-hierarchy"><span class="nav-number">1.1.</span> <span class="nav-text">Categories with hierarchy</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Categories-without-hierarchy-no-hierarchy-parallel"><span class="nav-number">1.2.</span> <span class="nav-text">Categories without hierarchy (no hierarchy, parallel)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Multiple-parallel-categories"><span class="nav-number">1.3.</span> <span class="nav-text">Multiple parallel categories</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sub-sub-category"><span class="nav-number">1.4.</span> <span class="nav-text">Sub-sub-category</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-number">2.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B8%BD%E7%B5%90"><span class="nav-number">1.</span> <span class="nav-text">總結</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%92%B0%E5%A2%83"><span class="nav-number">2.</span> <span class="nav-text">環境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%96%E8%A1%A8%E9%83%A8%E5%88%86"><span class="nav-number">3.</span> <span class="nav-text">圖表部分</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8E%9F%E5%A7%8B%E7%A2%BC"><span class="nav-number">3.1.</span> <span class="nav-text">原始碼</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%87%E7%B4%80%E9%8C%84%E4%B8%8B%E8%BC%89%E7%82%BAExcel%E9%83%A8%E5%88%86"><span class="nav-number">4.</span> <span class="nav-text">將紀錄下載為Excel部分</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8E%9F%E5%A7%8B%E7%A2%BC-1"><span class="nav-number">4.1.</span> <span class="nav-text">原始碼</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%83%E8%80%83%E6%96%87%E4%BB%B6"><span class="nav-number">5.</span> <span class="nav-text">參考文件</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -251,7 +253,7 @@
   
 
   <article itemscope="" itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://tzynwang.github.io/2021/hexo-category-hierarchy/">
+    <link itemprop="mainEntityOfPage" href="https://tzynwang.github.io/2021/express-chartjs-exceljs/">
 
     <span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar-pexels-alex-andrews-215-215.png">
@@ -264,7 +266,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Category hierarchy
+          作業功能擴充：為老爸的私房錢新增開支圖表、將開支紀錄下載為Excel檔案
         </h1>
 
         <div class="post-meta-container">
@@ -274,23 +276,21 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
+      
 
-      <time title="Created: 2021-02-15 09:38:00" itemprop="dateCreated datePublished" datetime="2021-02-15T09:38:00+08:00">2021-02-15</time>
+      <time title="Created: 2021-07-11 18:08:08 / Modified: 19:34:08" itemprop="dateCreated datePublished" datetime="2021-07-11T18:08:08+08:00">2021-07-11</time>
     </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-02-18 20:36:30" itemprop="dateModified" datetime="2021-02-18T20:36:30+08:00">2021-02-18</time>
-      </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
       </span>
       <span class="post-meta-item-text">In</span>
         <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-          <a href="/categories/hexo/" itemprop="url" rel="index"><span itemprop="name">hexo</span></a>
+          <a href="/categories/Express/" itemprop="url" rel="index"><span itemprop="name">Express</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+          <a href="/categories/Mongoose/" itemprop="url" rel="index"><span itemprop="name">Mongoose</span></a>
         </span>
     </span>
 
@@ -303,8 +303,8 @@
       </span>
       <span class="post-meta-item-text">Disqus: </span>
     
-    <a title="disqus" href="/2021/hexo-category-hierarchy/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/hexo-category-hierarchy/" itemprop="commentCount"></span>
+    <a title="disqus" href="/2021/express-chartjs-exceljs/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/express-chartjs-exceljs/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -318,13 +318,43 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h2 id="Summary-of-this-post"><a href="#Summary-of-this-post" class="headerlink" title="Summary of this post"></a>Summary of this post</h2><p>An introduction to hexo’s category hierarchy.</p>
-<h3 id="Categories-with-hierarchy"><a href="#Categories-with-hierarchy" class="headerlink" title="Categories with hierarchy"></a>Categories with hierarchy</h3><figure class="highlight yaml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># categories:</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">Fruit</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">Apple</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Result:</span></span><br><span class="line"><span class="string">└──</span> <span class="string">Fruit</span></span><br><span class="line">    <span class="string">└──</span> <span class="string">Apple</span></span><br></pre></td></tr></tbody></table></figure>
-<h3 id="Categories-without-hierarchy-no-hierarchy-parallel"><a href="#Categories-without-hierarchy-no-hierarchy-parallel" class="headerlink" title="Categories without hierarchy (no hierarchy, parallel)"></a>Categories without hierarchy (no hierarchy, parallel)</h3><figure class="highlight yaml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># categories:</span></span><br><span class="line"><span class="bullet">-</span> [<span class="string">Fruit</span>, <span class="string">Apple</span>] </span><br><span class="line"><span class="bullet">-</span> [<span class="string">Vegetable</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># Result:</span></span><br><span class="line"><span class="string">├──</span> <span class="string">Fruit</span></span><br><span class="line"><span class="string">|</span>   <span class="string">└──</span> <span class="string">Apple</span></span><br><span class="line"><span class="string">└──</span> <span class="string">Vegetable</span></span><br></pre></td></tr></tbody></table></figure>
-<h3 id="Multiple-parallel-categories"><a href="#Multiple-parallel-categories" class="headerlink" title="Multiple parallel categories"></a>Multiple parallel categories</h3><figure class="highlight yaml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># categories:</span></span><br><span class="line"><span class="bullet">-</span> [<span class="string">Fruit</span>, <span class="string">Apple</span>]</span><br><span class="line"><span class="bullet">-</span> [<span class="string">Fruit</span>, <span class="string">Orange</span>]</span><br><span class="line"><span class="bullet">-</span> [<span class="string">Vegetable</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># Result:</span></span><br><span class="line"><span class="string">├──</span> <span class="string">Fruit</span></span><br><span class="line"><span class="string">|</span>   <span class="string">└──</span> <span class="string">Apple</span></span><br><span class="line"><span class="string">|</span>   <span class="string">└──</span> <span class="string">Orange</span></span><br><span class="line"><span class="string">└──</span> <span class="string">Vegetable</span></span><br></pre></td></tr></tbody></table></figure>
-<h3 id="Sub-sub-category"><a href="#Sub-sub-category" class="headerlink" title="Sub-sub-category"></a>Sub-sub-category</h3><figure class="highlight yaml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># categories:</span></span><br><span class="line"><span class="bullet">-</span> [<span class="string">Fruit</span>, <span class="string">Apple</span>, <span class="string">Apple</span> <span class="string">seed</span>]</span><br><span class="line"><span class="bullet">-</span> [<span class="string">Vegetable</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># Result:</span></span><br><span class="line"><span class="string">├──</span> <span class="string">Fruit</span></span><br><span class="line"><span class="string">|</span>   <span class="string">└──</span> <span class="string">Apple</span></span><br><span class="line"><span class="string">|</span>      <span class="string">└──</span> <span class="string">Apple</span> <span class="string">Seed</span></span><br><span class="line"><span class="string">└──</span> <span class="string">Vegetable</span></span><br></pre></td></tr></tbody></table></figure>
+        <h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>圖表套件：<code>chart.js</code>（<a target="_blank" rel="noopener" href="https://www.chartjs.org/docs/latest/">官方文件</a>）<br>生成Excel之套件：<code>exceljs</code>（<a target="_blank" rel="noopener" href="https://www.npmjs.com/package/exceljs">npm</a>）</p>
+<figure class="figure--center"><img src="/2021/express-chartjs-exceljs/chartDemo.png" title="圖表成品示意"><figcaption><p>圖表成品示意</p></figcaption></figure>
 
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a target="_blank" rel="noopener" href="https://hexo.io/docs/front-matter#Categories-amp-Tags">hexo: Front-matter/Categories &amp; Tags</a></p>
+<h2 id="環境"><a href="#環境" class="headerlink" title="環境"></a>環境</h2><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">chart.js: 3.4.1</span><br><span class="line">exceljs: 4.2.1</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="圖表部分"><a href="#圖表部分" class="headerlink" title="圖表部分"></a>圖表部分</h2><ul>
+<li>需求：<ul>
+<li>使用者登入記帳APP時，若當月有任何記帳資料的話，顯示開支圖表；若該月份還未有任何記帳資料，則不會顯示圖表</li>
+<li>使用者可以在首頁篩選不同月份的記帳資料，篩選月份後，若該月份有記帳資料，則顯示圖表（反之該月份若無任何記帳資料，不顯示圖表）</li>
+<li>使用者若篩選特定類型的帳目資料，不顯示圖表</li>
+</ul>
+</li>
+<li>實作規劃：<ul>
+<li>監聽<code>&lt;input type="month"&gt;</code>的<code>change</code>事件，只有在使用者選取了帳目月份、且帳目類型為「全類別」的時候，才會顯示圖表</li>
+<li>根據使用者選擇的條件（月份、類型）向後端發出POST request，等待後端回應資料後，再根據資料修改前端畫面</li>
+</ul>
+</li>
+</ul>
+<h3 id="原始碼"><a href="#原始碼" class="headerlink" title="原始碼"></a>原始碼</h3><script src="https://gist.github.com/tzynwang/327957091f91f81b86c527f29a51c84d.js"></script>
+
+
+<h2 id="將紀錄下載為Excel部分"><a href="#將紀錄下載為Excel部分" class="headerlink" title="將紀錄下載為Excel部分"></a>將紀錄下載為Excel部分</h2><ul>
+<li>需求：想要滿足「可以讓使用者備份記帳APP中的開支資料」此一需求</li>
+<li>實作規劃：<ul>
+<li>從資料庫中取出該使用者的所有未被刪除的帳目資料，寫入excel檔案後，下載該檔案</li>
+<li>搜尋關鍵字「express download excel」，參考stackOverFlow與blog討論串進行實作</li>
+</ul>
+</li>
+</ul>
+<h3 id="原始碼-1"><a href="#原始碼-1" class="headerlink" title="原始碼"></a>原始碼</h3><script src="https://gist.github.com/tzynwang/b77a79b8bc53c6f5d546b4f18aa7ce71.js"></script>
+
+
+<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/43729199/how-i-can-use-like-operator-on-mongoose">How I can use “LIKE” operator on mongoose?</a></li>
+<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/38497650/how-to-find-items-using-regex-in-mongoose">How to find items using regex in Mongoose</a></li>
+<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/40056555/destroy-chart-js-bar-graph-to-redraw-other-graph-in-same-canvas">Destroy chart.js bar graph to redraw other graph in same canvas</a></li>
+<li><a target="_blank" rel="noopener" href="https://bezkoder.com/node-js-download-excel-file/">Node.js Download Excel file example with exceljs</a></li>
+</ul>
 
     </div>
 
@@ -338,14 +368,11 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2021/hexo-contribution-workflow/" rel="prev" title="Contribution workflow note: document update">
-                  <i class="fa fa-chevron-left"></i> Contribution workflow note: document update
+                <a href="/2021/express-login-remember-me/" rel="prev" title="作業功能擴充：讓老爸的私房錢「可以記住使用者的登入狀態」">
+                  <i class="fa fa-chevron-left"></i> 作業功能擴充：讓老爸的私房錢「可以記住使用者的登入狀態」
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2021/hexo-tag-figure/" rel="next" title="Plugin: hexo-tag-figure">
-                  Plugin: hexo-tag-figure <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
     </footer>
@@ -440,9 +467,9 @@
 ;
 
   var disqus_config = function() {
-    this.page.url = "https://tzynwang.github.io/2021/hexo-category-hierarchy/";
-    this.page.identifier = "2021/hexo-category-hierarchy/";
-    this.page.title = "Category hierarchy";
+    this.page.url = "https://tzynwang.github.io/2021/express-chartjs-exceljs/";
+    this.page.identifier = "2021/express-chartjs-exceljs/";
+    this.page.title = "作業功能擴充：為老爸的私房錢新增開支圖表、將開支紀錄下載為Excel檔案";
     };
   NexT.utils.loadComments('#disqus_thread', () => {
     if (window.DISQUS) {

@@ -6,7 +6,7 @@
   <link href="https://tzynwang.github.io/atom.xml" rel="self"/>
   
   <link href="https://tzynwang.github.io/"/>
-  <updated>2021-07-10T08:50:15.918Z</updated>
+  <updated>2021-07-11T11:34:08.614Z</updated>
   <id>https://tzynwang.github.io/</id>
   
   <author>
@@ -17,11 +17,36 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>作業功能擴充：為老爸的私房錢新增開支圖表、將開支紀錄下載為Excel檔案</title>
+    <link href="https://tzynwang.github.io/2021/express-chartjs-exceljs/"/>
+    <id>https://tzynwang.github.io/2021/express-chartjs-exceljs/</id>
+    <published>2021-07-11T10:08:08.000Z</published>
+    <updated>2021-07-11T11:34:08.614Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;總結&quot;&gt;&lt;a href=&quot;#總結&quot; class=&quot;headerlink&quot; title=&quot;總結&quot;&gt;&lt;/a&gt;總結&lt;/h2&gt;&lt;p&gt;圖表套件：&lt;code&gt;chart.js&lt;/code&gt;（&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="Express" scheme="https://tzynwang.github.io/categories/Express/"/>
+    
+    <category term="Mongoose" scheme="https://tzynwang.github.io/categories/Mongoose/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>作業功能擴充：讓老爸的私房錢「可以記住使用者的登入狀態」</title>
     <link href="https://tzynwang.github.io/2021/express-login-remember-me/"/>
     <id>https://tzynwang.github.io/2021/express-login-remember-me/</id>
     <published>2021-07-10T07:13:24.000Z</published>
-    <updated>2021-07-10T08:50:15.918Z</updated>
+    <updated>2021-07-11T10:06:51.264Z</updated>
     
     
       
@@ -105,29 +130,6 @@
     
     
     <category term="Data exchange format" scheme="https://tzynwang.github.io/categories/Data-exchange-format/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>「使用passport處理FB、Google第三方登入」相關筆記</title>
-    <link href="https://tzynwang.github.io/2021/express-passport-facebook-google-line/"/>
-    <id>https://tzynwang.github.io/2021/express-passport-facebook-google-line/</id>
-    <published>2021-06-30T04:59:56.000Z</published>
-    <updated>2021-07-01T02:19:13.335Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;總結&quot;&gt;&lt;a href=&quot;#總結&quot; class=&quot;headerlink&quot; title=&quot;總結&quot;&gt;&lt;/a&gt;總結&lt;/h2&gt;&lt;p&gt;使用npm package</summary>
-        
-      
-    
-    
-    
-    <category term="Express" scheme="https://tzynwang.github.io/categories/Express/"/>
     
     
   </entry>

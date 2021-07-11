@@ -1207,6 +1207,52 @@ on <a href="https://codepen.io">CodePen</a>.</span>
       </categories>
   </entry>
   <entry>
+    <title>作業功能擴充：為老爸的私房錢新增開支圖表、將開支紀錄下載為Excel檔案</title>
+    <url>/2021/express-chartjs-exceljs/</url>
+    <content><![CDATA[<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>圖表套件：<code>chart.js</code>（<a href="https://www.chartjs.org/docs/latest/">官方文件</a>）<br>生成Excel之套件：<code>exceljs</code>（<a href="https://www.npmjs.com/package/exceljs">npm</a>）</p>
+<figure class="figure--center"><img src="/2021/express-chartjs-exceljs/chartDemo.png" title="圖表成品示意"><figcaption><p>圖表成品示意</p></figcaption></figure>
+
+<h2 id="環境"><a href="#環境" class="headerlink" title="環境"></a>環境</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">chart.js: 3.4.1</span><br><span class="line">exceljs: 4.2.1</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></table></figure>
+<h2 id="圖表部分"><a href="#圖表部分" class="headerlink" title="圖表部分"></a>圖表部分</h2><ul>
+<li>需求：<ul>
+<li>使用者登入記帳APP時，若當月有任何記帳資料的話，顯示開支圖表；若該月份還未有任何記帳資料，則不會顯示圖表</li>
+<li>使用者可以在首頁篩選不同月份的記帳資料，篩選月份後，若該月份有記帳資料，則顯示圖表（反之該月份若無任何記帳資料，不顯示圖表）</li>
+<li>使用者若篩選特定類型的帳目資料，不顯示圖表</li>
+</ul>
+</li>
+<li>實作規劃：<ul>
+<li>監聽<code>&lt;input type=&quot;month&quot;&gt;</code>的<code>change</code>事件，只有在使用者選取了帳目月份、且帳目類型為「全類別」的時候，才會顯示圖表</li>
+<li>根據使用者選擇的條件（月份、類型）向後端發出POST request，等待後端回應資料後，再根據資料修改前端畫面</li>
+</ul>
+</li>
+</ul>
+<h3 id="原始碼"><a href="#原始碼" class="headerlink" title="原始碼"></a>原始碼</h3><script src="https://gist.github.com/tzynwang/327957091f91f81b86c527f29a51c84d.js"></script>
+
+
+<h2 id="將紀錄下載為Excel部分"><a href="#將紀錄下載為Excel部分" class="headerlink" title="將紀錄下載為Excel部分"></a>將紀錄下載為Excel部分</h2><ul>
+<li>需求：想要滿足「可以讓使用者備份記帳APP中的開支資料」此一需求</li>
+<li>實作規劃：<ul>
+<li>從資料庫中取出該使用者的所有未被刪除的帳目資料，寫入excel檔案後，下載該檔案</li>
+<li>搜尋關鍵字「express download excel」，參考stackOverFlow與blog討論串進行實作</li>
+</ul>
+</li>
+</ul>
+<h3 id="原始碼-1"><a href="#原始碼-1" class="headerlink" title="原始碼"></a>原始碼</h3><script src="https://gist.github.com/tzynwang/b77a79b8bc53c6f5d546b4f18aa7ce71.js"></script>
+
+
+<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
+<li><a href="https://stackoverflow.com/questions/43729199/how-i-can-use-like-operator-on-mongoose">How I can use “LIKE” operator on mongoose?</a></li>
+<li><a href="https://stackoverflow.com/questions/38497650/how-to-find-items-using-regex-in-mongoose">How to find items using regex in Mongoose</a></li>
+<li><a href="https://stackoverflow.com/questions/40056555/destroy-chart-js-bar-graph-to-redraw-other-graph-in-same-canvas">Destroy chart.js bar graph to redraw other graph in same canvas</a></li>
+<li><a href="https://bezkoder.com/node-js-download-excel-file/">Node.js Download Excel file example with exceljs</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Express</category>
+        <category>Mongoose</category>
+      </categories>
+  </entry>
+  <entry>
     <title>「Express Handlebars 取得父層變數內容」相關筆記</title>
     <url>/2021/express-handlebars-access-variable-in-parent-scope/</url>
     <content><![CDATA[<h2 id="問題描述"><a href="#問題描述" class="headerlink" title="問題描述"></a>問題描述</h2><ul>
@@ -1264,11 +1310,22 @@ on <a href="https://codepen.io">CodePen</a>.</span>
 <li>問題：如果今天要打造一個「能維持使用者登入狀態」的Web APP，勢必需要其他技術協助</li>
 </ul>
 <h3 id="關於sessions"><a href="#關於sessions" class="headerlink" title="關於sessions"></a>關於sessions</h3><ul>
-<li>sessions<strong>不是</strong>Chrome DevTools打開來切換到Application分頁看到的session storage</li>
-<li>sessions儲存在伺服器端，不存在使用者的瀏覽器中<ul>
+<li><p>sessions<strong>不是</strong>Chrome DevTools打開來切換到Application分頁看到的session storage</p>
+</li>
+<li><p>sessions儲存在伺服器端，不存在使用者的瀏覽器中</p>
+<ul>
 <li>而sessions實際究竟儲存在Express.js伺服器的「哪裡」則是根據開發者的設定決定</li>
 <li>參考「<a href="https://stackoverflow.com/questions/23821302/where-does-express-js-save-session-details">Where does express js save session details?</a>」，在沒有任何設定的情況下，Express.js伺服器會把sessions儲存在RAM中，所以重啟伺服器後，已登入的使用者也會被踢回登入畫面</li>
 <li>而如果把sessions保存在Redis或MongoDB等資料庫裡面的話，重啟Web APP的伺服器也不會失去sessions資料，已登入的使用者會繼續維持登入狀態</li>
+</ul>
+</li>
+<li><p><a href="https://github.com/expressjs/session#express-session">express-session</a></p>
+<ul>
+<li>參考「<a href="https://mianlabs.com/2018/05/09/understanding-sessions-and-local-authentication-in-express-with-passport-and-mongodb/">Understanding Sessions and Local Authentication in Express with Passport and MongoDb</a>」</li>
+<li>An <strong>Express.js middleware</strong> used for <strong>persisting sessions across stateless HTTP requests</strong>.</li>
+<li>Sessions are used for <strong>storing data about a user</strong> and presenting dynamic data based on a user’s identity. They rely upon <strong>saving session data to a cookie</strong> that is sent to the user’s browser and then received back in future user requests.</li>
+<li>This module expands the Express.js <code>request</code> object with the <code>session</code> property (among other things), which itself is an object that can be used by other middleware.</li>
+<li>By default it uses a <code>MemoryStore</code>, an in-memory key-value database not intended for production use, to store the session data. But you can and should plug in another memory store middleware when deploying a serious product.</li>
 </ul>
 </li>
 </ul>
@@ -2429,6 +2486,42 @@ The configuration in <code>_config.yml</code> file should be set like this:<figu
       </categories>
   </entry>
   <entry>
+    <title>Plugin&amp;#58; hexo-tag-figure</title>
+    <url>/2021/hexo-tag-figure/</url>
+    <content><![CDATA[<h2 id="Summary-of-this-post"><a href="#Summary-of-this-post" class="headerlink" title="Summary of this post"></a>Summary of this post</h2><p>This post is my notes for the following topics:</p>
+<ol>
+<li>hexo plugin: <a href="https://github.com/chawyehsu/hexo-tag-figure">hexo-tag-figure</a></li>
+<li>adding additional CSS style settings to NexT theme (by configuring <code>custom_file_path</code> in the file <code>_config.next.yml</code>)</li>
+</ol>
+<p>此篇主要是記錄<code>hexo-tag-figure</code>的使用心得，以及如何使用<code>_config.next.yml</code>中的<code>custom_file_path</code>參數設定來增加自定義CSS設定內容的相關筆記。</p>
+<h2 id="Environment"><a href="#Environment" class="headerlink" title="Environment"></a>Environment</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo-tag-figure: 0.4.1</span><br><span class="line">NexT: 8.2.1</span><br><span class="line">hexo: 5.3.0</span><br><span class="line">hexo-cli: 4.2.0</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></table></figure>
+
+<h2 id="hexo-tag-figure"><a href="#hexo-tag-figure" class="headerlink" title="hexo-tag-figure"></a>hexo-tag-figure</h2><h3 id="GitHub"><a href="#GitHub" class="headerlink" title="GitHub"></a>GitHub</h3><p><a href="https://github.com/chawyehsu/hexo-tag-figure">hexo-tag-figure</a></p>
+<h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="figure--center"><img src="/2021/hexo-tag-figure/book-cover.jpg" width="300" title="Confessions of a Young Novelist " alt="Book cover of Confessions of a Young Novelist"><figcaption><p>Confessions of a Young Novelist </p></figcaption></figure>
+
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;% figure figure--center 2021&#x2F;hexo-tag-figure&#x2F;book-cover.jpg 300 &quot;Confessions of a Young Novelist &#39;Book cover of Confessions of a Young Novelist&#39;&quot; %&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>figure--center</code>: the <code>class name</code> of the figure element.<br>  This is the <strong>required</strong> argument, though in the end I didn’t apply customized CSS style to this class, this argument can not be skipped.</li>
+<li><code>hexo-tag-figure/book-cover.jpg</code>: the image path.<br>  Check the source code to find the path logic:  <figure class="figure--center"><img src="/2021/hexo-tag-figure/image-path.png" title="Check the image path by DevTools " alt="Screenshot of checking the image path through DevTools"><figcaption><p>Check the image path by DevTools </p></figcaption></figure>
+  (update on Feb 16 2021: I change the <code>permalink</code> setting from <code>:year/:month/:day/:title/</code> to <code>:title/</code>, thus the image path needs to be updated too. The image path in the screenshot includes <code>:year/:month/:day/:title/</code> since I previously set the <code>permalink</code> in this form 😅)<br>  Aad the permalink <code>:title/</code> as prefix to load the image.<br>  文件沒有特別針對image path做說明，從DevTools觀察了一下其他還沒使用hexo-tag-figure插入的圖片路徑，測試後發現image path要加上permalink。</li>
+<li><code>300</code>: the image width. I skip the height setting.</li>
+<li><code>Confessions of a Young Novelist</code>: the title text that is placed in <code>figcaption</code> element.<br>  Add customized font color and font size to this element.</li>
+<li><code>Book cover of Confessions of a Young Novelist</code>: the alt text for this image.</li>
+</ul>
+<h3 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h3><ol>
+<li>According to <a href="https://theme-next.js.org/docs/advanced-settings/custom-files.html">NexT’s document</a>, extra CSS settings can be added by enable the <code>custom_file_path</code> in theme config file (in my case the <code>_config.next.yml</code> in root folder). This is my configuration:<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Define custom file paths.</span></span><br><span class="line"><span class="comment"># Create your custom files in site directory `source/_data` and uncomment needed files below.</span></span><br><span class="line"><span class="attr">custom_file_path:</span></span><br><span class="line">  <span class="comment">#head: source/_data/head.njk</span></span><br><span class="line">  <span class="comment">#header: source/_data/header.njk</span></span><br><span class="line">  <span class="comment">#sidebar: source/_data/sidebar.njk</span></span><br><span class="line">  <span class="comment">#postMeta: source/_data/post-meta.njk</span></span><br><span class="line">  <span class="comment">#postBodyEnd: source/_data/post-body-end.njk</span></span><br><span class="line">  <span class="comment">#footer: source/_data/footer.njk</span></span><br><span class="line">  <span class="comment">#bodyEnd: source/_data/body-end.njk</span></span><br><span class="line">  <span class="comment">#variable: source/_data/variables.styl</span></span><br><span class="line">  <span class="comment">#mixin: source/_data/mixins.styl</span></span><br><span class="line">  <span class="attr">style:</span> <span class="string">source/_data/styles.styl</span> <span class="comment"># Enable this option by removing the &#x27;#&#x27; in the beginning of the line</span></span><br></pre></td></tr></table></figure></li>
+<li>Add the <code>styles.styl</code> file in the path <code>C:\Projects\hexo_blog\source\_data</code></li>
+<li>Add CSS settings for <code>figcaption</code> element, remove each image’s bottom margin by setting the <code>margin-button</code> to 0px. With <code>margin-button</code> set as 0px, the text underneath (the <code>figcaption</code>) will be closer to the image.<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">figcaption</span> &#123;</span><br><span class="line">    <span class="attribute">color</span>: <span class="number">#999</span>;</span><br><span class="line">    <span class="attribute">text-align</span>: center;</span><br><span class="line">    font-size: 14px; # Set to 14px to make the font size same as the text in table of content</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.post-body</span> <span class="selector-tag">img</span> &#123;</span><br><span class="line">    <span class="attribute">margin-bottom</span>: <span class="number">0px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="figure--center"><img src="/2021/hexo-tag-figure/margin-bottom-20px.jpg" title="margin-bottom 20px"><figcaption><p>margin-bottom 20px</p></figcaption></figure>
+<figure class="figure--center"><img src="/2021/hexo-tag-figure/margin-bottom-0px.jpg" title="margin-bottom 0px"><figcaption><p>margin-bottom 0px</p></figcaption></figure></li>
+<li>Save the configuration and run <code>hexo generate</code> and <code>hexo deploy</code>, done ☕</li>
+</ol>
+]]></content>
+      <categories>
+        <category>hexo</category>
+      </categories>
+  </entry>
+  <entry>
     <title>「How JPEG Works」相關筆記</title>
     <url>/2021/how-jpeg-works/</url>
     <content><![CDATA[<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>問：JPEG到底是什麼？<br>答：實際上是一種壓縮影像的演算法</p>
@@ -2635,42 +2728,6 @@ on <a href="https://codepen.io">CodePen</a>.</span>
       <categories>
         <category>JavaScript</category>
         <category>HTML</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>Plugin&amp;#58; hexo-tag-figure</title>
-    <url>/2021/hexo-tag-figure/</url>
-    <content><![CDATA[<h2 id="Summary-of-this-post"><a href="#Summary-of-this-post" class="headerlink" title="Summary of this post"></a>Summary of this post</h2><p>This post is my notes for the following topics:</p>
-<ol>
-<li>hexo plugin: <a href="https://github.com/chawyehsu/hexo-tag-figure">hexo-tag-figure</a></li>
-<li>adding additional CSS style settings to NexT theme (by configuring <code>custom_file_path</code> in the file <code>_config.next.yml</code>)</li>
-</ol>
-<p>此篇主要是記錄<code>hexo-tag-figure</code>的使用心得，以及如何使用<code>_config.next.yml</code>中的<code>custom_file_path</code>參數設定來增加自定義CSS設定內容的相關筆記。</p>
-<h2 id="Environment"><a href="#Environment" class="headerlink" title="Environment"></a>Environment</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo-tag-figure: 0.4.1</span><br><span class="line">NexT: 8.2.1</span><br><span class="line">hexo: 5.3.0</span><br><span class="line">hexo-cli: 4.2.0</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></table></figure>
-
-<h2 id="hexo-tag-figure"><a href="#hexo-tag-figure" class="headerlink" title="hexo-tag-figure"></a>hexo-tag-figure</h2><h3 id="GitHub"><a href="#GitHub" class="headerlink" title="GitHub"></a>GitHub</h3><p><a href="https://github.com/chawyehsu/hexo-tag-figure">hexo-tag-figure</a></p>
-<h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="figure--center"><img src="/2021/hexo-tag-figure/book-cover.jpg" width="300" title="Confessions of a Young Novelist " alt="Book cover of Confessions of a Young Novelist"><figcaption><p>Confessions of a Young Novelist </p></figcaption></figure>
-
-<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;% figure figure--center 2021&#x2F;hexo-tag-figure&#x2F;book-cover.jpg 300 &quot;Confessions of a Young Novelist &#39;Book cover of Confessions of a Young Novelist&#39;&quot; %&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li><code>figure--center</code>: the <code>class name</code> of the figure element.<br>  This is the <strong>required</strong> argument, though in the end I didn’t apply customized CSS style to this class, this argument can not be skipped.</li>
-<li><code>hexo-tag-figure/book-cover.jpg</code>: the image path.<br>  Check the source code to find the path logic:  <figure class="figure--center"><img src="/2021/hexo-tag-figure/image-path.png" title="Check the image path by DevTools " alt="Screenshot of checking the image path through DevTools"><figcaption><p>Check the image path by DevTools </p></figcaption></figure>
-  (update on Feb 16 2021: I change the <code>permalink</code> setting from <code>:year/:month/:day/:title/</code> to <code>:title/</code>, thus the image path needs to be updated too. The image path in the screenshot includes <code>:year/:month/:day/:title/</code> since I previously set the <code>permalink</code> in this form 😅)<br>  Aad the permalink <code>:title/</code> as prefix to load the image.<br>  文件沒有特別針對image path做說明，從DevTools觀察了一下其他還沒使用hexo-tag-figure插入的圖片路徑，測試後發現image path要加上permalink。</li>
-<li><code>300</code>: the image width. I skip the height setting.</li>
-<li><code>Confessions of a Young Novelist</code>: the title text that is placed in <code>figcaption</code> element.<br>  Add customized font color and font size to this element.</li>
-<li><code>Book cover of Confessions of a Young Novelist</code>: the alt text for this image.</li>
-</ul>
-<h3 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h3><ol>
-<li>According to <a href="https://theme-next.js.org/docs/advanced-settings/custom-files.html">NexT’s document</a>, extra CSS settings can be added by enable the <code>custom_file_path</code> in theme config file (in my case the <code>_config.next.yml</code> in root folder). This is my configuration:<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Define custom file paths.</span></span><br><span class="line"><span class="comment"># Create your custom files in site directory `source/_data` and uncomment needed files below.</span></span><br><span class="line"><span class="attr">custom_file_path:</span></span><br><span class="line">  <span class="comment">#head: source/_data/head.njk</span></span><br><span class="line">  <span class="comment">#header: source/_data/header.njk</span></span><br><span class="line">  <span class="comment">#sidebar: source/_data/sidebar.njk</span></span><br><span class="line">  <span class="comment">#postMeta: source/_data/post-meta.njk</span></span><br><span class="line">  <span class="comment">#postBodyEnd: source/_data/post-body-end.njk</span></span><br><span class="line">  <span class="comment">#footer: source/_data/footer.njk</span></span><br><span class="line">  <span class="comment">#bodyEnd: source/_data/body-end.njk</span></span><br><span class="line">  <span class="comment">#variable: source/_data/variables.styl</span></span><br><span class="line">  <span class="comment">#mixin: source/_data/mixins.styl</span></span><br><span class="line">  <span class="attr">style:</span> <span class="string">source/_data/styles.styl</span> <span class="comment"># Enable this option by removing the &#x27;#&#x27; in the beginning of the line</span></span><br></pre></td></tr></table></figure></li>
-<li>Add the <code>styles.styl</code> file in the path <code>C:\Projects\hexo_blog\source\_data</code></li>
-<li>Add CSS settings for <code>figcaption</code> element, remove each image’s bottom margin by setting the <code>margin-button</code> to 0px. With <code>margin-button</code> set as 0px, the text underneath (the <code>figcaption</code>) will be closer to the image.<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">figcaption</span> &#123;</span><br><span class="line">    <span class="attribute">color</span>: <span class="number">#999</span>;</span><br><span class="line">    <span class="attribute">text-align</span>: center;</span><br><span class="line">    font-size: 14px; # Set to 14px to make the font size same as the text in table of content</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.post-body</span> <span class="selector-tag">img</span> &#123;</span><br><span class="line">    <span class="attribute">margin-bottom</span>: <span class="number">0px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="figure--center"><img src="/2021/hexo-tag-figure/margin-bottom-20px.jpg" title="margin-bottom 20px"><figcaption><p>margin-bottom 20px</p></figcaption></figure>
-<figure class="figure--center"><img src="/2021/hexo-tag-figure/margin-bottom-0px.jpg" title="margin-bottom 0px"><figcaption><p>margin-bottom 0px</p></figcaption></figure></li>
-<li>Save the configuration and run <code>hexo generate</code> and <code>hexo deploy</code>, done ☕</li>
-</ol>
-]]></content>
-      <categories>
-        <category>hexo</category>
       </categories>
   </entry>
   <entry>

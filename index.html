@@ -197,7 +197,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">56</span>
+          <span class="site-state-item-count">57</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -247,6 +247,134 @@
   
 
   <article itemscope="" itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tzynwang.github.io/2021/express-chartjs-exceljs/">
+
+    <span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar-pexels-alex-andrews-215-215.png">
+      <meta itemprop="name" content="Charlie (Tzu Yin)">
+      <meta itemprop="description" content="一介普通文組的學習筆記 📒">
+    </span>
+
+    <span hidden="" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="普通文組">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/express-chartjs-exceljs/" class="post-title-link" itemprop="url">作業功能擴充：為老爸的私房錢新增開支圖表、將開支紀錄下載為Excel檔案</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-07-11 18:08:08 / Modified: 19:34:08" itemprop="dateCreated datePublished" datetime="2021-07-11T18:08:08+08:00">2021-07-11</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+          <a href="/categories/Express/" itemprop="url" rel="index"><span itemprop="name">Express</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+          <a href="/categories/Mongoose/" itemprop="url" rel="index"><span itemprop="name">Mongoose</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2021/express-chartjs-exceljs/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/express-chartjs-exceljs/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>圖表套件：<code>chart.js</code>（<a target="_blank" rel="noopener" href="https://www.chartjs.org/docs/latest/">官方文件</a>）<br>生成Excel之套件：<code>exceljs</code>（<a target="_blank" rel="noopener" href="https://www.npmjs.com/package/exceljs">npm</a>）</p>
+<figure class="figure--center"><img src="/2021/express-chartjs-exceljs/chartDemo.png" title="圖表成品示意"><figcaption><p>圖表成品示意</p></figcaption></figure>
+
+<h2 id="環境"><a href="#環境" class="headerlink" title="環境"></a>環境</h2><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">chart.js: 3.4.1</span><br><span class="line">exceljs: 4.2.1</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="圖表部分"><a href="#圖表部分" class="headerlink" title="圖表部分"></a>圖表部分</h2><ul>
+<li>需求：<ul>
+<li>使用者登入記帳APP時，若當月有任何記帳資料的話，顯示開支圖表；若該月份還未有任何記帳資料，則不會顯示圖表</li>
+<li>使用者可以在首頁篩選不同月份的記帳資料，篩選月份後，若該月份有記帳資料，則顯示圖表（反之該月份若無任何記帳資料，不顯示圖表）</li>
+<li>使用者若篩選特定類型的帳目資料，不顯示圖表</li>
+</ul>
+</li>
+<li>實作規劃：<ul>
+<li>監聽<code>&lt;input type="month"&gt;</code>的<code>change</code>事件，只有在使用者選取了帳目月份、且帳目類型為「全類別」的時候，才會顯示圖表</li>
+<li>根據使用者選擇的條件（月份、類型）向後端發出POST request，等待後端回應資料後，再根據資料修改前端畫面</li>
+</ul>
+</li>
+</ul>
+<h3 id="原始碼"><a href="#原始碼" class="headerlink" title="原始碼"></a>原始碼</h3><script src="https://gist.github.com/tzynwang/327957091f91f81b86c527f29a51c84d.js"></script>
+
+
+<h2 id="將紀錄下載為Excel部分"><a href="#將紀錄下載為Excel部分" class="headerlink" title="將紀錄下載為Excel部分"></a>將紀錄下載為Excel部分</h2><ul>
+<li>需求：想要滿足「可以讓使用者備份記帳APP中的開支資料」此一需求</li>
+<li>實作規劃：<ul>
+<li>從資料庫中取出該使用者的所有未被刪除的帳目資料，寫入excel檔案後，下載該檔案</li>
+<li>搜尋關鍵字「express download excel」，參考stackOverFlow與blog討論串進行實作</li>
+</ul>
+</li>
+</ul>
+<h3 id="原始碼-1"><a href="#原始碼-1" class="headerlink" title="原始碼"></a>原始碼</h3><script src="https://gist.github.com/tzynwang/b77a79b8bc53c6f5d546b4f18aa7ce71.js"></script>
+
+
+<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/43729199/how-i-can-use-like-operator-on-mongoose">How I can use “LIKE” operator on mongoose?</a></li>
+<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/38497650/how-to-find-items-using-regex-in-mongoose">How to find items using regex in Mongoose</a></li>
+<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/40056555/destroy-chart-js-bar-graph-to-redraw-other-graph-in-same-canvas">Destroy chart.js bar graph to redraw other graph in same canvas</a></li>
+<li><a target="_blank" rel="noopener" href="https://bezkoder.com/node-js-download-excel-file/">Node.js Download Excel file example with exceljs</a></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope="" itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="https://tzynwang.github.io/2021/express-login-remember-me/">
 
     <span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -270,10 +398,16 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2021-07-10 15:13:24 / Modified: 16:50:15" itemprop="dateCreated datePublished" datetime="2021-07-10T15:13:24+08:00">2021-07-10</time>
+      <time title="Created: 2021-07-10 15:13:24" itemprop="dateCreated datePublished" datetime="2021-07-10T15:13:24+08:00">2021-07-10</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-07-11 18:06:51" itemprop="dateModified" datetime="2021-07-11T18:06:51+08:00">2021-07-11</time>
+      </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
@@ -326,11 +460,22 @@
 <li>問題：如果今天要打造一個「能維持使用者登入狀態」的Web APP，勢必需要其他技術協助</li>
 </ul>
 <h3 id="關於sessions"><a href="#關於sessions" class="headerlink" title="關於sessions"></a>關於sessions</h3><ul>
-<li>sessions<strong>不是</strong>Chrome DevTools打開來切換到Application分頁看到的session storage</li>
-<li>sessions儲存在伺服器端，不存在使用者的瀏覽器中<ul>
+<li><p>sessions<strong>不是</strong>Chrome DevTools打開來切換到Application分頁看到的session storage</p>
+</li>
+<li><p>sessions儲存在伺服器端，不存在使用者的瀏覽器中</p>
+<ul>
 <li>而sessions實際究竟儲存在Express.js伺服器的「哪裡」則是根據開發者的設定決定</li>
 <li>參考「<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/23821302/where-does-express-js-save-session-details">Where does express js save session details?</a>」，在沒有任何設定的情況下，Express.js伺服器會把sessions儲存在RAM中，所以重啟伺服器後，已登入的使用者也會被踢回登入畫面</li>
 <li>而如果把sessions保存在Redis或MongoDB等資料庫裡面的話，重啟Web APP的伺服器也不會失去sessions資料，已登入的使用者會繼續維持登入狀態</li>
+</ul>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://github.com/expressjs/session#express-session">express-session</a></p>
+<ul>
+<li>參考「<a target="_blank" rel="noopener" href="https://mianlabs.com/2018/05/09/understanding-sessions-and-local-authentication-in-express-with-passport-and-mongodb/">Understanding Sessions and Local Authentication in Express with Passport and MongoDb</a>」</li>
+<li>An <strong>Express.js middleware</strong> used for <strong>persisting sessions across stateless HTTP requests</strong>.</li>
+<li>Sessions are used for <strong>storing data about a user</strong> and presenting dynamic data based on a user’s identity. They rely upon <strong>saving session data to a cookie</strong> that is sent to the user’s browser and then received back in future user requests.</li>
+<li>This module expands the Express.js <code>request</code> object with the <code>session</code> property (among other things), which itself is an object that can be used by other middleware.</li>
+<li>By default it uses a <code>MemoryStore</code>, an in-memory key-value database not intended for production use, to store the session data. But you can and should plug in another memory store middleware when deploying a serious product.</li>
 </ul>
 </li>
 </ul>
@@ -1549,166 +1694,6 @@
 <li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/PUT">PUT</a></li>
 </ul>
 </li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope="" itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://tzynwang.github.io/2021/express-restaurant-list/">
-
-    <span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar-pexels-alex-andrews-215-215.png">
-      <meta itemprop="name" content="Charlie (Tzu Yin)">
-      <meta itemprop="description" content="一介普通文組的學習筆記 📒">
-    </span>
-
-    <span hidden="" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="普通文組">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/express-restaurant-list/" class="post-title-link" itemprop="url">從零開始重寫：餐廳清單（Express版）基礎功能與架構</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-06-21 15:47:32" itemprop="dateCreated datePublished" datetime="2021-06-21T15:47:32+08:00">2021-06-21</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-06-22 14:05:28" itemprop="dateModified" datetime="2021-06-22T14:05:28+08:00">2021-06-22</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-          <a href="/categories/Express/" itemprop="url" rel="index"><span itemprop="name">Express</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-          <a href="/categories/Express-Handlebars/" itemprop="url" rel="index"><span itemprop="name">Express Handlebars</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-          <a href="/categories/Mongoose/" itemprop="url" rel="index"><span itemprop="name">Mongoose</span></a>
-        </span>
-    </span>
-
-  
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus: </span>
-    
-    <a title="disqus" href="/2021/express-restaurant-list/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/express-restaurant-list/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>試著從頭開始重新練習一次Express、Express handlebars與Mongoose相關內容，本篇筆記主要記錄練習途中遭遇到的問題、解法與日後可能會回頭參考的相關內容</p>
-<h2 id="環境"><a href="#環境" class="headerlink" title="環境"></a>環境</h2><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">express: 4.17.1</span><br><span class="line">express-fileupload: 1.2.1</span><br><span class="line">express-handlebars: 5.3.2</span><br><span class="line">mongoose: 5.12.14</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></tbody></table></figure>
-<h2 id="app-js"><a href="#app-js" class="headerlink" title="app.js"></a>app.js</h2><script src="https://gist.github.com/tzynwang/97709d3b1d83e3ff4505924a09d819f4.js"></script>
-
-<ul>
-<li>20-21行：為了處理使用者上傳的餐廳圖片，使用套件<code>express-fileupload</code>（<a target="_blank" rel="noopener" href="https://www.npmjs.com/package/express-fileupload">npm</a>）<ul>
-<li>參考<a target="_blank" rel="noopener" href="https://github.com/richardgirges/express-fileupload/tree/master/example#basic-file-upload">官方示範</a>，HTML的form元素須加上<code>encType="multipart/form-data"</code>才能取到圖片資料</li>
-<li>注意：是透過<code>req.files</code>而非<code>req.body</code>來取使用者上傳的圖片資料</li>
-<li>取出<code>req.files.&lt;input name&gt;.mimetype</code>與<code>req.files.&lt;input name&gt;.data</code>來存入資料庫</li>
-</ul>
-</li>
-<li>26行helpers部分：本次使用自定義的helpers來配合Express handlebars，接觸過Vue的computed後比較能理解helpers的運作模式了<ul>
-<li>注意呼叫自定義的helpers<strong>不需要加上#</strong>，在模板中直接傳入helpers與參數即可，比如：</li>
-<li><code>&lt;img src="{{toImage this.image.contentType this.image.data.buffer}}"&gt;</code></li>
-<li><code>&lt;option {{ifEquals this ../restaurant.category}}&gt;&lt;/option&gt;</code></li>
-</ul>
-</li>
-<li>39行開始：對比之前的作業多半使用<code>.then()</code>進行串接，本次基本上都改用await/async語法糖來處理資料庫端相關的行為<ul>
-<li><code>await Restaurant.find({ deleteFlag: false }).sort({ _id: -1 }).lean()</code>：取所有<code>deleteFlag</code>為<code>false</code>的內容，並根據<code>_id</code>逆向排列</li>
-</ul>
-</li>
-<li>48行開始：本次實作出「根據使用者選取的欄位來限制搜尋範圍」之功能，<code>keyword</code>為使用者輸入的關鍵字、<code>field</code>為使用者指定要進行搜尋的欄位範圍<ul>
-<li>52-53行：無法在<code>mongoose.find()</code>直接使用template literal，故改為「建立一個空物件，物件的鍵根據<code>field</code>決定，物件的值為<code>new RegExp(keyword, 'i')</code>」，並將該物件作為條件傳入<code>.find()</code>中</li>
-<li>57行：偷懶行為，直接將<code>field</code>的中文對應名稱物件宣告在這邊，並傳入顯示搜尋結果的<code>index</code>模板</li>
-</ul>
-</li>
-<li>第71行：<code>await Restaurant.find().distinct('category').lean()</code><ul>
-<li>取出所有不重複的<code>category</code>的值</li>
-<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/30020946/mongoose-returning-unique-result-set-with-no-duplicate-entries">Mongoose: Returning unique result set with no duplicate entries</a>: use <code>find</code> to establish the query and then chain a call to <code>distinct</code> on the resulting query object to get the unique result.</li>
-<li><a target="_blank" rel="noopener" href="https://mongoosejs.com/docs/api.html#query_Query-distinct">Mongoose: Query.prototype.distinct()</a>: Declares or executes a <code>distinct()</code> operation.</li>
-<li><a target="_blank" rel="noopener" href="https://www.w3schools.com/sql/sql_distinct.asp">SQL SELECT DISTINCT Statement</a>: The <code>SELECT DISTINCT</code> statement is used to <strong>return only distinct (different) values</strong>.</li>
-</ul>
-</li>
-<li>99-104行：若使用者選擇自行上傳餐廳圖片（<code>if (req.files)</code>）的話，取圖片的<code>data</code>與<code>mimetype</code>存入DB中，若使用者沒有上傳圖片的話，則自動安排一張預設的餐廳圖片url給<code>image_url</code>欄位</li>
-<li>第152行：使用<code>.findOne()</code>來取出<code>document</code>型態的資料，之後才可配合<code>.save()</code>將修改完的資料存回DB中<ul>
-<li><a target="_blank" rel="noopener" href="https://mongoosejs.com/docs/documents.html#documents-vs-models">Mongoose: Documents vs Models</a>: <code>Document</code> and <code>Model</code> are distinct classes in Mongoose. The <code>Model</code> class is a subclass of the <code>Document</code> class. When you use the <code>Model</code> constructor, you create a new <code>document</code>.</li>
-<li>When you load documents from MongoDB using model functions like <code>findOne()</code>, you get a Mongoose <code>document</code> back.</li>
-</ul>
-</li>
-</ul>
-<h2 id="DB-schema"><a href="#DB-schema" class="headerlink" title="DB schema"></a>DB schema</h2><script src="https://gist.github.com/tzynwang/935464602cb71801e3b1c63acce9eb76.js"></script>
-
-<ul>
-<li>image欄位的內容參考<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/27353346/saving-image-with-mongoose">Saving image with mongoose</a></li>
-<li>deleteFlag預設為<code>false</code>（<code>default: false</code>），參考<a target="_blank" rel="noopener" href="https://mongoosejs.com/docs/defaults.html">Mongoose: Declaring Defaults in Your Schema</a></li>
-</ul>
-<h2 id="DB-seeder"><a href="#DB-seeder" class="headerlink" title="DB seeder"></a>DB seeder</h2><script src="https://gist.github.com/tzynwang/7585b5fbe4fcdfa38aecfaf72276f832.js"></script>
-
-<ul>
-<li>2-3行：讀取<code>.json</code>資料</li>
-<li>第15行開始：改用async/await語法糖包裝<code>Restaurant.create()</code></li>
-<li>31行：seeder寫入完畢後，呼叫<code>db.close()</code>結束連線</li>
-</ul>
-<h2 id="模板部分"><a href="#模板部分" class="headerlink" title="模板部分"></a>模板部分</h2><figure class="highlight handlebars"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="template-tag">{{#<span class="name"><span class="builtin-name">if</span></span> searchCheck}}</span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"/scripts/searchCheck.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line"><span class="template-tag">{{/<span class="name"><span class="builtin-name">if</span></span>}}</span></span><br></pre></td></tr></tbody></table></figure>
-<p>目前僅有<code>/</code>與<code>/search</code>路由回傳<code>searchCheck: true</code>，故<code>searchCheck.js</code>只會在這兩個頁面被載入</p>
-<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/58189365/async-await-in-nodejs-mongoose">Async/await in Nodejs + Mongoose</a></li>
-<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/8499633/how-to-display-base64-images-in-html">How to display Base64 images in HTML?</a></li>
 </ul>
 
       
