@@ -197,7 +197,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">57</span>
+          <span class="site-state-item-count">58</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -238,6 +238,120 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope="" itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tzynwang.github.io/2021/hexo-add-404/">
+
+    <span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar-pexels-alex-andrews-215-215.png">
+      <meta itemprop="name" content="Charlie (Tzu Yin)">
+      <meta itemprop="description" content="一介普通文組的學習筆記 📒">
+    </span>
+
+    <span hidden="" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="普通文組">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/hexo-add-404/" class="post-title-link" itemprop="url">Add 404 page</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-02-16 09:36:19" itemprop="dateCreated datePublished" datetime="2021-02-16T09:36:19+08:00">2021-02-16</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-02-18 20:30:56" itemprop="dateModified" datetime="2021-02-18T20:30:56+08:00">2021-02-18</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+          <a href="/categories/hexo/" itemprop="url" rel="index"><span itemprop="name">hexo</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2021/hexo-add-404/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/hexo-add-404/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="Summary-of-this-post"><a href="#Summary-of-this-post" class="headerlink" title="Summary of this post"></a>Summary of this post</h2><p>The workflow of adding a 404 handling page for the hexo blog.</p>
+<figure class="figure--center"><img src="/2021/hexo-add-404/404-page-for-hexo-blog.jpg" title="The 404 page"><figcaption><p>The 404 page</p></figcaption></figure>
+
+
+<h2 id="Environment"><a href="#Environment" class="headerlink" title="Environment"></a>Environment</h2><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo: 5.3.0</span><br><span class="line">hexo-cli: 4.2.0</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="Workflow"><a href="#Workflow" class="headerlink" title="Workflow"></a>Workflow</h2><ol>
+<li>Create a 404.md file in the <code>source</code> folder<figure class="figure--center"><img src="/2021/hexo-add-404/location-of-404-page.jpg" title="Add the 404.md in the source folder of hexo blog " alt="The screenshot to display file location of 404.md file for the hexo blog"><figcaption><p>Add the 404.md in the source folder of hexo blog </p></figcaption></figure></li>
+<li>Add page content for the 404.md file:<ul>
+<li><code>permalink: /404.html</code> in line 3 is <strong>required</strong>.</li>
+<li>Fill in the correct URL (<code>https://&lt;your GitHub username&gt;.github.io/</code>) for redirection in line 9 and line 19</li>
+<li>The value of <code>countTime</code> in line 12 can be updated to the preferred waiting time. I just leave the waiting time as 5 seconds without changing it.<figure class="highlight markdown"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: 404</span><br><span class="line">permalink: /404.html</span><br><span class="line">---</span><br><span class="line"></span><br><span class="line"><span class="section">## Page not exists</span></span><br><span class="line">The page you are looking for does not exist.</span><br><span class="line">Will bring you back to the homepage in <span class="xml"><span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">"timeout"</span>&gt;</span></span>5<span class="xml"><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span> second(s).</span><br><span class="line">Or [<span class="string">click this link</span>](<span class="link">https://&lt;your GitHub username&gt;.github.io/</span>) to go back to the homepage immediately.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span></span><br><span class="line">let countTime = 5;</span><br><span class="line"></span><br><span class="line">function count() {</span><br><span class="line">  </span><br><span class="line">  document.getElementById('timeout').textContent = countTime;</span><br><span class="line">  countTime -= 1;</span><br><span class="line">  if(countTime === 0){</span><br><span class="line"><span class="code">    location.href = "https://&lt;your GitHub username&gt;.github.io/";</span></span><br><span class="line"><span class="code">  }</span></span><br><span class="line"><span class="code">  setTimeout(() =&gt; {</span></span><br><span class="line"><span class="code">    count();</span></span><br><span class="line"><span class="code">  }, 1000);</span></span><br><span class="line"><span class="code">}</span></span><br><span class="line"><span class="code"></span></span><br><span class="line"><span class="code">count();</span></span><br><span class="line"><span class="code">&lt;/script&gt;</span></span><br></pre></td></tr></tbody></table></figure></li>
+</ul>
+</li>
+<li>Save the file. Run <code>hexo generate</code> and <code>hexo deploy</code> to push the 404 handle page to the repository. Done ☕</li>
+</ol>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
+<li>For the copy:<br>  <a target="_blank" rel="noopener" href="https://codepen.io/kdbkapsere/pen/oNXLbqQ">404 Page by Kasper De Bruyne</a></li>
+<li>For the <code>404.md</code> file location and the instruction of deployment:<br>  <a target="_blank" rel="noopener" href="https://github.com/ppoffice/hexo-theme-icarus/issues/66#issuecomment-165919312">https://github.com/ppoffice/hexo-theme-icarus/issues/66#issuecomment-165919312</a></li>
+<li>For the JavaScript of auto-redirect:<br>  <a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/articles/10249685">(23) 試著學 Hexo - SEO 篇 - 新增你的 404 頁面</a></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 

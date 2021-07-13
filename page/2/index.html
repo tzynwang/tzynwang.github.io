@@ -197,7 +197,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">57</span>
+          <span class="site-state-item-count">58</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -238,6 +238,163 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope="" itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tzynwang.github.io/2021/express-restaurant-list-1/">
+
+    <span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar-pexels-alex-andrews-215-215.png">
+      <meta itemprop="name" content="Charlie (Tzu Yin)">
+      <meta itemprop="description" content="一介普通文組的學習筆記 📒">
+    </span>
+
+    <span hidden="" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="普通文組">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/express-restaurant-list-1/" class="post-title-link" itemprop="url">從零開始重寫：餐廳清單（Express版）路由、METHODS重構</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-06-22 14:06:28 / Modified: 14:58:13" itemprop="dateCreated datePublished" datetime="2021-06-22T14:06:28+08:00">2021-06-22</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+          <a href="/categories/Express/" itemprop="url" rel="index"><span itemprop="name">Express</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+          <a href="/categories/HTML/" itemprop="url" rel="index"><span itemprop="name">HTML</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2021/express-restaurant-list-1/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/express-restaurant-list-1/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>本篇為餐廳清單（Express版）的路由、METHODS重構，以及使用<code>browserify</code>搭配<code>axios</code>實現in-browser <code>require()</code>之相關筆記</p>
+<h2 id="環境"><a href="#環境" class="headerlink" title="環境"></a>環境</h2><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">browserify: 17.0.0</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="筆記"><a href="#筆記" class="headerlink" title="筆記"></a>筆記</h2><figure class="figure--center"><img src="/2021/express-restaurant-list-1/folderStructure.png" title="重構後的資料夾結構"><figcaption><p>重構後的資料夾結構</p></figcaption></figure>
+
+<h3 id="路由重構"><a href="#路由重構" class="headerlink" title="路由重構"></a>路由重構</h3><script src="https://gist.github.com/tzynwang/708c0d129d912f54e8043e62cb9e751a.js"></script>
+
+<h4 id="app-js"><a href="#app-js" class="headerlink" title="app.js"></a>app.js</h4><ul>
+<li>第6行：將DB連線設定搬移到config資料夾中</li>
+<li>13-15行：為配合axios的POST request，將<code>body-parser</code>加回來</li>
+<li>37-38行：將路由移動到routes資料夾中</li>
+</ul>
+<h4 id="routes-index-js"><a href="#routes-index-js" class="headerlink" title="routes/index.js"></a>routes/index.js</h4><ul>
+<li>4-5行：routes/modules中的home.js與restaurants.js皆分別在檔案結尾進行<code>module.exports = router</code>，讓index.js可引用之</li>
+<li>7-8行：分別將對<code>/</code>與<code>/restaurant</code>的請求導向<code>home</code>與<code>restaurant</code></li>
+<li>第10行：將index.js本身也進行匯出，使app.js可使用之（app.js中第37行）</li>
+</ul>
+<h3 id="METHODS重構"><a href="#METHODS重構" class="headerlink" title="METHODS重構"></a>METHODS重構</h3><ul>
+<li><p>參考app.js第33-34行，引用<code>method-override</code>後，使用override using a query value的方式複寫METHOD<br><a target="_blank" rel="noopener" href="http://expressjs.com/en/resources/middleware/method-override.html">官方說明</a>：</p>
+<blockquote>
+<p>To use a query string value to override the method, specify the query string key as a string argument to the methodOverride function. To then make the call, send a <strong>POST request</strong> to a URL with the overridden method as the value of that query string key. This method of using a query value would typically be used in conjunction with plain HTML <code>&lt;form&gt;</code> elements when trying to support legacy browsers but still use newer methods.</p>
+</blockquote>
+<p>官方示範程式碼：</p>
+<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>)</span><br><span class="line"><span class="keyword">const</span> methodOverride = <span class="built_in">require</span>(<span class="string">'method-override'</span>)</span><br><span class="line"><span class="keyword">const</span> app = express()</span><br><span class="line"></span><br><span class="line"><span class="comment">// override with POST having ?_method=DELETE</span></span><br><span class="line">app.use(methodOverride(<span class="string">'_method'</span>))</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">method</span>=<span class="string">"POST"</span> <span class="attr">action</span>=<span class="string">"/resource?_method=DELETE"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"submit"</span>&gt;</span>Delete resource<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure></li>
+<li><p>將form action設定完畢後，原本的POST request就會（根據query string value）被覆寫為DELETE與PUT等METHOD</p>
+</li>
+<li><p>之後即可在後端使用<code>router.delete</code>或<code>router.put</code>等方式處理相關請求</p>
+</li>
+</ul>
+<h3 id="browserify流程記錄"><a href="#browserify流程記錄" class="headerlink" title="browserify流程記錄"></a>browserify流程記錄</h3><ol>
+<li>安裝browserify與axios</li>
+<li>在public/scripts資料夾中建立一檔案sort.js，內容如下</li>
+</ol>
+<script src="https://gist.github.com/tzynwang/f034770c2ca9f0cc16edc449f44a1f94.js"></script>
+
+
+<ol>
+<li>在沒有搭配browserify的情況下，直接引用sort.js檔案會在瀏覽器console看到<code>ReferenceError: require is not defined</code>此錯誤訊息，相關討論參考：<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/19059580/client-on-node-js-uncaught-referenceerror-require-is-not-defined">Client on Node.js: Uncaught ReferenceError: require is not defined</a></li>
+<li>參考browserify的<a target="_blank" rel="noopener" href="https://github.com/browserify/browserify#example">GitHub README</a>，在終端輸入<code>browserify public/scripts/sort.js &gt; public/scripts/sortBundle.js</code>將sort.js與axios等額外require的模組bundle在一起</li>
+<li>最終在前端網頁引用<code>sortBundle.js</code>此檔案，錯誤訊息消失，問題解決</li>
+</ol>
+<h2 id="補充"><a href="#補充" class="headerlink" title="補充"></a>補充</h2><h3 id="Method-PATCH-PUT"><a href="#Method-PATCH-PUT" class="headerlink" title="Method: PATCH, PUT"></a>Method: PATCH, PUT</h3><ul>
+<li>A <code>PATCH</code> request is considered a set of <strong>instructions on how to modify a resource</strong>. Contrast this with <code>PUT</code>; which is a complete <strong>representation of a resource</strong>.</li>
+<li>A <code>PATCH</code> is <strong>not necessarily idempotent</strong>, although it can be. Contrast this with <code>PUT</code>; which is <strong>always idempotent</strong>. The word “idempotent” means that any number of repeated, identical requests will leave the resource in the same state. (不像<code>POST</code> request如果連續發送可能會變成多筆訂單，多次發送<code>PUT</code> request不會有類似的後遺症)</li>
+<li>Calling <code>PUT</code> method <strong>once or several times successively has the same effect</strong> (that is no side effect), this method is <strong>idempotent</strong>; whereas successive identical <code>POST</code> requests may have additional effects, akin to placing an order several times.</li>
+</ul>
+<h3 id="Idempotent"><a href="#Idempotent" class="headerlink" title="Idempotent"></a>Idempotent</h3><ul>
+<li>Description of common <strong>idempotent methods</strong>: GET,&nbsp;HEAD,&nbsp;PUT,&nbsp;DELETE,&nbsp;OPTIONS,&nbsp;TRACE</li>
+<li>Description of common <strong>non-idempotent</strong> methods: POST,PATCH,&nbsp;CONNECT<ul>
+<li>Reference: <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Glossary/Idempotent">https://developer.mozilla.org/en-US/docs/Glossary/Idempotent</a></li>
+</ul>
+</li>
+<li>A request method is considered “idempotent” if the intended effect on the server of multiple identical requests with that method is the same as the effect for a single such request. (對server打一次或多次的結果如果都一樣，該HTTP method就會被認為是idempotent) Of the request methods defined by this specification, PUT, DELETE, and safe request methods (GET, HEAD, OPTIONS) are idempotent.<ul>
+<li>Reference: <a target="_blank" rel="noopener" href="https://datatracker.ietf.org/doc/html/rfc7231#section-4.2.2">https://datatracker.ietf.org/doc/html/rfc7231#section-4.2.2</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/6971583/node-style-require-for-in-browser-javascript/11588570">Node-style require for in-browser javascript?</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/browserify/browserify#browserify">GitHub: browserify</a></li>
+<li>MDN<ul>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/PATCH">PATCH</a></li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/PUT">PUT</a></li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1545,128 +1702,6 @@ on <a target="_blank" rel="noopener" href="https://codepen.io">CodePen</a>.</spa
 <h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
 <li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/24290358/remove-a-folder-from-git-tracking/">StackOverFlow: Remove a folder from git tracking</a></li>
 <li><a target="_blank" rel="noopener" href="https://git-scm.com/docs/gitignore/2.22.0">git official documentation: gitignore</a></li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope="" itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://tzynwang.github.io/2021/express-handlebars-access-variable-in-parent-scope/">
-
-    <span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar-pexels-alex-andrews-215-215.png">
-      <meta itemprop="name" content="Charlie (Tzu Yin)">
-      <meta itemprop="description" content="一介普通文組的學習筆記 📒">
-    </span>
-
-    <span hidden="" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="普通文組">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/express-handlebars-access-variable-in-parent-scope/" class="post-title-link" itemprop="url">「Express Handlebars 取得父層變數內容」相關筆記</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-05-14 21:11:16" itemprop="dateCreated datePublished" datetime="2021-05-14T21:11:16+08:00">2021-05-14</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-05-22 14:17:00" itemprop="dateModified" datetime="2021-05-22T14:17:00+08:00">2021-05-22</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-          <a href="/categories/Express-Handlebars/" itemprop="url" rel="index"><span itemprop="name">Express Handlebars</span></a>
-        </span>
-    </span>
-
-  
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus: </span>
-    
-    <a title="disqus" href="/2021/express-handlebars-access-variable-in-parent-scope/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/express-handlebars-access-variable-in-parent-scope/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="問題描述"><a href="#問題描述" class="headerlink" title="問題描述"></a>問題描述</h2><ul>
-<li>情境：在express-handlebars中使用原生的<code>each</code>搭配handlebars-helpers的<code>is</code>進行條件判斷，進而渲染出一組<code>&lt;select&gt;</code><ul>
-<li><code>&lt;select&gt;</code>中的每一個<code>&lt;option&gt;</code>都是一種餐廳類型（舉例：日本料理、酒吧、美式餐廳等）</li>
-<li>（由<code>app.js</code>傳遞給<code>edit.handlebars</code>的變數）<code>categories</code>為餐廳類型的陣列資料，<code>restaurant</code>為物件變數，可透過<code>restaurant.category</code>來取得該餐廳的餐廳類型</li>
-<li>當<code>each</code>迴圈中<code>this</code>的值與<code>restaurant.category</code>一致時，pre-selected該<code>&lt;option&gt;</code><figure class="figure--center"><img src="/2021/express-handlebars-access-variable-in-parent-scope/pre-selected.png" title="select欄位應預設選擇該餐廳的類型"><figcaption><p>select欄位應預設選擇該餐廳的類型</p></figcaption></figure></li>
-</ul>
-</li>
-<li>問題：檢查最終的DOM內容，發現並<strong>沒有</strong>渲染出應該要預先被選擇的<code>&lt;option&gt;</code></li>
-<li>行為不如預期的原始碼：<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// app.js端</span></span><br><span class="line">app.get(<span class="string">'/restaurants/:id/edit'</span>, <span class="function">(<span class="params">req, res</span>) =&gt;</span> {</span><br><span class="line">  <span class="keyword">const</span> id = <span class="built_in">Number</span>(req.params.id)</span><br><span class="line">  <span class="keyword">const</span> targetRestaurant = restaurantList.results.find(<span class="function">(<span class="params">restaurant</span>) =&gt;</span> restaurant.id === id)</span><br><span class="line">  <span class="keyword">const</span> categories = []</span><br><span class="line">  restaurantList.results.forEach(<span class="function"><span class="params">restaurant</span> =&gt;</span> {</span><br><span class="line">    <span class="keyword">if</span> (!categories.includes(restaurant.category)) {</span><br><span class="line">      categories.push(restaurant.category)</span><br><span class="line">    }</span><br><span class="line">  })</span><br><span class="line">  res.render(<span class="string">'edit'</span>, { <span class="attr">restaurant</span>: targetRestaurant, categories })</span><br><span class="line">})</span><br></pre></td></tr></tbody></table></figure>
-<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- handlebars端 --&gt;</span></span><br><span class="line">{{#each categories}}</span><br><span class="line">  {{#is this restaurant.category)}}</span><br><span class="line">  <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"{{this}}"</span> <span class="attr">selected</span>&gt;</span>{{this}}<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">  {{else}}</span><br><span class="line">  <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"{{this}}"</span>&gt;</span>{{this}}<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">  {{/is}}</span><br><span class="line">{{/each}}</span><br></pre></td></tr></tbody></table></figure>
-
-</li>
-</ul>
-<h2 id="環境"><a href="#環境" class="headerlink" title="環境"></a>環境</h2><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">express-handlebars: 5.3.2</span><br><span class="line">handlebars-helpers: 0.10.0</span><br></pre></td></tr></tbody></table></figure>
-
-<h2 id="解決方式"><a href="#解決方式" class="headerlink" title="解決方式"></a>解決方式</h2><p>將handlebars端的內容修改如下（<code>restaurant.category</code>加上<code>../</code>）：</p>
-<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- handlebars端 --&gt;</span></span><br><span class="line">{{#each categories}}</span><br><span class="line">  {{#is this ../restaurant.category)}}</span><br><span class="line">  <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"{{this}}"</span> <span class="attr">selected</span>&gt;</span>{{this}}<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">  {{else}}</span><br><span class="line">  <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"{{this}}"</span>&gt;</span>{{this}}<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">  {{/is}}</span><br><span class="line">{{/each}}</span><br></pre></td></tr></tbody></table></figure>
-
-<p>參考Handlebars官方文件的說明：</p>
-<blockquote>
-<p>Some helpers like <code>#with</code> and <code>#each</code> allow you to <strong>dive into nested objects</strong>. When you include <code>../</code> segments in your path, Handlebars will change back into the <strong>parent context</strong>.</p>
-</blockquote>
-<p>在巢狀結構中，使用<code>../</code>來取得上一層變數的內容</p>
-<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://handlebarsjs.com/guide/expressions.html#changing-the-context">Handlebars: Changing the context</a></li>
-<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/13645084/access-a-variable-outside-the-scope-of-a-handlebars-js-each-loop">Access a variable outside the scope of a Handlebars.js each loop</a></li>
-<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/a/12297980/15028185">Access properties of the parent with a Handlebars ‘each’ loop</a></li>
-<li><a target="_blank" rel="noopener" href="https://eruditeness.news.blog/2019/08/28/node-js%E5%88%9D%E5%AD%B8%E7%AD%86%E8%A8%9810-%E5%9C%A8express-handlebars%E4%B8%AD%E8%BC%95%E9%AC%86%E5%BB%BA%E7%AB%8B%E5%AE%A2%E8%A3%BDhelperhandlebars-custom-helpers/">Node.js初學筆記10: 在express-handlebars中輕鬆建立客製helper(handlebars custom helpers)</a></li>
 </ul>
 
       

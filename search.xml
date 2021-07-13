@@ -959,6 +959,151 @@ on <a href="https://codepen.io">CodePen</a>.</span>
       </categories>
   </entry>
   <entry>
+    <title>Alpha Camp「3前 毛小孩星球」相關筆記</title>
+    <url>/2021/css-ac-puppy-planet/</url>
+    <content><![CDATA[<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>一些過去沒有使用過的技巧：</p>
+<ul>
+<li><code>scroll-behavior: smooth;</code>讓使用者點擊不同錨點的時候，平順地捲動畫面</li>
+<li>以<code>top: 50%; left: 50%;</code>搭配<code>transform: translate(-50%, -50%);</code>達成水平垂直置中效果</li>
+<li>切換<code>transform: scale(1, 0);</code>與<code>transform: scale(1, 1);</code>來做出清單縮放效果</li>
+<li>使用<code>all: unset;</code>處理元素在小螢幕、大螢幕裝置之間的不同樣式</li>
+<li>使用<code>::before</code>與<code>::after</code>等偽元素處理框線（動畫）<figure class="figure--center"><img src="/2021/css-ac-puppy-planet/hover-animation.gif"></figure></li>
+<li>使用<code>display: block;</code>取消<code>vertical-align</code>，進而移除<code>&lt;img&gt;</code>下方的空隙</li>
+</ul>
+<p>新知：</p>
+<ul>
+<li><code>box-shadow</code>與<code>filter: drop-shadow();</code>的差異</li>
+<li>CSS Vendor Prefixes (CSS browser prefixes)</li>
+</ul>
+<p>成品：<a href="https://tzynwang.github.io/ac_practice_3F_puppy-planet/">毛小孩星球</a><br>原始碼：<a href="https://github.com/tzynwang/ac_practice_3F_puppy-planet">ac_practice_3F_puppy-planet</a></p>
+<h2 id="筆記"><a href="#筆記" class="headerlink" title="筆記"></a>筆記</h2><h3 id="scroll-behavior"><a href="#scroll-behavior" class="headerlink" title="scroll-behavior"></a>scroll-behavior</h3><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">scroll-behavior</span>: <span class="selector-tag">auto</span>;</span><br><span class="line"><span class="selector-tag">scroll-behavior</span>: <span class="selector-tag">smooth</span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>預設為<code>scroll-behavior: auto;</code>，點選錨點跳躍至文件中的指定位置時，不會有任何動畫效果</li>
+<li>設定為<code>scroll-behavior: smooth;</code>，點選錨點進行跳躍時會表現各家瀏覽器自行定義的捲動動畫效果<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/scroll-behavior#values">MDN</a>: The scrolling box scrolls in a <strong>smooth fashion</strong> using a <strong>user-agent-defined timing function over a user-agent-defined period of time</strong>. User agents should follow platform conventions, if any.</li>
+</ul>
+</li>
+<li>IE、iOS Safari（同理iOS Chrome）未支援<figure class="figure--center"><img src="/2021/css-ac-puppy-planet/scroll-behavior-browser-compatibility.png"></figure>
+
+</li>
+</ul>
+<h3 id="處理清單開合的-lt-input-type-quot-checkbox-quot-gt"><a href="#處理清單開合的-lt-input-type-quot-checkbox-quot-gt" class="headerlink" title="處理清單開合的&lt;input type=&quot;checkbox&quot;/&gt;"></a>處理清單開合的<code>&lt;input type=&quot;checkbox&quot;/&gt;</code></h3><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* AC版本 */</span></span><br><span class="line"><span class="selector-class">.navbar-toggle</span> &#123;</span><br><span class="line">  <span class="attribute">position</span>: absolute;</span><br><span class="line">  <span class="attribute">visibility</span>: hidden;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 個人處理方式，fixed後推到可視範圍外 */</span></span><br><span class="line"><span class="selector-class">.navbar-toggle</span> &#123;</span><br><span class="line">  <span class="attribute">position</span>: fixed;</span><br><span class="line">  <span class="attribute">top</span>: -<span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">right</span>: -<span class="number">100px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>visibility: hidden;</code>:<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/visibility">MDN</a>: Hides an element <strong>without changing the layout</strong> of a document.</li>
+<li>The element box is invisible (not drawn), but <strong>still affects layout</strong> as normal.</li>
+<li>The element <strong>cannot receive focus</strong> (such as when navigating through tab indexes).</li>
+<li>Using a visibility value of hidden on an element will <strong>remove it from the accessibility tree</strong>. This will cause the element and all its descendant elements to <strong>no longer be announced by screen reading technology</strong>.</li>
+<li>隱藏元素，但該元素依舊會佔據空間</li>
+</ul>
+</li>
+<li><code>display: none;</code>:<ul>
+<li>To both <strong>hide an element</strong> and <strong>remove it</strong> from the document layout, set the display property to none.</li>
+<li>該元素依舊會出現在DOM tree中，但已經不會在畫面上佔據任何空間</li>
+</ul>
+</li>
+</ul>
+<h3 id="position-absolute-與水平、垂直置中"><a href="#position-absolute-與水平、垂直置中" class="headerlink" title="position: absolute;與水平、垂直置中"></a><code>position: absolute;</code>與水平、垂直置中</h3><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.navbar-toggle-label</span> &#123;</span><br><span class="line">  <span class="attribute">position</span>: absolute;</span><br><span class="line">  <span class="attribute">top</span>: <span class="number">50%</span>;</span><br><span class="line">  <span class="attribute">left</span>: <span class="number">50%</span>;</span><br><span class="line">  <span class="attribute">transform</span>: <span class="built_in">translate</span>(-<span class="number">50%</span>, -<span class="number">50%</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>translate()</code>: <strong>repositions</strong> an element in the horizontal and/or vertical directions. <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/translate()">MDN</a></li>
+<li>先設定top與left各推50%後，將該元素的XY軸各回推-50%回來</li>
+<li>此份作業的頂部導覽漢堡按鈕與狗狗相片集的狗狗名字有使用此技巧</li>
+</ul>
+<p class="codepen" data-height="300" data-theme-id="dark" data-default-tab="css,result" data-slug-hash="wvdobWJ" data-preview="true" data-user="Charlie7779" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+  <span>See the Pen <a href="https://codepen.io/Charlie7779/pen/wvdobWJ">
+  transform: translate(-50%, -50%);</a> by Charlie (<a href="https://codepen.io/Charlie7779">@Charlie7779</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+
+<h3 id="切換漢堡按鈕圖示"><a href="#切換漢堡按鈕圖示" class="headerlink" title="切換漢堡按鈕圖示"></a>切換漢堡按鈕圖示</h3><figure class="figure--center"><img src="/2021/css-ac-puppy-planet/listDemo.gif"></figure>
+
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- HTML結構 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;checkbox&quot;</span> <span class="attr">class</span>=<span class="string">&quot;navbar-toggle&quot;</span> <span class="attr">id</span>=<span class="string">&quot;navbar-toggle&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">label</span> <span class="attr">class</span>=<span class="string">&quot;navbar-toggle-label&quot;</span> <span class="attr">for</span>=<span class="string">&quot;navbar-toggle&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;hamburger&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* CSS設定 */</span></span><br><span class="line"><span class="selector-class">.hamburger</span><span class="selector-pseudo">::before</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: inline-block;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">36px</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">36px</span>;</span><br><span class="line">  <span class="attribute">content</span>: <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">  <span class="attribute">background-size</span>: <span class="number">36px</span> <span class="number">36px</span>;</span><br><span class="line">  <span class="attribute">background-image</span>: <span class="built_in">url</span>(<span class="string">&#x27;./images/list.svg&#x27;</span>);</span><br><span class="line">  <span class="attribute">background-repeat</span>: no-repeat;</span><br><span class="line">  <span class="attribute">transition</span>: background-image .<span class="number">2s</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.navbar-toggle</span><span class="selector-pseudo">:checked</span>~<span class="selector-class">.navbar-toggle-label</span> <span class="selector-class">.hamburger</span><span class="selector-pseudo">::before</span> &#123;</span><br><span class="line">  <span class="attribute">background-image</span>: <span class="built_in">url</span>(<span class="string">&#x27;./images/cross.svg&#x27;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>使用<code>background-image: url()</code>插入圖示</li>
+<li>待<code>.navbar-toggle</code>進入勾選狀態後，選取<code>.navbar-toggle</code>之後的<code>.navbar-toggle-label</code>其下的<code>.hamburger::before</code>，修改<code>background-image</code>的圖示</li>
+</ul>
+<h3 id="關於-選取器（CSS-tilde-selector）"><a href="#關於-選取器（CSS-tilde-selector）" class="headerlink" title="關於~選取器（CSS tilde selector）"></a>關於<code>~</code>選取器（CSS tilde selector）</h3><ul>
+<li><a href="https://stackoverflow.com/questions/10782054/what-does-the-tilde-squiggle-twiddle-css-selector-mean">What does the “~” (tilde/squiggle/twiddle) CSS selector mean?</a><ul>
+<li>The general sibling combinator is made of the “tilde” (U+007E, <code>~</code>) character that separates two sequences of simple selectors.</li>
+<li>The elements represented by the two sequences <strong>share the same parent in the document tree</strong> and the element represented by the first sequence precedes (<strong>not necessarily immediately</strong>) the element represented by the second one.</li>
+<li>白話：以<code>.a ~ .b</code>為例，此選取器的意義是「選取所有與<code>.a</code>為siblings且在<code>.a</code>之後的<code>.b</code>」</li>
+</ul>
+</li>
+</ul>
+<h3 id="清單縮放"><a href="#清單縮放" class="headerlink" title="清單縮放"></a>清單縮放</h3><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.nav</span> &#123;</span><br><span class="line">  <span class="attribute">transform</span>: <span class="built_in">scale</span>(<span class="number">1</span>, <span class="number">0</span>);</span><br><span class="line">  <span class="attribute">transform-origin</span>: top;</span><br><span class="line">  <span class="attribute">transition</span>: .<span class="number">2s</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.navbar-toggle</span><span class="selector-pseudo">:checked</span>~<span class="selector-class">.nav</span> &#123;</span><br><span class="line">  <span class="attribute">transform</span>: <span class="built_in">scale</span>(<span class="number">1</span>, <span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>收起狀態：使用<code>transform: scale(1, 0);</code>將該元素的Y軸變為0</li>
+<li>展開狀態：設定<code>transform: scale(1, 1);</code>將元素的Y軸還原為原始高度</li>
+<li><code>transform-origin</code>預設為<code>center</code>，修改為<code>top</code>讓元素從上方開始進行變形</li>
+</ul>
+<h3 id="清單文字處理"><a href="#清單文字處理" class="headerlink" title="清單文字處理"></a>清單文字處理</h3><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.nav-item</span> &#123;</span><br><span class="line">  <span class="attribute">opacity</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.navbar-toggle</span><span class="selector-pseudo">:checked</span>~<span class="selector-class">.nav</span> <span class="selector-class">.nav-item</span> &#123;</span><br><span class="line">  <span class="attribute">opacity</span>: <span class="number">1</span>;</span><br><span class="line">  <span class="attribute">transition</span>: .<span class="number">2s</span> ease-out .<span class="number">15s</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>為了避免使用者看到被壓縮的文字，先使用<code>opacity: 0;</code>隱藏<code>.nav-item</code></li>
+<li>待清單展開後，設定<code>.nav-item</code>延遲0.15秒後再顯示</li>
+<li>與上方的動畫相比，修改後的版本不會看到被壓縮的文字：<figure class="figure--center"><img src="/2021/css-ac-puppy-planet/listDemo-1.gif"></figure>
+
+</li>
+</ul>
+<h3 id="處理大螢幕導覽列"><a href="#處理大螢幕導覽列" class="headerlink" title="處理大螢幕導覽列"></a>處理大螢幕導覽列</h3><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.nav</span>,</span><br><span class="line"><span class="selector-class">.nav-list</span>,</span><br><span class="line"><span class="selector-class">.nav-item</span> &#123;</span><br><span class="line">  <span class="attribute">all</span>: unset;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">header</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: grid;</span><br><span class="line">  <span class="attribute">grid-template-columns</span>: <span class="number">1</span>fr auto <span class="built_in">minmax</span>(<span class="number">600px</span>, <span class="number">3</span>fr) <span class="number">1</span>fr;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.navbar-brand</span> &#123;</span><br><span class="line">  <span class="attribute">grid-column</span>: <span class="number">2</span> / <span class="number">3</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.nav</span> &#123;</span><br><span class="line">  <span class="attribute">grid-column</span>: <span class="number">3</span> / <span class="number">4</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.nav-list</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: flex;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">100%</span>;</span><br><span class="line">  <span class="attribute">justify-content</span>: flex-end;</span><br><span class="line">  <span class="attribute">align-items</span>: center;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.nav-item</span>+<span class="selector-class">.nav-item</span> &#123;</span><br><span class="line">  <span class="attribute">margin-left</span>: <span class="number">2rem</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>重設<code>.nav</code>、<code>.nav-list</code>與<code>.nav-item</code>的CSS樣式</li>
+<li>將<code>header</code>設定為<code>display: grid;</code>後，指定<code>.navbar-brand</code>與<code>.nav</code>的位置</li>
+<li><code>.nav-list</code>不同於AC以<code>display: grid;</code>搭配<code>grid-auto-flow: column;</code>處理，因為僅有一維排版需求，故直接設定<code>display: flex;</code>搭配<code>justify-content: flex-end;</code>推到右側，並<code>align-items: center;</code>進行垂直置中</li>
+<li>以<code>+</code>選取器設定僅有位在<code>.nav-item</code>後面的<code>.nav-item</code>才會有左側margin<figure class="figure--center"><img src="/2021/css-ac-puppy-planet/nav-margin.png"></figure>
+
+</li>
+</ul>
+<h3 id="相片框線動畫"><a href="#相片框線動畫" class="headerlink" title="相片框線動畫"></a>相片框線動畫</h3><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.card</span><span class="selector-pseudo">::before</span>,</span><br><span class="line"><span class="selector-class">.card</span><span class="selector-pseudo">::after</span> &#123;</span><br><span class="line">  <span class="attribute">content</span>: <span class="string">&quot;&quot;</span>;</span><br><span class="line">  <span class="attribute">position</span>: absolute;</span><br><span class="line">  <span class="attribute">top</span>: <span class="number">5%</span>;</span><br><span class="line">  <span class="attribute">left</span>: <span class="number">5%</span>;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">90%</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">90%</span>;</span><br><span class="line">  <span class="attribute">transition</span>: .<span class="number">25s</span> ease-out .<span class="number">1s</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.card</span><span class="selector-pseudo">::before</span> &#123;</span><br><span class="line">  <span class="attribute">border-top</span>: <span class="number">1px</span> solid <span class="number">#fff</span>;</span><br><span class="line">  <span class="attribute">border-bottom</span>: <span class="number">1px</span> solid <span class="number">#fff</span>;</span><br><span class="line">  <span class="attribute">transform</span>: <span class="built_in">scale</span>(<span class="number">0</span>, <span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.card</span><span class="selector-pseudo">:hover</span><span class="selector-pseudo">::before</span> &#123;</span><br><span class="line">  <span class="attribute">transform</span>: <span class="built_in">scale</span>(<span class="number">1.05</span>, <span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.card</span><span class="selector-pseudo">::after</span> &#123;</span><br><span class="line">  <span class="attribute">border-left</span>: <span class="number">1px</span> solid <span class="number">#fff</span>;</span><br><span class="line">  <span class="attribute">border-right</span>: <span class="number">1px</span> solid <span class="number">#fff</span>;</span><br><span class="line">  <span class="attribute">transform</span>: <span class="built_in">scale</span>(<span class="number">1</span>, <span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.card</span><span class="selector-pseudo">:hover</span><span class="selector-pseudo">::after</span> &#123;</span><br><span class="line">  <span class="attribute">transform</span>: <span class="built_in">scale</span>(<span class="number">1</span>, <span class="number">1.05</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>position: absolute;</code>與<code>width: 90%; height: 90%;</code>組合，讓<code>.card</code>的偽元素尺寸比<code>.card</code>小一圈（90%）</li>
+<li><code>top: 5%; left: 5%;</code>將偽元素往下、右各推5%，因為為元素尺寸設定為90%，故各推5%後水平垂直的留白空間會一樣</li>
+<li><code>.card::before</code>與<code>.card::after</code>分別處理水平與垂直線段，並只有在<code>:hover後</code>透過<code>scale()</code>還原尺寸</li>
+<li><code>transition: .25s ease-out .1s;</code>設定滑鼠移動到元素上先延遲0.1秒才開始動畫</li>
+</ul>
+<h3 id="設定-lt-img-gt-為display-block"><a href="#設定-lt-img-gt-為display-block" class="headerlink" title="設定&lt;img&gt;為display: block;"></a>設定<code>&lt;img&gt;</code>為<code>display: block;</code></h3><ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#styling_with_css">MDN</a>: <code>&lt;img&gt;</code> is a <strong>replaced element</strong>; it has a <strong>display value of inline by default</strong>, but its default dimensions are defined by the embedded image’s intrinsic values, like it were inline-block. You can set properties like border/border-radius, padding/margin, width, height, etc. on an image.<ul>
+<li><code>&lt;img&gt;</code>元素預設為<code>display: inline;</code></li>
+<li>而<code>vertical-align</code>是<code>inline</code>、<code>inline-block</code>或<code>table-cell box</code>才有的屬性，參考<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/vertical-align">MDN: vertical-align</a>，<code>vertical-align</code>無法設定為<code>nonde</code></li>
+</ul>
+</li>
+<li>將<code>&lt;img&gt;</code>設定為為<code>display: block;</code>後，<code>vertical-align</code>屬性消失，也不會有圖片下方的空隙<figure class="figure--center"><img src="/2021/css-ac-puppy-planet/displayBlock.gif"></figure>
+
+</li>
+</ul>
+<h2 id="補充"><a href="#補充" class="headerlink" title="補充"></a>補充</h2><h3 id="box-shadow與filter-drop-shadow-的差異"><a href="#box-shadow與filter-drop-shadow-的差異" class="headerlink" title="box-shadow與filter: drop-shadow();的差異"></a><code>box-shadow</code>與<code>filter: drop-shadow();</code>的差異</h3><p class="codepen" data-height="300" data-theme-id="dark" data-default-tab="css,result" data-slug-hash="eYWgObo" data-user="Charlie7779" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+  <span>See the Pen <a href="https://codepen.io/Charlie7779/pen/eYWgObo">
+  shadows</a> by Charlie (<a href="https://codepen.io/Charlie7779">@Charlie7779</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+
+<ul>
+<li><code>box-shadow</code>：繪製<code>box-model</code>的影子<ul>
+<li>僅有<code>box-shadow</code>支援<code>spread-radius</code></li>
+<li>僅有<code>box-shadow</code>支援<code>inset</code>（內陰影）</li>
+</ul>
+</li>
+<li><code>drop-shadow()</code>：根據非透明的部分繪製影子</li>
+</ul>
+<h3 id="Why-do-browsers-create-vendor-prefixes-for-CSS-properties"><a href="#Why-do-browsers-create-vendor-prefixes-for-CSS-properties" class="headerlink" title="Why do browsers create vendor prefixes for CSS properties?"></a>Why do browsers create vendor prefixes for CSS properties?</h3><p>來源：<a href="https://stackoverflow.com/questions/8131846/why-do-browsers-create-vendor-prefixes-for-css-properties">https://stackoverflow.com/questions/8131846/why-do-browsers-create-vendor-prefixes-for-css-properties</a></p>
+<ul>
+<li>It’s because the features were implemented by vendors <strong>before</strong> the specification reached its final release stage.</li>
+<li>The vendor prefix kind of says “this is the (for example) Microsoft interpretation of an ongoing proposal.” Thus, if the final definition of grid is different, Microsoft can add a new CSS property grid <strong>without breaking pages that depend on -ms-grid</strong>.</li>
+<li>（當年）各家瀏覽器想實作某些「規格還未完全確認」的CSS效果，但又需避免日後正式規格發布後會有衝突，故那些瀏覽器自行先實裝的效果就加上各家瀏覽器的prefix，（與日後正式發布的CSS效果）做出區隔</li>
+</ul>
+<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
+<li><a href="https://css-tricks.com/breaking-css-box-shadow-vs-drop-shadow/">Breaking down CSS Box Shadow vs. Drop Shadow</a></li>
+<li><a href="http://thenewcode.com/598/box-shadow-property-vs-drop-shadow-filter-a-complete-comparison">box-shadow property vs. drop-shadow filter: a complete comparison</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/unset">MDN: unset</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>CSS</category>
+      </categories>
+  </entry>
+  <entry>
     <title>「CSS Specificity」相關筆記</title>
     <url>/2021/css-specificity/</url>
     <content><![CDATA[<h2 id="重點整理"><a href="#重點整理" class="headerlink" title="重點整理"></a>重點整理</h2><ul>
@@ -2427,23 +2572,6 @@ The configuration in <code>_config.yml</code> file should be set like this:<figu
       </categories>
   </entry>
   <entry>
-    <title>Display draft post</title>
-    <url>/2021/hexo-drafts/</url>
-    <content><![CDATA[<p>To view the draft posts (in the <code>source\_drafts</code> folder) on localhost:4000, just run <code>hexo server --draft</code>.<br>Set <code>render_drafts</code> as <code>true</code> in <code>_config.yml</code> will make <code>hexo generate</code> generate the posts in <code>source\_drafts</code> into <code>public</code> folder, which means the draft posts will be deployed to GitHub page by <code>hexo deploy</code>.<br>No needs to set <code>render_drafts</code> as <code>true</code> to view the draft posts on localhost, running <code>hexo server --draft</code> is enough.</p>
-<p><code>_config.yml</code>中的<code>render_drafts</code>設定為<code>true</code>的話，執行<code>hexo generate</code>時，資料夾<code>source\_drafts</code>內的檔案也會被生成到<code>public</code>資料夾中。<br>在這個情況下執行<code>hexo deploy</code>就會把草稿文章推到GitHub Page上。</p>
-<p>只是想要在localhost:4000上瀏覽草稿的話，執行<code>hexo server --draft</code>即可，不用修改<code>render_drafts</code>的值。<br>hexo官方文件對<code>render_drafts</code>的說明比較簡短，一開始以為設定成<code>true</code>只是代表<code>hexo server</code>會渲染草稿……😇</p>
-<h2 id="Environment"><a href="#Environment" class="headerlink" title="Environment"></a>Environment</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo: 5.3.0</span><br><span class="line">hexo-cli: 4.2.0</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></table></figure>
-
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
-<li><a href="https://hexo.io/docs/commands#Display-drafts">hexo: Commands/Display drafts</a></li>
-<li><a href="https://hexo.io/docs/configuration#Writing">hexo: Configuration/Writing</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>hexo</category>
-      </categories>
-  </entry>
-  <entry>
     <title>Add local search</title>
     <url>/2021/hexo-search-engine/</url>
     <content><![CDATA[<h2 id="Summary-of-this-post"><a href="#Summary-of-this-post" class="headerlink" title="Summary of this post"></a>Summary of this post</h2><p>2 ways to add local search engine to the hexo blog:</p>
@@ -2516,6 +2644,23 @@ The configuration in <code>_config.yml</code> file should be set like this:<figu
 <figure class="figure--center"><img src="/2021/hexo-tag-figure/margin-bottom-0px.jpg" title="margin-bottom 0px"><figcaption><p>margin-bottom 0px</p></figcaption></figure></li>
 <li>Save the configuration and run <code>hexo generate</code> and <code>hexo deploy</code>, done ☕</li>
 </ol>
+]]></content>
+      <categories>
+        <category>hexo</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Display draft post</title>
+    <url>/2021/hexo-drafts/</url>
+    <content><![CDATA[<p>To view the draft posts (in the <code>source\_drafts</code> folder) on localhost:4000, just run <code>hexo server --draft</code>.<br>Set <code>render_drafts</code> as <code>true</code> in <code>_config.yml</code> will make <code>hexo generate</code> generate the posts in <code>source\_drafts</code> into <code>public</code> folder, which means the draft posts will be deployed to GitHub page by <code>hexo deploy</code>.<br>No needs to set <code>render_drafts</code> as <code>true</code> to view the draft posts on localhost, running <code>hexo server --draft</code> is enough.</p>
+<p><code>_config.yml</code>中的<code>render_drafts</code>設定為<code>true</code>的話，執行<code>hexo generate</code>時，資料夾<code>source\_drafts</code>內的檔案也會被生成到<code>public</code>資料夾中。<br>在這個情況下執行<code>hexo deploy</code>就會把草稿文章推到GitHub Page上。</p>
+<p>只是想要在localhost:4000上瀏覽草稿的話，執行<code>hexo server --draft</code>即可，不用修改<code>render_drafts</code>的值。<br>hexo官方文件對<code>render_drafts</code>的說明比較簡短，一開始以為設定成<code>true</code>只是代表<code>hexo server</code>會渲染草稿……😇</p>
+<h2 id="Environment"><a href="#Environment" class="headerlink" title="Environment"></a>Environment</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo: 5.3.0</span><br><span class="line">hexo-cli: 4.2.0</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></table></figure>
+
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
+<li><a href="https://hexo.io/docs/commands#Display-drafts">hexo: Commands/Display drafts</a></li>
+<li><a href="https://hexo.io/docs/configuration#Writing">hexo: Configuration/Writing</a></li>
+</ul>
 ]]></content>
       <categories>
         <category>hexo</category>

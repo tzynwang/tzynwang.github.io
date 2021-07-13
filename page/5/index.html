@@ -197,7 +197,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">57</span>
+          <span class="site-state-item-count">58</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -238,6 +238,241 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope="" itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tzynwang.github.io/2021/css-specificity/">
+
+    <span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar-pexels-alex-andrews-215-215.png">
+      <meta itemprop="name" content="Charlie (Tzu Yin)">
+      <meta itemprop="description" content="一介普通文組的學習筆記 📒">
+    </span>
+
+    <span hidden="" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="普通文組">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/css-specificity/" class="post-title-link" itemprop="url">「CSS Specificity」相關筆記</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-03-18 20:52:44" itemprop="dateCreated datePublished" datetime="2021-03-18T20:52:44+08:00">2021-03-18</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-03-29 19:20:32" itemprop="dateModified" datetime="2021-03-29T19:20:32+08:00">2021-03-29</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+          <a href="/categories/CSS/" itemprop="url" rel="index"><span itemprop="name">CSS</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2021/css-specificity/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/css-specificity/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="重點整理"><a href="#重點整理" class="headerlink" title="重點整理"></a>重點整理</h2><ul>
+<li>有重複的CSS樣式規則套用到同一個HTML元素上的時候，權重（specificity）高的樣式會覆蓋權重低的樣式設定。</li>
+<li>原始碼中位置越下方（後發）的CSS樣式會複寫先寫出來的樣式。</li>
+<li>樣式規則有衝突的時候，權重較高的樣式會覆蓋權重低的樣式。衝突規則的權重一樣大的時候，後發的樣式會覆蓋先寫的樣式。</li>
+</ul>
+<h2 id="Specificity"><a href="#Specificity" class="headerlink" title="Specificity"></a>Specificity</h2><p>Specificity（以降以「權重」稱之）的高低影響哪一些CSS樣式會發生作用。<br>設定好的CSS沒有作用，可能就是CSS樣式的權重沒有妥善安排，導致編寫好的CSS樣式沒有如預期般套用到HTML元素上。</p>
+<p>權重從低至高順位分組如下：</p>
+<ol>
+<li><p>universal selector與inherited style：使用<code>*</code>選取「全部」與繼承得來的樣式，兩者的權重皆為<code>0-0-0-0-0</code>；最低的權重</p>
+</li>
+<li><p>element selector、::pseudo-element selector：選取HTML元素或偽元素，權重為<code>0-0-0-0-1</code></p>
+<ul>
+<li><p>HTML元素：html、body、section、div、p……等HTML元素（element）</p>
+</li>
+<li><p>偽元素：</p>
+<blockquote>
+<p>A CSS pseudo-element is a keyword added to a selector that lets you style a specific <strong>part</strong> of the selected element(s).</p>
+</blockquote>
+<p>參考<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-elements">MDN</a>，偽元素指的是HTML元素的「某一個部份」，較常見的大概是<code>::after</code>、<code>::before</code>與<code>::first-letter</code></p>
+</li>
+</ul>
+</li>
+<li><p>.class selector、:pseudo-class selector、[attribute] selector：選取class、偽類或具有特定屬性（attribute）的HTML元素，權重為<code>0-0-0-1-0</code></p>
+<ul>
+<li><p>偽類：</p>
+<blockquote>
+<p>A CSS pseudo-class is a keyword added to a selector that specifies a special <strong>state</strong> of the selected element(s).</p>
+</blockquote>
+<p>參考<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes">MDN</a>，偽類指的是HTML元素的「某一種狀態」，最常見的大概是<code>:hover</code></p>
+</li>
+<li><p>屬性：參考<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes">MDN</a>，以<code>input[type="checkbox"]</code>為例，就是「選取所有是checkbox特性的input元素」</p>
+</li>
+</ul>
+</li>
+<li><p>#id selector：選取擁有某id的HTML元素，權重是<code>0-0-1-0-0</code></p>
+</li>
+<li><p>inline style（比如<code>&lt;p style="color: red;"&gt;text&lt;/p&gt;</code>）：權重是<code>0-1-0-0-0</code>，不過這樣會讓原始碼的維護性變差，所以還是避免使用吧</p>
+</li>
+<li><p><code>!important</code>：擁有最大的權重<code>1-0-0-0-0</code>，而後發的<code>!important</code>會壓過先寫出來的<code>!important</code></p>
+</li>
+</ol>
+<h3 id="權重的計算方式"><a href="#權重的計算方式" class="headerlink" title="權重的計算方式"></a>權重的計算方式</h3><p>參考以上劃分的六種權重分組，將選取器中屬於同一組的選擇器條件相加後進行比大小。<br>舉個🌰，假設以下兩種<code>color</code>的樣式設定位在同一份原始碼裡面：</p>
+<figure class="highlight css"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#blue</span> { <span class="comment">/* 第一組樣式 */</span></span><br><span class="line">  <span class="attribute">color</span>: blue;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">div</span> <span class="selector-tag">p</span> { <span class="comment">/* 第二組樣式 */</span></span><br><span class="line">  <span class="attribute">color</span>: red;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>而HTML內容如下：</p>
+<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span> <span class="attr">id</span>=<span class="string">"blue"</span>&gt;</span>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consectetur, magnam!<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+<p>第一組樣式的選取器為#id一個，權重為：0-0-1-0-0<br>第二組樣式的選取器為HTML元素兩個，權重為：0-0-0-0-2<br>第一組樣式的權重大於第二組，故以上的<code>&lt;p&gt;</code>會是藍色：</p>
+<p class="codepen" data-height="265" data-theme-id="dark" data-default-tab="html,result" data-user="Charlie7779" data-slug-hash="vYyqpLy" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="css specificity">
+  <span>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/Charlie7779/pen/vYyqpLy">
+  css specificity</a> by Charlie (<a target="_blank" rel="noopener" href="https://codepen.io/Charlie7779">@Charlie7779</a>)
+  on <a target="_blank" rel="noopener" href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async="" src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+<p></p>
+<script async="" src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+
+<p>需注意的是，CSS的權重並<strong>不是十進位制</strong>，選取五十個.class做出來的CSS樣式也比不過選取一個#id宣告出來的樣式。<br>舉個🌰，假設以下兩種<code>background-color</code>的樣式設定位在同一份原始碼裡面：</p>
+<figure class="highlight css"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#yellow</span> {</span><br><span class="line">  <span class="attribute">background-color</span>: yellow;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.c1</span> <span class="selector-class">.c2</span> <span class="selector-class">.c3</span> <span class="selector-class">.c4</span> <span class="selector-class">.c5</span> <span class="selector-class">.c6</span> <span class="selector-class">.c7</span> <span class="selector-class">.c8</span> <span class="selector-class">.c9</span> <span class="selector-class">.c10</span> <span class="selector-class">.c11</span> {</span><br><span class="line">  <span class="attribute">background-color</span>: green;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>而HTML內容如下：</p>
+<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"c1"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"c2"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"c3"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"c4"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"c5"</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"c6"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"c7"</span>&gt;</span></span><br><span class="line">              <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"c8"</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"c9"</span>&gt;</span></span><br><span class="line">                  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"c10"</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"c11"</span> <span class="attr">id</span>=<span class="string">"yellow"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">              <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+<p>那麼該<code>&lt;div&gt;</code>的背景顏色會是黃色：</p>
+<p class="codepen" data-height="265" data-theme-id="dark" data-default-tab="html,result" data-user="Charlie7779" data-slug-hash="vYywoqR" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="css specificity">
+  <span>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/Charlie7779/pen/vYywoqR">
+  css specificity</a> by Charlie (<a target="_blank" rel="noopener" href="https://codepen.io/Charlie7779">@Charlie7779</a>)
+  on <a target="_blank" rel="noopener" href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async="" src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+<p></p>
+<script async="" src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+
+<p>在CSS Specificity的宇宙裡，團結起來的五十個<code>.筷子</code>還是會被<code>#●門</code>夾爆的。</p>
+<h3 id="快速判別樣式的權重"><a href="#快速判別樣式的權重" class="headerlink" title="快速判別樣式的權重"></a>快速判別樣式的權重</h3><ul>
+<li><code>!important</code>最大，有複數個<code>!important</code>就看哪一段樣式最後被執行</li>
+<li>element贏不過.class與[attribute]，.class與[attribute]贏不過#id</li>
+<li>使用人家寫好的計算機：<a target="_blank" rel="noopener" href="https://specificity.keegan.st/">Specificity Calculator</a></li>
+</ul>
+<figure class="figure--center"><img src="/2021/css-specificity/fullhouse.jpg" title="在CSS Specificity的宇宙裡，就算你爸變兔子.class也打不過#id"><figcaption><p>在CSS Specificity的宇宙裡，就算你爸變兔子.class也打不過#id</p></figcaption></figure>
+
+
+<h2 id="權重相等時，後發覆蓋先寫的樣式"><a href="#權重相等時，後發覆蓋先寫的樣式" class="headerlink" title="權重相等時，後發覆蓋先寫的樣式"></a>權重相等時，後發覆蓋先寫的樣式</h2><p>假設<code>style.css</code>的內容如下：</p>
+<figure class="highlight css"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">p</span> {</span><br><span class="line">  <span class="attribute">color</span>: blue;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>而HTML內容如下：</p>
+<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"./style.css"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line">    p {</span><br><span class="line">      color: green;</span><br><span class="line">    }</span><br><span class="line">  <span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consectetur, magnam!<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+<p>因為<code>&lt;style&gt;</code>比<code>&lt;link rel="stylesheet" href="./style.css"&gt;</code>晚執行，所以<code>&lt;p&gt;</code>會是綠色（按下<span style="color: #21a243;">▶</span>執行程式碼看結果）：</p>
+<iframe height="400px" width="100%" src="https://replit.com/@Charlie7779/css-specificity-style-after-link?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+
+<p>而如果調換<code>&lt;style&gt;</code>與<code>&lt;link rel="stylesheet" href="./style.css"&gt;</code>的順序：</p>
+<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line">    p {</span><br><span class="line">      color: green;</span><br><span class="line">    }</span><br><span class="line">  <span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"./style.css"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consectetur, magnam!<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+<p><code>&lt;p&gt;</code>就會是藍色（按下<span style="color: #21a243;">▶</span>執行程式碼看結果）：</p>
+<iframe height="400px" width="100%" src="https://replit.com/@Charlie7779/css-specificity-link-after-style?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+
+
+<h3 id="LVHA"><a href="#LVHA" class="headerlink" title="LVHA"></a>LVHA</h3><p>問：為什麼超連結的CSS樣式最好以「link-visited-hover-active」的順序從上到下書寫？<br>答：因為樣式權重相等的時候，後發的樣式會覆蓋先寫的內容。<br>假設使用「link-hover-active-visited」的順序來設定CSS樣式：</p>
+<figure class="highlight css"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">a</span><span class="selector-pseudo">:link</span> {</span><br><span class="line">  <span class="attribute">color</span>: blue;</span><br><span class="line">}</span><br><span class="line"><span class="selector-tag">a</span><span class="selector-pseudo">:hover</span> {</span><br><span class="line">  <span class="attribute">color</span>: aqua;</span><br><span class="line">}</span><br><span class="line"><span class="selector-tag">a</span><span class="selector-pseudo">:active</span> {</span><br><span class="line">  <span class="attribute">color</span>: red;</span><br><span class="line">}</span><br><span class="line"><span class="selector-tag">a</span><span class="selector-pseudo">:visited</span> {</span><br><span class="line">  <span class="attribute">color</span>: purple;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>那一個被點擊過的（<code>:visited</code>）超連結，即使在<code>:hover</code>或<code>:active</code>的狀態，也不會被套上<code>:hover</code>或<code>:active</code>的樣式，因為<code>:hover</code>與<code>:active</code>通通被<code>:visited</code>的樣式蓋過去了。<br>點擊過以下範例的超連結後，即使把游標停留在連結上，文字也不會變為水藍色：</p>
+<p class="codepen" data-height="265" data-theme-id="dark" data-default-tab="css,result" data-user="Charlie7779" data-slug-hash="abBgEQN" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="LHAV">
+  <span>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/Charlie7779/pen/abBgEQN">
+  LHAV</a> by Charlie (<a target="_blank" rel="noopener" href="https://codepen.io/Charlie7779">@Charlie7779</a>)
+  on <a target="_blank" rel="noopener" href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async="" src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+
+<p>但如果把樣式順序修改如下：</p>
+<figure class="highlight css"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">a</span><span class="selector-pseudo">:link</span> {</span><br><span class="line">  <span class="attribute">color</span>: blue;</span><br><span class="line">}</span><br><span class="line"><span class="selector-tag">a</span><span class="selector-pseudo">:visited</span> {</span><br><span class="line">  <span class="attribute">color</span>: purple;</span><br><span class="line">}</span><br><span class="line"><span class="selector-tag">a</span><span class="selector-pseudo">:hover</span> {</span><br><span class="line">  <span class="attribute">color</span>: aqua;</span><br><span class="line">}</span><br><span class="line"><span class="selector-tag">a</span><span class="selector-pseudo">:active</span> {</span><br><span class="line">  <span class="attribute">color</span>: red;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>這個超連結就可以表現出四種不同狀態的樣式。<br>先點擊以下範例的超連結，超連結的文字會變成紫色，但因為<code>:hover</code>與<code>:active</code>的樣式順序在<code>:visited</code>以下，所以當游標停留在連結上（狀態為<code>:hover</code>）時，文字會變成水藍色；而點下超連結（狀態為<code>:active</code>）時，文字會變成紅色：</p>
+<p class="codepen" data-height="265" data-theme-id="dark" data-default-tab="css,result" data-user="Charlie7779" data-slug-hash="xxRopME" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="LVHA">
+  <span>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/Charlie7779/pen/xxRopME">
+  LVHA</a> by Charlie (<a target="_blank" rel="noopener" href="https://codepen.io/Charlie7779">@Charlie7779</a>)
+  on <a target="_blank" rel="noopener" href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async="" src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+
+
+<h2 id="規則衝突時，後發覆蓋先寫的樣式"><a href="#規則衝突時，後發覆蓋先寫的樣式" class="headerlink" title="規則衝突時，後發覆蓋先寫的樣式"></a>規則衝突時，後發覆蓋先寫的樣式</h2><p>舉個🌰，假設以下兩種針對<code>&lt;p&gt;</code>的樣式設定位在同一份原始碼裡面：</p>
+<figure class="highlight css"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">p</span> {</span><br><span class="line">  <span class="attribute">color</span>: red;</span><br><span class="line">  <span class="attribute">background</span>: blue;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">p</span> {</span><br><span class="line">  <span class="attribute">color</span>: yellow;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>衝突的規則只有<code>color</code>，<code>background</code>不受影響，所以最後<code>&lt;p&gt;</code>的樣式會是「藍色背景、黃色文字」：</p>
+<p class="codepen" data-height="265" data-theme-id="dark" data-default-tab="html,result" data-user="Charlie7779" data-slug-hash="PobrEQQ" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="css specificity">
+  <span>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/Charlie7779/pen/PobrEQQ">
+  css specificity</a> by Charlie (<a target="_blank" rel="noopener" href="https://codepen.io/Charlie7779">@Charlie7779</a>)
+  on <a target="_blank" rel="noopener" href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async="" src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+
+
+<h2 id="透過繼承得到的樣式，權重是0-0-0-0-0"><a href="#透過繼承得到的樣式，權重是0-0-0-0-0" class="headerlink" title="透過繼承得到的樣式，權重是0-0-0-0-0"></a>透過繼承得到的樣式，權重是0-0-0-0-0</h2><p>舉個🌰，假設以下兩種樣式設定位在同一份原始碼裡面：</p>
+<figure class="highlight css"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#parent</span> {</span><br><span class="line">  <span class="attribute">color</span>: green;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">h1</span> {</span><br><span class="line">  <span class="attribute">color</span>: red;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>而HTML內容如下：</p>
+<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span> <span class="attr">id</span>=<span class="string">"parent"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>A Title<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+<p><code>&lt;h1&gt;</code>從<code>&lt;body id="parent"&gt;</code>繼承到的文字色彩樣式會被CSS樣式表中的<code>h1</code>覆蓋掉（樣式<code>h1</code>的權重是0-0-0-0-1），<code>&lt;h1&gt;A Title&lt;/h1&gt;</code>會是紅色：</p>
+<p class="codepen" data-height="265" data-theme-id="dark" data-default-tab="html,result" data-user="Charlie7779" data-slug-hash="vYyqRXo" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="inherited styles">
+  <span>See the Pen <a target="_blank" rel="noopener" href="https://codepen.io/Charlie7779/pen/vYyqRXo">
+  inherited styles</a> by Charlie (<a target="_blank" rel="noopener" href="https://codepen.io/Charlie7779">@Charlie7779</a>)
+  on <a target="_blank" rel="noopener" href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async="" src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+
+
+<h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://www.smashingmagazine.com/2007/07/css-specificity-things-you-should-know/">CSS Specificity: Things You Should Know</a></li>
+<li><a target="_blank" rel="noopener" href="https://meyerweb.com/eric/css/link-specificity.html">Link Specificity: I tried to apply CSS to my hyperlinks and the hovering didn’t work</a></li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity#directly_targeted_elements_vs._inherited_styles">MDN: Directly targeted elements vs. inherited styles</a></li>
+<li><a target="_blank" rel="noopener" href="https://cssspecificity.com/">CSS Specificity with icons inspired by “The Shining”</a></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1372,120 +1607,6 @@
 
 <h2 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h2><p>I decide to use <code>hexo-generator-searchdb</code> instead of adding another page to handle the search engine.<br>Prefer the way that NexT theme handles the search engine, it opens a searching tab on the current page. Users don’t need to navigate to another page for doing content searching.</p>
 <h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a target="_blank" rel="noopener" href="https://blog.johnwu.cc/article/hexo-google-custom-search.html">Hexo - 自訂站內搜尋 (Google Custom Search)</a></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope="" itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://tzynwang.github.io/2021/hexo-add-404/">
-
-    <span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar-pexels-alex-andrews-215-215.png">
-      <meta itemprop="name" content="Charlie (Tzu Yin)">
-      <meta itemprop="description" content="一介普通文組的學習筆記 📒">
-    </span>
-
-    <span hidden="" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="普通文組">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/hexo-add-404/" class="post-title-link" itemprop="url">Add 404 page</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-02-16 09:36:19" itemprop="dateCreated datePublished" datetime="2021-02-16T09:36:19+08:00">2021-02-16</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-02-18 20:30:56" itemprop="dateModified" datetime="2021-02-18T20:30:56+08:00">2021-02-18</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-          <a href="/categories/hexo/" itemprop="url" rel="index"><span itemprop="name">hexo</span></a>
-        </span>
-    </span>
-
-  
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus: </span>
-    
-    <a title="disqus" href="/2021/hexo-add-404/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/hexo-add-404/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="Summary-of-this-post"><a href="#Summary-of-this-post" class="headerlink" title="Summary of this post"></a>Summary of this post</h2><p>The workflow of adding a 404 handling page for the hexo blog.</p>
-<figure class="figure--center"><img src="/2021/hexo-add-404/404-page-for-hexo-blog.jpg" title="The 404 page"><figcaption><p>The 404 page</p></figcaption></figure>
-
-
-<h2 id="Environment"><a href="#Environment" class="headerlink" title="Environment"></a>Environment</h2><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo: 5.3.0</span><br><span class="line">hexo-cli: 4.2.0</span><br><span class="line">os: Windows_NT 10.0.18363 win32 x64</span><br></pre></td></tr></tbody></table></figure>
-
-<h2 id="Workflow"><a href="#Workflow" class="headerlink" title="Workflow"></a>Workflow</h2><ol>
-<li>Create a 404.md file in the <code>source</code> folder<figure class="figure--center"><img src="/2021/hexo-add-404/location-of-404-page.jpg" title="Add the 404.md in the source folder of hexo blog " alt="The screenshot to display file location of 404.md file for the hexo blog"><figcaption><p>Add the 404.md in the source folder of hexo blog </p></figcaption></figure></li>
-<li>Add page content for the 404.md file:<ul>
-<li><code>permalink: /404.html</code> in line 3 is <strong>required</strong>.</li>
-<li>Fill in the correct URL (<code>https://&lt;your GitHub username&gt;.github.io/</code>) for redirection in line 9 and line 19</li>
-<li>The value of <code>countTime</code> in line 12 can be updated to the preferred waiting time. I just leave the waiting time as 5 seconds without changing it.<figure class="highlight markdown"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: 404</span><br><span class="line">permalink: /404.html</span><br><span class="line">---</span><br><span class="line"></span><br><span class="line"><span class="section">## Page not exists</span></span><br><span class="line">The page you are looking for does not exist.</span><br><span class="line">Will bring you back to the homepage in <span class="xml"><span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">"timeout"</span>&gt;</span></span>5<span class="xml"><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span> second(s).</span><br><span class="line">Or [<span class="string">click this link</span>](<span class="link">https://&lt;your GitHub username&gt;.github.io/</span>) to go back to the homepage immediately.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span></span><br><span class="line">let countTime = 5;</span><br><span class="line"></span><br><span class="line">function count() {</span><br><span class="line">  </span><br><span class="line">  document.getElementById('timeout').textContent = countTime;</span><br><span class="line">  countTime -= 1;</span><br><span class="line">  if(countTime === 0){</span><br><span class="line"><span class="code">    location.href = "https://&lt;your GitHub username&gt;.github.io/";</span></span><br><span class="line"><span class="code">  }</span></span><br><span class="line"><span class="code">  setTimeout(() =&gt; {</span></span><br><span class="line"><span class="code">    count();</span></span><br><span class="line"><span class="code">  }, 1000);</span></span><br><span class="line"><span class="code">}</span></span><br><span class="line"><span class="code"></span></span><br><span class="line"><span class="code">count();</span></span><br><span class="line"><span class="code">&lt;/script&gt;</span></span><br></pre></td></tr></tbody></table></figure></li>
-</ul>
-</li>
-<li>Save the file. Run <code>hexo generate</code> and <code>hexo deploy</code> to push the 404 handle page to the repository. Done ☕</li>
-</ol>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
-<li>For the copy:<br>  <a target="_blank" rel="noopener" href="https://codepen.io/kdbkapsere/pen/oNXLbqQ">404 Page by Kasper De Bruyne</a></li>
-<li>For the <code>404.md</code> file location and the instruction of deployment:<br>  <a target="_blank" rel="noopener" href="https://github.com/ppoffice/hexo-theme-icarus/issues/66#issuecomment-165919312">https://github.com/ppoffice/hexo-theme-icarus/issues/66#issuecomment-165919312</a></li>
-<li>For the JavaScript of auto-redirect:<br>  <a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/articles/10249685">(23) 試著學 Hexo - SEO 篇 - 新增你的 404 頁面</a></li>
-</ul>
 
       
     </div>
