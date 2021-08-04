@@ -8,6 +8,7 @@ tags:
 
 ## 總結
 使用webpack（本次搭配axios與vue）開發前端web APP時的環境相關設置筆記
+2021/8/4更新：追加SCSS相關設定
 
 ## 環境
 ```
@@ -15,6 +16,10 @@ webpack: 5.38.1
 webpack-cli: 4.7.2
 vue: 2.6.14
 os: Windows_NT 10.0.18363 win32 x64
+
+// 2021/8/4追加
+node-sass: 6.0.1
+sass-loader: 12.1.0
 ```
 
 ## 步驟
@@ -76,7 +81,33 @@ os: Windows_NT 10.0.18363 win32 x64
   - [MiniCssExtractPlugin](https://webpack.js.org/plugins/mini-css-extract-plugin/)：此plugin會在執行`npm run build`時將（匯入index.js的）.css檔案獨立出來，並嵌入`index.html`中（預設在`<head>`尾端，可透過[`insert`參數](https://webpack.js.org/plugins/mini-css-extract-plugin/#insert)修改）
   - [Webpack config: Module Rule.test](https://webpack.js.org/configuration/module/#ruletest): Include all modules that pass test assertion. If you supply a `Rule.test` option, you cannot also supply a `Rule.resource`. 
 
+## 補充：若須導入.scss
+1. 除上述提及之package之外，追加安裝`node-sass`與`sass-loader`
+1. `webpack.config.js`的plugins與module設定如下：
+  ```
+  plugins: [
+    new MiniCssExtractPlugin(),
+    new HtmlWebpackPlugin({
+      inject: 'body',
+      template: './src/index.html'
+    })
+  ],
+  module: {
+    rules: [
+      {
+        test: /\.scss$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+          'sass-loader'
+        ]
+      }
+    ]
+  }
+  ```
+
 
 ## 參考文件
 - [Webpack 5: Getting Started](https://webpack.js.org/guides/getting-started/)
+- [Webpack 5: sass-loader](https://webpack.js.org/loaders/sass-loader/)
 - [HTML Webpack Plugin](https://github.com/jantimon/html-webpack-plugin#readme)
