@@ -1,8 +1,9 @@
 ---
-title: 30天挑戰：CSS progress bar (stepper) 技術記錄
+title: 30天挑戰：「CSS progress bar (stepper) 」技術記錄
 date: 2021-08-05 10:48:24
 categories:
-- CSS
+- [CSS]
+- [2021鐵人賽]
 tags:
 ---
 
@@ -33,7 +34,7 @@ tags:
   - 補充理由：「步驟數字不建議放到偽元素裡面，因為擴展為更多步驟，變數不好塞」、「（如果數字透過偽元素處理的話，）實務上若遇到多語系需求，或是不同數字的表達方式等等，就容易傷腦筋」
 - 使用`complete`、`active`與`pending`三種CSS class name來明確標註不同狀態，增加原始碼的好讀性
 
-## CSS
+## SCSS
 <script src="https://gist.github.com/tzynwang/ad326ea498a0945085e5961e188a3c21.js"></script>
 
 - 第9行`.step-container`：注意並**沒有**使用`justify-content: space-between;`
