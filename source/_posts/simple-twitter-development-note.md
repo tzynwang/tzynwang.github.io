@@ -41,6 +41,7 @@ tags:
 - 私人訊息：使用者可與特定使用者進行一對一聊天
 - 訂閱：一旦訂閱某使用者，在該使用者新增、回應、按讚與進行追蹤動作時皆會收到通知
 
+
 ## 開發之旅
 ### 組隊
 - 協作專案於學期三第六週正式開始，而學期三開始後沒多久就收到前端隊友發來組隊邀約，覺得先定下來也沒什麼不妥，故答應邀請
@@ -75,7 +76,8 @@ tags:
 - 設計稿並未提供小版面設計，故花了四個小時參考正版推特，補完手機與平板裝置的畫面設計
 - 個人感受：Alpha Camp學期三8月前端班的Vue教材基本上涵蓋了Simple Twitter專案指定規格絕大多數的解決方式，在實作指定規格時並未遭遇太多問題
 - 幾個印象比較深刻的問題都是在強化使用者體驗以及操作vuex中發生，以下列出各點分別說明
-  （註：專案開始前就從收到學姊建議若有空可先研究vue-router與vuex，故個人對vuex的理解與知識基本上都出自vuex官方文件、YouTube教學影片以及stackOverFlow討論串，較少使用到Alpha Camp提到的技巧）
+  （註：專案開始前就收到學姊建議若有空可先研究vue-router與vuex，故個人對vuex的理解與知識基本上都出自vuex官方文件、YouTube教學影片以及stackOverFlow討論串，較少使用到Alpha Camp提到的技巧）
+
 
 #### 實作首頁推文懶載入
 需求：後端組員提到想看看前端是否能做出「捲動畫面後載入更多推文」的畫面，覺得這需求確實可以提升使用者在操作專案時的好感，故在完成所有功能測試後，開始研究如何實作
@@ -86,7 +88,7 @@ tags:
     - 參考討論串如下：
     - [Javascript: How to detect if browser window is scrolled to bottom?](https://stackoverflow.com/questions/9439725/javascript-how-to-detect-if-browser-window-is-scrolled-to-bottom)
     - [How to Detect Scroll End with JavaScript?](https://thewebdev.info/2021/06/27/how-to-detect-scroll-end-with-javascript/)
-  - 在codePen中快速實驗確認對討論串內提到的程式碼理解沒有出錯後，開始在專案中實作功能
+  - 在codePen中快速實驗討論串提供的程式碼，確認理解沒有出錯後，便開始在專案中實作功能
 
 實作：
   - 於元件`data()`中設定每一批載入的推文的數量，本專案設定為一次10筆推文
@@ -97,16 +99,18 @@ tags:
   - 實際上只是畫面上有做出懶載入效果，並沒有真的有與後端搭配資料分頁
   - 「與後端合作一起處理懶載入」這個想法在規劃需求時不知為何就是沒有出現在腦海中，而在聽到講師點評後才後知後覺意識到前後端合作實際上可以做出「真的」懶載入⋯⋯感覺自己現階段的想法廣度還是不太夠，需要多跳離問題本身來進行更高層次的觀察
 
+
 #### 聊天室自動捲至畫面底部
 需求：使用者於聊天室發言後，畫面應自動捲至底部讓使用者可以直接看到方才送出的發言
 思考梳理：
   - 事件發生的時間點是使用者送出聊天內容後，一旦確認訊息發送成功，就將該發言追加到聊天室容器內，並容器捲到底
-  - 而自後端取得的聊天訊息會被儲存在元件的`data()`中，亦即在vue lifecycle hook的`updated()`階段做出捲動行為即可
+  - 新發出的聊天訊息會被儲存在元件的`data()`中，亦即在vue lifecycle hook的`updated()`階段做出捲動行為即可
 
 實作時並沒有遇到什麼困難，且被大量文章提醒需要搭配`this.$nextTick`來確保捲動行為要在資料更新**並且**在DOM渲染後才執行，感謝巨人們
 參考文章：
 - [Vue.nextTick( [callback, context] )](https://vuejs.org/v2/api/#Vue-nextTick)
 - [[Day 19] Vue nextTick 處理完成後就換我!](https://ithelp.ithome.com.tw/articles/10240669)
+
 
 #### vue-router與vuex actions
 需求：需要在資料夾router中的index.js檔案執行vuex module中的action，將使用者資料儲存在vuex module中
@@ -148,3 +152,4 @@ store.dispatch('authorization/setUser', data)
 
 ## 同組成員心得
 - [（後端隊友）Alicia: Twitter專案回顧](https://alicialin2020.medium.com/twitter%E5%B0%88%E6%A1%88%E5%9B%9E%E9%A1%A7-c1aec47f0afa)
+- [（前端隊友）Raven: Simple Twitter 專案反思](https://ravenera0317.medium.com/simple-twitter-%E5%B0%88%E6%A1%88%E5%8F%8D%E6%80%9D-c798eb8db8af)
