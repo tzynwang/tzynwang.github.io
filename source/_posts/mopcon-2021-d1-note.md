@@ -8,13 +8,9 @@ tags:
 
 ## 總結
 整理了2021 MOPCON 第一天JS、前端相關議程的筆記與延伸參考資料
-- [Huli: 你懂了 JavaScript，也不懂 JavaScript](https://mopcon.org/2021/schedule/2021006)
-- [PJCHENder: 用 Type 建立 Type：一起來當個 TypeScript 的型別魔術師](https://mopcon.org/2021/schedule/2021012)
-- [善用 UX 來提升 UU，打造滿足新手和專家的 UI](https://mopcon.org/2021/schedule/2021015)
 
 
-## 筆記
-### JavaScript那些對新手真的有幫助的知識
+## 你懂了JavaScript，也不懂JavaScript
 
 > 總結：在時間有限的前提下，先學習價值最高的技術或知識
 
@@ -22,11 +18,11 @@ tags:
   - 「這個知識對我寫code會有幫助嗎？」
   - 「不知道的話會容易寫出bug、或是根本不知道bug從何而來」
 - 比較不重要但有趣的知識：知道這些事情會讓你成為JS大師
-  {% figure figure--center 2021/js-mopcon-2021-d1-note/ydnjs.png "'Thanks for inventing JavaScript'" %}
-  {% figure figure--center 2021/js-mopcon-2021-d1-note/dont-know.png "'窩不知道'" %}
+  {% figure figure--center 2021/mopcon-2021-d1-note/ydnjs.png "'Thanks for inventing JavaScript'" %}
+  {% figure figure--center 2021/mopcon-2021-d1-note/dont-know.png "'窩不知道'" %}
 
 
-#### Type
+### Type
 - 留意`String + Number`會回傳字串結果
 - `Array.prototype.sort()`預設是字典排序，要進行數字大小排列的話，需傳入callback function `((a, b) => a - b)`
 - 留意浮點數陷阱
@@ -41,11 +37,11 @@ tags:
 - JS的Number有其極限（[Number.MAX_SAFE_INTEGER](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/MAX_SAFE_INTEGER): `9007199254740991`），超過此範圍請改用`BigInt`或`String`型態來保存資料
 
 
-#### Hoisting
+### Hoisting
 - JS在執行前就會先做一些處理，此語言有編譯（compile）的特性
 
 
-#### This
+### This
 - `this`的值跟怎麼呼叫函式有關
   ```JavaScript
   document.querySelector('.a') // null
@@ -68,17 +64,17 @@ tags:
   - Perhaps the greatest benefit of using Arrow functions is with DOM-level methods (`setTimeout`, `setInterval`, `addEventListener`) that usually required some kind of closure, call, apply or bind to ensure the function executed in the proper scope.
 
 
-#### Prototype
+### Prototype
 - 原型鍊（prototype chain）：在當下的scope找不到相對應的屬性或方法時，就往親代的scope找
 - `arr.slice(1)`與`Array.prototype.slice.call(arr, 1)`做的是完全一樣的事，只是後者是將整個原型鍊全部寫出來
 
 
-#### async與event loop
+### async與event loop
 - 需意識到callback function並不保證它是非同步執行
 - 知道event loop中的web API、stack與task queue是什麼
 
 
-### TypeScript與其型別應用
+## 用Type建立Type：一起來當個TypeScript的型別魔術師
 - 泛型（generics）：讓型別也變成一種變數，可以根據不同的情況套用不同的型別
   ```TypeScript
   // 一般寫法，所有資料的型別皆已經被設定好
@@ -240,11 +236,11 @@ tags:
   ```
 
 
-### 透過UX來提升UU與UI
+## 善用UX來提升UU，打造滿足新手和專家的UI
 
 > 重點：想要做出同時滿足新手與專家使用的產品，在介面設計上應該注意什麼事情？
 
-#### 操作介面常見問題
+### 操作介面常見問題
 - 初次使用（產品）若無法完成任務，很容易導致挫折、進而不願意再次嘗試（沒有下一次機會了）
 - 介面一口氣提供了太多資訊，容易讓新手感到緊張、不知從何下手
 - 假設提供操作說明：或許有幫助，但新手也不易記住這些步驟，閱讀說明也會打斷操作流程（回頭一看也忘記自己處理到哪一個步驟）
@@ -252,14 +248,14 @@ tags:
 - 初次使用者 !== 新手，該使用者可能有使用類似產品的經驗
 
 
-#### 新手與專家對操作介面的共同需求
+### 新手與專家對操作介面的共同需求
 - 簡化資訊、進行資料分類、強調重點
 - 提供複數種操作方式，同時滿足新手與專家使用者（舉例：台鐵提供了時間與車次兩種訂票方式）
 - 使用現行標準、或使用者熟悉的元素（舉例：英文輸入使用與電腦鍵盤相同的排列方式）
 - 活用使用者經驗與記錄來提升操作效率（舉例：ATM詢問使用者是否將某功能加入「常用交易」清單內）
 
 
-#### 何謂UU
+### 何謂UU
 - 易用性、通用使用性
 - [Universal Usability](https://en.wikipedia.org/wiki/Universal_usability), products that are **usable for every citizen**.
   - Supporting a broad range of **hardware, software, and network access**. 介面應支援各種軟硬體與網路環境
@@ -267,14 +263,13 @@ tags:
   - Bridging the knowledge gap between what users know and what they need to know about a specific system. 不同知識背景與經驗的使用者都可以順利操作
 
 
-#### 線上QA
+### 線上QA
 - 當輸入元素的外觀十分相似時，如何避免用戶做出錯誤輸入（比如把停車場圓形磁卡丟到硬幣孔）
   - 可以配合亮燈提示，引導使用者根據不同步驟做出對應行為
 - 是否有推薦新手入門UIUX的相關書籍或網路資源？
   - 新手建議搭配實際案例來理解UX與UI，不建議直接從理論下手
 
-
 ## 參考文件
-- [你懂了JavaScript，也不懂JavaScript - Huli](https://hackmd.io/@mopcon/2021/%2FkDbKzxtOSdeagxMFSXsN5g)
-- [用Type建立Type：一起來當個TypeScript的型別魔術師 - PJCHENder](https://hackmd.io/@mopcon/2021/%2F9OEkm6vnRD2pr-Yyg_ry3A)
-- [善用UX來提升UU，打造滿足新手和專家的UI - 小魚](https://hackmd.io/@mopcon/2021/%2FqDPybFZoTb-G7qcOq2SB1Q)
+- [Huli: 你懂了 JavaScript，也不懂 JavaScript](https://mopcon.org/2021/schedule/2021006)
+- [PJCHENder: 用 Type 建立 Type：一起來當個 TypeScript 的型別魔術師](https://mopcon.org/2021/schedule/2021012)
+- [善用 UX 來提升 UU，打造滿足新手和專家的 UI](https://mopcon.org/2021/schedule/2021015)
