@@ -2,7 +2,7 @@
 title: 「X-Frame-Options、Same-origin policy、Cross-Origin Resource Sharing」相關筆記
 date: 2021-04-13 18:09:25
 categories:
-- Browser
+- Web security
 tags:
 ---
 
@@ -98,7 +98,7 @@ os: Windows_NT 10.0.18363 win32 x64
 ## 定義Cross-Origin Resource Sharing (CORS)
 - [MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS): CORS is an **HTTP-header based mechanism** that allows a server to indicate any other origins (domain, scheme, or port) than its own from which a browser should permit loading of resources.
 - [Google Developers](https://web.dev/cross-origin-resource-sharing/): Enabling CORS lets the server tell the browser it's permitted to use an additional origin.
-- When you want to get a public resource from a different origin, the resource-providing server needs to tell the browser "This origin where the request is coming from can access my resource". The browser remembers that and allows cross-origin resource sharing.
+  - When you want to get a public resource from a different origin, the resource-providing server needs to tell the browser "This origin where the request is coming from can access my resource". The browser remembers that and allows cross-origin resource sharing.
 
 
 ### 筆記
