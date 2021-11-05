@@ -92,7 +92,8 @@ typescript: 4.4.4
 1. `npm install --save typescript @types/node @types/react @types/react-dom @types/jest`
 1. package.json中的`scripts/build`內容改為`tsc`
 1. `npx tsc --init`
-1. 根據實際情況調整tsconfig.json中`rootDir`與`rootDir`的設定
+1. 根據實際情況調整tsconfig.json中`rootDir`與`rootDir`的設定（官方文件預設為`src`與`build`）
+1. 設定`jsx`為`preserve`（參考討論串：[Error when opening TSX file: Cannot use JSX unless '--jsx' flag is provided](https://github.com/Microsoft/vscode/issues/15814)）
 1. `.js`副檔名改為`.ts`或`.tsx`（enable JSX with TypeScript，參考[TS官方文件](https://www.typescriptlang.org/docs/handbook/jsx.html)）
 
 完整說明參考React官方文件：[Adding TypeScript to a Project](https://reactjs.org/docs/static-type-checking.html#adding-typescript-to-a-project)
