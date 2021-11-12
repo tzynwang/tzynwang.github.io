@@ -2,8 +2,8 @@
 title: Chrome Dev Summit 2021 keynote 筆記
 date: 2021-11-04 11:13:16
 categories:
-- Browser
-- CSS
+- [Browser]
+- [CSS]
 tags:
 ---
 
