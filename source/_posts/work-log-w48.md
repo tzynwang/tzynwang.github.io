@@ -34,9 +34,66 @@ tags:
 
 - 改為使用 class 的方式來建立並檢查兩個物件 `jackie` 與 `jackie2` 的 `logInfo`，也會發現 `logInfo` 其實是不是兩個 `jackie` 物件各自持有，而是兩個物件中的 `logInfo` 實際上是沿著 prototype chain 往回搜尋，並找到位於 constructor function (User) prototype object 中的 `logInfo`
 
+### `this` 指向的內容
+
+1. 透過 `new` 呼叫 function constructor 的時候，指向透過該 function constructor 新建立的物件
+1. function 透過 `.apply()`、`.call()`或呼叫`.bind()` 綁定對象時，`this` 指向那些提供給 `apply()`、`bind()`或`call()`的物件
+1. 沒有透過 `apply()`、`bind()`或 `call()`，直接經由某物件呼叫時，指向該物件（舉例：`user.logInfo()`是由 `user` 物件呼叫`.logInfo()`，`this` 指向 `user`）
+1. 以上皆非，則指向`undefined`（`strict mode` 時），或指向全域物件
+
+### class 中的 `static` 關鍵字
+
+> MDN: Neither static methods nor static properties can be called on instances of the class. Instead, they're called on the class itself.
+
+> MDN: Static methods are often utility functions, such as functions to create or clone objects, whereas static properties are useful for caches, fixed-configuration, or any other data you don't need to be replicated across instances.
+
+簡單來說就是只有 class 可以使用，而非給 class instance 操作的 properties 或 methods
+
+```js
+class ClassWithStaticMethod {
+  static staticProperty = 'someValue'
+  static staticMethod() {
+    return 'static method has been called.'
+  }
+  static {
+    console.log('Class static initialization block called')
+  }
+}
+
+console.log(ClassWithStaticMethod.staticProperty)
+// "someValue"
+console.log(ClassWithStaticMethod.staticMethod())
+// "static method has been called."
+
+const c = new ClassWithStaticMethod()
+console.log(c.staticProperty)
+// undefined
+console.log(c.staticMethod())
+// Uncaught TypeError: c.staticMethod is not a function
+```
+
+如以上展示，透過 `ClassWithStaticMethod` 建立的 instance c 無法取得 `staticProperty` 的值，也無法呼叫 `staticMethod()`
+
+### class 中的 `private` 關鍵字
+
+> 需注意 JavaScript 原生的 #private 與 TypeScript 的關鍵字 private 有所差異
+
+- JavaScript `#private`: 
+  - Private fields are **accessible on the class constructor** from inside the class declaration itself.
+  - It is a syntax error to refer to `#private` from out of scope. It is also a syntax error to refer to private fields that were not declared before they were called, or to attempt to **remove declared fields with `delete`**.
+- TypeScript keyword `private`: 
+  - Doesn't like `protected`, access is NOT allowed from the member (even from subclasses).
+  - Because private members aren’t visible to derived classes, a derived class **can’t increase its visibility**.
+  - TypeScript’s type system, `private` and `protected` are only enforced during type checking. This means that JavaScript runtime constructs like `in` or simple property lookup can still access a `private` or `protected` member.
+  - `private` also allows access **using bracket notation** during type checking. This makes `private`-declared fields potentially easier to access for things **like unit tests**, with the drawback that these fields are **soft private** and don’t strictly enforce privacy.
+
 ## 參考文件
 
-- [Constructor, operator "new"](https://javascript.info/constructor-new)
-- [Prototypes, inheritance](https://javascript.info/prototypes)
-- [Classes](https://javascript.info/classes)
+- [JAVASCRIPT.INFO: Constructor, operator "new"](https://javascript.info/constructor-new)
+- [JAVASCRIPT.INFO: Prototypes, inheritance](https://javascript.info/prototypes)
+- [JAVASCRIPT.INFO: Classes](https://javascript.info/classes)
+- [MDN: static](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/static)
+- [MDN: Private class features](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Private_class_fields)
+- [TypeScript: Classes](https://www.typescriptlang.org/docs/handbook/2/classes.html)
+- [You Don't Know JS: Determining `this`](https://github.com/getify/You-Dont-Know-JS/blob/1st-ed/this%20%26%20object%20prototypes/ch2.md#determining-this)
 - [`__proto__` VS. `prototype` in JavaScript](https://stackoverflow.com/questions/9959727/proto-vs-prototype-in-javascript)
