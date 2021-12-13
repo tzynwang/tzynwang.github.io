@@ -2,8 +2,8 @@
 title: 2021 第48週 學習記錄
 date: 2021-12-05 10:48:40
 categories:
-  - JavaScript
-  - TypeScript
+  - [JavaScript]
+  - [TypeScript]
 tags:
 ---
 
