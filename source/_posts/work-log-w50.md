@@ -9,9 +9,28 @@ tags:
 
 ## 總結
 
-TBD
+本週最大發現： `React.useEffect` 也有訂閱的功能；`useEffect` 也是支援傳入 dependency 變數的
+其餘筆記包含如何使用 MuiTabs 搭配 MuiTab
 
 ## 筆記
+
+### 使用變數或 enum 管理起始值、預設值
+
+```tx
+// 比如以下
+const CONDITION = {
+  page: 0,
+  query: ''
+}
+
+enum STEP {
+  ORDER = 'order',
+  SUMMARY = 'summary'
+}
+```
+
+- `CONDITION` 不但是 `ustState` 會運用到的起始值，同時也是作為後端 API 的 query 物件
+- 將購物車的分頁使用 `enum STEP` 來保存，增加步驟的可讀性，而並非只是透過數字來控制畫面上購物車內容的切換
 
 ### 換頁時維持勾選狀態
 
@@ -26,25 +45,11 @@ TBD
 
 ### MuiTabs 動態顯示對應內容
 
-```JSX
-const [tabsValue, setTabsValue] = useState(0);
-const handleTabsChange = (e, newValue) => {
-  setTabsValue(newValue);
-};
+<script src="https://gist.github.com/tzynwang/2e092e1929341a8b6b19793ff76f1894.js"></script>
 
-const dynamicContent = useMemo(() => {
-  /* 在 (tabs) value 變化時回傳不同的顯示內容  */
-}, [tabsValue]);
+- 邏輯如上，在 MuiTabs `onChange` 時修改其 `value`（`tabsValue`），其他元件再透過 `useMemo()` 訂閱 `tabsValue` 來動態產生對應使用者點選不同 tab 時應該顯示的內容
 
-<Tabs value={tabsValue} onChange={handleChange} aria-label="basic tabs example">
-  <Tab label="一隻狐" />
-  <Tab label="兩隻狐" />
-  <Tab label="三隻狐" />
-</Tabs>
-<div> {/* 然後這邊要根據使用者點擊不同的 MuiTab 來渲染不同內容，比如 dynamicContent.map(content => {...}) */} </div>
-```
-
-- 邏輯如上，在 MuiTabs `onChange` 時修改其 `value`（`tabsValue`），再透過 `useMemo()` 訂閱 `tabsValue` 來動態產生對應使用者點選不同 tab 時應該顯示的內容
+{% figure figure--center 2021/work-log-w50/MuiTabs.png %}
 
 ### React.useEffect with condition
 
