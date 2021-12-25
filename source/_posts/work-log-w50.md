@@ -16,7 +16,7 @@ tags:
 
 ### 使用變數或 enum 管理起始值、預設值
 
-```tx
+```ts
 // 比如以下
 const CONDITION = {
   page: 0,
