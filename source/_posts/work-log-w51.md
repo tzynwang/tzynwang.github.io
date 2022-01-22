@@ -1,5 +1,5 @@
 ---
-title: 2021 第51週 學習記錄
+title: 2021 第51週 學習記錄：實作複數條件搜尋
 date: 2021-12-25 16:01:08
 categories:
   - React
@@ -80,12 +80,6 @@ useEffect(() => {
 - 因為使用者點擊搜尋按鈕或對 `muiTextField` 按下 `Enter` 的 `handleFunctions` 皆有進行過 debounce 處理，故可避免搜尋連打的情況出現
 - 可以在維持 `nat` 搜尋條件下進行性別或每頁資料數量的調整
 
-## debounce v.s. throttle
-
-- Debounce: will bunch a series of sequential calls to a function **into a single call** to that function. It ensures that one notification is made for an event that fires multiple times. 塵埃落定後，執行一次
-- Throttle: will **delay executing** a function. It will **reduce** the notifications of an event that fires multiple times. 降低執行的次數
-
 ## 參考文件
 
 - [demo: debounce, throttle](http://demo.nimius.net/debounce_throttle/)
-- [Difference Between throttling and debouncing a function](https://stackoverflow.com/questions/25991367/difference-between-throttling-and-debouncing-a-function)

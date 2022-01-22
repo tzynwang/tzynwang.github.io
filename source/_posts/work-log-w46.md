@@ -1,5 +1,5 @@
 ---
-title: 2021 第46週 學習記錄
+title: 2021 第46週 學習記錄：CSS modules、React HOC、React router、debounce 與 throttle
 date: 2021-11-18 20:53:38
 categories:
 - [CSS]
@@ -138,8 +138,8 @@ const EnhancedComponent = higherOrderComponent(WrappedComponent);
   - `_.debounce(func, [wait=0], [options={}])` ([Official docs](https://lodash.com/docs/4.17.15#debounce)): Creates a debounced function that delays invoking `func` until after `wait` milliseconds have elapsed since the last time the debounced function was invoked.
   - `_.throttle(func, [wait=0], [options={}])` ([Official docs](https://lodash.com/docs/4.17.15#throttle)): Creates a throttled function that only invokes `func` at most once per every `wait` milliseconds.
 - 差異：
-  - debounce：某cb()**最後一次被觸發、並過了指定秒數後**才執行該cb()
-  - throttle：某cb()在**一段指定時間內最多只會執行一次**
+  - debounce: will bunch a series of sequential calls to a function **into a single call** to that function. It ensures that one notification is made for an event that fires multiple times. **最後一次被觸發、並過了指定秒數後**才執行該cb()
+  - throttle: will **delay executing** a function. It will **reduce** the notifications of an event that fires multiple times. 在**一段指定時間內最多只會執行一次**
   - 視覺參考：http://demo.nimius.net/debounce_throttle/
 
 
