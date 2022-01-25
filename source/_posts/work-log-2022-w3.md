@@ -8,6 +8,15 @@ tags:
 
 ## 總結
 
+本篇整理了 design patterns 中歸類為 creational design patterns 的相關筆記：
+- Factory Method
+- Abstract Factory
+- Builder
+- Prototype
+- Singleton
+
+Creational patterns 的關注點：provide various object **creation mechanisms**, which increase **flexibility** and **reuse** of existing code. 著眼點在「物件應該如何被建立」的 design patterns
+
 ## 筆記
 
 ### Factory Method
@@ -47,7 +56,20 @@ tags:
 
 ### Prototype
 
+- Prototype can help when you need to **save copies of Commands into history**.
+- Sometimes Prototype can be a **simpler alternative to Memento**. This works if the object, the state of which you want to store in the history, is fairly straightforward and doesn’t have links to external resources, or the links are easy to re-establish.
+
+<script src="https://gist.github.com/tzynwang/cdfd010f777a9394e21ac2f9378e4447.js"></script>
+
+- gist/prototype.ts 與 gist/builder.ts 的差異在於使用 `.clone()` 複製 `Pizza` 物件當下的狀態，並修改 clone 回傳出來的 `Pizza` 物件；透過 `.listPizzaSpec()` 可以發現修改 `.clone()` 後的新 `Pizza` 不會影響到被當作複製對象的原始 `Pizza`
+
 ### Singleton
+
+- Singleton is a creational design pattern that lets you ensure that a class **has only one instance**, while **providing a global access point** to this instance. 實作過的例子：推特專案中唯一一個 web socket instance，確保推特專案在開啟的時候永遠只會有一個 web socket instance 在連線，避免出現使用者重複進出聊天室的錯誤
+- 注意 redux 並不等於 singleton pattern，而是使用者選擇只維護一個唯一實例，這才讓 redux 保管的資料擁有 singleton 的特性
+- Implementation:
+  - Make the default `constructor` **private**, to prevent other objects from using the new operator with the Singleton class.
+ - Create a static creation method that acts as a constructor. Under the hood, **this method calls the private constructor to create an object** and saves it in a static field. All following calls to this method **return the cached object**.
 
 ## 參考文件
 
