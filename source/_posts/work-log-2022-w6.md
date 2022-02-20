@@ -1,5 +1,5 @@
 ---
-title: 2022 第5週 實作筆記：日期選取器
+title: 2022 第6週 實作筆記：日期選取器
 date: 2022-02-12 22:48:46
 categories:
   - React
@@ -12,8 +12,8 @@ tags:
 demo: https://tzynwang.github.io/react-double-date-range/
 目前版本之 repo: https://github.com/tzynwang/react-double-date-range/tree/feature/3-third-version
 
-{% figure figure--center 2022/work-log-2022-w5/createdAt.png %}
-{% figure figure--center 2022/work-log-2022-w5/updatedAt.png %}
+{% figure figure--center 2022/work-log-2022-w6/createdAt.png %}
+{% figure figure--center 2022/work-log-2022-w6/updatedAt.png %}
 
 已實作內容：
 
