@@ -15,9 +15,9 @@ tags:
 
 ## 步驟
 1. 開啟 terminal 後，輸入 `ssh-keygen -t ed25519 -C "your@email.here"`
-  - `ed25519` 是保存 SSH key 的檔案名稱
+  - `ed25519` 是產生 SSH key 的演算法
   - 若不需要搭配 email 產生 key 則 `-C "your@email.here"` 此 flag 與 email 一起移除
-2. 出現 `"Enter a file in which to save the key,”` 訊息後，按下 Enter
+2. 出現 `"Enter a file in which to save the key,”` 訊息後，可直接按下 Enter 使用預設的檔案名稱保存 SSH key 或輸入自訂的檔案名稱來進行儲存
 3. `secure passphrase` 可選擇略過不輸入
 4. `cd ~/.ssh` 後 `ls` 查看資料夾內容，應會有一組檔案 `id_ed25519` 與 `id_ed25519.pub` 以及 `config`，若沒有 `config` 則輸入 `touch ~/.ssh/config` 建立一個
    - `id_ed25519` 的內容是私鑰，而 `.pub` 檔案裡面保存的則是公鑰
