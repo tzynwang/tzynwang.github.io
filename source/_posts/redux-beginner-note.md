@@ -1,5 +1,5 @@
 ---
-title: 2022 第6週 學習筆記：redux 基礎與 Immer producer
+title: 2022 第8週 學習筆記：redux 基礎與 Immer producer
 date: 2022-02-26 18:52:03
 categories:
 - [React]
