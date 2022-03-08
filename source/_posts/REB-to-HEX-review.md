@@ -3,8 +3,6 @@ title: 專案「RGB to HEX converter」技術記錄
 date: 2021-04-01 15:28:09
 categories:
 tags:
-- ALPHA Camp assignment
-- Side Project
 ---
 
 ## 總結
