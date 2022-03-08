@@ -4,7 +4,6 @@ date: 2021-05-05 14:56:06
 categories:
 - JavaScript
 tags:
-- ALPHA Camp assignment
 ---
 
 <p class="codepen" data-height="265" data-theme-id="dark" data-default-tab="js,result" data-user="Charlie7779" data-slug-hash="YzNmOGY" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="A22: My Favorite Movies：按讚與刪除">
