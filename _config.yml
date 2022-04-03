@@ -25,7 +25,7 @@ pretty_urls:
 # Directory
 source_dir: source
 public_dir: public
-tag_dir: tags
+# tag_dir: tags
 archive_dir: archives
 category_dir: categories
 #code_dir: downloads/code
@@ -122,7 +122,7 @@ sitemap:
   path: sitemap.xml
   template: 
   rel: false
-  tags: true
+  tags: false
   categories: true
 
 # Local Search
