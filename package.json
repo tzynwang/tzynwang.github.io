@@ -5,14 +5,16 @@
   "scripts": {
     "build": "hexo generate",
     "clean": "hexo clean",
-    "deploy": "hexo deploy",
-    "server": "hexo server"
+    "server": "hexo server",
+    "deploy": "hexo clean && hexo deploy",
+    "cli": "npm install hexo-cli -g"
   },
   "hexo": {
-    "version": "5.3.0"
+    "version": "5.4.2"
   },
   "dependencies": {
     "hexo": "^5.0.0",
+    "hexo-cli": "^4.3.0",
     "hexo-deployer-git": "^3.0.0",
     "hexo-fbcomments": "^1.0.6",
     "hexo-generator-archive": "^1.0.0",
@@ -30,7 +32,6 @@
     "hexo-renderer-stylus": "^2.0.0",
     "hexo-server": "^2.0.0",
     "hexo-tag-figure": "^0.4.1",
-    "hexo-theme-landscape": "^0.0.3",
     "marked": "^2.0.1"
   }
 }
