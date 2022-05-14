@@ -23,7 +23,9 @@ react: 17.0.2
 <script src="https://gist.github.com/tzynwang/7409c396191607b250274efa9b04fbdd.js"></script>
 
 效果：掛載後根據目前的捲動位置判斷畫面是否（捲到）頂部，回傳 `boolean`
-備註：debounce 300 的反應稍微有點慢，如果視覺反饋要更即時的話，可將延遲降低到 50 至 100 左右
+備註：
+  - debounce 300 的反應稍微有點慢，如果視覺反饋要更即時的話，可將延遲降低到 50 至 100 左右
+  - Firefox 須透過手動設定才能開啟支援 CSS `backdrop-filter` 效果（參考 [Can I use](https://caniuse.com/?search=backdrop-filter)）
 
 ### 效果展示
 
@@ -36,3 +38,4 @@ react: 17.0.2
 
 ## 參考文件
 - [MDN: window.scrollY](https://developer.mozilla.org/en-US/docs/Web/API/Window/scrollY)
+- [MDN: backdrop-filter](https://developer.mozilla.org/en-US/docs/Web/CSS/backdrop-filter)
