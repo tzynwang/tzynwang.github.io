@@ -1,5 +1,5 @@
 ---
-title: 2022 第22週 實作筆記：使用 transform rotate() 實作過場動畫
+title: 2022 第23週 實作筆記：使用 transform rotate() 實作過場動畫
 date: 2022-06-08 16:41:45
 categories:
 - [CSS]
