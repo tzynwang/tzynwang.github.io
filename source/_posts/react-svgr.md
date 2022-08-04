@@ -54,7 +54,7 @@ tags:
 ## 參考文件
 
 - [SVGR: Webpack](https://react-svgr.com/docs/webpack/)
-- [MDN: <title> — the SVG accessible name element](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/title)
+- [MDN: `<title>` — the SVG accessible name element](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/title)
 - [TypeScript: Triple-Slash Directives](https://www.typescriptlang.org/docs/handbook/triple-slash-directives.html)
 - [What is the react-app-env.d.ts in a react typescript project for](https://stackoverflow.com/questions/67262914/what-is-the-react-app-env-d-ts-in-a-react-typescript-project-for)
 - [How to Start New React Application with Create React App and TypeScript](https://www.newline.co/@dmitryrogozhny/how-to-start-new-react-application-with-create-react-app-and-typescript--4298e606)
