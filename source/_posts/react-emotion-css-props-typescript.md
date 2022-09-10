@@ -1,5 +1,5 @@
 ---
-title: 2022 第34週 實作筆記：為 typescript react 專案設定 @emotion/react 的 css props
+title: 2022 第35週 實作筆記：為 typescript react 專案設定 @emotion/react 的 css props
 date: 2022-09-01 22:21:40
 categories:
 - [CSS]
