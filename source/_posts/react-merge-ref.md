@@ -30,6 +30,10 @@ tags:
 
 > Ref callbacks are another option, which are needed for some advanced cases. You pass a function into the element, and the function will be called back when the instance is created or destroyed. These have the type `(instance: T) => void`.
 
+補充：在程式碼第 7 行使用非匿名的 function declaration 即可在 react devTool 中看到 forwardRef component 的名稱。
+
+{% figure figure--center 2022/react-merge-ref/name-forwardRef-component.png %}
+
 ### mergeRef.ts
 
 - 第 8 行：當 ref 為的型別為 function 時，把元件實例或 HTML DOM 作為參數傳入
