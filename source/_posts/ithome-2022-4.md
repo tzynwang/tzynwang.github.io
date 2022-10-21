@@ -1,5 +1,5 @@
 ---
-title: 2022 第40週：鐵人賽 Modern Web 組「我們可以不要 component library 了嗎？」第 22 - 21 天
+title: 2022 第40週：鐵人賽 Modern Web 組「我們可以不要 component library 了嗎？」第 22 - 30 天
 date: 2022-10-09 22:07:09
 categories:
   - [2022鐵人賽]
