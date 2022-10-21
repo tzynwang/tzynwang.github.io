@@ -1,5 +1,5 @@
 ---
-title: 2022 第41週：白手起家的 react monorepo 設定筆記
+title: 2022 第41週 實作筆記：react monorepo
 date: 2022-10-15 10:29:47
 categories:
   - [monorepo]

@@ -1,5 +1,5 @@
 ---
-title: 2022 第42週：「TypeScript type predicates」使用筆記
+title: 2022 第42週 實作筆記：TypeScript type predicates
 date: 2022-10-21 19:45:14
 categories:
   - [TypeScript]
