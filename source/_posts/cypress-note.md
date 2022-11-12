@@ -27,8 +27,9 @@ cypress: 10.6.0
 在 cypress 中無法直接處理「（根據條件查詢後）某個 DOM 可能不存在」的情境（查詢後如果找不到該 DOM 會直接拋錯），而如果測試情境會有「執行某操作後，根據不同的條件，畫面上可能會出現 X 或 Y 元件（即不管查詢 X 或 Y 都有可能會得到「不存在」的結果）」，這種時候可透過下列方法來確認「到底是哪一個元件出現在畫面上」：
 
 ```ts
+// 先透過 cy.get() 抓取一個必定存在的 DOM
 cy.get('body').then(($body) => {
-  // 注意下一行是 cy.find() 而是 $body.find()
+  // 接著再從上一行取得的 body element 中確認目標 DOM 是否存在
   const isComponentX = !!$body.find('.here-is-the-condition').length > 0;
   if (isComponentX) {
     // 針對 component X 的測試腳本
