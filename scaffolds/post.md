@@ -1,6 +1,6 @@
 ---
-title: { { title } }
-date: { { date } }
+title: {{ title }}
+date: {{ date }}
 categories:
 tags:
 ---
@@ -9,7 +9,7 @@ tags:
 
 ## 版本與環境
 
-```text
+```plaintext
 hexo: 5.3.0
 hexo-cli: 4.2.0
 os: Windows_NT 10.0.18363 win32 x64
