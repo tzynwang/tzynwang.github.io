@@ -1,5 +1,5 @@
 ---
-title: 實用： yarn install --production=false 與 package.json 中的 resolutions
+title: yarn install --production=false 與 package.json 中的 resolutions
 date: 2023-02-21 20:11:34
 categories:
   - [Package Manager]
