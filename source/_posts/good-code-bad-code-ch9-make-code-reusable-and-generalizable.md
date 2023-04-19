@@ -7,15 +7,13 @@ categories:
 
 ## 總結
 
-此篇是 Good Code, Bad Code: Think like a software engineer 第九章（Make code reusable and generalizable）的閱讀筆記。以下是本書作者認為可以提昇程式碼複用性、泛用性的技巧：
+此篇是 Good Code, Bad Code: Think like a software engineer 第九章（Make code reusable and generalizable）的閱讀筆記。本章提出以下「可提昇程式碼複用性、泛用性」的技巧：
 
 1. 避免假設
 2. 避免全域狀態
 3. 謹慎處理預設回傳內容
 4. 避免非必要的參數
 5. 合理使用泛行
-
-以下是關於各類技巧的說明。
 
 ## 筆記
 
