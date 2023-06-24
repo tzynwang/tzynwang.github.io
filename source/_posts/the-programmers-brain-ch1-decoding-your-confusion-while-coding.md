@@ -2,6 +2,7 @@
 title: 閱讀筆記：The Programmer's Brain Chapter 1 Decoding your confusion while coding
 date: 2023-06-24 10:28:26
 categories:
+  - [General]
 ---
 
 ## 總結
@@ -33,7 +34,6 @@ categories:
 ### 閱讀時的認知活動
 
 閱讀程式碼時，通常會是上述三種認知過程在腦中交互發生，不會只有單一種認知活動。
-
 
 以「閱讀一張回報 bug 的文件」為例，工程師腦中的認知活動如下：
 
