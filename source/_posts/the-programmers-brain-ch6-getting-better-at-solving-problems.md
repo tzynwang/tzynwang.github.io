@@ -9,8 +9,6 @@ categories:
 
 此篇是 Good Code, Bad Code: Think like a software engineer 一書第六章（Getting better at solving programming problems）的閱讀筆記。此章旨在論述模型（model）的重要性。模型會影響一個工程師如何思考、解決問題；契合問題的模型能降低解題的困難度，反之則會讓問題變得更加複雜。
 
-
-
 ## 筆記
 
 ### 何謂模型（model）
