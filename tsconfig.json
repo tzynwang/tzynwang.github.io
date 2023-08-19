@@ -1,0 +1,14 @@
+{
+  "extends": "astro/tsconfigs/strict",
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "baseUrl": "./src",
+    "paths": {
+      "@Components/*": ["components/*"],
+      "@Models/*": ["models/*"],
+      "@Pages/*": ["pages/*"],
+      "@Styles/*": ["styles/*"],
+      "@Tools/*": ["tools/*"]
+    }
+  }
+}
