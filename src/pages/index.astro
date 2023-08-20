@@ -1,5 +1,6 @@
 ---
 import Html from '@Components/Html.astro';
+import TopBar from '@Components/TopBar.astro';
 import FeaturedPostLayout from '@Components/FeaturedPostLayout.astro';
 import ListedPostLayout from '@Components/ListedPostLayout.astro';
 import { sortPostByDate, getPostWithCompiledSummary } from '@Tools/post';
@@ -17,7 +18,7 @@ const postsWithCompiledSummary =
 ---
 
 <Html title="普通文組 2.0" description="tzyn blog v2 index">
-  <h1>普通文組 2.0</h1>
+  <TopBar />
   <section class="posts-wrapper">
     <div class="posts-container">
       <div class="featured-posts-container">
