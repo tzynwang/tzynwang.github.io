@@ -30,7 +30,7 @@ const postsWithCompiledSummary =
                 date={post.frontmatter.date}
                 tag={post.frontmatter.tag}
                 banner={post.frontmatter.banner}
-                summary={post.summary}
+                summary={post.frontmatter.summary || post.summary}
                 url={post.url}
               />
             </div>
@@ -74,6 +74,12 @@ const postsWithCompiledSummary =
     margin-left: auto;
   }
 
+  .featured-posts-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
   @container (min-width: 1200px) {
     .posts-container {
       max-width: 800px;
@@ -90,7 +96,7 @@ const postsWithCompiledSummary =
     .featured-posts-container {
       display: grid;
       grid-template-columns: 1.25fr 1fr 1fr 1.25fr;
-      grid-template-rows: repeat(2, clamp(200px, 50vh, 420px));
+      grid-template-rows: clamp(200px, 50vh, 420px) clamp(160px, 36vh, 360px);
       grid-template-areas:
         'post-1 post-0 post-0 post-2'
         'post-3 post-3 post-4 post-4';

@@ -4,6 +4,8 @@ title: 快速筆記：使用 URL 與 URLSearchParams 建構子處理網址
 date: 2023-08-09 19:52:24
 tag:
   - [Web api]
+summary: 此篇筆記會記錄如何使用 web api `URL` 與 `URLSearchParams` 來處理網址。
+banner: /2023/web-api-url-search-params/richy-great-MAYEkmn7G6E-unsplash.jpg
 ---
 
 ## 總結
