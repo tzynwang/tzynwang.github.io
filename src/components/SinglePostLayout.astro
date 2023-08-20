@@ -1,0 +1,42 @@
+---
+import Html from '@Components/Html.astro';
+import { dateFormatter } from '@Tools/formatter'
+import type { Post, Heading } from '@Models/GeneralTypes';
+
+interface Props {
+  frontmatter: Post;
+  headings: Heading[];
+}
+
+const { frontmatter, headings } = Astro.props;
+---
+
+<Html title={frontmatter.title} description={frontmatter.summary || ''}>
+  <main class="post">
+    <h1>{frontmatter.title}</h1>
+    <span>{dateFormatter(frontmatter.date)}</span>
+    <div>{frontmatter.tag.map((tag) => <span>{tag}</span>)}</div>
+    <h2>目錄</h2>
+    <ul>{headings.map((heading) => <li>{heading.text}</li>)}</ul>
+    <slot />
+  </main>
+</Html>
+
+<style>
+  .post {
+    padding: 24px;
+  }
+
+  @media screen and (min-width: 600px) {
+    .post {
+      padding: 24px 48px;
+    }
+  }
+
+  @media screen and (min-width: 900px) {
+    .post {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+  }
+</style>

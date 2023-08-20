@@ -1,0 +1,69 @@
+---
+import { dateFormatter } from '@Tools/formatter'
+import type { Post } from '@Models/GeneralTypes';
+
+interface Props extends Post {
+  url?: string;
+}
+
+const { title, date, tag, banner, summary, url } = Astro.props;
+---
+
+<div class="featured-post-wrapper">
+  <div class="featured-post-layout">
+    <div
+      class="banner-wrapper"
+      style={{
+        backgroundImage: banner
+          ? `url(${banner})`
+          : 'linear-gradient(45deg, rgba(120,119,126,1) 0%, rgba(112,112,177,1) 35%, rgba(143,196,207,1) 100%);',
+      }}
+    >
+    </div>
+    <div class="text-wrapper">
+      <a href={url}>{title}</a>
+      <div>{dateFormatter(date)}</div>
+      <div>
+        {tag.map((tag) => <span>{tag}</span>)}
+      </div>
+      <p set:html={summary} />
+    </div>
+  </div>
+</div>
+
+<style scoped>
+  .featured-post-wrapper {
+    container-type: inline-size;
+    height: 100%;
+  }
+
+  .featured-post-layout {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .banner-wrapper {
+    min-height: 200px;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
+
+  p {
+    margin: 0;
+    padding: 0;
+  }
+
+  @container (min-width: 520px) {
+    .featured-post-layout {
+      flex-direction: row;
+    }
+
+    .banner-wrapper,
+    .text-wrapper {
+      flex: 1 1 50%;
+    }
+  }
+</style>

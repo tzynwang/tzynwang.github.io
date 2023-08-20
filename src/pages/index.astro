@@ -1,0 +1,119 @@
+---
+import Html from '@Components/Html.astro';
+import FeaturedPostLayout from '@Components/FeaturedPostLayout.astro';
+import ListedPostLayout from '@Components/ListedPostLayout.astro';
+import { sortPostByDate, getPostWithCompiledSummary } from '@Tools/post';
+import type { Post } from '@Models/GeneralTypes';
+
+const allPosts = await Astro.glob<Post>('../pages/posts/**/*.md');
+const sortedPosts = sortPostByDate(allPosts);
+const firstTenPosts = sortedPosts.slice(0, 10);
+
+const postShouldWithSumary = firstTenPosts.slice(0, 5);
+const restOfPost = firstTenPosts.slice(5, firstTenPosts.length);
+
+const postsWithCompiledSummary =
+  getPostWithCompiledSummary(postShouldWithSumary);
+---
+
+<Html title="普通文組 2.0" description="tzyn blog v2 index">
+  <h1>普通文組 2.0</h1>
+  <section class="posts-wrapper">
+    <div class="posts-container">
+      <div class="featured-posts-container">
+        {
+          postsWithCompiledSummary.map((post, index) => (
+            <div class:list={['post', `post-${index}`]}>
+              <FeaturedPostLayout
+                title={post.frontmatter.title}
+                date={post.frontmatter.date}
+                tag={post.frontmatter.tag}
+                banner={post.frontmatter.banner}
+                summary={post.summary}
+                url={post.url}
+              />
+            </div>
+          ))
+        }
+      </div>
+      <div class="listed-posts-container">
+        {
+          restOfPost.map((post) => (
+            <ListedPostLayout
+              title={post.frontmatter.title}
+              date={post.frontmatter.date}
+              tag={post.frontmatter.tag}
+              url={post.url}
+            />
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</Html>
+
+<style>
+  .posts-wrapper {
+    container-type: inline-size;
+  }
+
+  .posts-container {
+    margin: 0 clamp(16px, 5vw, 24px);
+  }
+
+  .banner {
+    width: 320px;
+    height: 200px;
+    object-fit: cover;
+  }
+
+  .post-tag-container {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+  }
+
+  @container (min-width: 1200px) {
+    .posts-container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+  }
+
+  @container (min-width: 1400px) {
+    .posts-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .featured-posts-container {
+      display: grid;
+      grid-template-columns: 1.25fr 1fr 1fr 1.25fr;
+      grid-template-rows: repeat(2, clamp(200px, 50vh, 420px));
+      grid-template-areas:
+        'post-1 post-0 post-0 post-2'
+        'post-3 post-3 post-4 post-4';
+      gap: 16px;
+    }
+
+    .post-0 {
+      grid-area: post-0;
+    }
+
+    .post-1 {
+      grid-area: post-1;
+    }
+
+    .post-2 {
+      grid-area: post-2;
+    }
+
+    .post-3 {
+      grid-area: post-3;
+    }
+
+    .post-4 {
+      grid-area: post-4;
+    }
+  }
+</style>

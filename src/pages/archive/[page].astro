@@ -1,0 +1,63 @@
+---
+import Html from '@Components/Html.astro';
+import { sortPostByDate } from '@Tools/post';
+import type {
+  MarkdownInstance,
+  Post,
+  GetStaticPathsOptions,
+  Page,
+} from '@Models/GeneralTypes';
+
+export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
+  const allPosts = await Astro.glob<Post>('../posts/**/*.md');
+  const sortedPosts = sortPostByDate(allPosts);
+  return paginate(sortedPosts, { pageSize: 10 });
+}
+
+// All paginated data is passed on the "page" prop
+const page: Page<MarkdownInstance<Post>> = Astro.props.page;
+---
+
+<Html title="普通文組 2.0" description="tzyn blog v2 index">
+  <h1>普通文組 2.0</h1>
+  {
+    page.data.map((post) => (
+      <li>
+        <a href={post.url}>{post.frontmatter.title}</a>
+        <div>{post.frontmatter.date}</div>
+        <ul>
+          {post.frontmatter.tag.map((tag) => (
+            <li>{tag}</li>
+          ))}
+        </ul>
+      </li>
+    ))
+  }
+  <div class="pagenation-wrapper">
+    {page.url.prev && <a href={page.url.prev}>prev page</a>}
+    {
+      Array.from({ length: page.lastPage }, (_, i) => i + 1).map(
+        (pageNumber) => (
+          <a
+            href={`/archive/${pageNumber}`}
+            class={pageNumber === page.currentPage ? 'current-page' : ''}
+          >
+            {pageNumber}
+          </a>
+        )
+      )
+    }
+    {page.url.next && <a href={page.url.next}>next page</a>}
+  </div>
+</Html>
+
+<style>
+  .pagenation-wrapper {
+    margin: 16px 0;
+  }
+
+  .current-page {
+    color: #000;
+    text-decoration: none;
+  }
+</style>
