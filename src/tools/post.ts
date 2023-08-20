@@ -8,6 +8,18 @@ export function sortPostByDate(posts: MarkdownInstance<Post>[]) {
   );
 }
 
+export function groupPostByYear(posts: MarkdownInstance<Post>[]) {
+  const yearsMap: Record<string, MarkdownInstance<Post>[]> = {};
+  posts.forEach((post) => {
+    const y = dayjs(post.frontmatter.date).format('YYYY');
+    if (!yearsMap[y]) {
+      yearsMap[y] = [];
+    }
+    yearsMap[y].push(post);
+  });
+  return yearsMap;
+}
+
 export function getPostWithCompiledSummary(posts: MarkdownInstance<Post>[]) {
   return posts.map((post) => {
     const compiledContent = post.compiledContent();
