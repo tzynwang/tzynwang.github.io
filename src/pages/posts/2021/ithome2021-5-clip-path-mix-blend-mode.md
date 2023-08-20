@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: 30天挑戰：「clip-path搭配mix-blend-mode製作疊圖文字」技術記錄
 date: 2021-08-13 08:38:15
 tag:

@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: 30天挑戰：「設定input autofill樣式」技術記錄
 date: 2021-08-15 09:29:23
 tag:

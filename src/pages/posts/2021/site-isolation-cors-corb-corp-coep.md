@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: 「CORP、COEB與CORP以及spectre attack」相關筆記
 date: 2021-10-26 10:47:48
 tag:

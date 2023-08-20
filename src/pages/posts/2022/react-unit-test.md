@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: 2022 第9週 實作筆記：create-react-app 與單元測試
 date: 2022-03-07 19:59:59
 tag:

@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: 「JavaScript初級面試題目」相關筆記
 date: 2021-10-18 13:52:32
 tag:

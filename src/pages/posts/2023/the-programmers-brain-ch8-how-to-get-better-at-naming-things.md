@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: 閱讀筆記：The Programmer's Brain Chapter 8 How to get better at naming things
 date: 2023-08-03 20:53:52
 tag:

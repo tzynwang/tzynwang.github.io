@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: 閱讀筆記：Good Code, Bad Code Chapter 10 Unit testing principles
 date: 2023-04-19 19:48:03
 tag:

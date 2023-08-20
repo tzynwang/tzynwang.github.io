@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: 從零開始重寫：餐廳清單（Express版）複數條件篩選
 date: 2021-07-06 15:25:04
 tag:

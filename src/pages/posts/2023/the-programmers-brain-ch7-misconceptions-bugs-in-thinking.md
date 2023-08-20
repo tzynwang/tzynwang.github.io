@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: 閱讀筆記：The Programmer's Brain Chapter 7 Misconceptions -- Bugs in thinking
 date: 2023-07-31 20:06:27
 tag:

@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: 閱讀筆記：Good Code, Bad Code Chapter 4 Errors
 date: 2023-03-19 15:11:59
 tag:

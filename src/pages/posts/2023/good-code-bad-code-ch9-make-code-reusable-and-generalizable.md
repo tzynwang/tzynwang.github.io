@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: 閱讀筆記：Good Code, Bad Code Chapter 9 Make code reusable and generalizable
 date: 2023-04-12 19:24:18
 tag:

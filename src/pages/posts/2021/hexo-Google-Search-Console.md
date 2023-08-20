@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: Submit to Google Search Console, SEO settings
 date: 2021-02-11 17:03:29
 tag:

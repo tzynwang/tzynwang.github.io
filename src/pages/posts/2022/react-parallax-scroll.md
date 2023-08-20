@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: 2022 第20週 實作筆記：在 React APP 中實作滾動視差
 date: 2022-05-21 15:03:26
 tag:

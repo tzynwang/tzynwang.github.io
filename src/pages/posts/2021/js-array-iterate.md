@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: 「JavaScript陣列遍歷」相關筆記
 date: 2021-03-27 09:37:48
 tag:

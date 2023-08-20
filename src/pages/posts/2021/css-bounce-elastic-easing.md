@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: 「Bringing bounce and elastic easing to CSS | HTTP 203」相關筆記
 date: 2021-12-01 23:10:02
 tag:

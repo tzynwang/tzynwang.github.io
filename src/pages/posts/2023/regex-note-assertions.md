@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: 正規表達式筆記：斷言（assertions）
 date: 2023-04-29 16:48:58
 tag:

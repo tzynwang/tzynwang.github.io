@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: 正規表達式筆記：群與反向參考（groups and backreferences）
 date: 2023-05-09 19:11:06
 tag:

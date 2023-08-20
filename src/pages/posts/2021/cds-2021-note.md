@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: Chrome Dev Summit 2021 keynote 筆記
 date: 2021-11-04 11:13:16
 tag:

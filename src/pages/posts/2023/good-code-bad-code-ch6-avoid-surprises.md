@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: 閱讀筆記：Good Code, Bad Code Chapter 6 Avoid surprises
 date: 2023-03-29 19:15:27
 tag:

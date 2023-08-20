@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: 2022 第34週 實作筆記：單色螢光筆功能
 date: 2022-08-26 21:20:07
 tag:

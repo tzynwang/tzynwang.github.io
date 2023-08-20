@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: 2022 第38週：鐵人賽 Modern Web 組「我們可以不要 component library 了嗎？」第 8 - 14 天
 date: 2022-09-25 13:22:06
 tag:

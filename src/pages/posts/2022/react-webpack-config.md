@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: 2022 第4週 實作筆記：React App 與 webpack
 date: 2022-01-28 20:22:42
 tag:

@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: 2022 第25週 學習筆記：在 React App 中對應 race condition
 date: 2022-06-25 12:01:10
 tag:

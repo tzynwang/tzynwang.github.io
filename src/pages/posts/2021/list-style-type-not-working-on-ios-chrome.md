@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: 為什麼iOS上的Chrome沒有呈現設定好的list-style-type
 date: 2021-04-22 11:53:12
 tag:

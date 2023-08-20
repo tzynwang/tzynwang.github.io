@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: 30天挑戰：「CSS progress bar (stepper) 」技術記錄
 date: 2021-08-05 10:48:24
 tag:

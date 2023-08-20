@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: 對 CSS text-decoration underline 加上動畫效果
 date: 2023-02-02 19:14:49
 tag:

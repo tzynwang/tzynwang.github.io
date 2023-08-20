@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: 「create-react-app template」實作筆記
 date: 2022-02-05 19:18:59
 tag:

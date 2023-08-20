@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: MOPCON 2021 第一天之JS、前端相關內容之議程筆記
 date: 2021-10-23 16:47:32
 tag:

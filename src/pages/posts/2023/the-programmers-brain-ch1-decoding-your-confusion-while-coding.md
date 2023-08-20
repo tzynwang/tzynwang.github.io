@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: 閱讀筆記：The Programmer's Brain Chapter 1 Decoding your confusion while coding
 date: 2023-06-24 10:28:26
 tag:

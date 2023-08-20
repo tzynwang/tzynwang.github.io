@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: 「z-index與stacking context」相關筆記
 date: 2021-08-16 13:33:27
 tag:

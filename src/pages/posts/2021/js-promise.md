@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: 「從Callback到Promise」相關筆記
 date: 2021-07-19 13:02:58
 tag:

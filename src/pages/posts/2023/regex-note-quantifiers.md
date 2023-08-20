@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: 正規表達式筆記：量詞（quantifiers）
 date: 2023-05-01 12:49:38
 tag:

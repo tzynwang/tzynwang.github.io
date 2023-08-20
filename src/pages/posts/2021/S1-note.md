@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: ALPHA Camp 2-1 S1作業：技術筆記
 date: 2021-04-20 09:42:02
 tag:

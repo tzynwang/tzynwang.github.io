@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: 「X-Frame-Options、Same-origin policy、Cross-Origin Resource Sharing」相關筆記
 date: 2021-04-13 18:09:25
 tag:

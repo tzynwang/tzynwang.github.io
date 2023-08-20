@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: 2022 第6週 實作筆記：日期選取器
 date: 2022-02-12 22:48:46
 tag:

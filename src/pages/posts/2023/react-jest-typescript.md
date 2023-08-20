@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: 在不使用 create-react-app 的情況下為 TypeScript React 專案設定 jest
 date: 2023-04-23 20:11:02
 tag:

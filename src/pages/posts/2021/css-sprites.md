@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: 「CSS Sprites」相關筆記
 date: 2021-09-01 14:14:50
 tag:

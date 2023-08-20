@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: 「使用passport middleware實作登入系統」相關筆記
 date: 2021-06-24 13:41:18
 tag:

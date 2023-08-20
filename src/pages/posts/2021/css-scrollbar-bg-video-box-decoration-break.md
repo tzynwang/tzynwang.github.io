@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: 「捲軸樣式、影片背景與box-decoration-break」相關筆記
 date: 2021-08-22 16:30:06
 tag:

@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: 2022 第41週 實作筆記：react monorepo
 date: 2022-10-15 10:29:47
 tag:

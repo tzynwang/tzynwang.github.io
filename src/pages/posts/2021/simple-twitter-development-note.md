@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: Alpha Camp結業專案「Simple Twitter」開發記錄
 date: 2021-10-03 13:31:43
 tag:

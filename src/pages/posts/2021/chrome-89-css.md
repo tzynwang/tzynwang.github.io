@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: DevTools與CSS有關的新功能（Chrome 89）
 date: 2021-03-03 19:22:14
 tag:

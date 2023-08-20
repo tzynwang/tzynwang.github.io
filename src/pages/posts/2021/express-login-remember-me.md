@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: 作業功能擴充：讓老爸的私房錢「可以記住使用者的登入狀態」
 date: 2021-07-10 15:13:24
 tag:

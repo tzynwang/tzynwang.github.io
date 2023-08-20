@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: Add 404 page
 date: 2021-02-16 09:36:19
 tag:
@@ -33,7 +33,7 @@ os: Windows_NT 10.0.18363 win32 x64
 
 ```markdown
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: 404
 permalink: /404.html
 ---

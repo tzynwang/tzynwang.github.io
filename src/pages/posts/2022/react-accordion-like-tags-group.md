@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: 2022 第27週 實作筆記：手風琴 (accordion) 分組元件
 date: 2022-07-10 10:26:37
 tag:

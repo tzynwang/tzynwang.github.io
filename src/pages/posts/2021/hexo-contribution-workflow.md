@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: Contribution workflow note&#58; document update
 date: 2021-02-14 09:53:37
 tag:

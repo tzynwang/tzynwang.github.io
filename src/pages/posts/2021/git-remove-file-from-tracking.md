@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: 「git stop tracking files」相關筆記
 date: 2021-05-22 13:47:48
 tag:

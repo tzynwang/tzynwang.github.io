@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: MUI Box Style override
 date: 2022-03-06 11:43:22
 tag:

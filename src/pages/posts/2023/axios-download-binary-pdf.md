@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: 快速筆記：使用 axios 下載後端回傳的 pdf binary
 date: 2023-06-02 19:42:22
 tag:

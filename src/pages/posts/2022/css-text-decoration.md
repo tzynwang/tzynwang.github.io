@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: 「CSS 字體底線樣式」相關筆記
 date: 2022-04-12 22:05:12
 tag:

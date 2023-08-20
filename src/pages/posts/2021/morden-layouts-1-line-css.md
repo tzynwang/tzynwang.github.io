@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: 「10 modern layouts in 1 line of CSS」相關筆記
 date: 2021-03-07 12:36:03
 tag:

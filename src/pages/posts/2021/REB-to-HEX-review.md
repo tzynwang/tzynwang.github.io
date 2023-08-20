@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: 專案「RGB to HEX converter」技術記錄
 date: 2021-04-01 15:28:09
 tag:

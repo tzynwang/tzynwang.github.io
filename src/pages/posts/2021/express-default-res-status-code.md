@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: 「Express response default statusCode」相關筆記
 date: 2021-09-30 21:25:16
 tag:

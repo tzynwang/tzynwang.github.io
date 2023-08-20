@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: 自主練習專案「grid-template-areas generator」技術記錄
 date: 2021-03-24 12:18:30
 tag:

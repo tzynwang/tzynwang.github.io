@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: 開發筆記：設定 dayjs timezone
 date: 2023-05-13 14:55:02
 tag:

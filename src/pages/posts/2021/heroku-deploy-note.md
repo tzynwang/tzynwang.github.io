@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: TODO：「部屬Express.js App至Heroku」
 date: 2021-06-23 15:48:43
 tag:

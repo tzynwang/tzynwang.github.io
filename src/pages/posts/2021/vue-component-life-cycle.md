@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: 「Vue component生命週期」相關筆記
 date: 2021-10-08 14:48:27
 tag:

@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: 「Writing Good Alt Text - HTTP 203」相關筆記
 date: 2021-03-09 12:17:45
 tag:

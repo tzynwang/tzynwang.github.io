@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: 30天挑戰：「CSS雙面卡片與動畫」 相關筆記
 date: 2021-08-23 10:00:47
 tag:

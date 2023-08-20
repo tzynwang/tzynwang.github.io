@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: 2022 第10週 實作筆記：webpack scoped styles (index.module.(s)css)
 date: 2022-03-13 19:55:03
 tag:

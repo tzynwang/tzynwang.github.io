@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: 2022 第1週 學習記錄： React 表單元件與動態內容
 date: 2022-01-07 23:25:47
 tag:

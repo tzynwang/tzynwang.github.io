@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: 閱讀筆記：Good Code, Bad Code Chapter 2 Layers of abstraction
 date: 2023-03-07 20:04:23
 tag:

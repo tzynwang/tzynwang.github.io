@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: 使用 CSS `content` 與 `counter` 設定序列的數字樣式
 date: 2023-05-26 19:35:39
 tag:

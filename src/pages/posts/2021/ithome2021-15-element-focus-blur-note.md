@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: 30天挑戰：「為什麼這個input沒有觸發@blur="event"」問題解析
 date: 2021-09-02 09:49:30
 tag:

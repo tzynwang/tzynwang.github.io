@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: 30天挑戰：「漢堡按鈕動畫與cubic-bezier()」 相關筆記
 date: 2021-08-17 10:11:42
 tag:

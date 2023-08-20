@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: 自主練習專案「日本文學經典50」技術記錄與反省
 date: 2021-03-23 13:16:10
 tag:

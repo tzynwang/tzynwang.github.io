@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: CSS 筆記：Logical properties 中的 margin-inline-end
 date: 2022-07-12 19:43:20
 tag:

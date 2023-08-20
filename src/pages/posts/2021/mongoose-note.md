@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: Alpha Camp「2-3 老爸的私房錢（簡易記帳APP）」技術記錄
 date: 2021-05-24 13:38:45
 tag:

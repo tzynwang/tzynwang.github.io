@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: 2022 第45週 試用筆記：HTMLImageElement.srcset
 date: 2022-11-12 21:25:59
 tag:

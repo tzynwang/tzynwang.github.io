@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: 2022 第48週 學習筆記：CSS 中的顏色格式與人眼視覺
 date: 2022-12-03 16:29:33
 tag:

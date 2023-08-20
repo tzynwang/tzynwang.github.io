@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: 在 MUI 5 中讓自定義的 CSS 樣式擁有較高的權重
 date: 2023-01-26 20:37:22
 tag:

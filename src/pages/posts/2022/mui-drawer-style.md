@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: MUI Drawer 樣式客製
 date: 2022-01-16 22:15:18
 tag:

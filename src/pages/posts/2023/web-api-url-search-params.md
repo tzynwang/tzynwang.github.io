@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: 快速筆記：使用 URL 與 URLSearchParams 建構子處理網址
 date: 2023-08-09 19:52:24
 tag:

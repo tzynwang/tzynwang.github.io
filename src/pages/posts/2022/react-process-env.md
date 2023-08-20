@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: 2022 第13週 學習筆記：前端專案中的環境變數
 date: 2022-04-03 21:40:30
 tag:

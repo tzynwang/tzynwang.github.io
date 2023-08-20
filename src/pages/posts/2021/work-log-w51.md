@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: 2021 第51週 學習記錄：實作複數條件搜尋
 date: 2021-12-25 16:01:08
 tag:

@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: 閱讀筆記：The Programmer's Brain Chapter 6 Getting better at solving programming problems
 date: 2023-07-26 19:05:19
 tag:

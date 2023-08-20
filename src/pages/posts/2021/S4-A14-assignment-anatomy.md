@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: ALPHA Camp 履歷網頁作業：內容解析
 date: 2021-03-20 21:06:49
 tag:

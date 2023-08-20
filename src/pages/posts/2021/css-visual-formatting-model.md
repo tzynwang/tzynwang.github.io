@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: 「CSS Visual Formatting Model」相關筆記
 date: 2021-08-26 11:43:15
 tag:

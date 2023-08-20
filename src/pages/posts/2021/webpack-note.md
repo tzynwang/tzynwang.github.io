@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: 「webpack環境設置步驟」相關筆記
 date: 2021-06-12 11:02:00
 tag:

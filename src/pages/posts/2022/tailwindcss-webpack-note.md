@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: tailwindcss 與 typescript 快速試用筆記
 date: 2022-05-24 19:48:53
 tag:

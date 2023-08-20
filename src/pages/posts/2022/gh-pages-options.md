@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: gh-pages 部屬選項
 date: 2022-06-01 21:57:11
 tag:

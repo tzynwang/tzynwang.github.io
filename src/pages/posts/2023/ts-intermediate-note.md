@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: 2023 第2週 學習筆記：Frontend Masters Intermediate TypeScript
 date: 2023-01-14 09:01:59
 tag:

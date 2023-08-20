@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: 30天挑戰：「純CSS製作:hover後顯示搜尋欄位」技術記錄
 date: 2021-08-09 10:17:00
 tag:

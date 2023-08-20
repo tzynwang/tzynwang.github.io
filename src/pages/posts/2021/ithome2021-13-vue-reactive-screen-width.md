@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: 30天挑戰：「Vue與viewport size」技術記錄
 date: 2021-08-29 09:58:26
 tag:

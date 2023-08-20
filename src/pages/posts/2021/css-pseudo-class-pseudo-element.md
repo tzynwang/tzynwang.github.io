@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: 「CSS pseudo class與pseudo element」相關筆記
 date: 2021-09-05 13:16:09
 tag:

@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: 「JavaScript與parser blocking」相關筆記
 date: 2021-09-27 10:50:12
 tag:

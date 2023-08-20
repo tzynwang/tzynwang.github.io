@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: 30天挑戰：「Vue project與SCSS」相關筆記
 date: 2021-08-27 09:25:15
 tag:

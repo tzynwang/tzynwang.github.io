@@ -1,8 +1,8 @@
 ---
-import Html from '@Components/Html.astro';
-import TopBar from '@Components/TopBar.astro';
-import FeaturedPostLayout from '@Components/FeaturedPostLayout.astro';
-import ListedPostLayout from '@Components/ListedPostLayout.astro';
+import Html from '@Components/layout/Html.astro';
+import TopBar from '@Components/element/TopBar.astro';
+import FeaturedPostLayout from '@Components/layout/FeaturedPostLayout.astro';
+import ListedPostLayout from '@Components/layout/ListedPostLayout.astro';
 import { sortPostByDate, getPostWithCompiledSummary } from '@Tools/post';
 import type { Post } from '@Models/GeneralTypes';
 

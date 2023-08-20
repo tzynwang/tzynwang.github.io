@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: 2022 第29週 實作筆記：發佈 npm 套件 usePreventLeave
 date: 2022-07-23 11:18:41
 tag:

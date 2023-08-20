@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: 「pass by value、pass by reference、深拷貝」相關筆記
 date: 2021-04-18 16:43:24
 tag:

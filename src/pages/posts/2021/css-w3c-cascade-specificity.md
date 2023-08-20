@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: 「CSS Cascading and Inheritance Level 4」相關筆記
 date: 2021-08-28 10:04:33
 tag:

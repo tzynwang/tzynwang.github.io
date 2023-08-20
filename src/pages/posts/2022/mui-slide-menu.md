@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: 2022 第16週 實作筆記：Mui 滑動式清單
 date: 2022-04-23 11:35:33
 tag:

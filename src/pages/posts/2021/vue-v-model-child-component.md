@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: 「Vue：在子代元件實作雙向資料綁定」相關筆記
 date: 2021-10-25 12:20:09
 tag:

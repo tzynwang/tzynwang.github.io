@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: TypeScript 觀摩筆記：React.PropsWithChildren 與 React.FC
 date: 2022-09-09 20:22:41
 tag:

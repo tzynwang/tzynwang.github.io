@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: SSH Keys for GitHub
 date: 2022-02-22 20:01:32
 tag:

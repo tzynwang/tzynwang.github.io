@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: VSCode擴充套件（Extensions）與自訂snippets
 date: 2021-03-04 09:27:50
 tag:

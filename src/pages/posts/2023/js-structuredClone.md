@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: JavaScript 原生深拷貝功能：structuredClone
 date: 2023-05-20 12:48:14
 tag:

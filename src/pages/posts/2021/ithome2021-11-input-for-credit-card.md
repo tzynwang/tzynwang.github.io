@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: 30天挑戰：「信用卡資料的inputmode設定」 相關筆記
 date: 2021-08-25 15:01:04
 tag:

@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: 在前端 React APP 專案中混用 ESM 與 CommonJS
 date: 2022-03-30 20:16:11
 tag:

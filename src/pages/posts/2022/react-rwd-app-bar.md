@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: 2022 第17週 實作筆記：RWD 側欄
 date: 2022-04-29 22:23:52
 tag:

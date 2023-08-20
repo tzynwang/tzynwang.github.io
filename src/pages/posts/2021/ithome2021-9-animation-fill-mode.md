@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: 30天挑戰：「CSS簡易動畫」 相關筆記
 date: 2021-08-21 06:19:25
 tag:

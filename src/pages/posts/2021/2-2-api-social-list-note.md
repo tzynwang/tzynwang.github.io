@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: Alpha Camp「2-2 社群名單」技術記錄
 date: 2021-05-04 19:59:34
 tag:

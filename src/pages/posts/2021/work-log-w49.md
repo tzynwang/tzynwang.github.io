@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: 2021 第49週 學習記錄：MUI 客製元件外觀
 date: 2021-12-11 22:52:01
 tag:

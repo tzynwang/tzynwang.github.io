@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: 2022 第33週 學習筆記：手刻對話框元件
 date: 2022-08-20 09:18:01
 tag:

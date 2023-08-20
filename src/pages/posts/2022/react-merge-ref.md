@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: 2022 第36週 實作筆記：ref merging
 date: 2022-09-10 13:35:22
 tag:

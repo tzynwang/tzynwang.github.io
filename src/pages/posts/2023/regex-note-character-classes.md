@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: 正規表達式筆記：字元類（character classes）
 date: 2023-04-30 14:26:01
 tag:

@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: 「React Error Boundaries」實作筆記
 date: 2022-01-29 22:17:24
 tag:

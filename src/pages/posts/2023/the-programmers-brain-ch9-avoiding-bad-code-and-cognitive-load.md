@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: 閱讀筆記：The Programmer's Brain Chapter 9 Avoiding bad code and cognitive load -- Two frameworks
 date: 2023-08-17 19:52:10
 tag:

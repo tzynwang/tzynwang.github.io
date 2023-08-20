@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: 2021 第47週 學習記錄：TypeScript
 date: 2021-11-27 12:51:14
 tag:

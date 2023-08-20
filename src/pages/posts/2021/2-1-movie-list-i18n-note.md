@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: Alpha Camp「2-1 電影清單之按讚與刪除」技術記錄
 date: 2021-05-05 14:56:06
 tag:

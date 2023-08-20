@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: 「How JPEG Works」相關筆記
 date: 2021-03-28 16:02:12
 tag:

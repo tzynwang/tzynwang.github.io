@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: 「Inside look at modern web browser」相關筆記
 date: 2021-04-23 11:54:43
 tag:

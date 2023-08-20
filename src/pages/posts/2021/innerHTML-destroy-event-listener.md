@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: 為什麼使用innerHTML對元素新增內容後，該元素「子代」的事件監聽器失效？
 date: 2021-05-25 18:32:01
 tag:

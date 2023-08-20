@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: 30天挑戰：「使用SCSS搭配Vue實作dark mode」技術記錄
 date: 2021-08-07 09:02:13
 tag:

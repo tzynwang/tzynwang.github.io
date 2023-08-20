@@ -1,5 +1,5 @@
 ---
-layout: '@Components/SinglePostLayout.astro'
+layout: '@Components/pages/SinglePostLayout.astro'
 title: 「Express Handlebars 取得父層變數內容」相關筆記
 date: 2021-05-14 21:11:16
 tag:
