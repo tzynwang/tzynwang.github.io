@@ -3,6 +3,7 @@
   padding: 0;
   box-sizing: content-box;
   font-family: 'Noto Sans TC', sans-serif;
+  color: rgba(0, 0, 0, 0.9);
 }
 
 html {
@@ -26,26 +27,28 @@ li {
   list-style-position: inside;
 }
 
+li li {
+  padding-left: 16px;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
 h1,
 h2 {
   margin: 16px 0;
+  color: #4c5958;
 }
 
 h3 {
   margin: 8px 0;
+  color: #4c5958;
 }
 
 p {
   margin: 16px 0;
-}
-
-p code {
-  position: relative;
-  top: -2px;
-  display: inline-block;
-  padding: 2px 4px;
-  background-color: #10403b;
-  color: rgb(255, 255, 255, 0.8);
 }
 
 blockquote {
@@ -60,4 +63,11 @@ pre {
 code,
 code span {
   font-family: monospace;
+}
+
+hr {
+  width: 100%;
+  height: 1px;
+  margin: 16px 0;
+  background-color: #4c5958;
 }
