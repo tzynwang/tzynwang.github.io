@@ -1,5 +1,6 @@
 ---
-import { dateFormatter } from '@Tools/formatter'
+import Tag from '@Components/Tag.astro';
+import { dateFormatter } from '@Tools/formatter';
 import type { Post } from '@Models/GeneralTypes';
 
 interface Props extends Pick<Post, 'title' | 'date' | 'tag'> {
@@ -13,7 +14,7 @@ const { title, date, tag, url } = Astro.props;
   <div>{dateFormatter(date)}</div>
   <a href={url}>{title}</a>
   <div class="tag-container">
-    {tag.map((tag) => <span>{tag}</span>)}
+    {tag.map((tag) => <Tag>{tag}</Tag>)}
   </div>
 </li>
 

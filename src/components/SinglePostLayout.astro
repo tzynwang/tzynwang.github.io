@@ -1,6 +1,9 @@
 ---
 import Html from '@Components/Html.astro';
-import { dateFormatter } from '@Tools/formatter'
+import Container from '@Components/Container.astro';
+import ContainerNavLink from '@Components/ContainerNavLink.astro';
+import Tag from '@Components/Tag.astro';
+import { dateFormatter } from '@Tools/formatter';
 import type { Post, Heading } from '@Models/GeneralTypes';
 
 interface Props {
@@ -12,31 +15,16 @@ const { frontmatter, headings } = Astro.props;
 ---
 
 <Html title={frontmatter.title} description={frontmatter.summary || ''}>
-  <main class="post">
+  <Container>
+    <ContainerNavLink>
+      <a href="/">回首頁</a>
+      <a href="/archive">回全文章歸檔</a>
+    </ContainerNavLink>
+  </Container>
+  <Container>
     <h1>{frontmatter.title}</h1>
     <span>{dateFormatter(frontmatter.date)}</span>
-    <div>{frontmatter.tag.map((tag) => <span>{tag}</span>)}</div>
-    <h2>目錄</h2>
-    <ul>{headings.map((heading) => <li>{heading.text}</li>)}</ul>
+    <div>{frontmatter.tag.map((tag) => <Tag>{tag}</Tag>)}</div>
     <slot />
-  </main>
+  </Container>
 </Html>
-
-<style>
-  .post {
-    padding: 24px;
-  }
-
-  @media screen and (min-width: 600px) {
-    .post {
-      padding: 24px 48px;
-    }
-  }
-
-  @media screen and (min-width: 900px) {
-    .post {
-      max-width: 720px;
-      margin: 0 auto;
-    }
-  }
-</style>
