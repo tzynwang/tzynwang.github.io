@@ -6,7 +6,4 @@ export default defineConfig({
   site: 'https://tzynwang.github.io/',
   integrations: [sitemap()],
   compressHTML: true,
-  build: {
-    assets: 'asset',
-  },
 });
