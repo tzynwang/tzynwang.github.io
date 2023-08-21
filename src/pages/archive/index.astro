@@ -16,7 +16,7 @@ const sortYears = Object.keys(groupByYearPosts).sort(
 <Html title="普通文組 2.0" description="tzyn blog v2 index">
   {
     sortYears.map((year) => (
-      <section>
+      <div class="year-container">
         <h2>
           {year}（計{groupByYearPosts[year].length}篇）
         </h2>
@@ -31,19 +31,19 @@ const sortYears = Object.keys(groupByYearPosts).sort(
             </div>
           </li>
         ))}
-      </section>
+      </div>
     ))
   }
 </Html>
 
 <style scoped>
-  section {
+  .year-container {
     display: flex;
     flex-direction: column;
     gap: 16px;
   }
 
-  section:not(:last-of-type) {
+  .year-container:not(:last-of-type) {
     margin-bottom: 16px;
   }
 
@@ -52,6 +52,9 @@ const sortYears = Object.keys(groupByYearPosts).sort(
   }
 
   .post-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
     list-style-type: none;
     container-type: inline-size;
   }
