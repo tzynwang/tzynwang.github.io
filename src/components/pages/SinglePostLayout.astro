@@ -23,8 +23,35 @@ const { frontmatter, headings } = Astro.props;
   </Container>
   <Container>
     <h1>{frontmatter.title}</h1>
-    <span>{dateFormatter(frontmatter.date)}</span>
-    <div>{frontmatter.tag.map((tag) => <Tag>{tag}</Tag>)}</div>
+    <div class="info">
+      <span>{dateFormatter(frontmatter.date)}</span>
+      <span>{frontmatter.tag.map((tag) => <Tag>{tag}</Tag>)}</span>
+      <ul>
+        {
+          headings.map((head) => (
+            <li class={`toc-${head.depth}`}>
+              <a href={`#${head.slug}`}>{head.text}</a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
     <slot />
   </Container>
 </Html>
+
+<style scoped>
+  .info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .toc-2 {
+    margin-left: 1rem;
+  }
+
+  .toc-3 {
+    margin-left: 2rem;
+  }
+</style>
