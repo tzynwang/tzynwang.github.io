@@ -15,13 +15,7 @@ const { frontmatter, headings } = Astro.props;
 ---
 
 <Html title={frontmatter.title} description={frontmatter.summary || ''}>
-  <Container>
-    <ContainerNavLink>
-      <a href="/">回首頁</a>
-      <a href="/archive">回全文章歸檔</a>
-    </ContainerNavLink>
-  </Container>
-  <Container>
+  <div class="post-container">
     <h1>{frontmatter.title}</h1>
     <div class="info">
       <span>{dateFormatter(frontmatter.date)}</span>
@@ -37,10 +31,15 @@ const { frontmatter, headings } = Astro.props;
       </ul>
     </div>
     <slot />
-  </Container>
+  </div>
 </Html>
 
 <style scoped>
+  h1 {
+    margin: 0;
+    margin-bottom: 24px;
+  }
+
   .info {
     display: flex;
     flex-direction: column;
@@ -53,5 +52,17 @@ const { frontmatter, headings } = Astro.props;
 
   .toc-3 {
     margin-left: 2rem;
+  }
+
+  @media screen and (min-width: 800px) {
+    .post-container {
+      max-width: 600px;
+    }
+  }
+
+  @media screen and (min-width: 1200px) {
+    .post-container {
+      max-width: 720px;
+    }
   }
 </style>

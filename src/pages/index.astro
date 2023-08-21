@@ -18,88 +18,54 @@ const postsWithCompiledSummary =
 ---
 
 <Html title="普通文組 2.0" description="tzyn blog v2 index">
-  <TopBar />
-  <section class="posts-wrapper">
-    <div class="posts-container">
-      <div class="featured-posts-container">
-        {
-          postsWithCompiledSummary.map((post, index) => (
-            <div class:list={['post', `post-${index}`]}>
-              <FeaturedPostLayout
-                title={post.frontmatter.title}
-                date={post.frontmatter.date}
-                tag={post.frontmatter.tag}
-                banner={post.frontmatter.banner}
-                summary={post.frontmatter.summary || post.summary}
-                url={post.url}
-              />
-            </div>
-          ))
-        }
-      </div>
-      <div class="listed-posts-container">
-        {
-          restOfPost.map((post) => (
-            <ListedPostLayout
+  <div class="post-container">
+    <div class="featured-posts-container">
+      {
+        postsWithCompiledSummary.map((post, index) => (
+          <div class:list={['post', `post-${index}`]}>
+            <FeaturedPostLayout
               title={post.frontmatter.title}
               date={post.frontmatter.date}
               tag={post.frontmatter.tag}
+              banner={post.frontmatter.banner}
+              summary={post.frontmatter.summary || post.summary}
               url={post.url}
             />
-          ))
-        }
-      </div>
+          </div>
+        ))
+      }
     </div>
-  </section>
+    <div class="listed-posts-container">
+      {
+        restOfPost.map((post) => (
+          <ListedPostLayout
+            title={post.frontmatter.title}
+            date={post.frontmatter.date}
+            tag={post.frontmatter.tag}
+            url={post.url}
+          />
+        ))
+      }
+    </div>
+  </div>
 </Html>
 
-<style>
-  .posts-wrapper {
-    container-type: inline-size;
-  }
-
-  .posts-container {
-    margin: 0 clamp(16px, 5vw, 24px);
-  }
-
-  .banner {
-    width: 320px;
-    height: 200px;
-    object-fit: cover;
-  }
-
-  .post-tag-container {
-    display: flex;
-    align-items: center;
-    margin-left: auto;
-  }
-
+<style scoped>
   .featured-posts-container {
     display: flex;
     flex-direction: column;
     gap: 16px;
+    margin-bottom: 16px;
   }
 
-  @container (min-width: 1200px) {
-    .posts-container {
-      max-width: 800px;
-      margin: 0 auto;
-    }
-  }
-
-  @container (min-width: 1400px) {
-    .posts-container {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
+  @media screen and (min-width: 1200px) {
     .featured-posts-container {
       display: grid;
-      grid-template-columns: 1.25fr 1fr 1fr 1.25fr;
-      grid-template-rows: clamp(200px, 50vh, 420px) clamp(160px, 36vh, 360px);
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(2, 1fr);
       grid-template-areas:
-        'post-1 post-0 post-0 post-2'
-        'post-3 post-3 post-4 post-4';
+        'post-0 post-0 post-1'
+        'post-2 post-3 post-4';
       gap: 16px;
     }
 
