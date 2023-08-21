@@ -18,19 +18,19 @@ build:
 preview:
 	yarn astro preview
 
-# create new .md in <root>/src/pages/posts folder
+# create new .md in <root>/src/pages/post folder
 # syntax: make new post=<article name>
 .PHONY: new
 new:
-	echo "---" >> src/pages/posts/$(shell date +%Y)/$(post).md
+	echo "---" >> src/pages/post/$(shell date +%Y)/$(post).md
 	echo "layout: '@Components/pages/SinglePostLayout.astro'"
-	echo "title: $(post)" >> src/pages/posts/$(shell date +%Y)/$(post).md
-	echo "date: $(shell date +%F) $(shell date +%T)" >> src/pages/posts/$(shell date +%Y)/$(post).md
-	echo "tag:" >> src/pages/posts/$(shell date +%Y)/$(post).md
-	echo "	- []" >> src/pages/posts/$(shell date +%Y)/$(post).md
-	echo "banner: " >> src/pages/posts/$(shell date +%Y)/$(post).md
-	echo "summary: " >> src/pages/posts/$(shell date +%Y)/$(post).md
-	echo "---" >> src/pages/posts/$(shell date +%Y)/$(post).md
+	echo "title: $(post)" >> src/pages/post/$(shell date +%Y)/$(post).md
+	echo "date: $(shell date +%F) $(shell date +%T)" >> src/pages/post/$(shell date +%Y)/$(post).md
+	echo "tag:" >> src/pages/post/$(shell date +%Y)/$(post).md
+	echo "	- []" >> src/pages/post/$(shell date +%Y)/$(post).md
+	echo "banner: " >> src/pages/post/$(shell date +%Y)/$(post).md
+	echo "summary: " >> src/pages/post/$(shell date +%Y)/$(post).md
+	echo "---" >> src/pages/post/$(shell date +%Y)/$(post).md
 	mkdir public/$(shell date +%Y)/$(post)
 
 # deploy build result to gitHub repo as branch "gh-pages"

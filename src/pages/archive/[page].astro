@@ -9,7 +9,7 @@ import type {
 } from '@Models/GeneralTypes';
 
 export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
-  const allPosts = await Astro.glob<Post>('../posts/**/*.md');
+  const allPosts = await Astro.glob<Post>('../post/**/*.md');
   const sortedPosts = sortPostByDate(allPosts);
   return paginate(sortedPosts, { pageSize: 10 });
 }
