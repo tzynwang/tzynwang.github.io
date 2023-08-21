@@ -27,6 +27,10 @@ li {
   list-style-position: inside;
 }
 
+ul {
+  margin-bottom: 16px;
+}
+
 li li {
   padding-left: 16px;
 }
