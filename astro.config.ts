@@ -5,5 +5,8 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   site: 'https://tzynwang.github.io/',
   integrations: [sitemap()],
-  base: './',
+  compressHTML: true,
+  build: {
+    assets: 'asset',
+  },
 });
