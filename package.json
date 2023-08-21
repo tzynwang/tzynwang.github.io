@@ -9,7 +9,7 @@
 	},
 	"dependencies": {
 		"@astrojs/sitemap": "^2.0.2",
-		"astro": "^2.0.15",
+		"astro": "^2.2.0",
 		"dayjs": "^1.11.7"
 	},
 	"devDependencies": {

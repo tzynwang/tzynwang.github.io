@@ -38,7 +38,7 @@ new:
 deploy: build
 	cd dist && \
 	git init && \
-	git remote -v | grep -w origin || git remote add origin git@github.com:tzynwang/astro-blog-v2.git && \
+	git remote -v | grep -w origin || git remote add origin git@github.com:tzynwang/tzynwang.github.io.git && \
 	git branch -m gh-pages && \
 	git add -A && \
 	git commit -m "[feat] deploy as gh-pages `date +'%Y-%m-%d %H:%M:%S'`" && \
