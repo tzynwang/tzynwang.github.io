@@ -46,8 +46,14 @@ h2 {
   color: #4c5958;
 }
 
-h3 {
+h3,
+h4 {
   margin: 8px 0;
+  color: #4c5958;
+}
+
+h5 {
+  margin: 4px 0;
   color: #4c5958;
 }
 
