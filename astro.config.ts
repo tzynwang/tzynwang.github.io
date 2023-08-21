@@ -6,4 +6,5 @@ export default defineConfig({
   site: 'https://tzynwang.github.io/',
   integrations: [sitemap()],
   compressHTML: true,
+  trailingSlash: 'never',
 });
