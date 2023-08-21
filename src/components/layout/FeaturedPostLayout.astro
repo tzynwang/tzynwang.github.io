@@ -1,0 +1,87 @@
+---
+import Tag from '@Components/element/Tag.astro';
+import { dateFormatter } from '@Tools/formatter';
+import type { Post } from '@Models/GeneralTypes';
+
+interface Props extends Post {
+  url?: string;
+}
+
+const { title, date, tag, banner, summary, url } = Astro.props;
+const bannerUrl = banner ? `url(${banner})` : 'none';
+---
+
+<div class="featured-post-wrapper">
+  <div class="featured-post-layout">
+    <div class="banner-wrapper"></div>
+    <div class="text-wrapper">
+      <a href={url}>{title}</a>
+      <div>{dateFormatter(date)}</div>
+      <div>
+        {tag.map((tag) => <Tag>{tag}</Tag>)}
+      </div>
+      <p set:html={summary} />
+    </div>
+  </div>
+</div>
+
+<style scoped define:vars={{ bannerUrl }}>
+  .featured-post-wrapper {
+    container-type: inline-size;
+    height: 100%;
+  }
+
+  .featured-post-layout {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .banner-wrapper {
+    position: relative;
+    min-height: 200px;
+    overflow: hidden;
+  }
+
+  .banner-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-image: var(--bannerUrl);
+    transform: scale(1);
+    transition: transform 0.3s ease;
+  }
+
+  .banner-wrapper:hover::before {
+    transform: scale(1.1);
+  }
+
+  .text-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  p {
+    margin: 0;
+    padding: 0;
+  }
+
+  @container (min-width: 520px) {
+    .featured-post-layout {
+      flex-direction: row;
+    }
+
+    .banner-wrapper,
+    .text-wrapper {
+      flex: 1 1 50%;
+    }
+  }
+</style>

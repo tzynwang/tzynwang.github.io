@@ -1,0 +1,66 @@
+---
+import Html from '@Components/layout/Html.astro';
+import Tag from '@Components/element/Tag.astro';
+import { dateFormatter } from '@Tools/formatter';
+import type { Post, Heading } from '@Models/GeneralTypes';
+
+interface Props {
+  frontmatter: Post;
+  headings: Heading[];
+}
+
+const { frontmatter, headings } = Astro.props;
+---
+
+<Html title={frontmatter.title} description={frontmatter.summary || ''}>
+  <div class="post-container">
+    <h1>{frontmatter.title}</h1>
+    <div class="info">
+      <span>{dateFormatter(frontmatter.date)}</span>
+      <span>{frontmatter.tag.map((tag) => <Tag>{tag}</Tag>)}</span>
+      <ul>
+        {
+          headings.map((head) => (
+            <li class={`toc-${head.depth}`}>
+              <a href={`#${head.slug}`}>{head.text}</a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+    <slot />
+  </div>
+</Html>
+
+<style scoped>
+  h1 {
+    margin: 0;
+    margin-bottom: 24px;
+  }
+
+  .info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .toc-2 {
+    margin-left: 1rem;
+  }
+
+  .toc-3 {
+    margin-left: 2rem;
+  }
+
+  @media screen and (min-width: 800px) {
+    .post-container {
+      max-width: 600px;
+    }
+  }
+
+  @media screen and (min-width: 1200px) {
+    .post-container {
+      max-width: 720px;
+    }
+  }
+</style>
