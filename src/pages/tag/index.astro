@@ -1,0 +1,32 @@
+---
+import Html from '@Components/layout/Html.astro';
+import Tag from '@Components/element/Tag.astro';
+import { sortPostByDate } from '@Tools/post';
+import type { Post } from '@Models/GeneralTypes';
+
+const allPosts = await Astro.glob<Post>('../post/**/*.md');
+const allTags = sortPostByDate(allPosts)
+  .map((post) => post.frontmatter.tag)
+  .flat(2)
+  .sort();
+const uniqueTags = [...new Set(allTags)];
+---
+
+<Html title="普通文組 2.0" description="tzyn blog v2 index">
+  <ul class="tag-container">
+    {uniqueTags.map((tag) => <li>{<Tag tag={tag}>{tag}</Tag>}</li>)}
+  </ul>
+</Html>
+
+<style scoped>
+  .tag-container {
+    display: inline-flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  ul,
+  li {
+    list-style-type: none;
+  }
+</style>
