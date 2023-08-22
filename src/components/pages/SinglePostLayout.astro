@@ -17,8 +17,10 @@ const { frontmatter, headings } = Astro.props;
     <h1>{frontmatter.title}</h1>
     <div class="info">
       <span>{dateFormatter(frontmatter.date)}</span>
-      <span>{frontmatter.tag.map((tag) => <Tag>{tag}</Tag>)}</span>
-      <ul>
+      <span class="tag-container"
+        >{frontmatter.tag.map((tag) => <Tag tag={tag}>{tag}</Tag>)}</span
+      >
+      <ul class="toc-container">
         {
           headings.map((head) => (
             <li class={`toc-${head.depth}`}>
@@ -33,15 +35,25 @@ const { frontmatter, headings } = Astro.props;
 </Html>
 
 <style scoped>
-  h1 {
+  .post-container h1 {
     margin: 0;
-    margin-bottom: 24px;
+    margin-bottom: 16px;
   }
 
   .info {
     display: flex;
     flex-direction: column;
     gap: 8px;
+  }
+
+  .tag-container {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .toc-container {
+    margin-bottom: 0;
   }
 
   .toc-2 {

@@ -14,7 +14,7 @@ const { title, date, tag, url } = Astro.props;
   <div>{dateFormatter(date)}</div>
   <a href={url}>{title}</a>
   <div class="tag-container">
-    {tag.map((tag) => <Tag>{tag}</Tag>)}
+    {tag.map((tag) => <Tag tag={tag}>{tag}</Tag>)}
   </div>
 </li>
 
