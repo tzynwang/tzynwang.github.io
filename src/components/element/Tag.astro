@@ -7,12 +7,12 @@ const { tag } = Astro.props;
 const tagUrl = `/tag/${tag}`;
 ---
 
-<a href={tagUrl}>
+<a class="tag" href={tagUrl}>
   <slot />
 </a>
 
 <style scoped>
-  a {
+  .tag {
     display: inline-flex;
     align-items: center;
     padding: 2px 8px;
