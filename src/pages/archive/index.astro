@@ -4,7 +4,7 @@ import PostItem from '@Components/element/PostItem.astro';
 import { sortPostByDate, groupPostByYear } from '@Tools/post';
 import type { Post } from '@Models/GeneralTypes';
 
-const allPosts = await Astro.glob<Post>('../post/**/*.md');
+const allPosts = await Astro.glob<Post>('../**/*.md');
 const sortedPosts = sortPostByDate(allPosts);
 const groupByYearPosts = groupPostByYear(sortedPosts);
 const sortYears = Object.keys(groupByYearPosts).sort(
