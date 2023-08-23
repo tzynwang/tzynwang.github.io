@@ -12,7 +12,7 @@ const allTags = sortPostByDate(allPosts)
 const uniqueTags = [...new Set(allTags)];
 ---
 
-<Html title="普通文組 2.0" description="tzyn blog v2 index">
+<Html>
   <ul class="tag-container">
     {uniqueTags.map((tag) => <li>{<Tag tag={tag}>{tag}</Tag>}</li>)}
   </ul>
