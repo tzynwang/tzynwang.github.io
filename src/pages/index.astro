@@ -5,7 +5,7 @@ import ListedPostLayout from '@Components/layout/ListedPostLayout.astro';
 import { sortPostByDate, getPostWithCompiledSummary } from '@Tools/post';
 import type { Post } from '@Models/GeneralTypes';
 
-const allPosts = await Astro.glob<Post>('../pages/post/**/*.md');
+const allPosts = await Astro.glob<Post>('./**/*.md');
 const sortedPosts = sortPostByDate(allPosts);
 const firstTenPosts = sortedPosts.slice(0, 10);
 
