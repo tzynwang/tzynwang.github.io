@@ -1,11 +1,21 @@
 ---
+const is404 = Astro.url.pathname.includes('/404');
 ---
 
-<footer>Tzu Yin (Charlie) 🦊 Made in Taiwan</footer>
+<footer class:list={['footer', { bottom: is404 }]}>
+  Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>
 
 <style>
-  footer {
+  .footer {
     padding: 36px;
     text-align: center;
+  }
+
+  .bottom {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
   }
 </style>
