@@ -22,15 +22,15 @@ preview:
 # syntax: make new post=<article name>
 .PHONY: new
 new:
-	echo "---" >> src/pages/post/$(shell date +%Y)/$(post).md
+	echo "---" >> src/pages/$(shell date +%Y)/$(post).md
 	echo "layout: '@Components/pages/SinglePostLayout.astro'"
-	echo "title: $(post)" >> src/pages/post/$(shell date +%Y)/$(post).md
-	echo "date: $(shell date +%F) $(shell date +%T)" >> src/pages/post/$(shell date +%Y)/$(post).md
-	echo "tag:" >> src/pages/post/$(shell date +%Y)/$(post).md
-	echo "	- []" >> src/pages/post/$(shell date +%Y)/$(post).md
-	echo "banner: " >> src/pages/post/$(shell date +%Y)/$(post).md
-	echo "summary: " >> src/pages/post/$(shell date +%Y)/$(post).md
-	echo "---" >> src/pages/post/$(shell date +%Y)/$(post).md
+	echo "title: $(post)" >> src/pages/$(shell date +%Y)/$(post).md
+	echo "date: $(shell date +%F) $(shell date +%T)" >> src/pages/$(shell date +%Y)/$(post).md
+	echo "tag:" >> src/pages/$(shell date +%Y)/$(post).md
+	echo "	- []" >> src/pages/$(shell date +%Y)/$(post).md
+	echo "banner: " >> src/pages/$(shell date +%Y)/$(post).md
+	echo "summary: " >> src/pages/$(shell date +%Y)/$(post).md
+	echo "---" >> src/pages/$(shell date +%Y)/$(post).md
 	mkdir public/$(shell date +%Y)/$(post)
 
 # deploy build result to gitHub repo as branch "gh-pages"
