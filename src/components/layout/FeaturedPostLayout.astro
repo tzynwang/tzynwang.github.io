@@ -1,5 +1,6 @@
 ---
 import Tag from '@Components/element/Tag.astro';
+import { GA4_READ_POST } from '@Models/GeneralModels';
 import { dateFormatter } from '@Tools/formatter';
 import type { Post } from '@Models/GeneralTypes';
 
@@ -15,7 +16,7 @@ const bannerUrl = banner ? `url(${banner})` : 'none';
   <div class="featured-post-layout">
     <div class="banner-wrapper"></div>
     <div class="text-wrapper">
-      <a href={url}>{title}</a>
+      <a href={url} class={GA4_READ_POST}>{title}</a>
       <div>{dateFormatter(date)}</div>
       <div>
         {tag.map((tag) => <Tag tag={tag}>{tag}</Tag>)}
