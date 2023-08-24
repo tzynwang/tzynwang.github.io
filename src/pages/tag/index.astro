@@ -1,20 +1,12 @@
 ---
 import Html from '@Components/layout/Html.astro';
 import Tag from '@Components/element/Tag.astro';
-import { sortPostByDate } from '@Tools/post';
-import type { Post } from '@Models/GeneralTypes';
-
-const allPosts = await Astro.glob<Post>('../**/*.md');
-const allTags = sortPostByDate(allPosts)
-  .map((post) => post.frontmatter.tag)
-  .flat(2)
-  .sort();
-const uniqueTags = [...new Set(allTags)];
+import { ALL_UNIQUE_TAGS } from '@Tools/post';
 ---
 
 <Html>
   <ul class="tag-container">
-    {uniqueTags.map((tag) => <li>{<Tag tag={tag}>{tag}</Tag>}</li>)}
+    {ALL_UNIQUE_TAGS.map((tag) => <li>{<Tag tag={tag}>{tag}</Tag>}</li>)}
   </ul>
 </Html>
 

@@ -6,6 +6,7 @@ export interface Post {
   tag: string[];
   banner?: string;
   summary?: string;
+  isDraft?: boolean;
 }
 
 export interface Heading {
