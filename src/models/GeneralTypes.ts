@@ -6,7 +6,10 @@ export interface Post {
   tag: string[];
   banner?: string;
   summary?: string;
-  isDraft?: boolean;
+  /** 這是 Astro 判定草稿的關鍵字
+   * 
+   * 可參考 https://docs.astro.build/en/reference/configuration-reference/#markdowndrafts */
+  draft?: boolean;
 }
 
 export interface Heading {

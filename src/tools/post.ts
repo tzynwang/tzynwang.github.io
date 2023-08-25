@@ -13,10 +13,6 @@ async function getAllPosts() {
   return await Promise.all(allPostsPromises);
 }
 
-function filterDraftPost(posts: MarkdownInstance<Post>[]) {
-  return posts.filter((post) => !post.frontmatter.isDraft);
-}
-
 function sortPostByDate(posts: MarkdownInstance<Post>[]) {
   return posts.sort(
     (a, b) =>
@@ -24,9 +20,7 @@ function sortPostByDate(posts: MarkdownInstance<Post>[]) {
   );
 }
 
-export const ALL_NOT_DRAFT_SORTED_POSTS = sortPostByDate(
-  filterDraftPost(await getAllPosts())
-);
+export const ALL_NOT_DRAFT_SORTED_POSTS = sortPostByDate(await getAllPosts());
 
 const ALL_TAGS = ALL_NOT_DRAFT_SORTED_POSTS.map((post) => post.frontmatter.tag)
   .flat(2)
