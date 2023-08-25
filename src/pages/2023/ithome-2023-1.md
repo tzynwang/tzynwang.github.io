@@ -1,6 +1,6 @@
 ---
 layout: '@Components/pages/SinglePostLayout.astro'
-title: 鐵人賽 Modern Web 組「捨棄 create-react-app 之餘還架了個 astro blog 告昭天下」第 1 天
+title: 鐵人賽 Modern Web 組「捨棄 create-react-app 之餘還架了個 astro blog 昭告天下」第 1 天
 date: 2023-08-25 07:20:39
 tag:
 	- [2023鐵人賽]
