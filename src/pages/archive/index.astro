@@ -1,36 +1,26 @@
 ---
 import Html from '@Components/layout/Html.astro';
-import Tag from '@Components/element/Tag.astro';
-import { sortPostByDate, groupPostByYear } from '@Tools/post';
-import { dateFormatter } from '@Tools/formatter';
-import type { Post } from '@Models/GeneralTypes';
+import PostItem from '@Components/element/PostItem.astro';
+import { ALL_NOT_DRAFT_SORTED_POSTS, groupPostByYear } from '@Tools/post';
 
-const allPosts = await Astro.glob<Post>('../post/**/*.md');
-const sortedPosts = sortPostByDate(allPosts);
-const groupByYearPosts = groupPostByYear(sortedPosts);
+const groupByYearPosts = groupPostByYear(ALL_NOT_DRAFT_SORTED_POSTS);
 const sortYears = Object.keys(groupByYearPosts).sort(
   (a, b) => Number(b) - Number(a)
 );
 ---
 
-<Html title="普通文組 2.0" description="tzyn blog v2 index">
+<Html>
   {
     sortYears.map((year) => (
       <div class="year-container">
         <h2>
           {year}（計{groupByYearPosts[year].length}篇）
         </h2>
-        {groupByYearPosts[year].map((post) => (
-          <li class="post-wrapper">
-            <a href={post.url}>{post.frontmatter.title}</a>
-            <div>{dateFormatter(post.frontmatter.date)}</div>
-            <div class="tag-container">
-              {post.frontmatter.tag.map((tag) => (
-                <Tag>{tag}</Tag>
-              ))}
-            </div>
-          </li>
-        ))}
+        <ul class="post-container">
+          {groupByYearPosts[year].map((post) => (
+            <PostItem post={post} />
+          ))}
+        </ul>
       </div>
     ))
   }
@@ -47,31 +37,13 @@ const sortYears = Object.keys(groupByYearPosts).sort(
     margin-bottom: 16px;
   }
 
-  h2 {
+  .year-container h2 {
     margin: 0;
   }
 
-  .post-wrapper {
+  .post-container {
     display: flex;
     flex-direction: column;
-    gap: 4px;
-    list-style-type: none;
-    container-type: inline-size;
-  }
-
-  .tag-container {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .tag {
-    list-style-type: none;
-  }
-
-  @container (min-width: 480px) {
-    .tag-container {
-      gap: 16px;
-    }
+    gap: 16px;
   }
 </style>

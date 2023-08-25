@@ -1,6 +1,7 @@
 ---
 import Tag from '@Components/element/Tag.astro';
 import { dateFormatter } from '@Tools/formatter';
+import { GA4_READ_POST } from '@Models/GeneralModels';
 import type { Post } from '@Models/GeneralTypes';
 
 interface Props extends Pick<Post, 'title' | 'date' | 'tag'> {
@@ -12,9 +13,9 @@ const { title, date, tag, url } = Astro.props;
 
 <li class="post">
   <div>{dateFormatter(date)}</div>
-  <a href={url}>{title}</a>
+  <a href={url} class={GA4_READ_POST}>{title}</a>
   <div class="tag-container">
-    {tag.map((tag) => <Tag>{tag}</Tag>)}
+    {tag.map((tag) => <Tag tag={tag}>{tag}</Tag>)}
   </div>
 </li>
 

@@ -2,12 +2,12 @@
 import Html from '@Components/layout/Html.astro';
 import FeaturedPostLayout from '@Components/layout/FeaturedPostLayout.astro';
 import ListedPostLayout from '@Components/layout/ListedPostLayout.astro';
-import { sortPostByDate, getPostWithCompiledSummary } from '@Tools/post';
-import type { Post } from '@Models/GeneralTypes';
+import {
+  ALL_NOT_DRAFT_SORTED_POSTS,
+  getPostWithCompiledSummary,
+} from '@Tools/post';
 
-const allPosts = await Astro.glob<Post>('../pages/post/**/*.md');
-const sortedPosts = sortPostByDate(allPosts);
-const firstTenPosts = sortedPosts.slice(0, 10);
+const firstTenPosts = ALL_NOT_DRAFT_SORTED_POSTS.slice(0, 10);
 
 const postShouldWithSumary = firstTenPosts.slice(0, 5);
 const restOfPost = firstTenPosts.slice(5, firstTenPosts.length);
@@ -16,7 +16,7 @@ const postsWithCompiledSummary =
   getPostWithCompiledSummary(postShouldWithSumary);
 ---
 
-<Html title="普通文組 2.0" description="tzyn blog v2 index">
+<Html>
   <div class="post-container">
     <div class="featured-posts-container">
       {

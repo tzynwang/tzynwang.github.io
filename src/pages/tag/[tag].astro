@@ -1,0 +1,28 @@
+---
+import Html from '@Components/layout/Html.astro';
+import PostItem from '@Components/element/PostItem.astro';
+import { ALL_NOT_DRAFT_SORTED_POSTS, ALL_UNIQUE_TAGS } from '@Tools/post';
+
+export async function getStaticPaths() {
+  return ALL_UNIQUE_TAGS.map((tag) => ({ params: { tag } }));
+}
+
+const { tag } = Astro.params;
+const posts = ALL_NOT_DRAFT_SORTED_POSTS.filter((post) =>
+  post.frontmatter.tag.flat().includes(tag || '')
+);
+---
+
+<Html>
+  <ul class="post-container">
+    {posts.map((post) => <PostItem post={post} />)}
+  </ul>
+</Html>
+
+<style scoped>
+  .post-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+</style>

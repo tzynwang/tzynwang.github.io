@@ -1,16 +1,24 @@
 ---
+interface Props {
+  tag: string;
+}
+
+const { tag } = Astro.props;
+const tagUrl = `/tag/${tag}`;
 ---
 
-<span>
+<a class="tag" href={tagUrl}>
   <slot />
-</span>
+</a>
 
 <style scoped>
-  span {
+  .tag {
     display: inline-flex;
     align-items: center;
     padding: 2px 8px;
     font-size: 14px;
+    font-weight: 400;
+    text-decoration: none;
     background-color: #8aa6a3;
     color: #fff;
   }
