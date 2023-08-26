@@ -62,12 +62,18 @@ draft: true
 
 ---
 
-給真的沒空讀完官方文件的人的補充：可以將 `nvm` 設定成「移動到資料夾時，自動偵測 `.nvmrc` 並切換至對應的 Node.js 版本」，自動指令請從[官方說明](https://github.com/nvm-sh/nvm#deeper-shell-integration)複製，並根據你的終端使用 `bash` `zsh` 或 `fish` 在檔案 `$HOME/.zshrc` 中貼上不同內容。
+給真的沒空讀完官方文件的人的 take away：可以將 `nvm` 設定成「移動到資料夾時，自動偵測 `.nvmrc` 並切換至對應的 Node.js 版本」，自動指令請從[官方說明](https://github.com/nvm-sh/nvm#deeper-shell-integration)複製，並根據你的終端使用 `bash` `zsh` 或 `fish` 在檔案 `$HOME/.zshrc` 中貼上不同內容。
 
 ---
 
 除了 `nvm` 以外，個人最近也有嘗試使用 Rust 撰寫的 [fnm](https://github.com/Schniz/fnm)，速度飛快，體驗極度良好，且也支援自動偵測＋切換。有興趣的朋友可以給個機會 (ゝ ∀･)
 
+### 記得存擋
+
+現在資料夾裡有些東西了，如果你還沒 `git init` 的話，現在差不多可以開始存檔了。
+
 ## 總結
 
-本日重點回顧：能根據套件修改內容來更新合適版號，並且能透過 `engines` `node` 來指定專案的 Node.js 環境版本。
+本日重點回顧：能根據套件修改內容來更新合適版號，並且能透過 `engines` `node` 來指定專案的 Node.js 環境版本。還有記得存檔（`git`）。
+
+![no auto save in real life](/2023/ithome-2023-2/neir-automata-no-auto-save.jpg)
