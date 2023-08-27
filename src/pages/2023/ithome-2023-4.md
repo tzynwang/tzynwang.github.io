@@ -64,7 +64,6 @@ draft: true
     "noUnusedLocals": true,
     "noUnusedParameters": true
   },
-  "include": ["./src/**/*"],
   "exclude": ["./node_modules", "./build"]
 }
 ```
@@ -92,6 +91,7 @@ import TopNav from '@Component/common/TopNav';
 ```bash
 .
 ├── README.md
+├── config
 ├── doc
 ├── package.json
 ├── public
@@ -113,7 +113,6 @@ import TopNav from '@Component/common/TopNav';
 │   └── tool
 ├── tool
 ├── tsconfig.json
-├── webpack
 └── yarn.lock
 ```
 
@@ -124,6 +123,7 @@ import TopNav from '@Component/common/TopNav';
 各資料夾的目的說明如下：
 
 - `README.md` 為專案的快速指南，通常會在這裡簡短說明專案概要、提供專案啟動腳本，如果此專案有更詳盡的操作手冊，則會將比較長篇的說明收納於 `./doc` 中
+- `./config` 用於存放 webpack 開發、打包用的設定內容；詳細的 webpack 設定會於日後文章解說
 - `./public` 負責收納 React app 專案的 `index.html` 模板與靜態檔案（包括但不限於 `favicon` `apple-touch-icon.png` `robots.txt` 等等）
 - `./script` 負責收納專案的啟動、打包腳本；更多關於這個資料夾的內容，會在鐵人賽後續文章中說明
 - `./src` 負責收納 React app 專案的核心內容
@@ -134,7 +134,6 @@ import TopNav from '@Component/common/TopNav';
   - `style` 負責收納 React app 的樣式檔案
   - `tool` 中是給 React app 專用的工具包，可能是 data formatter/transformer 或是 dayjs 函式
 - 根目錄的 `./tool` 負責收納專案用的工具，比如執行本機 webpack-dev 的 `start` 或打包用的 `build` 腳本
-- `/webpack` 用於存放 webpack 開發、打包用的設定內容；詳細的 webpack 設定會於日後文章解說
 
 ---
 
