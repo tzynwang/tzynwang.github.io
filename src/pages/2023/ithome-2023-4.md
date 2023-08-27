@@ -35,18 +35,15 @@ draft: true
     "module": "esnext",
     "jsx": "react",
     "moduleResolution": "node",
-    "baseUrl": "src",
-    "rootDir": "src",
-    "outDir": "build",
     "paths": {
       "@Api/*": ["./src/api/*"],
-      "@Asset/*": ["./src/asset/*"],
       "@Component/*": ["./src/component/*"],
       "@Hook/*": ["./src/hook/*"],
       "@Model/*": ["./src/model/*"],
       "@Reducer/*": ["./src/reducer/*"],
       "@Style/*": ["./src/style/*"],
-      "@Tool/*": ["./src/tool/*"]
+      "@Tool/*": ["./src/tool/*"],
+      "@/*": ["./*"]
     },
     "allowJs": false,
     "allowSyntheticDefaultImports": true,
@@ -64,6 +61,7 @@ draft: true
     "noUnusedLocals": true,
     "noUnusedParameters": true
   },
+  "include": ["./config/**/*", "./script/*", "./tool/*", "./src/**/*"],
   "exclude": ["./node_modules", "./build"]
 }
 ```
