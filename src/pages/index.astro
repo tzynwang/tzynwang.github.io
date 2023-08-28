@@ -2,32 +2,25 @@
 import Html from '@Components/layout/Html.astro';
 import FeaturedPostLayout from '@Components/layout/FeaturedPostLayout.astro';
 import ListedPostLayout from '@Components/layout/ListedPostLayout.astro';
-import {
-  ALL_NOT_DRAFT_SORTED_POSTS,
-  getPostWithCompiledSummary,
-} from '@Tools/post';
+import { ALL_NOT_DRAFT_SORTED_POSTS } from '@Tools/post';
 
 const firstTenPosts = ALL_NOT_DRAFT_SORTED_POSTS.slice(0, 10);
-
 const postShouldWithSumary = firstTenPosts.slice(0, 5);
 const restOfPost = firstTenPosts.slice(5, firstTenPosts.length);
-
-const postsWithCompiledSummary =
-  getPostWithCompiledSummary(postShouldWithSumary);
 ---
 
 <Html>
   <div class="post-container">
     <div class="featured-posts-container">
       {
-        postsWithCompiledSummary.map((post, index) => (
+        postShouldWithSumary.map((post, index) => (
           <div class:list={['post', `post-${index}`]}>
             <FeaturedPostLayout
               title={post.frontmatter.title}
               date={post.frontmatter.date}
               tag={post.frontmatter.tag}
               banner={post.frontmatter.banner}
-              summary={post.frontmatter.summary || post.summary}
+              summary={post.frontmatter.summary || ''}
               url={post.url}
             />
           </div>
