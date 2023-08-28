@@ -54,6 +54,7 @@ draft: true
     "importHelpers": true,
     "incremental": true,
     "isolatedModules": true,
+    "resolveJsonModule": true,
     "sourceMap": true,
     "strict": true,
     "noFallthroughCasesInSwitch": true,
@@ -61,7 +62,7 @@ draft: true
     "noUnusedLocals": true,
     "noUnusedParameters": true
   },
-  "include": ["./config/**/*", "./script/*", "./tool/*", "./src/**/*"],
+  "include": ["./config/**/*", "./script/**/*", "./tool/**/*", "./src/**/*"],
   "exclude": ["./node_modules", "./build"]
 }
 ```
