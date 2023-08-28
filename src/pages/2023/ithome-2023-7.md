@@ -245,6 +245,34 @@ export function getEnvsForDefineConfig(envs: ValidatedEnv) {
 
 執行 `getValidatedDevelopmentEnv` / `getValidatedProductionEnv` 時，會透過 `superstruct` 提供的 [assert()](https://docs.superstructjs.org/api-reference/core#assert) 來檢驗資料內容。此功能會在檢驗失敗時拋出一個 `StructError` 錯誤。而 `getStructError` 的任務就是將錯誤訊息輸出到終端，幫助開發者確認在檢驗過程中「是哪一些資料驗證失敗」。
 
+---
+
+superstruct 有提供[自訂驗證格式](https://docs.superstructjs.org/guides/02-validating-data#custom-values)的功能，而 `./tool/urlValidate` 的任務就是負責「檢查傳入的值是否為有效的 url 格式」：
+
+```ts
+import { Struct, define } from 'superstruct';
+
+export function isUrl(value: unknown) {
+  if (typeof value !== 'string' && !(value instanceof URL)) {
+    return false;
+  }
+  try {
+    return !!new URL(value);
+  } catch (e) {
+    return false;
+  }
+}
+
+const urlSuperstructValidate = (): Struct<string, null> =>
+  define<string>('url', (value: unknown) => isUrl(value));
+
+export default urlSuperstructValidate;
+```
+
+先透過 `isUrl` 來檢查傳入的值究竟是否為 url 類型的資料，再使用 superstruct 提供的 `define()` 來產生此套件可使用的自訂驗證結構（custom validation struct）。
+
+---
+
 最後，當環境變數通過檢驗時，再透過 `getEnvsForDefineConfig` 將資料字串化（`JSON.stringify()`）、打包為如下格式，方便 `Webpack.DefinePlugin` 使用：
 
 ```js
@@ -310,4 +338,4 @@ export default webpackDevelopmentConfig;
 
 雖然前置作業有點長，但好處是這樣嚴格把關 `.env` 內容能確保開發、打包時很難在環境變數這一個環節上出包（忘記餵變數、餵錯資料等等）。
 
-加一點手續、增一點信心，晚上會睡得比較安穩 (っ ´ω`c)
+加一點保險，晚上會睡得比較安穩 (っ ´ω`c)
