@@ -334,6 +334,26 @@ export default webpackDevelopmentConfig;
 
 至於那個熱騰騰的 `env` ，就把它丟進 `plugins: [new Webpack.DefinePlugin({ ...env })]` 裡面吧，這樣我們就能在 React app 內透過 `process.env.[VARIABLE_NAME]` 直取驗證完畢的環境變數資料了。
 
+### env.d.ts
+
+這真的是最後一步了。還記得那個躺在 `./src` 中的 `.env.d.ts` 嗎？請在這份檔案裡面補上以下內容：
+
+```ts
+/// <reference types="node" />
+/// <reference types="react" />
+/// <reference types="react-dom" />
+
+declare namespace NodeJS {
+  interface ProcessEnv {
+    readonly NODE_ENV: 'development' | 'production';
+    readonly APP_API_URL: string;
+    readonly APP_PORT: string;
+  }
+}
+```
+
+這樣就能讓型別資訊支援到 `process.env`。比如當你輸入 `process.env.NODE_ENV` 時，IDE（至少 vs code 有支援）會提示你這個值只有可能是 `development` 或 `production`。
+
 ## 總結
 
 雖然前置作業有點長，但好處是這樣嚴格把關 `.env` 內容能確保開發、打包時很難在環境變數這一個環節上出包（忘記餵變數、餵錯資料等等）。
