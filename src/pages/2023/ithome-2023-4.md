@@ -37,6 +37,7 @@ draft: true
     "moduleResolution": "node",
     "paths": {
       "@Api/*": ["./src/api/*"],
+      "@Asset/*": ["./src/asset/*"],
       "@Component/*": ["./src/component/*"],
       "@Hook/*": ["./src/hook/*"],
       "@Model/*": ["./src/model/*"],
@@ -62,7 +63,7 @@ draft: true
     "noUnusedLocals": true,
     "noUnusedParameters": true
   },
-  "include": ["./config/**/*", "./script/**/*", "./tool/**/*", "./src/**/*"],
+  "include": ["./config/**/*", "./script/**/*", "./tool/**/*", "./src/**/*", "./src/env.d.ts"],
   "exclude": ["./node_modules", "./build"]
 }
 ```
@@ -104,6 +105,7 @@ import TopNav from '@Component/common/TopNav';
 │   │   ├── Layer
 │   │   ├── Layout
 │   │   └── Page
+│   ├── env.d.ts
 │   ├── hook
 │   ├── index.tsx
 │   ├── model
@@ -128,6 +130,7 @@ import TopNav from '@Component/common/TopNav';
 - `./src` 負責收納 React app 專案的核心內容
   - `api` `asset` `hook` 如其名稱描述，負責收納 api、靜態資源（字型、圖示等）與 react hook 內容
   - `component` 會再根據元件特性歸納到 `Common` `Layer` `Layout` `Page` 中（詳細的歸納判斷會於明天文章說明）；`AppEntryPoint` 內僅會有一個檔案，即是整個 React app 在 `./src/index.tsx` 中使用的入口
+  - `env.d.ts` 負責提供 React app 的型別定義
   - `model` 收納 React app 會用到的純資料（例如常數、共用型別）以及 React Redux store 內容
   - `reducer` 收納 React Redux action/reducer 相關內容
   - `style` 負責收納 React app 的樣式檔案
