@@ -1,0 +1,53 @@
+---
+import Footer from '@Components/element/Footer.astro';
+---
+
+<section class="side-content">
+  <h1>普通文組 2.0</h1>
+  <nav>
+    <a href="/">首頁</a>
+    <a href="/archive">全文章歸檔</a>
+    <a href="/tag">以標籤檢視</a>
+  </nav>
+</section>
+<section class="main-content">
+  <slot />
+  <Footer />
+</section>
+
+<style scoped>
+  .side-content,
+  .main-content {
+    margin: 24px;
+  }
+
+  nav {
+    display: flex;
+    gap: 16px;
+  }
+
+  @media screen and (min-width: 800px) {
+    body {
+      height: 100vh;
+      display: flex;
+      flex-direction: row;
+      overflow-y: hidden;
+    }
+
+    nav {
+      flex-direction: column;
+    }
+
+    .side-content {
+      flex: 0 0 240px;
+    }
+
+    .main-content {
+      margin: 0;
+      padding: 40px 24px 0;
+      flex: 1 1 auto;
+      overflow-y: auto;
+      position: relative;
+    }
+  }
+</style>
