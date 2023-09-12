@@ -1,9 +1,9 @@
 ---
 import Html from '@Components/layout/Html.astro';
 import PostItem from '@Components/element/PostItem.astro';
-import { ALL_NOT_DRAFT_SORTED_POSTS, groupPostByYear } from '@Tools/post';
+import { ALL_SORTED_POSTS, groupPostByYear } from '@Tools/post';
 
-const groupByYearPosts = groupPostByYear(ALL_NOT_DRAFT_SORTED_POSTS);
+const groupByYearPosts = groupPostByYear(ALL_SORTED_POSTS);
 const sortYears = Object.keys(groupByYearPosts).sort(
   (a, b) => Number(b) - Number(a)
 );
@@ -11,17 +11,20 @@ const sortYears = Object.keys(groupByYearPosts).sort(
 
 <Html>
   {
-    sortYears.map((year) => (
-      <div class="year-container">
-        <h2>
-          {year}（計{groupByYearPosts[year].length}篇）
-        </h2>
-        <ul class="post-container">
-          {groupByYearPosts[year].map((post) => (
-            <PostItem post={post} />
-          ))}
-        </ul>
-      </div>
+    sortYears.map((year, i) => (
+      <>
+        <div class="year-container">
+          <h2>
+            {year}（計{groupByYearPosts[year].length}篇）
+          </h2>
+          <ul class="post-container">
+            {groupByYearPosts[year].map((post) => (
+              <PostItem post={post} />
+            ))}
+          </ul>
+        </div>
+        {i !== sortYears.length - 1 && <hr class="divider" />}
+      </>
     ))
   }
 </Html>
@@ -33,10 +36,6 @@ const sortYears = Object.keys(groupByYearPosts).sort(
     gap: 16px;
   }
 
-  .year-container:not(:last-of-type) {
-    margin-bottom: 16px;
-  }
-
   .year-container h2 {
     margin: 0;
   }
@@ -45,5 +44,10 @@ const sortYears = Object.keys(groupByYearPosts).sort(
     display: flex;
     flex-direction: column;
     gap: 16px;
+  }
+
+  .divider {
+    width: calc(100% - 16px);
+    margin-right: auto;
   }
 </style>
