@@ -12,7 +12,11 @@ interface Props {
 const { frontmatter, headings } = Astro.props;
 ---
 
-<Html title={frontmatter.title} description={frontmatter.summary || ''}>
+<Html
+  title={frontmatter.title}
+  description={frontmatter.summary || ''}
+  image={frontmatter.banner || ''}
+>
   <div class="post-container">
     <h1>{frontmatter.title}</h1>
     <div class="info">
