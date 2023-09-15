@@ -1,5 +1,5 @@
 ---
-import Footer from '@Components/element/Footer.astro';
+import GeneralLayout from '@Components/layout/GeneralLayout.astro';
 import { AVATAR } from '@Models/GeneralModels';
 import '@Styles/global.css';
 
@@ -13,12 +13,15 @@ const title = Astro.props.title || '普通文組 2.0';
 const description =
   Astro.props.description || '這是一個文組轉職前端工程師的技術部落格';
 const image = Astro.props.image || AVATAR;
+
+const ga4Id = import.meta.env.PUBLIC_GA4_ID;
+const gTagId = import.meta.env.PUBLIC_GTAG_ID;
 ---
 
 <html lang="en">
   <head>
     <!-- Google Tag Manager -->
-    <script is:inline>
+    <script is:inline define:vars={{ ga4Id }}>
       (function (w, d, s, l, i) {
         w[l] = w[l] || [];
         w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
@@ -28,19 +31,21 @@ const image = Astro.props.image || AVATAR;
         j.async = true;
         j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
         f.parentNode.insertBefore(j, f);
-      })(window, document, 'script', 'dataLayer', 'GTM-KM9SGJLK');
+      })(window, document, 'script', 'dataLayer', ga4Id);
     </script>
 
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6QC9CKHCTY"
-    ></script>
-    <script is:inline>
+    <script
+      async
+      define:vars={{ gTagId }}
+      src=`https://www.googletagmanager.com/gtag/js?id=${gTagId}`></script>
+    <script is:inline define:vars={{ ga4Id }}>
       window.dataLayer = window.dataLayer || [];
       function gtag() {
         dataLayer.push(arguments);
       }
       gtag('js', new Date());
-      gtag('config', 'G-6QC9CKHCTY');
+      gtag('config', ga4Id);
     </script>
 
     <!-- Global Metadata -->
@@ -84,60 +89,14 @@ const image = Astro.props.image || AVATAR;
     <!-- Google Tag Manager (noscript) -->
     <noscript
       ><iframe
-        src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK"
+        src=`https://www.googletagmanager.com/ns.html?id=${gTagId}`
         height="0"
         width="0"
         style="display:none;visibility:hidden"></iframe></noscript
     >
     <!-- End Google Tag Manager (noscript) -->
-    <section class="side-contnet">
-      <h1>普通文組 2.0</h1>
-      <nav>
-        <a href="/">首頁</a>
-        <a href="/archive">全文章歸檔</a>
-        <a href="/tag">以標籤檢視</a>
-      </nav>
-    </section>
-    <section class="main-content">
+    <GeneralLayout>
       <slot />
-      <Footer />
-    </section>
+    </GeneralLayout>
   </body>
 </html>
-
-<style scoped>
-  .side-contnet,
-  .main-content {
-    margin: 24px;
-  }
-
-  nav {
-    display: flex;
-    gap: 16px;
-  }
-
-  @media screen and (min-width: 800px) {
-    body {
-      height: 100vh;
-      display: flex;
-      flex-direction: row;
-      overflow-y: hidden;
-    }
-
-    nav {
-      flex-direction: column;
-    }
-
-    .side-contnet {
-      flex: 0 0 240px;
-    }
-
-    .main-content {
-      margin: 0;
-      padding: 40px 24px 0;
-      flex: 1 1 auto;
-      overflow-y: auto;
-      position: relative;
-    }
-  }
-</style>

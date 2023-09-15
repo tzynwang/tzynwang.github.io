@@ -4,35 +4,41 @@ i:
 	rm -rf node_modules && \
 	yarn install --frozen-lockfile --production=false
 
+BIN := node node_modules/.bin
+
 .PHONY: start
 start:
-	yarn astro dev
+	$(BIN)/astro dev
 
 .PHONY: build
 build:
-	yarn astro check && \
-	yarn tsc --noEmit && \
-	yarn astro build
+	$(BIN)/astro check && \
+	$(BIN)/tsc --noEmit && \
+	$(BIN)/astro build
 
 .PHONY: preview
 preview:
-	yarn astro preview
+	$(BIN)/astro preview
+
+YEAR := $(shell date +%Y)
+YMD := $(shell date +%F)
+DATE := $(shell date +%T)
 
 # create new .md in <root>/src/pages/post folder
 # syntax: make new post=<article name>
 .PHONY: new
 new:
-	echo "---" >> src/pages/$(shell date +%Y)/$(post).md
-	echo "layout: '@Components/pages/SinglePostLayout.astro'" >> src/pages/$(shell date +%Y)/$(post).md
-	echo "title: $(post)" >> src/pages/$(shell date +%Y)/$(post).md
-	echo "date: $(shell date +%F) $(shell date +%T)" >> src/pages/$(shell date +%Y)/$(post).md
-	echo "tag:" >> src/pages/$(shell date +%Y)/$(post).md
-	echo "	- []" >> src/pages/$(shell date +%Y)/$(post).md
-	echo "banner: " >> src/pages/$(shell date +%Y)/$(post).md
-	echo "summary: " >> src/pages/$(shell date +%Y)/$(post).md
-	echo "draft: " >> src/pages/$(shell date +%Y)/$(post).md
-	echo "---" >> src/pages/$(shell date +%Y)/$(post).md
-	mkdir public/$(shell date +%Y)/$(post)
+	@echo "---" >> src/pages/$(YEAR)/$(post).md
+	@echo "layout: '@Components/pages/SinglePostLayout.astro'" >> src/pages/$(YEAR)/$(post).md
+	@echo "title: $(post)" >> src/pages/$(YEAR)/$(post).md
+	@echo "date: $(YMD) $(DATE)" >> src/pages/$(YEAR)/$(post).md
+	@echo "tag:" >> src/pages/$(YEAR)/$(post).md
+	@echo "	- []" >> src/pages/$(YEAR)/$(post).md
+	@echo "banner: " >> src/pages/$(YEAR)/$(post).md
+	@echo "summary: " >> src/pages/$(YEAR)/$(post).md
+	@echo "draft: " >> src/pages/$(YEAR)/$(post).md
+	@echo "---" >> src/pages/$(YEAR)/$(post).md
+	mkdir -p public/$(YEAR)/$(post)
 
 # deploy build result to gitHub repo as branch "gh-pages"
 .PHONY: deploy

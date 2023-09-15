@@ -1,14 +1,14 @@
 ---
 import Html from '@Components/layout/Html.astro';
 import PostItem from '@Components/element/PostItem.astro';
-import { ALL_NOT_DRAFT_SORTED_POSTS, ALL_UNIQUE_TAGS } from '@Tools/post';
+import { ALL_SORTED_POSTS, ALL_UNIQUE_TAGS } from '@Tools/post';
 
 export async function getStaticPaths() {
   return ALL_UNIQUE_TAGS.map((tag) => ({ params: { tag } }));
 }
 
 const { tag } = Astro.params;
-const posts = ALL_NOT_DRAFT_SORTED_POSTS.filter((post) =>
+const posts = ALL_SORTED_POSTS.filter((post) =>
   post.frontmatter.tag.flat().includes(tag || '')
 );
 ---

@@ -20,9 +20,9 @@ function sortPostByDate(posts: MarkdownInstance<Post>[]) {
   );
 }
 
-export const ALL_NOT_DRAFT_SORTED_POSTS = sortPostByDate(await getAllPosts());
+export const ALL_SORTED_POSTS = sortPostByDate(await getAllPosts());
 
-const ALL_TAGS = ALL_NOT_DRAFT_SORTED_POSTS.map((post) => post.frontmatter.tag)
+const ALL_TAGS = ALL_SORTED_POSTS.map((post) => post.frontmatter.tag)
   .flat(2)
   .sort();
 
