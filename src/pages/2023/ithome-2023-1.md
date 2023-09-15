@@ -1,12 +1,12 @@
 ---
 layout: '@Components/pages/SinglePostLayout.astro'
-title: 鐵人賽 Modern Web 組「捨棄 create-react-app 之餘還架了個 astro blog 昭告天下」第 1 天
-date: 2023-08-25 07:20:39
+title: 捨棄 create-react-app 之餘還架了個 astro blog 昭告天下：關於今年主題
+date: 2023-09-16 07:10:39
 tag:
 	- [2023鐵人賽]
 banner: /2023/ithome-2023-1/miguel-a-amutio-27QOmh18KDc-unsplash.jpg
 summary: 2023 鐵人賽開始了，今年來聊聊前端基礎建設以及如何用 astro 架部落格。
-draft: true
+draft: 
 ---
 
 大家好，這半年來印象比較深刻、又能集結成文章分享的開發主題分別是：
@@ -41,8 +41,7 @@ draft: true
 - 建立並介紹 astro 的專案結構
 - 如何透過 astro 將 .md 檔轉為靜態網頁
 - 撰寫腳本來透過 command line 快速建立文章
-- 如何使用 astro 提供的 dynamic route 與 pagination
-- 使用 CSS layer 來管理樣式
+- 如何使用 astro 提供的 dynamic route
 - 埋設 GA4
 - 打包、部署到 GitHub Pages
 - 資源分享：如何尋找靈感、下班後的進修方向
