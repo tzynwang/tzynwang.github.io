@@ -1,6 +1,6 @@
 ---
 import GeneralLayout from '@Components/layout/GeneralLayout.astro';
-import { AVATAR } from '@Models/GeneralModels';
+import { AVATAR, TITLE, DESCRIPTION } from '@Models/GeneralModels';
 import '@Styles/global.css';
 
 interface Props {
@@ -9,9 +9,8 @@ interface Props {
   image?: string;
 }
 
-const title = Astro.props.title || '普通文組 2.0';
-const description =
-  Astro.props.description || '這是一個文組轉職前端工程師的技術部落格';
+const title = Astro.props.title || TITLE;
+const description = Astro.props.description || DESCRIPTION;
 const image = Astro.props.image || AVATAR;
 
 const ga4Id = import.meta.env.PUBLIC_GA4_ID;

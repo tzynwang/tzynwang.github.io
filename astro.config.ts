@@ -1,5 +1,6 @@
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
+import { SITE } from './src/models/GeneralModels';
 
 // https://astro.build/config
 export default defineConfig({
@@ -9,6 +10,6 @@ export default defineConfig({
     '/archives': '/archive',
     '/categories': '/tag',
   },
-  site: 'https://tzynwang.github.io/',
+  site: SITE,
   trailingSlash: 'never',
 });
