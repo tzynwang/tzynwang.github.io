@@ -1,4 +1,5 @@
 import dayjs from 'dayjs';
+import { dateFormatter } from '@Tools/formatter';
 import type { MarkdownInstance, Post } from '@Models/GeneralTypes';
 
 async function getAllPosts() {
@@ -21,6 +22,17 @@ function sortPostByDate(posts: MarkdownInstance<Post>[]) {
 }
 
 export const ALL_SORTED_POSTS = sortPostByDate(await getAllPosts());
+
+function getPostRss(posts: MarkdownInstance<Post>[]) {
+  return posts.map((p) => ({
+    title: p.frontmatter.title,
+    link: p.url || '',
+    description: p.frontmatter.summary || '',
+    pubDate: new Date(dateFormatter(p.frontmatter.date)),
+  }));
+}
+
+export const RSS_POSTS = getPostRss(ALL_SORTED_POSTS);
 
 const ALL_TAGS = ALL_SORTED_POSTS.map((post) => post.frontmatter.tag)
   .flat(2)
