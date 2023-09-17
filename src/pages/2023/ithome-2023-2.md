@@ -6,7 +6,7 @@ tag:
 	- [2023鐵人賽]
 banner: /2023/ithome-2023-2/jessica-ruscello-OQSCtabGkSY-unsplash.jpg
 summary: 面對全新全空的專案資料夾，首先從設定 package.json 開始。今天的範圍是語意化版本（semantic versioning）以及 Node.js 的環境管理器（version manager）
-draft: true
+draft:
 ---
 
 今天是捨棄 create-react-app template 的第一天。面對全新全空的專案資料夾，首先從設定 package.json 開始。
