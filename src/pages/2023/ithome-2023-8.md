@@ -1,7 +1,7 @@
 ---
 layout: '@Components/pages/SinglePostLayout.astro'
-title: 鐵人賽 Modern Web 組「捨棄 create-react-app 之餘還架了個 astro blog 昭告天下」第 8 天
-date: 2023-08-28 08:58:41
+title: 捨棄 create-react-app 之餘還架了個 astro blog 昭告天下：webpack 5 與 TypeScript
+date: 2023-09-23 08:58:41
 tag:
 	- [2023鐵人賽]
 banner: /2023/ithome-2023-8/victor-charlie-QG9xUOQTYCY-unsplash.jpg

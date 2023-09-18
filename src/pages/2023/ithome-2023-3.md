@@ -1,6 +1,6 @@
 ---
 layout: '@Components/pages/SinglePostLayout.astro'
-title: 捨棄 create-react-app 之餘還架了個 astro blog 昭告天下：套件安裝
+title: 捨棄 create-react-app 之餘還架了個 astro blog 昭告天下：安裝套件
 date: 2023-09-18 08:11:49
 tag:
 	- [2023鐵人賽]
