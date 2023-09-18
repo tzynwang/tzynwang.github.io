@@ -1,12 +1,12 @@
 ---
 layout: '@Components/pages/SinglePostLayout.astro'
-title: 鐵人賽 Modern Web 組「捨棄 create-react-app 之餘還架了個 astro blog 昭告天下」第 3 天
-date: 2023-08-25 20:18:49
+title: 捨棄 create-react-app 之餘還架了個 astro blog 昭告天下：套件安裝
+date: 2023-09-18 08:11:49
 tag:
 	- [2023鐵人賽]
 banner: /2023/ithome-2023-3/rizki-rama28-cXrVvHZO7Lo-unsplash.jpg
 summary: 分享個人如何決定套件的安裝版本。以及當安裝套件時的 warning 噴滿整個終端時，除了無視、還可以透過 overrides/resolutions 來嘗試解決掉這些警告。
-draft: true
+draft:
 ---
 
 環境已經確保，可以來~~做點比較像樣的事情~~安裝套件了。
