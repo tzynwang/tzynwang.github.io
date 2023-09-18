@@ -1,12 +1,12 @@
 ---
 layout: '@Components/pages/SinglePostLayout.astro'
 title: 捨棄 create-react-app 之餘還架了個 astro blog 昭告天下：專案結構
-date: 2023-09-19 09:59:27
+date: 2023-09-19 07:07:27
 tag:
 	- [2023鐵人賽]
 banner: /2023/ithome-2023-4/agence-olloweb-d9ILr-dbEdg-unsplash.jpg
 summary: 介紹個人慣用的 tsconfig.json 設定內容、以及如何引用其他套件分享的設定檔；順便聊一點資料夾結構的安排方式。
-draft: true
+draft:
 ---
 
 今天來為專案加上 TypeScript 設定，同時也會檢視目前為止的專案資料夾結構安排。
