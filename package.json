@@ -2,11 +2,6 @@
 	"name": "tzynwang.github.io",
 	"type": "module",
 	"version": "2.0.0",
-	"scripts": {
-		"start": "astro dev",
-		"build": "astro check && tsc --noEmit && astro build",
-		"preview": "astro preview"
-	},
 	"dependencies": {
 		"@astrojs/rss": "^3.0.0",
 		"@astrojs/sitemap": "^2.0.2",
@@ -15,5 +10,8 @@
 	},
 	"devDependencies": {
 		"@types/node": "^18.14.2"
+	},
+	"engines": {
+		"node": "20"
 	}
 }
