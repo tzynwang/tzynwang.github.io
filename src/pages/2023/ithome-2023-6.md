@@ -1,12 +1,12 @@
 ---
 layout: '@Components/pages/SinglePostLayout.astro'
 title: 捨棄 create-react-app 之餘還架了個 astro blog 昭告天下：專案腳本
-date: 2023-09-21 13:59:08
+date: 2023-09-21 08:03:08
 tag:
 	- [2023鐵人賽]
 banner: /2023/ithome-2023-6/clique-images-hSB2HmJYaTo-unsplash.jpg
 summary: 在風風火火地把最基礎的畫面與功能做完後，現在你需要一點腳本來啟動他。
-draft: true
+draft:
 ---
 
 畫面與功能做完後，現在需要一些指令來讓專案在跑起來。而如果一個專案沒有在 README 提到任何啟動資訊，通常工程師會往 package.json 中的 `scripts` 欄位尋找相關提示。而今天會分享一些個人設定 `scripts` 的方法。
