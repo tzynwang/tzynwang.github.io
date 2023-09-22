@@ -1,12 +1,12 @@
 ---
 layout: '@Components/pages/SinglePostLayout.astro'
 title: 捨棄 create-react-app 之餘還架了個 astro blog 昭告天下：webpack 5 與環境變數
-date: 2023-09-22 16:06:44
+date: 2023-09-22 08:11:44
 tag:
 	- [2023鐵人賽]
 banner: /2023/ithome-2023-7/cookie-the-pom-gySMaocSdqs-unsplash.jpg
 summary: 很抱歉吊了幾天的胃口，從今天開始終於要來聊聊 webpack 設定了。首先從處理環境變數開始吧。
-draft: true
+draft:
 ---
 
 接下來幾天會來介紹個人開發時慣用的 webpack 設定。會從零開始撰寫，處理範圍如下：
