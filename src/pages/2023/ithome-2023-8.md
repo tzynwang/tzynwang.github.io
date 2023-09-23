@@ -6,7 +6,7 @@ tag:
 	- [2023鐵人賽]
 banner: /2023/ithome-2023-8/victor-charlie-QG9xUOQTYCY-unsplash.jpg
 summary: 瀏覽器環境是認不得 TypeScript 內容的，今天會分享個人平常如何透過 webpack 將 .ts/.tsx 處理成 JavaScript 檔案。
-draft: true
+draft:
 ---
 
 在[第 4 天](/2023/ithome-2023-4)個人曾經推薦在 tsconfig.json 中透過 `paths` 設定短路徑、省去在檔案間互相 import 時計算路徑的麻煩。而今天就會來詳細解釋如何為 webpack 加上 `alias` 設定，以及要安裝哪些 loader 來讓 webpack 能夠將 TypeScript 轉為瀏覽器能夠理解的 JavaScript 內容。
