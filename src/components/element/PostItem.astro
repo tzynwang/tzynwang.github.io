@@ -14,7 +14,7 @@ const { post } = Astro.props;
 <li class="post-wrapper">
   <a href={post.url} class={GA4_READ_POST}>{post.frontmatter.title}</a>
   <div>{dateFormatter(post.frontmatter.date)}</div>
-  <div class="tag-container">
+  <div>
     {post.frontmatter.tag.map((tag) => <Tag tag={tag}>{tag}</Tag>)}
   </div>
 </li>
@@ -26,17 +26,5 @@ const { post } = Astro.props;
     gap: 4px;
     list-style-type: none;
     container-type: inline-size;
-  }
-
-  .tag-container {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  @container (min-width: 480px) {
-    .tag-container {
-      gap: 16px;
-    }
   }
 </style>
