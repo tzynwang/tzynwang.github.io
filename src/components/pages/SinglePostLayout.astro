@@ -21,9 +21,7 @@ const { frontmatter, headings } = Astro.props;
     <h1>{frontmatter.title}</h1>
     <div class="info">
       <span>{dateFormatter(frontmatter.date)}</span>
-      <span class="tag-container"
-        >{frontmatter.tag.map((tag) => <Tag tag={tag}>{tag}</Tag>)}</span
-      >
+      <span>{frontmatter.tag.map((tag) => <Tag tag={tag}>{tag}</Tag>)}</span>
       <ul class="toc-container">
         {
           headings.map((head) => (
@@ -48,12 +46,6 @@ const { frontmatter, headings } = Astro.props;
     display: flex;
     flex-direction: column;
     gap: 8px;
-  }
-
-  .tag-container {
-    display: flex;
-    align-items: center;
-    gap: 16px;
   }
 
   .toc-container {

@@ -3,7 +3,8 @@ layout: '@Components/pages/SinglePostLayout.astro'
 title: 捨棄 create-react-app 之餘還架了個 astro blog 昭告天下：安裝套件
 date: 2023-09-18 08:11:49
 tag:
-	- [2023鐵人賽]
+  - [2023鐵人賽]
+  - [Frontend Infrastructure]
 banner: /2023/ithome-2023-3/rizki-rama28-cXrVvHZO7Lo-unsplash.jpg
 summary: 分享個人如何決定套件的安裝版本。以及當安裝套件時的 warning 噴滿整個終端時，除了無視、還可以透過 overrides/resolutions 來嘗試解決掉這些警告。
 draft:
