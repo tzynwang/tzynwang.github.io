@@ -3,7 +3,9 @@ layout: '@Components/pages/SinglePostLayout.astro'
 title: 捨棄 create-react-app 之餘還架了個 astro blog 昭告天下：webpack 5 與 TypeScript
 date: 2023-09-23 08:58:41
 tag:
-	- [2023鐵人賽]
+  - [2023鐵人賽]
+  - [Frontend Infrastructure]
+  - [webpack]
 banner: /2023/ithome-2023-8/victor-charlie-QG9xUOQTYCY-unsplash.jpg
 summary: 瀏覽器環境是認不得 TypeScript 內容的，今天會分享個人平常如何透過 webpack 將 .ts/.tsx 處理成 JavaScript 檔案。
 draft:

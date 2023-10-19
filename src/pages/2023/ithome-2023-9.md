@@ -3,7 +3,9 @@ layout: '@Components/pages/SinglePostLayout.astro'
 title: 捨棄 create-react-app 之餘還架了個 astro blog 昭告天下：webpack 5 與 css
 date: 2023-09-24 10:15:57
 tag:
-	- [2023鐵人賽]
+  - [2023鐵人賽]
+  - [Frontend Infrastructure]
+  - [webpack]
 banner: /2023/ithome-2023-9/aneta-voborilova-c8ovzYe3z0s-unsplash.jpg
 summary: 除了一般的 .css 檔案，今天也會介紹如何設定 webpack 來支援 css modules
 draft:
