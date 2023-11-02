@@ -20,7 +20,7 @@ draft:
 
 ### 開發行為背後的心智活動
 
-![programming activities and the related memory systems](/2023/the-programmers-brain-ch11-the-act-of-writing-code/figure_11-1.png)Ｆ
+![programming activities and the related memory systems](/2023/the-programmers-brain-ch11-the-act-of-writing-code/figure_11-1.png)
 
 當工程師在執行開發任務時，各類任務倚賴的心智活動類型有所不同，書中說明如下。
 
