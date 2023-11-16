@@ -26,9 +26,7 @@ tag:
 2. stepper：出現於迴圈中，比如 JavaScript loop 中 `for (let i = 0; i < 10; i++)` 中的 `i`
 3. flag：常見於條件判斷中，通常是布林值
 4. walker：與 stepper 差距在於 stepper 是用於「已知」的物件結構（如陣列），而 walker 則是對應那些還未全盤了解其結構（比如 tree）的步驟點
-
-   > A walker traverses a data structure, similar to a stepper. The difference lies in the way the data structure is traversed. A stepper always iterates over a list of values that are known beforehand, like in a for-loop. A walker, on the other hand, is a variable that **traverses a data structure in a way that is unknown before the loop starts**. Examples of a walker are a variable that is traversing a linked list to find the position where a new element should be added or a search index in a binary tree.
-
+   - A walker traverses a data structure, similar to a stepper. The difference lies in the way the data structure is traversed. A stepper always iterates over a list of values that are known beforehand, like in a for-loop. A walker, on the other hand, is a variable that **traverses a data structure in a way that is unknown before the loop starts**. Examples of a walker are a variable that is traversing a linked list to find the position where a new element should be added or a search index in a binary tree.
 5. most recent holder：保管一連串計算後，最後一次得到的值（比如記錄一個檔案最後被讀取到哪一行）
 6. most wanted holder：保管一連串計算後，最想要被獲得的值（比如取出一個數字陣列中最大的值）
 7. gatherer：保管疊加出來的值，類似 JavaScript `Array.reduce()` 執行完畢後得到的那一個變數
