@@ -67,15 +67,9 @@ domain storytelling 是較新的概念，比起傳統的需訪或事件風暴（
 
 #### strategic: domain, subdomain
 
-何謂領域（domain）？
+領域（domain）指的是一個產品「對外的互動」與「本身的內容」。而在實際執行開發前，建議先將領域切割為子領域 (subdomain)——避免一口氣開發太大團的東西導致缺漏。
 
-- 指一個產品「對外的互動」與「本身的內容」
-- 描述產品實現商業邏輯的方式
-
-動手開發前，先將領域切割為子領域 (subdomain)：
-
-- 理由：避免一口氣開發太大團的東西導致缺漏
-- 子領域根據重要性（賺錢度）排列：core > supporting > generic
+不同子領域能根據重要性（賺錢度）進行排列：core > supporting > generic。資源應該傾注在核心（core）子領域上。
 
 #### strategic: bounded context
 
