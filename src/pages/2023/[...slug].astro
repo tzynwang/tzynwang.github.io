@@ -3,10 +3,12 @@ import { getCollection } from 'astro:content';
 import Html from '@Components/layout/Html.astro';
 import Tag from '@Components/element/Tag.astro';
 import { dateFormatter } from '@Tools/formatter';
-import { getFlatTags } from '@Tools/post';
+import { filterOutDraft, getFlatTags } from '@Tools/post';
 
 export async function getStaticPaths() {
-  const blogEntries = await getCollection('2023');
+  const blogEntries = await getCollection('2023', (post) =>
+    filterOutDraft(post)
+  );
   return blogEntries.map((entry) => ({
     params: { slug: entry.slug },
     props: { entry },
