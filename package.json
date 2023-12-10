@@ -1,15 +1,15 @@
 {
 	"name": "tzynwang.github.io",
 	"type": "module",
-	"version": "2.0.0",
+	"version": "2.1.0",
 	"dependencies": {
-		"@astrojs/rss": "^3.0.0",
-		"@astrojs/sitemap": "^2.0.2",
-		"astro": "^2.2.0",
-		"dayjs": "^1.11.7"
+		"@astrojs/rss": "3.0.0",
+		"@astrojs/sitemap": "2.0.2",
+		"astro": "3.6.4",
+		"dayjs": "1.11.9"
 	},
 	"devDependencies": {
-		"@types/node": "^18.14.2"
+		"@types/node": "^20"
 	},
 	"engines": {
 		"node": "20"
