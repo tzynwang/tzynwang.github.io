@@ -26,12 +26,19 @@ function getAllYears() {
   return years;
 }
 
+/** Filter posts with `draft: true` only when building for production */
+export function filterOutDraft(
+  post: CollectionEntry<'2021' | '2022' | '2023'>
+) {
+  return import.meta.env.PROD ? post.data.draft !== true : true;
+}
+
 async function getAllPosts() {
   const years = getAllYears();
   const allPostsPromises = years.map(
     async (year) =>
       // @ts-ignore
-      await getCollection(year)
+      await getCollection(year, (post) => filterOutDraft(post))
   );
   const allPosts = await Promise.all(allPostsPromises);
   return allPosts.flat();
