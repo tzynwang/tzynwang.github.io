@@ -1,64 +1,80 @@
+import type { CollectionEntry } from 'astro:content';
+
+import { getCollection } from 'astro:content';
 import dayjs from 'dayjs';
 import { dateFormatter } from '@Tools/formatter';
-import type { MarkdownInstance, Post } from '@Models/GeneralTypes';
+
+function getThisYear() {
+  return dayjs().year();
+}
+
+function getYearOfPost(date: Date) {
+  return dayjs(date).year();
+}
+
+export function getPostUrl(post: CollectionEntry<'2021'>) {
+  return `${getYearOfPost(post.data.date)}/${post.slug}`;
+}
+
+function getAllYears() {
+  const startYear = 2021;
+  const thisYear = getThisYear();
+  const years = Array.from(
+    { length: thisYear - startYear + 1 },
+    (_, index) => startYear + index
+  );
+  return years;
+}
 
 async function getAllPosts() {
-  // `import.meta.glob` ref.:
-  // https://docs.astro.build/en/reference/api-reference/#astroglob
-  // https://vitejs.dev/guide/features.html#glob-import
-  const metaAllPosts = import.meta.glob<MarkdownInstance<Post>>(
-    '../pages/**/*.md'
+  const years = getAllYears();
+  const allPostsPromises = years.map(
+    async (year) =>
+      // @ts-ignore
+      await getCollection(year)
   );
-  const keys = Object.keys(metaAllPosts);
-  const allPostsPromises = keys.map((key) => metaAllPosts[key]());
-  return await Promise.all(allPostsPromises);
+  const allPosts = await Promise.all(allPostsPromises);
+  return allPosts.flat();
 }
 
-function sortPostByDate(posts: MarkdownInstance<Post>[]) {
+function sortPostByDate(posts: CollectionEntry<'2021'>[]) {
   return posts.sort(
-    (a, b) =>
-      dayjs(b.frontmatter.date).valueOf() - dayjs(a.frontmatter.date).valueOf()
+    (a, b) => dayjs(b.data.date).valueOf() - dayjs(a.data.date).valueOf()
   );
 }
 
+// @ts-ignore
 export const ALL_SORTED_POSTS = sortPostByDate(await getAllPosts());
 
-function getPostRss(posts: MarkdownInstance<Post>[]) {
+function getPostRss(posts: CollectionEntry<'2021'>[]) {
   return posts.map((p) => ({
-    title: p.frontmatter.title,
-    link: p.url || '',
-    description: p.frontmatter.summary || '',
-    pubDate: new Date(dateFormatter(p.frontmatter.date)),
+    title: p.data.title,
+    link: p.slug || '',
+    description: p.data.summary || '',
+    pubDate: new Date(dateFormatter(p.data.date)),
   }));
 }
 
 export const RSS_POSTS = getPostRss(ALL_SORTED_POSTS);
 
-const ALL_TAGS = ALL_SORTED_POSTS.map((post) => post.frontmatter.tag)
+const ALL_TAGS = ALL_SORTED_POSTS.map((post) => post.data.tag)
   .flat(2)
   .sort();
 
 export const ALL_UNIQUE_TAGS = [...new Set(ALL_TAGS)];
 
-export function groupPostByYear(posts: MarkdownInstance<Post>[]) {
-  const yearsMap: Record<string, MarkdownInstance<Post>[]> = {};
+export function getFlatTags(tags: string[][]) {
+  return tags.flat(2);
+}
+
+export function groupPostByYear(posts: CollectionEntry<'2021'>[]) {
+  const yearsMap: Record<string, CollectionEntry<'2021'>[]> = {};
   posts.forEach((post) => {
-    const y = dayjs(post.frontmatter.date).format('YYYY');
+    const y = dayjs(post.data.date).format('YYYY');
     if (!yearsMap[y]) {
       yearsMap[y] = [];
     }
     yearsMap[y].push(post);
   });
   return yearsMap;
-}
-
-export function getPostWithCompiledSummary(posts: MarkdownInstance<Post>[]) {
-  return posts.map((post) => {
-    const compiledContent = post.compiledContent();
-    // 在 .md 開頭為 h2+p 的情況下，取得文章第一段內容
-    const summaryWithPTail = compiledContent.split('<p>')[1];
-    // 移除 </p> 以後的內容
-    const summary = summaryWithPTail.split('</p>')[0];
-    return { ...post, summary };
-  });
 }
