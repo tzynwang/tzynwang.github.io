@@ -2,7 +2,7 @@
 import Html from '@Components/layout/Html.astro';
 import FeaturedPostLayout from '@Components/layout/FeaturedPostLayout.astro';
 import ListedPostLayout from '@Components/layout/ListedPostLayout.astro';
-import { ALL_SORTED_POSTS } from '@Tools/post';
+import { ALL_SORTED_POSTS, getFlatTags, getPostUrl } from '@Tools/post';
 
 const firstTenPosts = ALL_SORTED_POSTS.slice(0, 10);
 const postShouldWithSumary = firstTenPosts.slice(0, 5);
@@ -16,12 +16,12 @@ const restOfPost = firstTenPosts.slice(5, firstTenPosts.length);
         postShouldWithSumary.map((post, index) => (
           <div class:list={['post', `post-${index}`]}>
             <FeaturedPostLayout
-              title={post.frontmatter.title}
-              date={post.frontmatter.date}
-              tag={post.frontmatter.tag}
-              banner={post.frontmatter.banner}
-              summary={post.frontmatter.summary || ''}
-              url={post.url}
+              title={post.data.title}
+              date={post.data.date}
+              tag={getFlatTags(post.data.tag)}
+              banner={post.data.banner}
+              summary={post.data.summary || ''}
+              url={getPostUrl(post)}
             />
           </div>
         ))
@@ -31,10 +31,10 @@ const restOfPost = firstTenPosts.slice(5, firstTenPosts.length);
       {
         restOfPost.map((post) => (
           <ListedPostLayout
-            title={post.frontmatter.title}
-            date={post.frontmatter.date}
-            tag={post.frontmatter.tag}
-            url={post.url}
+            title={post.data.title}
+            date={post.data.date}
+            tag={getFlatTags(post.data.tag)}
+            url={getPostUrl(post)}
           />
         ))
       }

@@ -1,21 +1,22 @@
 ---
+import type { CollectionEntry } from 'astro:content';
 import Tag from '@Components/element/Tag.astro';
 import { GA4_READ_POST } from '@Models/GeneralModels';
 import { dateFormatter } from '@Tools/formatter';
-import type { MarkdownInstance, Post } from '@Models/GeneralTypes';
+import { getPostUrl, getFlatTags } from '@Tools/post';
 
 interface Props {
-  post: MarkdownInstance<Post>;
+  post: CollectionEntry<'2021'>;
 }
 
 const { post } = Astro.props;
 ---
 
 <li class="post-wrapper">
-  <a href={post.url} class={GA4_READ_POST}>{post.frontmatter.title}</a>
-  <div>{dateFormatter(post.frontmatter.date)}</div>
+  <a href={`/${getPostUrl(post)}`} class={GA4_READ_POST}>{post.data.title}</a>
+  <div>{dateFormatter(post.data.date)}</div>
   <div>
-    {post.frontmatter.tag.map((tag) => <Tag tag={tag}>{tag}</Tag>)}
+    {getFlatTags(post.data.tag).map((tag) => <Tag tag={tag}>{tag}</Tag>)}
   </div>
 </li>
 
