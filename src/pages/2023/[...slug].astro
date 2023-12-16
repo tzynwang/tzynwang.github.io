@@ -1,14 +1,9 @@
 ---
-import type { PostYear } from '@Models/GeneralTypes';
-import { dirname, sep } from 'path';
-import { fileURLToPath } from 'url';
 import SinglePostLayout from '@Components/pages/SinglePostLayout.astro';
 import { getPublishedPostsOfThisYear } from '@Tools/post';
 
 export async function getStaticPaths() {
-  const dirYearPath = dirname(fileURLToPath(import.meta.url));
-  const dirYear = dirYearPath.split(sep).pop() as PostYear;
-  return getPublishedPostsOfThisYear(dirYear);
+  return getPublishedPostsOfThisYear('2023');
 }
 
 const { entry } = Astro.props;
