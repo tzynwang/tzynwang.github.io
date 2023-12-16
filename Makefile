@@ -20,24 +20,24 @@ build:
 preview:
 	$(BIN)/astro preview
 
+PATH := src/content
 YEAR := $(shell date +%Y)
 YMD := $(shell date +%F)
 DATE := $(shell date +%T)
 
-# create new .md in <root>/src/pages/post folder
+# create new .md in <root>/src/content/(YEAR) folder
 # syntax: make new post=<article name>
 .PHONY: new
 new:
-	@echo "---" >> src/pages/$(YEAR)/$(post).md
-	@echo "layout: '@Components/pages/SinglePostLayout.astro'" >> src/pages/$(YEAR)/$(post).md
-	@echo "title: $(post)" >> src/pages/$(YEAR)/$(post).md
-	@echo "date: $(YMD) $(DATE)" >> src/pages/$(YEAR)/$(post).md
-	@echo "tag:" >> src/pages/$(YEAR)/$(post).md
-	@echo "	- []" >> src/pages/$(YEAR)/$(post).md
-	@echo "banner: " >> src/pages/$(YEAR)/$(post).md
-	@echo "summary: " >> src/pages/$(YEAR)/$(post).md
-	@echo "draft: " >> src/pages/$(YEAR)/$(post).md
-	@echo "---" >> src/pages/$(YEAR)/$(post).md
+	@echo "---" >> $(PATH)/$(YEAR)/$(post).md
+	@echo "title: $(post)" >> $(PATH)/$(YEAR)/$(post).md
+	@echo "date: $(YMD) $(DATE)" >> $(PATH)/$(YEAR)/$(post).md
+	@echo "tag:" >> $(PATH)/$(YEAR)/$(post).md
+	@echo "	- []" >> $(PATH)/$(YEAR)/$(post).md
+	@echo "banner: " >> $(PATH)/$(YEAR)/$(post).md
+	@echo "summary: " >> $(PATH)/$(YEAR)/$(post).md
+	@echo "draft: " >> $(PATH)/$(YEAR)/$(post).md
+	@echo "---" >> $(PATH)/$(YEAR)/$(post).md
 	mkdir -p public/$(YEAR)/$(post)
 
 # deploy build result to gitHub repo as branch "gh-pages"
