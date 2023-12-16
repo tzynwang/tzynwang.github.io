@@ -1,5 +1,5 @@
 import type { CollectionEntry } from 'astro:content';
-import type { PostYear } from '@Models/GeneralTypes';
+import type { PostContent, PostYear } from '@Models/GeneralTypes';
 
 import { getCollection } from 'astro:content';
 import dayjs from 'dayjs';
@@ -13,7 +13,7 @@ function getYearOfPost(date: Date) {
   return dayjs(date).year();
 }
 
-export function getPostUrl(post: CollectionEntry<'2021'>) {
+export function getPostUrl(post: PostContent) {
   return `${getYearOfPost(post.data.date)}/${post.slug}`;
 }
 
@@ -53,7 +53,7 @@ async function getAllPosts() {
   return allPosts.flat();
 }
 
-function sortPostByDate(posts: CollectionEntry<'2021'>[]) {
+function sortPostByDate(posts: PostContent[]) {
   return posts.sort(
     (a, b) => dayjs(b.data.date).valueOf() - dayjs(a.data.date).valueOf()
   );
@@ -62,7 +62,7 @@ function sortPostByDate(posts: CollectionEntry<'2021'>[]) {
 // @ts-ignore
 export const ALL_SORTED_POSTS = sortPostByDate(await getAllPosts());
 
-function getPostRss(posts: CollectionEntry<'2021'>[]) {
+function getPostRss(posts: PostContent[]) {
   return posts.map((p) => ({
     title: p.data.title,
     link: p.slug || '',
@@ -83,8 +83,8 @@ export function getFlatTags(tags: string[][]) {
   return tags.flat(2);
 }
 
-export function groupPostByYear(posts: CollectionEntry<'2021'>[]) {
-  const yearsMap: Record<string, CollectionEntry<'2021'>[]> = {};
+export function groupPostByYear(posts: PostContent[]) {
+  const yearsMap: Record<string, PostContent[]> = {};
   posts.forEach((post) => {
     const y = dayjs(post.data.date).format('YYYY');
     if (!yearsMap[y]) {

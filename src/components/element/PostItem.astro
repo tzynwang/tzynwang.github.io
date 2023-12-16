@@ -1,12 +1,13 @@
 ---
-import type { CollectionEntry } from 'astro:content';
+import type { PostContent } from '@Models/GeneralTypes';
+
 import Tag from '@Components/element/Tag.astro';
 import { GA4_READ_POST } from '@Models/GeneralModels';
 import { dateFormatter } from '@Tools/formatter';
 import { getPostUrl, getFlatTags } from '@Tools/post';
 
 interface Props {
-  post: CollectionEntry<'2021'>;
+  post: PostContent;
 }
 
 const { post } = Astro.props;

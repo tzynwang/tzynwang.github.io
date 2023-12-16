@@ -1,4 +1,4 @@
-export type { MarkdownInstance, GetStaticPathsOptions, Page } from 'astro';
+import type { CollectionEntry } from 'astro:content';
 
 export type PostYear = '2021' | '2022' | '2023';
 
@@ -14,3 +14,5 @@ export type Post = {
 export type EntryData = {
   data: Post;
 };
+
+export type PostContent = CollectionEntry<'2021'>;
