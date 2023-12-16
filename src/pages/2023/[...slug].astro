@@ -1,93 +1,18 @@
 ---
-import { getCollection } from 'astro:content';
-import Html from '@Components/layout/Html.astro';
-import Tag from '@Components/element/Tag.astro';
-import { dateFormatter } from '@Tools/formatter';
-import { filterOutDraft, getFlatTags } from '@Tools/post';
+import type { PostYear } from '@Models/GeneralTypes';
+import { dirname, sep } from 'path';
+import { fileURLToPath } from 'url';
+import SinglePostLayout from '@Components/pages/SinglePostLayout.astro';
+import { getPublishedPostsOfThisYear } from '@Tools/post';
 
 export async function getStaticPaths() {
-  const blogEntries = await getCollection('2023', (post) =>
-    filterOutDraft(post)
-  );
-  return blogEntries.map((entry) => ({
-    params: { slug: entry.slug },
-    props: { entry },
-  }));
+  const dirYearPath = dirname(fileURLToPath(import.meta.url));
+  const dirYear = dirYearPath.split(sep).pop() as PostYear;
+  return getPublishedPostsOfThisYear(dirYear);
 }
 
 const { entry } = Astro.props;
 const { Content, headings } = await entry.render();
 ---
 
-<Html
-  title={entry.data.title}
-  description={entry.data.summary || ''}
-  image={entry.data.banner || ''}
->
-  <div class="post-container">
-    <h1>{entry.data.title}</h1>
-    <div class="info">
-      <span>{dateFormatter(entry.data.date)}</span>
-      <span
-        >{
-          getFlatTags(entry.data.tag).map((tag) => <Tag tag={tag}>{tag}</Tag>)
-        }</span
-      >
-      <ul class="toc-container">
-        {
-          headings.map((head) => (
-            <li class={`toc-${head.depth}`}>
-              <a href={`#${head.slug}`}>{head.text}</a>
-            </li>
-          ))
-        }
-      </ul>
-    </div>
-    <Content />
-  </div>
-</Html>
-
-<style scoped>
-  .post-container h1 {
-    margin: 0;
-    margin-bottom: 16px;
-  }
-
-  .info {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-
-  .toc-container {
-    margin-bottom: 0;
-  }
-
-  .toc-2 {
-    margin-left: 1rem;
-  }
-
-  .toc-3 {
-    margin-left: 2rem;
-  }
-
-  .toc-4 {
-    margin-left: 3rem;
-  }
-
-  .toc-5 {
-    margin-left: 4rem;
-  }
-
-  @media screen and (min-width: 800px) {
-    .post-container {
-      max-width: 600px;
-    }
-  }
-
-  @media screen and (min-width: 1200px) {
-    .post-container {
-      max-width: 720px;
-    }
-  }
-</style>
+<SinglePostLayout entry={entry} Content={Content} headings={headings} />
