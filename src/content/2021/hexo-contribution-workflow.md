@@ -26,7 +26,7 @@ os: Windows_NT 10.0.18363 win32 x64
 ## Workflow
 
 1. Fork [hexojs/site](https://github.com/hexojs/hexo)
-   ![Click "Fork" button](fork-hexo-site.png)
+   ![Click "Fork" button](/2021/hexo-contribution-workflow/fork-hexo-site.png)
 1. Open cmd.exe, move to `C:\Projects\hexo_contributing` by entering `cd C:\Projects\hexo_contributing` (since I want to store the hexojs/site repo in this location on my computer).
 1. Enter `git init` to [create a empty Git repository](https://git-scm.com/docs/git-init) in this folder.
 1. Follow the instruction on hexo's contribution document:
@@ -48,13 +48,13 @@ npm install
 [Receive a comment](https://github.com/hexojs/hexo/issues/4267#issuecomment-778646141) which indicated the improvement is out of date (my bad), thus remove the pr from GitHub. Here's the flow:
 
 1. Click the ["Pull requests" tab in hexojs/site](https://github.com/hexojs/hexo/pulls), click the pr I'd sent
-   ![Navigate to the Pull request tab in hexojs/site repository](close-pr-00.png)
+   ![Navigate to the Pull request tab in hexojs/site repository](/2021/hexo-contribution-workflow/close-pr-00.png)
 1. Scroll to the page bottom, add the comment to describe the reason of closing the pr. Click the button "Close with comment"
-   ![Comment the reason for closing the pull-request before closing it](close-pr-01.png)
+   ![Comment the reason for closing the pull-request before closing it](/2021/hexo-contribution-workflow/close-pr-01.png)
 1. Click the button "Delete branch" (since it has no useage now)
-   ![Delete the branch from GitHub repository](close-pr-02.png)
+   ![Delete the branch from GitHub repository](/2021/hexo-contribution-workflow/close-pr-02.png)
 1. The branch has been deleted
-   ![The screenshot after deleting a branch](close-pr-03.png)
+   ![The screenshot after deleting a branch](/2021/hexo-contribution-workflow/close-pr-03.png)
    Done 😌
 
 ## Reference

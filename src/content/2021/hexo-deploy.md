@@ -72,8 +72,8 @@ deploy:
 1. Enter `git commit -m "initial commit"`
 1. Enter `git push https://github.com/tzynwang/<GitHub username>.github.io.git source`, this will push all the files that are staged to the "source" branch on the GitHub repository
 1. Add a file `.github/workflows/pages.yml` to the "source" branch on the GitHub repository.
-   ![Add new file through GitHub webpage interface](add-new-file-to-repository-00.png)
-   ![Enter the name for the new-add file](add-new-file-to-repository-01.png)
+   ![Add new file through GitHub webpage interface](/2021/hexo-deploy/add-new-file-to-repository-00.png)
+   ![Enter the name for the new-add file](/2021/hexo-deploy/add-new-file-to-repository-01.png)
 1. Add the following contents to the file `.github/workflows/pages.yml`:
 
 ```yaml
@@ -117,8 +117,8 @@ jobs:
 1. Enter `hexo deploy`, this command will push the contents from local folder "public" to the branch "master" on GitHub repository. You don't need to create the branch "master" yourself, `hexo deploy` will handle this
    💡 There will be 2 branches on the repository, one is "source" and another is "master". The "master" branch contains the contents that will be rendered on your GitHub Pages
 1. After `hexo deploy` is completed, go to the "Settings" page for the repository. Change the Source of GitHub Pages to Branch "master"
-   ![Click the "Setting" tab on GitHub repository](config-github-pages-setting-00.png)
-   ![Config the GitHub Pages setting](config-github-pages-setting-01.png)
+   ![Click the "Setting" tab on GitHub repository](/2021/hexo-deploy/config-github-pages-setting-00.png)
+   ![Config the GitHub Pages setting](/2021/hexo-deploy/config-github-pages-setting-01.png)
 1. Navigate to the URL `https://<GitHub username>.github.io/` to view your hexo blog ☕
 
 ### Note

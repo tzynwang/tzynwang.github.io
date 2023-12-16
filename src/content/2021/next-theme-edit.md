@@ -82,7 +82,8 @@ font:
 
 - Set `external: true` to load the font family from `host`.
 - Go to [Google Fonts](https://fonts.google.com/) to get the host URI for "Roboto". 1. Search for the font family "Roboto" 1. Click "+ Select this style" 1. Click the button "View your selected families" on the top-right side on the screen 1. Copy `link href`, paste as the value for "host" key in `_config.next.yml` 1. Here's the screenshot for reference:
-  ![3 steps to get the font hosting URI from Google Fonts](steps-to-get-font-host-uri.png)
+  
+![3 steps to get the font hosting URI from Google Fonts](/2021/next-theme-edit/steps-to-get-font-host-uri.png)
 
 💡 Hint:
 In my case, I also add "Noto Sans TC" to the selected families, so the host URI becomes to `https://fonts.googleapis.com/css2?family=Noto+Sans+TC&family=Roboto&display=swap`.
@@ -124,7 +125,8 @@ $sidebar-highlight                = $blue;
 ```
 
 Change the hover and highlight color of "Table of Contents" into `$blue`:
-![sidebar (menu) hover and highlight color changes to blue](sidebar-highlight-and-hover-color.png)
+
+![sidebar (menu) hover and highlight color changes to blue](/2021/next-theme-edit/sidebar-highlight-and-hover-color.png)
 
 ### Sidebar (menu) image setting
 
@@ -136,7 +138,9 @@ $site-author-image-border-width   = 0px;
 
 I think the border around the blog author image creates a little bit conflict to the whole theme style (since the `site-author-image` seems to be the only place that appears the border). Removes the border by setting the `$site-author-image-border-width` to 0px.
 Below is the before-after comprehensive:
-![Author image with and without the border](author-image-border-adjust.png)
+
+![Author image with and without the border](/2021/next-theme-edit/author-image-border-adjust.png)
+
 覺得整體視覺上只有側欄的影像有加邊界反而不太協調，決定拿掉。
 
 ## Reference
