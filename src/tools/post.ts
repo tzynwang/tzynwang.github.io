@@ -1,4 +1,5 @@
 import type { CollectionEntry } from 'astro:content';
+import type { PostYear } from '@Models/GeneralTypes';
 
 import { getCollection } from 'astro:content';
 import dayjs from 'dayjs';
@@ -27,10 +28,18 @@ function getAllYears() {
 }
 
 /** Filter posts with `draft: true` only when building for production */
-export function filterOutDraft(
-  post: CollectionEntry<'2021' | '2022' | '2023'>
-) {
+export function filterOutDraft(post: CollectionEntry<PostYear>) {
   return import.meta.env.PROD ? post.data.draft !== true : true;
+}
+
+export async function getPublishedPostsOfThisYear(dirYear: PostYear) {
+  const blogEntries = await getCollection(dirYear, (post) =>
+    filterOutDraft(post)
+  );
+  return blogEntries.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
 }
 
 async function getAllPosts() {
