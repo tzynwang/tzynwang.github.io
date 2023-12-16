@@ -1,27 +1,35 @@
 ---
+import type { MarkdownInstance, MarkdownHeading } from 'astro';
+import type { EntryData } from '@Models/GeneralTypes';
+
 import Html from '@Components/layout/Html.astro';
 import Tag from '@Components/element/Tag.astro';
 import { dateFormatter } from '@Tools/formatter';
-import type { Post, Heading } from '@Models/GeneralTypes';
+import { getFlatTags } from '@Tools/post';
 
 interface Props {
-  frontmatter: Post;
-  headings: Heading[];
+  entry: EntryData;
+  headings: MarkdownHeading[];
+  Content: MarkdownInstance<{}>['Content'];
 }
 
-const { frontmatter, headings } = Astro.props;
+const { entry, headings, Content } = Astro.props;
 ---
 
 <Html
-  title={frontmatter.title}
-  description={frontmatter.summary || ''}
-  image={frontmatter.banner || ''}
+  title={entry.data.title}
+  description={entry.data.summary || ''}
+  image={entry.data.banner || ''}
 >
   <div class="post-container">
-    <h1>{frontmatter.title}</h1>
+    <h1>{entry.data.title}</h1>
     <div class="info">
-      <span>{dateFormatter(frontmatter.date)}</span>
-      <span>{frontmatter.tag.map((tag) => <Tag tag={tag}>{tag}</Tag>)}</span>
+      <span>{dateFormatter(entry.data.date)}</span>
+      <span
+        >{
+          getFlatTags(entry.data.tag).map((tag) => <Tag tag={tag}>{tag}</Tag>)
+        }</span
+      >
       <ul class="toc-container">
         {
           headings.map((head) => (
@@ -32,7 +40,7 @@ const { frontmatter, headings } = Astro.props;
         }
       </ul>
     </div>
-    <slot />
+    <Content />
   </div>
 </Html>
 
