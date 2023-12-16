@@ -18,7 +18,7 @@ build:
 preview:
 	$(BIN)/astro preview
 
-PATH := src/content
+NEW_POST_PATH := src/content
 YEAR := $(shell date +%Y)
 YMD := $(shell date +%F)
 DATE := $(shell date +%T)
@@ -27,15 +27,15 @@ DATE := $(shell date +%T)
 # syntax: make new post=<article name>
 .PHONY: new
 new:
-	@echo "---" >> $(PATH)/$(YEAR)/$(post).md
-	@echo "title: $(post)" >> $(PATH)/$(YEAR)/$(post).md
-	@echo "date: $(YMD) $(DATE)" >> $(PATH)/$(YEAR)/$(post).md
-	@echo "tag:" >> $(PATH)/$(YEAR)/$(post).md
-	@echo "	- []" >> $(PATH)/$(YEAR)/$(post).md
-	@echo "banner: " >> $(PATH)/$(YEAR)/$(post).md
-	@echo "summary: " >> $(PATH)/$(YEAR)/$(post).md
-	@echo "draft: " >> $(PATH)/$(YEAR)/$(post).md
-	@echo "---" >> $(PATH)/$(YEAR)/$(post).md
+	@echo "---" >> $(NEW_POST_PATH)/$(YEAR)/$(post).md
+	@echo "title: $(post)" >> $(NEW_POST_PATH)/$(YEAR)/$(post).md
+	@echo "date: $(YMD) $(DATE)" >> $(NEW_POST_PATH)/$(YEAR)/$(post).md
+	@echo "tag:" >> $(NEW_POST_PATH)/$(YEAR)/$(post).md
+	@echo "	- []" >> $(NEW_POST_PATH)/$(YEAR)/$(post).md
+	@echo "banner: " >> $(NEW_POST_PATH)/$(YEAR)/$(post).md
+	@echo "summary: " >> $(NEW_POST_PATH)/$(YEAR)/$(post).md
+	@echo "draft: " >> $(NEW_POST_PATH)/$(YEAR)/$(post).md
+	@echo "---" >> $(NEW_POST_PATH)/$(YEAR)/$(post).md
 	mkdir -p public/$(YEAR)/$(post)
 
 # deploy build result to gitHub repo as branch "gh-pages"
