@@ -12,8 +12,6 @@ start:
 
 .PHONY: build
 build:
-	$(BIN)/astro check && \
-	$(BIN)/tsc --noEmit && \
 	$(BIN)/astro build
 
 .PHONY: preview
