@@ -242,4 +242,4 @@ TDD 的成功三要素：
 
 ## 參考文件
 
-- [Manning: Good Code, Bad Code](https://www.manning.com/books/the-art-of-unit-testing-third-edition)
+- [Manning: The Art of Unit Testing, Third Edition](https://www.manning.com/books/the-art-of-unit-testing-third-edition)
