@@ -56,7 +56,7 @@ draft:
 
 - 回傳值
 - 改變狀態
-- 呼叫外部要素（dependency）
+- 呼叫依賴（dependency）
 
 一個工作單元可能會做一件以上有用的事——但如果一件都沒做，請把它給刪了。
 
@@ -107,9 +107,9 @@ sum('2,3'); // 5
 
 我們甚至能寫出第三個單元測試：以 `totalSoFar()` 為進入點，檢查退出點 `return total;` 的值是否符合預期。
 
-### 呼叫外部要素的退出點
+### 呼叫依賴的退出點
 
-下方的 `logger.info()` 就是退出點的第三種形式——呼叫外部要素（calling a dependency）。
+下方的 `logger.info()` 就是退出點的第三種形式——呼叫依賴（calling a dependency）。
 
 ```js
 let total = 0;
@@ -128,7 +128,7 @@ const sum = (numbers) => {
 };
 ```
 
-外部要素（dependency）的特徵：無法控制其行為、測試成本高。本書的反面定義如下：
+依賴（dependency）的特徵：無法控制其行為、測試成本高。本書的反面定義如下：
 
 > “If I can **fully and easily control** what it’s doing, and it **runs in memory**, and its **fast**, it’s not a dependency". There are always exceptions to the rule, but this should get you through 80% of the cases at least.
 
@@ -149,7 +149,7 @@ CQRS 的概念：一個功能選擇 command 或 query 一件事情做就好。
 
 1. 回傳值
 2. 改變狀態
-3. 呼叫了外部要素
+3. 呼叫依賴
 
 ### 單元測試的定義，第二版
 
@@ -161,7 +161,7 @@ CQRS 的概念：一個功能選擇 command 或 query 一件事情做就好。
 
 1. 回傳值：最簡單，驗證值是否正確即可
 2. 改變狀態：觸發該單元後，想辦法驗證狀態是否如預期改變
-3. 呼叫了外部要素：需要 mock object 來模擬外部要素
+3. 呼叫依賴：需要配合假資料（fake）
 
 ## 1.6 A Test from Scratch
 
@@ -176,7 +176,7 @@ CQRS 的概念：一個功能選擇 command 或 query 一件事情做就好。
 1. 不會花太多時間，所以你願意常常執行，並很快收到回饋
 2. 不用太多手動前置作業就能跑測試（例：起一個 docker image），這才是真正的自動化
 3. 不被執行環境、距離上一次執行的時間影響結果（test results are consistent）——想像你接手一個陌生專案，如果這個專案的單元測試全數運行如常，你會對修改這包專案更有自信
-4. 不依賴外部要素（dependency）——即使外部要素掛了，也不影響測試結果——所以工程師需要 stub
+4. 排除依賴（dependency）——即使依賴掛了，也不影響測試結果——所以工程師需要 fake
 5. 刪改一個單元測試不會影響其他單元測試
 6. 測試失敗時，提供有意義的訊息
 
@@ -190,7 +190,7 @@ CQRS 的概念：一個功能選擇 command 或 query 一件事情做就好。
 
 ## 1.8 Integration tests
 
-一旦測試包含**無法控制外部要素**，那就是整合測試。無法控制的外部要素為：
+一旦測試**包含依賴**，那就是整合測試。以下列出的都是依賴：
 
 - 資料庫、api
 - 其他團隊開發的套件
