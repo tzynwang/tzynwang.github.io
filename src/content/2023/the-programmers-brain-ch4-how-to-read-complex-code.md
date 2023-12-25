@@ -13,7 +13,7 @@ tag:
 
 - 反向重構：將程式碼重構為便於理解的結構
 - 取代：將程式碼中不熟悉的語法換成自己熟悉的版本
-- 透過相依圖（dependency graph）以及狀態表（state table）來降低工作記憶的負荷
+- 透過依賴圖（dependency graph）以及狀態表（state table）來降低工作記憶的負荷
 
 ## 筆記
 
@@ -57,9 +57,9 @@ tag:
 
 舉例：對一個剛開始接觸 JavaScript 的工程師來說，比起使用 `Array.map()` 來透過一個陣列產生另外一個陣列，使用 `for (let i = 0; i < arr.length; i++)` 搭配 `Array.push()` 來產生一個新陣列可能會「更好懂」。這就是「取代」。
 
-#### 相依圖與狀態表
+#### 依賴圖與狀態表
 
-相依圖（dependency graph）：推薦將程式碼印到紙上來作業、或至少存成 PDF 格式搭配平板來進行標記。標記的方法是：圈選變數、功能，以及將出現多次的變數透過線條彼此連接。這樣做的目的是——讓工程師在閱讀程式碼時能夠專注在內容、不用額外花費工作記憶來處理流程資訊
+依賴圖（dependency graph）：推薦將程式碼印到紙上來作業、或至少存成 PDF 格式搭配平板來進行標記。標記的方法是：圈選變數、功能，以及將出現多次的變數透過線條彼此連接。這樣做的目的是——讓工程師在閱讀程式碼時能夠專注在內容、不用額外花費工作記憶來處理流程資訊
 
 > Creating a dependency graph can help you understand a piece of complex and interconnected code.
 
