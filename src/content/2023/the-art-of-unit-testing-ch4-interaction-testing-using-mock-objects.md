@@ -456,13 +456,13 @@ module.exports = verifyPassword;
 在執行單元測試的檔案中，我們先透過 `jest.mock()` 將外部套件 `some-3rd-party-lib` 的 `log.info()` 覆蓋為 `jest.fn()`。接著在單元測試裡確認 `log.info()` 是否有被呼叫，且傳入的參數為 `PASSED`。完整程式碼如下：
 
 ```js
-const log = require('some-3rd-party-lib');
-const verifyPassword = require('./verifyPassword');
-
 // arrange
 jest.mock('some-3rd-party-lib', () => ({
   info: jest.fn(),
 }));
+
+const log = require('some-3rd-party-lib');
+const verifyPassword = require('./verifyPassword');
 
 describe('verifyPassword', () => {
   it('with any input and empty rule, should call log.info with PASSED', () => {
@@ -474,9 +474,7 @@ describe('verifyPassword', () => {
 });
 ```
 
-首先在單元測試的檔案中引入 `log` 與 `verifyPassword`。
-
-接著呼叫 `jest.mock()`，傳入的第一個參數是「我們想要 mock 的模組」。第二個參數則是工廠功能，我們會在這裡用 `jest.fn()` 來覆蓋 `some-3rd-party-lib` 的 `log.info()`——代表接下來執行單元測試時，我們呼叫的其實是 jest 的假功能。
+首先呼叫 `jest.mock()`，傳入的第一個參數是「我們想要 mock 的模組」。第二個參數則是工廠功能，我們會在這裡用 `jest.fn()` 來覆蓋 `some-3rd-party-lib` 的 `log.info()`——代表接下來執行單元測試時，我們呼叫的其實是 jest 的假功能。
 
 並且，因為原版的 `log.info()` 作用也只是「在終端輸出內容」，沒有其他任務（回傳值什麼的），所以我們也不用對 `jest.fn()` 提供實作細節（mock implementation）。如果你要 mock 的功能比較複雜，可以參考官方文件 [jest.mock(moduleName, factory, options)](https://jestjs.io/docs/jest-object#jestmockmodulename-factory-options) 與 [jest.fn(implementation?)](https://jestjs.io/docs/jest-object#jestfnimplementation) 的範例。
 
