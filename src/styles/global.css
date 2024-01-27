@@ -3,6 +3,7 @@
   padding: 0;
   box-sizing: content-box;
   font-family: 'Noto Sans TC', sans-serif;
+  text-wrap: pretty;
   color: rgba(0, 0, 0, 0.9);
 }
 
@@ -42,28 +43,45 @@ img {
 
 h1,
 h2 {
+  font-size: 28px;
+  line-height: 42px;
   margin: 16px 0;
   color: #4c5958;
 }
 
 h3,
 h4 {
+  font-size: 22px;
+  line-height: 34px;
   margin: 8px 0;
   color: #4c5958;
 }
 
 h5 {
+  font-size: 18px;
+  line-height: 28px;
   margin: 4px 0;
   color: #4c5958;
 }
 
 p {
+  font-size: 16px;
+  line-height: 24px;
   margin: 16px 0;
+}
+
+p code {
+  font-size: 14px;
 }
 
 blockquote {
   padding-left: 16px;
   border-left: 4px solid #4c5958;
+}
+
+blockquote * {
+  /* 引用的內容多半是英文，故使用 Noto Sans 避免 ' 這類符號變成全形 */
+  font-family: 'Noto Sans', sans-serif;
 }
 
 pre {
