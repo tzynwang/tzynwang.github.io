@@ -1,0 +1,98 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v3.6.4"><!-- Primary Meta Tags --><title>葫蘆裡的 React：關於渲染（render）與確認（commit）</title><meta name="title" content="葫蘆裡的 React：關於渲染（render）與確認（commit）"><meta name="description" content="此篇是關於新 React 官方文件對於 render 與 commit 解說的筆記。同時也整理了組件在掛載、更新與移除時的活動時間軸。"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2024/react-under-the-hood-render-and-commit/"><meta property="og:title" content="葫蘆裡的 React：關於渲染（render）與確認（commit）"><meta property="og:description" content="此篇是關於新 React 官方文件對於 render 與 commit 解說的筆記。同時也整理了組件在掛載、更新與移除時的活動時間軸。"><meta property="og:image" content="https://tzynwang.github.io/2024/react-under-the-hood-render-and-commit/theme-photos-Cl-OpYWFFm0-unsplash.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2024/react-under-the-hood-render-and-commit/"><meta property="twitter:title" content="葫蘆裡的 React：關於渲染（render）與確認（commit）"><meta property="twitter:description" content="此篇是關於新 React 官方文件對於 render 與 commit 解說的筆記。同時也整理了組件在掛載、更新與移除時的活動時間軸。"><meta property="twitter:image" content="https://tzynwang.github.io/2024/react-under-the-hood-render-and-commit/theme-photos-Cl-OpYWFFm0-unsplash.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:Noto Sans TC,sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}ul,li{list-style-position:inside}ul{margin-bottom:16px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:8px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+</style><script type="module" src="/_astro/hoisted.77775e67.js"></script></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>葫蘆裡的 React：關於渲染（render）與確認（commit）</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2024-03-10 15:16</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/React" data-astro-cid-2iymvi75> React </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#總結" data-astro-cid-qtokga5y>總結</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#何謂渲染render" data-astro-cid-qtokga5y>何謂渲染（render）</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#何謂確認commit" data-astro-cid-qtokga5y>何謂確認（commit）</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#活動時間軸" data-astro-cid-qtokga5y>活動時間軸</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#掛載mount" data-astro-cid-qtokga5y>掛載（mount）</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#更新update" data-astro-cid-qtokga5y>更新（update）</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#解除掛載unmount" data-astro-cid-qtokga5y>解除掛載（unmount）</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#參考文件" data-astro-cid-qtokga5y>參考文件</a> </li> </ul> </div> <h2 id="總結">總結</h2>
+<ul>
+<li>React 的渲染（render）<strong>不是</strong>瀏覽器的畫面繪製階段</li>
+<li>當組件（component）的 <code>props</code> 或狀態（state）有變時，React 會先渲染（render）再確認（commit）要呈現的內容——接著才由瀏覽器進行畫面繪製</li>
+</ul>
+<h2 id="何謂渲染render">何謂渲染（render）</h2>
+<blockquote>
+<p>即 React 要求組件（component）根據它當下的 <code>props</code> 與狀態（state）回傳它「應該呈現在畫面上的內容」</p>
+</blockquote>
+<p>以下兩種情境都會觸發渲染：</p>
+<ol>
+<li>首次渲染（initial render）</li>
+<li>一個組件（或其親組件）的狀態改變時</li>
+</ol>
+<hr>
+<p>渲染時，React 會遍歷所有組件，直到一個組件回傳的是 HTML 元素（host element）為止。在遍歷過程中，React 會記錄所有組件回傳的內容，並比對新、舊元素樹的差異，並整理出「需要修改的內容」——接著交給「確認（commit）階段」來修改 DOM。</p>
+<h2 id="何謂確認commit">何謂確認（commit）</h2>
+<blockquote>
+<p>即「更新 DOM 的階段」</p>
+</blockquote>
+<ul>
+<li>在首次渲染（initial render）時，React 會呼叫 <code>appendChild()</code> 來產生 DOM</li>
+<li>在後續透過「狀態變化」觸發重渲染時，React 會最小幅度地修改 DOM，使其符合最終要呈現的內容</li>
+</ul>
+<p>在 React 處理完 DOM 之後，才輪到瀏覽器來更新畫面（browser rendering）。</p>
+<h2 id="活動時間軸">活動時間軸</h2>
+<h3 id="掛載mount">掛載（mount）</h3>
+<p>在渲染階段：</p>
+<ol>
+<li>建立局部狀態的值</li>
+<li>初次呼叫 <code>useEffect</code> 以外的 hooks 們</li>
+<li>根據 <code>props</code> 與狀態回傳（return）組件當下要顯示的內容</li>
+</ol>
+<p>在確認階段：</p>
+<ol>
+<li>根據渲染階段產生的結果建立 DOM 節點</li>
+<li>將組件的 <code>ref</code> 與 DOM 關聯起來</li>
+<li>由瀏覽器執行繪製</li>
+<li>執行 <code>useEffect</code></li>
+</ol>
+<h3 id="更新update">更新（update）</h3>
+<p>在渲染階段：</p>
+<ol>
+<li>呼叫 <code>useEffect</code> 以外，且「依賴陣列（dependency array）內容有變」或「沒有依賴陣列」的 hooks 們</li>
+<li>根據 <code>props</code> 與狀態回傳（return）組件當下要顯示的內容</li>
+</ol>
+<p>在確認階段：</p>
+<ol>
+<li>更新 DOM 節點</li>
+<li>由瀏覽器執行繪製</li>
+<li>執行「依賴陣列（dependency array）內容有變」或「沒有依賴陣列」的 <code>useEffect</code> clean up 內容</li>
+<li>執行「依賴陣列（dependency array）內容有變」或「沒有依賴陣列」的 <code>useEffect</code> 的 set up 內容</li>
+</ol>
+<p>可參考以下範例來理解 set up 與 clean up 的範圍：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#B392F0">useEffect</span><span style="color:#E1E4E8">(() </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">  // here's the set up part</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">    // here's the clean up function</span></span>
+<span class="line"><span style="color:#E1E4E8">  };</span></span>
+<span class="line"><span style="color:#E1E4E8">}, [someValue]);</span></span></code></pre>
+<h3 id="解除掛載unmount">解除掛載（unmount）</h3>
+<ol>
+<li>將組件的 <code>ref</code> 設定為 <code>null</code></li>
+<li>移除該 DOM 節點</li>
+<li>執行 <code>useEffect</code> 的 clean up 內容</li>
+</ol>
+<h2 id="參考文件">參考文件</h2>
+<ul>
+<li><a href="https://react.dev/learn/render-and-commit">official doc 2.0: Render and Commit</a></li>
+<li><a href="https://julesblom.com/writing/react-hook-component-timeline">Timeline of a React Component With Hooks</a></li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

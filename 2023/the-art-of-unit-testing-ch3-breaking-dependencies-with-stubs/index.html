@@ -1,0 +1,336 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v3.6.4"><!-- Primary Meta Tags --><title>閱讀筆記：The Art of Unit Testing Chapter 3 Breaking dependencies with stubs</title><meta name="title" content="閱讀筆記：The Art of Unit Testing Chapter 3 Breaking dependencies with stubs"><meta name="description" content="在本書第二章我們為「回傳值」與「改變狀態」這兩種退出點寫了測試，在第三章則會討論如何測試那些會呼叫「進入型依賴」的單元。"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2023/the-art-of-unit-testing-ch3-breaking-dependencies-with-stubs/"><meta property="og:title" content="閱讀筆記：The Art of Unit Testing Chapter 3 Breaking dependencies with stubs"><meta property="og:description" content="在本書第二章我們為「回傳值」與「改變狀態」這兩種退出點寫了測試，在第三章則會討論如何測試那些會呼叫「進入型依賴」的單元。"><meta property="og:image" content="https://tzynwang.github.io/2023/the-art-of-unit-testing-ch3-breaking-dependencies-with-stubs/tim-mossholder-WHXbCz2KWhE-unsplash.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2023/the-art-of-unit-testing-ch3-breaking-dependencies-with-stubs/"><meta property="twitter:title" content="閱讀筆記：The Art of Unit Testing Chapter 3 Breaking dependencies with stubs"><meta property="twitter:description" content="在本書第二章我們為「回傳值」與「改變狀態」這兩種退出點寫了測試，在第三章則會討論如何測試那些會呼叫「進入型依賴」的單元。"><meta property="twitter:image" content="https://tzynwang.github.io/2023/the-art-of-unit-testing-ch3-breaking-dependencies-with-stubs/tim-mossholder-WHXbCz2KWhE-unsplash.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:Noto Sans TC,sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}ul,li{list-style-position:inside}ul{margin-bottom:16px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:8px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+</style><script type="module" src="/_astro/hoisted.77775e67.js"></script></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>閱讀筆記：The Art of Unit Testing Chapter 3 Breaking dependencies with stubs</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2023-12-25 08:23</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/Testing" data-astro-cid-2iymvi75> Testing </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#intro" data-astro-cid-qtokga5y>Intro</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#31-types-of-dependencies" data-astro-cid-qtokga5y>3.1 Types of dependencies</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#進入型" data-astro-cid-qtokga5y>進入型</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#出走型" data-astro-cid-qtokga5y>出走型</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#名詞整理" data-astro-cid-qtokga5y>名詞整理</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#32-reasons-to-use-stubs" data-astro-cid-qtokga5y>3.2 Reasons to use stubs</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#33-generally-accepted-design-approaches-to-stubbing" data-astro-cid-qtokga5y>3.3 Generally accepted design approaches to stubbing</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#331-stubbing-out-time-with-parameter-injection" data-astro-cid-qtokga5y>3.3.1 Stubbing out time with parameter injection</a> </li><li class="toc-4" data-astro-cid-qtokga5y> <a href="#dependency-inversion-d-from-solid" data-astro-cid-qtokga5y>Dependency inversion (D from SOLID)</a> </li><li class="toc-4" data-astro-cid-qtokga5y> <a href="#pure-function" data-astro-cid-qtokga5y>Pure function</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#332-dependencies-injections-and-control" data-astro-cid-qtokga5y>3.3.2 Dependencies, injections, and control</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#34-functional-injection-techniques" data-astro-cid-qtokga5y>3.4 Functional injection techniques</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#35-modular-injection-techniques" data-astro-cid-qtokga5y>3.5 Modular injection techniques</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#36-moving-towards-objects-with-constructor-functions" data-astro-cid-qtokga5y>3.6 Moving towards objects with constructor functions</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#37-object-oriented-injection-techniques" data-astro-cid-qtokga5y>3.7 Object oriented injection techniques</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#371-constructor-injection" data-astro-cid-qtokga5y>3.7.1 Constructor injection</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#372-injecting-an-object-instead-of-a-function" data-astro-cid-qtokga5y>3.7.2 Injecting an object instead of a function</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#373-extracting-a-common-interface" data-astro-cid-qtokga5y>3.7.3 Extracting a common interface</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#summary" data-astro-cid-qtokga5y>summary</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#參考文件" data-astro-cid-qtokga5y>參考文件</a> </li> </ul> </div> <h2 id="intro">Intro</h2>
+<p>我們在第一章學到單元的退出點（exit point）有三種類型：</p>
+<ol>
+<li>回傳值</li>
+<li>改變狀態</li>
+<li>呼叫依賴（dependency）</li>
+</ol>
+<p>依賴指的是「我們無法或很難控制的部分」，時間、非同步功能、檔案系統（file system）、網路——或是任何設定麻煩、跑起來非常耗時的要素——這些都算。在第二章我們為「回傳值」與「改變狀態」這兩種退出點寫了測試，在這一章則會討論如何測試那些會呼叫「進入型依賴」的單元。</p>
+<p>（筆記備註：本書原文提到第二章討論了「回傳值」與「改變狀態」這兩種測試，但第二章的例子基本上沒有處理到改變狀態的部分⋯⋯🌚）</p>
+<h2 id="31-types-of-dependencies">3.1 Types of dependencies</h2>
+<p>依賴可分為兩種類型：進入型（incoming dependency）、出走型（outgoing dependency）。</p>
+<p><img src="/2023/the-art-of-unit-testing-ch3-breaking-dependencies-with-stubs/two-types-of-dependencies.png" alt="two types of dependencies"></p>
+<h3 id="進入型">進入型</h3>
+<p>此類依賴會為單元提供資訊，扮演一個單元的「起點」。當我們要為需要這類依賴的單元撰寫測試時，會以稱為 stubs 的假資料代替依賴。</p>
+<p>常見進入型依賴：從資料庫撈出的內容、來自 api 的回應（response）、從硬碟讀取的檔案內容。</p>
+<h3 id="出走型">出走型</h3>
+<p>代表一個單元的退出點（exit point），執行到這裡就代表該單元「結束」了。執行單元測試時，會以稱為 mock 的假資料替代出走型依賴，並測試該 mock 是否有被呼叫。順帶一提，因為 mock 代表退出點，所以一個單元測試一次只應關注一個 mock。</p>
+<p>常見出走型依賴：呼叫 logger 印出結果、將內容保存到資料庫、寄信、呼叫 api 等。</p>
+<h3 id="名詞整理">名詞整理</h3>
+<p>本書以假資料（fake）取代原始依賴的「位置」來決定名稱。如果假資料要扮演供給資訊的起點，那就稱之 stub。如果假資料要在退出點發揮作用，那就稱之 mock。而 fake 是用來囊括 stub 與 mock 的泛稱。就這樣，沒有其他名字了。</p>
+<h2 id="32-reasons-to-use-stubs">3.2 Reasons to use stubs</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> moment</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> require</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"moment"</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> SUNDAY</span><span style="color:#F97583"> =</span><span style="color:#79B8FF"> 0</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> SATURDAY</span><span style="color:#F97583"> =</span><span style="color:#79B8FF"> 6</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#B392F0"> verifyPassword</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">input</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">rules</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> currentDay</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> moment</span><span style="color:#E1E4E8">().</span><span style="color:#B392F0">day</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#F97583">  if</span><span style="color:#E1E4E8"> ([</span><span style="color:#79B8FF">SATURDAY</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">SUNDAY</span><span style="color:#E1E4E8">].</span><span style="color:#B392F0">includes</span><span style="color:#E1E4E8">(currentDay)) {</span></span>
+<span class="line"><span style="color:#F97583">    throw</span><span style="color:#B392F0"> Error</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"It's the weekend!"</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> errors</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> [];</span></span>
+<span class="line"><span style="color:#E1E4E8">  rules.</span><span style="color:#B392F0">forEach</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">rule</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> result</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> rule</span><span style="color:#E1E4E8">(input);</span></span>
+<span class="line"><span style="color:#F97583">    if</span><span style="color:#E1E4E8"> (</span><span style="color:#F97583">!</span><span style="color:#E1E4E8">result.passed) {</span></span>
+<span class="line"><span style="color:#E1E4E8">      errors.</span><span style="color:#B392F0">push</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">`error ${</span><span style="color:#E1E4E8">result</span><span style="color:#9ECBFF">.</span><span style="color:#E1E4E8">reason</span><span style="color:#9ECBFF">}`</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#E1E4E8">  });</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> errors;</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span></code></pre>
+<p>以上方在週末就會拋錯的 <code>verifyPassword</code> 功能為例——如果工程師在單元測試中不使用 stub 來控制 <code>currentDay</code> 的值，寫出來的就不是「好」的單元測試。</p>
+<p>原因是，一個良好的單元測試不應被執行環境影響結果。不論我們在什麼日子執行測試，只要 <code>verifyPassword</code> 的實作沒有變，單元測試的結果就該維持一致，而不是在週間綠燈、週末紅燈。</p>
+<p>為了確保單元測試的品質，我們可以選擇重構（本章主要內容），或是透過 jest 的 isolation api 來控制 <code>currentDay</code> 的值（請看本書第五章）。</p>
+<h2 id="33-generally-accepted-design-approaches-to-stubbing">3.3 Generally accepted design approaches to stubbing</h2>
+<h3 id="331-stubbing-out-time-with-parameter-injection">3.3.1 Stubbing out time with parameter injection</h3>
+<p>我們可以選擇重構，將 <code>currentDay</code> 透過參數傳入——這能降低單元測試的變異性（variability）。現在提供 <code>currentDay</code> 的責任落在呼叫此單元的人身上，我們就能輕鬆地控制測試情境了：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#B392F0"> verifyPassword2</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">input</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">rules</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">currentDay</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">  if</span><span style="color:#E1E4E8"> ([</span><span style="color:#79B8FF">SATURDAY</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">SUNDAY</span><span style="color:#E1E4E8">].</span><span style="color:#B392F0">includes</span><span style="color:#E1E4E8">(currentDay)) {</span></span>
+<span class="line"><span style="color:#F97583">    throw</span><span style="color:#B392F0"> Error</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"It's the weekend!"</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> errors</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> [];</span></span>
+<span class="line"><span style="color:#E1E4E8">  rules.</span><span style="color:#B392F0">forEach</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">rule</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> result</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> rule</span><span style="color:#E1E4E8">(input);</span></span>
+<span class="line"><span style="color:#F97583">    if</span><span style="color:#E1E4E8"> (</span><span style="color:#F97583">!</span><span style="color:#E1E4E8">result.passed) {</span></span>
+<span class="line"><span style="color:#E1E4E8">      errors.</span><span style="color:#B392F0">push</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">`error ${</span><span style="color:#E1E4E8">result</span><span style="color:#9ECBFF">.</span><span style="color:#E1E4E8">reason</span><span style="color:#9ECBFF">}`</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#E1E4E8">  });</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> errors;</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> SUNDAY</span><span style="color:#F97583"> =</span><span style="color:#79B8FF"> 0</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> SATURDAY</span><span style="color:#F97583"> =</span><span style="color:#79B8FF"> 6</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> MONDAY</span><span style="color:#F97583"> =</span><span style="color:#79B8FF"> 1</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">describe</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"verifyPassword2"</span><span style="color:#E1E4E8">, () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#B392F0">  test</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"on weekends, should throw exceptions"</span><span style="color:#E1E4E8">, () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#B392F0">    expect</span><span style="color:#E1E4E8">(() </span><span style="color:#F97583">=></span><span style="color:#B392F0"> verifyPassword2</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"anything"</span><span style="color:#E1E4E8">, [], </span><span style="color:#79B8FF">SUNDAY</span><span style="color:#E1E4E8">)).</span><span style="color:#B392F0">toThrow</span><span style="color:#E1E4E8">(</span></span>
+<span class="line"><span style="color:#9ECBFF">      "It's the weekend!"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">    );</span></span>
+<span class="line"><span style="color:#E1E4E8">  });</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+<p>把 <code>currentDay</code> 參數化總共有三個意義：</p>
+<ol>
+<li>我們能控制單元測試的情境</li>
+<li>我們使用「依賴反轉（dependency inversion）」的概念來重構這個功能</li>
+<li>現在 <code>verifyPassword2</code> 是個純函數（pure function）了</li>
+</ol>
+<h4 id="dependency-inversion-d-from-solid">Dependency inversion (D from SOLID)</h4>
+<p><a href="https://zh.wikipedia.org/zh-tw/%E4%BE%9D%E8%B5%96%E5%8F%8D%E8%BD%AC%E5%8E%9F%E5%88%99">中文維基</a>翻譯為「依賴反轉」。核心概念是：高層次的模組<strong>不依賴</strong>低層次模組的實作細節——依賴關係被反轉——反該由低層次模組配合高層次模組的抽象需求。終極目標是<strong>解除模組之間的耦合</strong>。</p>
+<h4 id="pure-function">Pure function</h4>
+<p><a href="https://en.wikipedia.org/wiki/Pure_function">維基百科</a>的定義如下：</p>
+<ol>
+<li>此功能的回傳值只受參數影響——如果<strong>參數沒變，回傳值就不會變</strong></li>
+<li>此功能不會產生副作用（side effects），不會影響到它範圍外的任何東西</li>
+</ol>
+<h3 id="332-dependencies-injections-and-control">3.3.2 Dependencies, injections, and control</h3>
+<p>整理到目前為止出現的一些名詞與其定義：</p>
+<ul>
+<li>依賴（dependency）：一個單元中無法或很難控制（control）的部分</li>
+<li>控制（control）：在本書指的是「影響依賴的行為」。以 <code>verifyPassword</code> 為例，我們無法控制變數 <code>currentDay</code> 的值。然而在 <code>verifyPassword2</code> 中，我們能透過參數 <code>currentDay</code> 來決定要提供什麼樣的日期資訊</li>
+<li>控制反轉（inversion of control）：當我們將 <code>verifyPassword</code> 改寫為 <code>verifyPassword2</code> 時，就是透過參數注入（parameter injection）來將控制權從功能中反轉出來</li>
+<li>依賴注入（dependency injection）：指透過介面（design interface）來為一個單元提供依賴。以 <code>verifyPassword2</code> 為例，我們透過「參數」這個介面來注入依賴</li>
+<li>接縫（seam）：指那些能注入依賴的部位。以 <code>verifyPassword2</code> 為例，此功能的接縫就是它的參數 <code>currentDay</code>。接縫會大幅影響單元測試的可讀性與維護性——畢竟越容易控制一個單元的行為，就能越輕鬆地為各種使用情境撰寫測試。</li>
+</ul>
+<h2 id="34-functional-injection-techniques">3.4 Functional injection techniques</h2>
+<p>除了透過參數傳入依賴外，也可透過傳入功能，或是將原先的 <code>verifyPassword</code> 柯里化（currying）來避免把依賴寫死在功能中。</p>
+<blockquote>
+<p>Factory functions are functions that return other functions, <strong>pre-configured with some context</strong>.</p>
+</blockquote>
+<p>以下列 snippet 為例，我們將原本的密碼驗證功能拆成「產生驗證功能」與「密碼驗證」兩階段。呼叫 <code>makeVerifier</code> 時我們需要傳入 <code>rules</code> 與 <code>getCurrentDayFn</code> 這兩項參數，而 <code>makeVerifier</code> 會回傳「已經指定好 <code>rules</code> 與 <code>getCurrentDayFn</code> 的密碼驗證功能（<code>theVerifier</code>）」。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#6A737D">// the arrange</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> SATURDAY</span><span style="color:#F97583"> =</span><span style="color:#79B8FF"> 6</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> SUNDAY</span><span style="color:#F97583"> =</span><span style="color:#79B8FF"> 0</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> makeVerifier</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">rules</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">getCurrentDayFn</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#B392F0"> theVerifier</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">input</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">    if</span><span style="color:#E1E4E8"> ([</span><span style="color:#79B8FF">SATURDAY</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">SUNDAY</span><span style="color:#E1E4E8">].</span><span style="color:#B392F0">includes</span><span style="color:#E1E4E8">(</span><span style="color:#B392F0">getCurrentDayFn</span><span style="color:#E1E4E8">())) {</span></span>
+<span class="line"><span style="color:#F97583">      throw</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> Error</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"It's the weekend!"</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> errors</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> [];</span></span>
+<span class="line"><span style="color:#E1E4E8">    rules.</span><span style="color:#B392F0">forEach</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">rule</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">      const</span><span style="color:#79B8FF"> result</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> rule</span><span style="color:#E1E4E8">(input);</span></span>
+<span class="line"><span style="color:#F97583">      if</span><span style="color:#E1E4E8"> (</span><span style="color:#F97583">!</span><span style="color:#E1E4E8">result.passed) {</span></span>
+<span class="line"><span style="color:#E1E4E8">        errors.</span><span style="color:#B392F0">push</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">`error ${</span><span style="color:#E1E4E8">result</span><span style="color:#9ECBFF">.</span><span style="color:#E1E4E8">reason</span><span style="color:#9ECBFF">}`</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">      }</span></span>
+<span class="line"><span style="color:#E1E4E8">    });</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#E1E4E8"> errors;</span></span>
+<span class="line"><span style="color:#E1E4E8">  };</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> theVerifier;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">describe</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"verifier"</span><span style="color:#E1E4E8">, () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#B392F0">  test</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"factory method: on weekends, throws exceptions"</span><span style="color:#E1E4E8">, () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#B392F0"> alwaysSunday</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> () </span><span style="color:#F97583">=></span><span style="color:#79B8FF"> SUNDAY</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> verifyPassword</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> makeVerifier</span><span style="color:#E1E4E8">([], alwaysSunday);</span></span>
+<span class="line"><span style="color:#6A737D">    // the act and assert</span></span>
+<span class="line"><span style="color:#B392F0">    expect</span><span style="color:#E1E4E8">(() </span><span style="color:#F97583">=></span><span style="color:#B392F0"> verifyPassword</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"anything"</span><span style="color:#E1E4E8">)).</span><span style="color:#B392F0">toThrow</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"It's the weekend!"</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">  });</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+<p>以上重構讓單元測試變的俐落，但個人認為這波改動也降低了密碼驗證功能的可讀性。我偏向透過參數來執行依賴注入。</p>
+<h2 id="35-modular-injection-techniques">3.5 Modular injection techniques</h2>
+<p>以下是本書關於模組化注入（modular injection）的實作說明。首先，功能部分要追加 api 來允許模組注入：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> originalDependencies</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">  moment: </span><span style="color:#B392F0">require</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'moment'</span><span style="color:#E1E4E8">),</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span>
+<span class="line"><span style="color:#F97583">let</span><span style="color:#E1E4E8"> dependencies </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> { </span><span style="color:#F97583">...</span><span style="color:#E1E4E8">originalDependencies };</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#B392F0"> inject</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">fakes</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">  Object.</span><span style="color:#B392F0">assign</span><span style="color:#E1E4E8">(dependencies, fakes);</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#F97583"> function</span><span style="color:#B392F0"> reset</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#E1E4E8">    dependencies </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> { </span><span style="color:#F97583">...</span><span style="color:#E1E4E8">originalDependencies };</span></span>
+<span class="line"><span style="color:#E1E4E8">  };</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> SUNDAY</span><span style="color:#F97583"> =</span><span style="color:#79B8FF"> 0</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> SATURDAY</span><span style="color:#F97583"> =</span><span style="color:#79B8FF"> 6</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#B392F0"> verifyPassword</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">input</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">rules</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> currentDay</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> dependencies.</span><span style="color:#B392F0">moment</span><span style="color:#E1E4E8">().</span><span style="color:#B392F0">day</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#F97583">  if</span><span style="color:#E1E4E8"> ([</span><span style="color:#79B8FF">SATURDAY</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">SUNDAY</span><span style="color:#E1E4E8">].</span><span style="color:#B392F0">includes</span><span style="color:#E1E4E8">(currentDay)) {</span></span>
+<span class="line"><span style="color:#F97583">    throw</span><span style="color:#B392F0"> Error</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"It's the weekend!"</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#6A737D">  // more code goes here...</span></span>
+<span class="line"><span style="color:#6A737D">  // return list of errors found..</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> [];</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">module</span><span style="color:#E1E4E8">.</span><span style="color:#79B8FF">exports</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">  SATURDAY,</span></span>
+<span class="line"><span style="color:#E1E4E8">  verifyPassword,</span></span>
+<span class="line"><span style="color:#E1E4E8">  inject,</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span></code></pre>
+<p>並且測試後要復原模組狀態：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#79B8FF">  inject</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">  verifyPassword</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">  SATURDAY</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">} </span><span style="color:#F97583">=</span><span style="color:#B392F0"> require</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'./password-verifier-time00-modular'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#B392F0"> injectDate</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">newDay</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> reset</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> inject</span><span style="color:#E1E4E8">({</span></span>
+<span class="line"><span style="color:#B392F0">    moment</span><span style="color:#E1E4E8">: () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> ({</span></span>
+<span class="line"><span style="color:#6A737D">      // we're faking the moment.js module's API here.</span></span>
+<span class="line"><span style="color:#B392F0">      day</span><span style="color:#E1E4E8">: () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> newDay,</span></span>
+<span class="line"><span style="color:#E1E4E8">    }),</span></span>
+<span class="line"><span style="color:#E1E4E8">  });</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> reset;</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">describe</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'verifyPassword'</span><span style="color:#E1E4E8">, () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#B392F0">  describe</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'when its the weekend'</span><span style="color:#E1E4E8">, () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#B392F0">    it</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'throws an error'</span><span style="color:#E1E4E8">, () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">      const</span><span style="color:#79B8FF"> reset</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> injectDate</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">SATURDAY</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#B392F0">      expect</span><span style="color:#E1E4E8">(() </span><span style="color:#F97583">=></span><span style="color:#B392F0"> verifyPassword</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'any input'</span><span style="color:#E1E4E8">)).</span><span style="color:#B392F0">toThrow</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"It's the weekend!"</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#B392F0">      reset</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">    });</span></span>
+<span class="line"><span style="color:#E1E4E8">  });</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+<p>結論：不要自找麻煩。請選擇透過參數注入或柯里化來反轉依賴。</p>
+<h2 id="36-moving-towards-objects-with-constructor-functions">3.6 Moving towards objects with constructor functions</h2>
+<h2 id="37-object-oriented-injection-techniques">3.7 Object oriented injection techniques</h2>
+<h3 id="371-constructor-injection">3.7.1 Constructor injection</h3>
+<p>以下是重構為物件導向風味的 <code>PasswordVerifier</code> 功能。現在我們能透過建構子（constructor）注入依賴了：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#F97583">class</span><span style="color:#B392F0"> PasswordVerifier</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">  constructor</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">rules</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">getCurrentDayFn</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#79B8FF">    this</span><span style="color:#E1E4E8">.rules </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> rules;</span></span>
+<span class="line"><span style="color:#79B8FF">    this</span><span style="color:#E1E4E8">.currentDay </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> getCurrentDayFn;</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#B392F0">  verify</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">input</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">    if</span><span style="color:#E1E4E8"> ([</span><span style="color:#79B8FF">SATURDAY</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">SUNDAY</span><span style="color:#E1E4E8">].</span><span style="color:#B392F0">includes</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">this</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">currentDay</span><span style="color:#E1E4E8">())) {</span></span>
+<span class="line"><span style="color:#F97583">      throw</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> Error</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"It's the weekend!"</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> errors</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> [];</span></span>
+<span class="line"><span style="color:#6A737D">    //more code goes here..</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#E1E4E8"> errors;</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>注意——在下列單元測試中，我們都透過 <code>makeVerifier</code> 這個工廠功能（factory function）來建立驗證密碼的實例，而不是直接在每一道測試中呼叫 <code>new PasswordVerifier(rules, getCurrentDayFn)</code>：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#E1E4E8"> { </span><span style="color:#79B8FF">PasswordVerifier</span><span style="color:#E1E4E8"> } </span><span style="color:#F97583">=</span><span style="color:#B392F0"> require</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'./password-verifier'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">describe</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'refactored with constructor'</span><span style="color:#E1E4E8">, () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#B392F0"> makeVerifier</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">rules</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">getCurrentDayFn</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> PasswordVerifier</span><span style="color:#E1E4E8">(rules, getCurrentDayFn);</span></span>
+<span class="line"><span style="color:#E1E4E8">  };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">  test</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'class constructor: on weekends, throws exceptions'</span><span style="color:#E1E4E8">, () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">    // arrange</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#B392F0"> alwaysSunday</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> () </span><span style="color:#F97583">=></span><span style="color:#9ECBFF"> 'SUNDAY'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> verifier</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> makeVerifier</span><span style="color:#E1E4E8">([], alwaysSunday);</span></span>
+<span class="line"><span style="color:#6A737D">    // act and assert</span></span>
+<span class="line"><span style="color:#B392F0">    expect</span><span style="color:#E1E4E8">(() </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> verifier.</span><span style="color:#B392F0">verify</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'anything'</span><span style="color:#E1E4E8">)).</span><span style="color:#B392F0">toThrow</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"It's the weekend!"</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">  });</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">  test</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'class constructor: on weekdays, with no rules, passes'</span><span style="color:#E1E4E8">, () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">    // arrange</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#B392F0"> alwaysMonday</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> () </span><span style="color:#F97583">=></span><span style="color:#9ECBFF"> 'MONDAY'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> verifier</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> makeVerifier</span><span style="color:#E1E4E8">([], alwaysMonday);</span></span>
+<span class="line"><span style="color:#6A737D">    // act</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> result</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> verifier.</span><span style="color:#B392F0">verify</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'anything'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#6A737D">    // assert</span></span>
+<span class="line"><span style="color:#B392F0">    expect</span><span style="color:#E1E4E8">(result.</span><span style="color:#79B8FF">length</span><span style="color:#E1E4E8">).</span><span style="color:#B392F0">toBe</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">0</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">  });</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+<p>多包一層工廠功能（抽象層）的好處是：日後即使 <code>PasswordVerifier</code> 的實作方式變了，我們也不需要逐一調整單元測試的內容，而是更新 <code>makeVerifier</code> 就好。</p>
+<p>更多關於抽象層的說明可以參考 <a href="/2024/the-art-of-unit-testing-ch5-isolation-frameworks#consider-abstracting-away-direct-dependencies">第五章筆記 Consider abstracting away direct dependencies</a></p>
+<h3 id="372-injecting-an-object-instead-of-a-function">3.7.2 Injecting an object instead of a function</h3>
+<h3 id="373-extracting-a-common-interface">3.7.3 Extracting a common interface</h3>
+<p>除了功能（function），實例（instance）也能作為依賴被注入。</p>
+<p>首先我們實作了 <code>class PasswordVerifier</code>，並定義好介面 <code>TimeProvider</code>。每個試圖建立 <code>class PasswordVerifier</code> 實例的人，都必須傳入一個根據 <code>interface TimeProvider</code> 實踐（implements）的實例。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> interface</span><span style="color:#B392F0"> TimeProvider</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#B392F0">  getDay</span><span style="color:#E1E4E8">()</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> number</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> SUNDAY</span><span style="color:#F97583"> =</span><span style="color:#79B8FF"> 0</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> SATURDAY</span><span style="color:#F97583"> =</span><span style="color:#79B8FF"> 6</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">class</span><span style="color:#B392F0"> PasswordVerifier</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#FFAB70">  rules</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> any</span><span style="color:#E1E4E8">[];</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FFAB70">  timeProvider</span><span style="color:#F97583">:</span><span style="color:#B392F0"> TimeProvider</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">  constructor</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">rules</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> any</span><span style="color:#E1E4E8">[], </span><span style="color:#FFAB70">timeProvider</span><span style="color:#F97583">:</span><span style="color:#B392F0"> TimeProvider</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#79B8FF">    this</span><span style="color:#E1E4E8">.rules </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> rules;</span></span>
+<span class="line"><span style="color:#79B8FF">    this</span><span style="color:#E1E4E8">.timeProvider </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> timeProvider;</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">  verify</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">input</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> any</span><span style="color:#E1E4E8">)</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> string</span><span style="color:#E1E4E8">[] {</span></span>
+<span class="line"><span style="color:#6A737D">    // saturday, sunday</span></span>
+<span class="line"><span style="color:#F97583">    if</span><span style="color:#E1E4E8"> ([</span><span style="color:#79B8FF">6</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">0</span><span style="color:#E1E4E8">].</span><span style="color:#B392F0">includes</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">this</span><span style="color:#E1E4E8">.timeProvider.</span><span style="color:#B392F0">getDay</span><span style="color:#E1E4E8">())) {</span></span>
+<span class="line"><span style="color:#F97583">      throw</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> Error</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"It's the weekend!"</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> errors</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> string</span><span style="color:#E1E4E8">[] </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> [];</span></span>
+<span class="line"><span style="color:#79B8FF">    this</span><span style="color:#E1E4E8">.rules.</span><span style="color:#B392F0">forEach</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">rule</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">      const</span><span style="color:#79B8FF"> result</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> rule</span><span style="color:#E1E4E8">(input);</span></span>
+<span class="line"><span style="color:#F97583">      if</span><span style="color:#E1E4E8"> (</span><span style="color:#F97583">!</span><span style="color:#E1E4E8">result.passed) {</span></span>
+<span class="line"><span style="color:#E1E4E8">        errors.</span><span style="color:#B392F0">push</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">`error ${</span><span style="color:#E1E4E8">result</span><span style="color:#9ECBFF">.</span><span style="color:#E1E4E8">reason</span><span style="color:#9ECBFF">}`</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">      }</span></span>
+<span class="line"><span style="color:#E1E4E8">    });</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#E1E4E8"> errors;</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>當我們要為 <code>class PasswordVerifier</code> 撰寫單元測試時，只要捏出一個實踐 <code>interface TimeProvider</code> 的測試用實例就好：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#F97583">class</span><span style="color:#B392F0"> FakeTimeProvider</span><span style="color:#F97583"> implements</span><span style="color:#B392F0"> TimeProvider</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#FFAB70">  fakeDay</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> number</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">  getDay</span><span style="color:#E1E4E8">()</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> number</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#79B8FF"> this</span><span style="color:#E1E4E8">.fakeDay;</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">describe</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'password verifier with interfaces'</span><span style="color:#E1E4E8">, () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#B392F0">  test</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'on weekends, throws exceptions'</span><span style="color:#E1E4E8">, () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">    // arrange</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> stub</span><span style="color:#F97583"> =</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> FakeTimeProvider</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">    stub.fakeDay </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> 0</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> verifier</span><span style="color:#F97583"> =</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> PasswordVerifier</span><span style="color:#E1E4E8">([], stub);</span></span>
+<span class="line"><span style="color:#6A737D">    // act and assert</span></span>
+<span class="line"><span style="color:#B392F0">    expect</span><span style="color:#E1E4E8">(() </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> verifier.</span><span style="color:#B392F0">verify</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'anything'</span><span style="color:#E1E4E8">)).</span><span style="color:#B392F0">toThrow</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"It's the weekend!"</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">  });</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+<p>而在我們正式使用 <code>PasswordVerifier</code> 時，就搭配當下使用的函式庫實作一個「真」的實例即可：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> moment </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> 'moment'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">class</span><span style="color:#B392F0"> RealTimeProvider</span><span style="color:#F97583"> implements</span><span style="color:#B392F0"> TimeProvider</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#B392F0">  getDay</span><span style="color:#E1E4E8">()</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> number</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#B392F0"> moment</span><span style="color:#E1E4E8">().</span><span style="color:#B392F0">day</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<h2 id="summary">summary</h2>
+<p>總結本章內容——如果我們想透過重構來建立可靠的單元測試，可參考以下作法將依賴自單元中分離出來：</p>
+<ul>
+<li>透過參數來傳入，參數可以是原始值（primitive value）、功能（function）或實例（instance）</li>
+<li>透過柯里化（currying）或工廠功能（factory function）把依賴分離出來</li>
+<li>透過暴露注入模組（module）的 api 來允許動態傳入、重置實際要使用的模組</li>
+</ul>
+<p>當然，不是每一次都能這麼順利地執行重構，有些遺留程式碼（legacy code）或許真的碰不得——如果是這種狀況，建議活用 jest 的 isolation api 來幫忙控制依賴回傳的值（詳見 <a href="/2024/the-art-of-unit-testing-ch5-isolation-frameworks#53-functional-mocks-and-stubs-dynamically">第五章筆記 5.3 Functional mocks and stubs, dynamically</a> 與 <a href="/2024/the-art-of-unit-testing-ch5-isolation-frameworks#53-functional-mocks-and-stubs-dynamically">第五章筆記 5.5 Stubbing behavior dynamically</a>）。</p>
+<h2 id="參考文件">參考文件</h2>
+<ul>
+<li><a href="https://www.manning.com/books/the-art-of-unit-testing-third-edition">Manning: The Art of Unit Testing, Third Edition</a></li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

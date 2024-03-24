@@ -1,0 +1,59 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v3.6.4"><!-- Primary Meta Tags --><title>工程師的易用性測試（Usability Testing）筆記</title><meta name="title" content="工程師的易用性測試（Usability Testing）筆記"><meta name="description" content="早一點進行易用性測試，少一點機會回頭修改做好的東西 🫠"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2023/mwc-2023-usability-testing/"><meta property="og:title" content="工程師的易用性測試（Usability Testing）筆記"><meta property="og:description" content="早一點進行易用性測試，少一點機會回頭修改做好的東西 🫠"><meta property="og:image" content="https://tzynwang.github.io/2023/mwc-2023-usability-testing/ignacio-amenabar-2dkgXTfPfTg-unsplash.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2023/mwc-2023-usability-testing/"><meta property="twitter:title" content="工程師的易用性測試（Usability Testing）筆記"><meta property="twitter:description" content="早一點進行易用性測試，少一點機會回頭修改做好的東西 🫠"><meta property="twitter:image" content="https://tzynwang.github.io/2023/mwc-2023-usability-testing/ignacio-amenabar-2dkgXTfPfTg-unsplash.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:Noto Sans TC,sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}ul,li{list-style-position:inside}ul{margin-bottom:16px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:8px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+</style><script type="module" src="/_astro/hoisted.77775e67.js"></script></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>工程師的易用性測試（Usability Testing）筆記</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2023-11-11 15:15</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/MWC 2023" data-astro-cid-2iymvi75> MWC 2023 </a> <a class="tag" href="/tag/Product Design" data-astro-cid-2iymvi75> Product Design </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#總結" data-astro-cid-qtokga5y>總結</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#筆記" data-astro-cid-qtokga5y>筆記</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#何謂易用性測試" data-astro-cid-qtokga5y>何謂易用性測試</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#何謂用戶驗收測試" data-astro-cid-qtokga5y>何謂用戶驗收測試</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#如何執行易用性測試" data-astro-cid-qtokga5y>如何執行易用性測試</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#參考文件" data-astro-cid-qtokga5y>參考文件</a> </li> </ul> </div> <h2 id="總結">總結</h2>
+<p>此篇筆記是根據 MWC 2023 議程「<a href="https://modernweb.tw/2023/session-page/2449">易用性測試-你的程式不在乎使用者，所以你的使用者不在乎你的程式</a>」加上個人理解而產出的筆記。會提到易用性測試的定義、與用戶驗收測試（User Acceptance Testing）的差異，以及前端工程師如何能受惠於易用性測試。</p>
+<h2 id="筆記">筆記</h2>
+<h3 id="何謂易用性測試">何謂易用性測試</h3>
+<ul>
+<li>確認產品對使用者來說是「好用」的</li>
+<li>可以在開發階段的任何週期執行，<strong>可以在工程師執行開發前執行</strong></li>
+<li>可以重複執行</li>
+</ul>
+<h3 id="何謂用戶驗收測試">何謂用戶驗收測試</h3>
+<ul>
+<li>確保產品符合規格需求，功能沒有少、沒有錯誤</li>
+<li>通常在正式發佈前執行</li>
+</ul>
+<p>但用戶驗收測試僅會檢驗產品的功能是否正確，不關心產品是否「好用」。</p>
+<p>以前端開發舉例：工程師做了符合規格要求的「書籤」——使用者點擊書籤按鈕後，會透過 api 通知後端「使用者將某資源保存到書籤中」，並畫面上會有對應的動畫提示。但使用者按下書籤後，卻不曉得自己可以到哪裡查看所有已經加到書籤的內容，或使用者根本不明白「書籤」到底代表什麼。</p>
+<p>這樣的產品能通過用戶驗收測試，但大概無法通過易用性測試。</p>
+<h3 id="如何執行易用性測試">如何執行易用性測試</h3>
+<p>個人認為前端工程師不需要執行完整的易用性測試——重點是在<strong>實際動手開發</strong>前，確保設計稿不會有太誇張的易用性問題（比如按鈕太擠導致在手機上不好操作、或是使用者根本不知道原來那是一顆可以互動的按鈕），避免東西做好，但使用者不會用，讓工程師得再花時間進行修改。</p>
+<p>濃縮版本的易用性測試重點如下：</p>
+<ol>
+<li>確認測試範圍，列出自己想要測驗設計稿中的哪些部分</li>
+<li>定義測試情境，以及何謂測試成功</li>
+<li>根據測試結果，將待改善項目根據重要（嚴重）程度進行排序</li>
+<li>將測試結果分享給團隊</li>
+</ol>
+<p>時間有限，重點要放在改善最要命的問題上。且要與團隊分享測試結論，讓大家都知道現在發生什麼事情、以及接下來會有哪些代辦事項。</p>
+<h2 id="參考文件">參考文件</h2>
+<ul>
+<li><a href="https://www.interaction-design.org/literature/topics/usability-testing">Interaction Design Foundation: Usability Testing</a></li>
+<li><a href="https://uit.stanford.edu/pmo/UAT">Stanford University: User Acceptance Testing</a></li>
+<li><a href="https://www.youtube.com/watch?v=xuq4mTh50p4&#x26;ab_channel=MasterUXResearch">YouTube: How to Conduct Usability Testing</a></li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

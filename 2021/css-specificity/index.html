@@ -1,0 +1,292 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v3.6.4"><!-- Primary Meta Tags --><title>「CSS Specificity」相關筆記</title><meta name="title" content="「CSS Specificity」相關筆記"><meta name="description" content="這是一個文組轉職前端工程師的技術部落格"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2021/css-specificity/"><meta property="og:title" content="「CSS Specificity」相關筆記"><meta property="og:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="og:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2021/css-specificity/"><meta property="twitter:title" content="「CSS Specificity」相關筆記"><meta property="twitter:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="twitter:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:Noto Sans TC,sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}ul,li{list-style-position:inside}ul{margin-bottom:16px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:8px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+</style><script type="module" src="/_astro/hoisted.77775e67.js"></script></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>「CSS Specificity」相關筆記</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2021-03-18 20:52</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/CSS" data-astro-cid-2iymvi75> CSS </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#重點整理" data-astro-cid-qtokga5y>重點整理</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#specificity" data-astro-cid-qtokga5y>Specificity</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#權重的計算方式" data-astro-cid-qtokga5y>權重的計算方式</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#快速判別樣式的權重" data-astro-cid-qtokga5y>快速判別樣式的權重</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#權重相等時後發覆蓋先寫的樣式" data-astro-cid-qtokga5y>權重相等時，後發覆蓋先寫的樣式</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#lvha" data-astro-cid-qtokga5y>LVHA</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#規則衝突時後發覆蓋先寫的樣式" data-astro-cid-qtokga5y>規則衝突時，後發覆蓋先寫的樣式</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#透過繼承得到的樣式權重是-0-0-0-0-0" data-astro-cid-qtokga5y>透過繼承得到的樣式，權重是 0-0-0-0-0</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#參考文件" data-astro-cid-qtokga5y>參考文件</a> </li> </ul> </div> <h2 id="重點整理">重點整理</h2>
+<ul>
+<li>有重複的 CSS 樣式規則套用到同一個 HTML 元素上的時候，權重（specificity）高的樣式會覆蓋權重低的樣式設定。</li>
+<li>原始碼中位置越下方（後發）的 CSS 樣式會複寫先寫出來的樣式。</li>
+<li>樣式規則有衝突的時候，權重較高的樣式會覆蓋權重低的樣式。衝突規則的權重一樣大的時候，後發的樣式會覆蓋先寫的樣式。</li>
+</ul>
+<h2 id="specificity">Specificity</h2>
+<p>Specificity（以降以「權重」稱之）的高低影響哪一些 CSS 樣式會發生作用。
+設定好的 CSS 沒有作用，可能就是 CSS 樣式的權重沒有妥善安排，導致編寫好的 CSS 樣式沒有如預期般套用到 HTML 元素上。</p>
+<p>權重從低至高順位分組如下：</p>
+<ol>
+<li>
+<p>universal selector 與 inherited style：使用<code>*</code>選取「全部」與繼承得來的樣式，兩者的權重皆為<code>0-0-0-0-0</code>；最低的權重</p>
+</li>
+<li>
+<p>element selector、::pseudo-element selector：選取 HTML 元素或偽元素，權重為<code>0-0-0-0-1</code></p>
+<ul>
+<li>HTML 元素：html、body、section、div、p……等 HTML 元素（element）</li>
+<li>偽元素：
+<blockquote>
+<p>A CSS pseudo-element is a keyword added to a selector that lets you style a specific <strong>part</strong> of the selected element(s).</p>
+</blockquote>
+</li>
+</ul>
+<p>參考<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-elements">MDN</a>，偽元素指的是 HTML 元素的「某一個部份」，較常見的大概是<code>::after</code>、<code>::before</code>與<code>::first-letter</code></p>
+</li>
+<li>
+<p>.class selector、:pseudo-class selector、[attribute] selector：選取 class、偽類或具有特定屬性（attribute）的 HTML 元素，權重為<code>0-0-0-1-0</code></p>
+<ul>
+<li>偽類：
+<blockquote>
+<p>A CSS pseudo-class is a keyword added to a selector that specifies a special <strong>state</strong> of the selected element(s).</p>
+</blockquote>
+</li>
+</ul>
+<p>參考<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes">MDN</a>，偽類指的是 HTML 元素的「某一種狀態」，最常見的大概是<code>:hover</code></p>
+<ul>
+<li>屬性：參考<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes">MDN</a>，以<code>input[type="checkbox"]</code>為例，就是「選取所有是 checkbox 特性的 input 元素」</li>
+</ul>
+</li>
+<li>
+<p>#id selector：選取擁有某 id 的 HTML 元素，權重是<code>0-0-1-0-0</code></p>
+</li>
+<li>
+<p>inline style（比如<code>&#x3C;p style="color: red;">text&#x3C;/p></code>）：權重是<code>0-1-0-0-0</code>，不過這樣會讓原始碼的維護性變差，所以還是避免使用吧</p>
+</li>
+<li>
+<p><code>!important</code>：擁有最大的權重<code>1-0-0-0-0</code>，而後發的<code>!important</code>會壓過先寫出來的<code>!important</code></p>
+</li>
+</ol>
+<h3 id="權重的計算方式">權重的計算方式</h3>
+<p>參考以上劃分的六種權重分組，將選取器中屬於同一組的選擇器條件相加後進行比大小。
+舉個 🌰，假設以下兩種<code>color</code>的樣式設定位在同一份原始碼裡面：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#B392F0">#blue</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">  /* 第一組樣式 */</span></span>
+<span class="line"><span style="color:#79B8FF">  color</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">blue</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#85E89D">div</span><span style="color:#85E89D"> p</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">  /* 第二組樣式 */</span></span>
+<span class="line"><span style="color:#79B8FF">  color</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">red</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>而 HTML 內容如下：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#E1E4E8">&#x3C;</span><span style="color:#85E89D">div</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;</span><span style="color:#85E89D">p</span><span style="color:#B392F0"> id</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"blue"</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consectetur,</span></span>
+<span class="line"><span style="color:#E1E4E8">    magnam!</span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;/</span><span style="color:#85E89D">p</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">&#x3C;/</span><span style="color:#85E89D">div</span><span style="color:#E1E4E8">></span></span></code></pre>
+<p>第一組樣式的選取器為#id 一個，權重為：0-0-1-0-0
+第二組樣式的選取器為 HTML 元素兩個，權重為：0-0-0-0-2
+第一組樣式的權重大於第二組，故以上的<code>&#x3C;p></code>會是藍色：</p>
+<p class="codepen" data-height="265" data-theme-id="dark" data-default-tab="html,result" data-user="Charlie7779" data-slug-hash="vYyqpLy" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="css specificity">
+  <span>See the Pen <a href="https://codepen.io/Charlie7779/pen/vYyqpLy">
+  css specificity</a> by Charlie (<a href="https://codepen.io/Charlie7779">@Charlie7779</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+<p></p>
+<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+<p>需注意的是，CSS 的權重並<strong>不是十進位制</strong>，選取五十個.class 做出來的 CSS 樣式也比不過選取一個#id 宣告出來的樣式。
+舉個 🌰，假設以下兩種<code>background-color</code>的樣式設定位在同一份原始碼裡面：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#B392F0">#yellow</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#79B8FF">  background-color</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">yellow</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">.c1</span><span style="color:#B392F0"> .c2</span><span style="color:#B392F0"> .c3</span><span style="color:#B392F0"> .c4</span><span style="color:#B392F0"> .c5</span><span style="color:#B392F0"> .c6</span><span style="color:#B392F0"> .c7</span><span style="color:#B392F0"> .c8</span><span style="color:#B392F0"> .c9</span><span style="color:#B392F0"> .c10</span><span style="color:#B392F0"> .c11</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#79B8FF">  background-color</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">green</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>而 HTML 內容如下：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#E1E4E8">&#x3C;</span><span style="color:#85E89D">div</span><span style="color:#B392F0"> class</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"c1"</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;</span><span style="color:#85E89D">div</span><span style="color:#B392F0"> class</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"c2"</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#85E89D">div</span><span style="color:#B392F0"> class</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"c3"</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">      &#x3C;</span><span style="color:#85E89D">div</span><span style="color:#B392F0"> class</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"c4"</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">        &#x3C;</span><span style="color:#85E89D">div</span><span style="color:#B392F0"> class</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"c5"</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">          &#x3C;</span><span style="color:#85E89D">div</span><span style="color:#B392F0"> class</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"c6"</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">            &#x3C;</span><span style="color:#85E89D">div</span><span style="color:#B392F0"> class</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"c7"</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">              &#x3C;</span><span style="color:#85E89D">div</span><span style="color:#B392F0"> class</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"c8"</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">                &#x3C;</span><span style="color:#85E89D">div</span><span style="color:#B392F0"> class</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"c9"</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">                  &#x3C;</span><span style="color:#85E89D">div</span><span style="color:#B392F0"> class</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"c10"</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">                    &#x3C;</span><span style="color:#85E89D">div</span><span style="color:#B392F0"> class</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"c11"</span><span style="color:#B392F0"> id</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"yellow"</span><span style="color:#E1E4E8">>&#x3C;/</span><span style="color:#85E89D">div</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">                  &#x3C;/</span><span style="color:#85E89D">div</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">                &#x3C;/</span><span style="color:#85E89D">div</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">              &#x3C;/</span><span style="color:#85E89D">div</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">            &#x3C;/</span><span style="color:#85E89D">div</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">          &#x3C;/</span><span style="color:#85E89D">div</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">        &#x3C;/</span><span style="color:#85E89D">div</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">      &#x3C;/</span><span style="color:#85E89D">div</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;/</span><span style="color:#85E89D">div</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;/</span><span style="color:#85E89D">div</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">&#x3C;/</span><span style="color:#85E89D">div</span><span style="color:#E1E4E8">></span></span></code></pre>
+<p>那麼該<code>&#x3C;div></code>的背景顏色會是黃色：</p>
+<p class="codepen" data-height="265" data-theme-id="dark" data-default-tab="html,result" data-user="Charlie7779" data-slug-hash="vYywoqR" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="css specificity">
+  <span>See the Pen <a href="https://codepen.io/Charlie7779/pen/vYywoqR">
+  css specificity</a> by Charlie (<a href="https://codepen.io/Charlie7779">@Charlie7779</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+<p></p>
+<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+<p>在 CSS Specificity 的宇宙裡，團結起來的五十個<code>.筷子</code>還是會被<code>#●門</code>夾爆的。</p>
+<h3 id="快速判別樣式的權重">快速判別樣式的權重</h3>
+<ul>
+<li><code>!important</code>最大，有複數個<code>!important</code>就看哪一段樣式最後被執行</li>
+<li>element 贏不過.class 與[attribute]，.class 與[attribute]贏不過#id</li>
+<li>使用人家寫好的計算機：<a href="https://specificity.keegan.st/">Specificity Calculator</a></li>
+</ul>
+<p><img src="/2021/css-specificity/fullhouse.jpg" alt="在CSS Specificity的宇宙裡，就算你爸變兔子.class也打不過#id"></p>
+<h2 id="權重相等時後發覆蓋先寫的樣式">權重相等時，後發覆蓋先寫的樣式</h2>
+<p>假設<code>style.css</code>的內容如下：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#85E89D">p</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#79B8FF">  color</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">blue</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>而 HTML 內容如下：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#E1E4E8">&#x3C;!</span><span style="color:#85E89D">DOCTYPE</span><span style="color:#B392F0"> html</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">&#x3C;</span><span style="color:#85E89D">html</span><span style="color:#B392F0"> lang</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"en"</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;</span><span style="color:#85E89D">head</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#85E89D">link</span><span style="color:#B392F0"> rel</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"stylesheet"</span><span style="color:#B392F0"> href</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"./style.css"</span><span style="color:#E1E4E8"> /></span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#85E89D">style</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#85E89D">      p</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#79B8FF">        color</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">green</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">      }</span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;/</span><span style="color:#85E89D">style</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;/</span><span style="color:#85E89D">head</span><span style="color:#E1E4E8">></span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;</span><span style="color:#85E89D">body</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#85E89D">p</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consectetur,</span></span>
+<span class="line"><span style="color:#E1E4E8">      magnam!</span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;/</span><span style="color:#85E89D">p</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;/</span><span style="color:#85E89D">body</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">&#x3C;/</span><span style="color:#85E89D">html</span><span style="color:#E1E4E8">></span></span></code></pre>
+<p>因為<code>&#x3C;style></code>比<code>&#x3C;link rel="stylesheet" href="./style.css"></code>晚執行，所以<code>&#x3C;p></code>會是綠色（按下<span style="color: #21a243;">▶</span>執行程式碼看結果）：</p>
+<iframe height="400px" width="100%" src="https://replit.com/@Charlie7779/css-specificity-style-after-link?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+<p>而如果調換<code>&#x3C;style></code>與<code>&#x3C;link rel="stylesheet" href="./style.css"></code>的順序：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#E1E4E8">&#x3C;!</span><span style="color:#85E89D">DOCTYPE</span><span style="color:#B392F0"> html</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">&#x3C;</span><span style="color:#85E89D">html</span><span style="color:#B392F0"> lang</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"en"</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;</span><span style="color:#85E89D">head</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#85E89D">style</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#85E89D">      p</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#79B8FF">        color</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">green</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">      }</span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;/</span><span style="color:#85E89D">style</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#85E89D">link</span><span style="color:#B392F0"> rel</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"stylesheet"</span><span style="color:#B392F0"> href</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"./style.css"</span><span style="color:#E1E4E8"> /></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;/</span><span style="color:#85E89D">head</span><span style="color:#E1E4E8">></span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;</span><span style="color:#85E89D">body</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#85E89D">p</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consectetur,</span></span>
+<span class="line"><span style="color:#E1E4E8">      magnam!</span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;/</span><span style="color:#85E89D">p</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;/</span><span style="color:#85E89D">body</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">&#x3C;/</span><span style="color:#85E89D">html</span><span style="color:#E1E4E8">></span></span></code></pre>
+<p><code>&#x3C;p></code>就會是藍色（按下<span style="color: #21a243;">▶</span>執行程式碼看結果）：</p>
+<iframe height="400px" width="100%" src="https://replit.com/@Charlie7779/css-specificity-link-after-style?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+<h3 id="lvha">LVHA</h3>
+<p>問：為什麼超連結的 CSS 樣式最好以「link-visited-hover-active」的順序從上到下書寫？
+答：因為樣式權重相等的時候，後發的樣式會覆蓋先寫的內容。
+假設使用「link-hover-active-visited」的順序來設定 CSS 樣式：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#85E89D">a</span><span style="color:#B392F0">:link</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#79B8FF">  color</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">blue</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"><span style="color:#85E89D">a</span><span style="color:#B392F0">:hover</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#79B8FF">  color</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">aqua</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"><span style="color:#85E89D">a</span><span style="color:#B392F0">:active</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#79B8FF">  color</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">red</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"><span style="color:#85E89D">a</span><span style="color:#B392F0">:visited</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#79B8FF">  color</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">purple</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>那一個被點擊過的（<code>:visited</code>）超連結，即使在<code>:hover</code>或<code>:active</code>的狀態，也不會被套上<code>:hover</code>或<code>:active</code>的樣式，因為<code>:hover</code>與<code>:active</code>通通被<code>:visited</code>的樣式蓋過去了。
+點擊過以下範例的超連結後，即使把游標停留在連結上，文字也不會變為水藍色：</p>
+<p class="codepen" data-height="265" data-theme-id="dark" data-default-tab="css,result" data-user="Charlie7779" data-slug-hash="abBgEQN" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="LHAV">
+  <span>See the Pen <a href="https://codepen.io/Charlie7779/pen/abBgEQN">
+  LHAV</a> by Charlie (<a href="https://codepen.io/Charlie7779">@Charlie7779</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+<p>但如果把樣式順序修改如下：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#85E89D">a</span><span style="color:#B392F0">:link</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#79B8FF">  color</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">blue</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"><span style="color:#85E89D">a</span><span style="color:#B392F0">:visited</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#79B8FF">  color</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">purple</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"><span style="color:#85E89D">a</span><span style="color:#B392F0">:hover</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#79B8FF">  color</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">aqua</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"><span style="color:#85E89D">a</span><span style="color:#B392F0">:active</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#79B8FF">  color</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">red</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>這個超連結就可以表現出四種不同狀態的樣式。
+先點擊以下範例的超連結，超連結的文字會變成紫色，但因為<code>:hover</code>與<code>:active</code>的樣式順序在<code>:visited</code>以下，所以當游標停留在連結上（狀態為<code>:hover</code>）時，文字會變成水藍色；而點下超連結（狀態為<code>:active</code>）時，文字會變成紅色：</p>
+<p class="codepen" data-height="265" data-theme-id="dark" data-default-tab="css,result" data-user="Charlie7779" data-slug-hash="xxRopME" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="LVHA">
+  <span>See the Pen <a href="https://codepen.io/Charlie7779/pen/xxRopME">
+  LVHA</a> by Charlie (<a href="https://codepen.io/Charlie7779">@Charlie7779</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+<h2 id="規則衝突時後發覆蓋先寫的樣式">規則衝突時，後發覆蓋先寫的樣式</h2>
+<p>舉個 🌰，假設以下兩種針對<code>&#x3C;p></code>的樣式設定位在同一份原始碼裡面：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#85E89D">p</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#79B8FF">  color</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">red</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#79B8FF">  background</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">blue</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#85E89D">p</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#79B8FF">  color</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">yellow</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>衝突的規則只有<code>color</code>，<code>background</code>不受影響，所以最後<code>&#x3C;p></code>的樣式會是「藍色背景、黃色文字」：</p>
+<p class="codepen" data-height="265" data-theme-id="dark" data-default-tab="html,result" data-user="Charlie7779" data-slug-hash="PobrEQQ" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="css specificity">
+  <span>See the Pen <a href="https://codepen.io/Charlie7779/pen/PobrEQQ">
+  css specificity</a> by Charlie (<a href="https://codepen.io/Charlie7779">@Charlie7779</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+<h2 id="透過繼承得到的樣式權重是-0-0-0-0-0">透過繼承得到的樣式，權重是 0-0-0-0-0</h2>
+<p>舉個 🌰，假設以下兩種樣式設定位在同一份原始碼裡面：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#B392F0">#parent</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#79B8FF">  color</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">green</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#85E89D">h1</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#79B8FF">  color</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">red</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>而 HTML 內容如下：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#E1E4E8">&#x3C;</span><span style="color:#85E89D">html</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;</span><span style="color:#85E89D">body</span><span style="color:#B392F0"> id</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"parent"</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#85E89D">h1</span><span style="color:#E1E4E8">>A Title&#x3C;/</span><span style="color:#85E89D">h1</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;/</span><span style="color:#85E89D">body</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">&#x3C;/</span><span style="color:#85E89D">html</span><span style="color:#E1E4E8">></span></span></code></pre>
+<p><code>&#x3C;h1></code>從<code>&#x3C;body id="parent"></code>繼承到的文字色彩樣式會被 CSS 樣式表中的<code>h1</code>覆蓋掉（樣式<code>h1</code>的權重是 0-0-0-0-1），<code>&#x3C;h1>A Title&#x3C;/h1></code>會是紅色：</p>
+<p class="codepen" data-height="265" data-theme-id="dark" data-default-tab="html,result" data-user="Charlie7779" data-slug-hash="vYyqRXo" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="inherited styles">
+  <span>See the Pen <a href="https://codepen.io/Charlie7779/pen/vYyqRXo">
+  inherited styles</a> by Charlie (<a href="https://codepen.io/Charlie7779">@Charlie7779</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+<h2 id="參考文件">參考文件</h2>
+<ul>
+<li><a href="https://www.smashingmagazine.com/2007/07/css-specificity-things-you-should-know/">CSS Specificity: Things You Should Know</a></li>
+<li><a href="https://meyerweb.com/eric/css/link-specificity.html">Link Specificity: I tried to apply CSS to my hyperlinks and the hovering didn’t work</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity#directly_targeted_elements_vs._inherited_styles">MDN: Directly targeted elements vs. inherited styles</a></li>
+<li><a href="https://cssspecificity.com/">CSS Specificity with icons inspired by “The Shining”</a></li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

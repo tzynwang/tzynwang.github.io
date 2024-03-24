@@ -1,0 +1,60 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v3.6.4"><!-- Primary Meta Tags --><title>閱讀筆記：The Programmer&#39;s Brain Chapter 11 The act of writing code</title><meta name="title" content="閱讀筆記：The Programmer's Brain Chapter 11 The act of writing code"><meta name="description" content="即使都稱為「開發（programming）」，也有可能消耗不同種類的心智活動。另外，工作到一半被打斷、打擾，是真的會降低生產力的。"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2023/the-programmers-brain-ch11-the-act-of-writing-code/"><meta property="og:title" content="閱讀筆記：The Programmer's Brain Chapter 11 The act of writing code"><meta property="og:description" content="即使都稱為「開發（programming）」，也有可能消耗不同種類的心智活動。另外，工作到一半被打斷、打擾，是真的會降低生產力的。"><meta property="og:image" content="https://tzynwang.github.io/2023/the-programmers-brain-ch11-the-act-of-writing-code/k8-rJ236eQHXGA-unsplash.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2023/the-programmers-brain-ch11-the-act-of-writing-code/"><meta property="twitter:title" content="閱讀筆記：The Programmer's Brain Chapter 11 The act of writing code"><meta property="twitter:description" content="即使都稱為「開發（programming）」，也有可能消耗不同種類的心智活動。另外，工作到一半被打斷、打擾，是真的會降低生產力的。"><meta property="twitter:image" content="https://tzynwang.github.io/2023/the-programmers-brain-ch11-the-act-of-writing-code/k8-rJ236eQHXGA-unsplash.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:Noto Sans TC,sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}ul,li{list-style-position:inside}ul{margin-bottom:16px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:8px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+</style><script type="module" src="/_astro/hoisted.77775e67.js"></script></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>閱讀筆記：The Programmer&#39;s Brain Chapter 11 The act of writing code</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2023-10-26 19:32</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/General" data-astro-cid-2iymvi75> General </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#總結" data-astro-cid-qtokga5y>總結</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#筆記" data-astro-cid-qtokga5y>筆記</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#開發行為背後的心智活動" data-astro-cid-qtokga5y>開發行為背後的心智活動</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#關於被打擾" data-astro-cid-qtokga5y>關於被打擾</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#參考文件" data-astro-cid-qtokga5y>參考文件</a> </li> </ul> </div> <h2 id="總結">總結</h2>
+<p>第十一章討論了兩個主題：</p>
+<ol>
+<li>各種開發行為背後的心智活動</li>
+<li><del>被斷法</del>對開發的影響；以及有哪些技巧可以幫助工程師盡快回到被中斷前的狀態</li>
+</ol>
+<h2 id="筆記">筆記</h2>
+<h3 id="開發行為背後的心智活動">開發行為背後的心智活動</h3>
+<p><img src="/2023/the-programmers-brain-ch11-the-act-of-writing-code/figure_11-1.png" alt="programming activities and the related memory systems"></p>
+<p>當工程師在執行開發任務時，各類任務倚賴的心智活動類型有所不同，書中說明如下。</p>
+<p>搜尋（searching）：倚賴短期記憶的活動，因為工程師在「搜尋」程式碼時，需要記得「到底在找什麼？」「已經看過哪些內容？」「還有哪裡需要查看？」。為了降低對短期記憶的負擔，可以將「在找什麼」「找過哪裡」「還要找哪裡」這些事情寫下來（而不是靠短期記憶硬扛）。</p>
+<p>理解（comprehension）：倚賴工作記憶的活動。當工程師需要「理解」程式碼時，代表他並不熟悉程式碼的功能與行為（可能是因為程式碼是其他人、或是很久以前的自己寫的）。這時候，可以試著將「自己對於這些程式碼的心智模型與相關理解」寫下來，除了能減緩心智負荷外，也能在持續理解程式碼的過程中，反覆確認自己目前的認知（心智模型）是否有誤、需要修正。</p>
+<p>轉錄（transcription）：倚賴長期記憶的活動。「轉錄」代表工程師將腦中解決問題的步驟轉化為程式碼。如果工程師已經非常熟稔目前用於開發的程式語言，這個工作就不會產生太多心智負荷。</p>
+<p>增量（incrementation）：綜合了搜尋、理解與轉錄三種行為，畢竟工程師在為既有的程式碼追加新功能時，多少需要閱讀既有內容、回想當時的設計、尋找合適的插入點，最後才是將新功能安裝上去。本書建議，如果任務讓開發者感到吃力，則可先將主任務拆分為不同步驟，再依序攻克，避免心智負荷過重的問題。</p>
+<p>探索（exploration）：與增量不同的部分是「探索」時的工程師還沒有非常明確的目標與解決藍圖，他還在東查西看的階段。而隨著探索的內容增加，工程師會根據看到的內容制定計劃（或是終於對問題發生的理由有一個方向）。如果想要降低探索時的心智消耗，書中建議可以將探索計畫寫出來，讓大腦較能有餘裕針對計畫內容作深入思考。</p>
+<h3 id="關於被打擾">關於被打擾</h3>
+<blockquote>
+<p>Interruptions while you are programming are not only annoying; they are <strong>detrimental to productivity</strong> because it <strong>takes time to rebuild your mental model of the cod</strong>e.</p>
+</blockquote>
+<p>被中斷時，工作記憶中的內容會消失。而工程師需要額外花費力氣來把（被打斷前的）工作情境重建回來。被打擾確實會降低生產力。</p>
+<blockquote>
+<p>From Parnin’s results, we can see that the <strong>working memory lost vital information</strong> about the code programmers were working on. Programmers in his study needed to put in deliberate effort to <strong>rebuild the context</strong>. They would often navigate to several locations to rebuild context before continuing the programming work.</p>
+</blockquote>
+<p>本章提出以下建議來降低「被打斷」造成的影響：</p>
+<ol>
+<li>保存心智模型（Store your mental model）：在閱讀程式碼的途中，可以將自己理解到的內容註解在相關段落、或是整理到筆記中。在被中斷時，工程師可將當下的作業內容做個註解，讓自己在被中斷後，能夠較快重建對程式碼的理解</li>
+<li>記下之後要做的事情（Help your prospective memory）：透過 TODO 註解、設定行事曆或便條貼來提醒自己要完成的事情</li>
+<li>將任務大部分解（Label subgoals）：將任務拆解，並將步驟註解下來。每次被打斷時失去、要重建心智模型的範圍也會縮小，故此方式確實可以降低被打斷時的損失</li>
+</ol>
+<p>總結：重點是盡量被打斷當下的情境資訊。且盡可能將任務分拆，避免需要一口氣回想（重建）太大量的內容。</p>
+<h2 id="參考文件">參考文件</h2>
+<ul>
+<li><a href="https://www.manning.com/books/the-programmers-brain">Manning: The Programmer’s Brain</a></li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

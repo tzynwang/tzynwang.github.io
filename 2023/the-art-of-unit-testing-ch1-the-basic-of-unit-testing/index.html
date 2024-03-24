@@ -1,0 +1,218 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v3.6.4"><!-- Primary Meta Tags --><title>閱讀筆記：The Art of Unit Testing Chapter 1 The basics of unit testing</title><meta name="title" content="閱讀筆記：The Art of Unit Testing Chapter 1 The basics of unit testing"><meta name="description" content="此為 The Art of Unit Testing 第一章的閱讀筆記。此章旨在討論單元測試的定義，以及怎樣才算是好的單元測試。"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2023/the-art-of-unit-testing-ch1-the-basic-of-unit-testing/"><meta property="og:title" content="閱讀筆記：The Art of Unit Testing Chapter 1 The basics of unit testing"><meta property="og:description" content="此為 The Art of Unit Testing 第一章的閱讀筆記。此章旨在討論單元測試的定義，以及怎樣才算是好的單元測試。"><meta property="og:image" content="https://tzynwang.github.io/2023/the-art-of-unit-testing-ch1-the-basic-of-unit-testing/roman-mager-5mZ_M06Fc9g-unsplash.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2023/the-art-of-unit-testing-ch1-the-basic-of-unit-testing/"><meta property="twitter:title" content="閱讀筆記：The Art of Unit Testing Chapter 1 The basics of unit testing"><meta property="twitter:description" content="此為 The Art of Unit Testing 第一章的閱讀筆記。此章旨在討論單元測試的定義，以及怎樣才算是好的單元測試。"><meta property="twitter:image" content="https://tzynwang.github.io/2023/the-art-of-unit-testing-ch1-the-basic-of-unit-testing/roman-mager-5mZ_M06Fc9g-unsplash.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:Noto Sans TC,sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}ul,li{list-style-position:inside}ul{margin-bottom:16px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:8px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+</style><script type="module" src="/_astro/hoisted.77775e67.js"></script></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>閱讀筆記：The Art of Unit Testing Chapter 1 The basics of unit testing</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2023-12-01 21:12</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/Testing" data-astro-cid-2iymvi75> Testing </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#intro" data-astro-cid-qtokga5y>Intro</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#11-the-first-step" data-astro-cid-qtokga5y>1.1 The first step</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#12-defining-unit-testing-step-by-step" data-astro-cid-qtokga5y>1.2 Defining unit testing, step by step</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#何謂單元測試的單元" data-astro-cid-qtokga5y>何謂單元測試的「單元」</a> </li><li class="toc-4" data-astro-cid-qtokga5y> <a href="#工作單元" data-astro-cid-qtokga5y>工作單元</a> </li><li class="toc-4" data-astro-cid-qtokga5y> <a href="#使用案例" data-astro-cid-qtokga5y>使用案例</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#單元測試的定義第一版" data-astro-cid-qtokga5y>單元測試的定義，第一版</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#13-entry-points--exit-points" data-astro-cid-qtokga5y>1.3 Entry Points &amp; Exit Points</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#回傳值的退出點" data-astro-cid-qtokga5y>回傳值的退出點</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#改變狀態的退出點" data-astro-cid-qtokga5y>改變狀態的退出點</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#呼叫依賴的退出點" data-astro-cid-qtokga5y>呼叫依賴的退出點</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#題外話設計模式-command-and-query-responsibility-segregation-cqrs" data-astro-cid-qtokga5y>題外話：設計模式 Command and Query Responsibility Segregation (CQRS)</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#14-exit-point-types" data-astro-cid-qtokga5y>1.4 Exit Point Types</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#單元測試的定義第二版" data-astro-cid-qtokga5y>單元測試的定義，第二版</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#15-different-exit-points-different-techniques" data-astro-cid-qtokga5y>1.5 Different Exit Points, Different Techniques</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#16-a-test-from-scratch" data-astro-cid-qtokga5y>1.6 A Test from Scratch</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#17-characteristics-of-a-good-unit-test" data-astro-cid-qtokga5y>1.7 Characteristics of a good unit test</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#18-integration-tests" data-astro-cid-qtokga5y>1.8 Integration tests</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#19-finalizing-our-definition" data-astro-cid-qtokga5y>1.9 Finalizing our definition</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#單元測試的定義最終版" data-astro-cid-qtokga5y>單元測試的定義，最終版</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#110-test-driven-development" data-astro-cid-qtokga5y>1.10 Test-driven development</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#1101-tdd-is-not-a-substitute-for-good-unit-tests" data-astro-cid-qtokga5y>1.10.1 TDD is not a substitute for good unit tests</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#1102-three-core-skills-needed-for-successful-tdd" data-astro-cid-qtokga5y>1.10.2 Three core skills needed for successful TDD</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#參考文件" data-astro-cid-qtokga5y>參考文件</a> </li> </ul> </div> <h2 id="intro">Intro</h2>
+<p>執行測試是開發軟體時無法跳過的劇情。但手動測試耗時、高重複的特性讓人避之唯恐不及。這些討厭的環節可以靠測試框架克服，但使用框架不保證你寫出來的就是好測試。</p>
+<p>而好測試就是本書第一章討論的主題：「什麼是單元測試」、「何謂好的單元測試」。書中以 JavaScript 與 TypeScript 來撰寫範例，但好測試的概念是不受語言限制的。</p>
+<h2 id="11-the-first-step">1.1 The first step</h2>
+<p>單元測試不是整合測試（integration testing）。讓單元測試就只是單元測試——不論測試通過或失敗，你都不會懷疑結果是否有問題。</p>
+<blockquote>
+<p>Separating unit tests from other types of tests can be crucial to <strong>having high confidence in your tests</strong> when they fail or pass.</p>
+</blockquote>
+<h2 id="12-defining-unit-testing-step-by-step">1.2 Defining unit testing, step by step</h2>
+<p>單元測試的優點是：</p>
+<ul>
+<li>能改善程式碼的品質</li>
+<li>能讓工程師充分理解一段程式碼的功能</li>
+</ul>
+<p>而單元測試中的「單元」又被稱為 SUT (subject, system, or suite under test) 或 CUT (component, class, or code under test)。</p>
+<h3 id="何謂單元測試的單元">何謂單元測試的「單元」</h3>
+<p>指工作單元（unit of work）或使用案例（use case）。有進入點（entry point）與退出點（exit point）。此稱呼不一定代表 function，一個 class 或 module 也能是單元。</p>
+<h4 id="工作單元">工作單元</h4>
+<p>根據本書定義，是從開始執行到產出結果（entry point 到 exit point）為止，發生的所有動作。</p>
+<blockquote>
+<p>A unit of work is the <strong>sum of actions</strong> that take place between the invocation of an entry point up until a noticeable end result through one or more exit points.</p>
+</blockquote>
+<h4 id="使用案例">使用案例</h4>
+<p><a href="https://en.wikipedia.org/wiki/Use_case">維基</a>提供兩種解釋：</p>
+<ol>
+<li>描述程式碼的使用情境</li>
+<li>描述程式碼如何回應請求</li>
+</ol>
+<h3 id="單元測試的定義第一版">單元測試的定義，第一版</h3>
+<blockquote>
+<p>單元測試是為了確保軟體的一部分（「單元」）行為符合規格。單元可以指一個模組，但更常被認為是一個功能。在物件導向程式設計中，單元通常代表介面（interface），有時是方法（method）。</p>
+</blockquote>
+<h2 id="13-entry-points--exit-points">1.3 Entry Points &#x26; Exit Points</h2>
+<p>工作單元可以是一個 function、多個 functions、多組 modules，永遠有進入點（entry point）讓工程師觸發（trigger）它，永遠會做有用的事（do something useful, a.k.a exit point）。有用的事是：</p>
+<ul>
+<li>回傳值</li>
+<li>改變狀態</li>
+<li>呼叫依賴（dependency）</li>
+</ul>
+<p>一個工作單元可能會做一件以上有用的事——但如果一件都沒做，請把它給刪了。</p>
+<hr>
+<p>每一個進入點與退出點都該有自己的單元測試，理由如下：</p>
+<ul>
+<li>提升測試可讀性</li>
+<li>除錯條件單純</li>
+<li>牽涉範圍小，容易維護</li>
+</ul>
+<blockquote>
+<p>書中使用名稱「退出點（exit point）」來表達結束的意象，但「行為（behavior）」沒有。</p>
+</blockquote>
+<h3 id="回傳值的退出點">回傳值的退出點</h3>
+<p>執行以下 <code>sum('2,3');</code> 時，我們在同一行觸發並取得結果——亦即進入點與退出點在同一處。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#B392F0"> sum</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">numbers</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#E1E4E8"> [</span><span style="color:#79B8FF">a</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">b</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> numbers.</span><span style="color:#B392F0">split</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">','</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> result</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> parseInt</span><span style="color:#E1E4E8">(a) </span><span style="color:#F97583">+</span><span style="color:#B392F0"> parseInt</span><span style="color:#E1E4E8">(b);</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> result;</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">sum</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'2,3'</span><span style="color:#E1E4E8">); </span><span style="color:#6A737D">// 5</span></span></code></pre>
+<h3 id="改變狀態的退出點">改變狀態的退出點</h3>
+<p>執行以下 <code>sum('2,3');</code> 時，進入點維持一個，但退出點變成兩個——分別是 <code>total += result;</code> 與 <code>return result;</code>。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#F97583">let</span><span style="color:#E1E4E8"> total </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> 0</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#B392F0"> totalSoFar</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> total;</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#B392F0"> sum</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">numbers</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#E1E4E8"> [</span><span style="color:#79B8FF">a</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">b</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> numbers.</span><span style="color:#B392F0">split</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">','</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> result</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> parseInt</span><span style="color:#E1E4E8">(a) </span><span style="color:#F97583">+</span><span style="color:#B392F0"> parseInt</span><span style="color:#E1E4E8">(b);</span></span>
+<span class="line"><span style="color:#E1E4E8">  total </span><span style="color:#F97583">+=</span><span style="color:#E1E4E8"> result;</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> result;</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">sum</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'2,3'</span><span style="color:#E1E4E8">); </span><span style="color:#6A737D">// 5</span></span></code></pre>
+<p>以上程式碼至少要有兩個單元測試覆蓋兩個退出點。</p>
+<p>我們甚至能寫出第三個單元測試：以 <code>totalSoFar()</code> 為進入點，檢查退出點 <code>return total;</code> 的值是否符合預期。</p>
+<h3 id="呼叫依賴的退出點">呼叫依賴的退出點</h3>
+<p>下方的 <code>logger.info()</code> 就是退出點的第三種形式——呼叫依賴（calling a dependency）。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#F97583">let</span><span style="color:#E1E4E8"> total </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> 0</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#B392F0"> totalSoFar</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> total;</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> logger</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> makeLogger</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#B392F0"> sum</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">numbers</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#E1E4E8"> [</span><span style="color:#79B8FF">a</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">b</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> numbers.</span><span style="color:#B392F0">split</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">','</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">  logger.</span><span style="color:#B392F0">info</span><span style="color:#E1E4E8">(                             </span></span>
+<span class="line"><span style="color:#E1E4E8">    ‘</span><span style="color:#79B8FF">this</span><span style="color:#E1E4E8"> is a very important log output’, </span></span>
+<span class="line"><span style="color:#E1E4E8">    { firstNumWas: a, secondNumWas: b });  </span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> result</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> parseInt</span><span style="color:#E1E4E8">(a) </span><span style="color:#F97583">+</span><span style="color:#B392F0"> parseInt</span><span style="color:#E1E4E8">(b);</span></span>
+<span class="line"><span style="color:#E1E4E8">  total </span><span style="color:#F97583">+=</span><span style="color:#E1E4E8"> result;</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> result;</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span></code></pre>
+<p>依賴（dependency）的特徵：無法控制其行為、測試成本高。本書的反面定義如下：</p>
+<blockquote>
+<p>“If I can <strong>fully and easily control</strong> what it’s doing, and it <strong>runs in memory</strong>, and its <strong>fast</strong>, it’s not a dependency”. There are always exceptions to the rule, but this should get you through 80% of the cases at least.</p>
+</blockquote>
+<h3 id="題外話設計模式-command-and-query-responsibility-segregation-cqrs">題外話：設計模式 Command and Query Responsibility Segregation (CQRS)</h3>
+<p>CQRS 的概念：一個功能選擇 command 或 query 一件事情做就好。</p>
+<ul>
+<li>command 代表執行修改，不回傳內容</li>
+<li>query 代表回傳查詢結果，不修改內容</li>
+</ul>
+<p>徹底隔離的好處：讓工程師自在執行 query 功能時，不用擔心意外影響資料。</p>
+<blockquote>
+<p><a href="https://martinfowler.com/bliki/CommandQuerySeparation.html">martinFowler.com: CommandQuerySeparation</a>: This is because you <strong>can use queries in many situations with much more confidence</strong>, introducing them anywhere, changing their order. You have to be more careful with modifiers (commands).</p>
+</blockquote>
+<h2 id="14-exit-point-types">1.4 Exit Point Types</h2>
+<p>再講一次，退出點（exit point）有三種類型：</p>
+<ol>
+<li>回傳值</li>
+<li>改變狀態</li>
+<li>呼叫依賴</li>
+</ol>
+<h3 id="單元測試的定義第二版">單元測試的定義，第二版</h3>
+<blockquote>
+<p>單元測試會驗證一個「工作單元」或「使用案例」的退出點是否符合預期。結果不符則測試視為失敗。下至單個 function 上至多個 modules ——只要有「進入點」加上「退出點」——就是一個單元。</p>
+</blockquote>
+<h2 id="15-different-exit-points-different-techniques">1.5 Different Exit Points, Different Techniques</h2>
+<p>每一個退出點都值得一個單元測試。不同種類的退出點也有不同的測試方法。</p>
+<ol>
+<li>回傳值：最簡單，驗證值是否正確即可</li>
+<li>改變狀態：觸發該單元後，想辦法驗證狀態是否如預期改變</li>
+<li>呼叫依賴：需要配合假資料（fake）</li>
+</ol>
+<h2 id="16-a-test-from-scratch">1.6 A Test from Scratch</h2>
+<p>單元測試是為了<strong>驗證結果是否符合預期</strong>，而使用測試框架的「驗證」與「錯誤捕捉、暴露」功能會讓測試讀起來更簡潔、寫起來更快。</p>
+<p>不是非得靠框架才能寫單元測試——但使用框架會讓人生比較輕鬆。</p>
+<h2 id="17-characteristics-of-a-good-unit-test">1.7 Characteristics of a good unit test</h2>
+<p>一個好的單元測試不只讓工程師知道該單元具備哪些功能，還會有以下特徵：</p>
+<ol>
+<li>不會花太多時間，所以你願意常常執行，並很快收到回饋</li>
+<li>不用太多手動前置作業就能跑測試（例：起一個 docker image），這才是真正的自動化</li>
+<li>不被執行環境、距離上一次執行的時間影響結果（test results are consistent）——想像你接手一個陌生專案，如果這個專案的單元測試全數運行如常，你會對修改這包專案更有自信</li>
+<li>排除依賴（dependency）——即使依賴掛了，也不影響測試結果——所以工程師需要 fake</li>
+<li>刪改一個單元測試不會影響其他單元測試</li>
+<li>測試失敗時，提供有意義的訊息</li>
+</ol>
+<p>總結成三點：</p>
+<ol>
+<li>好讀</li>
+<li>好維護</li>
+<li>值得信賴</li>
+</ol>
+<p>不好的單元測試會拖累開發速度，因為工程師會浪費時間試圖理解、維護那些最終要被刪掉的東西。</p>
+<h2 id="18-integration-tests">1.8 Integration tests</h2>
+<p>一旦測試<strong>包含依賴</strong>，那就是整合測試。以下列出的都是依賴：</p>
+<ul>
+<li>資料庫、api</li>
+<li>其他團隊開發的套件</li>
+<li>亂數——對，<code>new Date()</code> 這種就算</li>
+</ul>
+<p>整合測試的問題是一次測試太多東西。當測試失敗時，無法馬上確認到底是哪裡出事。</p>
+<h2 id="19-finalizing-our-definition">1.9 Finalizing our definition</h2>
+<h3 id="單元測試的定義最終版">單元測試的定義，最終版</h3>
+<p>單元測試是一段自動化的程式碼，通常會透過框架撰寫。一個單元測試每次只驗證一個退出點。單元測試應該要值得信賴、容易維護、好讀、執行速度快。只要程式碼沒有變，單元測試的結果就要維持一致。</p>
+<h2 id="110-test-driven-development">1.10 Test-driven development</h2>
+<blockquote>
+<p>TDD 核心概念：在實作功能前，先為該功能寫測試</p>
+</blockquote>
+<ul>
+<li>傳統開發流程：開發 > 如果有時間就寫測試 🌚 > 如果有時間就執行測試 🌚 > 如果有時間就修測試遇到的 bug 🌚</li>
+<li>TDD 流程：寫測試 > 開發讓測試通過的功能 > 重構 > 寫下一個測試</li>
+</ul>
+<p>TDD 帶來的好處：</p>
+<ol>
+<li>減少 bug 數量</li>
+<li>縮短發現 bug 的時間</li>
+<li>增加對程式碼品質的信心</li>
+<li>增加對測試品質的信心：我們先寫測試，看著測試失敗，再看到開發完的功能讓測試變綠燈——我們確定測試在該失敗時失敗、該成功時成功</li>
+</ol>
+<p>傳統的「先開發再測試」讓工程師順著單元的輪廓寫測試，無法保證測試是否只會在該失敗時失敗——工程師可能還會納悶「測試怎麼會失敗？」</p>
+<blockquote>
+<p>The main benefit of TDD is <strong>verifying the correctness of your tests</strong>. Seeing your tests fail before writing production code ensures that these same tests would fail if the functionality they cover stops working properly.</p>
+</blockquote>
+<h3 id="1101-tdd-is-not-a-substitute-for-good-unit-tests">1.10.1 TDD is not a substitute for good unit tests</h3>
+<p>TDD 的技術特徵如下：</p>
+<ol>
+<li>先寫測試</li>
+<li>開發能讓測試通過的功能</li>
+<li>因為有了能驗證功能的測試，所以我們可以放心重構</li>
+</ol>
+<p>但要注意：導入 TDD 不等於單元測試有寫好。</p>
+<h3 id="1102-three-core-skills-needed-for-successful-tdd">1.10.2 Three core skills needed for successful TDD</h3>
+<p>TDD 的成功三要素：</p>
+<ol>
+<li>知道如何寫好單元測試</li>
+<li>先寫測試（test-first）</li>
+<li>導入 clean code 等設計概念，使專案容易維護</li>
+</ol>
+<h2 id="參考文件">參考文件</h2>
+<ul>
+<li><a href="https://www.manning.com/books/the-art-of-unit-testing-third-edition">Manning: The Art of Unit Testing, Third Edition</a></li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

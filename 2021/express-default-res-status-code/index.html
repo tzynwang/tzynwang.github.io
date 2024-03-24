@@ -1,0 +1,75 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v3.6.4"><!-- Primary Meta Tags --><title>「Express response default statusCode」相關筆記</title><meta name="title" content="「Express response default statusCode」相關筆記"><meta name="description" content="這是一個文組轉職前端工程師的技術部落格"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2021/express-default-res-status-code/"><meta property="og:title" content="「Express response default statusCode」相關筆記"><meta property="og:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="og:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2021/express-default-res-status-code/"><meta property="twitter:title" content="「Express response default statusCode」相關筆記"><meta property="twitter:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="twitter:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:Noto Sans TC,sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}ul,li{list-style-position:inside}ul{margin-bottom:16px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:8px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+</style><script type="module" src="/_astro/hoisted.77775e67.js"></script></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>「Express response default statusCode」相關筆記</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2021-09-30 21:25</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/HTTP" data-astro-cid-2iymvi75> HTTP </a> <a class="tag" href="/tag/Express" data-astro-cid-2iymvi75> Express </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#原始問題" data-astro-cid-qtokga5y>原始問題</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#梳理" data-astro-cid-qtokga5y>梳理</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#筆記" data-astro-cid-qtokga5y>筆記</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#關於後端-response-內容" data-astro-cid-qtokga5y>關於後端 response 內容</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#axios-處理-response-status" data-astro-cid-qtokga5y>axios 處理 response status</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#作答" data-astro-cid-qtokga5y>作答</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#參考文件" data-astro-cid-qtokga5y>參考文件</a> </li> </ul> </div> <h2 id="原始問題">原始問題</h2>
+<p>專案為前後分離，而後端需通知前端某使用者「登入失敗」時：</p>
+<ol>
+<li>選擇使用預設的 status code，然後加上 status message 回覆前端</li>
+<li>將 status code 修改為 401，並加入 status message 後再回覆前端</li>
+</ol>
+<p>上述兩種作法有什麼差異？</p>
+<h2 id="梳理">梳理</h2>
+<p>題目本身沒有針對「預設的 status code」以及前後端是否有額外使用框架做出限制，故首次回答本題時有做出以下假設：</p>
+<ol>
+<li>後端使用 Express 架設伺服器</li>
+<li>前端使用 axios 接收 response</li>
+</ol>
+<h2 id="筆記">筆記</h2>
+<h3 id="關於後端-response-內容">關於後端 response 內容</h3>
+<ul>
+<li>Express 的<code>res</code>物件是 Node.js <code>response</code>物件的延伸；而參考 Node.js 文件後可得知其預設的 status code 為<code>200</code>
+<ul>
+<li>(Express official docs) The <code>res</code> object is an enhanced version of Node’s own <code>response</code> object and <strong>supports all built-in fields and methods</strong>.</li>
+<li>(Node.js official docs) If you don’t bother setting it, the HTTP status code on a response will always be 200.</li>
+</ul>
+</li>
+</ul>
+<h3 id="axios-處理-response-status">axios 處理 response status</h3>
+<ul>
+<li>參考 axios 官方文件，其預設 2xx success 以外的 status code 都會回傳 Promise reject
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#6A737D">// `validateStatus` defines whether to resolve or reject the promise for a given</span></span>
+<span class="line"><span style="color:#6A737D">// HTTP response status code. If `validateStatus` returns `true` (or is set to `null`</span></span>
+<span class="line"><span style="color:#6A737D">// or `undefined`), the promise will be resolved; otherwise, the promise will be</span></span>
+<span class="line"><span style="color:#6A737D">// rejected.</span></span>
+<span class="line"><span style="color:#B392F0">validateStatus</span><span style="color:#E1E4E8">: </span><span style="color:#F97583">function</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">status</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> status </span><span style="color:#F97583">>=</span><span style="color:#79B8FF"> 200</span><span style="color:#F97583"> &#x26;&#x26;</span><span style="color:#E1E4E8"> status </span><span style="color:#F97583">&#x3C;</span><span style="color:#79B8FF"> 300</span><span style="color:#E1E4E8">; </span><span style="color:#6A737D">// default</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+</li>
+<li>若將 axios 改寫為 async/await 並搭配 try catch 的話，2xx 以外的 server response 都會被 catch 捕捉</li>
+</ul>
+<h2 id="作答">作答</h2>
+<p>根據以上筆記，回答題目中兩種作法的差異：</p>
+<ol>
+<li>使用預設的 status code 200 回覆前端時，前端需主動檢查 response 之 statusMessage，就算登入失敗也不會被 catch 捕捉</li>
+<li>將 response.statusCode 調整為 401 後，前端可直接在 catch 區塊處理登入失敗的邏輯，不需再檢查 statusMessage</li>
+</ol>
+<h2 id="參考文件">參考文件</h2>
+<ul>
+<li><a href="https://expressjs.com/en/api.html#res">Express: Response</a></li>
+<li><a href="https://nodejs.org/api/http.html#http_response_statuscode">Node.js: response.statusCode</a></li>
+<li><a href="https://nodejs.org/en/docs/guides/anatomy-of-an-http-transaction/#http-status-code">Node.js: HTTP Status Code</a></li>
+<li><a href="https://github.com/axios/axios#request-config">axios: Request Config</a></li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

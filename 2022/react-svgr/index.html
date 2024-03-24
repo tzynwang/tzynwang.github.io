@@ -1,0 +1,74 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v3.6.4"><!-- Primary Meta Tags --><title>2022 第31週 學習筆記：在 react 專案透過 @svgr/webpack 引用 .svg 檔案</title><meta name="title" content="2022 第31週 學習筆記：在 react 專案透過 @svgr/webpack 引用 .svg 檔案"><meta name="description" content="這是一個文組轉職前端工程師的技術部落格"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2022/react-svgr/"><meta property="og:title" content="2022 第31週 學習筆記：在 react 專案透過 @svgr/webpack 引用 .svg 檔案"><meta property="og:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="og:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2022/react-svgr/"><meta property="twitter:title" content="2022 第31週 學習筆記：在 react 專案透過 @svgr/webpack 引用 .svg 檔案"><meta property="twitter:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="twitter:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:Noto Sans TC,sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}ul,li{list-style-position:inside}ul{margin-bottom:16px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:8px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+</style><script type="module" src="/_astro/hoisted.77775e67.js"></script></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>2022 第31週 學習筆記：在 react 專案透過 @svgr/webpack 引用 .svg 檔案</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2022-08-04 20:27</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/React" data-astro-cid-2iymvi75> React </a> <a class="tag" href="/tag/TypeScript" data-astro-cid-2iymvi75> TypeScript </a> <a class="tag" href="/tag/webpack" data-astro-cid-2iymvi75> webpack </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#總結" data-astro-cid-qtokga5y>總結</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#程式碼" data-astro-cid-qtokga5y>程式碼</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#筆記" data-astro-cid-qtokga5y>筆記</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#關於-svg-tag-中的-title" data-astro-cid-qtokga5y>關於 svg tag 中的 title</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#關於-react-app-envdts" data-astro-cid-qtokga5y>關於 react-app-env.d.ts</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#關於-triple-slash-directives" data-astro-cid-qtokga5y>關於 Triple-Slash Directives</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#參考文件" data-astro-cid-qtokga5y>參考文件</a> </li> </ul> </div> <h2 id="總結">總結</h2>
+<p>記錄一下如何透過 <code>@svgr/webpack</code> 在 React 專案中操作 <code>.svg</code> 檔案，使用 <code>@svgr/webpack</code> 的好處是「同一份 <code>.svg</code> 檔案，可以選擇以『元件』或『路徑』的格式來使用」</p>
+<h2 id="程式碼">程式碼</h2>
+<script src="https://gist.github.com/tzynwang/5c200aca1cc8067dcb34254cd2f339c5.js"></script>
+<h2 id="筆記">筆記</h2>
+<ul>
+<li><code>svgr.react-app-env.d.ts</code>
+<ul>
+<li>第 7 行：要將 svg 檔案以 React 元件形式匯入時，需以 <code>ReactComponent</code> 的名稱進行 import</li>
+<li>第 9 行：設定 <code>ReactComponent</code> 可以接受 <code>title</code> props；如果對 <code>ReactComponent</code> 傳入 title 則最終渲染到畫面上的 svg tag 會包覆 title 字串</li>
+<li>第 12 行：預設匯出的形式是 <code>src</code> 字串</li>
+</ul>
+</li>
+<li><code>svgr.app.tsx</code>
+<ul>
+<li>第 8 行：以元件形式匯入的 <code>svg</code> 檔案可透過 <code>classNames</code> 來進行 css 樣式設定</li>
+<li>第 10 行：也可直接將尺寸（width, height）與顏色（fill）以 <code>props</code> 形式傳遞給元件；透過 props 傳入的樣式會覆寫掉 svg 檔案原本的設定（可參考 <code>final.html</code> 兩種 svg tag 的差異）</li>
+<li>第 11 行：以 <code>src</code> 形式匯入 <code>svg</code> 檔案，可直接用於 <code>img src</code> 或 <code>background-image url</code> 上</li>
+</ul>
+</li>
+</ul>
+<h3 id="關於-svg-tag-中的-title">關於 svg tag 中的 title</h3>
+<blockquote>
+<p>MDN: Text in a <code>&#x3C;title></code> element is not rendered as part of the graphic, but <strong>browsers usually display it as a tooltip</strong>. If an element can be described by visible text, it is recommended to reference that text with an <code>aria-labelledby</code> attribute rather than using the <code>&#x3C;title></code> element.</p>
+</blockquote>
+<p>如果有提供的話，瀏覽器會將其應用於 tooltip 的展示文字；但（參考 <a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Element/title#browser_compatibility">MDN 表格</a>） FireFox 以外的支援度並不明朗</p>
+<h3 id="關於-react-app-envdts">關於 react-app-env.d.ts</h3>
+<blockquote>
+<p>This file references <strong>TypeScript types declarations</strong> that are specific to projects started with Create React App. These type declarations add support for importing resource files such as <code>bmp</code>, <code>gif</code>, <code>jpeg</code>, <code>jpg</code>, <code>png</code>, <code>webp</code>, and <code>svg</code>.</p>
+</blockquote>
+<p>其實就是各種格式的型別定義集合</p>
+<h3 id="關於-triple-slash-directives">關於 Triple-Slash Directives</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#6A737D">/// &#x3C;</span><span style="color:#85E89D">reference</span><span style="color:#B392F0"> types</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"..."</span><span style="color:#6A737D"> /></span></span></code></pre>
+<blockquote>
+<p>Triple-slash directives are single-line comments containing a single XML tag. The contents of the comment are used as <strong>compiler directives</strong>. Triple-slash references instruct the compiler to <strong>include additional files in the compilation process</strong>.</p>
+</blockquote>
+<blockquote>
+<p>a <code>/// &#x3C;reference types="..." /></code> directive declares a <strong>dependency on a package</strong>. For example, including <code>/// &#x3C;reference types="node" /></code> in a declaration file declares that this file uses names declared in <code>@types/node/index.d.ts;</code> and thus, this package needs to be included in the compilation along with the declaration file.</p>
+</blockquote>
+<p>提示編譯器在執行編譯時，需要額外引用哪些套件的型別定義檔案</p>
+<h2 id="參考文件">參考文件</h2>
+<ul>
+<li><a href="https://react-svgr.com/docs/webpack/">SVGR: Webpack</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Element/title">MDN: <code>&#x3C;title></code> — the SVG accessible name element</a></li>
+<li><a href="https://www.typescriptlang.org/docs/handbook/triple-slash-directives.html">TypeScript: Triple-Slash Directives</a></li>
+<li><a href="https://stackoverflow.com/questions/67262914/what-is-the-react-app-env-d-ts-in-a-react-typescript-project-for">What is the react-app-env.d.ts in a react typescript project for</a></li>
+<li><a href="https://www.newline.co/@dmitryrogozhny/how-to-start-new-react-application-with-create-react-app-and-typescript--4298e606">How to Start New React Application with Create React App and TypeScript</a></li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

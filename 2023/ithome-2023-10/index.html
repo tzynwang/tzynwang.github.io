@@ -1,0 +1,130 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v3.6.4"><!-- Primary Meta Tags --><title>捨棄 create-react-app 之餘還架了個 astro blog 昭告天下：webpack 5 與圖片資源</title><meta name="title" content="捨棄 create-react-app 之餘還架了個 astro blog 昭告天下：webpack 5 與圖片資源"><meta name="description" content="來聊聊如何設定 webpack 讓其可以處理前端常用到的靜態資源（.jpg/.png/.svg），並搭配 @svgr/webpack 讓 .svg 格式的檔案可以以「元件」形式使用"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2023/ithome-2023-10/"><meta property="og:title" content="捨棄 create-react-app 之餘還架了個 astro blog 昭告天下：webpack 5 與圖片資源"><meta property="og:description" content="來聊聊如何設定 webpack 讓其可以處理前端常用到的靜態資源（.jpg/.png/.svg），並搭配 @svgr/webpack 讓 .svg 格式的檔案可以以「元件」形式使用"><meta property="og:image" content="https://tzynwang.github.io/2023/ithome-2023-10/sarandy-westfall-L6lA84MaEdw-unsplash.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2023/ithome-2023-10/"><meta property="twitter:title" content="捨棄 create-react-app 之餘還架了個 astro blog 昭告天下：webpack 5 與圖片資源"><meta property="twitter:description" content="來聊聊如何設定 webpack 讓其可以處理前端常用到的靜態資源（.jpg/.png/.svg），並搭配 @svgr/webpack 讓 .svg 格式的檔案可以以「元件」形式使用"><meta property="twitter:image" content="https://tzynwang.github.io/2023/ithome-2023-10/sarandy-westfall-L6lA84MaEdw-unsplash.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:Noto Sans TC,sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}ul,li{list-style-position:inside}ul{margin-bottom:16px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:8px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+</style><script type="module" src="/_astro/hoisted.77775e67.js"></script></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>捨棄 create-react-app 之餘還架了個 astro blog 昭告天下：webpack 5 與圖片資源</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2023-09-25 08:06</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/2023鐵人賽" data-astro-cid-2iymvi75> 2023鐵人賽 </a> <a class="tag" href="/tag/Frontend Infrastructure" data-astro-cid-2iymvi75> Frontend Infrastructure </a> <a class="tag" href="/tag/webpack" data-astro-cid-2iymvi75> webpack </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#webpack-設定" data-astro-cid-qtokga5y>webpack 設定</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#以路徑形式使用圖片" data-astro-cid-qtokga5y>以路徑形式使用圖片</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#以元件形式使用-svg" data-astro-cid-qtokga5y>以元件形式使用 svg</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#更新-srcenvdts" data-astro-cid-qtokga5y>更新 src/env.d.ts</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#補充如何選擇圖片格式" data-astro-cid-qtokga5y>補充：如何選擇圖片格式</a> </li> </ul> </div> <p>今天會先分享個人慣用的靜態資源設定，接著會介紹我滿喜歡的 svg loader <a href="https://react-svgr.com/docs/webpack/">@svgr/webpack</a>。這個套件能讓 <code>.svg</code> 直接以「元件」的形式被引用：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> EditIcon </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> './edit_icon.svg'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> EditButton</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> (</span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#85E89D">button</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">      &#x3C;</span><span style="color:#79B8FF">EditIcon</span><span style="color:#E1E4E8"> /> edit profile</span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;/</span><span style="color:#85E89D">button</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  );</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>那麽開始吧 (`・ω・´)</p>
+<h2 id="webpack-設定">webpack 設定</h2>
+<h3 id="以路徑形式使用圖片">以路徑形式使用圖片</h3>
+<p>首先在 webpack 設定中加上以下內容：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> webpackDevelopmentConfig</span><span style="color:#F97583">:</span><span style="color:#B392F0"> WebpackConfiguration</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">  module: {</span></span>
+<span class="line"><span style="color:#E1E4E8">    rules: [</span></span>
+<span class="line"><span style="color:#E1E4E8">      {</span></span>
+<span class="line"><span style="color:#E1E4E8">        test:</span><span style="color:#9ECBFF"> /</span><span style="color:#85E89D;font-weight:bold">\.</span><span style="color:#DBEDFF">(png</span><span style="color:#F97583">|</span><span style="color:#DBEDFF">svg</span><span style="color:#F97583">|</span><span style="color:#DBEDFF">jpg)</span><span style="color:#F97583">$</span><span style="color:#9ECBFF">/</span><span style="color:#F97583">i</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">        type: </span><span style="color:#9ECBFF">'asset/resource'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">        resourceQuery:</span><span style="color:#9ECBFF"> /</span><span style="color:#DBEDFF">url</span><span style="color:#9ECBFF">/</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">      },</span></span>
+<span class="line"><span style="color:#E1E4E8">    ],</span></span>
+<span class="line"><span style="color:#E1E4E8">  },</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span></code></pre>
+<p>沒錯，在 webpack 5 的時代裡，取用靜態資源不強制要求安裝套件 <code>raw-loader</code> / <code>url-loader</code> / <code>file-loader</code> 了。</p>
+<blockquote>
+<p><a href="https://webpack.js.org/guides/asset-modules/">webpack</a>: Asset Modules types <strong>replace all of these loaders</strong> by adding 4 new module types.</p>
+</blockquote>
+<p>以上這段規則在做的事情是：當偵測到檔案路徑符合 <code>.png?url</code> / <code>.svg?url</code> / <code>.jpg?url</code> 時，webpack 會提供該檔案在瀏覽器環境中可以使用的路徑。</p>
+<blockquote>
+<p><a href="https://webpack.js.org/guides/asset-modules/">webpack</a>: <code>asset/resource</code> emits a separate file and <strong>exports the URL</strong>. Previously achievable by using <code>file-loader</code>.</p>
+</blockquote>
+<p>所以現在你可以在專案內使用以下方式運用 <code>./src/asset</code> 資料夾中的圖片檔案了：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> React </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> 'react'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> foxImageUrl </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> '@Asset/alexander-andrews-unsplash.jpg?url'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> Image</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> &#x3C;</span><span style="color:#B392F0">img</span><span style="color:#B392F0"> src</span><span style="color:#E1E4E8">={</span><span style="color:#FFAB70">foxImageUrl</span><span style="color:#E1E4E8">} </span><span style="color:#B392F0">alt</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"fox image"</span><span style="color:#E1E4E8"> />;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> default</span><span style="color:#E1E4E8"> Image;</span></span></code></pre>
+<p>記得 import 路徑結尾要加上我們在 webpack 規則中設定好的 resourceQuery <code>url</code>。</p>
+<h3 id="以元件形式使用-svg">以元件形式使用 svg</h3>
+<p>先安裝 <code>@svgr/webpack</code>，然後追加以下設定：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> webpackDevelopmentConfig</span><span style="color:#F97583">:</span><span style="color:#B392F0"> WebpackConfiguration</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">  module: {</span></span>
+<span class="line"><span style="color:#E1E4E8">    rules: [</span></span>
+<span class="line"><span style="color:#E1E4E8">      {</span></span>
+<span class="line"><span style="color:#E1E4E8">        test:</span><span style="color:#9ECBFF"> /</span><span style="color:#85E89D;font-weight:bold">\.</span><span style="color:#DBEDFF">(png</span><span style="color:#F97583">|</span><span style="color:#DBEDFF">svg</span><span style="color:#F97583">|</span><span style="color:#DBEDFF">jpg)</span><span style="color:#F97583">$</span><span style="color:#9ECBFF">/</span><span style="color:#F97583">i</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">        type: </span><span style="color:#9ECBFF">'asset/resource'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">        resourceQuery:</span><span style="color:#9ECBFF"> /</span><span style="color:#DBEDFF">url</span><span style="color:#9ECBFF">/</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">      },</span></span>
+<span class="line"><span style="color:#E1E4E8">      {</span></span>
+<span class="line"><span style="color:#E1E4E8">        test:</span><span style="color:#9ECBFF"> /</span><span style="color:#85E89D;font-weight:bold">\.</span><span style="color:#DBEDFF">svg</span><span style="color:#F97583">$</span><span style="color:#9ECBFF">/</span><span style="color:#F97583">i</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">        issuer:</span><span style="color:#9ECBFF"> /</span><span style="color:#85E89D;font-weight:bold">\.</span><span style="color:#DBEDFF">tsx</span><span style="color:#F97583">?$</span><span style="color:#9ECBFF">/</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">        resourceQuery: { not: [</span><span style="color:#9ECBFF">/</span><span style="color:#DBEDFF">url</span><span style="color:#9ECBFF">/</span><span style="color:#E1E4E8">] },</span></span>
+<span class="line"><span style="color:#E1E4E8">        use: [</span></span>
+<span class="line"><span style="color:#E1E4E8">          {</span></span>
+<span class="line"><span style="color:#E1E4E8">            loader: </span><span style="color:#9ECBFF">'@svgr/webpack'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">            options: {</span></span>
+<span class="line"><span style="color:#E1E4E8">              svgo: </span><span style="color:#79B8FF">false</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">            },</span></span>
+<span class="line"><span style="color:#E1E4E8">          },</span></span>
+<span class="line"><span style="color:#E1E4E8">        ],</span></span>
+<span class="line"><span style="color:#E1E4E8">      },</span></span>
+<span class="line"><span style="color:#E1E4E8">    ],</span></span>
+<span class="line"><span style="color:#E1E4E8">  },</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span></code></pre>
+<p>透過 <code>test: /\.svg$/i</code>、<code>resourceQuery: { not: [/url/] }</code> 與 <code>issuer: /\.tsx?$/</code> 來處理「所有 <code>.tsx</code> 中結尾不為 <code>.svg?url</code> 的內容」。遇到符合前述條件的檔案時，使用 <code>@svgr/webpack</code> 來處理之。</p>
+<p>這邊比較弔詭的地方是設定 <code>svgo: false</code> 來讓 css 針對 svg 的尺寸設定可以順利被套用上去。只寫成 <code>use: ['@svgr/webpack']</code> 或是使用 <a href="https://github.com/svg/svgo#svg-wont-scale-when-css-is-applied-on-it">svgo 官方建議的解決方式</a>在個人的實驗結果中都是失敗的（svg 無法透過 css 調整尺寸）。</p>
+<p>🤷</p>
+<h2 id="更新-srcenvdts">更新 src/env.d.ts</h2>
+<p>請將以下內容加到 <code>./src/env.d.ts</code> 中。這能讓 TypeScript 知道「路徑結尾為 <code>.(jpg|png|svg)?url</code> 的檔案會是文字型別」，而「路徑結尾為 <code>.svg</code> 的檔案會是一個 React 元件且擁有 html svg element 的特性（props）」。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#F97583">declare</span><span style="color:#F97583"> module</span><span style="color:#9ECBFF"> '*.jpg?url'</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> src</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> string</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">  export</span><span style="color:#F97583"> default</span><span style="color:#E1E4E8"> src;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">declare</span><span style="color:#F97583"> module</span><span style="color:#9ECBFF"> '*.png?url'</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> src</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> string</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">  export</span><span style="color:#F97583"> default</span><span style="color:#E1E4E8"> src;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">declare</span><span style="color:#F97583"> module</span><span style="color:#9ECBFF"> '*.svg?url'</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> src</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> string</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">  export</span><span style="color:#F97583"> default</span><span style="color:#E1E4E8"> src;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">declare</span><span style="color:#F97583"> module</span><span style="color:#9ECBFF"> '*.svg'</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">  import</span><span style="color:#E1E4E8"> React </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> 'react'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> ReactComponent</span><span style="color:#F97583">:</span><span style="color:#B392F0"> React</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">FunctionComponent</span><span style="color:#E1E4E8">&#x3C;</span><span style="color:#B392F0">React</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">SVGProps</span><span style="color:#E1E4E8">&#x3C;</span><span style="color:#B392F0">SVGSVGElement</span><span style="color:#E1E4E8">>>;</span></span>
+<span class="line"><span style="color:#F97583">  export</span><span style="color:#F97583"> default</span><span style="color:#E1E4E8"> ReactComponent;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>完成！現在你的專案能夠正常顯示圖片內容了 (`･∀･)b</p>
+<h2 id="補充如何選擇圖片格式">補充：如何選擇圖片格式</h2>
+<p>綜合平常的開發經驗以及參考 <a href="https://web.dev/choose-the-right-image-format/">web.dev: Choose the right image format</a> 一文，個人通常會以以下流程來判斷最終要使用哪一種格式來顯示圖片：</p>
+<ol>
+<li>需要支援透明度：沒什麼選擇，基本上就是 <code>png</code></li>
+<li>照片、不是色塊分明的圖面：使用 <code>jpg</code></li>
+<li>色塊分明的圖片（如網站 logo 等）：使用 <code>svg</code> 或 <code>png</code></li>
+</ol>
+<p>確定格式後，我會再根據圖片實際的展示位置決定是否<a href="https://squoosh.app/">調整檔案尺寸</a>。除了 landing page 這類大面積區塊外，基本上圖片都可以縮小成「畫面上實際展示的大小」即可。</p>
+<p>雖然現在是不需要特別斤斤計較流量的時代，但無意義地使用大圖片也會造成 lighthouse 評分低落。開發時若還有餘裕的話，上圖時稍微注意一下也沒有損失 😈</p> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

@@ -1,0 +1,66 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v3.6.4"><!-- Primary Meta Tags --><title>JavaScript 快速筆記：Event.currentTarget</title><meta name="title" content="JavaScript 快速筆記：Event.currentTarget"><meta name="description" content="這是一個文組轉職前端工程師的技術部落格"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2022/js-event-current-target/"><meta property="og:title" content="JavaScript 快速筆記：Event.currentTarget"><meta property="og:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="og:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2022/js-event-current-target/"><meta property="twitter:title" content="JavaScript 快速筆記：Event.currentTarget"><meta property="twitter:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="twitter:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:Noto Sans TC,sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}ul,li{list-style-position:inside}ul{margin-bottom:16px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:8px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+</style><script type="module" src="/_astro/hoisted.77775e67.js"></script></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>JavaScript 快速筆記：Event.currentTarget</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2022-08-17 22:22</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/JavaScript" data-astro-cid-2iymvi75> JavaScript </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#總結" data-astro-cid-qtokga5y>總結</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#筆記" data-astro-cid-qtokga5y>筆記</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#bonus-track-eventstopimmediatepropagation" data-astro-cid-qtokga5y>bonus track: Event.stopImmediatePropagation</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#參考文件" data-astro-cid-qtokga5y>參考文件</a> </li> </ul> </div> <h2 id="總結">總結</h2>
+<p>在觀摩 <a href="https://github.com/mui/material-ui/blob/master/packages/mui-material/src/Dialog/Dialog.js">material-ui Dialog 原始碼</a>的時候發現過去沒用過的 property <code>Event.currentTarget</code>，記錄一下與 <code>Event.target</code> 的差異</p>
+<h2 id="筆記">筆記</h2>
+<ul>
+<li>Event.currentTarget：實際帶有 eventListener 的 DOM 元素
+<ul>
+<li>MDN: <code>Event.currentTarget</code> always refers to the element to which <strong>the event handler has been attached</strong>, as opposed to <code>Event.target</code>, which identifies the element on which the event occurred and which may be its descendant.</li>
+</ul>
+</li>
+<li>Event.target：事件真正的起始點
+<ul>
+<li>MDN: the reference to the object onto <strong>which the event was dispatched</strong></li>
+</ul>
+</li>
+</ul>
+<iframe src="https://codesandbox.io/embed/nice-shadow-ftlbqb?fontsize=14&#x26;hidenavigation=1&#x26;theme=dark" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" title="nice-shadow-ftlbqb" allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking" sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"></iframe>
+<p>DEMO CODE 解說：</p>
+<ul>
+<li>分別在 inner box 與 outer wrapper 綁上 click 監聽（32-33 行），並透過 <code>stopPropagation</code> 阻止事件向親層冒泡（14 行）</li>
+<li>點擊 inner box 時，事件停留在 inner 層，<code>e.target</code> 與 <code>e.currentTarget</code> 皆會是 inner box</li>
+<li>點擊 middle wrapper 時，點擊事件本身（<code>e.target</code>）發生在 middle wrapper，但冒泡到 outer wrapper 層，被 outer wrapper 的事件監聽捕捉到，<code>e.currentTarget</code> 會是帶有監聽器的 outer wrapper
+<ul>
+<li>雖然在 function setTarget 中加入 <code>stopPropagation</code>，但在 middle wrapper 發生的事件，首先要先浮到 outer wrapper 被捕捉，才會有後續的 <code>stopPropagation</code>；middle wrapper 本身沒有任何事件監聽，事件不會在這一層被取消</li>
+</ul>
+</li>
+<li>點擊 outer wrapper 的邏輯與點擊 inner box 雷同，<code>e.target</code> 與 <code>e.currentTarget</code> 都會是 outer wrapper</li>
+</ul>
+<h3 id="bonus-track-eventstopimmediatepropagation">bonus track: Event.stopImmediatePropagation</h3>
+<p>搜尋相關資料時連帶找到 <code>Event.stopImmediatePropagation()</code>，與 <code>stopPropagation</code> 的差異在：如果一個 DOM 元素被加上複數個同樣事件類型但不同 handler function 的監聽器，那麼各個 handler function 會根據其在程式碼的順序由上到下依序執行，此時如果在 handler function 中呼叫 <code>stopImmediatePropagation</code> 則剩下來的 handler function 都不會被觸發</p>
+<blockquote>
+<p>MDN: If several listeners are attached to the same element for the same event type, they are <strong>called in the order in which they were added</strong>. If <code>stopImmediatePropagation()</code> is invoked during one such call, no remaining listeners will be called.</p>
+</blockquote>
+<iframe src="https://codesandbox.io/embed/jolly-bhabha-5zfi6b?fontsize=14&#x26;hidenavigation=1&#x26;theme=dark" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" title="jolly-bhabha-5zfi6b" allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking" sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"></iframe>
+<p>於上述 DEMO CODE 中的 <code>funcTwo</code> 呼叫了 <code>e.stopImmediatePropagation()</code>，故 <code>funcThree</code> 與 <code>funcFour</code> 都沒有被執行，useState 變數 <code>result</code> 中只有前兩個 functions 執行完的結果</p>
+<h2 id="參考文件">參考文件</h2>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Event/currentTarget">MDN: Event.currentTarget</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Event/target">MDN: Event.target</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Event/stopImmediatePropagation">MDN: Event.stopImmediatePropagation()</a></li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

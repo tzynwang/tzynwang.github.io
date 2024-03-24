@@ -1,0 +1,59 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v3.6.4"><!-- Primary Meta Tags --><title>30天挑戰：「clip-path搭配mix-blend-mode製作疊圖文字」技術記錄</title><meta name="title" content="30天挑戰：「clip-path搭配mix-blend-mode製作疊圖文字」技術記錄"><meta name="description" content="這是一個文組轉職前端工程師的技術部落格"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2021/ithome2021-5-clip-path-mix-blend-mode/"><meta property="og:title" content="30天挑戰：「clip-path搭配mix-blend-mode製作疊圖文字」技術記錄"><meta property="og:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="og:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2021/ithome2021-5-clip-path-mix-blend-mode/"><meta property="twitter:title" content="30天挑戰：「clip-path搭配mix-blend-mode製作疊圖文字」技術記錄"><meta property="twitter:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="twitter:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:Noto Sans TC,sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}ul,li{list-style-position:inside}ul{margin-bottom:16px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:8px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+</style><script type="module" src="/_astro/hoisted.77775e67.js"></script></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>30天挑戰：「clip-path搭配mix-blend-mode製作疊圖文字」技術記錄</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2021-08-13 08:38</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/CSS" data-astro-cid-2iymvi75> CSS </a> <a class="tag" href="/tag/2021鐵人賽" data-astro-cid-2iymvi75> 2021鐵人賽 </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#總結" data-astro-cid-qtokga5y>總結</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#原理拆解" data-astro-cid-qtokga5y>原理拆解</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#補充" data-astro-cid-qtokga5y>補充</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#參考文件" data-astro-cid-qtokga5y>參考文件</a> </li> </ul> </div> <h2 id="總結">總結</h2>
+<p>使用 CSS <code>clip-path</code>與<code>mix-blend-mode</code>來做出文字疊圖混色的效果</p>
+<p class="codepen" data-height="720" data-theme-id="dark" data-default-tab="result" data-slug-hash="BaRbZYq" data-user="Charlie7779" style="height: 720px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+  <span>See the Pen <a href="https://codepen.io/Charlie7779/pen/BaRbZYq">
+  clip-path and mix-blend-mode</a> by Charlie (<a href="https://codepen.io/Charlie7779">@Charlie7779</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+<h2 id="原理拆解">原理拆解</h2>
+<ul>
+<li>使用<code>::before</code>與<code>::after</code>來寫字，同樣的文字寫兩套</li>
+<li>使用<code>clip-path</code>遮去超出圖片範圍的<code>::after</code>文字，並加上<code>mix-blend-mode</code>來為文字上色
+<ul>
+<li>算數時間：如何框出<code>clip-path</code>範圍？</li>
+<li>算式：<code>clip-path: inset( calc((100% - 320px) / 2) calc((100vw - 400px) / 2) calc((100% - 320px) / 2) calc((100vw - 400px) / 2) );</code></li>
+<li><code>inset</code>代表<code>clip-path</code>形狀設定為矩形（<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/clip-path#values">MDN</a>: Defines an inset rectangle.）</li>
+<li><code>inset</code>括號內的 4 組數字分別代表<code>clip-path</code>上右下左的起始點（<a href="https://drafts.csswg.org/css-shapes-1/#supported-basic-shapes">W3C</a>: When all of the first four arguments are supplied they represent the <strong>top, right, bottom and left</strong> offsets from the reference box inward that define the positions of the edges of the inset rectangle.）</li>
+<li><code>clip-path</code>的上下範圍分別是<code>.landing</code> 100%的高度減去圖片的高度（320px）後除以 2
+<img src="/2021/ithome2021-5-clip-path-mix-blend-mode/calc-1.jpg" alt="藍色為.landing 100%之範圍">
+<img src="/2021/ithome2021-5-clip-path-mix-blend-mode/calc-2.jpg" alt="紅色為圖片高度，黑線與.landing 100%高度相同，而黑線高減去圖片高後再除以2，就可得出覆蓋範圍"></li>
+<li>左右範圍則是<code>100vw</code>減去圖片的寬度（400px）後除以 2，計算原理與高度相同</li>
+</ul>
+</li>
+<li><code>::before</code>部分的文字就順其自然地讓圖片擋住</li>
+</ul>
+<h2 id="補充">補充</h2>
+<p><img src="/2021/ithome2021-5-clip-path-mix-blend-mode/github-host-svg.png" alt="GitHub host svg files"></p>
+<p><code>.svg</code>檔案推到 GitHub repo 後，點選 raw 即可取得直連位置，在沒有購買 codepen 付費方案時，可做為 online svg hosting 的替代方式</p>
+<h2 id="參考文件">參考文件</h2>
+<ul>
+<li><a href="https://css-tricks.com/almanac/properties/m/mix-blend-mode/">CSS-Tricks: mix-blend-mode</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/clip-path">MDN: clip-path</a></li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

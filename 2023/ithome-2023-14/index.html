@@ -1,0 +1,131 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v3.6.4"><!-- Primary Meta Tags --><title>捨棄 create-react-app 之餘還架了個 astro blog 昭告天下：打包與預覽</title><meta name="title" content="捨棄 create-react-app 之餘還架了個 astro blog 昭告天下：打包與預覽"><meta name="description" content="你搞定了部署用的 webpack 設定，只差開始執行打包的腳本以及處理 ./public 中靜態資源的功能了"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2023/ithome-2023-14/"><meta property="og:title" content="捨棄 create-react-app 之餘還架了個 astro blog 昭告天下：打包與預覽"><meta property="og:description" content="你搞定了部署用的 webpack 設定，只差開始執行打包的腳本以及處理 ./public 中靜態資源的功能了"><meta property="og:image" content="https://tzynwang.github.io/2023/ithome-2023-14/yu-kato-xE-k1r5shuA-unsplash.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2023/ithome-2023-14/"><meta property="twitter:title" content="捨棄 create-react-app 之餘還架了個 astro blog 昭告天下：打包與預覽"><meta property="twitter:description" content="你搞定了部署用的 webpack 設定，只差開始執行打包的腳本以及處理 ./public 中靜態資源的功能了"><meta property="twitter:image" content="https://tzynwang.github.io/2023/ithome-2023-14/yu-kato-xE-k1r5shuA-unsplash.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:Noto Sans TC,sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}ul,li{list-style-position:inside}ul{margin-bottom:16px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:8px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+</style><script type="module" src="/_astro/hoisted.77775e67.js"></script></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>捨棄 create-react-app 之餘還架了個 astro blog 昭告天下：打包與預覽</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2023-09-29 08:23</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/2023鐵人賽" data-astro-cid-2iymvi75> 2023鐵人賽 </a> <a class="tag" href="/tag/Frontend Infrastructure" data-astro-cid-2iymvi75> Frontend Infrastructure </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#打包" data-astro-cid-qtokga5y>打包</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#makefile-腳本" data-astro-cid-qtokga5y>Makefile 腳本</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#scriptbuildts-內容" data-astro-cid-qtokga5y>script/build.ts 內容</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#預覽" data-astro-cid-qtokga5y>預覽</a> </li> </ul> </div> <p>webpack 設定已經備妥，現在剩下啟動打包的指令、以及你可能需要一點小工具幫你把放在 <code>./public</code> 中的靜態資源（比如 <code>favicon</code>）複製一份到輸出資料夾中。今天就來介紹個人慣用的腳本內容。</p>
+<h2 id="打包">打包</h2>
+<h3 id="makefile-腳本">Makefile 腳本</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#B392F0">.PHONY:</span><span style="color:#9ECBFF"> build</span></span>
+<span class="line"><span style="color:#B392F0">build:</span></span>
+<span class="line"><span style="color:#B392F0">	node</span><span style="color:#79B8FF"> -r</span><span style="color:#9ECBFF"> esbuild-runner/register</span><span style="color:#9ECBFF"> ./script/build.ts</span></span></code></pre>
+<h3 id="scriptbuildts-內容">script/build.ts 內容</h3>
+<p>個人基本上會將打包邏輯放在 <code>./script/build.ts</code> 中，而這個檔案會處理以下三件事情：</p>
+<ol>
+<li>啟動 <code>webpack</code> 進行打包</li>
+<li>將 <code>./public</code> 中的靜態資源複製一份到打包完的目的資料夾</li>
+<li>（在專案內容比較簡單的時候）手動產生一份 <code>sitemap.xml</code> 並灌到打包完的資料夾中</li>
+</ol>
+<hr>
+<p>先看看第一步「透過 webpack 進行打包」的功能：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> webpack </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> 'webpack'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> webpackProductionConfig </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> '@/config/webpack.config.production'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> webpackBuild</span><span style="color:#E1E4E8">()</span><span style="color:#F97583">:</span><span style="color:#B392F0"> Promise</span><span style="color:#E1E4E8">&#x3C;</span><span style="color:#79B8FF">void</span><span style="color:#E1E4E8">> {</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#F97583"> new</span><span style="color:#79B8FF"> Promise</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">resolve</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">reject</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> compiler</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> webpack</span><span style="color:#E1E4E8">(webpackProductionConfig);</span></span>
+<span class="line"><span style="color:#E1E4E8">    compiler.</span><span style="color:#B392F0">run</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">error</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">stats</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">      if</span><span style="color:#E1E4E8"> (error) {</span></span>
+<span class="line"><span style="color:#E1E4E8">        console.</span><span style="color:#B392F0">error</span><span style="color:#E1E4E8">(error);</span></span>
+<span class="line"><span style="color:#F97583">        return</span><span style="color:#B392F0"> reject</span><span style="color:#E1E4E8">(error);</span></span>
+<span class="line"><span style="color:#E1E4E8">      }</span></span>
+<span class="line"><span style="color:#F97583">      if</span><span style="color:#E1E4E8"> (stats) {</span></span>
+<span class="line"><span style="color:#6A737D">        // 將毫秒轉回秒</span></span>
+<span class="line"><span style="color:#E1E4E8">        console.</span><span style="color:#B392F0">info</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'build time: '</span><span style="color:#E1E4E8">, (stats.endTime </span><span style="color:#F97583">-</span><span style="color:#E1E4E8"> stats.startTime) </span><span style="color:#F97583">/</span><span style="color:#79B8FF"> 1000</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#6A737D">        // 印出打包過程 log</span></span>
+<span class="line"><span style="color:#E1E4E8">        console.</span><span style="color:#B392F0">info</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'build log: '</span><span style="color:#E1E4E8">, stats.</span><span style="color:#B392F0">toString</span><span style="color:#E1E4E8">());</span></span>
+<span class="line"><span style="color:#E1E4E8">      }</span></span>
+<span class="line"><span style="color:#F97583">      if</span><span style="color:#E1E4E8"> (stats </span><span style="color:#F97583">&#x26;&#x26;</span><span style="color:#E1E4E8"> stats.</span><span style="color:#B392F0">hasErrors</span><span style="color:#E1E4E8">()) {</span></span>
+<span class="line"><span style="color:#F97583">        return</span><span style="color:#B392F0"> reject</span><span style="color:#E1E4E8">(stats.compilation.errors);</span></span>
+<span class="line"><span style="color:#E1E4E8">      }</span></span>
+<span class="line"><span style="color:#E1E4E8">      compiler.</span><span style="color:#B392F0">close</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">closeError</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">        if</span><span style="color:#E1E4E8"> (closeError) {</span></span>
+<span class="line"><span style="color:#E1E4E8">          console.</span><span style="color:#B392F0">error</span><span style="color:#E1E4E8">(closeError);</span></span>
+<span class="line"><span style="color:#F97583">          return</span><span style="color:#B392F0"> reject</span><span style="color:#E1E4E8">(closeError);</span></span>
+<span class="line"><span style="color:#E1E4E8">        } </span><span style="color:#F97583">else</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">          return</span><span style="color:#B392F0"> resolve</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">        }</span></span>
+<span class="line"><span style="color:#E1E4E8">      });</span></span>
+<span class="line"><span style="color:#E1E4E8">    });</span></span>
+<span class="line"><span style="color:#E1E4E8">  });</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>將 <code>webpackProductionConfig</code> 傳入 <code>webpack()</code> 建立打包用的 <code>compiler</code> 並啟動之。在有錯誤發生時，執行 <code>reject()</code> 把錯誤拋出。中間讀取 <code>stats.endTime</code> / <code>stats.startTime</code> 來顯示打包時長。其他打包過程中出現的資訊則透過 <code>stats.toString()</code> 直接輸出到終端。</p>
+<p>如果萬事順利，則進入 <code>compiler.close()</code> callback 中的的 <code>return resolve();</code> 分之，結束 webpack 打包流程。</p>
+<hr>
+<p>接著來將 <code>./public</code> 中除了 <code>index.html</code> 以外的內容都複製一份到打包完畢的目的地資料夾：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> fs </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> 'fs-extra'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { resolvePath } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> '@/tool/resolvePath'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> env </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> '@/config/data/env'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#F97583"> type</span><span style="color:#E1E4E8"> { EnvForBuildApp } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> '@/config/data/types'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> ENV_FOR_BUILD_APP</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> env[</span><span style="color:#9ECBFF">'process.env'</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">as</span><span style="color:#B392F0"> EnvForBuildApp</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> BUILD_DESTINATION_PATH</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> resolvePath</span><span style="color:#E1E4E8">(</span></span>
+<span class="line"><span style="color:#79B8FF">  JSON</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">parse</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">ENV_FOR_BUILD_APP</span><span style="color:#E1E4E8">.</span><span style="color:#79B8FF">BUILD_DESTINATION</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> copyPublicAsset</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#E1E4E8">  fs.</span><span style="color:#B392F0">copySync</span><span style="color:#E1E4E8">(</span><span style="color:#B392F0">resolvePath</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'public'</span><span style="color:#E1E4E8">), </span><span style="color:#79B8FF">BUILD_DESTINATION_PATH</span><span style="color:#E1E4E8">, {</span></span>
+<span class="line"><span style="color:#B392F0">    filter</span><span style="color:#E1E4E8">: (</span><span style="color:#FFAB70">file</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> file </span><span style="color:#F97583">!==</span><span style="color:#B392F0"> resolvePath</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'public/index.html'</span><span style="color:#E1E4E8">),</span></span>
+<span class="line"><span style="color:#E1E4E8">  });</span></span>
+<span class="line"><span style="color:#E1E4E8">  console.</span><span style="color:#B392F0">info</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'copy public folder done.'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>透過 <code>filter</code> 跳過 <code>index.html</code> 是因為這份檔案已經透過 webpack 的 <code>html-webpack-plugin</code> 處理了，我們不需要在這裡再複製一份。關於 fx-extra 中的 <code>copySync</code> 詳細說明可參考<a href="https://github.com/jprichardson/node-fs-extra/blob/master/docs/copy-sync.md">官方文件</a>。</p>
+<hr>
+<p>而在 React app 結構較簡單的情況下，個人會在處理打包時順便將 sitemap 一起做掉。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> generateSiteMap</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> content</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> `&#x3C;?xml version="1.0" encoding="UTF-8"?></span></span>
+<span class="line"><span style="color:#9ECBFF">&#x3C;urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"></span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#9ECBFF">&#x3C;url></span></span>
+<span class="line"><span style="color:#9ECBFF">&#x3C;loc>https://example.com/&#x3C;/loc></span></span>
+<span class="line"><span style="color:#9ECBFF">&#x3C;lastmod>${</span><span style="color:#F97583">new</span><span style="color:#B392F0"> Date</span><span style="color:#9ECBFF">().</span><span style="color:#B392F0">toISOString</span><span style="color:#9ECBFF">()</span><span style="color:#9ECBFF">}&#x3C;/lastmod></span></span>
+<span class="line"><span style="color:#9ECBFF">&#x3C;/url></span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#9ECBFF">&#x3C;/urlset>`</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">  fs.</span><span style="color:#B392F0">writeFileSync</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">`${</span><span style="color:#79B8FF">BUILD_DESTINATION_PATH</span><span style="color:#9ECBFF">}/sitemap_index.xml`</span><span style="color:#E1E4E8">, content);</span></span>
+<span class="line"><span style="color:#E1E4E8">  console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'sitemap.xml generated done.'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>上方 xml 內容參考自 <a href="https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap#xml">Google Search Center: Build and submit a sitemap</a></p>
+<p>sitemap 的功能基本上就是在告訴搜尋引擎「這個網站包含哪些內容」。需要更近一步的介紹可看看 Google 的 <a href="https://developers.google.com/search/docs/crawling-indexing/sitemaps/overview">Learn about sitemaps</a> 一文。</p>
+<hr>
+<p>最後，把這三個功能包起來執行即可：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#F97583">async</span><span style="color:#F97583"> function</span><span style="color:#B392F0"> buildProduction</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#E1E4E8">  console.</span><span style="color:#B392F0">info</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'build start.'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">  await</span><span style="color:#B392F0"> webpackBuild</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#B392F0">  copyPublicAsset</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#B392F0">  generateSiteMap</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">  console.</span><span style="color:#B392F0">info</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'build end.'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">buildProduction</span><span style="color:#E1E4E8">();</span></span></code></pre>
+<h2 id="預覽">預覽</h2>
+<p>個人習慣在打包完畢後，檢查包完的內容是否真的符合預期（比如檔案間互相引用的路徑在透過 webpack 處理後是否還正確、樣式是否能正常顯示）。以下是 <code>Makefile</code> 腳本：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#6A737D"># 預覽打包後的結果</span></span>
+<span class="line"><span style="color:#B392F0">.PHONY:</span><span style="color:#9ECBFF"> preview</span></span>
+<span class="line"><span style="color:#B392F0">preview:</span></span>
+<span class="line"><span style="color:#B392F0">	npx</span><span style="color:#9ECBFF"> http-server</span><span style="color:#9ECBFF"> $(</span><span style="color:#B392F0">BUILD_DESTINATION</span><span style="color:#9ECBFF">)</span><span style="color:#79B8FF"> -p</span><span style="color:#9ECBFF"> $(</span><span style="color:#B392F0">APP_PORT</span><span style="color:#9ECBFF">)</span></span></code></pre>
+<p>（<code>BUILD_DESTINATION</code> 與 <code>APP_PORT</code> 都是引用自 <code>.evn</code> 的內容，忘記這邊是怎麼來的可以回頭參考<a href="/2023/ithome-2023-6#%E9%80%8F%E9%81%8E-Makefile-%E8%A8%AD%E5%AE%9A%E8%85%B3%E6%9C%AC">第 6 天</a>內容）</p>
+<p>在終端輸入 <code>make preview</code> 即可在本機試玩打包後的成果。</p>
+<hr>
+<p>恭喜，你的專案已經交給 devOps 來準備上線了 (*ﾟーﾟ)b</p> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 
