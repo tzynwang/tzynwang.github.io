@@ -37,7 +37,7 @@ assertions 字元讓開發者可以根據「邊際」或「前後符合條件」
 
 `x(?=y)`：挑出後方有 `y` 的 `x`。舉例：`apple(?= pie)` 會挑中 `apple pie` 字串中的 `apple`，但不會挑中 `apple tea` 中的 `apple`
 
-`x(?!)y`：挑出後方沒有 `y` 的 `x`。舉例：`apple(?= pie)` 會挑中 `apple tea` 字串中的 `apple`，但不會挑中 `apple pie` 中的 `apple`
+`x(?!)y`：挑出後方沒有 `y` 的 `x`。舉例：`apple(?! pie)` 會挑中 `apple tea` 字串中的 `apple`，但不會挑中 `apple pie` 中的 `apple`
 
 `(?<=y)x`：挑出前方有 `y` 的 `x`。舉例：`(?<=apple )pie` 會挑中 `apple pie` 中的 `pie`，但不會挑中 `cherry pie` 中的 `pie`
 

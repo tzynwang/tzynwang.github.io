@@ -11,16 +11,22 @@ html {
   background-color: rgb(191, 191, 191, 0.4);
 }
 
-a {
+a, p.title {
   color: #127369;
   font-weight: 700;
   text-decoration: underline;
   text-decoration-color: transparent;
   transition: text-decoration-color 0.2s ease-in-out;
+  cursor: pointer;
 }
 
-a:hover {
+a:hover, p.title:hover {
   text-decoration-color: #127369;
+}
+
+a.link-out {
+  position: absolute;
+  inset: 0;
 }
 
 ul,

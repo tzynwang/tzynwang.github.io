@@ -4,7 +4,6 @@ import type { Post } from '@Models/GeneralTypes';
 import Tag from '@Components/element/Tag.astro';
 import { GA4_READ_POST } from '@Models/GeneralModels';
 import { dateFormatter } from '@Tools/formatter';
-import { getFlatTags } from '@Tools/post';
 
 interface Props extends Post {
   url?: string;
@@ -18,10 +17,11 @@ const bannerUrl = banner ? `url(${banner})` : 'none';
   <div class="featured-post-layout">
     <div class="banner-wrapper"></div>
     <div class="text-wrapper">
-      <a href={url} class={GA4_READ_POST}>{title}</a>
+      <a href={url} class:list={[GA4_READ_POST, 'link-out']}></a>
+      <p class="title">{title}</p>
       <div>{dateFormatter(date)}</div>
       <div>
-        {getFlatTags(tag).map((tag) => <Tag tag={tag}>{tag}</Tag>)}
+        {tag.map((tag) => <Tag tag={tag}>{tag}</Tag>)}
       </div>
       <p set:html={summary} />
     </div>
@@ -67,9 +67,15 @@ const bannerUrl = banner ? `url(${banner})` : 'none';
   }
 
   .text-wrapper {
+    position: relative;
     display: flex;
     flex-direction: column;
     gap: 4px;
+  }
+
+  /* 1 為了讓標題能呈現 hover 後的效果，透過 relative 建立新圖層 */
+  .title {
+    position: relative; /* 1 */
   }
 
   p {
