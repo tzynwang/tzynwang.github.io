@@ -1,0 +1,58 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v3.6.4"><!-- Primary Meta Tags --><title>閱讀筆記：The Art of Unit Testing Chapter 8 Maintainability</title><meta name="title" content="閱讀筆記：The Art of Unit Testing Chapter 8 Maintainability"><meta name="description" content="本書以「單元測試被修改的頻率」來衡量該測試的可維護性（maintainability）。修改的次數越少，維護性就越高。而這便是本篇筆記的主題——如何寫出好維護的測試（如何避免動不動就要修改測試）。"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2024/the-art-of-unit-testing-ch8-maintainability/"><meta property="og:title" content="閱讀筆記：The Art of Unit Testing Chapter 8 Maintainability"><meta property="og:description" content="本書以「單元測試被修改的頻率」來衡量該測試的可維護性（maintainability）。修改的次數越少，維護性就越高。而這便是本篇筆記的主題——如何寫出好維護的測試（如何避免動不動就要修改測試）。"><meta property="og:image" content="https://tzynwang.github.io/2024/the-art-of-unit-testing-ch8-maintainability/todd-quackenbush-IClZBVw5W5A-unsplash.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2024/the-art-of-unit-testing-ch8-maintainability/"><meta property="twitter:title" content="閱讀筆記：The Art of Unit Testing Chapter 8 Maintainability"><meta property="twitter:description" content="本書以「單元測試被修改的頻率」來衡量該測試的可維護性（maintainability）。修改的次數越少，維護性就越高。而這便是本篇筆記的主題——如何寫出好維護的測試（如何避免動不動就要修改測試）。"><meta property="twitter:image" content="https://tzynwang.github.io/2024/the-art-of-unit-testing-ch8-maintainability/todd-quackenbush-IClZBVw5W5A-unsplash.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:Noto Sans TC,sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul{margin-bottom:16px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:8px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+</style><script type="module" src="/_astro/hoisted.77775e67.js"></script></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>閱讀筆記：The Art of Unit Testing Chapter 8 Maintainability</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2024-01-27 20:20</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/Testing" data-astro-cid-2iymvi75> Testing </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#簡介" data-astro-cid-qtokga5y>簡介</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#何時需要修改測試" data-astro-cid-qtokga5y>何時需要修改測試</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#如何寫出好維護的測試" data-astro-cid-qtokga5y>如何寫出好維護的測試</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#善用工廠功能factory-function" data-astro-cid-qtokga5y>善用工廠功能（factory function）</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#不要驗證實作細節" data-astro-cid-qtokga5y>不要驗證實作細節</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#參考文件" data-astro-cid-qtokga5y>參考文件</a> </li> </ul> </div> <h2 id="簡介">簡介</h2>
+<p>本書以「單元測試被修改的頻率」來衡量該測試的可維護性（maintainability）。修改的次數越少，維護性就越高。</p>
+<blockquote>
+<p>Maintainability is a measure of <strong>how often we are forced to change the tests</strong>. We’d like to minimize the number of times that happens.</p>
+</blockquote>
+<p>而這便是本篇筆記的主題——如何寫出好維護的測試（如何避免動不動就要修改測試）。</p>
+<h2 id="何時需要修改測試">何時需要修改測試</h2>
+<p>答：測試沒過的時候 🤡</p>
+<p>說真的，除了測試失敗，誰沒事會去動測試？而測試會失敗除了 <a href="/2024/the-art-of-unit-testing-ch7-trustworthy-tests#%E7%82%BA%E4%BD%95%E6%B8%AC%E8%A9%A6%E6%9C%83%E7%B4%85%E7%87%88">7 Trustworthy tests#為何測試會紅燈</a> 提過的理由以外，其實還有最後一種<del>四大天王有五個人是常識</del>——測試本身的邏輯沒有問題，單元想實現的內容也沒有變，但單元的「使用方式」變了，導致測試也需要被修改。</p>
+<p>本書認為一個好（維護）的單元測試要盡量降低這類修改的次數。而要達成這個目標，請在撰寫單元測試時秉持以下兩點要訣：</p>
+<ul>
+<li>透過工廠功能管理重複內容</li>
+<li>不要驗證實作細節</li>
+</ul>
+<h2 id="如何寫出好維護的測試">如何寫出好維護的測試</h2>
+<h3 id="善用工廠功能factory-function">善用工廠功能（factory function）</h3>
+<p>詳細操作方式可以回頭翻 <a href="/2023/the-art-of-unit-testing-ch2-a-first-unit-test#27-trying-the-factory-method-route">2 A first unit test#2.7 Trying the factory method route</a>。重點回顧如下：</p>
+<p>將「啟動單元的步驟」集中到工廠功能的好處是，當啟動單元的方法變了，我們只要去修改「啟動單元的工廠功能」就好。不需要海巡該單元的所有測試。</p>
+<p>除此之外，「預設單元的測試情境」也很適合透過工廠功能集中管理。除了貫徹 <a href="https://en.wikipedia.org/wiki/Don%27t_repeat_yourself">DRY</a> 以外，降低設定情境的麻煩度也能減少測試之間的依賴性。</p>
+<p>想像一下：你沒有使用工廠功能來設定測試情境，但又不想在三組測試裡重複「產出特定結果」的程式碼。於是你決定在第一組測試裡產出、驗證這個結果，將它保存到全域變數裡，再使用這個值來執行後續的測試。</p>
+<p>不幸的事發生了——第一組測試沒過，然後第二、三組測試也跟著失敗了。但你無法馬上確認後兩組測試失敗的理由是「第一組測試沒過」還是「這兩組測試驗證的退出點真的有問題」。更別說這種寫法還有一個大前提，那就是你得確保這三組測試永遠要依序執行。</p>
+<p>比較好的做法是，透過工廠功能來產出「執行測試時必要的值」，讓第二、三組測試不需要關注第一組測試的內容——達成「每一組測試完全獨立，不受彼此影響」的目標。</p>
+<h3 id="不要驗證實作細節">不要驗證實作細節</h3>
+<p>如題，不要為實作細節（比如 class private property）撰寫測試。請專心檢查退出點（回傳的值、改變的狀態、是否有呼叫第三方套件）即可。</p>
+<blockquote>
+<p>If you test only the private method and it works, that <strong>doesn’t mean that the rest of the system is using this private method correctly</strong> or handles the results it provides correctly.</p>
+</blockquote>
+<p>當你確認一個單元的功能正確時，就代表該單元的實作細節必定也是正確的。反之，即使你確認某段實作細節的行為符合預期，也無法保證一個單元「有正確地使用該實作細節」——要確保一個單元的行為符合預期，那就專注於驗證單元的退出點就好。</p>
+<h2 id="參考文件">參考文件</h2>
+<ul>
+<li><a href="https://www.manning.com/books/the-art-of-unit-testing-third-edition">Manning: The Art of Unit Testing, Third Edition</a></li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

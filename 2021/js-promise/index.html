@@ -1,0 +1,296 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v3.6.4"><!-- Primary Meta Tags --><title>「從Callback到Promise」相關筆記</title><meta name="title" content="「從Callback到Promise」相關筆記"><meta name="description" content="這是一個文組轉職前端工程師的技術部落格"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2021/js-promise/"><meta property="og:title" content="「從Callback到Promise」相關筆記"><meta property="og:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="og:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2021/js-promise/"><meta property="twitter:title" content="「從Callback到Promise」相關筆記"><meta property="twitter:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="twitter:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:Noto Sans TC,sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul{margin-bottom:16px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:8px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+</style><script type="module" src="/_astro/hoisted.77775e67.js"></script></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>「從Callback到Promise」相關筆記</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2021-07-19 13:02</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/JavaScript" data-astro-cid-2iymvi75> JavaScript </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#總結" data-astro-cid-qtokga5y>總結</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#筆記" data-astro-cid-qtokga5y>筆記</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#promise" data-astro-cid-qtokga5y>Promise</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#callback-使用情境" data-astro-cid-qtokga5y>callback 使用情境</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#將-callback-轉換為-promise-形式" data-astro-cid-qtokga5y>將 callback 轉換為 promise 形式</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#ac-作業應用" data-astro-cid-qtokga5y>AC 作業應用</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#補充promiseall" data-astro-cid-qtokga5y>補充：Promise.all()</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#參考文件" data-astro-cid-qtokga5y>參考文件</a> </li> </ul> </div> <h2 id="總結">總結</h2>
+<p>本篇筆記內容：</p>
+<ul>
+<li>JavaScript 的非同步處理如何從呼叫 Callback function 轉換為 Promise 的形式</li>
+<li>AC 學期 3 的「Promise 包裝作業」思考流程</li>
+</ul>
+<h2 id="筆記">筆記</h2>
+<h3 id="promise">Promise</h3>
+<p>定義：</p>
+<ul>
+<li><a href="https://promisesaplus.com/">Promises/A+</a>:
+<ul>
+<li>A promise represents <strong>the eventual result of an asynchronous operation</strong>.</li>
+<li>The primary way of interacting with a promise is through its <code>then</code> method, which registers callbacks to <strong>receive either a promise’s eventual value</strong> or <strong>the reason why the promise cannot be fulfilled</strong>.</li>
+</ul>
+</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">MDN</a>:
+<ul>
+<li>The Promise object represents <strong>the eventual completion (or failure) of an asynchronous operation</strong> and its resulting value.</li>
+<li>This lets asynchronous methods return values like synchronous methods: instead of immediately returning the final value, the asynchronous method returns a promise to supply the value at some point in the future.</li>
+<li><code>Promise.prototype.then()</code>, <code>Promise.prototype.catch()</code>: As the <code>then</code> and <code>Promise.prototype.catch()</code> methods return promises, they can be <strong>chained</strong> — an operation called <strong>composition</strong>.</li>
+<li><code>Promise.prototype.finally()</code>: This provides a way for code to be run <strong>whether the promise was fulfilled successfully or rejected</strong> once the <code>Promise</code> has been dealt with.</li>
+</ul>
+</li>
+</ul>
+<p>小結論：</p>
+<ul>
+<li>promise 代表一個非同步功能的最終結果</li>
+<li>async function 最終的結果會是<code>fulfilled</code>或<code>rejected</code>二選一</li>
+<li>用<code>then()</code>來接<code>Promise.resolve()</code>的值、用<code>catch()</code>來接<code>Promise.reject()</code>，而<code>finally()</code>內的 function 則是不論結果為 resolve 或 reject 都會執行</li>
+</ul>
+<h3 id="callback-使用情境">callback 使用情境</h3>
+<p>範例：以下程式碼全部借鑑 YouTube 影片<a href="https://youtu.be/PoRJizFvM7s">Async JS Crash Course - Callbacks, Promises, Async Await</a></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> posts</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> [</span></span>
+<span class="line"><span style="color:#E1E4E8">  { title: </span><span style="color:#9ECBFF">'Post 1'</span><span style="color:#E1E4E8">, content: </span><span style="color:#9ECBFF">'Content post 1'</span><span style="color:#E1E4E8"> },</span></span>
+<span class="line"><span style="color:#E1E4E8">  { title: </span><span style="color:#9ECBFF">'Post 2'</span><span style="color:#E1E4E8">, content: </span><span style="color:#9ECBFF">'Content post 2'</span><span style="color:#E1E4E8"> }</span></span>
+<span class="line"><span style="color:#E1E4E8">]</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> postToList</span><span style="color:#E1E4E8"> () {</span></span>
+<span class="line"><span style="color:#B392F0">  setTimeout</span><span style="color:#E1E4E8">(() </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">    let</span><span style="color:#E1E4E8"> content </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> ''</span></span>
+<span class="line"><span style="color:#E1E4E8">    posts.</span><span style="color:#B392F0">forEach</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">post</span><span style="color:#F97583"> =></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">      content </span><span style="color:#F97583">+=</span><span style="color:#9ECBFF"> `&#x3C;li>${</span><span style="color:#E1E4E8">post</span><span style="color:#9ECBFF">.</span><span style="color:#E1E4E8">title</span><span style="color:#9ECBFF">}&#x3C;/li>`</span></span>
+<span class="line"><span style="color:#E1E4E8">    })</span></span>
+<span class="line"><span style="color:#E1E4E8">    document.body.innerHTML </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> content</span></span>
+<span class="line"><span style="color:#E1E4E8">  }, </span><span style="color:#79B8FF">1000</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">postToList</span><span style="color:#E1E4E8">()</span></span></code></pre>
+<ul>
+<li>模擬情境：
+<ul>
+<li>瀏覽器向 server 索取 posts 資料，而 server 過了一秒後回覆</li>
+<li>瀏覽器收到 posts 後，將所有的 post.title 渲染為清單並放到畫面上</li>
+</ul>
+</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> posts</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> [</span></span>
+<span class="line"><span style="color:#E1E4E8">  { title: </span><span style="color:#9ECBFF">'Post 1'</span><span style="color:#E1E4E8">, content: </span><span style="color:#9ECBFF">'Content post 1'</span><span style="color:#E1E4E8"> },</span></span>
+<span class="line"><span style="color:#E1E4E8">  { title: </span><span style="color:#9ECBFF">'Post 2'</span><span style="color:#E1E4E8">, content: </span><span style="color:#9ECBFF">'Content post 2'</span><span style="color:#E1E4E8"> }</span></span>
+<span class="line"><span style="color:#E1E4E8">]</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> postToList</span><span style="color:#E1E4E8"> () {</span></span>
+<span class="line"><span style="color:#B392F0">  setTimeout</span><span style="color:#E1E4E8">(() </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">    let</span><span style="color:#E1E4E8"> content </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> ''</span></span>
+<span class="line"><span style="color:#E1E4E8">    posts.</span><span style="color:#B392F0">forEach</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">post</span><span style="color:#F97583"> =></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">      content </span><span style="color:#F97583">+=</span><span style="color:#9ECBFF"> `&#x3C;li>${</span><span style="color:#E1E4E8">post</span><span style="color:#9ECBFF">.</span><span style="color:#E1E4E8">title</span><span style="color:#9ECBFF">}&#x3C;/li>`</span></span>
+<span class="line"><span style="color:#E1E4E8">    })</span></span>
+<span class="line"><span style="color:#E1E4E8">    document.body.innerHTML </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> content</span></span>
+<span class="line"><span style="color:#E1E4E8">  }, </span><span style="color:#79B8FF">1000</span><span style="color:#E1E4E8">) </span><span style="color:#6A737D">// 延後1秒執行</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> addPost</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">post</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#B392F0">  setTimeout</span><span style="color:#E1E4E8">(() </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">    posts.</span><span style="color:#B392F0">push</span><span style="color:#E1E4E8">(post)</span></span>
+<span class="line"><span style="color:#E1E4E8">  }, </span><span style="color:#79B8FF">2000</span><span style="color:#E1E4E8">) </span><span style="color:#6A737D">// 延後2秒執行</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">addPost</span><span style="color:#E1E4E8">({ title: </span><span style="color:#9ECBFF">'Post 3'</span><span style="color:#E1E4E8">, content: </span><span style="color:#9ECBFF">'Content post 3'</span><span style="color:#E1E4E8"> })</span></span>
+<span class="line"><span style="color:#B392F0">postToList</span><span style="color:#E1E4E8">()</span></span></code></pre>
+<ul>
+<li>模擬情境：
+<ul>
+<li>將第三篇 post 新增到 posts 陣列中</li>
+<li>瀏覽器向 server 索取 posts 資料，而 server 過了一秒後回覆</li>
+<li>瀏覽器收到 posts 後，將所有的 post.title 渲染為清單並放到畫面上</li>
+<li>執行結果：畫面上僅會有 post 1 與 post2，因為<code>addPost()</code>實際執行的時間點（被<code>setTimeout()</code>延後至少 2 秒）比<code>postToList()</code>（被<code>setTimeout()</code>延後至少 1 秒）晚</li>
+</ul>
+</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> posts</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> [</span></span>
+<span class="line"><span style="color:#E1E4E8">  { title: </span><span style="color:#9ECBFF">'Post 1'</span><span style="color:#E1E4E8">, content: </span><span style="color:#9ECBFF">'Content post 1'</span><span style="color:#E1E4E8"> },</span></span>
+<span class="line"><span style="color:#E1E4E8">  { title: </span><span style="color:#9ECBFF">'Post 2'</span><span style="color:#E1E4E8">, content: </span><span style="color:#9ECBFF">'Content post 2'</span><span style="color:#E1E4E8"> }</span></span>
+<span class="line"><span style="color:#E1E4E8">]</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> postToList</span><span style="color:#E1E4E8"> () {</span></span>
+<span class="line"><span style="color:#B392F0">  setTimeout</span><span style="color:#E1E4E8">(() </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">    let</span><span style="color:#E1E4E8"> content </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> ''</span></span>
+<span class="line"><span style="color:#E1E4E8">    posts.</span><span style="color:#B392F0">forEach</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">post</span><span style="color:#F97583"> =></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">      content </span><span style="color:#F97583">+=</span><span style="color:#9ECBFF"> `&#x3C;li>${</span><span style="color:#E1E4E8">post</span><span style="color:#9ECBFF">.</span><span style="color:#E1E4E8">title</span><span style="color:#9ECBFF">}&#x3C;/li>`</span></span>
+<span class="line"><span style="color:#E1E4E8">    })</span></span>
+<span class="line"><span style="color:#E1E4E8">    document.body.innerHTML </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> content</span></span>
+<span class="line"><span style="color:#E1E4E8">  }, </span><span style="color:#79B8FF">1000</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> addPost</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">post</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">callback</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#B392F0">  setTimeout</span><span style="color:#E1E4E8">(() </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">    posts.</span><span style="color:#B392F0">push</span><span style="color:#E1E4E8">(post)</span></span>
+<span class="line"><span style="color:#B392F0">    callback</span><span style="color:#E1E4E8">()</span></span>
+<span class="line"><span style="color:#E1E4E8">  }, </span><span style="color:#79B8FF">2000</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">addPost</span><span style="color:#E1E4E8">({ title: </span><span style="color:#9ECBFF">'Post 3'</span><span style="color:#E1E4E8">, content: </span><span style="color:#9ECBFF">'Content post 3'</span><span style="color:#E1E4E8"> }, postToList)</span></span></code></pre>
+<ul>
+<li>callback function 登場，將<code>postToList</code>作為 callback 傳入<code>addPost</code>後，程式碼的行為變成「待<code>addPost</code>結束後，再執行<code>postToList</code>」</li>
+<li>執行結果：畫面上會印出 post 1、post2 與 post3</li>
+</ul>
+<h3 id="將-callback-轉換為-promise-形式">將 callback 轉換為 promise 形式</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> posts</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> [</span></span>
+<span class="line"><span style="color:#E1E4E8">  { title: </span><span style="color:#9ECBFF">'Post 1'</span><span style="color:#E1E4E8">, content: </span><span style="color:#9ECBFF">'Content post 1'</span><span style="color:#E1E4E8"> },</span></span>
+<span class="line"><span style="color:#E1E4E8">  { title: </span><span style="color:#9ECBFF">'Post 2'</span><span style="color:#E1E4E8">, content: </span><span style="color:#9ECBFF">'Content post 2'</span><span style="color:#E1E4E8"> }</span></span>
+<span class="line"><span style="color:#E1E4E8">]</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> postToList</span><span style="color:#E1E4E8"> () {</span></span>
+<span class="line"><span style="color:#B392F0">  setTimeout</span><span style="color:#E1E4E8">(() </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">    let</span><span style="color:#E1E4E8"> content </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> ''</span></span>
+<span class="line"><span style="color:#E1E4E8">    posts.</span><span style="color:#B392F0">forEach</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">post</span><span style="color:#F97583"> =></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">      content </span><span style="color:#F97583">+=</span><span style="color:#9ECBFF"> `&#x3C;li>${</span><span style="color:#E1E4E8">post</span><span style="color:#9ECBFF">.</span><span style="color:#E1E4E8">title</span><span style="color:#9ECBFF">}&#x3C;/li>`</span></span>
+<span class="line"><span style="color:#E1E4E8">    })</span></span>
+<span class="line"><span style="color:#E1E4E8">    document.body.innerHTML </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> content</span></span>
+<span class="line"><span style="color:#E1E4E8">  }, </span><span style="color:#79B8FF">1000</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> addPost</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">post</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#F97583"> new</span><span style="color:#79B8FF"> Promise</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">resolve</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">reject</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#B392F0">      setTimeout</span><span style="color:#E1E4E8">(() </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">        const</span><span style="color:#79B8FF"> error</span><span style="color:#F97583"> =</span><span style="color:#79B8FF"> false</span></span>
+<span class="line"><span style="color:#F97583">        if</span><span style="color:#E1E4E8"> (</span><span style="color:#F97583">!</span><span style="color:#E1E4E8">error) {</span></span>
+<span class="line"><span style="color:#E1E4E8">          posts.</span><span style="color:#B392F0">push</span><span style="color:#E1E4E8">(post)</span></span>
+<span class="line"><span style="color:#B392F0">          resolve</span><span style="color:#E1E4E8">()</span></span>
+<span class="line"><span style="color:#E1E4E8">        } </span><span style="color:#F97583">else</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#B392F0">          reject</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'something goes wrong'</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">        }</span></span>
+<span class="line"><span style="color:#E1E4E8">      })</span></span>
+<span class="line"><span style="color:#E1E4E8">    })</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">addPost</span><span style="color:#E1E4E8">({ title: </span><span style="color:#9ECBFF">'Post 3'</span><span style="color:#E1E4E8">, content: </span><span style="color:#9ECBFF">'Content post 3'</span><span style="color:#E1E4E8"> })</span></span>
+<span class="line"><span style="color:#E1E4E8">  .</span><span style="color:#B392F0">then</span><span style="color:#E1E4E8">(() </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#B392F0">    postToList</span><span style="color:#E1E4E8">()</span></span>
+<span class="line"><span style="color:#E1E4E8">  })</span></span>
+<span class="line"><span style="color:#E1E4E8">  .</span><span style="color:#B392F0">catch</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">error</span><span style="color:#F97583"> =></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">    console.</span><span style="color:#B392F0">error</span><span style="color:#E1E4E8">(error)</span></span>
+<span class="line"><span style="color:#E1E4E8">  })</span></span></code></pre>
+<ol>
+<li>移除<code>addPost</code>的 callback 參數</li>
+<li>讓<code>addPost</code>回傳 Promise 物件，其中<code>resolve()</code>沒有包含任何值，而<code>reject()</code>提供錯誤訊息「<code>something goes wrong</code>」</li>
+<li>執行<code>addPost</code>後，透過<code>then</code>與<code>catch</code>來承接<code>addPost</code>順利完成（<code>resolve</code>）或失敗（<code>reject</code>）的情境</li>
+<li><code>addPost</code>成功時，進行<code>postToList()</code></li>
+<li><code>addPost</code>出現錯誤時，則<code>console.error(error)</code></li>
+</ol>
+<h3 id="ac-作業應用">AC 作業應用</h3>
+<p>原始 callback 版本：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> http</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> require</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'http'</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> https</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> require</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'https'</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> imgPath</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> ''</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">http.</span><span style="color:#B392F0">createServer</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">req</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">res</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">  https.</span><span style="color:#B392F0">get</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'https://dog.ceo/api/breeds/image/random'</span><span style="color:#E1E4E8">, (</span><span style="color:#FFAB70">body</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">    let</span><span style="color:#E1E4E8"> data </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> ''</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">    body.</span><span style="color:#B392F0">on</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'data'</span><span style="color:#E1E4E8">, (</span><span style="color:#FFAB70">chunk</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">      data </span><span style="color:#F97583">+=</span><span style="color:#E1E4E8"> chunk</span></span>
+<span class="line"><span style="color:#E1E4E8">    })</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">    body.</span><span style="color:#B392F0">on</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'end'</span><span style="color:#E1E4E8">, () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">      console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">JSON</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">parse</span><span style="color:#E1E4E8">(data))</span></span>
+<span class="line"><span style="color:#E1E4E8">      imgPath </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> JSON</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">parse</span><span style="color:#E1E4E8">(data).message</span></span>
+<span class="line"><span style="color:#E1E4E8">      res.</span><span style="color:#B392F0">end</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">`&#x3C;h1>DOG PAGE&#x3C;/h1>&#x3C;img src='${</span><span style="color:#E1E4E8">imgPath</span><span style="color:#9ECBFF">}' >`</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">    })</span></span>
+<span class="line"><span style="color:#E1E4E8">  }).</span><span style="color:#B392F0">on</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'error'</span><span style="color:#E1E4E8">, (</span><span style="color:#FFAB70">error</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">    console.</span><span style="color:#B392F0">error</span><span style="color:#E1E4E8">(error)</span></span>
+<span class="line"><span style="color:#E1E4E8">  })</span></span>
+<span class="line"><span style="color:#E1E4E8">}).</span><span style="color:#B392F0">listen</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">3000</span><span style="color:#E1E4E8">)</span></span></code></pre>
+<p>Promise 版起手式：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> http</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> require</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'http'</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> https</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> require</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'https'</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#B392F0"> requestData</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">  // TODO</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">http.</span><span style="color:#B392F0">createServer</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">req</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">res</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">  // TODO</span></span>
+<span class="line"><span style="color:#E1E4E8">  res.</span><span style="color:#B392F0">end</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">`&#x3C;h1>DOG PAGE&#x3C;/h1>&#x3C;img src='${</span><span style="color:#E1E4E8">imgPath</span><span style="color:#9ECBFF">}' >`</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">}).</span><span style="color:#B392F0">listen</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">3000</span><span style="color:#E1E4E8">)</span></span></code></pre>
+<p>思考過程：</p>
+<ol>
+<li>用<code>resolve()</code>處理<code>JSON.parse(data)</code>，用<code>reject()</code>處理<code>.on('error', (error) => { console.error(error) })</code>這一段</li>
+<li>把整個<code>https.get(...)</code>包成 Promise 物件</li>
+<li><code>requestData</code>順利完成後，用<code>then()</code>來接<code>JSON.parse(data)</code>；<code>result</code>內容為<code>JSON.parse(data)</code>，取<code>result.message</code>即為圖片網址</li>
+<li>用<code>catch()</code>來處理錯誤狀態，將<code>workingURL</code>替換為變數<code>errorURL</code>後，即可在終端看到<code>error</code>訊息</li>
+</ol>
+<p>改裝完成：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> http</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> require</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'http'</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> https</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> require</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'https'</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> workingURL</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> 'https://dog.ceo/api/breeds/image/random'</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> errorURL</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> 'https://this.will.not/work'</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#B392F0"> requestData</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#F97583"> new</span><span style="color:#79B8FF"> Promise</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">resolve</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">reject</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">    https.</span><span style="color:#B392F0">get</span><span style="color:#E1E4E8">(workingURL, (</span><span style="color:#FFAB70">body</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">      let</span><span style="color:#E1E4E8"> data </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> ''</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">      body.</span><span style="color:#B392F0">on</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'data'</span><span style="color:#E1E4E8">, (</span><span style="color:#FFAB70">chunk</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">        data </span><span style="color:#F97583">+=</span><span style="color:#E1E4E8"> chunk</span></span>
+<span class="line"><span style="color:#E1E4E8">      })</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">      body.</span><span style="color:#B392F0">on</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'end'</span><span style="color:#E1E4E8">, () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">        console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">JSON</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">parse</span><span style="color:#E1E4E8">(data))</span></span>
+<span class="line"><span style="color:#B392F0">        resolve</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">JSON</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">parse</span><span style="color:#E1E4E8">(data))</span></span>
+<span class="line"><span style="color:#E1E4E8">      })</span></span>
+<span class="line"><span style="color:#E1E4E8">    }).</span><span style="color:#B392F0">on</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'error'</span><span style="color:#E1E4E8">, (</span><span style="color:#FFAB70">error</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#B392F0">      reject</span><span style="color:#E1E4E8">(error)</span></span>
+<span class="line"><span style="color:#E1E4E8">    })</span></span>
+<span class="line"><span style="color:#E1E4E8">  })</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">http.</span><span style="color:#B392F0">createServer</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">req</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">res</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#B392F0">  requestData</span><span style="color:#E1E4E8">()</span></span>
+<span class="line"><span style="color:#E1E4E8">    .</span><span style="color:#B392F0">then</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">result</span><span style="color:#F97583"> =></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">      const</span><span style="color:#79B8FF"> imgPath</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> result.message</span></span>
+<span class="line"><span style="color:#E1E4E8">      res.</span><span style="color:#B392F0">end</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">`&#x3C;h1>DOG PAGE&#x3C;/h1>&#x3C;img src='${</span><span style="color:#E1E4E8">imgPath</span><span style="color:#9ECBFF">}' >`</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">    })</span></span>
+<span class="line"><span style="color:#E1E4E8">    .</span><span style="color:#B392F0">catch</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">error</span><span style="color:#F97583"> =></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">      console.</span><span style="color:#B392F0">error</span><span style="color:#E1E4E8">(error)</span></span>
+<span class="line"><span style="color:#E1E4E8">      res.</span><span style="color:#B392F0">end</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">`&#x3C;p>Sorry but something goes wrong.&#x3C;/p>`</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">    })</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">}).</span><span style="color:#B392F0">listen</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">3000</span><span style="color:#E1E4E8">)</span></span></code></pre>
+<h3 id="補充promiseall">補充：<code>Promise.all()</code></h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#6A737D">// MDN範例</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> promise1</span><span style="color:#F97583"> =</span><span style="color:#79B8FF"> Promise</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">resolve</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'Answer to the Ultimate Question of Life, '</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> promise2</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> 'the Universe, and Everything'</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> promise3</span><span style="color:#F97583"> =</span><span style="color:#F97583"> new</span><span style="color:#79B8FF"> Promise</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">resolve</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">reject</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#B392F0">  setTimeout</span><span style="color:#E1E4E8">(resolve, </span><span style="color:#79B8FF">1000</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">'42'</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">Promise</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">all</span><span style="color:#E1E4E8">([promise1, promise2, promise3])</span></span>
+<span class="line"><span style="color:#E1E4E8">  .</span><span style="color:#B392F0">then</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">values</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">    console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(values)</span></span>
+<span class="line"><span style="color:#E1E4E8">})</span></span>
+<span class="line"><span style="color:#6A737D">// 輸出結果：</span></span>
+<span class="line"><span style="color:#6A737D">// ["Answer to the Ultimate Question of Life, ", "the Universe, and Everything", "42"]</span></span></code></pre>
+<p>參考<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all">MDN</a>：</p>
+<ul>
+<li>It takes <strong>an iterable of promises as an input</strong>, and returns a single Promise that resolves to <strong>an array</strong> of the results of the input promises.</li>
+<li>It <strong>rejects immediately</strong> upon any of the input promises <strong>rejecting</strong> or <strong>non-promises throwing an error</strong>, and will reject with this first rejection message / error.</li>
+</ul>
+<h2 id="參考文件">參考文件</h2>
+<ul>
+<li><a href="https://promisesaplus.com/">Promises/A+</a></li>
+<li>YouTube
+<ul>
+<li><a href="https://youtu.be/PoRJizFvM7s">Async JS Crash Course - Callbacks, Promises, Async Await</a></li>
+<li><a href="https://youtu.be/VmQ6dHvnKIM">Callbacks, Promises, Async Await | JavaScript Fetch API Explained</a></li>
+</ul>
+</li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

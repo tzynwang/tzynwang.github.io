@@ -1,0 +1,69 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v3.6.4"><!-- Primary Meta Tags --><title>影片筆記：Managing React State -- 10 Years of Lessons Learned</title><meta name="title" content="影片筆記：Managing React State -- 10 Years of Lessons Learned"><meta name="description" content="這部影片非常簡潔地介紹了一些 React 本地狀態的反模式，以及可以透過哪些作法來化解這些不良設計"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2024/react-how-to-state/"><meta property="og:title" content="影片筆記：Managing React State -- 10 Years of Lessons Learned"><meta property="og:description" content="這部影片非常簡潔地介紹了一些 React 本地狀態的反模式，以及可以透過哪些作法來化解這些不良設計"><meta property="og:image" content="https://tzynwang.github.io/2024/react-how-to-state/aveedibya-dey-nfzdRKD0Zkg-unsplash.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2024/react-how-to-state/"><meta property="twitter:title" content="影片筆記：Managing React State -- 10 Years of Lessons Learned"><meta property="twitter:description" content="這部影片非常簡潔地介紹了一些 React 本地狀態的反模式，以及可以透過哪些作法來化解這些不良設計"><meta property="twitter:image" content="https://tzynwang.github.io/2024/react-how-to-state/aveedibya-dey-nfzdRKD0Zkg-unsplash.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:Noto Sans TC,sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul{margin-bottom:16px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:8px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+</style><script type="module" src="/_astro/hoisted.77775e67.js"></script></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>影片筆記：Managing React State -- 10 Years of Lessons Learned</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2024-02-27 20:32</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/React" data-astro-cid-2iymvi75> React </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#筆記" data-astro-cid-qtokga5y>筆記</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#提升內聚性" data-astro-cid-qtokga5y>提升內聚性</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#偏好推導" data-astro-cid-qtokga5y>偏好推導</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#避免在-useeffect-中呼叫-api" data-astro-cid-qtokga5y>避免在 useEffect 中呼叫 api</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#參考資料" data-astro-cid-qtokga5y>參考資料</a> </li> </ul> </div> <h2 id="筆記">筆記</h2>
+<p>單圖精華：</p>
+<p><img src="/2024/react-how-to-state/8-ways-to-handle-state-in-react-app.png" alt="8 ways to handle state in react app"></p>
+<h3 id="提升內聚性">提升內聚性</h3>
+<p>如果狀態彼此之間帶有強烈關聯，使用一個 useState 變數集中管理即可。比如下列的「信用卡號」「卡片有效日期」「持卡人姓名」其實可以集中到「付款資訊」一個變數中：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#6A737D">// don't</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#E1E4E8"> [</span><span style="color:#79B8FF">cardNo</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">setCardNo</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">=</span><span style="color:#B392F0"> useState</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">''</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#E1E4E8"> [</span><span style="color:#79B8FF">cardExpDate</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">setCardExpDate</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">=</span><span style="color:#B392F0"> useState</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">''</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#E1E4E8"> [</span><span style="color:#79B8FF">cardHolderName</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">setCardHolderName</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">=</span><span style="color:#B392F0"> useState</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">''</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// do</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#E1E4E8"> [</span><span style="color:#79B8FF">cardInfo</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">setCardInfo</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">=</span><span style="color:#B392F0"> useState</span><span style="color:#E1E4E8">({</span></span>
+<span class="line"><span style="color:#E1E4E8">  no: </span><span style="color:#9ECBFF">''</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">  expDate: </span><span style="color:#9ECBFF">''</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">  holderName: </span><span style="color:#9ECBFF">''</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+<p>如果不確定狀態們是否「有關」，可以根據「這些資料是否會包成一個 request body 送到後端」來判斷。</p>
+<hr>
+<p>當你發現自己經常「同時執行多組 state set」時，可考慮是否該將這些狀態包在一起（參考上述），或是改用 useReducer 來管理：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#6A737D">// don't</span></span>
+<span class="line"><span style="color:#B392F0">setUser</span><span style="color:#E1E4E8">(user);</span></span>
+<span class="line"><span style="color:#B392F0">setIsLoading</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">false</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// do: update multiple states in one dispatch</span></span>
+<span class="line"><span style="color:#B392F0">dispatch</span><span style="color:#E1E4E8">({ type: </span><span style="color:#9ECBFF">'save-user'</span><span style="color:#E1E4E8">, payload: user });</span></span></code></pre>
+<h3 id="偏好推導">偏好推導</h3>
+<p>在透過 <code>useEffect</code> 監聽前兩組狀態變數，以計算第三個狀態變數時，請確認「第三個變數」是否真的需要被 useState 管理：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#6A737D">// don't</span></span>
+<span class="line"><span style="color:#B392F0">useEffect</span><span style="color:#E1E4E8">(() </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#B392F0">  setFullName</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">`${</span><span style="color:#E1E4E8">firstName</span><span style="color:#9ECBFF">}, ${</span><span style="color:#E1E4E8">LastName</span><span style="color:#9ECBFF">}`</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">}, [firstName, lastName]);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// do</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> fullName</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> `${</span><span style="color:#E1E4E8">firstName</span><span style="color:#9ECBFF">}, ${</span><span style="color:#E1E4E8">LastName</span><span style="color:#9ECBFF">}`</span><span style="color:#E1E4E8">;</span></span></code></pre>
+<p>多使用推導（derive）來計算值，有時候你不需要這麼多組 useEffect / useState 😇</p>
+<h3 id="避免在-useeffect-中呼叫-api">避免在 useEffect 中呼叫 api</h3>
+<p>影片看法：避免在 useEffect 中呼叫 api 來取得資料，請考慮使用 custom hook 或現成的第三方套件（<a href="https://tanstack.com/query/latest/">React Query</a>, <a href="https://swr.vercel.app/">SWR</a> 等）來處理 api 互動。</p>
+<p><a href="https://react.dev/reference/react/useEffect#fetching-data-with-effects">react 官方文件</a>的看法：直接在 useEffect 裡面呼叫 api 不是不行，但要記得處理 race condition 以及元件卸載（unmount）時清空本地狀態。</p>
+<h2 id="參考資料">參考資料</h2>
+<ul>
+<li><a href="https://youtu.be/-IqIqJxC-wo?si=2T-BrEYK5VCiBpN6">(YouTube) Managing React State: 10 Years of Lessons Learned - Cory House, React Day Berlin 2023</a></li>
+<li><a href="https://x.com/housecor/status/1437765667906854915?s=20">(twitter) 10 lessons I’ve learned about handling React state over the last 7 years…</a></li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 
