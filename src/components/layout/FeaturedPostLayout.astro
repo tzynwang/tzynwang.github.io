@@ -73,14 +73,23 @@ const bannerUrl = banner ? `url(${banner})` : 'none';
     gap: 4px;
   }
 
-  /* 1 為了讓標題能呈現 hover 後的效果，透過 relative 建立新圖層 */
-  .title {
-    position: relative; /* 1 */
-  }
-
   p {
     margin: 0;
     padding: 0;
+  }
+
+  .text-wrapper .title {
+    margin: 0;
+    color: #127369;
+    font-weight: 700;
+    text-decoration: underline;
+    text-decoration-color: transparent;
+    transition: text-decoration-color 0.2s ease-in-out;
+    cursor: pointer;
+  }
+
+  .text-wrapper:hover .title {
+    text-decoration-color: #127369;
   }
 
   @container (min-width: 520px) {
