@@ -11,16 +11,15 @@ html {
   background-color: rgb(191, 191, 191, 0.4);
 }
 
-a, p.title {
+a {
   color: #127369;
   font-weight: 700;
   text-decoration: underline;
   text-decoration-color: transparent;
   transition: text-decoration-color 0.2s ease-in-out;
-  cursor: pointer;
 }
 
-a:hover, p.title:hover {
+a:hover {
   text-decoration-color: #127369;
 }
 
