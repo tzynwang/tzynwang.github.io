@@ -65,7 +65,7 @@ export const ALL_SORTED_POSTS = sortPostByDate(await getAllPosts());
 function getPostRss(posts: PostContent[]) {
   return posts.map((p) => ({
     title: p.data.title,
-    link: p.slug || '',
+    link: `${p.collection}/${p.slug}` || '',
     description: p.data.summary || '',
     pubDate: new Date(dateFormatter(p.data.date)),
   }));
