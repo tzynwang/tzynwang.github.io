@@ -25,9 +25,10 @@ draft:
 
 ## 功能二：保存狀態
 
-如果某狀態需要在畫面重整之間持續，或是**在多個裝置間傳遞**，那就可以考慮**將狀態帶入路由**。比如：
+如果某狀態需要在畫面重整之間持續，或是**在多個裝置、平台間傳遞**，那就可以考慮**將狀態帶入路由**。比如：
 
-- 讓使用者分享他的設定——比如「購物網站裡屬於品牌Ｘ的商品，並以網格模式顯示（`/brand/X?show=GRID`）」
+- 讓使用者分享他的設定，比如「購物網站裡屬於品牌Ｘ的商品，並以網格模式顯示（`/brand/X?show=GRID`）」
+- 註記使用者的來源，比如 [[GA4] Campaigns and traffic sources](https://support.google.com/analytics/answer/11242841?hl=en#zippy=%2Cin-this-article)
 - 在不使用帳號系統的情況下，讓使用者分享他的螢光筆標記（下述）
 
 備註：只是要滿足「狀態於畫面重整之間持續」的話，也可以用 [`window.localStorage`](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage) / [`window.sessionStorage`](https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage) 處理。
