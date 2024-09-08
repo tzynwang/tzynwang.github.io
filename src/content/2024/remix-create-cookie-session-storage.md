@@ -3,7 +3,7 @@ title: 快速筆記：Remix 的 createCookieSessionStorage 與 window.sessionSto
 date: 2024-09-04 20:53:47
 tag:
 	- [Remix]
-banner: 2024/remix-create-cookie-session-storage/annie-spratt-IENa-E_0nro-unsplash.jpg
+banner: /2024/remix-create-cookie-session-storage/annie-spratt-IENa-E_0nro-unsplash.jpg
 summary: 這個功能主要功能是「把 session 資料完整地保存在 cookie 中」，跟關閉瀏覽器分頁後就消失的 window.sessionStorage 沒有任何關係。
 draft: 
 ---
