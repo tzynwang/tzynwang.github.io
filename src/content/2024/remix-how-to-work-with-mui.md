@@ -6,15 +6,15 @@ tag:
   - [Remix]
 banner: /2024/remix-how-to-work-with-mui/jakub-chlouba-LVRgFVLgbK4-unsplash.jpg
 summary: 在 remix 使用 @mui/material 主要得克服 SSR 與 CSR 結果不同步的問題。本篇筆記會分享我在參考各路範例後拼出來的解法 🫠
-draft: 
+draft:
 ---
 
-在 remix 使用 @mui/material 主要得克服 SSR 與 CSR 結果不同步的問題，也要確保專案打包後能正常運作。這篇筆記是在參考 @mui 和 remix 的幾個官方範例後兜出來的解法。畢竟 @mui 的 Menu 跟 Dialog 用起來最順手最香⋯⋯🫠
+在 remix 使用 @mui/material 主要得克服 SSR 與 CSR 結果不同步的問題，也要確保專案打包後能正常運作。這篇筆記是在參考 @mui 和 remix 的幾個官方範例後兜出來的解法。畢竟 @mui 的 Menu 跟 Dialog 用起來最順手最香 ⋯⋯🫠
 
 ## 流程
 
 1. 建立 remix 專案：執行 `npx create-remix@latest`，如果沒有專案內沒有 `app/entry.client.tsx` 和 `app/entry.server.tsx` 就追加執行 `npx remix reveal`
-2. 安裝 @mui 相關內容：執行 `npm i @mui/material @emotion/react @emotion/styled @emotion/server`
+2. 安裝 @mui 相關內容：執行 `npm i @mui/material @emotion/react @emotion/styled`
 3. 新增 `app/mui/createEmotionCache.ts` 與 `app/mui/theme.ts`
 4. 更新 `app/entry.client.tsx` / `app/entry.server.tsx` / `vite.config.ts`
 
@@ -27,11 +27,7 @@ draft:
 ```ts
 import createCache from '@emotion/cache';
 
-function createEmotionCache() {
-  return createCache({ key: 'css' });
-}
-
-const cache = createEmotionCache();
+const cache = createCache({ key: 'css' });
 
 export default cache;
 ```
@@ -44,21 +40,12 @@ export default cache;
 
 ### `app/mui/theme.ts`
 
-在這裡根據需求設定 @mui 的預設樣式。
+在這裡根據需求設定 @mui 的預設樣式。如果預計用其他套件（比如 tailwind）管理樣式的話，這裡直接呼叫 `createTheme()` 取得 @mui 預設的 `theme` 物件即可。
 
 ```ts
 import { createTheme } from '@mui/material/styles';
 
-const theme = createTheme({
-  palette: {
-    primary: {
-      main: '#556cd6',
-    },
-    secondary: {
-      main: '#19857b',
-    },
-  },
-});
+const theme = createTheme();
 
 export default theme;
 ```
@@ -92,10 +79,7 @@ startTransition(() => {
 
 ### `app/entry.server.tsx`
 
-重點：
-
-1. 與 `app/entry.client.tsx` 雷同，要對 `RemixBrowser` 包覆 `CacheProvider` 與 `ThemeProvider`
-2. 透過 @emotion 的 `createEmotionServer` 對原本的 body 注入樣式
+重點：類似在 `app/entry.client.tsx` 的改動，要對 `RemixBrowser` 包覆 `CacheProvider` 與 `ThemeProvider`
 
 ```tsx
 import { CacheProvider } from '@emotion/react';
@@ -142,6 +126,7 @@ function handleBotRequest(
   return new Promise((resolve, reject) => {
     let shellRendered = false;
     const { pipe, abort } = renderToPipeableStream(
+      // wrap emotion/mui provider here
       <CacheProvider value={emotionCache}>
         <ThemeProvider theme={theme}>
           <RemixServer context={remixContext} url={request.url} />
@@ -152,12 +137,6 @@ function handleBotRequest(
           shellRendered = true;
           const body = new PassThrough();
           const stream = createReadableStreamFromReadable(body);
-          // add this line
-          const emotionServer = createEmotionServer(emotionCache);
-          // add this line
-          const bodyWithStyles = emotionServer.renderStylesToNodeStream();
-          // add this line
-          body.pipe(bodyWithStyles);
           responseHeaders.set('Content-Type', 'text/html');
           resolve(
             new Response(stream, {
@@ -191,6 +170,7 @@ function handleBrowserRequest(
   return new Promise((resolve, reject) => {
     let shellRendered = false;
     const { pipe, abort } = renderToPipeableStream(
+      // wrap emotion/mui provider here
       <CacheProvider value={emotionCache}>
         <ThemeProvider theme={theme}>
           <RemixServer context={remixContext} url={request.url} />
@@ -201,12 +181,6 @@ function handleBrowserRequest(
           shellRendered = true;
           const body = new PassThrough();
           const stream = createReadableStreamFromReadable(body);
-          // add this line
-          const emotionServer = createEmotionServer(emotionCache);
-          // add this line
-          const bodyWithStyles = emotionServer.renderStylesToNodeStream();
-          // add this line
-          body.pipe(bodyWithStyles);
           responseHeaders.set('Content-Type', 'text/html');
           resolve(
             new Response(stream, {
