@@ -1,0 +1,74 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v3.6.4"><!-- Primary Meta Tags --><title>捨棄 create-react-app 之餘還架了個 astro blog 昭告天下：設定 GA4</title><meta name="title" content="捨棄 create-react-app 之餘還架了個 astro blog 昭告天下：設定 GA4"><meta name="description" content="透過 Google Tag Manager 自訂客製化事件，讓你可以在 GA4 收集特定行為的數據"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2023/ithome-2023-29/"><meta property="og:title" content="捨棄 create-react-app 之餘還架了個 astro blog 昭告天下：設定 GA4"><meta property="og:description" content="透過 Google Tag Manager 自訂客製化事件，讓你可以在 GA4 收集特定行為的數據"><meta property="og:image" content="https://tzynwang.github.io/2023/ithome-2023-29/isaac-smith-6EnTPvPPL6I-unsplash.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2023/ithome-2023-29/"><meta property="twitter:title" content="捨棄 create-react-app 之餘還架了個 astro blog 昭告天下：設定 GA4"><meta property="twitter:description" content="透過 Google Tag Manager 自訂客製化事件，讓你可以在 GA4 收集特定行為的數據"><meta property="twitter:image" content="https://tzynwang.github.io/2023/ithome-2023-29/isaac-smith-6EnTPvPPL6I-unsplash.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:Noto Sans TC,sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul{margin-bottom:16px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:8px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+</style><script type="module" src="/_astro/hoisted.77775e67.js"></script></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>捨棄 create-react-app 之餘還架了個 astro blog 昭告天下：設定 GA4</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2023-10-14 10:54</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/2023鐵人賽" data-astro-cid-2iymvi75> 2023鐵人賽 </a> <a class="tag" href="/tag/GA4" data-astro-cid-2iymvi75> GA4 </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#建立-ga4-帳號" data-astro-cid-qtokga5y>建立 GA4 帳號</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#設定-google-tag-manager" data-astro-cid-qtokga5y>設定 Google Tag Manager</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#建立觸發條件triggers" data-astro-cid-qtokga5y>建立觸發條件（Triggers）</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#建立代碼tags" data-astro-cid-qtokga5y>建立代碼（Tags）</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#tag-assistant" data-astro-cid-qtokga5y>Tag Assistant</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#總結" data-astro-cid-qtokga5y>總結</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#參考" data-astro-cid-qtokga5y>參考</a> </li> </ul> </div> <p>有時候，你可能會想要知道讀者來到你的技術部落格之後到底都看了哪些內容、或是他其實只是來了又走。如果想知道這類比較具體的行為數據（相較於 Google Search Console 的網站拜訪統計），你可以考慮引入 Google Analytics 4 搭配 Google Tag Manager 來實作客製化行為追蹤。</p>
+<p>基本流程如下：</p>
+<ol>
+<li>建立 GA4 帳號，並建立部落格的 data stream</li>
+<li>在 Google Tag Manager 中建立 Triggers，亦即「當使用者執行行為Ｘ時，觸發（trigger）記錄行為」</li>
+<li>透過 Google Tag Assistant 確認「實行行為Ｘ時，綁定此 Triggers 的 Tag 是否有被觸發」</li>
+</ol>
+<h2 id="建立-ga4-帳號">建立 GA4 帳號</h2>
+<p>前往 <a href="https://analytics.google.com/">GA4</a>，點擊「開始測量」建立帳號，再根據網站實際內容填寫表格即可。於最後一步選擇建立「網站」的資料流，並提供部落格網址，讓 GA4 知道要去哪裡收集資料。</p>
+<p><img src="/2023/ithome-2023-29/add_data_stream_1.png" alt="add data stream: web"></p>
+<p><img src="/2023/ithome-2023-29/add_data_stream_2.png" alt="provide url for data stream"></p>
+<h2 id="設定-google-tag-manager">設定 Google Tag Manager</h2>
+<p>前往 <a href="https://tagmanager.google.com/">Tag Manager</a> 建立帳戶，與管理 Google Tags 用的容器（Container）。</p>
+<p><img src="/2023/ithome-2023-29/create_container.png" alt="create Google Tag account and container"></p>
+<p>建立成功後，將 GTM script 貼到部落格的 <code>&#x3C;head></code> 與 <code>&#x3C;body></code> 標籤中。</p>
+<p><img src="/2023/ithome-2023-29/gtm_snippet.png" alt="get GTM script"></p>
+<h3 id="建立觸發條件triggers">建立觸發條件（Triggers）</h3>
+<p>從側欄點擊「觸發條件（Triggers）」後，設定條件內容。</p>
+<p><img src="/2023/ithome-2023-29/add_triggers.png" alt="create triggers"></p>
+<p>以普通文組 2.0 為例，其中一組條件 <code>read_post</code> 是「當使用者點擊 class 包含 <code>.GA4-read-post</code> 的元素時」，視同觸發。</p>
+<p><img src="/2023/ithome-2023-29/set_triggers_condition.png" alt="set triggers condition"></p>
+<h3 id="建立代碼tags">建立代碼（Tags）</h3>
+<p>從側欄點擊「代碼（Tags）」來進行新增。</p>
+<p><img src="/2023/ithome-2023-29/add_tag.png" alt="add tags"></p>
+<p>以下的設定翻譯成白話文為：此代碼（Tags）會成為 GA4 事件，並且觸發此代碼的條件是名為 <code>read_post</code> 的觸發條件（Triggers）。亦即使用者在普通讀者 2.0 點擊任何包含 css <code>.GA4-read-post</code> 的元素時，一個名為 <code>read_post</code> 的 GA4 事件會被記錄下來，且此事件包含一個名為 <code>post_url</code> 的參數，值為 <code>{{Page URL}}</code>（當下的網址）。</p>
+<p><img src="/2023/ithome-2023-29/set_tag.png" alt="set tags"></p>
+<hr>
+<p>一組觸發條件與代碼的新增流程到此告一段落，接下來會使用 Tag Assistant 來確認代碼是否能被正常觸發。</p>
+<h2 id="tag-assistant">Tag Assistant</h2>
+<p>開啟 <a href="https://tagassistant.google.com/">Tag Assistant</a> 並提供要檢驗的網址，接著點擊 <code>></code> 按鈕開始檢查。</p>
+<p><img src="/2023/ithome-2023-29/add_tag_assistant.png" alt="add tag assistant"></p>
+<p><img src="/2023/ithome-2023-29/start_tag_assistant.png" alt="start tag assistant"></p>
+<p>設定正常的話，就能在 debug mode 中觀察到自訂事件被觸發：</p>
+<p><img src="/2023/ithome-2023-29/event_read_post.png" alt="trigger event read_post"></p>
+<hr>
+<p>除了直接從 Tag Assistant 進入外，也可透過 <code>Admin/Account Settings/Tag Coverage</code> 這個路徑開啟測試：</p>
+<p><img src="/2023/ithome-2023-29/admin_tag_coverage.png" alt="tag coverage"></p>
+<p><img src="/2023/ithome-2023-29/tag_assistant_in_tag_coverage.png" alt="open tag assistant from tag coverage"></p>
+<h2 id="總結">總結</h2>
+<p>在撰文當下的 astro 還沒有 GA4 的相關外掛，目前想要為 astro 專案設定 GA4 與客製追蹤事件只有較傳統的 GA4 + GTM 一途。而 GA4 與 GTM 的設定方式可能一直會有滾動式改善，如果本文的截圖已經不符現狀，可參考當下較新的教學錄影微調設定方式。</p>
+<p>感謝你的閱讀 (・∀・)</p>
+<h2 id="參考">參考</h2>
+<ul>
+<li><a href="https://support.google.com/tagmanager/answer/6103696">Set up and install Tag Manager</a></li>
+<li><a href="https://support.google.com/analytics/answer/9304153">[GA4] Set up Analytics for a website and/or app</a></li>
+<li><a href="https://support.google.com/tagmanager/answer/9442095">[GA4] Configure Google Analytics 4 in Google Tag Manager</a></li>
+<li><a href="https://webreaper.dev/posts/astro-google-tag-manager-ga4/">How to add GA4 and Google Tag Manager to your Astro Website</a></li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

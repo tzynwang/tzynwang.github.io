@@ -1,0 +1,60 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v3.6.4"><!-- Primary Meta Tags --><title>前端路由設計心得</title><meta name="title" content="前端路由設計心得"><meta name="description" content="關於前端路由設計，截至目前為止的心得是——這個部位就負責兩件事：「反應使用者的旅程階段」或「保存狀態」。"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2024/frontend-route-design-doodle/"><meta property="og:title" content="前端路由設計心得"><meta property="og:description" content="關於前端路由設計，截至目前為止的心得是——這個部位就負責兩件事：「反應使用者的旅程階段」或「保存狀態」。"><meta property="og:image" content="https://tzynwang.github.io/2024/frontend-route-design-doodle/matias-contreras-kQ4tZUEqyPw-unsplash.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2024/frontend-route-design-doodle/"><meta property="twitter:title" content="前端路由設計心得"><meta property="twitter:description" content="關於前端路由設計，截至目前為止的心得是——這個部位就負責兩件事：「反應使用者的旅程階段」或「保存狀態」。"><meta property="twitter:image" content="https://tzynwang.github.io/2024/frontend-route-design-doodle/matias-contreras-kQ4tZUEqyPw-unsplash.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:Noto Sans TC,sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul{margin-bottom:16px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:8px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+</style><script type="module" src="/_astro/hoisted.77775e67.js"></script></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>前端路由設計心得</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2024-09-02 18:59</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/General" data-astro-cid-2iymvi75> General </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#功能一反應使用者的旅程階段" data-astro-cid-qtokga5y>功能一：反應使用者的旅程階段</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#功能二保存狀態" data-astro-cid-qtokga5y>功能二：保存狀態</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#變化的部位" data-astro-cid-qtokga5y>變化的部位</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#參考資料" data-astro-cid-qtokga5y>參考資料</a> </li> </ul> </div> <p>目前為止的心得是——前端路由就負責兩件事：「反應使用者的旅程階段」或「保存狀態」。</p>
+<h2 id="功能一反應使用者的旅程階段">功能一：反應使用者的旅程階段</h2>
+<p>使用者的瀏覽紀錄要能反應其旅程（user’s browser history accurately reflects their journey through your application）。因此，當使用者<strong>在服務的不同階段移動時，路由就該變化</strong>。比如：</p>
+<ul>
+<li>使用者從購物網站的首頁（<code>/</code>）進入某個商品的說明頁（<code>/item/$itemId</code>）</li>
+<li>使用者決定為購物車（<code>/chart</code>）結帳（<code>/checkout</code>）</li>
+</ul>
+<p>而以下「沒有開啟新脈絡（前端在背景默默做掉就好）」的操作情境，就不需要改變路由：</p>
+<ul>
+<li>使用者對某個商品留下評價</li>
+<li>使用者Ａ向使用者Ｂ送出好友邀請</li>
+<li>使用者對某條貼文按下、收回讚</li>
+</ul>
+<h2 id="功能二保存狀態">功能二：保存狀態</h2>
+<p>如果某狀態需要在畫面重整之間持續，或是<strong>在多個裝置、平台間傳遞</strong>，那就可以考慮<strong>將狀態帶入路由</strong>。比如：</p>
+<ul>
+<li>讓使用者分享他的設定，比如「購物網站裡屬於品牌Ｘ的商品，並以網格模式顯示（<code>/brand/X?show=GRID</code>）」</li>
+<li>註記使用者的來源，比如 <a href="https://support.google.com/analytics/answer/11242841?hl=en#zippy=%2Cin-this-article">[GA4] Campaigns and traffic sources</a></li>
+<li>在不使用帳號系統的情況下，讓使用者分享他的螢光筆標記（下述）</li>
+</ul>
+<p>備註：只是要滿足「狀態於畫面重整之間持續」的話，也可以用 <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage"><code>window.localStorage</code></a> / <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage"><code>window.sessionStorage</code></a> 處理。</p>
+<h2 id="變化的部位">變化的部位</h2>
+<ul>
+<li><code>Location.pathname</code> 代表「階層」的概念；比如 <code>/friend</code> 這個頁面會列出某使用者的所有朋友，而 <code>/friend/25</code> 會指向「與該位朋友的互動紀錄頁」</li>
+<li><code>Location.search</code> 代表「過濾、排序」的概念；比如 <code>/friend?category=acquaintance</code> 會讓使用者看到他設定為「點頭之交」的朋友，而 <code>/friend?sort=DESC</code> 會將該使用者的朋友們以「成為朋友的日期」來排序</li>
+<li><code>Location.hash</code> 用來定位「一份文件中的特定位置」，比如 <code>/hooks#use-state</code> 用來指向 React hooks 中 <code>useState</code> 的說明段落</li>
+<li>不屬於 <code>Location</code> 的 <a href="https://developer.mozilla.org/en-US/docs/Web/URI/Fragment/Text_fragments">Text fragments</a> 能在不使用帳號系統的情況下，讓使用者分享他的螢光筆標記（參考 <a href="https://en.wikipedia.org/wiki/Session_(computer_science)#:~:text=In%20computer%20science%20and%20networking,systems%2C%20or%20live%20active%20users">Session (computer science) from Google search result</a> 和 <a href="https://en.wikipedia.org/wiki/Session_(computer_science)">Session (computer science) direct link</a> 這組對比）——但要注意目前 FireFox 還不支援此規格</li>
+</ul>
+<h2 id="參考資料">參考資料</h2>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Location">mdn web docs: Location</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/URI/Fragment/Text_fragments">mdn web docs: Text fragments</a></li>
+<li><a href="https://remix.run/docs/en/main/discussion/form-vs-fetcher">Remix docs: Form vs. fetcher</a></li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

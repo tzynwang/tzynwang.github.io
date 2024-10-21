@@ -1,0 +1,148 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v3.6.4"><!-- Primary Meta Tags --><title>捨棄 create-react-app 之餘還架了個 astro blog 昭告天下：處理首頁樣式</title><meta name="title" content="捨棄 create-react-app 之餘還架了個 astro blog 昭告天下：處理首頁樣式"><meta name="description" content="現在 Chrome/Edge/FireFox/Safari 都已經支援 css @container 了，來看看如何透過這個技術來處理部落格首頁排版"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2023/ithome-2023-22/"><meta property="og:title" content="捨棄 create-react-app 之餘還架了個 astro blog 昭告天下：處理首頁樣式"><meta property="og:description" content="現在 Chrome/Edge/FireFox/Safari 都已經支援 css @container 了，來看看如何透過這個技術來處理部落格首頁排版"><meta property="og:image" content="https://tzynwang.github.io/2023/ithome-2023-22/gryffyn-m-OhA3PGD-X9Y-unsplash.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2023/ithome-2023-22/"><meta property="twitter:title" content="捨棄 create-react-app 之餘還架了個 astro blog 昭告天下：處理首頁樣式"><meta property="twitter:description" content="現在 Chrome/Edge/FireFox/Safari 都已經支援 css @container 了，來看看如何透過這個技術來處理部落格首頁排版"><meta property="twitter:image" content="https://tzynwang.github.io/2023/ithome-2023-22/gryffyn-m-OhA3PGD-X9Y-unsplash.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:Noto Sans TC,sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul{margin-bottom:16px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:8px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+</style><script type="module" src="/_astro/hoisted.77775e67.js"></script></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>捨棄 create-react-app 之餘還架了個 astro blog 昭告天下：處理首頁樣式</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2023-10-07 10:47</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/2023鐵人賽" data-astro-cid-2iymvi75> 2023鐵人賽 </a> <a class="tag" href="/tag/astro" data-astro-cid-2iymvi75> astro </a> <a class="tag" href="/tag/CSS" data-astro-cid-2iymvi75> CSS </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#處理首頁排版" data-astro-cid-qtokga5y>處理首頁排版</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#處理-featuredpostlayout-樣式" data-astro-cid-qtokga5y>處理 FeaturedPostLayout 樣式</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#總結" data-astro-cid-qtokga5y>總結</a> </li> </ul> </div> <p>給還不熟 css @container 讀者的懶人包：在過去，前端時常透過 <code>@media screen and (min-width: 900px)</code> 來根據螢幕寬度改變畫面樣式（比如 <code>flex-direction</code> 在裝置螢幕變寬時，從 <code>column</code> 變成 <code>row</code>）。而 <code>@container</code> 的出現讓比較基準從此可以脫離「螢幕寬」，現在開發者可以將「容器（親元件）的寬度」作為條件來改變子元件的樣式設定。</p>
+<p>個人目前的部落格首頁右半部就是使用 <code>@container</code> 來處理最新五篇文章（圖佐說明）的排版。今天會來簡單解說製作方式。</p>
+<p>完整程式碼位置如下：</p>
+<ul>
+<li><a href="https://github.com/tzynwang/tzynwang.github.io/blob/master/src/pages/index.astro">首頁（<code>./src/pages/index.astro</code>）</a></li>
+<li><a href="https://github.com/tzynwang/tzynwang.github.io/blob/master/src/components/layout/FeaturedPostLayout.astro">圖佐說明元件（<code>./src/components/layout/FeaturedPostLayout.astro</code>）</a></li>
+</ul>
+<h2 id="處理首頁排版">處理首頁排版</h2>
+<p>首先設定 <code>.featured-posts-container</code> 來處理文章流向。在螢幕寬低於 <code>1200px</code> 時，透過 <code>display: flex</code> 搭配 <code>flex-direction: column</code> 保持垂直排版：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#B392F0">.featured-posts-container</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#79B8FF">  display</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">flex</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#79B8FF">  flex-direction</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">column</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#79B8FF">  gap</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">16</span><span style="color:#F97583">px</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#79B8FF">  margin-bottom</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">16</span><span style="color:#F97583">px</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>而當螢幕寬於 <code>1200px</code> 後，改用 <code>display: grid</code> 搭配 <code>grid-template-areas</code> 來安排文章元件佈局。以下設定代表：整片 grid 區塊呈現 3 x 2 的格位，除 <code>post-0</code> 佔據第一行的兩格位置外，其餘的文章都各自佔據一個格子。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#B392F0">.featured-posts-container</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#79B8FF">  display</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">grid</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#79B8FF">  grid-template-columns</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">repeat</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">3</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">1</span><span style="color:#F97583">fr</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#79B8FF">  grid-template-rows</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">repeat</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">2</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">1</span><span style="color:#F97583">fr</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#79B8FF">  grid-template-areas</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#9ECBFF">    'post-0 post-0 post-1'</span></span>
+<span class="line"><span style="color:#9ECBFF">    'post-2 post-3 post-4'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#79B8FF">  gap</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">16</span><span style="color:#F97583">px</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>而在透過 <code>postShouldWithSummary</code> 渲染文章元件時，將 <code>index</code> 資訊（此文排序第Ｘ篇）透過 <a href="https://docs.astro.build/en/reference/directives-reference/#classlist">class:list</a> 傳入文章元件 <code>FeaturedPostLayout</code> 中：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#E1E4E8">postShouldWithSummary.</span><span style="color:#B392F0">map</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">post</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">index</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> (</span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;</span><span style="color:#85E89D">div</span><span style="color:#B392F0"> class</span><span style="color:#E1E4E8">:</span><span style="color:#B392F0">list</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{[</span><span style="color:#9ECBFF">'post'</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">`post-${</span><span style="color:#E1E4E8">index</span><span style="color:#9ECBFF">}`</span><span style="color:#E1E4E8">]}></span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#79B8FF">FeaturedPostLayout</span></span>
+<span class="line"><span style="color:#B392F0">      title</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{post.frontmatter.title}</span></span>
+<span class="line"><span style="color:#B392F0">      date</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{post.frontmatter.date}</span></span>
+<span class="line"><span style="color:#B392F0">      tag</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{post.frontmatter.tag}</span></span>
+<span class="line"><span style="color:#B392F0">      banner</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{post.frontmatter.banner}</span></span>
+<span class="line"><span style="color:#B392F0">      summary</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{post.frontmatter.summary </span><span style="color:#F97583">||</span><span style="color:#9ECBFF"> ''</span><span style="color:#E1E4E8">}</span></span>
+<span class="line"><span style="color:#B392F0">      url</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{post.url}</span></span>
+<span class="line"><span style="color:#E1E4E8">    /></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;/</span><span style="color:#85E89D">div</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">));</span></span></code></pre>
+<p>接著就可以在 <code>&#x3C;style>&#x3C;/style></code> 裡透過 <code>.post-{index}</code> 來指定每一個文章元件會與哪一部分的 grid-area 掛鉤：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#B392F0">.post-0</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#79B8FF">  grid-area</span><span style="color:#E1E4E8">: post-0;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">.post-1</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#79B8FF">  grid-area</span><span style="color:#E1E4E8">: post-1;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">.post-2</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#79B8FF">  grid-area</span><span style="color:#E1E4E8">: post-2;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">.post-3</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#79B8FF">  grid-area</span><span style="color:#E1E4E8">: post-3;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">.post-4</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#79B8FF">  grid-area</span><span style="color:#E1E4E8">: post-4;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>首頁完工，接下來會來介紹 <code>FeaturedPostLayout</code> 中的設定。</p>
+<h2 id="處理-featuredpostlayout-樣式">處理 FeaturedPostLayout 樣式</h2>
+<p>首先在元件的 Component Script 部位取出 <code>Astro.props</code> 中的背景圖位置，設定為變數 <code>bannerUrl</code>：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#E1E4E8"> { </span><span style="color:#79B8FF">title</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">date</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">tag</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">banner</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">summary</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">url</span><span style="color:#E1E4E8"> } </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> Astro.props;</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> bannerUrl</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> banner </span><span style="color:#F97583">?</span><span style="color:#9ECBFF"> `url(${</span><span style="color:#E1E4E8">banner</span><span style="color:#9ECBFF">})`</span><span style="color:#F97583"> :</span><span style="color:#9ECBFF"> 'none'</span><span style="color:#E1E4E8">;</span></span></code></pre>
+<p>接著將背景圖變數透過 <a href="style%20scoped%20define:vars=%7B%7B%20bannerUrl%20%7D%7D">define:vars</a> 傳入 astro 元件的樣式標籤中：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#E1E4E8">&#x3C;</span><span style="color:#85E89D">style</span><span style="color:#B392F0"> define:vars</span><span style="color:#E1E4E8">={{ bannerUrl }}></span></span>
+<span class="line"><span style="color:#6A737D">  /* styles ... */</span></span>
+<span class="line"><span style="color:#E1E4E8">&#x3C;/</span><span style="color:#85E89D">style</span><span style="color:#E1E4E8">></span></span></code></pre>
+<p>這樣就能在樣式區塊取用 <code>Astro.props</code> 提供的文章標題配圖了 (́◉◞౪◟◉‵)</p>
+<hr>
+<p>接著來處理元件本身的排版。首先設定最外層的 div 元件「寬（<code>inline-size</code>）」為 <code>@container</code> 參考值：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#B392F0">.featured-post-wrapper</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#79B8FF">  container-type</span><span style="color:#E1E4E8">: inline-size;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>搭配 <code>@container (min-width: 520px)</code> 即代表 <code>.featured-post-wrapper</code> 的寬度至少有 <code>520px</code> 時，圖片與文字欄位要改為 <code>flex-direction: row</code> 流向：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#F97583">@container</span><span style="color:#E1E4E8"> (min-width: 520px) {</span></span>
+<span class="line"><span style="color:#B392F0">  .featured-post-layout</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#79B8FF">    flex-direction</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">row</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">  .banner-wrapper</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#B392F0">  .text-wrapper</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#79B8FF">    flex</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">1</span><span style="color:#79B8FF"> 1</span><span style="color:#79B8FF"> 50</span><span style="color:#F97583">%</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>對比 <code>.featured-post-wrapper</code> 的寬度未滿 <code>520px</code> 時，圖文要採取 <code>column</code> 排版：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#B392F0">.featured-post-layout</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#79B8FF">  height</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">100</span><span style="color:#F97583">%</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#79B8FF">  display</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">flex</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#79B8FF">  flex-direction</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">column</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#79B8FF">  gap</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">16</span><span style="color:#F97583">px</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>這樣就完成 css container query 的設定了。現在 <code>.banner-wrapper</code> 與 <code>.text-wrapper</code> 會根據 <code>.featured-post-wrapper</code> 的寬度來改變排版。</p>
+<hr>
+<p>最後因為想要做出「滑鼠 hover 後、圖片放大（要能搭配 <code>transition</code>）」的效果，決定使用 <code>background-image</code> 搭配偽元素 <code>::before</code> 來實現。首先將 <code>.banner-wrapper</code> 設定為 <code>positive: relative</code> 來作為 偽元素的定位點：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#B392F0">.banner-wrapper</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#79B8FF">  position</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">relative</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#79B8FF">  min-height</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">200</span><span style="color:#F97583">px</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#79B8FF">  overflow</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">hidden</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>接著將背景塞到 <code>::before</code> 中，並設定 <code>transition</code> 效果：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#B392F0">.banner-wrapper::before</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#79B8FF">  content</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">''</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#79B8FF">  position</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">absolute</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#79B8FF">  top</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">0</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#79B8FF">  left</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">0</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#79B8FF">  width</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">100</span><span style="color:#F97583">%</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#79B8FF">  height</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">100</span><span style="color:#F97583">%</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#79B8FF">  background-size</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">cover</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#79B8FF">  background-position</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">center</span><span style="color:#79B8FF"> center</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#79B8FF">  background-repeat</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">no-repeat</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#79B8FF">  background-image</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">var</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">--bannerUrl</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#79B8FF">  transform</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">scale</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#79B8FF">  transition</span><span style="color:#E1E4E8">: transform </span><span style="color:#79B8FF">0.3</span><span style="color:#F97583">s</span><span style="color:#79B8FF"> ease</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>最後設定 <code>:hover</code> 時，要微微放大 <code>::before</code> 內容：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#B392F0">.banner-wrapper:hover::before</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#79B8FF">  transform</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">scale</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">1.1</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>大功告成。</p>
+<h2 id="總結">總結</h2>
+<p>目前四大主流瀏覽器都已經支援 container query 了，讓樣式不再根據裝置、而是親容器寬度來安排，可以調整出視覺效果更好的排版。</p>
+<p>十分推薦在比較不需要擔心相容性的 side project 練手唷 (・`ω´・)</p> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 
