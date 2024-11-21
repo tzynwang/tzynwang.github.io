@@ -91,7 +91,7 @@ const listBoxProps = getListboxProps();
 
 心得：雞肋（使用方式可參考[官方文件](https://mui.com/material-ui/react-autocomplete/#custom-input)）。
 
-雖然可以靠 `props.renderInput` 自定義輸入框的元素與樣式客，但需要回頭靠 `props.classes` 慢慢覆蓋掉 MUI 預設的 `paper` `listbox` 與 `option` 樣式（參考[官方複雜樣式範例](https://mui.com/material-ui/react-autocomplete/#githubs-picker)）。
+雖然可以靠 `props.renderInput` 自定義輸入框的元素與樣式，但需要回頭靠 `props.classes` 慢慢覆蓋掉 MUI 預設的 `paper` `listbox` 與 `option` 樣式（參考[官方複雜樣式範例](https://mui.com/material-ui/react-autocomplete/#githubs-picker)）。
 
 在需要大量樣式客製化的前提下，處理起來沒有比用 `useAutocomplete` 輕鬆。
 
