@@ -1,0 +1,138 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v3.6.4"><!-- Primary Meta Tags --><title>捨棄 create-react-app 之餘還架了個 astro blog 昭告天下：集中處理 .md</title><meta name="title" content="捨棄 create-react-app 之餘還架了個 astro blog 昭告天下：集中處理 .md"><meta name="description" content="已知 Astro.glob() 只能用於 .astro 檔案中，今天就來介紹可在一般 .ts 檔案內執行的替代方案： import.meta.glob()"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2023/ithome-2023-20/"><meta property="og:title" content="捨棄 create-react-app 之餘還架了個 astro blog 昭告天下：集中處理 .md"><meta property="og:description" content="已知 Astro.glob() 只能用於 .astro 檔案中，今天就來介紹可在一般 .ts 檔案內執行的替代方案： import.meta.glob()"><meta property="og:image" content="https://tzynwang.github.io/2023/ithome-2023-20/markus-spiske-lqMrtKlIgCA-unsplash.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2023/ithome-2023-20/"><meta property="twitter:title" content="捨棄 create-react-app 之餘還架了個 astro blog 昭告天下：集中處理 .md"><meta property="twitter:description" content="已知 Astro.glob() 只能用於 .astro 檔案中，今天就來介紹可在一般 .ts 檔案內執行的替代方案： import.meta.glob()"><meta property="twitter:image" content="https://tzynwang.github.io/2023/ithome-2023-20/markus-spiske-lqMrtKlIgCA-unsplash.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:Noto Sans TC,sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul{margin-top:16px;margin-bottom:16px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:8px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+</style><script type="module" src="/_astro/hoisted.77775e67.js"></script></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>捨棄 create-react-app 之餘還架了個 astro blog 昭告天下：集中處理 .md</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2023-10-05 08:22</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/2023鐵人賽" data-astro-cid-2iymvi75> 2023鐵人賽 </a> <a class="tag" href="/tag/astro" data-astro-cid-2iymvi75> astro </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#本文" data-astro-cid-qtokga5y>本文</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#取得所有-md-內容" data-astro-cid-qtokga5y>取得所有 .md 內容</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#依照日期排序" data-astro-cid-qtokga5y>依照日期排序</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#總結" data-astro-cid-qtokga5y>總結</a> </li> </ul> </div> <p>你已經寫好幾篇 <code>.md</code> 文章，現在準備好讓 astro 把這些好棒棒的內容轉成網頁了。</p>
+<p>你查看了 <a href="https://docs.astro.build/en/reference/api-reference/#astro-global">astro 的官方文件</a>，知道可以透過 <code>Astro.glob()</code> 取得指定路徑中所有的 <code>.md</code> 內容。這包 <code>MarkdownInstance[]</code> 型態的資料能讓你決定怎麼展示文章，比如在網站首頁列出「最近十篇文章」，或是在「標籤」分頁列出「分類屬於 X 的所有文章」。</p>
+<p>但這個方便的功能僅能在 <code>.astro</code> 檔案內使用。如果我想要在部落格專案中建立一個 <code>tools</code> 資料夾，專門收納「讀取所有 <code>.md</code> 檔案」「預處理排序」等通用工具，這時候我們需要換個方式——使用未經 astro 包裝的 <code>import.meta.glob()</code> 來達成在 <code>.astro</code> 以外的地方讀取 <code>.md</code> 的需求。</p>
+<p>以下就來介紹個人在自家部落格處理 <code>.md</code> 讀檔以及排序的方式。</p>
+<h2 id="本文">本文</h2>
+<h3 id="取得所有-md-內容">取得所有 .md 內容</h3>
+<p>首先在 <code>./src/tools</code> 中新增一個檔案 <code>post.ts</code> 並新增第一個功能：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#F97583">async</span><span style="color:#F97583"> function</span><span style="color:#B392F0"> getAllPosts</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> metaAllPosts</span><span style="color:#F97583"> =</span><span style="color:#F97583"> import</span><span style="color:#E1E4E8">.</span><span style="color:#79B8FF">meta</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">glob</span><span style="color:#E1E4E8">&#x3C;</span><span style="color:#B392F0">MarkdownInstance</span><span style="color:#E1E4E8">&#x3C;</span><span style="color:#B392F0">Post</span><span style="color:#E1E4E8">>>(</span></span>
+<span class="line"><span style="color:#9ECBFF">    '../pages/**/*.md'</span></span>
+<span class="line"><span style="color:#E1E4E8">  );</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> keys</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> Object.</span><span style="color:#B392F0">keys</span><span style="color:#E1E4E8">(metaAllPosts);</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> allPostsPromises</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> keys.</span><span style="color:#B392F0">map</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">key</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> metaAllPosts[key]());</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#F97583"> await</span><span style="color:#79B8FF"> Promise</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">all</span><span style="color:#E1E4E8">(allPostsPromises);</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p><code>getAllPosts</code> 的任務是透過 <code>import.meta.glob()</code> 讀取位於 <code>./src/pages</code> 資料夾內「所有的 <code>.md</code> 檔案」。</p>
+<p>在這裡傳入型別 <code>MarkdownInstance&#x3C;Post></code> 代表指定每一份 <code>.md</code> 檔案中的 <code>frontmatter</code> 會有哪些項目（官分型別定義可參考 <a href="https://github.com/withastro/astro/blob/0fa483283e54c94f173838cd558dc0dbdd11e699/packages/astro/src/%40types/astro.ts#L1513">astro/packages/astro/src/@types/astro.ts</a> 內容）。比如我的每一篇部落格文章 <code>.md</code> 檔案都有以下開頭：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#E1E4E8">---</span></span>
+<span class="line"><span style="color:#85E89D">title</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">鐵人賽 Modern Web 組「捨棄 create-react-app 之餘還架了個 astro blog 昭告天下」第 1 天</span></span>
+<span class="line"><span style="color:#85E89D">date</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">2023-09-01 7:29:09</span></span>
+<span class="line"><span style="color:#85E89D">tag</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#E1E4E8">	- [</span><span style="color:#9ECBFF">2023鐵人賽</span><span style="color:#E1E4E8">]</span></span>
+<span class="line"><span style="color:#85E89D">banner</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">/2023/ithome-2023-1/miguel-a-amutio-27QOmh18KDc-unsplash.jpg</span></span>
+<span class="line"><span style="color:#85E89D">summary</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">2023 鐵人賽開始了，今年來聊聊前端基礎建設以及如何用 astro 架部落格</span></span>
+<span class="line"><span style="color:#85E89D">draft</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">true</span></span>
+<span class="line"><span style="color:#E1E4E8">---</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">...</span></span></code></pre>
+<p>那麼我的 <code>interface Post</code> 就會長得像下面這樣：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#F97583">interface</span><span style="color:#B392F0"> Post</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#FFAB70">  title</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> string</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#FFAB70">  date</span><span style="color:#F97583">:</span><span style="color:#B392F0"> Date</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#FFAB70">  tag</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> string</span><span style="color:#E1E4E8">[];</span></span>
+<span class="line"><span style="color:#FFAB70">  banner</span><span style="color:#F97583">?:</span><span style="color:#79B8FF"> string</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#FFAB70">  summary</span><span style="color:#F97583">?:</span><span style="color:#79B8FF"> string</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#FFAB70">  draft</span><span style="color:#F97583">?:</span><span style="color:#79B8FF"> boolean</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>以上列出來的鍵值即是我可以透過 <code>frontmatter</code> 取得的欄位資訊。比如等一下我們就能透過 <code>frontmatter.date</code> 來根據日期排序文章。</p>
+<p>（注意 astro 3.0 已經<a href="https://docs.astro.build/en/reference/configuration-reference/#markdowndrafts">不再支援 <code>draft</code> 功能</a>，如果需要根據特定條件來判定文章是否該在打包過程中被剔除，請參考 <a href="https://docs.astro.build/en/guides/upgrade-to/v3/#what-should-i-do-14">Breaking Changes 中的說明</a>）</p>
+<hr>
+<p>繼續往下看。根據 <a href="https://vitejs.dev/guide/features.html#glob-import">vite 官分文件</a>我們可以知道變數 <code>metaAllPosts</code> 會有類似以下結構的內容：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> metaAllPosts</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#9ECBFF">  '../pages/2023/ithome-2023-1.md'</span><span style="color:#E1E4E8">: () </span><span style="color:#F97583">=></span></span>
+<span class="line"><span style="color:#F97583">    import</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'../pages/2023/ithome-2023-1.md'</span><span style="color:#E1E4E8">),</span></span>
+<span class="line"><span style="color:#9ECBFF">  '../pages/2023/ithome-2023-2.md'</span><span style="color:#E1E4E8">: () </span><span style="color:#F97583">=></span></span>
+<span class="line"><span style="color:#F97583">    import</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'../pages/2023/ithome-2023-2.md'</span><span style="color:#E1E4E8">),</span></span>
+<span class="line"><span style="color:#6A737D">  // ...</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span></code></pre>
+<p>所以我們先透過 <code>Object.keys(metaAllPosts)</code> 取出所有的鍵值，再透過 <code>keys.map((key) => metaAllPosts[key]())</code> 執行 <code>metaAllPosts</code> 中的每一筆 <code>import</code>。最後使用 <code>await Promise.all()</code> 來取得「所有位在 <code>./src/pages</code> 資料夾中的 <code>MarkdownInstance</code> 內容」。</p>
+<p>這個功能最後回傳的資料型別會是 <code>MarkdownInstance&#x3C;Post>[]</code></p>
+<h3 id="依照日期排序">依照日期排序</h3>
+<p>繼續在 <code>./src/tools/post.ts</code> 中新增以下內容：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> dayjs </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> 'dayjs'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> sortPostByDate</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">posts</span><span style="color:#F97583">:</span><span style="color:#B392F0"> MarkdownInstance</span><span style="color:#E1E4E8">&#x3C;</span><span style="color:#B392F0">Post</span><span style="color:#E1E4E8">>[]) {</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> posts.</span><span style="color:#B392F0">sort</span><span style="color:#E1E4E8">(</span></span>
+<span class="line"><span style="color:#E1E4E8">    (</span><span style="color:#FFAB70">a</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">b</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span></span>
+<span class="line"><span style="color:#B392F0">      dayjs</span><span style="color:#E1E4E8">(b.frontmatter.date).</span><span style="color:#B392F0">valueOf</span><span style="color:#E1E4E8">() </span><span style="color:#F97583">-</span><span style="color:#B392F0"> dayjs</span><span style="color:#E1E4E8">(a.frontmatter.date).</span><span style="color:#B392F0">valueOf</span><span style="color:#E1E4E8">()</span></span>
+<span class="line"><span style="color:#E1E4E8">  );</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p><code>sortPostByDate</code> 的任務非常單純，即是根據每一篇文章的日期來進行排序。所以當我們執行以下組合：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> const</span><span style="color:#79B8FF"> ALL_SORTED_POSTS</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> sortPostByDate</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">await</span><span style="color:#B392F0"> getAllPosts</span><span style="color:#E1E4E8">());</span></span></code></pre>
+<p>就能得「根據日期從新到舊排序」的所有部落格文章了 (́◉◞౪◟◉‵)</p>
+<hr>
+<p>以個人部落格為例，我的首頁會顯示目前最新的十篇文章。達成的方式是：在 <code>src/pages/index.astro</code> 的 <a href="https://docs.astro.build/en/core-concepts/astro-components/#component-structure">Component Script 區塊</a>直接引用處理好的文章內容，分為前五、後五篇。接著再將切好的內容丟到排版專用的 <code>FeaturedPostLayout</code> 與 <code>ListedPostLayout</code> 元件來處理畫面樣式。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#6A737D">---</span></span>
+<span class="line"><span style="color:#6A737D">// Component Script</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> FeaturedPostLayout </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> '@Components/layout/FeaturedPostLayout.astro'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> ListedPostLayout </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> '@Components/layout/ListedPostLayout.astro'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { ALL_SORTED_POSTS } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> '@Tools/post'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> firstTenPosts</span><span style="color:#F97583"> =</span><span style="color:#79B8FF"> ALL_SORTED_POSTS</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">slice</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">0</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">10</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> postShouldWithSummary</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> firstTenPosts.</span><span style="color:#B392F0">slice</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">0</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">5</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> restOfPost</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> firstTenPosts.</span><span style="color:#B392F0">slice</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">5</span><span style="color:#E1E4E8">, firstTenPosts.</span><span style="color:#79B8FF">length</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#6A737D">---</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">&#x3C;!-- Component Template (HTML + JS Expressions) --></span></span>
+<span class="line"><span style="color:#E1E4E8">&#x3C;</span><span style="color:#85E89D">div</span><span style="color:#B392F0"> class</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"post-container"</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;</span><span style="color:#85E89D">div</span><span style="color:#B392F0"> class</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"featured-posts-container"</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">    {</span></span>
+<span class="line"><span style="color:#E1E4E8">      postShouldWithSummary.</span><span style="color:#B392F0">map</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">post</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">index</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> (</span></span>
+<span class="line"><span style="color:#E1E4E8">        &#x3C;</span><span style="color:#85E89D">div</span><span style="color:#B392F0"> class</span><span style="color:#E1E4E8">:</span><span style="color:#B392F0">list</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{[</span><span style="color:#9ECBFF">'post'</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">`post-${</span><span style="color:#E1E4E8">index</span><span style="color:#9ECBFF">}`</span><span style="color:#E1E4E8">]}></span></span>
+<span class="line"><span style="color:#E1E4E8">          &#x3C;</span><span style="color:#79B8FF">FeaturedPostLayout</span></span>
+<span class="line"><span style="color:#B392F0">            title</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{post.frontmatter.title}</span></span>
+<span class="line"><span style="color:#B392F0">            date</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{post.frontmatter.date}</span></span>
+<span class="line"><span style="color:#B392F0">            tag</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{post.frontmatter.tag}</span></span>
+<span class="line"><span style="color:#B392F0">            banner</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{post.frontmatter.banner}</span></span>
+<span class="line"><span style="color:#B392F0">            summary</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{post.frontmatter.summary </span><span style="color:#F97583">||</span><span style="color:#9ECBFF"> ''</span><span style="color:#E1E4E8">}</span></span>
+<span class="line"><span style="color:#B392F0">            url</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{post.url}</span></span>
+<span class="line"><span style="color:#E1E4E8">          /></span></span>
+<span class="line"><span style="color:#E1E4E8">        &#x3C;/</span><span style="color:#85E89D">div</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">      ))</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;/</span><span style="color:#85E89D">div</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;</span><span style="color:#85E89D">div</span><span style="color:#B392F0"> class</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"listed-posts-container"</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">    {</span></span>
+<span class="line"><span style="color:#E1E4E8">      restOfPost.</span><span style="color:#B392F0">map</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">post</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> (</span></span>
+<span class="line"><span style="color:#E1E4E8">        &#x3C;</span><span style="color:#79B8FF">ListedPostLayout</span></span>
+<span class="line"><span style="color:#B392F0">          title</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{post.frontmatter.title}</span></span>
+<span class="line"><span style="color:#B392F0">          date</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{post.frontmatter.date}</span></span>
+<span class="line"><span style="color:#B392F0">          tag</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{post.frontmatter.tag}</span></span>
+<span class="line"><span style="color:#B392F0">          url</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{post.url}</span></span>
+<span class="line"><span style="color:#E1E4E8">        /></span></span>
+<span class="line"><span style="color:#E1E4E8">      ))</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;/</span><span style="color:#85E89D">div</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">&#x3C;/</span><span style="color:#85E89D">div</span><span style="color:#E1E4E8">></span></span></code></pre>
+<p>在其他需要用到文章內容的元件，也都是直接引用處理好的 <code>ALL_SORTED_POSTS</code> 即可。集中到 <code>./src/tools/post.ts</code> 可以避免在各個 <code>.astro</code> 檔案中重複同樣的讀檔、排序邏輯。</p>
+<h2 id="總結">總結</h2>
+<p>現在你知道怎麼把讀檔的邏輯集中到一個檔案裡面了。</p>
+<p>而結合讀取與 astro 的渲染，你的 <code>.md</code> 文章們已經順利變化成靜態網頁，只可惜毫無樣式可言。為了解決這個問題，接下來的文章會來簡單介紹一下個人會如何處理部落格樣式，敬請期待 (ง๑ •̀_•́)ง</p> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

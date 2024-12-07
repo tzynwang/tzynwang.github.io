@@ -1,0 +1,73 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v3.6.4"><!-- Primary Meta Tags --><title>工作筆記：GitLab monorepo package registry/install</title><meta name="title" content="工作筆記：GitLab monorepo package registry/install"><meta name="description" content="記錄一下將 monorepo 的其中一個 package 發布成私人 GitLab 套件，以及安裝私人 GitLab 套件的步驟。"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2024/how-to-gitlab-monorepo-package-registry/"><meta property="og:title" content="工作筆記：GitLab monorepo package registry/install"><meta property="og:description" content="記錄一下將 monorepo 的其中一個 package 發布成私人 GitLab 套件，以及安裝私人 GitLab 套件的步驟。"><meta property="og:image" content="https://tzynwang.github.io/2024/how-to-gitlab-monorepo-package-registry/falco-negenman-nipCGHE-M98-unsplash.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2024/how-to-gitlab-monorepo-package-registry/"><meta property="twitter:title" content="工作筆記：GitLab monorepo package registry/install"><meta property="twitter:description" content="記錄一下將 monorepo 的其中一個 package 發布成私人 GitLab 套件，以及安裝私人 GitLab 套件的步驟。"><meta property="twitter:image" content="https://tzynwang.github.io/2024/how-to-gitlab-monorepo-package-registry/falco-negenman-nipCGHE-M98-unsplash.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:Noto Sans TC,sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul{margin-top:16px;margin-bottom:16px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:8px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+</style><script type="module" src="/_astro/hoisted.77775e67.js"></script></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>工作筆記：GitLab monorepo package registry/install</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2024-12-07 13:14</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/GitLab" data-astro-cid-2iymvi75> GitLab </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#將套件發布到私人-gitlab" data-astro-cid-qtokga5y>將套件發布到私人 GitLab</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#安裝來自私人-gitlab-的套件" data-astro-cid-qtokga5y>安裝來自私人 GitLab 的套件</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#參考文件" data-astro-cid-qtokga5y>參考文件</a> </li> </ul> </div> <p>提醒：</p>
+<ol>
+<li>完整教學請參考官方文件 <a href="https://docs.gitlab.com/ee/user/packages/npm_registry/index.html?tab=.npmrc+file">npm packages in the package registry</a>，這篇主要是給未來的我的懶人包 🌚</li>
+<li>雖然發布套件的指令是 <code>npm publish</code>，但「將套件發布到 GitLab」的關鍵字是 package registry，故搜尋時推薦餵 <code>GitLab package registry</code> 而不是 <code>GitLab package publish</code></li>
+</ol>
+<h2 id="將套件發布到私人-gitlab">將套件發布到私人 GitLab</h2>
+<p>假設一個叫 <code>@my-repo</code> 的 monorepo 結構如下：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#B392F0">libs</span></span>
+<span class="line"><span style="color:#B392F0">  tool1</span></span>
+<span class="line"><span style="color:#B392F0">  tool2</span></span>
+<span class="line"><span style="color:#B392F0">apps</span></span>
+<span class="line"><span style="color:#B392F0">  service1</span></span>
+<span class="line"><span style="color:#B392F0">  service2</span></span></code></pre>
+<p>而我的目的是「只將 <code>@my-repo/tool1</code> 發佈到私人 GitLab」，那麽流程會是：</p>
+<ol>
+<li>在 <code>@my-repo</code> 的根目錄位置新增 <code>.npmrc</code></li>
+<li>在 <code>@my-repo/tool1</code> 的 <code>package.json</code> 設定 <code>publishConfig.registry</code></li>
+<li>在 <code>@my-repo/tool1</code> （即 <code>libs/tool1</code> 這個資料夾）的位置執行 <code>npm publish</code></li>
+</ol>
+<p>第一步的 <code>.npmrc</code> 內容如下：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#B392F0">//&#x3C;domain_name>/api/v4/projects/&#x3C;project_id>/packages/npm/:_authToken</span><span style="color:#E1E4E8">=&#x3C;your_auth_token></span></span></code></pre>
+<ul>
+<li><code>&#x3C;domain_name></code> 換成 GitLab 網域名稱</li>
+<li><code>&#x3C;project_id></code> 換成該 GitLab 專案的 id，可參考 <a href="https://docs.gitlab.com/ee/user/project/working_with_projects.html#access-a-project-by-using-the-project-id">Access a project by using the project ID</a> 來查看</li>
+<li><code>&#x3C;your_auth_token></code> 換成 PAT，可參考 <a href="https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html#create-a-personal-access-token">Create a personal access token</a> 來取得</li>
+</ul>
+<p>第二步的 <code>package.json</code> 設定如下：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#B392F0">  "publishConfig"</span><span style="color:#79B8FF">:</span><span style="color:#9ECBFF"> {</span></span>
+<span class="line"><span style="color:#B392F0">    "registry"</span><span style="color:#79B8FF">:</span><span style="color:#9ECBFF"> "https://&#x3C;domain_name>/api/v4/projects/&#x3C;project_id>/packages/npm/"</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p><code>&#x3C;domain_name></code> 和 <code>&#x3C;project_id></code> 的替換規則如前述。</p>
+<h2 id="安裝來自私人-gitlab-的套件">安裝來自私人 GitLab 的套件</h2>
+<p>記得要在專案根目錄新增 <code>.npmrc</code> 並填入以下內容：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#F97583">&#x3C;</span><span style="color:#E1E4E8">package_name</span><span style="color:#F97583">></span><span style="color:#E1E4E8">:registry=https://</span><span style="color:#F97583">&#x3C;</span><span style="color:#E1E4E8">domain_name</span><span style="color:#F97583">></span><span style="color:#E1E4E8">/api/v4/projects/</span><span style="color:#F97583">&#x3C;</span><span style="color:#E1E4E8">project_id</span><span style="color:#F97583">></span><span style="color:#E1E4E8">/packages/npm/</span></span>
+<span class="line"><span style="color:#B392F0">//&#x3C;domain_name>/api/v4/projects/&#x3C;project_id>/packages/npm/:_authToken</span><span style="color:#E1E4E8">=&#x3C;your_auth_token></span></span></code></pre>
+<ul>
+<li><code>&#x3C;package_name></code> 替換成要安裝的套件的名稱（以本篇筆記為例，如果我要安裝 <code>@my-repo/tool1</code> 這個發布到私人 GitLab 的套件，這裏就填入 <code>@my-repo/tool1</code>）</li>
+<li><code>&#x3C;domain_name></code> / <code>&#x3C;project_id></code> / <code>&#x3C;your_auth_token></code> 的替換規則如前述</li>
+</ul>
+<h2 id="參考文件">參考文件</h2>
+<ul>
+<li><a href="https://docs.gitlab.com/ee/user/packages/npm_registry/index.html?tab=.npmrc+file">npm packages in the package registry</a></li>
+<li><a href="https://docs.gitlab.com/ee/user/packages/workflows/working_with_monorepos.html">Monorepo package management workflows</a></li>
+<li><a href="https://xenby.com/b/288-%E6%95%99%E5%AD%B8-%E5%BB%BA%E7%AB%8B%E8%88%87%E4%BD%BF%E7%94%A8-gitlab-%E7%A7%81%E4%BA%BA-npm-package-registry">[教學] 建立與使用 GitLab 私人 npm package registry</a></li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

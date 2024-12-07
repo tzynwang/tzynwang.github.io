@@ -1,0 +1,247 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v3.6.4"><!-- Primary Meta Tags --><title>「JavaScript陣列遍歷」相關筆記</title><meta name="title" content="「JavaScript陣列遍歷」相關筆記"><meta name="description" content="這是一個文組轉職前端工程師的技術部落格"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2021/js-array-iterate/"><meta property="og:title" content="「JavaScript陣列遍歷」相關筆記"><meta property="og:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="og:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2021/js-array-iterate/"><meta property="twitter:title" content="「JavaScript陣列遍歷」相關筆記"><meta property="twitter:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="twitter:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:Noto Sans TC,sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul{margin-top:16px;margin-bottom:16px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:8px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+</style><script type="module" src="/_astro/hoisted.77775e67.js"></script></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>「JavaScript陣列遍歷」相關筆記</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2021-03-27 09:37</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/JavaScript" data-astro-cid-2iymvi75> JavaScript </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#總結" data-astro-cid-qtokga5y>總結</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#不會回傳新陣列" data-astro-cid-qtokga5y>不會回傳新陣列</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#for搭配length" data-astro-cid-qtokga5y>for搭配length()</a> </li><li class="toc-4" data-astro-cid-qtokga5y> <a href="#題外話如何得知-object-的長度" data-astro-cid-qtokga5y>題外話：如何得知 object 的長度</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#while搭配length" data-astro-cid-qtokga5y>while搭配length()</a> </li><li class="toc-4" data-astro-cid-qtokga5y> <a href="#題外話把-normal-function-轉換成-arrow-function" data-astro-cid-qtokga5y>題外話：把 normal function 轉換成 arrow function</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#forin" data-astro-cid-qtokga5y>for...in</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#forof" data-astro-cid-qtokga5y>for...of</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#every" data-astro-cid-qtokga5y>every()</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#some" data-astro-cid-qtokga5y>some()</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#foreach" data-astro-cid-qtokga5y>forEach()</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#join" data-astro-cid-qtokga5y>join()</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#reduce" data-astro-cid-qtokga5y>reduce()</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#會回傳新陣列" data-astro-cid-qtokga5y>會回傳新陣列</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#filter" data-astro-cid-qtokga5y>filter()</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#flat" data-astro-cid-qtokga5y>flat()</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#flatmap" data-astro-cid-qtokga5y>flatMap()</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#map" data-astro-cid-qtokga5y>map()</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#參考文件" data-astro-cid-qtokga5y>參考文件</a> </li> </ul> </div> <h2 id="總結">總結</h2>
+<p>本篇文章是關於 JavaScript 遍歷陣列（部分方法也可直接遍歷物件）方法的筆記。
+keywords: array, iterate, iteration</p>
+<ul>
+<li>不會回傳新陣列的方式：<code>for</code>搭配<code>length()</code>、<code>while</code>搭配<code>length()</code>、<code>for...in</code>、<code>for...of</code>、<code>every()</code>、<code>some()</code>、<code>forEach()</code>、<code>join</code>、<code>reduce()</code></li>
+<li>會回傳一個新陣列的方式：<code>filter()</code>、<code>flat()</code>、<code>flatMap()</code>、<code>map()</code></li>
+</ul>
+<!--more-->
+<h2 id="不會回傳新陣列">不會回傳新陣列</h2>
+<h3 id="for搭配length"><code>for</code>搭配<code>length()</code></h3>
+<ul>
+<li>可遍歷陣列</li>
+<li>不可直接遍歷物件</li>
+</ul>
+<iframe height="400px" width="100%" src="https://replit.com/@Charlie7779/forDa-Pei-Arrayprototypelength?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+<ul>
+<li><code>Array.prototype.length</code>會回傳一個陣列內有多少個物件（並回傳物件的類別是 number）</li>
+<li>陣列物件會從零開始數（0 based index），三個物件的陣列會讓<code>Array.prototype.length</code>回傳<code>3</code>，而陣列內物件的 index 依序為 0、1、2</li>
+<li>搭配<code>for</code>迴圈，從第一個物件（index 0）開始，直到 index 等於<code>Array.prototype.length</code>前停止</li>
+<li>無法用這種方式來遍歷 object，因為對 object 使用<code>Array.prototype.length</code>會回傳<code>undefined</code>（參考以下示範）</li>
+</ul>
+<iframe height="400px" width="100%" src="https://replit.com/@Charlie7779/ArrayprototypelengthWu-Fa-Da-Pei-object?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+<p>參考：
+<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/length">MDN: Array.prototype.length</a></p>
+<h4 id="題外話如何得知-object-的長度">題外話：如何得知 object 的長度</h4>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#F97583">let</span><span style="color:#E1E4E8"> size </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> Object.</span><span style="color:#B392F0">keys</span><span style="color:#E1E4E8">(myObj).</span><span style="color:#79B8FF">length</span><span style="color:#E1E4E8">;</span></span></code></pre>
+<p><code>Object.keys()</code>會回傳一個陣列，陣列裡面包含一個物件的所有<code>key</code>，對回傳的陣列取其<code>length</code>即可知道物件的長度；參考：</p>
+<ul>
+<li><a href="https://stackoverflow.com/questions/5223/length-of-a-javascript-object">stack overflow: Length of a JavaScript object</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/keys">MDN: Object.keys</a></li>
+</ul>
+<h3 id="while搭配length"><code>while</code>搭配<code>length()</code></h3>
+<ul>
+<li>可遍歷陣列</li>
+<li>不可直接遍歷物件</li>
+</ul>
+<iframe height="400px" width="100%" src="https://replit.com/@Charlie7779/whileDa-Pei-Arrayprototypelength?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+<p>將<code>Array.prototype.length</code>設定為<code>while</code>迴圈的條件</p>
+<h4 id="題外話把-normal-function-轉換成-arrow-function">題外話：把 normal function 轉換成 arrow function</h4>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#6A737D">// 把function的部分獨立出來</span></span>
+<span class="line"><span style="color:#F97583">function</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">item</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#E1E4E8">  console.</span><span style="color:#B392F0">lot</span><span style="color:#E1E4E8">(item)</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// 用一個變數來存放arrow function</span></span>
+<span class="line"><span style="color:#F97583">let</span><span style="color:#B392F0"> function</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">item</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">  console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(item)</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// {}裡面只有一行console.log(item)，拿掉{}</span></span>
+<span class="line"><span style="color:#F97583">let</span><span style="color:#B392F0"> function</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">item</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(item)</span></span></code></pre>
+<p>參考：</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/NAN7U3MrX6o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<h3 id="forin"><code>for...in</code></h3>
+<ul>
+<li>可遍歷陣列</li>
+<li>可遍歷物件</li>
+</ul>
+<iframe height="400px" width="100%" src="https://replit.com/@Charlie7779/forinBian-Li?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+<ul>
+<li>只會遍歷 enumerable、non-Symbol <strong>properties</strong></li>
+<li>參考<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...in#description">MDN 的說明</a>：
+<ul>
+<li>A <code>for...in</code> loop <strong>only</strong> iterates over <strong>enumerable, non-Symbol properties</strong>.</li>
+<li>Objects created from built–in constructors like <code>Array()</code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Array">(ref.)</a> and <code>Object()</code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/Object">(ref.)</a> have inherited non–enumerable properties from <code>Object.prototype</code> and <code>String.prototype</code>, such as String’s <code>indexOf()</code> method or Object’s <code>toString()</code> method.</li>
+</ul>
+</li>
+<li>遍歷的是 enumerable <strong>properties</strong> (key-value pair 中的<strong>key</strong>)，而非 value；使用<code>for...in</code>遍歷陣列或字串時需注意是否抓取到正確的物件，參考以下示範：
+  <iframe height="400px" width="100%" src="https://replit.com/@Charlie7779/forinBian-Li-Zhen-Lie-Yu-Zi-Chuan?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+</li>
+</ul>
+<h3 id="forof"><code>for...of</code></h3>
+<ul>
+<li>可遍歷陣列</li>
+<li>不可直接遍歷物件</li>
+</ul>
+<iframe height="400px" width="100%" src="https://replit.com/@Charlie7779/forofBian-Li?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+<ul>
+<li>
+<p>可遍歷任何「可遍歷的物件」（iterable objects）</p>
+<ul>
+<li>JavaScript built-in iterable objects: Array, array-like objects (arguments, NodeList), TypedArray, Map, Set, String</li>
+<li>而 Object 不是 iterable objects，對 Object 使用<code>for...of</code>會回傳<code>Error: not iterable</code></li>
+<li>iterable objects 可參考<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols#the_iterable_protocol">MDN 的說明</a></li>
+</ul>
+</li>
+<li>
+<p>無法遍歷到使用「non-numeric」作為索引的值</p>
+  <iframe height="400px" width="100%" src="https://replit.com/@Charlie7779/forofWu-Fa-Bian-Li-non-numeric-properties?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+</li>
+<li>
+<p>無法直接遍歷「包含了 non-numeric 索引」的陣列</p>
+  <iframe height="400px" width="100%" src="https://replit.com/@Charlie7779/forofWu-Fa-Zhi-Jie-Bian-Li-You-forofWu-Fa-Zhi-Jie-Bian-Li-Bao-Han-non-numeric-propertiesDe-Zhen-Lie?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+</li>
+<li>
+<p>但如果先建立一個沒有「non-numeric 索引」的陣列，再 assign「包含了 non-numeric 索引」的值進去陣列裡面，這樣是可以遍歷的</p>
+  <iframe height="400px" width="100%" src="https://replit.com/@Charlie7779/forofKe-Yi-Bian-Li-Xuan-Gao-Hou-Bu-Jia-Shang-non-numeric-propertiesDe-Zhen-Lie?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+</li>
+</ul>
+<h3 id="every"><code>every()</code></h3>
+<ul>
+<li>可遍歷陣列</li>
+<li>不可直接遍歷物件</li>
+</ul>
+<iframe height="400px" width="100%" src="https://replit.com/@Charlie7779/Arrayprototypeevery?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+<ul>
+<li><code>every()</code>會對陣列中的每一個物件執行放在括號中的 function（callback function）</li>
+<li>如果所有的物件傳入 callback function 後都回傳 truthy value，則<code>every()</code>會回傳 true，否則<code>every()</code>回傳 false</li>
+<li>一旦 callback function 回傳 falsy value，<code>every()</code>就會停止（參考上方示範碼第 21 行輸出的結果）</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/every#description">參考 MDN 的說明</a>：對空的陣列執行<code>every()</code>，不管 callback function 的條件是什麼，<code>every()</code>都會回傳 true</li>
+<li><code>every()</code>不會對被刪除的、空的值執行 callback function</li>
+</ul>
+<h3 id="some"><code>some()</code></h3>
+<ul>
+<li>可遍歷陣列</li>
+<li>不可直接遍歷物件</li>
+</ul>
+<iframe height="400px" width="100%" src="https://replit.com/@Charlie7779/Arrayprototypesome?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+<ul>
+<li>對陣列中的每一個物件執行 callback function，只要有一個物件讓 callback function 回傳 truthy value，<code>some()</code>就會回傳 true</li>
+</ul>
+<h3 id="foreach"><code>forEach()</code></h3>
+<ul>
+<li>可遍歷陣列</li>
+<li>不可直接遍歷物件</li>
+</ul>
+<iframe height="400px" width="100%" src="https://replit.com/@Charlie7779/forEach?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+<ul>
+<li><code>forEach()</code>會對陣列中的每一個物件執行放在括號中的 function（callback function）</li>
+<li><code>forEach()</code>不會對被刪除的、空的值執行 callback function（<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach#description">MDN</a>: It is not invoked for index properties that have been deleted or are uninitialized.），可參考以下範例：
+  <iframe height="400px" width="100%" src="https://replit.com/@Charlie7779/forEach-invoked-count?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+</li>
+</ul>
+<h3 id="join"><code>join()</code></h3>
+<ul>
+<li>可遍歷陣列</li>
+<li>不可直接遍歷物件</li>
+</ul>
+<iframe height="400px" width="100%" src="https://replit.com/@Charlie7779/Arrayprototypejoin?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+<ul>
+<li>回傳「將陣列依照括號內條件」組合起來的字串（類型：string）</li>
+</ul>
+<h3 id="reduce"><code>reduce()</code></h3>
+<ul>
+<li>可遍歷陣列</li>
+<li>不可直接遍歷物件</li>
+</ul>
+<iframe height="400px" width="100%" src="https://replit.com/@Charlie7779/Arrayprototypereduce?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+<ul>
+<li>回傳「陣列經過<code>reduce()</code>後」的單一個值，不影響原始陣列的內容</li>
+<li><code>reduce()</code>的 callback 最少需要兩個參數<code>accumulator</code>與<code>currentValue</code>
+<ul>
+<li><code>accumulator</code>：負責記住 callback function 回傳的值</li>
+<li><code>currentValue</code>：每一回遍歷的陣列元素（MDN: The current element being processed in the array.）</li>
+</ul>
+</li>
+<li><code>reduceRight()</code>則是從陣列的右側向左遍歷</li>
+</ul>
+<p>2021/5/6 更新
+應用：可篩選出一個陣列中長度最長的單字</p>
+<script src="https://gist.github.com/tzynwang/6611fe122e2923e5d22b545f084eebc3.js"></script>
+<p>筆記：</p>
+<ul>
+<li>letterArray 中的每一個單字會依序成為<code>currentWord</code>，而當<code>currentWord.length</code>大於<code>longestWord.length</code>的時候，<code>longestWord</code>的值就會被更新為<code>currentWord</code></li>
+<li>遍歷結束後，回傳<code>longestWord</code>（該陣列中最長的單字）</li>
+</ul>
+<p>參考：<a href="https://www.freecodecamp.org/news/three-ways-to-find-the-longest-word-in-a-string-in-javascript-a2fb04c9757c/">Find the Longest Word With the reduce() Method</a></p>
+<h2 id="會回傳新陣列">會回傳新陣列</h2>
+<h3 id="filter"><code>filter()</code></h3>
+<ul>
+<li>可遍歷陣列</li>
+<li>不可直接遍歷物件</li>
+</ul>
+<iframe height="400px" width="100%" src="https://replit.com/@Charlie7779/Arrayprototypefilter?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+<ul>
+<li>回傳一個新的陣列，新的陣列中包含「傳入 callback function 後，判定為 true」的所有物件</li>
+<li>概念與<code>forEach()</code>類似：<code>filter()</code>不會對被刪除的、空的值執行 callback function（<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter#description">參考 MDN 的說明</a>）</li>
+</ul>
+<h3 id="flat"><code>flat()</code></h3>
+<ul>
+<li>可遍歷陣列</li>
+<li>不可直接遍歷物件</li>
+</ul>
+<iframe height="400px" width="100%" src="https://replit.com/@Charlie7779/Arrayprototypeflat?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+<ul>
+<li>根據括號內的參數來將陣列扁平化，回傳一個新的陣列</li>
+<li>預設參數為 1</li>
+<li>其他應用（<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/flat#examples">參考 MDN</a>）：
+<ul>
+<li>參數傳入<code>Infinity</code>的話，陣列中任何深度的巢狀陣列全部都會被扁平化</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> arr</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> [</span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">2</span><span style="color:#E1E4E8">, [</span><span style="color:#79B8FF">3</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">4</span><span style="color:#E1E4E8">, [</span><span style="color:#79B8FF">5</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">6</span><span style="color:#E1E4E8">, [</span><span style="color:#79B8FF">7</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">8</span><span style="color:#E1E4E8">, [</span><span style="color:#79B8FF">9</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">10</span><span style="color:#E1E4E8">]]]]];</span></span>
+<span class="line"><span style="color:#E1E4E8">arr.</span><span style="color:#B392F0">flat</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">Infinity</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#6A737D">// [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]</span></span></code></pre>
+<ul>
+<li>可以拿來去除陣列中的空位</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> arr</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> [</span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">2</span><span style="color:#E1E4E8">, , </span><span style="color:#79B8FF">4</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">5</span><span style="color:#E1E4E8">];</span></span>
+<span class="line"><span style="color:#E1E4E8">arr.</span><span style="color:#B392F0">flat</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#6A737D">// [1, 2, 4, 5]</span></span></code></pre>
+</li>
+</ul>
+<h3 id="flatmap"><code>flatMap()</code></h3>
+<p>功能上：即是<code>map()</code>加上<code>flat(1)</code>，但濃縮為一個 method</p>
+<h3 id="map"><code>map()</code></h3>
+<ul>
+<li>可遍歷陣列</li>
+<li>不可直接遍歷物件</li>
+</ul>
+<iframe height="400px" width="100%" src="https://replit.com/@Charlie7779/map?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+<ul>
+<li><code>map()</code>會對陣列中的每一個物件執行放在括號中的 function（callback function），並回傳一個新陣列</li>
+<li>概念與<code>forEach()</code>類似：<code>map()</code>不會對被刪除的、空的值執行 callback function（<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map#description">參考 MDN 的說明</a>）</li>
+</ul>
+<h2 id="參考文件">參考文件</h2>
+<ul>
+<li><a href="https://dev.to/misterkevin_js/11-ways-to-iterate-an-array-javascript-3mjg">11 ways to iterate an array in Javascript</a></li>
+<li><a href="https://www.w3schools.com/JS/js_array_iteration.asp">w3school.com: JavaScript Array Iteration Methods</a></li>
+<li><a href="https://www.geeksforgeeks.org/ways-iterating-array-javascript/">GeeksforGeeks: Ways of iterating over a array in JavaScript</a></li>
+<li><a href="https://masteringjs.io/tutorials/fundamentals/array-iterate">Mastering JS: How to Iterate through an Array in JavaScript</a></li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

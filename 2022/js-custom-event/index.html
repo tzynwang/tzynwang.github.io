@@ -1,0 +1,100 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v3.6.4"><!-- Primary Meta Tags --><title>2022 第32週 學習筆記：在 react app 中實作 event driven pattern</title><meta name="title" content="2022 第32週 學習筆記：在 react app 中實作 event driven pattern"><meta name="description" content="這是一個文組轉職前端工程師的技術部落格"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2022/js-custom-event/"><meta property="og:title" content="2022 第32週 學習筆記：在 react app 中實作 event driven pattern"><meta property="og:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="og:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2022/js-custom-event/"><meta property="twitter:title" content="2022 第32週 學習筆記：在 react app 中實作 event driven pattern"><meta property="twitter:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="twitter:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:Noto Sans TC,sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul{margin-top:16px;margin-bottom:16px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:8px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+</style><script type="module" src="/_astro/hoisted.77775e67.js"></script></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>2022 第32週 學習筆記：在 react app 中實作 event driven pattern</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2022-08-11 20:22</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/Design Patterns" data-astro-cid-2iymvi75> Design Patterns </a> <a class="tag" href="/tag/JavaScript" data-astro-cid-2iymvi75> JavaScript </a> <a class="tag" href="/tag/React" data-astro-cid-2iymvi75> React </a> <a class="tag" href="/tag/TypeScript" data-astro-cid-2iymvi75> TypeScript </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#總結" data-astro-cid-qtokga5y>總結</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#筆記" data-astro-cid-qtokga5y>筆記</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#建立事件" data-astro-cid-qtokga5y>建立事件</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#監聽事件" data-astro-cid-qtokga5y>監聽事件</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#小結" data-astro-cid-qtokga5y>小結</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#參考文件" data-astro-cid-qtokga5y>參考文件</a> </li> </ul> </div> <h2 id="總結">總結</h2>
+<p>最近在開發的功能規模不大，適合用 event driven pattern 來實作，此篇筆記記錄一下開發時收到的建議與心得</p>
+<ul>
+<li>展示頁：<a href="https://tzynwang.github.io/react-event-driven-demo/">https://tzynwang.github.io/react-event-driven-demo/</a></li>
+<li>完整原始碼：<a href="https://github.com/tzynwang/react-event-driven-demo">https://github.com/tzynwang/react-event-driven-demo</a></li>
+</ul>
+<h2 id="筆記">筆記</h2>
+<h3 id="建立事件">建立事件</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#F97583">interface</span><span style="color:#B392F0"> TokenLoginEvent</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#FFAB70">  token</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> string</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#F97583">enum</span><span style="color:#B392F0"> AUTH_EVENT</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#79B8FF">  TOKEN_LOGIN</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> 'TOKEN_LOGIN'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">  LOGOUT</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> 'LOGOUT'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> dispatchTokenLoginEvent</span><span style="color:#E1E4E8">()</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> void</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> event</span><span style="color:#F97583"> =</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> CustomEvent</span><span style="color:#E1E4E8">&#x3C;</span><span style="color:#B392F0">TokenLoginEvent</span><span style="color:#E1E4E8">>(</span><span style="color:#79B8FF">AUTH_EVENT</span><span style="color:#E1E4E8">.</span><span style="color:#79B8FF">TOKEN_LOGIN</span><span style="color:#E1E4E8">, {</span></span>
+<span class="line"><span style="color:#E1E4E8">    detail: { token: </span><span style="color:#9ECBFF">'a very long token'</span><span style="color:#E1E4E8"> },</span></span>
+<span class="line"><span style="color:#E1E4E8">  });</span></span>
+<span class="line"><span style="color:#E1E4E8">  document.</span><span style="color:#B392F0">dispatchEvent</span><span style="color:#E1E4E8">(event);</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> dispatchLogoutEvent</span><span style="color:#E1E4E8">()</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> void</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> event</span><span style="color:#F97583"> =</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> Event</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">AUTH_EVENT</span><span style="color:#E1E4E8">.</span><span style="color:#79B8FF">LOGOUT</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">  document.</span><span style="color:#B392F0">dispatchEvent</span><span style="color:#E1E4E8">(event);</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<ul>
+<li>需注意傳入 <code>Event</code> 或 <code>CustomEvent</code> constructor 作為事件名稱的 <code>type</code> 在 DOM Level 2 改為大小寫不分；原文：This specification considers the <code>type</code> attribute to be case-sensitive, while <strong>DOM Level 2 Events</strong> considers <code>type</code> to be <strong>case-insensitive</strong>.</li>
+<li>CustomEvent 可在 constructor 第二個參數傳入要隨事件一併發送的資料，型別為 <code>{ detail: T = any }</code>；上述範例中傳入 <code>TokenLoginEvent</code> 作為 T</li>
+<li>在有搭配 TypeScript 開發的情況下，可使用 enum 來管理專案內的所有事件名稱，使用 enum 也能避免打錯事件名稱的意外</li>
+</ul>
+<h3 id="監聽事件">監聽事件</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> handleLogout</span><span style="color:#E1E4E8">()</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> void</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">  // run the logout logic</span></span>
+<span class="line"><span style="color:#E1E4E8">  console.</span><span style="color:#B392F0">info</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'receive logout event.'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> handleLoginByToken</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">e</span><span style="color:#F97583">:</span><span style="color:#B392F0"> Event</span><span style="color:#E1E4E8">)</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> void</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">  // run the logic of login by token</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> event</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> e </span><span style="color:#F97583">as</span><span style="color:#B392F0"> CustomEvent</span><span style="color:#E1E4E8">&#x3C;</span><span style="color:#B392F0">TokenLoginEvent</span><span style="color:#E1E4E8">>;</span></span>
+<span class="line"><span style="color:#E1E4E8">  console.</span><span style="color:#B392F0">info</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">`receive login by token event, token: ${</span><span style="color:#E1E4E8">event</span><span style="color:#9ECBFF">.</span><span style="color:#E1E4E8">detail</span><span style="color:#9ECBFF">.</span><span style="color:#E1E4E8">token</span><span style="color:#9ECBFF">}.`</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">useEffect</span><span style="color:#E1E4E8">(() </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">  document.</span><span style="color:#B392F0">addEventListener</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">AUTH_EVENT</span><span style="color:#E1E4E8">.</span><span style="color:#79B8FF">LOGOUT</span><span style="color:#E1E4E8">, handleLogout);</span></span>
+<span class="line"><span style="color:#E1E4E8">  document.</span><span style="color:#B392F0">addEventListener</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">AUTH_EVENT</span><span style="color:#E1E4E8">.</span><span style="color:#79B8FF">TOKEN_LOGIN</span><span style="color:#E1E4E8">, handleLoginByToken);</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">    document.</span><span style="color:#B392F0">removeEventListener</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">AUTH_EVENT</span><span style="color:#E1E4E8">.</span><span style="color:#79B8FF">LOGOUT</span><span style="color:#E1E4E8">, handleLogout);</span></span>
+<span class="line"><span style="color:#E1E4E8">    document.</span><span style="color:#B392F0">removeEventListener</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">AUTH_EVENT</span><span style="color:#E1E4E8">.</span><span style="color:#79B8FF">TOKEN_LOGIN</span><span style="color:#E1E4E8">, handleLoginByToken);</span></span>
+<span class="line"><span style="color:#E1E4E8">  };</span></span>
+<span class="line"><span style="color:#E1E4E8">}, []);</span></span></code></pre>
+<p>在需要取出 CustomEvent 夾帶的 detail 資料時，透過 TypeScript <code>as</code> operator 讓 TS 將 event 認定為 <code>CustomEvent&#x3C;TokenLoginEvent></code> 型別，再從 detail 中取出對應的內容</p>
+<h3 id="小結">小結</h3>
+<ul>
+<li>使用 event driven 模式的優點：
+<ul>
+<li>觸發事件的條件單純時，開發速度很快</li>
+<li>將邏輯與介面 (views) 徹底分離，維護元件時不需擔心誤觸程式邏輯，反之更新邏輯時也不會意外影響元件外觀</li>
+<li>可將類型一致的邏輯處理集中到單一位置來管理，不會讓程式碼分散在專案各處，維護或除錯時比較不容易有漏網之魚</li>
+</ul>
+</li>
+<li>使用 event driven 模式的缺點：
+<ul>
+<li>派送的事件數量（或條件）一旦變多，就不容易釐清事件是從哪邊被派送出來，除錯難度上升</li>
+<li>某些需求一開始可能單純，但日趨複雜，使用 event driven 不一定能兼顧後續的需求擴增，有打掉重練的可能</li>
+</ul>
+</li>
+</ul>
+<h2 id="參考文件">參考文件</h2>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/Events/Creating_and_triggering_events">MDN: Creating and triggering events</a></li>
+<li><a href="https://www.w3.org/TR/DOM-Level-3-Events/#changes-DOMLevel2to3Changes">W3C: 11.1.3. Changes to DOM Level 2 Events interfaces</a></li>
+<li><a href="https://stackoverflow.com/questions/6629093/what-are-dom-levels">stackOverFlow: What are DOM levels?</a></li>
+<li><a href="https://stackoverflow.com/questions/69220403/is-there-a-difference-between-as-type-operator-and-classical-typing-in-typescr">stackOverFlow: Is there a difference between <code>as</code> type operator and classical typing in TypeScript?</a></li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 
