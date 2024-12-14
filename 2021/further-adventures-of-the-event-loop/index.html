@@ -1,0 +1,252 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v3.6.4"><!-- Primary Meta Tags --><title>再訪 event loop</title><meta name="title" content="再訪 event loop"><meta name="description" content="這是一個文組轉職前端工程師的技術部落格"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2021/further-adventures-of-the-event-loop/"><meta property="og:title" content="再訪 event loop"><meta property="og:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="og:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2021/further-adventures-of-the-event-loop/"><meta property="twitter:title" content="再訪 event loop"><meta property="twitter:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="twitter:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:Noto Sans TC,sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul{margin-top:16px;margin-bottom:16px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:8px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+</style><script type="module" src="/_astro/hoisted.77775e67.js"></script></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>再訪 event loop</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2021-04-14 14:02</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/JavaScript" data-astro-cid-2iymvi75> JavaScript </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#總結" data-astro-cid-qtokga5y>總結</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#影片摘要further-adventures-of-the-event-loop" data-astro-cid-qtokga5y>影片摘要：Further Adventures of the Event Loop</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#筆記-1" data-astro-cid-qtokga5y>筆記 1</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#standard-stack" data-astro-cid-qtokga5y>standard stack</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#microtask" data-astro-cid-qtokga5y>microtask</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#macrotask" data-astro-cid-qtokga5y>(macro)task</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#影片演示macrotask-queueanimation-callback-queue-與-microtask" data-astro-cid-qtokga5y>影片演示(macro)task queue、animation callback queue 與 microtask</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#題目解析in-the-loop" data-astro-cid-qtokga5y>題目解析：In The Loop</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#影片摘要scheduling-tasks" data-astro-cid-qtokga5y>影片摘要：Scheduling Tasks</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#筆記-2" data-astro-cid-qtokga5y>筆記 2</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#參考文件" data-astro-cid-qtokga5y>參考文件</a> </li> </ul> </div> <h2 id="總結">總結</h2>
+<ul>
+<li>瀏覽器中的 JavaScript 環境（runtime）包含 standard stack、microtask queue 與(macro)task queue</li>
+<li>簡化後的瀏覽器 event loop 流程如下：
+<ol>
+<li>處理 standard stack 中的<strong>所有</strong>任務</li>
+<li>standard stack 清空後，開始處理 microtask queue 中的<strong>所有</strong>任務</li>
+<li>microtask queue 清空後，開始處理(macro)task queue 中的<strong>一個</strong>任務</li>
+<li>一次 event loop 中可能有複數個(macro)task queue，event loop 會執行每一個(macro)task queue 中<strong>最早</strong>被加進來的<strong>一個</strong>任務</li>
+</ol>
+</li>
+</ul>
+<!--more-->
+<h2 id="影片摘要further-adventures-of-the-event-loop">影片摘要：Further Adventures of the Event Loop</h2>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/u1kqx6AenYw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<ul>
+<li>05:30 An event loop has <strong>one or more task queues</strong>.</li>
+<li>08:03 A microtask is promise. There are other things that generate microtasks, but 99.9% of things that you do it’s going to be promises.
+<ul>
+<li>MDN: JavaScript <strong>promises</strong> and the <strong>Mutation Observer API</strong> both use the <strong>microtask queue</strong> to run their callbacks.</li>
+<li>JAVASCRIPT.INFO: <strong>Microtasks are usually created by promises</strong>: an execution of .then/catch/finally handler becomes a microtask. Microtasks are used “under the cover” of await as well, as it’s another form of promise handling.</li>
+</ul>
+</li>
+<li>14:00 (Browser’s event loop) is an infinite loop, we’re going to pick a queue, we’re going to grab the first (macro)task off that queue, run that (macro)task.
+<ul>
+<li>Then as long as there are microtasks, we’re going to run all those (microtasks).</li>
+<li>Then if we’re ready to repaint, we’re going to grab the animation tasks that are currently in the animation queue, and we’re going to run all of those (tasks in animation queue).</li>
+<li>And then we’re going to repaint.
+<img src="/2021/further-adventures-of-the-event-loop/u1kqx6AenYw-00-14-00.jpg" alt="event loop in browser"></li>
+</ul>
+</li>
+<li>個人心得：Erin Zimmer 的演講沒有特別區分 standard stack 與(macro)task queue，14:00 左右的總結稍微有點簡陋，搭配其他解說文件一起理解比較好</li>
+</ul>
+<h2 id="筆記-1">筆記 1</h2>
+<h3 id="standard-stack">standard stack</h3>
+<ul>
+<li>所有的 synchronous functions 在這裡發生</li>
+<li>standard stack 中所有的任務清空後，才會輪到 microtask queue 與(macro)task queue(s)</li>
+</ul>
+<h3 id="microtask">microtask</h3>
+<ul>
+<li><code>microtask</code>的<code>micro</code>與 task 的尺寸沒有關聯
+<blockquote>
+<p>…microtasks, which kind of conveys a sense of size. Microtask sounds smaller than a task, but really what it just meets the <strong>microtask has a higher priority than a (macro)task</strong>. It doesn’t really say anything about the amount of work that you can do. Maybe a bit about what you should do. — <a href="https://youtu.be/8eHInw9_U8k">Scheduling Tasks - HTTP 203</a></p>
+</blockquote>
+</li>
+<li><code>promises</code>的 callback function 會加入 microtask queue 執行</li>
+<li>傳入<code>queueMicrotask()</code>的 function 也會加入 microtask queue 執行</li>
+<li>瀏覽器每一次的 event loop 只會有一個 microtask queue</li>
+<li>瀏覽器每一次的 event loop 會將 microtask queue 中<strong>所有</strong>的 microtasks 執行完畢後，再執行(macro)task queue 中的任務</li>
+</ul>
+<h3 id="macrotask">(macro)task</h3>
+<ul>
+<li>microtask queue 清空後，event loop 才會開始處理(macro)task queue 中的任務</li>
+<li>以下皆屬於(macro)task
+<ul>
+<li>透過<code>&#x3C;script src="..."></code>載入 JavaScript</li>
+<li><code>setTimeout</code>的 callback function 時間倒數完成後，callback function 會被推入(macro)task queue 執行</li>
+<li>其他如<code>setInterval</code>、<code>setImmediate</code>、<code>requestAnimationFrame</code>、I/O 與 UI rendering (repaint)等任務</li>
+</ul>
+</li>
+<li>瀏覽器每一次的 event loop 可能會有一個、或複數個(macro)task queue(s)</li>
+<li>瀏覽器每一次的 event loop 只會執行(macro)task queue 中的<strong>一個</strong>(macro)task</li>
+</ul>
+<h2 id="影片演示macrotask-queueanimation-callback-queue-與-microtask">影片演示(macro)task queue、animation callback queue 與 microtask</h2>
+<p>大約在 27:37 處開始：</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/cCOL7MC4Pl0?start=1657" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<h3 id="題目解析in-the-loop">題目解析：In The Loop</h3>
+<p>第一組程式碼：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> button</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> document.</span><span style="color:#B392F0">querySelector</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'button'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">button.</span><span style="color:#B392F0">addEventListener</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'click'</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">function</span><span style="color:#B392F0"> first</span><span style="color:#E1E4E8"> () {</span></span>
+<span class="line"><span style="color:#79B8FF">  Promise</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">resolve</span><span style="color:#E1E4E8">().</span><span style="color:#B392F0">then</span><span style="color:#E1E4E8">(() </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'microtask 1'</span><span style="color:#E1E4E8">));</span></span>
+<span class="line"><span style="color:#E1E4E8">  console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'listener 1'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">button.</span><span style="color:#B392F0">addEventListener</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'click'</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">function</span><span style="color:#B392F0"> second</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#79B8FF">  Promise</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">resolve</span><span style="color:#E1E4E8">().</span><span style="color:#B392F0">then</span><span style="color:#E1E4E8">(() </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'microtask 2'</span><span style="color:#E1E4E8">));</span></span>
+<span class="line"><span style="color:#E1E4E8">  console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'listener 2'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+<ul>
+<li>輸出順序：<code>listener 1</code>、<code>microtask 1</code>、<code>listener 2</code>、<code>microtask 2</code></li>
+<li>分析：
+<ol>
+<li>使用者點選<code>button</code>後，task stack 執行<code>function first ()</code>的<code>console.log('listener 1')</code></li>
+<li><code>console.log('microtask 1')</code>被推到 microtask queue 中</li>
+<li><code>function first ()</code>結束，task stack 空了，執行 microtask queue 中的<code>console.log('microtask 1')</code></li>
+<li>開始執行<code>function second()</code>的<code>console.log('listener 2')</code></li>
+<li><code>console.log('microtask 2')</code>被推到 microtask queue 中</li>
+<li><code>function second()</code>結束，task stack 空了，執行 microtask queue 中的<code>console.log('microtask 2')</code></li>
+</ol>
+</li>
+</ul>
+<p>第二組程式碼：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> button</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> document.</span><span style="color:#B392F0">querySelector</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'button'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">button.</span><span style="color:#B392F0">addEventListener</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'click'</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">function</span><span style="color:#B392F0"> first</span><span style="color:#E1E4E8"> () {</span></span>
+<span class="line"><span style="color:#79B8FF">  Promise</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">resolve</span><span style="color:#E1E4E8">().</span><span style="color:#B392F0">then</span><span style="color:#E1E4E8">(() </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'microtask 1'</span><span style="color:#E1E4E8">));</span></span>
+<span class="line"><span style="color:#E1E4E8">  console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'listener 1'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">})</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">button.</span><span style="color:#B392F0">addEventListener</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'click'</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">function</span><span style="color:#B392F0"> second</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#79B8FF">  Promise</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">resolve</span><span style="color:#E1E4E8">().</span><span style="color:#B392F0">then</span><span style="color:#E1E4E8">(() </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'microtask 2'</span><span style="color:#E1E4E8">));</span></span>
+<span class="line"><span style="color:#E1E4E8">  console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'listener 2'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">})</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">button.</span><span style="color:#B392F0">click</span><span style="color:#E1E4E8">();</span></span></code></pre>
+<ul>
+<li>輸出順序：<code>listener 1</code>、<code>listener 2</code>、<code>microtask 1</code>、<code>microtask 2</code></li>
+<li>分析：
+<ol>
+<li><code>button.click()</code>被執行</li>
+<li>執行<code>function first ()</code>的<code>console.log('listener 1')</code></li>
+<li><code>console.log('microtask 1')</code>被推到 microtask queue 中</li>
+<li><code>function first ()</code>結束，但<code>button.click()</code>還在執行（task stack 還未清空），還未輪到 microtask</li>
+<li>開始執行<code>function second()</code>的<code>console.log('listener 2')</code></li>
+<li><code>console.log('microtask 2')</code>被推到 microtask queue 中</li>
+<li><code>function second ()</code>結束，，<code>button.click()</code>還在執行（task stack 還未清空），還未輪到 microtask</li>
+<li><code>button.click()</code>結束</li>
+<li>task stack 空了，執行 microtask queue 中的<code>console.log('listener 1')</code>與<code>console.log('microtask 2')</code></li>
+</ol>
+</li>
+<li>在第一組程式碼中，<code>function first ()</code>結束後 task stack 就淨空了，故可以去處理 microtask queue 中的任務</li>
+<li>而第二組程式碼則是：<code>function first ()</code>結束了，但<code>button.click()</code>還沒完，因為還有一個<code>function second ()</code>需執行；<code>function second ()</code>執行完畢後，<code>button.click()</code>才算完全結束，可以從 task stack 上移除，這時候才能處理 microtask queue 中的任務</li>
+</ul>
+<h2 id="影片摘要scheduling-tasks">影片摘要：Scheduling Tasks</h2>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/8eHInw9_U8k" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<ul>
+<li>
+<p>02:45 There’s a way to synchronously call a callback, there’s a way to call a callback as a (macro)task, and there is a way to call a callback as a microtask</p>
+</li>
+<li>
+<p>03:19 In the end, the event loop is just something that spins around and takes tasks out of different queues. And these <strong>different queues have different priorities</strong>.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#B392F0">synchronous</span><span style="color:#E1E4E8">(() </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'sync 1'</span><span style="color:#E1E4E8">));</span></span>
+<span class="line"><span style="color:#B392F0">task</span><span style="color:#E1E4E8">       (() </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'task 1'</span><span style="color:#E1E4E8">));</span></span>
+<span class="line"><span style="color:#B392F0">microtask</span><span style="color:#E1E4E8">  (() </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'microtask 1'</span><span style="color:#E1E4E8">));</span></span>
+<span class="line"><span style="color:#B392F0">task</span><span style="color:#E1E4E8">       (() </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'task 2'</span><span style="color:#E1E4E8">));</span></span>
+<span class="line"><span style="color:#B392F0">synchronous</span><span style="color:#E1E4E8">(() </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'sync 2'</span><span style="color:#E1E4E8">));</span></span>
+<span class="line"><span style="color:#B392F0">microtask</span><span style="color:#E1E4E8">  (() </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'microtask 2'</span><span style="color:#E1E4E8">));</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">/*</span></span>
+<span class="line"><span style="color:#6A737D">output order:</span></span>
+<span class="line"><span style="color:#6A737D">sync 1</span></span>
+<span class="line"><span style="color:#6A737D">sync 2</span></span>
+<span class="line"><span style="color:#6A737D">microtask 1</span></span>
+<span class="line"><span style="color:#6A737D">microtask 2</span></span>
+<span class="line"><span style="color:#6A737D">task 1</span></span>
+<span class="line"><span style="color:#6A737D">task 2</span></span>
+<span class="line"><span style="color:#6A737D">*/</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> synchronous</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">cb</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#B392F0">  cb</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> microtask</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">cb</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#B392F0">  queueMicrotask</span><span style="color:#E1E4E8">(cb);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">  // This can work too:</span></span>
+<span class="line"><span style="color:#6A737D">  // Promise.resolve().then(() => cb());</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> task</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">cb</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#B392F0">  setTimeout</span><span style="color:#E1E4E8">(() </span><span style="color:#F97583">=></span><span style="color:#B392F0"> cb</span><span style="color:#E1E4E8">());</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">  // A more reliable way without timeout clamping, use MessageChannel():</span></span>
+<span class="line"><span style="color:#6A737D">  // const mc = new MessageChannel();</span></span>
+<span class="line"><span style="color:#6A737D">  // mc.port1.postMessage(null);</span></span>
+<span class="line"><span style="color:#6A737D">  // mc.port2.addEventListener('message', () => {</span></span>
+<span class="line"><span style="color:#6A737D">  //   cb();</span></span>
+<span class="line"><span style="color:#6A737D">  // }, {once: true});</span></span>
+<span class="line"><span style="color:#6A737D">  // mc.port2.start();</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+</li>
+<li>
+<p>03:55 There are some very particular situations where microtasks can come before (macro)tasks, but <strong>only when they’re queued by the browser</strong>, not by JavaScript.</p>
+</li>
+<li>
+<p>04:57 (The code below) is not correct because the constructor of the promise, the function inside the promise constructor, this is call the <strong>revealing constructor pattern</strong>…will invoke <strong>synchronously</strong>.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> microtask</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">cb</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#6A737D">  // This can NOT add the callback to microtask queue:</span></span>
+<span class="line"><span style="color:#F97583">  new</span><span style="color:#79B8FF"> Promise</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">resolve</span><span style="color:#F97583"> =></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#B392F0">    cb</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#B392F0">    resolve</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">  });</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">/*</span></span>
+<span class="line"><span style="color:#6A737D">output order will change to:</span></span>
+<span class="line"><span style="color:#6A737D">sync 1</span></span>
+<span class="line"><span style="color:#6A737D">microtask 1</span></span>
+<span class="line"><span style="color:#6A737D">sync 2</span></span>
+<span class="line"><span style="color:#6A737D">microtask 2</span></span>
+<span class="line"><span style="color:#6A737D">task 1</span></span>
+<span class="line"><span style="color:#6A737D">task 2</span></span>
+<span class="line"><span style="color:#6A737D">*/</span></span></code></pre>
+</li>
+<li>
+<p>06:31 Most of the time (the code below) will be OK. However, <code>setTimeout()</code> has som very specific rules that when you start <strong>scheduling tasks from within tasks</strong> using this, once you reach a certain depth, <strong>timeout clamping</strong> will occur. So it won’t schedule the task immediately, but it will start scaling it after 4 milliseconds.</p>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setTimeout#reasons_for_delays">Clamping</a>: In modern browsers, <code>setTimeout()</code>/<code>setInterval()</code> calls are throttled to a minimum of once every 4 ms when successive calls are triggered due to <strong>callback nesting</strong> (where the nesting level is at least a certain depth), or after certain number of successive intervals.</li>
+<li>06:59 The spec for this says, wait whatever time you put in there. But then the browser is free to add any kind of padding that they want.</li>
+</ul>
+</li>
+<li>
+<p>08:36 The reason that we don’t have a simple function for queuing tasks is <strong>because there are many task queues</strong>. And whenever someone suggests, let’s have a simple function for queuing a task, the next question is, <strong>which queue</strong>?</p>
+</li>
+</ul>
+<h2 id="筆記-2">筆記 2</h2>
+<ul>
+<li><a href="https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick/#process-nexttick-vs-setimmediate">process.nextTick() vs setImmediate()</a>
+<ul>
+<li><code>nextTick()</code>僅存於 node，<code>setImmediate()</code>目前<a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/setImmediate#browser_compatibility">僅有 IE 支援</a></li>
+<li>傳進<code>nextTick()</code>的 callback function 會比傳進<code>setImmediate()</code>的 callback function 更早被 node 的 event loop 執行</li>
+<li>官方吐槽：“In essence, the names should be swapped.”</li>
+</ul>
+</li>
+</ul>
+<h2 id="參考文件">參考文件</h2>
+<ul>
+<li><a href="https://jakearchibald.com/2015/tasks-microtasks-queues-and-schedules/">Tasks, microtasks, queues and schedules</a></li>
+<li><a href="https://javascript.info/event-loop">Event loop: microtasks and macrotasks</a></li>
+<li><a href="https://javascript.info/microtask-queue">Microtasks</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/HTML_DOM_API/Microtask_guide">Using microtasks in JavaScript with queueMicrotask()</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop">Concurrency model and the event loop</a></li>
+<li><a href="https://stackoverflow.com/q/25915634/15028185">Difference between microtask and macrotask within an event loop context</a></li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

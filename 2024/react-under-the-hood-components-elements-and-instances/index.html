@@ -1,0 +1,204 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v3.6.4"><!-- Primary Meta Tags --><title>葫蘆裡的 React：關於組件（components）與元素（elements）</title><meta name="title" content="葫蘆裡的 React：關於組件（components）與元素（elements）"><meta name="description" content="你知道嗎？對 React 來說，組件（components）、組件實例（components instances）和元素（elements）這三者是不同的東西唷 🌚"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2024/react-under-the-hood-components-elements-and-instances/"><meta property="og:title" content="葫蘆裡的 React：關於組件（components）與元素（elements）"><meta property="og:description" content="你知道嗎？對 React 來說，組件（components）、組件實例（components instances）和元素（elements）這三者是不同的東西唷 🌚"><meta property="og:image" content="https://tzynwang.github.io/2024/react-under-the-hood-components-elements-and-instances/luis-aguila-xLvIcAYuuMQ-unsplash.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2024/react-under-the-hood-components-elements-and-instances/"><meta property="twitter:title" content="葫蘆裡的 React：關於組件（components）與元素（elements）"><meta property="twitter:description" content="你知道嗎？對 React 來說，組件（components）、組件實例（components instances）和元素（elements）這三者是不同的東西唷 🌚"><meta property="twitter:image" content="https://tzynwang.github.io/2024/react-under-the-hood-components-elements-and-instances/luis-aguila-xLvIcAYuuMQ-unsplash.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:Noto Sans TC,sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul{margin-top:16px;margin-bottom:16px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:8px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+</style><script type="module" src="/_astro/hoisted.77775e67.js"></script></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>葫蘆裡的 React：關於組件（components）與元素（elements）</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2024-01-08 08:05</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/React" data-astro-cid-2iymvi75> React </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#元素不是組件" data-astro-cid-qtokga5y>元素不是組件</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#關於元素element" data-astro-cid-qtokga5y>關於元素（element）</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#dom-element" data-astro-cid-qtokga5y>DOM Element</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#component-element" data-astro-cid-qtokga5y>Component Element</a> </li><li class="toc-4" data-astro-cid-qtokga5y> <a href="#透過-propschildren-解除耦合" data-astro-cid-qtokga5y>透過 props.children 解除耦合</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#關於組件component" data-astro-cid-qtokga5y>關於組件（component）</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#react-的工作" data-astro-cid-qtokga5y>React 的工作</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#參考文件" data-astro-cid-qtokga5y>參考文件</a> </li> </ul> </div> <h2 id="元素不是組件">元素不是組件</h2>
+<p>組件（components）、組件實例（components instances）和元素（elements）在 React 各自代表不同的意義。</p>
+<p>組件（components）是你透過 React 定義的 <code>&#x3C;Button /></code>，它會有自己的局部狀態（local states）。而組件實例（components instances）則是指 React 幫你建立、在整個前端服務各處實際使用的 <code>&#x3C;Button /></code> 們。</p>
+<blockquote>
+<p>For example, you may declare a <strong><code>Button</code> component</strong> by creating a class. When the app is running, you may have several <strong>instances of this component</strong> on screen, each with its own properties and local state.</p>
+</blockquote>
+<p>傳統的物件導向風格介面函式庫（例如 Backbone）會由組件實例直接處理 DOM 節點的增刪改。一個組件實例也要負責控制它的子代組件實例。</p>
+<blockquote>
+<p>Each component instance has to keep references to its DOM node and to the instances of the children components, and create, update, and destroy them when the time is right.</p>
+</blockquote>
+<p>比如以下的虛擬碼：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#F97583">class</span><span style="color:#B392F0"> Form</span><span style="color:#F97583"> extends</span><span style="color:#B392F0"> TraditionalObjectOrientedView</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#B392F0">  render</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#6A737D">    // Read some data passed to the view</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#E1E4E8"> { </span><span style="color:#79B8FF">isSubmitted</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">buttonText</span><span style="color:#E1E4E8"> } </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> this</span><span style="color:#E1E4E8">.attrs;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">    if</span><span style="color:#E1E4E8"> (</span><span style="color:#F97583">!</span><span style="color:#E1E4E8">isSubmitted </span><span style="color:#F97583">&#x26;&#x26;</span><span style="color:#F97583"> !</span><span style="color:#79B8FF">this</span><span style="color:#E1E4E8">.button) {</span></span>
+<span class="line"><span style="color:#6A737D">      // Form is not yet submitted. Create the button!</span></span>
+<span class="line"><span style="color:#79B8FF">      this</span><span style="color:#E1E4E8">.button </span><span style="color:#F97583">=</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> Button</span><span style="color:#E1E4E8">({</span></span>
+<span class="line"><span style="color:#E1E4E8">        children: buttonText,</span></span>
+<span class="line"><span style="color:#E1E4E8">        color: </span><span style="color:#9ECBFF">'blue'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">      });</span></span>
+<span class="line"><span style="color:#79B8FF">      this</span><span style="color:#E1E4E8">.el.</span><span style="color:#B392F0">appendChild</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">this</span><span style="color:#E1E4E8">.button.el);</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">    if</span><span style="color:#E1E4E8"> (</span><span style="color:#79B8FF">this</span><span style="color:#E1E4E8">.button) {</span></span>
+<span class="line"><span style="color:#6A737D">      // The button is visible. Update its text!</span></span>
+<span class="line"><span style="color:#79B8FF">      this</span><span style="color:#E1E4E8">.button.attrs.children </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> buttonText;</span></span>
+<span class="line"><span style="color:#79B8FF">      this</span><span style="color:#E1E4E8">.button.</span><span style="color:#B392F0">render</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">    if</span><span style="color:#E1E4E8"> (isSubmitted </span><span style="color:#F97583">&#x26;&#x26;</span><span style="color:#79B8FF"> this</span><span style="color:#E1E4E8">.button) {</span></span>
+<span class="line"><span style="color:#6A737D">      // Form was submitted. Destroy the button!</span></span>
+<span class="line"><span style="color:#79B8FF">      this</span><span style="color:#E1E4E8">.el.</span><span style="color:#B392F0">removeChild</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">this</span><span style="color:#E1E4E8">.button.el);</span></span>
+<span class="line"><span style="color:#79B8FF">      this</span><span style="color:#E1E4E8">.button.</span><span style="color:#B392F0">destroy</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">    if</span><span style="color:#E1E4E8"> (isSubmitted </span><span style="color:#F97583">&#x26;&#x26;</span><span style="color:#F97583"> !</span><span style="color:#79B8FF">this</span><span style="color:#E1E4E8">.message) {</span></span>
+<span class="line"><span style="color:#6A737D">      // Form was submitted. Show the success message!</span></span>
+<span class="line"><span style="color:#79B8FF">      this</span><span style="color:#E1E4E8">.message </span><span style="color:#F97583">=</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> Message</span><span style="color:#E1E4E8">({ text: </span><span style="color:#9ECBFF">'Success!'</span><span style="color:#E1E4E8"> });</span></span>
+<span class="line"><span style="color:#79B8FF">      this</span><span style="color:#E1E4E8">.el.</span><span style="color:#B392F0">appendChild</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">this</span><span style="color:#E1E4E8">.message.el);</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>問題是——組件的狀態越來越多，程式碼也會越來越長。且讓組件實例直接控管其子代也讓我們難以降低組件親子之間的耦合性。於是 React 透過「元素（elements）」來解決這些問題。</p>
+<h2 id="關於元素element">關於元素（element）</h2>
+<p>React 對元素的定義：一個描述「組件實例或 DOM 節點」的 JavaScript 物件。</p>
+<p>此物件會記錄「組件的類型（type）」與「組件的性質（properties）」——那些要實際呈現在畫面上的內容。</p>
+<p>元素是不可變的（immutable）。它像是電影中的一幀畫面，描述了前端服務「在某個時間點」的模樣。如果想改變畫面，唯一的方法就是建立一個新的（元素）。但請注意：元素只負責「描述」，後續是由 <code>react-dom</code> 處理<strong>比較</strong>新舊（元素）差異與<strong>更新</strong>畫面的工作。</p>
+<blockquote>
+<p>React DOM compares the element and its children to the previous one, and only applies the DOM updates necessary to bring the DOM to the desired state.</p>
+</blockquote>
+<blockquote>
+<p>React DOM takes care of updating the DOM to match the React elements.</p>
+</blockquote>
+<hr>
+<p>元素可以描述 DOM 節點，也可以描述 React 組件。它其實就是組件最終回傳的內容。</p>
+<blockquote>
+<p>An element is a <strong>plain object</strong> describing a <strong>component instance or DOM node</strong> and its desired <strong>properties</strong>. An element is not an actual instance, it is a way to tell React <strong>what you want to see on the screen</strong>.</p>
+</blockquote>
+<p>組件的類型（<code>type</code>）會是 <code>string</code> 或 <code>ReactClass</code> 型別的資料。</p>
+<h3 id="dom-element">DOM Element</h3>
+<p>當一個元素的組件類型資料是字串（string）時，代表此元素描述的是 DOM 節點。比如下方的元素就在描述一個 HTML 按鈕：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#B392F0">  type</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">'button'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#B392F0">  props</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#B392F0">    className</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">'button button-blue'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#B392F0">    children</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#B392F0">      type</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">'b'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#B392F0">      props</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#B392F0">        children</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">'OK!'</span></span>
+<span class="line"><span style="color:#E1E4E8">      }</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#E1E4E8">&#x3C;</span><span style="color:#85E89D">button</span><span style="color:#B392F0"> class</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"button button-blue"</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;</span><span style="color:#85E89D">button</span><span style="color:#E1E4E8">> OK! &#x3C;/</span><span style="color:#85E89D">b</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">&#x3C;/</span><span style="color:#85E89D">button</span><span style="color:#E1E4E8">></span></span></code></pre>
+<p>注意：我們在 <code>props.children</code> 中包了另外一個元素（<code>type: b</code>），這就是 React 記錄子代元素的方式。</p>
+<h3 id="component-element">Component Element</h3>
+<p>當組件的類型是函式（function）或類（class）時，代表該元素描述的是 React 組件。這時 React 會去查詢該函式（或該類）實際上代表怎樣的 DOM 節點。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#B392F0">  type</span><span style="color:#E1E4E8">: Button,</span></span>
+<span class="line"><span style="color:#B392F0">  props</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#B392F0">    color</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">'blue'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#B392F0">    children</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">'OK!'</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>以上方 snippet 中的 <code>type: Button</code> 為例，當 React 看到此元素時，它會去查詢 <code>Button</code> 究竟代表什麼東西，而 <code>type: Button</code> 會回覆以下內容：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#B392F0">  type</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">'button'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#B392F0">  props</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#B392F0">    className</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">'button button-blue'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#B392F0">    children</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#B392F0">      type</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">'b'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#B392F0">      props</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#B392F0">        children</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">'OK!'</span></span>
+<span class="line"><span style="color:#E1E4E8">      }</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>React 會重複以上的查詢流程，直到它確認完元素內的所有內容。</p>
+<h4 id="透過-propschildren-解除耦合">透過 props.children 解除耦合</h4>
+<p>我們能在 <code>props.children</code> 中混合使用 DOM 節點與 React 組件：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#B392F0"> DeleteAccount</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> ({</span></span>
+<span class="line"><span style="color:#E1E4E8">  type: </span><span style="color:#9ECBFF">'div'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">  props: {</span></span>
+<span class="line"><span style="color:#E1E4E8">    children: [{</span></span>
+<span class="line"><span style="color:#E1E4E8">      type: </span><span style="color:#9ECBFF">'p'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">      props: {</span></span>
+<span class="line"><span style="color:#E1E4E8">        children: </span><span style="color:#9ECBFF">'Are you sure?'</span></span>
+<span class="line"><span style="color:#E1E4E8">      }</span></span>
+<span class="line"><span style="color:#E1E4E8">    }, {</span></span>
+<span class="line"><span style="color:#E1E4E8">      type: DangerButton,</span></span>
+<span class="line"><span style="color:#E1E4E8">      props: {</span></span>
+<span class="line"><span style="color:#E1E4E8">        children: </span><span style="color:#9ECBFF">'Yep'</span></span>
+<span class="line"><span style="color:#E1E4E8">      }</span></span>
+<span class="line"><span style="color:#E1E4E8">    }, {</span></span>
+<span class="line"><span style="color:#E1E4E8">      type: Button,</span></span>
+<span class="line"><span style="color:#E1E4E8">      props: {</span></span>
+<span class="line"><span style="color:#E1E4E8">        color: </span><span style="color:#9ECBFF">'blue'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">        children: </span><span style="color:#9ECBFF">'Cancel'</span></span>
+<span class="line"><span style="color:#E1E4E8">      }</span></span>
+<span class="line"><span style="color:#E1E4E8">   }]</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// the above is equivalent to:</span></span>
+<span class="line"><span style="color:#E1E4E8">const </span><span style="color:#B392F0">DeleteAccount</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> (</span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;</span><span style="color:#85E89D">div</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#85E89D">p</span><span style="color:#E1E4E8">>Are you sure?&#x3C;/</span><span style="color:#85E89D">p</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#79B8FF">DangerButton</span><span style="color:#E1E4E8">>Yep&#x3C;/</span><span style="color:#79B8FF">DangerButton</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#79B8FF">Button</span><span style="color:#B392F0"> color</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">'blue'</span><span style="color:#E1E4E8">>Cancel&#x3C;/</span><span style="color:#79B8FF">Button</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;/</span><span style="color:#85E89D">div</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">);</span></span></code></pre>
+<p>這解決了組件親子耦合的問題，因為元素是透過 <code>props.children</code> 來描述組件之間的關係。我們不用在這邊關注實際的 DOM 結構。</p>
+<blockquote>
+<p>This lets you compose independent parts of UI <strong>without relying on their internal DOM structure</strong>.</p>
+</blockquote>
+<h2 id="關於組件component">關於組件（component）</h2>
+<p>組件收受參數（稱為 <code>props</code>），回傳元素（element）。且 React 組件必須遵從純函式（pure function）的規則——它不能修改收到的 <code>props</code>。</p>
+<p>本篇筆記最上方的物件導向風味 <code>Form</code> 如果是一個 React 組件，那它就會回傳以下<del>大幅簡化過的</del>內容：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#B392F0"> Form</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> ({ </span><span style="color:#FFAB70">isSubmitted</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">buttonText</span><span style="color:#E1E4E8"> }) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">  if</span><span style="color:#E1E4E8"> (isSubmitted) {</span></span>
+<span class="line"><span style="color:#6A737D">    // Form submitted! Return a message element.</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">      type: Message,</span></span>
+<span class="line"><span style="color:#E1E4E8">      props: {</span></span>
+<span class="line"><span style="color:#E1E4E8">        text: </span><span style="color:#9ECBFF">'Success!'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">      },</span></span>
+<span class="line"><span style="color:#E1E4E8">    };</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">  // Form is still visible! Return a button element.</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">    type: Button,</span></span>
+<span class="line"><span style="color:#E1E4E8">    props: {</span></span>
+<span class="line"><span style="color:#E1E4E8">      children: buttonText,</span></span>
+<span class="line"><span style="color:#E1E4E8">      color: </span><span style="color:#9ECBFF">'blue'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">    },</span></span>
+<span class="line"><span style="color:#E1E4E8">  };</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span></code></pre>
+<h2 id="react-的工作">React 的工作</h2>
+<p>當我們使用 React 時，實際上發生的事情如下：</p>
+<ol>
+<li>我們定義組件（components）</li>
+<li>組件回傳元素（elements）</li>
+<li>由 React 負責增刪改（管理）組件實例（instances）</li>
+</ol>
+<blockquote>
+<p>We let React create, update, and destroy instances. We describe them with elements we return from the components, and <strong>React takes care of managing the instances</strong>.</p>
+</blockquote>
+<h2 id="參考文件">參考文件</h2>
+<ul>
+<li><a href="https://legacy.reactjs.org/docs/glossary.html">Glossary of React Terms</a></li>
+<li><a href="https://legacy.reactjs.org/blog/2015/12/18/react-components-elements-and-instances.html">React Components, Elements, and Instances</a></li>
+<li><a href="https://legacy.reactjs.org/docs/rendering-elements.html">Rendering Elements</a></li>
+<li><a href="https://legacy.reactjs.org/docs/components-and-props.html">Components and Props</a></li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 
