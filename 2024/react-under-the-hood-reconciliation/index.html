@@ -1,0 +1,281 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v3.6.4"><!-- Primary Meta Tags --><title>葫蘆裡的 React：關於調適（reconciliation）與組件的 props.key</title><meta name="title" content="葫蘆裡的 React：關於調適（reconciliation）與組件的 props.key"><meta name="description" content="此篇筆記整理了 React 官方文件中關於 reconciliation 的相關內容，並順便說明在某些情況下你可能需要指定組件的 props.key 來強制更新畫面。"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2024/react-under-the-hood-reconciliation/"><meta property="og:title" content="葫蘆裡的 React：關於調適（reconciliation）與組件的 props.key"><meta property="og:description" content="此篇筆記整理了 React 官方文件中關於 reconciliation 的相關內容，並順便說明在某些情況下你可能需要指定組件的 props.key 來強制更新畫面。"><meta property="og:image" content="https://tzynwang.github.io/2024/react-under-the-hood-reconciliation/dan-hadar-HMG2ELxyos8-unsplash.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2024/react-under-the-hood-reconciliation/"><meta property="twitter:title" content="葫蘆裡的 React：關於調適（reconciliation）與組件的 props.key"><meta property="twitter:description" content="此篇筆記整理了 React 官方文件中關於 reconciliation 的相關內容，並順便說明在某些情況下你可能需要指定組件的 props.key 來強制更新畫面。"><meta property="twitter:image" content="https://tzynwang.github.io/2024/react-under-the-hood-reconciliation/dan-hadar-HMG2ELxyos8-unsplash.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:Noto Sans TC,sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul{margin-top:16px;margin-bottom:16px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:8px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+</style><script type="module" src="/_astro/hoisted.77775e67.js"></script></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>葫蘆裡的 React：關於調適（reconciliation）與組件的 props.key</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2024-03-03 20:11</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/React" data-astro-cid-2iymvi75> React </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#總結" data-astro-cid-qtokga5y>總結</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#觸發比對" data-astro-cid-qtokga5y>觸發比對</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#比對的方式" data-astro-cid-qtokga5y>比對的方式</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#elements-of-different-types" data-astro-cid-qtokga5y>Elements Of Different Types</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#dom-elements-of-the-same-type" data-astro-cid-qtokga5y>DOM Elements Of The Same Type</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#component-elements-of-the-same-type" data-astro-cid-qtokga5y>Component Elements Of The Same Type</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#key" data-astro-cid-qtokga5y>key</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#提示-react-組件有變" data-astro-cid-qtokga5y>提示 React 組件有變</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#提示-react-組件沒變只是換位" data-astro-cid-qtokga5y>提示 React 組件沒變，只是換位</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#為何陣列索引index不適合作為-key" data-astro-cid-qtokga5y>為何陣列索引（index）不適合作為 key</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#使用規則" data-astro-cid-qtokga5y>使用規則</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#參考文件" data-astro-cid-qtokga5y>參考文件</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#10-official-doc" data-astro-cid-qtokga5y>1.0 official doc</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#20-official-doc" data-astro-cid-qtokga5y>2.0 official doc</a> </li> </ul> </div> <h2 id="總結">總結</h2>
+<p>reconciliation 指的是以下過程：</p>
+<blockquote>
+<p>當組件（component）的 <code>props</code> 或狀態（state）改變，React 會去比對新、舊版的元素（element）差異。如果有別，React 就會最小幅度地更新畫面。</p>
+</blockquote>
+<h2 id="觸發比對">觸發比對</h2>
+<p>當你呼叫以下功能時，就會產生元素（element）：</p>
+<ul>
+<li><code>ReactDOM.render()</code></li>
+<li>React class 組件的 <code>render()</code> 或 <code>setState()</code></li>
+<li>React function 組件的 <code>set</code> 函式（比如 <code>const [open, setOpen] = useState(false)</code> 中的 <code>setOpen</code>）</li>
+</ul>
+<p>然後，當一個組件的 <code>props</code> 或狀態（state）有變時，又會產生一個新的元素。這時 React 就會透過 diff 演算法來比對舊新版的元素是否有差異——如果有，那就更新畫面。</p>
+<p>另外，為了確保 diff 演算法的效率達到 O(n)，有兩個前提：</p>
+<ol>
+<li>不同類型（type）的元素會產生不同的結果（two elements of different types will produce different trees）</li>
+<li>工程師會透過 <code>key</code> 來提示 React 該元素是否有變動</li>
+</ol>
+<p>（忘記什麼是元素請回頭翻 <a href="/2024/react-under-the-hood-components-elements-and-instances/#%E9%97%9C%E6%96%BC%E5%85%83%E7%B4%A0element">React Components, Elements, and Instances#關於元素（elements）</a>）</p>
+<h2 id="比對的方式">比對的方式</h2>
+<p>React 會從根部（root element）開始比對，結果有三種：</p>
+<ol>
+<li>兩者的類型（type）根本不同</li>
+<li>兩者是相同的 DOM 元素</li>
+<li>兩者是相同的組件（component）</li>
+</ol>
+<h3 id="elements-of-different-types">Elements Of Different Types</h3>
+<p>如果根部的類別根本不同，React 會直接銷毀前一版的元素——代表前一版的所有 DOM 節點、局部狀態都會消失——接著再從頭開始打造新的元素。</p>
+<p>以下列 snippet 為例，因為根部從 <code>div</code> 變成 <code>span</code>，所以舊版元素會被整個打掉重練，而包在中間的 <code>Counter</code> 組件也會被銷毀：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#6A737D">// before</span></span>
+<span class="line"><span style="color:#E1E4E8">&#x3C;</span><span style="color:#85E89D">div</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;</span><span style="color:#79B8FF">Counter</span><span style="color:#E1E4E8"> /></span></span>
+<span class="line"><span style="color:#E1E4E8">&#x3C;/</span><span style="color:#85E89D">div</span><span style="color:#E1E4E8">></span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// after</span></span>
+<span class="line"><span style="color:#E1E4E8">&#x3C;</span><span style="color:#85E89D">span</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;</span><span style="color:#79B8FF">Counter</span><span style="color:#E1E4E8"> /></span></span>
+<span class="line"><span style="color:#E1E4E8">&#x3C;/</span><span style="color:#85E89D">span</span><span style="color:#E1E4E8">></span></span></code></pre>
+<h3 id="dom-elements-of-the-same-type">DOM Elements Of The Same Type</h3>
+<p>如果「前後版的根部類別是相同的 DOM 元素」，那 React 就只會去更新有差異的特性（attributes）。以下列 snippet 為例，因為差異只出現在 <code>className</code> 上，所以 React 只會更新此處的資訊：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#6A737D">// before</span></span>
+<span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#B392F0">  type</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">'div'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#B392F0">  props</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#B392F0">    className</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">'desktop-style'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// after</span></span>
+<span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#B392F0">  type</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">'div'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#B392F0">  props</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#B392F0">    className</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">'mobile-style'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<h3 id="component-elements-of-the-same-type">Component Elements Of The Same Type</h3>
+<p>如果「前後版的根部是相同的組件（component）」，組件實例（instance）與局部狀態（local state）就會維持一致，React 只會去更新 <code>props</code> 不同的部分。</p>
+<p>這是什麼意思？</p>
+<p>首先，我們建立一個 <code>Input</code> 組件：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> React, { useState, useId } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> 'react'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#F97583"> type</span><span style="color:#E1E4E8"> { HTMLAttributes } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> 'react'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">type</span><span style="color:#B392F0"> Props</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> HTMLAttributes</span><span style="color:#E1E4E8">&#x3C;</span><span style="color:#9ECBFF">'Input'</span><span style="color:#E1E4E8">> </span><span style="color:#F97583">&#x26;</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#FFAB70">  label</span><span style="color:#F97583">?:</span><span style="color:#79B8FF"> string</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> default</span><span style="color:#F97583"> function</span><span style="color:#B392F0"> Input</span><span style="color:#E1E4E8">({ </span><span style="color:#FFAB70">label</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">placeholder</span><span style="color:#E1E4E8"> }</span><span style="color:#F97583">:</span><span style="color:#B392F0"> Props</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#6A737D">  /* local state */</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#E1E4E8"> [</span><span style="color:#79B8FF">input</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">setInput</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">=</span><span style="color:#B392F0"> useState</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">''</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> id</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> useId</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">  /* main */</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> (</span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#85E89D">div</span></span>
+<span class="line"><span style="color:#B392F0">      style</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{{</span></span>
+<span class="line"><span style="color:#E1E4E8">        display: </span><span style="color:#9ECBFF">'flex'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">        flexDirection: </span><span style="color:#9ECBFF">'column'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">        gap: </span><span style="color:#9ECBFF">'8px'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">        margin: </span><span style="color:#9ECBFF">'8px auto'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">      }}</span></span>
+<span class="line"><span style="color:#E1E4E8">    ></span></span>
+<span class="line"><span style="color:#E1E4E8">      {label </span><span style="color:#F97583">&#x26;&#x26;</span><span style="color:#E1E4E8"> &#x3C;</span><span style="color:#85E89D">label</span><span style="color:#B392F0"> htmlFor</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{id}>{label}&#x3C;/</span><span style="color:#85E89D">label</span><span style="color:#E1E4E8">>}</span></span>
+<span class="line"><span style="color:#E1E4E8">      &#x3C;</span><span style="color:#85E89D">input</span></span>
+<span class="line"><span style="color:#B392F0">        id</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{id}</span></span>
+<span class="line"><span style="color:#B392F0">        onChange</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{(</span><span style="color:#FFAB70">e</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#B392F0"> setInput</span><span style="color:#E1E4E8">(e.target.value)}</span></span>
+<span class="line"><span style="color:#B392F0">        value</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{input}</span></span>
+<span class="line"><span style="color:#B392F0">        placeholder</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{placeholder}</span></span>
+<span class="line"><span style="color:#B392F0">        style</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{{</span></span>
+<span class="line"><span style="color:#E1E4E8">          width: </span><span style="color:#9ECBFF">'80%'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">          padding: </span><span style="color:#9ECBFF">'8px 16px'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">        }}</span></span>
+<span class="line"><span style="color:#E1E4E8">      /></span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;/</span><span style="color:#85E89D">div</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  );</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>然後在 <code>App.tsx</code> 中實作以下邏輯：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> React, { useState } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> 'react'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> Input </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> './Input'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> default</span><span style="color:#F97583"> function</span><span style="color:#B392F0"> App</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#E1E4E8"> [</span><span style="color:#79B8FF">isCheck</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">setIsCheck</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">=</span><span style="color:#B392F0"> useState</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">false</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> (</span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#79B8FF">React.Fragment</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">      &#x3C;</span><span style="color:#85E89D">input</span></span>
+<span class="line"><span style="color:#B392F0">        id</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"check"</span></span>
+<span class="line"><span style="color:#B392F0">        type</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"checkbox"</span></span>
+<span class="line"><span style="color:#B392F0">        onChange</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{(</span><span style="color:#FFAB70">e</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#B392F0"> setIsCheck</span><span style="color:#E1E4E8">(e.target.checked)}</span></span>
+<span class="line"><span style="color:#E1E4E8">      /></span></span>
+<span class="line"><span style="color:#E1E4E8">      &#x3C;</span><span style="color:#85E89D">label</span><span style="color:#B392F0"> htmlFor</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"check"</span><span style="color:#E1E4E8">>Toggle me to switch between Input A and B&#x3C;/</span><span style="color:#85E89D">label</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">      {isCheck </span><span style="color:#F97583">?</span><span style="color:#E1E4E8"> (</span></span>
+<span class="line"><span style="color:#E1E4E8">        &#x3C;</span><span style="color:#79B8FF">Input</span><span style="color:#B392F0"> label</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"Input B"</span><span style="color:#B392F0"> placeholder</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"This is input B"</span><span style="color:#E1E4E8"> /></span></span>
+<span class="line"><span style="color:#E1E4E8">      ) </span><span style="color:#F97583">:</span><span style="color:#E1E4E8"> (</span></span>
+<span class="line"><span style="color:#E1E4E8">        &#x3C;</span><span style="color:#79B8FF">Input</span><span style="color:#B392F0"> label</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"Input A"</span><span style="color:#B392F0"> placeholder</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"This is input A"</span><span style="color:#E1E4E8"> /></span></span>
+<span class="line"><span style="color:#E1E4E8">      )}</span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;/</span><span style="color:#79B8FF">React.Fragment</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  );</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>（可互動的版本在<a href="https://codesandbox.io/p/sandbox/react-local-state-reserve-between-different-render-m24fks">這裡</a>）</p>
+<p>我們先對畫面上的 <code>Input</code> 組件隨便輸入些內容，再去勾選 <code>input</code> HTML 元素，切換畫面上的 <code>Input</code> 組件版本。然後你會發現，剛才隨手輸入的文字<strong>沒有因為畫面上的組件變成 B 版而消失</strong>。但這兩個明明是不同的 <code>Input</code> 組件？</p>
+<p>這就是「組件實例不變，且局部狀態會被保留下來」的意思——對 React 來說，當上方範例中的 <code>Input</code> 改變時，它看到的前後版元素如下：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#6A737D">// before</span></span>
+<span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#B392F0">  type</span><span style="color:#E1E4E8">: Input,</span></span>
+<span class="line"><span style="color:#B392F0">  props</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#B392F0">    label</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"Input A"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#B392F0">    placeholder</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"This is input A"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">  },</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// after</span></span>
+<span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#B392F0">  type</span><span style="color:#E1E4E8">: Input,</span></span>
+<span class="line"><span style="color:#B392F0">  props</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#B392F0">    label</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"Input B"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#B392F0">    placeholder</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"This is input B"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">  },</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>差異只出現在 <code>props.label</code> 與 <code>props.placeholder</code> 這兩個屬性上，所以 React 就只更新這部分。局部狀態（組件中的 <code>input</code>）不在修改範圍內 🙂</p>
+<p>如果你認為這種「明明換了組件，但局部狀態卻沒變」的行為很詭異，那麼下一段筆記要介紹的 <code>key</code> 能完美地幫忙解決這個問題。</p>
+<p><img src="/2024/react-under-the-hood-reconciliation/yeah.png" alt="yeah"></p>
+<h2 id="key"><code>key</code></h2>
+<h3 id="提示-react-組件有變">提示 React 組件有變</h3>
+<p>為了避免局部狀態被保留下來，請為兩個 <code>Input</code> 組件加上不同的 <code>key</code>：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> React, { useState } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> 'react'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> Input </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> './Input'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> default</span><span style="color:#F97583"> function</span><span style="color:#B392F0"> App</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#E1E4E8"> [</span><span style="color:#79B8FF">isCheck</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">setIsCheck</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">=</span><span style="color:#B392F0"> useState</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">false</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> (</span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#79B8FF">React.Fragment</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">      &#x3C;</span><span style="color:#85E89D">input</span></span>
+<span class="line"><span style="color:#B392F0">        id</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"check"</span></span>
+<span class="line"><span style="color:#B392F0">        type</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"checkbox"</span></span>
+<span class="line"><span style="color:#B392F0">        onChange</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{(</span><span style="color:#FFAB70">e</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#B392F0"> setIsCheck</span><span style="color:#E1E4E8">(e.target.checked)}</span></span>
+<span class="line"><span style="color:#E1E4E8">      /></span></span>
+<span class="line"><span style="color:#E1E4E8">      &#x3C;</span><span style="color:#85E89D">label</span><span style="color:#B392F0"> htmlFor</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"check"</span><span style="color:#E1E4E8">>Toggle me to switch between Input A and B&#x3C;/</span><span style="color:#85E89D">label</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">      {isCheck </span><span style="color:#F97583">?</span><span style="color:#E1E4E8"> (</span></span>
+<span class="line"><span style="color:#E1E4E8">        &#x3C;</span><span style="color:#79B8FF">Input</span><span style="color:#B392F0"> key</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"B"</span><span style="color:#B392F0"> label</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"Input B"</span><span style="color:#B392F0"> placeholder</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"This is input B"</span><span style="color:#E1E4E8"> /></span></span>
+<span class="line"><span style="color:#E1E4E8">      ) </span><span style="color:#F97583">:</span><span style="color:#E1E4E8"> (</span></span>
+<span class="line"><span style="color:#E1E4E8">        &#x3C;</span><span style="color:#79B8FF">Input</span><span style="color:#B392F0"> key</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"A"</span><span style="color:#B392F0"> label</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"Input A"</span><span style="color:#B392F0"> placeholder</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"This is input A"</span><span style="color:#E1E4E8"> /></span></span>
+<span class="line"><span style="color:#E1E4E8">      )}</span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;/</span><span style="color:#79B8FF">React.Fragment</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  );</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>對 React 來說，這樣新舊版的 <code>Input</code> 就<strong>不再是一樣的組件</strong>：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#6A737D">// before</span></span>
+<span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#B392F0">  type</span><span style="color:#E1E4E8">: Input,</span></span>
+<span class="line"><span style="color:#B392F0">  key</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"A"</span><span style="color:#E1E4E8">, </span><span style="color:#6A737D">// 多了這個</span></span>
+<span class="line"><span style="color:#B392F0">  props</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#B392F0">    label</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"Input A"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#B392F0">    placeholder</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"This is input A"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">  },</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// after</span></span>
+<span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#B392F0">  type</span><span style="color:#E1E4E8">: Input,</span></span>
+<span class="line"><span style="color:#B392F0">  key</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"B"</span><span style="color:#E1E4E8">, </span><span style="color:#6A737D">// 多了這個</span></span>
+<span class="line"><span style="color:#B392F0">  props</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#B392F0">    label</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"Input B"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#B392F0">    placeholder</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"This is input B"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">  },</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>於是舊的 <code>Input</code> 組件 A 會被卸載（unmounted），局部狀態消失。而新的 <code>Input</code> 組件 B 會被掛載（mounted）到畫面上，與舊組件的局部狀態沒有絲毫關聯。問題解決 🥳</p>
+<h3 id="提示-react-組件沒變只是換位">提示 React 組件沒變，只是換位</h3>
+<p>React 會將子代（children）視為<strong>陣列</strong>來比對差異。以下列 snippet 為例，陣列的前兩個項目沒有變，差異出現在最尾列。經比對後，React 只需追加 <code>&#x3C;li>third&#x3C;/li></code>，不用理會 <code>&#x3C;li>first&#x3C;/li></code> 與 <code>&#x3C;li>second&#x3C;/li></code>：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#6A737D">// before</span></span>
+<span class="line"><span style="color:#E1E4E8">&#x3C;</span><span style="color:#85E89D">ul</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;</span><span style="color:#85E89D">li</span><span style="color:#E1E4E8">>first&#x3C;/</span><span style="color:#85E89D">li</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;</span><span style="color:#85E89D">li</span><span style="color:#E1E4E8">>second&#x3C;/</span><span style="color:#85E89D">li</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">&#x3C;/</span><span style="color:#85E89D">ul</span><span style="color:#E1E4E8">></span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// after</span></span>
+<span class="line"><span style="color:#E1E4E8">&#x3C;</span><span style="color:#85E89D">ul</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;</span><span style="color:#85E89D">li</span><span style="color:#E1E4E8">>first&#x3C;/</span><span style="color:#85E89D">li</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;</span><span style="color:#85E89D">li</span><span style="color:#E1E4E8">>second&#x3C;/</span><span style="color:#85E89D">li</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;</span><span style="color:#85E89D">li</span><span style="color:#E1E4E8">>third&#x3C;/</span><span style="color:#85E89D">li</span><span style="color:#E1E4E8">> {</span><span style="color:#6A737D">/* this is easy 😎 */</span><span style="color:#E1E4E8">}</span></span>
+<span class="line"><span style="color:#E1E4E8">&#x3C;/</span><span style="color:#85E89D">ul</span><span style="color:#E1E4E8">></span></span></code></pre>
+<p>但當新元素出現在陣列最上方時，React 就會判斷「新舊版的子代完全不同」，於是整個子代就會被打掉重練——包括其實沒有變的 <code>&#x3C;li>first&#x3C;/li></code> 與 <code>&#x3C;li>second&#x3C;/li></code>：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#6A737D">// before</span></span>
+<span class="line"><span style="color:#E1E4E8">&#x3C;</span><span style="color:#85E89D">ul</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;</span><span style="color:#85E89D">li</span><span style="color:#E1E4E8">>first&#x3C;/</span><span style="color:#85E89D">li</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;</span><span style="color:#85E89D">li</span><span style="color:#E1E4E8">>second&#x3C;/</span><span style="color:#85E89D">li</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">&#x3C;/</span><span style="color:#85E89D">ul</span><span style="color:#E1E4E8">></span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// after</span></span>
+<span class="line"><span style="color:#E1E4E8">&#x3C;</span><span style="color:#85E89D">ul</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;</span><span style="color:#85E89D">li</span><span style="color:#E1E4E8">>zero&#x3C;/</span><span style="color:#85E89D">li</span><span style="color:#E1E4E8">> {</span><span style="color:#6A737D">/* oh no 🥹 */</span><span style="color:#E1E4E8">}</span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;</span><span style="color:#85E89D">li</span><span style="color:#E1E4E8">>first&#x3C;/</span><span style="color:#85E89D">li</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;</span><span style="color:#85E89D">li</span><span style="color:#E1E4E8">>second&#x3C;/</span><span style="color:#85E89D">li</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">&#x3C;/</span><span style="color:#85E89D">ul</span><span style="color:#E1E4E8">></span></span></code></pre>
+<p>而 <code>key</code> 在這裡就是為了解決「銷毀無變動內容」的做白工問題——如果 <code>key</code> 沒變，那麼根據 React 的最小幅度更新哲學，該組件會被沿用，只是換個位置。</p>
+<p>所以上方的 snippet 在帶入 <code>key</code> 之後，React 就不會去卸載 <code>&#x3C;li key="first">first&#x3C;/li></code> 與 <code>&#x3C;li key="second">second&#x3C;/li></code>，只會進行掛載 <code>&#x3C;li key="zero">zero&#x3C;/li></code> 的工作：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#6A737D">// before</span></span>
+<span class="line"><span style="color:#E1E4E8">&#x3C;</span><span style="color:#85E89D">ul</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;</span><span style="color:#85E89D">li</span><span style="color:#B392F0"> key</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"first"</span><span style="color:#E1E4E8">>first&#x3C;/</span><span style="color:#85E89D">li</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;</span><span style="color:#85E89D">li</span><span style="color:#B392F0"> key</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"second"</span><span style="color:#E1E4E8">>second&#x3C;/</span><span style="color:#85E89D">li</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">&#x3C;/</span><span style="color:#85E89D">ul</span><span style="color:#E1E4E8">></span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// after</span></span>
+<span class="line"><span style="color:#E1E4E8">&#x3C;</span><span style="color:#85E89D">ul</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;</span><span style="color:#85E89D">li</span><span style="color:#B392F0"> key</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"zero"</span><span style="color:#E1E4E8">>zero&#x3C;/</span><span style="color:#85E89D">li</span><span style="color:#E1E4E8">> {</span><span style="color:#6A737D">/* the new one 👋 */</span><span style="color:#E1E4E8">}</span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;</span><span style="color:#85E89D">li</span><span style="color:#B392F0"> key</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"first"</span><span style="color:#E1E4E8">>first&#x3C;/</span><span style="color:#85E89D">li</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;</span><span style="color:#85E89D">li</span><span style="color:#B392F0"> key</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"second"</span><span style="color:#E1E4E8">>second&#x3C;/</span><span style="color:#85E89D">li</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">&#x3C;/</span><span style="color:#85E89D">ul</span><span style="color:#E1E4E8">></span></span></code></pre>
+<h3 id="為何陣列索引index不適合作為-key">為何陣列索引（index）不適合作為 <code>key</code></h3>
+<p>如果一個陣列會被<strong>重排序</strong>、在<strong>最尾列以外的位置被追加新項目</strong>，那麼陣列索引（index）就不適合用來當作組件 <code>key</code>。</p>
+<p>可以試玩<a href="https://codesandbox.io/p/sandbox/dont-use-index-as-key-for-react-component-t95dm6">此範例</a>感受一下。畫面上的第一組表格使用索引作為 <code>key</code>，當我們對 <code>ToDo</code> 組件隨便輸入些內容，再新增一些 <code>ToDo</code> 到畫面上，最後執行排序——你會發現 <code>ToDo</code> 確實有根據時間重新排列，但我們輸入到 <code>ToDo</code> 的內容（局部狀態）卻沒有跟著重新排序。</p>
+<p>（狀態沒有跟上的原因請參考上方 Component Elements Of The Same Type 的解釋）</p>
+<p>這就是使用索引作為 <code>key</code> 的缺點——當陣列的內容被重排序後，畫面可能會不如預期。</p>
+<hr>
+<p>而範例中第二組表格使用 id 作為 <code>key</code>，當我們為陣列洗牌時，React 會知道它要做的事情是「更新 <code>ToDo</code> 組件們的位置」，而不只是「更新 <code>ToDo</code> 有變的 <code>props</code>」——這樣，每個 <code>ToDo</code> 的局部狀態就會跟著一起重排序了 🥳</p>
+<h3 id="使用規則">使用規則</h3>
+<ol>
+<li>因為 React 會將子代（children）視為陣列，所以一個陣列中的 <code>key</code> 不可出現重複的值——反之，相同的 <code>key</code> 可以在不同的陣列（子代）重複出現</li>
+<li><code>key</code> 不能是隨機值，如果 React 在比對新舊元素時發現 <code>key</code> 不同，該組件就會被銷毀——但那個組件可能只是 <code>key</code> 有變，這樣就只是在徒增更新畫面的成本</li>
+<li>如果一個陣列會被重排序，或是在最尾列以外的位置被追加新項目，那麼陣列索引（index）就不適合用來當作 <code>key</code></li>
+</ol>
+<h2 id="參考文件">參考文件</h2>
+<h3 id="10-official-doc">1.0 official doc</h3>
+<ul>
+<li><a href="https://legacy.reactjs.org/docs/codebase-overview.html#reconcilers">Reconcilers</a></li>
+<li><a href="https://legacy.reactjs.org/docs/reconciliation.html">Reconciliation</a></li>
+<li><a href="https://legacy.reactjs.org/blog/2015/12/18/react-components-elements-and-instances.html">React Components, Elements, and Instances</a></li>
+<li><a href="https://legacy.reactjs.org/docs/glossary.html">Glossary of React Terms</a></li>
+</ul>
+<h3 id="20-official-doc">2.0 official doc</h3>
+<ul>
+<li><a href="https://react.dev/reference/react-dom/client/createRoot#root-render">root.render(reactNode)</a></li>
+<li><a href="https://react.dev/learn/preserving-and-resetting-state">Preserving and Resetting State</a></li>
+<li><a href="https://react.dev/learn/rendering-lists#why-does-react-need-keys">Why does React need keys?</a></li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

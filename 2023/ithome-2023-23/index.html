@@ -1,0 +1,57 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v3.6.4"><!-- Primary Meta Tags --><title>捨棄 create-react-app 之餘還架了個 astro blog 昭告天下：通用元件 Html.astro</title><meta name="title" content="捨棄 create-react-app 之餘還架了個 astro blog 昭告天下：通用元件 Html.astro"><meta name="description" content="來建立一個全部落格頁面通用的元件，把所有需要用到的 html metadata 以及排版都集中到 `./src/components/layout/Html.astro` 處理"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2023/ithome-2023-23/"><meta property="og:title" content="捨棄 create-react-app 之餘還架了個 astro blog 昭告天下：通用元件 Html.astro"><meta property="og:description" content="來建立一個全部落格頁面通用的元件，把所有需要用到的 html metadata 以及排版都集中到 `./src/components/layout/Html.astro` 處理"><meta property="og:image" content="https://tzynwang.github.io/2023/ithome-2023-23/hal-gatewood-tZc3vjPCk-Q-unsplash.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2023/ithome-2023-23/"><meta property="twitter:title" content="捨棄 create-react-app 之餘還架了個 astro blog 昭告天下：通用元件 Html.astro"><meta property="twitter:description" content="來建立一個全部落格頁面通用的元件，把所有需要用到的 html metadata 以及排版都集中到 `./src/components/layout/Html.astro` 處理"><meta property="twitter:image" content="https://tzynwang.github.io/2023/ithome-2023-23/hal-gatewood-tZc3vjPCk-Q-unsplash.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:Noto Sans TC,sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul{margin-top:16px;margin-bottom:16px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:8px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+</style><script type="module" src="/_astro/hoisted.77775e67.js"></script></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>捨棄 create-react-app 之餘還架了個 astro blog 昭告天下：通用元件 Html.astro</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2023-10-08 08:37</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/2023鐵人賽" data-astro-cid-2iymvi75> 2023鐵人賽 </a> <a class="tag" href="/tag/astro" data-astro-cid-2iymvi75> astro </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#元件-generallayout" data-astro-cid-qtokga5y>元件 GeneralLayout</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#元件-html" data-astro-cid-qtokga5y>元件 Html</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#ga-部分" data-astro-cid-qtokga5y>GA 部分</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#metadata-部分" data-astro-cid-qtokga5y>metadata 部分</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#總結" data-astro-cid-qtokga5y>總結</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#參考" data-astro-cid-qtokga5y>參考</a> </li> </ul> </div> <p>對於一個部落格來說，大部分的畫面都能共同一套 html metadata。這時除了在多個檔案間複製貼上以外，更便於維護的做法是把內容集中到一個 layout 元件，並讓整個部落格都建立在這個基礎元件之上。</p>
+<p>今天會來分享一下個人的 Html 以及 GeneralLayout 元件設定（可點擊兩個元件名稱連結到完整的程式碼）。</p>
+<h2 id="元件-generallayout">元件 GeneralLayout</h2>
+<p>這邊沒有太複雜的內容，唯一的目的就是處理整個部落格的左側選單、右側主內容排版。在裝置小於 <code>800px</code> 寬時，畫面呈現垂直排版。而在螢幕寬度大於 <code>800px</code> 後，改用 <code>display: flex</code> 讓 <code>.side-content</code> / <code>.main-content</code> 呈現水平排列。並設定 <code>.main-content</code> 的 <code>overflow-y</code> 為 <code>auto</code>，使畫面右半可獨立捲動。</p>
+<h2 id="元件-html">元件 Html</h2>
+<h3 id="ga-部分">GA 部分</h3>
+<p>發文當下還沒找到合用的 plugin，目前想要在透過 astro 建立的靜態網站中埋設 GA 只能回歸手動設定 data steam + Google tag 的方式。</p>
+<p>在設定好 Google Analytics 的 Data Streams 後（後續鐵人賽會介紹較完整的設定流程），請將 Google 提供的 script 內容整包複製貼上到 astro 元件中，並在 script 標籤加上 <a href="https://docs.astro.build/en/reference/directives-reference/#isinline">is:inline</a>，讓 astro 不要介入這段 script 中的內容。</p>
+<p>這裡可以透過 <code>.env</code> 來避免 data stream Id 直接暴露出來~~（雖然打包後還是直接公開了）~~，操作如下：</p>
+<ol>
+<li>專案根目錄建立 <code>.env</code> 檔案，設定好變數 <code>PUBLIC_GA4_ID</code> 與 <code>PUBLIC_GTAG_ID</code>；注意變數一定要是 <code>PUBLIC_</code> 開頭，才能讓瀏覽器這類無 process 的環境也能順利取得變數資料</li>
+<li>在 astro 元件的 Component Script 部位透過 <code>import.meta.env.${.env 中的變數名}</code> 取出變數資訊</li>
+<li>在 Component Template 中「使用到變數的 script 部位」透過 <code>define:vars="..."</code> 將步驟二取得的變數傳入</li>
+</ol>
+<p>有用到變數的 script 標籤在 astro 元件中應該要長得像以下這樣：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#E1E4E8">&#x3C;</span><span style="color:#85E89D">script</span><span style="color:#B392F0"> is:inline</span><span style="color:#B392F0"> define:vars</span><span style="color:#E1E4E8">={{ ga4Id }}></span></span>
+<span class="line"><span style="color:#6A737D">  /* ... */</span></span>
+<span class="line"><span style="color:#E1E4E8">&#x3C;/</span><span style="color:#85E89D">script</span><span style="color:#E1E4E8">></span></span></code></pre>
+<p>astro 官方在介紹環境變數的文件沒有特別提及，總之請記得——如果要在 script 標籤中使用變數，務必要將變數納入 <a href="https://docs.astro.build/en/reference/directives-reference/#definevars">define:vars</a> 裡，否則什麼都拿不到。</p>
+<h3 id="metadata-部分">metadata 部分</h3>
+<p>元件最上方 Component Script 的部分引用了 Footer 元件、整個 astro 專案通用的 avatar 路徑（其實就是 <code>./public/alexander-andrews-mEdKuPYJe1I.jpg</code>）以及共用的 <code>global.css</code> 內容。</p>
+<p>接著就是從 props 取用外部元件提供的 <code>title</code> / <code>description</code> / <code>image</code> 內容（若有）並帶入 Component Template 中，主要用於 Primary Meta Tags 區塊以及 <a href="https://ogp.me/">Open Graph</a> 等連結區塊。設定 OG 可以讓使用者分享網站網址時帶入指定的圖片以及描述內容，而不只是單純的網址。</p>
+<p>最後就是在 head 中引用整個部落格會用到的字型（Noto Sans TC）資料。</p>
+<h2 id="總結">總結</h2>
+<p>今天介紹的 <code>Html</code> 元件是所有部落格畫面的基礎，並透過 <code>Astro.props</code> 來決定是否要在單一文章頁的情況下為 og 連結顯示該篇文章的 banner 圖。沒有太難的技術，但可以讓連結被分享時看起來更吸引人一點 ☆ ﾟ.*･｡</p>
+<p>感謝你今天的閱讀。</p>
+<h2 id="參考">參考</h2>
+<ul>
+<li><a href="https://docs.astro.build/en/guides/environment-variables/">astro docs: Using environment variables</a></li>
+<li><a href="https://stackoverflow.com/a/73843865">stackOverFlow: How do I pass a server variable to client side JS in astro?</a></li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

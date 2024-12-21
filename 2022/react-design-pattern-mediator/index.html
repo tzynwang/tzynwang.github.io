@@ -1,0 +1,71 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v3.6.4"><!-- Primary Meta Tags --><title>2022 第26週 工作筆記：在 React App 中的 mediator pattern</title><meta name="title" content="2022 第26週 工作筆記：在 React App 中的 mediator pattern"><meta name="description" content="這是一個文組轉職前端工程師的技術部落格"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2022/react-design-pattern-mediator/"><meta property="og:title" content="2022 第26週 工作筆記：在 React App 中的 mediator pattern"><meta property="og:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="og:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2022/react-design-pattern-mediator/"><meta property="twitter:title" content="2022 第26週 工作筆記：在 React App 中的 mediator pattern"><meta property="twitter:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="twitter:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:Noto Sans TC,sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul{margin-top:16px;margin-bottom:16px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:8px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+</style><script type="module" src="/_astro/hoisted.77775e67.js"></script></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>2022 第26週 工作筆記：在 React App 中的 mediator pattern</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2022-07-02 13:01</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/Design Patterns" data-astro-cid-2iymvi75> Design Patterns </a> <a class="tag" href="/tag/React" data-astro-cid-2iymvi75> React </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#總結" data-astro-cid-qtokga5y>總結</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#筆記" data-astro-cid-qtokga5y>筆記</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#什麼是-mediator-pattern" data-astro-cid-qtokga5y>什麼是 mediator pattern</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#如何應用在-react-app-中" data-astro-cid-qtokga5y>如何應用在 React App 中</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#何謂無外觀元件" data-astro-cid-qtokga5y>何謂無外觀元件</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#參考文件" data-astro-cid-qtokga5y>參考文件</a> </li> </ul> </div> <h2 id="總結">總結</h2>
+<p>最近為手上的專案加裝純文字複製與格式複製功能，與前輩討論後發現適合使用 mediator pattern 來管理此功能的相關邏輯</p>
+<h2 id="筆記">筆記</h2>
+<h3 id="什麼是-mediator-pattern">什麼是 mediator pattern</h3>
+<blockquote>
+<p>patterns.dev: Use a central mediator object to handle communication between components</p>
+</blockquote>
+<blockquote>
+<p>refactoring.guru: Mediator is a behavioral design pattern that lets you <strong>reduce chaotic dependencies</strong> between objects.</p>
+</blockquote>
+<ul>
+<li>核心概念：此模式類似現實中的機場塔台與飛機；飛機們不會直接與彼此溝通，而是只會與塔台聯繫，塔台負責將資訊整理給各飛機</li>
+<li>優點：將資料的流動單純化
+<ul>
+<li>只會透過中央元件來處理資料（邏輯）</li>
+<li>其他需要執行特定操作的元件，只負責發送需求，不負責處理邏輯實作</li>
+<li>如果要 debug 也只需要集中檢查中央元件的內容即可，不需要將每一個元件的內容都挑出來檢查</li>
+</ul>
+</li>
+<li>缺點：有可能會造出 God Object
+<ul>
+<li>在沒有審慎分類功能的情況下，將不相干的資料都保存在同一個 class 中</li>
+<li><a href="https://en.wikipedia.org/wiki/God_object">Wikipedia</a>: In object-oriented programming, a God object is an object that references a large number of distinct types, <strong>has too many unrelated or un-categorized methods</strong>, or some combination of both.</li>
+</ul>
+</li>
+</ul>
+<h3 id="如何應用在-react-app-中">如何應用在 React App 中</h3>
+<ul>
+<li>mediator pattern 在 React 可以解決的問題：集中管理，避免實作的 code 散落（重複）於 App 各處</li>
+<li>應用解說：
+<ul>
+<li>假設一個 React App 中有複數個位置可以執行「複製」行為，直觀的解決方式是在「每一個需要執行複製的元件」中實作複製邏輯</li>
+<li>mediator 風味的解決方式是，將複製邏輯實作在一個沒有外觀的 Layer (middleware) 元件中，此元件負責監聽、處理 App 裡所有的複製需求；而此元件本身沒有（也不需要）視覺外觀</li>
+<li>而負責提供「複製功能」這個外觀的元件（比如一個按鈕），在使用者與元件互動（比如點了此按鈕）後，即發送「複製事件」，觸發 Layer (middleware) 的一連串行為</li>
+</ul>
+</li>
+</ul>
+<h3 id="何謂無外觀元件">何謂無外觀元件</h3>
+<script src="https://gist.github.com/tzynwang/6ad8892dbfd4fdd2b0105d2d2494cfed.js"></script>
+<p>參考上方範例，元件本身不提供視覺效果，僅包覆 children ，由 children 元件來處理與使用者互動的視覺</p>
+<h2 id="參考文件">參考文件</h2>
+<ul>
+<li><a href="https://www.patterns.dev/posts/mediator-pattern/">patterns.dev: Mediator/Middleware Pattern</a></li>
+<li><a href="https://refactoring.guru/design-patterns/mediator">refactoring.guru: Mediator</a></li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

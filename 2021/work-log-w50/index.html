@@ -1,0 +1,86 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v3.6.4"><!-- Primary Meta Tags --><title>2021 第50週 學習記錄：MuiTabs、React.useEffect</title><meta name="title" content="2021 第50週 學習記錄：MuiTabs、React.useEffect"><meta name="description" content="這是一個文組轉職前端工程師的技術部落格"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2021/work-log-w50/"><meta property="og:title" content="2021 第50週 學習記錄：MuiTabs、React.useEffect"><meta property="og:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="og:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2021/work-log-w50/"><meta property="twitter:title" content="2021 第50週 學習記錄：MuiTabs、React.useEffect"><meta property="twitter:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="twitter:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:Noto Sans TC,sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul{margin-top:16px;margin-bottom:16px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:8px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+</style><script type="module" src="/_astro/hoisted.77775e67.js"></script></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>2021 第50週 學習記錄：MuiTabs、React.useEffect</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2021-12-14 22:46</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/React" data-astro-cid-2iymvi75> React </a> <a class="tag" href="/tag/MaterialUI" data-astro-cid-2iymvi75> MaterialUI </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#總結" data-astro-cid-qtokga5y>總結</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#筆記" data-astro-cid-qtokga5y>筆記</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#使用變數或-enum-管理起始值預設值" data-astro-cid-qtokga5y>使用變數或 enum 管理起始值、預設值</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#換頁時維持勾選狀態" data-astro-cid-qtokga5y>換頁時維持勾選狀態</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#調整-muicheckbox-框線粗細" data-astro-cid-qtokga5y>調整 MuiCheckBox 框線粗細</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#muitabs-動態顯示對應內容" data-astro-cid-qtokga5y>MuiTabs 動態顯示對應內容</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#reactuseeffect-with-condition" data-astro-cid-qtokga5y>React.useEffect with condition</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#參考文件" data-astro-cid-qtokga5y>參考文件</a> </li> </ul> </div> <h2 id="總結">總結</h2>
+<p>本週最大發現： <code>React.useEffect</code> 也有訂閱的功能；<code>useEffect</code> 也是支援傳入 dependency 變數的
+其餘筆記包含如何使用 MuiTabs 搭配 MuiTab</p>
+<h2 id="筆記">筆記</h2>
+<h3 id="使用變數或-enum-管理起始值預設值">使用變數或 enum 管理起始值、預設值</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#6A737D">// 比如以下</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> CONDITION</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">  page: </span><span style="color:#79B8FF">0</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">  query: </span><span style="color:#9ECBFF">''</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">enum</span><span style="color:#B392F0"> STEP</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#79B8FF">  ORDER</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> 'order'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">  SUMMARY</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> 'summary'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<ul>
+<li><code>CONDITION</code> 不但是 <code>ustState</code> 會運用到的起始值，同時也是作為後端 API 的 query 物件</li>
+<li>將購物車的分頁使用 <code>enum STEP</code> 來保存，增加步驟的可讀性，而並非只是透過數字來控制畫面上購物車內容的切換</li>
+</ul>
+<h3 id="換頁時維持勾選狀態">換頁時維持勾選狀態</h3>
+<ul>
+<li>將已經勾選起來的項目的 id 儲存為 useState 資料：<code>const [checkedItem, setCheckedItem] = useState&#x3C;string[]>([]);</code></li>
+<li>將 <code>checkedItem</code> 作為 <code>props</code> 傳入 <code>TablePagination</code> 元件，比對 <code>sourceList</code> 陣列中的項目其 <code>id</code> 是否存在 <code>checkedItem</code> 中，若有，則 <code>CheckBox</code> 設定為打勾狀態</li>
+<li>如此即可在換頁時維持項目的勾選狀態，因為換頁時更換的是 <code>sourceList</code> 資料，不影響 <code>checkedItem</code> 的內容，只要檢查 <code>sourceList</code> 中的項目是否存在 <code>checkedItem</code> 即可知道該項目是否已經被勾選過</li>
+</ul>
+<h3 id="調整-muicheckbox-框線粗細">調整 MuiCheckBox 框線粗細</h3>
+<ul>
+<li>實際上 <code>MuiCheckBox</code> 預設在未勾選、勾選狀態下會分別顯示 <code>&#x3C;CheckBoxOutlineBlankIcon /></code> 與 <code>&#x3C;CheckBoxIcon /></code> 這兩種外觀，未勾選狀態下的「框線粗細」實際上是中間透明的 svg 正方形圖案，無法透過 css 直接調整</li>
+<li>可透過修改 <code>MuiCheckBox</code> 的 <code>icon</code> 與 <code>checkedIcon</code> 來調整未勾選、勾選狀態下的外觀，或乾脆直接客製化整個元件</li>
+</ul>
+<h3 id="muitabs-動態顯示對應內容">MuiTabs 動態顯示對應內容</h3>
+<script src="https://gist.github.com/tzynwang/2e092e1929341a8b6b19793ff76f1894.js"></script>
+<ul>
+<li>邏輯如上，在 MuiTabs <code>onChange</code> 時修改其 <code>value</code>（<code>tabsValue</code>），其他元件再透過 <code>useMemo()</code> 訂閱 <code>tabsValue</code> 來動態產生對應使用者點選不同 tab 時應該顯示的內容</li>
+</ul>
+<p><img src="/2021/work-log-w50/MuiTabs.png" alt="demo"></p>
+<h3 id="reactuseeffect-with-condition">React.useEffect with condition</h3>
+<blockquote>
+<p>Think of <code>setState()</code> as a request rather than an immediate command to update the component. For better perceived performance, React may delay it, and then update several components in a single pass. <strong>React does not guarantee that the state changes are applied immediately.</strong> <code>setState()</code> does not always immediately update the component. It may batch or defer the update until later.</p>
+</blockquote>
+<ul>
+<li>重點：<code>setState()</code> 並不是 synchronous function， 執行完 <code>setState()</code> 並不保證該 <code>state</code> 的值立刻就會更新為最新的狀態</li>
+<li>如果需要在某個 <code>state</code> 更新後去執行其他操作（例：根據使用者勾選的資料類別，向後端請求「只有該類別」的資料），可以透過 <code>useEffect()</code> 去訂閱該 <code>state</code></li>
+<li><code>useEffect()</code> 接受傳入第二組參數（以下示範的 <code>[props.source]</code>），作為第一個參數傳入的 function 會在「第二個陣列參數中的資料（被訂閱的資料）改變後」才執行
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#B392F0">useEffect</span><span style="color:#E1E4E8">(() </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> subscription</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> props.source.</span><span style="color:#B392F0">subscribe</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">    subscription.</span><span style="color:#B392F0">unsubscribe</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">  };</span></span>
+<span class="line"><span style="color:#E1E4E8">}, [props.source]);</span></span></code></pre>
+</li>
+<li>解說：僅有在 <code>props.source</code> 改變時，才執行 <code>useEffect()</code> 中作為第一個參數傳入的 function</li>
+</ul>
+<h2 id="參考文件">參考文件</h2>
+<ul>
+<li><a href="https://mui.com/api/checkbox/#main-content">MuiCheckBox API</a></li>
+<li><a href="https://mui.com/components/checkboxes/#customization">MuiCheckBox: Customization</a></li>
+<li><a href="https://reactjs.org/docs/react-component.html#setstate">React: setState()</a></li>
+<li><a href="https://reactjs.org/docs/hooks-reference.html#conditionally-firing-an-effect">React: Conditionally firing an effect</a></li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

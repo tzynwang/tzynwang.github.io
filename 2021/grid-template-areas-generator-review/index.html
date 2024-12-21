@@ -1,0 +1,97 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v3.6.4"><!-- Primary Meta Tags --><title>自主練習專案「grid-template-areas generator」技術記錄</title><meta name="title" content="自主練習專案「grid-template-areas generator」技術記錄"><meta name="description" content="這是一個文組轉職前端工程師的技術部落格"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2021/grid-template-areas-generator-review/"><meta property="og:title" content="自主練習專案「grid-template-areas generator」技術記錄"><meta property="og:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="og:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2021/grid-template-areas-generator-review/"><meta property="twitter:title" content="自主練習專案「grid-template-areas generator」技術記錄"><meta property="twitter:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="twitter:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:Noto Sans TC,sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul{margin-top:16px;margin-bottom:16px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:8px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+</style><script type="module" src="/_astro/hoisted.77775e67.js"></script></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>自主練習專案「grid-template-areas generator」技術記錄</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2021-03-24 12:18</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/CSS" data-astro-cid-2iymvi75> CSS </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#總結" data-astro-cid-qtokga5y>總結</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#成品" data-astro-cid-qtokga5y>成品</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#版本與環境" data-astro-cid-qtokga5y>版本與環境</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#css-內容" data-astro-cid-qtokga5y>CSS 內容</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#使用before與linear-gradient畫圖示" data-astro-cid-qtokga5y>使用::before與linear-gradient()畫圖示</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#textarea換行上色效果" data-astro-cid-qtokga5y>&lt;textarea&gt;換行上色效果</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#js-內容" data-astro-cid-qtokga5y>JS 內容</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#return與break的差別" data-astro-cid-qtokga5y>return與break的差別</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#regular-expressions-筆記" data-astro-cid-qtokga5y>Regular Expressions 筆記</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#參考文件" data-astro-cid-qtokga5y>參考文件</a> </li> </ul> </div> <h2 id="總結">總結</h2>
+<p>微型專案「grid-template-areas generator」是為了不想要手動輸入多種 grid-template-areas 設定的產物；輸入 column 與 row 的始末後，按下 generate 按鈕即可產生能直接使用的 grid-template-areas 設定，並提供一鍵複製的功能。</p>
+<h2 id="成品">成品</h2>
+<p>codepen 展示：</p>
+<p class="codepen" data-height="265" data-theme-id="dark" data-default-tab="css,result" data-user="Charlie7779" data-slug-hash="qBqGbpm" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="grid-template-areas generator">
+  <span>See the Pen <a href="https://codepen.io/Charlie7779/pen/qBqGbpm">
+  grid-template-areas generator</a> by Charlie (<a href="https://codepen.io/Charlie7779">@Charlie7779</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+<h2 id="版本與環境">版本與環境</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span>Google Chrome: 89.0.4389.90 (Official Build) (64-bit)</span></span>
+<span class="line"><span>os: Windows_NT 10.0.18363 win32 x64</span></span></code></pre>
+<h2 id="css-內容">CSS 內容</h2>
+<h3 id="使用before與linear-gradient畫圖示">使用<code>::before</code>與<code>linear-gradient()</code>畫圖示</h3>
+<ul>
+<li>
+<p>先選取<code>.label</code>的<code>::before</code>部位，設定<code>position: absolute;</code>與<code>top: 8px;</code>、<code>left: 4px;</code>來讓圖示預定繪製的範圍離<code>.label</code>左邊框 4px 遠，並垂直置中</p>
+</li>
+<li>
+<p><code>background</code>如果設定多個<code>linear-gradient()</code>，原始碼從上到下會分別對應圖層從上到下繪製的內容</p>
+<ul>
+<li>以 cell start 的圖示為例：</li>
+</ul>
+<script src="https://gist.github.com/tzynwang/9b197345e6727409ced24f58820e1a47.js"></script>
+  <p class="codepen" data-height="265" data-theme-id="dark" data-default-tab="css,result" data-user="Charlie7779" data-slug-hash="GRrJEJM" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="linear-gradient()">
+  <span>See the Pen <a href="https://codepen.io/Charlie7779/pen/GRrJEJM">
+  linear-gradient()</a> by Charlie (<a href="https://codepen.io/Charlie7779">@Charlie7779</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+  </p>
+  <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+  - 其他欄位的圖示原理相同，僅是修改色塊位置或縮小覆蓋區域
+</li>
+</ul>
+<h3 id="textarea換行上色效果"><code>&#x3C;textarea></code>換行上色效果</h3>
+<ul>
+<li>使用<code>repeating-linear-gradient</code>來重複製造淺綠／白色相間的色塊背景</li>
+<li>將文字的高度設定成與色塊背景高度一致，並在<code>background</code>加上<code>local</code>參數，讓背景隨著滑鼠滾輪捲動，視覺上更為自然
+  <script src="https://gist.github.com/tzynwang/1badaf6cd76aa8aaef55437f307378e3.js"></script>
+</li>
+</ul>
+<h2 id="js-內容">JS 內容</h2>
+<h3 id="return與break的差別"><code>return</code>與<code>break</code>的差別</h3>
+<script src="https://gist.github.com/tzynwang/3e954aaba9dc39d3c9409e58ebdbbd02.js"></script>
+<ul>
+<li>一開始在第 13 行與 23 行使用不正確的關鍵字<code>break</code>來脫離迴圈；<code>break</code>儘代表「跳脫現在的迴圈」，卻會繼續執行接下來的程式碼。故第 13 行使用<code>break</code>離開後，接下來會去執行第 21 行的程式碼（而不是脫離整個 function）。</li>
+<li>改用<code>return</code>後，第 13 行與 23 行的意義變為「印出錯誤訊息後，就離開 function，不會繼續走完 function 接下來的程式碼」。</li>
+</ul>
+<h3 id="regular-expressions-筆記">Regular Expressions 筆記</h3>
+<ul>
+<li>使用方式：先設定包覆在<code>//</code>中的<code>pattern</code>（有需要的話也可指定<code>modifiers</code>），再搭配<code>test()</code>來判定變數是否帶有 pattern 內容；以下為步驟解析：
+<ul>
+<li><code>let r = /^\+?[1-9][0-9]*$/</code>中，pattern 的內容是「<code>^\+?[1-9][0-9]*$</code>」</li>
+<li><code>^</code>：「開頭須包含」</li>
+<li><code>\+</code>與<code>?</code>：加號前面的斜線為跳脫字元，<code>?</code>代表可以有 0 個或 1 個<code>\+</code></li>
+<li><code>[1-9]</code>：內容範圍涵蓋 1 到 9</li>
+<li><code>[0-9]</code>與<code>*</code>：代表可以擁有 0 個（含）以上的<code>[0-9]</code>字元</li>
+<li><code>$</code>：「結尾須包含」</li>
+</ul>
+</li>
+<li>翻譯成白話文：「開頭需有 1-9 任一數字，可以有<code>+</code>號，接著可以有任意數量的 0-9」</li>
+<li>pattern 並無包含數字以外字元的內容，故如果是「<code>123a321</code>」這樣夾雜數字以外的字串，<code>r.test(x)</code>會回傳<code>false</code></li>
+<li>最後並沒有採用正規表示式來判定輸入內容是否為正整數，而是改用<code>parseInt()</code>，因為<code>parseInt()</code>可以同時處理<code>String</code>轉換為<code>Number</code>的工作</li>
+</ul>
+<h2 id="參考文件">參考文件</h2>
+<ul>
+<li><a href="https://wcc723.github.io/css/2013/09/25/background-att/">CSS 沒有極限 - 意想不到的 background-attachment</a></li>
+<li><a href="https://www.youtube.com/watch?v=rhzKDrUiJVk">Learn Regular Expressions In 20 Minutes</a></li>
+<li><a href="https://regexr.com/">RegExr: Learn, Build, &#x26; Test RegEx</a>：會顯示有依附關係的 reg exr</li>
+<li><a href="https://regex101.com/">regular expressions 101</a>：有附 debugger</li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 
