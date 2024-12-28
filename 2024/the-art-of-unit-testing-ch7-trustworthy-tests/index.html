@@ -1,0 +1,129 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v3.6.4"><!-- Primary Meta Tags --><title>閱讀筆記：The Art of Unit Testing Chapter 7 Trustworthy tests</title><meta name="title" content="閱讀筆記：The Art of Unit Testing Chapter 7 Trustworthy tests"><meta name="description" content="本書第一章曾提過，好的單元測試應有三種特徵——好讀、值得信任、好維護。第二到六章說明了如何寫出「好讀」的測試，而這一章則會說明「信任感」在單元測試中扮演什麼角色。"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2024/the-art-of-unit-testing-ch7-trustworthy-tests/"><meta property="og:title" content="閱讀筆記：The Art of Unit Testing Chapter 7 Trustworthy tests"><meta property="og:description" content="本書第一章曾提過，好的單元測試應有三種特徵——好讀、值得信任、好維護。第二到六章說明了如何寫出「好讀」的測試，而這一章則會說明「信任感」在單元測試中扮演什麼角色。"><meta property="og:image" content="https://tzynwang.github.io/2024/the-art-of-unit-testing-ch7-trustworthy-tests/hannah-busing-Zyx1bK9mqmA-unsplash.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2024/the-art-of-unit-testing-ch7-trustworthy-tests/"><meta property="twitter:title" content="閱讀筆記：The Art of Unit Testing Chapter 7 Trustworthy tests"><meta property="twitter:description" content="本書第一章曾提過，好的單元測試應有三種特徵——好讀、值得信任、好維護。第二到六章說明了如何寫出「好讀」的測試，而這一章則會說明「信任感」在單元測試中扮演什麼角色。"><meta property="twitter:image" content="https://tzynwang.github.io/2024/the-art-of-unit-testing-ch7-trustworthy-tests/hannah-busing-Zyx1bK9mqmA-unsplash.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:Noto Sans TC,sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul{margin-top:16px;margin-bottom:16px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:8px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+</style><script type="module" src="/_astro/hoisted.77775e67.js"></script></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>閱讀筆記：The Art of Unit Testing Chapter 7 Trustworthy tests</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2024-01-21 10:45</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/Testing" data-astro-cid-2iymvi75> Testing </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#intro" data-astro-cid-qtokga5y>intro</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#何謂信任感" data-astro-cid-qtokga5y>何謂信任感</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#為何測試會紅燈" data-astro-cid-qtokga5y>為何測試會紅燈</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#錯的是測試" data-astro-cid-qtokga5y>錯的是測試</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#反覆無常的測試" data-astro-cid-qtokga5y>反覆無常的測試</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#不可信的綠燈" data-astro-cid-qtokga5y>不可信的綠燈</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#其他注意事項" data-astro-cid-qtokga5y>其他注意事項</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#參考文件" data-astro-cid-qtokga5y>參考文件</a> </li> </ul> </div> <h2 id="intro">intro</h2>
+<p>本書第一章曾提過，好的單元測試應有三種特徵——好讀、值得信任、好維護。第二到六章說明了如何寫出「好讀」的測試，而這一章則會說明「信任感」在單元測試中扮演什麼角色。</p>
+<h2 id="何謂信任感">何謂信任感</h2>
+<p>一個單元測試如果值得信任，就代表我們全心相信該測試每一次執行的結果。</p>
+<blockquote>
+<p>We accept the test results with confidence.</p>
+</blockquote>
+<p>當我們信任的測試紅燈時，我們會認真除錯，而不是機械性地再跑一次測試，期待結果變綠燈。當我們信任的測試綠燈時，我們便確信該單元 100% 功能正常，不需要再「手動檢查一下，以防萬一」。</p>
+<h2 id="為何測試會紅燈">為何測試會紅燈</h2>
+<ul>
+<li>👍 因為程式碼真的有問題：這很正當的紅燈原因，畢竟單元測試本來就是為了幫忙檢查程式碼的功能是否正常</li>
+<li>❌ 因為測試已經和現行實作脫鉤：如果是這個理由，請刪掉過時的測試，並根據當下的實作內容撰寫新的單元測試</li>
+<li>❌ 錯的是測試：詳見下方筆記</li>
+<li>❌ 反覆無常的測試（flaky Test）：詳見下方筆記</li>
+</ul>
+<h3 id="錯的是測試">錯的是測試</h3>
+<p>被檢驗的單元沒有任何功能瑕疵，反而是單元測試驗證的內容有誤，或誤會單元的使用方式，導致測試失敗——這就是寫壞的測試。可以透過「先寫測試，再實作」（測試驅動開發 / TDD）的開發流程來減少這類問題（參考<a href="/2023/the-art-of-unit-testing-ch1-the-basic-of-unit-testing#110-test-driven-development">第一章的筆記</a>）。</p>
+<p>我們也要避免在測試中使用邏輯，比如下列不良示範：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#B392F0"> makeGreeting</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">name</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#9ECBFF"> 'hello'</span><span style="color:#F97583"> +</span><span style="color:#E1E4E8"> name;</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">describe</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'makeGreeting'</span><span style="color:#E1E4E8">, () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#B392F0">  it</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'should return string hello with name'</span><span style="color:#E1E4E8">, () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> name</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> 'abc'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> result</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> trust.</span><span style="color:#B392F0">makeGreeting</span><span style="color:#E1E4E8">(name);</span></span>
+<span class="line"><span style="color:#B392F0">    expect</span><span style="color:#E1E4E8">(result).</span><span style="color:#B392F0">toBe</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'hello'</span><span style="color:#F97583"> +</span><span style="color:#E1E4E8"> name);</span></span>
+<span class="line"><span style="color:#E1E4E8">  });</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+<p>如果一段邏輯已經有問題，那麼，把該邏輯照搬到單元測試裡只會讓問題繼續被埋沒。上述測試無法幫忙查出「輸出的 <code>hello</code> 與參數 <code>name</code> 之間並沒有空白」的問題。</p>
+<p>直接驗證寫死的值，反而能正確反應該單元的問題：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#B392F0">describe</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'makeGreeting'</span><span style="color:#E1E4E8">, () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#B392F0">  it</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'should return `hello ${name}`'</span><span style="color:#E1E4E8">, () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> result</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> trust.</span><span style="color:#B392F0">makeGreeting</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'abc'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#B392F0">    expect</span><span style="color:#E1E4E8">(result).</span><span style="color:#B392F0">toBe</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'hello abc'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">  });</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+<hr>
+<p>以下是另一個負面教材：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#B392F0"> isName</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">input</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> input.</span><span style="color:#B392F0">split</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">' '</span><span style="color:#E1E4E8">).</span><span style="color:#79B8FF">length</span><span style="color:#F97583"> ===</span><span style="color:#79B8FF"> 2</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">describe</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'isName'</span><span style="color:#E1E4E8">, () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> namesToTest</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> [</span><span style="color:#9ECBFF">'firstOnly'</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">'first second'</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">''</span><span style="color:#E1E4E8">];</span></span>
+<span class="line"><span style="color:#B392F0">  it</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'correctly finds out if it is a name'</span><span style="color:#E1E4E8">, () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">    namesToTest.</span><span style="color:#B392F0">forEach</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">name</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">      const</span><span style="color:#79B8FF"> result</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> trust.</span><span style="color:#B392F0">isName</span><span style="color:#E1E4E8">(name);</span></span>
+<span class="line"><span style="color:#F97583">      if</span><span style="color:#E1E4E8"> (name.</span><span style="color:#B392F0">includes</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">' '</span><span style="color:#E1E4E8">)) {</span></span>
+<span class="line"><span style="color:#B392F0">        expect</span><span style="color:#E1E4E8">(result).</span><span style="color:#B392F0">toBe</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">      } </span><span style="color:#F97583">else</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#B392F0">        expect</span><span style="color:#E1E4E8">(result).</span><span style="color:#B392F0">toBe</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">false</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">      }</span></span>
+<span class="line"><span style="color:#E1E4E8">    });</span></span>
+<span class="line"><span style="color:#E1E4E8">  });</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+<p>使用迴圈與條件判斷除了讓測試本身變得不易閱讀以外，當測試紅燈時，這種寫法也會提升除錯的困難度。Jest 雖然會提示出錯測試的名稱，但這並不會讓我們知道「是陣列中的哪一個項目導致測試失敗」。工程師只能耐著性子一行一行地讀，並在腦中運行每一組迴圈的執行結果。</p>
+<p>結論：表面上看起來是少寫了幾行程式碼，但出包時的修繕成本比多寫幾組測試高太多了。</p>
+<h3 id="反覆無常的測試">反覆無常的測試</h3>
+<p>指那些在程式碼或單元測試沒有任何改動時，執行結果便時好時壞的詭異測試。</p>
+<p><img src="/2024/the-art-of-unit-testing-ch7-trustworthy-tests/%E5%8F%8D%E8%A6%86%E8%A9%A6%E6%8E%A2.png" alt="反覆試探"></p>
+<p>以常理而言，測試中的依賴（不可控的部分）越多，測試時好時壞的可能性就越高。但這是 e2e 與系統測試（system testing）無法避免的一部分——畢竟我們執行這些測試，就是為了盡可能貼近真實情況。而現實世界中的依賴（real dependency / moving part）畢竟沒有那麼好控制：資料庫的內容會變、網路可能不穩、使用者的裝置版本可能出乎意料的舊 ⋯⋯。</p>
+<p><img src="/2024/the-art-of-unit-testing-ch7-trustworthy-tests/flakiness-chart.png" alt="flakiness chart"></p>
+<p>但對單元測試而言，結果反覆無常是不可容忍的。除了參考本書關於 stub/mock 的章節來增前對測試環境的控制外，對於那些實在無法收編的測試，請考慮刪除之。</p>
+<h2 id="不可信的綠燈">不可信的綠燈</h2>
+<p>如果單元測試有可能因為本身的邏輯錯誤導致誤報（紅燈），那自然也會有一些理由導致單元測試給出虛假的綠燈。這類應失敗但未失敗的測試基本上：</p>
+<ol>
+<li>根本沒有執行驗證（assert）</li>
+<li>執行了模稜兩可的反面驗證，比如以下範例：</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#B392F0">expect</span><span style="color:#E1E4E8">(() </span><span style="color:#F97583">=></span><span style="color:#B392F0"> someFunction</span><span style="color:#E1E4E8">()).not.</span><span style="color:#B392F0">toThrow</span><span style="color:#E1E4E8">(error);</span></span></code></pre>
+<p>這個測試只讓我們知道 <code>someFunction</code> 沒有拋錯，但我們也無法知道這個功能的「表現正常」到底是什麼。這個綠燈只是消極地確保「某功能沒有出錯」。</p>
+<p>請使用 <code>.toBe()</code> <code>.toEqual()</code> 這類正面的比對功能（Matcher）和退出點一決勝負。</p>
+<p><img src="/2024/the-art-of-unit-testing-ch7-trustworthy-tests/jojo-approach.png" alt="jojo-approach.png"></p>
+<h2 id="其他注意事項">其他注意事項</h2>
+<p>不要在一個單元測試裡執行多次驗證（<code>expect()</code>）——當測試失敗時，你會需要多花時間確認到底是哪一組 <code>expect()</code> 失敗。</p>
+<p>如果有複數種情境需要驗證，就為不同的情境撰寫對應的單元測試。這也能避免我們用太攏統的名稱來描述一個測試。比如以下範例：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#B392F0">describe</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'trigger'</span><span style="color:#E1E4E8">, () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#B392F0">  it</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'should work as expect'</span><span style="color:#E1E4E8">, () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> callback</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> jest.</span><span style="color:#B392F0">fn</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> result</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> trigger</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">2</span><span style="color:#E1E4E8">, callback);</span></span>
+<span class="line"><span style="color:#B392F0">    expect</span><span style="color:#E1E4E8">(result).</span><span style="color:#B392F0">toBe</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">3</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#B392F0">    expect</span><span style="color:#E1E4E8">(callback).</span><span style="color:#B392F0">toHaveBeenCalledWith</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"I'm triggered"</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">  });</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+<p>可以拆為兩組命名更具體的單元測試：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#B392F0">describe</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'trigger'</span><span style="color:#E1E4E8">, () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#B392F0">  it</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'should run the callback'</span><span style="color:#E1E4E8">, () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> callback</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> jest.</span><span style="color:#B392F0">fn</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#B392F0">    trigger</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">2</span><span style="color:#E1E4E8">, callback);</span></span>
+<span class="line"><span style="color:#B392F0">    expect</span><span style="color:#E1E4E8">(callback).</span><span style="color:#B392F0">toHaveBeenCalledWith</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"I'm triggered"</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">  });</span></span>
+<span class="line"><span style="color:#B392F0">  it</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'should return the sum from the given values'</span><span style="color:#E1E4E8">, () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> result</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> trigger</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">2</span><span style="color:#E1E4E8">, jest.</span><span style="color:#B392F0">fn</span><span style="color:#E1E4E8">());</span></span>
+<span class="line"><span style="color:#B392F0">    expect</span><span style="color:#E1E4E8">(result).</span><span style="color:#B392F0">toBe</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">3</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">  });</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+<h2 id="參考文件">參考文件</h2>
+<ul>
+<li><a href="https://www.manning.com/books/the-art-of-unit-testing-third-edition">Manning: The Art of Unit Testing, Third Edition</a></li>
+<li><a href="https://stackoverflow.com/a/11837973">Stack Overflow: What does “DAMP not DRY” mean when talking about unit tests?</a></li>
+<li><a href="https://enterprisecraftsmanship.com/posts/dry-damp-unit-tests/">Enterprise Craftsmanship: DRY vs DAMP in Unit Tests</a></li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

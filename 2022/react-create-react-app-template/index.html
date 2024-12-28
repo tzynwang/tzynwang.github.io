@@ -1,0 +1,75 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v3.6.4"><!-- Primary Meta Tags --><title>「create-react-app template」實作筆記</title><meta name="title" content="「create-react-app template」實作筆記"><meta name="description" content="這是一個文組轉職前端工程師的技術部落格"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2022/react-create-react-app-template/"><meta property="og:title" content="「create-react-app template」實作筆記"><meta property="og:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="og:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2022/react-create-react-app-template/"><meta property="twitter:title" content="「create-react-app template」實作筆記"><meta property="twitter:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="twitter:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:Noto Sans TC,sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul{margin-top:16px;margin-bottom:16px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:8px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+</style><script type="module" src="/_astro/hoisted.77775e67.js"></script></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>「create-react-app template」實作筆記</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2022-02-05 19:18</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/React" data-astro-cid-2iymvi75> React </a> <a class="tag" href="/tag/webpack" data-astro-cid-2iymvi75> webpack </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#總結" data-astro-cid-qtokga5y>總結</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#版本與環境" data-astro-cid-qtokga5y>版本與環境</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#踩坑記錄" data-astro-cid-qtokga5y>踩坑記錄</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#npm-run-eject" data-astro-cid-qtokga5y>npm run eject</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#tsconfig-extends" data-astro-cid-qtokga5y>tsconfig extends</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#自訂-webpack-終端訊息" data-astro-cid-qtokga5y>自訂 webpack 終端訊息</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#一鍵部署至-github-page" data-astro-cid-qtokga5y>一鍵部署至 GitHub Page</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#參考文件" data-astro-cid-qtokga5y>參考文件</a> </li> </ul> </div> <h2 id="總結">總結</h2>
+<p>寫了一個 create-react-app template <code>choffee</code>（<a href="https://www.npmjs.com/package/cra-template-choffee">npm 連結</a>），目前實作了以下個人每次建立新 react app 時都會用到的功能與設定：</p>
+<ol>
+<li>
+<p>使用 typescript</p>
+</li>
+<li>
+<p>於 react app 的進入點 <code>index.tsx</code> 預設使用 <code>Error Boundary</code> 包覆 <code>App</code>，開發時若出錯會直接將錯誤訊息吐到瀏覽器畫面中</p>
+</li>
+<li>
+<p>較友善的元件 import 路徑（移植自 <a href="https://tzynwang.github.io/2022/react-webpack-config/">2022 第 4 週 實作筆記：React App 與 webpack</a>）</p>
+</li>
+<li>
+<p>較短的 webpack 終端訊息，並將 dev server 運行的 IP 置頂，藍字為專案名稱
+（理想是讓自訂訊息在 webpack 輸出 infrastructureLog 之後才出現，但目前還未找到實作方法）
+<img src="/2022/react-create-react-app-template/choffee.png" alt="terminal log from template choffee">
+<img src="/2022/react-create-react-app-template/cra-default.png" alt="terminal log from default create-react-app"></p>
+</li>
+<li>
+<p>設定好 git remote 後即可透過 <code>npm run deploy</code> 將 react app 部署上 GitHub Page</p>
+</li>
+</ol>
+<h2 id="版本與環境">版本與環境</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span>create-react-app: 5.0.0</span></span>
+<span class="line"><span>webpack: 5.67.0</span></span></code></pre>
+<h2 id="踩坑記錄">踩坑記錄</h2>
+<h3 id="npm-run-eject">npm run eject</h3>
+<p>問題：如何修改（覆蓋） create-react-app 預設的 webpack 設定？
+解決方式：執行 <code>npm run eject</code> ，template 內會出現 <code>config</code> 與 <code>scripts</code> 這兩個資料夾，<code>webpack.config.js</code> 與 <code>webpackDevServer.config.js</code> 位在 <code>config</code> 資料夾中</p>
+<blockquote>
+<p>If you aren’t satisfied with the build tool and configuration choices, you can <code>eject</code> at any time. This command will <strong>remove the single build dependency from your project</strong>. Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc.) into your project as dependencies in <code>package.json</code>.</p>
+</blockquote>
+<h3 id="tsconfig-extends">tsconfig extends</h3>
+<p>問題：在 <code>template</code> 資料夾中設定好 <code>tsconfig.json</code> 的 <code>paths</code> 參數，使用 <code>template</code> 建立 react app 後卻發現 <code>tsconfig.json</code> 中的 <code>paths</code> 參數並沒有被帶進來
+解決方式：將 <code>paths</code> 寫在另外一個 <code>tsconfig.path.json</code> 中，於 <code>tsconfig.json</code> 裡面透過 <code>extends</code> 來引用 <code>tsconfig.path.json</code> 內的 <code>paths</code> 設定</p>
+<script src="https://gist.github.com/tzynwang/6bb8ee9d276dfc8202536d24b069a88b.js"></script>
+<p>參考：<a href="https://github.com/facebook/create-react-app/issues/8909">create-react-app #8909 Using the tsconfig file to configure the alias does not take effect</a></p>
+<h3 id="自訂-webpack-終端訊息">自訂 webpack 終端訊息</h3>
+<p>清除的方法參考自 <a href="https://www.npmjs.com/package/clean-terminal-webpack-plugin">clean-terminal-webpack-plugin</a>，在 webpack 的 <code>compiler.hooks.beforeCompile</code> 與 <code>compiler.hooks.afterCompile</code> 清除了終端的訊息，並在 <code>compiler.hooks.done</code> 階段輸出 dev server 的 IP</p>
+<h3 id="一鍵部署至-github-page">一鍵部署至 GitHub Page</h3>
+<p>修改了 <code>webpack.config.js</code> 中 <code>output</code> 的 <code>publicPath</code> 路徑，從 cra 預設的 <code>path.publicUrlOrPath</code> 改為 <code>./</code>；在處理這段時是直接先 <code>npm run build</code> 後檢查 build 出來的資料夾內容，使用 vs code Live Server 確認在本幾可以正常瀏覽 bundle 檔案後，再加上 <code>gh-pages -d build</code> 等 scripts</p>
+<p>設定好 react app 專案的 git remote 後即可執行 <code>npm run deploy</code> 將專案部署為該 repo 的 GitHub Page</p>
+<h2 id="參考文件">參考文件</h2>
+<ul>
+<li><a href="https://create-react-app.dev/docs/custom-templates">Create React App: Custom Templates</a></li>
+<li><a href="https://create-react-app.dev/docs/available-scripts/#npm-run-eject">Create React App: npm run eject</a></li>
+<li><a href="https://stackoverflow.com/questions/48395804/where-is-create-react-app-webpack-config-and-files">where is create-react-app webpack config and files?</a></li>
+<li><a href="https://github.com/webpack/webpack/issues/12091">webpack #12091 Support customizing infrastructure logging</a></li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

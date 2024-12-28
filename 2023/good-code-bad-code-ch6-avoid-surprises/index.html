@@ -1,0 +1,112 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v3.6.4"><!-- Primary Meta Tags --><title>閱讀筆記：Good Code, Bad Code Chapter 6 Avoid surprises</title><meta name="title" content="閱讀筆記：Good Code, Bad Code Chapter 6 Avoid surprises"><meta name="description" content="這是一個文組轉職前端工程師的技術部落格"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2023/good-code-bad-code-ch6-avoid-surprises/"><meta property="og:title" content="閱讀筆記：Good Code, Bad Code Chapter 6 Avoid surprises"><meta property="og:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="og:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2023/good-code-bad-code-ch6-avoid-surprises/"><meta property="twitter:title" content="閱讀筆記：Good Code, Bad Code Chapter 6 Avoid surprises"><meta property="twitter:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="twitter:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:Noto Sans TC,sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul{margin-top:16px;margin-bottom:16px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:8px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+</style><script type="module" src="/_astro/hoisted.77775e67.js"></script></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>閱讀筆記：Good Code, Bad Code Chapter 6 Avoid surprises</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2023-03-29 19:15</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/Software Architecture" data-astro-cid-2iymvi75> Software Architecture </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#總結" data-astro-cid-qtokga5y>總結</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#筆記" data-astro-cid-qtokga5y>筆記</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#如何避免驚喜驚嚇" data-astro-cid-qtokga5y>如何避免驚喜（驚嚇）</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#實作方式" data-astro-cid-qtokga5y>實作方式</a> </li><li class="toc-4" data-astro-cid-qtokga5y> <a href="#避免使用-magic-value" data-astro-cid-qtokga5y>避免使用 magic value</a> </li><li class="toc-4" data-astro-cid-qtokga5y> <a href="#謹慎使用-null-object" data-astro-cid-qtokga5y>謹慎使用 null object</a> </li><li class="toc-4" data-astro-cid-qtokga5y> <a href="#避免無預期的-side-effects" data-astro-cid-qtokga5y>避免無預期的 side effects</a> </li><li class="toc-4" data-astro-cid-qtokga5y> <a href="#避免修改參數" data-astro-cid-qtokga5y>避免修改參數</a> </li><li class="toc-4" data-astro-cid-qtokga5y> <a href="#謹慎對應-enum" data-astro-cid-qtokga5y>謹慎對應 enum</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#參考文件" data-astro-cid-qtokga5y>參考文件</a> </li> </ul> </div> <h2 id="總結">總結</h2>
+<p>此篇文章是 Good Code, Bad Code: Think like a software engineer 第六章（Avoid surprises）的閱讀筆記，並摘錄了書中一些關於「減少程式碼對使用者造成驚喜（驚嚇）」的實作技巧。</p>
+<h2 id="筆記">筆記</h2>
+<h3 id="如何避免驚喜驚嚇">如何避免驚喜（驚嚇）</h3>
+<p>本章總結：避免驚嚇（驚喜）最好的辦法，就是讓程式碼的使用者明確意識到「這段程式碼運作之後，會發生什麼事情」。</p>
+<blockquote>
+<p>Avoiding surprises is often about <strong>being explicit</strong>. If a function sometimes returns nothing or there is a special scenario that needs handling then we should <strong>make sure other engineers are aware of this</strong>.</p>
+</blockquote>
+<h3 id="實作方式">實作方式</h3>
+<h4 id="避免使用-magic-value">避免使用 magic value</h4>
+<p><code>Array.prototype.findIndex()</code> 就是一個使用 magic value 的例子。當 <code>findIndex()</code> 無法在該陣列中找到符合條件的項目時，此功能不是回傳 <code>null</code> 或 <code>undefined</code>，而是回傳 <code>-1</code>。</p>
+<p>這麼做的缺點是：</p>
+<ol>
+<li>TypeScript 對回傳值的型別檢查失效，使用者一定要手動檢查回傳的值是否大於 <code>-1</code> 才能知道「到底有沒有找到符合條件的項目」</li>
+<li>如果使用者沒有查閱 <code>Array.prototype.findIndex()</code> 的文件，他不會知道這個功能是透過「回傳 <code>-1</code>」來代表「找不到符合條件的項目」</li>
+</ol>
+<p>有鑒於以上的不便性，工程師在開發一個 function 時應選擇避免使用 magic value。</p>
+<p>以 TypeScript 開發來說，上述功能如果改為「找不到對應項目時，回傳 <code>null</code> 或 <code>undefined</code>」的話，使用此功能的工程師即可透過「檢查回傳值的型別」來知道該功能究竟有沒有找到對應項目。</p>
+<h4 id="謹慎使用-null-object">謹慎使用 null object</h4>
+<p>以下列功能為例，呼叫 <code>getUserInfo</code> 後必定會取得一個符合 <code>UserInfo</code> 型態的資料，但變數 <code>userInfo</code> 卻不保證包含有效資訊，如果在呼叫 API 時發生錯誤，這個 <code>userInfo</code> 就會是一個空殼物件。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#F97583">async</span><span style="color:#F97583"> function</span><span style="color:#B392F0"> getUserInfo</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">user_id</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> string</span><span style="color:#E1E4E8">)</span><span style="color:#F97583">:</span><span style="color:#B392F0"> UserInfo</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">  try</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> results</span><span style="color:#F97583"> =</span><span style="color:#F97583"> await</span><span style="color:#E1E4E8"> api.user.</span><span style="color:#B392F0">getInfo</span><span style="color:#E1E4E8">(user_id);</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> userInfo</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">      user_id,</span></span>
+<span class="line"><span style="color:#E1E4E8">      display_name: results.data.payload.display_name,</span></span>
+<span class="line"><span style="color:#E1E4E8">      email: results.data.payload.email,</span></span>
+<span class="line"><span style="color:#E1E4E8">      is_validate: results.data.payload.is_validate,</span></span>
+<span class="line"><span style="color:#E1E4E8">    };</span></span>
+<span class="line"><span style="color:#E1E4E8">  } </span><span style="color:#F97583">catch</span><span style="color:#E1E4E8"> (error) {</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">      user_id: </span><span style="color:#9ECBFF">''</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">      display_name: </span><span style="color:#9ECBFF">''</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">      email: </span><span style="color:#9ECBFF">''</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">      is_validate: </span><span style="color:#79B8FF">false</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">    };</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> userInfo</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> getUserInfo</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'id_1'</span><span style="color:#E1E4E8">);</span></span></code></pre>
+<p>若有一個工程師不做任何檢查，直接使用變數 <code>userInfo</code> 來渲染畫面的話，就會遇到「呼叫 API 失敗時，畫面上會缺少使用者的相關資訊」的狀況。</p>
+<p>除非 <code>getUserInfo</code> 的使用者知道這個功能的實作細節，不然以上的設計方式可能會給程式碼的使用者帶來驚喜（驚嚇）。比較好的做法是在呼叫 API 失敗時直接拋錯、或是回傳 <code>null</code> 物件。</p>
+<p>雖然這樣會讓 <code>getUserInfo</code> 的使用者需要額外撰寫一段 <code>if (userInfo !== null) { ... }</code> 的檢查邏輯，但這可以確保 <code>getUserInfo</code> 的使用者意識到「此功能可能不是每次都會回傳有效內容」，進而避免過於大意的使用方式。</p>
+<h4 id="避免無預期的-side-effects">避免無預期的 side effects</h4>
+<p>產生 side effect 是撰寫程式中不可或缺的一環，但本書作者想強調的事情是：</p>
+<ul>
+<li>如果一個功能會產生 side effect，則必須讓該功能的使用者意識到「呼叫此功能會產生 side effect」
+<ul>
+<li>建議：透過 function name 明示一個功能會產生 side effect</li>
+<li>避免：使用者需要透過註解或文件才會知道一個功能帶有 side effect（參考本書第三章）</li>
+</ul>
+</li>
+<li>如果 side effect 並非必要，那麼就把會產生 side effect 的邏輯自該功能中移除掉</li>
+</ul>
+<blockquote>
+<p>Not causing a side effect in the first place is the best way to avoid a surprise, but this is not always practical. When a side effect is unavoidable, <strong>naming things appropriately</strong> can be a very effective way to make it obvious.</p>
+</blockquote>
+<h4 id="避免修改參數">避免修改參數</h4>
+<p>在無法保證傳入一個功能的參數是否有可能被其他功能使用時，比較好的做法是複製一份參數後，再對該副本進行修改。如果是較複雜的巢狀結構物件，可搭配 <code>lodash/cloneDeep</code> 來執行深拷貝。</p>
+<h4 id="謹慎對應-enum">謹慎對應 enum</h4>
+<p>重點：工程師需意識到一個 <code>enum</code> 有可能在日後繼續增加項目</p>
+<blockquote>
+<p>When you do have to handle an enum, it’s often important to remember that more values may be added to the enum in the future. If you write code that ignores this fact, then you may cause some nasty surprises for yourself or other engineers.</p>
+</blockquote>
+<p>撰寫程式碼時如果需要根據 <code>enum</code> 來進行條件分支，本書建議使用 <code>switch()</code> 來明確列出、處理每一個 <code>enum</code> 項目。並且若語言有支援的話，讓程式碼在「沒有處理到所有 <code>enum</code> 項目時拋錯、或無法進行編譯」。</p>
+<p>TypeScript 目前尚未支援「檢查是否所有的 enum 項目都有被 <code>switch() case</code> 使用」，一種做法是在 <code>default</code> 分支中進行例外處理：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#F97583">enum</span><span style="color:#B392F0"> user_action</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#79B8FF">  set_user_info</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> 'set_user_info'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">  logout_user</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> 'logout_user'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> reduxUserReducer</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">state</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">action</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">  switch</span><span style="color:#E1E4E8"> (action.type) {</span></span>
+<span class="line"><span style="color:#F97583">    case</span><span style="color:#E1E4E8"> user_action.set_user_info:</span></span>
+<span class="line"><span style="color:#F97583">      return</span><span style="color:#E1E4E8"> { </span><span style="color:#F97583">...</span><span style="color:#E1E4E8">state };</span></span>
+<span class="line"><span style="color:#F97583">    case</span><span style="color:#E1E4E8"> user_action.logout_user:</span></span>
+<span class="line"><span style="color:#F97583">      return</span><span style="color:#E1E4E8"> { </span><span style="color:#F97583">...</span><span style="color:#E1E4E8">state };</span></span>
+<span class="line"><span style="color:#F97583">    default</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#F97583">      throw</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> Error</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">`un-handled user_action::: ${</span><span style="color:#E1E4E8">action</span><span style="color:#9ECBFF">.</span><span style="color:#E1E4E8">type</span><span style="color:#9ECBFF">}`</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<h2 id="參考文件">參考文件</h2>
+<ul>
+<li><a href="https://www.manning.com/books/good-code-bad-code">Manning: Good Code, Bad Code</a></li>
+<li><a href="https://lodash.com/">Lodash</a></li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

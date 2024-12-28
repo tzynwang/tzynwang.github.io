@@ -1,0 +1,138 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v3.6.4"><!-- Primary Meta Tags --><title>Alpha Camp「2-3 老爸的私房錢（簡易記帳APP）」技術記錄</title><meta name="title" content="Alpha Camp「2-3 老爸的私房錢（簡易記帳APP）」技術記錄"><meta name="description" content="這是一個文組轉職前端工程師的技術部落格"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2021/mongoose-note/"><meta property="og:title" content="Alpha Camp「2-3 老爸的私房錢（簡易記帳APP）」技術記錄"><meta property="og:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="og:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2021/mongoose-note/"><meta property="twitter:title" content="Alpha Camp「2-3 老爸的私房錢（簡易記帳APP）」技術記錄"><meta property="twitter:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="twitter:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:Noto Sans TC,sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul{margin-top:16px;margin-bottom:16px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:8px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+</style><script type="module" src="/_astro/hoisted.77775e67.js"></script></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>Alpha Camp「2-3 老爸的私房錢（簡易記帳APP）」技術記錄</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2021-05-24 13:38</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/JavaScript" data-astro-cid-2iymvi75> JavaScript </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#總結" data-astro-cid-qtokga5y>總結</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#環境" data-astro-cid-qtokga5y>環境</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#筆記" data-astro-cid-qtokga5y>筆記</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#專案結構" data-astro-cid-qtokga5y>專案結構</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#透過一行腳本在多個資料庫個別產生種子資料" data-astro-cid-qtokga5y>透過一行腳本在多個資料庫個別產生種子資料</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#對-mongodb-進行類似-sql-資料庫的-join-指令" data-astro-cid-qtokga5y>對 mongoDB 進行類似 SQL 資料庫的 join 指令</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#使用-axios-進行-ajax-請求" data-astro-cid-qtokga5y>使用 axios 進行 ajax 請求</a> </li> </ul> </div> <h2 id="總結">總結</h2>
+<p>以下是本次作業處理到的主要問題：</p>
+<ul>
+<li>透過一行腳本在多個資料庫個別產生種子資料</li>
+<li>透過 mongoose 在 mongoDB 中 join 兩組 collections 之間的資料</li>
+<li>使用 axios 進行 ajax 請求，根據使用者選擇的組別顯示相對應的帳目資料（例：選擇「休閒娛樂」的帳目資料，則畫面僅會顯示該類別的帳目，並消費總金額會同步更新）</li>
+</ul>
+<h2 id="環境">環境</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span>node: 12.20.2</span></span>
+<span class="line"><span>express: 4.17.1</span></span>
+<span class="line"><span>express-handlebars: 5.3.2</span></span>
+<span class="line"><span>mongoose: 5.12.9</span></span>
+<span class="line"><span>os: Windows_NT 10.0.18363 win32 x64</span></span></code></pre>
+<h2 id="筆記">筆記</h2>
+<h3 id="專案結構">專案結構</h3>
+<p><img src="/2021/mongoose-note/structure.png" alt="本次專案的完整結構圖"></p>
+<h3 id="透過一行腳本在多個資料庫個別產生種子資料">透過一行腳本在多個資料庫個別產生種子資料</h3>
+<p><code>npm run</code>腳本如右：<code>"seed": "node models/seeds/categorySeeder.js &#x26;&#x26; node models/seeds/recordSeeder.js"</code>
+兩份種子腳本的原始碼如下：</p>
+<script src="https://gist.github.com/tzynwang/1ff4db97c6defc36b0a2517f13066353.js"></script>
+<script src="https://gist.github.com/tzynwang/24a97dfb59507d16988598e5766380ec.js"></script>
+<ul>
+<li><code>node models/seeds/categorySeeder.js</code>執行完畢後，需確保腳本停止，方可開始執行<code>node models/seeds/recordSeeder.js</code></li>
+<li>在<code>categorySeeder.js</code>中，待<code>Categories.create()</code>完成後，串接<code>.then()</code>來停止 db 連線</li>
+<li><code>categorySeeder.js</code>結束後，開始執行<code>recordSeeder.js</code></li>
+<li>根據 MDN 的<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach#polyfill"><code>forEach()</code> polyfill</a>，<code>forEach()</code>並沒有 await callback function 的機制，故改使用<code>for...of</code>來進行迴圈；相關參考文件如下：
+<ul>
+<li><a href="https://www.itread01.com/content/1553973607.html">為什麽 array.foreach 不支持 async/await</a></li>
+<li><a href="https://www.coreycleary.me/why-does-async-await-in-a-foreach-not-actually-await">Why does async/await in a .forEach not actually await?</a></li>
+<li><a href="https://stackoverflow.com/questions/37576685/using-async-await-with-a-foreach-loop">Using async/await with a forEach loop</a></li>
+</ul>
+</li>
+<li>待<code>for...of</code>執行完畢後，再關閉 db 連線，結束<code>recordSeeder.js</code></li>
+</ul>
+<h3 id="對-mongodb-進行類似-sql-資料庫的-join-指令">對 mongoDB 進行類似 SQL 資料庫的 join 指令</h3>
+<script src="https://gist.github.com/tzynwang/623afbb2e2537e196f5c08897f674a94.js"></script>
+<ul>
+<li>第 49 行的<code>results</code>，在前端透過 axios 接收後進行<code>console.log(response.data)</code>的內容如下：
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#9ECBFF">    "_id"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"60a3a3f66d1cf025c09c5714"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">    "name"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"早餐"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">    "category"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"餐飲食品"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">    "date"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"2021-05-18"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">    "amount"</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">80</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">    "__v"</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">0</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">    "iconPair"</span><span style="color:#E1E4E8">: [</span></span>
+<span class="line"><span style="color:#E1E4E8">        {</span></span>
+<span class="line"><span style="color:#9ECBFF">            "_id"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"60a3a865b6ccf51988c7cf9b"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">            "name"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"餐飲食品"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">            "icon"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"&#x3C;i class=</span><span style="color:#79B8FF">\"</span><span style="color:#9ECBFF">bi bi-cup-straw</span><span style="color:#79B8FF">\"</span><span style="color:#9ECBFF">>&#x3C;/i>"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">            "__v"</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">0</span></span>
+<span class="line"><span style="color:#E1E4E8">        }</span></span>
+<span class="line"><span style="color:#E1E4E8">    ]</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#9ECBFF">    "_id"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"60a3a3f66d1cf025c09c5715"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">    "name"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"午餐"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">    "category"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"餐飲食品"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">    "date"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"2021-05-18"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">    "amount"</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">120</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">    "__v"</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">0</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">    "iconPair"</span><span style="color:#E1E4E8">: [</span></span>
+<span class="line"><span style="color:#E1E4E8">        {</span></span>
+<span class="line"><span style="color:#9ECBFF">            "_id"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"60a3a865b6ccf51988c7cf9b"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">            "name"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"餐飲食品"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">            "icon"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"&#x3C;i class=</span><span style="color:#79B8FF">\"</span><span style="color:#9ECBFF">bi bi-cup-straw</span><span style="color:#79B8FF">\"</span><span style="color:#9ECBFF">>&#x3C;/i>"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">            "__v"</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">0</span></span>
+<span class="line"><span style="color:#E1E4E8">        }</span></span>
+<span class="line"><span style="color:#E1E4E8">    ]</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#9ECBFF">    "_id"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"60a3a3f66d1cf025c09c5716"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">    "name"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"晚餐"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">    "category"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"餐飲食品"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">    "date"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"2021-05-18"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">    "amount"</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">100</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">    "__v"</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">0</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">    "iconPair"</span><span style="color:#E1E4E8">: [</span></span>
+<span class="line"><span style="color:#E1E4E8">        {</span></span>
+<span class="line"><span style="color:#9ECBFF">            "_id"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"60a3a865b6ccf51988c7cf9b"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">            "name"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"餐飲食品"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">            "icon"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"&#x3C;i class=</span><span style="color:#79B8FF">\"</span><span style="color:#9ECBFF">bi bi-cup-straw</span><span style="color:#79B8FF">\"</span><span style="color:#9ECBFF">>&#x3C;/i>"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">            "__v"</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">0</span></span>
+<span class="line"><span style="color:#E1E4E8">        }</span></span>
+<span class="line"><span style="color:#E1E4E8">    ]</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+使用<code>$lookup</code>關聯出的結果可透過鍵值<code>iconPair</code>取得</li>
+<li>相關參考文件：
+<ul>
+<li><a href="https://stackoverflow.com/questions/36805784/how-to-join-two-collections-in-mongoose">How to join two collections in mongoose</a></li>
+<li><a href="https://docs.mongodb.com/manual/reference/operator/aggregation/lookup/">$lookup (aggregation)</a></li>
+<li><a href="https://docs.mongodb.com/manual/reference/operator/aggregation/sum/">$sum (aggregation)</a>：<code>$sum</code>可搭配<code>aggregation</code>來直接回傳某欄位的總計值，本次未使用</li>
+</ul>
+</li>
+</ul>
+<h3 id="使用-axios-進行-ajax-請求">使用 axios 進行 ajax 請求</h3>
+<p><img src="/2021/mongoose-note/demo.gif" alt="使用 ajax 來請求特定帳目群組的資料"></p>
+<script src="https://gist.github.com/tzynwang/5bcb2c3c5e5868bad34b8549277e4878.js"></script>
+<ul>
+<li>若使用 axios 進行 POST request 的話，需搭配<code>body-parser</code>，並加上<code>app.use(bodyParser.json())</code>，否則無法取得 POST request 送出的資料
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#6A737D">// app.js中需加入以下兩組middleware</span></span>
+<span class="line"><span style="color:#E1E4E8">app.</span><span style="color:#B392F0">use</span><span style="color:#E1E4E8">(bodyParser.</span><span style="color:#B392F0">json</span><span style="color:#E1E4E8">());</span></span>
+<span class="line"><span style="color:#E1E4E8">app.</span><span style="color:#B392F0">use</span><span style="color:#E1E4E8">(bodyParser.</span><span style="color:#B392F0">urlencoded</span><span style="color:#E1E4E8">({ extended: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8"> }));</span></span></code></pre>
+</li>
+<li>參考文件如下：
+<ul>
+<li><a href="https://stackoverflow.com/questions/40859299/axios-post-request-body-is-empty-object">Axios post request.body is empty object</a></li>
+<li><a href="https://stackoverflow.com/questions/51143730/axios-posting-empty-request">Axios posting empty request</a></li>
+<li><a href="https://stackoverflow.com/questions/55593431/cant-receive-data-from-axios-on-api">Can’t receive data from axios on API</a></li>
+</ul>
+</li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

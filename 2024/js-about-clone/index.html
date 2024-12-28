@@ -1,0 +1,141 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v3.6.4"><!-- Primary Meta Tags --><title>關於在 JavaScript 中執行「複製」這件事</title><meta name="title" content="關於在 JavaScript 中執行「複製」這件事"><meta name="description" content="最近才發現 node 原生的 `structuredClone` 在複製上的限制比想像中的多，如果有複製純物件以外的需求（比如要處理實例），還是需要使用 `lodash/cloneDeep` 🙈"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2024/js-about-clone/"><meta property="og:title" content="關於在 JavaScript 中執行「複製」這件事"><meta property="og:description" content="最近才發現 node 原生的 `structuredClone` 在複製上的限制比想像中的多，如果有複製純物件以外的需求（比如要處理實例），還是需要使用 `lodash/cloneDeep` 🙈"><meta property="og:image" content="https://tzynwang.github.io/2024/js-about-clone/andre-mouton-GBEHjsPQbEQ-unsplash.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2024/js-about-clone/"><meta property="twitter:title" content="關於在 JavaScript 中執行「複製」這件事"><meta property="twitter:description" content="最近才發現 node 原生的 `structuredClone` 在複製上的限制比想像中的多，如果有複製純物件以外的需求（比如要處理實例），還是需要使用 `lodash/cloneDeep` 🙈"><meta property="twitter:image" content="https://tzynwang.github.io/2024/js-about-clone/andre-mouton-GBEHjsPQbEQ-unsplash.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:Noto Sans TC,sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul{margin-top:16px;margin-bottom:16px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:8px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+</style><script type="module" src="/_astro/hoisted.77775e67.js"></script></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>關於在 JavaScript 中執行「複製」這件事</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2024-04-28 14:33</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/JavaScript" data-astro-cid-2iymvi75> JavaScript </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#懶人包" data-astro-cid-qtokga5y>懶人包</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#關於-lodashclonedeep-的實作" data-astro-cid-qtokga5y>關於 lodash/cloneDeep 的實作</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#objectgetprototypeof--objectcreate" data-astro-cid-qtokga5y>Object.getPrototypeOf() / Object.create()</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#getallkeys" data-astro-cid-qtokga5y>getAllKeys</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#關於-structuredclone-的規格" data-astro-cid-qtokga5y>關於 structuredClone() 的規格</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#參考文件" data-astro-cid-qtokga5y>參考文件</a> </li> </ul> </div> <p>最近在因緣際會下嘗試透過 <code>structuredClone</code> 來複製實例（JavaScript <a href="https://developer.mozilla.org/en-US/docs/Glossary/Instance">Instance</a>），卻發現這個 node 的原生功能在「能複製的對象」上其實有不少限制。在回頭找了老朋友 <code>lodash/cloneDeep</code> 之餘，順便研究一下 <code>cloneDeep</code> 是用什麼手段來實現「實例複製」。</p>
+<h2 id="懶人包">懶人包</h2>
+<p>在處理「複製實例」這件事情上：</p>
+<ul>
+<li><code>lodash/cloneDeep</code> 透過 <code>Object.create</code> 來實現複製，你可以在新實例上操作原有實例的 methods/accessors</li>
+<li><code>structuredClone</code> 的複製演算法並不支援複製實例的 methods/accessors</li>
+<li>兩者都不會複製實例的私人屬性（<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Private_properties">private properties</a>）</li>
+</ul>
+<h2 id="關於-lodashclonedeep-的實作">關於 <code>lodash/cloneDeep</code> 的實作</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#F97583">class</span><span style="color:#B392F0"> Demo</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#FFAB70">  name</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> ''</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">  constructor</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#79B8FF">    this</span><span style="color:#E1E4E8">.name </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> 'hello world'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">  get</span><span style="color:#B392F0"> showName</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#79B8FF"> this</span><span style="color:#E1E4E8">.name;</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">  logName</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#E1E4E8">    console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'name:::'</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">this</span><span style="color:#E1E4E8">.name);</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> d</span><span style="color:#F97583"> =</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> Demo</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> d1</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> cloneDeep</span><span style="color:#E1E4E8">(d);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">console.</span><span style="color:#B392F0">info</span><span style="color:#E1E4E8">(d.showName); </span><span style="color:#6A737D">// hello world</span></span>
+<span class="line"><span style="color:#E1E4E8">d.</span><span style="color:#B392F0">logName</span><span style="color:#E1E4E8">(); </span><span style="color:#6A737D">// name::: hello world</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">console.</span><span style="color:#B392F0">info</span><span style="color:#E1E4E8">(d1.showName); </span><span style="color:#6A737D">// hello world</span></span>
+<span class="line"><span style="color:#E1E4E8">d1.</span><span style="color:#B392F0">logName</span><span style="color:#E1E4E8">(); </span><span style="color:#6A737D">// name::: hello world</span></span></code></pre>
+<p>在使用 <code>cloneDeep</code> 複製 <code>d</code> 時，發生的事情如下：</p>
+<ol>
+<li>從 <a href="https://github.com/lodash/lodash/blob/a67a085cc0612f5b83d78024e507427dab25ca2c/src/cloneDeep.ts">src/cloneDeep.ts</a> 得知 <code>cloneDeep</code> 會呼叫 <code>baseClone</code></li>
+<li>根據 <a href="https://github.com/lodash/lodash/blob/main/src/.internal/baseClone.ts#L157">src/.internal/baseClone.ts</a> 中的邏輯分支，在複製實例時，我們會進入<a href="https://github.com/lodash/lodash/blob/main/src/.internal/baseClone.ts#L186">第 186 行的 <code>initCloneObject</code></a></li>
+<li>打開 <a href="https://github.com/lodash/lodash/blob/main/src/.internal/initCloneObject.ts">src/.internal/initCloneObject.ts</a>，發現複製實例時，執行的是 <code>Object.create(Object.getPrototypeOf(object))</code></li>
+<li>最後抵達 <a href="https://github.com/lodash/lodash/blob/main/src/.internal/baseClone.ts#L230">src/.internal/baseClone.ts</a> 的第 230 行，得知 <code>cloneDeep</code> 在這裡將實例的屬性（property）一個一個搬到複製出來的新實例上</li>
+</ol>
+<h3 id="objectgetprototypeof--objectcreate"><code>Object.getPrototypeOf()</code> / <code>Object.create()</code></h3>
+<p>個人認為 <code>cloneDeep</code> 最巧妙的地方就是它將 <code>Object.create()</code> 與 <code>Object.getPrototypeOf()</code> 搭配起來做出「複製實例的效果」。首先是透過 <code>Object.getPrototypeOf()</code> 取得傳入參數的原型Ｘ，再透過 <code>Object.create()</code> 建立一個「繼承原型Ｘ」的新實例。</p>
+<blockquote>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/create">MDN</a>: The <strong><code>Object.create()</code></strong> static method creates a new object, using an existing object as the prototype of the newly created object.</p>
+</blockquote>
+<p>以範例中的實例 <code>d</code> 與複製出來的 <code>d1</code> 來說，這兩者在原型鏈上都指向 <code>Demo.prototype</code>：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#6A737D">// d ---> Demo.prototype ---> Object.prototype ---> null</span></span>
+<span class="line"><span style="color:#6A737D">// d1 ---> Demo.prototype ---> Object.prototype ---> null</span></span></code></pre>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#E1E4E8">console.</span><span style="color:#B392F0">info</span><span style="color:#E1E4E8">(Object.</span><span style="color:#B392F0">getPrototypeOf</span><span style="color:#E1E4E8">(d) </span><span style="color:#F97583">===</span><span style="color:#79B8FF"> Demo</span><span style="color:#E1E4E8">.</span><span style="color:#79B8FF">prototype</span><span style="color:#E1E4E8">); </span><span style="color:#6A737D">// true</span></span>
+<span class="line"><span style="color:#E1E4E8">console.</span><span style="color:#B392F0">info</span><span style="color:#E1E4E8">(Object.</span><span style="color:#B392F0">getPrototypeOf</span><span style="color:#E1E4E8">(d1) </span><span style="color:#F97583">===</span><span style="color:#79B8FF"> Demo</span><span style="color:#E1E4E8">.</span><span style="color:#79B8FF">prototype</span><span style="color:#E1E4E8">); </span><span style="color:#6A737D">// true</span></span>
+<span class="line"><span style="color:#E1E4E8">console.</span><span style="color:#B392F0">info</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">Demo</span><span style="color:#E1E4E8">.</span><span style="color:#79B8FF">prototype</span><span style="color:#E1E4E8">.logName </span><span style="color:#F97583">===</span><span style="color:#E1E4E8"> d.logName); </span><span style="color:#6A737D">// true</span></span>
+<span class="line"><span style="color:#E1E4E8">console.</span><span style="color:#B392F0">info</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">Demo</span><span style="color:#E1E4E8">.</span><span style="color:#79B8FF">prototype</span><span style="color:#E1E4E8">.logName </span><span style="color:#F97583">===</span><span style="color:#E1E4E8"> d1.logName); </span><span style="color:#6A737D">// true</span></span></code></pre>
+<p>當我們在執行 <code>d1.showName</code> 與 <code>d1.logName()</code> 時，呼叫的其實是 <code>Demo.prototype.showName</code> 與 <code>Demo.prototype.showName</code>。<code>cloneDeep</code> 不會去處理實例 methods/accessors 的複製，它只是活用了 JavaScript 的原型鏈來讓新實例能表現出既有實例的功能。</p>
+<h3 id="getallkeys"><code>getAllKeys</code></h3>
+<p>而當要複製的實例包含私人屬性時，執行 <code>cloneDeep</code> 不會出錯，但複製出來的新實例果不其然地不包含這類參數：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#F97583">class</span><span style="color:#B392F0"> Demo</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#FFAB70">  #name</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> ''</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">  constructor</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#79B8FF">    this</span><span style="color:#E1E4E8">.#name </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> 'hello world'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">  logName</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#E1E4E8">    console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'name:::'</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">this</span><span style="color:#E1E4E8">.#name);</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> d</span><span style="color:#F97583"> =</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> Demo</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> d1</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> cloneDeep</span><span style="color:#E1E4E8">(d);</span></span>
+<span class="line"><span style="color:#E1E4E8">d1.</span><span style="color:#B392F0">logName</span><span style="color:#E1E4E8">(); </span><span style="color:#6A737D">// TypeError: Cannot read private member #name from an object whose class did not declare it</span></span></code></pre>
+<p>在複製實例時，會透過 <a href="https://github.com/lodash/lodash/blob/main/src/.internal/getAllKeys.ts">src/.internal/getAllKeys.ts</a> 來整理出所有需要複製的屬性，然而私人屬性是無法被 <code>Object.keys()</code> / <code>Object.getOwnPropertySymbols()</code> / <code>Object.prototype.propertyIsEnumerable()</code> 揪出來的，所以複製出來的新實例不會有這些參數。</p>
+<p>且私人屬性也「無法被沒有定義它的實例」取用：</p>
+<blockquote>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Private_properties">MDN</a>: Private properties** cannot be legally referenced outside of the class**. The only way to access a private property is via dot notation, and you can <strong>only do so within the class that defines the private property</strong>.</p>
+</blockquote>
+<p>因此上述範例在執行到 <code>d1.logName()</code> 時，就會拋錯。</p>
+<h2 id="關於-structuredclone-的規格">關於 <code>structuredClone()</code> 的規格</h2>
+<p>此功能會根據 structured clone 演算法對傳入的參數執行深拷貝（deep clone），但有以下限制：</p>
+<ol>
+<li>不能複製 DOM 節點</li>
+<li>不能複製功能（Function）</li>
+<li>複製物件時，不會處理 <code>property descriptor</code> <code>getter</code> <code>setter</code> <code>metadata-like features</code></li>
+<li>複製物件時，不會處理原型鏈（<code>prototype chain</code>）</li>
+<li>不會複製正規表達式（RegExp）物件的 <code>lastIndex</code></li>
+</ol>
+<p>第三、四點的限制讓 <code>structuredClone</code>（在需要複製實例時）無法成為 <code>lodash/cloneDeep</code> 的 node 原生替代。如以下範例，透過複製產生的 <code>d1</code> 僅會包含 <code>name</code>，沒有 <code>get showName</code> 也沒有 <code>logName()</code>：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#F97583">class</span><span style="color:#B392F0"> Demo</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#FFAB70">  name</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> ''</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">  constructor</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#79B8FF">    this</span><span style="color:#E1E4E8">.name </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> 'hello world'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">  get</span><span style="color:#B392F0"> showName</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#79B8FF"> this</span><span style="color:#E1E4E8">.name;</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">  logName</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#E1E4E8">    console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'name:::'</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">this</span><span style="color:#E1E4E8">.name);</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> d</span><span style="color:#F97583"> =</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> Demo</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> d1</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> structuredClone</span><span style="color:#E1E4E8">(d);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">console.</span><span style="color:#B392F0">info</span><span style="color:#E1E4E8">(d.showName); </span><span style="color:#6A737D">// hello world</span></span>
+<span class="line"><span style="color:#E1E4E8">d.</span><span style="color:#B392F0">logName</span><span style="color:#E1E4E8">(); </span><span style="color:#6A737D">// name::: hello world</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">console.</span><span style="color:#B392F0">info</span><span style="color:#E1E4E8">(d1.showName); </span><span style="color:#6A737D">// undefined</span></span>
+<span class="line"><span style="color:#E1E4E8">d1.</span><span style="color:#B392F0">logName</span><span style="color:#E1E4E8">(); </span><span style="color:#6A737D">// TypeError: d1.logName is not a function</span></span></code></pre>
+<h2 id="參考文件">參考文件</h2>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/structuredClone">MDN: structuredClone() global function</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Structured_clone_algorithm">MDN: The structured clone algorithm</a></li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

@@ -1,0 +1,101 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v3.6.4"><!-- Primary Meta Tags --><title>tailwind 快速上手筆記</title><meta name="title" content="tailwind 快速上手筆記"><meta name="description" content="最近有機會在新專案試用 tailwind。而為了避免繞遠路，在正式開工前先花了點時間搜集關於這個套件的 best practice。"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2024/css-tailwind-best-practice/"><meta property="og:title" content="tailwind 快速上手筆記"><meta property="og:description" content="最近有機會在新專案試用 tailwind。而為了避免繞遠路，在正式開工前先花了點時間搜集關於這個套件的 best practice。"><meta property="og:image" content="https://tzynwang.github.io/2024/css-tailwind-best-practice/jason-leung-cwhtQIssH9k-unsplash.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2024/css-tailwind-best-practice/"><meta property="twitter:title" content="tailwind 快速上手筆記"><meta property="twitter:description" content="最近有機會在新專案試用 tailwind。而為了避免繞遠路，在正式開工前先花了點時間搜集關於這個套件的 best practice。"><meta property="twitter:image" content="https://tzynwang.github.io/2024/css-tailwind-best-practice/jason-leung-cwhtQIssH9k-unsplash.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:Noto Sans TC,sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul{margin-top:16px;margin-bottom:16px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:8px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+</style><script type="module" src="/_astro/hoisted.77775e67.js"></script></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>tailwind 快速上手筆記</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2024-06-22 11:53</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/CSS" data-astro-cid-2iymvi75> CSS </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#搭配工具" data-astro-cid-qtokga5y>搭配工具</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#官方-prettier-套件" data-astro-cid-qtokga5y>官方 prettier 套件</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#官方-plugin" data-astro-cid-qtokga5y>官方 plugin</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#cheat-sheet" data-astro-cid-qtokga5y>cheat sheet</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#操作" data-astro-cid-qtokga5y>操作</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#關於重複樣式" data-astro-cid-qtokga5y>關於重複樣式</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#關於-apply" data-astro-cid-qtokga5y>關於 @apply</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#關於動態樣式" data-astro-cid-qtokga5y>關於動態樣式</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#實用樣式" data-astro-cid-qtokga5y>實用樣式</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#參考文件" data-astro-cid-qtokga5y>參考文件</a> </li> </ul> </div> <p>最近有機會在新專案試用 tailwind。而為了避免繞遠路，在正式開工前先花了點時間搜集關於這個套件的 best practice。</p>
+<p>注意此篇文章不是 tailwind 的新手教學，而是記錄一些我認為在對這個套件有了基本了解後，可以搭配使用，進而讓開發更輕鬆的工具與訣竅。</p>
+<h2 id="搭配工具">搭配工具</h2>
+<h3 id="官方-prettier-套件">官方 prettier 套件</h3>
+<p>連結：<a href="https://github.com/tailwindlabs/prettier-plugin-tailwindcss">prettier-plugin-tailwindcss</a></p>
+<p>目的：讓所有的 tailwind class 根據<a href="https://tailwindcss.com/blog/automatic-class-sorting-with-prettier#how-classes-are-sorted">官方推薦的順序</a>（base layer >> components layer >> utilities layer）排列，確保使用到的樣式都不會被權重（specificity）問題影響。另外，這個 plugin 預設也會幫忙移除多餘的空白（space）與重複出現的樣式。最後，統一樣式的排序也能讓閱讀程式碼的人比較輕鬆。</p>
+<h3 id="官方-plugin">官方 plugin</h3>
+<p><a href="https://github.com/tailwindlabs/tailwindcss-typography"><code>@tailwindcss/typography</code></a>：</p>
+<p>對文章常見元件提供預設樣式，比如標題的 margin 與清單的樣式，實際效果可參考<a href="https://play.tailwindcss.com/uj1vGACRJA?layout=preview">官方範例</a>。適合不想花太多時間自己調教文章樣式的人。</p>
+<p>在極致懶惰的情況下，可以只在整篇文章的容器加上 <code>class="prose"</code> 就好。不過此 plugin 也提供客製化的選項，比如在不同螢幕寬（breakpoint）<a href="https://github.com/tailwindlabs/tailwindcss-typography?tab=readme-ov-file#applying-a-type-scale">調整字體大小</a>或是微調 <code>.prose</code> 之下<a href="https://github.com/tailwindlabs/tailwindcss-typography?tab=readme-ov-file#element-modifiers">各式元件的預設樣式</a>。</p>
+<hr>
+<p><a href="https://github.com/tailwindlabs/tailwindcss-forms"><code>@tailwindcss/forms</code></a>：對表單常見元件提供預設樣式，目前的支援列表可參考 <a href="https://github.com/tailwindlabs/tailwindcss-forms?tab=readme-ov-file#basic-usage">README</a>。</p>
+<p>需注意輸入元件要帶入 type 設定，比如 <code>input[type='text']</code>。</p>
+<hr>
+<p><a href="https://github.com/tailwindlabs/tailwindcss-container-queries">@tailwindcss/container-queries</a>：如名稱所示，安裝此 plugin 後就能使用 tailwind class 來實現 container query。</p>
+<p>支援<a href="https://github.com/tailwindlabs/tailwindcss-container-queries?tab=readme-ov-file#arbitrary-container-sizes">一次性使用的 query 尺寸</a>，也<a href="https://github.com/tailwindlabs/tailwindcss-container-queries?tab=readme-ov-file#configuration">支援透過 <code>tailwind.config</code> 來複寫</a>全域尺寸設定。</p>
+<h3 id="cheat-sheet">cheat sheet</h3>
+<p>搜尋 <code>tailwind cheat sheet</code> 後，挑一個看起來順眼的使用即可。個人目前是使用 <a href="https://flowbite.com/tools/tailwind-cheat-sheet/">Flowbite 的 cheat sheet</a>，因為有深色模式、點一下就能複製、支援搜尋結果的 expand/collapse。</p>
+<p>目的：減少開發時額外的心智負荷，幫助開發者快速找到還沒背起來的樣式——所以絕大多數的注意力能用於解決核心問題，不會被「回想樣式如何設定」打斷思考流程。</p>
+<h2 id="操作">操作</h2>
+<h3 id="關於重複樣式">關於重複樣式</h3>
+<p>當大量重複的樣式出現在多個元件時，除了「直接擷取重複的樣式，包裝出（抽象化）一個帶有基本樣式的元件」以外，其實也可以考慮以下方式：</p>
+<ul>
+<li>如果重複的樣式只出現在單一檔案中（整包專案目前沒有其他地方用到這一套樣式），那就算不做任何優化也沒有關係。當日後需要修改這些樣式時，直接透過 IDE 的多重選取編輯（multi-cursor editing）來一口氣做調整就好。可參考 <a href="https://tailwindcss.com/docs/reusing-styles#multi-cursor-editing">tailwind 官方的範例</a></li>
+<li>寫好樣式後，使用迴圈來產生元件</li>
+</ul>
+<p>簡單來說，「重複」這件事情沒有那麼可怕，有時候問題其實有抽象化以外的解決方式。尤其抽象化會增加閱讀、理解程式碼的門檻，在執行前可以評估抽象化帶來的好處是否大於日後維護的成本。</p>
+<h3 id="關於-apply">關於 <code>@apply</code></h3>
+<blockquote>
+<p>…don’t use <code>@apply</code> just to make things look “cleaner”.</p>
+</blockquote>
+<p>不要「只」因為想讓樣式看起來比較簡潔而使用 <code>@apply</code>，比如以下不良示範：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#F97583">@tailwind</span><span style="color:#E1E4E8"> base;</span></span>
+<span class="line"><span style="color:#F97583">@tailwind</span><span style="color:#E1E4E8"> components;</span></span>
+<span class="line"><span style="color:#F97583">@tailwind</span><span style="color:#E1E4E8"> utilities;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">@layer</span><span style="color:#E1E4E8"> components {</span></span>
+<span class="line"><span style="color:#B392F0">  .btn-primary</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">    @</span><span style="color:#79B8FF">apply</span><span style="color:#79B8FF"> py-</span><span style="color:#E1E4E8">2 </span><span style="color:#79B8FF">px-</span><span style="color:#E1E4E8">5 </span><span style="color:#79B8FF">bg-violet-</span><span style="color:#E1E4E8">500 </span><span style="color:#79B8FF">text-white</span><span style="color:#79B8FF"> font-semibold</span><span style="color:#79B8FF"> rounded-full</span><span style="color:#79B8FF"> shadow-md</span><span style="color:#79B8FF"> hover</span><span style="color:#E1E4E8">:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-400 focus:ring-opacity-75;</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>理由是：這種使用 <code>@apply</code> 的方式，就和直接手寫 CSS 樣式沒什麼兩樣，<a href="https://tailwindcss.com/docs/reusing-styles#avoiding-premature-abstraction">失去很多使用 tailwind 系統的優點</a>——你需要發想 CSS 樣式的名稱、需要在不同的檔案之間切換才能知道樣式的設定。日後修改一個 <code>@apply</code> 樣式時，你不確定是否會有預期外的影響。最後，打包（bundle）完的檔案尺寸也會比較大。</p>
+<p><code>@apply</code> 比較推薦的應用場合，是在需要將 tailwind 的樣式權杖（design token）<a href="https://tailwindcss.com/docs/functions-and-directives#apply">套用在第三方套件</a>的時候。</p>
+<h3 id="關於動態樣式">關於動態樣式</h3>
+<p>「不要」動態組合 tailwind 樣式，比如以下錯誤示範：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> meetCondition</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> Math.</span><span style="color:#B392F0">random</span><span style="color:#E1E4E8">() </span><span style="color:#F97583">>=</span><span style="color:#79B8FF"> 0.5</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> dynamicClass</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> `text-${</span><span style="color:#E1E4E8">meetCondition</span><span style="color:#F97583"> ?</span><span style="color:#9ECBFF"> 'green'</span><span style="color:#F97583"> :</span><span style="color:#9ECBFF"> 'red'}-500`</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">&#x3C;</span><span style="color:#85E89D">h1</span><span style="color:#B392F0"> class</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{dynamicClass}>Hello World&#x3C;/</span><span style="color:#85E89D">h1</span><span style="color:#E1E4E8">>;</span></span></code></pre>
+<p>理由是：tailwind 會檢查整個專案，並只產生有使用到的樣式。而 tailwind 的檢查機制又是「完整比對 class 名稱」（出自<a href="https://tailwindcss.com/docs/content-configuration#class-detection-in-depth">官方文件</a>）。所以 tailwind 無法辨認出上述動態組出的 <code>text-green-500</code> 與 <code>text-red-500</code>。</p>
+<p>解決方式：需要動態樣式時，要完整列出 tailwind class 名稱：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> meetCondition</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> Math.</span><span style="color:#B392F0">random</span><span style="color:#E1E4E8">() </span><span style="color:#F97583">>=</span><span style="color:#79B8FF"> 0.5</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> dynamicClass</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> meetCondition </span><span style="color:#F97583">?</span><span style="color:#9ECBFF"> 'text-green-500'</span><span style="color:#F97583"> :</span><span style="color:#9ECBFF"> 'text-red-500'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">&#x3C;</span><span style="color:#85E89D">h1</span><span style="color:#B392F0"> class</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{dynamicClass}>Hello World&#x3C;/</span><span style="color:#85E89D">h1</span><span style="color:#E1E4E8">>;</span></span></code></pre>
+<p>更多資訊請參考<a href="https://tailwindcss.com/docs/content-configuration#dynamic-class-names">官方文件</a> 的說明。</p>
+<h2 id="實用樣式">實用樣式</h2>
+<p>以下是從一些教學影片匯集出來，不需要開發者再從頭造輪子的實用內建樣式：</p>
+<ul>
+<li><code>.group</code> 可讓元件的外觀根據<strong>親元件的狀態</strong>進行變化，而 <code>.peer</code> 則是能讓元件的外觀根據<strong>鄰近元件的狀態</strong>進行變化</li>
+<li><code>.container</code> 可讓元件直接變成有限寬度的容器，可透過 <code>tailwind.config</code> 中的 <code>theme.container</code> 設定全域樣式</li>
+<li><code>.size</code> 可同時設定元件的寬高，比如 <code>.size-2</code> 在預設情況下會將元件的寬高都設定為 8px</li>
+<li><code>.divide</code> 可設定元件在水平或是垂直方向產生分隔線（使用的 CSS 樣式為 <code>border</code>）</li>
+<li><code>.ring</code> 會透過 <code>box-shadow</code> 來產生類似邊線的效果</li>
+<li>在一些真的無法使用 <code>flex</code> 或 <code>grid</code> 來安排元件間距時，可使用 <code>.space</code> 來做出間距（使用的 CSS 樣式為 <code>margin</code>）</li>
+<li><code>.bg-gradient-to-</code> / <code>.from-</code> / .<code>via-</code> / <code>.to-</code> 能直接控制背景顏色梯度（background-gradient）的方向，以及背景起點、中繼、終點的顏色</li>
+<li><code>.animation</code> 提供了一些基本動畫效果——旋轉（<code>.animate-spin</code>）、閃爍（<code>.animate-ping</code>）、脈動（<code>.animate-pulse</code>）與彈跳（<code>.animate-bounce</code>）</li>
+</ul>
+<h2 id="參考文件">參考文件</h2>
+<p>本筆記大部分的工具與技巧出自以下三部 YouTube 影片，再搭配 <a href="https://tailwindcss.com/">tailwind 官方文件</a>整理為筆記：</p>
+<ul>
+<li><a href="https://youtu.be/QBajvZaWLXs?si=kDfIQmn3vlSLNrxl">I WISH I Knew These Tailwind Tips Earlier</a></li>
+<li><a href="https://youtu.be/aSlK3GhRuXA?si=wofL_8WI0GMGQoQS">10 Tailwind Tricks You NEED To Know!</a></li>
+<li><a href="https://youtu.be/x1RJ5Q09PqM?si=tR17D0aGEywUmTY2">10 Tailwind Classes I Wish I Knew Earlier</a></li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 
