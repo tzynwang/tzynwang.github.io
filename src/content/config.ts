@@ -17,4 +17,6 @@ export const collections = {
   2021: blog,
   2022: blog,
   2023: blog,
+  2024: blog,
+  2025: blog,
 };
