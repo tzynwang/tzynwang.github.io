@@ -10,6 +10,8 @@ draft:
 
 ## 讀取 json
 
+### 讀取靜態檔案中的 json
+
 流程：
 
 1. 使用 `node:fs/promises` 的 `readFile` 從指定路徑讀取檔案內容
@@ -26,6 +28,45 @@ export async function loader() {
 
 export default function ReadJson() {
   const data = useLoaderData<typeof loader>();
+}
+```
+
+### 讀取使用者上傳的 json
+
+重點：
+
+- remix 的 `Form` 元件 `encType` 要設定為 `"multipart/form-data"`，參考 [TypeError: Could not parse content as FormData](https://github.com/remix-run/remix/issues/3238#issuecomment-1150493008)
+- 透過 `await new Response(file).text();` 即可取得純文字版的 .json 檔內容，加上 `JSON.parse(text);` 就可得到 JS 物件
+
+```tsx
+import type { ActionFunctionArgs, MetaFunction } from '@remix-run/node';
+import {
+  unstable_createMemoryUploadHandler,
+  unstable_parseMultipartFormData,
+} from '@remix-run/node';
+import { Form, useActionData } from '@remix-run/react';
+
+// https://remix.run/docs/en/main/guides/file-uploads
+// https://remix.run/docs/en/main/utils/unstable-create-memory-upload-handler
+export async function action({ request }: ActionFunctionArgs) {
+  const uploadHandler = unstable_createMemoryUploadHandler();
+  const formData = await unstable_parseMultipartFormData(
+    request,
+    uploadHandler
+  );
+  const file = formData.get('file');
+  const text = await new Response(file).text();
+  return JSON.parse(text);
+}
+
+export default function Index() {
+  const data = useActionData<typeof action>(); // do whatever you need
+  return (
+    <Form method="post" encType="multipart/form-data">
+      <input type="file" name="file" accept="application/json" />
+      <button type="submit">上傳</button>
+    </Form>
+  );
 }
 ```
 
@@ -175,7 +216,7 @@ import { Readable } from 'node:stream';
 
 export const loader = async () => {
   const file = createReadableStreamFromReadable(
-    Readable.from(['Hello, World!']),
+    Readable.from(['Hello, World!'])
   );
 
   return new Response(file, {
@@ -188,6 +229,14 @@ export const loader = async () => {
 ```
 
 ## 參考文件
+
+讀取 json 檔：
+
+- [Remix: File Uploads](https://remix.run/docs/en/main/guides/file-uploads)
+- [Remix: unstable_createMemoryUploadHandler](https://remix.run/docs/en/main/utils/unstable-create-memory-upload-handler)
+- [MDN: Blob > Extracting data from a blob](https://developer.mozilla.org/en-US/docs/Web/API/Blob#extracting_data_from_a_blob)
+
+下載為 json 檔：
 
 - [npm: qs](https://www.npmjs.com/package/qs)
 - [MDN: URL > createObjectURL()](https://developer.mozilla.org/en-US/docs/Web/API/URL/createObjectURL_static)
