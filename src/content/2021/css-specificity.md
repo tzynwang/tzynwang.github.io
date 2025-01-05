@@ -2,7 +2,7 @@
 title: 「CSS Specificity」相關筆記
 date: 2021-03-18 20:52:44
 tag:
-  - [CSS]
+- [CSS]
 ---
 
 ## 重點整理

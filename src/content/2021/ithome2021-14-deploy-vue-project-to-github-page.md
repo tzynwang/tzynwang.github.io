@@ -2,8 +2,8 @@
 title: 30天挑戰：「將Vue project部屬至GitHub Pages」相關筆記
 date: 2021-08-31 10:05:53
 tag:
-  - [Vue]
-  - [2021鐵人賽]
+- [Vue]
+- [2021鐵人賽]
 ---
 
 ## 總結

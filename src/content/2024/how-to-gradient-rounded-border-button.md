@@ -2,7 +2,7 @@
 title: 如何製作「帶圓角漸層邊框並且透明背景」的按鈕
 date: 2024-12-28 21:57:36
 tag:
-	- [CSS]
+- [CSS]
 banner: /2024/how-to-gradient-rounded-border-button/barbara-zandoval-x_L2sLTLHTU-unsplash.jpg
 summary: 懶人包：請設計師提供設定好漸層、圓角且背景透明的 .svg 檔，然後用 CSS `border-image` 設定按鈕的邊框樣式。
 draft: 

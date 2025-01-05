@@ -2,7 +2,7 @@
 title: Alpha Camp「2-2 電影清單」技術記錄
 date: 2021-05-29 14:26:16
 tag:
-  - [JavaScript]
+- [JavaScript]
 ---
 
 ## 總結

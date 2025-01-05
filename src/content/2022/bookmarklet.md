@@ -2,8 +2,8 @@
 title: 瀏覽器上的 JavaScript snippet：bookmarklet
 date: 2022-04-19 18:53:34
 tag:
-  - [Browser]
-  - [JavaScript]
+- [Browser]
+- [JavaScript]
 ---
 
 ## 總結

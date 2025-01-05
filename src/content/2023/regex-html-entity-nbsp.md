@@ -2,8 +2,8 @@
 title: 使用 JavaScript RegExp() 過濾 HTML entity NBSP
 date: 2023-02-14 19:20:57
 tag:
-  - [HTML]
-  - [JavaScript]
+- [HTML]
+- [JavaScript]
 ---
 
 ## 總結

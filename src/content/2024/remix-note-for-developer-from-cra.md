@@ -2,7 +2,7 @@
 title: 給習慣寫 CSR 服務的 remix 入門注意事項
 date: 2024-08-31 21:57:06
 tag:
-	- [Remix]
+- [Remix]
 banner: /2024/remix-note-for-developer-from-cra/sascha-bosshard-4x_yDlANVhs-unsplash.jpg
 summary: 最近用 remix 開發了一個新產品。而因為我到目前為止的前端生涯一直都是在寫 client side render 服務，所以使用 remix 開發時需要克服一些習慣。此篇筆記記錄了一些開發時的心得，如果你也是習慣寫 client side render 的 React app 但想考慮試用 remix，這篇筆記可以提供一些踩坑經驗。
 draft: 

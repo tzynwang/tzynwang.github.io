@@ -31,7 +31,7 @@ new:
 	@echo "title: $(post)" >> $(NEW_POST_PATH)/$(YEAR)/$(post).md
 	@echo "date: $(YMD) $(DATE)" >> $(NEW_POST_PATH)/$(YEAR)/$(post).md
 	@echo "tag:" >> $(NEW_POST_PATH)/$(YEAR)/$(post).md
-	@echo "	- []" >> $(NEW_POST_PATH)/$(YEAR)/$(post).md
+	@echo "- []" >> $(NEW_POST_PATH)/$(YEAR)/$(post).md
 	@echo "banner: " >> $(NEW_POST_PATH)/$(YEAR)/$(post).md
 	@echo "summary: " >> $(NEW_POST_PATH)/$(YEAR)/$(post).md
 	@echo "draft: " >> $(NEW_POST_PATH)/$(YEAR)/$(post).md

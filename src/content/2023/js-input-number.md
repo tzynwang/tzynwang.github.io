@@ -2,7 +2,7 @@
 title: 工作筆記：使用 JavaScript 控制輸入內容僅限於數字
 date: 2023-07-15 12:36:42
 tag:
-  - [JavaScript]
+- [JavaScript]
 ---
 
 ## 總結

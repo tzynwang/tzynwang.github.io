@@ -2,7 +2,7 @@
 title: 閱讀筆記：The Art of Unit Testing Chapter 5 Isolation frameworks
 date: 2024-01-02 20:24:36
 tag:
-	- [Testing]
+- [Testing]
 banner: /2024/the-art-of-unit-testing-ch5-isolation-frameworks/matthew-guay-vIjt8UHhSVo-unsplash.jpg
 summary: 本書在第三、四章示範了不少手動處理 stub/mock 的方式，但其實我們可以透過 jest 這類有提供 isolation api 的測試框架來省掉不少人工作業。
 draft: 

@@ -2,7 +2,7 @@
 title: 2023 第1週 學習筆記：TypeScript 中的 interface merging
 date: 2023-01-07 12:48:40
 tag:
-  - [TypeScript]
+- [TypeScript]
 ---
 
 ## 總結

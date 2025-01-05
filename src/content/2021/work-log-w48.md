@@ -2,8 +2,8 @@
 title: 2021 第48週 學習記錄：JavaScript Class
 date: 2021-12-05 10:48:40
 tag:
-  - [JavaScript]
-  - [TypeScript]
+- [JavaScript]
+- [TypeScript]
 ---
 
 ## 總結

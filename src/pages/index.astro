@@ -5,7 +5,7 @@ import ListedPostLayout from '@Components/layout/ListedPostLayout.astro';
 import { ALL_SORTED_POSTS, getFlatTags, getPostUrl } from '@Tools/post';
 
 const firstTenPosts = ALL_SORTED_POSTS.slice(0, 10);
-const postShouldWithSumary = firstTenPosts.slice(0, 5);
+const postShouldWithSummary = firstTenPosts.slice(0, 5);
 const restOfPost = firstTenPosts.slice(5, firstTenPosts.length);
 ---
 
@@ -13,7 +13,7 @@ const restOfPost = firstTenPosts.slice(5, firstTenPosts.length);
   <div class="post-container">
     <div class="featured-posts-container">
       {
-        postShouldWithSumary.map((post, index) => (
+        postShouldWithSummary.map((post, index) => (
           <div class:list={['post', `post-${index}`]}>
             <FeaturedPostLayout
               title={post.data.title}

@@ -2,7 +2,7 @@
 title: 閱讀筆記：The Programmer's Brain Chapter 13 How to onboard new developers
 date: 2023-11-16 18:34:49
 tag:
-	- [General]
+- [General]
 banner: /2023/the-programmers-brain-ch13-how-to-onboard-new-developers/vlad-tchompalov-wt5Y8VY_0bA-unsplash.jpg
 summary: 新人上線時不要一口氣給予太多資訊，避免認知負荷過高，讓新人無法正常表現。
 draft: 

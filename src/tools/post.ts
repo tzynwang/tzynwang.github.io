@@ -44,12 +44,13 @@ export async function getPublishedPostsOfThisYear(dirYear: PostYear) {
 
 async function getAllPosts() {
   const years = getAllYears();
-  const allPostsPromises = years.map(
-    async (year) =>
-      // @ts-ignore
-      await getCollection(year, (post) => filterOutDraft(post))
-  );
-  const allPosts = await Promise.all(allPostsPromises);
+  let allPosts = [];
+  for (const year of years) {
+    const posts = await getCollection(year.toString() as PostYear, (post) =>
+      filterOutDraft(post)
+    );
+    allPosts.push(posts);
+  }
   return allPosts.flat();
 }
 

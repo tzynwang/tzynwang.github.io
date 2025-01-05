@@ -2,10 +2,10 @@
 title: 2022 第32週 學習筆記：在 react app 中實作 event driven pattern
 date: 2022-08-11 20:22:06
 tag:
-  - [Design Patterns]
-  - [JavaScript]
-  - [React]
-  - [TypeScript]
+- [Design Patterns]
+- [JavaScript]
+- [React]
+- [TypeScript]
 ---
 
 ## 總結

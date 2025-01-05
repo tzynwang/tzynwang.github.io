@@ -2,8 +2,8 @@
 title: 領域模型（domain model）與領域驅動設計（DDD）：最基礎的部分
 date: 2023-11-29 20:27:20
 tag:
-  - [Product Design]
-  - [Software Architecture]
+- [Product Design]
+- [Software Architecture]
 banner: /2023/ddd-the-very-basic/annie-spratt-Xse_WtQsIGA-unsplash.jpg
 summary: 本篇筆記會簡單說明什麼是領域模型（domain model），以及介紹領域驅動設計（DDD）最最最入門的部分。
 draft:

@@ -2,8 +2,8 @@
 title: 「用TS改寫幼兒難度的React App」相關筆記
 date: 2021-11-05 13:00:44
 tag:
-  - [React]
-  - [TypeScript]
+- [React]
+- [TypeScript]
 ---
 
 ## 總結

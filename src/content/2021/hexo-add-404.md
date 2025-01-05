@@ -2,7 +2,7 @@
 title: Add 404 page
 date: 2021-02-16 09:36:19
 tag:
-  - [hexo]
+- [hexo]
 ---
 
 ## Summary of this post

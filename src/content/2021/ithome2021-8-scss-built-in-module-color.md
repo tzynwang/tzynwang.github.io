@@ -2,8 +2,8 @@
 title: 30天挑戰：「SCSS built-in color module」相關筆記
 date: 2021-08-19 09:54:32
 tag:
-  - [CSS]
-  - [2021鐵人賽]
+- [CSS]
+- [2021鐵人賽]
 ---
 
 ## 總結

@@ -2,7 +2,7 @@
 title: 課程筆記：如何打造對的軟體
 date: 2024-11-10 09:27:00
 tag:
-	- [Product Design]
+- [Product Design]
 banner: /2024/how-to-build-the-right-software/debby-hudson-bAYP_kAtNWg-unsplash.jpg
 summary: 首先搞清楚我們到底要解決什麼問題 ☕️
 draft: 

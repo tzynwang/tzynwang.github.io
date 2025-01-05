@@ -2,9 +2,9 @@
 title: 捨棄 create-react-app 之餘還架了個 astro blog 昭告天下：專案腳本
 date: 2023-09-21 08:03:08
 tag:
-  - [2023鐵人賽]
-  - [Frontend Infrastructure]
-  - [make]
+- [2023鐵人賽]
+- [Frontend Infrastructure]
+- [make]
 banner: /2023/ithome-2023-6/clique-images-hSB2HmJYaTo-unsplash.jpg
 summary: 在風風火火地把最基礎的畫面與功能做完後，現在你需要一點腳本來啟動他。
 draft:

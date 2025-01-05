@@ -2,7 +2,7 @@
 title: 為什麼iOS上的Chrome沒有呈現設定好的list-style-type
 date: 2021-04-22 11:53:12
 tag:
-  - [CSS]
+- [CSS]
 ---
 
 ![一種Chrome，各自表述渲染結果](/2021/list-style-type-not-working-on-ios-chrome/ask.jpg)

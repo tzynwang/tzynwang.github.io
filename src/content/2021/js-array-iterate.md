@@ -2,7 +2,7 @@
 title: 「JavaScript陣列遍歷」相關筆記
 date: 2021-03-27 09:37:48
 tag:
-  - [JavaScript]
+- [JavaScript]
 ---
 
 ## 總結

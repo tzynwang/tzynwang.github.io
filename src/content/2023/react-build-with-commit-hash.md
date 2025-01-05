@@ -2,7 +2,7 @@
 title: 快速筆記：在 React app 取得最新的 git commit sha
 date: 2023-06-10 10:09:07
 tag:
-  - [GitLab]
+- [GitLab]
 ---
 
 ## 總結

@@ -2,7 +2,7 @@
 title: 閱讀筆記：The Programmer's Brain Chapter 12 Designing and improving larger system
 date: 2023-11-02 19:31:55
 tag:
-	- [General]
+- [General]
 banner: /2023/the-programmers-brain-ch12-designing-and-improving-larger-systems/mike-kononov-lFv0V3_2H6s-unsplash.jpg
 summary: 本章介紹了 CDCB (cognitive dimensions of codebases)，讓使用者能透過「認知」的角度來觀察程式碼。使用者在理解到程式碼的各種認知特徵後，也能根據一個專案的生命週期來決定維護重點方向。
 draft: 

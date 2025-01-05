@@ -2,7 +2,7 @@
 title: 閱讀筆記：The Programmer's Brain Chapter 5 Reaching a deeper understanding of code
 date: 2023-07-19 19:57:19
 tag:
-  - [General]
+- [General]
 ---
 
 ## 總結

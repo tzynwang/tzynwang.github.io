@@ -2,8 +2,8 @@
 title: Alpha Camp「2-3 middleware實作練習」技術記錄
 date: 2021-05-23 12:53:23
 tag:
-  - [Express]
-  - [JavaScript]
+- [Express]
+- [JavaScript]
 ---
 
 ## 總結

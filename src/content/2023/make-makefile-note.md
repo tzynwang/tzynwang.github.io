@@ -2,7 +2,7 @@
 title: 2023 第4週 實作筆記：使用 Makefile 搭配 vite 處理 GitHub Pages 部署
 date: 2023-01-27 11:10:18
 tag:
-  - [make]
+- [make]
 ---
 
 ## 總結

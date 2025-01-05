@@ -2,7 +2,7 @@
 title: 「Base64」相關筆記
 date: 2021-07-05 11:18:25
 tag:
-  - [Data exchange format]
+- [Data exchange format]
 ---
 
 ## 總結

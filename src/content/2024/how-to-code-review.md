@@ -2,7 +2,7 @@
 title: 如何讓人認真看待你的 PR？或是你其實可以拒看過胖的 PR 嗎？
 date: 2024-10-31 19:28:49
 tag:
-	- [General]
+- [General]
 banner: /2024/how-to-code-review/christian-rucinski-9-emauS-yBQ-unsplash.jpg
 summary: 此篇是 NDC Oslo 議程 Looks GREAT To Me 的自用筆記。講者針對 PR/MR 的作者（author）和審查者（reviewer）分別提出了一些 Dos 和 Don'ts。
 draft: 

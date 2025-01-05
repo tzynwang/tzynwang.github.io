@@ -2,8 +2,8 @@
 title: 2022 第18週 學習筆記
 date: 2022-05-06 22:12:23
 tag:
-  - [React]
-  - [Web security]
+- [React]
+- [Web security]
 ---
 
 ## 總結

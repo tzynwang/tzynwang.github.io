@@ -2,8 +2,8 @@
 title: 2022 第49週 學習筆記：React.SyntheticEvent
 date: 2022-12-09 08:03:16
 tag:
-  - [MaterialUI]
-  - [React]
+- [MaterialUI]
+- [React]
 ---
 
 ## 總結

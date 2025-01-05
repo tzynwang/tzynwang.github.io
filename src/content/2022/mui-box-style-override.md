@@ -2,7 +2,7 @@
 title: MUI Box Style override
 date: 2022-03-06 11:43:22
 tag:
-  - [MaterialUI]
+- [MaterialUI]
 ---
 
 ## 總結

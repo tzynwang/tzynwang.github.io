@@ -2,7 +2,7 @@
 title: 如何在 Remix 讀取、下載 json 檔
 date: 2025-01-04 10:20:19
 tag:
-	- [Remix]
+- [Remix]
 banner: /2025/remix-how-to-read-download-json/food-photographer-jennifer-pallian-dcPNZeSY3yk-unsplash.jpg
 summary: 如題，新的一年就從分享在 Remix 裡面處理「讀取 .json 檔內容」和「將特定內容下載為 .json 檔」的程式碼開始。新年快樂 🍾
 draft: 

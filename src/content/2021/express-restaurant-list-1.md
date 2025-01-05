@@ -2,8 +2,8 @@
 title: 從零開始重寫：餐廳清單（Express版）路由、METHODS重構
 date: 2021-06-22 14:06:28
 tag:
-  - [Express]
-  - [HTML]
+- [Express]
+- [HTML]
 ---
 
 ## 總結

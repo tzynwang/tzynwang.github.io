@@ -2,8 +2,8 @@
 title: 2022 第24週 學習筆記：在 React App 中處理錯誤情境
 date: 2022-06-18 10:00:44
 tag:
-  - [JavaScript]
-  - [React]
+- [JavaScript]
+- [React]
 ---
 
 ## 總結

@@ -2,8 +2,8 @@
 title: 捨棄 create-react-app 之餘還架了個 astro blog 昭告天下：元件分類原則
 date: 2023-09-20 07:21:48
 tag:
-  - [2023鐵人賽]
-  - [Frontend Infrastructure]
+- [2023鐵人賽]
+- [Frontend Infrastructure]
 banner: /2023/ithome-2023-5/jan-antonin-kolar-lRoX0shwjUQ-unsplash.jpg
 summary: 昨天說明了整包專案的資料夾結構規劃方式，今天來聊聊個人通常會根據哪些規則來分類 React 元件。
 draft:

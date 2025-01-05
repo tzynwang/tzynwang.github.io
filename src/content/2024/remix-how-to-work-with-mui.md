@@ -2,8 +2,8 @@
 title: 如何指南：在 remix 專案使用 @mui/material
 date: 2024-10-20 17:56:45
 tag:
-  - [MaterialUI]
-  - [Remix]
+- [MaterialUI]
+- [Remix]
 banner: /2024/remix-how-to-work-with-mui/jakub-chlouba-LVRgFVLgbK4-unsplash.jpg
 summary: 在 remix 使用 @mui/material 主要得克服 SSR 與 CSR 結果不同步的問題。本篇筆記會分享我在參考各路範例後拼出來的解法 🫠
 draft:

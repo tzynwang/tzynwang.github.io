@@ -2,7 +2,7 @@
 title: 如何在 TypeScript remix 專案中把 .svg 引用成 React 元件
 date: 2024-08-03 19:23:07
 tag:
-	- [Remix]
+- [Remix]
 banner: /2024/remix-svg-as-react-component/dan-asaki-aI3jlXTqrdI-unsplash.jpg
 summary: 我感覺 SVGR 官方提供的 remix 設定有點太複雜，其實可以直接上 vite-plugin-svgr 就好。如果你也在用 remix 並且需要把 .svg 引用成 React 元件，歡迎參考此篇筆記。
 draft: 

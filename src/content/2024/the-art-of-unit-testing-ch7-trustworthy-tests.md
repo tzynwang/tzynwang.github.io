@@ -2,7 +2,7 @@
 title: 閱讀筆記：The Art of Unit Testing Chapter 7 Trustworthy tests
 date: 2024-01-21 10:45:50
 tag:
-	- [Testing]
+- [Testing]
 banner: /2024/the-art-of-unit-testing-ch7-trustworthy-tests/hannah-busing-Zyx1bK9mqmA-unsplash.jpg
 summary: 本書第一章曾提過，好的單元測試應有三種特徵——好讀、值得信任、好維護。第二到六章說明了如何寫出「好讀」的測試，而這一章則會說明「信任感」在單元測試中扮演什麼角色。
 draft: 

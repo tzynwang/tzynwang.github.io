@@ -2,7 +2,7 @@
 title: 閱讀筆記：The Programmer's Brain Chapter 6 Getting better at solving programming problems
 date: 2023-07-26 19:05:19
 tag:
-  - [General]
+- [General]
 summary: 模型會影響一個工程師如何思考、解決問題；契合問題的模型能降低解題的困難度，反之則會讓問題變得更加複雜。
 banner: /2023/the-programmers-brain-ch6-getting-better-at-solving-problems/kenny-eliason-2RRq1BHPq4E-unsplash.jpg
 ---

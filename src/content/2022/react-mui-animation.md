@@ -2,9 +2,9 @@
 title: 2022 第19週 實作筆記：在 React APP 中搭配 Mui 處理基礎動畫
 date: 2022-05-11 18:24:59
 tag:
-  - [CSS]
-  - [React]
-  - [MaterialUI]
+- [CSS]
+- [React]
+- [MaterialUI]
 ---
 
 ## 總結

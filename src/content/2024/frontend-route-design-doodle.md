@@ -2,7 +2,7 @@
 title: 前端路由設計心得
 date: 2024-09-02 18:59:19
 tag:
-	- [General]
+- [General]
 banner: /2024/frontend-route-design-doodle/matias-contreras-kQ4tZUEqyPw-unsplash.jpg
 summary: 關於前端路由設計，截至目前為止的心得是——這個部位就負責兩件事：「反應使用者的旅程階段」或「保存狀態」。
 draft: 

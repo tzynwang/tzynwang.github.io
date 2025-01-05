@@ -2,7 +2,7 @@
 title: 2022 第11週 實作筆記：Element.getBoundingClientRect()
 date: 2022-03-21 22:57:09
 tag:
-  - [React]
+- [React]
 ---
 
 ## 總結

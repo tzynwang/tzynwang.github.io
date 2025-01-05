@@ -2,7 +2,7 @@
 title: 2022 第2週 學習記錄：React Forwarding Refs
 date: 2022-01-15 20:20:21
 tag:
-  - [React]
+- [React]
 ---
 
 ## 總結

@@ -2,7 +2,7 @@
 title: 閱讀筆記：Good Code, Bad Code Chapter 5 Make code readable
 date: 2023-03-25 14:40:09
 tag:
-  - [Software Architecture]
+- [Software Architecture]
 ---
 
 ## 總結

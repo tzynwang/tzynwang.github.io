@@ -2,7 +2,7 @@
 title: 透過 useAutocomplete 來處理 Material UI 5 Autocomplete 的樣式客製化需求
 date: 2024-04-14 19:47:35
 tag:
-	- [MaterialUI]
+- [MaterialUI]
 banner: /2024/mui-use-autocomplete/torbjorn-helgesen-C4FbCe4L_pw-unsplash.jpg
 summary: 如題，記錄一下如何對 MUI 5 的 Autocomplete 進行完全的樣式客製化。
 draft: 

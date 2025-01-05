@@ -2,7 +2,7 @@
 title: TODO：「部屬Express.js App至Heroku」
 date: 2021-06-23 15:48:43
 tag:
-  - [Heroku]
+- [Heroku]
 ---
 
 ## 總結

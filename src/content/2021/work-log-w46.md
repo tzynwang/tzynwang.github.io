@@ -2,8 +2,8 @@
 title: 2021 第46週 學習記錄：CSS modules、React HOC、React router、debounce 與 throttle
 date: 2021-11-18 20:53:38
 tag:
-  - [CSS]
-  - [React]
+- [CSS]
+- [React]
 ---
 
 ## 總結

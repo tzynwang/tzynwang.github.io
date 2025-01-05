@@ -2,7 +2,7 @@
 title: 「setTimeout() difference between parameters as string or function」相關筆記
 date: 2021-04-12 20:27:31
 tag:
-  - [JavaScript]
+- [JavaScript]
 ---
 
 ## 原始問題

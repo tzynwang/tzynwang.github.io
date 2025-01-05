@@ -2,7 +2,7 @@
 title: 閱讀筆記：The Art of Unit Testing Chapter 4 Interaction testing using mock objects
 date: 2023-12-28 20:04:09
 tag:
-	- [Testing]
+- [Testing]
 banner: /2023/the-art-of-unit-testing-ch4-interaction-testing-using-mock-objects/izzad-syah-JF34nJycWCo-unsplash.jpg
 summary: 這章定義了何謂互動測試（interaction testing），以及我們如何透過 mock 來測試那些呼叫（出走型）依賴的單元。
 draft: 

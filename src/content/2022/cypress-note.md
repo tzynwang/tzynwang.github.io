@@ -2,8 +2,8 @@
 title: 2022 第44週 cypress 綜合筆記：對應元件可能不存在的情境、搭配 typescript 使用 dayjs
 date: 2022-11-04 21:15:42
 tag:
-  - [cypress]
-  - [Testing]
+- [cypress]
+- [Testing]
 ---
 
 ## 總結

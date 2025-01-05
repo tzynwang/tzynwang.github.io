@@ -2,7 +2,7 @@
 title: 領域敘事（Domain Storytelling）：最基礎的筆記
 date: 2023-12-04 20:04:03
 tag:
-	- [Product Design]
+- [Product Design]
 banner: /2023/domain-storytelling-the-very-basic/rain-bennett-wjMUVrZI1p4-unsplash.jpg
 summary: 此篇文章是關於領域敘事（domain storytelling）的筆記——這是什麼？為何使用？如何進行？
 draft: 

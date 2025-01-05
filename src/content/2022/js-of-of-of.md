@@ -2,7 +2,7 @@
 title: 奇妙的 JavaScript 程式碼： for (var of of of) {...}
 date: 2022-06-21 20:46:05
 tag:
-  - [JavaScript]
+- [JavaScript]
 ---
 
 ## 奇妙範例

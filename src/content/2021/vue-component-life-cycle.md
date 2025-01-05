@@ -2,7 +2,7 @@
 title: 「Vue component生命週期」相關筆記
 date: 2021-10-08 14:48:27
 tag:
-  - [Vue]
+- [Vue]
 ---
 
 ## 原始問題

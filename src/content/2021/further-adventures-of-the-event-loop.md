@@ -2,7 +2,7 @@
 title: 再訪 event loop
 date: 2021-04-14 14:02:39
 tag:
-  - [JavaScript]
+- [JavaScript]
 ---
 
 ## 總結

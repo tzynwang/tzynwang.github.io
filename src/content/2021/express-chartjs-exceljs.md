@@ -2,8 +2,8 @@
 title: 作業功能擴充：為老爸的私房錢新增開支圖表、將開支紀錄下載為Excel檔案
 date: 2021-07-11 18:08:08
 tag:
-  - [Express]
-  - [Mongoose]
+- [Express]
+- [Mongoose]
 ---
 
 ## 總結

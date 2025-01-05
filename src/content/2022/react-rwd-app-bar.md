@@ -2,8 +2,8 @@
 title: 2022 第17週 實作筆記：RWD 側欄
 date: 2022-04-29 22:23:52
 tag:
-  - [MaterialUI]
-  - [React]
+- [MaterialUI]
+- [React]
 ---
 
 ## 總結

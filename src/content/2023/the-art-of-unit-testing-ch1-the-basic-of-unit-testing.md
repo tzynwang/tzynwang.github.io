@@ -2,7 +2,7 @@
 title: 閱讀筆記：The Art of Unit Testing Chapter 1 The basics of unit testing
 date: 2023-12-01 21:12:26
 tag:
-	- [Testing]
+- [Testing]
 banner: /2023/the-art-of-unit-testing-ch1-the-basic-of-unit-testing/roman-mager-5mZ_M06Fc9g-unsplash.jpg 
 summary: 此為 The Art of Unit Testing 第一章的閱讀筆記。此章旨在討論單元測試的定義，以及怎樣才算是好的單元測試。
 draft:

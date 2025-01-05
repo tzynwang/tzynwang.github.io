@@ -2,8 +2,8 @@
 title: 工程師的易用性測試（Usability Testing）筆記
 date: 2023-11-11 15:15:24
 tag:
-  - [MWC 2023]
-  - [Product Design]
+- [MWC 2023]
+- [Product Design]
 banner: /2023/mwc-2023-usability-testing/ignacio-amenabar-2dkgXTfPfTg-unsplash.jpg
 summary: 早一點進行易用性測試，少一點機會回頭修改做好的東西 🫠
 draft: 

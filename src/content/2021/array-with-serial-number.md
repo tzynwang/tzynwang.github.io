@@ -2,7 +2,7 @@
 title: 「產生順序數陣列」相關筆記
 date: 2021-06-14 18:27:20
 tag:
-  - [JavaScript]
+- [JavaScript]
 ---
 
 ## 總結
