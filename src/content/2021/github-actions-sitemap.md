@@ -2,7 +2,7 @@
 title: 使用GitHub Actions自動產生sitemap.xml
 date: 2021-03-09 10:54:00
 tag:
-  - [git]
+- [git]
 ---
 
 ## 總結

@@ -2,7 +2,7 @@
 title: SSH Keys for GitHub
 date: 2022-02-22 20:01:32
 tag:
-  - [git]
+- [git]
 ---
 
 ## 總結

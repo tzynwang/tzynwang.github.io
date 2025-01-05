@@ -2,7 +2,7 @@
 title: 閱讀筆記：The Programmer's Brain Chapter 4 How to read complex code
 date: 2023-07-06 20:07:10
 tag:
-  - [General]
+- [General]
 ---
 
 ## 總結

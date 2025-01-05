@@ -2,9 +2,9 @@
 title: 「電影清單（Vue版本）」技術記錄
 date: 2021-06-17 14:13:19
 tag:
-  - [Vue]
-  - [JavaScript]
-  - [CSS]
+- [Vue]
+- [JavaScript]
+- [CSS]
 ---
 
 ## 總結

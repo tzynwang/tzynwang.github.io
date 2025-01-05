@@ -2,7 +2,7 @@
 title: React 19 筆記：hooks 篇
 date: 2024-05-05 19:37:19
 tag:
-	- [React]
+- [React]
 banner: /2024/react-19-hooks/anne-nygard-viq9Ztqi3Vc-unsplash.jpg
 summary: 這週花了一些時間在了解 React 19 Beta 預定要帶來的新功能與改動，此篇旨在記錄新 hooks 的用途與使用方式。
 draft: 

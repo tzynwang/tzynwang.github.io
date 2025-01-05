@@ -2,7 +2,7 @@
 title: 2022 第52週 實作筆記：於 MaterialUI theme 新增 custom breakpoints
 date: 2022-12-30 21:01:05
 tag:
-  - [MaterialUI]
+- [MaterialUI]
 ---
 
 ## 總結

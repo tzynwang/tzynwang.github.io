@@ -2,7 +2,7 @@
 title: 「JavaScript Understanding the Weird Parts」第二、三章筆記
 date: 2021-08-30 15:29:47
 tag:
-  - [JavaScript]
+- [JavaScript]
 ---
 
 ## 總結

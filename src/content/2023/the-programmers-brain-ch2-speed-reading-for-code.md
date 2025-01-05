@@ -2,7 +2,7 @@
 title: 閱讀筆記：The Programmer's Brain Chapter 2 Speed reading for code
 date: 2023-06-25 14:40:31
 tag:
-  - [General]
+- [General]
 ---
 
 ## 總結

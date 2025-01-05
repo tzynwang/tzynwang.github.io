@@ -2,8 +2,8 @@
 title: 2022 第26週 工作筆記：在 React App 中的 mediator pattern
 date: 2022-07-02 13:01:26
 tag:
-  - [Design Patterns]
-  - [React]
+- [Design Patterns]
+- [React]
 ---
 
 ## 總結

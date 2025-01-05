@@ -2,7 +2,7 @@
 title: JSDC 2021 議程筆記
 date: 2021-10-30 12:27:13
 tag:
-  - [JavaScript]
+- [JavaScript]
 ---
 
 ## 總結

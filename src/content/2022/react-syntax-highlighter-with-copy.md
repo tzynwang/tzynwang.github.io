@@ -2,7 +2,7 @@
 title: 2022 第22週 實作筆記：為 react-syntax-highlighter 加上複製功能
 date: 2022-06-05 19:36:28
 tag:
-  - [React]
+- [React]
 ---
 
 ## 總結

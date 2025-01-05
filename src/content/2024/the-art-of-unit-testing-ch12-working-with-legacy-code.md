@@ -2,7 +2,7 @@
 title: 閱讀筆記：The Art of Unit Testing Chapter 12 Working with legacy code
 date: 2024-02-17 20:39:26
 tag:
-	- [Testing]
+- [Testing]
 banner: /2024/the-art-of-unit-testing-ch12-working-with-legacy-code/randy-fath-ymf4_9Y9S_A-unsplash.jpg
 summary: 如何決定重構目標？可以從一個單元的邏輯複雜度、依賴數量與核心價值來決定重構的起點
 draft: 

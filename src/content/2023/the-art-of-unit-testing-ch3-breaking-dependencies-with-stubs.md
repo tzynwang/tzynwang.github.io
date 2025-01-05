@@ -2,7 +2,7 @@
 title: 閱讀筆記：The Art of Unit Testing Chapter 3 Breaking dependencies with stubs
 date: 2023-12-25 08:23:20
 tag:
-	- [Testing]
+- [Testing]
 banner: /2023/the-art-of-unit-testing-ch3-breaking-dependencies-with-stubs/tim-mossholder-WHXbCz2KWhE-unsplash.jpg
 summary: 在本書第二章我們為「回傳值」與「改變狀態」這兩種退出點寫了測試，在第三章則會討論如何測試那些會呼叫「進入型依賴」的單元。
 draft: 

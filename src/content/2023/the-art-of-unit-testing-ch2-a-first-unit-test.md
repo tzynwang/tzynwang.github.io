@@ -2,7 +2,7 @@
 title: 閱讀筆記：The Art of Unit Testing Chapter 2 A first unit test
 date: 2023-12-17 13:03:40
 tag:
-	- [Testing]
+- [Testing]
 banner: /2023/the-art-of-unit-testing-ch2-a-first-unit-test/towfiqu-barbhuiya-J6g_szOtMF4-unsplash.jpg
 summary: 此為 The Art of Unit Testing 第二章的閱讀筆記。此章介紹了測試框架 Jest 與撰寫單元測試的架構、命名技巧。也說明濫用 .beforeEach() 的副作用，以及如何透過工廠模式（factory method）來避免在 .beforeEach() 塞入太多設定的問題。
 draft: 

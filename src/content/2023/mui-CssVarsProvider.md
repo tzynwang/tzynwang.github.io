@@ -2,7 +2,7 @@
 title: 使用 CssVarsProvider 來取得 MaterialUI 樣式的 CSS 變數
 date: 2023-02-05 13:51:29
 tag:
-  - [MaterialUI]
+- [MaterialUI]
 ---
 
 ## 總結

@@ -2,8 +2,8 @@
 title: 「Jeremy Keith | In And Out Of Style | CSS Day 2022」影片筆記
 date: 2022-06-19 13:53:41
 tag:
-  - [CSS]
-  - [HTML]
+- [CSS]
+- [HTML]
 ---
 
 ## 總結

@@ -2,8 +2,8 @@
 title: 捨棄 create-react-app 之餘還架了個 astro blog 昭告天下：設定 package.json
 date: 2023-09-17 08:31:14
 tag:
-  - [2023鐵人賽]
-  - [Frontend Infrastructure]
+- [2023鐵人賽]
+- [Frontend Infrastructure]
 banner: /2023/ithome-2023-2/jessica-ruscello-OQSCtabGkSY-unsplash.jpg
 summary: 面對全新全空的專案資料夾，首先從設定 package.json 開始。今天的範圍是語意化版本（semantic versioning）以及 Node.js 的環境管理器（version manager）
 draft:

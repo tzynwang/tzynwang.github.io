@@ -2,7 +2,7 @@
 title: 在 React app 實作拖曳上傳區塊（drag and drop file uploader）
 date: 2024-03-31 17:29:52
 tag:
-	- [React]
+- [React]
 banner: /2024/react-drag-and-drop-file-uploader/cesar-couto-eIDXdlfelVE-unsplash.jpg
 summary: 如題，之後的專案可能會用到這類元件，趁有空時搓一個練手感。在有 Html5 Drag and Drop Api 的今天，實作起來其實挺簡單的。
 draft: 

@@ -2,7 +2,7 @@
 title: 「Writing Good Alt Text - HTTP 203」相關筆記
 date: 2021-03-09 12:17:45
 tag:
-  - [HTML]
+- [HTML]
 ---
 
 ## 總結

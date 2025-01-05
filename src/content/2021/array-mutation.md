@@ -2,7 +2,7 @@
 title: 為什麼可以修改使用const宣告的陣列（或物件）的內容？
 date: 2021-04-09 14:23:04
 tag:
-  - [JavaScript]
+- [JavaScript]
 ---
 
 ## 原始問題

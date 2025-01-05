@@ -2,7 +2,7 @@
 title: 葫蘆裡的 React：關於渲染（render）與確認（commit）
 date: 2024-03-10 15:16:05
 tag:
-	- [React]
+- [React]
 banner: /2024/react-under-the-hood-render-and-commit/theme-photos-Cl-OpYWFFm0-unsplash.jpg
 summary: 此篇是關於新 React 官方文件對於 render 與 commit 解說的筆記。同時也整理了組件在掛載、更新與移除時的活動時間軸。
 draft: 

@@ -2,7 +2,7 @@
 title: 筆記：Usability Review Live
 date: 2024-09-28 09:37:52
 tag:
-	- [Product Design]
+- [Product Design]
 banner: /2024/usability-review-live-note/med-badr-chemmaoui-ZSPBhokqDMc-unsplash.jpg
 summary: 整理了之前追 Tony Alicea Usability Review Live 的筆記。這段一小時的直播以很平易近人的方式說明了一些介面設計的基本知識，值得一看。
 draft: 

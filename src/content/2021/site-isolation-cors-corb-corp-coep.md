@@ -2,7 +2,7 @@
 title: 「CORP、COEB與CORP以及spectre attack」相關筆記
 date: 2021-10-26 10:47:48
 tag:
-  - [Web security]
+- [Web security]
 ---
 
 ## 總結

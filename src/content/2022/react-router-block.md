@@ -2,8 +2,8 @@
 title: 2022 第7週 實作筆記：在離開路由前顯示確認視窗
 date: 2022-02-16 18:30:04
 tag:
-  - [React]
-  - [webpack]
+- [React]
+- [webpack]
 ---
 
 ## 總結

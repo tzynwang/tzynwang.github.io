@@ -2,7 +2,7 @@
 title: tailwind 快速上手筆記
 date: 2024-06-22 11:53:07
 tag:
-	- [CSS]
+- [CSS]
 banner: /2024/css-tailwind-best-practice/jason-leung-cwhtQIssH9k-unsplash.jpg
 summary: 最近有機會在新專案試用 tailwind。而為了避免繞遠路，在正式開工前先花了點時間搜集關於這個套件的 best practice。
 draft: 

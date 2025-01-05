@@ -2,7 +2,7 @@
 title: 快速筆記：如何對 remix 的 cookie 功能加上一點 TypeScript
 date: 2024-10-02 18:43:54
 tag:
-	- [Remix]
+- [Remix]
 banner: /2024/remix-cookie-note/caglar-araz-CggwlFAw8Kw-unsplash.jpg
 summary: 為了避免打錯字誤事，我寫了兩個簡單的 TypeScript 小功能幫忙在 remix 中處理 cookie 的取值、賦值工作。
 draft: 

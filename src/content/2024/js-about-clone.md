@@ -2,7 +2,7 @@
 title: 關於在 JavaScript 中執行「複製」這件事
 date: 2024-04-28 14:33:50
 tag:
-	- [JavaScript]
+- [JavaScript]
 banner: /2024/js-about-clone/andre-mouton-GBEHjsPQbEQ-unsplash.jpg
 summary: 最近才發現 node 原生的 `structuredClone` 在複製上的限制比想像中的多，如果有複製純物件以外的需求（比如要處理實例），還是需要使用 `lodash/cloneDeep` 🙈
 draft: 

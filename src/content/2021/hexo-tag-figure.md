@@ -2,7 +2,7 @@
 title: Plugin -- hexo-tag-figure
 date: 2021-02-15 15:11:42
 tag:
-  - [hexo]
+- [hexo]
 ---
 
 ## Summary of this post

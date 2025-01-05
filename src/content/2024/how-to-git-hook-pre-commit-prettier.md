@@ -2,7 +2,7 @@
 title: 如何指南：透過 git hook pre-commit 處理程式碼自動格式化（format），再見了 npm run format
 date: 2024-11-02 11:06:14
 tag:
-  - [git]
+- [git]
 banner: /2024/how-to-git-hook-pre-commit-prettier/josh-calabrese-zcYRw547Dps-unsplash.jpg
 summary: 此篇筆記會說明如何使用 git hook pre-commit 來自動格式化「處於 git stage 階段的檔案」，確保被 git commit 的都是已經格式化後的內容
 draft: 

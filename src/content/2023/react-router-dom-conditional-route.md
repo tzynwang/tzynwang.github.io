@@ -2,7 +2,7 @@
 title: 快速筆記：在 react-router-dom 5 實作條件路由
 date: 2023-06-17 12:44:24
 tag:
-  - [React]
+- [React]
 ---
 
 ## 總結

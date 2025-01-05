@@ -2,7 +2,7 @@
 title: React 19 筆記：新 api 與 pros 功能篇
 date: 2024-05-11 14:23:58
 tag:
-	- [React]
+- [React]
 banner: /2024/react-19-apis/justus-menke-hwHJrWIh5SM-unsplash.jpg
 summary: 此篇筆記記錄了 React 19 預計提供的新 api 與 props 功能。
 draft: 

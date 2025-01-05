@@ -2,7 +2,7 @@
 title: 2022 第28週 學習筆記：不只是型別
 date: 2022-07-16 14:49:22
 tag:
-  - [JavaScript]
+- [JavaScript]
 ---
 
 ## 總結

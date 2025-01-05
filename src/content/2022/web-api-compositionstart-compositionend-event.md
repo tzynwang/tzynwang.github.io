@@ -2,7 +2,7 @@
 title: 2022 第50週 實作筆記：透過 compositionstart/compositionend 來暫停驗證輸入內容
 date: 2022-12-16 21:32:29
 tag:
-  - [React]
+- [React]
 ---
 
 ## 總結

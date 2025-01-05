@@ -2,7 +2,7 @@
 title: 閱讀筆記：Good Code, Bad Code Chapter 7 Make code hard to misuse
 date: 2023-04-03 16:53:29
 tag:
-  - [Software Architecture]
+- [Software Architecture]
 ---
 
 ## 總結

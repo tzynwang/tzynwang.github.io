@@ -2,7 +2,7 @@
 title: 閱讀筆記：The Art of Unit Testing Chapter 8 Maintainability
 date: 2024-01-27 20:20:34
 tag:
-	- [Testing]
+- [Testing]
 banner: /2024/the-art-of-unit-testing-ch8-maintainability/todd-quackenbush-IClZBVw5W5A-unsplash.jpg
 summary: 本書以「單元測試被修改的頻率」來衡量該測試的可維護性（maintainability）。修改的次數越少，維護性就越高。而這便是本篇筆記的主題——如何寫出好維護的測試（如何避免動不動就要修改測試）。
 draft: 

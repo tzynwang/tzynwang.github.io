@@ -2,8 +2,8 @@
 title: 2022 第47週 閱讀筆記：Don’t use JPEG-XR on the Web
 date: 2022-11-27 11:09:12
 tag:
-  - [Image format]
-  - [Web performance]
+- [Image format]
+- [Web performance]
 ---
 
 ## 總結

@@ -2,7 +2,7 @@
 title: 「重設表單（form reset）」相關筆記
 date: 2021-05-13 14:27:11
 tag:
-  - [HTML]
+- [HTML]
 ---
 
 ## 總結

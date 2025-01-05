@@ -2,7 +2,7 @@
 title: 閱讀筆記：The Art of Unit Testing Chapter 6 Unit testing asynchronous code
 date: 2024-01-14 18:26:23
 tag:
-	- [Testing]
+- [Testing]
 banner: /2024/the-art-of-unit-testing-ch6-unit-testing-asynchronous-code/age-barros-rBPOfVqROzY-unsplash.jpg
 summary: 本章提供兩種實作技巧讓我們能為「包含非同步功能」的單元寫出良好的單元測試，其為「分離進入點（extracting an entry point）」與「配接器模式（adapter pattern）」
 draft: 

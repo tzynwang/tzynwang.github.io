@@ -2,7 +2,7 @@
 title: 2022 第46週 閱讀筆記：Dialogs, modality and popovers seem similar. How are they different?
 date: 2022-11-20 10:39:09
 tag:
-  - [HTML]
+- [HTML]
 ---
 
 ## 總結

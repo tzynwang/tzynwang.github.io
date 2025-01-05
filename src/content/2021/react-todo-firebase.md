@@ -2,7 +2,7 @@
 title: 「從零開始React Todo List with TypeScript」相關筆記
 date: 2021-11-12 14:52:46
 tag:
-  - [React]
+- [React]
 ---
 
 ## 總結

@@ -2,7 +2,8 @@
 title: 分享：寫作後的ＳＯＰ
 date: 2024-09-22 08:14:42
 tag:
-	- [General]
+- [General]
+- [閱讀筆記]
 banner: /2024/writing-sop-post-writing/vanesa-conunaese-8FUBOPCTh70-unsplash.jpg
 summary: 這篇文章會聊聊我在完成寫作後，會執行哪些工作來確保文章真的好理解（好懂）。
 draft: 

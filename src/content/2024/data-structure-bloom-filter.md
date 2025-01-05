@@ -2,8 +2,8 @@
 title: 快速筆記：bloom filter
 date: 2024-09-08 09:11:26
 tag:
-  - [Browser]
-  - [Data Structure]
+- [Browser]
+- [Data Structure]
 banner: /2024/data-structure-bloom-filter/freestocks-fplnXE5loWo-unsplash.jpg
 summary: bloom filter 是一種資料結構。當你只需要知道某個目標是否存在時，可以使用此結構來保存目標「存在與否」的資訊。
 draft: 

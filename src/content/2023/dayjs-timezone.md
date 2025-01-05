@@ -2,7 +2,7 @@
 title: 開發筆記：設定 dayjs timezone
 date: 2023-05-13 14:55:02
 tag:
-  - [JavaScript]
+- [JavaScript]
 ---
 
 ## 總結

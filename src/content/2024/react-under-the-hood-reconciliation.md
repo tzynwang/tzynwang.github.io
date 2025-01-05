@@ -2,7 +2,7 @@
 title: 葫蘆裡的 React：關於調適（reconciliation）與組件的 props.key
 date: 2024-03-03 20:11:33
 tag:
-	- [React]
+- [React]
 banner: /2024/react-under-the-hood-reconciliation/dan-hadar-HMG2ELxyos8-unsplash.jpg
 summary: 此篇筆記整理了 React 官方文件中關於 reconciliation 的相關內容，並順便說明在某些情況下你可能需要指定組件的 props.key 來強制更新畫面。
 draft: 

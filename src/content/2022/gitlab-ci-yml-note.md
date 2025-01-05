@@ -2,7 +2,7 @@
 title: 2022 第43週 學習筆記：.gitlab-ci.yml
 date: 2022-10-28 18:02:24
 tag:
-  - [GitLab]
+- [GitLab]
 ---
 
 ## 總結

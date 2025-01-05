@@ -2,8 +2,8 @@
 title: 「JavaScript與parser blocking」相關筆記
 date: 2021-09-27 10:50:12
 tag:
-  - [JavaScript]
-  - [Browser]
+- [JavaScript]
+- [Browser]
 ---
 
 ## 原始問題

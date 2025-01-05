@@ -2,7 +2,7 @@
 title: 工作筆記：在 remix 中根據系統外觀（system appearance）更新 shadcn/ui 的主題（theme）
 date: 2024-12-21 19:06:33
 tag:
-	- [Remix]
+- [Remix]
 banner: /2024/remix-shad-cn-ui-theme/jim-niakaris-f62RBhbXn8M-unsplash.jpg
 summary: 這篇筆記說明了如何在 remix app 中預設 shadcn/ui 參照系統外觀，並在使用者切換系統外觀時同步切換整個介面的主題。
 draft: 

@@ -2,8 +2,8 @@
 title: 「Glass effect header」實作筆記
 date: 2022-05-14 14:42:46
 tag:
-  - [CSS]
-  - [React]
+- [CSS]
+- [React]
 ---
 
 ## 總結

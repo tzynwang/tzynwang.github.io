@@ -2,8 +2,8 @@
 title: 「Vue computed與methods之差異，以及getter/setter」相關筆記
 date: 2021-07-25 18:02:30
 tag:
-  - [Vue]
-  - [JavaScript]
+- [Vue]
+- [JavaScript]
 ---
 
 ## 總結

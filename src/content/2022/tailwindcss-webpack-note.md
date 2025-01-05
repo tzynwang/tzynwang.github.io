@@ -2,7 +2,7 @@
 title: tailwindcss 與 typescript 快速試用筆記
 date: 2022-05-24 19:48:53
 tag:
-  - [CSS]
+- [CSS]
 ---
 
 ## 總結

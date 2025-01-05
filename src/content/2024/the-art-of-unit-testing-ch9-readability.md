@@ -2,7 +2,7 @@
 title: 閱讀筆記：The Art of Unit Testing Chapter 9 Readability
 date: 2024-01-29 21:20:37
 tag:
-	- [Testing]
+- [Testing]
 banner: /2024/the-art-of-unit-testing-ch9-readability/david-travis-aVvZJC0ynBQ-unsplash.jpg
 summary: 沒人在乎「看不懂到底在幹麼」的測試，而為了確保我們費力寫出來的測試能發揮價值，這一章會介紹（回顧）四個能讓測試更好懂的技巧。
 draft: 

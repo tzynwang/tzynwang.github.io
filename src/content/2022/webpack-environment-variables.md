@@ -2,7 +2,7 @@
 title: 2022 第15週 學習筆記：從零開始透過 webpack.config 讀取環境變數
 date: 2022-04-13 19:21:50
 tag:
-  - [webpack]
+- [webpack]
 ---
 
 ## 總結

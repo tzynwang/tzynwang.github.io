@@ -2,7 +2,7 @@
 title: 我們不要那個 overflow hidden 了——如何無痛隱藏單軸內容？
 date: 2024-11-24 18:32:30
 tag:
-	- [CSS]
+- [CSS]
 banner: /2024/css-overflow-clip/daria-shatova-qBSIwo7H0qY-unsplash.jpg
 summary: 答：把 `overflow-x/y` 設定為 `clip` 而不是 `hidden` 來隱藏單軸內容。如果你好奇為什麼要用 `clip`，那歡迎點開本篇筆記。
 draft: 

@@ -2,8 +2,8 @@
 title: 30天挑戰：「CSS progress bar (stepper) 」技術記錄
 date: 2021-08-05 10:48:24
 tag:
-  - [CSS]
-  - [2021鐵人賽]
+- [CSS]
+- [2021鐵人賽]
 ---
 
 ## 總結

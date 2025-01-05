@@ -2,7 +2,7 @@
 title: 閱讀筆記：The Programmer's Brain Chapter 8 How to get better at naming things
 date: 2023-08-03 20:53:52
 tag:
-  - [General]
+- [General]
 summary: 命名很重要，名稱是工程師閱讀一段程式碼時最優先接觸到的內容，會影響工程師如何理解一段程式碼。
 banner: /2023/the-programmers-brain-ch8-how-to-get-better-at-naming-things/brett-jordan-POMpXtcVYHo-unsplash.jpg
 ---

@@ -2,7 +2,7 @@
 title: 捨棄 create-react-app 之餘還架了個 astro blog 昭告天下：關於今年主題
 date: 2023-09-16 07:10:39
 tag:
-  - [2023鐵人賽]
+- [2023鐵人賽]
 banner: /2023/ithome-2023-1/miguel-a-amutio-27QOmh18KDc-unsplash.jpg
 summary: 2023 鐵人賽開始了，今年來聊聊前端基礎建設以及如何用 astro 架部落格。
 draft:

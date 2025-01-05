@@ -2,7 +2,7 @@
 title: Alpha Camp「3前 毛小孩星球」相關筆記
 date: 2021-07-13 15:40:31
 tag:
-  - [CSS]
+- [CSS]
 ---
 
 ## 總結

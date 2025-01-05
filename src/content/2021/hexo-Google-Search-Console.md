@@ -2,7 +2,7 @@
 title: Submit to Google Search Console, SEO settings
 date: 2021-02-11 17:03:29
 tag:
-  - [hexo]
+- [hexo]
 ---
 
 ## Summary of this post

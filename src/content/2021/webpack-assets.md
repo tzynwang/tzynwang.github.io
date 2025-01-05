@@ -2,7 +2,7 @@
 title: 「webpack引用assets靜態檔案」相關筆記
 date: 2021-08-14 13:24:22
 tag:
-  - [webpack]
+- [webpack]
 ---
 
 ## 總結

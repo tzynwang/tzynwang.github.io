@@ -2,7 +2,7 @@
 title: MOPCON 2021 第二天之前端開發相關內容之議程筆記
 date: 2021-10-24 11:46:28
 tag:
-  - [Web performance]
+- [Web performance]
 ---
 
 ## 總結

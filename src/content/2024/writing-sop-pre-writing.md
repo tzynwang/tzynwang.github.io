@@ -2,7 +2,8 @@
 title: 分享：寫作前的ＳＯＰ
 date: 2024-09-16 18:15:37
 tag:
-	- [General]
+- [General]
+- [閱讀筆記]
 banner: /2024/writing-sop-pre-writing/renata-adrienn-ebvCsRypmxM-unsplash.jpg
 summary: 為了能盡量寫出有說服力、好理解的文章，我在寫作前後都各有一套ＳＯＰ來幫忙檢查文章內容。如果你也想寫出好懂的文章，歡迎參考此篇筆記。
 draft: 

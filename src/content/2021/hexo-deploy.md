@@ -2,7 +2,7 @@
 title: Deploy to GitHub Page
 date: 2021-02-10 19:00:23
 tag:
-  - [hexo]
+- [hexo]
 ---
 
 ## Summary of this post

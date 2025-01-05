@@ -2,7 +2,7 @@
 title: 2022 第42週 實作筆記：TypeScript type predicates
 date: 2022-10-21 19:45:14
 tag:
-  - [TypeScript]
+- [TypeScript]
 ---
 
 ## 問題描述

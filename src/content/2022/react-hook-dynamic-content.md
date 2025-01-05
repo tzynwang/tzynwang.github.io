@@ -2,8 +2,8 @@
 title: 2022 第30週 工作筆記：透過 custom hook 回傳動態內容
 date: 2022-07-28 18:32:00
 tag:
-  - [MaterialUI]
-  - [React]
+- [MaterialUI]
+- [React]
 ---
 
 ## 總結

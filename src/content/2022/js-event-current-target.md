@@ -2,7 +2,7 @@
 title: JavaScript 快速筆記：Event.currentTarget
 date: 2022-08-17 22:22:53
 tag:
-  - [JavaScript]
+- [JavaScript]
 ---
 
 ## 總結

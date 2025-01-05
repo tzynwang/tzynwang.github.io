@@ -2,7 +2,7 @@
 title: Display draft post
 date: 2021-02-19 14:25:20
 tag:
-  - [hexo]
+- [hexo]
 
 ---
 
