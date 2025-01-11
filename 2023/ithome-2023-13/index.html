@@ -1,0 +1,209 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.BScVxmeO.js"></script><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.1.2"><!-- Primary Meta Tags --><title>捨棄 create-react-app 之餘還架了個 astro blog 昭告天下：正式環境用的 webpack 設定</title><meta name="title" content="捨棄 create-react-app 之餘還架了個 astro blog 昭告天下：正式環境用的 webpack 設定"><meta name="description" content="眼看專案有個基本能動的樣子，你打算部署一個可以讓其他人玩玩看的測試站。相較於開發用的版本，部署（上線）用的 webpack 設定會比較強調優化與壓縮的部分，今天會來聊聊這一塊"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2023/ithome-2023-13"><meta property="og:title" content="捨棄 create-react-app 之餘還架了個 astro blog 昭告天下：正式環境用的 webpack 設定"><meta property="og:description" content="眼看專案有個基本能動的樣子，你打算部署一個可以讓其他人玩玩看的測試站。相較於開發用的版本，部署（上線）用的 webpack 設定會比較強調優化與壓縮的部分，今天會來聊聊這一塊"><meta property="og:image" content="https://tzynwang.github.io/2023/ithome-2023-13/patrick-campanale-oCsQLKENz34-unsplash.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2023/ithome-2023-13"><meta property="twitter:title" content="捨棄 create-react-app 之餘還架了個 astro blog 昭告天下：正式環境用的 webpack 設定"><meta property="twitter:description" content="眼看專案有個基本能動的樣子，你打算部署一個可以讓其他人玩玩看的測試站。相較於開發用的版本，部署（上線）用的 webpack 設定會比較強調優化與壓縮的部分，今天會來聊聊這一塊"><meta property="twitter:image" content="https://tzynwang.github.io/2023/ithome-2023-13/patrick-campanale-oCsQLKENz34-unsplash.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:Noto Sans TC,sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul{margin-top:16px;margin-bottom:16px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:8px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+[data-astro-image]{width:100%;height:auto;object-fit:var(--fit);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>捨棄 create-react-app 之餘還架了個 astro blog 昭告天下：正式環境用的 webpack 設定</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2023-09-28 07:53</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/2023鐵人賽" data-astro-cid-2iymvi75> 2023鐵人賽 </a> <a class="tag" href="/tag/Frontend Infrastructure" data-astro-cid-2iymvi75> Frontend Infrastructure </a> <a class="tag" href="/tag/webpack" data-astro-cid-2iymvi75> webpack </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#完整設定" data-astro-cid-qtokga5y>完整設定</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#解說" data-astro-cid-qtokga5y>解說</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#輸出結果" data-astro-cid-qtokga5y>輸出結果</a> </li> </ul> </div> <p>忙了幾天之後，你感覺專案稍微有模有樣了，打算先部署一版測試站讓其他人看看，所以——今天的主題就是分享個人在正式環境用的 webpack 設定。</p>
+<p>相較於開發版，部署用的設定移除了 source map 並導入壓縮、分塊（chunking）的功能。有興趣歡迎參考，當然也很歡迎你留言分享自己的愛用設定或 plugin 唷 (・∀・)</p>
+<h2 id="完整設定">完整設定</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#6A737D">/* Package */</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { EsbuildPlugin } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> 'esbuild-loader'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> HtmlWebpackPlugin </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> 'html-webpack-plugin'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> MiniCssExtractPlugin </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> 'mini-css-extract-plugin'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> Webpack </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> 'webpack'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">/* Tool */</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { resolvePath } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> '@/tool/resolvePath'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">/* Data */</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> alias </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> './data/alias'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> env </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> './data/env'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#F97583"> type</span><span style="color:#E1E4E8"> { WebpackConfiguration, EnvForBuildApp } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> './data/types'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> envForBuildApp</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> env[</span><span style="color:#9ECBFF">'process.env'</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">as</span><span style="color:#B392F0"> EnvForBuildApp</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">/* Main */</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> webpackProductionConfig</span><span style="color:#F97583">:</span><span style="color:#B392F0"> WebpackConfiguration</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">  mode: </span><span style="color:#9ECBFF">'production'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">  entry: </span><span style="color:#B392F0">resolvePath</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'src/index'</span><span style="color:#E1E4E8">),</span></span>
+<span class="line"><span style="color:#E1E4E8">  output: {</span></span>
+<span class="line"><span style="color:#E1E4E8">    filename: </span><span style="color:#9ECBFF">'static/js/[name].[contenthash:8].js'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">    path: </span><span style="color:#B392F0">resolvePath</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">JSON</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">parse</span><span style="color:#E1E4E8">(envForBuildApp.</span><span style="color:#79B8FF">BUILD_DESTINATION</span><span style="color:#E1E4E8">)),</span></span>
+<span class="line"><span style="color:#E1E4E8">    clean: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">  },</span></span>
+<span class="line"><span style="color:#E1E4E8">  optimization: {</span></span>
+<span class="line"><span style="color:#E1E4E8">    splitChunks: {</span></span>
+<span class="line"><span style="color:#E1E4E8">      chunks: </span><span style="color:#9ECBFF">'all'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">      maxSize: </span><span style="color:#79B8FF">20000</span><span style="color:#E1E4E8">, </span><span style="color:#6A737D">// 單位 bytes ，這裡是 20kb</span></span>
+<span class="line"><span style="color:#E1E4E8">      cacheGroups: {</span></span>
+<span class="line"><span style="color:#E1E4E8">        defaultVendors: {</span></span>
+<span class="line"><span style="color:#E1E4E8">          test:</span><span style="color:#9ECBFF"> /</span><span style="color:#79B8FF">[</span><span style="color:#85E89D;font-weight:bold">\\</span><span style="color:#79B8FF">/]</span><span style="color:#DBEDFF">node_modules</span><span style="color:#79B8FF">[</span><span style="color:#85E89D;font-weight:bold">\\</span><span style="color:#79B8FF">/]</span><span style="color:#9ECBFF">/</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">          priority: </span><span style="color:#F97583">-</span><span style="color:#79B8FF">10</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">        },</span></span>
+<span class="line"><span style="color:#E1E4E8">        default: {</span></span>
+<span class="line"><span style="color:#E1E4E8">          minChunks: </span><span style="color:#79B8FF">10</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">        },</span></span>
+<span class="line"><span style="color:#E1E4E8">      },</span></span>
+<span class="line"><span style="color:#E1E4E8">    },</span></span>
+<span class="line"><span style="color:#E1E4E8">    minimizer: [</span></span>
+<span class="line"><span style="color:#F97583">      new</span><span style="color:#B392F0"> EsbuildPlugin</span><span style="color:#E1E4E8">({</span></span>
+<span class="line"><span style="color:#E1E4E8">        target: </span><span style="color:#9ECBFF">'es2015'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">        css: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">      }),</span></span>
+<span class="line"><span style="color:#E1E4E8">    ],</span></span>
+<span class="line"><span style="color:#E1E4E8">  },</span></span>
+<span class="line"><span style="color:#E1E4E8">  module: {</span></span>
+<span class="line"><span style="color:#E1E4E8">    rules: [</span></span>
+<span class="line"><span style="color:#E1E4E8">      {</span></span>
+<span class="line"><span style="color:#E1E4E8">        test:</span><span style="color:#9ECBFF"> /</span><span style="color:#85E89D;font-weight:bold">\.</span><span style="color:#DBEDFF">(js</span><span style="color:#F97583">|</span><span style="color:#DBEDFF">ts</span><span style="color:#F97583">|</span><span style="color:#DBEDFF">tsx)</span><span style="color:#F97583">$</span><span style="color:#9ECBFF">/</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">        loader: </span><span style="color:#9ECBFF">'esbuild-loader'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">        options: {</span></span>
+<span class="line"><span style="color:#E1E4E8">          loader: </span><span style="color:#9ECBFF">'tsx'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">          target: </span><span style="color:#9ECBFF">'es2015'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">        },</span></span>
+<span class="line"><span style="color:#E1E4E8">      },</span></span>
+<span class="line"><span style="color:#E1E4E8">      {</span></span>
+<span class="line"><span style="color:#E1E4E8">        test:</span><span style="color:#9ECBFF"> /</span><span style="color:#85E89D;font-weight:bold">\.</span><span style="color:#DBEDFF">(png</span><span style="color:#F97583">|</span><span style="color:#DBEDFF">svg</span><span style="color:#F97583">|</span><span style="color:#DBEDFF">jpg)</span><span style="color:#F97583">$</span><span style="color:#9ECBFF">/</span><span style="color:#F97583">i</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">        type: </span><span style="color:#9ECBFF">'asset/resource'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">        resourceQuery:</span><span style="color:#9ECBFF"> /</span><span style="color:#DBEDFF">url</span><span style="color:#9ECBFF">/</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">      },</span></span>
+<span class="line"><span style="color:#E1E4E8">      {</span></span>
+<span class="line"><span style="color:#E1E4E8">        test:</span><span style="color:#9ECBFF"> /</span><span style="color:#85E89D;font-weight:bold">\.</span><span style="color:#DBEDFF">svg</span><span style="color:#F97583">$</span><span style="color:#9ECBFF">/</span><span style="color:#F97583">i</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">        issuer:</span><span style="color:#9ECBFF"> /</span><span style="color:#85E89D;font-weight:bold">\.</span><span style="color:#DBEDFF">tsx</span><span style="color:#F97583">?$</span><span style="color:#9ECBFF">/</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">        resourceQuery: { not: [</span><span style="color:#9ECBFF">/</span><span style="color:#DBEDFF">url</span><span style="color:#9ECBFF">/</span><span style="color:#E1E4E8">] },</span></span>
+<span class="line"><span style="color:#E1E4E8">        use: [</span></span>
+<span class="line"><span style="color:#E1E4E8">          {</span></span>
+<span class="line"><span style="color:#E1E4E8">            loader: </span><span style="color:#9ECBFF">'@svgr/webpack'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">            options: {</span></span>
+<span class="line"><span style="color:#E1E4E8">              svgo: </span><span style="color:#79B8FF">false</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">              ref: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">            },</span></span>
+<span class="line"><span style="color:#E1E4E8">          },</span></span>
+<span class="line"><span style="color:#E1E4E8">        ],</span></span>
+<span class="line"><span style="color:#E1E4E8">      },</span></span>
+<span class="line"><span style="color:#E1E4E8">      {</span></span>
+<span class="line"><span style="color:#E1E4E8">        test:</span><span style="color:#9ECBFF"> /</span><span style="color:#85E89D;font-weight:bold">\.</span><span style="color:#DBEDFF">css</span><span style="color:#F97583">$</span><span style="color:#9ECBFF">/</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">        exclude:</span><span style="color:#9ECBFF"> /</span><span style="color:#85E89D;font-weight:bold">\.</span><span style="color:#DBEDFF">module</span><span style="color:#85E89D;font-weight:bold">\.</span><span style="color:#DBEDFF">css</span><span style="color:#F97583">$</span><span style="color:#9ECBFF">/</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">        use: [</span></span>
+<span class="line"><span style="color:#E1E4E8">          {</span></span>
+<span class="line"><span style="color:#E1E4E8">            loader: MiniCssExtractPlugin.loader,</span></span>
+<span class="line"><span style="color:#E1E4E8">          },</span></span>
+<span class="line"><span style="color:#E1E4E8">          {</span></span>
+<span class="line"><span style="color:#E1E4E8">            loader: </span><span style="color:#9ECBFF">'css-loader'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">            options: {</span></span>
+<span class="line"><span style="color:#E1E4E8">              sourceMap: </span><span style="color:#79B8FF">false</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">            },</span></span>
+<span class="line"><span style="color:#E1E4E8">          },</span></span>
+<span class="line"><span style="color:#E1E4E8">        ],</span></span>
+<span class="line"><span style="color:#E1E4E8">      },</span></span>
+<span class="line"><span style="color:#E1E4E8">      {</span></span>
+<span class="line"><span style="color:#E1E4E8">        test:</span><span style="color:#9ECBFF"> /</span><span style="color:#85E89D;font-weight:bold">\.</span><span style="color:#DBEDFF">module</span><span style="color:#85E89D;font-weight:bold">\.</span><span style="color:#DBEDFF">css</span><span style="color:#F97583">$</span><span style="color:#9ECBFF">/</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">        use: [</span></span>
+<span class="line"><span style="color:#E1E4E8">          {</span></span>
+<span class="line"><span style="color:#E1E4E8">            loader: MiniCssExtractPlugin.loader,</span></span>
+<span class="line"><span style="color:#E1E4E8">          },</span></span>
+<span class="line"><span style="color:#E1E4E8">          {</span></span>
+<span class="line"><span style="color:#E1E4E8">            loader: </span><span style="color:#9ECBFF">'css-loader'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">            options: {</span></span>
+<span class="line"><span style="color:#E1E4E8">              sourceMap: </span><span style="color:#79B8FF">false</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">              modules: {</span></span>
+<span class="line"><span style="color:#E1E4E8">                mode: </span><span style="color:#9ECBFF">'local'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">                localIdentName: </span><span style="color:#9ECBFF">'[hash:base64]'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">              },</span></span>
+<span class="line"><span style="color:#E1E4E8">            },</span></span>
+<span class="line"><span style="color:#E1E4E8">          },</span></span>
+<span class="line"><span style="color:#E1E4E8">        ],</span></span>
+<span class="line"><span style="color:#E1E4E8">      },</span></span>
+<span class="line"><span style="color:#E1E4E8">    ],</span></span>
+<span class="line"><span style="color:#E1E4E8">  },</span></span>
+<span class="line"><span style="color:#E1E4E8">  plugins: [</span></span>
+<span class="line"><span style="color:#F97583">    new</span><span style="color:#B392F0"> HtmlWebpackPlugin</span><span style="color:#E1E4E8">({</span></span>
+<span class="line"><span style="color:#E1E4E8">      inject: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">      template: </span><span style="color:#B392F0">resolvePath</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'public/index.html'</span><span style="color:#E1E4E8">),</span></span>
+<span class="line"><span style="color:#E1E4E8">      publicPath: </span><span style="color:#9ECBFF">'/'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">    }),</span></span>
+<span class="line"><span style="color:#F97583">    new</span><span style="color:#E1E4E8"> Webpack.</span><span style="color:#B392F0">DefinePlugin</span><span style="color:#E1E4E8">({ </span><span style="color:#F97583">...</span><span style="color:#E1E4E8">env }),</span></span>
+<span class="line"><span style="color:#F97583">    new</span><span style="color:#B392F0"> MiniCssExtractPlugin</span><span style="color:#E1E4E8">({</span></span>
+<span class="line"><span style="color:#E1E4E8">      filename: </span><span style="color:#9ECBFF">'static/css/[name].[contenthash:8].css'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">      chunkFilename: </span><span style="color:#9ECBFF">'static/css/[name].[contenthash:8].chunk.css'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">    }),</span></span>
+<span class="line"><span style="color:#E1E4E8">  ],</span></span>
+<span class="line"><span style="color:#E1E4E8">  resolve: {</span></span>
+<span class="line"><span style="color:#E1E4E8">    extensions: [</span><span style="color:#9ECBFF">'.js'</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">'.ts'</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">'.tsx'</span><span style="color:#E1E4E8">],</span></span>
+<span class="line"><span style="color:#E1E4E8">    alias,</span></span>
+<span class="line"><span style="color:#E1E4E8">  },</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> default</span><span style="color:#E1E4E8"> webpackProductionConfig;</span></span></code></pre>
+<h3 id="解說">解說</h3>
+<p>Package 區塊：</p>
+<p>此區列出部署時會用到的套件。相較於開發用設定，追加了 <code>mini-css-extract-plugin</code> 協助處理 css 相關內容。</p>
+<hr>
+<p>Tool 區塊：</p>
+<p>使用<a href="/2023/ithome-2023-8">第 8 天</a>寫好的小工具 <code>resolvePath</code> 來處理檔案路徑。</p>
+<hr>
+<p>Data 區塊：</p>
+<p>引用<a href="/2023/ithome-2023-7">第 7 天</a> 與 <a href="/2023/ithome-2023-8">第 8 天</a>處理好的 <code>env</code> 與 <code>alias</code> 內容，並透過 <code>const envForBuildApp = env['process.env'] as EnvForBuildApp;</code> 取用驗證過的部署用環境變數。</p>
+<hr>
+<p>Main 部分：</p>
+<p>設定 <code>mode: production</code> 並指定打包入口點為 <code>entry: resolvePath('src/index')</code>。</p>
+<p>在 <code>output</code> 內透過 <code>path</code> 設定最終輸出目的地，上方設定翻譯成白話文就是：透過 <code>resolvePath()</code> 解出環境變數 <code>BUILD_DESTINATION</code> 的絕對路徑，打包完畢的東西請送到這個資料夾。</p>
+<p>而因為打算做 code splitting，所以指定輸出的 bundle 檔案名稱為 <code>static/js/[name].[contenthash:8].js</code>。詳細說明可參考 <a href="https://webpack.js.org/configuration/output/#outputfilename">webpack 5 output.filename</a> 的內容。</p>
+<p>設定 <code>output.clean: true</code> 代表每次打包前都先<a href="https://webpack.js.org/configuration/output/#outputclean">清空目的地資料夾</a>。個人選擇這樣設定是因為：</p>
+<ol>
+<li>避免任何檔案殘留影響的可能性</li>
+<li>評估當下專案的靜態檔案沒有多到需要做檔案快取來加速打包流程，故選擇全刪</li>
+</ol>
+<p><code>optimization</code> 分成 <code>splitChunks</code> 與 <code>minimizer</code> 兩部分。分塊設定大部分參考自 <a href="https://webpack.js.org/plugins/split-chunks-plugin/#optimizationsplitchunks">webpack 5: optimization.splitChunks</a> 內容。</p>
+<p>設定 <code>chunks: 'all'</code> 代表所有的分塊都會被<a href="https://webpack.js.org/plugins/split-chunks-plugin/#splitchunkschunks">納入優化處理</a>。因設定後實測打包速度還能維持 5 秒左右結束，故這裡選擇使用極限優化。</p>
+<p><code>maxSize: 20000</code>（單位為 bytes 所以實際上代表 20kb）指示 webpack 盡量將大於這個尺寸的分塊繼續往下分解。</p>
+<blockquote>
+<p>Using <a href="https://webpack.js.org/plugins/split-chunks-plugin/#splitchunksmaxsize"><code>maxSize</code></a> tells webpack to try to split chunks bigger than <code>maxSize</code> <strong>bytes</strong> into smaller parts.</p>
+</blockquote>
+<p><code>minChunks: 10</code> 代表「至少要有 10 處以上的引用，才會被分塊」：</p>
+<blockquote>
+<p><a href="https://webpack.js.org/plugins/split-chunks-plugin/#splitchunksminchunks">splitChunks.minChunks</a>: The minimum times must a module be shared among chunks before splitting.</p>
+</blockquote>
+<p>而 <code>minimizer</code> 中選擇使用既有的 <code>EsbuildPlugin</code> 來協助壓縮 css 輸出內容、不再另外安裝套件。完整介紹可參考<a href="https://github.com/esbuild-kit/esbuild-loader#css-minification">官方說明</a>。</p>
+<p><code>module.rules</code> 與開發設定不同的地方在於取消 sourceMap，並搭配 <code>MiniCssExtractPlugin.loader</code> 將 <code>.css</code> 內容獨立為一份檔案。</p>
+<blockquote>
+<p><a href="https://github.com/webpack-contrib/mini-css-extract-plugin#mini-css-extract-plugin-1">mini-css-extract-plugin</a>: This plugin extracts CSS into separate files.</p>
+</blockquote>
+<p>可看到 <code>plugins</code> 納入了 <code>new MiniCssExtractPlugin({ ... })</code> 設定。與最上方的 <code>output</code> 類似，這裡透過 <code>mini-css-extract-plugin</code> 指定 <code>.css</code>檔案都要包進輸出資料夾中的 <code>./static/css</code> 中。</p>
+<h2 id="輸出結果">輸出結果</h2>
+<p>執行（明天會說明細節）以上打包設定後，專案根目錄會出現一個 <code>./build</code> 資料夾，結構基本如下：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">./build</span></span>
+<span class="line"><span style="color:#B392F0">├──</span><span style="color:#9ECBFF"> index.html</span></span>
+<span class="line"><span style="color:#B392F0">├──</span><span style="color:#9ECBFF"> （輸出後的根目錄會包含一些被</span><span style="color:#9ECBFF"> index.html</span><span style="color:#9ECBFF"> 引用的靜態檔案，會於後續鐵人賽中說明）</span></span>
+<span class="line"><span style="color:#B392F0">└──</span><span style="color:#9ECBFF"> static</span></span>
+<span class="line"><span style="color:#B392F0">    ├──</span><span style="color:#9ECBFF"> css</span></span>
+<span class="line"><span style="color:#B392F0">    │</span><span style="color:#9ECBFF">   └──</span><span style="color:#9ECBFF"> main-31743c5a.b5b18614.css</span></span>
+<span class="line"><span style="color:#B392F0">    └──</span><span style="color:#9ECBFF"> js</span></span>
+<span class="line"><span style="color:#B392F0">        ├──</span><span style="color:#9ECBFF"> （省略了非常多的分塊檔案，不然內容會太長）</span></span>
+<span class="line"><span style="color:#B392F0">        ├──</span><span style="color:#9ECBFF"> main-f16aa68b.5879c5ca.js</span></span>
+<span class="line"><span style="color:#B392F0">        └──</span><span style="color:#9ECBFF"> main-f6eac33a.2dac1962.js</span></span></code></pre>
+<p>這時已經可以透過 vs code 的 <a href="https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer">Live Server</a> 或 npm 套件 <a href="https://www.npmjs.com/package/http-server">http-server</a> 來預覽打包成果了。</p>
+<p>最後，謝謝你撐過今天的解說 👍</p>
+<p><img src="/2023/ithome-2023-13/Speedwagon.jpeg" alt="Speedwagon"></p> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

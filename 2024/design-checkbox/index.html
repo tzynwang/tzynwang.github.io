@@ -1,0 +1,64 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.BScVxmeO.js"></script><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.1.2"><!-- Primary Meta Tags --><title>閱讀筆記：核取方塊的設計準則</title><meta name="title" content="閱讀筆記：核取方塊的設計準則"><meta name="description" content="在閱讀 NNG 的設計準則以前，我確實沒有注意到「清單」與「巢狀」核取方塊最大的差別是什麼⋯⋯👀"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2024/design-checkbox"><meta property="og:title" content="閱讀筆記：核取方塊的設計準則"><meta property="og:description" content="在閱讀 NNG 的設計準則以前，我確實沒有注意到「清單」與「巢狀」核取方塊最大的差別是什麼⋯⋯👀"><meta property="og:image" content="https://tzynwang.github.io/2024/design-checkbox/glenn-carstens-peters-RLw-UC03Gwc-unsplash.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2024/design-checkbox"><meta property="twitter:title" content="閱讀筆記：核取方塊的設計準則"><meta property="twitter:description" content="在閱讀 NNG 的設計準則以前，我確實沒有注意到「清單」與「巢狀」核取方塊最大的差別是什麼⋯⋯👀"><meta property="twitter:image" content="https://tzynwang.github.io/2024/design-checkbox/glenn-carstens-peters-RLw-UC03Gwc-unsplash.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:Noto Sans TC,sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul{margin-top:16px;margin-bottom:16px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:8px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+[data-astro-image]{width:100%;height:auto;object-fit:var(--fit);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>閱讀筆記：核取方塊的設計準則</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2024-07-16 19:32</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/Product Design" data-astro-cid-2iymvi75> Product Design </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#關於核取方塊" data-astro-cid-qtokga5y>關於核取方塊</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#類型" data-astro-cid-qtokga5y>類型</a> </li><li class="toc-4" data-astro-cid-qtokga5y> <a href="#獨立核取方塊standalone-checkbox" data-astro-cid-qtokga5y>獨立核取方塊（standalone checkbox）</a> </li><li class="toc-4" data-astro-cid-qtokga5y> <a href="#清單核取方塊listed-checkbox" data-astro-cid-qtokga5y>清單核取方塊（listed checkbox）</a> </li><li class="toc-4" data-astro-cid-qtokga5y> <a href="#巢狀核取方塊nested-checkbox" data-astro-cid-qtokga5y>巢狀核取方塊（nested checkbox）</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#視覺設計之建議" data-astro-cid-qtokga5y>視覺設計之建議</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#懶人包" data-astro-cid-qtokga5y>懶人包</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#參考文件" data-astro-cid-qtokga5y>參考文件</a> </li> </ul> </div> <p>提醒：原文 <a href="https://www.nngroup.com/articles/checkboxes-design-guidelines/">NNG | Checkboxes: Design Guidelines</a> 其實不會太長，寫得也算平易近人，有空的讀者真的可以親自讀一下。</p>
+<h2 id="關於核取方塊">關於核取方塊</h2>
+<h3 id="類型">類型</h3>
+<h4 id="獨立核取方塊standalone-checkbox">獨立核取方塊（standalone checkbox）</h4>
+<p>只會有兩種狀態（有勾、沒勾）。</p>
+<p>這類核取方塊和其他元件<strong>沒有依賴關係</strong>。目的是博取使用者的注意力。</p>
+<blockquote>
+<p>There are no other checkboxes around it, and it is frequently cordoned off in its own visually distinctive container. The checkbox and its label, in this case, <strong>demand attention and consideration on their own</strong>.</p>
+</blockquote>
+<p>應用範例：使用者必須「同意條款內容」才能完成註冊流程。</p>
+<p>雖然視覺上是「勾了之後才能按下註冊按鈕」，但「核取方塊」和「按鈕」<strong>不是彼此出現在畫面上的必要條件</strong>。核取方塊的目的是<strong>改變使用者同意條款的狀態</strong>，而註冊服務的按鈕<strong>根據使用者同意條款的狀態</strong>來改變自身狀態。</p>
+<p>不是畫面出現「核取方塊」就必定出現「按鈕」，反之亦然。</p>
+<h4 id="清單核取方塊listed-checkbox">清單核取方塊（listed checkbox）</h4>
+<p>只會有兩種狀態（有勾、沒勾）。</p>
+<p>清單中的每一個選項<strong>彼此獨立</strong>，不會因為勾了選項Ａ就影響選項Ｂ的狀態。</p>
+<p>應用範例：讓使用者操作一個<strong>可能需要多選、但不太可能全選</strong>的清單——比如在地圖上過濾「想要查詢的設施（餐廳、飯店、車站）」。</p>
+<h4 id="巢狀核取方塊nested-checkbox">巢狀核取方塊（nested checkbox）</h4>
+<p>親代的核取方塊會有三種狀態（全勾、部分勾、無勾），子代只有兩種狀態（有勾、沒勾）。</p>
+<p>親代與子代會<strong>影響彼此的狀態</strong>，比如：</p>
+<ul>
+<li>使用者勾選親代時，子代也要全數進入勾選狀態</li>
+<li>使用者勾選子代時，其親代應進入「部分勾」或「全勾」狀態</li>
+</ul>
+<p>應用範例：讓使用者操作<strong>很可能需要全選</strong>的清單——比如讓使用者確認他「目前擁有的蘋果產品有哪些」。</p>
+<h3 id="視覺設計之建議">視覺設計之建議</h3>
+<ul>
+<li>核取方塊就該<strong>做成方形</strong>，因為圓形會看起來像是單選按鈕（radio button）</li>
+<li>搭配的標籤（label）應使用正面描述</li>
+<li>使用合理的邏輯<strong>排列清單選項</strong>（筆畫順、規模、頻率 ⋯⋯）</li>
+<li>根據選項彼此之間的關聯來決定是否提供「全選」選項</li>
+<li>允許多選時，明確提示<strong>可選擇的數量</strong></li>
+</ul>
+<h3 id="懶人包">懶人包</h3>
+<p>下圖是 <a href="https://www.nngroup.com/articles/checkboxes-design-guidelines/">NNG</a> 出品的「選項元件應用情境速查表」。你可以根據「選項數量」以及「選項之間的關係」來判斷哪種元件最符合需求。</p>
+<p><img src="/2024/design-checkbox/use-case.png" alt="use case for checkbox, radio button, dropdown and switch"></p>
+<h2 id="參考文件">參考文件</h2>
+<p><a href="https://www.nngroup.com/articles/checkboxes-design-guidelines/">NNG | Checkboxes: Design Guidelines</a></p> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

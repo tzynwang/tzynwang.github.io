@@ -1,0 +1,127 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.BScVxmeO.js"></script><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.1.2"><!-- Primary Meta Tags --><title>領域模型（domain model）與領域驅動設計（DDD）：最基礎的部分</title><meta name="title" content="領域模型（domain model）與領域驅動設計（DDD）：最基礎的部分"><meta name="description" content="本篇筆記會簡單說明什麼是領域模型（domain model），以及介紹領域驅動設計（DDD）最最最入門的部分。"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2023/ddd-the-very-basic"><meta property="og:title" content="領域模型（domain model）與領域驅動設計（DDD）：最基礎的部分"><meta property="og:description" content="本篇筆記會簡單說明什麼是領域模型（domain model），以及介紹領域驅動設計（DDD）最最最入門的部分。"><meta property="og:image" content="https://tzynwang.github.io/2023/ddd-the-very-basic/annie-spratt-Xse_WtQsIGA-unsplash.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2023/ddd-the-very-basic"><meta property="twitter:title" content="領域模型（domain model）與領域驅動設計（DDD）：最基礎的部分"><meta property="twitter:description" content="本篇筆記會簡單說明什麼是領域模型（domain model），以及介紹領域驅動設計（DDD）最最最入門的部分。"><meta property="twitter:image" content="https://tzynwang.github.io/2023/ddd-the-very-basic/annie-spratt-Xse_WtQsIGA-unsplash.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:Noto Sans TC,sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul{margin-top:16px;margin-bottom:16px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:8px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+[data-astro-image]{width:100%;height:auto;object-fit:var(--fit);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>領域模型（domain model）與領域驅動設計（DDD）：最基礎的部分</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2023-11-29 20:27</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/Product Design" data-astro-cid-2iymvi75> Product Design </a> <a class="tag" href="/tag/Software Architecture" data-astro-cid-2iymvi75> Software Architecture </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#總結" data-astro-cid-qtokga5y>總結</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#筆記" data-astro-cid-qtokga5y>筆記</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#what-is-domain-modeling" data-astro-cid-qtokga5y>what is domain modeling</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#why-ddd-with-domain-modeling" data-astro-cid-qtokga5y>why DDD with domain modeling</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#傳統需訪中的-stakeholders" data-astro-cid-qtokga5y>傳統需訪中的 stakeholders</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#另一種需訪domain-storytelling" data-astro-cid-qtokga5y>另一種需訪：domain storytelling</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#ddd大概念" data-astro-cid-qtokga5y>DDD：大概念</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#ddd稍微深入" data-astro-cid-qtokga5y>DDD：稍微深入</a> </li><li class="toc-4" data-astro-cid-qtokga5y> <a href="#strategic-domain-subdomain" data-astro-cid-qtokga5y>strategic: domain, subdomain</a> </li><li class="toc-4" data-astro-cid-qtokga5y> <a href="#strategic-bounded-context" data-astro-cid-qtokga5y>strategic: bounded context</a> </li><li class="toc-4" data-astro-cid-qtokga5y> <a href="#strategic-context-map" data-astro-cid-qtokga5y>strategic: context map</a> </li><li class="toc-4" data-astro-cid-qtokga5y> <a href="#tactical-entity" data-astro-cid-qtokga5y>tactical: entity</a> </li><li class="toc-4" data-astro-cid-qtokga5y> <a href="#tactical-value-object" data-astro-cid-qtokga5y>tactical: value object</a> </li><li class="toc-4" data-astro-cid-qtokga5y> <a href="#tactical-aggregate" data-astro-cid-qtokga5y>tactical: aggregate</a> </li><li class="toc-4" data-astro-cid-qtokga5y> <a href="#tactical-domain-service" data-astro-cid-qtokga5y>tactical: domain service</a> </li><li class="toc-4" data-astro-cid-qtokga5y> <a href="#tactical-domain-event" data-astro-cid-qtokga5y>tactical: domain event</a> </li><li class="toc-4" data-astro-cid-qtokga5y> <a href="#architecture" data-astro-cid-qtokga5y>architecture</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#參考文件" data-astro-cid-qtokga5y>參考文件</a> </li> </ul> </div> <p>本篇筆記是根據影片 <a href="https://www.youtube.com/watch?v=mGR0A5Jyolg&#x26;ab_channel=MOPCON">MOPCON 2019 從需求直面系統實作，領域驅動設計 (DDD) 的領域塑模</a> 整理出來的內容。會簡單說明什麼是領域模型（domain model），以及介紹領域驅動設計（DDD）最入門的部分。</p>
+<h2 id="總結">總結</h2>
+<p>透過 DDD 思維，開發者做完需訪就能整理出待開發項目。因為 DDD 的著眼點是<strong>使用流程</strong>，「如何實作」是理解流程後自然出現的結果。</p>
+<h2 id="筆記">筆記</h2>
+<h3 id="what-is-domain-modeling">what is domain modeling</h3>
+<blockquote>
+<p>具體理解「要做什麼」，以及「怎麼做」。</p>
+</blockquote>
+<p>講者定義：具體（視覺化）理解一個組織「要做什麼」與「如何做」的事情與互動關係。</p>
+<h3 id="why-ddd-with-domain-modeling">why DDD with domain modeling</h3>
+<blockquote>
+<p>DDD 讓開發者在需訪結束後——透過 domain modeling 思維理解「要做什麼」且「怎麼做」——就能規劃好系統架構 (architecture) 與實作細節 (element)。</p>
+</blockquote>
+<h3 id="傳統需訪中的-stakeholders">傳統需訪中的 stakeholders</h3>
+<p><img src="/2023/ddd-the-very-basic/ddd-stakeholders-type.png" alt="ddd-stakeholders-type"></p>
+<ul>
+<li>actor: 與流程互動，最後會獲利的角色</li>
+<li>worker: 在流程中操作商業邏輯的角色</li>
+</ul>
+<p>（非 stakeholder 但很重要）ubiquitous language: 在執行事件風暴（event storming）淬煉需求時，為了保證認知一致所使用的共同語言。</p>
+<h3 id="另一種需訪domain-storytelling">另一種需訪：domain storytelling</h3>
+<blockquote>
+<p>濃縮自 <a href="https://domainstorytelling.org/">domainstorytelling.org</a>：把領域知識（domain knowledge）轉化為軟體的一門技術。目的在讓人更了解一個領域（domain）。產出的結果 domain story 會是一張圖 (pictographic) ，上面會呈現所有人對該領域的理解。</p>
+</blockquote>
+<p>domain storytelling 是較新的概念，比起傳統的需訪或事件風暴（event storming）更貼近使用者，融合更多 DDD 的思考方式。</p>
+<p>下圖以 actor 為中心來描述產品的使用方式—— actor 會建立 work object 或與其互動：</p>
+<p><img src="/2023/ddd-the-very-basic/domain-storytelling-quick-start.png" alt="domain-storytelling-quick-start"></p>
+<h3 id="ddd大概念">DDD：大概念</h3>
+<p><img src="/2023/ddd-the-very-basic/domain-design-model-instructions.png" alt="domain-design-model-instructions"></p>
+<p>傳統開發思維以「完成功能」為主，但 DDD 強調的是「流程 (process base thinking)」——從系統流程的角度來看待系統設計——亦即執行的是 forward design。</p>
+<ul>
+<li>backward design：我要保存使用者的訂單資料，所以我必須將資料庫設計為 ⋯⋯</li>
+<li>forward design：使用者會與系統互動，而互動時產生的資料需要被保存起來，於是我需要設計保存資料的方式 ⋯⋯</li>
+</ul>
+<p>在使用流程中流動的是「物件」而非「資料」，並物件會提供屬性與方法讓外界操作。</p>
+<h3 id="ddd稍微深入">DDD：稍微深入</h3>
+<p>可以分為戰略 (strategic / 外觀) 與戰術 (tactical / 內裝)：</p>
+<ul>
+<li>戰略：如何描述你的系統</li>
+<li>戰術：你要實作哪些設計</li>
+</ul>
+<h4 id="strategic-domain-subdomain">strategic: domain, subdomain</h4>
+<p>領域（domain）指的是一個產品「對外的互動」與「本身的內容」。而在實際執行開發前，建議先將領域切割為子領域 (subdomain)——避免一口氣開發太大團的東西導致缺漏。</p>
+<p>不同子領域能根據重要性（賺錢度）進行排列：core > supporting > generic。資源應該傾注在核心（core）子領域上。</p>
+<h4 id="strategic-bounded-context">strategic: bounded context</h4>
+<p>限界上下文 (bounded context, a <strong>conceptual boundary</strong>)：代表不同目的的流程。以電商購物為例，以下就是兩組限界上下文：</p>
+<ul>
+<li>使用者在網站上瀏覽商品——目的是「搜尋商品」</li>
+<li>使用者下單——目的是「購買，取得產品」</li>
+</ul>
+<p>如果同一件事情在不同的流程中「換了名字」，代表這裡出現了新的限界上下文——因為每組限界上下文會有自己的 ubiquitous language。下圖每一個彩圈都是一組「限界上下文」：</p>
+<p><img src="/2023/ddd-the-very-basic/bounded-context-in-EC-example.png" alt="bounded-context-in-EC-example"></p>
+<h4 id="strategic-context-map">strategic: context map</h4>
+<p>上下文映射（context mapping）是為了銜接不同的限界上下文（bounded context）。</p>
+<p>常見的實作方式：</p>
+<ul>
+<li>透過防腐層 (anticorruption layer) 避免上下文（context）互相影響</li>
+<li>透過開放主機服務 (open host service) 與發佈語言 (published language) 溝通——白話文就是「定義溝通用的介面規格」</li>
+</ul>
+<p>上下文的上下游——被呼叫端是上游、呼叫端是下游——關係會影響到「防腐層要做在哪裡」。從簡報來看，上游會定義開放主機服務與發佈語言，而防腐層通常是做在下游：</p>
+<p><img src="/2023/ddd-the-very-basic/contexts-map.png" alt="contexts-map.png"></p>
+<h4 id="tactical-entity">tactical: entity</h4>
+<blockquote>
+<p>具有身份 (identity)、狀態 (state) 與生命週期，可以被執行商業邏輯 (business operation)。</p>
+</blockquote>
+<p>例子：電商網站中的「訂單」「商品」。</p>
+<h4 id="tactical-value-object">tactical: value object</h4>
+<blockquote>
+<p>為了完成某種目的的資料，沒有身份概念。</p>
+</blockquote>
+<p>例子：電商網站中的「出貨地址」「信用卡卡號」。</p>
+<h4 id="tactical-aggregate">tactical: aggregate</h4>
+<blockquote>
+<p>流程中相關聯的個體（entity）彼此聚合，有生命週期的概念。不會無上限聚合。</p>
+</blockquote>
+<p>例子：電商網站在出貨時需要聚合「訂單」與「商品」的資訊。</p>
+<h4 id="tactical-domain-service">tactical: domain service</h4>
+<blockquote>
+<p>真的無法歸納進個體（entity）的商業邏輯，沒有狀態概念。</p>
+</blockquote>
+<p>例子：電商網站「針對首次購買的客戶，需要驗證手機號碼才能出貨」這個行為。</p>
+<h4 id="tactical-domain-event">tactical: domain event</h4>
+<p>使用者的行動目標改變時，通常會配送領域事件（domain event）。在 domain storytelling 或需訪聽到關鍵字「當我 ⋯⋯ 時」「如果 ⋯⋯ 就要 ⋯⋯」時，可能就代表這裡會配送領域事件。</p>
+<p>領域事件通常會導致個體（entity）進行狀態切換——但不要輕易在個體中記錄狀態，而是<strong>由個體屬性來決定狀態</strong>。在流程進行時「狀態變化」會自然發生——比如訂單被押上付款日期後，訂單狀態自然就變成「待出貨」。</p>
+<h4 id="architecture">architecture</h4>
+<p><img src="/2023/ddd-the-very-basic/ddd-architecture.png" alt="ddd-architecture"></p>
+<p>application layer 與 domain layer 的差異：domain 會操作個體（entity），但 application 不會。</p>
+<p><img src="/2023/ddd-the-very-basic/ddd-architecture-map-to-clean-architecture.png" alt="ddd-architecture-map-to-clean-architecture"></p>
+<p>將 DDD architecture 對應到 clean architecture 的話：</p>
+<ul>
+<li>domain layer 會被放在 clean architecture 的 entity 中</li>
+<li>application layer 會對應 clean architecture 的 use case</li>
+</ul>
+<h2 id="參考文件">參考文件</h2>
+<ul>
+<li><a href="https://stackoverflow.com/questions/73077578/what-actually-is-a-subdomain-in-domain-driven-design">stackOverFlow: What actually is a subdomain in domain-driven design?</a></li>
+<li><a href="https://thedomaindrivendesign.io/domains-and-subdomains/">Domains and Subdomains</a></li>
+<li><a href="https://levelup.gitconnected.com/bounded-contexts-in-ddd-d5f0dc7d1cf1">Bounded Contexts in DDD</a></li>
+<li><a href="https://martinfowler.com/bliki/BoundedContext.html">martinFowler.com: BoundedContext</a></li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

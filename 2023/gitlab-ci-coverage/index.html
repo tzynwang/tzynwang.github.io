@@ -1,0 +1,91 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.BScVxmeO.js"></script><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.1.2"><!-- Primary Meta Tags --><title>快速筆記：透過 GitLab 執行 ci/cd 時，取得測試覆蓋率的方法</title><meta name="title" content="快速筆記：透過 GitLab 執行 ci/cd 時，取得測試覆蓋率的方法"><meta name="description" content="GitLab 有提供關鍵字 `coverage` 來收集 job output 中的測試覆蓋率數據，這篇筆記會解說使用方式"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2023/gitlab-ci-coverage"><meta property="og:title" content="快速筆記：透過 GitLab 執行 ci/cd 時，取得測試覆蓋率的方法"><meta property="og:description" content="GitLab 有提供關鍵字 `coverage` 來收集 job output 中的測試覆蓋率數據，這篇筆記會解說使用方式"><meta property="og:image" content="https://tzynwang.github.io/2023/gitlab-ci-coverage/no-revisions-oQEVnA7D3Uk-unsplash.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2023/gitlab-ci-coverage"><meta property="twitter:title" content="快速筆記：透過 GitLab 執行 ci/cd 時，取得測試覆蓋率的方法"><meta property="twitter:description" content="GitLab 有提供關鍵字 `coverage` 來收集 job output 中的測試覆蓋率數據，這篇筆記會解說使用方式"><meta property="twitter:image" content="https://tzynwang.github.io/2023/gitlab-ci-coverage/no-revisions-oQEVnA7D3Uk-unsplash.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:Noto Sans TC,sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul{margin-top:16px;margin-bottom:16px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:8px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+[data-astro-image]{width:100%;height:auto;object-fit:var(--fit);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>快速筆記：透過 GitLab 執行 ci/cd 時，取得測試覆蓋率的方法</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2023-10-20 21:06</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/GitLab" data-astro-cid-2iymvi75> GitLab </a> <a class="tag" href="/tag/Testing" data-astro-cid-2iymvi75> Testing </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#簡介" data-astro-cid-qtokga5y>簡介</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#實作方式" data-astro-cid-qtokga5y>實作方式</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#jestconfig" data-astro-cid-qtokga5y>jest.config</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#參考文件" data-astro-cid-qtokga5y>參考文件</a> </li> </ul> </div> <h2 id="簡介">簡介</h2>
+<p>最近在為公司專案們的 GitLab ci/cd 工作（jobs）增加「取得測試覆蓋率」的相關指令。簡單來說，就是 GitLab 支援透過關鍵字 <code>coverage</code> 搭配 regex 來取得工作輸出（job output）中的覆蓋率數據。</p>
+<h2 id="實作方式">實作方式</h2>
+<p>以下是專案執行測試的工作腳本。簡單來說這段工作是：當觸發 mr 以及合併目標是 develop/main/master 分支時，使用 docker image node:20 版，執行套件安裝（<code>yarn install --frozen-lockfile --production=false</code>）與測試（<code>yarn jest</code>）工作。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="yml"><code><span class="line"><span style="color:#85E89D">test</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">  stage</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">test</span></span>
+<span class="line"><span style="color:#85E89D">  image</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">node:20</span></span>
+<span class="line"><span style="color:#85E89D">  rules</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">if</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">$CI_PIPELINE_SOURCE == "merge_request_event"</span></span>
+<span class="line"><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">if</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">$CI_COMMIT_BRANCH == "develop"</span></span>
+<span class="line"><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">if</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">$CI_COMMIT_BRANCH == "main"</span></span>
+<span class="line"><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">if</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">$CI_COMMIT_BRANCH == "master"</span></span>
+<span class="line"><span style="color:#E1E4E8">    - </span><span style="color:#85E89D">when</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">never</span></span>
+<span class="line"><span style="color:#85E89D">  script</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#E1E4E8">    - </span><span style="color:#9ECBFF">yarn install --frozen-lockfile --production=false</span></span>
+<span class="line"><span style="color:#E1E4E8">    - </span><span style="color:#9ECBFF">yarn jest</span></span>
+<span class="line"><span style="color:#85E89D">  coverage</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">/All files[^|]*\|[^|]*\s+([\d\.]+)/</span></span>
+<span class="line"><span style="color:#85E89D">  tags</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#E1E4E8">    - </span><span style="color:#9ECBFF">docker</span></span></code></pre>
+<p>而 <code>coverage: /All files[^|]*\|[^|]*\s+([\d\.]+)/</code> 這行的目的則是「透過 regex 比對工作的輸出內容，進而取得測試覆蓋率數據，並顯示在 GitLab 介面上」。</p>
+<blockquote>
+<p>GitLab docs: Use <code>coverage</code> with a custom regular expression to configure <strong>how code coverage is extracted from the job output</strong>. The coverage is shown in the UI if at least one line in the job output matches the regular expression.</p>
+</blockquote>
+<p>可參考下圖，使用 <code>/All files[^|]*\|[^|]*\s+([\d\.]+)/</code> 就能取得工作輸出內容中描述測試覆蓋率的資料，並顯示在 GitLab 介面上。</p>
+<p><img src="/2023/gitlab-ci-coverage/job-result.png" alt="GitLab ci/cd job result"></p>
+<p><img src="/2023/gitlab-ci-coverage/show-doverage.png" alt="GitLab show test coverage"></p>
+<p>以上就是在 GitLab ci/cd 取得特定工作測試覆蓋率的方式。</p>
+<h2 id="jestconfig">jest.config</h2>
+<p>而為了能讓 jest 輸出測試覆蓋率相關資訊，以下是個人使用的 <code>jest.config</code> 內容。與測試覆蓋數據相關的設定為 <code>coverageReporters</code> / <code>collectCoverage</code> / <code>collectCoverageFrom</code></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#6A737D">/** </span><span style="color:#F97583">@type</span><span style="color:#B392F0"> {import('jest').Config}</span><span style="color:#6A737D"> */</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> config</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">  preset: </span><span style="color:#9ECBFF">'ts-jest'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">  testEnvironment: </span><span style="color:#9ECBFF">'jsdom'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">  coverageReporters: [</span><span style="color:#9ECBFF">'text'</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">'text-summary'</span><span style="color:#E1E4E8">],</span></span>
+<span class="line"><span style="color:#E1E4E8">  collectCoverage: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">  collectCoverageFrom: [</span></span>
+<span class="line"><span style="color:#9ECBFF">    'src/(model|tool)/**/*.ts'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">    '!src/(model|tool)/**/*.(d|test).ts'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">    '!src/model/General*.ts'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">    '!**/node_modules/**'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">  ],</span></span>
+<span class="line"><span style="color:#E1E4E8">  maxWorkers: </span><span style="color:#9ECBFF">'25%'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">  moduleNameMapper: {</span></span>
+<span class="line"><span style="color:#9ECBFF">    '@/jest.config'</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">'&#x3C;rootDir>/jest.config.js'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">  },</span></span>
+<span class="line"><span style="color:#E1E4E8">  transform: {</span></span>
+<span class="line"><span style="color:#9ECBFF">    '^.+</span><span style="color:#79B8FF">\\</span><span style="color:#9ECBFF">.tsx?$'</span><span style="color:#E1E4E8">: [</span><span style="color:#9ECBFF">'ts-jest'</span><span style="color:#E1E4E8">, {}],</span></span>
+<span class="line"><span style="color:#9ECBFF">    '^.+</span><span style="color:#79B8FF">\\</span><span style="color:#9ECBFF">.ts?$'</span><span style="color:#E1E4E8">: [</span><span style="color:#9ECBFF">'ts-jest'</span><span style="color:#E1E4E8">, {}],</span></span>
+<span class="line"><span style="color:#E1E4E8">  },</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">module</span><span style="color:#E1E4E8">.</span><span style="color:#79B8FF">exports</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> config;</span></span></code></pre>
+<ul>
+<li><a href="https://jestjs.io/docs/configuration#coveragereporters-arraystring--string-options">coverageReporters</a>：指定 <code>text</code> 與 <code>text-summary</code> 讓 jest 在終端輸出測試覆蓋率的資料</li>
+<li><a href="https://jestjs.io/docs/configuration#collectcoverage-boolean">collectCoverage</a>：設定為 <code>true</code> 來收集測試覆蓋率</li>
+<li><a href="https://jestjs.io/docs/configuration#collectcoveragefrom-array">collectCoverageFrom</a>：指定覆蓋率要根據哪些檔案來計算，這邊的比對規則翻譯成白話文即是「計算 <code>src/model</code> 與 <code>src/tool</code> 中，所有不是 <code>.d.ts</code> 與 <code>.test.ts</code> 類檔案的測試覆蓋率；並排除純粹宣告資料用的 <code>General</code> 類檔案」</li>
+</ul>
+<p>目前僅針對較易執行單元測試的 <code>src/model</code> 與 <code>src/tool</code> 執行測試覆蓋率計算，除了目前較少針對畫面元件撰寫測試外，也避免計算範圍太廣而導致效能不佳的問題。</p>
+<h2 id="參考文件">參考文件</h2>
+<ul>
+<li><a href="https://docs.gitlab.com/ee/ci/yaml/?query=coverage">.gitlab-ci.yml keyword reference: <code>coverage</code></a></li>
+<li><a href="https://docs.gitlab.com/ee/ci/testing/code_coverage.html#test-coverage-examples">GitLab docs: Code coverage >> Test coverage examples</a></li>
+<li><a href="https://jestjs.io/docs/configuration">Configuring Jest</a></li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

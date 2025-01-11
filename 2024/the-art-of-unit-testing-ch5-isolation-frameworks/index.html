@@ -1,0 +1,264 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.BScVxmeO.js"></script><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.1.2"><!-- Primary Meta Tags --><title>閱讀筆記：The Art of Unit Testing Chapter 5 Isolation frameworks</title><meta name="title" content="閱讀筆記：The Art of Unit Testing Chapter 5 Isolation frameworks"><meta name="description" content="本書在第三、四章示範了不少手動處理 stub/mock 的方式，但其實我們可以透過 jest 這類有提供 isolation api 的測試框架來省掉不少人工作業。"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2024/the-art-of-unit-testing-ch5-isolation-frameworks"><meta property="og:title" content="閱讀筆記：The Art of Unit Testing Chapter 5 Isolation frameworks"><meta property="og:description" content="本書在第三、四章示範了不少手動處理 stub/mock 的方式，但其實我們可以透過 jest 這類有提供 isolation api 的測試框架來省掉不少人工作業。"><meta property="og:image" content="https://tzynwang.github.io/2024/the-art-of-unit-testing-ch5-isolation-frameworks/matthew-guay-vIjt8UHhSVo-unsplash.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2024/the-art-of-unit-testing-ch5-isolation-frameworks"><meta property="twitter:title" content="閱讀筆記：The Art of Unit Testing Chapter 5 Isolation frameworks"><meta property="twitter:description" content="本書在第三、四章示範了不少手動處理 stub/mock 的方式，但其實我們可以透過 jest 這類有提供 isolation api 的測試框架來省掉不少人工作業。"><meta property="twitter:image" content="https://tzynwang.github.io/2024/the-art-of-unit-testing-ch5-isolation-frameworks/matthew-guay-vIjt8UHhSVo-unsplash.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:Noto Sans TC,sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul{margin-top:16px;margin-bottom:16px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:8px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+[data-astro-image]{width:100%;height:auto;object-fit:var(--fit);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>閱讀筆記：The Art of Unit Testing Chapter 5 Isolation frameworks</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2024-01-02 20:24</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/Testing" data-astro-cid-2iymvi75> Testing </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#summary" data-astro-cid-qtokga5y>summary</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#51-defining-isolation-frameworks" data-astro-cid-qtokga5y>5.1 Defining isolation frameworks</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#52-faking-modules-dynamically" data-astro-cid-qtokga5y>5.2 Faking modules dynamically</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#consider-abstracting-away-direct-dependencies" data-astro-cid-qtokga5y>Consider abstracting away direct dependencies</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#53-functional-mocks-and-stubs-dynamically" data-astro-cid-qtokga5y>5.3 Functional mocks and stubs, dynamically</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#54-object-oriented-dynamic-mocks-and-stubs" data-astro-cid-qtokga5y>5.4 Object-oriented dynamic mocks and stubs</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#55-stubbing-behavior-dynamically" data-astro-cid-qtokga5y>5.5 Stubbing behavior dynamically</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#56-advantages-and-traps-of-isolation-frameworks" data-astro-cid-qtokga5y>5.6 Advantages and traps of isolation frameworks</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#參考文件" data-astro-cid-qtokga5y>參考文件</a> </li> </ul> </div> <h2 id="summary">summary</h2>
+<p>本書在第三、四章示範了不少手動處理 stub/mock 的方式，但其實我們可以透過 jest 這類有提供 isolation api 的測試框架來省掉不少人工作業。</p>
+<p><del>能理解本書作者想避免因為太輕鬆導致 stub 與 mock 被濫用，但一路看下來還是有點浪費時間。</del></p>
+<h2 id="51-defining-isolation-frameworks">5.1 Defining isolation frameworks</h2>
+<p>隔離框架（isolation framework）的定義如下：</p>
+<blockquote>
+<p>此框架會提供 api 讓工程師定義假資料（包含 stub/mock）。稱之為「隔離」是因為它幫助我們在測試時「隔離」了某個單元的依賴。</p>
+</blockquote>
+<h2 id="52-faking-modules-dynamically">5.2 Faking modules dynamically</h2>
+<p>再次見到我們的老朋友 <code>verifyPassword</code>，這個同時擁有進入型（<code>service</code>）與出走型（<code>logger</code>）依賴的單元：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> service</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> require</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'./configuration-service'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> logger</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> require</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'./complicated-logger'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#B392F0"> log</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">text</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">  if</span><span style="color:#E1E4E8"> (service.</span><span style="color:#B392F0">getLogLevel</span><span style="color:#E1E4E8">() </span><span style="color:#F97583">===</span><span style="color:#9ECBFF"> 'info'</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#E1E4E8">    logger.</span><span style="color:#B392F0">info</span><span style="color:#E1E4E8">(text);</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#F97583">  if</span><span style="color:#E1E4E8"> (service.</span><span style="color:#B392F0">getLogLevel</span><span style="color:#E1E4E8">() </span><span style="color:#F97583">===</span><span style="color:#9ECBFF"> 'debug'</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#E1E4E8">    logger.</span><span style="color:#B392F0">debug</span><span style="color:#E1E4E8">(text);</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#B392F0"> verifyPassword</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">input</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">rules</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> failed</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> rules</span></span>
+<span class="line"><span style="color:#E1E4E8">    .</span><span style="color:#B392F0">map</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">rule</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#B392F0"> rule</span><span style="color:#E1E4E8">(input))</span></span>
+<span class="line"><span style="color:#E1E4E8">    .</span><span style="color:#B392F0">filter</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">result</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> result </span><span style="color:#F97583">===</span><span style="color:#79B8FF"> false</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">  if</span><span style="color:#E1E4E8"> (failed.</span><span style="color:#79B8FF">length</span><span style="color:#F97583"> ===</span><span style="color:#79B8FF"> 0</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#B392F0">    log</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'PASSED'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#79B8FF"> true</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#B392F0">  log</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'FAIL'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#79B8FF"> false</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span></code></pre>
+<p>透過 <code>jest.mock()</code> 與 <code>mockFn.mockReturnValue()</code> 來取代 <code>verifyPassword</code> 的兩種依賴，我們省去那些在 <a href="/2023/the-art-of-unit-testing-ch4-interaction-testing-using-mock-objects#45-modular-style-mocks">4 Interaction testing using mock objects#4.5 Modular-style mocks</a> 為了「暴露 api 以便注入依賴」而進行的加工：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#E1E4E8">jest.</span><span style="color:#B392F0">mock</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'./configuration-service'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">jest.</span><span style="color:#B392F0">mock</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'./complicated-logger'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> stubService</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> require</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'./configuration-service'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> mockLogger</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> require</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'./complicated-logger'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">describe</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'password verifier'</span><span style="color:#E1E4E8">, () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#B392F0">  afterEach</span><span style="color:#E1E4E8">(jest.resetAllMocks);</span></span>
+<span class="line"><span style="color:#B392F0">  test</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">`with info log level and no rules, </span></span>
+<span class="line"><span style="color:#9ECBFF">  it calls the logger with PASSED`</span><span style="color:#E1E4E8">, () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">    // arrange</span></span>
+<span class="line"><span style="color:#E1E4E8">    stubService.getLogLevel.</span><span style="color:#B392F0">mockReturnValue</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'info'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#6A737D">    // act</span></span>
+<span class="line"><span style="color:#B392F0">    verifyPassword</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'anything'</span><span style="color:#E1E4E8">, []);</span></span>
+<span class="line"><span style="color:#6A737D">    // assert</span></span>
+<span class="line"><span style="color:#B392F0">    expect</span><span style="color:#E1E4E8">(mockLogger.info).</span><span style="color:#B392F0">toHaveBeenCalledWith</span><span style="color:#E1E4E8">(</span></span>
+<span class="line"><span style="color:#6A737D">      //</span></span>
+<span class="line"><span style="color:#E1E4E8">      expect.</span><span style="color:#B392F0">stringMatching</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">/</span><span style="color:#DBEDFF">PASS</span><span style="color:#9ECBFF">/</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">    );</span></span>
+<span class="line"><span style="color:#E1E4E8">  });</span></span>
+<span class="line"><span style="color:#B392F0">  test</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">`with debug log level and no rules, </span></span>
+<span class="line"><span style="color:#9ECBFF">  it calls the logger with PASSED`</span><span style="color:#E1E4E8">, () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">    // arrange</span></span>
+<span class="line"><span style="color:#E1E4E8">    stubService.getLogLevel.</span><span style="color:#B392F0">mockReturnValue</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'debug'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#6A737D">    // act</span></span>
+<span class="line"><span style="color:#B392F0">    verifyPassword</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'anything'</span><span style="color:#E1E4E8">, []);</span></span>
+<span class="line"><span style="color:#6A737D">    // assert</span></span>
+<span class="line"><span style="color:#B392F0">    expect</span><span style="color:#E1E4E8">(mockLogger.debug).</span><span style="color:#B392F0">toHaveBeenCalledWith</span><span style="color:#E1E4E8">(</span></span>
+<span class="line"><span style="color:#6A737D">      //</span></span>
+<span class="line"><span style="color:#E1E4E8">      expect.</span><span style="color:#B392F0">stringMatching</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">/</span><span style="color:#DBEDFF">PASS</span><span style="color:#9ECBFF">/</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">    );</span></span>
+<span class="line"><span style="color:#E1E4E8">  });</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+<h3 id="consider-abstracting-away-direct-dependencies">Consider abstracting away direct dependencies</h3>
+<p>雖然透過 <code>jest.mock()</code> 與 <code>mockFn.mockReturnValue()</code> 就能很輕鬆地在單元測試中使用 stub/mock，但還是建議工程師們盡量避免這種直接寫死依賴的實作方式。比較好的作法是多包一個抽象層來隔離「依賴」與「需要此依賴的功能」，可參考 <a href="/2023/the-art-of-unit-testing-ch4-interaction-testing-using-mock-objects#%E5%A4%9A%E5%9E%8B-polymorphism">4 Interaction testing using mock objects#多型 polymorphism</a> 的概念。</p>
+<p>多套一個抽象層的好處是：即使你依賴的套件更改它的使用方式，整包程式碼中依賴該套件的功能也不需要做什麼調整——畢竟那些功能互動的對象是你定義的介面。你唯一要做的事情，就是去更新這個抽象層呼叫套件的方法。</p>
+<h2 id="53-functional-mocks-and-stubs-dynamically">5.3 Functional mocks and stubs, dynamically</h2>
+<p>除了透過 <code>mockFn.mockReturnValue()</code> 來指定某功能的回傳值以外，我們還能將「需要被 mock 的功能」以 <code>jest.fn()</code> 覆蓋。</p>
+<p>先回顧一下 <a href="/2023/the-art-of-unit-testing-ch4-interaction-testing-using-mock-objects#46-mocks-in-a-functional-style">4 Interaction testing using mock objects#4.6 Mocks in a functional style</a> 的手動 mock 版本。我們在 <code>const mockLog</code> 中直接寫了一個假 <code>info</code> 功能，並透過驗證 <code>let logged</code> 的值來確定 <code>mockLog.info()</code> 有被順利呼叫：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#B392F0"> makeVerifier</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">rules</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">logger</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">input</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> failed</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> rules</span></span>
+<span class="line"><span style="color:#E1E4E8">      .</span><span style="color:#B392F0">map</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">rule</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#B392F0"> rule</span><span style="color:#E1E4E8">(input))</span></span>
+<span class="line"><span style="color:#E1E4E8">      .</span><span style="color:#B392F0">filter</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">result</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> result </span><span style="color:#F97583">===</span><span style="color:#79B8FF"> false</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">    if</span><span style="color:#E1E4E8"> (failed.</span><span style="color:#79B8FF">length</span><span style="color:#F97583"> ===</span><span style="color:#79B8FF"> 0</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#E1E4E8">      logger.</span><span style="color:#B392F0">info</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'PASSED'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">      return</span><span style="color:#79B8FF"> true</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#E1E4E8">    logger.</span><span style="color:#B392F0">info</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'FAIL'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#79B8FF"> false</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">  };</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">test</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'given logger and passing scenario'</span><span style="color:#E1E4E8">, () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">  // arrange</span></span>
+<span class="line"><span style="color:#F97583">  let</span><span style="color:#E1E4E8"> logged </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> ''</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> mockLog</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#B392F0">    info</span><span style="color:#E1E4E8">: (</span><span style="color:#FFAB70">text</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">      logged </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> text;</span></span>
+<span class="line"><span style="color:#E1E4E8">    },</span></span>
+<span class="line"><span style="color:#E1E4E8">  };</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> passVerify</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> makeVerifier</span><span style="color:#E1E4E8">([], mockLog);</span></span>
+<span class="line"><span style="color:#6A737D">  // act</span></span>
+<span class="line"><span style="color:#B392F0">  passVerify</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'any input'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#6A737D">  // assert</span></span>
+<span class="line"><span style="color:#B392F0">  expect</span><span style="color:#E1E4E8">(logged).</span><span style="color:#B392F0">toMatch</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">/</span><span style="color:#DBEDFF">PASSED</span><span style="color:#9ECBFF">/</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+<p>更簡單粗暴的作法是把 <code>jest.fn()</code> 餵進 <code>const mockLog</code> 裡，接著就能搭配 <code>.toHaveBeenCalledWith()</code> 來驗證 <code>mockLog.info()</code> 是否有被正確呼叫：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#B392F0">test</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'given logger and passing scenario'</span><span style="color:#E1E4E8">, () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">  // arrange</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> mockLog</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> { info: jest.</span><span style="color:#B392F0">fn</span><span style="color:#E1E4E8">() };</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> verify</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> makeVerifier</span><span style="color:#E1E4E8">([], mockLog);</span></span>
+<span class="line"><span style="color:#6A737D">  // act</span></span>
+<span class="line"><span style="color:#B392F0">  verify</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'any input'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#B392F0">  expect</span><span style="color:#E1E4E8">(mockLog.info).</span><span style="color:#B392F0">toHaveBeenCalledWith</span><span style="color:#E1E4E8">(</span></span>
+<span class="line"><span style="color:#6A737D">    //</span></span>
+<span class="line"><span style="color:#E1E4E8">    expect.</span><span style="color:#B392F0">stringMatching</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">/</span><span style="color:#DBEDFF">PASS</span><span style="color:#9ECBFF">/</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">  );</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+<h2 id="54-object-oriented-dynamic-mocks-and-stubs">5.4 Object-oriented dynamic mocks and stubs</h2>
+<p>接下來要示範如何使用 <code>jest.spyOn()</code> 來測試擁有相對對複雜介面的單元。借用一下第四章的 <code>interface ComplicatedLogger</code> 與 <code>class PasswordVerifier2</code> 作為範例功能：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">interface</span><span style="color:#B392F0"> ComplicatedLogger</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#B392F0">  info</span><span style="color:#F97583">:</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">text</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> string</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#79B8FF"> void</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#B392F0">  debug</span><span style="color:#F97583">:</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">text</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> string</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">obj</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> any</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#79B8FF"> void</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#B392F0">  warn</span><span style="color:#F97583">:</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">text</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> string</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#79B8FF"> void</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#B392F0">  error</span><span style="color:#F97583">:</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">text</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> string</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">location</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> string</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">stacktrace</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> string</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#79B8FF"> void</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">class</span><span style="color:#B392F0"> PasswordVerifier2</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#FFAB70">  #rules</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> any</span><span style="color:#E1E4E8">[];</span></span>
+<span class="line"><span style="color:#FFAB70">  #logger</span><span style="color:#F97583">:</span><span style="color:#B392F0"> ComplicatedLogger</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">  constructor</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">rules</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> any</span><span style="color:#E1E4E8">[], </span><span style="color:#FFAB70">logger</span><span style="color:#F97583">:</span><span style="color:#B392F0"> ComplicatedLogger</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#79B8FF">    this</span><span style="color:#E1E4E8">.#rules </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> rules;</span></span>
+<span class="line"><span style="color:#79B8FF">    this</span><span style="color:#E1E4E8">.#logger </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> logger;</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">  verify</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">input</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> string</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> failed</span><span style="color:#F97583"> =</span><span style="color:#79B8FF"> this</span><span style="color:#E1E4E8">.#rules</span></span>
+<span class="line"><span style="color:#E1E4E8">      .</span><span style="color:#B392F0">map</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">rule</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#B392F0"> rule</span><span style="color:#E1E4E8">(input))</span></span>
+<span class="line"><span style="color:#E1E4E8">      .</span><span style="color:#B392F0">filter</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">result</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> result </span><span style="color:#F97583">===</span><span style="color:#79B8FF"> false</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">    if</span><span style="color:#E1E4E8"> (failed.</span><span style="color:#79B8FF">length</span><span style="color:#F97583"> ===</span><span style="color:#79B8FF"> 0</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#79B8FF">      this</span><span style="color:#E1E4E8">.#logger.</span><span style="color:#B392F0">info</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'PASSED'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">      return</span><span style="color:#79B8FF"> true</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#79B8FF">    this</span><span style="color:#E1E4E8">.#logger.</span><span style="color:#B392F0">info</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'FAIL'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#79B8FF"> false</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>進行測試時，我們先呼叫 <code>const realLogger = new RealLogger();</code> 來取得 logger 實例，然後再<del>注入靈魂</del>透過 <code>const mockLoggerInfo = jest.spyOn(realLogger, "info");</code> 來把 <code>realLogger.info()</code> mock 起來。接著，檢查 <code>mockLoggerInfo</code> 是否有被呼叫、且被傳入參數 <code>PASSED</code> 即可：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#B392F0">describe</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'PasswordVerifier2'</span><span style="color:#E1E4E8">, () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#B392F0">  it</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'whan pass empty rule, should call logger.info with "PASSED"'</span><span style="color:#E1E4E8">, () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">    // arrange</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> realLogger</span><span style="color:#F97583"> =</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> RealLogger</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> mockLoggerInfo</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> jest.</span><span style="color:#B392F0">spyOn</span><span style="color:#E1E4E8">(realLogger, </span><span style="color:#9ECBFF">'info'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> verifier</span><span style="color:#F97583"> =</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> PasswordVerifier2</span><span style="color:#E1E4E8">([], realLogger);</span></span>
+<span class="line"><span style="color:#6A737D">    // act</span></span>
+<span class="line"><span style="color:#E1E4E8">    verifier.</span><span style="color:#B392F0">verify</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'someInput'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#6A737D">    // assert</span></span>
+<span class="line"><span style="color:#B392F0">    expect</span><span style="color:#E1E4E8">(mockLoggerInfo).</span><span style="color:#B392F0">toHaveBeenCalledWith</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'PASSED'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#6A737D">    // restore</span></span>
+<span class="line"><span style="color:#E1E4E8">    mockLoggerInfo.</span><span style="color:#B392F0">mockRestore</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">  });</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+<p>最後記得執行 <code>mockLoggerInfo.mockRestore();</code> 來還原被 mock 起來的 <code>.info()</code> 功能。</p>
+<hr>
+<p>現在讓事情變得更過分一點——這個驗證密碼的實例現在追加了「檢查系統是否正在維護中」的邏輯。這個單元現在有三大組退出點：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">interface</span><span style="color:#B392F0"> MaintenanceWindow</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#B392F0">  isUnderMaintenance</span><span style="color:#F97583">:</span><span style="color:#E1E4E8"> () </span><span style="color:#F97583">=></span><span style="color:#79B8FF"> boolean</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> class</span><span style="color:#B392F0"> PasswordVerifier3</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">  private</span><span style="color:#FFAB70"> _rules</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> any</span><span style="color:#E1E4E8">[];</span></span>
+<span class="line"><span style="color:#F97583">  private</span><span style="color:#FFAB70"> _logger</span><span style="color:#F97583">:</span><span style="color:#B392F0"> ComplicatedLogger</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">  private</span><span style="color:#FFAB70"> _maintenanceWindow</span><span style="color:#F97583">:</span><span style="color:#B392F0"> MaintenanceWindow</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">  constructor</span><span style="color:#E1E4E8">(</span></span>
+<span class="line"><span style="color:#FFAB70">    rules</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> any</span><span style="color:#E1E4E8">[],</span></span>
+<span class="line"><span style="color:#FFAB70">    logger</span><span style="color:#F97583">:</span><span style="color:#B392F0"> ComplicatedLogger</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#FFAB70">    maintenanceWindow</span><span style="color:#F97583">:</span><span style="color:#B392F0"> MaintenanceWindow</span></span>
+<span class="line"><span style="color:#E1E4E8">  ) {</span></span>
+<span class="line"><span style="color:#79B8FF">    this</span><span style="color:#E1E4E8">._rules </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> rules;</span></span>
+<span class="line"><span style="color:#79B8FF">    this</span><span style="color:#E1E4E8">._logger </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> logger;</span></span>
+<span class="line"><span style="color:#79B8FF">    this</span><span style="color:#E1E4E8">._maintenanceWindow </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> maintenanceWindow;</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#B392F0">  verify</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">input</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> string</span><span style="color:#E1E4E8">)</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> boolean</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">    if</span><span style="color:#E1E4E8"> (</span><span style="color:#79B8FF">this</span><span style="color:#E1E4E8">._maintenanceWindow.</span><span style="color:#B392F0">isUnderMaintenance</span><span style="color:#E1E4E8">()) {</span></span>
+<span class="line"><span style="color:#6A737D">      // exit point set 1</span></span>
+<span class="line"><span style="color:#79B8FF">      this</span><span style="color:#E1E4E8">._logger.</span><span style="color:#B392F0">info</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'Under Maintenance'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">      return</span><span style="color:#79B8FF"> false</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> failed</span><span style="color:#F97583"> =</span><span style="color:#79B8FF"> this</span><span style="color:#E1E4E8">._rules</span></span>
+<span class="line"><span style="color:#E1E4E8">      .</span><span style="color:#B392F0">map</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">rule</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#B392F0"> rule</span><span style="color:#E1E4E8">(input))</span></span>
+<span class="line"><span style="color:#E1E4E8">      .</span><span style="color:#B392F0">filter</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">result</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> result </span><span style="color:#F97583">===</span><span style="color:#79B8FF"> false</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">    if</span><span style="color:#E1E4E8"> (failed.</span><span style="color:#79B8FF">length</span><span style="color:#F97583"> ===</span><span style="color:#79B8FF"> 0</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#6A737D">      // exit point set 2</span></span>
+<span class="line"><span style="color:#79B8FF">      this</span><span style="color:#E1E4E8">._logger.</span><span style="color:#B392F0">info</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'PASSED'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">      return</span><span style="color:#79B8FF"> true</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#6A737D">    // exit point set 3</span></span>
+<span class="line"><span style="color:#79B8FF">    this</span><span style="color:#E1E4E8">._logger.</span><span style="color:#B392F0">info</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'FAIL'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#79B8FF"> false</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>幸好這一切都還在 jest 能搞定的範圍內。我們能透過 <code>jest.spyOn()</code> 與 <code>.mockReturnValue()</code> 的組合技來限制測試環境的 <code>Maintainer.isUnderMaintenance()</code> 一定要是 <code>true</code>：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#B392F0">describe</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'PasswordVerifier3'</span><span style="color:#E1E4E8">, () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#B392F0">  it</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'when under maintenance, should call logger.info with "Under Maintenance"'</span><span style="color:#E1E4E8">, () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">    // arrange</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> realMaintainer</span><span style="color:#F97583"> =</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> Maintainer</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> stubIsUnderMaintenance</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> jest.</span><span style="color:#B392F0">spyOn</span><span style="color:#E1E4E8">(</span></span>
+<span class="line"><span style="color:#E1E4E8">      realMaintainer,</span></span>
+<span class="line"><span style="color:#9ECBFF">      'isUnderMaintenance'</span></span>
+<span class="line"><span style="color:#E1E4E8">    );</span></span>
+<span class="line"><span style="color:#E1E4E8">    stubIsUnderMaintenance.</span><span style="color:#B392F0">mockReturnValue</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> realLogger</span><span style="color:#F97583"> =</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> ComplicatedLog</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> mockLoggerInfo</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> jest.</span><span style="color:#B392F0">spyOn</span><span style="color:#E1E4E8">(realLogger, </span><span style="color:#9ECBFF">'info'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> Verifier</span><span style="color:#F97583"> =</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> PasswordVerifier3</span><span style="color:#E1E4E8">([], realLogger, realMaintainer);</span></span>
+<span class="line"><span style="color:#6A737D">    // act</span></span>
+<span class="line"><span style="color:#E1E4E8">    Verifier.</span><span style="color:#B392F0">verify</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'someInput'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#6A737D">    // assert</span></span>
+<span class="line"><span style="color:#B392F0">    expect</span><span style="color:#E1E4E8">(mockLoggerInfo).</span><span style="color:#B392F0">toHaveBeenCalledWith</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'Under Maintenance'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#6A737D">    // restore</span></span>
+<span class="line"><span style="color:#E1E4E8">    stubIsUnderMaintenance.</span><span style="color:#B392F0">mockRestore</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">    mockLoggerInfo.</span><span style="color:#B392F0">mockRestore</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">  });</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+<p>一組單元測試又平安的過去了，感謝 jest 提供的 api 與你自己的努力。</p>
+<p><img src="/2024/the-art-of-unit-testing-ch5-isolation-frameworks/powerpuff-unit-test.png" alt="powerpuff-unit-test.png"></p>
+<h2 id="55-stubbing-behavior-dynamically">5.5 Stubbing behavior dynamically</h2>
+<p>除了透過 <code>.mockReturnValue()</code> 與 <code>.mockReturnValueOnce()</code> 來指定 stub 要回傳的內容外，還可以透過 <code>.mockImplementation()</code> 來模擬拋錯等「不是單純回傳值」的行為，比如：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#B392F0">test</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'stub a function that throw error'</span><span style="color:#E1E4E8">, () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> stubFunc</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> jest.</span><span style="color:#B392F0">fn</span><span style="color:#E1E4E8">().</span><span style="color:#B392F0">mockImplementation</span><span style="color:#E1E4E8">(() </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">    throw</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> Error</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'Oops!'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">  });</span></span>
+<span class="line"><span style="color:#B392F0">  expect</span><span style="color:#E1E4E8">(</span><span style="color:#B392F0">stubFunc</span><span style="color:#E1E4E8">()).</span><span style="color:#B392F0">toThrow</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">/</span><span style="color:#DBEDFF">oops</span><span style="color:#9ECBFF">/</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+<h2 id="56-advantages-and-traps-of-isolation-frameworks">5.6 Advantages and traps of isolation frameworks</h2>
+<p>隔離框架讓工程師在寫單元測試時，能輕鬆搞定需要 stub/mock 的部分。但這份便利性也可能導致濫用，比如你發現自己在驗證 stub ——要記得，我們需要 stub 是為了在單元測試中固定情境（確保每次都供應相同的資料），你不需要驗證 stub 是否有被呼叫。</p>
+<p>你甚至要確認每一組單元測試是否都在驗證必要的部分。不要因為某段程式碼「看起來可以被測試」就寫了測試。請提醒自己：單元測試要確保的是「在情境不變時，該單元在退出點產生的結果就會維持一致」，<del>莫忘初衷：</del><a href="/2023/the-art-of-unit-testing-ch1-the-basic-of-unit-testing#%E5%96%AE%E5%85%83%E6%B8%AC%E8%A9%A6%E7%9A%84%E5%AE%9A%E7%BE%A9%E6%9C%80%E7%B5%82%E7%89%88">單元測試的定義，最終版</a>。</p>
+<p>如果一個測試與「確認退出點的行為是否一致」無關，那它就應該被刪掉。</p>
+<h2 id="參考文件">參考文件</h2>
+<ul>
+<li><a href="https://www.manning.com/books/the-art-of-unit-testing-third-edition">Manning: The Art of Unit Testing, Third Edition</a></li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

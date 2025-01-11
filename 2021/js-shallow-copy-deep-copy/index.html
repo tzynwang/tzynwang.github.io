@@ -1,0 +1,155 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.BScVxmeO.js"></script><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.1.2"><!-- Primary Meta Tags --><title>「pass by value、pass by reference、深拷貝」相關筆記</title><meta name="title" content="「pass by value、pass by reference、深拷貝」相關筆記"><meta name="description" content="這是一個文組轉職前端工程師的技術部落格"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2021/js-shallow-copy-deep-copy"><meta property="og:title" content="「pass by value、pass by reference、深拷貝」相關筆記"><meta property="og:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="og:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2021/js-shallow-copy-deep-copy"><meta property="twitter:title" content="「pass by value、pass by reference、深拷貝」相關筆記"><meta property="twitter:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="twitter:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:Noto Sans TC,sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul{margin-top:16px;margin-bottom:16px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:8px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+[data-astro-image]{width:100%;height:auto;object-fit:var(--fit);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>「pass by value、pass by reference、深拷貝」相關筆記</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2021-04-18 16:43</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/JavaScript" data-astro-cid-2iymvi75> JavaScript </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#總結" data-astro-cid-qtokga5y>總結</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#pass-by-value" data-astro-cid-qtokga5y>Pass by value</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#pass-by-reference" data-astro-cid-qtokga5y>Pass by reference</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#深拷貝deep-copy" data-astro-cid-qtokga5y>深拷貝（deep copy）</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#jsonstringify搭配jsonparse" data-astro-cid-qtokga5y>JSON.stringify搭配JSON.parse</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#使用lodash的_clonedeep" data-astro-cid-qtokga5y>使用Lodash的_.cloneDeep</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#使用jquery的extend" data-astro-cid-qtokga5y>使用jQuery的$.extend</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#nodejs-serialization-api" data-astro-cid-qtokga5y>Node.js: Serialization API</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#the-structured-clone-algorithm" data-astro-cid-qtokga5y>The structured clone algorithm</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#bonus-track-cpython-id-in-javascript" data-astro-cid-qtokga5y>bonus track: CPython id() in JavaScript?</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#參考文件" data-astro-cid-qtokga5y>參考文件</a> </li> </ul> </div> <h2 id="總結">總結</h2>
+<p>對 Primitive types 與 Structural types 的資料使用等號進行「賦值」的動作時，賦予的內容分別是值本身（value）或記憶體中的位置（reference）：</p>
+<ul>
+<li>Primitive types（<code>undefined</code>、<code>Boolean</code>、<code>Number</code>、<code>BigInt</code>、<code>String</code>、<code>Symbol</code>）：pass by value，可直接透過「賦值」拷貝（淺拷貝，shallow copy）</li>
+<li>Structural types（<code>Object</code>、<code>Function</code>）：pass by reference，要完全拷貝其內容需執行深拷貝（deep copy）</li>
+</ul>
+<h2 id="pass-by-value">Pass by value</h2>
+<ul>
+<li>將基本類別的資料從一個變數「賦值」到另外一個變數的時候，傳遞的是「值」本身（pass by value）</li>
+<li>參考以下程式碼，在將<code>bag</code>的值<code>apples</code>賦予<code>pocket</code>時，傳遞給<code>pocket</code>的是<code>bag</code>的值（<code>apples</code>）
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#F97583">let</span><span style="color:#E1E4E8"> bag </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> 'apples'</span></span>
+<span class="line"><span style="color:#F97583">let</span><span style="color:#E1E4E8"> pocket </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> bag</span></span>
+<span class="line"><span style="color:#E1E4E8">bag </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> 'oranges'</span></span>
+<span class="line"><span style="color:#E1E4E8">console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(pocket) </span><span style="color:#6A737D">// output: apples</span></span></code></pre>
+<ul>
+<li><code>pocket</code>的<code>apples</code>與<code>bag</code>的<code>apples</code>分別位在記憶體中不同的空間，實際上是兩筆值為<code>apples</code>的資料</li>
+<li>所以，即使對<code>bag</code>賦予一組新的值<code>oranges</code>，也不會影響到<code>pocket</code>的值</li>
+</ul>
+</li>
+</ul>
+<h2 id="pass-by-reference">Pass by reference</h2>
+<ul>
+<li>將<code>Object</code>與<code>function</code>類型的資料從一個變數「賦值」到另外一個變數的時候，傳遞的是「記憶體中的位置」（pass by reference）</li>
+<li>參考以下程式碼，<code>container1</code>與<code>container2</code>兩個變數「指向」同一筆資料<code>{apple: 6}</code>；修改<code>container1</code>「指向」的內容後，呼叫「指向同一筆資料」的<code>container2</code>就會看到被修改後的內容，即是<code>{apple: 3}</code>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> container1</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> {apple: </span><span style="color:#79B8FF">6</span><span style="color:#E1E4E8">}</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> container2</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> container1</span></span>
+<span class="line"><span style="color:#E1E4E8">container1.apple </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> 3</span></span>
+<span class="line"><span style="color:#E1E4E8">console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(container2) </span><span style="color:#6A737D">// output: {apple: 3}</span></span></code></pre>
+</li>
+</ul>
+<h2 id="深拷貝deep-copy">深拷貝（deep copy）</h2>
+<p>概念如下：透過對<code>container1</code>進行深拷貝來取得<code>container2</code>的話 ⋯⋯</p>
+<ul>
+<li><code>container2</code>就會是一個完全獨立的新物件，對<code>container2</code>進行任何修改都不會影響到<code>container1</code></li>
+<li>反之亦然，對<code>container1</code>進行任何修改都不會影響到<code>container2</code>的內容</li>
+<li><code>container1</code>與<code>container2</code>分別指向記憶體中<strong>不同的位置</strong></li>
+</ul>
+<h3 id="jsonstringify搭配jsonparse"><code>JSON.stringify</code>搭配<code>JSON.parse</code></h3>
+<p>把需要進行深拷貝的目標傳入<code>JSON.stringify</code>，再將<code>JSON.stringify</code>回傳的 JSON string 傳入<code>JSON.parse()</code>重建為 JavaScript 物件（或值）</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> container1</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> {apple: </span><span style="color:#79B8FF">6</span><span style="color:#E1E4E8">}</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> jsonString</span><span style="color:#F97583"> =</span><span style="color:#79B8FF"> JSON</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">stringify</span><span style="color:#E1E4E8">(container1) </span><span style="color:#6A737D">// 取得JSON string化的container1</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> container2</span><span style="color:#F97583"> =</span><span style="color:#79B8FF"> JSON</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">parse</span><span style="color:#E1E4E8">(jsonString)     </span><span style="color:#6A737D">// 將JSON string化的container1重建為JavaScript物件，得到與container1無關的container2</span></span>
+<span class="line"><span style="color:#E1E4E8">container1.apple </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> 3</span></span>
+<span class="line"><span style="color:#E1E4E8">console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(container2) </span><span style="color:#6A737D">// output: {apple: 6}</span></span></code></pre>
+<p><code>JSON.stringify</code>的特性：</p>
+<ul>
+<li>無法處理<code>circular reference</code>（循環參考）與<code>BigInt</code>（<code>JSON.stringify</code>會丟出<code>TypeError</code>）</li>
+<li>無法處理<code>undefined</code>、<code>Function</code>或<code>Symbol</code>
+<ul>
+<li>若是在處理<code>array</code>時發現以上三種資料，這三種類型的資料會被轉換為<code>null</code></li>
+<li>若是在處理<code>object</code>時發現以上三種資料，這三種類型的資料會被略過</li>
+<li><code>Symbol</code>-keyed 會被略過</li>
+<li><code>undefined</code>與<code>Function</code>會讓<code>JSON.stringify</code>回傳<code>undefined</code></li>
+<li>MDN 原文：<code>undefined</code>, <code>Function</code>s, and <code>Symbol</code>s are not valid JSON values. If any such values are encountered during conversion they are either omitted (when found in an object) or changed to <code>null</code> (when found in an array). <code>JSON.stringify()</code> can return <code>undefined</code> when passing in “pure” values like <code>JSON.stringify(function(){})</code> or <code>JSON.stringify(undefined)</code>.</li>
+</ul>
+</li>
+<li>傳入<code>JSON.stringify</code>的<code>Infinity</code>、<code>NaN</code>與<code>null</code>都會被視為<code>null</code>
+<ul>
+<li>MDN 原文：The numbers <code>Infinity</code> and <code>NaN</code>, as well as the value <code>null</code>, are all considered <code>null</code>.</li>
+</ul>
+</li>
+<li>只會處理<code>Object</code>中<code>enumerable</code>的部分
+<ul>
+<li>MDN 原文：All the other <code>Object</code> instances (including <code>Map</code>, <code>Set</code>, <code>WeakMap</code>, and <code>WeakSet</code>) will have only their enumerable properties serialized.</li>
+</ul>
+</li>
+</ul>
+<p><code>JSON.parse</code>的使用注意事項：</p>
+<ul>
+<li>無法處理 trailing commas
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#79B8FF">JSON</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">parse</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'[1, 2, 3, 4, ]'</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#79B8FF">JSON</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">parse</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'{"foo" : 1, }'</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#6A737D">// both will throw a SyntaxError</span></span></code></pre>
+</li>
+<li>僅允許單引號<code>'</code>包覆雙引號<code>"</code>，反過來使用雙引號包覆單引號會丟出<code>SyntaxError</code>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#79B8FF">JSON</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">parse</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'[1, 5, "false"]'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#6A737D">// output: [1, 5, "false"]</span></span>
+<span class="line"><span style="color:#79B8FF">JSON</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">parse</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"[1, 5, 'false']"</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#6A737D">// will throw a SyntaxError</span></span></code></pre>
+</li>
+</ul>
+<h3 id="使用lodash的_clonedeep">使用<a href="https://lodash.com/">Lodash</a>的<code>_.cloneDeep</code></h3>
+<p>文件：<a href="https://docs-lodash.com/v4/clone-deep/">https://docs-lodash.com/v4/clone-deep/</a></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> container1</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> [{ apple: </span><span style="color:#79B8FF">6</span><span style="color:#E1E4E8"> }, { orange: </span><span style="color:#79B8FF">2</span><span style="color:#E1E4E8"> }]</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> container2</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> _.</span><span style="color:#B392F0">cloneDeep</span><span style="color:#E1E4E8">(container1)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">container1[</span><span style="color:#79B8FF">0</span><span style="color:#E1E4E8">].apple </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> 3</span></span>
+<span class="line"><span style="color:#E1E4E8">console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(container1) </span><span style="color:#6A737D">// [{ apple: 3 }, { orange: 2 }]</span></span>
+<span class="line"><span style="color:#E1E4E8">console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(container2) </span><span style="color:#6A737D">// [{ apple: 6 }, { orange: 2 }]</span></span></code></pre>
+<h3 id="使用jquery的extend">使用<a href="https://jquery.com/">jQuery</a>的<code>$.extend</code></h3>
+<p>文件：<a href="https://api.jquery.com/jquery.extend/">https://api.jquery.com/jquery.extend/</a></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> container1</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> [{ apple: </span><span style="color:#79B8FF">6</span><span style="color:#E1E4E8"> }, { orange: </span><span style="color:#79B8FF">2</span><span style="color:#E1E4E8"> }]</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> container2</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> $.</span><span style="color:#B392F0">extend</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">, [], container1);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">container1[</span><span style="color:#79B8FF">0</span><span style="color:#E1E4E8">].apple </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> 3</span></span>
+<span class="line"><span style="color:#E1E4E8">console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(container1) </span><span style="color:#6A737D">// [{ apple: 3 }, { orange: 2 }]</span></span>
+<span class="line"><span style="color:#E1E4E8">console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(container2) </span><span style="color:#6A737D">// [{ apple: 6 }, { orange: 2 }]</span></span></code></pre>
+<h3 id="nodejs-serialization-api">Node.js: Serialization API</h3>
+<p>文件：<a href="https://nodejs.org/api/all.html#v8_serialization_api">https://nodejs.org/api/all.html#v8_serialization_api</a></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> v8</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> require</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'v8'</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#B392F0"> structuredClone</span><span style="color:#F97583"> =</span><span style="color:#FFAB70"> obj</span><span style="color:#F97583"> =></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> v8.</span><span style="color:#B392F0">deserialize</span><span style="color:#E1E4E8">(v8.</span><span style="color:#B392F0">serialize</span><span style="color:#E1E4E8">(obj));</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<h3 id="the-structured-clone-algorithm">The structured clone algorithm</h3>
+<p>參考：<a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Structured_clone_algorithm">https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Structured_clone_algorithm</a>
+尚未於瀏覽器中實現。</p>
+<h2 id="bonus-track-cpython-id-in-javascript">bonus track: CPython <a href="https://docs.python.org/3/library/functions.html#id">id()</a> in JavaScript?</h2>
+<p>提問：CPython 的<code>id()</code>會回傳物件在記憶體中的位置，JavaScript 有類似的功能嗎？
+簡答：沒有。
+詳答：</p>
+<ul>
+<li>If it would be possible at all, it would be very <strong>dependent on the javascript engine</strong>. The more modern javascript engine compile their code using a <a href="https://hacks.mozilla.org/2017/02/a-crash-course-in-just-in-time-jit-compilers/">just in time compiler</a> and messing with their internal variables would be either bad for performance, or bad for stability.</li>
+<li>Here’s an easier reason for why you can’t get a variable’s memory address: JS is a safe language for the web, which abstracts away not only the hardware, but also the OS and browser. There are <strong>only high-level concepts by design</strong>, because lower-level stuff does not have to matter at all.</li>
+</ul>
+<h2 id="參考文件">參考文件</h2>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#data_and_structure_types">MDN: Data and Structure types</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify">MDN: JSON.stringify()</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse">MDN: JSON.parse()</a></li>
+<li><a href="https://ithelp.ithome.com.tw/articles/10223178">前端三十 - 成為更好的前端工程師系列：14. [JS] 深拷貝是什麼？如何實現？</a></li>
+<li><a href="https://awdr74100.github.io/2019-10-24-javascript-deepcopy/">Roya’s Blog: JavaScript 淺拷貝 (Shallow Copy) 與深拷貝 (Deep Copy)</a></li>
+<li><a href="https://kanboo.github.io/2018/01/27/JS-ShallowCopy-DeepCopy/">Kanboo Notes: JS-淺拷貝(Shallow Copy) VS 深拷貝(Deep Copy)</a></li>
+<li><a href="https://pjchender.blogspot.com/2016/03/javascriptby-referenceby-value.html">[筆記] 談談 JavaScript 中 by reference 和 by value 的重要觀念</a></li>
+<li><a href="https://stackoverflow.com/questions/122102/what-is-the-most-efficient-way-to-deep-clone-an-object-in-javascript">What is the most efficient way to deep clone an object in JavaScript?</a></li>
+<li><a href="https://stackoverflow.com/questions/639514/how-can-i-get-the-memory-address-of-a-javascript-variable">How can I get the memory address of a JavaScript variable?</a></li>
+<li><a href="https://hashnode.com/post/how-to-get-the-variable-memory-address-in-nodejs-cjq83mnya00yh1vs2czf9vwne">How to get the variable’ memory address in node.js?</a></li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

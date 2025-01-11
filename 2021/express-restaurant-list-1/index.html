@@ -1,0 +1,117 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.BScVxmeO.js"></script><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.1.2"><!-- Primary Meta Tags --><title>從零開始重寫：餐廳清單（Express版）路由、METHODS重構</title><meta name="title" content="從零開始重寫：餐廳清單（Express版）路由、METHODS重構"><meta name="description" content="這是一個文組轉職前端工程師的技術部落格"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2021/express-restaurant-list-1"><meta property="og:title" content="從零開始重寫：餐廳清單（Express版）路由、METHODS重構"><meta property="og:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="og:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2021/express-restaurant-list-1"><meta property="twitter:title" content="從零開始重寫：餐廳清單（Express版）路由、METHODS重構"><meta property="twitter:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="twitter:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:Noto Sans TC,sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul{margin-top:16px;margin-bottom:16px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:8px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+[data-astro-image]{width:100%;height:auto;object-fit:var(--fit);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>從零開始重寫：餐廳清單（Express版）路由、METHODS重構</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2021-06-22 14:06</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/Express" data-astro-cid-2iymvi75> Express </a> <a class="tag" href="/tag/HTML" data-astro-cid-2iymvi75> HTML </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#總結" data-astro-cid-qtokga5y>總結</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#環境" data-astro-cid-qtokga5y>環境</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#筆記" data-astro-cid-qtokga5y>筆記</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#路由重構" data-astro-cid-qtokga5y>路由重構</a> </li><li class="toc-4" data-astro-cid-qtokga5y> <a href="#appjs" data-astro-cid-qtokga5y>app.js</a> </li><li class="toc-4" data-astro-cid-qtokga5y> <a href="#routesindexjs" data-astro-cid-qtokga5y>routes/index.js</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#methods-重構" data-astro-cid-qtokga5y>METHODS 重構</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#browserify-流程記錄" data-astro-cid-qtokga5y>browserify 流程記錄</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#補充" data-astro-cid-qtokga5y>補充</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#method-patch-put" data-astro-cid-qtokga5y>Method: PATCH, PUT</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#idempotent" data-astro-cid-qtokga5y>Idempotent</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#參考文件" data-astro-cid-qtokga5y>參考文件</a> </li> </ul> </div> <h2 id="總結">總結</h2>
+<p>本篇為餐廳清單（Express 版）的路由、METHODS 重構，以及使用<code>browserify</code>搭配<code>axios</code>實現 in-browser <code>require()</code>之相關筆記</p>
+<h2 id="環境">環境</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>browserify: 17.0.0</span></span>
+<span class="line"><span>os: Windows_NT 10.0.18363 win32 x64</span></span></code></pre>
+<h2 id="筆記">筆記</h2>
+<p><img src="/2021/express-restaurant-list-1/folderStructure.png" alt="重構後的資料夾結構"></p>
+<h3 id="路由重構">路由重構</h3>
+<script src="https://gist.github.com/tzynwang/708c0d129d912f54e8043e62cb9e751a.js"></script>
+<h4 id="appjs">app.js</h4>
+<ul>
+<li>第 6 行：將 DB 連線設定搬移到 config 資料夾中</li>
+<li>13-15 行：為配合 axios 的 POST request，將<code>body-parser</code>加回來</li>
+<li>37-38 行：將路由移動到 routes 資料夾中</li>
+</ul>
+<h4 id="routesindexjs">routes/index.js</h4>
+<ul>
+<li>4-5 行：routes/modules 中的 home.js 與 restaurants.js 皆分別在檔案結尾進行<code>module.exports = router</code>，讓 index.js 可引用之</li>
+<li>7-8 行：分別將對<code>/</code>與<code>/restaurant</code>的請求導向<code>home</code>與<code>restaurant</code></li>
+<li>第 10 行：將 index.js 本身也進行匯出，使 app.js 可使用之（app.js 中第 37 行）</li>
+</ul>
+<h3 id="methods-重構">METHODS 重構</h3>
+<ul>
+<li>
+<p>參考 app.js 第 33-34 行，引用<code>method-override</code>後，使用 override using a query value 的方式複寫 METHOD
+<a href="http://expressjs.com/en/resources/middleware/method-override.html">官方說明</a>：</p>
+<blockquote>
+<p>To use a query string value to override the method, specify the query string key as a string argument to the methodOverride function. To then make the call, send a <strong>POST request</strong> to a URL with the overridden method as the value of that query string key. This method of using a query value would typically be used in conjunction with plain HTML <code>&#x3C;form></code> elements when trying to support legacy browsers but still use newer methods.</p>
+</blockquote>
+<p>官方示範程式碼：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> express</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> require</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'express'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> methodOverride</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> require</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'method-override'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> app</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> express</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// override with POST having ?_method=DELETE</span></span>
+<span class="line"><span style="color:#E1E4E8">app.</span><span style="color:#B392F0">use</span><span style="color:#E1E4E8">(</span><span style="color:#B392F0">methodOverride</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'_method'</span><span style="color:#E1E4E8">));</span></span></code></pre>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="html"><code><span class="line"><span style="color:#E1E4E8">&#x3C;</span><span style="color:#85E89D">form</span><span style="color:#B392F0"> method</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"POST"</span><span style="color:#B392F0"> action</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"/resource?_method=DELETE"</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;</span><span style="color:#85E89D">button</span><span style="color:#B392F0"> type</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"submit"</span><span style="color:#E1E4E8">>Delete resource&#x3C;/</span><span style="color:#85E89D">button</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">&#x3C;/</span><span style="color:#85E89D">form</span><span style="color:#E1E4E8">></span></span></code></pre>
+</li>
+<li>
+<p>將 form action 設定完畢後，原本的 POST request 就會（根據 query string value）被覆寫為 DELETE 與 PUT 等 METHOD</p>
+</li>
+<li>
+<p>之後即可在後端使用<code>router.delete</code>或<code>router.put</code>等方式處理相關請求</p>
+</li>
+</ul>
+<h3 id="browserify-流程記錄">browserify 流程記錄</h3>
+<ol>
+<li>安裝 browserify 與 axios</li>
+<li>在 public/scripts 資料夾中建立一檔案 sort.js，內容如下</li>
+</ol>
+<script src="https://gist.github.com/tzynwang/f034770c2ca9f0cc16edc449f44a1f94.js"></script>
+<ol>
+<li>在沒有搭配 browserify 的情況下，直接引用 sort.js 檔案會在瀏覽器 console 看到<code>ReferenceError: require is not defined</code>此錯誤訊息，相關討論參考：<a href="https://stackoverflow.com/questions/19059580/client-on-node-js-uncaught-referenceerror-require-is-not-defined">Client on Node.js: Uncaught ReferenceError: require is not defined</a></li>
+<li>參考 browserify 的<a href="https://github.com/browserify/browserify#example">GitHub README</a>，在終端輸入<code>browserify public/scripts/sort.js > public/scripts/sortBundle.js</code>將 sort.js 與 axios 等額外 require 的模組 bundle 在一起</li>
+<li>最終在前端網頁引用<code>sortBundle.js</code>此檔案，錯誤訊息消失，問題解決</li>
+</ol>
+<h2 id="補充">補充</h2>
+<h3 id="method-patch-put">Method: PATCH, PUT</h3>
+<ul>
+<li>A <code>PATCH</code> request is considered a set of <strong>instructions on how to modify a resource</strong>. Contrast this with <code>PUT</code>; which is a complete <strong>representation of a resource</strong>.</li>
+<li>A <code>PATCH</code> is <strong>not necessarily idempotent</strong>, although it can be. Contrast this with <code>PUT</code>; which is <strong>always idempotent</strong>. The word “idempotent” means that any number of repeated, identical requests will leave the resource in the same state. (不像<code>POST</code> request 如果連續發送可能會變成多筆訂單，多次發送<code>PUT</code> request 不會有類似的後遺症)</li>
+<li>Calling <code>PUT</code> method <strong>once or several times successively has the same effect</strong> (that is no side effect), this method is <strong>idempotent</strong>; whereas successive identical <code>POST</code> requests may have additional effects, akin to placing an order several times.</li>
+</ul>
+<h3 id="idempotent">Idempotent</h3>
+<ul>
+<li>Description of common <strong>idempotent methods</strong>: GET, HEAD, PUT, DELETE, OPTIONS, TRACE</li>
+<li>Description of common <strong>non-idempotent</strong> methods: POST,PATCH, CONNECT
+<ul>
+<li>Reference: <a href="https://developer.mozilla.org/en-US/docs/Glossary/Idempotent">https://developer.mozilla.org/en-US/docs/Glossary/Idempotent</a></li>
+</ul>
+</li>
+<li>A request method is considered “idempotent” if the intended effect on the server of multiple identical requests with that method is the same as the effect for a single such request. (對 server 打一次或多次的結果如果都一樣，該 HTTP method 就會被認為是 idempotent) Of the request methods defined by this specification, PUT, DELETE, and safe request methods (GET, HEAD, OPTIONS) are idempotent.
+<ul>
+<li>Reference: <a href="https://datatracker.ietf.org/doc/html/rfc7231#section-4.2.2">https://datatracker.ietf.org/doc/html/rfc7231#section-4.2.2</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="參考文件">參考文件</h2>
+<ul>
+<li><a href="https://stackoverflow.com/questions/6971583/node-style-require-for-in-browser-javascript/11588570">Node-style require for in-browser javascript?</a></li>
+<li><a href="https://github.com/browserify/browserify#browserify">GitHub: browserify</a></li>
+<li>MDN
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/PATCH">PATCH</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/PUT">PUT</a></li>
+</ul>
+</li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

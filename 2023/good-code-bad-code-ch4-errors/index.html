@@ -1,0 +1,107 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.BScVxmeO.js"></script><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.1.2"><!-- Primary Meta Tags --><title>閱讀筆記：Good Code, Bad Code Chapter 4 Errors</title><meta name="title" content="閱讀筆記：Good Code, Bad Code Chapter 4 Errors"><meta name="description" content="這是一個文組轉職前端工程師的技術部落格"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2023/good-code-bad-code-ch4-errors"><meta property="og:title" content="閱讀筆記：Good Code, Bad Code Chapter 4 Errors"><meta property="og:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="og:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2023/good-code-bad-code-ch4-errors"><meta property="twitter:title" content="閱讀筆記：Good Code, Bad Code Chapter 4 Errors"><meta property="twitter:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="twitter:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:Noto Sans TC,sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul{margin-top:16px;margin-bottom:16px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:8px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+[data-astro-image]{width:100%;height:auto;object-fit:var(--fit);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>閱讀筆記：Good Code, Bad Code Chapter 4 Errors</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2023-03-19 15:11</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/Software Architecture" data-astro-cid-2iymvi75> Software Architecture </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#總結" data-astro-cid-qtokga5y>總結</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#筆記" data-astro-cid-qtokga5y>筆記</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#recoverability" data-astro-cid-qtokga5y>Recoverability</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#robustness-vs-failure" data-astro-cid-qtokga5y>Robustness vs. failure</a> </li><li class="toc-4" data-astro-cid-qtokga5y> <a href="#注意穩健性robustness" data-astro-cid-qtokga5y>注意穩健性（Robustness）</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#範例如何在-typescript-中提示錯誤" data-astro-cid-qtokga5y>範例：如何在 TypeScript 中提示錯誤</a> </li><li class="toc-4" data-astro-cid-qtokga5y> <a href="#直接拋錯" data-astro-cid-qtokga5y>直接拋錯</a> </li><li class="toc-4" data-astro-cid-qtokga5y> <a href="#回傳-null" data-astro-cid-qtokga5y>回傳 null</a> </li><li class="toc-4" data-astro-cid-qtokga5y> <a href="#回傳-magic-value" data-astro-cid-qtokga5y>回傳 magic value</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#參考文件" data-astro-cid-qtokga5y>參考文件</a> </li> </ul> </div> <h2 id="總結">總結</h2>
+<p>此篇文章是 Good Code, Bad Code: Think like a software engineer 第四章（Errors）的閱讀筆記。除記錄章節重點外，本篇文章也提供一些如何在 TypeScript 實作此章建議的範例程式碼。</p>
+<p>本章重點如下：</p>
+<ul>
+<li>軟體拋錯代表有功能執行不如預期，不應隱藏、且應盡可能讓錯誤明顯，工程師才有機會處理錯誤</li>
+<li>盡可能讓工程師意識到「某段程式碼可能會拋錯」，工程師才會有「這段程式碼可能會出錯，我需要提供應對手段」的意識</li>
+</ul>
+<h2 id="筆記">筆記</h2>
+<h3 id="recoverability">Recoverability</h3>
+<p>本書認為軟體錯誤可分為「可復原」與「無法復原」兩種類型，此二類型的特徵如下：</p>
+<ul>
+<li>可復原的錯誤：代表軟體遭遇此類錯誤時，有辦法自行脫離錯誤狀態。
+<ul>
+<li>以前端開發為例，「呼叫後端 API 時收到 503 Service Unavailable 回應」就是一種「可復原錯誤」，前端服務能在偵測到後端回應 503 後，在畫面上顯示提示訊息，而不是讓整個前端服務停止運作</li>
+<li>牽涉到「外部」的錯誤通常可歸類在此範疇，因「外部失效」是一軟體在運行中可預見的事態。以前端開發為例，相對於前端服務本身，「後端 API 回應」以及「使用者提供的輸入（從鍵入文字資料到上傳檔案）」失效都是合理且可預期發生的行為，要求前端服務在偵測到此類行為時能夠自行應對、處理（而不是讓整個服務跟著停止運作），算是合理的開發規格</li>
+</ul>
+</li>
+<li>無法復原的錯誤：代表軟體遭遇此類錯誤時，無法自行脫離錯誤狀態
+<ul>
+<li>以前端開發為例，假設使用者在開啟一 React APP 時因網路狀態不佳、導致一部分 JavaScript 檔案沒有被載入，結果會導致此 React APP 無法正常運行，且此 React APP 也無法自主脫離這個錯誤狀態，這就是一種無法復原的錯誤</li>
+<li>如果將規模縮小到 function 等級，則「呼叫某 function 時，沒有提供正確的參數」導致該 function 無法順利被執行，對該 function 來說，這就是無法復原的錯誤</li>
+<li>針對此類錯誤，本書作者認為「原地且大聲報錯（failing fast and failing loudly）」是比較好的處理方式，因爲如此才能確保錯誤被工程師看見、才有機會被修復</li>
+</ul>
+</li>
+</ul>
+<h3 id="robustness-vs-failure">Robustness vs. failure</h3>
+<blockquote>
+<p>failing fast and failing loudly</p>
+</blockquote>
+<ul>
+<li>原地拋錯：這會讓工程師在除錯時能夠盡快定位到錯誤位置，而不用翻找一層又一層的程式碼</li>
+<li>大聲拋錯：確保錯誤會被察覺、被修復，而不是被靜默處理，導致程式碼「看起來沒有出錯」卻又有不如預期的行為發生</li>
+</ul>
+<h4 id="注意穩健性robustness">注意穩健性（Robustness）</h4>
+<p>以前端開發來說，在 JavaScript 中如果拋錯（<code>throw new Error('...')</code>）但未搭配 <code>try...catch</code> 語法來捕捉錯誤的話，即會導致整段程式碼停止執行。在前端遵守 <code>failing fast and failing loudly</code> 原則時，需注意是否為該功能附上對應的 <code>try...catch</code> 語法，否則服務會在錯誤被拋出時即停止運行，導致使用體驗不佳。</p>
+<p>以 React 為例，元件 <code>ErrorBoundary</code> 可視為整個 APP 的 <code>try...catch</code> 語法；如果整個 APP 中有部分程式碼會拋錯，但沒有緊鄰的 <code>try..catch</code> 來捕捉該錯誤，此錯誤最終會被 <code>ErrorBoundary</code> 攔截。工程師可透過此元件決定如何處理錯誤（發送 GA 事件來記錄錯誤資訊、顯示提示用的 UI 元件等等）。</p>
+<p>需注意：目前 TypeScript 尚未支援在 function 的回傳型態中定義該 function 是否會拋錯（參考 <a href="https://stackoverflow.com/questions/49434751/how-to-declare-a-function-that-throws-an-error-in-typescript">How to declare a function that throws an error in Typescript</a>），這部分就得仰賴文件說明、或是呼叫 function 的使用者需意識到該 function 得搭配 <code>try...catch</code> 來確保程式碼的穩健性。</p>
+<h3 id="範例如何在-typescript-中提示錯誤">範例：如何在 TypeScript 中提示錯誤</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> getSquareRoot</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">arg</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#6A737D">  // 根據參數 arg 回傳其開根號後的值，如果 arg 不是大於等於零的數字，則此 function 無法對該 arg 開根號</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>以上列 <code>getSquareRoot</code> 為例，在 TypeScript 中有以下幾種「讓工程師察覺到參數 arg 的值不合理」的手段：</p>
+<h4 id="直接拋錯">直接拋錯</h4>
+<p>優點：提供明確錯誤訊息，呼叫此 function 的工程師會知道為何出錯
+缺點：如果使用此 function 的工程師沒有提供對應的 <code>try...catch</code> 語法的話，整段程式碼一出錯（被餵了不合法的參數）就會停止執行，且目前 TypeScript 還無法透過型別提示該 function 是否會拋錯，需要引用 function 的工程師主動確認文件或原始碼</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> getSquareRoot</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">arg</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">  if</span><span style="color:#E1E4E8"> (</span><span style="color:#F97583">typeof</span><span style="color:#E1E4E8"> arg </span><span style="color:#F97583">!==</span><span style="color:#9ECBFF"> 'number'</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">    throw</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> Error</span><span style="color:#E1E4E8">(</span></span>
+<span class="line"><span style="color:#9ECBFF">      `getSquareRoot arg not valid, should be number, but receive ${</span><span style="color:#E1E4E8">arg</span><span style="color:#9ECBFF">}, type: ${</span><span style="color:#F97583">typeof</span><span style="color:#E1E4E8"> arg</span><span style="color:#9ECBFF">}.`</span></span>
+<span class="line"><span style="color:#E1E4E8">    );</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#6A737D">  // ...</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<h4 id="回傳-null">回傳 <code>null</code></h4>
+<p>優點：可透過 TypeScript 的型別定義讓呼叫此 function 的工程師意識到回傳的值可能為 <code>null</code> 或數字，工程師需要先檢查回傳的值的型別，才能繼續執行接下來的邏輯
+缺點：回傳 <code>null</code> 無法提供太多有意義的錯誤資訊</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> getSquareRoot</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">arg</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">  if</span><span style="color:#E1E4E8"> (</span><span style="color:#F97583">typeof</span><span style="color:#E1E4E8"> arg </span><span style="color:#F97583">!==</span><span style="color:#9ECBFF"> 'number'</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#79B8FF"> null</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">  } </span><span style="color:#F97583">else</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">    // ...</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<h4 id="回傳-magic-value">回傳 magic value</h4>
+<p>下下策，回傳的值基本上無法提供有意義的錯誤資訊，也無法透過型別檢查得知回傳的值是否有效；儘管有這種作法但並不推薦實務使用</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> getSquareRoot</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">arg</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">  if</span><span style="color:#E1E4E8"> (</span><span style="color:#F97583">typeof</span><span style="color:#E1E4E8"> arg </span><span style="color:#F97583">!==</span><span style="color:#9ECBFF"> 'number'</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#F97583"> -</span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">  } </span><span style="color:#F97583">else</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">    // ...</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<h2 id="參考文件">參考文件</h2>
+<ul>
+<li><a href="https://www.manning.com/books/good-code-bad-code">Manning: Good Code, Bad Code</a></li>
+<li><a href="https://react.dev/reference/react/Component#catching-rendering-errors-with-an-error-boundary">react.dev: Catching rendering errors with an error boundary</a></li>
+<li><a href="https://stackoverflow.com/questions/49434751/how-to-declare-a-function-that-throws-an-error-in-typescript">stackOverFlow: How to declare a function that throws an error in Typescript</a></li>
+<li><a href="https://github.com/microsoft/TypeScript/issues/13219">issues: Suggestion: <code>throws</code> clause and typed catch clause #13219</a></li>
+<li><a href="https://github.com/microsoft/TypeScript/issues/8240">issues: <code>Result value must be used</code> check #8240</a></li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

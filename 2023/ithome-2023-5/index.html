@@ -1,0 +1,122 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.BScVxmeO.js"></script><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.1.2"><!-- Primary Meta Tags --><title>捨棄 create-react-app 之餘還架了個 astro blog 昭告天下：元件分類原則</title><meta name="title" content="捨棄 create-react-app 之餘還架了個 astro blog 昭告天下：元件分類原則"><meta name="description" content="昨天說明了整包專案的資料夾結構規劃方式，今天來聊聊個人通常會根據哪些規則來分類 React 元件。"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2023/ithome-2023-5"><meta property="og:title" content="捨棄 create-react-app 之餘還架了個 astro blog 昭告天下：元件分類原則"><meta property="og:description" content="昨天說明了整包專案的資料夾結構規劃方式，今天來聊聊個人通常會根據哪些規則來分類 React 元件。"><meta property="og:image" content="https://tzynwang.github.io/2023/ithome-2023-5/jan-antonin-kolar-lRoX0shwjUQ-unsplash.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2023/ithome-2023-5"><meta property="twitter:title" content="捨棄 create-react-app 之餘還架了個 astro blog 昭告天下：元件分類原則"><meta property="twitter:description" content="昨天說明了整包專案的資料夾結構規劃方式，今天來聊聊個人通常會根據哪些規則來分類 React 元件。"><meta property="twitter:image" content="https://tzynwang.github.io/2023/ithome-2023-5/jan-antonin-kolar-lRoX0shwjUQ-unsplash.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:Noto Sans TC,sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul{margin-top:16px;margin-bottom:16px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:8px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+[data-astro-image]{width:100%;height:auto;object-fit:var(--fit);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>捨棄 create-react-app 之餘還架了個 astro blog 昭告天下：元件分類原則</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2023-09-20 07:21</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/2023鐵人賽" data-astro-cid-2iymvi75> 2023鐵人賽 </a> <a class="tag" href="/tag/Frontend Infrastructure" data-astro-cid-2iymvi75> Frontend Infrastructure </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#srccomponent-內容" data-astro-cid-qtokga5y>src/component 內容</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#appentrypoint" data-astro-cid-qtokga5y>AppEntryPoint</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#page" data-astro-cid-qtokga5y>Page</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#layer" data-astro-cid-qtokga5y>Layer</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#layout" data-astro-cid-qtokga5y>Layout</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#common" data-astro-cid-qtokga5y>Common</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#總結" data-astro-cid-qtokga5y>總結</a> </li> </ul> </div> <p>昨天說明了整包專案的資料夾結構規劃方式，今天來聊聊個人通常會根據哪些規則來分類 React 元件。</p>
+<h2 id="srccomponent-內容">src/component 內容</h2>
+<p>以一個包含「landing page、全產品一覽、單一產品詳細頁」這三個畫面的 React app 專案來說，我規劃的 <code>src/component</code> 結構大致上會長這樣：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">src/component</span></span>
+<span class="line"><span style="color:#B392F0">├──</span><span style="color:#9ECBFF"> AppEntryPoint</span></span>
+<span class="line"><span style="color:#B392F0">│</span><span style="color:#9ECBFF">   └──</span><span style="color:#9ECBFF"> index.tsx</span></span>
+<span class="line"><span style="color:#B392F0">├──</span><span style="color:#9ECBFF"> Common</span></span>
+<span class="line"><span style="color:#B392F0">│</span><span style="color:#9ECBFF">   ├──</span><span style="color:#9ECBFF"> ListItem</span></span>
+<span class="line"><span style="color:#B392F0">│</span><span style="color:#9ECBFF">   ├──</span><span style="color:#9ECBFF"> SideBar</span></span>
+<span class="line"><span style="color:#B392F0">│</span><span style="color:#9ECBFF">   ├──</span><span style="color:#9ECBFF"> SearchBar</span></span>
+<span class="line"><span style="color:#B392F0">│</span><span style="color:#9ECBFF">   └──</span><span style="color:#9ECBFF"> TopNav</span></span>
+<span class="line"><span style="color:#B392F0">├──</span><span style="color:#9ECBFF"> Layer</span></span>
+<span class="line"><span style="color:#B392F0">│</span><span style="color:#9ECBFF">   ├──</span><span style="color:#9ECBFF"> AppRoutes</span></span>
+<span class="line"><span style="color:#B392F0">│</span><span style="color:#9ECBFF">   ├──</span><span style="color:#9ECBFF"> Dialog</span></span>
+<span class="line"><span style="color:#B392F0">│</span><span style="color:#9ECBFF">   ├──</span><span style="color:#9ECBFF"> GA4</span></span>
+<span class="line"><span style="color:#B392F0">│</span><span style="color:#9ECBFF">   ├──</span><span style="color:#9ECBFF"> MuiThemeInject</span></span>
+<span class="line"><span style="color:#B392F0">│</span><span style="color:#9ECBFF">   └──</span><span style="color:#9ECBFF"> ReduxProvider</span></span>
+<span class="line"><span style="color:#B392F0">├──</span><span style="color:#9ECBFF"> Layout</span></span>
+<span class="line"><span style="color:#B392F0">│</span><span style="color:#9ECBFF">   └──</span><span style="color:#9ECBFF"> Main</span></span>
+<span class="line"><span style="color:#B392F0">└──</span><span style="color:#9ECBFF"> Page</span></span>
+<span class="line"><span style="color:#B392F0">    ├──</span><span style="color:#9ECBFF"> LandingPage</span></span>
+<span class="line"><span style="color:#B392F0">		├──</span><span style="color:#9ECBFF"> Products</span></span>
+<span class="line"><span style="color:#B392F0">    ├──</span><span style="color:#9ECBFF"> SingleProduct</span></span>
+<span class="line"><span style="color:#B392F0">    └──</span><span style="color:#9ECBFF"> NotFound</span></span></code></pre>
+<p>而以下會依照元件粒度從大到小，依序介紹個人的分類規則。</p>
+<h3 id="appentrypoint">AppEntryPoint</h3>
+<p>這個資料夾內只會有一個元件，即整個 React app 的入口。</p>
+<p>這個元件唯一的任務，就是引用整個專案中會使用到的其他元件與資料層，個人不會在這裡執行任何額外的邏輯運算任務了。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> React </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> 'react'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { HelmetProvider } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> 'react-helmet-async'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> AppRoutes </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> '@Component/Layer/AppRoutes'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> Dialog </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> '@Component/Layer/Dialog'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> GA4 </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> '@Component/Layer/GA4'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> MuiThemeInject </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> '@Component/Layer/MuiThemeInject'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> ReduxProvider </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> '@Component/Layer/ReduxProvider'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#9ECBFF"> '@Style/css/global.css'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#9ECBFF"> '@Tool/dayjsGlobalSetting'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> AppEntryPoint</span><span style="color:#E1E4E8">()</span><span style="color:#F97583">:</span><span style="color:#B392F0"> React</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">ReactElement</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> (</span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#79B8FF">HelmetProvider</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">      &#x3C;</span><span style="color:#79B8FF">MuiThemeInject</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">        &#x3C;</span><span style="color:#79B8FF">ReduxProvider</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">          &#x3C;</span><span style="color:#79B8FF">AppRoutes</span><span style="color:#E1E4E8"> /></span></span>
+<span class="line"><span style="color:#E1E4E8">          &#x3C;</span><span style="color:#79B8FF">Dialog</span><span style="color:#E1E4E8"> /></span></span>
+<span class="line"><span style="color:#E1E4E8">          &#x3C;</span><span style="color:#79B8FF">GA4</span><span style="color:#E1E4E8"> /></span></span>
+<span class="line"><span style="color:#E1E4E8">        &#x3C;/</span><span style="color:#79B8FF">ReduxProvider</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">      &#x3C;/</span><span style="color:#79B8FF">MuiThemeInject</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;/</span><span style="color:#79B8FF">HelmetProvider</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  );</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> default</span><span style="color:#E1E4E8"> AppEntryPoint;</span></span></code></pre>
+<h3 id="page">Page</h3>
+<p><code>Page</code> 中的每一個檔案都會對應到一條 url end point。假設一個專案總計有三條路由 <code>/</code> / <code>/products</code> / <code>/product/:id</code>，那麽路由與元件的對應會如以下安排：</p>
+<ul>
+<li><code>/</code> 對應元件 <code>src/component/Page/LandingPage</code></li>
+<li><code>/products</code> 對應元件 <code>src/component/Page/Products</code></li>
+<li><code>/product/:id</code> 對應元件 <code>src/component/Page/SingleProduct</code></li>
+</ul>
+<p>作為獨立畫面的 404 頁也會被我歸納在 <code>src/component/Page</code> 資料夾中。</p>
+<hr>
+<p>在畫面大致上已經確定、並且也規劃好路由後，個人就會開始開發 <code>Page</code> 元件。比較簡單的做法是一股腦把該路由所有的邏輯與視覺內容都寫到一個 <code>Page</code> 元件中，然後再根據資料流向、元件複用性來決定是否有可以拆進 <code>src/component/Layout</code> / <code>src/component/Common</code> 中的內容。</p>
+<p>提醒：如果拆分出去的 <code>Layout</code> / <code>Common</code> 元件需要透過大量的 props（個人認為超過 5 個就算大量了）才能順利運作，這可能代表元件的拆分規模不恰當、或是有些資料需要透過 <a href="https://react.dev/reference/react/useContext">React context</a> / <a href="https://redux.js.org/api/store">Redux store</a> 來直取會比較方便。一個元件需要太多 props 會有股<a href="https://zh.wikipedia.org/zh-tw/%E8%80%A6%E5%90%88%E6%80%A7_(%E8%A8%88%E7%AE%97%E6%A9%9F%E7%A7%91%E5%AD%B8)">高耦合性</a>的 code smell (´・ω・`)…</p>
+<h3 id="layer">Layer</h3>
+<p>如果一個元件帶有以下屬性，通常會被我歸類到 <code>src/component/Layer</code> 資料夾：</p>
+<ul>
+<li>只有功能、沒有畫面的元件；比如 <code>GA4</code> / <code>MuiThemeInject</code> / <code>ReduxProvider</code></li>
+<li>整個 React app 都會用到的全域元件，比如 <code>AppRoutes</code> 或 <code>Dialog</code></li>
+</ul>
+<p>此類元件通常不需要透過 props 來接收資料。在真的有讀取資料的需求時（比如 <code>Dialog</code> 元件需要動態地控制對話框內文），基本上也是透過 Redux store 來取得資料。</p>
+<h3 id="layout">Layout</h3>
+<p>這個資料夾負責收納無功能邏輯、僅有排版作用的元件。假設一個 React app 專案大部分的畫面都包含「一個 TopNav 搭配下方的內容區塊」，那麽 <code>src/component/Layout</code> 中大概就會有一個叫做 <code>MainLayout</code> 的檔案：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> React, { memo, PropsWithChildren } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> 'react'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> TopNav </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> '@Component/Common/TopNav'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> moduleStyle </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> './index.module.css'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> MainLayout</span><span style="color:#E1E4E8">({ </span><span style="color:#FFAB70">children</span><span style="color:#E1E4E8"> }</span><span style="color:#F97583">:</span><span style="color:#B392F0"> PropsWithChildren</span><span style="color:#E1E4E8">)</span><span style="color:#F97583">:</span><span style="color:#B392F0"> React</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">ReactElement</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> (</span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#85E89D">div</span><span style="color:#B392F0"> className</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{moduleStyle.container}></span></span>
+<span class="line"><span style="color:#E1E4E8">      &#x3C;</span><span style="color:#79B8FF">ContractPageNav</span><span style="color:#E1E4E8"> /></span></span>
+<span class="line"><span style="color:#E1E4E8">      &#x3C;</span><span style="color:#85E89D">div</span><span style="color:#B392F0"> className</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{moduleStyle.main_wrapper}>{children}&#x3C;/</span><span style="color:#85E89D">div</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;/</span><span style="color:#85E89D">div</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  );</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> default</span><span style="color:#B392F0"> memo</span><span style="color:#E1E4E8">(MainLayout);</span></span></code></pre>
+<p>現在所有外觀是「一個 TopNav 搭配下方的內容區塊」的元件就可以直接複用 <code>MainLayout</code> 的排版了。</p>
+<h3 id="common">Common</h3>
+<p>只要觀察到一段程式碼（不論是邏輯或是樣式設定）在專案各處重複出現，這時就可以考慮把該段內容整理進 <code>src/component/Common</code> 中了。</p>
+<p>舉例：假設在 <code>Page/LandingPage</code> 與 <code>Page/Products</code> 都有「展示產品的元件」，此時就可以考慮將相關程式碼抽出、獨立到 <code>src/component/Common/ListItem</code> 中。</p>
+<p>原則是放在 <code>Common</code> 資料夾內的元件其<a href="https://zh.wikipedia.org/zh-tw/%E5%85%A7%E8%81%9A%E6%80%A7">內聚性</a>越高、耦合度（必要的 props）越低越好。</p>
+<p>另外，雖然程式碼的長度並不完全等同程式碼的品質，但個人會盡量讓放在 <code>Common</code> 內的元件不要超過 200 行。太長的程式碼除了讀起來很辛苦以外，也可能代表這個「單一元件」事實上還是同時做了太多事情，可以研究看看是否還能將這個元件的粒度繼續細化。</p>
+<h2 id="總結">總結</h2>
+<p>以上就是個人目前分類元件的規則，如果喜歡歡迎你借用。當然，如果覺得我的規則根本不講理，也歡迎留言交流想法唷 ε≡ ﾍ( ´∀`)ﾉ</p> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 
