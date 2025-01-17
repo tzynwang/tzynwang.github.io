@@ -115,7 +115,7 @@ border-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQ
 
 - `x="0.5" y="0.5" width="63" height="63"` 代表從座標 `(0.5, 0.5)` 繪製一個 `63px * 63px` 大的矩形
 - `rx="4"` 代表[圓角尺寸](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/rx#rect)為 4px
-- `stroke="url(#square)"` 代表這個矩形的**邊框（[stroke](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Fills_and_Strokes#painting)）**填色要參照 `<defs />` 中的 `id="square"`
+- `stroke="url(#square)"` 代表這個矩形的**邊框**（[stroke](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Fills_and_Strokes#painting)）填色要參照 `<defs />` 中的 `id="square"`
 - 因為沒有指定 `stroke-width` 所以邊框的寬度會是[預設值 `1px`](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/stroke-width#usage_notes)
 
 `<defs />` / `<linearGradient />` / `<stop />` 部分：
