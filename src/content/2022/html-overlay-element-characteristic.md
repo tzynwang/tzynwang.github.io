@@ -42,7 +42,7 @@ top layer 讓元件必定出現在畫面最上方，而根據 [Fullscreen API](h
 
 ### 元件
 
-### dialog
+#### dialog
 
 dialog 元件不一定會有 modal 特性，參考以下兩張螢幕截圖：
 
