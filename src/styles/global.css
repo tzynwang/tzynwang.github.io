@@ -33,7 +33,7 @@ li {
   list-style-position: inside;
 }
 
-ul {
+ul:not(:has(li)) {
   margin-top: 16px;
   margin-bottom: 16px;
 }
@@ -59,7 +59,7 @@ h3,
 h4 {
   font-size: 22px;
   line-height: 34px;
-  margin: 8px 0;
+  margin: 16px 0;
   color: #4c5958;
 }
 
