@@ -1,0 +1,129 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.BScVxmeO.js"></script><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.1.2"><!-- Primary Meta Tags --><title>捨棄 create-react-app 之餘還架了個 astro blog 昭告天下：專案腳本</title><meta name="title" content="捨棄 create-react-app 之餘還架了個 astro blog 昭告天下：專案腳本"><meta name="description" content="在風風火火地把最基礎的畫面與功能做完後，現在你需要一點腳本來啟動他。"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2023/ithome-2023-6"><meta property="og:title" content="捨棄 create-react-app 之餘還架了個 astro blog 昭告天下：專案腳本"><meta property="og:description" content="在風風火火地把最基礎的畫面與功能做完後，現在你需要一點腳本來啟動他。"><meta property="og:image" content="https://tzynwang.github.io/2023/ithome-2023-6/clique-images-hSB2HmJYaTo-unsplash.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2023/ithome-2023-6"><meta property="twitter:title" content="捨棄 create-react-app 之餘還架了個 astro blog 昭告天下：專案腳本"><meta property="twitter:description" content="在風風火火地把最基礎的畫面與功能做完後，現在你需要一點腳本來啟動他。"><meta property="twitter:image" content="https://tzynwang.github.io/2023/ithome-2023-6/clique-images-hSB2HmJYaTo-unsplash.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:Noto Sans TC,sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul:not(:has(li)){margin-top:16px;margin-bottom:16px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:16px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+[data-astro-image]{width:100%;height:auto;object-fit:var(--fit);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>捨棄 create-react-app 之餘還架了個 astro blog 昭告天下：專案腳本</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2023-09-21 08:03</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/2023鐵人賽" data-astro-cid-2iymvi75> 2023鐵人賽 </a> <a class="tag" href="/tag/Frontend Infrastructure" data-astro-cid-2iymvi75> Frontend Infrastructure </a> <a class="tag" href="/tag/make" data-astro-cid-2iymvi75> make </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#本文" data-astro-cid-qtokga5y>本文</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#在-packagejson-scripts-設定腳本" data-astro-cid-qtokga5y>在 package.json scripts 設定腳本</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#透過-makefile-設定腳本" data-astro-cid-qtokga5y>透過 Makefile 設定腳本</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#結論" data-astro-cid-qtokga5y>結論</a> </li> </ul> </div> <p>畫面與功能做完後，現在需要一些指令來讓專案在跑起來。而如果一個專案沒有在 README 提到任何啟動資訊，通常工程師會往 package.json 中的 <code>scripts</code> 欄位尋找相關提示。而今天會分享一些個人設定 <code>scripts</code> 的方法。</p>
+<h2 id="本文">本文</h2>
+<h3 id="在-packagejson-scripts-設定腳本">在 package.json scripts 設定腳本</h3>
+<p>在 <a href="/2023/ithome-2023-4">鐵人賽第 4 天</a> 有提到，個人習慣在專案的根目錄留一個 <code>./script</code> 資料夾，目的是負責收納「啟動、打包專案的腳本」。而為了能在終端輸入 <code>yarn start</code> 就觸發啟動、打包流程，我的 package.json <code>script</code> 欄位會長這樣：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="json"><code><span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#79B8FF">  "name"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"ithome-2023"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">  "version"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"1.0.0"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">  "private"</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">  "scripts"</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#79B8FF">    "start"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"node -r esbuild-runner/register ./script/start.ts"</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p><code>node -r esbuild-runner/register</code> 代表「在 node 環境註冊 <code>esbuild-runner/register</code> 套件」，然後再執行 <code>./script/start.ts</code>。更多關於 esbuild-runner 的說明可參考 <a href="https://github.com/folke/esbuild-runner#readme">官方 README</a> 內容。基本上，這就是一個幫忙把 <code>.ts</code> 檔轉成 <code>.js</code>，好讓 Node.js 環境可以順利執行 <code>.ts</code> 檔的轉譯工具。</p>
+<p>而 <code>script/start.ts</code> 的內容如下：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#6A737D">/* Packages */</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> webpack </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> 'webpack'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> WebpackDevServer </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> 'webpack-dev-server'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">/* Data */</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> devConfig, {</span></span>
+<span class="line"><span style="color:#E1E4E8">  devServerConfig,</span></span>
+<span class="line"><span style="color:#E1E4E8">} </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> './config/webpack.config.development'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">/* Functions */</span></span>
+<span class="line"><span style="color:#F97583">async</span><span style="color:#F97583"> function</span><span style="color:#B392F0"> runApp</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> compiler</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> webpack</span><span style="color:#E1E4E8">(devConfig);</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> devServer</span><span style="color:#F97583"> =</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> WebpackDevServer</span><span style="color:#E1E4E8">(devServerConfig, compiler);</span></span>
+<span class="line"><span style="color:#F97583">  await</span><span style="color:#E1E4E8"> devServer.</span><span style="color:#B392F0">start</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">/* Main */</span></span>
+<span class="line"><span style="color:#B392F0">runApp</span><span style="color:#E1E4E8">();</span></span></code></pre>
+<p>參考 <a href="https://webpack.js.org/api/webpack-dev-server/">webpack-dev-server API</a> 以及 <a href="https://webpack.js.org/api/node/#compiler-instance">Compiler Instance</a> 可得知：沒有餵 callback 給 <code>webpack</code> function 時，此功能會回傳一個 <code>webpack.Compiler</code> 實例（即上方程式碼中的 <code>compiler</code>）。</p>
+<blockquote>
+<p>If you don’t pass the <code>webpack</code> runner function a callback, it will return a webpack <code>Compiler</code> instance.</p>
+</blockquote>
+<p>將此實例與 <code>webpack-dev-server</code> 專用的 <code>devServerConfig</code> 設定檔做為參數來建構一個 <code>WebpackDevServer</code> 實例後，得到的 <code>devServer</code> 即可透過 <code>.start()</code> 來啟動本機伺服器、預覽專案內容。</p>
+<p><code>script/start.ts</code> 的任務非常單純，他負責的事情只是「根據開發者餵進來的 webpack 設定」來啟動一個本機伺服器。至於這個本機伺服器「會有哪些行為」，則是透過 <code>./src/config</code> 的設定決定。</p>
+<h3 id="透過-makefile-設定腳本">透過 Makefile 設定腳本</h3>
+<p>除了將腳本寫在 package.json <code>scripts</code> 中，還有另外一種選擇，那就是透過 <code>make</code> 與 <code>Makefile</code>。<code>make</code> 是一種<a href="https://zh.wikipedia.org/zh-tw/%E7%B5%84%E5%BB%BA%E8%87%AA%E5%8B%95%E5%8C%96">組建自動化工具</a>（build automation tool），搭配 <code>Makefile</code> 後，開發者可在終端輸入 <code>make $(target)</code> 來執行各種已經在 <code>Makefile</code> 內設定好的腳本。</p>
+<p>以上方的 <code>yarn start</code> 為例，其 <code>Makefile</code> 版本如下：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D"># 開啟本機伺服器來運行此前端專案</span></span>
+<span class="line"><span style="color:#B392F0">.PHONY:</span><span style="color:#9ECBFF"> start</span></span>
+<span class="line"><span style="color:#B392F0">start:</span></span>
+<span class="line"><span style="color:#B392F0">	node</span><span style="color:#79B8FF"> -r</span><span style="color:#9ECBFF"> esbuild-runner/register</span><span style="color:#9ECBFF"> ./script/start.ts</span></span></code></pre>
+<p><code>.PHONY: start</code> 代表偵測到 <code>make start</code> 指令時，要執行下方的 <code>node -r esbuild-runner/register ./script/start.ts</code> 內容。使用 <code>.PHONY</code> 能優化效能、也能避免執行 <code>make</code> 腳本時撞名（比如資料夾中真的有一個叫做 <code>start</code> 的檔案，如果沒有 <code>.PHONY: start</code> 的話，就會變成該 <code>start</code> 檔案被執行）。</p>
+<blockquote>
+<p><a href="https://www.gnu.org/software/make/manual/html_node/Phony-Targets.html">gnu.org > 4.6 Phony Targets</a>: A phony target is one that is not really the name of a file; rather it is <strong>just a name for a recipe to be executed when you make an explicit request</strong>. There are two reasons to use a phony target: to <strong>avoid a conflict with a file of the same name</strong>, and to <strong>improve performance</strong>.</p>
+</blockquote>
+<hr>
+<p>個人愛用的安裝腳本如下，先移除既有的 node_modules 資料夾後，再以「不更動 yarn.lock 內容」為前提進行套件安裝。並透過 <code>--production=false</code> 確保 <code>devDependencies</code> 套件不會被漏掉。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">.PHONY:</span><span style="color:#9ECBFF"> i</span></span>
+<span class="line"><span style="color:#B392F0">i:</span></span>
+<span class="line"><span style="color:#B392F0">	rm</span><span style="color:#79B8FF"> -rf</span><span style="color:#9ECBFF"> node_modules</span><span style="color:#E1E4E8"> &#x26;&#x26; </span><span style="color:#79B8FF">\</span></span>
+<span class="line"><span style="color:#B392F0">	yarn</span><span style="color:#9ECBFF"> install</span><span style="color:#79B8FF"> --frozen-lockfile</span><span style="color:#79B8FF"> --production=false</span></span></code></pre>
+<p>以上腳本還可改寫為：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D"># 移除 node_modules 資料夾</span></span>
+<span class="line"><span style="color:#B392F0">.PHONY:</span><span style="color:#9ECBFF"> delete-node-modules</span></span>
+<span class="line"><span style="color:#B392F0">delete-node-modules:</span></span>
+<span class="line"><span style="color:#B392F0">	rm</span><span style="color:#79B8FF"> -rf</span><span style="color:#9ECBFF"> node_modules</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># 在不更動 yarn.lock 內容的情況下，安裝全部的專案套件</span></span>
+<span class="line"><span style="color:#B392F0">.PHONY:</span><span style="color:#9ECBFF"> i</span></span>
+<span class="line"><span style="color:#B392F0">i:</span><span style="color:#9ECBFF"> delete-node-modules</span></span>
+<span class="line"><span style="color:#B392F0">	yarn</span><span style="color:#9ECBFF"> install</span><span style="color:#79B8FF"> --frozen-lockfile</span><span style="color:#79B8FF"> --production=false</span></span></code></pre>
+<p><code>i: delete-node-modules</code> 代表「執行 target <code>i</code> 之前，先執行 target <code>delete-node-modules</code> 的內容」。更多關於 target dependency 的內容可以參考 <a href="https://bytes.usc.edu/cs104/wiki/makefile/">Makefile Cheat Sheet</a>。</p>
+<p>提示：透過 <code>#</code> 字開頭的內容都會被視為註解。</p>
+<blockquote>
+<p><a href="https://www.gnu.org/software/make/manual/html_node/Makefile-Contents.html">gnu.org > 3.1 What Makefiles Contain</a>: ‘#’ in a line of a makefile <strong>starts a comment</strong>. It and the rest of the line are ignored, except that a trailing backslash not escaped by another backslash will continue the comment across multiple lines.</p>
+</blockquote>
+<hr>
+<p>有時候，你可能需要在執行腳本時引用 <code>.env</code> 檔案內的變數。先假設 <code>.env</code> 內容為：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D"># 指定打包後輸出的目的地資料夾</span></span>
+<span class="line"><span style="color:#E1E4E8">BUILD_DESTINATION</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">build</span></span></code></pre>
+<p>那麽在 <code>Makefile</code> 中，只要加上以下內容就能直接透過 <code>$(BUILD_DESTINATION)</code> 來取得 <code>.env</code> 中的變數內容（即 <code>build</code>）：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">ifneq</span><span style="color:#E1E4E8"> (,$(wildcard </span><span style="color:#9ECBFF">./.env</span><span style="color:#E1E4E8">))</span></span>
+<span class="line"><span style="color:#B392F0">    include</span><span style="color:#9ECBFF"> .env</span></span>
+<span class="line"><span style="color:#F97583">    export</span></span>
+<span class="line"><span style="color:#B392F0">endif</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># 移除打包檔案</span></span>
+<span class="line"><span style="color:#B392F0">.PHONY:</span><span style="color:#9ECBFF"> remove-build</span></span>
+<span class="line"><span style="color:#B392F0">remove-build:</span></span>
+<span class="line"><span style="color:#B392F0">	rm</span><span style="color:#79B8FF"> -f</span><span style="color:#79B8FF"> -r</span><span style="color:#E1E4E8"> $(</span><span style="color:#B392F0">BUILD_DESTINATION</span><span style="color:#E1E4E8">)</span></span></code></pre>
+<p><code>ifneq (,$(wildcard ./.env))</code> 代表「<code>wildcard ./.env</code> 回傳的內容是否為空字串」，如果「不是空字串」，則透過 <code>include .env</code> / <code>export</code> 來「引入、並將其中的變數匯出」，於是開發者可以透過 <code>$(BUILD_DESTINATION)</code> 來取得 <code>.env</code> 中的內容了。</p>
+<p>完整的 syntax 說明可參考官方文件：</p>
+<ul>
+<li><code>ifneq</code> 可查看 <a href="https://www.gnu.org/software/make/manual/html_node/Conditional-Syntax.html">7.2 Syntax of Conditionals</a></li>
+<li><code>wildcard</code> 可查看 <a href="https://www.gnu.org/software/make/manual/html_node/Wildcard-Function.html">4.4.3 The Function wildcard</a></li>
+</ul>
+<hr>
+<p>不過，如果想要透過 <code>Makefile</code> 來執行 <code>jest -u</code>（更新 <code>snapshots</code> 內容） 或 <code>jest path/to/specific/file.test.ts</code>（指定測試特定檔案）這類需要傳入 command line flag 的腳本時，個人認為 <code>make</code> 就比較不直覺了：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D"># 執行單元測試</span></span>
+<span class="line"><span style="color:#B392F0">.PHONY:</span><span style="color:#9ECBFF"> test</span></span>
+<span class="line"><span style="color:#79B8FF">test</span><span style="color:#9ECBFF">:</span></span>
+<span class="line"><span style="color:#B392F0">	yarn</span><span style="color:#9ECBFF"> jest</span><span style="color:#E1E4E8"> $(</span><span style="color:#B392F0">option</span><span style="color:#E1E4E8">)</span></span></code></pre>
+<p>此時需要在終端輸入 <code>make test option=-u</code> 或 <code>make test option=path/to/specific/file.test.ts</code> 才能滿足效果。</p>
+<p>提示：關鍵字 <code>option</code> 可換成任意單字，這邊僅是透過 <code>option</code> 一詞來將終端機取得的內容轉交給 <code>make</code> 而已。</p>
+<h2 id="結論">結論</h2>
+<p>使用 <code>Makefile</code> 的好處是：能寫註解、可對腳本進行換行排版、簡單幾行 code 就能引用 <code>.env</code> 檔的內容。缺點是在執行 <code>jest</code> 這類經常搭配 command line flag 的套件時，需要額外透過自訂關鍵字來取得 flag 資料。</p>
+<p>大原則是將腳本集中一處管理，選定使用 <code>scripts</code> 或 <code>Makefile</code> 後，就盡量把專案中所有的腳本都收納在選好的地方、不要再到處散落了。</p>
+<p>以上就是個人對 package.json <code>scripts</code> 與 <code>make</code> / <code>Makefile</code> 的經驗分享，感謝你的閱讀 ( •̀ω•́)</p> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

@@ -1,0 +1,607 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.BScVxmeO.js"></script><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.1.2"><!-- Primary Meta Tags --><title>閱讀筆記：The Art of Unit Testing Chapter 6 Unit testing asynchronous code</title><meta name="title" content="閱讀筆記：The Art of Unit Testing Chapter 6 Unit testing asynchronous code"><meta name="description" content="本章提供兩種實作技巧讓我們能為「包含非同步功能」的單元寫出良好的單元測試，其為「分離進入點（extracting an entry point）」與「配接器模式（adapter pattern）」"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2024/the-art-of-unit-testing-ch6-unit-testing-asynchronous-code"><meta property="og:title" content="閱讀筆記：The Art of Unit Testing Chapter 6 Unit testing asynchronous code"><meta property="og:description" content="本章提供兩種實作技巧讓我們能為「包含非同步功能」的單元寫出良好的單元測試，其為「分離進入點（extracting an entry point）」與「配接器模式（adapter pattern）」"><meta property="og:image" content="https://tzynwang.github.io/2024/the-art-of-unit-testing-ch6-unit-testing-asynchronous-code/age-barros-rBPOfVqROzY-unsplash.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2024/the-art-of-unit-testing-ch6-unit-testing-asynchronous-code"><meta property="twitter:title" content="閱讀筆記：The Art of Unit Testing Chapter 6 Unit testing asynchronous code"><meta property="twitter:description" content="本章提供兩種實作技巧讓我們能為「包含非同步功能」的單元寫出良好的單元測試，其為「分離進入點（extracting an entry point）」與「配接器模式（adapter pattern）」"><meta property="twitter:image" content="https://tzynwang.github.io/2024/the-art-of-unit-testing-ch6-unit-testing-asynchronous-code/age-barros-rBPOfVqROzY-unsplash.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:Noto Sans TC,sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul:not(:has(li)){margin-top:16px;margin-bottom:16px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:16px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+[data-astro-image]{width:100%;height:auto;object-fit:var(--fit);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>閱讀筆記：The Art of Unit Testing Chapter 6 Unit testing asynchronous code</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2024-01-14 18:26</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/Testing" data-astro-cid-2iymvi75> Testing </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#intro" data-astro-cid-qtokga5y>intro</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#61-dealing-with-async-data-fetching" data-astro-cid-qtokga5y>6.1 Dealing with async data fetching</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#62-making-our-code-unit-test-friendly" data-astro-cid-qtokga5y>6.2 Making our code unit-test friendly</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#extracting-an-entry-point" data-astro-cid-qtokga5y>Extracting an entry point</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#extract-adapter-pattern" data-astro-cid-qtokga5y>Extract adapter pattern</a> </li><li class="toc-4" data-astro-cid-qtokga5y> <a href="#module-solution" data-astro-cid-qtokga5y>module solution</a> </li><li class="toc-4" data-astro-cid-qtokga5y> <a href="#function-parameter-solution" data-astro-cid-qtokga5y>function parameter solution</a> </li><li class="toc-4" data-astro-cid-qtokga5y> <a href="#interface-based-solution" data-astro-cid-qtokga5y>interface based solution</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#63-dealing-with-timers" data-astro-cid-qtokga5y>6.3 Dealing with timers</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#monkey-patching" data-astro-cid-qtokga5y>Monkey patching</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#faking-timer-with-jest" data-astro-cid-qtokga5y>Faking timer with Jest</a> </li><li class="toc-4" data-astro-cid-qtokga5y> <a href="#for-settimeout" data-astro-cid-qtokga5y>for setTimeout()</a> </li><li class="toc-4" data-astro-cid-qtokga5y> <a href="#for-setinterval" data-astro-cid-qtokga5y>for setInterval()</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#64-dealing-with-common-events" data-astro-cid-qtokga5y>6.4 Dealing with common events</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#dealing-with-event-emitters" data-astro-cid-qtokga5y>Dealing with event emitters</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#dealing-with-click-events" data-astro-cid-qtokga5y>Dealing with click events</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#參考文件" data-astro-cid-qtokga5y>參考文件</a> </li> </ul> </div> <h2 id="intro">intro</h2>
+<p>還記得依賴（dependency）的定義嗎？所有無法、很難控制的要素都是依賴，所以非同步功能（async function）自然也是一種依賴——畢竟我們無法控制非同步功能的完成時間。</p>
+<p>有鑒於此不可控性，本章提供兩種實作技巧來讓我們寫出良好的單元測試：</p>
+<ol>
+<li>分離進入點（extracting an entry point）</li>
+<li>採用配接器模式（adapter pattern）分離非同步的部分</li>
+</ol>
+<h2 id="61-dealing-with-async-data-fetching">6.1 Dealing with async data fetching</h2>
+<p>非同步功能為單元測試帶來的困擾是——產生結果所需的時間、結果是成功或失敗——這些都是我們無法控制的部分。以下方的 <code>isWebsiteAlive</code> 為例：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> fetch</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> require</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'node-fetch'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#B392F0"> isWebsiteAlive</span><span style="color:#F97583"> =</span><span style="color:#F97583"> async</span><span style="color:#E1E4E8"> () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">  try</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> resp</span><span style="color:#F97583"> =</span><span style="color:#F97583"> await</span><span style="color:#B392F0"> fetch</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'http://example.com'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">    if</span><span style="color:#E1E4E8"> (</span><span style="color:#F97583">!</span><span style="color:#E1E4E8">resp.ok) {</span></span>
+<span class="line"><span style="color:#6A737D">      // exit point 1</span></span>
+<span class="line"><span style="color:#F97583">      throw</span><span style="color:#E1E4E8"> resp.statusText;</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> text</span><span style="color:#F97583"> =</span><span style="color:#F97583"> await</span><span style="color:#E1E4E8"> resp.</span><span style="color:#B392F0">text</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#F97583">    if</span><span style="color:#E1E4E8"> (text.</span><span style="color:#B392F0">includes</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'illustrative'</span><span style="color:#E1E4E8">)) {</span></span>
+<span class="line"><span style="color:#6A737D">      // exit point 2</span></span>
+<span class="line"><span style="color:#F97583">      return</span><span style="color:#E1E4E8"> { success: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">, status: </span><span style="color:#9ECBFF">'ok'</span><span style="color:#E1E4E8"> };</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#6A737D">    // exit point 3</span></span>
+<span class="line"><span style="color:#F97583">    throw</span><span style="color:#9ECBFF"> 'text missing'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">  } </span><span style="color:#F97583">catch</span><span style="color:#E1E4E8"> (err) {</span></span>
+<span class="line"><span style="color:#6A737D">    // exit point 4</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#E1E4E8"> { success: </span><span style="color:#79B8FF">false</span><span style="color:#E1E4E8">, status: err };</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span></code></pre>
+<ol>
+<li>我們無法控制 <code>await fetch("http://example.com")</code> 何時回應，測試可能變得耗時</li>
+<li>我們無法控制 <code>http://example.com</code> 這個服務是否在線上 ，執行測試時，我們無法控制要進入哪一個退出點</li>
+<li>承上，因為無法控制網站的上線與否，當測試亮紅燈時，我們要檢查到底是網站掛掉，還是測試壞掉——多來幾次以後，我們就不再信賴這個測試，也不會信任執行結果了</li>
+</ol>
+<p>綜上所述，為了能寫出穩固、能全心信賴的單元測試，在實作功能時請透過以下技巧製造<strong>接縫</strong>（seam，可複習<a href="/2023/the-art-of-unit-testing-ch3-breaking-dependencies-with-stubs#332-dependencies-injections-and-control">第三章的筆記</a>）：</p>
+<ol>
+<li>分離進入點（extracting and entry point）：意思是把一個單元裡「純邏輯」的部分獨立成一個功能，並把這個功能當成新的進入點，對其執行單元測試</li>
+<li>採用配接器模式（adapter patter）：工程師只要遵守定義好的介面，就能替換掉非同步的部分</li>
+</ol>
+<h2 id="62-making-our-code-unit-test-friendly">6.2 Making our code unit-test friendly</h2>
+<h3 id="extracting-an-entry-point">Extracting an entry point</h3>
+<p>我們可以將 <code>isWebsiteAlive</code> 裡，只進行邏輯判斷（純）的部份抽出（<code>throwIfResponseNotOK</code> / <code>processFetchContent</code> / <code>processFetchError</code>）：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> fetch</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> require</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'node-fetch'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#B392F0"> throwIfResponseNotOK</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">resp</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">  if</span><span style="color:#E1E4E8"> (</span><span style="color:#F97583">!</span><span style="color:#E1E4E8">resp.ok) {</span></span>
+<span class="line"><span style="color:#F97583">    throw</span><span style="color:#E1E4E8"> resp.statusText;</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#B392F0"> processFetchContent</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">text</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> included</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> text.</span><span style="color:#B392F0">includes</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'illustrative'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">  if</span><span style="color:#E1E4E8"> (included) {</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#E1E4E8"> { success: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">, status: </span><span style="color:#9ECBFF">'ok'</span><span style="color:#E1E4E8"> };</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> { success: </span><span style="color:#79B8FF">false</span><span style="color:#E1E4E8">, status: </span><span style="color:#9ECBFF">'missing text'</span><span style="color:#E1E4E8"> };</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#B392F0"> processFetchError</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">err</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> { success: </span><span style="color:#79B8FF">false</span><span style="color:#E1E4E8">, status: err };</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// Await version</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#B392F0"> isWebsiteAlive</span><span style="color:#F97583"> =</span><span style="color:#F97583"> async</span><span style="color:#E1E4E8"> () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">  try</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> resp</span><span style="color:#F97583"> =</span><span style="color:#F97583"> await</span><span style="color:#B392F0"> fetch</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'http://example.com'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#6A737D">    // exit point 1</span></span>
+<span class="line"><span style="color:#B392F0">    throwIfResponseNotOK</span><span style="color:#E1E4E8">(resp);</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> text</span><span style="color:#F97583"> =</span><span style="color:#F97583"> await</span><span style="color:#E1E4E8"> resp.</span><span style="color:#B392F0">text</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#6A737D">    // exit point 2</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#B392F0"> processFetchContent</span><span style="color:#E1E4E8">(text);</span></span>
+<span class="line"><span style="color:#E1E4E8">  } </span><span style="color:#F97583">catch</span><span style="color:#E1E4E8"> (err) {</span></span>
+<span class="line"><span style="color:#6A737D">    // exit point 3</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#B392F0"> processFetchError</span><span style="color:#E1E4E8">(err);</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span></code></pre>
+<p>雖然我們依舊無法控制 <code>const resp = await fetch("http://example.com");</code> 的結果，但能透過單元測試確保「這三個新單元會根據 <code>resp</code> 內容採取正確的行動」：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#B392F0">describe</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'throwIfResponseNotOK'</span><span style="color:#E1E4E8">, () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#B392F0">  it</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'should not throw an error if response is ok'</span><span style="color:#E1E4E8">, () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> response</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> { ok: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8"> };</span></span>
+<span class="line"><span style="color:#B392F0">    expect</span><span style="color:#E1E4E8">(() </span><span style="color:#F97583">=></span><span style="color:#B392F0"> throwIfResponseNotOK</span><span style="color:#E1E4E8">(response)).not.</span><span style="color:#B392F0">toThrow</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">  });</span></span>
+<span class="line"><span style="color:#B392F0">  it</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'should throw an error with response status text if response is not ok'</span><span style="color:#E1E4E8">, () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> response</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> { ok: </span><span style="color:#79B8FF">false</span><span style="color:#E1E4E8">, statusText: </span><span style="color:#9ECBFF">'Not Found'</span><span style="color:#E1E4E8"> };</span></span>
+<span class="line"><span style="color:#B392F0">    expect</span><span style="color:#E1E4E8">(() </span><span style="color:#F97583">=></span><span style="color:#B392F0"> throwIfResponseNotOK</span><span style="color:#E1E4E8">(response)).</span><span style="color:#B392F0">toThrowError</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'Not Found'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">  });</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">describe</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'processFetchContent'</span><span style="color:#E1E4E8">, () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#B392F0">  it</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"should return success true and status 'ok' when text includes 'illustrative'"</span><span style="color:#E1E4E8">, () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> text</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> 'This is illustrative content'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#B392F0">    expect</span><span style="color:#E1E4E8">(</span><span style="color:#B392F0">processFetchContent</span><span style="color:#E1E4E8">(text)).</span><span style="color:#B392F0">toEqual</span><span style="color:#E1E4E8">({</span></span>
+<span class="line"><span style="color:#6A737D">      //</span></span>
+<span class="line"><span style="color:#E1E4E8">      success: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">      status: </span><span style="color:#9ECBFF">'ok'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">    });</span></span>
+<span class="line"><span style="color:#E1E4E8">  });</span></span>
+<span class="line"><span style="color:#B392F0">  it</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"should return success false and status 'missing text' when text does not include 'illustrative'"</span><span style="color:#E1E4E8">, () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> text</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> 'Some random content'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#B392F0">    expect</span><span style="color:#E1E4E8">(</span><span style="color:#B392F0">processFetchContent</span><span style="color:#E1E4E8">(text)).</span><span style="color:#B392F0">toEqual</span><span style="color:#E1E4E8">({</span></span>
+<span class="line"><span style="color:#6A737D">      //</span></span>
+<span class="line"><span style="color:#E1E4E8">      success: </span><span style="color:#79B8FF">false</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">      status: </span><span style="color:#9ECBFF">'missing text'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">    });</span></span>
+<span class="line"><span style="color:#E1E4E8">  });</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">describe</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'processFetchError'</span><span style="color:#E1E4E8">, () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#B392F0">  test</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'should return an object with success false and provided error message'</span><span style="color:#E1E4E8">, () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> errorMessage</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> 'Failed to fetch'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#B392F0">    expect</span><span style="color:#E1E4E8">(</span><span style="color:#B392F0">processFetchError</span><span style="color:#E1E4E8">(errorMessage)).</span><span style="color:#B392F0">toEqual</span><span style="color:#E1E4E8">({</span></span>
+<span class="line"><span style="color:#E1E4E8">      success: </span><span style="color:#79B8FF">false</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">      status: </span><span style="color:#9ECBFF">'Failed to fetch'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">    });</span></span>
+<span class="line"><span style="color:#E1E4E8">  });</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+<p>以上就是用「分離進入點」的概念重構 <code>isWebsiteAlive</code>，以便提升測試覆蓋率的方法。</p>
+<h3 id="extract-adapter-pattern">Extract adapter pattern</h3>
+<p>配接器模式說白了，就是把「呼叫非同步功能的介面」與「功能的實作方式」分開來。這種設計的好處是，我們能在測試時使用同步（synchronous）的假模組、假功能、假實例。</p>
+<h4 id="module-solution">module solution</h4>
+<p>第一種作法：以模組作為介面，把非同步功能獨立到另一包檔案中。</p>
+<p>比如把 <code>isWebsiteAlive</code> 中的 <code>await fetch</code> 拆進 <code>network.js</code> 中，變成一個獨立的功能 <code>fetchUrlText</code>。剩下的就留在 <code>index.js</code> 裡：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#6A737D">// network.js</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#B392F0"> fetchUrlText</span><span style="color:#F97583"> =</span><span style="color:#F97583"> async</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">url</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> resp</span><span style="color:#F97583"> =</span><span style="color:#F97583"> await</span><span style="color:#B392F0"> fetch</span><span style="color:#E1E4E8">(url);</span></span>
+<span class="line"><span style="color:#F97583">  if</span><span style="color:#E1E4E8"> (resp.ok) {</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> text</span><span style="color:#F97583"> =</span><span style="color:#F97583"> await</span><span style="color:#E1E4E8"> resp.</span><span style="color:#B392F0">text</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#E1E4E8"> { ok: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">, text: text };</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> { ok: </span><span style="color:#79B8FF">false</span><span style="color:#E1E4E8">, text: resp.statusText };</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span></code></pre>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#6A737D">// index.js</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#E1E4E8"> { </span><span style="color:#79B8FF">fetchUrlText</span><span style="color:#E1E4E8"> } </span><span style="color:#F97583">=</span><span style="color:#B392F0"> require</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'./network'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#B392F0"> processFetchSuccess</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">text</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> included</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> text.</span><span style="color:#B392F0">includes</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'illustrative'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">  if</span><span style="color:#E1E4E8"> (included) {</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#E1E4E8"> { success: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">, status: </span><span style="color:#9ECBFF">'ok'</span><span style="color:#E1E4E8"> };</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> { success: </span><span style="color:#79B8FF">false</span><span style="color:#E1E4E8">, status: </span><span style="color:#9ECBFF">'missing text'</span><span style="color:#E1E4E8"> };</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#B392F0"> processFetchFail</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">err</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> { success: </span><span style="color:#79B8FF">false</span><span style="color:#E1E4E8">, status: err };</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#B392F0"> isWebsiteAlive</span><span style="color:#F97583"> =</span><span style="color:#F97583"> async</span><span style="color:#E1E4E8"> () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">  try</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> result</span><span style="color:#F97583"> =</span><span style="color:#F97583"> await</span><span style="color:#B392F0"> fetchUrlText</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'http://example.com'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">    if</span><span style="color:#E1E4E8"> (</span><span style="color:#F97583">!</span><span style="color:#E1E4E8">result.ok) {</span></span>
+<span class="line"><span style="color:#F97583">      return</span><span style="color:#B392F0"> processFetchFail</span><span style="color:#E1E4E8">(result.text);</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> text</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> result.text;</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#B392F0"> processFetchSuccess</span><span style="color:#E1E4E8">(text);</span></span>
+<span class="line"><span style="color:#E1E4E8">  } </span><span style="color:#F97583">catch</span><span style="color:#E1E4E8"> (err) {</span></span>
+<span class="line"><span style="color:#F97583">    throw</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> Error</span><span style="color:#E1E4E8">(err);</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span></code></pre>
+<p>在測試 <code>isWebsiteAlive</code> 時，我們就能透過 <code>jest.mock()</code> 與 <code>.mockResolvedValue()</code> 控制非同步功能 <code>fetchUrlText()</code> 回傳的值，進而決定我們在每一個單元測試中要通過哪一個退出點：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#E1E4E8">jest.</span><span style="color:#B392F0">mock</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'./network'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> stub</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> require</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'./network'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#E1E4E8"> { </span><span style="color:#79B8FF">isWebsiteAlive</span><span style="color:#E1E4E8"> } </span><span style="color:#F97583">=</span><span style="color:#B392F0"> require</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'./index'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">describe</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'isWebsiteAlive'</span><span style="color:#E1E4E8">, () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#B392F0">  beforeEach</span><span style="color:#E1E4E8">(() </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">    jest.</span><span style="color:#B392F0">clearAllMocks</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">  });</span></span>
+<span class="line"><span style="color:#B392F0">  it</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'should return success: true, status: ok when fetchUrlText returns ok and text include `illustrative`'</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">async</span><span style="color:#E1E4E8"> () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">    // arrange</span></span>
+<span class="line"><span style="color:#E1E4E8">    stub.fetchUrlText.</span><span style="color:#B392F0">mockResolvedValue</span><span style="color:#E1E4E8">({</span></span>
+<span class="line"><span style="color:#E1E4E8">      ok: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">      text: </span><span style="color:#9ECBFF">'This is illustrative text'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">    });</span></span>
+<span class="line"><span style="color:#6A737D">    // act</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> result</span><span style="color:#F97583"> =</span><span style="color:#F97583"> await</span><span style="color:#B392F0"> isWebsiteAlive</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#6A737D">    // assert</span></span>
+<span class="line"><span style="color:#B392F0">    expect</span><span style="color:#E1E4E8">(result).</span><span style="color:#B392F0">toEqual</span><span style="color:#E1E4E8">({ success: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">, status: </span><span style="color:#9ECBFF">'ok'</span><span style="color:#E1E4E8"> });</span></span>
+<span class="line"><span style="color:#E1E4E8">  });</span></span>
+<span class="line"><span style="color:#B392F0">  it</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'should return success: false, status: missing text when fetchUrlText returns ok but text not include `illustrative`'</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">async</span><span style="color:#E1E4E8"> () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">    // arrange</span></span>
+<span class="line"><span style="color:#E1E4E8">    stub.fetchUrlText.</span><span style="color:#B392F0">mockResolvedValue</span><span style="color:#E1E4E8">({</span></span>
+<span class="line"><span style="color:#E1E4E8">      ok: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">      text: </span><span style="color:#9ECBFF">'Some random text'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">    });</span></span>
+<span class="line"><span style="color:#6A737D">    // act</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> result</span><span style="color:#F97583"> =</span><span style="color:#F97583"> await</span><span style="color:#B392F0"> isWebsiteAlive</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#6A737D">    // assert</span></span>
+<span class="line"><span style="color:#B392F0">    expect</span><span style="color:#E1E4E8">(result).</span><span style="color:#B392F0">toEqual</span><span style="color:#E1E4E8">({ success: </span><span style="color:#79B8FF">false</span><span style="color:#E1E4E8">, status: </span><span style="color:#9ECBFF">'missing text'</span><span style="color:#E1E4E8"> });</span></span>
+<span class="line"><span style="color:#E1E4E8">  });</span></span>
+<span class="line"><span style="color:#B392F0">  it</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'should throw success: false and status with error text when fetchUrlText return ok: false'</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">async</span><span style="color:#E1E4E8"> () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">    // arrange</span></span>
+<span class="line"><span style="color:#E1E4E8">    stub.fetchUrlText.</span><span style="color:#B392F0">mockResolvedValue</span><span style="color:#E1E4E8">({</span></span>
+<span class="line"><span style="color:#E1E4E8">      ok: </span><span style="color:#79B8FF">false</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">      text: </span><span style="color:#9ECBFF">'Failed to fetch'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">    });</span></span>
+<span class="line"><span style="color:#6A737D">    // act</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> result</span><span style="color:#F97583"> =</span><span style="color:#F97583"> await</span><span style="color:#B392F0"> isWebsiteAlive</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#6A737D">    // assert</span></span>
+<span class="line"><span style="color:#B392F0">    expect</span><span style="color:#E1E4E8">(result).</span><span style="color:#B392F0">toEqual</span><span style="color:#E1E4E8">({ success: </span><span style="color:#79B8FF">false</span><span style="color:#E1E4E8">, status: </span><span style="color:#9ECBFF">'Failed to fetch'</span><span style="color:#E1E4E8"> });</span></span>
+<span class="line"><span style="color:#E1E4E8">  });</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+<h4 id="function-parameter-solution">function parameter solution</h4>
+<p>第二種作法：以參數作為介面來傳入非同步功能——這樣在測試時，我們就能透過參數傳入假的同步功能。</p>
+<p>比如以下重構後的 <code>isWebsiteAlive</code> 就允許我們透過參數注入 <code>fetchUrlText()</code>：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#B392F0"> processFetchSuccess</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">text</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> included</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> text.</span><span style="color:#B392F0">includes</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'illustrative'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">  if</span><span style="color:#E1E4E8"> (included) {</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#E1E4E8"> { success: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">, status: </span><span style="color:#9ECBFF">'ok'</span><span style="color:#E1E4E8"> };</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> { success: </span><span style="color:#79B8FF">false</span><span style="color:#E1E4E8">, status: </span><span style="color:#9ECBFF">'missing text'</span><span style="color:#E1E4E8"> };</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#B392F0"> processFetchFail</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">err</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> { success: </span><span style="color:#79B8FF">false</span><span style="color:#E1E4E8">, status: err };</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#B392F0"> isWebsiteAlive</span><span style="color:#F97583"> =</span><span style="color:#F97583"> async</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">fetchUrlText</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> result</span><span style="color:#F97583"> =</span><span style="color:#F97583"> await</span><span style="color:#B392F0"> fetchUrlText</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'http://exa-mple.com'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">  if</span><span style="color:#E1E4E8"> (</span><span style="color:#F97583">!</span><span style="color:#E1E4E8">result.ok) {</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#B392F0"> processFetchFail</span><span style="color:#E1E4E8">(result.text);</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> text</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> result.text;</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#B392F0"> processFetchSuccess</span><span style="color:#E1E4E8">(text);</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span></code></pre>
+<p>在撰寫測試時，就能透過工廠功能 <code>getStubResult()</code> 控制環境了：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#E1E4E8"> { </span><span style="color:#79B8FF">isWebsiteAlive</span><span style="color:#E1E4E8"> } </span><span style="color:#F97583">=</span><span style="color:#B392F0"> require</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'./index'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// arrange</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#B392F0"> getStubResult</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">ok</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">text</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> ({</span></span>
+<span class="line"><span style="color:#E1E4E8">  ok,</span></span>
+<span class="line"><span style="color:#E1E4E8">  text,</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">describe</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'isWebsiteAlive'</span><span style="color:#E1E4E8">, () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#B392F0">  it</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'should return success: true, status: ok when fetchUrlText returns ok and text include `illustrative`'</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">async</span><span style="color:#E1E4E8"> () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">    // act</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> result</span><span style="color:#F97583"> =</span><span style="color:#F97583"> await</span><span style="color:#B392F0"> isWebsiteAlive</span><span style="color:#E1E4E8">(</span></span>
+<span class="line"><span style="color:#B392F0">      getStubResult</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">'This is illustrative text'</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">    );</span></span>
+<span class="line"><span style="color:#6A737D">    // assert</span></span>
+<span class="line"><span style="color:#B392F0">    expect</span><span style="color:#E1E4E8">(result).</span><span style="color:#B392F0">toEqual</span><span style="color:#E1E4E8">({ success: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">, status: </span><span style="color:#9ECBFF">'ok'</span><span style="color:#E1E4E8"> });</span></span>
+<span class="line"><span style="color:#E1E4E8">  });</span></span>
+<span class="line"><span style="color:#B392F0">  it</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'should return success: false, status: missing text when fetchUrlText returns ok but text not include `illustrative`'</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">async</span><span style="color:#E1E4E8"> () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">    // act</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> result</span><span style="color:#F97583"> =</span><span style="color:#F97583"> await</span><span style="color:#B392F0"> isWebsiteAlive</span><span style="color:#E1E4E8">(</span></span>
+<span class="line"><span style="color:#B392F0">      getStubResult</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">'Some random text'</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">    );</span></span>
+<span class="line"><span style="color:#6A737D">    // assert</span></span>
+<span class="line"><span style="color:#B392F0">    expect</span><span style="color:#E1E4E8">(result).</span><span style="color:#B392F0">toEqual</span><span style="color:#E1E4E8">({ success: </span><span style="color:#79B8FF">false</span><span style="color:#E1E4E8">, status: </span><span style="color:#9ECBFF">'missing text'</span><span style="color:#E1E4E8"> });</span></span>
+<span class="line"><span style="color:#E1E4E8">  });</span></span>
+<span class="line"><span style="color:#B392F0">  it</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'should throw success: false and status with error text when fetchUrlText return ok: false'</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">async</span><span style="color:#E1E4E8"> () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">    // act</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> result</span><span style="color:#F97583"> =</span><span style="color:#F97583"> await</span><span style="color:#B392F0"> isWebsiteAlive</span><span style="color:#E1E4E8">(</span></span>
+<span class="line"><span style="color:#B392F0">      getStubResult</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">false</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">'Failed to fetch'</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">    );</span></span>
+<span class="line"><span style="color:#6A737D">    // assert</span></span>
+<span class="line"><span style="color:#B392F0">    expect</span><span style="color:#E1E4E8">(result).</span><span style="color:#B392F0">toEqual</span><span style="color:#E1E4E8">({ success: </span><span style="color:#79B8FF">false</span><span style="color:#E1E4E8">, status: </span><span style="color:#9ECBFF">'Failed to fetch'</span><span style="color:#E1E4E8"> });</span></span>
+<span class="line"><span style="color:#E1E4E8">  });</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+<h4 id="interface-based-solution">interface based solution</h4>
+<p>第三種作法：以物件導向風格進行開發時，可以透過定義介面（interface）來分離實作細節——當我們想為該單元撰寫測試時，只要根據介面規則實作假實例即可。</p>
+<p>以 <code>WebsiteVerifier</code> 為例，我們會定義以下三種介面：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> interface</span><span style="color:#B392F0"> FetchAdapter</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#B392F0">  fetchUrlText</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">url</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> string</span><span style="color:#E1E4E8">)</span><span style="color:#F97583">:</span><span style="color:#B392F0"> Promise</span><span style="color:#E1E4E8">&#x3C;</span><span style="color:#B392F0">FetchResult</span><span style="color:#E1E4E8">>;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> type</span><span style="color:#B392F0"> FetchResult</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#FFAB70">  ok</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> boolean</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#FFAB70">  text</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> string</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> type</span><span style="color:#B392F0"> WebsiteAliveResult</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#FFAB70">  success</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> boolean</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#FFAB70">  status</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> string</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span></code></pre>
+<p>在正式環境裡，我們會根據 <code>FetchAdapter</code> 實作一個「真」的 <code>NetworkAdapter</code> 實例，並在建構 <code>class WebsiteVerifier</code> 時，傳入這個 <code>NetworkAdapter</code> 作為參數：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#F97583"> type</span><span style="color:#E1E4E8"> { FetchAdapter, FetchResult } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> './types'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> class</span><span style="color:#B392F0"> NetworkAdapter</span><span style="color:#F97583"> implements</span><span style="color:#B392F0"> FetchAdapter</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">  async</span><span style="color:#B392F0"> fetchUrlText</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">url</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> string</span><span style="color:#E1E4E8">)</span><span style="color:#F97583">:</span><span style="color:#B392F0"> Promise</span><span style="color:#E1E4E8">&#x3C;</span><span style="color:#B392F0">FetchResult</span><span style="color:#E1E4E8">> {</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> resp</span><span style="color:#F97583"> =</span><span style="color:#F97583"> await</span><span style="color:#B392F0"> fetch</span><span style="color:#E1E4E8">(url);</span></span>
+<span class="line"><span style="color:#F97583">    if</span><span style="color:#E1E4E8"> (resp.ok) {</span></span>
+<span class="line"><span style="color:#F97583">      const</span><span style="color:#79B8FF"> text</span><span style="color:#F97583"> =</span><span style="color:#F97583"> await</span><span style="color:#E1E4E8"> resp.</span><span style="color:#B392F0">text</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#F97583">      return</span><span style="color:#E1E4E8"> { ok: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">, text: text };</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#E1E4E8"> { ok: </span><span style="color:#79B8FF">false</span><span style="color:#E1E4E8">, text: resp.statusText };</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#F97583"> type</span><span style="color:#E1E4E8"> { FetchAdapter, WebsiteAliveResult } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> './types'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> class</span><span style="color:#B392F0"> WebsiteVerifier</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#FFAB70">  network</span><span style="color:#F97583">:</span><span style="color:#B392F0"> FetchAdapter</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">  constructor</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">network</span><span style="color:#F97583">:</span><span style="color:#B392F0"> FetchAdapter</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#79B8FF">    this</span><span style="color:#E1E4E8">.network </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> network;</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">  isWebsiteAlive</span><span style="color:#F97583"> =</span><span style="color:#F97583"> async</span><span style="color:#E1E4E8"> ()</span><span style="color:#F97583">:</span><span style="color:#B392F0"> Promise</span><span style="color:#E1E4E8">&#x3C;</span><span style="color:#B392F0">WebsiteAliveResult</span><span style="color:#E1E4E8">> </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">    try</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">      const</span><span style="color:#79B8FF"> result</span><span style="color:#F97583"> =</span><span style="color:#F97583"> await</span><span style="color:#79B8FF"> this</span><span style="color:#E1E4E8">.network.</span><span style="color:#B392F0">fetchUrlText</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'http://example.com'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">      return</span><span style="color:#E1E4E8"> result.ok</span></span>
+<span class="line"><span style="color:#F97583">        ?</span><span style="color:#79B8FF"> this</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">processFetchSuccess</span><span style="color:#E1E4E8">(result.text)</span></span>
+<span class="line"><span style="color:#F97583">        :</span><span style="color:#79B8FF"> this</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">processFetchFail</span><span style="color:#E1E4E8">(result.text);</span></span>
+<span class="line"><span style="color:#E1E4E8">    } </span><span style="color:#F97583">catch</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">err</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> any</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">      throw</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> Error</span><span style="color:#E1E4E8">(err);</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#E1E4E8">  };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">  processFetchSuccess</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">text</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> string</span><span style="color:#E1E4E8">)</span><span style="color:#F97583">:</span><span style="color:#B392F0"> WebsiteAliveResult</span><span style="color:#F97583"> =></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> included</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> text.</span><span style="color:#B392F0">includes</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'illustrative'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#E1E4E8"> included</span></span>
+<span class="line"><span style="color:#F97583">      ?</span><span style="color:#E1E4E8"> { success: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">, status: </span><span style="color:#9ECBFF">'ok'</span><span style="color:#E1E4E8"> }</span></span>
+<span class="line"><span style="color:#F97583">      :</span><span style="color:#E1E4E8"> { success: </span><span style="color:#79B8FF">false</span><span style="color:#E1E4E8">, status: </span><span style="color:#9ECBFF">'missing text'</span><span style="color:#E1E4E8"> };</span></span>
+<span class="line"><span style="color:#E1E4E8">  };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">  processFetchFail</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">err</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> any</span><span style="color:#E1E4E8">)</span><span style="color:#F97583">:</span><span style="color:#B392F0"> WebsiteAliveResult</span><span style="color:#F97583"> =></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#E1E4E8"> { success: </span><span style="color:#79B8FF">false</span><span style="color:#E1E4E8">, status: err };</span></span>
+<span class="line"><span style="color:#E1E4E8">  };</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>但是——在為 <code>class WebsiteVerifier</code> 寫測試時，我們大可直接根據 <code>interface FetchAdapter</code> 實作一個測試專用的 <code>StubNetworkAdapter</code> 來控制 <code>fetchUrlText()</code> 的回傳結果，進而為所有的情境撰寫對應測試：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#F97583"> type</span><span style="color:#E1E4E8"> { FetchAdapter, FetchResult } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> './types'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { describe, it, expect } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> '@jest/globals'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { WebsiteVerifier } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> './index'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">class</span><span style="color:#B392F0"> StubNetworkAdapter</span><span style="color:#F97583"> implements</span><span style="color:#B392F0"> FetchAdapter</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#FFAB70">  ok</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> boolean</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#FFAB70">  text</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> string</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">  constructor</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">ok</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> boolean</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">text</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> string</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#79B8FF">    this</span><span style="color:#E1E4E8">.ok </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> ok;</span></span>
+<span class="line"><span style="color:#79B8FF">    this</span><span style="color:#E1E4E8">.text </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> text;</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">  fetchUrlText</span><span style="color:#E1E4E8">()</span><span style="color:#F97583">:</span><span style="color:#B392F0"> Promise</span><span style="color:#E1E4E8">&#x3C;</span><span style="color:#B392F0">FetchResult</span><span style="color:#E1E4E8">> {</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#79B8FF"> this</span><span style="color:#E1E4E8">.ok</span></span>
+<span class="line"><span style="color:#F97583">      ?</span><span style="color:#79B8FF"> Promise</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">resolve</span><span style="color:#E1E4E8">({ ok: </span><span style="color:#79B8FF">this</span><span style="color:#E1E4E8">.ok, text: </span><span style="color:#79B8FF">this</span><span style="color:#E1E4E8">.text })</span></span>
+<span class="line"><span style="color:#F97583">      :</span><span style="color:#79B8FF"> Promise</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">reject</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">new</span><span style="color:#B392F0"> Error</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">this</span><span style="color:#E1E4E8">.text));</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#B392F0"> getVerifierWithStubAdapter</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> (</span></span>
+<span class="line"><span style="color:#FFAB70">  ok</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> boolean</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#FFAB70">  text</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> string</span></span>
+<span class="line"><span style="color:#E1E4E8">)</span><span style="color:#F97583">:</span><span style="color:#B392F0"> WebsiteVerifier</span><span style="color:#F97583"> =></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> stubAdapter</span><span style="color:#F97583"> =</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> StubNetworkAdapter</span><span style="color:#E1E4E8">(ok, text);</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> WebsiteVerifier</span><span style="color:#E1E4E8">(stubAdapter);</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">describe</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'WebsiteVerifier'</span><span style="color:#E1E4E8">, () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#B392F0">  it</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'should return success: true, status: ok when fetchUrlText returns ok and text include `illustrative`'</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">async</span><span style="color:#E1E4E8"> () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">    // arrange</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> verifier</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> getVerifierWithStubAdapter</span><span style="color:#E1E4E8">(</span></span>
+<span class="line"><span style="color:#79B8FF">      true</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">      'This is illustrative text'</span></span>
+<span class="line"><span style="color:#E1E4E8">    );</span></span>
+<span class="line"><span style="color:#6A737D">    // act</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> result</span><span style="color:#F97583"> =</span><span style="color:#F97583"> await</span><span style="color:#E1E4E8"> verifier.</span><span style="color:#B392F0">isWebsiteAlive</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#6A737D">    // assert</span></span>
+<span class="line"><span style="color:#B392F0">    expect</span><span style="color:#E1E4E8">(result).</span><span style="color:#B392F0">toEqual</span><span style="color:#E1E4E8">({ success: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">, status: </span><span style="color:#9ECBFF">'ok'</span><span style="color:#E1E4E8"> });</span></span>
+<span class="line"><span style="color:#E1E4E8">  });</span></span>
+<span class="line"><span style="color:#B392F0">  it</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'should return success: false, status: missing text when fetchUrlText returns ok but text not include `illustrative`'</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">async</span><span style="color:#E1E4E8"> () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">    // arrange</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> verifier</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> getVerifierWithStubAdapter</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">'Some random text'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#6A737D">    // act</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> result</span><span style="color:#F97583"> =</span><span style="color:#F97583"> await</span><span style="color:#E1E4E8"> verifier.</span><span style="color:#B392F0">isWebsiteAlive</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#6A737D">    // assert</span></span>
+<span class="line"><span style="color:#B392F0">    expect</span><span style="color:#E1E4E8">(result).</span><span style="color:#B392F0">toEqual</span><span style="color:#E1E4E8">({ success: </span><span style="color:#79B8FF">false</span><span style="color:#E1E4E8">, status: </span><span style="color:#9ECBFF">'missing text'</span><span style="color:#E1E4E8"> });</span></span>
+<span class="line"><span style="color:#E1E4E8">  });</span></span>
+<span class="line"><span style="color:#B392F0">  it</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'should throw success: false and status with error text when fetchUrlText return ok: false'</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">async</span><span style="color:#E1E4E8"> () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">    // arrange</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> verifier</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> getVerifierWithStubAdapter</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">false</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">'Failed to fetch'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">    try</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">      // act</span></span>
+<span class="line"><span style="color:#F97583">      await</span><span style="color:#E1E4E8"> verifier.</span><span style="color:#B392F0">isWebsiteAlive</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">    } </span><span style="color:#F97583">catch</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">e</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> any</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#6A737D">      // assert</span></span>
+<span class="line"><span style="color:#B392F0">      expect</span><span style="color:#E1E4E8">(e.message).</span><span style="color:#B392F0">toMatch</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">/</span><span style="color:#DBEDFF">Failed to fetch</span><span style="color:#9ECBFF">/</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#E1E4E8">  });</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+<p>我們甚至不需要 jest 的隔離 api 就能搞定所有退出點的單元測試 👍</p>
+<h2 id="63-dealing-with-timers">6.3 Dealing with timers</h2>
+<p>在給有計時器（timer）的單元寫測試時，可以考慮以猴子補丁（monkey patch）或直接借用 jest api 來化解 <code>setTimeout()</code> / <code>setInterval()</code> 的非同步特徵。</p>
+<h3 id="monkey-patching">Monkey patching</h3>
+<p>猴子補丁（monkey patch）指的是工程師能在執行一段程式時，「動態地修改其功能」的行為。此修改的影響是一時而非永久。</p>
+<blockquote>
+<p>Monkey patching is a way for a program <strong>to extend or modify supporting system software locally</strong> (affecting only the running instance of the program).</p>
+</blockquote>
+<p>當我們在給呼叫計時器的單元寫測試時，可以運用猴子補丁技巧來暫時修改 <code>setTimeout()</code> 的行為，並且在測試結束後將它回復原狀。</p>
+<p>比如以下範例，我們在測試時暫時移除了 <code>setTimeout()</code> 的非同步特性，並在測試結束後執行復原：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#B392F0"> calculate1</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">x</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">y</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">resultCallback</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#B392F0">  setTimeout</span><span style="color:#E1E4E8">(() </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#B392F0">    resultCallback</span><span style="color:#E1E4E8">(x </span><span style="color:#F97583">+</span><span style="color:#E1E4E8"> y);</span></span>
+<span class="line"><span style="color:#E1E4E8">  }, </span><span style="color:#79B8FF">1000</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">describe</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'calculate1'</span><span style="color:#E1E4E8">, () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#B392F0">  describe</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'in monkey patching style'</span><span style="color:#E1E4E8">, () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">    // arrange</span></span>
+<span class="line"><span style="color:#F97583">    let</span><span style="color:#E1E4E8"> originalTimeOut;</span></span>
+<span class="line"><span style="color:#B392F0">    beforeEach</span><span style="color:#E1E4E8">(() </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">      originalTimeOut </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> setTimeout;</span></span>
+<span class="line"><span style="color:#B392F0">      setTimeout</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">cb</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#B392F0"> cb</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">    });</span></span>
+<span class="line"><span style="color:#B392F0">    afterEach</span><span style="color:#E1E4E8">(() </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> (setTimeout </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> originalTimeOut));</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">    it</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'should return calculate result after 1 second'</span><span style="color:#E1E4E8">, () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">      // act, assert</span></span>
+<span class="line"><span style="color:#B392F0">      calculate1</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">2</span><span style="color:#E1E4E8">, (</span><span style="color:#FFAB70">result</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#B392F0"> expect</span><span style="color:#E1E4E8">(result).</span><span style="color:#B392F0">toBe</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">3</span><span style="color:#E1E4E8">));</span></span>
+<span class="line"><span style="color:#E1E4E8">    });</span></span>
+<span class="line"><span style="color:#E1E4E8">  });</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+<h3 id="faking-timer-with-jest">Faking timer with Jest</h3>
+<p>Jest 提供隔離 api <code>useFakeTimers()</code> / <code>useRealTimers()</code> 來讓工程師決定要在測試時使用假或真的計時器。如果我們想讓測試儘速執行完畢，可選擇呼叫 <code>useFakeTimers()</code> 讓 Jest 來覆蓋計時器的預設行為。</p>
+<h4 id="for-settimeout">for <code>setTimeout()</code></h4>
+<p>以下列 snippet 為例，我們讓 Jest 控制計時器後，不需要「真的等待一秒過去」才能看到單元執行完畢。想驗證 <code>setTimeout()</code> 是否有如期被呼叫，也能搭配 <code>toHaveBeenCalledTimes()</code> 來進行驗證：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#E1E4E8"> { </span><span style="color:#79B8FF">calculate1</span><span style="color:#E1E4E8"> } </span><span style="color:#F97583">=</span><span style="color:#B392F0"> require</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'./index'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">describe</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'calculate1'</span><span style="color:#E1E4E8">, () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#B392F0">  describe</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'in jest isolation api style'</span><span style="color:#E1E4E8">, () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">    // arrange</span></span>
+<span class="line"><span style="color:#B392F0">    beforeEach</span><span style="color:#E1E4E8">(() </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">      jest.</span><span style="color:#B392F0">clearAllTimers</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">      jest.</span><span style="color:#B392F0">useFakeTimers</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">    });</span></span>
+<span class="line"><span style="color:#B392F0">    it</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'should return calculate result'</span><span style="color:#E1E4E8">, () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">      // act, assert</span></span>
+<span class="line"><span style="color:#B392F0">      calculate1</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">2</span><span style="color:#E1E4E8">, (</span><span style="color:#FFAB70">result</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#B392F0"> expect</span><span style="color:#E1E4E8">(result).</span><span style="color:#B392F0">toBe</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">3</span><span style="color:#E1E4E8">));</span></span>
+<span class="line"><span style="color:#E1E4E8">    });</span></span>
+<span class="line"><span style="color:#B392F0">    it</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'should call setTimeout once'</span><span style="color:#E1E4E8">, () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">      // arrange</span></span>
+<span class="line"><span style="color:#E1E4E8">      jest.</span><span style="color:#B392F0">spyOn</span><span style="color:#E1E4E8">(global, </span><span style="color:#9ECBFF">'setTimeout'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#6A737D">      // act</span></span>
+<span class="line"><span style="color:#B392F0">      calculate1</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">2</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#6A737D">      // assert</span></span>
+<span class="line"><span style="color:#B392F0">      expect</span><span style="color:#E1E4E8">(setTimeout).</span><span style="color:#B392F0">toHaveBeenCalledTimes</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">    });</span></span>
+<span class="line"><span style="color:#E1E4E8">  });</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+<h4 id="for-setinterval">for <code>setInterval()</code></h4>
+<p>當單元包含 <code>setInterval()</code> 時，可搭配 <code>jest.advanceTimersToNextTimer()</code> 來推進計時器。在下列範例中，我們對 <code>jest.advanceTimersToNextTimer()</code> 傳入參數 <code>2</code>，代表計時器要被觸發兩次——因此 <code>results</code> 也該出現兩組結果：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#B392F0"> calculate2</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">getInputsFn</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">resultFn</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#B392F0">  setInterval</span><span style="color:#E1E4E8">(() </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#E1E4E8"> { </span><span style="color:#79B8FF">x</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">y</span><span style="color:#E1E4E8"> } </span><span style="color:#F97583">=</span><span style="color:#B392F0"> getInputsFn</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#B392F0">    resultFn</span><span style="color:#E1E4E8">(x </span><span style="color:#F97583">+</span><span style="color:#E1E4E8"> y);</span></span>
+<span class="line"><span style="color:#E1E4E8">  }, </span><span style="color:#79B8FF">1000</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">describe</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'calculate2'</span><span style="color:#E1E4E8">, () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#B392F0">  beforeEach</span><span style="color:#E1E4E8">(() </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">    jest.</span><span style="color:#B392F0">clearAllTimers</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">    jest.</span><span style="color:#B392F0">useFakeTimers</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">  });</span></span>
+<span class="line"><span style="color:#B392F0">  it</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'should execute getInputsFn/resultFn at interval'</span><span style="color:#E1E4E8">, () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">    // arrange</span></span>
+<span class="line"><span style="color:#F97583">    let</span><span style="color:#E1E4E8"> xInput </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> 1</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">    let</span><span style="color:#E1E4E8"> yInput </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> 2</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> results</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> [];</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#B392F0"> resultFn</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">r</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> results.</span><span style="color:#B392F0">push</span><span style="color:#E1E4E8">(r);</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#B392F0"> inputFn</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> ({ x: xInput</span><span style="color:#F97583">++</span><span style="color:#E1E4E8">, y: yInput</span><span style="color:#F97583">++</span><span style="color:#E1E4E8"> });</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">    // act</span></span>
+<span class="line"><span style="color:#B392F0">    calculate2</span><span style="color:#E1E4E8">(inputFn, resultFn);</span></span>
+<span class="line"><span style="color:#E1E4E8">    jest.</span><span style="color:#B392F0">advanceTimersToNextTimer</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">2</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">    // assert</span></span>
+<span class="line"><span style="color:#B392F0">    expect</span><span style="color:#E1E4E8">(results[</span><span style="color:#79B8FF">0</span><span style="color:#E1E4E8">]).</span><span style="color:#B392F0">toBe</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">3</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#B392F0">    expect</span><span style="color:#E1E4E8">(results[</span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">]).</span><span style="color:#B392F0">toBe</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">5</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">  });</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+<h2 id="64-dealing-with-common-events">6.4 Dealing with common events</h2>
+<p>📢 溫馨提示：為了順利執行下列測試，請記得安裝 <code>jest-environment-jsdom</code>，因為此套件<a href="https://jestjs.io/blog/2022/04/25/jest-28#jsdom-19">在 Jest 28 以後不再是預設安裝內容</a>。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">Error:</span><span style="color:#9ECBFF"> ...</span></span>
+<span class="line"><span style="color:#B392F0">As</span><span style="color:#9ECBFF"> of</span><span style="color:#9ECBFF"> Jest</span><span style="color:#79B8FF"> 28</span><span style="color:#9ECBFF"> "jsdom"</span><span style="color:#9ECBFF"> is</span><span style="color:#9ECBFF"> no</span><span style="color:#9ECBFF"> longer</span><span style="color:#9ECBFF"> shipped</span><span style="color:#9ECBFF"> by</span><span style="color:#9ECBFF"> default,</span><span style="color:#9ECBFF"> make</span><span style="color:#9ECBFF"> sure</span><span style="color:#9ECBFF"> to</span><span style="color:#9ECBFF"> install</span><span style="color:#9ECBFF"> it</span><span style="color:#9ECBFF"> separately.</span></span></code></pre>
+<p>另外，在 Jest 28 以後也支援「<a href="https://jestjs.io/blog/2022/04/25/jest-28#inline-testenvironmentoptions">指定個別測試檔案的環境</a>」。過去只能透過 <code>jest.config</code> 中的 <code>testEnvironment</code> 為所有的測試指定一種環境（<code>node</code> 或 <code>jsdom</code>）。而現在，我們能在「需要操作 DOM 的測試檔案」加入下方註解來指定該檔案的測試環境：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#6A737D">/**</span></span>
+<span class="line"><span style="color:#6A737D"> * @jest-environment jsdom</span></span>
+<span class="line"><span style="color:#6A737D"> */</span></span></code></pre>
+<h3 id="dealing-with-event-emitters">Dealing with event emitters</h3>
+<p>想測試一個包含 <code>window.dispatchEvent()</code> 的單元時，可以在 <code>beforeEach</code> 中掛載事件監聽器、在 <code>afterEach</code> 移除之，並檢查假功能 <code>handler</code> 是否有如期被呼叫。參考以下範例：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#6A737D">/**</span></span>
+<span class="line"><span style="color:#6A737D"> * @jest-environment jsdom</span></span>
+<span class="line"><span style="color:#6A737D"> */</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#B392F0"> emitMessageEvent</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">detail</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> string</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> event</span><span style="color:#F97583"> =</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> CustomEvent</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'message'</span><span style="color:#E1E4E8">, { detail });</span></span>
+<span class="line"><span style="color:#E1E4E8">  window.</span><span style="color:#B392F0">dispatchEvent</span><span style="color:#E1E4E8">(event);</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">describe</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'emitMessageEvent'</span><span style="color:#E1E4E8">, () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">  let</span><span style="color:#E1E4E8"> handler</span><span style="color:#F97583">:</span><span style="color:#B392F0"> jest</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">Mock</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#B392F0">  beforeEach</span><span style="color:#E1E4E8">(() </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">    handler </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> jest.</span><span style="color:#B392F0">fn</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">    window.</span><span style="color:#B392F0">addEventListener</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'message'</span><span style="color:#E1E4E8">, handler);</span></span>
+<span class="line"><span style="color:#E1E4E8">  });</span></span>
+<span class="line"><span style="color:#B392F0">  afterEach</span><span style="color:#E1E4E8">(() </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">    window.</span><span style="color:#B392F0">removeEventListener</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'message'</span><span style="color:#E1E4E8">, handler);</span></span>
+<span class="line"><span style="color:#E1E4E8">    handler.</span><span style="color:#B392F0">mockReset</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">  });</span></span>
+<span class="line"><span style="color:#B392F0">  it</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'should dispatch a custom event with the correct detail'</span><span style="color:#E1E4E8">, () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">    // arrange</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> detail</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> 'Test message'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#6A737D">    // act</span></span>
+<span class="line"><span style="color:#B392F0">    emitMessageEvent</span><span style="color:#E1E4E8">(detail);</span></span>
+<span class="line"><span style="color:#6A737D">    // assert</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#E1E4E8"> [</span><span style="color:#79B8FF">event</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> handler.mock.calls[</span><span style="color:#79B8FF">0</span><span style="color:#E1E4E8">];</span></span>
+<span class="line"><span style="color:#B392F0">    expect</span><span style="color:#E1E4E8">((event </span><span style="color:#F97583">as</span><span style="color:#B392F0"> CustomEvent</span><span style="color:#E1E4E8">).detail).</span><span style="color:#B392F0">toBe</span><span style="color:#E1E4E8">(detail);</span></span>
+<span class="line"><span style="color:#E1E4E8">  });</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+<h3 id="dealing-with-click-events">Dealing with click events</h3>
+<p>當我們想測試「一個 DOM 的點擊事件是否有正常運作」時，可以把重點放在「事件派送後，檢查預期結果是否出現」。</p>
+<p>以下方 <code>index.html</code> 與 <code>index.js</code> 為例，兩者搭配起來的行為是「當使用者點擊 <code>id="myButton"</code> 按鈕後，畫面上的 <code>id="myResult"</code> 要出現 <code>Clicked!</code> 字樣」：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="html"><code><span class="line"><span style="color:#6A737D">&#x3C;!-- index.html --></span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">&#x3C;!</span><span style="color:#85E89D">DOCTYPE</span><span style="color:#B392F0"> html</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">&#x3C;</span><span style="color:#85E89D">html</span><span style="color:#B392F0"> lang</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"en"</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;</span><span style="color:#85E89D">head</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#85E89D">meta</span><span style="color:#B392F0"> charset</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"UTF-8"</span><span style="color:#E1E4E8"> /></span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#85E89D">title</span><span style="color:#E1E4E8">>File to Be Tested&#x3C;/</span><span style="color:#85E89D">title</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#85E89D">script</span><span style="color:#B392F0"> src</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"./index.js"</span><span style="color:#E1E4E8">>&#x3C;/</span><span style="color:#85E89D">script</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;/</span><span style="color:#85E89D">head</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;</span><span style="color:#85E89D">body</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#85E89D">div</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">      &#x3C;</span><span style="color:#85E89D">h1</span><span style="color:#E1E4E8">>A simple button&#x3C;/</span><span style="color:#85E89D">h1</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">      &#x3C;</span><span style="color:#85E89D">button</span><span style="color:#B392F0"> id</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"myButton"</span><span style="color:#E1E4E8">>Click Me&#x3C;/</span><span style="color:#85E89D">button</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">      &#x3C;</span><span style="color:#85E89D">div</span><span style="color:#B392F0"> id</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"myResult"</span><span style="color:#E1E4E8">>Waiting...&#x3C;/</span><span style="color:#85E89D">div</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;/</span><span style="color:#85E89D">div</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;/</span><span style="color:#85E89D">body</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">&#x3C;/</span><span style="color:#85E89D">html</span><span style="color:#E1E4E8">></span></span></code></pre>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#6A737D">// index.js</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> onMyButtonClick</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> resultDiv</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> document.</span><span style="color:#B392F0">getElementById</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'myResult'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">  resultDiv.innerText </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> 'Clicked!'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">window.</span><span style="color:#B392F0">addEventListener</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'load'</span><span style="color:#E1E4E8">, () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">  document</span></span>
+<span class="line"><span style="color:#E1E4E8">    .</span><span style="color:#B392F0">getElementById</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'myButton'</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">    .</span><span style="color:#B392F0">addEventListener</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'click'</span><span style="color:#E1E4E8">, onMyButtonClick);</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">module</span><span style="color:#E1E4E8">.</span><span style="color:#79B8FF">exports</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">  onMyButtonClick,</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span></code></pre>
+<p>在撰寫測試時，我們可直接執行 <code>onMyButtonClick()</code>，再檢查元素 <code>id="myResult"</code> 的 <code>innerText</code> 是否有變為預期內容：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#6A737D">/**</span></span>
+<span class="line"><span style="color:#6A737D"> * @jest-environment jsdom</span></span>
+<span class="line"><span style="color:#6A737D"> */</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> fs</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> require</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'fs'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> path</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> require</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'path'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#E1E4E8"> { </span><span style="color:#79B8FF">onMyButtonClick</span><span style="color:#E1E4E8"> } </span><span style="color:#F97583">=</span><span style="color:#B392F0"> require</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'./index'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#B392F0"> setHtmlContent</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> html</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> fs.</span><span style="color:#B392F0">readFileSync</span><span style="color:#E1E4E8">(path.</span><span style="color:#B392F0">resolve</span><span style="color:#E1E4E8">(__dirname, </span><span style="color:#9ECBFF">'./index.html'</span><span style="color:#E1E4E8">), </span><span style="color:#9ECBFF">'utf8'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">  document.documentElement.innerHTML </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> html;</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#B392F0"> getTargetDiv</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> document.</span><span style="color:#B392F0">getElementById</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'myResult'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">describe</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'Button click behavior'</span><span style="color:#E1E4E8">, () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#B392F0">  test</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'myButton innerText should change after clicking'</span><span style="color:#E1E4E8">, () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">    // arrange</span></span>
+<span class="line"><span style="color:#B392F0">    setHtmlContent</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> target</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> getTargetDiv</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#6A737D">    // act</span></span>
+<span class="line"><span style="color:#B392F0">    onMyButtonClick</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#6A737D">    // assert</span></span>
+<span class="line"><span style="color:#B392F0">    expect</span><span style="color:#E1E4E8">(target.innerText).</span><span style="color:#B392F0">toBe</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'Clicked!'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">  });</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+<p>此概念類似上方提過的「分離進入點（extracting and entry point）」，我們不一定要在測試中鉅細靡遺地重現使用者的行為，重點是<strong>某個功能被觸發後，是否有產生預期結果</strong>。</p>
+<blockquote>
+<p>What we care about is that the click has actually done something useful other than triggering.</p>
+</blockquote>
+<p>以上便是本書第六章的筆記內容，恭喜你搞懂如何測試那些帶有非同步功能的單元了。</p>
+<h2 id="參考文件">參考文件</h2>
+<ul>
+<li><a href="https://www.manning.com/books/the-art-of-unit-testing-third-edition">Manning: The Art of Unit Testing, Third Edition</a></li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

@@ -1,0 +1,80 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.BScVxmeO.js"></script><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.1.2"><!-- Primary Meta Tags --><title>給習慣寫 CSR 服務的 remix 入門注意事項</title><meta name="title" content="給習慣寫 CSR 服務的 remix 入門注意事項"><meta name="description" content="最近用 remix 開發了一個新產品。而因為我到目前為止的前端生涯一直都是在寫 client side render 服務，所以使用 remix 開發時需要克服一些習慣。此篇筆記記錄了一些開發時的心得，如果你也是習慣寫 client side render 的 React app 但想考慮試用 remix，這篇筆記可以提供一些踩坑經驗。"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2024/remix-note-for-developer-from-cra"><meta property="og:title" content="給習慣寫 CSR 服務的 remix 入門注意事項"><meta property="og:description" content="最近用 remix 開發了一個新產品。而因為我到目前為止的前端生涯一直都是在寫 client side render 服務，所以使用 remix 開發時需要克服一些習慣。此篇筆記記錄了一些開發時的心得，如果你也是習慣寫 client side render 的 React app 但想考慮試用 remix，這篇筆記可以提供一些踩坑經驗。"><meta property="og:image" content="https://tzynwang.github.io/2024/remix-note-for-developer-from-cra/sascha-bosshard-4x_yDlANVhs-unsplash.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2024/remix-note-for-developer-from-cra"><meta property="twitter:title" content="給習慣寫 CSR 服務的 remix 入門注意事項"><meta property="twitter:description" content="最近用 remix 開發了一個新產品。而因為我到目前為止的前端生涯一直都是在寫 client side render 服務，所以使用 remix 開發時需要克服一些習慣。此篇筆記記錄了一些開發時的心得，如果你也是習慣寫 client side render 的 React app 但想考慮試用 remix，這篇筆記可以提供一些踩坑經驗。"><meta property="twitter:image" content="https://tzynwang.github.io/2024/remix-note-for-developer-from-cra/sascha-bosshard-4x_yDlANVhs-unsplash.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:Noto Sans TC,sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul:not(:has(li)){margin-top:16px;margin-bottom:16px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:16px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+[data-astro-image]{width:100%;height:auto;object-fit:var(--fit);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>給習慣寫 CSR 服務的 remix 入門注意事項</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2024-08-31 21:57</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/Remix" data-astro-cid-2iymvi75> Remix </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#大前提" data-astro-cid-qtokga5y>大前提</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#套件" data-astro-cid-qtokga5y>套件</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#關於-ga4" data-astro-cid-qtokga5y>關於 GA4</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#資料流" data-astro-cid-qtokga5y>資料流</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#網路狀態" data-astro-cid-qtokga5y>網路狀態</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#打包" data-astro-cid-qtokga5y>打包</a> </li> </ul> </div> <p>提示：這不是一篇關於 <a href="https://remix.run/">remix</a> 的手把手教學筆記，而是一個過去<strong>只寫過 client side render 服務的前端工程師在改用 remix 開發後的心得分享</strong>。如果你完全不知道 remix 是什麼，請先參考此框架的<a href="https://remix.run/docs/en/main/start/quickstart">新手教學</a>。</p>
+<h2 id="大前提">大前提</h2>
+<p>推薦使用 remix 的大前提是<strong>你能控制伺服器</strong>，你寫好的服務<strong>可以部署到後端</strong>。如果你的服務只能做成 client side render 的形式，請改用 remix 的 <a href="https://remix.run/docs/en/main/guides/spa-mode">SPA Mode</a> 開發。</p>
+<blockquote>
+<p><a href="https://remix.run/docs/en/main/guides/spa-mode#spa-mode">via official document</a>: from the beginning, Remix’s opinion has always been that <strong>you own your server architecture</strong>. While we believe that <strong>having a server provides the best UX/Performance/SEO/etc. for most apps</strong>, it is also undeniable that there exist plenty of valid use cases for a Single Page Application in the real world.</p>
+</blockquote>
+<h2 id="套件">套件</h2>
+<p>如果你需要安裝第三方套件，請確認該套件是否能在對應的環境中執行。舉例：如果你需要在 <code>loader()</code>/<code>action()</code> 裡呼叫某個套件，該套件就要能在 Node.js 環境中運作。另一方面，任何會用到 <code>window</code>/<code>document</code> 的套件與功能（比如 <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage"><code>localStorage</code></a>），請一律在 <code>React.useEffect</code> 中執行。</p>
+<h3 id="關於-ga4">關於 GA4</h3>
+<p>一開始我參考 <a href="https://github.com/remix-run/examples/tree/main/google-analytics">google-analytics</a> 在 <code>root.tsx</code> 的 <code>Layout()</code> 設定了 GA4 的 script 標籤，但測試後確定事件都沒有被派送（明明 <code>window.dataLayer</code> 跟 <code>window.gtag</code> 都不是 <code>undefined</code> 🥲）。</p>
+<p>目前的解決辦法：在 <code>React.useEffect</code> 中透過套件 <a href="https://www.npmjs.com/package/react-ga4">react-ga4</a> 來啟動 GA4。</p>
+<h2 id="資料流">資料流</h2>
+<blockquote>
+<p>大原則：從 <code>loader()</code> 取資料，在元件（畫面）中使用 <code>loader()</code> 提供的資料；觸發 <code>action()</code> 後（比如使用者送出訂單），再根據 <code>action()</code> 造成的改變更新元件（畫面）。細節可參考<a href="https://remix.run/docs/en/main/discussion/data-flow">官方文件 Fullstack Data Flow</a>。</p>
+</blockquote>
+<p>所有「取得資料」的工作（呼叫 api/DB 等等）都由 <code>loader()</code> 負責，詳細可參考<a href="https://remix.run/docs/en/main/guides/data-loading">官方文件 Data Loading</a>。</p>
+<p>如果需要全域變數，可以從 <code>root.tsx</code> 的 <code>loader()</code> 傳入，再搭配 <code>useRouteLoaderData</code> 於特定部位取用。但要注意 <code>loader()</code> 吐出來的資料都是序列化的內容。需要全域功能或任何要「全域共用，但不能被序列化的資料」可以考慮用 <a href="https://remix.run/docs/en/main/components/outlet"><code>&#x3C;Outlet></code></a> 的 <code>props.context</code> 搭配 <a href="https://remix.run/docs/en/main/hooks/use-outlet-context"><code>useOutletContext</code></a> 來實現。</p>
+<hr>
+<p>環境變數請根據你部署服務的後端來設定，參考 <a href="https://remix.run/docs/en/main/guides/envvars">Environment Variables</a>。這部分比傳統的 client side render 服務簡單很多。</p>
+<hr>
+<p>remix 有提供 <a href="https://remix.run/docs/en/main/route/meta">meta</a> 功能方便開發者設定每一條路由的 <code>&#x3C;meta></code> 資訊。要注意的是：如果 <code>meta()</code> 需要用到 Node.js 環境的資料，要從 <code>loader()</code> 餵進去；另外，此功能雖然不在後端，但也無法操作 <code>window</code>/<code>document</code> 等瀏覽器物件 🌚</p>
+<h2 id="網路狀態">網路狀態</h2>
+<p>非常簡單易懂，只有三種：<code>idle</code> / <code>submitting</code> / <code>loading</code>。發生的順序可參考以下整理自 <a href="https://remix.run/docs/en/main/hooks/use-navigation#navigationstate">useNavigation — navigation.state</a> 的懶人包：</p>
+<ul>
+<li>HTTP <code>GET</code> 與一般瀏覽的狀態切換為 <code>idle</code> → <code>loading</code> → <code>idle</code></li>
+<li>HTTP <code>POST</code>/<code>PUT</code>/<code>PATCH</code>/<code>DELETE</code> 的狀態切換為 <code>idle</code> → <code>submitting</code> → <code>loading</code> → <code>idle</code></li>
+</ul>
+<p>以下是自用的 custom hook:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { useNavigation } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> '@remix-run/react'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { useMemo } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> 'react'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">type</span><span style="color:#B392F0"> NavState</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">  /** Means NO navigation pending */</span></span>
+<span class="line"><span style="color:#FFAB70">  isIdle</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> boolean</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#6A737D">  /** A route action is triggered by &#x3C;Form> submission using `POST/PUT/PATCH/DELETE` */</span></span>
+<span class="line"><span style="color:#FFAB70">  isSubmitting</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> boolean</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#6A737D">  /** The loaders for the next routes are called, next page is going to be rendered */</span></span>
+<span class="line"><span style="color:#FFAB70">  isLoading</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> boolean</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> default</span><span style="color:#F97583"> function</span><span style="color:#B392F0"> useNavState</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#E1E4E8"> { </span><span style="color:#79B8FF">state</span><span style="color:#E1E4E8"> } </span><span style="color:#F97583">=</span><span style="color:#B392F0"> useNavigation</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#B392F0"> useMemo</span><span style="color:#E1E4E8">&#x3C;</span><span style="color:#B392F0">NavState</span><span style="color:#E1E4E8">>(</span></span>
+<span class="line"><span style="color:#E1E4E8">    () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> ({</span></span>
+<span class="line"><span style="color:#E1E4E8">      isIdle: state </span><span style="color:#F97583">===</span><span style="color:#9ECBFF"> 'idle'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">      isSubmitting: state </span><span style="color:#F97583">===</span><span style="color:#9ECBFF"> 'submitting'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">      isLoading: state </span><span style="color:#F97583">===</span><span style="color:#9ECBFF"> 'loading'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">    }),</span></span>
+<span class="line"><span style="color:#E1E4E8">    [state]</span></span>
+<span class="line"><span style="color:#E1E4E8">  );</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<h2 id="打包">打包</h2>
+<p>只要你能將服務<strong>部署到後端</strong>上，用 remix 打包就很簡單，直接跑 <code>remix vite:build</code> 就好。</p> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

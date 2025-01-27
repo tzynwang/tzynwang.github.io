@@ -1,0 +1,201 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.BScVxmeO.js"></script><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.1.2"><!-- Primary Meta Tags --><title>TypeScript 工程師的基礎 SOLID 筆記</title><meta name="title" content="TypeScript 工程師的基礎 SOLID 筆記"><meta name="description" content="最近在看《Clean Code 學派的風格實踐：開發可靠、可維護又強健的 JavaScript》，順便整理一下 SOLID 在 JS/TS 中的應用方式。"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2024/solid-basic-note"><meta property="og:title" content="TypeScript 工程師的基礎 SOLID 筆記"><meta property="og:description" content="最近在看《Clean Code 學派的風格實踐：開發可靠、可維護又強健的 JavaScript》，順便整理一下 SOLID 在 JS/TS 中的應用方式。"><meta property="og:image" content="https://tzynwang.github.io/2024/solid-basic-note/uve-sanchez-9DRX_cW48RQ-unsplash.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2024/solid-basic-note"><meta property="twitter:title" content="TypeScript 工程師的基礎 SOLID 筆記"><meta property="twitter:description" content="最近在看《Clean Code 學派的風格實踐：開發可靠、可維護又強健的 JavaScript》，順便整理一下 SOLID 在 JS/TS 中的應用方式。"><meta property="twitter:image" content="https://tzynwang.github.io/2024/solid-basic-note/uve-sanchez-9DRX_cW48RQ-unsplash.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:Noto Sans TC,sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul:not(:has(li)){margin-top:16px;margin-bottom:16px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:16px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+[data-astro-image]{width:100%;height:auto;object-fit:var(--fit);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>TypeScript 工程師的基礎 SOLID 筆記</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2024-02-21 20:57</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/clean code" data-astro-cid-2iymvi75> clean code </a> <a class="tag" href="/tag/Design Patterns" data-astro-cid-2iymvi75> Design Patterns </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#簡介" data-astro-cid-qtokga5y>簡介</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#單一功能原則-single-responsibility-principle" data-astro-cid-qtokga5y>單一功能原則 Single responsibility principle</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#開閉原則-openclosed-principle" data-astro-cid-qtokga5y>開閉原則 Open–closed principle</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#預判修改" data-astro-cid-qtokga5y>預判修改</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#里氏替換原則-liskov-substitution-principle" data-astro-cid-qtokga5y>里氏替換原則 Liskov substitution principle</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#不合適的繼承" data-astro-cid-qtokga5y>不合適的繼承</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#使用-ts-的-implements-建構類別" data-astro-cid-qtokga5y>使用 TS 的 implements 建構類別</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#介面隔離原則-interface-segregation-principle" data-astro-cid-qtokga5y>介面隔離原則 Interface segregation principle</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#依賴反轉原則-dependency-inversion-principle" data-astro-cid-qtokga5y>依賴反轉原則 Dependency inversion principle</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#參考資料" data-astro-cid-qtokga5y>參考資料</a> </li> </ul> </div> <h2 id="簡介">簡介</h2>
+<p>SOLID 是為了讓<strong>物件導向程式碼</strong>能更好懂、好維護的設計原則。而因為有些概念不太適合透過純 JavaScript 呈現，所以本篇筆記會視情況使用 JS 和 TS 來撰寫範例。</p>
+<h2 id="單一功能原則-single-responsibility-principle">單一功能原則 Single responsibility principle</h2>
+<ul>
+<li>一個功能只做一件事</li>
+<li>一個類別（class）只專注在一個主題上</li>
+</ul>
+<p>終極目標是提高一個功能的內聚性（cohesion）。</p>
+<hr>
+<p>雖然不在這個原則的範疇內，但功能的名稱與其行為也請維持一致，不要寫做Ａ實作Ｂ。反之，如果有段遺留程式碼（legacy code）實在很難以單一功能原則重構，則至少在功能名稱上完整描述它的行為。不要給閱讀、執行程式碼人帶來驚喜<del>驚嚇</del> 🤡</p>
+<h2 id="開閉原則-openclosed-principle">開閉原則 Open–closed principle</h2>
+<p>一個功能應在「不改動既有程式碼」的情況下「延伸其功能」。</p>
+<p><img src="/2024/solid-basic-note/Nick-Young-Confused.png" alt="Nick-Young-Confused.png"></p>
+<p>先看看以下範例。當我們需要新增付款方式時，必須直接調整 <code>handlePayment</code> 內容——新增一組 <code>case</code>。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> handlePayment</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">method</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">  switch</span><span style="color:#E1E4E8"> (method) {</span></span>
+<span class="line"><span style="color:#F97583">    case</span><span style="color:#9ECBFF"> 'atm'</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#6A737D">      // ...</span></span>
+<span class="line"><span style="color:#F97583">      break</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">    case</span><span style="color:#9ECBFF"> 'credit-card'</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#6A737D">      // ...</span></span>
+<span class="line"><span style="color:#F97583">      break</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">    default</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#6A737D">    // ...</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>而為了讓程式碼符合開閉原則，我們可以使用 TS 來進行重構。</p>
+<p>首先定義 <code>abstract class PaymentHandler</code> 讓「負責實作付款功能的類別」都有 <code>method processPayment</code> 能呼叫：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">abstract</span><span style="color:#F97583"> class</span><span style="color:#B392F0"> PaymentHandler</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">  abstract</span><span style="color:#B392F0"> processPayment</span><span style="color:#F97583">:</span><span style="color:#E1E4E8"> () </span><span style="color:#F97583">=></span><span style="color:#79B8FF"> void</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>接著透過 <code>implements PaymentHandler</code> 實作出 <code>AtmPayment</code> 與 <code>CreditCardpayment</code>：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">class</span><span style="color:#B392F0"> AtmPayment</span><span style="color:#F97583"> implements</span><span style="color:#B392F0"> PaymentHandler</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#B392F0">  processPayment</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#6A737D">    // ...</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">class</span><span style="color:#B392F0"> CreditCardpayment</span><span style="color:#F97583"> implements</span><span style="color:#B392F0"> PaymentHandler</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#B392F0">  processPayment</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#6A737D">    // ...</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>由 <code>enum paymentMethods</code> 來決定「目前允許的付款方式」，並在<code>class Payment</code> 中透過 <code>handlePayment</code> 來取得對應的付款功能：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">enum</span><span style="color:#B392F0"> paymentMethods</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#79B8FF">  atm</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> 'atm'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">  creditCard</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> 'creditCard'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">type</span><span style="color:#B392F0"> Payments</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">  [</span><span style="color:#B392F0">key</span><span style="color:#F97583"> in</span><span style="color:#B392F0"> paymentMethods</span><span style="color:#E1E4E8">]</span><span style="color:#F97583">:</span><span style="color:#B392F0"> PaymentHandler</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">class</span><span style="color:#B392F0"> Payment</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#FFAB70">  payments</span><span style="color:#F97583">:</span><span style="color:#B392F0"> Payments</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">  constructor</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">arg</span><span style="color:#F97583">:</span><span style="color:#B392F0"> Payments</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#79B8FF">    this</span><span style="color:#E1E4E8">.payments </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> arg;</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">  handlePayment</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">method</span><span style="color:#F97583">:</span><span style="color:#B392F0"> paymentMethods</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> fn</span><span style="color:#F97583"> =</span><span style="color:#79B8FF"> this</span><span style="color:#E1E4E8">.payments[method].processPayment;</span></span>
+<span class="line"><span style="color:#F97583">    if</span><span style="color:#E1E4E8"> (</span><span style="color:#F97583">!</span><span style="color:#E1E4E8">fn) </span><span style="color:#F97583">throw</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> Error</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">`payment method not allow::: ${</span><span style="color:#E1E4E8">method</span><span style="color:#9ECBFF">}`</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#B392F0">    fn</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>實際使用 <code>class Payment</code> 時，透過依賴注入（dependency injection）來提供「實作了各種付款方式的類別」：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> paymentHandlers</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">  atm: </span><span style="color:#F97583">new</span><span style="color:#B392F0"> AtmPayment</span><span style="color:#E1E4E8">(),</span></span>
+<span class="line"><span style="color:#E1E4E8">  creditCard: </span><span style="color:#F97583">new</span><span style="color:#B392F0"> CreditCardpayment</span><span style="color:#E1E4E8">(),</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> P</span><span style="color:#F97583"> =</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> Payment</span><span style="color:#E1E4E8">(paymentHandlers);</span></span></code></pre>
+<p>未來在新增付款方式時，需要修改的部位變成：</p>
+<ul>
+<li><code>enum paymentMethods</code></li>
+<li><code>const paymentHandlers</code></li>
+<li>新增 <code>implements PaymentHandler</code> 的付款類別</li>
+</ul>
+<h3 id="預判修改">預判修改</h3>
+<p>問：跟原本的 JS 版比起來，重構後多寫了不少程式碼。遵守開閉原則的好處到底是什麼？</p>
+<p>答：此原則的重點是「程式碼要能彈性對應日後的擴充需求」，個人認為「並不是所有功能都適合以開閉原則撰寫」。</p>
+<p>假設我很難想像這個功能未來的擴充內容，它或許就不是開閉原則的理想對象。但是，如果我現在需要「修改一段既有的程式碼，為它加入新功能」，那我就應該考慮在這次修改中以開閉原則重構相關段落。</p>
+<h2 id="里氏替換原則-liskov-substitution-principle">里氏替換原則 Liskov substitution principle</h2>
+<p>假設有一個類別Ｘ與繼承Ｘ的子類別Ｙ，把所有的Ｘ以Ｙ替代後，程式碼應繼續正常運行。</p>
+<h3 id="不合適的繼承">不合適的繼承</h3>
+<p>以下是一個違反原則的 JS 範例。類別「企鵝」雖然繼承自類別「鳥」，但企鵝覆蓋了 <code>fly</code> 的內容，導致此功能產生意料外的結果。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#F97583">class</span><span style="color:#B392F0"> Bird</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#FFAB70">  name</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">  constructor</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">name</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#79B8FF">    this</span><span style="color:#E1E4E8">.name </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> name;</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">  fly</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#9ECBFF"> `${</span><span style="color:#79B8FF">this</span><span style="color:#9ECBFF">.</span><span style="color:#E1E4E8">name</span><span style="color:#9ECBFF">} is flying.`</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">class</span><span style="color:#B392F0"> Penguin</span><span style="color:#F97583"> extends</span><span style="color:#B392F0"> Bird</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#B392F0">  fly</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">    throw</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> Error</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'Penguin can not fly.'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>雖然 TS 會直接在 <code>class Penguin extends Bird</code> 報錯（<code>Property 'fly' in type 'Penguin' is not assignable to the same property in base type 'Bird'.</code>），但工程師也應該思考——如果 <code>class Penguin</code> 不應該有 <code>fly</code> 功能，繼承 <code>class Bird</code> 真的合理嗎？</p>
+<h3 id="使用-ts-的-implements-建構類別">使用 TS 的 <code>implements</code> 建構類別</h3>
+<p>此關鍵字會幫忙檢查某類別是否有根據它 <code>implements</code> 的介面進行實作（參閱<a href="https://www.typescriptlang.org/docs/handbook/2/classes.html#implements-clauses">官方文件</a>）。這能讓工程師有意識地去處理每一個子類別的內容。</p>
+<p>可參考以下範例——使用 <code>extends</code> 的 <code>class BlackFridayStrategy1</code> 會直接繼承 <code>class PriceStrategy</code> 實作好的 <code>getPrice</code> 功能，但沒有實作 <code>getPrice</code> 的 <code>BlackFridayStrategy2</code> 讓 TS 噴錯了（<code>Class 'BlackFridayStrategy2' incorrectly implements class 'PriceStrategy'. Property 'getPrice' is missing in type 'BlackFridayStrategy2' but required in type 'PriceStrategy'.</code>）。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">class</span><span style="color:#B392F0"> PriceStrategy</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#B392F0">  getPrice</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">p</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> number</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#E1E4E8"> p;</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">class</span><span style="color:#B392F0"> BlackFridayStrategy1</span><span style="color:#F97583"> extends</span><span style="color:#B392F0"> PriceStrategy</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">  // nothing happen</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">class</span><span style="color:#B392F0"> BlackFridayStrategy2</span><span style="color:#F97583"> implements</span><span style="color:#B392F0"> PriceStrategy</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">  // oops TS is yelling</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<h2 id="介面隔離原則-interface-segregation-principle">介面隔離原則 Interface segregation principle</h2>
+<ul>
+<li>一個功能不應被迫接受它用不到的東西</li>
+<li>精確 > 攏統（參數、型別皆是）</li>
+</ul>
+<p>不良示範：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">type</span><span style="color:#B392F0"> PaymentArgs</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#FFAB70">  amount</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> number</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#FFAB70">  cardNo</span><span style="color:#F97583">?:</span><span style="color:#79B8FF"> string</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#FFAB70">  cardValidateNo</span><span style="color:#F97583">?:</span><span style="color:#79B8FF"> string</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#FFAB70">  cardHolderName</span><span style="color:#F97583">?:</span><span style="color:#79B8FF"> string</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#FFAB70">  bankNo</span><span style="color:#F97583">?:</span><span style="color:#79B8FF"> string</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> handleCreditCardPayment</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">arg</span><span style="color:#F97583">:</span><span style="color:#B392F0"> PaymentArgs</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#6A737D">  // no needs for bankNo...</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> handleBankPayment</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">arg</span><span style="color:#F97583">:</span><span style="color:#B392F0"> PaymentArgs</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#6A737D">  // no needs for credit card related args...</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>理想狀態：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">type</span><span style="color:#B392F0"> BasePaymentArg</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#FFAB70">  amount</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> number</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">type</span><span style="color:#B392F0"> CreditCardPaymentArgs</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> BasePaymentArg</span><span style="color:#F97583"> &#x26;</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#FFAB70">  cardNo</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> string</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#FFAB70">  cardValidateNo</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> string</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#FFAB70">  cardHolderName</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> string</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">type</span><span style="color:#B392F0"> BankPaymentArgs</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> BasePaymentArg</span><span style="color:#F97583"> &#x26;</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#FFAB70">  bankNo</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> string</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> handleCreditCardPayment</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">arg</span><span style="color:#F97583">:</span><span style="color:#B392F0"> CreditCardPaymentArgs</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#6A737D">  //</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> handleBankPayment</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">arg</span><span style="color:#F97583">:</span><span style="color:#B392F0"> BankPaymentArgs</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#6A737D">  //</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>在 <a href="/2023/the-art-of-unit-testing-ch4-interaction-testing-using-mock-objects#interface-segregation-principle-i-from-solid">4 Interaction testing using mock objects#Interface segregation principle (I from SOLID)</a> 也有提過此概念。在撰寫單元測試時，工程師不應被強迫使用他用不到的功能。</p>
+<h2 id="依賴反轉原則-dependency-inversion-principle">依賴反轉原則 Dependency inversion principle</h2>
+<p>不要寫死實作內容，而是使用抽象層來介接高、低層次的功能。終極目標是降低功能之間的耦合性（coupling）。</p>
+<p>實作可參考 <a href="/2023/the-art-of-unit-testing-ch3-breaking-dependencies-with-stubs#331-stubbing-out-time-with-parameter-injection">3 Breaking dependencies with stubs#3.3.1 Stubbing out time with parameter injection</a> 展示過的內容。</p>
+<h2 id="參考資料">參考資料</h2>
+<ul>
+<li><a href="https://www.tenlong.com.tw/products/9789864345700">Clean Code 學派的風格實踐：開發可靠、可維護又強健的 JavaScript（第四章）</a></li>
+<li><a href="https://www.youtube.com/watch?v=vE74gnv4VlY">YouTube: The Right way to write Nest.js &#x26; Typescript clean-code - SOLID</a></li>
+<li><a href="https://stackoverflow.com/questions/38834625/whats-the-difference-between-extends-and-implements-in-typescript">What’s the difference between ‘extends’ and ‘implements’ in TypeScript</a></li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

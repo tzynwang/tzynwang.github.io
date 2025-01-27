@@ -1,0 +1,134 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.BScVxmeO.js"></script><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.1.2"><!-- Primary Meta Tags --><title>正規表達式筆記：斷言（assertions）</title><meta name="title" content="正規表達式筆記：斷言（assertions）"><meta name="description" content="這是一個文組轉職前端工程師的技術部落格"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2023/regex-note-assertions"><meta property="og:title" content="正規表達式筆記：斷言（assertions）"><meta property="og:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="og:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2023/regex-note-assertions"><meta property="twitter:title" content="正規表達式筆記：斷言（assertions）"><meta property="twitter:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="twitter:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:Noto Sans TC,sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul:not(:has(li)){margin-top:16px;margin-bottom:16px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:16px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+[data-astro-image]{width:100%;height:auto;object-fit:var(--fit);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>正規表達式筆記：斷言（assertions）</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2023-04-29 16:48</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/Regular expressions" data-astro-cid-2iymvi75> Regular expressions </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#總結" data-astro-cid-qtokga5y>總結</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#筆記內容" data-astro-cid-qtokga5y>筆記內容</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#定義" data-astro-cid-qtokga5y>定義</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#邊際類型boundary-type-assertions" data-astro-cid-qtokga5y>邊際類型（boundary-type assertions）</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#前後條件類型" data-astro-cid-qtokga5y>前後條件類型</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#mdn-範例解讀" data-astro-cid-qtokga5y>MDN 範例解讀</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#參考文件" data-astro-cid-qtokga5y>參考文件</a> </li> </ul> </div> <h2 id="總結">總結</h2>
+<p>此篇文章是閱讀 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions/Assertions">MDN: Regular expressions > Assertions</a> 時記下的筆記。</p>
+<h2 id="筆記內容">筆記內容</h2>
+<h3 id="定義">定義</h3>
+<blockquote>
+<p>MDN: Assertions include <strong>boundaries</strong>, which indicate the beginnings and endings of lines and words, and other patterns indicating in some way that <strong>a match is possible</strong> (including look-ahead, look-behind, and conditional expressions).</p>
+</blockquote>
+<p>assertions 字元讓開發者可以根據「邊際」或「前後符合條件」來進行搜尋。</p>
+<h3 id="邊際類型boundary-type-assertions">邊際類型（boundary-type assertions）</h3>
+<p><code>^</code>：比對一段內容的「起點」是否符合 <code>^</code> 後面提供的條件。舉例：<code>/^a/</code> 會挑中字串 <code>apple</code> 中的 <code>a</code>，但不會挑中 <code>banana</code> 中的 <code>a</code></p>
+<p><code>$</code>：比對一段內容的「結尾」是否符合 <code>$</code> 前面提供的條件。舉例：<code>/t$/</code> 會挑中字串 <code>cat</code> 中的 <code>t</code>，但不會挑中 <code>tea</code> 中的 <code>t</code></p>
+<p><code>\b</code> 代表「邊際」（word boundary），範例如下：</p>
+<ul>
+<li><code>/\bc/</code> 會挑中 <code>cat</code> 中的 <code>c</code>，但不會挑中 <code>octopus</code> 中的 <code>c</code></li>
+<li><code>/t\b/</code> 會挑中 <code>cat</code> 中的 <code>t</code>，但不會挑中 <code>take</code> 中的 <code>t</code></li>
+</ul>
+<p><code>\B</code> 的作用與 <code>\b</code> 相反，代表「非邊際」（non-word boundary）；如果把上方範例中的 <code>\b</code> 改為 <code>\B</code>，結果就會反過來：</p>
+<ul>
+<li><code>/\Bc/</code> 不會挑中 <code>cat</code> 中的 <code>c</code>，但會挑中 <code>octopus</code> 中的 <code>c</code></li>
+<li><code>/t\B/</code> 不會挑中 <code>cat</code> 中的 <code>t</code>，但會挑中 <code>take</code> 中的 <code>t</code></li>
+</ul>
+<h3 id="前後條件類型">前後條件類型</h3>
+<p><code>x(?=y)</code>：挑出後方有 <code>y</code> 的 <code>x</code>。舉例：<code>apple(?= pie)</code> 會挑中 <code>apple pie</code> 字串中的 <code>apple</code>，但不會挑中 <code>apple tea</code> 中的 <code>apple</code></p>
+<p><code>x(?!)y</code>：挑出後方沒有 <code>y</code> 的 <code>x</code>。舉例：<code>apple(?! pie)</code> 會挑中 <code>apple tea</code> 字串中的 <code>apple</code>，但不會挑中 <code>apple pie</code> 中的 <code>apple</code></p>
+<p><code>(?&#x3C;=y)x</code>：挑出前方有 <code>y</code> 的 <code>x</code>。舉例：<code>(?&#x3C;=apple )pie</code> 會挑中 <code>apple pie</code> 中的 <code>pie</code>，但不會挑中 <code>cherry pie</code> 中的 <code>pie</code></p>
+<p><code>(?&#x3C;!y)x</code>：挑出前方沒有 <code>y</code> 的 <code>x</code>。舉例：<code>(?&#x3C;!apple )pie</code> 會挑中 <code>cherry pie</code> 中的 <code>pie</code>，但不會挑中 <code>apple pie</code> 中的 <code>pie</code></p>
+<h3 id="mdn-範例解讀">MDN 範例解讀</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#E1E4E8">buggyMultiline </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> `tey, ihe light-greon apple</span></span>
+<span class="line"><span style="color:#9ECBFF">tangs on ihe greon traa`</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">buggyMultiline </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> buggyMultiline.</span><span style="color:#B392F0">replace</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">/</span><span style="color:#F97583">^</span><span style="color:#DBEDFF">t</span><span style="color:#9ECBFF">/</span><span style="color:#F97583">gim</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">'h'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#6A737D">// 將位於每一個「單字開頭」的 t 替換成 h</span></span>
+<span class="line"><span style="color:#6A737D">// 這裡會將 tey 與 tangs 換成 hey 與 hangs</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">buggyMultiline </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> buggyMultiline.</span><span style="color:#B392F0">replace</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">/</span><span style="color:#DBEDFF">aa</span><span style="color:#F97583">$</span><span style="color:#9ECBFF">/</span><span style="color:#F97583">gim</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">'ee.'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#6A737D">// 將每一個「單字結束前」的 aa 替換為 ee.</span></span>
+<span class="line"><span style="color:#6A737D">// 這裡會將 greon traa 的 traa 換成 tree</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">buggyMultiline </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> buggyMultiline.</span><span style="color:#B392F0">replace</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">/</span><span style="color:#F97583">\b</span><span style="color:#DBEDFF">i</span><span style="color:#9ECBFF">/</span><span style="color:#F97583">gim</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">'t'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#6A737D">// 將每一個「前方有字元邊際」的 i 替換為 t</span></span>
+<span class="line"><span style="color:#6A737D">// 這裡會將出現兩次的 ihe 替換為 the</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">fixedMultiline </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> buggyMultiline.</span><span style="color:#B392F0">replace</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">/</span><span style="color:#F97583">\B</span><span style="color:#DBEDFF">o</span><span style="color:#9ECBFF">/</span><span style="color:#F97583">gim</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">'e'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#6A737D">// 將每一個被其他字母包圍的 o 替換為 e</span></span>
+<span class="line"><span style="color:#6A737D">// 這裡會將出現兩次的 greon 替換為 green</span></span></code></pre>
+<hr>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> fruits</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> [</span><span style="color:#9ECBFF">'Apple'</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">'Watermelon'</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">'Orange'</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">'Avocado'</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">'Strawberry'</span><span style="color:#E1E4E8">];</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> fruitsStartsWithA</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> fruits.</span><span style="color:#B392F0">filter</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">fruit</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#9ECBFF"> /</span><span style="color:#F97583">^</span><span style="color:#DBEDFF">A</span><span style="color:#9ECBFF">/</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">test</span><span style="color:#E1E4E8">(fruit));</span></span>
+<span class="line"><span style="color:#6A737D">// 取出「開頭為大寫字母 A」的字串</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> fruitsStartsWithNotA</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> fruits.</span><span style="color:#B392F0">filter</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">fruit</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#9ECBFF"> /</span><span style="color:#F97583">^</span><span style="color:#79B8FF">[</span><span style="color:#F97583">^</span><span style="color:#79B8FF">A]</span><span style="color:#9ECBFF">/</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">test</span><span style="color:#E1E4E8">(fruit));</span></span>
+<span class="line"><span style="color:#6A737D">// 取出「開頭『不是』大寫字母 A」的字串</span></span>
+<span class="line"><span style="color:#6A737D">// [^A] 代表「開頭為大寫字母 A」，但搭配 ^ 執行反轉後，條件改為「開頭不為大寫字母 A」</span></span></code></pre>
+<hr>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> fruitsWithDescription</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> [</span><span style="color:#9ECBFF">'Red apple'</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">'Orange orange'</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">'Green Avocado'</span><span style="color:#E1E4E8">];</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> enEdSelection</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> fruitsWithDescription.</span><span style="color:#B392F0">filter</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">descr</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span></span>
+<span class="line"><span style="color:#9ECBFF">  /</span><span style="color:#DBEDFF">(en</span><span style="color:#F97583">|</span><span style="color:#DBEDFF">ed)</span><span style="color:#F97583">\b</span><span style="color:#9ECBFF">/</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">test</span><span style="color:#E1E4E8">(descr)</span></span>
+<span class="line"><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#6A737D">// 取出「以 en 或 ed 結尾」的字串</span></span></code></pre>
+<hr>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> regex</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> /</span><span style="color:#DBEDFF">First(?= test)</span><span style="color:#9ECBFF">/</span><span style="color:#F97583">g</span><span style="color:#E1E4E8">;</span></span></code></pre>
+<p>翻譯：比對出後方緊隨 <code>test</code> 的 <code>First</code></p>
+<p>若傳入字串 <code>First test</code> ，結果會是比對成功
+若傳入字串 <code>First kiss</code> ，結果會是比對失敗，因為 First 後方接續的不是 <code>test</code> 而是 <code>kiss</code></p>
+<hr>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> regex</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> /</span><span style="color:#79B8FF">\d</span><span style="color:#F97583">+</span><span style="color:#DBEDFF">(?!</span><span style="color:#85E89D;font-weight:bold">\.</span><span style="color:#DBEDFF">)</span><span style="color:#9ECBFF">/</span><span style="color:#F97583">g</span><span style="color:#E1E4E8">;</span></span></code></pre>
+<p>翻譯：比對出後方沒有 <code>.</code> 的「一個或無限多個阿拉伯數字」（<code>\d</code>）</p>
+<p>步驟分解如下：</p>
+<ul>
+<li>先看 <code>(?!\.)</code>，這代表「沒有 <code>.</code>」</li>
+<li>再看 <code>\d+</code>，<code>\d</code> 代表阿拉伯數字，而 <code>+</code> 代表「阿拉伯數字可以為 1 至無限多個」</li>
+</ul>
+<p>合起來的意思就是「搜尋所有後方沒有出現 <code>.</code> 的阿拉伯數字，且這段阿拉伯數字可能為 1 至無限多個」。</p>
+<p>舉例：透過此 <code>regex</code> 條件搜尋字串 <code>3.14</code> 時，回傳出來的比對結果會是 <code>14</code>，因 <code>3</code> 後方有 <code>.</code>，不符合條件；而 <code>14</code> 後方沒有 <code>.</code>，故比對成功。</p>
+<p>注意：如果將條件中的 <code>+</code> 拿掉，那麼 <code>regex</code> 的意義會變為「後方沒有 <code>.</code> 的『一個』阿拉伯數字」。透過此條件比對 <code>3.14</code> 時，會回傳兩個數字，分別是 <code>1</code> 與 <code>4</code></p>
+<hr>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> orangeNotLemon</span><span style="color:#F97583"> =</span></span>
+<span class="line"><span style="color:#9ECBFF">  'Do you want to have an orange? Yes, I do not want to have a lemon!'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> selectNotLemonRegex</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> /</span><span style="color:#79B8FF">[</span><span style="color:#F97583">^</span><span style="color:#79B8FF">?!]</span><span style="color:#F97583">+</span><span style="color:#DBEDFF">have(?! a lemon)</span><span style="color:#79B8FF">[</span><span style="color:#F97583">^</span><span style="color:#79B8FF">?!]</span><span style="color:#F97583">+</span><span style="color:#79B8FF">[?!]</span><span style="color:#9ECBFF">/</span><span style="color:#F97583">gi</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(orangeNotLemon.</span><span style="color:#B392F0">match</span><span style="color:#E1E4E8">(selectNotLemonRegex));</span></span>
+<span class="line"><span style="color:#6A737D">// [ 'Do you want to have an orange?' ]</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> selectNotOrangeRegex</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> /</span><span style="color:#79B8FF">[</span><span style="color:#F97583">^</span><span style="color:#79B8FF">?!]</span><span style="color:#F97583">+</span><span style="color:#DBEDFF">have(?! an orange)</span><span style="color:#79B8FF">[</span><span style="color:#F97583">^</span><span style="color:#79B8FF">?!]</span><span style="color:#F97583">+</span><span style="color:#79B8FF">[?!]</span><span style="color:#9ECBFF">/</span><span style="color:#F97583">gi</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(orangeNotLemon.</span><span style="color:#B392F0">match</span><span style="color:#E1E4E8">(selectNotOrangeRegex));</span></span>
+<span class="line"><span style="color:#6A737D">// [ ' Yes, I do not want to have a lemon!' ]</span></span></code></pre>
+<p>分解 <code>/[^?!]+have(?! a lemon)[^?!]+[?!]/gi</code> 步驟如下：</p>
+<ul>
+<li><code>gi</code> 代表 global 與 case insensitive，亦即這個條件不會在「找到第一個目標」後就結束搜尋、且也不在意大小寫差異</li>
+<li><code>[^?!]+</code> 代表「並非 <code>?</code> 與 <code>!</code> 的內容」，並且此內容可能為 1 至無限多個</li>
+<li><code>have(?! a lemon)</code> 代表要搜尋「後方沒有 <code>a lemon</code> 的 <code>have</code>」</li>
+<li><code>[?!]</code> 代表 <code>?</code> 或 <code>!</code></li>
+</ul>
+<p>總結 <code>selectNotLemonRegex</code> 的意思為：搜尋不是 <code>?</code> 與 <code>!</code> 的內容（且要有兩段，因為 <code>[^?!]+</code> 出現兩次），兩段內容中間要夾帶一個「後方不是 <code>a lemon</code> 的 <code>have</code>」，最後允許 <code>?</code> 或 <code>!</code> 做為結尾。</p>
+<p><code>selectNotOrangeRegex</code> 僅替換了中間搜尋 <code>have</code> 的條件為「後方不是 <code>an orange</code>」，其餘邏輯與 <code>selectNotLemonRegex</code> 相同。</p>
+<hr>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> oranges</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> [</span><span style="color:#9ECBFF">'ripe orange A'</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">'green orange B'</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">'ripe orange C'</span><span style="color:#E1E4E8">];</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> ripeOranges</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> oranges.</span><span style="color:#B392F0">filter</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">fruit</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#9ECBFF"> /</span><span style="color:#DBEDFF">(?&#x3C;=ripe )orange</span><span style="color:#9ECBFF">/</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">test</span><span style="color:#E1E4E8">(fruit));</span></span></code></pre>
+<p>翻譯：比對前方有 <code>ripe</code> 的 <code>orange</code>。</p>
+<p>陣列 <code>oranges</code> 中有 <code>ripe orange A</code> 與 <code>ripe orange C</code> 符合條件；而 <code>green orange B</code> 因 <code>orange</code> 前方的字串為 <code>green</code> 故判定為比對失敗。</p>
+<h2 id="參考文件">參考文件</h2>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions/Assertions">MDN: Regular expressions > Assertions</a></li>
+<li><a href="https://www.phind.com/search?cache=5d897b17-2e84-4343-9f90-3ab6e8a83cbc">Phind: What does ‘assertions’ mean in JavaScript regular expressions?</a></li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

@@ -1,0 +1,75 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.BScVxmeO.js"></script><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.1.2"><!-- Primary Meta Tags --><title>透過 npx 在呼叫套件時省略 node_modules/.bin 前綴</title><meta name="title" content="透過 npx 在呼叫套件時省略 node_modules/.bin 前綴"><meta name="description" content="這是一個文組轉職前端工程師的技術部落格"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2023/npx-package-runner"><meta property="og:title" content="透過 npx 在呼叫套件時省略 node_modules/.bin 前綴"><meta property="og:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="og:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2023/npx-package-runner"><meta property="twitter:title" content="透過 npx 在呼叫套件時省略 node_modules/.bin 前綴"><meta property="twitter:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="twitter:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:Noto Sans TC,sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul:not(:has(li)){margin-top:16px;margin-bottom:16px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:16px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+[data-astro-image]{width:100%;height:auto;object-fit:var(--fit);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>透過 npx 在呼叫套件時省略 node_modules/.bin 前綴</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2023-02-24 21:03</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/Package Manager" data-astro-cid-2iymvi75> Package Manager </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#總結" data-astro-cid-qtokga5y>總結</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#筆記" data-astro-cid-qtokga5y>筆記</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#什麼是-npx" data-astro-cid-qtokga5y>什麼是 npx</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#node_modules-中的-bin-資料夾" data-astro-cid-qtokga5y>node_modules 中的 .bin 資料夾</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#實際運用" data-astro-cid-qtokga5y>實際運用</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#參考文件" data-astro-cid-qtokga5y>參考文件</a> </li> </ul> </div> <h2 id="總結">總結</h2>
+<p>在把專案 <code>package.json</code> 中的 <code>scripts</code> 內容都移植到 <code>Makefile</code> 時，發現在 make 腳本中如果省略 <code>npx</code> 或 <code>yarn</code> 的話，就無法執行套件，修正完腳本後查了一下 <code>npx</code> 到底做了哪些事情，這篇筆記基本上就是圍繞在這個主題上。</p>
+<h2 id="筆記">筆記</h2>
+<h3 id="什麼是-npx">什麼是 <code>npx</code></h3>
+<p>可透過 <code>npx &#x3C;package-name></code> 來執行套件。如果該套件沒有被安裝，則先進行安裝、再啟動套件。功能與 <code>npm run &#x3C;command></code>（<code>npm run-script &#x3C;command></code>）相同。</p>
+<blockquote>
+<p><a href="https://blog.npmjs.org/post/162869356040/introducing-npx-an-npm-package-runner">npm blog</a>: Have you ever run into a situation where you want to try some CLI tool, but it’s annoying to have to install a global just to run it once? npx is great for that, too. Calling npx <code>&#x3C;command></code> when <code>&#x3C;command></code> isn’t already in your <code>$PATH</code> will <strong>automatically install a package with that name from the npm registry for you</strong>, and invoke it.</p>
+</blockquote>
+<blockquote>
+<p><a href="https://docs.npmjs.com/cli/v8/commands/npx?v=true#description">npm official doc</a>: <code>npx</code> allows you to run an arbitrary command from an npm package (either one installed locally, or fetched remotely), in a similar context as running it via <code>npm run</code>.</p>
+</blockquote>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#6A737D"># https://docs.npmjs.com/cli/v8/commands/npm-run-script#synopsis</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">npm</span><span style="color:#9ECBFF"> run-script</span><span style="color:#F97583"> &#x3C;</span><span style="color:#9ECBFF">comman</span><span style="color:#E1E4E8">d</span><span style="color:#F97583">></span><span style="color:#E1E4E8"> [-- </span><span style="color:#F97583">&#x3C;</span><span style="color:#9ECBFF">arg</span><span style="color:#E1E4E8">s</span><span style="color:#F97583">></span><span style="color:#9ECBFF">]</span></span>
+<span class="line"><span style="color:#6A737D"># aliases: run, rum, urn</span></span></code></pre>
+<p>而當透過 <code>npm run &#x3C;command></code> 執行腳本時，<code>npm run</code> 會幫忙加上路徑前綴 <code>node_modules/.bin</code>：</p>
+<blockquote>
+<p><a href="https://docs.npmjs.com/cli/v8/commands/npm-run-script#description">npm official doc</a>: In addition to the shell’s pre-existing <code>PATH</code>, <code>npm run</code> adds <code>node_modules/.bin</code> to the <code>PATH</code> provided to scripts. Any binaries provided by locally-installed dependencies can be used without the <code>node_modules/.bin</code> prefix.</p>
+</blockquote>
+<h3 id="node_modules-中的-bin-資料夾"><code>node_modules</code> 中的 <code>.bin</code> 資料夾</h3>
+<p>能透過 <code>npm run &#x3C;command></code> 執行的內容都會放在這裡：</p>
+<blockquote>
+<p><a href="https://docs.npmjs.com/cli/v9/configuring-npm/folders#executables">npm official doc</a>: When in local mode, executables are linked into <code>./node_modules/.bin</code> so that <strong>they can be made available to scripts run through npm</strong>. (For example, so that a test runner will be in the path when you run <code>npm test</code>.)</p>
+</blockquote>
+<blockquote>
+<p><a href="https://stackoverflow.com/a/55600104/15028185">stackOverFlow</a>: As for the <code>.bin</code>, this directory stores all the executables of your <code>node_modules</code> for which your project is dependent upon to run. <strong>This allows your project to just ‘run’ the libraries which are necessary</strong>, for your project, without you having to worry about compiling these files yourself.</p>
+</blockquote>
+<h3 id="實際運用">實際運用</h3>
+<p>總結：在 <code>Makefile</code> 中，如果想要在終端直接執行某些套件（比如 <code>webpack</code> 或 <code>next</code>），需透過 <code>npx &#x3C;package-name></code> 或手動連結到 <code>node_modules/.bin</code> 來呼叫。</p>
+<p>以下列出的三種寫法都能執行 <code>next dev</code> 功能：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="make"><code><span class="line"><span style="color:#79B8FF">.PHONY</span><span style="color:#E1E4E8">: dev</span></span>
+<span class="line"><span style="color:#B392F0">dev</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#E1E4E8">	node node_modules/.bin/next dev</span></span></code></pre>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="make"><code><span class="line"><span style="color:#79B8FF">.PHONY</span><span style="color:#E1E4E8">: dev</span></span>
+<span class="line"><span style="color:#B392F0">dev</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#E1E4E8">	npx next dev</span></span></code></pre>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="make"><code><span class="line"><span style="color:#79B8FF">.PHONY</span><span style="color:#E1E4E8">: dev</span></span>
+<span class="line"><span style="color:#B392F0">dev</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#6A737D">  # this is equivalent to `yarn run next dev`, see https://yarnpkg.com/cli/run#examples</span></span>
+<span class="line"><span style="color:#E1E4E8">  yarn next dev</span></span></code></pre>
+<h2 id="參考文件">參考文件</h2>
+<ul>
+<li><a href="https://blog.npmjs.org/post/162869356040/introducing-npx-an-npm-package-runner">npm Blog: Introducing npx — an npm package runner</a></li>
+<li><a href="https://classic.yarnpkg.com/en/docs/migrating-from-npm#toc-cli-commands-comparison">Yarn: Migrating from npm — CLI commands comparison</a></li>
+<li><a href="https://stackoverflow.com/questions/50605219/difference-between-npx-and-npm">stackOverFlow: Difference between npx and npm?</a></li>
+<li><a href="https://stackoverflow.com/questions/25306168/what-is-the-purpose-of-bin-folder-in-node-modules">stackOverFlow: What is the purpose of .bin folder in node_modules?</a></li>
+<li><a href="https://stackoverflow.com/questions/55600026/purpose-of-the-bin-directory-within-node-modules-what-are-binaries">Purpose of the .bin directory within node_modules? What are binaries?</a></li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

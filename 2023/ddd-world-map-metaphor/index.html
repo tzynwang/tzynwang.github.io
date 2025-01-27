@@ -1,0 +1,69 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.BScVxmeO.js"></script><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.1.2"><!-- Primary Meta Tags --><title>以地圖來比喻 DDD 的領域（domain）與模型（model）</title><meta name="title" content="以地圖來比喻 DDD 的領域（domain）與模型（model）"><meta name="description" content="本篇筆記會說明如何透過「地圖」的概念來理解 DDD 中的領域（domain）與模型（model）。"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2023/ddd-world-map-metaphor"><meta property="og:title" content="以地圖來比喻 DDD 的領域（domain）與模型（model）"><meta property="og:description" content="本篇筆記會說明如何透過「地圖」的概念來理解 DDD 中的領域（domain）與模型（model）。"><meta property="og:image" content="https://tzynwang.github.io/2023/ddd-world-map-metaphor/aliaksei-lepik-5F4oYUg-WvM-unsplash.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2023/ddd-world-map-metaphor"><meta property="twitter:title" content="以地圖來比喻 DDD 的領域（domain）與模型（model）"><meta property="twitter:description" content="本篇筆記會說明如何透過「地圖」的概念來理解 DDD 中的領域（domain）與模型（model）。"><meta property="twitter:image" content="https://tzynwang.github.io/2023/ddd-world-map-metaphor/aliaksei-lepik-5F4oYUg-WvM-unsplash.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:Noto Sans TC,sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul:not(:has(li)){margin-top:16px;margin-bottom:16px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:16px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+[data-astro-image]{width:100%;height:auto;object-fit:var(--fit);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>以地圖來比喻 DDD 的領域（domain）與模型（model）</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2023-12-10 06:03</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/Software Architecture" data-astro-cid-2iymvi75> Software Architecture </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#文字定義" data-astro-cid-qtokga5y>文字定義</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#地圖比喻" data-astro-cid-qtokga5y>地圖比喻</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#影片摘要英文" data-astro-cid-qtokga5y>影片摘要（英文）</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#名詞定義" data-astro-cid-qtokga5y>名詞定義</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#從領域到模型" data-astro-cid-qtokga5y>從領域到模型</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#參考文件" data-astro-cid-qtokga5y>參考文件</a> </li> </ul> </div> <p>本筆記的內容出自影片 <a href="https://youtu.be/pMuiVlnGqjk?si=4pNZhdSyeG1ZDNVX">What is DDD - Eric Evans - DDD Europe 2019</a>，我認為地圖很適合用來解釋 DDD 中領域（domain）與模型（model）代表的意義。</p>
+<h2 id="文字定義">文字定義</h2>
+<ul>
+<li>領域：代表一個範圍內的知識或活動</li>
+<li>模型：將一個領域中的特定片段抽象化</li>
+</ul>
+<h2 id="地圖比喻">地圖比喻</h2>
+<p>全球地圖（world map）會告訴讀者「如果把地球畫在紙上，會是什麼樣子」，且會有不同的繪製方式。下方第一張是使用麥卡托投影法（Mercator projection）繪製的地圖、第二張是使用摩爾威特投影法（Mollweide projection）製作：</p>
+<p><img src="/2023/ddd-world-map-metaphor/world-map-Mercator-projection.png" alt="world map Mercator projection"></p>
+<p><img src="/2023/ddd-world-map-metaphor/world-map-Mollweide-projection.png" alt="world map Mollweide projection"></p>
+<p>而當我要回答以下問題時，地圖的繪製方式會影響作答的難易程度：</p>
+<ol>
+<li>從香港到西雅圖的航線方向是？</li>
+<li>格陵蘭與非洲的面積差距是？</li>
+</ol>
+<p>第一張地圖能讓人一筆就畫出香港到西雅圖的航線，但第二張地圖就無法簡單地回答這個問題。</p>
+<p>反之，當我想確認格陵蘭與非洲的面積差距時，只看第一張地圖是不可能給出正確答案的——但是摩爾威特投影法此時就能發揮功能了，第二張地圖能讓我相對精確地估算兩處的面積差異。</p>
+<p>這就是透過地圖來比喻領域（domain）與模型（model）分別是什麼——地圖描述了關於地球表面的<strong>知識</strong>，而各種投影法<strong>用不同的方式描述關於地表的資訊</strong>。</p>
+<p>並且你會注意到，不同模型各有其擅長解決的問題。</p>
+<h2 id="影片摘要英文">影片摘要（英文）</h2>
+<h3 id="名詞定義">名詞定義</h3>
+<ul>
+<li>domain: a sphere (範圍) of knowledge or activity</li>
+<li>model: a system of abstractions representing <strong>the selected aspects</strong> of a domain
+<ul>
+<li>a model distills (抽取、提煉) knowledge and assumptions about a domain</li>
+<li>a model describes a very specific problem you’re solving</li>
+</ul>
+</li>
+</ul>
+<h3 id="從領域到模型">從領域到模型</h3>
+<ol>
+<li>Abstraction: Earth is a sphere.</li>
+<li>Selection &#x26; Abstraction: Points of interest (coastlines, rivers, posts…) are described in spherical coordinates (latitude/longitude).</li>
+<li>Established Formalism: Cylindrical projections — function converts points on round surface to points on flat.</li>
+<li>Assertion: Mercator Projection — preserves direction between points.</li>
+</ol>
+<p><img src="/2023/ddd-world-map-metaphor/from-domain-to-model.jpg" alt="from domain to model.jpg"></p>
+<h2 id="參考文件">參考文件</h2>
+<ul>
+<li><a href="https://youtu.be/pMuiVlnGqjk?si=4pNZhdSyeG1ZDNVX">What is DDD - Eric Evans - DDD Europe 2019</a></li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

@@ -1,0 +1,173 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.BScVxmeO.js"></script><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.1.2"><!-- Primary Meta Tags --><title>2021 第46週 學習記錄：CSS modules、React HOC、React router、debounce 與 throttle</title><meta name="title" content="2021 第46週 學習記錄：CSS modules、React HOC、React router、debounce 與 throttle"><meta name="description" content="這是一個文組轉職前端工程師的技術部落格"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2021/work-log-w46"><meta property="og:title" content="2021 第46週 學習記錄：CSS modules、React HOC、React router、debounce 與 throttle"><meta property="og:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="og:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2021/work-log-w46"><meta property="twitter:title" content="2021 第46週 學習記錄：CSS modules、React HOC、React router、debounce 與 throttle"><meta property="twitter:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="twitter:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:Noto Sans TC,sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul:not(:has(li)){margin-top:16px;margin-bottom:16px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:16px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+[data-astro-image]{width:100%;height:auto;object-fit:var(--fit);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>2021 第46週 學習記錄：CSS modules、React HOC、React router、debounce 與 throttle</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2021-11-18 20:53</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/CSS" data-astro-cid-2iymvi75> CSS </a> <a class="tag" href="/tag/React" data-astro-cid-2iymvi75> React </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#總結" data-astro-cid-qtokga5y>總結</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#css-modules" data-astro-cid-qtokga5y>CSS modules</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#相關問題" data-astro-cid-qtokga5y>相關問題</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#react" data-astro-cid-qtokga5y>React</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#higher-order-function" data-astro-cid-qtokga5y>Higher-Order function</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#higher-order-components" data-astro-cid-qtokga5y>Higher-Order Components</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#react-router" data-astro-cid-qtokga5y>React Router</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#strict-exact" data-astro-cid-qtokga5y>strict, exact</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#searching-debounce-throttle" data-astro-cid-qtokga5y>Searching Debounce, Throttle</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#參考文章" data-astro-cid-qtokga5y>參考文章</a> </li> </ul> </div> <h2 id="總結">總結</h2>
+<p>記錄 2021 年第 46 週學到的新東西：CSS modules、React Router、Debounce 與 Throttle</p>
+<h2 id="css-modules">CSS modules</h2>
+<blockquote>
+<p><a href="https://magento.github.io/pwa-studio/technologies/basic-concepts/css-modules/">Adobe Magneto PWA docs</a>: A CSS Module is a CSS file that defines class and animation names that are <strong>scoped locally by default</strong>. CSS modules <strong>do not have an official specification</strong> nor are they a browser feature. They are part of a compilation process that executes against your project to convert scoped classes and selectors into CSS files that the browser can parse and understand. Tools such as <strong>Webpack</strong> are used to perform this compilation process.</p>
+</blockquote>
+<ul>
+<li>解決了原生 CSS 沒有 scope 概念的問題</li>
+<li>目前的專案使用 webpack5 處理打包流程，故直接在 React 元件中引用相對應的 module.css 檔案即可</li>
+</ul>
+<h3 id="相關問題">相關問題</h3>
+<blockquote>
+<p>試圖對 MUI 元件套用自定義的 CSS 樣式，確定語法與選擇器皆有正確撰寫，但樣式卻沒有套用到畫面上</p>
+</blockquote>
+<ul>
+<li>問題根源：在 module.css 中誤用<code>:local</code>限制了要覆蓋的 MUI CSS classes</li>
+<li>解決方式：使用<code>:global</code>取代<code>:local</code>，因為要覆蓋的 MUI CSS classes 是 global 樣式，不需套用<code>:local</code>將該樣式做 scoped</li>
+</ul>
+<h2 id="react">React</h2>
+<h3 id="higher-order-function">Higher-Order function</h3>
+<blockquote>
+<p>Higher-Order function 是 function 回傳 function；而 higher-order component 也可用類似邏輯理解</p>
+</blockquote>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#6A737D">// function return function</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#B392F0"> add</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">x</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">y</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">z</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> x </span><span style="color:#F97583">+</span><span style="color:#E1E4E8"> y </span><span style="color:#F97583">+</span><span style="color:#E1E4E8"> z;</span></span>
+<span class="line"><span style="color:#B392F0">add</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">2</span><span style="color:#E1E4E8">)(</span><span style="color:#79B8FF">3</span><span style="color:#E1E4E8">)(</span><span style="color:#79B8FF">4</span><span style="color:#E1E4E8">); </span><span style="color:#6A737D">// 2+3+4 = 9</span></span></code></pre>
+<h3 id="higher-order-components">Higher-Order Components</h3>
+<blockquote>
+<p><a href="https://reactjs.org/docs/higher-order-components.html">React Official Docs</a>: A higher-order component is a function that takes a component and <strong>returns a new component</strong>.</p>
+</blockquote>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#6A737D">// component return component</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> EnhancedComponent</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> higherOrderComponent</span><span style="color:#E1E4E8">(WrappedComponent);</span></span></code></pre>
+<ul>
+<li>
+<p>You can imagine that in a large app, this <strong>same pattern</strong> of subscribing to <code>DataSource</code> and calling <code>setState</code> will occur over and over again. We want an abstraction that allows us to define this logic in a single place and share it across many components. This is where higher-order components excel.
+官方說明中以「render comments」與「render blog post」做範例，雖然 render 出來的內容類型完全不同，但行為都是「在<code>componentDidMount</code>時執行 data fetch，把資料丟進 setState，並將資料渲染到畫面上」；而 HOCs 可以<strong>重複利用以上邏輯</strong></p>
+</li>
+<li>
+<p>The wrapped component receives all the props of the container, along with a new prop, <code>data</code>, which it uses to render its output. The <strong>HOC isn’t concerned with how or why the data is used</strong>, and the <strong>wrapped component isn’t concerned with where the data came from</strong>.
+HOCs 不管資料怎麼被子層元件使用，子層元件也不管資料怎麼來</p>
+</li>
+<li>
+<p>簡單應用範例：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#6A737D">// remove props</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> React </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> 'react'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> HocRemoveProp</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">WrappedComponent</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#F97583"> class</span><span style="color:#B392F0"> WrappingComponent</span><span style="color:#F97583"> extends</span><span style="color:#B392F0"> React</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">Component</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#B392F0">    render</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">      const</span><span style="color:#E1E4E8"> { </span><span style="color:#79B8FF">user</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">...</span><span style="color:#79B8FF">otherProps</span><span style="color:#E1E4E8"> } </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> this</span><span style="color:#E1E4E8">.props;</span></span>
+<span class="line"><span style="color:#F97583">      return</span><span style="color:#E1E4E8"> &#x3C;</span><span style="color:#79B8FF">WrappedComponent</span><span style="color:#E1E4E8"> {</span><span style="color:#F97583">...</span><span style="color:#E1E4E8">otherProps} />;</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#E1E4E8">  };</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> default</span><span style="color:#E1E4E8"> HocRemoveProp;</span></span></code></pre>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#6A737D">// remove props</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> React </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> 'react'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> HocRemoveProp</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">WrappedComponent</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#F97583"> class</span><span style="color:#B392F0"> WrappingComponent</span><span style="color:#F97583"> extends</span><span style="color:#B392F0"> React</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">Component</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#B392F0">    render</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">      const</span><span style="color:#E1E4E8"> { </span><span style="color:#79B8FF">user</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">...</span><span style="color:#79B8FF">otherProps</span><span style="color:#E1E4E8"> } </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> this</span><span style="color:#E1E4E8">.props;</span></span>
+<span class="line"><span style="color:#F97583">      return</span><span style="color:#E1E4E8"> &#x3C;</span><span style="color:#79B8FF">WrappedComponent</span><span style="color:#E1E4E8"> {</span><span style="color:#F97583">...</span><span style="color:#E1E4E8">otherProps} />;</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#E1E4E8">  };</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> default</span><span style="color:#E1E4E8"> HocRemoveProp;</span></span></code></pre>
+</li>
+</ul>
+<h2 id="react-router">React Router</h2>
+<ul>
+<li>
+<p>To use a router, just make sure it is <strong>rendered at the root of your element hierarchy</strong>. Typically you’ll wrap your top-level <code>&#x3C;App></code> element in a router.
+基本上會用<code>&#x3C;BrowserRouter></code>把<code>&#x3C;App></code>包起來</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> React </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> 'react'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> ReactDOM </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> 'react-dom'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { BrowserRouter } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> 'react-router-dom'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> App</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> &#x3C;</span><span style="color:#85E89D">h1</span><span style="color:#E1E4E8">>Hello React Router&#x3C;/</span><span style="color:#85E89D">h1</span><span style="color:#E1E4E8">>;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">ReactDOM.</span><span style="color:#B392F0">render</span><span style="color:#E1E4E8">(</span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;</span><span style="color:#79B8FF">BrowserRouter</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#79B8FF">App</span><span style="color:#E1E4E8"> /></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;/</span><span style="color:#79B8FF">BrowserRouter</span><span style="color:#E1E4E8">>,</span></span>
+<span class="line"><span style="color:#E1E4E8">  document.</span><span style="color:#B392F0">getElementById</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'root'</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">);</span></span></code></pre>
+</li>
+<li>
+<p>You should put <code>&#x3C;Route></code>s with more specific (typically longer) <code>path</code>s <strong>before</strong> less-specific ones.
+邏輯跟 vue router 一樣，比對到就不會繼續往下找了，所以條件越嚴格的要放越上面</p>
+</li>
+</ul>
+<h3 id="strict-exact">strict, exact</h3>
+<ul>
+<li><code>exact strict</code>：完全符合
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#E1E4E8">&#x3C;</span><span style="color:#79B8FF">Route</span><span style="color:#B392F0"> exact</span><span style="color:#B392F0"> strict</span><span style="color:#B392F0"> path</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"/one/"</span><span style="color:#B392F0"> component</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{About} /></span></span>
+<span class="line"><span style="color:#6A737D">// ✅ /one/</span></span>
+<span class="line"><span style="color:#6A737D">// 🚫 /one, /one/two</span></span></code></pre>
+</li>
+<li><code>strict</code>：檢查 trailing slash
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#E1E4E8">&#x3C;</span><span style="color:#79B8FF">Route</span><span style="color:#B392F0"> strict</span><span style="color:#B392F0"> path</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"/one/"</span><span style="color:#B392F0"> component</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{About} /></span></span>
+<span class="line"><span style="color:#6A737D">// ✅ /one/, /one/two</span></span>
+<span class="line"><span style="color:#6A737D">// 🚫 /one</span></span></code></pre>
+</li>
+<li><code>exact</code>：不限制 trailing slash，但 trailing slash 後若有內容則判定不 match
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#E1E4E8">&#x3C;</span><span style="color:#79B8FF">Route</span><span style="color:#B392F0"> exact</span><span style="color:#B392F0"> path</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"/one"</span><span style="color:#B392F0"> component</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{About} /></span></span>
+<span class="line"><span style="color:#6A737D">// ✅ /one, /one/</span></span>
+<span class="line"><span style="color:#6A737D">// 🚫 /one/two</span></span></code></pre>
+</li>
+</ul>
+<h2 id="searching-debounce-throttle">Searching Debounce, Throttle</h2>
+<blockquote>
+<p>When a React component handles bursting events like window resize, scrolling, user typing into an input, etc. — it’s wise to <strong>soften the handlers of these events</strong>. Otherwise, when the handlers are invoked too often you risk making the application <strong>lagging</strong> or even <strong>unresponsive for a few seconds</strong>.</p>
+</blockquote>
+<ul>
+<li>簡單總結：「等一下再執行」
+舉例：不是每次 user input onChange 的時候就馬上搜尋內容，而是等待 xx 毫秒後再執行搜尋</li>
+<li>簡單解法：
+<ul>
+<li><code>_.debounce(func, [wait=0], [options={}])</code> (<a href="https://lodash.com/docs/4.17.15#debounce">Official docs</a>): Creates a debounced function that delays invoking <code>func</code> until after <code>wait</code> milliseconds have elapsed since the last time the debounced function was invoked.</li>
+<li><code>_.throttle(func, [wait=0], [options={}])</code> (<a href="https://lodash.com/docs/4.17.15#throttle">Official docs</a>): Creates a throttled function that only invokes <code>func</code> at most once per every <code>wait</code> milliseconds.</li>
+</ul>
+</li>
+<li>差異：
+<ul>
+<li>debounce: will bunch a series of sequential calls to a function <strong>into a single call</strong> to that function. It ensures that one notification is made for an event that fires multiple times. <strong>最後一次被觸發、並過了指定秒數後</strong>才執行該 cb()</li>
+<li>throttle: will <strong>delay executing</strong> a function. It will <strong>reduce</strong> the notifications of an event that fires multiple times. 在<strong>一段指定時間內最多只會執行一次</strong></li>
+<li>視覺參考：<a href="http://demo.nimius.net/debounce_throttle/">http://demo.nimius.net/debounce_throttle/</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="參考文章">參考文章</h2>
+<ul>
+<li><a href="https://github.com/css-modules/css-modules">CSS Modules</a></li>
+<li><a href="https://youtu.be/JZcKgeulFM0">(YouTube) What is a Higher Order Component? | React Tutorials</a></li>
+<li><a href="https://pjchender.dev/react/react-higher-order-component/">[react] Higher Order Component(HOC)</a></li>
+<li><a href="https://mp.weixin.qq.com/s/_zQZ4Gg9WIG-3byL_p13QA">当初要是看了这篇，React 高阶组件早会了</a></li>
+<li><a href="https://stackoverflow.com/questions/52275146/usage-of-exact-and-strict-props">Usage of exact and strict props</a></li>
+<li><a href="https://dmitripavlutin.com/react-throttle-debounce/">How to Correctly Debounce and Throttle Callbacks in React</a></li>
+<li><a href="https://css-tricks.com/debouncing-throttling-explained-examples/">Debouncing and Throttling Explained Through Examples</a></li>
+<li><a href="https://stackoverflow.com/questions/25991367/difference-between-throttling-and-debouncing-a-function">Difference Between throttling and debouncing a function</a></li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 
