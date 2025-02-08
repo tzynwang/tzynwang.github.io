@@ -1,8 +1,9 @@
 ---
-title: 說真的，如何避免拷問使用者？
+title: 說真的，如何避免拷問使用者——《資訊架構學》（第四版）閱讀筆記
 date: 2025-01-27 11:47:53
 tag:
   - [Product Design]
+  - [閱讀筆記]
 banner: /2025/how-to-make-information-findable-understandable/拷問的各種形式.png
 summary: 避免產品拷問使用者的終極前提其實是「理解使用者要什麼、在想什麼」，不過這篇的重點是關於「如何讓資訊找尋找、好理解」以及「如何維持體驗的一致性」。不會聊到使用者研究，請見諒 🌚
 draft:
