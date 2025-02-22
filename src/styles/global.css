@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: content-box;
-  font-family: 'Noto Sans TC', sans-serif;
+  font-family: sans-serif;
   text-wrap: pretty;
   color: rgba(0, 0, 0, 0.9);
 }
@@ -36,6 +36,12 @@ li {
 ul:not(:has(li)) {
   margin-top: 16px;
   margin-bottom: 16px;
+}
+
+li {
+  margin-top: 4px;
+  margin-bottom: 4px;
+  line-height: 24px;
 }
 
 li li {
@@ -104,4 +110,9 @@ hr {
   height: 1px;
   margin: 16px 0;
   background-color: #4c5958;
+}
+
+del {
+  /* 90% opacity */
+  color: #4c5958e6;
 }
