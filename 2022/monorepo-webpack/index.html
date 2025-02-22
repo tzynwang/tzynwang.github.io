@@ -1,0 +1,202 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.BScVxmeO.js"></script><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.1.2"><!-- Primary Meta Tags --><title>2022 第41週 實作筆記：react monorepo</title><meta name="title" content="2022 第41週 實作筆記：react monorepo"><meta name="description" content="這是一個文組轉職前端工程師的技術部落格"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2022/monorepo-webpack"><meta property="og:title" content="2022 第41週 實作筆記：react monorepo"><meta property="og:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="og:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2022/monorepo-webpack"><meta property="twitter:title" content="2022 第41週 實作筆記：react monorepo"><meta property="twitter:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="twitter:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul:not(:has(li)){margin-top:16px;margin-bottom:16px}li{margin-top:4px;margin-bottom:4px;line-height:24px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:16px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}del{color:#4c5958e6}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+[data-astro-image]{width:100%;height:auto;object-fit:var(--fit);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>2022 第41週 實作筆記：react monorepo</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2022-10-15 10:29</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/monorepo" data-astro-cid-2iymvi75> monorepo </a> <a class="tag" href="/tag/webpack" data-astro-cid-2iymvi75> webpack </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#總結" data-astro-cid-qtokga5y>總結</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#版本與環境" data-astro-cid-qtokga5y>版本與環境</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#筆記" data-astro-cid-qtokga5y>筆記</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#packagejson" data-astro-cid-qtokga5y>package.json</a> </li><li class="toc-4" data-astro-cid-qtokga5y> <a href="#根目錄" data-astro-cid-qtokga5y>根目錄</a> </li><li class="toc-4" data-astro-cid-qtokga5y> <a href="#workspace-下的套件" data-astro-cid-qtokga5y>workspace 下的套件</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#webpack" data-astro-cid-qtokga5y>webpack</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#gitignore" data-astro-cid-qtokga5y>.gitignore</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#參考文件" data-astro-cid-qtokga5y>參考文件</a> </li> </ul> </div> <h2 id="總結">總結</h2>
+<p>在沒有使用其他套件的情況下從零開始建立一個 react monorepo 專案，此篇筆記會記錄如何調整 package.json 與 webpack 設定來讓專案可以順利編譯。</p>
+<p>專案結構可參考：<a href="https://github.com/tzynwang/monorepo-study">tzynwang/monorepo-study</a></p>
+<h2 id="版本與環境">版本與環境</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>react: 18.2.0</span></span>
+<span class="line"><span>react-dom: 18.2.0</span></span>
+<span class="line"><span>webpack: 5.74.0</span></span>
+<span class="line"><span>yarn: 1.22.18</span></span></code></pre>
+<h2 id="筆記">筆記</h2>
+<h3 id="packagejson">package.json</h3>
+<h4 id="根目錄">根目錄</h4>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="json"><code><span class="line"><span style="color:#6A737D">// 僅列出 monorepo 必要的部份</span></span>
+<span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#79B8FF">  "name"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"monorepo-study"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">  "private"</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">  "scripts"</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#79B8FF">    "start"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"yarn workspace @monorepo-study/app start"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    "build"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"yarn workspace @monorepo-study/app build"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    "del:node_modules"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"find . -type d -name 'node_modules' -exec rm -rf {} +"</span></span>
+<span class="line"><span style="color:#E1E4E8">  },</span></span>
+<span class="line"><span style="color:#79B8FF">  "workspaces"</span><span style="color:#E1E4E8">: [</span><span style="color:#9ECBFF">"app/**"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"packages/**"</span><span style="color:#E1E4E8">]</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>根目錄的 <code>package.json</code> 指定整個專案的名稱為 <code>monorepo-study</code>，並設定 <code>workspaces</code> 需涵蓋 <code>&#x3C;root>/app</code> 與 <code>&#x3C;root>/packages</code> 這兩個資料夾的內容。</p>
+<p>要在專案根目錄執行 workspaces 套件的腳本，加上 <code>workspace</code> 關鍵字即可；參考上述範例，在終端執行 <code>yarn start</code> 時，實際執行的是 <code>@monorepo-study/app</code> 這個套件的 <code>yarn start</code></p>
+<h4 id="workspace-下的套件">workspace 下的套件</h4>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="json"><code><span class="line"><span style="color:#6A737D">// &#x3C;root>/packages/components 資料夾中的 package.json</span></span>
+<span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#79B8FF">  "name"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"@monorepo-study/components"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">  "main"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"./src/index.tsx"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">  "types"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"./src/types.d.ts"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">  "version"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"1.0.0"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">  "description"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">""</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">  "keywords"</span><span style="color:#E1E4E8">: [],</span></span>
+<span class="line"><span style="color:#79B8FF">  "author"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">""</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">  "license"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"MIT"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">  "dependencies"</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#79B8FF">    "@types/react"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"^18.0.21"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    "@types/react-dom"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"^18.0.6"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    "classnames"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"^2.3.2"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    "react"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"^18.2.0"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    "react-dom"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"^18.2.0"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    "typescript"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"^4.8.4"</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="json"><code><span class="line"><span style="color:#6A737D">// &#x3C;root>/app 資料夾中的 package.json</span></span>
+<span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#79B8FF">  "name"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"@monorepo-study/app"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">  "version"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"1.0.0"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">  "description"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">""</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">  "scripts"</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#79B8FF">    "start"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"node script/start.js"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    "build"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"node script/build.js"</span></span>
+<span class="line"><span style="color:#E1E4E8">  },</span></span>
+<span class="line"><span style="color:#79B8FF">  "keywords"</span><span style="color:#E1E4E8">: [],</span></span>
+<span class="line"><span style="color:#79B8FF">  "author"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">""</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">  "license"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"MIT"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">  "dependencies"</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#79B8FF">    "@babel/core"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"^7.19.3"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    "@babel/preset-env"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"^7.19.3"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    "@babel/preset-react"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"^7.18.6"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    "@types/react"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"^18.0.21"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    "@types/react-dom"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"^18.0.6"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    "babel-loader"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"^8.2.5"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    "classnames"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"^2.3.2"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    "copy-webpack-plugin"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"^11.0.0"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    "css-loader"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"^6.7.1"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    "dotenv"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"^16.0.3"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    "dotenv-webpack"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"^8.0.1"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    "html-webpack-plugin"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"^5.5.0"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    "mini-css-extract-plugin"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"2.6.1"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    "react"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"^18.2.0"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    "react-dom"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"^18.2.0"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    "style-loader"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"^3.3.1"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    "ts-loader"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"^9.4.1"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    "typescript"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"^4.8.4"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    "webpack"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"^5.74.0"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    "webpack-cli"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"^4.10.0"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    "webpack-dev-server"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"^4.11.1"</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>注意 workspaces 套件的名稱都需加上在根目錄 <code>package.json</code> 設定好的專案名；比如 <code>packages/components</code> 在 <code>package.json</code> 中的 <code>name</code> 要設定為 <code>@monorepo-study/components</code>（而不是單純的 <code>components</code>）</p>
+<p>而開發需要的 dependencies 也都根據 <code>@monorepo-study/components</code> 以及 <code>@monorepo-study/app</code> 各自的需求列出。兩個套件都有安裝 <code>react</code> 與 <code>react-dom</code>，但只有 <code>@monorepo-study/app</code> 安裝了 <code>webpack</code> 與相關套件來處理轉譯、打包需求。</p>
+<p>設定好 workspaces 們的 dependencies 後，直接在專案根目錄位置執行 <code>yarn</code> 來執行 dependencies 安裝即可。</p>
+<h3 id="webpack">webpack</h3>
+<p>最大的關鍵是在 <code>module.rules.loader</code> 加上 <code>require.resolve</code> 來解析 <code>plugin</code> 位置，其他設定則根據 development 以及 production 環境的需求來處理即可。</p>
+<p>以 <code>@monorepo-study/app</code> 的設定為例，只有在 production 環境時才選擇載入 <code>miniCssExtractPlugin</code>，<code>module.rules</code> 中關於 css 檔案的解析，也根據環境是 development 或 production 來決定要採用 <code>miniCssExtractPlugin.loader</code> 或 <code>style-loader</code> 來處理檔案。</p>
+<p>差異是：<code>miniCssExtractPlugin</code> 會把樣式獨立輸出為一個 <code>.css</code> 檔案，而 <code>style-loader</code> 則是把樣式直接注入到 DOM 上（如果 <code>injectType</code> 使用預設的 <code>styleTag</code>），在開發時透過 <code>style-loader</code> 可以直接反應修改後儲存的內容，比較方便。</p>
+<p>而 <code>output.path</code> 則透過 <code>path.resolve</code> 來指定最終輸出的 <code>dist</code> 資料夾要放在專案根目錄中。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> path</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> require</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'path'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> dotenvWebpack</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> require</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'dotenv-webpack'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> htmlWebpackPlugin</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> require</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'html-webpack-plugin'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> miniCssExtractPlugin</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> require</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'mini-css-extract-plugin'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#B392F0">require</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'dotenv'</span><span style="color:#E1E4E8">).</span><span style="color:#B392F0">config</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">module</span><span style="color:#E1E4E8">.</span><span style="color:#79B8FF">exports</span><span style="color:#F97583"> =</span><span style="color:#F97583"> function</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">webpackEnv</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> isProduction</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> webpackEnv </span><span style="color:#F97583">===</span><span style="color:#9ECBFF"> 'production'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">    entry: </span><span style="color:#9ECBFF">'./src/index.tsx'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">    output: {</span></span>
+<span class="line"><span style="color:#E1E4E8">      clean: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">      chunkFilename: </span><span style="color:#9ECBFF">'js/[name].[contenthash:8].chunk.js'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">      filename: </span><span style="color:#9ECBFF">'js/[name].[contenthash:8].js'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">      path: path.</span><span style="color:#B392F0">resolve</span><span style="color:#E1E4E8">(__dirname, </span><span style="color:#9ECBFF">'..'</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">'..'</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">'dist'</span><span style="color:#E1E4E8">), </span><span style="color:#6A737D">// export final bundle to root/dist folder</span></span>
+<span class="line"><span style="color:#E1E4E8">    },</span></span>
+<span class="line"><span style="color:#E1E4E8">    plugins: [</span></span>
+<span class="line"><span style="color:#F97583">      new</span><span style="color:#B392F0"> dotenvWebpack</span><span style="color:#E1E4E8">(),</span></span>
+<span class="line"><span style="color:#F97583">      new</span><span style="color:#B392F0"> htmlWebpackPlugin</span><span style="color:#E1E4E8">({</span></span>
+<span class="line"><span style="color:#E1E4E8">        template: </span><span style="color:#9ECBFF">'./public/index.html'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">      }),</span></span>
+<span class="line"><span style="color:#E1E4E8">      isProduction </span><span style="color:#F97583">&#x26;&#x26;</span></span>
+<span class="line"><span style="color:#F97583">        new</span><span style="color:#B392F0"> miniCssExtractPlugin</span><span style="color:#E1E4E8">({</span></span>
+<span class="line"><span style="color:#E1E4E8">          filename: </span><span style="color:#9ECBFF">'css/[name].[contenthash:8].css'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">          chunkFilename: </span><span style="color:#9ECBFF">'css/[name].[contenthash:8].chunk.css'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">        }),</span></span>
+<span class="line"><span style="color:#E1E4E8">    ].</span><span style="color:#B392F0">filter</span><span style="color:#E1E4E8">(Boolean),</span></span>
+<span class="line"><span style="color:#E1E4E8">    module: {</span></span>
+<span class="line"><span style="color:#E1E4E8">      rules: [</span></span>
+<span class="line"><span style="color:#E1E4E8">        {</span></span>
+<span class="line"><span style="color:#E1E4E8">          test:</span><span style="color:#9ECBFF"> /</span><span style="color:#85E89D;font-weight:bold">\.</span><span style="color:#DBEDFF">tsx</span><span style="color:#F97583">?$</span><span style="color:#9ECBFF">/</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">          exclude:</span><span style="color:#9ECBFF"> /</span><span style="color:#DBEDFF">node_modules</span><span style="color:#9ECBFF">/</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">          loader: require.</span><span style="color:#B392F0">resolve</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'ts-loader'</span><span style="color:#E1E4E8">),</span></span>
+<span class="line"><span style="color:#E1E4E8">        },</span></span>
+<span class="line"><span style="color:#E1E4E8">        {</span></span>
+<span class="line"><span style="color:#E1E4E8">          test:</span><span style="color:#9ECBFF"> /</span><span style="color:#85E89D;font-weight:bold">\.</span><span style="color:#DBEDFF">js</span><span style="color:#F97583">$</span><span style="color:#9ECBFF">/</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">          exclude:</span><span style="color:#9ECBFF"> /</span><span style="color:#DBEDFF">node_modules</span><span style="color:#9ECBFF">/</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">          loader: require.</span><span style="color:#B392F0">resolve</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'babel-loader'</span><span style="color:#E1E4E8">),</span></span>
+<span class="line"><span style="color:#E1E4E8">          options: {</span></span>
+<span class="line"><span style="color:#E1E4E8">            presets: [</span></span>
+<span class="line"><span style="color:#E1E4E8">              require.</span><span style="color:#B392F0">resolve</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'@babel/preset-env'</span><span style="color:#E1E4E8">),</span></span>
+<span class="line"><span style="color:#E1E4E8">              require.</span><span style="color:#B392F0">resolve</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'@babel/preset-react'</span><span style="color:#E1E4E8">),</span></span>
+<span class="line"><span style="color:#E1E4E8">            ],</span></span>
+<span class="line"><span style="color:#E1E4E8">          },</span></span>
+<span class="line"><span style="color:#E1E4E8">        },</span></span>
+<span class="line"><span style="color:#E1E4E8">        {</span></span>
+<span class="line"><span style="color:#E1E4E8">          test:</span><span style="color:#9ECBFF"> /</span><span style="color:#85E89D;font-weight:bold">\.</span><span style="color:#DBEDFF">module</span><span style="color:#85E89D;font-weight:bold">\.</span><span style="color:#DBEDFF">css</span><span style="color:#F97583">$</span><span style="color:#9ECBFF">/</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">          use: [</span></span>
+<span class="line"><span style="color:#E1E4E8">            isProduction</span></span>
+<span class="line"><span style="color:#F97583">              ?</span><span style="color:#E1E4E8"> { loader: miniCssExtractPlugin.loader }</span></span>
+<span class="line"><span style="color:#F97583">              :</span><span style="color:#E1E4E8"> { loader: require.</span><span style="color:#B392F0">resolve</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'style-loader'</span><span style="color:#E1E4E8">) },</span></span>
+<span class="line"><span style="color:#E1E4E8">            {</span></span>
+<span class="line"><span style="color:#E1E4E8">              loader: require.</span><span style="color:#B392F0">resolve</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'css-loader'</span><span style="color:#E1E4E8">),</span></span>
+<span class="line"><span style="color:#E1E4E8">              options: {</span></span>
+<span class="line"><span style="color:#E1E4E8">                importLoaders: </span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">                modules: {</span></span>
+<span class="line"><span style="color:#E1E4E8">                  localIdentName: </span><span style="color:#9ECBFF">'[path][name]__[local]__[hash:base64:5]'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">                },</span></span>
+<span class="line"><span style="color:#E1E4E8">              },</span></span>
+<span class="line"><span style="color:#E1E4E8">            },</span></span>
+<span class="line"><span style="color:#E1E4E8">          ],</span></span>
+<span class="line"><span style="color:#E1E4E8">        },</span></span>
+<span class="line"><span style="color:#E1E4E8">        {</span></span>
+<span class="line"><span style="color:#E1E4E8">          test:</span><span style="color:#9ECBFF"> /</span><span style="color:#85E89D;font-weight:bold">\.</span><span style="color:#DBEDFF">css</span><span style="color:#F97583">$</span><span style="color:#9ECBFF">/</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">          exclude:</span><span style="color:#9ECBFF"> /</span><span style="color:#85E89D;font-weight:bold">\.</span><span style="color:#DBEDFF">module</span><span style="color:#85E89D;font-weight:bold">\.</span><span style="color:#DBEDFF">css</span><span style="color:#F97583">$</span><span style="color:#9ECBFF">/</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">          use: [</span></span>
+<span class="line"><span style="color:#E1E4E8">            isProduction</span></span>
+<span class="line"><span style="color:#F97583">              ?</span><span style="color:#E1E4E8"> miniCssExtractPlugin.loader</span></span>
+<span class="line"><span style="color:#F97583">              :</span><span style="color:#E1E4E8"> require.</span><span style="color:#B392F0">resolve</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'style-loader'</span><span style="color:#E1E4E8">),</span></span>
+<span class="line"><span style="color:#E1E4E8">            require.</span><span style="color:#B392F0">resolve</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'css-loader'</span><span style="color:#E1E4E8">),</span></span>
+<span class="line"><span style="color:#E1E4E8">          ],</span></span>
+<span class="line"><span style="color:#E1E4E8">        },</span></span>
+<span class="line"><span style="color:#E1E4E8">      ],</span></span>
+<span class="line"><span style="color:#E1E4E8">    },</span></span>
+<span class="line"><span style="color:#E1E4E8">    resolve: {</span></span>
+<span class="line"><span style="color:#E1E4E8">      extensions: [</span><span style="color:#9ECBFF">'.tsx'</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">'.ts'</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">'.jsx'</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">'.js'</span><span style="color:#E1E4E8">],</span></span>
+<span class="line"><span style="color:#E1E4E8">    },</span></span>
+<span class="line"><span style="color:#E1E4E8">  };</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span></code></pre>
+<h3 id="gitignore">.gitignore</h3>
+<p>不需要加上 <code>/</code> 或 <code>**</code>，直接輸入 <code>node_modules</code> 與 <code>dist</code> 即可直接忽略在專案各層有著同樣名稱的資料夾</p>
+<h2 id="參考文件">參考文件</h2>
+<ul>
+<li><a href="https://nodejs.org/api/modules.html#requireresolverequest-options">Node.js require.resolve(request[, options])</a></li>
+<li><a href="https://stackoverflow.com/questions/56093213/transpiling-and-linting-files-outside-of-my-root-directory-webpack-4">StackOverFlow: Transpiling and linting files outside of my root directory webpack 4</a></li>
+<li><a href="https://stackoverflow.com/a/45490108/15028185">StackOverFlow: ignoring any ‘bin’ directory on a git project</a></li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

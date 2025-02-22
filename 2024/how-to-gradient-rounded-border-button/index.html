@@ -1,0 +1,126 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.BScVxmeO.js"></script><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.1.2"><!-- Primary Meta Tags --><title>如何製作「帶圓角漸層邊框並且透明背景」的按鈕</title><meta name="title" content="如何製作「帶圓角漸層邊框並且透明背景」的按鈕"><meta name="description" content="懶人包：請設計師提供設定好漸層、圓角且背景透明的 .svg 檔，然後用 CSS `border-image` 設定按鈕的邊框樣式。"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2024/how-to-gradient-rounded-border-button"><meta property="og:title" content="如何製作「帶圓角漸層邊框並且透明背景」的按鈕"><meta property="og:description" content="懶人包：請設計師提供設定好漸層、圓角且背景透明的 .svg 檔，然後用 CSS `border-image` 設定按鈕的邊框樣式。"><meta property="og:image" content="https://tzynwang.github.io/2024/how-to-gradient-rounded-border-button/barbara-zandoval-x_L2sLTLHTU-unsplash.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2024/how-to-gradient-rounded-border-button"><meta property="twitter:title" content="如何製作「帶圓角漸層邊框並且透明背景」的按鈕"><meta property="twitter:description" content="懶人包：請設計師提供設定好漸層、圓角且背景透明的 .svg 檔，然後用 CSS `border-image` 設定按鈕的邊框樣式。"><meta property="twitter:image" content="https://tzynwang.github.io/2024/how-to-gradient-rounded-border-button/barbara-zandoval-x_L2sLTLHTU-unsplash.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul:not(:has(li)){margin-top:16px;margin-bottom:16px}li{margin-top:4px;margin-bottom:4px;line-height:24px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:16px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}del{color:#4c5958e6}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+[data-astro-image]{width:100%;height:auto;object-fit:var(--fit);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>如何製作「帶圓角漸層邊框並且透明背景」的按鈕</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2024-12-28 21:57</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/CSS" data-astro-cid-2iymvi75> CSS </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#步驟" data-astro-cid-qtokga5y>步驟</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#附錄svg-參數相關筆記" data-astro-cid-qtokga5y>附錄：svg 參數相關筆記</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#參考文件" data-astro-cid-qtokga5y>參考文件</a> </li> </ul> </div> <p>懶人包：請設計師提供設定好漸層、圓角且背景透明的 .svg 檔，然後用 CSS <code>border-image</code> 設定按鈕的邊框樣式。</p>
+<p>CSS <code>background-origin: border-box</code> 和 <code>padding-box</code> 的限制是<strong>按鈕的背景必定要填色</strong>，如果要透明背景的按鈕就無法用 <code>background-origin</code> 處理 🌚</p>
+<h2 id="步驟">步驟</h2>
+<p>如上方提過的，請設計師提供一版 .svg 格式的按鈕邊框檔案。以下是一個「左橘右綠漸層並且有 4px 圓角」的 1px 邊框：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="html"><code><span class="line"><span style="color:#E1E4E8">&#x3C;</span><span style="color:#85E89D">svg</span></span>
+<span class="line"><span style="color:#B392F0">  width</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"64"</span></span>
+<span class="line"><span style="color:#B392F0">  height</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"64"</span></span>
+<span class="line"><span style="color:#B392F0">  viewBox</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"0 0 64 64"</span></span>
+<span class="line"><span style="color:#B392F0">  fill</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"none"</span></span>
+<span class="line"><span style="color:#B392F0">  xmlns</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"http://www.w3.org/2000/svg"</span></span>
+<span class="line"><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;</span><span style="color:#85E89D">rect</span><span style="color:#B392F0"> x</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"0.5"</span><span style="color:#B392F0"> y</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"0.5"</span><span style="color:#B392F0"> width</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"63"</span><span style="color:#B392F0"> height</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"63"</span><span style="color:#B392F0"> rx</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"4"</span><span style="color:#B392F0"> stroke</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"url(#square)"</span><span style="color:#E1E4E8"> /></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;</span><span style="color:#85E89D">defs</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#85E89D">linearGradient</span></span>
+<span class="line"><span style="color:#B392F0">      id</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"square"</span></span>
+<span class="line"><span style="color:#B392F0">      x1</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"63"</span></span>
+<span class="line"><span style="color:#B392F0">      y1</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"0"</span></span>
+<span class="line"><span style="color:#B392F0">      x2</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"0.5"</span></span>
+<span class="line"><span style="color:#B392F0">      y2</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"0"</span></span>
+<span class="line"><span style="color:#B392F0">      gradientUnits</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"userSpaceOnUse"</span></span>
+<span class="line"><span style="color:#E1E4E8">    ></span></span>
+<span class="line"><span style="color:#E1E4E8">      &#x3C;</span><span style="color:#85E89D">stop</span><span style="color:#B392F0"> stop-color</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"lime"</span><span style="color:#E1E4E8"> /></span></span>
+<span class="line"><span style="color:#E1E4E8">      &#x3C;</span><span style="color:#85E89D">stop</span><span style="color:#B392F0"> offset</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"1"</span><span style="color:#B392F0"> stop-color</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"orange"</span><span style="color:#E1E4E8"> /></span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;/</span><span style="color:#85E89D">linearGradient</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;/</span><span style="color:#85E89D">defs</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">&#x3C;/</span><span style="color:#85E89D">svg</span><span style="color:#E1E4E8">></span></span></code></pre>
+<p>而因為載入外連圖檔需要時間（使用者會發現邊框晚一點才出現），所以選擇將上述檔案<a href="https://www.svgviewer.dev/svg-to-data-uri">轉成 Data URI 格式</a>再餵給 <code>border-image-source</code>。到目前為止的 CSS 樣式如下：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="css"><code><span class="line"><span style="color:#B392F0">.btn-border-gradient</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#79B8FF">  border-image-source</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">url</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB4PSIwLjUiIHk9IjAuNSIgd2lkdGg9IjYzIiBoZWlnaHQ9IjYzIiByeD0iNCIgc3Ryb2tlPSJ1cmwoI3NxdWFyZSkiIC8+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9InNxdWFyZSIgeDE9IjYzIiB5MT0iMCIgeDI9IjAuNSIgeTI9IjAiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KICAgICAgPHN0b3Agc3RvcC1jb2xvcj0ibGltZSIgLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSJvcmFuZ2UiIC8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KPC9zdmc+'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>接著加上 <code>border-image-slice</code> / <code>border-image-width</code> / <code>border-image-repeat</code> 參數：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="css"><code><span class="line"><span style="color:#B392F0">.btn-border-gradient</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#79B8FF">  border-image-source</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">url</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB4PSIwLjUiIHk9IjAuNSIgd2lkdGg9IjYzIiBoZWlnaHQ9IjYzIiByeD0iNCIgc3Ryb2tlPSJ1cmwoI3NxdWFyZSkiIC8+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9InNxdWFyZSIgeDE9IjYzIiB5MT0iMCIgeDI9IjAuNSIgeTI9IjAiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KICAgICAgPHN0b3Agc3RvcC1jb2xvcj0ibGltZSIgLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSJvcmFuZ2UiIC8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KPC9zdmc+'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#79B8FF">  border-image-slice</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">4</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#79B8FF">  border-image-width</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">4</span><span style="color:#F97583">px</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#79B8FF">  border-image-repeat</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">stretch</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>這三組參數的用途如下：</p>
+<ul>
+<li><code>border-image-slice</code> 指定瀏覽器將 <code>border-image-source</code> 切成九宮格時（可參考 <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/border-image-slice">MDN 範例圖</a>），下刀的位置要<strong>距離圖片邊緣有多遠</strong>；傳入 <code>4</code> 是為了<strong>搭配設計稿的 4px 圓角</strong>，代表「從圖片邊緣往中心走 <code>4px</code> 後再切」</li>
+<li><code>border-image-width</code> 指定邊框的寬度，傳入 <code>4px</code> 搭配 <code>border-image-slice: 4</code> 後即可完整呈現設計稿的 4px 圓角；數字太小會讓圓角被裁掉</li>
+<li><code>border-image-repeat</code> 設定為 <code>stretch</code> 代表拉伸圖片，所以即使我們提供正方形的 svg 背景圖，也能搭配長方形的按鈕</li>
+</ul>
+<p>最後，這些設定可以壓成一行 <code>border-image</code> 如下：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="css"><code><span class="line"><span style="color:#85E89D">border-image</span><span style="color:#E1E4E8">: url('</span><span style="color:#85E89D">data</span><span style="color:#E1E4E8">:image/</span><span style="color:#85E89D">svg</span><span style="color:#F97583">+</span><span style="color:#E1E4E8">xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB4PSIwLjUiIHk9IjAuNSIgd2lkdGg9IjYzIiBoZWlnaHQ9IjYzIiByeD0iNCIgc3Ryb2tlPSJ1cmwoI3NxdWFyZSkiIC8</span><span style="color:#F97583">+</span><span style="color:#E1E4E8">CiAgPGRlZnM</span><span style="color:#F97583">+</span><span style="color:#E1E4E8">CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9InNxdWFyZSIgeDE9IjYzIiB5MT0iMCIgeDI9IjAuNSIgeTI9IjAiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KICAgICAgPHN0b3Agc3RvcC1jb2xvcj0ibGltZSIgLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSJvcmFuZ2UiIC8</span><span style="color:#F97583">+</span><span style="color:#E1E4E8">CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KPC9zdmc</span><span style="color:#F97583">+</span><span style="color:#E1E4E8">')</span></span>
+<span class="line"><span style="color:#E1E4E8">  4 / 4px stretch;</span></span></code></pre>
+<p>完成，你得到一個有 4px 圓角漸層邊框並且透明背景的按鈕了 🌈</p>
+<h2 id="附錄svg-參數相關筆記">附錄：svg 參數相關筆記</h2>
+<p>以本篇筆記的 svg 檔為例：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="html"><code><span class="line"><span style="color:#E1E4E8">&#x3C;</span><span style="color:#85E89D">svg</span></span>
+<span class="line"><span style="color:#B392F0">  width</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"64"</span></span>
+<span class="line"><span style="color:#B392F0">  height</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"64"</span></span>
+<span class="line"><span style="color:#B392F0">  viewBox</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"0 0 64 64"</span></span>
+<span class="line"><span style="color:#B392F0">  fill</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"none"</span></span>
+<span class="line"><span style="color:#B392F0">  xmlns</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"http://www.w3.org/2000/svg"</span></span>
+<span class="line"><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;</span><span style="color:#85E89D">rect</span><span style="color:#B392F0"> x</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"0.5"</span><span style="color:#B392F0"> y</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"0.5"</span><span style="color:#B392F0"> width</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"63"</span><span style="color:#B392F0"> height</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"63"</span><span style="color:#B392F0"> rx</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"4"</span><span style="color:#B392F0"> stroke</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"url(#square)"</span><span style="color:#E1E4E8"> /></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;</span><span style="color:#85E89D">defs</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#85E89D">linearGradient</span></span>
+<span class="line"><span style="color:#B392F0">      id</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"square"</span></span>
+<span class="line"><span style="color:#B392F0">      x1</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"63"</span></span>
+<span class="line"><span style="color:#B392F0">      y1</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"0"</span></span>
+<span class="line"><span style="color:#B392F0">      x2</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"0.5"</span></span>
+<span class="line"><span style="color:#B392F0">      y2</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"0"</span></span>
+<span class="line"><span style="color:#B392F0">      gradientUnits</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"userSpaceOnUse"</span></span>
+<span class="line"><span style="color:#E1E4E8">    ></span></span>
+<span class="line"><span style="color:#E1E4E8">      &#x3C;</span><span style="color:#85E89D">stop</span><span style="color:#B392F0"> stop-color</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"lime"</span><span style="color:#E1E4E8"> /></span></span>
+<span class="line"><span style="color:#E1E4E8">      &#x3C;</span><span style="color:#85E89D">stop</span><span style="color:#B392F0"> offset</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"1"</span><span style="color:#B392F0"> stop-color</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"orange"</span><span style="color:#E1E4E8"> /></span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;/</span><span style="color:#85E89D">linearGradient</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;/</span><span style="color:#85E89D">defs</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">&#x3C;/</span><span style="color:#85E89D">svg</span><span style="color:#E1E4E8">></span></span></code></pre>
+<p><code>&#x3C;svg /></code> 部分：</p>
+<ul>
+<li><code>width="64" height="64"</code> 代表此 svg 的實際尺寸為 <code>64px * 64px</code></li>
+<li><code>viewBox="0 0 64 64"</code> 代表視埠（viewport）和 svg 的實際尺寸一樣大，且不進行任何縮放</li>
+<li><code>fill="none"</code> 代表不填入任何背景色</li>
+<li><code>xmlns="http://www.w3.org/2000/svg"</code> 代表這是一個 svg 檔案</li>
+</ul>
+<p><code>&#x3C;rect /></code> 部分：</p>
+<ul>
+<li><code>x="0.5" y="0.5" width="63" height="63"</code> 代表從座標 <code>(0.5, 0.5)</code> 繪製一個 <code>63px * 63px</code> 大的矩形</li>
+<li><code>rx="4"</code> 代表<a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/rx#rect">圓角尺寸</a>為 4px</li>
+<li><code>stroke="url(#square)"</code> 代表這個矩形的<strong>邊框</strong>（<a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Fills_and_Strokes#painting">stroke</a>）填色要參照 <code>&#x3C;defs /></code> 中的 <code>id="square"</code></li>
+<li>因為沒有指定 <code>stroke-width</code> 所以邊框的寬度會是<a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/stroke-width#usage_notes">預設值 <code>1px</code></a></li>
+</ul>
+<p><code>&#x3C;defs /></code> / <code>&#x3C;linearGradient /></code> / <code>&#x3C;stop /></code> 部分：</p>
+<ul>
+<li><code>x1="63" y1="0" x2="0.5" y2="0"</code> 代表漸層從座標 <code>(63, 0)</code> 開始，到 <code>(0.5, 0)</code> 結束——即從右<strong>水平</strong>畫到左</li>
+<li><code>stop-color="lime"</code> 代表漸層中的第一組顏色是 <code>lime</code></li>
+<li><code>stop-color="orange"</code> 代表漸層中的第二組顏色是 <code>orange</code>；<code>offset</code> <a href="https://svgwg.org/svg2-draft/pservers.html#GradientStopAttributes">傳入數字 <code>1</code> 等同傳入 <code>100%</code></a>，可以用 <a href="https://www.svgviewer.dev/">online viewer 修改參數</a>並觀察漸層的差別來體會這個參數的用途</li>
+</ul>
+<p>將這個 svg 檔案用白話文來描述的話，就是「給我一個尺寸是 <code>64px * 64px</code>，底色透明，邊框 <code>1px</code> 寬且 <code>4px</code> 圓角，邊框顏色從右到左為萊姆色——橘色漸層」的圖檔。</p>
+<h2 id="參考文件">參考文件</h2>
+<ul>
+<li><a href="https://dev.to/noriste/production-grade-gradient-bordered-transparent-and-rounded-button-56h4">Production-grade gradient bordered, transparent, and rounded button</a></li>
+<li><a href="https://stackoverflow.com/questions/51496204/border-gradient-with-border-radius">Border Gradient with Border Radius</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Element/stop">MDN SVG Elements — <code>&#x3C;stop></code></a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/x1">MDN SVG Attributes — <code>x1</code></a></li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

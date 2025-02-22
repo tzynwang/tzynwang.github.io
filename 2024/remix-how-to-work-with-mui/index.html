@@ -1,0 +1,233 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.BScVxmeO.js"></script><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.1.2"><!-- Primary Meta Tags --><title>如何指南：在 remix 專案使用 @mui/material</title><meta name="title" content="如何指南：在 remix 專案使用 @mui/material"><meta name="description" content="在 remix 使用 @mui/material 主要得克服 SSR 與 CSR 結果不同步的問題。本篇筆記會分享我在參考各路範例後拼出來的解法 🫠"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2024/remix-how-to-work-with-mui"><meta property="og:title" content="如何指南：在 remix 專案使用 @mui/material"><meta property="og:description" content="在 remix 使用 @mui/material 主要得克服 SSR 與 CSR 結果不同步的問題。本篇筆記會分享我在參考各路範例後拼出來的解法 🫠"><meta property="og:image" content="https://tzynwang.github.io/2024/remix-how-to-work-with-mui/jakub-chlouba-LVRgFVLgbK4-unsplash.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2024/remix-how-to-work-with-mui"><meta property="twitter:title" content="如何指南：在 remix 專案使用 @mui/material"><meta property="twitter:description" content="在 remix 使用 @mui/material 主要得克服 SSR 與 CSR 結果不同步的問題。本篇筆記會分享我在參考各路範例後拼出來的解法 🫠"><meta property="twitter:image" content="https://tzynwang.github.io/2024/remix-how-to-work-with-mui/jakub-chlouba-LVRgFVLgbK4-unsplash.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul:not(:has(li)){margin-top:16px;margin-bottom:16px}li{margin-top:4px;margin-bottom:4px;line-height:24px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:16px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}del{color:#4c5958e6}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+[data-astro-image]{width:100%;height:auto;object-fit:var(--fit);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>如何指南：在 remix 專案使用 @mui/material</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2024-10-20 17:56</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/MaterialUI" data-astro-cid-2iymvi75> MaterialUI </a> <a class="tag" href="/tag/Remix" data-astro-cid-2iymvi75> Remix </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#流程" data-astro-cid-qtokga5y>流程</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#原始碼與相關注意事項" data-astro-cid-qtokga5y>原始碼與相關注意事項</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#appmuicreateemotioncachets" data-astro-cid-qtokga5y>app/mui/createEmotionCache.ts</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#appmuithemets" data-astro-cid-qtokga5y>app/mui/theme.ts</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#appentryclienttsx" data-astro-cid-qtokga5y>app/entry.client.tsx</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#appentryservertsx" data-astro-cid-qtokga5y>app/entry.server.tsx</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#viteconfigts" data-astro-cid-qtokga5y>vite.config.ts</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#備註" data-astro-cid-qtokga5y>備註</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#參考文件" data-astro-cid-qtokga5y>參考文件</a> </li> </ul> </div> <p>在 remix 使用 @mui/material 主要得克服 SSR 與 CSR 結果不同步的問題，也要確保專案打包後能正常運作。這篇筆記是在參考 @mui 和 remix 的幾個官方範例後兜出來的解法。畢竟 @mui 的 Menu 跟 Dialog 用起來最順手最香 ⋯⋯🫠</p>
+<h2 id="流程">流程</h2>
+<ol>
+<li>建立 remix 專案：執行 <code>npx create-remix@latest</code>，如果沒有專案內沒有 <code>app/entry.client.tsx</code> 和 <code>app/entry.server.tsx</code> 就追加執行 <code>npx remix reveal</code></li>
+<li>安裝 @mui 相關內容：執行 <code>npm i @mui/material @emotion/react @emotion/styled</code></li>
+<li>新增 <code>app/mui/createEmotionCache.ts</code> 與 <code>app/mui/theme.ts</code></li>
+<li>更新 <code>app/entry.client.tsx</code> / <code>app/entry.server.tsx</code> / <code>vite.config.ts</code></li>
+</ol>
+<h2 id="原始碼與相關注意事項">原始碼與相關注意事項</h2>
+<p>完整的示範 repo 可參考 <a href="https://github.com/tzynwang/remix-mui">tzynwang/remix-mui</a>。</p>
+<h3 id="appmuicreateemotioncachets"><code>app/mui/createEmotionCache.ts</code></h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> createCache </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> '@emotion/cache'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> cache</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> createCache</span><span style="color:#E1E4E8">({ key: </span><span style="color:#9ECBFF">'css'</span><span style="color:#E1E4E8"> });</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> default</span><span style="color:#E1E4E8"> cache;</span></span></code></pre>
+<p>注意 <code>createCache</code> 的參數 <code>key</code> 如果設定成 <code>'css'</code> 以外的值會造成 @mui 樣式問題，推測是因為這個 <code>key</code> 也會用於 <code>renderStylesToString</code> 和 <code>renderStylesToNodeStream</code>：</p>
+<blockquote>
+<p><a href="https://emotion.sh/docs/@emotion/cache#key">@emotion/cache</a>: It will also be set as the value of the <code>data-emotion</code> attribute on the style tags that emotion inserts and <strong>it’s used in the attribute name that marks style elements in <code>renderStylesToString</code> and <code>renderStylesToNodeStream</code></strong>.</p>
+</blockquote>
+<p>但從<a href="https://emotion.sh/docs/ssr#api-reference">文件</a>上看不出來要怎麼調整這兩個功能的 <code>key</code> 的值。總之，為了讓 @mui 的樣式能正常運作，請將 <code>key</code> 的值固定為 <code>'css'</code>。</p>
+<h3 id="appmuithemets"><code>app/mui/theme.ts</code></h3>
+<p>在這裡根據需求設定 @mui 的預設樣式。如果預計用其他套件（比如 tailwind）管理樣式的話，這裡直接呼叫 <code>createTheme()</code> 取得 @mui 預設的 <code>theme</code> 物件即可。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { createTheme } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> '@mui/material/styles'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> theme</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> createTheme</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> default</span><span style="color:#E1E4E8"> theme;</span></span></code></pre>
+<h3 id="appentryclienttsx"><code>app/entry.client.tsx</code></h3>
+<p>重點：對 <code>RemixBrowser</code> 包覆 @emotion 的 <code>CacheProvider</code> 與 @mui 的 <code>ThemeProvider</code>。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { CacheProvider } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> '@emotion/react'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { ThemeProvider } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> '@mui/material/styles'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { RemixBrowser } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> '@remix-run/react'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { startTransition, StrictMode } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> 'react'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { hydrateRoot } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> 'react-dom/client'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> emotionCache </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> './mui/createEmotionCache'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> theme </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> './mui/theme'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">startTransition</span><span style="color:#E1E4E8">(() </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#B392F0">  hydrateRoot</span><span style="color:#E1E4E8">(</span></span>
+<span class="line"><span style="color:#E1E4E8">    document,</span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#79B8FF">CacheProvider</span><span style="color:#B392F0"> value</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{emotionCache}></span></span>
+<span class="line"><span style="color:#E1E4E8">      &#x3C;</span><span style="color:#79B8FF">ThemeProvider</span><span style="color:#B392F0"> theme</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{theme}></span></span>
+<span class="line"><span style="color:#E1E4E8">        &#x3C;</span><span style="color:#79B8FF">StrictMode</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">          &#x3C;</span><span style="color:#79B8FF">RemixBrowser</span><span style="color:#E1E4E8"> /></span></span>
+<span class="line"><span style="color:#E1E4E8">        &#x3C;/</span><span style="color:#79B8FF">StrictMode</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">      &#x3C;/</span><span style="color:#79B8FF">ThemeProvider</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;/</span><span style="color:#79B8FF">CacheProvider</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  );</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+<h3 id="appentryservertsx"><code>app/entry.server.tsx</code></h3>
+<p>重點：類似在 <code>app/entry.client.tsx</code> 的改動，要對 <code>RemixBrowser</code> 包覆 <code>CacheProvider</code> 與 <code>ThemeProvider</code></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { CacheProvider } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> '@emotion/react'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> createEmotionServer </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> '@emotion/server/create-instance'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { ThemeProvider } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> '@mui/material/styles'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#F97583"> type</span><span style="color:#E1E4E8"> { EntryContext } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> '@remix-run/node'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { createReadableStreamFromReadable } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> '@remix-run/node'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { RemixServer } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> '@remix-run/react'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { isbot } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> 'isbot'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { PassThrough } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> 'node:stream'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { renderToPipeableStream } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> 'react-dom/server'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> emotionCache </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> './mui/createEmotionCache'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> theme </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> './mui/theme'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> ABORT_DELAY</span><span style="color:#F97583"> =</span><span style="color:#79B8FF"> 5_000</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> default</span><span style="color:#F97583"> function</span><span style="color:#B392F0"> handleRequest</span><span style="color:#E1E4E8">(</span></span>
+<span class="line"><span style="color:#FFAB70">  request</span><span style="color:#F97583">:</span><span style="color:#B392F0"> Request</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#FFAB70">  responseStatusCode</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> number</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#FFAB70">  responseHeaders</span><span style="color:#F97583">:</span><span style="color:#B392F0"> Headers</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#FFAB70">  remixContext</span><span style="color:#F97583">:</span><span style="color:#B392F0"> EntryContext</span></span>
+<span class="line"><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#B392F0"> isbot</span><span style="color:#E1E4E8">(request.headers.</span><span style="color:#B392F0">get</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'user-agent'</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">||</span><span style="color:#9ECBFF"> ''</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#F97583">    ?</span><span style="color:#B392F0"> handleBotRequest</span><span style="color:#E1E4E8">(</span></span>
+<span class="line"><span style="color:#E1E4E8">        request,</span></span>
+<span class="line"><span style="color:#E1E4E8">        responseStatusCode,</span></span>
+<span class="line"><span style="color:#E1E4E8">        responseHeaders,</span></span>
+<span class="line"><span style="color:#E1E4E8">        remixContext</span></span>
+<span class="line"><span style="color:#E1E4E8">      )</span></span>
+<span class="line"><span style="color:#F97583">    :</span><span style="color:#B392F0"> handleBrowserRequest</span><span style="color:#E1E4E8">(</span></span>
+<span class="line"><span style="color:#E1E4E8">        request,</span></span>
+<span class="line"><span style="color:#E1E4E8">        responseStatusCode,</span></span>
+<span class="line"><span style="color:#E1E4E8">        responseHeaders,</span></span>
+<span class="line"><span style="color:#E1E4E8">        remixContext</span></span>
+<span class="line"><span style="color:#E1E4E8">      );</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> handleBotRequest</span><span style="color:#E1E4E8">(</span></span>
+<span class="line"><span style="color:#FFAB70">  request</span><span style="color:#F97583">:</span><span style="color:#B392F0"> Request</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#FFAB70">  responseStatusCode</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> number</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#FFAB70">  responseHeaders</span><span style="color:#F97583">:</span><span style="color:#B392F0"> Headers</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#FFAB70">  remixContext</span><span style="color:#F97583">:</span><span style="color:#B392F0"> EntryContext</span></span>
+<span class="line"><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#F97583"> new</span><span style="color:#79B8FF"> Promise</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">resolve</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">reject</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">    let</span><span style="color:#E1E4E8"> shellRendered </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> false</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#E1E4E8"> { </span><span style="color:#79B8FF">pipe</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">abort</span><span style="color:#E1E4E8"> } </span><span style="color:#F97583">=</span><span style="color:#B392F0"> renderToPipeableStream</span><span style="color:#E1E4E8">(</span></span>
+<span class="line"><span style="color:#6A737D">      // wrap emotion/mui provider here</span></span>
+<span class="line"><span style="color:#E1E4E8">      &#x3C;</span><span style="color:#79B8FF">CacheProvider</span><span style="color:#B392F0"> value</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{emotionCache}></span></span>
+<span class="line"><span style="color:#E1E4E8">        &#x3C;</span><span style="color:#79B8FF">ThemeProvider</span><span style="color:#B392F0"> theme</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{theme}></span></span>
+<span class="line"><span style="color:#E1E4E8">          &#x3C;</span><span style="color:#79B8FF">RemixServer</span><span style="color:#B392F0"> context</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{remixContext} </span><span style="color:#B392F0">url</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{request.url} /></span></span>
+<span class="line"><span style="color:#E1E4E8">        &#x3C;/</span><span style="color:#79B8FF">ThemeProvider</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">      &#x3C;/</span><span style="color:#79B8FF">CacheProvider</span><span style="color:#E1E4E8">>,</span></span>
+<span class="line"><span style="color:#E1E4E8">      {</span></span>
+<span class="line"><span style="color:#B392F0">        onAllReady</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#E1E4E8">          shellRendered </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> true</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">          const</span><span style="color:#79B8FF"> body</span><span style="color:#F97583"> =</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> PassThrough</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#F97583">          const</span><span style="color:#79B8FF"> stream</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> createReadableStreamFromReadable</span><span style="color:#E1E4E8">(body);</span></span>
+<span class="line"><span style="color:#E1E4E8">          responseHeaders.</span><span style="color:#B392F0">set</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'Content-Type'</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">'text/html'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#B392F0">          resolve</span><span style="color:#E1E4E8">(</span></span>
+<span class="line"><span style="color:#F97583">            new</span><span style="color:#B392F0"> Response</span><span style="color:#E1E4E8">(stream, {</span></span>
+<span class="line"><span style="color:#E1E4E8">              headers: responseHeaders,</span></span>
+<span class="line"><span style="color:#E1E4E8">              status: responseStatusCode,</span></span>
+<span class="line"><span style="color:#E1E4E8">            })</span></span>
+<span class="line"><span style="color:#E1E4E8">          );</span></span>
+<span class="line"><span style="color:#B392F0">          pipe</span><span style="color:#E1E4E8">(body);</span></span>
+<span class="line"><span style="color:#E1E4E8">        },</span></span>
+<span class="line"><span style="color:#B392F0">        onShellError</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">error</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> unknown</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#B392F0">          reject</span><span style="color:#E1E4E8">(error);</span></span>
+<span class="line"><span style="color:#E1E4E8">        },</span></span>
+<span class="line"><span style="color:#B392F0">        onError</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">error</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> unknown</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#E1E4E8">          responseStatusCode </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> 500</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">          if</span><span style="color:#E1E4E8"> (shellRendered) {</span></span>
+<span class="line"><span style="color:#E1E4E8">            console.</span><span style="color:#B392F0">error</span><span style="color:#E1E4E8">(error);</span></span>
+<span class="line"><span style="color:#E1E4E8">          }</span></span>
+<span class="line"><span style="color:#E1E4E8">        },</span></span>
+<span class="line"><span style="color:#E1E4E8">      }</span></span>
+<span class="line"><span style="color:#E1E4E8">    );</span></span>
+<span class="line"><span style="color:#B392F0">    setTimeout</span><span style="color:#E1E4E8">(abort, </span><span style="color:#79B8FF">ABORT_DELAY</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">  });</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> handleBrowserRequest</span><span style="color:#E1E4E8">(</span></span>
+<span class="line"><span style="color:#FFAB70">  request</span><span style="color:#F97583">:</span><span style="color:#B392F0"> Request</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#FFAB70">  responseStatusCode</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> number</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#FFAB70">  responseHeaders</span><span style="color:#F97583">:</span><span style="color:#B392F0"> Headers</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#FFAB70">  remixContext</span><span style="color:#F97583">:</span><span style="color:#B392F0"> EntryContext</span></span>
+<span class="line"><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#F97583"> new</span><span style="color:#79B8FF"> Promise</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">resolve</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">reject</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">    let</span><span style="color:#E1E4E8"> shellRendered </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> false</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#E1E4E8"> { </span><span style="color:#79B8FF">pipe</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">abort</span><span style="color:#E1E4E8"> } </span><span style="color:#F97583">=</span><span style="color:#B392F0"> renderToPipeableStream</span><span style="color:#E1E4E8">(</span></span>
+<span class="line"><span style="color:#6A737D">      // wrap emotion/mui provider here</span></span>
+<span class="line"><span style="color:#E1E4E8">      &#x3C;</span><span style="color:#79B8FF">CacheProvider</span><span style="color:#B392F0"> value</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{emotionCache}></span></span>
+<span class="line"><span style="color:#E1E4E8">        &#x3C;</span><span style="color:#79B8FF">ThemeProvider</span><span style="color:#B392F0"> theme</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{theme}></span></span>
+<span class="line"><span style="color:#E1E4E8">          &#x3C;</span><span style="color:#79B8FF">RemixServer</span><span style="color:#B392F0"> context</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{remixContext} </span><span style="color:#B392F0">url</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{request.url} /></span></span>
+<span class="line"><span style="color:#E1E4E8">        &#x3C;/</span><span style="color:#79B8FF">ThemeProvider</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">      &#x3C;/</span><span style="color:#79B8FF">CacheProvider</span><span style="color:#E1E4E8">>,</span></span>
+<span class="line"><span style="color:#E1E4E8">      {</span></span>
+<span class="line"><span style="color:#B392F0">        onShellReady</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#E1E4E8">          shellRendered </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> true</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">          const</span><span style="color:#79B8FF"> body</span><span style="color:#F97583"> =</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> PassThrough</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#F97583">          const</span><span style="color:#79B8FF"> stream</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> createReadableStreamFromReadable</span><span style="color:#E1E4E8">(body);</span></span>
+<span class="line"><span style="color:#E1E4E8">          responseHeaders.</span><span style="color:#B392F0">set</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'Content-Type'</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">'text/html'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#B392F0">          resolve</span><span style="color:#E1E4E8">(</span></span>
+<span class="line"><span style="color:#F97583">            new</span><span style="color:#B392F0"> Response</span><span style="color:#E1E4E8">(stream, {</span></span>
+<span class="line"><span style="color:#E1E4E8">              headers: responseHeaders,</span></span>
+<span class="line"><span style="color:#E1E4E8">              status: responseStatusCode,</span></span>
+<span class="line"><span style="color:#E1E4E8">            })</span></span>
+<span class="line"><span style="color:#E1E4E8">          );</span></span>
+<span class="line"><span style="color:#B392F0">          pipe</span><span style="color:#E1E4E8">(body);</span></span>
+<span class="line"><span style="color:#E1E4E8">        },</span></span>
+<span class="line"><span style="color:#B392F0">        onShellError</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">error</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> unknown</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#B392F0">          reject</span><span style="color:#E1E4E8">(error);</span></span>
+<span class="line"><span style="color:#E1E4E8">        },</span></span>
+<span class="line"><span style="color:#B392F0">        onError</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">error</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> unknown</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#E1E4E8">          responseStatusCode </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> 500</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">          if</span><span style="color:#E1E4E8"> (shellRendered) {</span></span>
+<span class="line"><span style="color:#E1E4E8">            console.</span><span style="color:#B392F0">error</span><span style="color:#E1E4E8">(error);</span></span>
+<span class="line"><span style="color:#E1E4E8">          }</span></span>
+<span class="line"><span style="color:#E1E4E8">        },</span></span>
+<span class="line"><span style="color:#E1E4E8">      }</span></span>
+<span class="line"><span style="color:#E1E4E8">    );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">    setTimeout</span><span style="color:#E1E4E8">(abort, </span><span style="color:#79B8FF">ABORT_DELAY</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">  });</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<h3 id="viteconfigts"><code>vite.config.ts</code></h3>
+<p>重點：在執行 <code>isSsrBuild</code>（即執行預設 <code>npm run build</code>）時，<strong>不要排除 @mui 相關內容</strong>；但在一般開發（<code>npm run dev</code>）時不做任何處理</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { vitePlugin </span><span style="color:#F97583">as</span><span style="color:#E1E4E8"> remix } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> '@remix-run/dev'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { defineConfig } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> 'vite'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> tsconfigPaths </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> 'vite-tsconfig-paths'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> default</span><span style="color:#B392F0"> defineConfig</span><span style="color:#E1E4E8">(({ </span><span style="color:#FFAB70">isSsrBuild</span><span style="color:#E1E4E8"> }) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> ({</span></span>
+<span class="line"><span style="color:#E1E4E8">  ssr: {</span></span>
+<span class="line"><span style="color:#E1E4E8">    noExternal: isSsrBuild </span><span style="color:#F97583">?</span><span style="color:#E1E4E8"> [</span><span style="color:#9ECBFF">/</span><span style="color:#F97583">^</span><span style="color:#DBEDFF">@mui</span><span style="color:#85E89D;font-weight:bold">\/</span><span style="color:#F97583">*</span><span style="color:#9ECBFF">/</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">:</span><span style="color:#79B8FF"> undefined</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">  },</span></span>
+<span class="line"><span style="color:#E1E4E8">  plugins: [</span></span>
+<span class="line"><span style="color:#B392F0">    remix</span><span style="color:#E1E4E8">({</span></span>
+<span class="line"><span style="color:#E1E4E8">      future: {</span></span>
+<span class="line"><span style="color:#E1E4E8">        v3_fetcherPersist: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">        v3_relativeSplatPath: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">        v3_throwAbortReason: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">        v3_singleFetch: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">        v3_lazyRouteDiscovery: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">      },</span></span>
+<span class="line"><span style="color:#E1E4E8">    }),</span></span>
+<span class="line"><span style="color:#B392F0">    tsconfigPaths</span><span style="color:#E1E4E8">(),</span></span>
+<span class="line"><span style="color:#E1E4E8">  ],</span></span>
+<span class="line"><span style="color:#E1E4E8">}));</span></span></code></pre>
+<h2 id="備註">備註</h2>
+<p>在 <a href="https://github.com/mui/material-ui/tree/master/examples/material-ui-remix-ts">@mui 提供的 remix 範例</a>中，專案的根目錄有一個 <code>remix.config.js</code> 檔，並設定 <code>serverModuleFormat: 'cjs'</code>，但我在測試時發現這個設定不會讓「執行 <code>npm run start</code> 時的噴錯」消失 🤷</p>
+<h2 id="參考文件">參考文件</h2>
+<ul>
+<li><a href="https://github.com/remix-run/examples/blob/main/chakra-ui/app/entry.server.tsx">remix-run/chakra-ui/app/entry.server.tsx</a></li>
+<li><a href="https://github.com/mui/material-ui/issues/42544#issuecomment-2289725618">[system] Import error when using Material UI styles with Remix v2</a></li>
+<li><a href="https://mui.com/material-ui/getting-started/example-projects/">Material UI: Example projects</a></li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

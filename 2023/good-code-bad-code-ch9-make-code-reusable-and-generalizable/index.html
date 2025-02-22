@@ -1,0 +1,105 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.BScVxmeO.js"></script><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.1.2"><!-- Primary Meta Tags --><title>閱讀筆記：Good Code, Bad Code Chapter 9 Make code reusable and generalizable</title><meta name="title" content="閱讀筆記：Good Code, Bad Code Chapter 9 Make code reusable and generalizable"><meta name="description" content="這是一個文組轉職前端工程師的技術部落格"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2023/good-code-bad-code-ch9-make-code-reusable-and-generalizable"><meta property="og:title" content="閱讀筆記：Good Code, Bad Code Chapter 9 Make code reusable and generalizable"><meta property="og:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="og:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2023/good-code-bad-code-ch9-make-code-reusable-and-generalizable"><meta property="twitter:title" content="閱讀筆記：Good Code, Bad Code Chapter 9 Make code reusable and generalizable"><meta property="twitter:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="twitter:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul:not(:has(li)){margin-top:16px;margin-bottom:16px}li{margin-top:4px;margin-bottom:4px;line-height:24px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:16px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}del{color:#4c5958e6}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+[data-astro-image]{width:100%;height:auto;object-fit:var(--fit);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>閱讀筆記：Good Code, Bad Code Chapter 9 Make code reusable and generalizable</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2023-04-12 19:24</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/Software Architecture" data-astro-cid-2iymvi75> Software Architecture </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#總結" data-astro-cid-qtokga5y>總結</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#筆記" data-astro-cid-qtokga5y>筆記</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#避免假設" data-astro-cid-qtokga5y>避免假設</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#避免全域狀態" data-astro-cid-qtokga5y>避免全域狀態</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#謹慎處理預設回傳內容" data-astro-cid-qtokga5y>謹慎處理預設回傳內容</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#避免非必要的參數" data-astro-cid-qtokga5y>避免非必要的參數</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#合理使用泛型" data-astro-cid-qtokga5y>合理使用泛型</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#參考文件" data-astro-cid-qtokga5y>參考文件</a> </li> </ul> </div> <h2 id="總結">總結</h2>
+<p>此篇是 Good Code, Bad Code: Think like a software engineer 第九章（Make code reusable and generalizable）的閱讀筆記。本章提出以下「可提昇程式碼複用性、泛用性」的技巧：</p>
+<ol>
+<li>避免假設</li>
+<li>避免全域狀態</li>
+<li>謹慎處理預設回傳內容</li>
+<li>避免非必要的參數</li>
+<li>合理使用泛型</li>
+</ol>
+<h2 id="筆記">筆記</h2>
+<h3 id="避免假設">避免假設</h3>
+<p>避免的理由：一個功能如果需要先滿足特定條件（假設）才能正常運作，代表該功能能被運用的場合會變少（相較於「沒有假設」的功能）。</p>
+<p>更進一步來說，如果一個功能「本來就僅為了服務特定情境而生」，那麼本書建議該功能的命名最好要能讓使用者一看就知道「使用此功能需要滿足一些條件」，避免不知情者誤用。</p>
+<p>建議：越是基礎、底層的功能，一旦未來可能被重複使用的場合越多，此類功能最好避免包含假設（或是前置條件）。</p>
+<h3 id="避免全域狀態">避免全域狀態</h3>
+<blockquote>
+<p>Using global state can make code reuse completely unsafe. The fact that global state is used <strong>might not be apparent to another engineer</strong>, so if they do try to reuse the code, this might result in weird behavior and bugs. If we need to share state between different parts of a program, it’s usually safer to do this in a more controlled way using <strong>dependency injection</strong>.</p>
+</blockquote>
+<p>「全域」代表一個資料可能會在各處被操作，而這個操作可能不是開發者原本在設計功能時希望發生的事情。在設計一個功能時如果想要增加其複用或泛用性，則應該避免在功能中與全域狀態互動。</p>
+<p>全域資料的替代方案：本書建議透過依賴注入來產生獨立的狀態資料，避免資料遭到意外污染。</p>
+<h3 id="謹慎處理預設回傳內容">謹慎處理預設回傳內容</h3>
+<p>情境如下：一個會回傳使用者照片的功能，如果該使用者沒有提供照片，則回傳預設圖檔。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> getAvatarImageUrl</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">user</span><span style="color:#F97583">:</span><span style="color:#B392F0"> User</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> user.avatar_image_url</span></span>
+<span class="line"><span style="color:#F97583">    ?</span><span style="color:#E1E4E8"> user.avatar_image_url</span></span>
+<span class="line"><span style="color:#F97583">    :</span><span style="color:#9ECBFF"> 'asset/default_avatar_image.jpg'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>現在所有呼叫 <code>getAvatarImageUrl</code> 的程式碼都必定會收到一組照片的 url，但不會知道這組 url 是使用者上傳、或是系統預設的圖片。如果在整個服務的某些地方，我們想要「根據使用者是否有上傳照片」來執行不同的行動，那麼 <code>getAvatarImageUrl</code> 就無法滿足我們的需求。</p>
+<p>建議：撰寫功能時，如果此功能未來可能會被複用，可多加考慮回傳預設值是否合理。以上述的例子而言，讓 <code>getAvatarImageUrl</code> 在使用者未上傳照片時回傳 <code>null</code> 是個比較有彈性的設計。</p>
+<h3 id="避免非必要的參數">避免非必要的參數</h3>
+<p>情境如下：一個設定 <code>Text</code> 顏色的功能，接收兩個參數 <code>text: Text</code> 與 <code>style: TextStyle</code>。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">interface</span><span style="color:#B392F0"> Text</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#FFAB70">  content</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> string</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#FFAB70">  style</span><span style="color:#F97583">:</span><span style="color:#B392F0"> TextStyle</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">interface</span><span style="color:#B392F0"> TextStyle</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#FFAB70">  fontSize</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> number</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#FFAB70">  fontFamily</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> string</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#FFAB70">  color</span><span style="color:#F97583">:</span><span style="color:#B392F0"> Color</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">interface</span><span style="color:#B392F0"> Color</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#FFAB70">  red</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> number</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#FFAB70">  green</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> number</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#FFAB70">  blue</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> number</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> setTextColor</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">text</span><span style="color:#F97583">:</span><span style="color:#B392F0"> Text</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">style</span><span style="color:#F97583">:</span><span style="color:#B392F0"> TextStyle</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> clonedText</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> lodash.</span><span style="color:#B392F0">cloneDeep</span><span style="color:#E1E4E8">(text);</span></span>
+<span class="line"><span style="color:#E1E4E8">  clonedText.style.color </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> style.color;</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> clonedText;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>事實上 <code>setTextColor</code> 不需要用到完整的 <code>style</code> 物件來設定 <code>text</code> 的顏色，此功能事實上只需要 <code>style.color</code> 即可。但目前的設計會讓所有呼叫 <code>setTextColor</code> 的程式碼都需要提供一個完整的 <code>TextStyle</code> 物件才能順利修改 <code>text</code> 的顏色。</p>
+<p>建議：盡量讓一個功能只取用真正必要的內容，會讓該功能的泛用性變的更高。以 <code>setTextColor</code> 而言，第二個參數只接收 <code>Color</code> 型別的資料即可。</p>
+<h3 id="合理使用泛型">合理使用泛型</h3>
+<p>參考以下改寫自書中的範例。下方 <code>Queue</code> 被設計成能夠容納各種類型（而不是只能保存 <code>string</code> 或 <code>number</code>，有限定類型）的資料結構。整個服務中需要此類結構的地方都可複用 <code>Queue</code>，不用擔心型別限制。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">class</span><span style="color:#B392F0"> Queue</span><span style="color:#E1E4E8">&#x3C;</span><span style="color:#B392F0">T</span><span style="color:#E1E4E8">> {</span></span>
+<span class="line"><span style="color:#FFAB70">  list</span><span style="color:#F97583">:</span><span style="color:#B392F0"> T</span><span style="color:#E1E4E8">[];</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">  add</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">newValue</span><span style="color:#F97583">:</span><span style="color:#B392F0"> T</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#79B8FF">    this</span><span style="color:#E1E4E8">.list.</span><span style="color:#B392F0">push</span><span style="color:#E1E4E8">(newValue);</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">  getRandomlyRemoveOneItemList</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">    if</span><span style="color:#E1E4E8"> (</span><span style="color:#F97583">!</span><span style="color:#79B8FF">this</span><span style="color:#E1E4E8">.list.</span><span style="color:#79B8FF">length</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">      return</span><span style="color:#79B8FF"> null</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> randomIndex</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> Math.</span><span style="color:#B392F0">floor</span><span style="color:#E1E4E8">(Math.</span><span style="color:#B392F0">random</span><span style="color:#E1E4E8">() </span><span style="color:#F97583">*</span><span style="color:#E1E4E8"> (</span><span style="color:#79B8FF">this</span><span style="color:#E1E4E8">.list.</span><span style="color:#79B8FF">length</span><span style="color:#F97583"> +</span><span style="color:#79B8FF"> 1</span><span style="color:#E1E4E8">));</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> cloneList</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> cloneDeep</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">this</span><span style="color:#E1E4E8">.list);</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#E1E4E8"> cloneList.</span><span style="color:#B392F0">splice</span><span style="color:#E1E4E8">(randomIndex, </span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>泛型較能對應日後各類使用情境，在設計基礎功能時，若情境允許，則可使用泛型來增加程式碼的被運用的彈性。</p>
+<h2 id="參考文件">參考文件</h2>
+<ul>
+<li><a href="https://www.manning.com/books/good-code-bad-code">Manning: Good Code, Bad Code</a></li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

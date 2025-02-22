@@ -1,0 +1,171 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.BScVxmeO.js"></script><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.1.2"><!-- Primary Meta Tags --><title>React 19 筆記：新 api 與 pros 功能篇</title><meta name="title" content="React 19 筆記：新 api 與 pros 功能篇"><meta name="description" content="此篇筆記記錄了 React 19 預計提供的新 api 與 props 功能。"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2024/react-19-apis"><meta property="og:title" content="React 19 筆記：新 api 與 pros 功能篇"><meta property="og:description" content="此篇筆記記錄了 React 19 預計提供的新 api 與 props 功能。"><meta property="og:image" content="https://tzynwang.github.io/2024/react-19-apis/justus-menke-hwHJrWIh5SM-unsplash.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2024/react-19-apis"><meta property="twitter:title" content="React 19 筆記：新 api 與 pros 功能篇"><meta property="twitter:description" content="此篇筆記記錄了 React 19 預計提供的新 api 與 props 功能。"><meta property="twitter:image" content="https://tzynwang.github.io/2024/react-19-apis/justus-menke-hwHJrWIh5SM-unsplash.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul:not(:has(li)){margin-top:16px;margin-bottom:16px}li{margin-top:4px;margin-bottom:4px;line-height:24px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:16px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}del{color:#4c5958e6}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+[data-astro-image]{width:100%;height:auto;object-fit:var(--fit);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>React 19 筆記：新 api 與 pros 功能篇</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2024-05-11 14:23</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/React" data-astro-cid-2iymvi75> React </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#use" data-astro-cid-qtokga5y>use</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#ref-相關改動" data-astro-cid-qtokga5y>ref 相關改動</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#可直接透過-props-傳遞" data-astro-cid-qtokga5y>可直接透過 props 傳遞</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#可執行-cleanup-function" data-astro-cid-qtokga5y>可執行 cleanup function</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#contextprovider-簡化為-context" data-astro-cid-qtokga5y>&lt;Context.Provider&gt; 簡化為 &lt;Context&gt;</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#支援文件-metadata" data-astro-cid-qtokga5y>支援文件 metadata</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#link-支援樣式權重排序" data-astro-cid-qtokga5y>&lt;link&gt; 支援樣式權重排序</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#script-支援-async" data-astro-cid-qtokga5y>&lt;script&gt; 支援 async</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#支援外部資源預載" data-astro-cid-qtokga5y>支援外部資源預載</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#參考文件" data-astro-cid-qtokga5y>參考文件</a> </li> </ul> </div> <p>提醒：此篇筆記整理了 <a href="https://react.dev/blog/2024/04/25/react-19">React 19 Beta</a> 中關於 api 與 props 的改動，但不是一份 100% 詳盡的翻譯與解說文，我只記錄了自認需要關注的內容。如果你想了解 React 19 預計要提供的所有改動，請務必閱讀官方文件。</p>
+<h2 id="use"><code>use</code></h2>
+<p>可直接讀取 Promise / React context 的內容，但無法讀取在渲染時產生的 Promise（does not support promises created in render）。</p>
+<p>讀取 Promise：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { use } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> 'react'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> Comments</span><span style="color:#E1E4E8">({ </span><span style="color:#FFAB70">commentsPromise</span><span style="color:#E1E4E8"> }) {</span></span>
+<span class="line"><span style="color:#6A737D">  // `use` will suspend until the promise resolves.</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> comments</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> use</span><span style="color:#E1E4E8">(commentsPromise);</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> comments.</span><span style="color:#B392F0">map</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">comment</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> &#x3C;</span><span style="color:#85E89D">p</span><span style="color:#B392F0"> key</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{comment.id}>{comment}&#x3C;/</span><span style="color:#85E89D">p</span><span style="color:#E1E4E8">>);</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> Page</span><span style="color:#E1E4E8">({ </span><span style="color:#FFAB70">commentsPromise</span><span style="color:#E1E4E8"> }) {</span></span>
+<span class="line"><span style="color:#6A737D">  // When `use` suspends in Comments,</span></span>
+<span class="line"><span style="color:#6A737D">  // this Suspense boundary will be shown.</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> (</span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#79B8FF">Suspense</span><span style="color:#B392F0"> fallback</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{&#x3C;</span><span style="color:#85E89D">div</span><span style="color:#E1E4E8">>Loading...&#x3C;/</span><span style="color:#85E89D">div</span><span style="color:#E1E4E8">>}></span></span>
+<span class="line"><span style="color:#E1E4E8">      &#x3C;</span><span style="color:#79B8FF">Comments</span><span style="color:#B392F0"> commentsPromise</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{commentsPromise} /></span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;/</span><span style="color:#79B8FF">Suspense</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  );</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>讀取 Context：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { use } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> 'react'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> ThemeContext </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> './ThemeContext'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> Heading</span><span style="color:#E1E4E8">({ </span><span style="color:#FFAB70">children</span><span style="color:#E1E4E8"> }) {</span></span>
+<span class="line"><span style="color:#F97583">  if</span><span style="color:#E1E4E8"> (children </span><span style="color:#F97583">==</span><span style="color:#79B8FF"> null</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#79B8FF"> null</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">  // This would not work with useContext</span></span>
+<span class="line"><span style="color:#6A737D">  // because of the early return.</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> theme</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> use</span><span style="color:#E1E4E8">(ThemeContext);</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> &#x3C;</span><span style="color:#85E89D">h1</span><span style="color:#B392F0"> style</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{{ color: theme.color }}>{children}&#x3C;/</span><span style="color:#85E89D">h1</span><span style="color:#E1E4E8">>;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>注意事項：</p>
+<ul>
+<li>此 api 可以根據條件決定是否被呼叫（<code>use</code> can be called conditionally），也可以在迴圈中使用</li>
+<li>此 api 只能在 hook 或元件中被呼叫</li>
+<li>在透過 <code>use</code> 讀取 Promise 內容時，需注意該 Promise 如何處理錯誤情境。會拋錯的話，可以搭配套件 <code>react-error-boundary</code> 的 <code>ErrorBoundary</code> 來顯示錯誤訊息。也可考慮對 Promise 加上 <code>.catch()</code> 來應對，參考<a href="https://react.dev/reference/react/use#providing-an-alternative-value-with-promise-catch">官方範例</a></li>
+</ul>
+<h2 id="ref-相關改動"><code>ref</code> 相關改動</h2>
+<h3 id="可直接透過-props-傳遞">可直接透過 <code>props</code> 傳遞</h3>
+<p>在 React 19 後，可直接透過 <code>props</code> 傳遞 <code>ref</code>，不需要再搭配 <code>forwardRef</code> 了。且未來 <code>forwardRef</code> 會被標記為待移除（we will deprecate and remove <code>forwardRef</code>）。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#6A737D">// before</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { forwardRef } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> 'react'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> MyInput</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> forwardRef</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">function</span><span style="color:#B392F0"> MyInput</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">props</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">ref</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> &#x3C;</span><span style="color:#85E89D">input</span><span style="color:#B392F0"> placeholder</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{placeholder} </span><span style="color:#B392F0">ref</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{ref} />;</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// after</span></span>
+<span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> MyInput</span><span style="color:#E1E4E8">({ </span><span style="color:#FFAB70">placeholder</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">ref</span><span style="color:#E1E4E8"> }) {</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> &#x3C;</span><span style="color:#85E89D">input</span><span style="color:#B392F0"> placeholder</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{placeholder} </span><span style="color:#B392F0">ref</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{ref} />;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<h3 id="可執行-cleanup-function">可執行 cleanup function</h3>
+<p>當元件要從畫面上被卸除時，React 會執行 ref 中的被回傳的 cleanup 功能。如以下範例：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#E1E4E8">&#x3C;</span><span style="color:#85E89D">input</span></span>
+<span class="line"><span style="color:#B392F0">  ref</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{(</span><span style="color:#FFAB70">ref</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">    // do something when ref created</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#E1E4E8"> () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">      // do something when component unmounts</span></span>
+<span class="line"><span style="color:#E1E4E8">    };</span></span>
+<span class="line"><span style="color:#E1E4E8">  }}</span></span>
+<span class="line"><span style="color:#E1E4E8">/></span></span></code></pre>
+<h2 id="contextprovider-簡化為-context"><code>&#x3C;Context.Provider></code> 簡化為 <code>&#x3C;Context></code></h2>
+<p>如標題以及以下範例所示，語法從原本的 <code>&#x3C;ThemeContext.Provider></code> 簡化為 <code>&#x3C;ThemeContext></code>。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> ThemeContext</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> createContext</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">''</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> App</span><span style="color:#E1E4E8">({ </span><span style="color:#FFAB70">children</span><span style="color:#E1E4E8"> }) {</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> &#x3C;</span><span style="color:#79B8FF">ThemeContext</span><span style="color:#B392F0"> value</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"dark"</span><span style="color:#E1E4E8">>{children}&#x3C;/</span><span style="color:#79B8FF">ThemeContext</span><span style="color:#E1E4E8">>;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<h2 id="支援文件-metadata">支援文件 metadata</h2>
+<p>當 React 渲染包含 metadata 的元件時，這些 meta tag 會被提升（hoist）至 HTML 文件的 <code>&#x3C;head></code> 中。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> BlogPost</span><span style="color:#E1E4E8">({ </span><span style="color:#FFAB70">post</span><span style="color:#E1E4E8"> }) {</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> (</span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#85E89D">article</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">      &#x3C;</span><span style="color:#85E89D">h1</span><span style="color:#E1E4E8">>{post.title}&#x3C;/</span><span style="color:#85E89D">h1</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">      &#x3C;</span><span style="color:#85E89D">title</span><span style="color:#E1E4E8">>{post.title}&#x3C;/</span><span style="color:#85E89D">title</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">      {</span><span style="color:#6A737D">/* support document metadata */</span><span style="color:#E1E4E8">}</span></span>
+<span class="line"><span style="color:#E1E4E8">      &#x3C;</span><span style="color:#85E89D">meta</span><span style="color:#B392F0"> name</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"author"</span><span style="color:#B392F0"> content</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"Josh"</span><span style="color:#E1E4E8"> /></span></span>
+<span class="line"><span style="color:#E1E4E8">      &#x3C;</span><span style="color:#85E89D">link</span><span style="color:#B392F0"> rel</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"author"</span><span style="color:#B392F0"> href</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"https://twitter.com/joshcstory/"</span><span style="color:#E1E4E8"> /></span></span>
+<span class="line"><span style="color:#E1E4E8">      &#x3C;</span><span style="color:#85E89D">meta</span><span style="color:#B392F0"> name</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"keywords"</span><span style="color:#B392F0"> content</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{post.keywords} /></span></span>
+<span class="line"><span style="color:#E1E4E8">      {</span><span style="color:#F97583">...</span><span style="color:#E1E4E8">}</span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;/</span><span style="color:#85E89D">article</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  );</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<h3 id="link-支援樣式權重排序"><code>&#x3C;link></code> 支援樣式權重排序</h3>
+<p>透過參數 <code>precedence</code> 可指定樣式的載入順序。比如以下範例中的樣式，在 HTML 文件中的順序從上到下會是 <code>foo</code> >> <code>baz</code> >> <code>bar</code>：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> ComponentOne</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> (</span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#79B8FF">Suspense</span><span style="color:#B392F0"> fallback</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"loading..."</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">      &#x3C;</span><span style="color:#85E89D">link</span><span style="color:#B392F0"> rel</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"stylesheet"</span><span style="color:#B392F0"> href</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"foo"</span><span style="color:#B392F0"> precedence</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"default"</span><span style="color:#E1E4E8"> /></span></span>
+<span class="line"><span style="color:#E1E4E8">      &#x3C;</span><span style="color:#85E89D">link</span><span style="color:#B392F0"> rel</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"stylesheet"</span><span style="color:#B392F0"> href</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"bar"</span><span style="color:#B392F0"> precedence</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"high"</span><span style="color:#E1E4E8"> /></span></span>
+<span class="line"><span style="color:#E1E4E8">      &#x3C;</span><span style="color:#85E89D">article</span><span style="color:#B392F0"> class</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"foo-class bar-class"</span><span style="color:#E1E4E8">>&#x3C;/</span><span style="color:#85E89D">article</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">      {</span><span style="color:#F97583">...</span><span style="color:#E1E4E8">}</span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;/</span><span style="color:#79B8FF">Suspense</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  );</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> ComponentTwo</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> (</span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#85E89D">div</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">      &#x3C;</span><span style="color:#85E89D">p</span><span style="color:#E1E4E8">>{</span><span style="color:#F97583">...</span><span style="color:#E1E4E8">}&#x3C;/</span><span style="color:#85E89D">p</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">      &#x3C;</span><span style="color:#85E89D">link</span><span style="color:#B392F0"> rel</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"stylesheet"</span><span style="color:#B392F0"> href</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"baz"</span><span style="color:#B392F0"> precedence</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"default"</span><span style="color:#E1E4E8"> /></span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;/</span><span style="color:#85E89D">div</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  );</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span></code></pre>
+<p>另外，即使在整個 App 多處重複載入帶有樣式表的元件，該樣式表在 HTML 文件中也只會出現一次（React will only include the stylesheet once in the document）。</p>
+<h3 id="script-支援-async"><code>&#x3C;script></code> 支援 <code>async</code></h3>
+<p>邏輯與上方透過 <code>&#x3C;link></code> 載入樣式類似——一個包含 <code>&#x3C;script></code> 的元件即使在整個 App 中出現多次，React 也只會在 HTML 中嵌入一次標籤。</p>
+<h2 id="支援外部資源預載">支援外部資源預載</h2>
+<p><code>react-dom</code> 追加數種可以預先載入資源的 api：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { prefetchDNS, preconnect, preload, preinit } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> 'react-dom'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> MyComponent</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#B392F0">  preinit</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'https://.../path/to/some/script.js'</span><span style="color:#E1E4E8">, { as: </span><span style="color:#9ECBFF">'script'</span><span style="color:#E1E4E8"> }); </span><span style="color:#6A737D">// loads and executes this script eagerly</span></span>
+<span class="line"><span style="color:#B392F0">  preload</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'https://.../path/to/font.woff'</span><span style="color:#E1E4E8">, { as: </span><span style="color:#9ECBFF">'font'</span><span style="color:#E1E4E8"> }); </span><span style="color:#6A737D">// preloads this font</span></span>
+<span class="line"><span style="color:#B392F0">  preload</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'https://.../path/to/stylesheet.css'</span><span style="color:#E1E4E8">, { as: </span><span style="color:#9ECBFF">'style'</span><span style="color:#E1E4E8"> }); </span><span style="color:#6A737D">// preloads this stylesheet</span></span>
+<span class="line"><span style="color:#B392F0">  prefetchDNS</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'https://...'</span><span style="color:#E1E4E8">); </span><span style="color:#6A737D">// when you may not actually request anything from this host</span></span>
+<span class="line"><span style="color:#B392F0">  preconnect</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'https://...'</span><span style="color:#E1E4E8">); </span><span style="color:#6A737D">// when you will request something but aren't sure what</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>上方元件最終會渲染出以下結果：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="html"><code><span class="line"><span style="color:#6A737D">&#x3C;!-- the above would result in the following DOM/HTML --></span></span>
+<span class="line"><span style="color:#E1E4E8">&#x3C;</span><span style="color:#85E89D">html</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;</span><span style="color:#85E89D">head</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#6A737D">    &#x3C;!-- links/scripts are prioritized by their utility to early loading, not call order --></span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#85E89D">link</span><span style="color:#B392F0"> rel</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"prefetch-dns"</span><span style="color:#B392F0"> href</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"https://..."</span><span style="color:#E1E4E8"> /></span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#85E89D">link</span><span style="color:#B392F0"> rel</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"preconnect"</span><span style="color:#B392F0"> href</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"https://..."</span><span style="color:#E1E4E8"> /></span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#85E89D">link</span><span style="color:#B392F0"> rel</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"preload"</span><span style="color:#B392F0"> as</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"font"</span><span style="color:#B392F0"> href</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"https://.../path/to/font.woff"</span><span style="color:#E1E4E8"> /></span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#85E89D">link</span><span style="color:#B392F0"> rel</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"preload"</span><span style="color:#B392F0"> as</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"style"</span><span style="color:#B392F0"> href</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"https://.../path/to/stylesheet.css"</span><span style="color:#E1E4E8"> /></span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#85E89D">script</span><span style="color:#B392F0"> async</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">""</span><span style="color:#B392F0"> src</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"https://.../path/to/some/script.js"</span><span style="color:#E1E4E8">>&#x3C;/</span><span style="color:#85E89D">script</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;/</span><span style="color:#85E89D">head</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;</span><span style="color:#85E89D">body</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">    ...</span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;/</span><span style="color:#85E89D">body</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">&#x3C;/</span><span style="color:#85E89D">html</span><span style="color:#E1E4E8">></span></span></code></pre>
+<p>注意事項：外部資源實際渲染出來的順序是根據其「功能」而非「在元件中被呼叫的順序」決定。</p>
+<h2 id="參考文件">參考文件</h2>
+<ul>
+<li><a href="https://react.dev/blog/2024/04/25/react-19">React 19 Beta</a></li>
+<li><a href="https://react.dev/reference/react/use">use</a></li>
+<li><a href="https://react.dev/reference/react-dom#resource-preloading-apis">Resource Preloading APIs</a></li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

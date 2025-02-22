@@ -1,0 +1,76 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.BScVxmeO.js"></script><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.1.2"><!-- Primary Meta Tags --><title>閱讀筆記：Good Code, Bad Code Chapter 8 Make code modular</title><meta name="title" content="閱讀筆記：Good Code, Bad Code Chapter 8 Make code modular"><meta name="description" content="這是一個文組轉職前端工程師的技術部落格"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2023/good-code-bad-code-ch8-make-code-modular"><meta property="og:title" content="閱讀筆記：Good Code, Bad Code Chapter 8 Make code modular"><meta property="og:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="og:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2023/good-code-bad-code-ch8-make-code-modular"><meta property="twitter:title" content="閱讀筆記：Good Code, Bad Code Chapter 8 Make code modular"><meta property="twitter:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="twitter:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul:not(:has(li)){margin-top:16px;margin-bottom:16px}li{margin-top:4px;margin-bottom:4px;line-height:24px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:16px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}del{color:#4c5958e6}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+[data-astro-image]{width:100%;height:auto;object-fit:var(--fit);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>閱讀筆記：Good Code, Bad Code Chapter 8 Make code modular</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2023-04-08 19:13</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/Software Architecture" data-astro-cid-2iymvi75> Software Architecture </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#總結" data-astro-cid-qtokga5y>總結</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#筆記" data-astro-cid-qtokga5y>筆記</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#模組化的優點" data-astro-cid-qtokga5y>模組化的優點</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#實作技巧" data-astro-cid-qtokga5y>實作技巧</a> </li><li class="toc-4" data-astro-cid-qtokga5y> <a href="#依賴注入" data-astro-cid-qtokga5y>依賴注入</a> </li><li class="toc-4" data-astro-cid-qtokga5y> <a href="#謹慎繼承" data-astro-cid-qtokga5y>謹慎繼承</a> </li><li class="toc-4" data-astro-cid-qtokga5y> <a href="#專注於自身" data-astro-cid-qtokga5y>專注於自身</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#參考文件" data-astro-cid-qtokga5y>參考文件</a> </li> </ul> </div> <h2 id="總結">總結</h2>
+<p>此篇是 Good Code, Bad Code: Think like a software engineer 第八章（Make code modular）的閱讀筆記，本章旨在說明讓程式碼模組化可以帶來的優點，以及提供一些讓程式碼更加模組化的實作技巧。</p>
+<h2 id="筆記">筆記</h2>
+<h3 id="模組化的優點">模組化的優點</h3>
+<p>一個軟體產品通常不太可能一經發布後完全不修改其規格或行為。對軟體開發而言，「修改」是一件可預期發生的事情。而如果程式碼有被模組化，那麼修改這樣的程式碼通常會比改動「沒有模組化的程式碼」來的簡單。</p>
+<blockquote>
+<p>One of the main aims of modularity is to create code that <strong>can be easily adapted and reconfigured</strong>, without having to know exactly how it will need to be adapted or reconfigured. A key goal in achieving this is that different pieces of functionality (or requirements) should <strong>map to distinct (clear, recognizably) parts of the codebase</strong>.</p>
+</blockquote>
+<p>而模組化的核心概念如下：</p>
+<ol>
+<li>不暴露實作細節</li>
+<li>每一個功能（或資料結構、物件等）只專注在自身的任務上，不關心其互動目標的實作內容</li>
+<li>承上，當程式碼需要因應新規格進行變動時，修改應只發生在「與新規格有直接關聯」的程式碼上</li>
+</ol>
+<h3 id="實作技巧">實作技巧</h3>
+<h4 id="依賴注入">依賴注入</h4>
+<p>核心概念是「保持彈性」，避免寫死日後可能會面臨修改的部分。</p>
+<p>以導航軟體為例，「地圖」這類「日後可能會擴充、或是有多種版本」的資料比較適合透過依賴注入（dependency injection）來把內容送進「需要地圖資料」的功能中。直接把地圖資料刻進各種功能內，可能會造成：</p>
+<ol>
+<li>地圖散落在各種需要此類資料的功能中，造成內容（地圖）在多處重複出現</li>
+<li>承上，一旦面臨修改時，所有會用到「地圖」的程式碼都要一起被更新</li>
+<li>或是另一種情況：現在有了兩個版本的地圖資料，但因為日前把第一版的地圖寫死在相關功能中，導致為了對應第二版的地圖，現在需要建立「除了地圖版本不同以外、其他內容基本上都一樣」的第二套功能</li>
+</ol>
+<p>而透過依賴注入可以避免以上情境發生。</p>
+<p>補充：可以透過定義 <code>interface</code> 來確保「注入的參數」以及「功能本身」能夠互相搭配，亦即參數以及功能在實作時都需要遵守特定介面，確保兩者可以順利溝通。</p>
+<h4 id="謹慎繼承">謹慎繼承</h4>
+<p>在執行類別繼承（class inheritance）時，延伸出來的子類別會繼承親類別的 API 以及功能。但本書提出的觀點為：如果親類別的 API 與功能「對於子類別的使用者來說並不相干（屬於實作細節）」的話，直接繼承就不是一個最佳實作方式。而以下是作者建議的替代方案：</p>
+<p>（下面以Ｘ代表原繼承關係中的子類別、Ｙ代表原繼承關係中的親類別）</p>
+<ul>
+<li>直接產生（compose）類別Ｙ的實例，並於類別Ｘ中使用Ｙ實例的功能，此時類別Ｘ的使用者不會看到類別Ｙ的任何實作細節，但類別Ｘ的功能依舊</li>
+<li>透過代理（delegation）來把「使用者要透過類別Ｘ完成的功能」轉交給類別Ｙ執行，類別Ｘ一樣不會暴露任何關於類別Ｙ的實作細節</li>
+</ul>
+<p>而為何要避免暴露實作細節？本書的解釋是：</p>
+<ul>
+<li>一旦親類別的 API 或功能暴露到子類別層級，就無法避免這些功能被子類別的使用者拿來用。而一旦被拿來用，日後工程師便不能輕易修改親類別的功能，因為這可能會影響到那些子類別的使用者</li>
+<li>暴露親類別的 API 或功能可能會導致子類別的使用者感到困惑，因為親類別的 API 或功能可能與子類別沒有直接關聯</li>
+</ul>
+<h4 id="專注於自身">專注於自身</h4>
+<p>核心概念是「不過度依賴其他程式碼的實作細節」。</p>
+<p>在兩段程式碼需要合作時，比較好的做法是定義好共用介面（interface），並根據此資料結構來進行互動。好處是此二程式碼日後若需進行更新，只要兩者繼續遵守日前定義好的介面，那麼其中一方的修改就不會影響到另外一邊的程式碼。</p>
+<p>反之，如果一個功能Ａ的實作全都直接參考Ｂ的回傳結構，這會導致功能Ｂ日後進行任何修改時，都要一併檢查功能Ａ的實作是否還能配合改動後的功能Ｂ。這會讓程式碼變得容易出錯，應盡量避免此類開發方式。</p>
+<p>以上「專注於自身」的技巧除了應用在一般回傳內容上，也適用於拋錯時的錯誤內容：</p>
+<blockquote>
+<p>In order to prevent implementation details being leaked, each layer in the code should ideally <strong>reveal only error types that reflect the given layer of abstraction</strong>. We can achieve this by wrapping any errors from lower layers into error types <strong>appropriate to the current layer</strong>. This means that callers are presented with an appropriate layer of abstraction while also ensuring that the original error information is not lost (because it’s still present within the wrapped error).</p>
+</blockquote>
+<h2 id="參考文件">參考文件</h2>
+<ul>
+<li><a href="https://www.manning.com/books/good-code-bad-code">Manning: Good Code, Bad Code</a></li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

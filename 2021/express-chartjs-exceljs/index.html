@@ -1,0 +1,72 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.BScVxmeO.js"></script><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.1.2"><!-- Primary Meta Tags --><title>作業功能擴充：為老爸的私房錢新增開支圖表、將開支紀錄下載為Excel檔案</title><meta name="title" content="作業功能擴充：為老爸的私房錢新增開支圖表、將開支紀錄下載為Excel檔案"><meta name="description" content="這是一個文組轉職前端工程師的技術部落格"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2021/express-chartjs-exceljs"><meta property="og:title" content="作業功能擴充：為老爸的私房錢新增開支圖表、將開支紀錄下載為Excel檔案"><meta property="og:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="og:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2021/express-chartjs-exceljs"><meta property="twitter:title" content="作業功能擴充：為老爸的私房錢新增開支圖表、將開支紀錄下載為Excel檔案"><meta property="twitter:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="twitter:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul:not(:has(li)){margin-top:16px;margin-bottom:16px}li{margin-top:4px;margin-bottom:4px;line-height:24px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:16px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}del{color:#4c5958e6}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+[data-astro-image]{width:100%;height:auto;object-fit:var(--fit);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>作業功能擴充：為老爸的私房錢新增開支圖表、將開支紀錄下載為Excel檔案</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2021-07-11 18:08</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/Express" data-astro-cid-2iymvi75> Express </a> <a class="tag" href="/tag/Mongoose" data-astro-cid-2iymvi75> Mongoose </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#總結" data-astro-cid-qtokga5y>總結</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#環境" data-astro-cid-qtokga5y>環境</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#圖表部分" data-astro-cid-qtokga5y>圖表部分</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#原始碼-1" data-astro-cid-qtokga5y>原始碼 1</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#將紀錄下載為-excel-部分" data-astro-cid-qtokga5y>將紀錄下載為 Excel 部分</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#原始碼-2" data-astro-cid-qtokga5y>原始碼 2</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#參考文件" data-astro-cid-qtokga5y>參考文件</a> </li> </ul> </div> <h2 id="總結">總結</h2>
+<p>圖表套件：<code>chart.js</code>（<a href="https://www.chartjs.org/docs/latest/">官方文件</a>）
+生成 Excel 之套件：<code>exceljs</code>（<a href="https://www.npmjs.com/package/exceljs">npm</a>）</p>
+<p><img src="/2021/express-chartjs-exceljs/chartDemo.png" alt="圖表成品示意"></p>
+<h2 id="環境">環境</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>chart.js: 3.4.1</span></span>
+<span class="line"><span>exceljs: 4.2.1</span></span>
+<span class="line"><span>os: Windows_NT 10.0.18363 win32 x64</span></span></code></pre>
+<h2 id="圖表部分">圖表部分</h2>
+<ul>
+<li>需求：
+<ul>
+<li>使用者登入記帳 APP 時，若當月有任何記帳資料的話，顯示開支圖表；若該月份還未有任何記帳資料，則不會顯示圖表</li>
+<li>使用者可以在首頁篩選不同月份的記帳資料，篩選月份後，若該月份有記帳資料，則顯示圖表（反之該月份若無任何記帳資料，不顯示圖表）</li>
+<li>使用者若篩選特定類型的帳目資料，不顯示圖表</li>
+</ul>
+</li>
+<li>實作規劃：
+<ul>
+<li>監聽<code>&#x3C;input type="month"></code>的<code>change</code>事件，只有在使用者選取了帳目月份、且帳目類型為「全類別」的時候，才會顯示圖表</li>
+<li>根據使用者選擇的條件（月份、類型）向後端發出 POST request，等待後端回應資料後，再根據資料修改前端畫面</li>
+</ul>
+</li>
+</ul>
+<h3 id="原始碼-1">原始碼 1</h3>
+<script src="https://gist.github.com/tzynwang/327957091f91f81b86c527f29a51c84d.js"></script>
+<h2 id="將紀錄下載為-excel-部分">將紀錄下載為 Excel 部分</h2>
+<ul>
+<li>需求：想要滿足「可以讓使用者備份記帳 APP 中的開支資料」此一需求</li>
+<li>實作規劃：
+<ul>
+<li>從資料庫中取出該使用者的所有未被刪除的帳目資料，寫入 excel 檔案後，下載該檔案</li>
+<li>搜尋關鍵字「express download excel」，參考 stackOverFlow 與 blog 討論串進行實作</li>
+</ul>
+</li>
+</ul>
+<h3 id="原始碼-2">原始碼 2</h3>
+<script src="https://gist.github.com/tzynwang/b77a79b8bc53c6f5d546b4f18aa7ce71.js"></script>
+<h2 id="參考文件">參考文件</h2>
+<ul>
+<li><a href="https://stackoverflow.com/questions/43729199/how-i-can-use-like-operator-on-mongoose">How I can use “LIKE” operator on mongoose?</a></li>
+<li><a href="https://stackoverflow.com/questions/38497650/how-to-find-items-using-regex-in-mongoose">How to find items using regex in Mongoose</a></li>
+<li><a href="https://stackoverflow.com/questions/40056555/destroy-chart-js-bar-graph-to-redraw-other-graph-in-same-canvas">Destroy chart.js bar graph to redraw other graph in same canvas</a></li>
+<li><a href="https://bezkoder.com/node-js-download-excel-file/">Node.js Download Excel file example with exceljs</a></li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

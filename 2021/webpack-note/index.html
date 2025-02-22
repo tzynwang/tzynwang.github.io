@@ -1,0 +1,137 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.BScVxmeO.js"></script><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.1.2"><!-- Primary Meta Tags --><title>「webpack環境設置步驟」相關筆記</title><meta name="title" content="「webpack環境設置步驟」相關筆記"><meta name="description" content="這是一個文組轉職前端工程師的技術部落格"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2021/webpack-note"><meta property="og:title" content="「webpack環境設置步驟」相關筆記"><meta property="og:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="og:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2021/webpack-note"><meta property="twitter:title" content="「webpack環境設置步驟」相關筆記"><meta property="twitter:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="twitter:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul:not(:has(li)){margin-top:16px;margin-bottom:16px}li{margin-top:4px;margin-bottom:4px;line-height:24px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:16px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}del{color:#4c5958e6}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+[data-astro-image]{width:100%;height:auto;object-fit:var(--fit);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>「webpack環境設置步驟」相關筆記</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2021-06-12 11:02</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/webpack" data-astro-cid-2iymvi75> webpack </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#總結" data-astro-cid-qtokga5y>總結</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#環境" data-astro-cid-qtokga5y>環境</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#步驟" data-astro-cid-qtokga5y>步驟</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#資料夾結構" data-astro-cid-qtokga5y>資料夾結構</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#補充若須導入css" data-astro-cid-qtokga5y>補充：若須導入.css</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#補充若須導入scss" data-astro-cid-qtokga5y>補充：若須導入.scss</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#參考文件" data-astro-cid-qtokga5y>參考文件</a> </li> </ul> </div> <h2 id="總結">總結</h2>
+<p>使用 webpack（本次搭配 axios 與 vue）開發前端 web APP 時的環境相關設置筆記
+2021/8/4 更新：追加 SCSS 相關設定</p>
+<h2 id="環境">環境</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>webpack: 5.38.1</span></span>
+<span class="line"><span>webpack-cli: 4.7.2</span></span>
+<span class="line"><span>vue: 2.6.14</span></span>
+<span class="line"><span>os: Windows_NT 10.0.18363 win32 x64</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>// 2021/8/4追加</span></span>
+<span class="line"><span>node-sass: 6.0.1</span></span>
+<span class="line"><span>sass-loader: 12.1.0</span></span></code></pre>
+<h2 id="步驟">步驟</h2>
+<ol>
+<li>移動到專案資料夾內，在終端機輸入<code>npm init -y</code></li>
+</ol>
+<ul>
+<li><code>-y</code>可跳過所有關於<code>package.json</code>的設定問題</li>
+<li><a href="https://docs.npmjs.com/cli/v6/commands/npm-init">npm-init</a>: If the initializer is omitted (by just calling <code>npm init</code>), init will fall back to legacy init behavior. It will <strong>ask you a bunch of questions</strong>, and then write a <code>package.json</code> for you. You can also use <code>-y</code>/<code>--yes</code> to <strong>skip the questionnaire</strong> altogether.</li>
+</ul>
+<ol>
+<li>安裝<code>webpack</code>、<code>webpack-cli</code>、<code>axios</code>、<code>vue</code>與<code>html-webpack-plugin</code></li>
+</ol>
+<ul>
+<li><code>npm install &#x3C;package name> --save-dev</code></li>
+<li><a href="https://stackoverflow.com/questions/22891211/what-is-the-difference-between-save-and-save-dev">What is the difference between —save and —save-dev?</a></li>
+<li><a href="https://docs.npmjs.com/cli/v6/configuring-npm/package-json#devdependencies">npm: devDependencies</a>: If someone is planning on downloading and using your module in their program, then they probably <strong>don’t want or need to download and build the external test or documentation framework</strong> that you use. In this case, it’s best to map these additional items in a <strong>devDependencies</strong> object.</li>
+</ul>
+<ol>
+<li><code>package.json</code>設定如下：</li>
+</ol>
+<script src="https://gist.github.com/tzynwang/0036ecd4516c978467fe64266791de26.js"></script>
+<ul>
+<li><a href="https://webpack.js.org/configuration/watch/"><code>webpack --watch</code></a>: This means that after the initial build, webpack will <strong>continue to watch for changes</strong> in any of the resolved files. 執行<code>npm run watch</code>的話，webpack 會自動更新修改後的 src 內容；搭配 vs code liver server 的話，就能及時觀察到修正後的結果</li>
+</ul>
+<ol>
+<li>在根目錄中建立<code>webpack.config.js</code>，（在專案需要使用 vue 的情況下）設定如下：</li>
+</ol>
+<script src="https://gist.github.com/tzynwang/8dadd59d8eb258d7843727f7bbcd4419.js"></script>
+<ol>
+<li>在根目錄中建立資料夾<code>src</code>，其中的檔案名稱需與<code>webpack.config.js</code>搭配，故使用<code>index.js</code>與<code>template.html</code></li>
+</ol>
+<script src="https://gist.github.com/tzynwang/948dbc4dea908a2cc27b874949a35383.js"></script>
+<script src="https://gist.github.com/tzynwang/2bf0bd73c4f25713752a3c7decd13385.js"></script>
+<ol>
+<li>在終端機執行<code>npm run build</code>後，根目錄中出現資料夾<code>dist</code>，內有<code>index.html</code>與<code>main.js</code></li>
+</ol>
+<script src="https://gist.github.com/tzynwang/96051f1c7bdded10f79ad3caeaf838be.js"></script>
+<p>並且<code>main.js</code>已經根據<code>webpack.config.js</code>中<code>HtmlWebpackPlugin</code>的設定，自動嵌入<code>&#x3C;body></code>底部
+使用 webpack 進行打包的步驟到此結束</p>
+<h2 id="資料夾結構">資料夾結構</h2>
+<p><img src="/2021/webpack-note/webpack-folder-structure.png" alt="folder structure"></p>
+<h2 id="補充若須導入css">補充：若須導入.css</h2>
+<ol>
+<li>安裝<code>css-loader</code>與<code>mini-css-extract-plugin</code>（<code>npm i css-loader mini-css-extract-plugin -D</code>）</li>
+<li>在<code>index.js</code>中匯入.css 檔案</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#9ECBFF"> './bootstrap.bundle'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#9ECBFF"> './bootstrap.css'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#9ECBFF"> './style.css'</span><span style="color:#E1E4E8">;</span></span></code></pre>
+<ol>
+<li><code>webpack.config.js</code>加入以下內容：</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> MiniCssExtractPlugin</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> require</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'mini-css-extract-plugin'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">module</span><span style="color:#E1E4E8">.</span><span style="color:#79B8FF">exports</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">  plugins: [</span><span style="color:#F97583">new</span><span style="color:#B392F0"> MiniCssExtractPlugin</span><span style="color:#E1E4E8">()],</span></span>
+<span class="line"><span style="color:#E1E4E8">  module: {</span></span>
+<span class="line"><span style="color:#E1E4E8">    rules: [</span></span>
+<span class="line"><span style="color:#E1E4E8">      {</span></span>
+<span class="line"><span style="color:#E1E4E8">        test:</span><span style="color:#9ECBFF"> /</span><span style="color:#85E89D;font-weight:bold">\.</span><span style="color:#DBEDFF">css</span><span style="color:#F97583">$</span><span style="color:#9ECBFF">/</span><span style="color:#F97583">i</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">        use: [MiniCssExtractPlugin.loader, </span><span style="color:#9ECBFF">'css-loader'</span><span style="color:#E1E4E8">],</span></span>
+<span class="line"><span style="color:#E1E4E8">      },</span></span>
+<span class="line"><span style="color:#E1E4E8">    ],</span></span>
+<span class="line"><span style="color:#E1E4E8">  },</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span></code></pre>
+<ul>
+<li><a href="https://webpack.js.org/plugins/mini-css-extract-plugin/">MiniCssExtractPlugin</a>：此 plugin 會在執行<code>npm run build</code>時將（匯入 index.js 的）.css 檔案獨立出來，並嵌入<code>index.html</code>中（預設在<code>&#x3C;head></code>尾端，可透過<a href="https://webpack.js.org/plugins/mini-css-extract-plugin/#insert"><code>insert</code>參數</a>修改）</li>
+<li><a href="https://webpack.js.org/configuration/module/#ruletest">Webpack config: Module Rule.test</a>: Include all modules that pass test assertion. If you supply a <code>Rule.test</code> option, you cannot also supply a <code>Rule.resource</code>.</li>
+</ul>
+<h2 id="補充若須導入scss">補充：若須導入.scss</h2>
+<ol>
+<li>除上述提及之 package 之外，追加安裝<code>node-sass</code>與<code>sass-loader</code></li>
+<li><code>webpack.config.js</code>的 plugins 與 module 設定如下：</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>plugins: [</span></span>
+<span class="line"><span>  new MiniCssExtractPlugin(),</span></span>
+<span class="line"><span>  new HtmlWebpackPlugin({</span></span>
+<span class="line"><span>    inject: 'body',</span></span>
+<span class="line"><span>    template: './src/index.html'</span></span>
+<span class="line"><span>  })</span></span>
+<span class="line"><span>],</span></span>
+<span class="line"><span>module: {</span></span>
+<span class="line"><span>  rules: [</span></span>
+<span class="line"><span>    {</span></span>
+<span class="line"><span>      test: /\.scss$/,</span></span>
+<span class="line"><span>      use: [</span></span>
+<span class="line"><span>        MiniCssExtractPlugin.loader,</span></span>
+<span class="line"><span>        'css-loader',</span></span>
+<span class="line"><span>        'sass-loader'</span></span>
+<span class="line"><span>      ]</span></span>
+<span class="line"><span>    }</span></span>
+<span class="line"><span>  ]</span></span>
+<span class="line"><span>}</span></span></code></pre>
+<h2 id="參考文件">參考文件</h2>
+<ul>
+<li><a href="https://webpack.js.org/guides/getting-started/">Webpack 5: Getting Started</a></li>
+<li><a href="https://webpack.js.org/loaders/sass-loader/">Webpack 5: sass-loader</a></li>
+<li><a href="https://github.com/jantimon/html-webpack-plugin#readme">HTML Webpack Plugin</a></li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

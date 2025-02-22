@@ -1,0 +1,76 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.BScVxmeO.js"></script><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.1.2"><!-- Primary Meta Tags --><title>SSH Keys for GitHub</title><meta name="title" content="SSH Keys for GitHub"><meta name="description" content="這是一個文組轉職前端工程師的技術部落格"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2022/git-ssh-key"><meta property="og:title" content="SSH Keys for GitHub"><meta property="og:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="og:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2022/git-ssh-key"><meta property="twitter:title" content="SSH Keys for GitHub"><meta property="twitter:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="twitter:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul:not(:has(li)){margin-top:16px;margin-bottom:16px}li{margin-top:4px;margin-bottom:4px;line-height:24px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:16px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}del{color:#4c5958e6}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+[data-astro-image]{width:100%;height:auto;object-fit:var(--fit);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>SSH Keys for GitHub</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2022-02-22 20:01</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/git" data-astro-cid-2iymvi75> git </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#總結" data-astro-cid-qtokga5y>總結</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#步驟" data-astro-cid-qtokga5y>步驟</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#參考文章" data-astro-cid-qtokga5y>參考文章</a> </li> </ul> </div> <h2 id="總結">總結</h2>
+<blockquote>
+<p>GitHub Docs About SSH: With SSH keys, you can connect to GitHub without supplying your username and personal access token at each visit.</p>
+</blockquote>
+<p>使用 SSH key 可以在不輸入 username 與密碼的情況下操作 GitHub/GitLab 的 repo
+本篇筆記乃為記錄在 Mac 產生 SSH key 的流程</p>
+<h2 id="步驟">步驟</h2>
+<ol>
+<li>
+<p>開啟 terminal 後，輸入 <code>ssh-keygen -t ed25519 -C "your@email.here"</code></p>
+<ul>
+<li><code>ed25519</code> 是產生 SSH key 的演算法</li>
+<li>若不需要搭配 email 產生 key 則 <code>-C "your@email.here"</code> 此 flag 與 email 一起移除</li>
+</ul>
+</li>
+<li>
+<p>出現 <code>"Enter a file in which to save the key,”</code> 訊息後，可直接按下 Enter 使用預設的檔案名稱保存 SSH key 或輸入自訂的檔案名稱來進行儲存</p>
+</li>
+<li>
+<p><code>secure passphrase</code> 可選擇略過不輸入</p>
+</li>
+<li>
+<p><code>cd ~/.ssh</code> 後 <code>ls</code> 查看資料夾內容，應會有一組檔案 <code>id_ed25519</code> 與 <code>id_ed25519.pub</code> 以及 <code>config</code>，若沒有 <code>config</code> 則輸入 <code>touch ~/.ssh/config</code> 建立一個</p>
+<ul>
+<li><code>id_ed25519</code> 的內容是私鑰，而 <code>.pub</code> 檔案裡面保存的則是公鑰</li>
+<li><a href="https://git-scm.com/book/en/v2/Git-on-the-Server-Generating-Your-SSH-Public-Key">Pro Git book</a>: The <code>.pub</code> file is your public key, and the other file is the corresponding private key.</li>
+</ul>
+</li>
+<li>
+<p>在 terminal 輸入 <code>open ~/.ssh/config</code> 後，於檔案內貼入以下內容，注意最後一行的 <code>IdentityFile</code> 檔案名稱（<code>id_ed25519</code>）要與前面步驟建立的 SSH key 檔案名稱一致</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Host *</span></span>
+<span class="line"><span>  AddKeysToAgent yes</span></span>
+<span class="line"><span>  IdentityFile ~/.ssh/id_ed25519</span></span></code></pre>
+</li>
+<li>
+<p>於 terminal 輸入 <code>cat ~/.ssh/id_ed25519.pub</code>  檢視公鑰內容並將 SSH key 複製起來，或也可輸入 <code>pbcopy &#x3C; ~/.ssh/id_ed25519.pub</code> 直接複製 SSH key 內容；注意「<code>id_ed25519.pub</code>」要與前面步驟建立的 SSH key 檔案名稱一致</p>
+</li>
+<li>
+<p>把 SSH key 貼到 GitHub/GitLab SSH Key 中，並注意之後需使用 GitHub/GitLab 的 SSH url 來 clone 或是 push 等指令（而非使用 HTTPS url）</p>
+</li>
+</ol>
+<p><img src="/2022/git-ssh-key/git-clone-ssh.png" alt="use SSH url to clone the repo"></p>
+<h2 id="參考文章">參考文章</h2>
+<ul>
+<li><a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/about-ssh">GitHub Docs: About SSH</a></li>
+<li><a href="https://git-scm.com/book/en/v2/Git-on-the-Server-Generating-Your-SSH-Public-Key">Pro Git book 4.3 Git on the Server - Generating Your SSH Public Key</a></li>
+<li><a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent">GitHub Docs: Generating a new SSH key and adding it to the ssh-agent</a></li>
+<li><a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account">GitHub Docs: Adding a new SSH key to your GitHub account</a></li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

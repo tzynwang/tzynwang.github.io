@@ -1,0 +1,105 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.BScVxmeO.js"></script><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.1.2"><!-- Primary Meta Tags --><title>DevTools與CSS有關的新功能（Chrome 89）</title><meta name="title" content="DevTools與CSS有關的新功能（Chrome 89）"><meta name="description" content="這是一個文組轉職前端工程師的技術部落格"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2021/chrome-89-css"><meta property="og:title" content="DevTools與CSS有關的新功能（Chrome 89）"><meta property="og:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="og:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2021/chrome-89-css"><meta property="twitter:title" content="DevTools與CSS有關的新功能（Chrome 89）"><meta property="twitter:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="twitter:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul:not(:has(li)){margin-top:16px;margin-bottom:16px}li{margin-top:4px;margin-bottom:4px;line-height:24px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:16px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}del{color:#4c5958e6}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+[data-astro-image]{width:100%;height:auto;object-fit:var(--fit);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>DevTools與CSS有關的新功能（Chrome 89）</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2021-03-03 19:22</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/DevTools" data-astro-cid-2iymvi75> DevTools </a> <a class="tag" href="/tag/CSS" data-astro-cid-2iymvi75> CSS </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#總結" data-astro-cid-qtokga5y>總結</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#版本與環境" data-astro-cid-qtokga5y>版本與環境</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#devtools-中與-css-相關的新內容chrome-89" data-astro-cid-qtokga5y>DevTools 中與 CSS 相關的新內容（Chrome 89）</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#直接對-node-截圖" data-astro-cid-qtokga5y>直接對 node 截圖</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#可直接套用偽類target-至元件上" data-astro-cid-qtokga5y>可直接套用偽類:target 至元件上</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#直接在-devtools-裡面複製元件" data-astro-cid-qtokga5y>直接在 DevTools 裡面複製元件</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#支援-color-picker" data-astro-cid-qtokga5y>支援 color picker</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#複製元件的-css-內容" data-astro-cid-qtokga5y>複製元件的 CSS 內容</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#字體編輯面板experimental-features" data-astro-cid-qtokga5y>字體編輯面板（Experimental features）</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#flexbox-debug-工具experimental-features" data-astro-cid-qtokga5y>flexbox debug 工具（Experimental features）</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#附錄" data-astro-cid-qtokga5y>附錄</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#開啟-experimental-features" data-astro-cid-qtokga5y>開啟 Experimental features</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#檢查-chrome-的版本" data-astro-cid-qtokga5y>檢查 Chrome 的版本</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#參考文件" data-astro-cid-qtokga5y>參考文件</a> </li> </ul> </div> <h2 id="總結">總結</h2>
+<p>本篇是記錄 Chrome 89 的 DevTools 中，CSS 相關新功能的筆記。</p>
+<h2 id="版本與環境">版本與環境</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Google Chrome: 89.0.4389.72 (Official Build) (64-bit)</span></span>
+<span class="line"><span>os: Windows_NT 10.0.18363 win32 x64</span></span></code></pre>
+<h2 id="devtools-中與-css-相關的新內容chrome-89">DevTools 中與 CSS 相關的新內容（Chrome 89）</h2>
+<h3 id="直接對-node-截圖">直接對 node 截圖</h3>
+<p>原文連結：<a href="https://developers.google.com/web/updates/2021/01/devtools#node-screenshot">https://developers.google.com/web/updates/2021/01/devtools#node-screenshot</a></p>
+<p><img src="/2021/chrome-89-css/node-screenshot.jpg" alt="node screenshot"></p>
+<p>在 node 上點擊右鍵，選擇 Capture node screenshot 後，截圖就會下載到本機。</p>
+<h3 id="可直接套用偽類target-至元件上">可直接套用偽類:target 至元件上</h3>
+<p>原文連結：<a href="https://developers.google.com/web/updates/2021/01/devtools#force-target">https://developers.google.com/web/updates/2021/01/devtools#force-target</a></p>
+<p><img src="/2021/chrome-89-css/target.jpg" alt="可直接套用 :target 偽類"></p>
+<p>不用點擊連結，即可套用<code>:target</code>到元件上。
+打開 DevTools，點選 Elements 標籤，點選元件後按下:hov 按鈕，即可展開支援套用的偽類（pseudo-element）清單。
+選擇<code>:target</code>後，即可直接觀察相關的 CSS 表現內容。</p>
+<p><img src="/2021/chrome-89-css/target-example.jpg" alt="target example"></p>
+<p><img src="/2021/chrome-89-css/target-example-select.jpg" alt="target example select"></p>
+<p>以上兩張螢幕截圖用到的原始碼：</p>
+<p class="codepen" data-height="300" data-theme-id="dark" data-default-tab="html,result" data-user="Charlie7779" data-slug-hash="abBKWNL" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title=":target">
+  <span>See the Pen <a href="https://codepen.io/Charlie7779/pen/abBKWNL">
+  :target</a> by Charlie (<a href="https://codepen.io/Charlie7779">@Charlie7779</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+<h3 id="直接在-devtools-裡面複製元件">直接在 DevTools 裡面複製元件</h3>
+<p>原文連結：<a href="https://developers.google.com/web/updates/2021/01/devtools#duplicate-element">https://developers.google.com/web/updates/2021/01/devtools#duplicate-element</a></p>
+<p><img src="/2021/chrome-89-css/duplicate-element.jpg" alt="duplicate element"></p>
+<p><img src="/2021/chrome-89-css/duplicate-element-after.jpg" alt="duplicate element after"></p>
+<p>在元件上按下右鍵選擇 Duplicate element 後，該元件的副本就會出現在被拷貝的元件下方。
+支援快速鍵，點選元件後按下<code>Shift</code>+ <code>Alt</code>+ ⬇️（Windows）或<code>Shift</code>+ <code>Option</code>+ ⬇️（Mac）即可拷貝元件。</p>
+<h3 id="支援-color-picker">支援 color picker</h3>
+<p>原文連結：<a href="https://developers.google.com/web/updates/2021/01/devtools#color-picker">https://developers.google.com/web/updates/2021/01/devtools#color-picker</a>
+並且如果按住<code>Shift</code>後以滑鼠左鍵點擊顏色方塊的話，可以切換為不同的顏色編碼格式（RGBA、HSLA、Hex）</p>
+<h3 id="複製元件的-css-內容">複製元件的 CSS 內容</h3>
+<p>原文連結：<a href="https://developers.google.com/web/updates/2021/01/devtools#copy-css">https://developers.google.com/web/updates/2021/01/devtools#copy-css</a>
+在 Styles 區塊對元件的 CSS 設定按下右鍵，可複製 CSS 內容。</p>
+<p><img src="/2021/chrome-89-css/copy-CSS-properties.jpg" alt="copy css properties 1">
+如果是在選取器位置按下右鍵的話，會出現以下選項：</p>
+<ul>
+<li>Copy selector：複製選取器，上圖水藍色部分</li>
+<li>Copy rule：複製 CSS 規則，上圖黃色部分</li>
+<li>Copy all declarations：複製選取器與 CSS 規則，上圖水藍色加上黃色部分</li>
+</ul>
+<p><img src="/2021/chrome-89-css/copy-CSS-properties-1.jpg" alt="copy css properties 2">
+如果是在中括號<code>{}</code>區塊按下右鍵的話，選項如下：</p>
+<ul>
+<li>Copy declaration：複製紅框與粉框部分</li>
+<li>Copy property：複製紅框部分</li>
+<li>Copy value：複製粉框部分</li>
+<li>Copy rule：複製水藍色加上黃色部分</li>
+<li>Copy all declarations：僅複製黃色部分</li>
+</ul>
+<h3 id="字體編輯面板experimental-features">字體編輯面板（Experimental features）</h3>
+<p>原文連結：<a href="https://developers.google.com/web/updates/2021/01/devtools#font">https://developers.google.com/web/updates/2021/01/devtools#font</a></p>
+<p><img src="/2021/chrome-89-css/font-editor.jpg" alt="font editor"></p>
+<p>點選上圖紅框內的字體圖示，可即時調整字體設計。</p>
+<h3 id="flexbox-debug-工具experimental-features">flexbox debug 工具（Experimental features）</h3>
+<p>原文連結：<a href="https://developers.google.com/web/updates/2021/01/devtools#flexbox">https://developers.google.com/web/updates/2021/01/devtools#flexbox</a></p>
+<p><img src="/2021/chrome-89-css/flexbox-gap.jpg" alt="flex box gap">
+<img src="/2021/chrome-89-css/flexbox-align-items.jpg" alt="flexbox align items"></p>
+<p>有<code>display: flex;</code>特性的元件，右側會顯示 flex 圖示。
+滑鼠移動到 flex 相關的特性上，會在畫面中顯示提示。上圖分別是滑鼠指向<code>gap</code>與<code>align-items</code>。</p>
+<h2 id="附錄">附錄</h2>
+<h3 id="開啟-experimental-features">開啟 Experimental features</h3>
+<p><img src="/2021/chrome-89-css/experimental-features.jpg" alt="experimental features 1">
+<img src="/2021/chrome-89-css/experimental-features-1.jpg" alt="experimental features 2"></p>
+<p>點選 DevTools 的齒輪圖示（設定），移動到 Experiments 標籤，勾選需要開啟的相關功能。
+設定完畢後需關閉、重新啟動 DevTools 來套用設定。</p>
+<h3 id="檢查-chrome-的版本">檢查 Chrome 的版本</h3>
+<p><img src="/2021/chrome-89-css/check-chrome-version.png" alt="More icon >> Help >> About Google Chrome">
+<img src="/2021/chrome-89-css/chrome-version-info.png" alt="點選About Google Chrome後，即可看到Chrome版本"></p>
+<p>打開 Chrome 後，點選畫面右上角的垂直排列三點按鈕，依序選擇幫助、關於，點開關於後即可看到 Chrome 版本資訊。</p>
+<h2 id="參考文件">參考文件</h2>
+<ul>
+<li><a href="https://www.w3schools.com/cssref/sel_target.asp">CSS :target Selector</a></li>
+<li><a href="https://www.google.com/chrome/update/">How to check Chrome’s version</a></li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

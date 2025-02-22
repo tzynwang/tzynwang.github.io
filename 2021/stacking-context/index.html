@@ -1,0 +1,151 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.BScVxmeO.js"></script><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.1.2"><!-- Primary Meta Tags --><title>「z-index與stacking context」相關筆記</title><meta name="title" content="「z-index與stacking context」相關筆記"><meta name="description" content="這是一個文組轉職前端工程師的技術部落格"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2021/stacking-context"><meta property="og:title" content="「z-index與stacking context」相關筆記"><meta property="og:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="og:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2021/stacking-context"><meta property="twitter:title" content="「z-index與stacking context」相關筆記"><meta property="twitter:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="twitter:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul:not(:has(li)){margin-top:16px;margin-bottom:16px}li{margin-top:4px;margin-bottom:4px;line-height:24px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:16px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}del{color:#4c5958e6}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+[data-astro-image]{width:100%;height:auto;object-fit:var(--fit);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>「z-index與stacking context」相關筆記</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2021-08-16 13:33</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/CSS" data-astro-cid-2iymvi75> CSS </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#原始問題" data-astro-cid-qtokga5y>原始問題</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#筆記" data-astro-cid-qtokga5y>筆記</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#z-index-是什麼" data-astro-cid-qtokga5y>z-index 是什麼？</a> </li><li class="toc-4" data-astro-cid-qtokga5y> <a href="#w3c" data-astro-cid-qtokga5y>W3C</a> </li><li class="toc-4" data-astro-cid-qtokga5y> <a href="#mdn-1" data-astro-cid-qtokga5y>MDN 1</a> </li><li class="toc-4" data-astro-cid-qtokga5y> <a href="#front-end-interview-handbook-1" data-astro-cid-qtokga5y>Front End Interview Handbook 1</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#stacking-context-是什麼" data-astro-cid-qtokga5y>stacking context 是什麼？</a> </li><li class="toc-4" data-astro-cid-qtokga5y> <a href="#mdn" data-astro-cid-qtokga5y>MDN</a> </li><li class="toc-4" data-astro-cid-qtokga5y> <a href="#前端三十" data-astro-cid-qtokga5y>前端三十</a> </li><li class="toc-4" data-astro-cid-qtokga5y> <a href="#front-end-interview-handbook-2" data-astro-cid-qtokga5y>Front End Interview Handbook 2</a> </li><li class="toc-4" data-astro-cid-qtokga5y> <a href="#what-no-one-told-you-about-z-index" data-astro-cid-qtokga5y>What No One Told You About Z-Index</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#stacking-context-如何產生" data-astro-cid-qtokga5y>stacking context 如何產生？</a> </li><li class="toc-4" data-astro-cid-qtokga5y> <a href="#w3c-1" data-astro-cid-qtokga5y>W3C</a> </li><li class="toc-4" data-astro-cid-qtokga5y> <a href="#mdn-2" data-astro-cid-qtokga5y>MDN 2</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#實作" data-astro-cid-qtokga5y>實作</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#參考文件" data-astro-cid-qtokga5y>參考文件</a> </li> </ul> </div> <h2 id="原始問題">原始問題</h2>
+<blockquote>
+<p>Describe <code>z-index</code> and how stacking context is formed.</p>
+</blockquote>
+<p>Reference: <a href="https://github.com/yangshun/front-end-interview-handbook/blob/master/contents/en/css-questions.md#describe-z-index-and-how-stacking-context-is-formed">front-end-interview-handbook</a></p>
+<ul>
+<li><code>z-index</code>是什麼？</li>
+<li>哪些 CSS 設定會產生新的<code>stacking context</code>？</li>
+</ul>
+<h2 id="筆記">筆記</h2>
+<h3 id="z-index-是什麼">z-index 是什麼？</h3>
+<h4 id="w3c"><a href="https://drafts.csswg.org/css2/#z-index">W3C</a></h4>
+<ul>
+<li>Specifying the <strong>stack level</strong>.</li>
+<li>Initial value: auto. Means the stack level of the generated box in the current stacking context is <strong>0</strong>. The box <strong>does not establish a new stacking context</strong> unless it is the root element.</li>
+<li>Applies to: positioned elements</li>
+<li>For a <strong>positioned box</strong>, the z-index property specifies the <strong>stack level</strong> of the box in the current stacking context, and whether the box <strong>establishes a stacking context</strong>.</li>
+<li>對 position 不為 static 的元素來說，<code>z-index</code>的值代表該元素的 stack level，以及該元素是否會建立新的 stacking context</li>
+<li>Each box belongs to one stacking context. Each positioned box in a given stacking context has an integer stack level, which is its position on the z-axis relative other stack levels within the same stacking context.</li>
+<li>Boxes with greater stack levels are always formatted in front of boxes with lower stack levels. Boxes may have negative stack levels.</li>
+<li>Boxes with the <strong>same stack level</strong> in a stacking context are stacked back-to-front <strong>according to document tree order</strong>.</li>
+</ul>
+<h4 id="mdn-1">MDN 1</h4>
+<ul>
+<li>The <code>z-index</code> attribute lets you adjust <strong>the order of the layering of objects</strong> when rendering content.</li>
+<li>In CSS 2.1, each box has a position in three dimensions. In addition to their horizontal and vertical positions, boxes lie along a “z-axis” and are formatted one on top of the other. Z-axis positions are particularly relevant when boxes <strong>overlap</strong> visually.</li>
+<li>The Z position of each layer is expressed as an integer representing the stacking order for rendering. <strong>Greater numbers mean closer to the observer.</strong></li>
+<li><code>z-index</code>控制元素在視覺上的堆疊順序，元素的<code>z-index</code>值越大，代表在 Z 軸上離使用者（observer）越近；反之<code>z-index</code>越小（或甚至設定為負值的情況下）則代表該元素在 Z 軸上離使用者越遠</li>
+<li>If you want to create a custom stacking order, you can use the <code>z-index</code> property on a <strong>positioned element</strong>.</li>
+<li>一個元素的 position 須設定為<code>static</code>以外的值，<code>z-index</code>才會發揮功能；替<code>position: static;</code>的元素加上<code>z-index</code>不會影響其 Z 軸的排序</li>
+</ul>
+<h4 id="front-end-interview-handbook-1">Front End Interview Handbook 1</h4>
+<ul>
+<li>The <code>z-index</code> property in CSS controls the vertical stacking order of elements that overlap. <code>z-index</code> only affects elements that have a position value which is not <code>static</code>.</li>
+<li>Without any <code>z-index</code> value, elements stack in the order that they appear in the DOM (the lowest one down at the same hierarchy level appears on top). Elements with non-static positioning (and their children) will always appear on top of elements with default static positioning, regardless of HTML hierarchy.</li>
+</ul>
+<h3 id="stacking-context-是什麼">stacking context 是什麼？</h3>
+<h4 id="mdn"><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Positioning/Understanding_z_index/The_stacking_context">MDN</a></h4>
+<ul>
+<li>The stacking context is <strong>a three-dimensional conceptualization</strong> of HTML elements along an imaginary z-axis relative to the user, who is assumed to be facing the viewport or the webpage. HTML elements occupy this space in priority order based on element attributes.</li>
+<li>Each stacking context is <strong>completely independent of its siblings</strong>, only descendant elements are considered when stacking is processed. Each stacking context is self-contained, after the element’s contents are stacked, the whole element is considered in the stacking order of the parent stacking context.</li>
+<li>某元素若建立了一個 stacking context，則該元素與其子代元素的堆疊狀態就不會去影響到其他元素，因該元素的子代元素都被限制在這個 stacking context 裡面了</li>
+</ul>
+<h4 id="前端三十"><a href="https://ithelp.ithome.com.tw/articles/10217945">前端三十</a></h4>
+<ul>
+<li>在網頁排版時，預設的元素排列會是由上到下、由左到右的依序排列；開發者如果想要調整或固定特定元素的位置，會透過設定 position 為 relative、absolute、fixed，讓指定的元素可以從原本的排列位置移動，甚至離開（Out of Flow）。</li>
+<li>而這時，也就<strong>產生了一個新的 CSS 堆疊環境</strong>，從此這個元素及它的子元素，就自成一國，他們的排列也就<strong>與其他的堆疊環境無關了</strong>。</li>
+</ul>
+<h4 id="front-end-interview-handbook-2">Front End Interview Handbook 2</h4>
+<ul>
+<li>A stacking context is <strong>an element that contains a set of layers</strong>.</li>
+<li>Within a stacking context, the z-index values of one element’s children are <strong>set relative to that (parent) element</strong>, rather than to the document root.</li>
+<li>Each stacking context is <strong>self-contained</strong>, after the element’s contents are stacked, the whole element is considered in the stacking order of the parent stacking context.</li>
+<li>Layers outside of that context (i.e. sibling elements of a local stacking context) can’t sit between layers within it.</li>
+<li>stacking context 中的子代元素，其 z-index 就算設定的比 stacking context 外部的元素還要大，該子代元素也<strong>無法覆蓋在 stacking context 外的元素上</strong></li>
+</ul>
+<h4 id="what-no-one-told-you-about-z-index">What No One Told You About Z-Index</h4>
+<ul>
+<li>Groups of elements <strong>with a common parent that move forward or backward together</strong> in the stacking order make up what is known as a stacking context.</li>
+<li>Every stacking context has a single HTML element as its root element. When a new stacking context is formed on an element, that stacking context confines all of its child elements to a particular place in the stacking order.</li>
+<li>This means if an element is contained in a stacking context at the bottom of the stacking order, there is no way to get it to appear in front of another element <strong>in a different stacking context</strong> that is higher in the stacking order, even with a z-index of a billion!</li>
+</ul>
+<h3 id="stacking-context-如何產生">stacking context 如何產生？</h3>
+<h4 id="w3c-1">W3C</h4>
+<ul>
+<li>The root element forms the root stacking context. Other stacking contexts are generated by any positioned element (including relatively positioned elements) having a computed value of <strong><code>z-index</code> other than auto</strong>.</li>
+<li><code>z-index</code>不為<code>auto</code>的 positioned element 會建立新的 stacking contexts</li>
+</ul>
+<h4 id="mdn-2">MDN 2</h4>
+<ul>
+<li>Element with a position value <code>absolute</code> or <code>relative</code> and <code>z-index</code> value other than <code>auto</code>.</li>
+<li>Element with a position value <code>fixed</code> or <code>sticky</code>.</li>
+<li>Element that is a child of a <code>flex</code> or <code>grid</code> container, with <code>z-index</code> value other than <code>auto</code>.</li>
+<li>Element with a <code>opacity</code> value less than <code>1</code>.</li>
+<li>Element with a <code>mix-blend-mode</code> value other than <code>normal</code>.</li>
+<li>Element with any of the following properties with value other than <code>none</code>:
+<ul>
+<li><code>transform</code></li>
+<li><code>filter</code></li>
+<li><code>perspective</code></li>
+<li><code>clip-path</code></li>
+<li><code>mask</code>, <code>mask-image</code>, <code>mask-border</code></li>
+</ul>
+</li>
+<li>Element with a <code>isolation</code> value <code>isolate</code>. (The <code>isolation</code> CSS property determines whether an element must create a new stacking context. <code>isolation</code>設定為<code>isolate</code>即可直接建立新的 stacking context)</li>
+<li>Element with a <code>-webkit-overflow-scrolling</code> value <code>touch</code>.</li>
+<li>Element with a <code>will-change</code> value specifying any property that would create a stacking context on non-initial value.</li>
+<li>Element with a <code>contain</code> value of <code>layout</code>, or <code>paint</code>, or a composite value that includes either of them (i.e. contain: strict, contain: content).</li>
+</ul>
+<h2 id="實作">實作</h2>
+<p class="codepen" data-height="300" data-default-tab="css,result" data-slug-hash="qBmwLLY" data-user="Charlie7779" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+  <span>See the Pen <a href="https://codepen.io/Charlie7779/pen/qBmwLLY">
+  nav (z-index)</a> by Charlie (<a href="https://codepen.io/Charlie7779">@Charlie7779</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+<p>在僅有一組<code>nav</code>元素的情況下做出「<code>nav</code>展開時，從<code>header</code>下方滑出」的視覺效果</p>
+<ul>
+<li>小版面：<code>nav</code>會從<code>header</code>下方滑出，<code>header</code>沒有固定
+<ul>
+<li><code>header</code>設定為<code>display: flex;</code>但沒有指定<code>z-index</code>，沒有產生新的 stacking context</li>
+<li><code>label</code>設定為<code>position: relative;</code>但沒有指定<code>z-index</code>，沒有產生新的 stacking context</li>
+<li><code>nav</code>設定為<code>position: absolute;</code>與<code>z-index: -1;</code>，產生 stacking context，並視覺上會從<code>header</code>下方滑出</li>
+<li><code>main</code>設定為<code>position: relative;</code>與<code>z-index: -2;</code>，產生 stacking context，且 Z 軸順序比<code>nav</code>還要下方，不會遮蓋到<code>nav</code></li>
+</ul>
+</li>
+<li>大版面：<code>header</code>固定在視窗頂部
+<ul>
+<li><code>header</code>設定為<code>position: fixed;</code>與<code>z-index: 99;</code>，產生 stacking context，視覺上永遠固定在畫面最上方</li>
+<li><code>nav</code>設定為<code>position: static;</code>，取消 stacking context</li>
+</ul>
+</li>
+</ul>
+<h2 id="參考文件">參考文件</h2>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Positioning/Understanding_z_index/The_stacking_context">MDN: The stacking context</a></li>
+<li><a href="https://drafts.csswg.org/css2/#elaborate-stacking-contexts">W3C Appendix E: Elaborate description of Stacking Contexts</a></li>
+<li><a href="https://stackoverflow.com/questions/54897916/why-cant-an-element-with-a-z-index-value-cover-its-child">StackOverFlow: Why can’t an element with a z-index value cover its child?</a></li>
+<li><a href="https://stackoverflow.com/questions/1806421/how-to-get-a-parent-element-to-appear-above-child">StackOverFlow: How to get a parent element to appear above child</a></li>
+<li><a href="https://philipwalton.com/articles/what-no-one-told-you-about-z-index/">What No One Told You About Z-Index</a></li>
+<li><a href="https://youtu.be/uS8l4YRXbaw">YouTube: Solve your z-index issues | z-index and stacking context explained</a></li>
+<li><a href="https://ithelp.ithome.com.tw/articles/10217945">04. [CSS] z-index 與 Stacking Context 的關係是什麼？</a></li>
+<li><a href="https://dev.opera.com/articles/css-will-change-property/">Everything You Need to Know About the CSS will-change Property</a></li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

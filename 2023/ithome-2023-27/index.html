@@ -1,0 +1,81 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.BScVxmeO.js"></script><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.1.2"><!-- Primary Meta Tags --><title>捨棄 create-react-app 之餘還架了個 astro blog 昭告天下：部署</title><meta name="title" content="捨棄 create-react-app 之餘還架了個 astro blog 昭告天下：部署"><meta name="description" content="本日主題：將 astro 部署到 GitHub Pages 的兩種方式——透過 GitHub Actions 或傳統的「打包後，手動更新」"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2023/ithome-2023-27"><meta property="og:title" content="捨棄 create-react-app 之餘還架了個 astro blog 昭告天下：部署"><meta property="og:description" content="本日主題：將 astro 部署到 GitHub Pages 的兩種方式——透過 GitHub Actions 或傳統的「打包後，手動更新」"><meta property="og:image" content="https://tzynwang.github.io/2023/ithome-2023-27/nasa-n463SoeSiVY-unsplash.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2023/ithome-2023-27"><meta property="twitter:title" content="捨棄 create-react-app 之餘還架了個 astro blog 昭告天下：部署"><meta property="twitter:description" content="本日主題：將 astro 部署到 GitHub Pages 的兩種方式——透過 GitHub Actions 或傳統的「打包後，手動更新」"><meta property="twitter:image" content="https://tzynwang.github.io/2023/ithome-2023-27/nasa-n463SoeSiVY-unsplash.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul:not(:has(li)){margin-top:16px;margin-bottom:16px}li{margin-top:4px;margin-bottom:4px;line-height:24px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:16px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}del{color:#4c5958e6}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+[data-astro-image]{width:100%;height:auto;object-fit:var(--fit);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>捨棄 create-react-app 之餘還架了個 astro blog 昭告天下：部署</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2023-10-12 08:17</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/2023鐵人賽" data-astro-cid-2iymvi75> 2023鐵人賽 </a> <a class="tag" href="/tag/astro" data-astro-cid-2iymvi75> astro </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#astroconfigts-設定" data-astro-cid-qtokga5y>astro.config.ts 設定</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#部署方式" data-astro-cid-qtokga5y>部署方式</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#github-actions" data-astro-cid-qtokga5y>GitHub Actions</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#手動更新" data-astro-cid-qtokga5y>手動更新</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#注意事項" data-astro-cid-qtokga5y>注意事項</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#總結" data-astro-cid-qtokga5y>總結</a> </li> </ul> </div> <p>到目前為止，整個 astro 專案都只是在本地的伺服器上運行而已。而今天要來分享的內容即是：如何將 astro 專案發佈到為 GitHub Pages。有兩種方式：官方文件採用的 GitHub Actions 或是比較傳統的打包後手動更新。</p>
+<h2 id="astroconfigts-設定">astro.config.ts 設定</h2>
+<p>對於要將 astro 專案部署為 GitHub Pages 且網址為 <code>&#x3C;YOUR_USERNAME>.github.io</code> 型態的朋友，基本上你不需要在這邊追加太多內容，設定一下 <code>site</code> 即可：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { defineConfig } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> 'astro/config'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> default</span><span style="color:#B392F0"> defineConfig</span><span style="color:#E1E4E8">({</span></span>
+<span class="line"><span style="color:#E1E4E8">  compressHTML: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">  site: </span><span style="color:#9ECBFF">'https://&#x3C;YOUR_USERNAME>.github.io/'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+<h2 id="部署方式">部署方式</h2>
+<h3 id="github-actions">GitHub Actions</h3>
+<p><a href="https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions">GitHub Actions</a> 簡單來說就是：根據開發者放在 repo <code>.github/workflows</code> 資料夾中的 <code>.yaml</code> 腳本來執行一系列工作。開發者可以在 <code>.yaml</code> 中指定工作被觸發的條件（比如 main 分支有合併事件時），以及一系列執行內容（比如「先打包專案」再「將打包內容部署至 GitHub Pages」）。</p>
+<p>以<a href="https://docs.astro.build/en/guides/deploy/github/#how-to-deploy">官方食譜</a>來說，該份 <code>deploy.yml</code> 在做的事情翻成白話文就是：</p>
+<ol>
+<li>每當有 <code>git push</code> 發生在 <code>main</code> 分支時，就要執行這份 <code>.yml</code> 內列出的工作</li>
+<li>提供 GitHub Actions 讀寫的權限（<code>permissions</code>）</li>
+<li>使用 <code>main</code> 分支的內容執行工作（<code>jobs</code>） <code>build</code> 與 <code>deploy</code>，最終的 GitHub Pages 是根據 <code>main</code> 分支建立的</li>
+</ol>
+<hr>
+<p>在專案建立 <code>.github/workflows/deploy.yml</code> 後，需調整 repo 設定，指定使用 GitHub Actions 作為 GitHub Pages 的來源。如下圖：</p>
+<p><img src="/2023/ithome-2023-27/source-github-actions.png" alt="source: GitHub Actions"></p>
+<p>完成以上設定後，每次 git push 到 main 分支時，都會自動開啟 GitHub Pages 部署流程。你的網站現在會自動更新了。</p>
+<h3 id="手動更新">手動更新</h3>
+<p>你想要做一個能自主決定部署與否的人，那麽，請在 <code>Makefile</code> 新增以下腳本：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">.PHONY:</span><span style="color:#9ECBFF"> deploy</span></span>
+<span class="line"><span style="color:#B392F0">deploy:</span><span style="color:#9ECBFF"> build</span></span>
+<span class="line"><span style="color:#79B8FF">	cd</span><span style="color:#9ECBFF"> dist</span><span style="color:#E1E4E8"> &#x26;&#x26; </span><span style="color:#79B8FF">\</span></span>
+<span class="line"><span style="color:#B392F0">	git</span><span style="color:#9ECBFF"> init</span><span style="color:#E1E4E8"> &#x26;&#x26; </span><span style="color:#79B8FF">\</span></span>
+<span class="line"><span style="color:#B392F0">	git</span><span style="color:#9ECBFF"> remote</span><span style="color:#79B8FF"> -v</span><span style="color:#F97583"> |</span><span style="color:#B392F0"> grep</span><span style="color:#79B8FF"> -w</span><span style="color:#9ECBFF"> origin</span><span style="color:#F97583"> ||</span><span style="color:#B392F0"> git</span><span style="color:#9ECBFF"> remote</span><span style="color:#9ECBFF"> add</span><span style="color:#9ECBFF"> origin</span><span style="color:#F97583"> &#x3C;</span><span style="color:#9ECBFF">REPO</span><span style="color:#9ECBFF"> UR</span><span style="color:#E1E4E8">L</span><span style="color:#F97583">></span><span style="color:#E1E4E8"> &#x26;&#x26; </span><span style="color:#79B8FF">\</span></span>
+<span class="line"><span style="color:#B392F0">	git</span><span style="color:#9ECBFF"> branch</span><span style="color:#79B8FF"> -m</span><span style="color:#9ECBFF"> gh-pages</span><span style="color:#E1E4E8"> &#x26;&#x26; </span><span style="color:#79B8FF">\</span></span>
+<span class="line"><span style="color:#B392F0">	git</span><span style="color:#9ECBFF"> add</span><span style="color:#79B8FF"> -A</span><span style="color:#E1E4E8"> &#x26;&#x26; </span><span style="color:#79B8FF">\</span></span>
+<span class="line"><span style="color:#B392F0">	git</span><span style="color:#9ECBFF"> commit</span><span style="color:#79B8FF"> -m</span><span style="color:#9ECBFF"> "[feat] deploy as gh-pages `</span><span style="color:#B392F0">date</span><span style="color:#9ECBFF"> +'%Y-%m-%d %H:%M:%S'`"</span><span style="color:#E1E4E8"> &#x26;&#x26; </span><span style="color:#79B8FF">\</span></span>
+<span class="line"><span style="color:#B392F0">	git</span><span style="color:#9ECBFF"> push</span><span style="color:#79B8FF"> -u</span><span style="color:#9ECBFF"> origin</span><span style="color:#9ECBFF"> gh-pages</span><span style="color:#79B8FF"> -f</span></span></code></pre>
+<p>以上內容翻譯為白話文為：</p>
+<ol>
+<li>當開發者透過終端執行 <code>make deploy</code> 時，會先連帶執行 <code>make build</code></li>
+<li>打包完畢後，移動到 <code>./dist</code> 資料夾（此為 astro 預設的輸出資料夾名稱，如果你在 <code>astro.config.ts</code> 中修改了 <code>outDir</code> 內容，這裡需連動更新）</li>
+<li>於 <code>./dist</code> 資料夾中啟動 git 並將所有的內容 commit 起來，訊息為 <code>[feat] deploy as gh-pages YYYY-MM-DD HH:mm:ss</code></li>
+<li>執行 force push 將打包好的靜態網站內容推到你的 repo 中名為 <code>gh-pages</code> 的分支</li>
+</ol>
+<p>記得將 repo 的 GitHub Pages branch 指向 <code>gh-pages</code>，如下圖：</p>
+<p><img src="/2023/ithome-2023-27/github-pages-branch.png" alt="select GitHub Pages branch"></p>
+<hr>
+<p>這樣就變成「只有在每次執行 <code>make deploy</code> 時，才會進行部署流程」了。</p>
+<h2 id="注意事項">注意事項</h2>
+<p>astro 預設的 <code>build.assets</code> 輸出資料夾為 <code>_astro</code>（參考<a href="https://docs.astro.build/en/reference/configuration-reference/#buildassets">官方文件</a>）。如果沒有透過 <code>astro.config.ts</code> 更動資料夾名稱設定，請記得在專案的 <code>./public</code> 中新增一個名為 <code>.nojekyll</code> 的空檔案，讓 astro 在打包時將該檔案一併複製到 <code>dist</code> 中。</p>
+<p>追加此 <code>.nojekyll</code> 檔案能讓 GitHub Pages 正常取得「底線開頭資料夾」中的內容。參考：</p>
+<blockquote>
+<p><a href="https://github.blog/2009-12-29-bypassing-jekyll-on-github-pages/">Bypassing Jekyll on GitHub Pages</a>: This should only be necessary if your site uses files or directories that start with underscores since Jekyll considers these to be special resources and <strong>does not copy them to the final site</strong>.</p>
+</blockquote>
+<p>或是直接指定無底線的 <code>build.assets</code> 名稱來避免此問題。</p>
+<h2 id="總結">總結</h2>
+<p>現在你的專案已經公諸於世了。明天會來介紹如何為 astro 專案設定 sitemap（將網站內容提供給搜尋引擎爬蟲）以及 RSS（讓讀者可以訂閱內容）。</p>
+<p>感謝你今天的閱讀。</p> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

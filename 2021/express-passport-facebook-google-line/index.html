@@ -1,0 +1,130 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.BScVxmeO.js"></script><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.1.2"><!-- Primary Meta Tags --><title>「使用passport處理FB、Google第三方登入」相關筆記</title><meta name="title" content="「使用passport處理FB、Google第三方登入」相關筆記"><meta name="description" content="這是一個文組轉職前端工程師的技術部落格"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2021/express-passport-facebook-google-line"><meta property="og:title" content="「使用passport處理FB、Google第三方登入」相關筆記"><meta property="og:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="og:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2021/express-passport-facebook-google-line"><meta property="twitter:title" content="「使用passport處理FB、Google第三方登入」相關筆記"><meta property="twitter:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="twitter:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul:not(:has(li)){margin-top:16px;margin-bottom:16px}li{margin-top:4px;margin-bottom:4px;line-height:24px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:16px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}del{color:#4c5958e6}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+[data-astro-image]{width:100%;height:auto;object-fit:var(--fit);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>「使用passport處理FB、Google第三方登入」相關筆記</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2021-06-30 12:59</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/Express" data-astro-cid-2iymvi75> Express </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#總結" data-astro-cid-qtokga5y>總結</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#環境" data-astro-cid-qtokga5y>環境</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#筆記" data-astro-cid-qtokga5y>筆記</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#專案結構" data-astro-cid-qtokga5y>專案結構</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#fb-流程" data-astro-cid-qtokga5y>FB 流程</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#google-流程" data-astro-cid-qtokga5y>Google 流程</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#line-流程" data-astro-cid-qtokga5y>LINE 流程</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#authjs-內容" data-astro-cid-qtokga5y>auth.js 內容</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#appjs-設定" data-astro-cid-qtokga5y>app.js 設定</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#關於-oauth-20" data-astro-cid-qtokga5y>關於 OAuth 2.0</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#authentication" data-astro-cid-qtokga5y>Authentication</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#authorization" data-astro-cid-qtokga5y>Authorization</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#參考文件" data-astro-cid-qtokga5y>參考文件</a> </li> </ul> </div> <h2 id="總結">總結</h2>
+<p>使用 npm package <code>passport-facebook</code>、<code>passport-google-oauth20</code>與<code>passport-line</code>讓 Todo List 專案可以透過 FB、Google 或 LINE 帳號進行第三方登入</p>
+<h2 id="環境">環境</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>passport: 0.4.1</span></span>
+<span class="line"><span>passport-facebook: 3.0.0</span></span>
+<span class="line"><span>passport-google-oauth20: 2.0.0</span></span>
+<span class="line"><span>passport-line: 0.0.4</span></span>
+<span class="line"><span>os: Windows_NT 10.0.18363 win32 x64</span></span></code></pre>
+<h2 id="筆記">筆記</h2>
+<h3 id="專案結構">專案結構</h3>
+<p>僅列出與本次實作相關的資料夾與檔案：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>config</span></span>
+<span class="line"><span>  passport_FB.js</span></span>
+<span class="line"><span>  passport_Google.js</span></span>
+<span class="line"><span>  passport_LINE.js</span></span>
+<span class="line"><span>models</span></span>
+<span class="line"><span>  user.js</span></span>
+<span class="line"><span>routes</span></span>
+<span class="line"><span>  modules</span></span>
+<span class="line"><span>    auth.js</span></span>
+<span class="line"><span>app.js</span></span></code></pre>
+<h3 id="fb-流程">FB 流程</h3>
+<script src="https://gist.github.com/tzynwang/7b5d441f8127653fac09bbebd9a9ac0f.js"></script>
+<p><img src="/2021/express-passport-facebook-google-line/fb_dashboard.jpg" alt="fb dashboard"></p>
+<p>clientID 與 clientSecret 都可在 FB 開發者後台取得</p>
+<h3 id="google-流程">Google 流程</h3>
+<script src="https://gist.github.com/tzynwang/26b84e1bfaccf5dc353ad01b0d2cfd65.js"></script>
+<p>後台流程如下：</p>
+<ol>
+<li>
+<p>進入 GCP 後選擇 APIs &#x26; Service，選擇 Credentials 並建立新的 Oath client ID</p>
+<p><img src="/2021/express-passport-facebook-google-line/Google_step1.jpg" alt="Google step 1"></p>
+</li>
+<li>
+<p>應用程式類型因應練習專案選擇 Web application</p>
+<p><img src="/2021/express-passport-facebook-google-line/Google_step2.jpg" alt="Google step 2"></p>
+</li>
+<li>
+<p>與 FB 較為不同，Authorized redirect URIs 為必填，練習情況下直接導回<code>localhost:3000/&#x3C;auth/google/callback></code>即可（前述<code>&#x3C;></code>內容與 endpoint 設定一致）</p>
+<p><a href="/2021/express-passport-facebook-google-line/Google_step3.jpg">Google step 3</a></p>
+</li>
+</ol>
+<h3 id="line-流程">LINE 流程</h3>
+<script src="https://gist.github.com/tzynwang/21340bfe58134bb6e1cb6a07e9def494.js"></script>
+<p>官方說明文件：</p>
+<ul>
+<li><a href="https://developers.line.biz/en/docs/line-login/integrate-line-login/">Integrating LINE Login with your web app</a></li>
+<li><a href="https://developers.line.biz/zh-hant/docs/line-login/integrate-line-login/">整合 LINE Login 與 web app</a></li>
+</ul>
+<p>官方申請入口：<a href="https://developers.line.biz/en/services/line-login/">LINE Developer: Products / LINE Login</a></p>
+<p>後台流程如下：</p>
+<ol>
+<li>
+<p>與 FB 以及 Google 較不同，LINE 搭配 passport 處理第三方登入會用到的是<strong>Channel</strong> ID 與<strong>Channel</strong> Secret，兩筆資料可在 Basic Settings 中複製</p>
+<p><img src="/2021/express-passport-facebook-google-line/LINE_dashboard1.jpg" alt="LINE step 1">
+<img src="/2021/express-passport-facebook-google-line/LINE_dashboard2.jpg" alt="LINE step 2"></p>
+</li>
+<li>
+<p>切換到 LINE Login 分頁，設定 Callback URL</p>
+<p><img src="/2021/express-passport-facebook-google-line/LINE_dashboard3.jpg" alt="LINE step 3"></p>
+</li>
+<li>
+<p>其餘流程與 FB 以及 Google 登入的差異是，透過 LINE 向使用者要求授權時，不需要帶入<code>scope</code>資料（參考以下<code>auth.js</code>第 32 行，與 FB 以及 Google 的內容不同）</p>
+</li>
+</ol>
+<p>補充：</p>
+<ul>
+<li>LINE Login<strong>不會</strong>主動提供使用者的 Email 資訊，若須請求使用者的 Email，開發者要自行申請 Email address permission</li>
+<li>參考：<a href="https://developers.line.biz/en/docs/line-login/integrate-line-login/#applying-for-email-permission">Requesting permission to access the user’s email address</a></li>
+</ul>
+<h3 id="authjs-內容">auth.js 內容</h3>
+<script src="https://gist.github.com/tzynwang/302a2a4b7098456bcd09f233093946a6.js"></script>
+<h3 id="appjs-設定">app.js 設定</h3>
+<script src="https://gist.github.com/tzynwang/e9758c91408f8062498e2ef7f3ea6207.js"></script>
+<p>記得<code>require</code>在 config 資料夾中設定好的<code>passport_FB</code>與<code>passport_Google</code>並呼叫之即可</p>
+<h2 id="關於-oauth-20">關於 OAuth 2.0</h2>
+<blockquote>
+<p>OAuth allows you (the User) to grant access to your private resources on one site (which is called the Service Provider), to another site (called Consumer). While OpenID is all about using a single identity to sign into many sites, OAuth is about <strong>giving access to your stuff without sharing your identity at all</strong> (or its secret parts).</p>
+</blockquote>
+<p>Reference: <a href="https://hueniversedotcom.wordpress.com/2007/09/05/explaining-oauth/">Eran Hammer-Lahav: Explaining OAuth</a></p>
+<h3 id="authentication">Authentication</h3>
+<ul>
+<li>Authentication is about <strong>proving you are the correct person</strong> because you know things.</li>
+<li>Authentication means <strong>confirming your own identity</strong> (is the account and password correct?)</li>
+<li>（透過提供正確的帳號密碼組合）證明我是誰</li>
+</ul>
+<h3 id="authorization">Authorization</h3>
+<ul>
+<li>Authorization is <strong>asking for permission</strong> to do stuff.</li>
+<li>Authorization means <strong>granting access</strong> (is this user same as the one that just be authenticated?) to the system.</li>
+<li><a href="https://oauth.net/2/">OAuth 2.0</a>: is the industry-standard protocol for <strong>authorization</strong>.</li>
+<li>允許哪些 APP 來存取資料；以本次練習來說，就是「我同意此 Todo list 專案可以存取我在 FB 或是 Google 帳號中的部分資料」</li>
+</ul>
+<h2 id="參考文件">參考文件</h2>
+<ul>
+<li><a href="https://youtu.be/o9e3ex-axzA">YouTube: Express (NodeJS) - Google oAuth 2.0 (passportJS)</a></li>
+<li>OAuth 2.0
+<ul>
+<li><a href="https://www.digitalocean.com/community/tutorials/an-introduction-to-oauth-2">DigitalOcean: An Introduction to OAuth 2</a></li>
+<li><a href="https://www.varonis.com/blog/what-is-oauth/">What is OAuth? Definition and How it Works</a></li>
+</ul>
+</li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 
