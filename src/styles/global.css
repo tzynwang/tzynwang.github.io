@@ -116,3 +116,9 @@ del {
   /* 90% opacity */
   color: #4c5958e6;
 }
+
+ol > li:has(p) > p {
+  /* 處理位於「註解」內的 p 樣式 */
+  display: inline;
+  margin: 0;
+}

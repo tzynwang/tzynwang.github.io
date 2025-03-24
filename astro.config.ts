@@ -6,6 +6,9 @@ import { SITE } from './src/models/GeneralModels';
 export default defineConfig({
   compressHTML: true,
   integrations: [sitemap()],
+  markdown: {
+    remarkRehype: { footnoteLabel: '註解' },
+  },
   redirects: {
     '/archives': '/archive',
     '/categories': '/tag',
