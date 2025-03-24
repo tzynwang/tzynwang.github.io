@@ -1,0 +1,73 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.BScVxmeO.js"></script><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.1.2"><!-- Primary Meta Tags --><title>「Vue component生命週期」相關筆記</title><meta name="title" content="「Vue component生命週期」相關筆記"><meta name="description" content="這是一個文組轉職前端工程師的技術部落格"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2021/vue-component-life-cycle"><meta property="og:title" content="「Vue component生命週期」相關筆記"><meta property="og:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="og:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2021/vue-component-life-cycle"><meta property="twitter:title" content="「Vue component生命週期」相關筆記"><meta property="twitter:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="twitter:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul:not(:has(li)){margin-top:16px;margin-bottom:16px}li{margin-top:4px;margin-bottom:4px;line-height:24px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:16px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}del{color:#4c5958e6}ol>li:has(p)>p{display:inline;margin:0}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+[data-astro-image]{width:100%;height:auto;object-fit:var(--fit);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>「Vue component生命週期」相關筆記</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2021-10-08 14:48</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/Vue" data-astro-cid-2iymvi75> Vue </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#原始問題" data-astro-cid-qtokga5y>原始問題</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#回答" data-astro-cid-qtokga5y>回答</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#版本與環境" data-astro-cid-qtokga5y>版本與環境</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#筆記" data-astro-cid-qtokga5y>筆記</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#參考文件" data-astro-cid-qtokga5y>參考文件</a> </li> </ul> </div> <h2 id="原始問題">原始問題</h2>
+<p>Vue component 從建立到摧毀，會經過數個階段的生命週期；請描述以下這兩個 DOM 元素的生命週期發生順序為何？</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="html"><code><span class="line"><span style="color:#E1E4E8">&#x3C;</span><span style="color:#85E89D">header</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;</span><span style="color:#85E89D">nav</span><span style="color:#E1E4E8">>&#x3C;/</span><span style="color:#85E89D">nav</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">&#x3C;/</span><span style="color:#85E89D">header</span><span style="color:#E1E4E8">></span></span></code></pre>
+<h2 id="回答">回答</h2>
+<ol>
+<li>先是<code>header</code>的 beforeCreate、created 與 beforeMount（<code>header</code>準備掛載）</li>
+<li>接著<code>nav</code>進行 beforeCreate、created 與 beforeMount（<code>nav</code>準備掛載）</li>
+<li><code>nav</code> mounted，然後<code>header</code> mounted（掛載<code>nav</code>後，掛載<code>header</code>）</li>
+<li>準備銷毀時先<code>header</code> beforeDestroy，接著<code>nav</code> beforeDestroy（<code>header</code>準備銷毀，接著<code>nav</code>準備銷毀）</li>
+<li><code>nav</code> destroyed，最後<code>header</code> destroyed（銷毀<code>nav</code>後再銷毀<code>header</code>）</li>
+</ol>
+<p>遇到資料更新時則是<code>beforeUpdate</code>接<code>updated</code>
+自作純觀察用的奈米專案（結果輸出於 devTool console）：<a href="https://tzynwang.github.io/vue-component-life-cycle/">demo</a> | <a href="https://github.com/tzynwang/vue-component-life-cycle#readme">repo</a></p>
+<p><img src="/2021/vue-component-life-cycle/vue-component-life-cycle.png" alt="vue component life cycle"></p>
+<h2 id="版本與環境">版本與環境</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>vue: 2.6.11</span></span></code></pre>
+<h2 id="筆記">筆記</h2>
+<ul>
+<li>透過<code>console.log</code>可觀察到<code>this.$data</code>在<code>created</code>後才可取用（操作）
+<ul>
+<li>Vue.js 技術揭密：可以從原始碼看到<code>beforeCreate</code>和<code>created</code>的 hook 分別在<code>initState</code>的前後調用，而<code>initState</code>的作用是初始化<code>props</code>、<code>data</code>、<code>methods</code>、<code>watch</code>、<code>computed</code>等屬性，所以在<code>beforeCreate</code>的 hook 無法取用 props、data 定義的值，也不能調用<code>methods</code>中的 function。</li>
+</ul>
+</li>
+<li><code>$el</code>與<code>$ref</code>皆是<code>mounted</code>後才可取用
+<ul>
+<li>重新認識 Vue.js：直到<code>mounted</code>階段，Vue 才正式將網頁上的 DOM 節點、事件都綁定至 Vue 的實體。也就是說，如果我們基於某些原因需要手動操作 DOM API，如<code>querySelector</code>或<code>addEventListener</code>等，最好在<code>mounted</code>階段完成後進行操作，以免操作的 DOM 節點被 Vue 替換掉。</li>
+<li>functions in <code>mounted</code> hook: called after the instance has been mounted, where <code>el</code> is replaced by the newly created <code>vm.$el</code>.</li>
+<li>An important note about the <code>ref</code> registration timing: because the refs themselves are created as a result of the render function, you <strong>cannot access them on the initial render</strong> - they don’t exist yet!</li>
+</ul>
+</li>
+<li>在<code>beforeUpdate</code>階段時，資料就已經更新了，只是還未重渲染畫面；<code>updated</code>則代表「畫面已更新」
+<ul>
+<li>Vue 的<code>$nextTick()</code>就是要確保其<code>cb()</code>在畫面更新後才執行</li>
+</ul>
+</li>
+<li>Vue component 被銷毀（<code>destroyed</code>）後，無法再透過 Vue 操作 DOM（<code>$ref</code>的值變為<code>undefined</code>）（devTool 中的 Vue extension 也不再顯示相關內容），但 DOM 元素依舊存在</li>
+</ul>
+<h2 id="參考文件">參考文件</h2>
+<ul>
+<li><a href="https://vuejs.org/v2/guide/instance.html#Lifecycle-Diagram">The Vue Instance: Lifecycle Diagram</a></li>
+<li><a href="https://book.vue.tw/CH1/1-7-lifecycle.html">重新認識 Vue.js：1-7 元件的生命週期與更新機制</a></li>
+<li><a href="https://ustbhuangyi.github.io/vue-analysis/v2/components/lifecycle.html#%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F">Vue.js 技術揭密：生命週期</a></li>
+<li><a href="https://juejin.cn/post/6844903811094413320">Vue 生命周期</a></li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

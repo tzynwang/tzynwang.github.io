@@ -1,0 +1,121 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.BScVxmeO.js"></script><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.1.2"><!-- Primary Meta Tags --><title>2021 第48週 學習記錄：JavaScript Class</title><meta name="title" content="2021 第48週 學習記錄：JavaScript Class"><meta name="description" content="這是一個文組轉職前端工程師的技術部落格"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2021/work-log-w48"><meta property="og:title" content="2021 第48週 學習記錄：JavaScript Class"><meta property="og:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="og:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2021/work-log-w48"><meta property="twitter:title" content="2021 第48週 學習記錄：JavaScript Class"><meta property="twitter:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="twitter:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul:not(:has(li)){margin-top:16px;margin-bottom:16px}li{margin-top:4px;margin-bottom:4px;line-height:24px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:16px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}del{color:#4c5958e6}ol>li:has(p)>p{display:inline;margin:0}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+[data-astro-image]{width:100%;height:auto;object-fit:var(--fit);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>2021 第48週 學習記錄：JavaScript Class</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2021-12-05 10:48</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/JavaScript" data-astro-cid-2iymvi75> JavaScript </a> <a class="tag" href="/tag/TypeScript" data-astro-cid-2iymvi75> TypeScript </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#總結" data-astro-cid-qtokga5y>總結</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#筆記" data-astro-cid-qtokga5y>筆記</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#new-做的事" data-astro-cid-qtokga5y>new 做的事</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#this-指向的內容" data-astro-cid-qtokga5y>this 指向的內容</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#class-中的-static-關鍵字" data-astro-cid-qtokga5y>class 中的 static 關鍵字</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#class-中的-private-關鍵字" data-astro-cid-qtokga5y>class 中的 private 關鍵字</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#參考文件" data-astro-cid-qtokga5y>參考文件</a> </li> </ul> </div> <h2 id="總結">總結</h2>
+<p>本週集中火力閱讀 JavaScript Class 相關的內容，以下為筆記整理，基本整理自 MDN、Udemy 課程 JavaScript: Understanding the Weird Parts、YDKJS 與 JAVASCRIPT.INFO</p>
+<h2 id="筆記">筆記</h2>
+<blockquote>
+<p>大總結：JavaScript 的 Class 是 function constructor 的語法糖；而在 JavaScript 中使用關鍵字 <code>new</code> 來建立新物件這件事情，本質上是「建立一個新物件，並該物件的原型（<code>[[Prototype]]</code>）指向關鍵字 <code>new</code> 後方的 function constructor 的 prototype object」</p>
+</blockquote>
+<h3 id="new-做的事"><code>new</code> 做的事</h3>
+<ol>
+<li>Creates a blank, plain JavaScript object.</li>
+<li>Adds a property (<code>__proto__</code>) to the new object that links to the <strong>constructor function’s prototype object</strong>.</li>
+<li>Binds the newly created object instance as the <code>this</code> context (i.e. all references to <code>this</code> in the constructor function now refer to the object created in the first step).</li>
+<li>Returns <code>this</code> if the function doesn’t return an object.</li>
+</ol>
+<blockquote>
+<p>以程式碼展示 constructor function’s prototype object 到底是什麼意思</p>
+</blockquote>
+<script src="https://gist.github.com/tzynwang/10863be3efdd0ad7256f7b63b7b428a0.js"></script>
+<ol>
+<li>在 UserF 中建立 method <code>logInfo</code></li>
+<li>設定 UserF 的 prototype 中有一 method <code>logInfoP</code></li>
+<li>透過 UserF 建立 <code>jackieF</code> 與 <code>jackieF2</code> 後比較兩只物件的<code>.logInfo</code> 與<code>.logInfoP</code>，發現<code>.logInfo</code> 是位在記憶體中不同位置的兩組程式碼，而 <code>logInfoP</code> 則都指向 <code>UserF.prototype</code> 中的同一段程式碼</li>
+<li>所以，當開發者想要對 <code>jackieF</code> 或 <code>jackieF2</code> 這兩個物件使用 <code>logInfoP</code> 時，操作的其實是沿著 prototype chain 往回搜尋、找到並使用 UserF.prototype 的 <code>logInfoP</code></li>
+</ol>
+<script src="https://gist.github.com/tzynwang/27744405dbd062612c649134907dabb8.js"></script>
+<ul>
+<li>改為使用 class 的方式來建立並檢查兩個物件 <code>jackie</code> 與 <code>jackie2</code> 的 <code>logInfo</code>，也會發現 <code>logInfo</code> 其實是不是兩個 <code>jackie</code> 物件各自持有，而是兩個物件中的 <code>logInfo</code> 實際上是沿著 prototype chain 往回搜尋，並找到位於 constructor function (User) prototype object 中的 <code>logInfo</code></li>
+</ul>
+<h3 id="this-指向的內容"><code>this</code> 指向的內容</h3>
+<ol>
+<li>透過 <code>new</code> 呼叫 function constructor 的時候，指向透過該 function constructor 新建立的物件</li>
+<li>function 透過 <code>.apply()</code>、<code>.call()</code>或呼叫<code>.bind()</code> 綁定對象時，<code>this</code> 指向那些提供給 <code>apply()</code>、<code>bind()</code>或<code>call()</code>的物件</li>
+<li>沒有透過 <code>apply()</code>、<code>bind()</code>或 <code>call()</code>，直接經由某物件呼叫時，指向該物件（舉例：<code>user.logInfo()</code>是由 <code>user</code> 物件呼叫<code>.logInfo()</code>，<code>this</code> 指向 <code>user</code>）</li>
+<li>以上皆非，則指向<code>undefined</code>（<code>strict mode</code> 時），或指向全域物件</li>
+</ol>
+<h3 id="class-中的-static-關鍵字">class 中的 <code>static</code> 關鍵字</h3>
+<blockquote>
+<p>MDN: Neither static methods nor static properties can be called on instances of the class. Instead, they’re called on the class itself.</p>
+</blockquote>
+<blockquote>
+<p>MDN: Static methods are often utility functions, such as functions to create or clone objects, whereas static properties are useful for caches, fixed-configuration, or any other data you don’t need to be replicated across instances.</p>
+</blockquote>
+<p>簡單來說就是只有 class 可以使用，而非給 class instance 操作的 properties 或 methods</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#F97583">class</span><span style="color:#B392F0"> ClassWithStaticMethod</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">  static</span><span style="color:#FFAB70"> staticProperty</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> 'someValue'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">  static</span><span style="color:#B392F0"> staticMethod</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#9ECBFF"> 'static method has been called.'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#F97583">  static</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">    console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'Class static initialization block called'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(ClassWithStaticMethod.staticProperty);</span></span>
+<span class="line"><span style="color:#6A737D">// "someValue"</span></span>
+<span class="line"><span style="color:#E1E4E8">console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(ClassWithStaticMethod.</span><span style="color:#B392F0">staticMethod</span><span style="color:#E1E4E8">());</span></span>
+<span class="line"><span style="color:#6A737D">// "static method has been called."</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> c</span><span style="color:#F97583"> =</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> ClassWithStaticMethod</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(c.staticProperty);</span></span>
+<span class="line"><span style="color:#6A737D">// undefined</span></span>
+<span class="line"><span style="color:#E1E4E8">console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(c.</span><span style="color:#B392F0">staticMethod</span><span style="color:#E1E4E8">());</span></span>
+<span class="line"><span style="color:#6A737D">// Uncaught TypeError: c.staticMethod is not a function</span></span></code></pre>
+<p>如以上展示，透過 <code>ClassWithStaticMethod</code> 建立的 instance c 無法取得 <code>staticProperty</code> 的值，也無法呼叫 <code>staticMethod()</code></p>
+<h3 id="class-中的-private-關鍵字">class 中的 <code>private</code> 關鍵字</h3>
+<blockquote>
+<p>需注意 JavaScript 原生的 #private 與 TypeScript 的關鍵字 private 有所差異</p>
+</blockquote>
+<ul>
+<li>JavaScript <code>#private</code>:
+<ul>
+<li>Private fields are <strong>accessible on the class constructor</strong> from inside the class declaration itself.</li>
+<li>It is a syntax error to refer to <code>#private</code> from out of scope. It is also a syntax error to refer to private fields that were not declared before they were called, or to attempt to <strong>remove declared fields with <code>delete</code></strong>.</li>
+</ul>
+</li>
+<li>TypeScript keyword <code>private</code>:
+<ul>
+<li>Doesn’t like <code>protected</code>, access is NOT allowed from the member (even from subclasses).</li>
+<li>Because private members aren’t visible to derived classes, a derived class <strong>can’t increase its visibility</strong>.</li>
+<li>TypeScript’s type system, <code>private</code> and <code>protected</code> are only enforced during type checking. This means that JavaScript runtime constructs like <code>in</code> or simple property lookup can still access a <code>private</code> or <code>protected</code> member.</li>
+<li><code>private</code> also allows access <strong>using bracket notation</strong> during type checking. This makes <code>private</code>-declared fields potentially easier to access for things <strong>like unit tests</strong>, with the drawback that these fields are <strong>soft private</strong> and don’t strictly enforce privacy.</li>
+</ul>
+</li>
+</ul>
+<h2 id="參考文件">參考文件</h2>
+<ul>
+<li><a href="https://javascript.info/constructor-new">JAVASCRIPT.INFO: Constructor, operator “new”</a></li>
+<li><a href="https://javascript.info/prototypes">JAVASCRIPT.INFO: Prototypes, inheritance</a></li>
+<li><a href="https://javascript.info/classes">JAVASCRIPT.INFO: Classes</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/static">MDN: static</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Private_class_fields">MDN: Private class features</a></li>
+<li><a href="https://www.typescriptlang.org/docs/handbook/2/classes.html">TypeScript: Classes</a></li>
+<li><a href="https://github.com/getify/You-Dont-Know-JS/blob/1st-ed/this%20%26%20object%20prototypes/ch2.md#determining-this">You Don’t Know JS: Determining <code>this</code></a></li>
+<li><a href="https://stackoverflow.com/questions/9959727/proto-vs-prototype-in-javascript"><code>__proto__</code> VS. <code>prototype</code> in JavaScript</a></li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

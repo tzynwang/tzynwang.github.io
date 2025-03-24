@@ -1,0 +1,221 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.BScVxmeO.js"></script><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.1.2"><!-- Primary Meta Tags --><title>如何在 Remix 讀取、下載 json 檔</title><meta name="title" content="如何在 Remix 讀取、下載 json 檔"><meta name="description" content="如題，新的一年就從分享在 Remix 裡面處理「讀取 .json 檔內容」和「將特定內容下載為 .json 檔」的程式碼開始。新年快樂 🍾"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2025/remix-how-to-read-download-json"><meta property="og:title" content="如何在 Remix 讀取、下載 json 檔"><meta property="og:description" content="如題，新的一年就從分享在 Remix 裡面處理「讀取 .json 檔內容」和「將特定內容下載為 .json 檔」的程式碼開始。新年快樂 🍾"><meta property="og:image" content="https://tzynwang.github.io/2025/remix-how-to-read-download-json/food-photographer-jennifer-pallian-dcPNZeSY3yk-unsplash.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2025/remix-how-to-read-download-json"><meta property="twitter:title" content="如何在 Remix 讀取、下載 json 檔"><meta property="twitter:description" content="如題，新的一年就從分享在 Remix 裡面處理「讀取 .json 檔內容」和「將特定內容下載為 .json 檔」的程式碼開始。新年快樂 🍾"><meta property="twitter:image" content="https://tzynwang.github.io/2025/remix-how-to-read-download-json/food-photographer-jennifer-pallian-dcPNZeSY3yk-unsplash.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul:not(:has(li)){margin-top:16px;margin-bottom:16px}li{margin-top:4px;margin-bottom:4px;line-height:24px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:16px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}del{color:#4c5958e6}ol>li:has(p)>p{display:inline;margin:0}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+[data-astro-image]{width:100%;height:auto;object-fit:var(--fit);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>如何在 Remix 讀取、下載 json 檔</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2025-01-04 10:20</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/Remix" data-astro-cid-2iymvi75> Remix </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#讀取-json" data-astro-cid-qtokga5y>讀取 json</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#讀取靜態檔案中的-json" data-astro-cid-qtokga5y>讀取靜態檔案中的 json</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#讀取使用者上傳的-json" data-astro-cid-qtokga5y>讀取使用者上傳的 json</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#下載為-json" data-astro-cid-qtokga5y>下載為 json</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#使用-qs-處理表單內容" data-astro-cid-qtokga5y>使用 qs 處理表單內容</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#function-downloadjson" data-astro-cid-qtokga5y>function downloadJson</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#class-jsonhandler" data-astro-cid-qtokga5y>class JsonHandler</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#class-downloadhandler" data-astro-cid-qtokga5y>class DownloadHandler</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#其他下載方式" data-astro-cid-qtokga5y>其他下載方式</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#下載為純文字檔" data-astro-cid-qtokga5y>下載為純文字檔</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#下載為-md-檔" data-astro-cid-qtokga5y>下載為 .md 檔</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#參考文件" data-astro-cid-qtokga5y>參考文件</a> </li> </ul> </div> <h2 id="讀取-json">讀取 json</h2>
+<h3 id="讀取靜態檔案中的-json">讀取靜態檔案中的 json</h3>
+<p>流程：</p>
+<ol>
+<li>使用 <code>node:fs/promises</code> 的 <code>readFile</code> 從指定路徑讀取檔案內容</li>
+<li>使用 <code>JSON.parse()</code> 將字串化的檔案內容解析成物件，接著就可以透過 <code>useLoaderData</code> 隨意使用了</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { useLoaderData } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> '@remix-run/react'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { readFile } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> 'node:fs/promises'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> async</span><span style="color:#F97583"> function</span><span style="color:#B392F0"> loader</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> fileContent</span><span style="color:#F97583"> =</span><span style="color:#F97583"> await</span><span style="color:#B392F0"> readFile</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'path/to/file.json'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#79B8FF"> JSON</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">parse</span><span style="color:#E1E4E8">(fileContent.</span><span style="color:#B392F0">toString</span><span style="color:#E1E4E8">());</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> default</span><span style="color:#F97583"> function</span><span style="color:#B392F0"> ReadJson</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> data</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> useLoaderData</span><span style="color:#E1E4E8">&#x3C;</span><span style="color:#F97583">typeof</span><span style="color:#E1E4E8"> loader>();</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<h3 id="讀取使用者上傳的-json">讀取使用者上傳的 json</h3>
+<p>重點：</p>
+<ul>
+<li>remix 的 <code>Form</code> 元件 <code>encType</code> 要設定為 <code>"multipart/form-data"</code>，參考 <a href="https://github.com/remix-run/remix/issues/3238#issuecomment-1150493008">TypeError: Could not parse content as FormData</a></li>
+<li>透過 <code>await new Response(file).text();</code> 即可取得純文字版的 .json 檔內容，加上 <code>JSON.parse(text);</code> 就可得到 JS 物件</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#F97583"> type</span><span style="color:#E1E4E8"> { ActionFunctionArgs, MetaFunction } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> '@remix-run/node'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">  unstable_createMemoryUploadHandler,</span></span>
+<span class="line"><span style="color:#E1E4E8">  unstable_parseMultipartFormData,</span></span>
+<span class="line"><span style="color:#E1E4E8">} </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> '@remix-run/node'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { Form, useActionData } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> '@remix-run/react'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// https://remix.run/docs/en/main/guides/file-uploads</span></span>
+<span class="line"><span style="color:#6A737D">// https://remix.run/docs/en/main/utils/unstable-create-memory-upload-handler</span></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> async</span><span style="color:#F97583"> function</span><span style="color:#B392F0"> action</span><span style="color:#E1E4E8">({ </span><span style="color:#FFAB70">request</span><span style="color:#E1E4E8"> }</span><span style="color:#F97583">:</span><span style="color:#B392F0"> ActionFunctionArgs</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> uploadHandler</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> unstable_createMemoryUploadHandler</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> formData</span><span style="color:#F97583"> =</span><span style="color:#F97583"> await</span><span style="color:#B392F0"> unstable_parseMultipartFormData</span><span style="color:#E1E4E8">(</span></span>
+<span class="line"><span style="color:#E1E4E8">    request,</span></span>
+<span class="line"><span style="color:#E1E4E8">    uploadHandler</span></span>
+<span class="line"><span style="color:#E1E4E8">  );</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> file</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> formData.</span><span style="color:#B392F0">get</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'file'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> text</span><span style="color:#F97583"> =</span><span style="color:#F97583"> await</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> Response</span><span style="color:#E1E4E8">(file).</span><span style="color:#B392F0">text</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#79B8FF"> JSON</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">parse</span><span style="color:#E1E4E8">(text);</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> default</span><span style="color:#F97583"> function</span><span style="color:#B392F0"> Index</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> data</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> useActionData</span><span style="color:#E1E4E8">&#x3C;</span><span style="color:#F97583">typeof</span><span style="color:#E1E4E8"> action>(); </span><span style="color:#6A737D">// do whatever you need</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> (</span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#79B8FF">Form</span><span style="color:#B392F0"> method</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"post"</span><span style="color:#B392F0"> encType</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"multipart/form-data"</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">      &#x3C;</span><span style="color:#85E89D">input</span><span style="color:#B392F0"> type</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"file"</span><span style="color:#B392F0"> name</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"file"</span><span style="color:#B392F0"> accept</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"application/json"</span><span style="color:#E1E4E8"> /></span></span>
+<span class="line"><span style="color:#E1E4E8">      &#x3C;</span><span style="color:#85E89D">button</span><span style="color:#B392F0"> type</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"submit"</span><span style="color:#E1E4E8">>上傳&#x3C;/</span><span style="color:#85E89D">button</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;/</span><span style="color:#79B8FF">Form</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  );</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<h2 id="下載為-json">下載為 json</h2>
+<p>提醒：我的需求是「把使用者填寫到表單（<code>Form</code>）中的內容下載為 .json 檔」。如果你會自行處理要被下載的內容，那直接從 <a href="#function-downloadjson">downloadJson</a> 這段開始看就好。</p>
+<h3 id="使用-qs-處理表單內容">使用 qs 處理表單內容</h3>
+<p>流程：</p>
+<ol>
+<li>使用者送出（<code>submit</code>）表單後，先透過 npm 套件 qs 處理表單內容</li>
+<li>透過 <code>useActionData</code> 取出 qs 處理好的內容，再搭配 <code>downloadJson</code>（詳細請參考下一大段）執行檔案下載</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#F97583"> type</span><span style="color:#E1E4E8"> { ActionFunctionArgs } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> '@remix-run/node'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { Form, useActionData } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> '@remix-run/react'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { useEffect } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> 'react'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> qs </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> 'qs'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { downloadJson } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> '~util'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> async</span><span style="color:#F97583"> function</span><span style="color:#B392F0"> action</span><span style="color:#E1E4E8">({ </span><span style="color:#FFAB70">request</span><span style="color:#E1E4E8"> }</span><span style="color:#F97583">:</span><span style="color:#B392F0"> ActionFunctionArgs</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> text</span><span style="color:#F97583"> =</span><span style="color:#F97583"> await</span><span style="color:#E1E4E8"> request.</span><span style="color:#B392F0">text</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> qs.</span><span style="color:#B392F0">parse</span><span style="color:#E1E4E8">(text);</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> default</span><span style="color:#F97583"> function</span><span style="color:#B392F0"> SomeForm</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#6A737D">  /* data */</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> data</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> useActionData</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#6A737D">  /* hook */</span></span>
+<span class="line"><span style="color:#B392F0">  useEffect</span><span style="color:#E1E4E8">(() </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#B392F0">    downloadJson</span><span style="color:#E1E4E8">(data);</span></span>
+<span class="line"><span style="color:#E1E4E8">  }, []);</span></span>
+<span class="line"><span style="color:#6A737D">  /* main */</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> (</span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#79B8FF">Form</span><span style="color:#B392F0"> method</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"post"</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">      {</span><span style="color:#6A737D">/* many inputs... */</span><span style="color:#E1E4E8">}</span></span>
+<span class="line"><span style="color:#E1E4E8">      &#x3C;</span><span style="color:#85E89D">button</span><span style="color:#B392F0"> type</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"submit"</span><span style="color:#E1E4E8">>download as .json&#x3C;/</span><span style="color:#85E89D">button</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;/</span><span style="color:#79B8FF">Form</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  );</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<h3 id="function-downloadjson">function downloadJson</h3>
+<p>流程：</p>
+<ol>
+<li>由 <code>JsonHandler</code> 的 <code>createUrl</code> 將內容加工成 .json 檔，並取得可下載的路由和下載檔案名稱</li>
+<li>由 <code>DownloadHandler</code> 負責處理下載行為</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> function</span><span style="color:#B392F0"> downloadJson</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">input</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> any</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> jsonHandler</span><span style="color:#F97583"> =</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> JsonHandler</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> url</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> jsonHandler.</span><span style="color:#B392F0">createUrl</span><span style="color:#E1E4E8">(input);</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> fileName</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> jsonHandler.</span><span style="color:#B392F0">createFileNameDateIso</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> downloadHandler</span><span style="color:#F97583"> =</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> DownloadHandler</span><span style="color:#E1E4E8">({ url, fileName });</span></span>
+<span class="line"><span style="color:#E1E4E8">  downloadHandler.</span><span style="color:#B392F0">exec</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<h3 id="class-jsonhandler">class JsonHandler</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> class</span><span style="color:#B392F0"> JsonHandler</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">  /**</span></span>
+<span class="line"><span style="color:#6A737D">   * Creates a URL for downloading a JSON object.</span></span>
+<span class="line"><span style="color:#6A737D">   *</span></span>
+<span class="line"><span style="color:#6A737D">   * </span><span style="color:#F97583">@param</span><span style="color:#E1E4E8"> input</span><span style="color:#6A737D"> - The JSON object to be downloaded.</span></span>
+<span class="line"><span style="color:#6A737D">   * </span><span style="color:#F97583">@param</span><span style="color:#E1E4E8"> overwriteFormatter</span><span style="color:#6A737D"> - An optional function that formats the JSON object before downloading.</span></span>
+<span class="line"><span style="color:#6A737D">   * </span><span style="color:#F97583">@returns</span><span style="color:#6A737D"> A URL that can be used to download the JSON object.</span></span>
+<span class="line"><span style="color:#6A737D">   */</span></span>
+<span class="line"><span style="color:#B392F0">  createUrl</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">input</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> any</span><span style="color:#E1E4E8">, </span><span style="color:#B392F0">overwriteFormatter</span><span style="color:#F97583">?:</span><span style="color:#E1E4E8"> (</span><span style="color:#F97583">...</span><span style="color:#FFAB70">args</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> unknown</span><span style="color:#E1E4E8">[]) </span><span style="color:#F97583">=></span><span style="color:#79B8FF"> string</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> formatted</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> overwriteFormatter</span></span>
+<span class="line"><span style="color:#F97583">      ?</span><span style="color:#B392F0"> overwriteFormatter</span><span style="color:#E1E4E8">(input)</span></span>
+<span class="line"><span style="color:#F97583">      :</span><span style="color:#79B8FF"> JSON</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">stringify</span><span style="color:#E1E4E8">(input, </span><span style="color:#79B8FF">null</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">2</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> blob</span><span style="color:#F97583"> =</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> Blob</span><span style="color:#E1E4E8">([formatted], { type: </span><span style="color:#9ECBFF">'application/json'</span><span style="color:#E1E4E8"> });</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#E1E4E8"> window.</span><span style="color:#79B8FF">URL</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">createObjectURL</span><span style="color:#E1E4E8">(blob);</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">  createFileNameDateIso</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#9ECBFF"> `${</span><span style="color:#F97583">new</span><span style="color:#B392F0"> Date</span><span style="color:#9ECBFF">().</span><span style="color:#B392F0">toISOString</span><span style="color:#9ECBFF">()</span><span style="color:#9ECBFF">}.json`</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<h3 id="class-downloadhandler">class DownloadHandler</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#F97583">type</span><span style="color:#B392F0"> DownloadHandlerArgs</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#FFAB70">  url</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> string</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#FFAB70">  fileName</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> string</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> class</span><span style="color:#B392F0"> DownloadHandler</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#FFAB70">  #url</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> string</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FFAB70">  #fileName</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> string</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">  constructor</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">args</span><span style="color:#F97583">:</span><span style="color:#B392F0"> DownloadHandlerArgs</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#79B8FF">    this</span><span style="color:#E1E4E8">.#url </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> args.url;</span></span>
+<span class="line"><span style="color:#79B8FF">    this</span><span style="color:#E1E4E8">.#fileName </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> args.fileName;</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">  createDownloadAnchor</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">href</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> string</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">fileName</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> string</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> link</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> document.</span><span style="color:#B392F0">createElement</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'a'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">    link.href </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> href;</span></span>
+<span class="line"><span style="color:#E1E4E8">    link.download </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> fileName;</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#E1E4E8"> link;</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">  exec</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> el</span><span style="color:#F97583"> =</span><span style="color:#79B8FF"> this</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">createDownloadAnchor</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">this</span><span style="color:#E1E4E8">.#url, </span><span style="color:#79B8FF">this</span><span style="color:#E1E4E8">.#fileName);</span></span>
+<span class="line"><span style="color:#E1E4E8">    document.body.</span><span style="color:#B392F0">appendChild</span><span style="color:#E1E4E8">(el);</span></span>
+<span class="line"><span style="color:#E1E4E8">    el.</span><span style="color:#B392F0">click</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">    document.body.</span><span style="color:#B392F0">removeChild</span><span style="color:#E1E4E8">(el);</span></span>
+<span class="line"><span style="color:#E1E4E8">    window.</span><span style="color:#79B8FF">URL</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">revokeObjectURL</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">this</span><span style="color:#E1E4E8">.#url);</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<h2 id="其他下載方式">其他下載方式</h2>
+<h3 id="下載為純文字檔">下載為純文字檔</h3>
+<p>出自 Remix 的 issue <a href="https://github.com/remix-run/remix/discussions/5533">How to download a file in Remix?</a>：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> function</span><span style="color:#B392F0"> action</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> content</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> 'some text content...'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> Response</span><span style="color:#E1E4E8">(content, {</span></span>
+<span class="line"><span style="color:#E1E4E8">    status: </span><span style="color:#79B8FF">200</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">    headers: {</span></span>
+<span class="line"><span style="color:#9ECBFF">      'Content-Disposition'</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">'attachment; filename="some.txt"'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">      'Content-Type'</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">'plain/text'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">    },</span></span>
+<span class="line"><span style="color:#E1E4E8">  });</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<h3 id="下載為-md-檔">下載為 .md 檔</h3>
+<p>出自 stack overflow <a href="https://stackoverflow.com/questions/75526237/remix-file-download">Remix: file download</a>：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { createReadableStreamFromReadable } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> '@remix-run/node'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { Readable } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> 'node:stream'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> const</span><span style="color:#B392F0"> loader</span><span style="color:#F97583"> =</span><span style="color:#F97583"> async</span><span style="color:#E1E4E8"> () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> file</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> createReadableStreamFromReadable</span><span style="color:#E1E4E8">(</span></span>
+<span class="line"><span style="color:#E1E4E8">    Readable.</span><span style="color:#B392F0">from</span><span style="color:#E1E4E8">([</span><span style="color:#9ECBFF">'Hello, World!'</span><span style="color:#E1E4E8">])</span></span>
+<span class="line"><span style="color:#E1E4E8">  );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> Response</span><span style="color:#E1E4E8">(file, {</span></span>
+<span class="line"><span style="color:#E1E4E8">    headers: {</span></span>
+<span class="line"><span style="color:#9ECBFF">      'Content-Disposition'</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">'attachment; filename="hello.md"'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">      'Content-Type'</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">'text/markdown'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">    },</span></span>
+<span class="line"><span style="color:#E1E4E8">  });</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span></code></pre>
+<h2 id="參考文件">參考文件</h2>
+<p>讀取 json 檔：</p>
+<ul>
+<li><a href="https://remix.run/docs/en/main/guides/file-uploads">Remix: File Uploads</a></li>
+<li><a href="https://remix.run/docs/en/main/utils/unstable-create-memory-upload-handler">Remix: unstable_createMemoryUploadHandler</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Blob#extracting_data_from_a_blob">MDN: Blob > Extracting data from a blob</a></li>
+</ul>
+<p>下載為 json 檔：</p>
+<ul>
+<li><a href="https://www.npmjs.com/package/qs">npm: qs</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/URL/createObjectURL_static">MDN: URL > createObjectURL()</a></li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

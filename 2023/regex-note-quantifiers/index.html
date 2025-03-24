@@ -1,0 +1,95 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.BScVxmeO.js"></script><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.1.2"><!-- Primary Meta Tags --><title>正規表達式筆記：量詞（quantifiers）</title><meta name="title" content="正規表達式筆記：量詞（quantifiers）"><meta name="description" content="這是一個文組轉職前端工程師的技術部落格"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2023/regex-note-quantifiers"><meta property="og:title" content="正規表達式筆記：量詞（quantifiers）"><meta property="og:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="og:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2023/regex-note-quantifiers"><meta property="twitter:title" content="正規表達式筆記：量詞（quantifiers）"><meta property="twitter:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="twitter:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul:not(:has(li)){margin-top:16px;margin-bottom:16px}li{margin-top:4px;margin-bottom:4px;line-height:24px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:16px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}del{color:#4c5958e6}ol>li:has(p)>p{display:inline;margin:0}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+[data-astro-image]{width:100%;height:auto;object-fit:var(--fit);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>正規表達式筆記：量詞（quantifiers）</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2023-05-01 12:49</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/Regular expressions" data-astro-cid-2iymvi75> Regular expressions </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#總結" data-astro-cid-qtokga5y>總結</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#筆記" data-astro-cid-qtokga5y>筆記</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#各種量詞與文法" data-astro-cid-qtokga5y>各種量詞與文法</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#mdn-範例解讀" data-astro-cid-qtokga5y>MDN 範例解讀</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#參考文件" data-astro-cid-qtokga5y>參考文件</a> </li> </ul> </div> <h2 id="總結">總結</h2>
+<p>在使用正規表達式比對字串時，可搭配量詞（quantifiers）來設定比對內容長度。此篇筆記大部分是參考 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions/Quantifiers">MDN: Regular expressions > Quantifiers</a> 整理出來的內容。</p>
+<h2 id="筆記">筆記</h2>
+<h3 id="各種量詞與文法">各種量詞與文法</h3>
+<p><code>x*</code>：比對 <code>x</code> ，允許 <code>x</code> 的數量為「零至無限多」。以 <code>app*</code> 為例，會在 <code>apple</code> 中挑出 <code>app</code>、在 <code>ape</code> 中挑出 <code>ap</code>。</p>
+<p><code>x+</code>：比對 <code>x</code> ，允許 <code>x</code> 的數量為「一至無限多」。以 <code>app*</code> 為例，會在 <code>apple</code> 中挑出 <code>app</code>、但在 <code>ape</code> 中不會挑出任何符合模式的字串。</p>
+<p><code>x?</code>：比對 <code>x</code> ，允許 <code>x</code> 的數量為「零」或「一」。以 <code>e?le?</code> 為例，會挑出 <code>angel</code> 中的 <code>el</code>、挑出 <code>angle</code> 中的 <code>le</code>。</p>
+<p><code>x{n}</code>：當 <code>n</code> 為正整數時，比對 <code>x</code> 並允許出現的數量為「正好 <code>n</code> 個」。以 <code>p{2}</code> 為例，會挑出 <code>apple</code> 中的 <code>pp</code>、但在 <code>ape</code> 中不會挑出任何符合模式的字串。</p>
+<p><code>x{n,}</code>：當 <code>n</code> 為正整數時，比對 <code>x</code> 並允許出現的數量為「至少（含） <code>n</code> 個」。以 <code>p{2,}</code> 為例，會挑出 <code>apple</code> 中的 <code>pp</code>、挑出 <code>appple</code> 中的 <code>ppp</code>。</p>
+<p><code>x{n,m}</code>：當 <code>n</code> 與 <code>m</code> 為正整數且 <code>m > n</code> 時，比對 <code>x</code> 並允許出現的數量為「至少 <code>n</code> 個，最多 <code>m</code> 個，且超過 <code>m</code> 的數量不會被挑中」。以範例 <code>p{2,4}</code> 來說：</p>
+<ul>
+<li><code>apple</code> 會挑出 <code>pp</code></li>
+<li><code>appple</code> 會挑出 <code>ppp</code></li>
+<li><code>apppple</code> 會挑出 <code>pppp</code></li>
+<li><code>appppple</code> 總共有五個 <code>p</code>，但僅會挑出 <code>pppp</code></li>
+</ul>
+<hr>
+<p>額外規則：將 <code>?</code> 接續在上述各種量詞後面時（比如 <code>x*?</code> 、 <code>x+?</code> 或 <code>x??</code>），會取消量詞的 greedy 效果。量詞在沒有額外搭配 <code>?</code> 時會「盡可能選取所有符合規則的字符」，但如果量詞搭配了 <code>?</code>，原本的「找到全部（greedy）」會變成「有找到就停止（non-greedy, lazy）」。</p>
+<blockquote>
+<p>MDN: By default quantifiers like <code>*</code> and <code>+</code> are “greedy”, meaning that they try <strong>to match as much of the string as possible</strong>. The <code>?</code> character after the quantifier makes the quantifier “non-greedy”: meaning that it will <strong>stop as soon as it finds a match</strong>.</p>
+</blockquote>
+<p>舉例：</p>
+<ul>
+<li>以 <code>p+</code> 與 <code>p+?</code> 來說，<code>p+</code> 會挑出 <code>apple</code> 中的 <code>pp</code>，但換成 <code>p+?</code> 後，只會挑出 <code>apple</code> 中的「第一個 <code>p</code> 字符」</li>
+<li>以字串 <code>&#x3C;foo> &#x3C;bar> new &#x3C;/bar> &#x3C;/foo></code> 來說，使用 <code>&#x3C;.*></code> 會挑中「一整個字串」，因 <code>&#x3C;</code> 與 <code>></code> 中間允許「零至無限多」的「行終止符（line terminator）以外的字元」；但當表達式換成 <code>&#x3C;.*?></code> 後，僅會有 <code>&#x3C;foo></code> 被挑中。</li>
+</ul>
+<p>注意 lazy 效果與 global flag 是兩回事，如果將 <code>/&#x3C;.*?>/</code> 改為 <code>/&#x3C;.*?>/g</code> 的話，整個 <code>&#x3C;foo> &#x3C;bar> new &#x3C;/bar> &#x3C;/foo></code> 字串中會有 <code>&#x3C;foo></code> 、 <code>&#x3C;bar></code> 、 <code>&#x3C;/bar></code> 與 <code>&#x3C;/foo></code> 被挑中。</p>
+<h3 id="mdn-範例解讀">MDN 範例解讀</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> wordEndingWithAs</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> /</span><span style="color:#79B8FF">\w</span><span style="color:#F97583">+</span><span style="color:#DBEDFF">a</span><span style="color:#F97583">+\b</span><span style="color:#9ECBFF">/</span><span style="color:#E1E4E8">;</span></span></code></pre>
+<ul>
+<li><code>\w+</code> 代表「一至無限多個」的「拉丁英數與底線符號」</li>
+<li><code>a+</code> 代表「一至無限多個」的 <code>a</code></li>
+<li><code>\b</code> 代表「邊際」（word boundary）</li>
+</ul>
+<p>總結：尋找「任意拉丁英數與底線符號」開頭、中間帶有「一至無限個 <code>a</code> 字母」且「以字母 <code>a</code> 結尾」的內容</p>
+<hr>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> singleLetterWord</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> /</span><span style="color:#F97583">\b</span><span style="color:#79B8FF">\w</span><span style="color:#F97583">\b</span><span style="color:#9ECBFF">/</span><span style="color:#F97583">g</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> notSoLongWord</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> /</span><span style="color:#F97583">\b</span><span style="color:#79B8FF">\w</span><span style="color:#F97583">{2,6}\b</span><span style="color:#9ECBFF">/</span><span style="color:#F97583">g</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> longWord</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> /</span><span style="color:#F97583">\b</span><span style="color:#79B8FF">\w</span><span style="color:#F97583">{13,}\b</span><span style="color:#9ECBFF">/</span><span style="color:#F97583">g</span><span style="color:#E1E4E8">;</span></span></code></pre>
+<ul>
+<li><code>singleLetterWord</code> 為「長度為 1 的單字」</li>
+<li><code>notSoLongWord</code> 為「長度介於 2 至 6 個字母」的單字</li>
+<li><code>longWord</code> 為「至少包含 13 個字母」的單字</li>
+</ul>
+<hr>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> regexpEnding</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> /</span><span style="color:#79B8FF">\w</span><span style="color:#F97583">+</span><span style="color:#DBEDFF">ou</span><span style="color:#F97583">?</span><span style="color:#DBEDFF">r</span><span style="color:#9ECBFF">/</span><span style="color:#F97583">g</span><span style="color:#E1E4E8">;</span></span></code></pre>
+<ul>
+<li><code>\w+</code> 代表「一至無限多個」的「拉丁英數與底線符號」</li>
+<li><code>ou?r</code> 代表字母 <code>o</code> 後面可有、可沒有字母 <code>u</code></li>
+<li>撞到字母 <code>r</code> 時，就結束抓取（因為 <code>r</code> 後方沒有再接其他條件）</li>
+</ul>
+<p>以上述條件來說，會抓取 <code>for</code> 與 <code>four</code> 這兩個完整的單字、不會抓取 <code>fou</code> 、會抓取 <code>fourty</code> 中的 <code>four</code> 部分。</p>
+<hr>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> greedyRegexp</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> /</span><span style="color:#79B8FF">[\w ]</span><span style="color:#F97583">+</span><span style="color:#9ECBFF">/</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> nonGreedyRegexp</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> /</span><span style="color:#79B8FF">[\w ]</span><span style="color:#F97583">+?</span><span style="color:#9ECBFF">/</span><span style="color:#E1E4E8">;</span></span></code></pre>
+<ul>
+<li><code>[\w ]+</code> 代表要尋找「拉丁英數與底線符號」以及「空白鍵」，搭配 <code>+</code> 讓字符數量可為「一至無限多個」</li>
+<li>加上 <code>?</code> 後，會在「找到第一個符合條件的字串」後，就視為「找到」</li>
+</ul>
+<p>以字串 <code>You must be getting somewhere near the center of the earth.</code> 來說：</p>
+<ul>
+<li>條件 <code>greedyRegexp</code> 會找到一整串除了結尾句號以外的內容，即是 <code>You must be getting somewhere near the center of the earth</code></li>
+<li>條件 <code>nonGreedyRegexp</code> 會在找到開頭的 <code>Y</code> 之後就視為「找到」，並回傳這個單獨的 <code>Y</code></li>
+</ul>
+<h2 id="參考文件">參考文件</h2>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions/Quantifiers">MDN: Regular expressions > Quantifiers</a></li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

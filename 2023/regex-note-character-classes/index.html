@@ -1,0 +1,86 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.BScVxmeO.js"></script><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.1.2"><!-- Primary Meta Tags --><title>正規表達式筆記：字元類（character classes）</title><meta name="title" content="正規表達式筆記：字元類（character classes）"><meta name="description" content="這是一個文組轉職前端工程師的技術部落格"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2023/regex-note-character-classes"><meta property="og:title" content="正規表達式筆記：字元類（character classes）"><meta property="og:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="og:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2023/regex-note-character-classes"><meta property="twitter:title" content="正規表達式筆記：字元類（character classes）"><meta property="twitter:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="twitter:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul:not(:has(li)){margin-top:16px;margin-bottom:16px}li{margin-top:4px;margin-bottom:4px;line-height:24px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:16px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}del{color:#4c5958e6}ol>li:has(p)>p{display:inline;margin:0}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+[data-astro-image]{width:100%;height:auto;object-fit:var(--fit);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>正規表達式筆記：字元類（character classes）</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2023-04-30 14:26</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/Regular expressions" data-astro-cid-2iymvi75> Regular expressions </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#總結" data-astro-cid-qtokga5y>總結</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#筆記" data-astro-cid-qtokga5y>筆記</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#定義" data-astro-cid-qtokga5y>定義</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#各種範疇與文法" data-astro-cid-qtokga5y>各種範疇與文法</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#mdn-範例解讀" data-astro-cid-qtokga5y>MDN 範例解讀</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#參考文件" data-astro-cid-qtokga5y>參考文件</a> </li> </ul> </div> <h2 id="總結">總結</h2>
+<p>此篇文章大部分的內容是根據 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions/Character_classes">MDN: Regular expressions > Character classes</a> 整理出來的筆記。</p>
+<h2 id="筆記">筆記</h2>
+<h3 id="定義">定義</h3>
+<blockquote>
+<p>javascript.info: In JavaScript regular expressions, a character class is a special notation that <strong>matches any symbol from a certain set</strong>.</p>
+</blockquote>
+<p>character class 讓開發者可以定義「字元比對的範疇」。</p>
+<h3 id="各種範疇與文法">各種範疇與文法</h3>
+<p><code>[]</code>：根據 <code>[]</code> 內列出的條件進行比對。舉例：<code>[abc]</code> 會挑出 <code>apple</code> 中的 <code>a</code>、<code>banana</code> 中的 <code>b</code> 與 <code>a</code>，以及 <code>cherry</code> 中的 <code>c</code></p>
+<p><code>[^]</code>：當 <code>^</code> 被放在 <code>[]</code> 中，其意義為「尋找不在 <code>[]</code> 範圍內的字符」。舉例：<code>[^abc]+</code> 會挑出 <code>apple</code> 中的 <code>pple</code>、<code>banana</code> 中的 <code>n</code>，以及 <code>cherry</code> 中的 <code>herry</code></p>
+<p>以上條件可搭配 <code>-</code> 字符進行範圍搜尋，但如果是由 <code>-</code> 開頭或結尾，則 <code>-</code> 會被當作字符進行比對。範例如下：</p>
+<ul>
+<li><code>[a-z]</code> 代表「尋找 a 至 z 這個範圍」，比如 <code>Apple</code> 會挑出 <code>p</code> 、 <code>p</code> 、 <code>l</code> 與 <code>e</code></li>
+<li><code>[^a-z]</code> 代表「尋找非 a 至 z 這個範圍」，比如 <code>Apple</code> 會挑出 <code>A</code></li>
+<li><code>[-t]</code> 代表「尋找符合 <code>-t</code> 的內容」，比如 <code>apple-pie</code> 會挑出 <code>-</code>，而 <code>apple-tea</code> 會挑出 <code>-</code> 與 <code>t</code></li>
+</ul>
+<p><code>.</code> 會根據擺放位置會有兩種用途，範例如下：</p>
+<ul>
+<li>擺在 <code>[]</code> 中：視為比對 <code>.</code> 字元，比如 <code>[.]</code> 會挑出 <code>3.14</code> 中的 <code>.</code></li>
+<li>沒有包含在 <code>[]</code> 中：代表「行終止符（line terminator）<strong>以外</strong>的字元」，比如 <code>.y+</code> 會判定 <code>my</code> 與 <code>cherry</code> 這兩個單字符合比對條件，但不會判定 <code>yes</code> 符合，因為 <code>yes</code> 中的 <code>y</code> 前方<strong>有</strong>行終止符</li>
+</ul>
+<p><code>\d</code>：意義等同 <code>[0-9]</code>，代表尋找阿拉伯數字</p>
+<p><code>\D</code>：代表「非數字內容」，比如比對 <code>3.14</code> 時會挑出 <code>.</code></p>
+<p><code>\w</code>：意義等同 <code>[A-Za-z0-9_]</code>，會尋找拉丁英數與底線符號</p>
+<p><code>\W</code>：代表「非拉丁英數、非底線」內容，比如比對 <code>2%</code> 時會挑出 <code>%</code>，而 <code>\W+</code> 會挑出 <code>笑死XD</code> 中的 <code>笑死</code></p>
+<p><code>\s</code>：意義等同 <code>[\f\n\r\t\v\u0020\u00a0\u1680\u2000-\u200a\u2028\u2029\u202f\u205f\u3000\ufeff]</code>，用於比對「空白字元」</p>
+<p><code>\S</code>：代表「非空白字元」的內容，比如拿條件 <code>\S+</code> 比對 <code>hello world</code> 會挑出 <code>hello</code> 與 <code>world</code></p>
+<p><code>\</code> 為跳脫字符，搭配特殊字元可讓該字元失去原本的特殊效果、反之亦然。範例如下：</p>
+<ul>
+<li>將 <code>\d</code> 變成 <code>\\d</code> 後，後者的意義不再是「比對阿拉伯數字」，而是變成「比對 <code>\d</code> 此字串模式」</li>
+<li>如果是 <code>d</code> 變成 <code>\d</code>，則從原本的「比對字母 <code>d</code>」變成「比對阿拉伯數字」</li>
+</ul>
+<p><code>|</code> 為邏輯上的「或（or）」比對。比如 <code>green|red</code> 代表「尋找 <code>green</code> 或 <code>red</code> 這個模式的字串」</p>
+<h3 id="mdn-範例解讀">MDN 範例解讀</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> regexpFourDigits</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> /</span><span style="color:#F97583">\b</span><span style="color:#79B8FF">\d</span><span style="color:#F97583">{4}\b</span><span style="color:#9ECBFF">/</span><span style="color:#F97583">g</span><span style="color:#E1E4E8">;</span></span></code></pre>
+<ul>
+<li><code>\b</code> 代表邊際</li>
+<li><code>\d{4}</code> 代表要尋找「數量為 4 個」的阿拉伯數字</li>
+</ul>
+<p>總結：比對「前後都是『邊際』且『數量為 4 個』的阿拉伯數字串」。</p>
+<hr>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> regexpWordStartingWithA</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> /</span><span style="color:#F97583">\b</span><span style="color:#79B8FF">[aA]\w</span><span style="color:#F97583">+</span><span style="color:#9ECBFF">/</span><span style="color:#F97583">g</span><span style="color:#E1E4E8">;</span></span></code></pre>
+<ul>
+<li><code>\b</code> 代表邊際</li>
+<li><code>[aA]</code> 代表尋找 <code>A</code> 或 <code>a</code></li>
+<li><code>\w+</code> 代表要找「數量為 1 或無限多」的「拉丁英數與底線符號」</li>
+</ul>
+<p>總結：比對「開頭為 <code>A</code> 或 <code>a</code> 的單字」</p>
+<hr>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> regexpVowels</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> /</span><span style="color:#79B8FF">[AEIOUYaeiouy]</span><span style="color:#9ECBFF">/</span><span style="color:#F97583">g</span><span style="color:#E1E4E8">;</span></span></code></pre>
+<p>意圖：比對「發母音的字符」</p>
+<h2 id="參考文件">參考文件</h2>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions/Character_classes">MDN: Regular expressions > Character classes</a></li>
+<li><a href="https://www.phind.com/search?cache=e6435c56-0a75-4626-9246-bdd356d0ab82">Phind: What does ‘character class’ mean in JavaScript regular expressions?</a></li>
+<li><a href="https://terms.naer.edu.tw/detail/4c5f3bec4224ee86a2ccd3cf7be3c0fe/?seq=1">國家教育研究院：字元類</a></li>
+<li><a href="https://terms.naer.edu.tw/detail/36032540b9f5d14f5bac72ac7ce0269d/?seq=1">國家教育研究院：行終止符</a></li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

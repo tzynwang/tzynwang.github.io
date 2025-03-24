@@ -1,0 +1,184 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.BScVxmeO.js"></script><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.1.2"><!-- Primary Meta Tags --><title>「How JPEG Works」相關筆記</title><meta name="title" content="「How JPEG Works」相關筆記"><meta name="description" content="這是一個文組轉職前端工程師的技術部落格"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2021/how-jpeg-works"><meta property="og:title" content="「How JPEG Works」相關筆記"><meta property="og:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="og:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2021/how-jpeg-works"><meta property="twitter:title" content="「How JPEG Works」相關筆記"><meta property="twitter:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="twitter:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul:not(:has(li)){margin-top:16px;margin-bottom:16px}li{margin-top:4px;margin-bottom:4px;line-height:24px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:16px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}del{color:#4c5958e6}ol>li:has(p)>p{display:inline;margin:0}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+[data-astro-image]{width:100%;height:auto;object-fit:var(--fit);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>「How JPEG Works」相關筆記</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2021-03-28 16:02</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/Image format" data-astro-cid-2iymvi75> Image format </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#總結" data-astro-cid-qtokga5y>總結</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#part-0-color-spaces" data-astro-cid-qtokga5y>Part 0: color spaces</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#color-spaces" data-astro-cid-qtokga5y>Color spaces</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#ycbcr" data-astro-cid-qtokga5y>Y’CbCr</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#part-1-files-and-color" data-astro-cid-qtokga5y>Part 1: files and color</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#jfif" data-astro-cid-qtokga5y>JFIF</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#frequency" data-astro-cid-qtokga5y>frequency</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#compression-steps" data-astro-cid-qtokga5y>Compression steps</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#down-sampling" data-astro-cid-qtokga5y>Down-sampling</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#part-2-dct-discrete-cosine-transform" data-astro-cid-qtokga5y>Part 2: DCT (Discrete Cosine Transform)</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#dct" data-astro-cid-qtokga5y>DCT</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#quantization" data-astro-cid-qtokga5y>Quantization</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#quantization-matrix-quantization-table" data-astro-cid-qtokga5y>Quantization matrix (quantization table)</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#huffman-encoding" data-astro-cid-qtokga5y>Huffman encoding</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#參考文件" data-astro-cid-qtokga5y>參考文件</a> </li> </ul> </div> <h2 id="總結">總結</h2>
+<p>問：JPEG 到底是什麼？
+答：實際上是一種壓縮影像的演算法</p>
+<p>問：JPEG 如何壓縮影像？
+簡答：將影像從 RGB 轉換為 Y’CbCr，捨棄多餘的顏色資訊、壓縮人眼不易察覺的部分（影像中高頻率變化的部分）後，輸出為.jpg 檔案</p>
+<p>內收關於影片組「<a href="https://www.youtube.com/playlist?list=PLzH6n4zXuckoAod3z31QEST1ZaizBuNHh">How JPEG Works</a>」的相關筆記、JPEG 詳細的壓縮過程，與其他參考資料來源。</p>
+<!--more-->
+<h2 id="part-0-color-spaces">Part 0: color spaces</h2>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/LFXN9PiOGtY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<h3 id="color-spaces">Color spaces</h3>
+<ul>
+<li>Color spaces are the ways of representing the colors in an image
+<ul>
+<li><span style="color: #FF0000;">R</span><span style="color: #00FF00;">G</span><span style="color: #0000FF;">B</span>: red, green and blue; most monitors use this format</li>
+<li>Y’CbCr: use by high definition video, TV broadcasting, <strong>JPEG</strong></li>
+<li><span style="color: #00FFFF">C</span><span style="color: #FF00FF">M</span><span style="color: #FFFF00">Y</span><span style="color: #000000">K</span>: cyan, magenta, yellow and black; printers use this format
+<ul>
+<li>01:48 用 K 來代表黑色是因為 B 已經被藍色（blue）使用了</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="ycbcr">Y’CbCr</h3>
+<ul>
+<li>Y’: luminosity from 0 to 255；明亮的程度</li>
+<li>Cb/ Cr: blue/ red chrominance values from -127 to 128；藍色／紅色的濃度
+<img src="/2021/how-jpeg-works/Y50_CbCr_Scaled.jpg" alt="The CbCr plane at constant luma Y′=0.5">
+<img src="/2021/how-jpeg-works/Y&#x27;CbCr_cube.png" alt="Y′CbCr color cube"></li>
+<li>05:58 開始：
+<ul>
+<li>You’ll generally use Y’CbCr if you’re doing any kind of TV broadcasting.</li>
+<li>If you’re actually sending a stream of data to someone’s TV, you need to worry about how much compression you have about data, because it’s quite important.</li>
+<li>Y’CbCr lets you do very clever techniques by <strong>down sampling the color components</strong>, but <strong>not</strong> down sampling the luminous component; people won’t really notice this… in fact, this is the fundamental to how JPEG works.</li>
+</ul>
+</li>
+<li>Wiki: This reflects the fact that human eye is less sensitive to fine color details than to fine brightness details.
+<ul>
+<li>人眼「對明亮變化的察覺程度」大於「對顏色變化的察覺程度」</li>
+<li>Y’CbCr 將影像的「明亮度資訊」與「顏色資訊」分開來</li>
+<li>捨棄一定程度顏色的資訊，但盡量保留影像的明亮度資訊的話，即使經過壓縮，人眼也不太容易察覺壓縮前後的差異</li>
+<li>JPEG 就是使用這樣的原理來壓縮圖片的</li>
+</ul>
+</li>
+</ul>
+<h2 id="part-1-files-and-color">Part 1: files and color</h2>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/n_uNPbdenRs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<h3 id="jfif">JFIF</h3>
+<ul>
+<li>JPEG 實際上並不是檔案格式，而是壓縮影像的方式；JFIF 才是檔案格式</li>
+<li>JPEG File Interchange Format (JFIF) is the actual wrapper that holds the compress data.
+<ul>
+<li>(Wiki) JFIF is an image file format standard, the most common format for storing and transmitting photographic images on the World Wide Web.</li>
+<li>(Wiki) JFIF defines supplementary specifications for the container format that contains the image data encoded with the JPEG algorithm.</li>
+</ul>
+</li>
+<li>01:07 …really, when we’re talking about a JPEG file, we’re actually talking about a JFIF file most of the time.</li>
+</ul>
+<h3 id="frequency">frequency</h3>
+<ul>
+<li>01:30 開始：
+<ul>
+<li>…we don’t see high-frequency changes in image intensity very well either. So we can get rid of some of that high-frequency information.</li>
+<li>Bits of image that change intensity very very quickly, we can kind of sorta blur out, and those things will go away, we won’t really see a difference.</li>
+</ul>
+</li>
+</ul>
+<p>筆記：人眼對於高頻率的變化並不敏銳，所以影像裡面高頻率的部分可以捨棄（壓縮）。
+影像的頻率：指「像素變化」的程度。
+使用<strong>越少</strong>的像素完成變化，頻率越<strong>高</strong>；使用<strong>越多</strong>的像素完成變化，頻率越<strong>低</strong>。</p>
+<ul>
+<li>Let’s say you have some region in your image that changes from white to black. If it takes many pixels to undergo that change, it’s low frequency. The fewer the pixels it takes to represent that intensity variation, the higher the frequency. Ref.: <a href="https://www.quora.com/What-are-the-low-and-high-frequencies-in-an-image?share=1">What are the low and high frequencies in an image?</a></li>
+<li>Frequency means rate of change of something. In two-dimensional signals like digital images, frequencies are rate of change of grey scale value (intensity of pixel) with respect to space. This is also called Spatial frequency. Ref.: <a href="https://www.quora.com/What-are-frequencies-in-images-Better-if-explained-with-an-example">What are frequencies in images?</a></li>
+<li>One interesting application is in the use of compression algorithms like JPEG. Here the DCT (Discrete cosine transform) is used to save more of the important parts of the image (the low frequencies) and less of the high frequencies. Ref. <a href="https://photo.stackexchange.com/questions/40401/what-does-frequency-mean-in-an-image">What does “frequency” mean in an image?</a></li>
+<li>Wiki: Human vision is much more sensitive to <strong>small variations in color (or brightness) over large areas</strong> than to the strength of <strong>high-frequency brightness variations</strong>.</li>
+</ul>
+<p>補充：對人眼來說，察覺「大範圍中小小的顏色或亮度變化」比發現「高頻率的亮度變化」容易。</p>
+<h3 id="compression-steps">Compression steps</h3>
+<ol>
+<li>Transform the image into Y’CbCr color space
+<ul>
+<li>Y’CbCr separate each pixel’s intensity (Y’) from color (Cb, Cr)</li>
+</ul>
+</li>
+<li>Down-sampling (chroma sub-sampling)
+<ul>
+<li>Wiki: reduce the spatial(空間性的) resolution of the Cb and Cr components</li>
+<li>白話文：減少影像使用的顏色數量</li>
+</ul>
+</li>
+<li>Block splitting
+<ul>
+<li>Wiki: depending on chroma sub-sampling, this yields Minimum Coded Unit (MCU) blocks of size 8×8 (4:4:4 when no sub-sampling), 16×8 (4:2:2), or most commonly 16×16 (4:2:0).</li>
+</ul>
+</li>
+<li>Apply DCT (discrete cosine transform)</li>
+<li>Quantization (the lossy part in JPEG compression)</li>
+<li>Huffman encoding, get the .JPG file</li>
+</ol>
+<h3 id="down-sampling">Down-sampling</h3>
+<ul>
+<li>04:37 開始：
+<ul>
+<li>One of the nice things about Y’CbCr is that human eye doesn’t really see chrominance very well. It’s certainly a much lower resolution than we see changes in intensity.</li>
+<li>Just like with TV encoding, we can massively down sample the amount of Cb and Cr that we see in the image.</li>
+</ul>
+</li>
+<li>06:14 Down-sampling is sometimes tied to the quality of the JPG that you output.
+<ul>
+<li>影像軟體在輸出.JPG 檔案時，「品質」調整的通常就是 down-sampling 的程度</li>
+</ul>
+</li>
+<li>06:29 In general, most software will use a down-sample of 2 in both direction, which is 4 times less colors.</li>
+</ul>
+<h2 id="part-2-dct-discrete-cosine-transform">Part 2: DCT (Discrete Cosine Transform)</h2>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Q2aEzeMDHMA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<h3 id="dct">DCT</h3>
+<ul>
+<li>02:53 …in JPEG, we can get rid of some of the higher frequency signals and the general gist of the image will still be there.</li>
+<li>03:19 What we do in JPEG is we split each image into 8 by 8 pixel groups, and each of those pixel groups is separately encoded with its own discrete cosine transform.</li>
+<li>Wiki:
+<ul>
+<li>Each 8 by 8 pixel group is converted to a frequency-domain representation by “normalized, two-dimensional type-II DCT”.</li>
+<li>Before computing the DCT of the pixel group, its values are shifted from a positive range to one centered on zero (from <code>[0, 255]</code> to <code>[-128, 127]</code>). This step reduces the dynamic range requirements in the DCT processing stage that follows.
+<img src="/2021/how-jpeg-works/patterns.png" alt="two-dimensional DCT basis functions"></li>
+<li>The DCT transforms an pixel group of input values to a linear combination of these 64 patterns (see above image). The output values are referred to as <strong>transform coefficients</strong>.</li>
+</ul>
+</li>
+</ul>
+<h3 id="quantization">Quantization</h3>
+<ul>
+<li>08:27 After calculating the discrete cosine transform coefficients, we will try to remove the ones we don’t want. We call the process of removing the high frequency data “quantization”.</li>
+<li>Wiki: the elements in the quantization matrix control the compression ratio, with larger values producing greater compression.
+<ul>
+<li>白話文：DCT 結束後得到的<strong>transform coefficients</strong>會根據 quantization matrix 繼續壓縮。quantization matrix 會指示<strong>transform coefficients</strong>中每一個像素被壓縮的程度；quantization matrix 中越大的數字代表越大的壓縮比例</li>
+<li>12:55 If we increase the values in the quantization table, we’re essentially operating a lower JPEG quality setting.</li>
+</ul>
+</li>
+</ul>
+<h3 id="quantization-matrix-quantization-table">Quantization matrix (quantization table)</h3>
+<p>Wiki: the quantization matrix is designed to provide more resolution to more perceivable frequency components over less perceivable components (usually lower frequencies over high frequencies) in addition to transforming as many components to 0, which can be encoded with greatest efficiency.</p>
+<p>白話文：quantization matrix 會盡可能保留人眼可察覺的部分（通常是低頻率的部分），捨棄人眼察覺不出來的部分（高頻率的部分）</p>
+<h3 id="huffman-encoding">Huffman encoding</h3>
+<ul>
+<li>以 zigzag 的形式來編碼<strong>transform coefficients</strong></li>
+<li><strong>transform coefficients</strong>中，通常是左上角擁有較多資訊，而右下角偏向被捨棄，搭配 Huffman encoding 可以讓尾部大量的 0 一起被壓縮
+<ul>
+<li>10:34 We serialize them out into a long line, and we use Huffman encoding to shrink them right down.</li>
+</ul>
+</li>
+</ul>
+<h2 id="參考文件">參考文件</h2>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/YCbCr">Wikipedia: YCbCr</a></li>
+<li><a href="https://en.wikipedia.org/wiki/JPEG">Wikipedia: JPEG</a></li>
+<li><a href="https://en.wikipedia.org/wiki/JPEG_File_Interchange_Format">Wikipedia: JPEG File Interchange Format</a></li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

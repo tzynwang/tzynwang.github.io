@@ -1,0 +1,117 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.BScVxmeO.js"></script><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.1.2"><!-- Primary Meta Tags --><title>「部屬Express.js App至Google App Engine」相關筆記</title><meta name="title" content="「部屬Express.js App至Google App Engine」相關筆記"><meta name="description" content="這是一個文組轉職前端工程師的技術部落格"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2021/express-app-deploy-gcp"><meta property="og:title" content="「部屬Express.js App至Google App Engine」相關筆記"><meta property="og:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="og:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2021/express-app-deploy-gcp"><meta property="twitter:title" content="「部屬Express.js App至Google App Engine」相關筆記"><meta property="twitter:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="twitter:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul:not(:has(li)){margin-top:16px;margin-bottom:16px}li{margin-top:4px;margin-bottom:4px;line-height:24px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:16px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}del{color:#4c5958e6}ol>li:has(p)>p{display:inline;margin:0}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+[data-astro-image]{width:100%;height:auto;object-fit:var(--fit);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>「部屬Express.js App至Google App Engine」相關筆記</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2021-06-25 14:06</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/Express" data-astro-cid-2iymvi75> Express </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#總結" data-astro-cid-qtokga5y>總結</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#環境" data-astro-cid-qtokga5y>環境</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#部屬前設定" data-astro-cid-qtokga5y>部屬前設定</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#appjs" data-astro-cid-qtokga5y>app.js</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#configmongoosejs" data-astro-cid-qtokga5y>config/mongoose.js</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#appyaml" data-astro-cid-qtokga5y>app.yaml</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#packagejson" data-astro-cid-qtokga5y>package.json</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#部屬流程" data-astro-cid-qtokga5y>部屬流程</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#練習結果" data-astro-cid-qtokga5y>練習結果</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#關於種子資料" data-astro-cid-qtokga5y>關於種子資料</a> </li> </ul> </div> <h2 id="總結">總結</h2>
+<ul>
+<li>同樣是在搭配使用 MongoDB 的情境下，整體流程比感覺比部屬至 Heroku 簡單許多</li>
+<li>缺點：無法處理「對資料庫導入種子資料」的需求；雖然 App Engine 提供<code>runtime: custom</code>與<code>Dockerfile</code>來處理一定程度的客製化需求，但無法配合<code>docker-compose.yml</code>來安裝 mongoDB</li>
+</ul>
+<h2 id="環境">環境</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Google Cloud SDK: 346.0.0</span></span>
+<span class="line"><span>os: Windows_NT 10.0.18363 win32 x64</span></span></code></pre>
+<h2 id="部屬前設定">部屬前設定</h2>
+<h3 id="appjs">app.js</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#6A737D">// 新增process.env.PORT，讓App可以讀取Google App Engine分配的埠號</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> port</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> process.env.</span><span style="color:#79B8FF">PORT</span><span style="color:#F97583"> ||</span><span style="color:#79B8FF"> 5000</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// 追加以下內容</span></span>
+<span class="line"><span style="color:#E1E4E8">app.</span><span style="color:#B392F0">set</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'trust proxy'</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">);</span></span></code></pre>
+<ul>
+<li>關於<code>app.set('trust proxy', true)</code>
+<ul>
+<li>參考官方文件內容：<a href="https://cloud.google.com/appengine/docs/standard/nodejs/runtime#https_and_forwarding_proxies">HTTPS and forwarding proxies</a></li>
+<li>App Engine terminates HTTPS connections at the load balancer and forwards requests to your application. Some applications need to determine the original request IP and protocol. The user’s IP address is available in the standard X-Forwarded-For header. Applications that require this information should configure their web framework to trust the proxy.</li>
+<li>With Express.js, use the trust proxy setting: <code>app.set('trust proxy', true)</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="configmongoosejs">config/mongoose.js</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#6A737D">// 於config/mongoose.js中追加process.env.MONGODB_URI</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> MONGODB_URI</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> process.env.</span><span style="color:#79B8FF">MONGODB_URI</span><span style="color:#F97583"> ||</span><span style="color:#9ECBFF"> 'mongodb://localhost/login-passport'</span></span>
+<span class="line"><span style="color:#E1E4E8">mongoose.</span><span style="color:#B392F0">connect</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">MONGODB_URI</span><span style="color:#E1E4E8">, { </span><span style="color:#F97583">...</span><span style="color:#E1E4E8"> })</span></span></code></pre>
+<h3 id="appyaml">app.yaml</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="yaml"><code><span class="line"><span style="color:#85E89D">runtime</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">nodejs12</span></span>
+<span class="line"><span style="color:#85E89D">env_variables</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">  MONGODB_URI</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">'mongodb+srv://&#x3C;DB使用者帳號>:&#x3C;DB密碼>@&#x3C;MongoDB cluster名稱>.8glc1.mongodb.net/&#x3C;MongoDB cluster名稱>?retryWrites=true&#x26;w=majority'</span></span></code></pre>
+<ul>
+<li><code>app.yaml</code>檔案位於專案的根目錄</li>
+<li>參考官方文件：<a href="https://cloud.google.com/appengine/docs/standard/nodejs/runtime">Node.js Runtime Environment</a></li>
+</ul>
+<h3 id="packagejson">package.json</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#9ECBFF">"scripts"</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#9ECBFF">  "start"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"node app.js"</span></span>
+<span class="line"><span style="color:#E1E4E8">},</span></span>
+<span class="line"><span style="color:#9ECBFF">"engines"</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#9ECBFF">  "node"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"^12.0.0"</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<ul>
+<li>Google App Engine 預設執行<code>node server.js</code>來啟動 App，可以透過 package.json 中的<code>start</code> scripts 修改執行內容（本次練習中改為<code>node app.js</code>）</li>
+<li>參考<a href="https://cloud.google.com/appengine/docs/standard/nodejs/runtime#application_startup">官方文件</a>：By default, the runtime starts your application by running <code>node server.js</code>. If you specify a start script in your <code>package.json</code> file, the runtime <strong>runs the specified start script instead</strong>.</li>
+</ul>
+<h2 id="部屬流程">部屬流程</h2>
+<ol>
+<li>在 Google Cloud Platform 建立新專案</li>
+<li>安裝 Google Cloud SDK</li>
+</ol>
+<ul>
+<li>官方說明文件：<a href="https://cloud.google.com/sdk/docs/install">https://cloud.google.com/sdk/docs/install</a></li>
+<li>Google Cloud SDK 需搭配 Python，安裝 SDK 時勾選 Install Bundled Python 選項即可，不須另外自行安裝 Python</li>
+</ul>
+<ol>
+<li>
+<p>安裝完畢後，移動到要部屬到 Google App Engine 的專案的資料夾，在終端機輸入<code>gcloud init</code></p>
+</li>
+<li>
+<p>完成布署前設定後，即可執行<code>gcloud app deploy</code>，部屬完畢後終端機會顯示 App URL（類似<code>https://&#x3C;專案ID>.de.r.appspot.com/</code>），可直接開啟該 URL 瀏覽專案</p>
+</li>
+<li>
+<p>若 URL 打開後沒有載入任何內容，則進入 App Engine → 版本 → 診斷 → 記錄檔中查看錯誤訊息</p>
+<p><img src="/2021/express-app-deploy-gcp/gcp_AppEngine_Version.png" alt="demo 1">
+<img src="/2021/express-app-deploy-gcp/gcp_log.png" alt="demo 2"></p>
+</li>
+</ol>
+<h2 id="練習結果">練習結果</h2>
+<ul>
+<li>Login practice: <a href="https://complete-verve-317814.de.r.appspot.com/">https://complete-verve-317814.de.r.appspot.com/</a></li>
+<li>Movie list (Express.js): <a href="https://academic-genius-317809.de.r.appspot.com/">https://academic-genius-317809.de.r.appspot.com/</a></li>
+</ul>
+<h2 id="關於種子資料">關於種子資料</h2>
+<ul>
+<li>原本以為可以僅靠<code>Dockerfile</code>來處理<code>npm run seed</code>，不過實際執行後得到錯誤訊息<code>MongooseServerSelectionError: connect ECONNREFUSED 127.0.0.1:27017</code></li>
+<li>錯誤訊息的意義：環境中沒有安裝 MongoDB
+<ul>
+<li><a href="https://stackoverflow.com/questions/46523321/mongoerror-connect-econnrefused-127-0-0-127017">MongoError: connect ECONNREFUSED 127.0.0.1:27017</a>: This happened probably because the <strong>MongoDB service isn’t started</strong>.</li>
+</ul>
+</li>
+<li>然而 Google App Engine 並不支援<code>docker-compose</code>，故無法進行「安裝 MongoDB 後導入種子資料」此需求，參考討論串：
+<ul>
+<li><a href="https://stackoverflow.com/questions/63782456/docker-compose-yml-in-google-cloud-run">docker-compose.yml in Google Cloud Run</a></li>
+<li><a href="https://stackoverflow.com/questions/63223193/google-app-engine-run-command-after-deploy">Google App Engine run command after deploy</a></li>
+<li><a href="https://stackoverflow.com/questions/39877521/using-docker-compose-within-google-app-engine">Using Docker compose within Google App Engine</a></li>
+</ul>
+</li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

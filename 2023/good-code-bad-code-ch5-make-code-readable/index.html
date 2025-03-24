@@ -1,0 +1,122 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.BScVxmeO.js"></script><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.1.2"><!-- Primary Meta Tags --><title>閱讀筆記：Good Code, Bad Code Chapter 5 Make code readable</title><meta name="title" content="閱讀筆記：Good Code, Bad Code Chapter 5 Make code readable"><meta name="description" content="這是一個文組轉職前端工程師的技術部落格"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2023/good-code-bad-code-ch5-make-code-readable"><meta property="og:title" content="閱讀筆記：Good Code, Bad Code Chapter 5 Make code readable"><meta property="og:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="og:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2023/good-code-bad-code-ch5-make-code-readable"><meta property="twitter:title" content="閱讀筆記：Good Code, Bad Code Chapter 5 Make code readable"><meta property="twitter:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="twitter:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul:not(:has(li)){margin-top:16px;margin-bottom:16px}li{margin-top:4px;margin-bottom:4px;line-height:24px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:16px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}del{color:#4c5958e6}ol>li:has(p)>p{display:inline;margin:0}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+[data-astro-image]{width:100%;height:auto;object-fit:var(--fit);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>閱讀筆記：Good Code, Bad Code Chapter 5 Make code readable</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2023-03-25 14:40</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/Software Architecture" data-astro-cid-2iymvi75> Software Architecture </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#總結" data-astro-cid-qtokga5y>總結</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#筆記" data-astro-cid-qtokga5y>筆記</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#關於提升程式碼可讀性的核心觀念" data-astro-cid-qtokga5y>關於「提升程式碼可讀性」的核心觀念</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#如何提升程式碼的可讀性" data-astro-cid-qtokga5y>如何提升程式碼的可讀性</a> </li><li class="toc-4" data-astro-cid-qtokga5y> <a href="#為-function-或變數進行有意義的命名" data-astro-cid-qtokga5y>為 function 或變數進行有意義的命名</a> </li><li class="toc-4" data-astro-cid-qtokga5y> <a href="#合理使用註解" data-astro-cid-qtokga5y>合理使用註解</a> </li><li class="toc-4" data-astro-cid-qtokga5y> <a href="#避免無意義的程式碼行數限制" data-astro-cid-qtokga5y>避免無意義的程式碼行數限制</a> </li><li class="toc-4" data-astro-cid-qtokga5y> <a href="#避免過多巢狀結構" data-astro-cid-qtokga5y>避免過多巢狀結構</a> </li><li class="toc-4" data-astro-cid-qtokga5y> <a href="#避免反共識的撰寫風格" data-astro-cid-qtokga5y>避免反共識的撰寫風格</a> </li><li class="toc-4" data-astro-cid-qtokga5y> <a href="#合理使用新功能" data-astro-cid-qtokga5y>合理使用新功能</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#參考文件" data-astro-cid-qtokga5y>參考文件</a> </li> </ul> </div> <h2 id="總結">總結</h2>
+<p>此篇文章是 Good Code, Bad Code: Think like a software engineer 第五章（Make code readable）的閱讀筆記。此章旨在提供「提升程式碼可讀性」的具體手段。</p>
+<h2 id="筆記">筆記</h2>
+<h3 id="關於提升程式碼可讀性的核心觀念">關於「提升程式碼可讀性」的核心觀念</h3>
+<blockquote>
+<p>The essence of <strong>readability</strong> is ensuring that engineers can <strong>quickly and accurately understand what some code does</strong>. Actually achieving this often requires <strong>being empathetic</strong> and trying to imagine how things might be confusing or open to misinterpretation when seen from someone else’s point of view.</p>
+</blockquote>
+<p>總結：撰寫程式碼時，試著站在「閱讀這段程式碼的人」的立場（同理）思考——這段程式碼有哪些部分可能會令人困惑、誤會？</p>
+<p>可參考以下列出的技巧來辨識一段程式碼是否包含不易理解的部分，而各種容易造成理解困難的因子又各自可以透過什麼方式來化解。</p>
+<h3 id="如何提升程式碼的可讀性">如何提升程式碼的可讀性</h3>
+<h4 id="為-function-或變數進行有意義的命名">為 function 或變數進行有意義的命名</h4>
+<p>有意義的名稱可以讓工程師一看就知道該 function 想要達成的功能、或是該變數代表的意義。</p>
+<p>負面範例：使用者根據 function 名稱（<code>getHeadingMarginTopByRWD</code>）可理解此功能乃是根據 RWD breakpoint 來回傳對應的 heading margin-top 數值，但無法得知回傳的數值是根據什麼樣的規則計算出來的。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> getHeadingMarginTopByRWD</span><span style="color:#E1E4E8">()</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> number</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> upBreakpointXl</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> isCurrentBreakPointUp</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'xl'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> upBreakpointMd</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> isCurrentBreakPointUp</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'md'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">  if</span><span style="color:#E1E4E8"> (upBreakpointXl) {</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#79B8FF"> 92</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#F97583">  if</span><span style="color:#E1E4E8"> (upBreakpointMd) {</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#79B8FF"> 76</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#79B8FF"> 60</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>正面範例：追加常數 <code>APP_BAR_HEIGHT_PX</code> 協助辨明整個 function 的計算規則。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> getHeadingMarginTopByRWD</span><span style="color:#E1E4E8">()</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> number</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> APP_BAR_HEIGHT_PX</span><span style="color:#F97583"> =</span><span style="color:#79B8FF"> 60</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> upBreakpointXl</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> isCurrentBreakPointUp</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'xl'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> upBreakpointMd</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> isCurrentBreakPointUp</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'md'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">  if</span><span style="color:#E1E4E8"> (upBreakpointXl) {</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#79B8FF"> APP_BAR_HEIGHT_PX</span><span style="color:#F97583"> +</span><span style="color:#79B8FF"> 32</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#F97583">  if</span><span style="color:#E1E4E8"> (upBreakpointMd) {</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#79B8FF"> APP_BAR_HEIGHT_PX</span><span style="color:#F97583"> +</span><span style="color:#79B8FF"> 16</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#79B8FF"> APP_BAR_HEIGHT_PX</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>現在可知 heading 的 margin-top 數值乃是根據「app bar 的元件高度」以及「RWD breakpoint 條件」來計算。日後即使 app bar 高度有變，接手維護這段程式碼的工程師也能明白應該如何調整 <code>getHeadingMarginTopByRWD</code> 的內容。</p>
+<hr>
+<p>補充：命名規則還可以延伸到 function 參數上。工程師可以透過 TypeScript 以及 object destructure 來模擬出參數命名的效果：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">interface</span><span style="color:#B392F0"> sendMessageArgs</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#FFAB70">  message</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> string</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#FFAB70">  priority</span><span style="color:#F97583">?:</span><span style="color:#79B8FF"> number</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#FFAB70">  allowRetry</span><span style="color:#F97583">?:</span><span style="color:#79B8FF"> boolean</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> sendMessage</span><span style="color:#E1E4E8">({ </span><span style="color:#FFAB70">message</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">priority</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">allowRetry</span><span style="color:#E1E4E8"> }</span><span style="color:#F97583">:</span><span style="color:#B392F0"> sendMessageArgs</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#6A737D">  // ...</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">sendMessage</span><span style="color:#E1E4E8">({ message: </span><span style="color:#9ECBFF">'hello world!'</span><span style="color:#E1E4E8"> });</span></span>
+<span class="line"><span style="color:#B392F0">sendMessage</span><span style="color:#E1E4E8">({ message: </span><span style="color:#9ECBFF">'hello again!'</span><span style="color:#E1E4E8">, priority: </span><span style="color:#79B8FF">3</span><span style="color:#E1E4E8">, allowRetry: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8"> });</span></span></code></pre>
+<h4 id="合理使用註解">合理使用註解</h4>
+<p>儘管在本書第三章有提到「避免讓一段程式碼必須依賴註解、文件才能夠被理解」，但如果是為了說明商業邏輯、或是一些需要特殊處理才能讓程式碼動起來的情況下，則不要吝於對程式碼提供註解。而前述的「特殊情境」可能是：</p>
+<ul>
+<li>引用的第三方套件有些已知但還未解決的問題，我們在使用這些套件時，需要透過一些技巧來讓程式碼最終還是能表現出想要的效果；這時，僅透過程式碼本身可能很難猜出工程師的本意，那麼提供註解來解釋「為何在這裡我們要這樣寫 code」就是一個合理的註解使用情境</li>
+<li>一包程式碼可能經過多次轉手，部分既有程式碼可能不易維護（比如試圖修改一個眼前的小問題，卻發現這造成牽一髮動全身的窘境），而這些「是為了配合既有程式碼來解決問題」的手法就適合搭配註解來說明「為何這裡的 code 要這樣寫」</li>
+</ul>
+<p>比較好的做法是根據常識來判斷「這段程式碼是否需要其他說明才能讓他人理解」。如果一包程式碼因為一些理由無法使得它能自我表述（self-explanatory），那麼為這段 code 加上註解就是一個合理的行為。</p>
+<p>反之，為了一看就能懂的概念繼續添加註解就是畫蛇添足，應避免這類行為。</p>
+<h4 id="避免無意義的程式碼行數限制">避免無意義的程式碼行數限制</h4>
+<p>不過度追求壓縮程式碼的行數、字數。避免僅只是為了壓縮字數而犧牲程式碼的可讀性。</p>
+<p>另外，如果察覺到一段程式碼開始有「壓縮長度」的需求，此時可能也須檢查該程式碼是否一口氣試圖解決過多問題（沒有良好的抽象層）的傾象。</p>
+<h4 id="避免過多巢狀結構">避免過多巢狀結構</h4>
+<p>舉例：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> formatArrayToObject</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">argArray</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">  if</span><span style="color:#E1E4E8"> (argArray.conditionX) {</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#E1E4E8"> argArray.</span><span style="color:#B392F0">reduce</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">prev</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">curr</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">      if</span><span style="color:#E1E4E8"> (curr.conditionY) {</span></span>
+<span class="line"><span style="color:#6A737D">        // ...</span></span>
+<span class="line"><span style="color:#E1E4E8">      } </span><span style="color:#F97583">else</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">        // ...</span></span>
+<span class="line"><span style="color:#E1E4E8">      }</span></span>
+<span class="line"><span style="color:#E1E4E8">    }, {})</span></span>
+<span class="line"><span style="color:#E1E4E8">  } </span><span style="color:#F97583">else</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#E1E4E8"> { </span><span style="color:#F97583">...</span><span style="color:#E1E4E8"> }</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>過多的條件分支會讓一段程式碼不易閱讀，也代表此 function 可能試圖一口氣解決太多問題。</p>
+<p>可透過 early return 、或是將該 function 中處理的多種任務各自分拆為單一功能來避免理解困難。</p>
+<h4 id="避免反共識的撰寫風格">避免反共識的撰寫風格</h4>
+<p>反共識（比如使用小寫開頭的單字為 class 命名、使用小寫單字來命名常數）的撰寫風格會造成其他人在閱讀程式碼時，無法套用既有的經驗來幫助理解內容。過於自由的撰寫風格會增加理解程式碼的困難度。</p>
+<p>書中建議：開發團隊可挑選一組全員同意遵守的 linter 來避免此類問題。</p>
+<h4 id="合理使用新功能">合理使用新功能</h4>
+<p>重點如下：</p>
+<ol>
+<li>使用過於新穎的語法是否會造成開發團隊中其他成員的理解困難？</li>
+<li>看到新玩具就想要嘗試是人性，但需注意自己是否有正確運用該功能？或是只是想嚐鮮、但沒有仔細思考該工具的使用情境是否合理？應盡量避免後者發生。</li>
+</ol>
+<h2 id="參考文件">參考文件</h2>
+<ul>
+<li><a href="https://www.manning.com/books/good-code-bad-code">Manning: Good Code, Bad Code</a></li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

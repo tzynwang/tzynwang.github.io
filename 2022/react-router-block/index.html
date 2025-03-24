@@ -1,0 +1,93 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.BScVxmeO.js"></script><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.1.2"><!-- Primary Meta Tags --><title>2022 第7週 實作筆記：在離開路由前顯示確認視窗</title><meta name="title" content="2022 第7週 實作筆記：在離開路由前顯示確認視窗"><meta name="description" content="這是一個文組轉職前端工程師的技術部落格"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2022/react-router-block"><meta property="og:title" content="2022 第7週 實作筆記：在離開路由前顯示確認視窗"><meta property="og:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="og:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2022/react-router-block"><meta property="twitter:title" content="2022 第7週 實作筆記：在離開路由前顯示確認視窗"><meta property="twitter:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="twitter:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul:not(:has(li)){margin-top:16px;margin-bottom:16px}li{margin-top:4px;margin-bottom:4px;line-height:24px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:16px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}del{color:#4c5958e6}ol>li:has(p)>p{display:inline;margin:0}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+[data-astro-image]{width:100%;height:auto;object-fit:var(--fit);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>2022 第7週 實作筆記：在離開路由前顯示確認視窗</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2022-02-16 18:30</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/React" data-astro-cid-2iymvi75> React </a> <a class="tag" href="/tag/webpack" data-astro-cid-2iymvi75> webpack </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#總結" data-astro-cid-qtokga5y>總結</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#版本" data-astro-cid-qtokga5y>版本</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#筆記" data-astro-cid-qtokga5y>筆記</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#useblock" data-astro-cid-qtokga5y>useBlock</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#無條件阻擋about-元件" data-astro-cid-qtokga5y>無條件阻擋：About 元件</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#有條件阻擋form-元件" data-astro-cid-qtokga5y>有條件阻擋：Form 元件</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#webpack-devserver-設定" data-astro-cid-qtokga5y>webpack devServer 設定</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#參考文件" data-astro-cid-qtokga5y>參考文件</a> </li> </ul> </div> <h2 id="總結">總結</h2>
+<p>本篇筆記記錄如何使用 react-router-dom (v5) 的 <code>useHistory()</code> 與 Web API <code>beforeunload</code> event 在以下時間點跳出確認訊息：</p>
+<ul>
+<li>使用者點擊重新整理（<code>beforeunload</code>）</li>
+<li>使用者關閉分頁（<code>beforeunload</code>）</li>
+<li>使用者按下「上（下）一頁」準備離開當下畫面（<code>history.block()</code>）</li>
+</ul>
+<p><img src="/2022/react-router-block/react-router-block-demo.gif" alt="leave prompt"></p>
+<p>原始碼：<a href="https://github.com/tzynwang/react-router-block/tree/version/2">https://github.com/tzynwang/react-router-block/tree/version/2</a></p>
+<h2 id="版本">版本</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>react-router-dom: 5.3.0</span></span>
+<span class="line"><span>webpack: 5.69.0</span></span></code></pre>
+<h2 id="筆記">筆記</h2>
+<h3 id="useblock">useBlock</h3>
+<script src="https://gist.github.com/tzynwang/64078bcedb90e4b1e17479d45bbca97d.js"></script>
+<ul>
+<li>
+<p><code>beforeunload</code> 能偵測的是「重新整理」與「關閉分頁」這兩種行為，而使用者點擊「上（下）一頁」會由 <code>useHistory()</code> 產生的 <code>history</code> instance 來阻擋</p>
+</li>
+<li>
+<p>從 args 傳入 <code>block</code> 參數，讓 useBlock 可以在特定條件下解除阻擋行為（例：使用者已經填完表單所有內容）</p>
+</li>
+<li>
+<p>第 25-31 行：當引用 useBlock 的元件掛載至畫面上時，將 <code>history.block()</code> 回傳的 instance 保存到變數 <code>BLOCK</code> 中，並在引用 useBlock 的元件從畫面上卸載時，執行 <code>BLOCK</code></p>
+</li>
+<li>
+<p>第 26 行：使用 <code>window.confirm</code> 彈出瀏覽器原生的對話框，詢問使用者是否離開網頁，選擇不離開（<code>!leave</code>）則回傳 <code>false</code> 取消離開的行為</p>
+</li>
+<li>
+<p>參考 <code>@types/history</code> 可得知 <code>history.block()</code> 與其 args 的 type 分別如下列：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> interface</span><span style="color:#B392F0"> History</span><span style="color:#E1E4E8">&#x3C;</span><span style="color:#B392F0">HistoryLocationState</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> LocationState</span><span style="color:#E1E4E8">> {</span></span>
+<span class="line"><span style="color:#B392F0">  block</span><span style="color:#E1E4E8">(</span></span>
+<span class="line"><span style="color:#FFAB70">    prompt</span><span style="color:#F97583">?:</span><span style="color:#79B8FF"> boolean</span><span style="color:#F97583"> |</span><span style="color:#79B8FF"> string</span><span style="color:#F97583"> |</span><span style="color:#B392F0"> TransitionPromptHook</span><span style="color:#E1E4E8">&#x3C;</span><span style="color:#B392F0">HistoryLocationState</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  )</span><span style="color:#F97583">:</span><span style="color:#B392F0"> UnregisterCallback</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> type</span><span style="color:#B392F0"> TransitionPromptHook</span><span style="color:#E1E4E8">&#x3C;</span><span style="color:#B392F0">S</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> LocationState</span><span style="color:#E1E4E8">> </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> (</span></span>
+<span class="line"><span style="color:#FFAB70">  location</span><span style="color:#F97583">:</span><span style="color:#B392F0"> Location</span><span style="color:#E1E4E8">&#x3C;</span><span style="color:#B392F0">S</span><span style="color:#E1E4E8">>,</span></span>
+<span class="line"><span style="color:#FFAB70">  action</span><span style="color:#F97583">:</span><span style="color:#B392F0"> Action</span></span>
+<span class="line"><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#79B8FF"> string</span><span style="color:#F97583"> |</span><span style="color:#79B8FF"> false</span><span style="color:#F97583"> |</span><span style="color:#79B8FF"> void</span><span style="color:#E1E4E8">;</span></span></code></pre>
+<p>為了讓 type check 不會報錯，在使用者確認離開畫面時，讓傳入 <code>history.block()</code> 的匿名函式回傳 <code>undefined</code> 而非 <code>true</code>（第 30 行）</p>
+</li>
+</ul>
+<h3 id="無條件阻擋about-元件">無條件阻擋：About 元件</h3>
+<script src="https://gist.github.com/tzynwang/fe1c004da511941c3e1cb83723c98f93.js"></script>
+<p>直接在元件中呼叫 <code>useBlock()</code>，並傳入空物件（不需解除條件）</p>
+<h3 id="有條件阻擋form-元件">有條件阻擋：Form 元件</h3>
+<script src="https://gist.github.com/tzynwang/d31470f3de89cf5ac39e4b3f1dbf2eda.js"></script>
+<p>傳入 <code>useState</code> 變數 <code>block</code>，在使用者按下送出表單的按鈕時，將 <code>block</code> 設定為 <code>false</code>，並在畫面重新整理（元件重新掛載到畫面上後），重設 <code>block</code> 為 <code>true</code> 避免 F5 後阻擋失效</p>
+<h3 id="webpack-devserver-設定">webpack devServer 設定</h3>
+<ul>
+<li>在後端 server 沒有配合的情況下，使用 <code>BrowserRouter</code> 來處理路由會導致畫面重新整理、或是使用者直接輸入路由時遭遇 404</li>
+<li>如果在開發時使用 webpack devServer 來執行 react APP，則設定 <code>webpack.config.js</code> 的 <code>devServer</code> 其 <code>historyApiFallback: true</code> 即可使用 <code>BrowserRouter</code>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#B392F0">devServer</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#B392F0">  historyApiFallback</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+</li>
+<li>若 react APP 是部署到 GitHub Pages（或任何無法配合 history mode 的 server）則需使用 <code>react-router-dom</code> 的 <code>HashRouter</code> 來處理路由，而路由會帶上井字號</li>
+</ul>
+<h2 id="參考文件">參考文件</h2>
+<ul>
+<li><a href="https://v5.reactrouter.com/web/api/history">react-router v5: history</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/beforeunload_event">MDN: beforeunload event</a></li>
+<li><a href="https://stackoverflow.com/questions/65526447/react-router-v5-2-blocking-route-change-with-createbrowserhistory-and-history">React Router v5.2 - Blocking route change with createBrowserHistory and history.block</a></li>
+<li><a href="https://stackoverflow.com/questions/27928372/react-router-urls-dont-work-when-refreshing-or-writing-manually">React-router urls don’t work when refreshing or writing manually</a></li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

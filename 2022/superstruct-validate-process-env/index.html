@@ -1,0 +1,75 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.BScVxmeO.js"></script><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.1.2"><!-- Primary Meta Tags --><title>2022 第14週 學習筆記：使用 superstruct 驗證 process.env 資料</title><meta name="title" content="2022 第14週 學習筆記：使用 superstruct 驗證 process.env 資料"><meta name="description" content="這是一個文組轉職前端工程師的技術部落格"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2022/superstruct-validate-process-env"><meta property="og:title" content="2022 第14週 學習筆記：使用 superstruct 驗證 process.env 資料"><meta property="og:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="og:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2022/superstruct-validate-process-env"><meta property="twitter:title" content="2022 第14週 學習筆記：使用 superstruct 驗證 process.env 資料"><meta property="twitter:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="twitter:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul:not(:has(li)){margin-top:16px;margin-bottom:16px}li{margin-top:4px;margin-bottom:4px;line-height:24px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:16px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}del{color:#4c5958e6}ol>li:has(p)>p{display:inline;margin:0}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+[data-astro-image]{width:100%;height:auto;object-fit:var(--fit);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>2022 第14週 學習筆記：使用 superstruct 驗證 process.env 資料</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2022-04-08 17:07</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/React" data-astro-cid-2iymvi75> React </a> <a class="tag" href="/tag/webpack" data-astro-cid-2iymvi75> webpack </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#總結" data-astro-cid-qtokga5y>總結</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#版本與環境" data-astro-cid-qtokga5y>版本與環境</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#筆記" data-astro-cid-qtokga5y>筆記</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#使用-superstruct-的優點" data-astro-cid-qtokga5y>使用 superstruct 的優點</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#實作想法梳理" data-astro-cid-qtokga5y>實作想法梳理</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#原始碼" data-astro-cid-qtokga5y>原始碼</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#參考文件" data-astro-cid-qtokga5y>參考文件</a> </li> </ul> </div> <h2 id="總結">總結</h2>
+<p>使用 <code>create-react-app</code> 建立 React APP 並執行 <code>npm run eject</code> 後，在 <code>config</code> 資料夾內的 <code>env.js</code> 會協助處理 <code>.env</code> 中帶有 <code>REACT_APP_</code> 關鍵字的環境變數，讓開發者可以在 React APP 中讀取 process.env 內容；而如果開發者想要檢驗 process.env 的 schema 並將環境變數由字串型態轉變回布林、數值等資料形式的話，可以搭配 npm package <code>superstruct</code> 來實現</p>
+<p>目前未解明：為何投入 <code>webpack.DefinePlugin</code> 後「沒有 <code>REACT_APP_</code> 前綴的環境變數」依舊可以保留字串以外的資料型態 🤔</p>
+<h2 id="版本與環境">版本與環境</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>superstruct: 0.15.4</span></span>
+<span class="line"><span>webpack: 5.64.4</span></span></code></pre>
+<h2 id="筆記">筆記</h2>
+<h3 id="使用-superstruct-的優點">使用 superstruct 的優點</h3>
+<ul>
+<li>除了驗證資料型態（字串、布林、數值等）是否正確，也可檢查資料結構是否符合預期（指定的鍵值是否皆有出現）</li>
+<li>提供型別轉換的功能</li>
+<li>支援 typescript，定義好的 schema 可挪作 type/interface 使用（本次未使用）</li>
+</ul>
+<h3 id="實作想法梳理">實作想法梳理</h3>
+<ul>
+<li><strong>不</strong>將 process.env 的資料檢驗與型別轉換實作在 <code>config/env.js</code> 中，因環境變數最後還是會送至 <code>config/webpack.config.js</code> 中的 <code>webpack.DefinePlugin</code> 轉換回純字串資料</li>
+<li>將 process.env 執行型別轉換後的資料保存在 <code>class Env</code> 中，令 process.env 保持字串形式，而在「需要在 React APP 中引用環境變數」時，就從 <code>class Env</code> 取用已經進行型別轉換後的資料</li>
+</ul>
+<h3 id="原始碼">原始碼</h3>
+<script src="https://gist.github.com/tzynwang/02bc3b826d291932f2e322ef5b7b0b29.js"></script>
+<p>示範專案 repo：<a href="https://github.com/tzynwang/react-process-env/tree/feature/superstruct">https://github.com/tzynwang/react-process-env/tree/feature/superstruct</a></p>
+<ul>
+<li><code>src.Model.Env.index.ts</code>
+<ul>
+<li>第 16~22 行：加上 <code>!</code> 迴避 ts 檢查後回報 <code>Property '...' has no initializer and is not definitely assigned in the constructor</code> 的問題</li>
+<li>第 32 行：使用 <code>define</code> 提供 superstruct 自訂義的資料型別</li>
+<li>第 33 行：使用 <code>type</code> 允許 process.env 中出現 schema 沒有定義到的鍵值（因 config/env.js 除了回傳帶有 <code>REACT_APP_</code> 的環境變數外，也會納入其他變數內容）；如果資料結構需完全符合定義好的 schema 則可以使用 <code>object</code> 來進行檢查（會在出現額外的鍵值時直接 throw Error）</li>
+<li>第 44 行：使用 <code>create</code> 建立型別轉換後的環境變數物件，若 process.env 中有不符合 schema 定義的資料內容，在這階段就會 throw Error</li>
+<li>第 47~54 行：將檢驗後的環境變數保存到 <code>class Env</code> 中</li>
+</ul>
+</li>
+<li><code>src.Hook.useEnv.tsx</code>
+<ul>
+<li>建立該 React APP 中的唯一 <code>Env</code> 實例（singleton pattern）</li>
+</ul>
+</li>
+<li><code>src.App.tsx</code>
+<ul>
+<li>第 12 行：透過 useEnv 取得 React APP 中的唯一 <code>Env</code> 實例</li>
+</ul>
+</li>
+</ul>
+<h2 id="參考文件">參考文件</h2>
+<ul>
+<li><a href="https://github.com/ianstormtaylor/superstruct#readme">GitHub: Superstruct</a></li>
+<li><a href="https://docs.superstructjs.org/">Superstruct Documentation</a></li>
+<li><a href="https://stackoverflow.com/questions/49699067/property-has-no-initializer-and-is-not-definitely-assigned-in-the-construc">stackoverflow: Property ’…’ has no initializer and is not definitely assigned in the constructor</a></li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

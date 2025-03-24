@@ -1,0 +1,81 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.BScVxmeO.js"></script><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.1.2"><!-- Primary Meta Tags --><title>2022 第30週 工作筆記：透過 custom hook 回傳動態內容</title><meta name="title" content="2022 第30週 工作筆記：透過 custom hook 回傳動態內容"><meta name="description" content="這是一個文組轉職前端工程師的技術部落格"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2022/react-hook-dynamic-content"><meta property="og:title" content="2022 第30週 工作筆記：透過 custom hook 回傳動態內容"><meta property="og:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="og:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2022/react-hook-dynamic-content"><meta property="twitter:title" content="2022 第30週 工作筆記：透過 custom hook 回傳動態內容"><meta property="twitter:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="twitter:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul:not(:has(li)){margin-top:16px;margin-bottom:16px}li{margin-top:4px;margin-bottom:4px;line-height:24px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:16px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}del{color:#4c5958e6}ol>li:has(p)>p{display:inline;margin:0}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+[data-astro-image]{width:100%;height:auto;object-fit:var(--fit);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>2022 第30週 工作筆記：透過 custom hook 回傳動態內容</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2022-07-28 18:32</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/MaterialUI" data-astro-cid-2iymvi75> MaterialUI </a> <a class="tag" href="/tag/React" data-astro-cid-2iymvi75> React </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#總結" data-astro-cid-qtokga5y>總結</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#筆記" data-astro-cid-qtokga5y>筆記</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#作法一將邏輯全部納入-hook-中" data-astro-cid-qtokga5y>作法一：將邏輯全部納入 hook 中</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#作法二透過參數控制-hook-回傳的內容" data-astro-cid-qtokga5y>作法二：透過參數控制 hook 回傳的內容</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#bonus-track-materialui-styled-component-with-typescript" data-astro-cid-qtokga5y>bonus track: MaterialUI styled component with TypeScript</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#參考文件" data-astro-cid-qtokga5y>參考文件</a> </li> </ul> </div> <h2 id="總結">總結</h2>
+<p>在重構的過程中收到來自前輩的建議，在這篇筆記記錄一下兩種 react custom hook 的設計方向
+需要 custom hook 完成的事情：根據條件回傳對應的元件，比如根據當下的路由替換網站 NavBar 的選單內容</p>
+<p>原始碼：<a href="https://github.com/tzynwang/react-content-hooks">https://github.com/tzynwang/react-content-hooks</a>
+展示頁：<a href="https://tzynwang.github.io/react-content-hooks/">https://tzynwang.github.io/react-content-hooks/</a></p>
+<h2 id="筆記">筆記</h2>
+<h3 id="作法一將邏輯全部納入-hook-中">作法一：將邏輯全部納入 hook 中</h3>
+<script src="https://gist.github.com/tzynwang/e6cde22debcde3029e2b00382cbdbeb0.js"></script>
+<ul>
+<li>直接在需要動態內容的元件中呼叫該 hook 即可，所有的邏輯都在 hook 內處理；外層元件不進行干涉，只取用 hook 回傳的結果</li>
+<li>在「只有一個關連性需要考慮」的時候，較適合使用此類設計方向
+<ul>
+<li>舉例：如果一個網站的 NavBar 內容根據（且僅需根據）路由來產生動態變化，則可將路由作為唯一會影響動態內容的條件來實作此 hook ，參考上述程式碼第 80 行唯一的 dependency 內容</li>
+</ul>
+</li>
+<li>優點：在邏輯需要修改時，針對 hook 內容進行調整即可，不需要在修改後回頭更新引用 hook 的元件</li>
+<li>缺點：在條件開始變複雜（有兩組以上的關聯性資料會影響產出）後，hook 的內容會逐漸肥大，維護與除錯難度會上升
+<ul>
+<li>舉例：網站的 NavBar 不但在不同的路由間需呈現不同內容，且還須考慮使用者是否已經登入該網站；前述的規格中有<strong>兩個</strong>條件會影響 NavBar 的內容，而判斷最後產出內容的程式碼就會開始增長</li>
+</ul>
+</li>
+</ul>
+<h3 id="作法二透過參數控制-hook-回傳的內容">作法二：透過參數控制 hook 回傳的內容</h3>
+<script src="https://gist.github.com/tzynwang/1164af23cad63fa41e46fccf9e635ab4.js"></script>
+<ul>
+<li>呼叫 hook 時需要提供參數來影響最終內容，並產物在呼叫該 hook 的元件內可能也須搭配其他條件來計算最後是否要渲染在畫面上
+<ul>
+<li>參考 <a href="https://github.com/tzynwang/react-content-hooks/blob/master/src/components/Common/Category/index.tsx#L44">@Components/Common/Category</a> 第 44 與 45 行，透過 hook 取得按鈕元件後，再根據使用者是否登入、是否為 premium 會員來決定畫面上究竟需要渲染哪些按鈕</li>
+</ul>
+</li>
+<li>優點：因部分條件透過外部傳入的關係，讓 hook 本身的程式碼相對簡短</li>
+<li>缺點：需注意在修改 hook 內容後，現行呼叫該 hook 的元件其傳入的參數是否還可沿用，或者需要調整</li>
+</ul>
+<h3 id="bonus-track-materialui-styled-component-with-typescript">bonus track: MaterialUI styled component with TypeScript</h3>
+<p>記錄一下 styled component 型別的來源，以及在根據 MUI 元件建立 styled component 時，自定義的型別要如何傳入 <code>styled</code> 中</p>
+<script src="https://gist.github.com/tzynwang/7946d03c812ea011d08359282d41abd3.js"></script>
+<ul>
+<li>從 <code>@emotion/styled</code> 取得 type <code>StyledComponent</code></li>
+<li>從 <code>@mui/system</code> 取得 type <code>MUIStyledCommonProps</code></li>
+<li>從 <code>@mui/material/styles</code> 取得 type <code>Theme</code></li>
+<li>從 <code>react</code> 取得 type <code>DetailedHTMLProps</code> 與 <code>HTMLAttributes</code></li>
+<li>在需要傳入自定義 <code>props</code> 到 MUI 元件時：
+<ul>
+<li>types.d.ts 第 3 行：先匯入該元件的 props types</li>
+<li>types.d.ts 第 7 行：再 extends 一個自定義型別</li>
+<li>index.tsx 第 26 行：將自定義的 <code>ButtonProps</code> 傳入 <code>StyledComponent</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="參考文件">參考文件</h2>
+<ul>
+<li>hook 設計方向：來自前輩同事的建議</li>
+<li>type <code>StyledComponent</code>: <a href="https://github.com/emotion-js/emotion/blob/main/packages/styled/types/base.d.ts">emotion/packages/styled/types/base.d.ts</a></li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

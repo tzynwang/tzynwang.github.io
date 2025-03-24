@@ -1,0 +1,404 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.BScVxmeO.js"></script><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.1.2"><!-- Primary Meta Tags --><title>ALPHA Camp 2-1 S1作業：技術筆記</title><meta name="title" content="ALPHA Camp 2-1 S1作業：技術筆記"><meta name="description" content="這是一個文組轉職前端工程師的技術部落格"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2021/s1-note"><meta property="og:title" content="ALPHA Camp 2-1 S1作業：技術筆記"><meta property="og:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="og:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2021/s1-note"><meta property="twitter:title" content="ALPHA Camp 2-1 S1作業：技術筆記"><meta property="twitter:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="twitter:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul:not(:has(li)){margin-top:16px;margin-bottom:16px}li{margin-top:4px;margin-bottom:4px;line-height:24px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:16px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}del{color:#4c5958e6}ol>li:has(p)>p{display:inline;margin:0}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+[data-astro-image]{width:100%;height:auto;object-fit:var(--fit);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>ALPHA Camp 2-1 S1作業：技術筆記</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2021-04-20 09:42</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/JavaScript" data-astro-cid-2iymvi75> JavaScript </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#總結" data-astro-cid-qtokga5y>總結</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#a1-部分作業" data-astro-cid-qtokga5y>A1 部分作業</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#q1產生隨機英數字串組" data-astro-cid-qtokga5y>Q1：產生隨機英數字串組</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#q2加密姓名" data-astro-cid-qtokga5y>Q2：加密姓名</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#q3加密信箱" data-astro-cid-qtokga5y>Q3：加密信箱</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#a2-部分作業" data-astro-cid-qtokga5y>A2 部分作業</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#參加者與黑名單皆為單純陣列" data-astro-cid-qtokga5y>參加者與黑名單皆為單純陣列</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#參加者與黑名單皆為包含物件的陣列" data-astro-cid-qtokga5y>參加者與黑名單皆為包含物件的陣列</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#a5-部分作業" data-astro-cid-qtokga5y>A5 部分作業</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#第一版-drawwinner" data-astro-cid-qtokga5y>第一版 drawWinner()</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#第二版-drawwinner" data-astro-cid-qtokga5y>第二版 drawWinner()</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#swap" data-astro-cid-qtokga5y>swap()</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#announcemsg" data-astro-cid-qtokga5y>announceMsg()</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#encodename" data-astro-cid-qtokga5y>encodeName()</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#getemailnamegetemaildomainencodenameforemailencodeemailgenerateticket" data-astro-cid-qtokga5y>getEmailName()、getEmailDomain()、encodeNameForEmail()、encodeEmail()、generateTicket()</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#assignticket" data-astro-cid-qtokga5y>assignTicket()</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#分配參加獎" data-astro-cid-qtokga5y>分配參加獎</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#bonus-track時間複雜度time-complexity" data-astro-cid-qtokga5y>bonus track：時間複雜度（Time complexity）</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#參考資料" data-astro-cid-qtokga5y>參考資料</a> </li> </ul> </div> <p>2021/4/21 更新：
+經同學提醒<code>replace()</code>只會處理目標字串中的「第一組」目標，亦即：當我要處理的字串中包含重複的字母時，使用<code>replace()</code>來處理字串可能會導致非預期結果（因為<code>replace()</code>只會處理「符合目標的第一個字母」），故追加新解法。</p>
+<h2 id="總結">總結</h2>
+<p>記錄 2021 年 ALPHA Camp 學期 2-1（四月班）第一週課程「JavaScript 核心觀念」作業中有使用到的技術與相關筆記。</p>
+<p>使用到的<code>methods</code>一覽：</p>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/floor">Math.floor()</a>：取最大整數</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random">Math.random()</a>：注意<code>Math.random() * X</code>的範圍是<code>0</code>到<code>X - 1</code>（不包含<code>X</code>本身）</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/fromCharCode">String.fromCharCode()</a>：根據傳入 Unicode 回傳相對應的 string</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/padStart">String.prototype.padStart()</a>：補位用</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace">String.prototype.replace()</a>：將字串中符合比對的段落更換為指定內容後，回傳新字串</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/charAt">String.prototype.charAt()</a>：回傳位在指定 index 位置的字串</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/substring">String.prototype.substring()</a>：回傳指定範圍內的字串</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/indexOf">String.prototype.indexOf()</a>：回傳第一個符合搜尋目標的 index</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice">Array.prototype.splice()</a>：在本次作業情境中，被用來刪除陣列內容（沒有執行插入）</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes">Array.prototype.includes()</a>：檢查陣列中是否有指定內容</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter">Array.prototype.filter()</a>：將所有傳入的內容進行篩選動作，回傳符合篩選條件的內容</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf">Array.prototype.indexOf()</a>：回傳第一個符合搜尋目標的 index</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach">Array.prototype.forEach()</a>：對陣列中的每一個項目執行傳入的 function</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push">Array.prototype.push()</a>：新增一內容到陣列最尾端</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/pop">Array.prototype.pop()</a>：移除陣列「最末端」的「一個」內容</li>
+</ul>
+<!-- more -->
+<h2 id="a1-部分作業">A1 部分作業</h2>
+<h3 id="q1產生隨機英數字串組">Q1：產生隨機英數字串組</h3>
+<p>要求：</p>
+<ul>
+<li>分別、獨立產生六個字符</li>
+<li>前兩個字符為大寫英文字母</li>
+<li>後四個字符為數字</li>
+</ul>
+<p>解題邏輯：</p>
+<ul>
+<li>大寫字母有兩種產生方式：
+<ul>
+<li>宣告一組全大寫字母的字串<code>ABCDEFGHIJKLMNOPQRSTUVWXYZ</code>，配合<code>Math.floor(Math.random() * 26)</code>來隨機挑選字母
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#F97583">let</span><span style="color:#E1E4E8"> ticket </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> ''</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> letters</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'</span></span>
+<span class="line"><span style="color:#E1E4E8">ticket </span><span style="color:#F97583">+=</span><span style="color:#E1E4E8"> letters[Math.</span><span style="color:#B392F0">floor</span><span style="color:#E1E4E8">(Math.</span><span style="color:#B392F0">random</span><span style="color:#E1E4E8">() </span><span style="color:#F97583">*</span><span style="color:#79B8FF"> 26</span><span style="color:#E1E4E8">)] </span><span style="color:#6A737D">// 隨機挑選letters字串中的字母</span></span></code></pre>
+</li>
+<li>使用<code>Math.floor(Math.random() * 25) + 1</code>搭配<code>String.fromCharCode()</code>將數字轉換為大寫字母
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#F97583">let</span><span style="color:#E1E4E8"> ticketChar1 </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> Math.</span><span style="color:#B392F0">floor</span><span style="color:#E1E4E8">(Math.</span><span style="color:#B392F0">random</span><span style="color:#E1E4E8">() </span><span style="color:#F97583">*</span><span style="color:#79B8FF"> 25</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">+</span><span style="color:#79B8FF"> 1</span></span>
+<span class="line"><span style="color:#E1E4E8">ticketChar1 </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> String.</span><span style="color:#B392F0">fromCharCode</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">64</span><span style="color:#F97583"> +</span><span style="color:#E1E4E8"> ticketChar1)</span></span></code></pre>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/fromCharCode">MDN</a> <code>String.fromCharCode()</code>: returns a string created from the specified sequence of <strong>UTF-16 code units</strong>.</li>
+<li><a href="https://asecuritysite.com/coding/asc2">UTF-16 Table</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>產生四位數字：使用<code>Math.floor(Math.random() * 10000)</code>隨機產生 0-9999 的數值，並搭配<code>.toString().padStart(4, '0')</code>將未滿四位數的數值補 0</li>
+</ul>
+<p>解法（直接包裝為函式）：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> generateTicket</span><span style="color:#E1E4E8"> () {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> letters</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> ticketLetters</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> `${</span><span style="color:#E1E4E8">letters</span><span style="color:#9ECBFF">[</span><span style="color:#E1E4E8">Math</span><span style="color:#9ECBFF">.</span><span style="color:#B392F0">floor</span><span style="color:#9ECBFF">(</span><span style="color:#E1E4E8">Math</span><span style="color:#9ECBFF">.</span><span style="color:#B392F0">random</span><span style="color:#9ECBFF">() </span><span style="color:#F97583">*</span><span style="color:#79B8FF"> 26</span><span style="color:#9ECBFF">)]</span><span style="color:#9ECBFF">}${</span><span style="color:#E1E4E8">letters</span><span style="color:#9ECBFF">[</span><span style="color:#E1E4E8">Math</span><span style="color:#9ECBFF">.</span><span style="color:#B392F0">floor</span><span style="color:#9ECBFF">(</span><span style="color:#E1E4E8">Math</span><span style="color:#9ECBFF">.</span><span style="color:#B392F0">random</span><span style="color:#9ECBFF">() </span><span style="color:#F97583">*</span><span style="color:#79B8FF"> 26</span><span style="color:#9ECBFF">)]</span><span style="color:#9ECBFF">}`</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> ticketNum</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> Math.</span><span style="color:#B392F0">floor</span><span style="color:#E1E4E8">(Math.</span><span style="color:#B392F0">random</span><span style="color:#E1E4E8">() </span><span style="color:#F97583">*</span><span style="color:#79B8FF"> 10000</span><span style="color:#E1E4E8">).</span><span style="color:#B392F0">toString</span><span style="color:#E1E4E8">().</span><span style="color:#B392F0">padStart</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">4</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">'0'</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#9ECBFF"> `${</span><span style="color:#E1E4E8">ticketLetters</span><span style="color:#9ECBFF">}${</span><span style="color:#E1E4E8">ticketNum</span><span style="color:#9ECBFF">}`</span><span style="color:#6A737D"> // 回傳「兩個大寫英文字母＋四位數字組合」的彩券號碼</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>筆記：</p>
+<ul>
+<li><code>Math.random()</code>會隨機產生 0（不含）至 1（不含）之間的任意小數</li>
+<li>將<code>Math.random()</code>得到的結果乘以<code>x</code>並搭配<code>Math.floor()</code>，即可隨機產生一個「不大於<code>x</code>的整數」</li>
+<li>舉例：<code>Math.floor(Math.random() * 7)</code>會回傳 0-6 之間的任意整數</li>
+</ul>
+<h3 id="q2加密姓名">Q2：加密姓名</h3>
+<p>要求：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#6A737D">// input</span></span>
+<span class="line"><span style="color:#F97583">let</span><span style="color:#E1E4E8"> name </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> 'Bernard'</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// output should be 'Be*****'</span></span>
+<span class="line"><span style="color:#E1E4E8">console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(name)</span></span></code></pre>
+<ul>
+<li>名字的總長度不變</li>
+<li>顯示前兩個字母</li>
+<li>剩下改成<code>*</code></li>
+</ul>
+<p>解題邏輯：</p>
+<ul>
+<li>遍歷字串</li>
+<li>字串中除了首二位的字母外，其他字母都替換為<code>*</code></li>
+</ul>
+<p>2021/4/21 更新：
+以下「舊版解法」不盡然正確，因為<code>replace()</code>只會處理「第一個」符合目標的字母。
+如果<code>name</code>中有重複的單字，那麼「其餘的」字母都不會被處理到；在這裡使用<code>replace()</code>來進行字串操作並不是最佳解。</p>
+<p>舊版解法：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#F97583">for</span><span style="color:#E1E4E8"> (</span><span style="color:#F97583">const</span><span style="color:#79B8FF"> n</span><span style="color:#F97583"> in</span><span style="color:#E1E4E8"> name) {</span></span>
+<span class="line"><span style="color:#F97583">  if</span><span style="color:#E1E4E8"> (n </span><span style="color:#F97583">></span><span style="color:#79B8FF"> 1</span><span style="color:#E1E4E8">) name </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> name.</span><span style="color:#B392F0">replace</span><span style="color:#E1E4E8">(name.</span><span style="color:#B392F0">charAt</span><span style="color:#E1E4E8">(n),</span><span style="color:#9ECBFF">'*'</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"><span style="color:#E1E4E8">console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(name) </span><span style="color:#6A737D">// Be*****</span></span></code></pre>
+<p>舊版解法包裝為函式：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> encodeName</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">name</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">replaceTo</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">startIndex</span><span style="color:#F97583"> =</span><span style="color:#79B8FF"> 2</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">endIndex</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> name.</span><span style="color:#79B8FF">length</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">  for</span><span style="color:#E1E4E8"> (</span><span style="color:#F97583">const</span><span style="color:#79B8FF"> n</span><span style="color:#F97583"> in</span><span style="color:#E1E4E8"> name) {</span></span>
+<span class="line"><span style="color:#F97583">    if</span><span style="color:#E1E4E8"> (n </span><span style="color:#F97583">>=</span><span style="color:#E1E4E8"> startIndex </span><span style="color:#F97583">&#x26;&#x26;</span><span style="color:#E1E4E8"> n </span><span style="color:#F97583">&#x3C;</span><span style="color:#E1E4E8"> endIndex) name </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> name.</span><span style="color:#B392F0">replace</span><span style="color:#E1E4E8">(name.</span><span style="color:#B392F0">charAt</span><span style="color:#E1E4E8">(n), replaceTo)</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> name</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#B392F0">encodeName</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'Bernard'</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">'*'</span><span style="color:#E1E4E8">)) </span><span style="color:#6A737D">// Be*****</span></span></code></pre>
+<ul>
+<li><code>name</code>：傳入需打碼的名字</li>
+<li><code>replaceTo</code>：代表要以何種字符遮蔽<code>name</code>的內容</li>
+<li><code>startIndex</code>：代表<code>name</code>需從哪一個字母開始進行打碼動作
+<ul>
+<li>index 為 zero-based；比如「Morgan」的 M 其 index 為 0、M 後面的 o 其 index 為 1⋯⋯ 以此類推</li>
+<li>預設從第三個（index = 2）字母開始打碼，可透過傳入其他值來調整打碼範圍</li>
+</ul>
+</li>
+<li><code>endIndex</code>：代表<code>name</code>的打碼到哪一個字母停止
+<ul>
+<li>index 為 zero-based</li>
+<li>預設打碼到最後一個字母為止，可透過傳入其他值來調整打碼範圍</li>
+</ul>
+</li>
+</ul>
+<p>筆記：</p>
+<ul>
+<li>
+<p><code>name.replace(name.CharAt(n), replaceTo)</code>白話文如下：
+將<code>name</code>位於 index <code>n</code>（<code>CharAt(n)</code>）的字母替換為<code>replaceTo</code>內容</p>
+</li>
+<li>
+<p>一個函式「擁有預設值的 parameters」要放在「沒有預設值的 parameters」之後，以下為例</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> encodeName</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">name</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">startIndex</span><span style="color:#F97583"> =</span><span style="color:#79B8FF"> 2</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">endIndex</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> name.</span><span style="color:#79B8FF">length</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">replaceTo</span><span style="color:#E1E4E8">) {</span><span style="color:#F97583">...</span><span style="color:#E1E4E8">}</span></span>
+<span class="line"><span style="color:#6A737D">// encodeName('Morgan', '*')會導致startIndex被覆蓋為*，導致函示無法回傳預期結果</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> encodeName</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">name</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">replaceTo</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">startIndex</span><span style="color:#F97583"> =</span><span style="color:#79B8FF"> 2</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">endIndex</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> name.</span><span style="color:#79B8FF">length</span><span style="color:#E1E4E8">) {</span><span style="color:#F97583">...</span><span style="color:#E1E4E8">}</span></span>
+<span class="line"><span style="color:#6A737D">// 將擁有預設值的parameters往後挪，這樣encodeName('Morgan', '*')即可正常執行，不會覆蓋到startIndex與endIndex的預設值</span></span></code></pre>
+</li>
+<li>
+<p>可參考<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Default_parameters#parameters_without_defaults_after_default_parameters">MDN: Parameters without defaults after default parameters</a></p>
+</li>
+<li>
+<p>舊版解法的問題：</p>
+<ul>
+<li>假設我要從「第三個」字母以後開始打碼：</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#F97583">let</span><span style="color:#E1E4E8"> name </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> 'Bernard'</span></span>
+<span class="line"><span style="color:#F97583">for</span><span style="color:#E1E4E8"> (</span><span style="color:#F97583">const</span><span style="color:#79B8FF"> n</span><span style="color:#F97583"> in</span><span style="color:#E1E4E8"> name) {</span></span>
+<span class="line"><span style="color:#F97583">  if</span><span style="color:#E1E4E8"> (n </span><span style="color:#F97583">></span><span style="color:#79B8FF"> 2</span><span style="color:#E1E4E8">) name </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> name.</span><span style="color:#B392F0">replace</span><span style="color:#E1E4E8">(name.</span><span style="color:#B392F0">charAt</span><span style="color:#E1E4E8">(n),</span><span style="color:#9ECBFF">'*'</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(name)) </span><span style="color:#6A737D">// Be***r*</span></span></code></pre>
+<p>舊版的解法會輸出<code>Be***r*</code>，因為：</p>
+<ul>
+<li>當<code>name</code>遍歷到<code>name.charAt(5)</code>的時候，取得的字母是「r」</li>
+<li><code>replace()</code>收到的指示是「把<code>r</code>替換為<code>*</code>」，但<code>replace()</code>的特性是「抓到第一個符合條件的結果後，後續一致的結果都不會去理會他」</li>
+<li>結果<code>Bernard</code>中的第一個<code>r</code>（不應該被替換）被<code>replace()</code>替換了，而第二個（應該要被替換的）<code>r</code>還是維持原狀</li>
+</ul>
+</li>
+</ul>
+<p>2021/4/21 追加新解法（直接包裝為函示）</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> encodeName</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">name</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">replaceTo</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> '*'</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">startIndex</span><span style="color:#F97583"> =</span><span style="color:#79B8FF"> 0</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">endIndex</span><span style="color:#F97583"> =</span><span style="color:#79B8FF"> 2</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> partialName</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> name.</span><span style="color:#B392F0">substring</span><span style="color:#E1E4E8">(startIndex, endIndex)</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> replace</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> replaceTo.</span><span style="color:#B392F0">repeat</span><span style="color:#E1E4E8">(name.</span><span style="color:#79B8FF">length</span><span style="color:#F97583"> -</span><span style="color:#E1E4E8"> endIndex)</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#9ECBFF"> `${</span><span style="color:#E1E4E8">partialName</span><span style="color:#9ECBFF">}${</span><span style="color:#E1E4E8">replace</span><span style="color:#9ECBFF">}`</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">name </span><span style="color:#F97583">=</span><span style="color:#B392F0"> encodeName</span><span style="color:#E1E4E8">(name)</span></span>
+<span class="line"><span style="color:#E1E4E8">console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(name) </span><span style="color:#6A737D">// Be*****</span></span></code></pre>
+<p>解析：</p>
+<ul>
+<li>使用<code>substring()</code>來取得「保留原狀、不打碼」的段落</li>
+<li>使用<code>repeat()</code>來根據「<code>name</code>扣除不打碼部位後，剩下的長度」來產生相對應數量的<code>*</code></li>
+</ul>
+<h3 id="q3加密信箱">Q3：加密信箱</h3>
+<p>要求：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#6A737D">// input</span></span>
+<span class="line"><span style="color:#F97583">let</span><span style="color:#E1E4E8"> email </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> 'bernard@example.com'</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// output should be 'ber...@example.com'</span></span>
+<span class="line"><span style="color:#E1E4E8">console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(email)</span></span></code></pre>
+<ul>
+<li>顯示<code>@</code>後的資訊</li>
+<li>把<code>@</code>前的字母覆蓋掉一半，隱藏的部分一律用三個點<code>...</code>取代</li>
+<li>如果測試字串的長度是單數，例如 5，則只會保留前 2 個字母，其餘以<code>...</code>取代</li>
+</ul>
+<p>解題邏輯：</p>
+<ul>
+<li>姓名部分的打碼規則與 Q2 不同，函式無法直接沿用，需修改</li>
+<li>email 的網域部分不需做任何打碼處理</li>
+</ul>
+<p>解法：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#F97583">let</span><span style="color:#E1E4E8"> namePartial </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> email.</span><span style="color:#B392F0">substring</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">0</span><span style="color:#E1E4E8">, email.</span><span style="color:#B392F0">indexOf</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'@'</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">/</span><span style="color:#79B8FF"> 2</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">email </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> `${</span><span style="color:#E1E4E8">namePartial</span><span style="color:#9ECBFF">}...${</span><span style="color:#E1E4E8">email</span><span style="color:#9ECBFF">.</span><span style="color:#B392F0">substring</span><span style="color:#9ECBFF">(</span><span style="color:#E1E4E8">email</span><span style="color:#9ECBFF">.</span><span style="color:#B392F0">indexOf</span><span style="color:#9ECBFF">(</span><span style="color:#9ECBFF">'@'</span><span style="color:#9ECBFF">), </span><span style="color:#E1E4E8">email</span><span style="color:#9ECBFF">.</span><span style="color:#79B8FF">length</span><span style="color:#9ECBFF"> )</span><span style="color:#9ECBFF">}`</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(email) </span><span style="color:#6A737D">// ber...@example.co</span></span></code></pre>
+<p>包裝為函式：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> getEmailName</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">email</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> email.</span><span style="color:#B392F0">substring</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">0</span><span style="color:#E1E4E8">, email.</span><span style="color:#B392F0">indexOf</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'@'</span><span style="color:#E1E4E8">))</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> getEmailDomain</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">email</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> email.</span><span style="color:#B392F0">substring</span><span style="color:#E1E4E8">(email.</span><span style="color:#B392F0">indexOf</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'@'</span><span style="color:#E1E4E8">), email.</span><span style="color:#79B8FF">length</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> encodeNameForEmail</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">name</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">replaceTo</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> '...'</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">keepStartIndex</span><span style="color:#F97583"> =</span><span style="color:#79B8FF"> 0</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">keepEndIndex</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> name.</span><span style="color:#79B8FF">length</span><span style="color:#F97583"> /</span><span style="color:#79B8FF"> 2</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#9ECBFF"> `${</span><span style="color:#E1E4E8">name</span><span style="color:#9ECBFF">.</span><span style="color:#B392F0">substring</span><span style="color:#9ECBFF">(</span><span style="color:#E1E4E8">keepStartIndex</span><span style="color:#9ECBFF">, </span><span style="color:#E1E4E8">keepEndIndex</span><span style="color:#9ECBFF">)</span><span style="color:#9ECBFF">}${</span><span style="color:#E1E4E8">replaceTo</span><span style="color:#9ECBFF">}`</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> encodeEmail</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">email</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> name</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> getEmailName</span><span style="color:#E1E4E8">(email)</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> encodeName</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> encodeNameForEmail</span><span style="color:#E1E4E8">(name)</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> domain</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> getEmailDomain</span><span style="color:#E1E4E8">(email)</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#9ECBFF"> `${</span><span style="color:#E1E4E8">encodeName</span><span style="color:#9ECBFF">}${</span><span style="color:#E1E4E8">domain</span><span style="color:#9ECBFF">}`</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#B392F0">encodeEmail</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'bernard@example.com'</span><span style="color:#E1E4E8">))  </span><span style="color:#6A737D">// ber...@example.com</span></span>
+<span class="line"><span style="color:#E1E4E8">console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#B392F0">encodeEmail</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'info@example.com'</span><span style="color:#E1E4E8">))     </span><span style="color:#6A737D">// in...@example.com</span></span>
+<span class="line"><span style="color:#E1E4E8">console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#B392F0">encodeEmail</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'genie@example.com'</span><span style="color:#E1E4E8">))    </span><span style="color:#6A737D">// ge...@example.com</span></span>
+<span class="line"><span style="color:#E1E4E8">console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#B392F0">encodeEmail</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'eva_chan@example.com'</span><span style="color:#E1E4E8">)) </span><span style="color:#6A737D">// eva_...@example.com</span></span></code></pre>
+<ul>
+<li><code>getEmailName(email)</code>：任務是「取得 email 中『姓名』的部分」</li>
+<li><code>getEmailDomain(email)</code>：任務是「取得 email 中『網域』（包含@）的部分」</li>
+<li><code>encodeNameForEmail(name, replaceTo = '...', keepStartIndex = 0, keepEndIndex = name.length / 2)</code>：任務是「將傳入的 name 保留指定部位、加上指定的替代字元後，回傳打碼後的 name」</li>
+<li><code>encodeEmail(email)</code>：任務是「將傳入的 email 打碼，回傳打碼後的 email」</li>
+</ul>
+<p>筆記：</p>
+<ul>
+<li><code>str.substring(indexStart[, indexEnd])</code>：會回傳「位在<code>indexStart</code>」到「<code>indexEnd</code><strong>前</strong>」（不包含<code>indexEnd</code>）的所有字母
+<ul>
+<li>比如<code>'Morgan'.substring(0, 3)</code>會回傳「<code>Mor</code>」，不包含 index = 3 的<code>g</code></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/substring#description">MDN 原文</a>：<code>substring()</code> extracts characters from <code>indexStart</code> up to but <strong>not including</strong> <code>indexEnd</code>.</li>
+</ul>
+</li>
+<li>採用 functional programming 的概念來規劃這些函式，一個函式只做一件事情</li>
+<li>functional programming 的入門概念影片如下：
+<iframe width="560" height="315" src="https://www.youtube.com/embed/e-5obm1G_FY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</li>
+</ul>
+<h2 id="a2-部分作業">A2 部分作業</h2>
+<h3 id="參加者與黑名單皆為單純陣列">參加者與黑名單皆為單純陣列</h3>
+<p>第一版解法：兩層迴圈會讓時間複雜度升高，還有優化空間</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#F97583">for</span><span style="color:#E1E4E8"> (</span><span style="color:#F97583">let</span><span style="color:#E1E4E8"> i </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> 0</span><span style="color:#E1E4E8">; i </span><span style="color:#F97583">&#x3C;</span><span style="color:#E1E4E8"> blackList.</span><span style="color:#79B8FF">length</span><span style="color:#E1E4E8">; i </span><span style="color:#F97583">++</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">  for</span><span style="color:#E1E4E8"> (</span><span style="color:#F97583">let</span><span style="color:#E1E4E8"> j </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> 0</span><span style="color:#E1E4E8">; j </span><span style="color:#F97583">&#x3C;</span><span style="color:#E1E4E8"> players.</span><span style="color:#79B8FF">length</span><span style="color:#E1E4E8">; j </span><span style="color:#F97583">++</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">    if</span><span style="color:#E1E4E8"> (blackList[i] </span><span style="color:#F97583">===</span><span style="color:#E1E4E8"> players[j]) {</span></span>
+<span class="line"><span style="color:#E1E4E8">      players.</span><span style="color:#B392F0">splice</span><span style="color:#E1E4E8">(j, </span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>觀摩後改良：從參加者陣列的尾部開始遍歷並移除黑名單對象，就不用擔心<code>splice()</code>影響陣列長度，且只需遍歷參加者陣列、不用遍歷黑名單</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#6A737D">// 直接包裝為函式</span></span>
+<span class="line"><span style="color:#6A737D">// 此函式會直接修改players的內容，而不會回傳一個新陣列</span></span>
+<span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> playersRemoveBlackListArray</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">players</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">blackList</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">  for</span><span style="color:#E1E4E8"> (</span><span style="color:#F97583">let</span><span style="color:#E1E4E8"> i </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> players.</span><span style="color:#79B8FF">length</span><span style="color:#F97583"> -</span><span style="color:#79B8FF"> 1</span><span style="color:#E1E4E8">; i </span><span style="color:#F97583">>=</span><span style="color:#79B8FF"> 0</span><span style="color:#E1E4E8">; i </span><span style="color:#F97583">--</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">    if</span><span style="color:#E1E4E8"> (blackList.</span><span style="color:#B392F0">includes</span><span style="color:#E1E4E8">(players[i])) players.</span><span style="color:#B392F0">splice</span><span style="color:#E1E4E8">(i, </span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<h3 id="參加者與黑名單皆為包含物件的陣列">參加者與黑名單皆為包含物件的陣列</h3>
+<p>第一版解法：雙迴圈處理（邏輯與單純陣列的第一版解法一致，此處不再重複列出）
+觀摩到的解法：使用<code>filter()</code>過濾掉位在黑名單中的名字</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> playersAllowed</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> players.</span><span style="color:#B392F0">filter</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">player</span><span style="color:#F97583"> =></span><span style="color:#E1E4E8"> player.name </span><span style="color:#F97583">!==</span><span style="color:#9ECBFF"> 'Tim'</span><span style="color:#F97583"> &#x26;&#x26;</span><span style="color:#E1E4E8"> player.name </span><span style="color:#F97583">!==</span><span style="color:#9ECBFF"> 'Walter'</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(playersAllowed)</span></span></code></pre>
+<p>但以上的程式碼是直接上黑名單手動輸入到<code>filter()</code>中，日後黑名單若擴充還需更新程式碼內容，彈性不夠好。
+於是改良第三版：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> getPermittedUsers</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">users</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">blackList</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> black</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> getBlackListNames</span><span style="color:#E1E4E8">(blackList)</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> pass</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> users.</span><span style="color:#B392F0">filter</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">user</span><span style="color:#F97583"> =></span><span style="color:#E1E4E8"> black.</span><span style="color:#B392F0">indexOf</span><span style="color:#E1E4E8">(user.name) </span><span style="color:#F97583">===</span><span style="color:#F97583"> -</span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> pass</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> getBlackListNames</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">blackList</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> names</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> []</span></span>
+<span class="line"><span style="color:#E1E4E8">  blackList.</span><span style="color:#B392F0">forEach</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">black</span><span style="color:#F97583"> =></span><span style="color:#E1E4E8"> names.</span><span style="color:#B392F0">push</span><span style="color:#E1E4E8">(black.name))</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> names </span><span style="color:#6A737D">// 會得到 ['Tim', 'Walter']</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> permittedUsers</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> getPermittedUsers</span><span style="color:#E1E4E8">(players, blackList)</span></span>
+<span class="line"><span style="color:#E1E4E8">console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(permittedUsers)</span></span>
+<span class="line"><span style="color:#6A737D">/*</span></span>
+<span class="line"><span style="color:#6A737D">輸出結果如下：</span></span>
+<span class="line"><span style="color:#6A737D">[</span></span>
+<span class="line"><span style="color:#6A737D">  { name: 'Bernard', email: 'bernard@example.com', ticket: 'XL3558' },</span></span>
+<span class="line"><span style="color:#6A737D">  { name: 'Youchi', email: 'youchi@example.com', ticket: 'AH9188' },</span></span>
+<span class="line"><span style="color:#6A737D">  { name: 'Yenting', email: 'yenting@example.com', ticket: 'LO9903' },</span></span>
+<span class="line"><span style="color:#6A737D">  { name: 'Angela', email: 'angela@example.com', ticket: 'HY7212' },</span></span>
+<span class="line"><span style="color:#6A737D">  { name: 'Yvonne', email: 'yvonne@example.com', ticket: 'CH7684' },</span></span>
+<span class="line"><span style="color:#6A737D">  { name: 'Ellen', email: 'ellen@example.com', ticket: 'BB1750' },</span></span>
+<span class="line"><span style="color:#6A737D">  { name: 'Kevin', email: 'kevin@example.com', ticket: 'TT1804' },</span></span>
+<span class="line"><span style="color:#6A737D">  { name: 'Russell', email: 'russell@example.com', ticket: 'SI0305' }</span></span>
+<span class="line"><span style="color:#6A737D">]</span></span>
+<span class="line"><span style="color:#6A737D">*/</span></span></code></pre>
+<ul>
+<li><code>getBlackListNames(blackList)</code>會回傳一個陣列，該陣列的內容是<code>blackList</code>中的所有名字</li>
+<li><code>getPermittedUsers(users, blackList)</code>：<code>users</code>是包含所有使用者的陣列（內容為物件），<code>blackList</code>是黑名單陣列（內容為物件）
+<ul>
+<li>首先透過<code>const black = getBlackListNames(blackList)</code>來取得<code>blackList</code>中的所有名字</li>
+<li><code>const pass = users.filter(user => black.indexOf(user.name) === -1)</code>這行的意思是：
+<ul>
+<li>通過<code>filter()</code>的篩選條件為：<code>user.name</code>不可以存在於<code>black</code>這個陣列中</li>
+<li>符合以上條件才可加入<code>pass</code>陣列內</li>
+<li>若<code>black.indexOf(user.name)</code>回傳<code>-1</code>，則代表<code>black</code>裡面沒有該<code>user</code></li>
+<li>將通過篩選的全部<code>user</code>都加入<code>pass</code>中</li>
+</ul>
+</li>
+<li>最後回傳<code>pass</code>，內容是「所有不在黑名單中的使用者」</li>
+</ul>
+</li>
+<li><code>const permittedUsers = getPermittedUsers(players, blackList)</code>：宣告一個變數<code>permittedUsers</code>來接住<code>getPermittedUsers()</code>回傳的內容</li>
+<li><code>console.log(permittedUsers)</code>：將結果輸出到 console 上</li>
+</ul>
+<h2 id="a5-部分作業">A5 部分作業</h2>
+<script src="https://gist.github.com/tzynwang/adbb90bce5cac0f7aa50333eda4c5011.js"></script>
+<h3 id="第一版-drawwinner">第一版 drawWinner()</h3>
+<ul>
+<li>第 18-23 行</li>
+<li>使用<code>Math.floor(Math.random() * players.length)</code>來決定要「抽到誰」之後，透過<code>splice()</code>來移除陣列中特定 index 的內容</li>
+<li>一旦<code>splice()</code>修改的部位是「陣列中的第一個內容」，那麼時間複雜度就會是<code>O(n)</code>，因為陣列中所有的內容都要往前移動一個 index
+<blockquote>
+<p>We can use the <code>Array.splice()</code> method to remove an element and/or insert elements at any position in an array. When we use this method, the number of indices that need to be changed depend on which index you splice. But in the worst case scenario which is if you splice at the very start is <code>O(n)</code>.
+引用來源：<a href="https://medium.com/@ashfaqueahsan61/time-complexities-of-common-array-operations-in-javascript-c11a6a65a168">Time Complexities Of Common Array Operations In JavaScript</a></p>
+</blockquote>
+</li>
+</ul>
+<h3 id="第二版-drawwinner">第二版 drawWinner()</h3>
+<ul>
+<li>第 25-33 行</li>
+<li>先透過<code>swap()</code>來把「被抽到的人」移動到陣列最尾端，再透過<code>pop()</code>把「被抽到的人」從陣列中移除</li>
+<li><code>pop()</code>的時間複雜度是<code>O(1)</code>，因為：
+<ul>
+<li>固定刪除陣列中最末端的內容，使用<code>array.length</code>即可計算出陣列最末端的 index</li>
+<li>且最末端內容被刪除後，其他還在陣列中的內容不需要調整 index</li>
+</ul>
+</li>
+</ul>
+<h3 id="swap">swap()</h3>
+<ul>
+<li>36 行：使用<code>buffer</code>儲存陣列中最尾端的內容</li>
+<li>37 行：把「要搬到最尾端的內容」搬到最尾端</li>
+<li>38 行：把<code>buffer</code>內容搬到「搬走的內容」位置中</li>
+</ul>
+<h3 id="announcemsg">announceMsg()</h3>
+<p>將得獎者相關資料輸出到 console 上，此為題目預設的內容，不更動</p>
+<h3 id="encodename">encodeName()</h3>
+<p>為配合<code>announceMsg()</code>，修改<code>replaceTo</code>將其內容預設為<code>*</code></p>
+<h3 id="getemailnamegetemaildomainencodenameforemailencodeemailgenerateticket">getEmailName()、getEmailDomain()、encodeNameForEmail()、encodeEmail()、generateTicket()</h3>
+<p>解題思考流程請參考本篇文章上半部</p>
+<h3 id="assignticket">assignTicket()</h3>
+<ul>
+<li>85 行：額外準備一個<code>used</code>陣列來檢查<code>generateTicket()</code>產生的彩券號碼是否已經使用過</li>
+<li>95 行：使用<code>includes()</code>來檢查<code>used</code>中有無重複內容，（-97 行）若有則產生新的彩券號碼，直到與<code>used</code>既有的內容不重複</li>
+<li>98 行：使用過的彩券號碼存到<code>used</code>中，供之後檢查是否重複</li>
+<li>100 行：執行<code>player.number = ticket</code>把確認沒有使用過的彩券號碼分配使用者</li>
+</ul>
+<h3 id="分配參加獎">分配參加獎</h3>
+<ul>
+<li>112 行：使用<code>forEach()</code>為沒有被抽選為頭獎、貳獎、參獎的使用者全部賦予參加獎選項</li>
+</ul>
+<h2 id="bonus-track時間複雜度time-complexity">bonus track：時間複雜度（Time complexity）</h2>
+<p>以下筆記參考中文維基百科與 CS50 2018 Lecture 0：</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/5azaK2cBKGw?start=1430" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<p>「時間複雜度」：指的是某一演算法的<strong>執行時間</strong></p>
+<ul>
+<li>O(1)：「<a href="https://zh.wikipedia.org/wiki/%E5%B8%B8%E6%95%B8%E6%99%82%E9%96%93">常數時間</a>」，代表某演算法的時間複雜度是<strong>固定</strong>的，不會根據演算的資料量多寡而改變
+<ul>
+<li>透過陣列的 index 來取陣列內容，時間複雜度是 O(1)</li>
+<li>想尋找無序陣列內最小的值，需要找遍整個陣列，時間複雜度就不是 O(1)，而是 O(n)</li>
+</ul>
+</li>
+<li>O(n)：<a href="https://zh.wikipedia.org/wiki/%E7%B7%9A%E6%80%A7%E6%99%82%E9%96%93">線性時間</a>，時間複雜度會根據輸入的資料量進行變化
+<ul>
+<li>舉例：如果一個「搜尋對象 X 是否位於電話簿中」的演算法是「從第一頁開始翻，如果沒有，翻到下一頁，直到找到對象 X 的號碼」，那這個演算法的時間複雜度就是 O(n)，n 根據電話簿的厚度決定，因為可能要翻遍一整本電話簿才能知道對象 X 是否位在電話簿中</li>
+</ul>
+</li>
+<li>O(log n)：對數時間，比如透過<a href="https://zh.wikipedia.org/wiki/%E4%BA%8C%E5%88%86%E6%90%9C%E5%B0%8B%E6%BC%94%E7%AE%97%E6%B3%95">二分搜尋演算法（折半搜尋演算法）</a>來進行猜數字遊戲
+<ul>
+<li>舉例：玩家 A 從 1 至 100 中選取一數字，玩家 B 可從 50 開始猜，玩家 A 回覆他選定的數字比 50 大或小</li>
+<li>若玩家 A 選定的數字比 50 大，玩家 B 可猜 51-100 範圍內位在「正中央」的數字</li>
+<li>若玩家 A 選定的數字比 50 小，玩家 B 可猜 1-49 範圍內位在「正中央」的數字</li>
+<li>只要還未猜到玩家 A 選定的數字，玩家 B 都可在剩下的數字範圍內取「正中央」的數字來猜，因為這樣可以最大限度地淘汰不需要的數字</li>
+</ul>
+</li>
+</ul>
+<h2 id="參考資料">參考資料</h2>
+<ul>
+<li><a href="http://web.ntnu.edu.tw/~algo/Algorithm.html">演算法筆記：Algorithm</a></li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

@@ -1,0 +1,205 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.BScVxmeO.js"></script><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.1.2"><!-- Primary Meta Tags --><title>2022 第52週 實作筆記：於 MaterialUI theme 新增 custom breakpoints</title><meta name="title" content="2022 第52週 實作筆記：於 MaterialUI theme 新增 custom breakpoints"><meta name="description" content="這是一個文組轉職前端工程師的技術部落格"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2022/mui-custom-breakpoints"><meta property="og:title" content="2022 第52週 實作筆記：於 MaterialUI theme 新增 custom breakpoints"><meta property="og:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="og:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2022/mui-custom-breakpoints"><meta property="twitter:title" content="2022 第52週 實作筆記：於 MaterialUI theme 新增 custom breakpoints"><meta property="twitter:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="twitter:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul:not(:has(li)){margin-top:16px;margin-bottom:16px}li{margin-top:4px;margin-bottom:4px;line-height:24px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:16px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}del{color:#4c5958e6}ol>li:has(p)>p{display:inline;margin:0}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+[data-astro-image]{width:100%;height:auto;object-fit:var(--fit);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>2022 第52週 實作筆記：於 MaterialUI theme 新增 custom breakpoints</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2022-12-30 21:01</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/MaterialUI" data-astro-cid-2iymvi75> MaterialUI </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#總結" data-astro-cid-qtokga5y>總結</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#版本與環境" data-astro-cid-qtokga5y>版本與環境</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#筆記" data-astro-cid-qtokga5y>筆記</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#實作方式" data-astro-cid-qtokga5y>實作方式</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#原始碼部分" data-astro-cid-qtokga5y>原始碼部分</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#參考文件" data-astro-cid-qtokga5y>參考文件</a> </li> </ul> </div> <h2 id="總結">總結</h2>
+<p>記錄一下 Mui theme custom breakpoints 搭配 TypeScript 專案的處理方式。</p>
+<ul>
+<li><a href="https://tzynwang.github.io/mui-custom-breakpoints/">custom breakpoints demo</a></li>
+<li><a href="https://github.com/tzynwang/mui-custom-breakpoints/tree/main/src">repo</a></li>
+</ul>
+<h2 id="版本與環境">版本與環境</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>@mui/material: 5.11.2</span></span></code></pre>
+<h2 id="筆記">筆記</h2>
+<h3 id="實作方式">實作方式</h3>
+<p>專案結構如下：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>src</span></span>
+<span class="line"><span>  App.tsx</span></span>
+<span class="line"><span>  MainAppView.tsx</span></span>
+<span class="line"><span>  theme.ts</span></span>
+<span class="line"><span>  react-app-env.d.ts</span></span></code></pre>
+<p>重點：透過 <code>declare module</code> 對 <code>interface BreakpointOverrides</code> 傳入 custom breakpoints 設定。設定為 true 的鍵值即可在 mui theme 中使用，反之設定為 false 的鍵值會被忽略。</p>
+<p>以下內容代表「不再使用 MUI 預設的 <code>xs/sm/md/lg/xl</code> 這五組 breakpoints，並新增 <code>mobile/tablet/laptop/desktop</code> 這四組 breakpoints」：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#6A737D">/// &#x3C;</span><span style="color:#85E89D">reference</span><span style="color:#B392F0"> types</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"react-scripts"</span><span style="color:#6A737D"> /></span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#F97583"> type</span><span style="color:#E1E4E8"> { BreakpointOverrides } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> '@mui/system/createTheme/createBreakpoints'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">declare</span><span style="color:#F97583"> module</span><span style="color:#9ECBFF"> '@mui/system/createTheme/createBreakpoints'</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">  interface</span><span style="color:#B392F0"> BreakpointOverrides</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#FFAB70">    xs</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> false</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#FFAB70">    sm</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> false</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#FFAB70">    md</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> false</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#FFAB70">    lg</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> false</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#FFAB70">    xl</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> false</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#FFAB70">    mobile</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> true</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#FFAB70">    tablet</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> true</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#FFAB70">    laptop</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> true</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#FFAB70">    desktop</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> true</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#6A737D">/* theme.ts */</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { useTheme } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> '@mui/material'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { ThemeProvider, createTheme } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> '@mui/material/styles'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> useMediaQuery </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> '@mui/material/useMediaQuery'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#F97583"> type</span><span style="color:#E1E4E8"> { Theme } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> '@mui/material/styles'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> theme</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> createTheme</span><span style="color:#E1E4E8">({</span></span>
+<span class="line"><span style="color:#E1E4E8">  breakpoints: {</span></span>
+<span class="line"><span style="color:#E1E4E8">    values: {</span></span>
+<span class="line"><span style="color:#E1E4E8">      mobile: </span><span style="color:#79B8FF">0</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">      tablet: </span><span style="color:#79B8FF">640</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">      laptop: </span><span style="color:#79B8FF">1024</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">      desktop: </span><span style="color:#79B8FF">1200</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">    },</span></span>
+<span class="line"><span style="color:#E1E4E8">  },</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#E1E4E8"> { ThemeProvider, theme, useTheme, useMediaQuery, Theme };</span></span></code></pre>
+<p>定義好 <code>BreakpointOverrides</code> 後即可搭配 <code>useTheme</code> 或 <code>useMediaQuery</code> 使用：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#6A737D">/* MainAppView.tsx */</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> React, { memo } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> 'react'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { useTheme, useMediaQuery, Theme } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> './theme'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> MainAppView</span><span style="color:#E1E4E8">()</span><span style="color:#F97583">:</span><span style="color:#B392F0"> React</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">ReactElement</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">  /* States */</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> theme</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> useTheme</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> upMobile</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> useMediaQuery</span><span style="color:#E1E4E8">(theme.breakpoints.</span><span style="color:#B392F0">up</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'mobile'</span><span style="color:#E1E4E8">));</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> upTablet</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> useMediaQuery</span><span style="color:#E1E4E8">(theme.breakpoints.</span><span style="color:#B392F0">up</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'tablet'</span><span style="color:#E1E4E8">));</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> upLapTop</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> useMediaQuery</span><span style="color:#E1E4E8">(theme.breakpoints.</span><span style="color:#B392F0">up</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'laptop'</span><span style="color:#E1E4E8">));</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> upDesktop</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> useMediaQuery</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">theme</span><span style="color:#F97583">:</span><span style="color:#B392F0"> Theme</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span></span>
+<span class="line"><span style="color:#E1E4E8">    theme.breakpoints.</span><span style="color:#B392F0">up</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'desktop'</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">  );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">  /* Main */</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> (</span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#85E89D">ul</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">      &#x3C;</span><span style="color:#85E89D">li</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">        {theme.breakpoints.</span><span style="color:#B392F0">up</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'mobile'</span><span style="color:#E1E4E8">)}</span></span>
+<span class="line"><span style="color:#E1E4E8">        {</span><span style="color:#9ECBFF">`theme.breakpoints.up('mobile'): ${</span><span style="color:#E1E4E8">upMobile</span><span style="color:#9ECBFF">}`</span><span style="color:#E1E4E8">}</span></span>
+<span class="line"><span style="color:#E1E4E8">      &#x3C;/</span><span style="color:#85E89D">li</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">      &#x3C;</span><span style="color:#85E89D">li</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">        {theme.breakpoints.</span><span style="color:#B392F0">up</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'tablet'</span><span style="color:#E1E4E8">)}</span></span>
+<span class="line"><span style="color:#E1E4E8">        {</span><span style="color:#9ECBFF">`theme.breakpoints.up('tablet'): ${</span><span style="color:#E1E4E8">upTablet</span><span style="color:#9ECBFF">}`</span><span style="color:#E1E4E8">}</span></span>
+<span class="line"><span style="color:#E1E4E8">      &#x3C;/</span><span style="color:#85E89D">li</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">      &#x3C;</span><span style="color:#85E89D">li</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">        {theme.breakpoints.</span><span style="color:#B392F0">up</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'laptop'</span><span style="color:#E1E4E8">)}</span></span>
+<span class="line"><span style="color:#E1E4E8">        {</span><span style="color:#9ECBFF">`theme.breakpoints.up('laptop'): ${</span><span style="color:#E1E4E8">upLapTop</span><span style="color:#9ECBFF">}`</span><span style="color:#E1E4E8">}</span></span>
+<span class="line"><span style="color:#E1E4E8">      &#x3C;/</span><span style="color:#85E89D">li</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">      &#x3C;</span><span style="color:#85E89D">li</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">        {theme.breakpoints.</span><span style="color:#B392F0">up</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'desktop'</span><span style="color:#E1E4E8">)}</span></span>
+<span class="line"><span style="color:#E1E4E8">        {</span><span style="color:#9ECBFF">`theme.breakpoints.up('desktop'): ${</span><span style="color:#E1E4E8">upDesktop</span><span style="color:#9ECBFF">}`</span><span style="color:#E1E4E8">}</span></span>
+<span class="line"><span style="color:#E1E4E8">      &#x3C;/</span><span style="color:#85E89D">li</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;/</span><span style="color:#85E89D">ul</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  );</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> default</span><span style="color:#B392F0"> memo</span><span style="color:#E1E4E8">(MainAppView);</span></span></code></pre>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#6A737D">/* App.tsx */</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> React, { memo } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> 'react'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> MainAppView </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> './MainAppView'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { ThemeProvider, theme } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> './theme'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> App</span><span style="color:#E1E4E8">()</span><span style="color:#F97583">:</span><span style="color:#B392F0"> React</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">ReactElement</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">  /* Main */</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> (</span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#79B8FF">ThemeProvider</span><span style="color:#B392F0"> theme</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{theme}></span></span>
+<span class="line"><span style="color:#E1E4E8">      &#x3C;</span><span style="color:#79B8FF">MainAppView</span><span style="color:#E1E4E8"> /></span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;/</span><span style="color:#79B8FF">ThemeProvider</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  );</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> default</span><span style="color:#B392F0"> memo</span><span style="color:#E1E4E8">(App);</span></span></code></pre>
+<h3 id="原始碼部分">原始碼部分</h3>
+<p>首先從 <code>@mui/material/styles/createTheme.d.ts</code> 可以找到傳入 <code>createTheme</code> 的參數 options 其型別定義為 <code>ThemeOptions</code>：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> default</span><span style="color:#F97583"> function</span><span style="color:#B392F0"> createTheme</span><span style="color:#E1E4E8">(</span></span>
+<span class="line"><span style="color:#FFAB70">  options</span><span style="color:#F97583">?:</span><span style="color:#B392F0"> ThemeOptions</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#F97583">  ...</span><span style="color:#FFAB70">args</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> object</span><span style="color:#E1E4E8">[]</span></span>
+<span class="line"><span style="color:#E1E4E8">)</span><span style="color:#F97583">:</span><span style="color:#B392F0"> Theme</span><span style="color:#E1E4E8">;</span></span></code></pre>
+<p>而同一份檔案往上翻，發現 interface <code>ThemeOptions</code> 是延伸自 <code>Omit&#x3C;SystemThemeOptions, 'zIndex'> { ... }</code>：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { ThemeOptions </span><span style="color:#F97583">as</span><span style="color:#E1E4E8"> SystemThemeOptions } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> '@mui/system'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// 中間略</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> interface</span><span style="color:#B392F0"> ThemeOptions</span><span style="color:#F97583"> extends</span><span style="color:#B392F0"> Omit</span><span style="color:#E1E4E8">&#x3C;</span><span style="color:#B392F0">SystemThemeOptions</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">'zIndex'</span><span style="color:#E1E4E8">> {</span></span>
+<span class="line"><span style="color:#FFAB70">  mixins</span><span style="color:#F97583">?:</span><span style="color:#B392F0"> MixinsOptions</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#FFAB70">  components</span><span style="color:#F97583">?:</span><span style="color:#B392F0"> Components</span><span style="color:#E1E4E8">&#x3C;</span><span style="color:#B392F0">Omit</span><span style="color:#E1E4E8">&#x3C;</span><span style="color:#B392F0">Theme</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">'components'</span><span style="color:#E1E4E8">>>;</span></span>
+<span class="line"><span style="color:#FFAB70">  palette</span><span style="color:#F97583">?:</span><span style="color:#B392F0"> PaletteOptions</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#FFAB70">  shadows</span><span style="color:#F97583">?:</span><span style="color:#B392F0"> Shadows</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#FFAB70">  transitions</span><span style="color:#F97583">?:</span><span style="color:#B392F0"> TransitionsOptions</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#FFAB70">  typography</span><span style="color:#F97583">?:</span><span style="color:#B392F0"> TypographyOptions</span><span style="color:#F97583"> |</span><span style="color:#E1E4E8"> ((</span><span style="color:#FFAB70">palette</span><span style="color:#F97583">:</span><span style="color:#B392F0"> Palette</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#B392F0"> TypographyOptions</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#FFAB70">  zIndex</span><span style="color:#F97583">?:</span><span style="color:#B392F0"> ZIndexOptions</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#FFAB70">  unstable_strictMode</span><span style="color:#F97583">?:</span><span style="color:#79B8FF"> boolean</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#FFAB70">  unstable_sxConfig</span><span style="color:#F97583">?:</span><span style="color:#B392F0"> SxConfig</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>再追蹤下去，可以在 <code>@mui/system/createTheme/createTheme/createTheme.d.ts</code> 找到 <code>ThemeOptions</code>，而 breakpoints 的型別定義為 <code>BreakpointsOptions</code>：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> interface</span><span style="color:#B392F0"> ThemeOptions</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#FFAB70">  shape</span><span style="color:#F97583">?:</span><span style="color:#B392F0"> ShapeOptions</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#FFAB70">  breakpoints</span><span style="color:#F97583">?:</span><span style="color:#B392F0"> BreakpointsOptions</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#FFAB70">  direction</span><span style="color:#F97583">?:</span><span style="color:#B392F0"> Direction</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#FFAB70">  mixins</span><span style="color:#F97583">?:</span><span style="color:#79B8FF"> unknown</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#FFAB70">  palette</span><span style="color:#F97583">?:</span><span style="color:#B392F0"> Record</span><span style="color:#E1E4E8">&#x3C;</span><span style="color:#79B8FF">string</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">any</span><span style="color:#E1E4E8">>;</span></span>
+<span class="line"><span style="color:#FFAB70">  shadows</span><span style="color:#F97583">?:</span><span style="color:#79B8FF"> unknown</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#FFAB70">  spacing</span><span style="color:#F97583">?:</span><span style="color:#B392F0"> SpacingOptions</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#FFAB70">  transitions</span><span style="color:#F97583">?:</span><span style="color:#79B8FF"> unknown</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#FFAB70">  components</span><span style="color:#F97583">?:</span><span style="color:#B392F0"> Record</span><span style="color:#E1E4E8">&#x3C;</span><span style="color:#79B8FF">string</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">any</span><span style="color:#E1E4E8">>;</span></span>
+<span class="line"><span style="color:#FFAB70">  typography</span><span style="color:#F97583">?:</span><span style="color:#79B8FF"> unknown</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#FFAB70">  zIndex</span><span style="color:#F97583">?:</span><span style="color:#B392F0"> Record</span><span style="color:#E1E4E8">&#x3C;</span><span style="color:#79B8FF">string</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">number</span><span style="color:#E1E4E8">>;</span></span>
+<span class="line"><span style="color:#FFAB70">  unstable_sxConfig</span><span style="color:#F97583">?:</span><span style="color:#B392F0"> SxConfig</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>打開 <code>@mui/system/createTheme/createTheme/createBreakpoints.d.ts</code>，發現 <code>BreakpointsOptions</code> 延伸自 <code>Partial&#x3C;Breakpoints></code>：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">interface</span><span style="color:#B392F0"> BreakpointsOptions</span><span style="color:#F97583"> extends</span><span style="color:#B392F0"> Partial</span><span style="color:#E1E4E8">&#x3C;</span><span style="color:#B392F0">Breakpoints</span><span style="color:#E1E4E8">> { </span><span style="color:#F97583">...</span><span style="color:#E1E4E8"> }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> interface</span><span style="color:#B392F0"> Breakpoints</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#FFAB70">  keys</span><span style="color:#F97583">:</span><span style="color:#B392F0"> Breakpoint</span><span style="color:#E1E4E8">[];</span></span>
+<span class="line"><span style="color:#6A737D">  // 中間略</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>同一份檔案往上捲一下，會看到 <code>Breakpoints</code> 中的 <code>keys: Breakpoint[]</code> 的本體為 <code>OverridableStringUnion&#x3C;'xs' | 'sm' | 'md' | 'lg' | 'xl', BreakpointOverrides></code>：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> interface</span><span style="color:#B392F0"> BreakpointOverrides</span><span style="color:#E1E4E8"> {}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> type</span><span style="color:#B392F0"> Breakpoint</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> OverridableStringUnion</span><span style="color:#E1E4E8">&#x3C;</span></span>
+<span class="line"><span style="color:#9ECBFF">  'xs'</span><span style="color:#F97583"> |</span><span style="color:#9ECBFF"> 'sm'</span><span style="color:#F97583"> |</span><span style="color:#9ECBFF"> 'md'</span><span style="color:#F97583"> |</span><span style="color:#9ECBFF"> 'lg'</span><span style="color:#F97583"> |</span><span style="color:#9ECBFF"> 'xl'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#B392F0">  BreakpointOverrides</span></span>
+<span class="line"><span style="color:#E1E4E8">>;</span></span></code></pre>
+<p>最後來到檔案 <code>@mui/types/index.d.ts</code>，說明如下：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#6A737D">/**</span></span>
+<span class="line"><span style="color:#6A737D"> * Generate a set of string literal types with the given default record `T` and</span></span>
+<span class="line"><span style="color:#6A737D"> * override record `U`.</span></span>
+<span class="line"><span style="color:#6A737D"> *</span></span>
+<span class="line"><span style="color:#6A737D"> * If the property value was `true`, the property key will be added to the</span></span>
+<span class="line"><span style="color:#6A737D"> * string union.</span></span>
+<span class="line"><span style="color:#6A737D"> *</span></span>
+<span class="line"><span style="color:#6A737D"> * </span><span style="color:#F97583">@internal</span></span>
+<span class="line"><span style="color:#6A737D"> */</span></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> type</span><span style="color:#B392F0"> OverridableStringUnion</span><span style="color:#E1E4E8">&#x3C;</span></span>
+<span class="line"><span style="color:#B392F0">  T</span><span style="color:#F97583"> extends</span><span style="color:#79B8FF"> string</span><span style="color:#F97583"> |</span><span style="color:#79B8FF"> number</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#B392F0">  U</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> {}</span></span>
+<span class="line"><span style="color:#E1E4E8">> </span><span style="color:#F97583">=</span><span style="color:#B392F0"> GenerateStringUnion</span><span style="color:#E1E4E8">&#x3C;</span><span style="color:#B392F0">Overwrite</span><span style="color:#E1E4E8">&#x3C;</span><span style="color:#B392F0">Record</span><span style="color:#E1E4E8">&#x3C;</span><span style="color:#B392F0">T</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">>, </span><span style="color:#B392F0">U</span><span style="color:#E1E4E8">>>;</span></span></code></pre>
+<p>在執行 <code>declare module '@mui/system/createTheme/createBreakpoints' interface BreakpointOverrides</code> 時，設定為 <code>true</code> 的鍵值會被納入定義，之後在使用 custom breakpoints 時，TypeScript complier 便不會再報錯。</p>
+<h2 id="參考文件">參考文件</h2>
+<ul>
+<li><a href="https://mui.com/material-ui/customization/breakpoints/#custom-breakpoints">MUI: Custom breakpoints</a></li>
+<li><a href="https://stackoverflow.com/questions/61925965/adding-custom-breakpoints-to-material-ui-with-typescript">stackOverFlow: Adding custom breakpoints to material ui with typescript</a></li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 
