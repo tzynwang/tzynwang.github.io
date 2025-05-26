@@ -38,7 +38,7 @@ draft:
 
 [@tailwindcss/container-queries](https://github.com/tailwindlabs/tailwindcss-container-queries)：如名稱所示，安裝此 plugin 後就能使用 tailwind class 來實現 container query。
 
-支援[一次性使用的 query 尺寸](https://github.com/tailwindlabs/tailwindcss-container-queries?tab=readme-ov-file#arbitrary-container-sizes)，也[支援透過 `tailwind.config` 來複寫](https://github.com/tailwindlabs/tailwindcss-container-queries?tab=readme-ov-file#configuration)全域尺寸設定。
+支援[一次性使用的 query 尺寸](https://github.com/tailwindlabs/tailwindcss-container-queries?tab=readme-ov-file#arbitrary-container-sizes)，也[支援透過 `tailwind.config` 來覆寫](https://github.com/tailwindlabs/tailwindcss-container-queries?tab=readme-ov-file#configuration)全域尺寸設定。
 
 ### cheat sheet
 
