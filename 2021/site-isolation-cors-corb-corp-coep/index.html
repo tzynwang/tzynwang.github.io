@@ -1,0 +1,157 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.BScVxmeO.js"></script><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.1.2"><!-- Primary Meta Tags --><title>「CORP、COEB與CORP以及spectre attack」相關筆記</title><meta name="title" content="「CORP、COEB與CORP以及spectre attack」相關筆記"><meta name="description" content="這是一個文組轉職前端工程師的技術部落格"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2021/site-isolation-cors-corb-corp-coep"><meta property="og:title" content="「CORP、COEB與CORP以及spectre attack」相關筆記"><meta property="og:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="og:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2021/site-isolation-cors-corb-corp-coep"><meta property="twitter:title" content="「CORP、COEB與CORP以及spectre attack」相關筆記"><meta property="twitter:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="twitter:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul:not(:has(li)){margin-top:16px;margin-bottom:16px}li{margin-top:4px;margin-bottom:4px;line-height:24px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:16px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}del{color:#4c5958e6}ol>li:has(p)>p{display:inline;margin:0}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+[data-astro-image]{width:100%;height:auto;object-fit:var(--fit);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>「CORP、COEB與CORP以及spectre attack」相關筆記</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2021-10-26 10:47</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/Web security" data-astro-cid-2iymvi75> Web security </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#總結" data-astro-cid-qtokga5y>總結</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#筆記" data-astro-cid-qtokga5y>筆記</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#cors-cross-origin-resource-sharing" data-astro-cid-qtokga5y>CORS (Cross-Origin Resource Sharing)</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#cross-origin-resource-policy" data-astro-cid-qtokga5y>Cross-Origin Resource Policy</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#cross-origin-embedder-policy" data-astro-cid-qtokga5y>Cross-Origin-Embedder-Policy</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#cross-origin-read-blocking" data-astro-cid-qtokga5y>Cross-Origin Read Blocking</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#site-isolation" data-astro-cid-qtokga5y>Site Isolation</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#meltdown-spectre-attack" data-astro-cid-qtokga5y>Meltdown, Spectre attack</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#參考文件" data-astro-cid-qtokga5y>參考文件</a> </li> </ul> </div> <h2 id="總結">總結</h2>
+<p>在面試時遇到 CORS 概念題，故回顧了<a href="https://tzynwang.github.io/2021/cross-origin-resource-sharing/">年初的筆記</a>，並追加研究了一些 CORS fetching 相關的知識。
+本篇會提到的內容：</p>
+<ul>
+<li>CORS 概念快速回顧</li>
+<li>CORP, Cross-Origin Resource Policy</li>
+<li>COEP, Cross-Origin Embedder Policy</li>
+<li>CORB, Cross-Origin Read Blocking</li>
+<li>Site Isolation</li>
+<li>Meltdown, Spectre attack</li>
+</ul>
+<p>結論：以上機制的終極目標都是為了確保資料安全（常見攻擊手法為 Meltdown 與 Spectre）；阻擋可疑請求，但允許合理的非同源存取互動。</p>
+<h2 id="筆記">筆記</h2>
+<h3 id="cors-cross-origin-resource-sharing">CORS (Cross-Origin Resource Sharing)</h3>
+<blockquote>
+<p>首先「同源政策（same-origin policy）」限制了不同源文件的互動性（出於安全理由，來源 B 的回應內容無法影響到來源 A 的內容），而 CORS 設定則允許了例外（可取得非同源之資源）。</p>
+</blockquote>
+<ul>
+<li>MDN: The same-origin policy is a critical security mechanism that restricts how a document or script <strong>loaded by one origin can interact with a resource from another origin</strong>.</li>
+<li>MDN: It helps isolate potentially malicious documents, <strong>reducing possible attack vectors</strong>. For example, it prevents a malicious website on the Internet from running JS in a browser to read data from a third-party webmail service (which the user is signed into) or a company intranet (which is protected from direct access by the attacker by not having a public IP address) and relaying that data to the attacker.</li>
+<li>Wiki: Cross-origin resource sharing is a mechanism that allows restricted resources on a web page <strong>to be requested from another domain</strong> outside the domain from which the first resource was served.</li>
+<li>Wiki: A web page may <strong>freely embed cross-origin images, stylesheets, scripts, iframes, and videos</strong>. Certain <strong>“cross-domain” requests</strong>, notably <strong>Ajax requests, are forbidden</strong> by default by the same-origin security policy.</li>
+<li>TechBridge：如果你現在這個網站的跟你要呼叫的 API 的網站「不同源」的時候，瀏覽器一樣會幫你發 Request，但是會把 Response 給擋下來，不讓你的 JavaScript 拿到（回應）並且傳回錯誤。注意：「你的<strong>Request 還是有發出去的</strong>」，而且<strong>瀏覽器也「確實有收到 Response」</strong>，重點是「瀏覽器<strong>因為同源政策，不把結果傳回給你的 JavaScript</strong>」。如果沒有瀏覽器的話其實就沒有這些問題，你愛發給誰就發給誰，不管怎樣都拿得到 Response。</li>
+</ul>
+<blockquote>
+<p>CORS 是 HTTP header 的一種機制，根據不同的設定可以允許或禁止非同源的資源存取。基本上伺服器要先允許 CORS，瀏覽器才可取用非同源的資源。</p>
+</blockquote>
+<ul>
+<li>MDN: CORS is an <strong>HTTP-header based mechanism</strong> that allows a server to indicate any origins other than its own from which a browser should <strong>permit loading resources</strong>.</li>
+<li>MDN: The CORS mechanism <strong>supports secure cross-origin requests</strong> and data transfers between browsers and servers. Modern browsers use CORS in APIs such as <code>XMLHttpRequest</code> or <code>Fetch</code> to mitigate the risks of cross-origin HTTP requests.</li>
+<li>MDN: The CORS standard works by <strong>adding new HTTP headers</strong> that <strong>let servers describe which origins are permitted to read that information</strong> from a web browser.</li>
+<li>Wiki: CORS defines a way in which a <strong>browser and server can interact to determine whether it is safe to allow the cross-origin request</strong>. It allows for more freedom and functionality than purely same-origin requests, but is more secure than simply allowing all cross-origin requests.</li>
+</ul>
+<blockquote>
+<p>CORS preflight：如果是會影響伺服器資料的 request（<code>simple request</code>以外的 request methods），瀏覽器在實際送出 request 前會先發出 preflight，待收到伺服器的允許後，才會真正發出這些 request。</p>
+</blockquote>
+<ul>
+<li>MDN: Some requests <strong>don’t trigger a CORS preflight</strong>. Those are called <strong>simple requests</strong>.</li>
+<li>MDN: A CORS preflight request is a CORS request that checks to see if the CORS protocol is understood and a server is aware using specific methods and headers. It is an <code>OPTIONS</code> request, using three HTTP request headers: <code>Access-Control-Request-Method</code>, <code>Access-Control-Request-Headers</code>, and the <code>Origin</code> header.</li>
+</ul>
+<h3 id="cross-origin-resource-policy">Cross-Origin Resource Policy</h3>
+<blockquote>
+<p>設定在 response header 上，決定同、不同源的 request 是否能存取資源。</p>
+</blockquote>
+<ul>
+<li>MDN: a policy set by the <code>Cross-Origin-Resource-Policy</code> HTTP header that lets web sites to <strong>protection against certain requests from other origins</strong> (such as those issued with elements like <code>&#x3C;script></code> and <code>&#x3C;img></code>), to <strong>mitigate speculative side-channel attacks</strong>, like Spectre, as well as Cross-Site Script Inclusion attacks.</li>
+<li>MDN: CORP is an <strong>additional layer</strong> of protection beyond the default same-origin policy. Cross-Origin Resource Policy complements Cross-Origin Read Blocking (CORB), which is a mechanism to prevent some cross-origin reads by default.</li>
+<li>MDN: Web applications set a Cross-Origin Resource Policy via the <code>Cross-Origin-Resource-Policy</code> HTTP <strong>response header</strong>, which accepts one of three values: <code>same-site</code>, <code>same-origin</code> or <code>cross-origin</code>
+<ul>
+<li><code>same-site</code>: only requests from the same site can read the resource.</li>
+<li><code>same-origin</code>: only requests from the same origin (i.e. same in scheme + host + port) can read the resource.</li>
+<li><code>cross-origin</code>: requests from any origin can read the resource. This is useful when COEP is used.</li>
+</ul>
+</li>
+<li>MDN: As this policy is expressed <strong>via a response header</strong>, the actual <strong>request is not prevented—rather</strong>, the browser prevents the result from being leaked by stripping the response body.</li>
+</ul>
+<h3 id="cross-origin-embedder-policy">Cross-Origin-Embedder-Policy</h3>
+<blockquote>
+<p>設定在 response header 上，避免瀏覽器載入沒有設定為允許 CORS 或設定 CORP 的資源。</p>
+</blockquote>
+<ul>
+<li>MDN: The HTTP COEP <strong>response header</strong> prevents a document from loading any cross-origin resources that don’t explicitly grant the document permission (using CORP or CORS).</li>
+<li>MDN: header syntax as following: <code>Cross-Origin-Embedder-Policy: unsafe-none | require-corp</code>
+<ul>
+<li><code>unsafe-none</code>: default value; <strong>allows</strong> the document to fetch <strong>cross-origin resources without giving explicit permission</strong> through the CORS protocol or the CROP header.</li>
+<li><code>require-corp</code>: a document can <strong>only load resources from the same origin</strong>, or resources explicitly <strong>marked as loadable</strong> from another origin. If a cross origin resource supports CORS, the <code>crossorigin</code> attribute or the CORP header must be used to load it without being blocked by COEP.</li>
+</ul>
+</li>
+</ul>
+<h3 id="cross-origin-read-blocking">Cross-Origin Read Blocking</h3>
+<blockquote>
+<p>阻擋那些明顯不合理的請求，比如在<code>img</code>或<code>script</code>標籤中請求 JSON 資料這種行為。</p>
+</blockquote>
+<ul>
+<li>WHATWG standard: Cross-origin read blocking, better known as CORB, is an algorithm which <strong>identifies dubious cross-origin resource fetches</strong> (e.g., fetches that would fail anyway like attempts to render JSON inside an <code>img</code> element) and <strong>blocks them before they reach a web page</strong>. CORB reduces the risk of leaking sensitive data by keeping it further from cross-origin web pages.</li>
+<li>The Chromium Projects: For example, it will block a cross-origin <code>text/html</code> response requested from a <code>&#x3C;script></code> or <code>&#x3C;img></code> tag, replacing it with an empty response instead. This is an important part of the protections <strong>included with Site Isolation</strong>.</li>
+</ul>
+<h3 id="site-isolation">Site Isolation</h3>
+<blockquote>
+<p>Chrome 瀏覽器額外實作的安全機制，每個網站有其獨立的 process，降低被攻擊的可能性。</p>
+</blockquote>
+<ul>
+<li>Site Isolation is <strong>a security feature in Chrome</strong> that offers additional protection against some types of security bugs. It uses Chrome’s <strong>sandbox</strong> to make it harder for untrustworthy websites to access or steal information from your accounts on other websites.</li>
+<li>It ensures that pages from different websites are always put into <strong>different processes</strong>, each running in a sandbox that limits what the process is allowed to do. As a result, a malicious website will find it much more difficult to steal data from other sites, even if it can break some of the rules in its own process.</li>
+<li>Cross-site data (such as HTML, XML, JSON, and PDF files) is <strong>not delivered</strong> to a web page’s process <strong>unless the server says it should be allowed</strong> (using CORS).</li>
+</ul>
+<h3 id="meltdown-spectre-attack">Meltdown, Spectre attack</h3>
+<blockquote>
+<p>處理器的安全漏洞，透過破壞應用程式之間的獨立性來推測、竊取內容。</p>
+</blockquote>
+<ul>
+<li>Meltdown and Spectre exploit <strong>critical vulnerabilities in modern processors</strong>. These hardware vulnerabilities allow programs to <strong>steal data which is currently processed on the computer</strong>. While programs are typically not permitted to read data from other programs, a malicious program can exploit Meltdown and Spectre to get hold of secrets stored in the memory of other running programs.
+<ul>
+<li>Meltdown: breaks the most fundamental <strong>isolation between user applications</strong> and the operating system. This attack allows a program to access the memory, and thus also the secrets, of other programs and the operating system.</li>
+<li>Spectre: breaks the <strong>isolation between different applications</strong>. It allows an attacker to <strong>trick error-free programs</strong>, which follow best practices, into leaking their secrets.</li>
+</ul>
+</li>
+<li>Google web.dev: spectre makes any data that is loaded to the same browsing context group as your code <strong>potentially readable</strong>. By <strong>measuring the time</strong> certain operations take, attackers can guess the <strong>contents</strong> of the CPU caches, and through that, the contents of the process’ memory.</li>
+<li><del>不重要：「007：惡魔四伏」的原文片名就是「Spectre」</del></li>
+</ul>
+<h2 id="參考文件">參考文件</h2>
+<ul>
+<li>Google:
+<ul>
+<li><a href="https://jakearchibald.com/2021/cors/">How to win at CORS</a></li>
+<li><a href="https://developers.google.com/web/updates/2018/07/site-isolation">Site Isolation for web developers</a></li>
+<li><a href="https://www.chromium.org/Home/chromium-security/site-isolation">Site Isolation</a></li>
+<li><a href="https://www.chromium.org/Home/chromium-security/corb-for-developers">Cross-Origin Read Blocking for Web Developers</a></li>
+<li><a href="https://chromium.googlesource.com/chromium/src/+/refs/heads/main/services/network/cross_origin_read_blocking_explainer.md">Cross-Origin Read Blocking (CORB)</a></li>
+<li><a href="https://web.dev/coop-coep/">Making your website “cross-origin isolated” using COOP and COEP</a></li>
+<li><a href="https://web.dev/why-coop-coep/">Why you need “cross-origin isolated” for powerful features</a></li>
+</ul>
+</li>
+<li>MDN:
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Glossary/Preflight_request">Preflight request</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Cross-Origin_Resource_Policy_(CORP)">Cross-Origin Resource Policy (CORP)</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cross-Origin-Embedder-Policy">Cross-Origin-Embedder-Policy</a></li>
+</ul>
+</li>
+<li>無分類：
+<ul>
+<li><a href="https://fetch.spec.whatwg.org/#corb">WHATWG fetch standard: CORB</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Cross-origin_resource_sharing">Wikipedia: Cross-origin resource sharing</a></li>
+<li><a href="https://youtu.be/vfAHa5GBLio">YouTube: Cross-origin fetches - HTTP 203</a></li>
+<li><a href="https://meltdownattack.com/">Meltdown and Spectre</a></li>
+<li><a href="https://blog.techbridge.cc/2017/05/20/api-ajax-cors-and-jsonp/">輕鬆理解 Ajax 與跨來源請求</a></li>
+</ul>
+</li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

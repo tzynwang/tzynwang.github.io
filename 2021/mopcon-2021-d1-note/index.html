@@ -1,0 +1,296 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.BScVxmeO.js"></script><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.1.2"><!-- Primary Meta Tags --><title>MOPCON 2021 第一天之JS、前端相關內容之議程筆記</title><meta name="title" content="MOPCON 2021 第一天之JS、前端相關內容之議程筆記"><meta name="description" content="這是一個文組轉職前端工程師的技術部落格"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2021/mopcon-2021-d1-note"><meta property="og:title" content="MOPCON 2021 第一天之JS、前端相關內容之議程筆記"><meta property="og:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="og:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2021/mopcon-2021-d1-note"><meta property="twitter:title" content="MOPCON 2021 第一天之JS、前端相關內容之議程筆記"><meta property="twitter:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="twitter:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul:not(:has(li)){margin-top:16px;margin-bottom:16px}li{margin-top:4px;margin-bottom:4px;line-height:24px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:16px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}del{color:#4c5958e6}ol>li:has(p)>p{display:inline;margin:0}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+[data-astro-image]{width:100%;height:auto;object-fit:var(--fit);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>MOPCON 2021 第一天之JS、前端相關內容之議程筆記</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2021-10-23 16:47</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/JavaScript" data-astro-cid-2iymvi75> JavaScript </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#總結" data-astro-cid-qtokga5y>總結</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#你懂了-javascript也不懂-javascript" data-astro-cid-qtokga5y>你懂了 JavaScript，也不懂 JavaScript</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#type" data-astro-cid-qtokga5y>Type</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#hoisting" data-astro-cid-qtokga5y>Hoisting</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#this" data-astro-cid-qtokga5y>This</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#prototype" data-astro-cid-qtokga5y>Prototype</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#async-與-event-loop" data-astro-cid-qtokga5y>async 與 event loop</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#用-type-建立-type一起來當個-typescript-的型別魔術師" data-astro-cid-qtokga5y>用 Type 建立 Type：一起來當個 TypeScript 的型別魔術師</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#善用-ux-來提升-uu打造滿足新手和專家的-ui" data-astro-cid-qtokga5y>善用 UX 來提升 UU，打造滿足新手和專家的 UI</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#操作介面常見問題" data-astro-cid-qtokga5y>操作介面常見問題</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#新手與專家對操作介面的共同需求" data-astro-cid-qtokga5y>新手與專家對操作介面的共同需求</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#何謂-uu" data-astro-cid-qtokga5y>何謂 UU</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#線上-qa" data-astro-cid-qtokga5y>線上 QA</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#參考文件" data-astro-cid-qtokga5y>參考文件</a> </li> </ul> </div> <h2 id="總結">總結</h2>
+<p>整理了 2021 MOPCON 第一天 JS、前端相關議程的筆記與延伸參考資料</p>
+<h2 id="你懂了-javascript也不懂-javascript">你懂了 JavaScript，也不懂 JavaScript</h2>
+<blockquote>
+<p>總結：在時間有限的前提下，先學習價值最高的技術或知識</p>
+</blockquote>
+<ul>
+<li>而何謂重要的知識：
+<ul>
+<li>「這個知識對我寫 code 會有幫助嗎？」</li>
+<li>「不知道的話會容易寫出 bug、或是根本不知道 bug 從何而來」</li>
+</ul>
+</li>
+<li>比較不重要但有趣的知識：知道這些事情會讓你成為 JS 大師
+<img src="/2021/mopcon-2021-d1-note/ydnjs.png" alt="Thanks for inventing JavaScript">
+<img src="/2021/mopcon-2021-d1-note/dont-know.png" alt="meme"></li>
+</ul>
+<h3 id="type">Type</h3>
+<ul>
+<li>留意<code>String + Number</code>會回傳字串結果</li>
+<li><code>Array.prototype.sort()</code>預設是字典排序，要進行數字大小排列的話，需傳入 callback function <code>((a, b) => a - b)</code></li>
+<li>留意浮點數陷阱
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#79B8FF">0.5</span><span style="color:#F97583"> +</span><span style="color:#79B8FF"> 0.1</span><span style="color:#F97583"> ===</span><span style="color:#79B8FF"> 0.6</span><span style="color:#E1E4E8">; </span><span style="color:#6A737D">// true</span></span>
+<span class="line"><span style="color:#79B8FF">0.2</span><span style="color:#F97583"> +</span><span style="color:#79B8FF"> 0.1</span><span style="color:#F97583"> ===</span><span style="color:#79B8FF"> 0.3</span><span style="color:#E1E4E8">; </span><span style="color:#6A737D">// false</span></span></code></pre>
+<ul>
+<li><a href="https://stackoverflow.com/questions/588004/is-floating-point-math-broken">Is floating point math broken?</a>
+<ul>
+<li>In most programming languages, it is based on the <strong>IEEE 754 standard</strong>. The crux of the problem is that numbers are represented in this format as a whole number times a power of two; rational numbers (such as 0.1, which is 1/10) <strong>whose denominator is not a power of two cannot be exactly represented</strong>.</li>
+<li>Think about representing 1/3 as a decimal value. It’s <strong>impossible to do exactly</strong>! In the same way, 1/10 (decimal 0.1) <strong>cannot be represented exactly in base 2 (binary)</strong> as a “decimal” value; a repeating pattern after the decimal point goes on forever. <strong>The value is not exact</strong>, and therefore you can’t do exact math with it using normal floating point methods.</li>
+</ul>
+</li>
+<li><a href="https://jsy.tw/blog/1878/javascript-decimal-js/">【筆記】Javascript 大數字與浮點數的計算處理 (decimal.js)</a>：Javascript 的數字型態一律為遵守 IEEE 754 規範的 number，採用雙精度儲存（double precision），佔用 64 bit。若整體數字（整數 + 小數）的長度超過 16 ~ 17 位，就會發生數字丟失的問題。</li>
+</ul>
+</li>
+<li>JS 的 Number 有其極限（<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/MAX_SAFE_INTEGER">Number.MAX_SAFE_INTEGER</a>: <code>9007199254740991</code>），超過此範圍請改用<code>BigInt</code>或<code>String</code>型態來保存資料</li>
+</ul>
+<h3 id="hoisting">Hoisting</h3>
+<ul>
+<li>JS 在執行前就會先做一些處理，此語言有編譯（compile）的特性</li>
+</ul>
+<h3 id="this">This</h3>
+<ul>
+<li><code>this</code>的值跟怎麼呼叫函式有關
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#E1E4E8">document.</span><span style="color:#B392F0">querySelector</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'.a'</span><span style="color:#E1E4E8">); </span><span style="color:#6A737D">// null</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> q</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> document.querySelector;</span></span>
+<span class="line"><span style="color:#B392F0">q</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'.a'</span><span style="color:#E1E4E8">); </span><span style="color:#6A737D">// Uncaught TypeError: Illegal invocation</span></span></code></pre>
+<code>document.querySelector('.a')</code>中的<code>this</code>是<code>document</code>，而<code>q('.a')</code>的<code>this</code>在非嚴格模式下會指向 global object，可透過使用<code>bind()</code>將<code>document</code>綁進去解決：
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> q</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> document.querySelector.</span><span style="color:#B392F0">bind</span><span style="color:#E1E4E8">(document);</span></span>
+<span class="line"><span style="color:#B392F0">q</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'.a'</span><span style="color:#E1E4E8">); </span><span style="color:#6A737D">// null</span></span></code></pre>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#6A737D">// 這樣也可以</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> q</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> document.querySelector;</span></span>
+<span class="line"><span style="color:#E1E4E8">q.</span><span style="color:#B392F0">call</span><span style="color:#E1E4E8">(document, </span><span style="color:#9ECBFF">'.a'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">q.</span><span style="color:#B392F0">apply</span><span style="color:#E1E4E8">(document, [</span><span style="color:#9ECBFF">'.a'</span><span style="color:#E1E4E8">]);</span></span></code></pre>
+</li>
+<li>箭頭函式的 this 與一般函式的 this 不一樣（以下內容節錄自<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions">MDN</a>）
+<ul>
+<li>Arrow functions establish “this” <strong>based on the scope the Arrow function is defined within</strong>.</li>
+<li>Perhaps the greatest benefit of using Arrow functions is with DOM-level methods (<code>setTimeout</code>, <code>setInterval</code>, <code>addEventListener</code>) that usually required some kind of closure, call, apply or bind to ensure the function executed in the proper scope.</li>
+</ul>
+</li>
+</ul>
+<h3 id="prototype">Prototype</h3>
+<ul>
+<li>原型鍊（prototype chain）：在當下的 scope 找不到相對應的屬性或方法時，就往親代的 scope 找</li>
+<li><code>arr.slice(1)</code>與<code>Array.prototype.slice.call(arr, 1)</code>做的是完全一樣的事，只是後者是將整個原型鍊全部寫出來</li>
+</ul>
+<h3 id="async-與-event-loop">async 與 event loop</h3>
+<ul>
+<li>需意識到 callback function 並不保證它是非同步執行</li>
+<li>知道 event loop 中的 web API、stack 與 task queue 是什麼</li>
+</ul>
+<h2 id="用-type-建立-type一起來當個-typescript-的型別魔術師">用 Type 建立 Type：一起來當個 TypeScript 的型別魔術師</h2>
+<ul>
+<li>
+<p>泛型（generics）：讓型別也變成一種變數，可以根據不同的情況套用不同的型別</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#6A737D">// 一般寫法，所有資料的型別皆已經被設定好</span></span>
+<span class="line"><span style="color:#F97583">type</span><span style="color:#B392F0"> ConferenceWithGenerics</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#FFAB70">  name</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> string</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#FFAB70">  year</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> number</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#FFAB70">  isAddToCalendar</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> boolean</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#FFAB70">  price</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> number</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span></code></pre>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#6A737D">// 泛型的寫法</span></span>
+<span class="line"><span style="color:#F97583">type</span><span style="color:#B392F0"> ConferenceWithGenerics</span><span style="color:#E1E4E8">&#x3C;</span><span style="color:#B392F0">T</span><span style="color:#E1E4E8">> </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#FFAB70">  name</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> string</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#FFAB70">  year</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> number</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#FFAB70">  isAddToCalendar</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> boolean</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#FFAB70">  price</span><span style="color:#F97583">:</span><span style="color:#B392F0"> T</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span></code></pre>
+<p><code>price</code>可根據<code>T</code>傳入的內容允許不同類型的資料，<strong>把型別當成參數</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#6A737D">// price為string型態的資料</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> mopcon</span><span style="color:#F97583">:</span><span style="color:#B392F0"> ConferenceWithGenerics</span><span style="color:#E1E4E8">&#x3C;</span><span style="color:#79B8FF">string</span><span style="color:#E1E4E8">> </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">  name: </span><span style="color:#9ECBFF">'MOPCON'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">  year: </span><span style="color:#79B8FF">2021</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">  isAddToCalendar: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">  price: </span><span style="color:#9ECBFF">'1000元'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span></code></pre>
+</li>
+<li>
+<p>泛型可透過關鍵字 extends 來限制傳入的類型（generic constraints），可帶入預設值</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">type</span><span style="color:#B392F0"> ConferenceWithGenerics</span><span style="color:#E1E4E8">&#x3C;</span><span style="color:#B392F0">T</span><span style="color:#F97583"> extends</span><span style="color:#79B8FF"> string</span><span style="color:#F97583"> |</span><span style="color:#79B8FF"> number</span><span style="color:#F97583"> =</span><span style="color:#79B8FF"> number</span><span style="color:#E1E4E8">> </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#FFAB70">  name</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> string</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#FFAB70">  year</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> number</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#FFAB70">  isAddToCalendar</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> boolean</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#FFAB70">  price</span><span style="color:#F97583">:</span><span style="color:#B392F0"> T</span><span style="color:#E1E4E8">; </span><span style="color:#6A737D">// 允許傳入string或number型態的資料，並在沒有傳入參數的時候預設為number</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span></code></pre>
+</li>
+<li>
+<p>Utility Types：把型別當成參數，透過 Utility Types 取得型的型別；TypeScript 本身就內建了多種 Utility Types</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">type</span><span style="color:#B392F0"> conferenceNameWithNull</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> 'MOPCON'</span><span style="color:#F97583"> |</span><span style="color:#9ECBFF"> 'JSDC'</span><span style="color:#F97583"> |</span><span style="color:#9ECBFF"> 'COSCUP'</span><span style="color:#F97583"> |</span><span style="color:#79B8FF"> null</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">type</span><span style="color:#B392F0"> T1</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> NonNullable</span><span style="color:#E1E4E8">&#x3C;</span><span style="color:#B392F0">conferenceNameWithNull</span><span style="color:#E1E4E8">>;</span></span></code></pre>
+<p><code>NonNullable</code>是 TypeScript 內建的 Utility Types，如果檢視 T1 的內容會發現僅剩下<code>MOPCON</code>、<code>JSDC</code>與<code>COSCUP</code>；<code>null</code>不見了</p>
+</li>
+<li>
+<p>透過<code>keyof</code>取得物件型別中所有的 key 作為型別（<code>keyof</code>後面接的是<code>Type</code>）；<code>typeof</code>後面接的是 JS 中的「值」（可直接加上物件，然後透過 TS 的自動推論來建立型別），會把值轉為「型別（<code>Type</code>）」，然後合體技如下：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> mopcon</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">  name: </span><span style="color:#9ECBFF">'MOPCON'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">  year: </span><span style="color:#79B8FF">2021</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">  isAddToCalendar: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">  price: </span><span style="color:#9ECBFF">'1000元'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span>
+<span class="line"><span style="color:#F97583">type</span><span style="color:#B392F0"> keysOfConferenceFromTypeOf</span><span style="color:#F97583"> =</span><span style="color:#F97583"> keyof</span><span style="color:#F97583"> typeof</span><span style="color:#E1E4E8"> mopcon;</span></span></code></pre>
+<p>得到的內容是<code>'name' | 'year' | 'isAddToCalendar' | 'price'</code></p>
+</li>
+<li>
+<p>支援 Template Literals（反引號）：TS 會根據傳入的聯集組合出新的聯集</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">type</span><span style="color:#B392F0"> X</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> 'left'</span><span style="color:#F97583"> |</span><span style="color:#9ECBFF"> 'right'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">type</span><span style="color:#B392F0"> Y</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> 'top'</span><span style="color:#F97583"> |</span><span style="color:#9ECBFF"> 'bottom'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">type</span><span style="color:#B392F0"> Position</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> `${</span><span style="color:#B392F0">X</span><span style="color:#9ECBFF">}-${</span><span style="color:#B392F0">Y</span><span style="color:#9ECBFF">}`</span><span style="color:#E1E4E8">; </span><span style="color:#6A737D">// 'left-top' | 'left-bottom' | 'right-top' | 'right-bottom'</span></span></code></pre>
+</li>
+<li>
+<p>練習：寫一個 Utility Type 取得物件型別中所有屬性的 Keys</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">type</span><span style="color:#B392F0"> ConferenceWithGenerics</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#FFAB70">  name</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> string</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#FFAB70">  year</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> number</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#FFAB70">  isAddToCalendar</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> boolean</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#FFAB70">  price</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> number</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// 先使用實際例子</span></span>
+<span class="line"><span style="color:#F97583">type</span><span style="color:#B392F0"> Keys</span><span style="color:#F97583"> =</span><span style="color:#F97583"> keyof</span><span style="color:#B392F0"> ConferenceWithGenerics</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// 然後抽象化</span></span>
+<span class="line"><span style="color:#F97583">type</span><span style="color:#B392F0"> Keys</span><span style="color:#E1E4E8">&#x3C;</span><span style="color:#B392F0">T</span><span style="color:#E1E4E8">> </span><span style="color:#F97583">=</span><span style="color:#F97583"> keyof</span><span style="color:#B392F0"> T</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// 實用：取出Conference物件中所有屬性的Keys放到T1中</span></span>
+<span class="line"><span style="color:#F97583">type</span><span style="color:#B392F0"> T1</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> Keys</span><span style="color:#E1E4E8">&#x3C;</span><span style="color:#B392F0">Conference</span><span style="color:#E1E4E8">>;</span></span></code></pre>
+</li>
+<li>
+<p>Indexed Access Types：透過中括號取得物件型別中的特定屬性值</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">type</span><span style="color:#B392F0"> Conference</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#FFAB70">  name</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> string</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#FFAB70">  year</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> number</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#FFAB70">  isAddToCalendar</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> boolean</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#FFAB70">  price</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> number</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">type</span><span style="color:#B392F0"> T1</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> Conference</span><span style="color:#E1E4E8">[</span><span style="color:#9ECBFF">'name'</span><span style="color:#E1E4E8">]; </span><span style="color:#6A737D">// string</span></span>
+<span class="line"><span style="color:#F97583">type</span><span style="color:#B392F0"> T2</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> Conference</span><span style="color:#E1E4E8">[</span><span style="color:#9ECBFF">'name'</span><span style="color:#F97583"> |</span><span style="color:#9ECBFF"> 'year'</span><span style="color:#E1E4E8">]; </span><span style="color:#6A737D">// string | number</span></span>
+<span class="line"><span style="color:#F97583">type</span><span style="color:#B392F0"> T3</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> Conference</span><span style="color:#E1E4E8">[</span><span style="color:#F97583">keyof</span><span style="color:#B392F0"> Conference</span><span style="color:#E1E4E8">]; </span><span style="color:#6A737D">// string | number | boolean</span></span></code></pre>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#6A737D">// 練習：寫一個Utility Type取得物件型別中所有屬性的Keys</span></span>
+<span class="line"><span style="color:#6A737D">// 先使用實際例子</span></span>
+<span class="line"><span style="color:#F97583">type</span><span style="color:#B392F0"> ConferenceValues</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> Conference</span><span style="color:#E1E4E8">[</span><span style="color:#F97583">keyof</span><span style="color:#B392F0"> Conference</span><span style="color:#E1E4E8">];</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// 再抽象化</span></span>
+<span class="line"><span style="color:#F97583">type</span><span style="color:#B392F0"> Values</span><span style="color:#E1E4E8">&#x3C;</span><span style="color:#B392F0">T</span><span style="color:#E1E4E8">> </span><span style="color:#F97583">=</span><span style="color:#B392F0"> T</span><span style="color:#E1E4E8">[</span><span style="color:#F97583">keyof</span><span style="color:#B392F0"> T</span><span style="color:#E1E4E8">];</span></span></code></pre>
+</li>
+<li>
+<p>Mapped Type：解決 Index Signatures 之 key 太過廣泛的問題，使用關鍵字<code>in</code>；概念類似<code>Array.prototype.map()</code></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">type</span><span style="color:#B392F0"> T</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">  [</span><span style="color:#B392F0">P</span><span style="color:#F97583"> in</span><span style="color:#9ECBFF"> 'MOPCON'</span><span style="color:#F97583"> |</span><span style="color:#9ECBFF"> 'JSDC'</span><span style="color:#F97583"> |</span><span style="color:#9ECBFF"> 'COSCUP'</span><span style="color:#E1E4E8">]</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> string</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span>
+<span class="line"><span style="color:#6A737D">// T = { MOPCON: string; JSDC: string; COSCUP: string; }</span></span></code></pre>
+<p>修改物件型別中所有 value 的屬性：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">type</span><span style="color:#B392F0"> T1</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">  [</span><span style="color:#B392F0">Property</span><span style="color:#F97583"> in</span><span style="color:#F97583"> keyof</span><span style="color:#B392F0"> Conference</span><span style="color:#E1E4E8">]</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> string</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span>
+<span class="line"><span style="color:#6A737D">// Conference物件中所有value都變為string類型</span></span></code></pre>
+<p>修改物件型別中所有的 key：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">type</span><span style="color:#B392F0"> T2</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">  [</span><span style="color:#B392F0">Property</span><span style="color:#F97583"> in</span><span style="color:#F97583"> keyof</span><span style="color:#B392F0"> Conference</span><span style="color:#F97583"> as</span><span style="color:#9ECBFF"> `at${</span><span style="color:#79B8FF">string</span><span style="color:#F97583"> &#x26;</span></span>
+<span class="line"><span style="color:#B392F0">    Property</span><span style="color:#9ECBFF">}`</span><span style="color:#E1E4E8">]</span><span style="color:#F97583">:</span><span style="color:#B392F0"> Conference</span><span style="color:#E1E4E8">[</span><span style="color:#B392F0">Property</span><span style="color:#E1E4E8">];</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span>
+<span class="line"><span style="color:#6A737D">// atname: string; atyear: number; atisAddToCalendar: boolean; atprice: number;</span></span></code></pre>
+<p>取出物件中特定的資料：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#6A737D">// 只取出Conference中的name與price</span></span>
+<span class="line"><span style="color:#F97583">type</span><span style="color:#B392F0"> T3</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">  [</span><span style="color:#B392F0">Property</span><span style="color:#F97583"> in</span><span style="color:#9ECBFF"> 'name'</span><span style="color:#F97583"> |</span><span style="color:#9ECBFF"> 'price'</span><span style="color:#E1E4E8">]</span><span style="color:#F97583">:</span><span style="color:#B392F0"> Conference</span><span style="color:#E1E4E8">[</span><span style="color:#B392F0">Property</span><span style="color:#E1E4E8">];</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// 抽象化</span></span>
+<span class="line"><span style="color:#F97583">type</span><span style="color:#B392F0"> PickObject</span><span style="color:#E1E4E8">&#x3C;</span><span style="color:#B392F0">T</span><span style="color:#E1E4E8">, </span><span style="color:#B392F0">Key</span><span style="color:#F97583"> extends</span><span style="color:#F97583"> keyof</span><span style="color:#B392F0"> T</span><span style="color:#E1E4E8">> </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">  [</span><span style="color:#B392F0">Property</span><span style="color:#F97583"> in</span><span style="color:#B392F0"> Key</span><span style="color:#E1E4E8">]</span><span style="color:#F97583">:</span><span style="color:#B392F0"> T</span><span style="color:#E1E4E8">[</span><span style="color:#B392F0">Property</span><span style="color:#E1E4E8">];</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// 一樣取出Conference中的name與price</span></span>
+<span class="line"><span style="color:#F97583">type</span><span style="color:#B392F0"> T3</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> PickObject</span><span style="color:#E1E4E8">&#x3C;</span><span style="color:#B392F0">Conference</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">'name'</span><span style="color:#F97583"> |</span><span style="color:#9ECBFF"> 'price'</span><span style="color:#E1E4E8">>;</span></span></code></pre>
+</li>
+<li>
+<p>Conditional Types</p>
+<ul>
+<li><code>X extends Y ? T : F</code>：若 X 是 Y 的子集合，型別 A 就是 T，反之為 F</li>
+<li><code>never extends Y ? T : F</code>：因為<code>never</code>（可理解為空集合）不是任何型態的子集合，因此型別 A 必定為 F</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">type</span><span style="color:#B392F0"> InferResp</span><span style="color:#E1E4E8">&#x3C;</span><span style="color:#B392F0">T</span><span style="color:#E1E4E8">> </span><span style="color:#F97583">=</span><span style="color:#B392F0"> T</span><span style="color:#F97583"> extends</span><span style="color:#E1E4E8"> { </span><span style="color:#FFAB70">response</span><span style="color:#F97583">:</span><span style="color:#F97583"> infer</span><span style="color:#B392F0"> R</span><span style="color:#E1E4E8">; </span><span style="color:#FFAB70">status</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> number</span><span style="color:#E1E4E8"> } </span><span style="color:#F97583">?</span><span style="color:#B392F0"> R</span><span style="color:#F97583"> :</span><span style="color:#B392F0"> T</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> successResp</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> { response: { data: </span><span style="color:#9ECBFF">'foo'</span><span style="color:#E1E4E8"> }, status: </span><span style="color:#79B8FF">200</span><span style="color:#E1E4E8"> };</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> errorResp</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> { status: </span><span style="color:#79B8FF">400</span><span style="color:#E1E4E8"> };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">type</span><span style="color:#B392F0"> TS</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> InferResp</span><span style="color:#E1E4E8">&#x3C;</span><span style="color:#F97583">typeof</span><span style="color:#E1E4E8"> successRest>; </span><span style="color:#6A737D">// { data: string }</span></span>
+<span class="line"><span style="color:#F97583">type</span><span style="color:#B392F0"> TF</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> InferResp</span><span style="color:#E1E4E8">&#x3C;</span><span style="color:#F97583">typeof</span><span style="color:#E1E4E8"> errorResp>; </span><span style="color:#6A737D">// { status: number }</span></span></code></pre>
+</li>
+<li>
+<p>Recursion</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">type</span><span style="color:#B392F0"> SnakeToCamelCase</span><span style="color:#E1E4E8">&#x3C;</span><span style="color:#B392F0">T</span><span style="color:#F97583"> extends</span><span style="color:#79B8FF"> string</span><span style="color:#E1E4E8">> </span><span style="color:#F97583">=</span></span>
+<span class="line"><span style="color:#B392F0">  T</span><span style="color:#F97583"> extends</span><span style="color:#9ECBFF"> `${</span><span style="color:#F97583">infer</span><span style="color:#B392F0"> Head</span><span style="color:#9ECBFF">}_${</span><span style="color:#F97583">infer</span><span style="color:#B392F0"> Tail</span><span style="color:#9ECBFF">}`</span></span>
+<span class="line"><span style="color:#F97583">    ?</span><span style="color:#9ECBFF"> `${</span><span style="color:#B392F0">Uncapitalize</span><span style="color:#9ECBFF">&#x3C;</span><span style="color:#B392F0">Head</span><span style="color:#9ECBFF">></span><span style="color:#9ECBFF">}${</span><span style="color:#B392F0">Capitalize</span><span style="color:#9ECBFF">&#x3C;</span><span style="color:#B392F0">SnakeToCamelCase</span><span style="color:#9ECBFF">&#x3C;</span><span style="color:#B392F0">Tail</span><span style="color:#9ECBFF">>></span><span style="color:#9ECBFF">}`</span></span>
+<span class="line"><span style="color:#F97583">    :</span><span style="color:#B392F0"> T</span><span style="color:#E1E4E8">;</span></span></code></pre>
+</li>
+</ul>
+<h2 id="善用-ux-來提升-uu打造滿足新手和專家的-ui">善用 UX 來提升 UU，打造滿足新手和專家的 UI</h2>
+<blockquote>
+<p>重點：想要做出同時滿足新手與專家使用的產品，在介面設計上應該注意什麼事情？</p>
+</blockquote>
+<h3 id="操作介面常見問題">操作介面常見問題</h3>
+<ul>
+<li>初次使用（產品）若無法完成任務，很容易導致挫折、進而不願意再次嘗試（沒有下一次機會了）</li>
+<li>介面一口氣提供了太多資訊，容易讓新手感到緊張、不知從何下手</li>
+<li>假設提供操作說明：或許有幫助，但新手也不易記住這些步驟，閱讀說明也會打斷操作流程（回頭一看也忘記自己處理到哪一個步驟）</li>
+<li>自助操作系統常用步驟引導的方式來協助使用者進行操作，但拉長操作時間也會讓專家使用者感到不耐煩</li>
+<li>初次使用者 !== 新手，該使用者可能有使用類似產品的經驗</li>
+</ul>
+<h3 id="新手與專家對操作介面的共同需求">新手與專家對操作介面的共同需求</h3>
+<ul>
+<li>簡化資訊、進行資料分類、強調重點</li>
+<li>提供複數種操作方式，同時滿足新手與專家使用者（舉例：台鐵提供了時間與車次兩種訂票方式）</li>
+<li>使用現行標準、或使用者熟悉的元素（舉例：英文輸入使用與電腦鍵盤相同的排列方式）</li>
+<li>活用使用者經驗與記錄來提升操作效率（舉例：ATM 詢問使用者是否將某功能加入「常用交易」清單內）</li>
+</ul>
+<h3 id="何謂-uu">何謂 UU</h3>
+<ul>
+<li>易用性、通用使用性</li>
+<li><a href="https://en.wikipedia.org/wiki/Universal_usability">Universal Usability</a>, products that are <strong>usable for every citizen</strong>.
+<ul>
+<li>Supporting a broad range of <strong>hardware, software, and network access</strong>. 介面應支援各種軟硬體與網路環境</li>
+<li>Accommodating individual differences among users, such as age, gender, abilities, literacy, culture, income, and so forth. 需考量不同能力的使用者以及各種可能的使用情境</li>
+<li>Bridging the knowledge gap between what users know and what they need to know about a specific system. 不同知識背景與經驗的使用者都可以順利操作</li>
+</ul>
+</li>
+</ul>
+<h3 id="線上-qa">線上 QA</h3>
+<ul>
+<li>當輸入元素的外觀十分相似時，如何避免用戶做出錯誤輸入（比如把停車場圓形磁卡丟到硬幣孔）
+<ul>
+<li>可以配合亮燈提示，引導使用者根據不同步驟做出對應行為</li>
+</ul>
+</li>
+<li>是否有推薦新手入門 UIUX 的相關書籍或網路資源？
+<ul>
+<li>新手建議搭配實際案例來理解 UX 與 UI，不建議直接從理論下手</li>
+</ul>
+</li>
+</ul>
+<h2 id="參考文件">參考文件</h2>
+<ul>
+<li><a href="https://mopcon.org/2021/schedule/2021006">Huli: 你懂了 JavaScript，也不懂 JavaScript</a></li>
+<li><a href="https://mopcon.org/2021/schedule/2021012">PJCHENder: 用 Type 建立 Type：一起來當個 TypeScript 的型別魔術師</a></li>
+<li><a href="https://mopcon.org/2021/schedule/2021015">善用 UX 來提升 UU，打造滿足新手和專家的 UI</a></li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

@@ -1,0 +1,68 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.BScVxmeO.js"></script><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.1.2"><!-- Primary Meta Tags --><title>捨棄 create-react-app 之餘還架了個 astro blog 昭告天下：關於今年主題</title><meta name="title" content="捨棄 create-react-app 之餘還架了個 astro blog 昭告天下：關於今年主題"><meta name="description" content="2023 鐵人賽開始了，今年來聊聊前端基礎建設以及如何用 astro 架部落格。"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2023/ithome-2023-1"><meta property="og:title" content="捨棄 create-react-app 之餘還架了個 astro blog 昭告天下：關於今年主題"><meta property="og:description" content="2023 鐵人賽開始了，今年來聊聊前端基礎建設以及如何用 astro 架部落格。"><meta property="og:image" content="https://tzynwang.github.io/2023/ithome-2023-1/miguel-a-amutio-27QOmh18KDc-unsplash.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2023/ithome-2023-1"><meta property="twitter:title" content="捨棄 create-react-app 之餘還架了個 astro blog 昭告天下：關於今年主題"><meta property="twitter:description" content="2023 鐵人賽開始了，今年來聊聊前端基礎建設以及如何用 astro 架部落格。"><meta property="twitter:image" content="https://tzynwang.github.io/2023/ithome-2023-1/miguel-a-amutio-27QOmh18KDc-unsplash.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul:not(:has(li)){margin-top:16px;margin-bottom:16px}li{margin-top:4px;margin-bottom:4px;line-height:24px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:16px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}del{color:#4c5958e6}ol>li:has(p)>p{display:inline;margin:0}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+[data-astro-image]{width:100%;height:auto;object-fit:var(--fit);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>捨棄 create-react-app 之餘還架了個 astro blog 昭告天下：關於今年主題</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2023-09-16 07:10</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/2023鐵人賽" data-astro-cid-2iymvi75> 2023鐵人賽 </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#內容簡介" data-astro-cid-qtokga5y>內容簡介</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#前端專案基礎建設" data-astro-cid-qtokga5y>前端專案基礎建設</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#使用-astro-架設部落格" data-astro-cid-qtokga5y>使用 astro 架設部落格</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#目標讀者" data-astro-cid-qtokga5y>目標讀者</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#小結" data-astro-cid-qtokga5y>小結</a> </li> </ul> </div> <p>大家好，這半年來印象比較深刻、又能集結成文章分享的開發主題分別是：</p>
+<ul>
+<li>從零開始的前端專案基礎建設</li>
+<li><a href="https://tzynwang.github.io/">技術部落格</a>改版，從 <a href="https://hexo.io/index.html">hexo</a> 改用 <a href="https://astro.build/">astro</a></li>
+</ul>
+<p>並且大綱寫著寫著，發現兩個題目合併起來剛好可以湊滿 30 天的內容，於是今年的鐵人賽主題就撒尿牛丸化了。</p>
+<p>而接下來 29 天為了提供良好的閱讀體驗，前半段會集中討論「前端專案基礎建設」這個題目，後半段則是說明「如何使用 astro 架設、部署部落格到 GitHub 上」。</p>
+<p>以下是兩邊主題的大綱，還請參考 ( ´∀ ｀)つ t[ ]</p>
+<h2 id="內容簡介">內容簡介</h2>
+<h3 id="前端專案基礎建設">前端專案基礎建設</h3>
+<p>大綱如下，這基本上也是我在設定一個全新專案時的工作順序：</p>
+<ul>
+<li>從 package.json 開始，設定依賴套件、環境版本、腳本</li>
+<li>設定 tsconfig.json</li>
+<li>鋪設專案架構，同時也會分享我如何規劃專案的資料夾結構</li>
+<li>處理開發用的 webpack 設定</li>
+<li>設定 jest 與 cypress 來執行單元測試及 e2e 測試</li>
+<li>處理打包、部署流程</li>
+<li>寫文件拯救其他人（包括未來的自己）</li>
+</ul>
+<h3 id="使用-astro-架設部落格">使用 astro 架設部落格</h3>
+<p>大綱如下：</p>
+<ul>
+<li>建立並介紹 astro 的專案結構</li>
+<li>如何透過 astro 將 .md 檔轉為靜態網頁</li>
+<li>撰寫腳本來透過 command line 快速建立文章</li>
+<li>如何使用 astro 提供的 dynamic route</li>
+<li>埋設 GA4</li>
+<li>打包、部署到 GitHub Pages</li>
+<li>資源分享：如何尋找靈感、下班後的進修方向</li>
+</ul>
+<h2 id="目標讀者">目標讀者</h2>
+<ul>
+<li>（前半）覺得 create-react-app eject 後有點笨重、但又不確定從零開始處理專案基礎建設該怎麼開始的人</li>
+<li>（前半）想知道其他前端工程師都是怎麼管理專案資料夾結構的人</li>
+<li>（後半）想知道用 astro 架部落格大概需要做哪些事情的人</li>
+</ul>
+<h2 id="小結">小結</h2>
+<p>以上就是今年鐵人賽的主題簡介，有興趣的讀者歡迎訂閱系列文。</p>
+<p>如果針對文章內容有任何疑惑也歡迎留言。</p>
+<p>感謝你看到這裡 (ゝ ∀･)</p> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

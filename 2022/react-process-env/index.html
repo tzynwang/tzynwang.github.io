@@ -1,0 +1,83 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.BScVxmeO.js"></script><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.1.2"><!-- Primary Meta Tags --><title>2022 第13週 學習筆記：前端專案中的環境變數</title><meta name="title" content="2022 第13週 學習筆記：前端專案中的環境變數"><meta name="description" content="這是一個文組轉職前端工程師的技術部落格"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2022/react-process-env"><meta property="og:title" content="2022 第13週 學習筆記：前端專案中的環境變數"><meta property="og:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="og:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2022/react-process-env"><meta property="twitter:title" content="2022 第13週 學習筆記：前端專案中的環境變數"><meta property="twitter:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="twitter:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul:not(:has(li)){margin-top:16px;margin-bottom:16px}li{margin-top:4px;margin-bottom:4px;line-height:24px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:16px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}del{color:#4c5958e6}ol>li:has(p)>p{display:inline;margin:0}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+[data-astro-image]{width:100%;height:auto;object-fit:var(--fit);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>2022 第13週 學習筆記：前端專案中的環境變數</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2022-04-03 21:40</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/React" data-astro-cid-2iymvi75> React </a> <a class="tag" href="/tag/webpack" data-astro-cid-2iymvi75> webpack </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#總結" data-astro-cid-qtokga5y>總結</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#版本與環境" data-astro-cid-qtokga5y>版本與環境</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#筆記" data-astro-cid-qtokga5y>筆記</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#nodejs-與環境變數" data-astro-cid-qtokga5y>Node.js 與環境變數</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#前端專案中的環境變數" data-astro-cid-qtokga5y>前端專案中的環境變數</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#參考文件" data-astro-cid-qtokga5y>參考文件</a> </li> </ul> </div> <h2 id="總結">總結</h2>
+<p>記錄一下 Node.js 中的 <code>process.env</code> 與環境變數的相關特性，以及在前端搭配 webpack5 的 React APP 專案中，環境變數是怎麼被讀入的</p>
+<h2 id="版本與環境">版本與環境</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>react: 17</span></span>
+<span class="line"><span>dotenv: 10.0.0</span></span>
+<span class="line"><span>webpack: 5.64.4</span></span></code></pre>
+<h2 id="筆記">筆記</h2>
+<h3 id="nodejs-與環境變數">Node.js 與環境變數</h3>
+<ul>
+<li><code>process</code>: The <code>process</code> object is a <code>global</code> that provides information about, and control over, the <strong>current Node.js process</strong>. As a global, it is always available to Node.js applications without using <code>require()</code>. 是一種物件，提供當下 Node.js 執行環境的資訊</li>
+<li><code>process.env</code>: returns an <code>object</code> containing the user environment.
+<ul>
+<li>Assigning a property on <code>process.env</code> will implicitly <strong>convert the value to a string</strong>. 注意 <code>process.env</code> 只會回傳字串形式的資料（<code>"true"</code>, <code>"undefined"</code>, <code>"42"</code>）</li>
+<li>On <strong>Windows</strong> operating systems, environment variables are <strong>case-insensitive</strong>. 在 Windows 的環境變數<strong>不會區別大小寫</strong></li>
+</ul>
+</li>
+</ul>
+<h3 id="前端專案中的環境變數">前端專案中的環境變數</h3>
+<blockquote>
+<p>注意：以下筆記內容是建立在使用 <code>create-react-app</code> 建立專案，並執行 <code>npm run eject</code> 後整理出來的資訊</p>
+</blockquote>
+<p>示範專案 repo：<a href="https://github.com/tzynwang/react-process-env">https://github.com/tzynwang/react-process-env</a></p>
+<script src="https://gist.github.com/tzynwang/1fe5e71d4c96f082c8ff189975eb0bf8.js"></script>
+<ul>
+<li><code>/react-app/config/path.js</code> 第 53, 55 行：預設為讀取位在專案根目錄的 <code>.env</code> 檔案</li>
+</ul>
+<script src="https://gist.github.com/tzynwang/f66834717bcbb9099a8b84f83eaa534a.js"></script>
+<ul>
+<li><code>/react-app/config/env.js</code> 第 33-41 行：讀取 <code>.env</code> 內容
+<ul>
+<li><code>existsSync</code>: Returns <code>true</code> if the path exists, <code>false</code> otherwise. 檢驗該路徑是否存在</li>
+<li>這段程式碼的目的：檢驗 <code>.env</code> 是否存在，若存在，則 <code>require('dotenv')</code> 來協助讀取 <code>.env</code> 內容</li>
+<li>dotenv 此 npm package 的目的：協助專案讀取 <code>.env</code> 內容，可參考<a href="https://github.com/motdotla/dotenv/blob/master/lib/main.js">原始碼</a></li>
+</ul>
+</li>
+<li>第 61 行：將 <code>.env</code> 檔案中變數名稱帶有 <code>REACT_APP_</code> 前綴的變數自動納入 63 行 <code>getClientEnvironment</code> 回傳的內容，如果不在變數加上 <code>REACT_APP_</code> 此前綴，就需要手動將變數一個一個加入 <code>getClientEnvironment</code> 中
+<ul>
+<li>優點：加上 <code>REACT_APP_</code> 即可讓 webpack 在打包時幫忙自動處理相關的環境變數，不需透過手動加入</li>
+<li>缺點：透過自動處理的環境變數內容只會是 string 型別，在需要判定環境變數的 <code>true/false</code> 或使用 <code>PORT</code> 等做為 number 型態的資料時，需在使用時進行型別轉換，或進行手動判別（布林值）</li>
+</ul>
+</li>
+<li>第 92-95 行：這邊是手動追加的部分，代表追加 <code>PROJECT_AUTHOR</code>，<code>PROJECT_SINCE</code> 與 <code>PROJECT_RELEASE</code> 這三個項目，並針對 process.env 回傳的內容進行型別轉換</li>
+</ul>
+<script src="https://gist.github.com/tzynwang/467fdbbe0745557fc49317ec8ef13452.js"></script>
+<p><img src="/2022/react-process-env/read-env-demo.png" alt="process env"></p>
+<ul>
+<li>在 <code>/react-app/src/App.tsx</code> 中透過 <code>console.log(process.env)</code> 可以觀察到：如果是有 <code>REACT_APP_</code> 前綴的環境變數，全部都是 <code>string</code> 型別；而如果是透過手動追加的環境變數，因為已經先在 webpack 編譯的過程中將之還原回應有的（<code>boolean</code>、<code>number</code>）型別，故會以轉換過的型別出現</li>
+</ul>
+<h2 id="參考文件">參考文件</h2>
+<ul>
+<li><a href="https://create-react-app.dev/docs/adding-custom-environment-variables/">Create React App: Adding Custom Environment Variables</a></li>
+<li><a href="https://www.npmjs.com/package/dotenv">npm: dotenv</a></li>
+<li><a href="https://nodejs.org/dist/latest-v8.x/docs/api/process.html#process_process_env">Node.js: process.env</a></li>
+<li><a href="https://nodejs.dev/learn/how-to-read-environment-variables-from-nodejs">Node.js: How to read environment variables from Node.js</a></li>
+<li><a href="https://stackoverflow.com/questions/57663555/how-to-access-environment-variables-from-the-front-end">How to access environment variables from the front-end</a></li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

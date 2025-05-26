@@ -1,0 +1,69 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.BScVxmeO.js"></script><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.1.2"><!-- Primary Meta Tags --><title>2022 第48週 學習筆記：CSS 中的顏色格式與人眼視覺</title><meta name="title" content="2022 第48週 學習筆記：CSS 中的顏色格式與人眼視覺"><meta name="description" content="這是一個文組轉職前端工程師的技術部落格"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2022/css-color-format"><meta property="og:title" content="2022 第48週 學習筆記：CSS 中的顏色格式與人眼視覺"><meta property="og:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="og:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2022/css-color-format"><meta property="twitter:title" content="2022 第48週 學習筆記：CSS 中的顏色格式與人眼視覺"><meta property="twitter:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="twitter:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul:not(:has(li)){margin-top:16px;margin-bottom:16px}li{margin-top:4px;margin-bottom:4px;line-height:24px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:16px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}del{color:#4c5958e6}ol>li:has(p)>p{display:inline;margin:0}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+[data-astro-image]{width:100%;height:auto;object-fit:var(--fit);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>2022 第48週 學習筆記：CSS 中的顏色格式與人眼視覺</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2022-12-03 16:29</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/CSS" data-astro-cid-2iymvi75> CSS </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#總結" data-astro-cid-qtokga5y>總結</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#筆記" data-astro-cid-qtokga5y>筆記</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#什麼是色域-color-space" data-astro-cid-qtokga5y>什麼是色域 (color space)</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#在-css-中宣告顏色的方法" data-astro-cid-qtokga5y>在 CSS 中宣告顏色的方法</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#視錐細胞-cone-cell-與視桿細胞-rod-cell" data-astro-cid-qtokga5y>視錐細胞 (cone cell) 與視桿細胞 (rod cell)</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#參考文件" data-astro-cid-qtokga5y>參考文件</a> </li> </ul> </div> <h2 id="總結">總結</h2>
+<p>記錄一下從 <a href="https://www.joshwcomeau.com/css/color-formats/">Color Formats in CSS</a> 以及 YouTube 影片 <a href="https://youtu.be/cGyLHxn16pE">Color Spaces: Do YOU know the difference between sRGB, LAB and CIE XYZ? - HTTP 203</a> 中學到的東西。</p>
+<h2 id="筆記">筆記</h2>
+<h3 id="什麼是色域-color-space">什麼是色域 (color space)</h3>
+<blockquote>
+<p><a href="https://zh.wikipedia.org/zh-tw/%E8%89%B2%E5%9F%9F">維基百科</a>：色域是對一種顏色進行編碼的方法，也指一個技術系統能夠產生的顏色的總合。</p>
+</blockquote>
+<p>每種色域涵蓋的顏色數量不同，實際範圍可參考下圖，最常在網路世界被使用的色域為 sRGB。</p>
+<blockquote>
+<p><a href="https://en.wikipedia.org/wiki/SRGB">wikipedia</a>: sRGB is the current defined <strong>standard colorspace for the web</strong>, and it is usually the assumed colorspace for images that are neither tagged for a colorspace nor have an embedded color profile.</p>
+</blockquote>
+<p><img src="/2022/css-color-format/color-space.png" alt="color space"></p>
+<p>而 CSS 中的 <code>color()</code> 功能讓開發者可以指定要使用哪一種色域。但需注意：目前僅有 safari 瀏覽器支援 <code>color()</code>，且使用者的螢幕規格也不一定能配合顯示開發者指定的色域。</p>
+<blockquote>
+<p><a href="https://w3c.github.io/csswg-drafts/css-color/#color-function">w3c specification</a>: The <code>color()</code> function allows a color to be specified in a particular, specified color space (rather than the implicit sRGB color space that most of the other color functions operate in).</p>
+</blockquote>
+<p>下圖左右分別為 <code>srgb</code> 與 <code>p3</code> 色域中的深紅色，右側的色塊看起來比左側更飽和、鮮豔：</p>
+<p><img src="/2022/css-color-format/srgb-p3-maroon.png" alt="color space srgb and p3"></p>
+<h3 id="在-css-中宣告顏色的方法">在 CSS 中宣告顏色的方法</h3>
+<ul>
+<li><code>rgb()</code> 與 <code>hex code</code> 三者皆是透過「指定紅綠藍成分」來組合出顏色</li>
+<li><code>hsl()</code> 是透過指定顏色的色調 (hue)、飽和度 (saturation) 與明度 (lightness) 來組成顏色。相較於 rgb 與 hex code，優點是在調整「飽和度」與「明度」這兩個項目上更直覺，修改數值即可調整一個顏色的濃淡與明暗</li>
+<li><code>lch()</code> 的原理與 <code>hsl()</code> 有些類似：透過指定顏色的明度、彩度 (chroma) 與色調 (hue) 來組合顏色。與 <code>hsl()</code> 不同的地方是，在 <code>lch()</code> 固定明度與彩度的情況下修改色調，可以達成「人眼看起來亮度一致，僅有顏色不同」的效果。缺點是這篇筆記撰寫的時間點只有 safari 支援此宣告方式</li>
+</ul>
+<p>以下是透過 <code>hsl()</code> 指定「同樣飽和度、同樣明度」的黃色 (<code>hsl(70, 100%, 50%)</code>) 與紫色 (<code>hsl(257, 100%, 50%)</code>)，但人眼會感覺左邊的黃色「比較亮」：</p>
+<p><img src="/2022/css-color-format/hsl.png" alt="hsl"></p>
+<p>而以下兩張圖片則是透過 <code>lch()</code> 指定「同樣明度、同樣彩度」的黃色與紫色；相較於 <code>hsl()</code> 版本，以下兩組圖片的左右「亮度」看起來會比較一致：</p>
+<p><img src="/2022/css-color-format/lch-1.png" alt="lch example 1"></p>
+<p><img src="/2022/css-color-format/lch-2.png" alt="lch example 2"></p>
+<h3 id="視錐細胞-cone-cell-與視桿細胞-rod-cell">視錐細胞 (cone cell) 與視桿細胞 (rod cell)</h3>
+<p>參考維基百科說明：</p>
+<blockquote>
+<p><a href="https://zh.wikipedia.org/zh-tw/%E8%A7%86%E9%94%A5%E7%BB%86%E8%83%9E">視錐細胞</a>（cone cell）是視網膜上一種色覺感光細胞。人類每隻眼球視網膜大約 600 至 700 萬個視錐細胞。視錐細胞主要負責<strong>顏色識別</strong>，並且在相對較亮的光照下更能發揮作用。
+<a href="https://zh.wikipedia.org/zh-tw/%E8%A7%86%E6%9D%86%E7%BB%86%E8%83%9E">視桿細胞</a> (rod cell) 較視錐細胞<strong>對光更敏感</strong>，幾乎主要全部用於夜視力。人類視網膜平均有約 1 億 2500 萬個視桿細胞。</p>
+</blockquote>
+<p>有鑒於人眼對色彩變化較不敏銳，比較擅長察覺亮度變化的特性，JPEG 格式便是透過捨棄色彩、但保留圖片的明暗度資訊來達成良好的壓縮效果。</p>
+<h2 id="參考文件">參考文件</h2>
+<ul>
+<li><a href="https://www.joshwcomeau.com/css/color-formats/">Color Formats in CSS</a></li>
+<li><a href="https://youtu.be/cGyLHxn16pE">YouTube: Color Spaces: Do YOU know the difference between sRGB, LAB and CIE XYZ? - HTTP 203</a></li>
+<li><a href="https://ajalt.github.io/colormath/">colormath</a></li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

@@ -1,0 +1,90 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.BScVxmeO.js"></script><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.1.2"><!-- Primary Meta Tags --><title>閱讀筆記：The Programmer&#39;s Brain Chapter 13 How to onboard new developers</title><meta name="title" content="閱讀筆記：The Programmer's Brain Chapter 13 How to onboard new developers"><meta name="description" content="新人上線時不要一口氣給予太多資訊，避免認知負荷過高，讓新人無法正常表現。"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2023/the-programmers-brain-ch13-how-to-onboard-new-developers"><meta property="og:title" content="閱讀筆記：The Programmer's Brain Chapter 13 How to onboard new developers"><meta property="og:description" content="新人上線時不要一口氣給予太多資訊，避免認知負荷過高，讓新人無法正常表現。"><meta property="og:image" content="https://tzynwang.github.io/2023/the-programmers-brain-ch13-how-to-onboard-new-developers/vlad-tchompalov-wt5Y8VY_0bA-unsplash.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2023/the-programmers-brain-ch13-how-to-onboard-new-developers"><meta property="twitter:title" content="閱讀筆記：The Programmer's Brain Chapter 13 How to onboard new developers"><meta property="twitter:description" content="新人上線時不要一口氣給予太多資訊，避免認知負荷過高，讓新人無法正常表現。"><meta property="twitter:image" content="https://tzynwang.github.io/2023/the-programmers-brain-ch13-how-to-onboard-new-developers/vlad-tchompalov-wt5Y8VY_0bA-unsplash.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul:not(:has(li)){margin-top:16px;margin-bottom:16px}li{margin-top:4px;margin-bottom:4px;line-height:24px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:16px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}del{color:#4c5958e6}ol>li:has(p)>p{display:inline;margin:0}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+[data-astro-image]{width:100%;height:auto;object-fit:var(--fit);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>閱讀筆記：The Programmer&#39;s Brain Chapter 13 How to onboard new developers</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2023-11-16 18:34</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/General" data-astro-cid-2iymvi75> General </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#總結" data-astro-cid-qtokga5y>總結</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#各章節筆記" data-astro-cid-qtokga5y>各章節筆記</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#issues-in-the-onboarding-process" data-astro-cid-qtokga5y>Issues in the onboarding process</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#differences-between-experts-and-novices" data-astro-cid-qtokga5y>Differences between experts and novices</a> </li><li class="toc-4" data-astro-cid-qtokga5y> <a href="#neo-piagetian-stages-for-programming" data-astro-cid-qtokga5y>Neo-Piagetian stages for programming</a> </li><li class="toc-4" data-astro-cid-qtokga5y> <a href="#difference-between-seeing-concepts-concretely-and-abstractly" data-astro-cid-qtokga5y>Difference between seeing concepts concretely and abstractly</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#activities-for-a-better-onboarding-process" data-astro-cid-qtokga5y>Activities for a better onboarding process</a> </li><li class="toc-4" data-astro-cid-qtokga5y> <a href="#limit-tasks-to-one-programming-activity" data-astro-cid-qtokga5y>Limit tasks to one programming activity</a> </li><li class="toc-4" data-astro-cid-qtokga5y> <a href="#support-the-memory-of-the-onboardee" data-astro-cid-qtokga5y>Support the memory of the onboardee</a> </li><li class="toc-4" data-astro-cid-qtokga5y> <a href="#read-code-together" data-astro-cid-qtokga5y>Read code together</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#參考文件" data-astro-cid-qtokga5y>參考文件</a> </li> </ul> </div> <h2 id="總結">總結</h2>
+<p>本章特別強調在新人上線時不要一口氣給予太多資訊，避免認知負荷太重，讓新人無法正常表現。也提供一些實務建議，讓老鳥、新人兩方在上線時都能有更好的體驗。</p>
+<h2 id="各章節筆記">各章節筆記</h2>
+<h3 id="issues-in-the-onboarding-process">Issues in the onboarding process</h3>
+<blockquote>
+<p>一口氣讓新人接收太多知識，會讓對方的認知負荷（cognitive load）太重，導致難以思考或是記憶。</p>
+</blockquote>
+<p>在上線第一天就帶新人認識環境、介紹公司、介紹未來要負責的專案，甚至第一天就讓人「解一些簡單的小問題」——同時吸收這麼多資訊，會讓新人的認知負荷爆表，無法發揮平常的思考水準。老鳥也可能因此誤判新人的實力（「加個小功能應該很簡單，怎麼做這麼久？」）。</p>
+<h3 id="differences-between-experts-and-novices">Differences between experts and novices</h3>
+<blockquote>
+<p>老鳥與新人對專案的理解程度完全不同。</p>
+</blockquote>
+<p>老鳥熟悉公司的專案架構與商業邏輯。老鳥腦中的長期記憶能提供許多經驗幫助除錯、讓開發更順暢。老鳥通常也不用一行一行去讀程式碼，更多是一瞥就大概知道那段功能的目的（比如重置狀態）。但對新人來說，他需要逐行讀完才知道整包 code 在做什麼。兩方承受的認知負荷完全不同。</p>
+<h4 id="neo-piagetian-stages-for-programming">Neo-Piagetian stages for programming</h4>
+<p>皮亞傑的<a href="https://zh.wikipedia.org/zh-tw/%E8%AA%8D%E7%9F%A5%E7%99%BC%E5%B1%95%E8%AB%96">認知發展論</a>旨在描述兒童於不同年齡階段的思考能力。而借鑑皮亞傑的理論，我們能根據工程師對一個領域（domain）的理解程度，分類為以下四種等級：</p>
+<ol>
+<li>感覺動作階段（sensorimotor stage）：對程式碼毫無概念，無法預測程式碼的執行結果</li>
+<li>前運思階段（preoperational stage）：能「推測」程式碼的執行結果，但不一定能解釋「為什麼我這樣猜」。如果新人還不熟悉開發用的程式語言，那麼加強新人對程式語言的理解（語法、語法糖、接口等等）能幫助對方進入狀況</li>
+<li>具體運思階段（concrete operational stage）：能根據程式碼「合理地預測」執行結果。進入此階段的開發者不再依賴手動輸出來檢驗自己的假設是否正確，他們讀完程式碼就知道結果是什麼。不過有時還是會無法覺察自己的思考方向是否有誤</li>
+<li>形式運思階段（formal operational stage）：已經熟稔特定語言的老練工程師，多半能自行理解一包專案，缺乏的大概只是商業邏輯相關的知識</li>
+</ol>
+<p><img src="/2023/the-programmers-brain-ch13-how-to-onboard-new-developers/figure_13-1.png" alt="4 neo-Piagetian levels for programming"></p>
+<p>注意：就算是同一位工程師，在接觸不熟悉的領域就有可能退行到上一階段。比如一位資深前端工程師在學習後端 api 開發、資料庫操作等主題時，因為沒有太多相關知識，他的程度可能會退化到「感覺動作期」。</p>
+<h4 id="difference-between-seeing-concepts-concretely-and-abstractly">Difference between seeing concepts concretely and abstractly</h4>
+<blockquote>
+<p>如何製造良好的學習體驗：先總結，再提供實際範例，最後回到抽象概念上。</p>
+</blockquote>
+<p><img src="/2023/the-programmers-brain-ch13-how-to-onboard-new-developers/CH13_F02_Hermans2.png" alt="the semantic wave"></p>
+<p>只有提供理論或是實例都不夠。在學習新東西時，比較好的做法是：</p>
+<ol>
+<li>先了解功能：為什麼要用？通常用在哪裡？已經熟悉這個工具的人會如何總結（summarize）它？</li>
+<li>接觸範例（上圖的 unpacking 流程）：透過實作理解語法以及應用場景，知識進入實作層面</li>
+<li>總結為抽象概念（上圖的 repacking 流程）：使用自己的語言進行總結，知識回到抽象層面</li>
+</ol>
+<h3 id="activities-for-a-better-onboarding-process">Activities for a better onboarding process</h3>
+<blockquote>
+<p>大原則：管制新人的認知負荷，並鼓勵使用「具體的詞彙」來描述自己的認知狀態。</p>
+</blockquote>
+<p>具體的詞彙：介紹認知負荷、長期記憶、短期記憶、工作記憶、分塊（chunking）等概念，讓新人在有困難時，能夠具體描述他在哪方面需要幫助（例：我一次接收到太多新資訊，需要緩緩）。</p>
+<h4 id="limit-tasks-to-one-programming-activity">Limit tasks to one programming activity</h4>
+<p>要新人「幫專案新增一個小功能」其實包含了搜尋、理解、轉錄、增量，總計<strong>四種</strong>心智活動（參考<a href="/2023/the-programmers-brain-ch11-the-act-of-writing-code#%E9%96%8B%E7%99%BC%E8%A1%8C%E7%82%BA%E8%83%8C%E5%BE%8C%E7%9A%84%E5%BF%83%E6%99%BA%E6%B4%BB%E5%8B%95">第 11 章</a>的筆記）。理想上是讓讓新人一次做一件事情就好。建議讓新人先看專案，看懂後再讓他搜尋適合新增功能的位置，最後才是動手寫。</p>
+<h4 id="support-the-memory-of-the-onboardee">Support the memory of the onboardee</h4>
+<p>以下是能幫助新人更快進入狀況的上線流程建議：</p>
+<ul>
+<li>向新人介紹公司的商業邏輯</li>
+<li>向新人介紹他日後要維護的專案，比如使用的技術、第三方套件以及部署流程等等</li>
+<li>比起直接開始維護，讓新人先針對一個功能或是模組寫下「功能總結（summary）」更能幫助新人知道專案在做什麼</li>
+<li>適度使用流程圖來幫助理解</li>
+</ul>
+<h4 id="read-code-together">Read code together</h4>
+<p>本書認為老鳥、新人「一起讀程式碼」也是種能加入上線流程的活動。注意事項如下：</p>
+<ul>
+<li>在閱讀專案程式碼前，先介紹該專案的商業邏輯、或是跟程式碼無關，但有助於理解專案的資訊</li>
+<li>新人可能不知道哪一段程式碼是專案的核心，老鳥可適時提點之</li>
+<li>關注新人的理解狀況，可以請新人描述他目前為止「理解了哪些東西」</li>
+<li>承上，如果新人看起來快吐了、或是開始答非所問，就先休息、整理筆記與腦袋，畢竟硬塞也記不住</li>
+<li>如果畫圖能幫助理解，就畫圖</li>
+</ul>
+<h2 id="參考文件">參考文件</h2>
+<ul>
+<li><a href="https://www.manning.com/books/the-programmers-brain">Manning: The Programmer’s Brain</a></li>
+<li><a href="https://zh.wikipedia.org/zh-tw/%E8%AA%8D%E7%9F%A5%E7%99%BC%E5%B1%95%E8%AB%96">認知發展論</a></li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

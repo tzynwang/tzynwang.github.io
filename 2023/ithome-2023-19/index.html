@@ -1,0 +1,107 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.BScVxmeO.js"></script><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.1.2"><!-- Primary Meta Tags --><title>捨棄 create-react-app 之餘還架了個 astro blog 昭告天下：讀取 .md</title><meta name="title" content="捨棄 create-react-app 之餘還架了個 astro blog 昭告天下：讀取 .md"><meta name="description" content="部落格的基本單位就是文章，今天就來看看如何寫出 astro 能處理 .md 檔吧"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2023/ithome-2023-19"><meta property="og:title" content="捨棄 create-react-app 之餘還架了個 astro blog 昭告天下：讀取 .md"><meta property="og:description" content="部落格的基本單位就是文章，今天就來看看如何寫出 astro 能處理 .md 檔吧"><meta property="og:image" content="https://tzynwang.github.io/2023/ithome-2023-19/elisa-calvet-b-S3nUOqDmUvc-unsplash.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2023/ithome-2023-19"><meta property="twitter:title" content="捨棄 create-react-app 之餘還架了個 astro blog 昭告天下：讀取 .md"><meta property="twitter:description" content="部落格的基本單位就是文章，今天就來看看如何寫出 astro 能處理 .md 檔吧"><meta property="twitter:image" content="https://tzynwang.github.io/2023/ithome-2023-19/elisa-calvet-b-S3nUOqDmUvc-unsplash.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul:not(:has(li)){margin-top:16px;margin-bottom:16px}li{margin-top:4px;margin-bottom:4px;line-height:24px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:16px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}del{color:#4c5958e6}ol>li:has(p)>p{display:inline;margin:0}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+[data-astro-image]{width:100%;height:auto;object-fit:var(--fit);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>捨棄 create-react-app 之餘還架了個 astro blog 昭告天下：讀取 .md</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2023-10-04 08:03</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/2023鐵人賽" data-astro-cid-2iymvi75> 2023鐵人賽 </a> <a class="tag" href="/tag/astro" data-astro-cid-2iymvi75> astro </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#關於-md-檔" data-astro-cid-qtokga5y>關於 md 檔</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#frontmattermeta-區" data-astro-cid-qtokga5y>frontmatter/meta 區</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#文章本體區" data-astro-cid-qtokga5y>文章本體區</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#關於-layout-元件" data-astro-cid-qtokga5y>關於 layout 元件</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#script-部分" data-astro-cid-qtokga5y>Script 部分</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#template-部分" data-astro-cid-qtokga5y>Template 部分</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#總結" data-astro-cid-qtokga5y>總結</a> </li> </ul> </div> <p>根據<a href="https://docs.astro.build/en/guides/markdown-content/">官方文件</a>，開發者只要根據 <a href="https://stackoverflow.com/a/44222826">frontmatter YAML</a> 以及 <a href="https://www.markdownguide.org/basic-syntax/">markdown syntax</a> 來撰寫 <code>.md</code> 內容，就能直接借用 astro 內附的 markdown 編譯功能來把部落格文章轉為結構穩當的靜態網站。</p>
+<p>今天會來簡單介紹在 astro 撰寫 <code>.md</code> 時的注意事項。</p>
+<h2 id="關於-md-檔">關於 md 檔</h2>
+<p>首先來在 <code>./src/pages</code> 資料夾中新增一個 <code>hello-world.md</code> 檔案，結構如下：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="md"><code><span class="line"><span style="color:#E1E4E8">---</span></span>
+<span class="line"><span style="color:#9ECBFF">&#x3C;!--- 在兩組 `---` 之間的是 frontmatter 區塊 --></span></span>
+<span class="line"><span style="color:#85E89D">layout</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">title</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">date</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#E1E4E8">---</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">&#x3C;!--- 在第二組 `---` 之後的是文章本體區塊 --></span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF;font-weight:bold">## 標題</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">內文 ⋯⋯</span></span></code></pre>
+<h3 id="frontmattermeta-區">frontmatter/meta 區</h3>
+<p>除了常見的 <code>title</code> / <code>date</code> / <code>tag</code> 等「常見的文章 meta 資訊外」，astro 允許開發者在 <code>.md</code> frontmatter 區塊使用 <code>layout</code> 這個特殊關鍵字：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="md"><code><span class="line"><span style="color:#E1E4E8">---</span></span>
+<span class="line"><span style="color:#85E89D">title</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">鐵人賽 Modern Web 組「捨棄 create-react-app 之餘還架了個 astro blog 昭告天下」第 19 天</span></span>
+<span class="line"><span style="color:#85E89D">date</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">2023-09-07 19:29:09</span></span>
+<span class="line"><span style="color:#85E89D">tag</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#E1E4E8">- [</span><span style="color:#9ECBFF">2023鐵人賽</span><span style="color:#E1E4E8">]</span></span>
+<span class="line"><span style="color:#85E89D">banner</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">/2023/ithome-2023-19/elisa-calvet-b-S3nUOqDmUvc-unsplash.jpg</span></span>
+<span class="line"><span style="color:#85E89D">summary</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">部落格的基本單位就是文章，今天就來看看 astro 如何處理 .md 檔案吧</span></span>
+<span class="line"><span style="color:#85E89D">draft</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">true</span></span>
+<span class="line"><span style="color:#E1E4E8">---</span></span></code></pre>
+<p>上方 <code>.md</code> frontmatter 代表的意義是：對這篇文章套用指定的 astro 元件 <code>@Components/pages/SinglePostLayout.astro</code>（提醒：實際路徑為 <code>./src/components/pages/SinglePostLayout.astro</code>）。</p>
+<p>另外，這篇文章其餘的 meta 資訊包含 <code>title</code> / <code>date</code> / <code>tag</code> / <code>banner</code> / <code>summary</code> / <code>draft</code> 六個項目。</p>
+<h3 id="文章本體區">文章本體區</h3>
+<p>astro 會把位於此處的內容轉為<a href="https://www.markdownguide.org/basic-syntax/">對應的 html 元件</a>。開發者寫文時只要專注於內容與結構編排，不需要額外煩惱轉譯為靜態網站內容的問題。</p>
+<p>提醒：在 <code>.md</code> 中引用圖片、影片等靜態內容時，須將檔案放置於 <code>./public</code> 中再行引用。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="md"><code><span class="line"><span style="color:#E1E4E8">![</span><span style="color:#DBEDFF;text-decoration:underline">這裡是圖片 alt 文字內容</span><span style="color:#E1E4E8">](</span><span style="color:#E1E4E8;text-decoration:underline">/image/hello-world.jpg</span><span style="color:#E1E4E8">)</span></span></code></pre>
+<p>以上在做的事情即是「引用位於 <code>./public/image</code> 資料夾中的 <code>hello-world.jpg</code> 圖片」。注意不需要在靜態檔案的路徑中包含 <code>./public</code> 資料夾。</p>
+<h2 id="關於-layout-元件">關於 layout 元件</h2>
+<p>一個 astro 元件基本上會有 <a href="https://docs.astro.build/en/core-concepts/astro-components/#component-structure">Component Script 與 Component Template</a> 兩個部分。而以 <code>.md</code> 中指定的排版元件 <code>SinglePostLayout</code> 來說，它會包含以下內容：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="astro"><code><span class="line"><span style="color:#6A737D">---</span></span>
+<span class="line"><span style="color:#6A737D">// Component Script</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">interface</span><span style="color:#B392F0"> Post</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#FFAB70">  title</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> string</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#FFAB70">  date</span><span style="color:#F97583">:</span><span style="color:#B392F0"> Date</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#FFAB70">  tag</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> string</span><span style="color:#E1E4E8">[];</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">interface</span><span style="color:#B392F0"> Props</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#FFAB70">  frontmatter</span><span style="color:#F97583">:</span><span style="color:#B392F0"> Post</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#E1E4E8"> { </span><span style="color:#79B8FF">frontmatter</span><span style="color:#E1E4E8"> } </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> Astro.props;</span></span>
+<span class="line"><span style="color:#6A737D">---</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">&#x3C;!-- Component Template (HTML + JS Expressions) --></span></span>
+<span class="line"><span style="color:#E1E4E8">&#x3C;</span><span style="color:#85E89D">div</span><span style="color:#B392F0"> class</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"post-container"</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;</span><span style="color:#85E89D">h1</span><span style="color:#E1E4E8">>{frontmatter.title}&#x3C;/</span><span style="color:#85E89D">h1</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;</span><span style="color:#85E89D">div</span><span style="color:#B392F0"> class</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"info"</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#85E89D">span</span><span style="color:#E1E4E8">>{frontmatter.date}&#x3C;/</span><span style="color:#85E89D">span</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#85E89D">span</span><span style="color:#B392F0"> class</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"tag-container"</span></span>
+<span class="line"><span style="color:#E1E4E8">      >{frontmatter.tag.</span><span style="color:#B392F0">map</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">tag</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> &#x3C;</span><span style="color:#85E89D">span</span><span style="color:#E1E4E8">>{tag}&#x3C;/</span><span style="color:#85E89D">span</span><span style="color:#E1E4E8">>)}&#x3C;/</span><span style="color:#85E89D">span</span></span>
+<span class="line"><span style="color:#E1E4E8">    ></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;/</span><span style="color:#85E89D">div</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;</span><span style="color:#85E89D">slot</span><span style="color:#E1E4E8"> /></span></span>
+<span class="line"><span style="color:#E1E4E8">&#x3C;/</span><span style="color:#85E89D">div</span><span style="color:#E1E4E8">></span></span></code></pre>
+<h3 id="script-部分">Script 部分</h3>
+<p>根據官方文件，我們知道可以透過 <code>Astro.props.frontmatter</code> 取得我們在 <code>.md</code> frontmatter 區塊設定好的 meta 內容：</p>
+<blockquote>
+<p>Specific properties are then available to the layout component through <code>Astro.props</code>. For example, you can access frontmatter properties through <code>Astro.props.frontmatter</code>.</p>
+</blockquote>
+<p>官方定義好的 <code>Astro.props</code> 完整內容可參考 <a href="https://docs.astro.build/en/core-concepts/layouts/#markdown-layout-props">Markdown Layout Props</a>。</p>
+<p>但在這個元件中，為了避免 TypeScript 報錯，我選擇重新定義 <code>interface Props</code> 來覆寫 astro 官方型別，這樣在 Template 部分才能順利取得 (markdown) Generated values 的內容（即 <code>interface Post</code> 中列出項目）。</p>
+<h3 id="template-部分">Template 部分</h3>
+<p>我在這裡取出每篇文章的標題（<code>frontmatter.title</code>）放到 h1 中，並且透過 span 元件顯示發文日期（<code>frontmatter.date</code>）以及標籤（<code>frontmatter.tag</code>）。</p>
+<p>而重點來了，整篇 <code>.md</code> 文章（已經結構化）的內容都會被傳入 <code>&#x3C;slot /></code> 元件裡面：</p>
+<blockquote>
+<p><a href="https://docs.astro.build/en/core-concepts/layouts/#markdownmdx-layouts">astro docs</a>: A typical layout for Markdown or MDX pages includes the frontmatter prop to access the Markdown or MDX page’s frontmatter and other data, and a default <code>&#x3C;slot /></code> to indicate where the page’s Markdown/MDX content should be rendered.</p>
+</blockquote>
+<p>沒錯，一個負責渲染 markdown 文章內容的 astro layout 只需要這些要素就能正常運作了。</p>
+<h2 id="總結">總結</h2>
+<p>完成以上內容後，可開啟本地伺服器並移動到 <code>localhost:4321/hello-world</code>，這時你應該能看到被轉為 html 的 <code>hello-world.md</code> 內容。</p>
+<p>現在你知道如何撰寫 astro 能看懂的 markdown 檔了 👍</p> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

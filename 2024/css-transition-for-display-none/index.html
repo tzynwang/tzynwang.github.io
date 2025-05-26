@@ -1,0 +1,106 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.BScVxmeO.js"></script><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.1.2"><!-- Primary Meta Tags --><title>CSS 筆記：如何實現 display none 的漸變效果</title><meta name="title" content="CSS 筆記：如何實現 display none 的漸變效果"><meta name="description" content="雖然目前 Firefox 還不支援，不過已經可以靠 `@starting-style` 與 `allow-discrete` 這兩個屬性來讓元件在「從有到無、從無到有」時也能表現漸變（`transition`）效果了。"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2024/css-transition-for-display-none"><meta property="og:title" content="CSS 筆記：如何實現 display none 的漸變效果"><meta property="og:description" content="雖然目前 Firefox 還不支援，不過已經可以靠 `@starting-style` 與 `allow-discrete` 這兩個屬性來讓元件在「從有到無、從無到有」時也能表現漸變（`transition`）效果了。"><meta property="og:image" content="https://tzynwang.github.io/2024/css-transition-for-display-none/marc-olivier-jodoin-NqOInJ-ttqM-unsplash.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2024/css-transition-for-display-none"><meta property="twitter:title" content="CSS 筆記：如何實現 display none 的漸變效果"><meta property="twitter:description" content="雖然目前 Firefox 還不支援，不過已經可以靠 `@starting-style` 與 `allow-discrete` 這兩個屬性來讓元件在「從有到無、從無到有」時也能表現漸變（`transition`）效果了。"><meta property="twitter:image" content="https://tzynwang.github.io/2024/css-transition-for-display-none/marc-olivier-jodoin-NqOInJ-ttqM-unsplash.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul:not(:has(li)){margin-top:16px;margin-bottom:16px}li{margin-top:4px;margin-bottom:4px;line-height:24px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:16px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}del{color:#4c5958e6}ol>li:has(p)>p{display:inline;margin:0}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+[data-astro-image]{width:100%;height:auto;object-fit:var(--fit);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>CSS 筆記：如何實現 display none 的漸變效果</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2024-06-15 07:42</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/CSS" data-astro-cid-2iymvi75> CSS </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#懶人包" data-astro-cid-qtokga5y>懶人包</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#starting-style" data-astro-cid-qtokga5y>@starting-style</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#transition-behavior-allow-discrete" data-astro-cid-qtokga5y>transition-behavior: allow-discrete</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#參考文件" data-astro-cid-qtokga5y>參考文件</a> </li> </ul> </div> <h2 id="懶人包">懶人包</h2>
+<p>要讓元件在 <code>display: none</code> 變成其他 <code>display</code> 狀態時表現漸變（<code>transition</code>）效果的話，需要以下兩種設定：</p>
+<ol>
+<li>設定目標元件的 <code>@starting-style</code></li>
+<li>將 <code>transition-behavior</code> 設定為 <code>allow-discrete</code></li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="css"><code><span class="line"><span style="color:#85E89D">div</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#79B8FF">  flex</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#79B8FF">  border</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">1</span><span style="color:#F97583">px</span><span style="color:#79B8FF"> solid</span><span style="color:#79B8FF"> #333</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#79B8FF">  position</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">relative</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#79B8FF">  background</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">linear-gradient</span><span style="color:#E1E4E8">(</span></span>
+<span class="line"><span style="color:#F97583">    to</span><span style="color:#79B8FF"> right</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    rgb</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">255</span><span style="color:#79B8FF"> 255</span><span style="color:#79B8FF"> 255</span><span style="color:#E1E4E8"> / </span><span style="color:#79B8FF">0</span><span style="color:#F97583">%</span><span style="color:#E1E4E8">),</span></span>
+<span class="line"><span style="color:#79B8FF">    rgb</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">255</span><span style="color:#79B8FF"> 255</span><span style="color:#79B8FF"> 255</span><span style="color:#E1E4E8"> / </span><span style="color:#79B8FF">50</span><span style="color:#F97583">%</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">  );</span></span>
+<span class="line"><span style="color:#79B8FF">  opacity</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#79B8FF">  scale</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">1</span><span style="color:#79B8FF"> 1</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#79B8FF">  transition</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">all</span><span style="color:#79B8FF"> 0.4</span><span style="color:#F97583">s</span><span style="color:#E1E4E8"> allow-discrete; </span><span style="color:#6A737D">/* &#x3C;== here */</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">  /* and here */</span></span>
+<span class="line"><span style="color:#E1E4E8">  @</span><span style="color:#79B8FF">starting-style</span><span style="color:#E1E4E8"> { </span></span>
+<span class="line"><span style="color:#79B8FF">    opacity</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">0</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#79B8FF">    scale</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">1</span><span style="color:#79B8FF"> 0</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>備註：上方的<a href="https://codepen.io/Charlie7779/pen/WNBZqzW">可操作範例</a>（改編自 <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@starting-style#transitioning_elements_on_dom_addition_and_removal">MDN: Transitioning elements on DOM addition and removal</a>）。</p>
+<p>另外要注意 Firefox <strong>尚未支援</strong>這兩個 CSS 參數。</p>
+<hr>
+<p>而以下是關於 <code>@starting-style</code> 與 <code>allow-discrete</code> 的自用筆記，記錄了我認為這兩種 CSS 樣式需要注意的部分。若要了解詳細資訊，請務必回頭參考 MDN 中的說明。</p>
+<h2 id="starting-style">@starting-style</h2>
+<p>重點：用於定義一個元件「從有到無，或是從無到有時」的樣式。</p>
+<blockquote>
+<p><code>@starting-style</code> is especially useful when creating entry and exit transitions for… elements that are <strong>changing to and from display: none</strong>, and elements when first <strong>added to or removed from the DOM</strong>.</p>
+</blockquote>
+<p>在過去，當元件從 <code>display: none</code> 變成其他 <code>display</code> 狀態（或是反過來，從其他狀態變回 <code>none</code>）時，工程師無法對這段「變化」加上漸變效果。不會漸變是因為 <code>display</code> 的動畫屬性（<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_animated_properties#discrete">animation type</a>）是離散（<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_animated_properties#discrete">discrete</a>）的，代表它在表現動畫時，只會有「開始」與「結束」這兩種視覺效果。</p>
+<p>但現在可以透過 <code>@starting-style</code> 與 <code>transition-behavior: allow-discrete</code> 讓 <code>display</code> 這個屬性也能實現漸變。</p>
+<p>注意事項：</p>
+<ul>
+<li><code>@starting-style</code> 只影響 CSS <code>transition</code>，與 CSS <code>animation</code> 無關</li>
+<li><code>@starting-style</code> 的權重（specificity）和元件本身的樣式一致，所以要先書寫元件本身的樣式，再書寫該元件的 <code>@starting-style</code> 樣式（The <code>@starting-style</code> at-rule and the original rule <strong>have the same specificity</strong>… include the <code>@starting-style</code> at-rule <strong>after the original rule</strong>.）</li>
+<li>當我們運用 <code>@starting-style</code> 時，實際上會有三種狀態：開始時的樣式（即 <code>@starting-style</code> 定義的樣式）、漸變中的樣式與元件本身的樣式——可以從這個範例 <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@starting-style#demonstration_of_when_starting_styles_are_used">MDN: Demonstration of when starting styles are used</a> 體驗一下何謂三種狀態</li>
+</ul>
+<p>語法：有兩種寫法。一是把 <code>@starting-style</code> 包在樣式中：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="css"><code><span class="line"><span style="color:#B392F0">#target</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#79B8FF">  background-color</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">green</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#79B8FF">  transition</span><span style="color:#E1E4E8">: background-color </span><span style="color:#79B8FF">1.5</span><span style="color:#F97583">s</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">  @</span><span style="color:#79B8FF">starting-style</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#79B8FF">    background-color</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">transparent</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>二是將 <code>@starting-style</code> 獨立出來，並在此區塊指定特定元件「開始時的樣式」：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="css"><code><span class="line"><span style="color:#B392F0">#target</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#79B8FF">  background-color</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">green</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#79B8FF">  transition</span><span style="color:#E1E4E8">: background-color </span><span style="color:#79B8FF">1.5</span><span style="color:#F97583">s</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">@starting-style</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#B392F0">  #target</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#79B8FF">    background-color</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">transparent</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<h2 id="transition-behavior-allow-discrete">transition-behavior: allow-discrete</h2>
+<p>重點：允許離散（<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_animated_properties#discrete">discrete</a>）類型的動畫也能表現出漸變效果。</p>
+<blockquote>
+<p>The <code>transition-behavior</code> CSS property specifies whether transitions will be started for properties whose animation behavior is discrete.</p>
+</blockquote>
+<p>注意事項（摘錄自 <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/transition-behavior#discrete_animation_behavior">Discrete animation behavior</a>）：</p>
+<ul>
+<li>目標元件從 <code>display: none</code> 變成 <code>block</code>（從無到有）時，元件會在動畫進度 0% 時就進入 <code>block</code> 狀態，所以元件在整個動畫全程都是可視（「有」）的。</li>
+<li>目標元件從 <code>display: block</code> 變成 <code>none</code>（從有到無）時，元件會在動畫進度 100% 時才進入 <code>none</code> 狀態，所以元件在整個動畫全程都是可視（「有」）的。</li>
+</ul>
+<h2 id="參考文件">參考文件</h2>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@starting-style">MDN: @starting-style</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/transition-behavior">MDN: transition-behavior</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_animated_properties">MDN: Animatable CSS properties</a></li>
+<li><a href="https://developer.chrome.com/blog/entry-exit-animations">Chrome for Developers: Four new CSS features for smooth entry and exit animations</a></li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

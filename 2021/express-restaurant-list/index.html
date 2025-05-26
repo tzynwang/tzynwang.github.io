@@ -1,0 +1,102 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.BScVxmeO.js"></script><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.1.2"><!-- Primary Meta Tags --><title>從零開始重寫：餐廳清單（Express版）基礎功能與架構</title><meta name="title" content="從零開始重寫：餐廳清單（Express版）基礎功能與架構"><meta name="description" content="這是一個文組轉職前端工程師的技術部落格"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2021/express-restaurant-list"><meta property="og:title" content="從零開始重寫：餐廳清單（Express版）基礎功能與架構"><meta property="og:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="og:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2021/express-restaurant-list"><meta property="twitter:title" content="從零開始重寫：餐廳清單（Express版）基礎功能與架構"><meta property="twitter:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="twitter:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul:not(:has(li)){margin-top:16px;margin-bottom:16px}li{margin-top:4px;margin-bottom:4px;line-height:24px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:16px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}del{color:#4c5958e6}ol>li:has(p)>p{display:inline;margin:0}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+[data-astro-image]{width:100%;height:auto;object-fit:var(--fit);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>從零開始重寫：餐廳清單（Express版）基礎功能與架構</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2021-06-21 15:47</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/Express" data-astro-cid-2iymvi75> Express </a> <a class="tag" href="/tag/Express Handlebars" data-astro-cid-2iymvi75> Express Handlebars </a> <a class="tag" href="/tag/Mongoose" data-astro-cid-2iymvi75> Mongoose </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#總結" data-astro-cid-qtokga5y>總結</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#環境" data-astro-cid-qtokga5y>環境</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#appjs" data-astro-cid-qtokga5y>app.js</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#db-schema" data-astro-cid-qtokga5y>DB schema</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#db-seeder" data-astro-cid-qtokga5y>DB seeder</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#模板部分" data-astro-cid-qtokga5y>模板部分</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#參考文件" data-astro-cid-qtokga5y>參考文件</a> </li> </ul> </div> <h2 id="總結">總結</h2>
+<p>試著從頭開始重新練習一次 Express、Express handlebars 與 Mongoose 相關內容，本篇筆記主要記錄練習途中遭遇到的問題、解法與日後可能會回頭參考的相關內容</p>
+<h2 id="環境">環境</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>express: 4.17.1</span></span>
+<span class="line"><span>express-fileupload: 1.2.1</span></span>
+<span class="line"><span>express-handlebars: 5.3.2</span></span>
+<span class="line"><span>mongoose: 5.12.14</span></span>
+<span class="line"><span>os: Windows_NT 10.0.18363 win32 x64</span></span></code></pre>
+<h2 id="appjs">app.js</h2>
+<script src="https://gist.github.com/tzynwang/97709d3b1d83e3ff4505924a09d819f4.js"></script>
+<ul>
+<li>20-21 行：為了處理使用者上傳的餐廳圖片，使用套件<code>express-fileupload</code>（<a href="https://www.npmjs.com/package/express-fileupload">npm</a>）
+<ul>
+<li>參考<a href="https://github.com/richardgirges/express-fileupload/tree/master/example#basic-file-upload">官方示範</a>，HTML 的 form 元素須加上<code>encType="multipart/form-data"</code>才能取到圖片資料</li>
+<li>注意：是透過<code>req.files</code>而非<code>req.body</code>來取使用者上傳的圖片資料</li>
+<li>取出<code>req.files.&#x3C;input name>.mimetype</code>與<code>req.files.&#x3C;input name>.data</code>來存入資料庫</li>
+</ul>
+</li>
+<li>26 行 helpers 部分：本次使用自定義的 helpers 來配合 Express handlebars，接觸過 Vue 的 computed 後比較能理解 helpers 的運作模式了
+<ul>
+<li>注意呼叫自定義的 helpers<strong>不需要加上#</strong>，在模板中直接傳入 helpers 與參數即可，比如：</li>
+<li><code>&#x3C;img src="{{toImage this.image.contentType this.image.data.buffer}}"></code></li>
+<li><code>&#x3C;option {{ifEquals this ../restaurant.category}}>&#x3C;/option></code></li>
+</ul>
+</li>
+<li>39 行開始：對比之前的作業多半使用<code>.then()</code>進行串接，本次基本上都改用 await/async 語法糖來處理資料庫端相關的行為
+<ul>
+<li><code>await Restaurant.find({ deleteFlag: false }).sort({ _id: -1 }).lean()</code>：取所有<code>deleteFlag</code>為<code>false</code>的內容，並根據<code>_id</code>逆向排列</li>
+</ul>
+</li>
+<li>48 行開始：本次實作出「根據使用者選取的欄位來限制搜尋範圍」之功能，<code>keyword</code>為使用者輸入的關鍵字、<code>field</code>為使用者指定要進行搜尋的欄位範圍
+<ul>
+<li>52-53 行：無法在<code>mongoose.find()</code>直接使用 template literal，故改為「建立一個空物件，物件的鍵根據<code>field</code>決定，物件的值為<code>new RegExp(keyword, 'i')</code>」，並將該物件作為條件傳入<code>.find()</code>中</li>
+<li>57 行：偷懶行為，直接將<code>field</code>的中文對應名稱物件宣告在這邊，並傳入顯示搜尋結果的<code>index</code>模板</li>
+</ul>
+</li>
+<li>第 71 行：<code>await Restaurant.find().distinct('category').lean()</code>
+<ul>
+<li>取出所有不重複的<code>category</code>的值</li>
+<li><a href="https://stackoverflow.com/questions/30020946/mongoose-returning-unique-result-set-with-no-duplicate-entries">Mongoose: Returning unique result set with no duplicate entries</a>: use <code>find</code> to establish the query and then chain a call to <code>distinct</code> on the resulting query object to get the unique result.</li>
+<li><a href="https://mongoosejs.com/docs/api.html#query_Query-distinct">Mongoose: Query.prototype.distinct()</a>: Declares or executes a <code>distinct()</code> operation.</li>
+<li><a href="https://www.w3schools.com/sql/sql_distinct.asp">SQL SELECT DISTINCT Statement</a>: The <code>SELECT DISTINCT</code> statement is used to <strong>return only distinct (different) values</strong>.</li>
+</ul>
+</li>
+<li>99-104 行：若使用者選擇自行上傳餐廳圖片（<code>if (req.files)</code>）的話，取圖片的<code>data</code>與<code>mimetype</code>存入 DB 中，若使用者沒有上傳圖片的話，則自動安排一張預設的餐廳圖片 url 給<code>image_url</code>欄位</li>
+<li>第 152 行：使用<code>.findOne()</code>來取出<code>document</code>型態的資料，之後才可配合<code>.save()</code>將修改完的資料存回 DB 中
+<ul>
+<li><a href="https://mongoosejs.com/docs/documents.html#documents-vs-models">Mongoose: Documents vs Models</a>: <code>Document</code> and <code>Model</code> are distinct classes in Mongoose. The <code>Model</code> class is a subclass of the <code>Document</code> class. When you use the <code>Model</code> constructor, you create a new <code>document</code>.</li>
+<li>When you load documents from MongoDB using model functions like <code>findOne()</code>, you get a Mongoose <code>document</code> back.</li>
+</ul>
+</li>
+</ul>
+<h2 id="db-schema">DB schema</h2>
+<script src="https://gist.github.com/tzynwang/935464602cb71801e3b1c63acce9eb76.js"></script>
+<ul>
+<li>image 欄位的內容參考<a href="https://stackoverflow.com/questions/27353346/saving-image-with-mongoose">Saving image with mongoose</a></li>
+<li>deleteFlag 預設為<code>false</code>（<code>default: false</code>），參考<a href="https://mongoosejs.com/docs/defaults.html">Mongoose: Declaring Defaults in Your Schema</a></li>
+</ul>
+<h2 id="db-seeder">DB seeder</h2>
+<script src="https://gist.github.com/tzynwang/7585b5fbe4fcdfa38aecfaf72276f832.js"></script>
+<ul>
+<li>2-3 行：讀取<code>.json</code>資料</li>
+<li>第 15 行開始：改用 async/await 語法糖包裝<code>Restaurant.create()</code></li>
+<li>31 行：seeder 寫入完畢後，呼叫<code>db.close()</code>結束連線</li>
+</ul>
+<h2 id="模板部分">模板部分</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>{{#if searchCheck}}</span></span>
+<span class="line"><span>&#x3C;script src="/scripts/searchCheck.js">&#x3C;/script></span></span>
+<span class="line"><span>{{/if}}</span></span></code></pre>
+<p>目前僅有<code>/</code>與<code>/search</code>路由回傳<code>searchCheck: true</code>，故<code>searchCheck.js</code>只會在這兩個頁面被載入</p>
+<h2 id="參考文件">參考文件</h2>
+<ul>
+<li><a href="https://stackoverflow.com/questions/58189365/async-await-in-nodejs-mongoose">Async/await in Nodejs + Mongoose</a></li>
+<li><a href="https://stackoverflow.com/questions/8499633/how-to-display-base64-images-in-html">How to display Base64 images in HTML?</a></li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

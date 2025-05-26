@@ -1,0 +1,132 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.BScVxmeO.js"></script><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.1.2"><!-- Primary Meta Tags --><title>閱讀筆記：The Programmer&#39;s Brain Chapter 12 Designing and improving larger system</title><meta name="title" content="閱讀筆記：The Programmer's Brain Chapter 12 Designing and improving larger system"><meta name="description" content="本章介紹了 CDCB (cognitive dimensions of codebases)，讓使用者能透過「認知」的角度來觀察程式碼。使用者在理解到程式碼的各種認知特徵後，也能根據一個專案的生命週期來決定維護重點方向。"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2023/the-programmers-brain-ch12-designing-and-improving-larger-systems"><meta property="og:title" content="閱讀筆記：The Programmer's Brain Chapter 12 Designing and improving larger system"><meta property="og:description" content="本章介紹了 CDCB (cognitive dimensions of codebases)，讓使用者能透過「認知」的角度來觀察程式碼。使用者在理解到程式碼的各種認知特徵後，也能根據一個專案的生命週期來決定維護重點方向。"><meta property="og:image" content="https://tzynwang.github.io/2023/the-programmers-brain-ch12-designing-and-improving-larger-systems/mike-kononov-lFv0V3_2H6s-unsplash.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2023/the-programmers-brain-ch12-designing-and-improving-larger-systems"><meta property="twitter:title" content="閱讀筆記：The Programmer's Brain Chapter 12 Designing and improving larger system"><meta property="twitter:description" content="本章介紹了 CDCB (cognitive dimensions of codebases)，讓使用者能透過「認知」的角度來觀察程式碼。使用者在理解到程式碼的各種認知特徵後，也能根據一個專案的生命週期來決定維護重點方向。"><meta property="twitter:image" content="https://tzynwang.github.io/2023/the-programmers-brain-ch12-designing-and-improving-larger-systems/mike-kononov-lFv0V3_2H6s-unsplash.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul:not(:has(li)){margin-top:16px;margin-bottom:16px}li{margin-top:4px;margin-bottom:4px;line-height:24px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:16px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}del{color:#4c5958e6}ol>li:has(p)>p{display:inline;margin:0}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+[data-astro-image]{width:100%;height:auto;object-fit:var(--fit);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>閱讀筆記：The Programmer&#39;s Brain Chapter 12 Designing and improving larger system</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2023-11-02 19:31</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/General" data-astro-cid-2iymvi75> General </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#總結" data-astro-cid-qtokga5y>總結</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#筆記" data-astro-cid-qtokga5y>筆記</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#何謂-cdcb-cognitive-dimensions-of-codebases" data-astro-cid-qtokga5y>何謂 CDCB (cognitive dimensions of codebases)</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#程式碼的認知特徵" data-astro-cid-qtokga5y>程式碼的認知特徵</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#認知特徵與開發時的心智活動" data-astro-cid-qtokga5y>認知特徵與開發時的心智活動</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#設計上的取捨" data-astro-cid-qtokga5y>設計上的取捨</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#參考文件" data-astro-cid-qtokga5y>參考文件</a> </li> </ul> </div> <h2 id="總結">總結</h2>
+<p>本章介紹了 CDCB (cognitive dimensions of codebases)，讓使用者能透過「認知」的角度來觀察程式碼。使用者在理解到程式碼的各種認知特徵後，也能根據一個專案的生命週期來決定維護重點方向。</p>
+<h2 id="筆記">筆記</h2>
+<h3 id="何謂-cdcb-cognitive-dimensions-of-codebases">何謂 CDCB (cognitive dimensions of codebases)</h3>
+<p>CDCB (cognitive dimensions of codebases) 是從 CDN (cognitive dimensions of notation) 延伸出來的框架。主要是從認知（cognitive）的角度來研究一包程式碼，探究的問題多半為：「這包程式碼好修改、好維護嗎？」以及「使用者能輕鬆地在這包 code 裡面找到他需要的資訊嗎？」這類<strong>非技術面向</strong>的問題。</p>
+<blockquote>
+<p>CDN, which is a technique to <strong>examine codebases from a cognitive perspective</strong>. CDN helps you answer questions about existing large codebases, such as “Will this code be easy for people to change?” or “Will this codebase be easy for people to find information in?”</p>
+</blockquote>
+<p>透過 CDCB 來檢視一包程式碼，可以讓你了解其他人使用這包程式碼的體驗與心情，也可以說是評估一包程式碼的可用性（usability）。</p>
+<blockquote>
+<p>Examining codebases from a cognitive rather than technical perspective can help you gain a better perspective on <strong>how people interact with your code</strong>.</p>
+</blockquote>
+<blockquote>
+<p>…when we discuss different libraries, frameworks, modules, or programming languages, we can also discuss <strong>what they do to your brain</strong> rather than your computer.</p>
+</blockquote>
+<h3 id="程式碼的認知特徵">程式碼的認知特徵</h3>
+<p>以下摘要本書提到的 13 種程式碼的認知特徵。</p>
+<p>易出錯性（Error Proneness）：以程式語言為例，本書指出弱型別的 JavaScript 就比強型別的 C 來得「容易出錯」。程式碼也會有這種特性，當一個使用者運用沒有完整說明文件的函式庫時，就比使用有著嚴謹說明文件的函式庫容易出錯。</p>
+<hr>
+<p>連貫性（Consistency）：比如變數是否統一採用駝峰或蛇形命名？是否所有的 class 都以大寫開頭命名？「不連貫」會增加使用者的認知負荷，因為需要一直確認「看到的東西是否一致」。</p>
+<blockquote>
+<p>A framework or language that is <strong>inconsistent</strong> in its use of names and conventions might lead to greater cognitive load because it will <strong>take your brain more energy to understand what is what</strong>, and it might take you more time to find relevant information.</p>
+</blockquote>
+<hr>
+<p>擴散性（Diffuseness）：指一段程式碼佔據的實體或認知空間。</p>
+<p>比如以下兩個功能有一樣的效果，但解法ㄧ的擴散性就比解法二高：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> arr</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> [</span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">2</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">3</span><span style="color:#E1E4E8">];</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// 一</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> result1</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> [];</span></span>
+<span class="line"><span style="color:#F97583">for</span><span style="color:#E1E4E8"> (</span><span style="color:#F97583">let</span><span style="color:#E1E4E8"> i </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> 0</span><span style="color:#E1E4E8">; i </span><span style="color:#F97583">&#x3C;</span><span style="color:#E1E4E8"> arr.</span><span style="color:#79B8FF">length</span><span style="color:#E1E4E8">; i</span><span style="color:#F97583">++</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#E1E4E8">  result1.</span><span style="color:#B392F0">push</span><span style="color:#E1E4E8">(arr[i] </span><span style="color:#F97583">+</span><span style="color:#79B8FF"> 2</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// 二</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> result2</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> arr.</span><span style="color:#B392F0">map</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">item</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> item </span><span style="color:#F97583">+</span><span style="color:#79B8FF"> 2</span><span style="color:#E1E4E8">);</span></span></code></pre>
+<p>而一段程式碼是否能被有效分塊（chunking）就會影響認知空間的消耗。</p>
+<hr>
+<p>隱藏依賴（Hidden dependencies）：舉例來說，如果一個出現在畫面上的按鈕是透過 JavaScript 渲染、而非直接刻在 html 中的話，這種情況就能算是一種「隱藏依賴」，因為控制該按鈕的程式碼是獨立於 html 以外的 JavaScript 檔案。</p>
+<hr>
+<p>臨時性（Provisionality）：書中定義為「在思考時使用該工具的難度」。比如多人進行討論時，「使用白板將想法記錄下來」的難度就會比「把想法記錄在 Google Doc 中」來得低。因為白板不會限制使用者「怎麼書寫」，但 Google Doc 會限制使用者「只能根據它的規則來記錄內容」。亦即 Google Doc 的臨時性比白板來得低。</p>
+<blockquote>
+<p>If a codebase or programming language is <strong>very strict</strong> (for example, using types, assertions, and post conditions), it can <strong>be hard to use code to express a thought</strong>. We then say this tool has <strong>low provisionality</strong>.</p>
+</blockquote>
+<p>程式碼的低臨時性會讓使用者理解這包 code 的難度變高，因為低臨時性代表程式碼要求使用者要嚴謹地思考、使用它。亦即在程式碼本身的邏輯以外，使用者需要消耗額外的精神來進行「符合程式碼規範的思考」。</p>
+<blockquote>
+<p>Provisionality is an essential factor in learnability because expressing vague ideas and incomplete code might be needed if you are a beginner in a certain system. Thinking of a plan for your code while <strong>also thinking about types and syntax</strong> can <strong>cause too much cognitive load</strong> in beginners.</p>
+</blockquote>
+<hr>
+<p>黏度（Viscosity）：代表改動的難度。可以想像一下：修改強型別程式碼多半會比修改弱型別程式碼費工，因為弱型別不要求使用者嚴謹的定義型別資訊。</p>
+<p>而如果一段程式碼需要消耗大量時間在測試、打包或編譯上，我們也能說這包程式碼的改動黏度很高。</p>
+<hr>
+<p>漸進改變支援度（Progressive evaluation）：可參考 webpack 的使用方式，使用者可以傳入非常少的打包設定（沒有指定的部分就讓 webpack 預設值發揮），但也能根據自身需求傳入十分詳盡的客製化設定。我們可以說 webpack 有不錯的改變支援度。</p>
+<hr>
+<p>角色辨識度（Role expressiveness）：以 Visual Studio Code 的主題 <a href="https://draculatheme.com/visual-studio-code">dracula</a> 與 <a href="https://marketplace.visualstudio.com/items?itemName=GitHub.github-vscode-theme">GitHub Theme</a> 為例，這兩個主題都會根據程式碼的角色與功能來標注對應的顏色（比如 dracula 會將 class 中的 constructor / get 等關鍵字統一標記為粉色、而 method 統標為綠色）。</p>
+<p>能夠一眼「辨認出不同段落的功能」的難度越低，就代表角色辨識度越高。</p>
+<hr>
+<p>關聯度（Closeness of mapping）：領域驅動設計（Domain Driven Design）基本上就是在提倡此特徵。</p>
+<blockquote>
+<p>…domain-driven design philosophy prescribes that the <strong>structure and identifiers</strong> in code should <strong>match the business domain</strong>.</p>
+</blockquote>
+<p>負面舉例：如果一個函式的命名很難讓人一眼就了解該函式的目的、或是命名根本與函式本身在做的事行背道而馳，我們就能說該函式名稱的關聯度很低。</p>
+<hr>
+<p>思考難度（Hard mental operations）：難度越高，對認知的消耗程度就越大。書中舉例如下：</p>
+<blockquote>
+<p>Finally, some operations are hard because they take a toll on the working memory, for example, if data has to be downloaded from <strong>two difference sources</strong> in <strong>two different formats</strong> and converted into a <strong>third format</strong>. The user will then have to keep track of the different streams and their corresponding types.</p>
+</blockquote>
+<hr>
+<p>額外資訊支援度（Secondary notation）：比較白話文的說法就是「對註解的支援程度」或是「是否支援 name parameter」。這些特徵不會影響一段程式碼要表現的功能，但能讓使用者比較容易理解程式碼意圖達成的目標。</p>
+<hr>
+<p>抽象程度（Abstraction）：代表使用者是否能自訂功能、類別（class）與物件。書中舉例：一個允許使用者自訂 subclass （使用者可主動）的函式庫，其抽象程度就比只提供 api 讓使用者介接的函式庫（使用者處於被動）來得高。</p>
+<blockquote>
+<p>For example, allowing a library user to create a subclass to which additional functionality can be added has more power of abstraction than a library that just allows API calls.</p>
+</blockquote>
+<hr>
+<p>可視性（Visibility）：書中舉例偏向「對結構的支援程度」。</p>
+<blockquote>
+<p>For example, an API that fetches data might return a string, a JSON file, or an object, which each have a different visibility. <strong>If a string is returned, it is harder to see the form of the data</strong>, and the framework offers the user lower visibility.</p>
+</blockquote>
+<h3 id="認知特徵與開發時的心智活動">認知特徵與開發時的心智活動</h3>
+<p><a href="/2023/the-programmers-brain-ch11-the-act-of-writing-code#%E9%96%8B%E7%99%BC%E8%A1%8C%E7%82%BA%E8%83%8C%E5%BE%8C%E7%9A%84%E5%BF%83%E6%99%BA%E6%B4%BB%E5%8B%95">本書第 11 章</a> 有提過 5 種開發時的心智活動，分別是搜尋（searching）、理解（comprehension）、轉錄（transcription）、增量（incrementation）與探索（exploration）。而這些心智活動與上述提到的 13 種認知特徵的互動如下：</p>
+<ul>
+<li>搜尋：大量的隱藏依賴（Hidden dependencies）會阻礙搜尋；高擴散性（Diffuseness）會讓程式碼變長，於是要搜尋的內容變多；不過良好的額外資訊支援（Secondary notation）（註解）會降低搜尋的難度</li>
+<li>理解：低可視性（Visibility）會增加理解難度，反之明顯的角色辨識度（Role expressiveness）與明顯的連貫性（Consistency）可以降低此活動的難度</li>
+<li>轉錄、增量：在擴充功能時，讓理解變簡單的高連貫性（Consistency）可能會增加額外工作，因為需要確保整包程式碼的一致性；另外高黏度（Viscosity）也會讓提升這兩種活動的困難度</li>
+<li>探索：高臨時性（Provisionality）、漸進改變支援度（Progressive evaluation）會讓探索體驗較為良好；反觀高思考難度（Hard mental operations）會讓增加探索的難度</li>
+</ul>
+<h3 id="設計上的取捨">設計上的取捨</h3>
+<p>程式碼的認知特徵有可能互相對立，而「為了增加某一面向的特徵，所以對程式碼進行修改」就被稱為設計操縱（design maneuver）。</p>
+<blockquote>
+<p>Making changes to a codebase to improve a certain dimension in a codebase is called a <strong>design maneuver</strong>.</p>
+</blockquote>
+<p>以下列出較常見的對立特徵：</p>
+<ul>
+<li>易出錯性（Error Proneness）對黏度（Viscosity）</li>
+<li>臨時性（Provisionality）、漸進改變支援度（Progressive evaluation）對易出錯性（Error Proneness）</li>
+<li>角色辨識度（Role expressiveness）對擴散性（Diffuseness）</li>
+</ul>
+<hr>
+<p>另外，需注意一包程式碼在不同的生命階段會有不同的重點取向。</p>
+<p>比如進入穩定、夕陽階段的專案通常大改動較少、搜尋行為較多，那麼提升註解（Secondary notation）的成分就能讓開發者的體驗比較好。反過來說，還在早期衝刺階段的程式碼可以比較不計較黏度（Viscosity）與連貫性（Consistency）特徵，降低擴充功能的難度。</p>
+<h2 id="參考文件">參考文件</h2>
+<ul>
+<li><a href="https://www.manning.com/books/the-programmers-brain">Manning: The Programmer’s Brain</a></li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

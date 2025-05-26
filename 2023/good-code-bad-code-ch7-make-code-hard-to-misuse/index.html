@@ -1,0 +1,121 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.BScVxmeO.js"></script><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.1.2"><!-- Primary Meta Tags --><title>閱讀筆記：Good Code, Bad Code Chapter 7 Make code hard to misuse</title><meta name="title" content="閱讀筆記：Good Code, Bad Code Chapter 7 Make code hard to misuse"><meta name="description" content="這是一個文組轉職前端工程師的技術部落格"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2023/good-code-bad-code-ch7-make-code-hard-to-misuse"><meta property="og:title" content="閱讀筆記：Good Code, Bad Code Chapter 7 Make code hard to misuse"><meta property="og:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="og:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2023/good-code-bad-code-ch7-make-code-hard-to-misuse"><meta property="twitter:title" content="閱讀筆記：Good Code, Bad Code Chapter 7 Make code hard to misuse"><meta property="twitter:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="twitter:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul:not(:has(li)){margin-top:16px;margin-bottom:16px}li{margin-top:4px;margin-bottom:4px;line-height:24px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:16px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}del{color:#4c5958e6}ol>li:has(p)>p{display:inline;margin:0}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+[data-astro-image]{width:100%;height:auto;object-fit:var(--fit);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>閱讀筆記：Good Code, Bad Code Chapter 7 Make code hard to misuse</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2023-04-03 16:53</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/Software Architecture" data-astro-cid-2iymvi75> Software Architecture </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#總結" data-astro-cid-qtokga5y>總結</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#筆記" data-astro-cid-qtokga5y>筆記</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#使物件不可被修改" data-astro-cid-qtokga5y>使物件不可被修改</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#避免過於籠統的型別定義" data-astro-cid-qtokga5y>避免過於籠統的型別定義</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#謹慎對應時間資料" data-astro-cid-qtokga5y>謹慎對應時間資料</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#single-source-of-truth-資料與邏輯" data-astro-cid-qtokga5y>Single source of truth: 資料與邏輯</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#參考文件" data-astro-cid-qtokga5y>參考文件</a> </li> </ul> </div> <h2 id="總結">總結</h2>
+<p>此篇是 Good Code, Bad Code: Think like a software engineer 第七章（Make code hard to misuse）的閱讀筆記，本章提出以下幾點「讓程式碼難以被誤用」的實作建議：</p>
+<ol>
+<li>使物件不可被修改（immutable）</li>
+<li>避免過於籠統的型別定義</li>
+<li>謹慎對應時間資料</li>
+<li>Single source of truth: 資料與邏輯</li>
+</ol>
+<h2 id="筆記">筆記</h2>
+<h3 id="使物件不可被修改">使物件不可被修改</h3>
+<p>以 React 專案為例，如果要實作此建議，常見做法為搭配 <code>lodash/cloneDeep</code> 或透過 <code>immer/produce</code> 來避免「直接更動某一份資料的內容」。</p>
+<p>參考以下範例：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> React, { memo, useState, useCallback, useEffect } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> 'react'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> cloneDeep </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> 'lodash'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">interface</span><span style="color:#B392F0"> InputValue</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#FFAB70">  id</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> string</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#FFAB70">  value</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> string</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> InputComponent</span><span style="color:#E1E4E8">()</span><span style="color:#F97583">:</span><span style="color:#B392F0"> React</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">ReactElement</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">  /* States */</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#E1E4E8"> [</span><span style="color:#79B8FF">inputValue</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">setInputValue</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">=</span><span style="color:#B392F0"> useState</span><span style="color:#E1E4E8">&#x3C;</span><span style="color:#B392F0">InputValue</span><span style="color:#E1E4E8">[]>();</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">  /* Functions */</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> onInputChange</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> useCallback</span><span style="color:#E1E4E8">(</span></span>
+<span class="line"><span style="color:#E1E4E8">    (</span><span style="color:#FFAB70">id</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> string</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">e</span><span style="color:#F97583">:</span><span style="color:#B392F0"> React</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">ChangeEvent</span><span style="color:#E1E4E8">&#x3C;</span><span style="color:#B392F0">HTMLInputElement</span><span style="color:#E1E4E8">>) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">      const</span><span style="color:#79B8FF"> cloneState</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> cloneDeep</span><span style="color:#E1E4E8">(inputValue);</span></span>
+<span class="line"><span style="color:#F97583">      const</span><span style="color:#79B8FF"> inputIndex</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> cloneState.</span><span style="color:#B392F0">findIndex</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">input</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> input.id </span><span style="color:#F97583">===</span><span style="color:#E1E4E8"> id);</span></span>
+<span class="line"><span style="color:#F97583">      if</span><span style="color:#E1E4E8"> (inputIndex </span><span style="color:#F97583">></span><span style="color:#F97583"> -</span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#E1E4E8">        cloneState[inputIndex].value </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> e.target.value;</span></span>
+<span class="line"><span style="color:#E1E4E8">      } </span><span style="color:#F97583">else</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">        cloneState.</span><span style="color:#B392F0">push</span><span style="color:#E1E4E8">({ id, value: e.target.value });</span></span>
+<span class="line"><span style="color:#E1E4E8">      }</span></span>
+<span class="line"><span style="color:#B392F0">      setAnswer</span><span style="color:#E1E4E8">(cloneState);</span></span>
+<span class="line"><span style="color:#E1E4E8">    },</span></span>
+<span class="line"><span style="color:#E1E4E8">    [inputValue]</span></span>
+<span class="line"><span style="color:#E1E4E8">  );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">  /* Hooks */</span></span>
+<span class="line"><span style="color:#B392F0">  useEffect</span><span style="color:#E1E4E8">(() </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">    // 根據 inputValue 執行其他操作...</span></span>
+<span class="line"><span style="color:#E1E4E8">  }, [inputValue]);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">  /* Main */</span></span>
+<span class="line"><span style="color:#6A737D">  // 渲染 input 元件...</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>當工程師需要透過 <code>setInputValue</code> 修改 <code>inputValue</code> 時，會先對 <code>inputValue</code> 執行一次深拷貝取得 <code>cloneState</code>，接下來所有的改動都是發生在變數 <code>cloneState</code> 上，原本的 <code>inputValue</code> 不參與「被拷貝」以外的任何工作。</p>
+<p>這能確保此元件 <code>useEffect</code> 所依賴的 <code>inputValue</code> 不會在 <code>onInputChange</code> 被執行的途中被意外修改內容，導致預料外的 side effect 發生。</p>
+<h3 id="避免過於籠統的型別定義">避免過於籠統的型別定義</h3>
+<p>書中範例為「二維座標資料陣列」：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">type</span><span style="color:#B392F0"> LocationInfo</span><span style="color:#F97583"> =</span><span style="color:#79B8FF"> number</span><span style="color:#E1E4E8">[];</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> location1</span><span style="color:#F97583">:</span><span style="color:#B392F0"> LocationInfo</span><span style="color:#E1E4E8">[] </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> [</span></span>
+<span class="line"><span style="color:#E1E4E8">  [</span><span style="color:#79B8FF">42</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">37</span><span style="color:#E1E4E8">],</span></span>
+<span class="line"><span style="color:#E1E4E8">  [</span><span style="color:#79B8FF">6</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">24</span><span style="color:#E1E4E8">],</span></span>
+<span class="line"><span style="color:#E1E4E8">  [], </span><span style="color:#6A737D">// 無效座標，但 TypeScript 檢查不出來</span></span>
+<span class="line"><span style="color:#E1E4E8">  [</span><span style="color:#79B8FF">92</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">40</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">3</span><span style="color:#E1E4E8">], </span><span style="color:#6A737D">// 無效座標，但 TypeScript 檢查不出來</span></span>
+<span class="line"><span style="color:#E1E4E8">];</span></span></code></pre>
+<p>本書認為 <code>LocationInfo</code> 這樣的型別定義過於寬鬆，基本上這個型別無法提供「關於座標這類資料的具體訊息」。其他工程師看到這個型別只知道 <code>LocationInfo</code> 會是一組數字陣列，卻無法認知到「一組座標陣列必須且只能包含兩個數字（分別代表 X 與 Y 軸）」這個需求。</p>
+<p>建議：只要有可能，就使用更精確的型別定義內容。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">type</span><span style="color:#B392F0"> LocationInfoBetter</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> [</span><span style="color:#79B8FF">number</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">number</span><span style="color:#E1E4E8">];</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> location2</span><span style="color:#F97583">:</span><span style="color:#B392F0"> LocationInfoBetter</span><span style="color:#E1E4E8">[] </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> [</span></span>
+<span class="line"><span style="color:#E1E4E8">  [</span><span style="color:#79B8FF">42</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">37</span><span style="color:#E1E4E8">],</span></span>
+<span class="line"><span style="color:#E1E4E8">  [</span><span style="color:#79B8FF">6</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">24</span><span style="color:#E1E4E8">],</span></span>
+<span class="line"><span style="color:#E1E4E8">  [], </span><span style="color:#6A737D">// 現在 TypeScript 會報錯</span></span>
+<span class="line"><span style="color:#E1E4E8">  [</span><span style="color:#79B8FF">92</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">40</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">3</span><span style="color:#E1E4E8">], </span><span style="color:#6A737D">// 現在 TypeScript 會報錯</span></span>
+<span class="line"><span style="color:#E1E4E8">];</span></span></code></pre>
+<h3 id="謹慎對應時間資料">謹慎對應時間資料</h3>
+<p>本書關於「處理時間類型資料」的建議如下：</p>
+<ul>
+<li>一個 function 以及其參數名稱要明確定義「需要傳入什麼型態的時間資料」，是要傳入「一段時間」、或是傳入一個「時間點」</li>
+<li>承上，在需要傳入時間資料時，明確列出需要的時間單位（常見誤區：秒或毫秒）</li>
+<li>儲存時間資料時，注意時區陷阱；針對此點，本書建議工程師挑選一個合適的套件來輔助開發，借力使力，也避免重造輪子</li>
+</ul>
+<h3 id="single-source-of-truth-資料與邏輯">Single source of truth: 資料與邏輯</h3>
+<p>本章指出程式碼中的資料可歸納為以下兩種：</p>
+<ul>
+<li>初級資料（primary data）：無法透過計算等方式來「得知」，此類資料基本上就是那些「作為參數餵給功能的內容」或是「固定的資料」；例：銀行帳戶中的存款、欠款</li>
+<li>衍伸資料（derived data）：可透過計算得出的內容；例：銀行帳戶中的「餘額」，可透過「存款減去欠款」後得出</li>
+</ul>
+<p>以上述銀行帳戶資料為例，一個理想中的資料結構應該只需要包含存款與欠款（初級資料），不需要再立一個 class field 來保存餘額（衍伸資料）。工程師應只有在需要的時候，直接透過計算「存款減欠款」來得到餘額資料。</p>
+<p>在計算十分耗能的情況下，本書建議導入 cache 以及 lazy calculate 等機制來避免不必要的效能浪費。</p>
+<hr>
+<p>而除了資料上的 single source of truth 以外，本書也提醒工程師在開發時也要注意維持「邏輯上的 single source of truth」。亦即：一段功能（比如針對特定資料的 formatter 邏輯）是否也有保持單一來源準則。</p>
+<p>舉例：假設今天前端在兩個元件中都需要使用一段後端回傳、且需要經過加工整理（format）的資料，這個資料的 formatter 就可以透過 custom hook 或是 util tool 的形式包裝，而不是直接把資料加工的邏輯散落在各個元件中。</p>
+<p>良好的抽象層通常也能協助維持邏輯的 single source of truth 原則。</p>
+<h2 id="參考文件">參考文件</h2>
+<ul>
+<li><a href="https://www.manning.com/books/good-code-bad-code">Manning: Good Code, Bad Code</a></li>
+<li><a href="https://lodash.com/">Lodash</a></li>
+<li><a href="https://immerjs.github.io/immer/">Immer</a></li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 
