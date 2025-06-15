@@ -25,7 +25,8 @@ tag:
 但參考影片留言的內容：
 
 > leaving the alt attribute empty will hide the image from screen readers.
-> `alt=""`的時候，screen reader 會跳過該圖片。除非是裝飾性素材（如背景圖片），否則不適合讓 alt 為空白。
+
+`alt=""` 的時候，screen reader 會跳過該圖片。除非是裝飾性素材（如背景圖片），否則不適合讓 alt 為空白。
 
 > In general, alt and figcaption should not be the same. Alt descriptions should be functional; figcaption descriptions should be editorial or illustrative.
 
@@ -36,13 +37,13 @@ tag:
 講者是否戴眼鏡對（圖片）瀏覽者來說並非重點，但講者躲在植物後面的動作有引導出這張頭像照片的特殊之處。
 故 alt 內容可為：「講者俏皮地躲在植物後」。
 
-小結論：`<figcaption>`為 editorial 或 illustrative 導向，而 alt 用來做（圖片的）功能性描述。
+小結論：`<figcaption>` 為 editorial 或 illustrative 導向，而 alt 用來做（圖片的）功能性描述。
 
 而何謂 editorial 與 illustrative，參考[Alt vs Figcaption](https://thoughtbot.com/blog/alt-vs-figcaption)：
 
 > Editorial or illustrative descriptions can convey the who, what, when, where, and/or why of an image contextualizing it alongside other content on the page. This may be information that isn’t apparent from just looking at the image.
 
-我流解讀：描述的事圖片帶出的故事。
+我流解讀：描述的是圖片帶出的故事。
 
 最後，關於上下文對 alt 的影響程度，可參考 07:34 Does the skin color of the speaker matter?
 影片中的立場：如果講者談論的是與種族相關的演講題目，這或許重要到需在 alt 中註明。
