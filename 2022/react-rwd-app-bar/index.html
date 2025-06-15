@@ -1,0 +1,79 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.BScVxmeO.js"></script><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.1.2"><!-- Primary Meta Tags --><title>2022 第17週 實作筆記：RWD 側欄</title><meta name="title" content="2022 第17週 實作筆記：RWD 側欄"><meta name="description" content="這是一個文組轉職前端工程師的技術部落格"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2022/react-rwd-app-bar"><meta property="og:title" content="2022 第17週 實作筆記：RWD 側欄"><meta property="og:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="og:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2022/react-rwd-app-bar"><meta property="twitter:title" content="2022 第17週 實作筆記：RWD 側欄"><meta property="twitter:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="twitter:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul:not(:has(li)){margin-top:16px;margin-bottom:16px}li{margin-top:4px;margin-bottom:4px;line-height:24px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:16px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}del{color:#4c5958e6}ol>li:has(p)>p{display:inline;margin:0}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+[data-astro-image]{width:100%;height:auto;object-fit:var(--fit);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>2022 第17週 實作筆記：RWD 側欄</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2022-04-29 22:23</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/MaterialUI" data-astro-cid-2iymvi75> MaterialUI </a> <a class="tag" href="/tag/React" data-astro-cid-2iymvi75> React </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#總結" data-astro-cid-qtokga5y>總結</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#筆記" data-astro-cid-qtokga5y>筆記</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#設計說明" data-astro-cid-qtokga5y>設計說明</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#開發思路" data-astro-cid-qtokga5y>開發思路</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#css-筆記" data-astro-cid-qtokga5y>CSS 筆記</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#material-ui-相關" data-astro-cid-qtokga5y>Material UI 相關</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#參考文件" data-astro-cid-qtokga5y>參考文件</a> </li> </ul> </div> <h2 id="總結">總結</h2>
+<p>參考了 Material UI 的 Drawer 設計刻出 RWD App Bar</p>
+<p><img src="/2022/react-rwd-app-bar/demo-mobile.png" alt="手機版面"></p>
+<p><img src="/2022/react-rwd-app-bar/demo-tablet.png" alt="平板版面"></p>
+<p><img src="/2022/react-rwd-app-bar/demo-desktop.png" alt="桌機版面"></p>
+<p>展示：<a href="https://tzynwang.github.io/rwd-app-bar/">https://tzynwang.github.io/rwd-app-bar/</a>
+原始碼：<a href="https://github.com/tzynwang/rwd-app-bar/tree/feature/rwd-bar">https://github.com/tzynwang/rwd-app-bar/tree/feature/rwd-bar</a></p>
+<h2 id="筆記">筆記</h2>
+<h3 id="設計說明">設計說明</h3>
+<ul>
+<li>參考日前經手專案的版面設計，文字規格如下：
+<ul>
+<li>手機版面：頂部左側（menu icon）點開後出現一般選項清單，右側（avatar）點開後出現使用者相關選項的清單；在手機版面下，清單要蓋滿頂部以外的版面空間</li>
+<li>平板版面：預設清單收合在左側，點擊後展開，並上方出現 logo；而 avatar 移動至畫面右上角</li>
+<li>大版面：清單固定在展開狀態，移除收合清單的按鈕（平板版面清單右上角）</li>
+</ul>
+</li>
+</ul>
+<h3 id="開發思路">開發思路</h3>
+<ul>
+<li>分拆為以下兩個元件：
+<ul>
+<li>Bar：包含 BarHeader 與 BarBody 兩個部位
+<ul>
+<li>BarHeader 僅會出現在手機版面最上方</li>
+<li>BarBody（一般選項清單）：包含 News、Archives、Tags 與 Contact Us 這四個選項，透過 CSS 設定在大小版面呈現不同效果，並在平板、桌機版面追加 logo Row</li>
+</ul>
+</li>
+<li>AvatarWithMenu：如其名，包含 Avatar 與 Menu，兩者同捆為一個元件傳入 BarHeader，或搭配 Material UI 的 <code>useMediaQuery</code> 在平板、桌機版面的情況下出現於畫面右上角
+<ul>
+<li>Menu（使用者相關選項的清單）：包含 Setting 與 Log Out，手機版時呈現滿版，平板與桌機版面則固定在 avatar 下方位置</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="css-筆記">CSS 筆記</h3>
+<ul>
+<li>使用 <code>transform: translate()</code> 搭配 <code>transition</code> 做出位移動畫效果</li>
+<li>平板版面的「收合」狀態是透過 <code>width: 60px</code> 搭配 <code>overflow: hidden</code> 與 <code>white-space: nowrap</code> 組合出來的</li>
+</ul>
+<h3 id="material-ui-相關">Material UI 相關</h3>
+<script src="https://gist.github.com/tzynwang/1e640db6c3d9709b88141076c2c32c1b.js"></script>
+<p>透過 <code>&#x3C;CssBaseline /></code> 與 <code>createTheme</code> 修改 MUI default theme 的 <code>typography</code> 內容來調整專案的整體字型</p>
+<script src="https://gist.github.com/tzynwang/fc6878f235ef58d87d02ea5025884626.js"></script>
+<p>使用 Mui <code>styled()</code> 時可傳入自定義 <code>props</code>，此 Logo 元件可透過 <code>props: black</code> 來控制字體顏色</p>
+<h2 id="參考文件">參考文件</h2>
+<ul>
+<li><a href="https://mui.com/material-ui/react-drawer/#main-content">MUI: Drawer</a></li>
+<li><a href="https://mui.com/system/styled/#api">MUI API: styled</a></li>
+<li><a href="https://stackoverflow.com/questions/68814908/can-you-pass-custom-props-to-material-ui-v5-styled-components">Can you pass custom props to Material-UI v5 <code>styled()</code> components?</a></li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

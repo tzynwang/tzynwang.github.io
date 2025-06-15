@@ -1,0 +1,160 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.BScVxmeO.js"></script><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.1.2"><!-- Primary Meta Tags --><title>React 19 筆記：hooks 篇</title><meta name="title" content="React 19 筆記：hooks 篇"><meta name="description" content="這週花了一些時間在了解 React 19 Beta 預定要帶來的新功能與改動，此篇旨在記錄新 hooks 的用途與使用方式。"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2024/react-19-hooks"><meta property="og:title" content="React 19 筆記：hooks 篇"><meta property="og:description" content="這週花了一些時間在了解 React 19 Beta 預定要帶來的新功能與改動，此篇旨在記錄新 hooks 的用途與使用方式。"><meta property="og:image" content="https://tzynwang.github.io/2024/react-19-hooks/anne-nygard-viq9Ztqi3Vc-unsplash.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2024/react-19-hooks"><meta property="twitter:title" content="React 19 筆記：hooks 篇"><meta property="twitter:description" content="這週花了一些時間在了解 React 19 Beta 預定要帶來的新功能與改動，此篇旨在記錄新 hooks 的用途與使用方式。"><meta property="twitter:image" content="https://tzynwang.github.io/2024/react-19-hooks/anne-nygard-viq9Ztqi3Vc-unsplash.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul:not(:has(li)){margin-top:16px;margin-bottom:16px}li{margin-top:4px;margin-bottom:4px;line-height:24px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:16px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}del{color:#4c5958e6}ol>li:has(p)>p{display:inline;margin:0}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+[data-astro-image]{width:100%;height:auto;object-fit:var(--fit);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>React 19 筆記：hooks 篇</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2024-05-05 19:37</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/React" data-astro-cid-2iymvi75> React </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#usetransition" data-astro-cid-qtokga5y>useTransition</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#usedeferredvalue" data-astro-cid-qtokga5y>useDeferredValue</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#useoptimistic" data-astro-cid-qtokga5y>useOptimistic</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#useactionstate" data-astro-cid-qtokga5y>useActionState</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#useformstatus" data-astro-cid-qtokga5y>useFormStatus</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#參考文件" data-astro-cid-qtokga5y>參考文件</a> </li> </ul> </div> <p>提醒：這篇筆記是我在讀完 <a href="https://react.dev/blog/2024/04/25/react-19">React 19 Beta</a> 後，參考官方文件對於各 hook 的說明整理出來的東西。這不是一篇把每個 hook 從頭講解到尾的文章，我只記錄自認重要的部分。如果你需要知道 React 19 預定帶來的新功能與每個 hook 的詳細解說，請務必閱讀官方文件。</p>
+<h2 id="usetransition">useTransition</h2>
+<p>目的：避免繁重計算阻擋使用者與畫面互動。</p>
+<p>使用範例：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> TabContainer</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#E1E4E8"> [</span><span style="color:#79B8FF">isPending</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">startTransition</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">=</span><span style="color:#B392F0"> useTransition</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#E1E4E8"> [</span><span style="color:#79B8FF">tab</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">setTab</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">=</span><span style="color:#B392F0"> useState</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'about'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">  function</span><span style="color:#B392F0"> selectTab</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">nextTab</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#B392F0">    startTransition</span><span style="color:#E1E4E8">(() </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#B392F0">      setTab</span><span style="color:#E1E4E8">(nextTab);</span></span>
+<span class="line"><span style="color:#E1E4E8">    });</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#6A737D">  // ...</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>回傳內容：</p>
+<ul>
+<li><code>isPending</code> 讓使用者判斷現在是否在執行變遷（Transition）</li>
+<li><code>startTransition</code> 將使用者傳入的狀態變更（set）功能標記為變遷（Transition）</li>
+</ul>
+<p>搭配上方範例，我們在做的事情就是「將 <code>setTab</code> 標記為變遷」。在執行變遷時，畫面（UI）不會凍結。可以透過<a href="https://react.dev/reference/react/useTransition#marking-a-state-update-as-a-non-blocking-transition">官方範例</a>體驗一下「有無變遷」如何影響使用者與 App 互動的體驗。</p>
+<p>而參數 <code>isPending</code> 則是能讓使用者不必透過 <code>Suspense</code> 來控制畫面，可參考<a href="https://react.dev/reference/react/useTransition#preventing-unwanted-loading-indicators">官方範例</a>來體驗局部 UI 變更的效果。</p>
+<p>注意事項：</p>
+<ul>
+<li>無法將 input 的狀態變更標記為變遷</li>
+<li>被標記為變遷的狀態變更，會被其他的狀態變更打斷——比如我將狀態Ａ標記為變遷，並且在狀態Ａ重渲染到一半（in the middle of a re-render）時，跑去變更狀態Ｂ，此時 React 會停止更新狀態Ａ，並於狀態Ｂ完成更新後，再處理狀態Ａ的渲染（restart the rendering work for state A after handling state B）</li>
+<li>React 目前會批次執行變遷（for multiple ongoing Transitions, React currently batches them together）</li>
+<li><code>startTransition</code> 僅支援同步功能</li>
+<li>可以<a href="https://react.dev/reference/react/startTransition#starttransitionscope">直接從 <code>react</code> 中取用 <code>startTransition</code></a></li>
+</ul>
+<h2 id="usedeferredvalue">useDeferredValue</h2>
+<p>目的：在新結果計算完畢前，不更新畫面，而是顯示上一次的計算結果。與 <code>useTransition</code> 有點類似，這個 hook 的目的也是避免讓繁重的計算影響到使用者與 App 的互動體驗。</p>
+<p>使用範例：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { useState, useDeferredValue } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> 'react'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> SlowList </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> './SlowList.js'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> default</span><span style="color:#F97583"> function</span><span style="color:#B392F0"> App</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#E1E4E8"> [</span><span style="color:#79B8FF">text</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">setText</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">=</span><span style="color:#B392F0"> useState</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">''</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> deferredText</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> useDeferredValue</span><span style="color:#E1E4E8">(text);</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> (</span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;></span></span>
+<span class="line"><span style="color:#E1E4E8">      &#x3C;</span><span style="color:#85E89D">input</span><span style="color:#B392F0"> value</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{text} </span><span style="color:#B392F0">onChange</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{(</span><span style="color:#FFAB70">e</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#B392F0"> setText</span><span style="color:#E1E4E8">(e.target.value)} /></span></span>
+<span class="line"><span style="color:#E1E4E8">      &#x3C;</span><span style="color:#79B8FF">SlowList</span><span style="color:#B392F0"> text</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{deferredText} /></span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;/></span></span>
+<span class="line"><span style="color:#E1E4E8">  );</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>接收參數：</p>
+<ul>
+<li><code>value</code> 任何原始型別（primitive type）的資料，或是「不是在渲染中產生的物件資料」</li>
+<li><code>initialValue</code> 會讓元件在第一次渲染（initial render）時進行比對，目前只能在 React 19 測試</li>
+</ul>
+<p>回傳內容：在第一次渲染時，會回傳使用者傳入的值（上述 <code>value</code>）。在重渲染時，React 會先回傳舊值，再回傳新值。搭配<a href="https://react.dev/reference/react/useDeferredValue#deferring-re-rendering-for-a-part-of-the-ui">官方範例</a>比較能體會這個「新舊值切換」到底在解決什麼問題。</p>
+<p>注意事項：</p>
+<ul>
+<li>此 hook 使用 <code>Object.is</code> 來比對新舊值的差異。這也是為什麼在打算「傳入物件作為參數」時，物件「不能是在每一次渲染中產生的資料」——因為每次比對都會判斷成「有差異」，導致不必要的額外工作（it will be different on every render, causing unnecessary background re-renders）</li>
+<li>在判斷新舊值「有差異」後，React 會安排背景渲染工作（it schedules a re-render in the background with the new value），這個背景渲染工作在每次值發生變化時，都會被打斷、重新開始，是優先度低的工作</li>
+<li>注意此 hook 僅針對畫面渲染，根據值進行的 api 呼叫等等工作並不會跟著優化（only displaying results are deferred, not the network requests themselves）</li>
+<li>如果狀態變更被標記為變遷（Transition，參考上方 useTransition 筆記說明），那 useDeferredValue 必定會回傳新值（always returns the new <code>value</code> and does not spawn a deferred render, since the update is already deferred）</li>
+</ul>
+<h2 id="useoptimistic">useOptimistic</h2>
+<p>目的：在新結果計算完畢前，先用 <code>optimisticState</code> 更新畫面。</p>
+<p>接收參數：</p>
+<ul>
+<li><code>state</code></li>
+<li><code>updateFn(currentState, optimisticValue)</code></li>
+</ul>
+<p>回傳結果</p>
+<ul>
+<li><code>optimisticState</code> 通常等於 <code>state</code>。不過如果有執行到一半的 action，則值會是 <code>updateFn(currentState, optimisticValue)</code> 回傳的內容</li>
+<li><code>addOptimistic</code> 接受一個參數 <code>optimisticValue</code>，並執行 action</li>
+</ul>
+<p>整理了一版改編自官方的<a href="https://stackblitz.com/edit/vitejs-vite-dclgdx?file=src%2FApp.tsx">使用範例</a>，以下是此範例的詳細行為說明：</p>
+<ol>
+<li><code>App</code> 的 <code>sendMessage</code> 功能接收 <code>msg: string</code> 作為參數，並以此值呼叫 api，最後再透過 <code>setMessages</code> 將 api 回傳的結果更新回本地狀態</li>
+<li>使用者對 <code>Thread</code> 元件送出表單後，從表單取得 <code>message</code> 欄位的值（<code>msg</code>），並將此值傳給 <code>addOptimistic</code>（即 <code>addOptimisticMsg</code>）開始執行 action。接著清空表單內容，並呼叫 <code>sendMessage(msg)</code></li>
+<li>執行 <code>addOptimisticMsg</code> 時會發生的事情請參考範例第 14 到 21 行，我們將使用者輸入到表單的值（<code>msg</code>）加入 <code>optimisticState</code>（即 <code>optimisticMsg</code>）中，並設定 key sending 為 <code>true</code></li>
+<li>而因為我們使用 <code>optimisticState</code>（即 <code>optimisticMsg</code>）來渲染畫面，所以在 api 回傳實際結果前，會看到畫面上出現 <code>(Sending...)</code> 字樣</li>
+<li>在 api 回傳結果後，回到步驟一，我們透過 <code>setMessages</code> 將 key sending 設定為 <code>false</code>，畫面上的 <code>(Sending...)</code> 消失</li>
+</ol>
+<h2 id="useactionstate">useActionState</h2>
+<p>目的：根據 form action 的結果來更新局部狀態。可參考<a href="https://react.dev/reference/react/useActionState#using-information-returned-by-a-form-action">官方範例</a>感受其作用。</p>
+<p>使用範例：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> ChangeName</span><span style="color:#E1E4E8">({ </span><span style="color:#FFAB70">name</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">setName</span><span style="color:#E1E4E8"> }) {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#E1E4E8"> [</span><span style="color:#79B8FF">error</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">submitAction</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">isPending</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">=</span><span style="color:#B392F0"> useActionState</span><span style="color:#E1E4E8">(</span></span>
+<span class="line"><span style="color:#F97583">    async</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">previousState</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">formData</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">      const</span><span style="color:#79B8FF"> error</span><span style="color:#F97583"> =</span><span style="color:#F97583"> await</span><span style="color:#B392F0"> updateName</span><span style="color:#E1E4E8">(formData.</span><span style="color:#B392F0">get</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"name"</span><span style="color:#E1E4E8">));</span></span>
+<span class="line"><span style="color:#F97583">      if</span><span style="color:#E1E4E8"> (error) {</span></span>
+<span class="line"><span style="color:#F97583">        return</span><span style="color:#E1E4E8"> error;</span></span>
+<span class="line"><span style="color:#E1E4E8">      }</span></span>
+<span class="line"><span style="color:#B392F0">      redirect</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"/path"</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">      return</span><span style="color:#79B8FF"> null</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">    },</span></span>
+<span class="line"><span style="color:#79B8FF">    null</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">  );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> (</span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#85E89D">form</span><span style="color:#B392F0"> action</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{submitAction}></span></span>
+<span class="line"><span style="color:#E1E4E8">      &#x3C;</span><span style="color:#85E89D">input</span><span style="color:#B392F0"> type</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"text"</span><span style="color:#B392F0"> name</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"name"</span><span style="color:#E1E4E8"> /></span></span>
+<span class="line"><span style="color:#E1E4E8">      &#x3C;</span><span style="color:#85E89D">button</span><span style="color:#B392F0"> type</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"submit"</span><span style="color:#B392F0"> disabled</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{isPending}></span></span>
+<span class="line"><span style="color:#E1E4E8">        Update</span></span>
+<span class="line"><span style="color:#E1E4E8">      &#x3C;/</span><span style="color:#85E89D">button</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">      {error </span><span style="color:#F97583">&#x26;&#x26;</span><span style="color:#E1E4E8"> &#x3C;</span><span style="color:#85E89D">p</span><span style="color:#E1E4E8">>{error}&#x3C;/</span><span style="color:#85E89D">p</span><span style="color:#E1E4E8">>}</span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;/</span><span style="color:#85E89D">form</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  );</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>接收參數：</p>
+<ul>
+<li>第一個參數 <code>fn</code> 是在送出表單（when the form is submitted or button pressed）時，要執行的功能。此功能會收到兩個參數 <code>prevState</code> 與 <code>formData</code></li>
+<li>第二個參數 <code>initialState</code> 如其名，是局部狀態的初始值，只會在這個 hook 第一次被呼叫時取用</li>
+</ul>
+<p>回傳內容：</p>
+<ul>
+<li><code>state</code> 在初次渲染時，回傳 <code>initialState</code>，而在執行過 <code>fn</code> 後，會回傳對應的內容</li>
+<li><code>formAction</code> 是提供給表單使用的功能</li>
+</ul>
+<h2 id="useformstatus">useFormStatus</h2>
+<p>目的：取得送出表單時的狀態。需注意此 hook 只能在表單的子元件中使用。</p>
+<p>回傳內容可解構為以下四項資訊：</p>
+<ul>
+<li><code>pending</code> 負責提示表單是否正在送出資料的途中</li>
+<li><code>data</code> 可取得表單資訊</li>
+<li><code>method</code> 負責提示該表單使用 <code>GET</code> 或 <code>POST</code> 哪一個 HTTP method 執行送出</li>
+<li><code>action</code> 會連結到該表單的 action 功能</li>
+</ul>
+<h2 id="參考文件">參考文件</h2>
+<ul>
+<li><a href="https://react.dev/blog/2024/04/25/react-19">React 19 Beta</a></li>
+<li><a href="https://react.dev/reference/react/useTransition">useTransition</a></li>
+<li><a href="https://react.dev/reference/react/useDeferredValue">useDeferredValue</a></li>
+<li><a href="https://react.dev/reference/react/useOptimistic">useOptimistic</a></li>
+<li><a href="https://react.dev/reference/react/useActionState">useActionState</a></li>
+<li><a href="https://react.dev/reference/react-dom/hooks/useFormStatus">useFormStatus</a></li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

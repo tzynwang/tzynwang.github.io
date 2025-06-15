@@ -1,0 +1,159 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.BScVxmeO.js"></script><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.1.2"><!-- Primary Meta Tags --><title>「使用passport middleware實作登入系統」相關筆記</title><meta name="title" content="「使用passport middleware實作登入系統」相關筆記"><meta name="description" content="這是一個文組轉職前端工程師的技術部落格"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2021/express-passport-login-note"><meta property="og:title" content="「使用passport middleware實作登入系統」相關筆記"><meta property="og:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="og:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2021/express-passport-login-note"><meta property="twitter:title" content="「使用passport middleware實作登入系統」相關筆記"><meta property="twitter:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="twitter:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul:not(:has(li)){margin-top:16px;margin-bottom:16px}li{margin-top:4px;margin-bottom:4px;line-height:24px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:16px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}del{color:#4c5958e6}ol>li:has(p)>p{display:inline;margin:0}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+[data-astro-image]{width:100%;height:auto;object-fit:var(--fit);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>「使用passport middleware實作登入系統」相關筆記</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2021-06-24 13:41</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/Express" data-astro-cid-2iymvi75> Express </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#總結" data-astro-cid-qtokga5y>總結</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#環境" data-astro-cid-qtokga5y>環境</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#筆記" data-astro-cid-qtokga5y>筆記</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#appjs" data-astro-cid-qtokga5y>app.js</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#configpassportjs" data-astro-cid-qtokga5y>config/passport.js</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#configautojs" data-astro-cid-qtokga5y>config/auto.js</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#routesmodules" data-astro-cid-qtokga5y>routes/modules</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#viewspartials" data-astro-cid-qtokga5y>views/partials</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#參考文件" data-astro-cid-qtokga5y>參考文件</a> </li> </ul> </div> <h2 id="總結">總結</h2>
+<p>本次練習包含以下幾個主要功能：</p>
+<ul>
+<li>使用<a href="https://www.npmjs.com/package/passport">passport</a>來驗證使用者輸入的登入資訊（帳號、密碼）是否有效
+<ul>
+<li>並<code>passport.authenticate()</code>會接手處理驗證成功／失敗的 redirect endpoint</li>
+<li>搭配<code>req.isAuthenticated()</code>設計 middleware 來控制登入前後可視之畫面（例：登入前不可查看/dashboard 頁面、登入後無法查看/user/login 頁面）</li>
+</ul>
+</li>
+<li>使用<a href="https://www.npmjs.com/package/connect-flash">connect-flash</a>搭配 express-handlebars 的 partial 來實現<code>res.redirect()</code>後顯示錯誤訊息的功能</li>
+</ul>
+<h2 id="環境">環境</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>passport: 0.4.1</span></span>
+<span class="line"><span>passport-local: 1.0.0</span></span>
+<span class="line"><span>express: 4.17.1</span></span>
+<span class="line"><span>express-session: 1.17.2</span></span>
+<span class="line"><span>connect-flash: 0.1.1</span></span>
+<span class="line"><span>os: Windows_NT 10.0.18363 win32 x64</span></span></code></pre>
+<h2 id="筆記">筆記</h2>
+<h3 id="appjs">app.js</h3>
+<script src="https://gist.github.com/tzynwang/afaa354b51d99a02994f11bf0d11b993.js"></script>
+<ul>
+<li>13 行開始：參考<a href="https://www.npmjs.com/package/passport#middleware">passport 的官方示範</a>，將<code>resave</code>與<code>saveUninitialized</code>兩個參數都設定為<code>true</code>
+<ul>
+<li>根據<a href="https://www.npmjs.com/package/express-session">express-session 的官方文件</a>：</li>
+<li><code>resave</code>: Forces the session to be saved back to the session store, even if the session was never modified during the request.</li>
+<li><code>saveUninitialized</code>: Forces a session that is “uninitialized” to be saved to the store. A session is uninitialized when it is new but not modified.</li>
+</ul>
+</li>
+<li>21 行開始
+<ul>
+<li><code>res.locals.successMessage = req.flash('successMessage')</code>: Every view will have access to any error or success messages that you flash.
+Ref.: <a href="https://stackoverflow.com/questions/23160743/how-to-send-flash-messages-in-express-4-0">How to send flash messages in Express 4.0?</a></li>
+<li><code>res.locals</code>: An object that contains response <strong>local variables scoped to the request</strong>, and therefore <strong>available only to the view(s) rendered</strong> during that request / response cycle (if any). Otherwise, this property is identical to <code>app.locals</code>.
+Ref.: <a href="http://expressjs.com/en/api.html#res.locals">Express: res.locals</a></li>
+<li>須注意<code>req.flash('error')</code>此名稱為 passport 專用，將 error 修改為其他名稱後，passport <code>done()</code>的錯誤訊息就無法顯示</li>
+</ul>
+</li>
+</ul>
+<h3 id="configpassportjs">config/passport.js</h3>
+<script src="https://gist.github.com/tzynwang/cc3b3e679e73660fff218cbbe3897fa5.js"></script>
+<ul>
+<li>說明：<code>function loginVerify(passport)</code>匯出後由<code>app.js</code> require 後使用，參考<code>app.js</code>原始碼 33-34 行</li>
+<li>第 6 行的<code>{ usernameField: 'email' }</code>
+<ul>
+<li>By default, LocalStrategy expects to find credentials in parameters named <code>username</code> and <code>password</code>. If your site prefers to name these fields differently, options are available to change the defaults.</li>
+<li>登入表單中的 username 與 password name 欄位若不是<code>name="username"</code>與<code>name="password"</code>的話，可額外指定要讀取的表格欄位，<code>{ usernameField: 'email' }</code>的意思即是使用登入表單中的<code>name="email"</code>欄位作為<code>usernameField</code></li>
+</ul>
+</li>
+<li>第 9 行的<code>{ message: 'User not exist' }</code>：其中<code>'User not exist'</code>會由<code>req.flash('error')</code>顯示</li>
+<li><code>done(null, user)</code>與<code>done(null, false)</code>
+<ul>
+<li><code>done(null, user)</code>: If the credentials are valid, the verify callback invokes <code>done()</code> to <strong>supply Passport with the user that authenticated</strong>.</li>
+<li><code>done(null, false)</code>: If the credentials are not valid, <code>done()</code> should be <strong>invoked with false instead of a user</strong> to indicate an authentication failure.</li>
+</ul>
+</li>
+<li><code>serializeUser</code>與<code>deserializeUser</code>
+<ul>
+<li>16 行：Only the <code>user.id</code> is serialized to the session, keeping the amount of data stored within the session small.</li>
+<li>20 行：When subsequent requests are received, this ID (<code>user.id</code>) is used to find the user, <strong>which will be restored to <code>req.user</code></strong>.</li>
+<li>Ref.: <a href="https://stackoverflow.com/questions/27637609/understanding-passport-serialize-deserialize">Understanding passport serialize deserialize</a>
+Q: Where does <code>user.id</code> go after <code>passport.serializeUser</code> has been called?
+A: The <code>user.id</code> is <strong>saved in the session</strong>, and is later used to retrieve the whole object via the <code>deserializeUser</code> function. <code>serializeUser</code> determines which data of the user object should be stored in the session.</li>
+</ul>
+</li>
+</ul>
+<h3 id="configautojs">config/auto.js</h3>
+<script src="https://gist.github.com/tzynwang/a33766a251de5bfc93c51333d34ebc3b.js"></script>
+<ul>
+<li>
+<p>關於<code>.isAuthenticated()</code></p>
+<p><img src="/2021/express-passport-login-note/it_just_works_king_crimson.jpg" alt="We just don&#x27;t have it in the docs"></p>
+<ul>
+<li><a href="https://stackoverflow.com/questions/38820251/how-is-req-isauthenticated-in-passport-js-implemented">How is req.isAuthenticated() in Passport JS implemented?</a>
+For any request, you can check if a user <strong>is authenticated or not</strong> by using this method.</li>
+<li><a href="https://github.com/jaredhanson/passport/issues/683">No Mention of isAuthenticated() in docs #683</a>
+There is no bug… The thing is that the <code>isAuthenticated()</code> and <code>isUnauthenticated()</code> functions are not mentioned anywhere in the docs.</li>
+</ul>
+</li>
+<li>
+<p>在<code>routes/home.js</code>與<code>routes/user.js</code>中作為 middleware 使用</p>
+<ul>
+<li><code>isLoggedIn</code>：若使用者已登入，則可繼續前往該 endpoint；反之若使用者未登入的話，則導向<code>/user/login</code>，並顯示提示訊息（<code>Please log in to view this page.</code>）</li>
+<li><code>notLoggedIn</code>：若使用者在已經登入的情況下前往<code>/user/login</code>或<code>/user/register</code>，則自動導回<code>/dashboard</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="routesmodules">routes/modules</h3>
+<script src="https://gist.github.com/tzynwang/46da1a3a1881b339c4151444527b12a9.js"></script>
+<ul>
+<li>home.js
+<ul>
+<li>第 12 行<code>res.render('dashboard', { user: req.user.username })</code>：通過登入驗證的使用者資料會被儲存在<code>req.user</code>中，要在<code>dashboard</code>模板中顯示<code>username</code>的話，從<code>req.user</code>中取<code>username</code>的值即可</li>
+</ul>
+</li>
+<li>user.js
+<ul>
+<li>21-25 行：直接由<code>passport.authenticate('local', { ... })</code>接管登入驗證的程序，驗證成功的話導向<code>/dashboard</code>，失敗則導回<code>/user/login</code>，並因為<code>failureFlash</code>設定為<code>true</code>，<code>login</code>模板會根據 config/passport.js 中設定的條件顯示相對應的錯誤訊息（<code>{ message: 'User not exist' }</code>與<code>{ message: 'Password incorrect' }</code>）</li>
+<li>Setting the <code>failureFlash</code> option to <code>true</code> instructs Passport to flash an error message using the message given by the strategy’s verify callback, if any. 需注意 views/partials 中的<code>{{#if error}}</code>不可換成其他名稱，<code>req.flash('error')</code>中的<code>'error'</code>也不可換（換了就無法顯示訊息）</li>
+<li><code>req.logout()</code>: Passport exposes a <code>logout()</code> function on <code>req</code> that can be called from any route handler which needs to terminate a login session. Invoking <code>logout()</code> will <strong>remove the <code>req.user</code> property and clear the login session (if any)</strong>.</li>
+</ul>
+</li>
+</ul>
+<h3 id="viewspartials">views/partials</h3>
+<script src="https://gist.github.com/tzynwang/0b6189f1dc961b792690202dde873773.js"></script>
+<ul>
+<li>使用 partials 時的 views 資料夾結構：</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>/views</span></span>
+<span class="line"><span>  /layouts</span></span>
+<span class="line"><span>    main.handlebars</span></span>
+<span class="line"><span>  /partials</span></span>
+<span class="line"><span>    messages.handlebars</span></span>
+<span class="line"><span>  dashboard.handlebars</span></span>
+<span class="line"><span>  index.handlebars</span></span>
+<span class="line"><span>  login.handlebars</span></span>
+<span class="line"><span>  register.handlebars</span></span></code></pre>
+<ul>
+<li>使用方式：設定好 partials 內容後，將<code>{{> 檔案名稱}}</code>（例：<code>{{> messages}}</code>）插回其餘模板即可</li>
+<li>會自動根據<code>{{#if 參數是否為true}}</code>來決定顯示哪些 partials 內容，舉例：若 passport.js 中的<code>done()</code>回傳 error 的話，partials 檔案<code>messages.handlebars</code>中的 24-29 行即會顯示在<code>login</code>或<code>register</code>模板中</li>
+</ul>
+<h2 id="參考文件">參考文件</h2>
+<ul>
+<li><a href="https://www.passportjs.org/docs/">Passport: Documentation</a></li>
+<li>YouTube 教學
+<ul>
+<li><a href="https://youtu.be/6FOq4cUdH8k">Node.js With Passport Authentication | Full Project</a></li>
+<li><a href="https://youtu.be/W5Tb1MIeg-I">Build a Login System in NodeJS with Passport.js Authentication | A NodeJS Tutorial</a></li>
+</ul>
+</li>
+<li><a href="http://cythilya.blogspot.com/2015/08/node-handlebars.html">Node - 使用模版引擎 Handlebars</a></li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

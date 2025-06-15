@@ -1,0 +1,198 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.BScVxmeO.js"></script><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.1.2"><!-- Primary Meta Tags --><title>「X-Frame-Options、Same-origin policy、Cross-Origin Resource Sharing」相關筆記</title><meta name="title" content="「X-Frame-Options、Same-origin policy、Cross-Origin Resource Sharing」相關筆記"><meta name="description" content="這是一個文組轉職前端工程師的技術部落格"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2021/cross-origin-resource-sharing"><meta property="og:title" content="「X-Frame-Options、Same-origin policy、Cross-Origin Resource Sharing」相關筆記"><meta property="og:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="og:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2021/cross-origin-resource-sharing"><meta property="twitter:title" content="「X-Frame-Options、Same-origin policy、Cross-Origin Resource Sharing」相關筆記"><meta property="twitter:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="twitter:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul:not(:has(li)){margin-top:16px;margin-bottom:16px}li{margin-top:4px;margin-bottom:4px;line-height:24px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:16px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}del{color:#4c5958e6}ol>li:has(p)>p{display:inline;margin:0}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+[data-astro-image]{width:100%;height:auto;object-fit:var(--fit);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>「X-Frame-Options、Same-origin policy、Cross-Origin Resource Sharing」相關筆記</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2021-04-13 18:09</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/Web security" data-astro-cid-2iymvi75> Web security </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#原始問題" data-astro-cid-qtokga5y>原始問題</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#簡答" data-astro-cid-qtokga5y>簡答</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#環境" data-astro-cid-qtokga5y>環境</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#x-frame-options" data-astro-cid-qtokga5y>X-Frame-Options</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#問題解析" data-astro-cid-qtokga5y>問題解析</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#定義-same-origin-policy" data-astro-cid-qtokga5y>定義 Same-origin policy</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#定義-origin" data-astro-cid-qtokga5y>定義 origin</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#筆記" data-astro-cid-qtokga5y>筆記</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#例外" data-astro-cid-qtokga5y>例外</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#定義-cross-origin-resource-sharing-cors" data-astro-cid-qtokga5y>定義 Cross-Origin Resource Sharing (CORS)</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#處理方式" data-astro-cid-qtokga5y>處理方式</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#參考文件" data-astro-cid-qtokga5y>參考文件</a> </li> </ul> </div> <h2 id="原始問題">原始問題</h2>
+<p>在<a href="https://codepen.io/Charlie7779/pen/MWJgKrP">作品</a>中插入 Linkedin、Facebook 與 Instagram 的超連結，為什麼在 codepen 右側欄位中點選這些超連結無法前往該網站？</p>
+<p><img src="/2021/cross-origin-resource-sharing/codepen-screenshot.png" alt="在codepen的輸出視窗點擊超連結，無法連線至該網站"></p>
+<h2 id="簡答">簡答</h2>
+<p>根據 DevTool Console 顯示的錯誤訊息，codepen.io 將<code>X-Frame-Options</code>設定為<code>sameorigin</code>，故無法在 codepen.io 的<code>&#x3C;iframe></code>中開啟不同來源（origin）的網站（Linkedin、Facebook 或 Instagram）</p>
+<h2 id="環境">環境</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Google Chrome: 89.0.4389.114 (Official Build) (64-bit)</span></span>
+<span class="line"><span>os: Windows_NT 10.0.18363 win32 x64</span></span></code></pre>
+<h2 id="x-frame-options">X-Frame-Options</h2>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options">MDN</a>: This indicate whether or not a browser should be allowed to render a page in a <code>&#x3C;frame></code>, <code>&#x3C;iframe></code>, <code>&#x3C;embed></code> or <code>&#x3C;object></code>.
+<ul>
+<li><code>deny</code>: The page cannot be displayed in a frame, regardless of the site attempting to do so.</li>
+<li><code>sameorigin</code>: The page can only be displayed in a frame on the same origin as the page itself.</li>
+<li><code>deny</code>不允許載入任何頁面，而<code>sameorigin</code>允許載入同源的頁面</li>
+<li>將作品原始碼中超連結的<code>href</code>修改為 codepen.io 上其他作品的連結的話，可以在右側輸出欄位連線到該作品</li>
+</ul>
+</li>
+</ul>
+<h3 id="問題解析">問題解析</h3>
+<ul>
+<li>
+<p>在 codepen.io 處於 Editor View 模式時，作品是透過 codepen.io 網站中的<code>&#x3C;iframe></code>來展示</p>
+</li>
+<li>
+<p>codepen.io 將<code>X-Frame-Options</code>設定為<code>sameorigin</code>，而 Linkedin、Facebook 或 Instagram 與 codepen.io 並不屬於相同來源，故無法在 codepen.io 的<code>&#x3C;iframe></code>中開啟這些網站</p>
+<p><img src="/2021/cross-origin-resource-sharing/codepen-iframe.png" alt="Editor View模式下，作品透過codepen.io網站中的iframe元素展示"></p>
+</li>
+<li>
+<p>如果使用 debug mode 來開啟 codepen.io 上的作品，此時作品不再透過<code>&#x3C;iframe></code>展示，且瀏覽器通常允許 cross-origin writes（下述），故可正常連線至其他網站</p>
+<p><img src="/2021/cross-origin-resource-sharing/codepen-debug-mode.png" alt="使用Debug Mode開啟作品時，作品本身即是一個完整的HTML文件，而非嵌於codepen.io網站中的部分內容"></p>
+</li>
+</ul>
+<h2 id="定義-same-origin-policy">定義 Same-origin policy</h2>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy">MDN</a>: The same-origin policy is a critical security mechanism that restricts how a document (or script) loaded from one origin can interact with a resource from another origin.</li>
+<li><a href="https://web.dev/cross-origin-resource-sharing/">Google Developers</a>: The browser’s same-origin policy <strong>blocks</strong> reading a resource from a <strong>different origin</strong>.</li>
+<li><a href="https://youtu.be/KaEj_qZgiKY?t=227">CSRF Introduction and what is the Same-Origin Policy</a>: Same-origin policy prevents scripts from one origin to access private data on another origin.</li>
+</ul>
+<h3 id="定義-origin">定義 origin</h3>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy#definition_of_an_origin">MDN</a>: Two URLs have the same origin if the protocol, port (if specified), and host are the same for both.
+<ul>
+<li>Compares <code>http://store.company.com/dir/page.html</code> with the following URLs:</li>
+</ul>
+<table>
+  <tbody><tr>
+    <th>URL</th>
+    <th>Outcome</th>
+    <th>Reason</th>
+  </tr>
+  <tr>
+    <td>http://store.company.com/dir2/other.html</td>
+    <td>Same origin</td>
+    <td>Only the path differs</td>
+  </tr>
+  <tr>
+    <td>http://store.company.com/dir/inner/another.html</td>
+    <td>Same origin</td>
+    <td>Only the path differs</td>
+  </tr>
+  <tr>
+    <td>https://store.company.com/page.html</td>
+    <td>Failure</td>
+    <td>Different protocol</td>
+  </tr>
+  <tr>
+    <td>http://news.company.com/dir/page.html</td>
+    <td>Failure	</td>
+    <td>Different host</td>
+  </tr>
+  <tr>
+    <td>http://store.company.com:81/dir/page.html</td>
+    <td>Failure</td>
+    <td>Different port (http:// is port 80 by default)</td>
+  </tr>
+</tbody></table>
+</li>
+</ul>
+<h3 id="筆記">筆記</h3>
+<ul>
+<li>Same-origin policy 是瀏覽器提供的安全政策，會限制一個網站只能與相同來源的文件或 script 互動</li>
+<li>何謂相同來源？兩組 URL 若符合以下條件，則視為屬於同樣來源：
+<ul>
+<li>擁有相同的 protocol（都是 HTTP 或 HTTPS）</li>
+<li>擁有相同的 host（domain）</li>
+<li>擁有相同的 port</li>
+</ul>
+</li>
+</ul>
+<h3 id="例外">例外</h3>
+<p>參考<a href="https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy#cross-origin_network_access">MDN: Cross-origin network access</a></p>
+<ul>
+<li>瀏覽器通常允許 cross-origin writes（顯示資料），比如：開啟不同來源的網站，或是送出表單</li>
+<li>瀏覽器通常允許 cross-origin embedding，比如：
+<ul>
+<li>透過<code>&#x3C;script src="…">&#x3C;/script></code>嵌入不同來源的 JavaScript</li>
+<li>透過<code>&#x3C;link rel="stylesheet" href="…"></code>嵌入不同來源的 CSS</li>
+<li>使用<code>@font-face</code>載入不同來源的字型資源</li>
+<li>使用<code>&#x3C;audio></code>、<code>&#x3C;img></code>、<code>&#x3C;video></code>、<code>&#x3C;iframe></code>、<code>&#x3C;object></code>或<code>&#x3C;embed></code>載入不同來源網站的資源</li>
+</ul>
+</li>
+</ul>
+<h2 id="定義-cross-origin-resource-sharing-cors">定義 Cross-Origin Resource Sharing (CORS)</h2>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS">MDN</a>: CORS is an <strong>HTTP-header based mechanism</strong> that allows a server to indicate any other origins (domain, scheme, or port) than its own from which a browser should permit loading of resources.</li>
+<li><a href="https://web.dev/cross-origin-resource-sharing/">Google Developers</a>: Enabling CORS lets the server tell the browser it’s permitted to use an additional origin.
+<ul>
+<li>When you want to get a public resource from a different origin, the resource-providing server needs to tell the browser “This origin where the request is coming from can access my resource”. The browser remembers that and allows cross-origin resource sharing.</li>
+</ul>
+</li>
+</ul>
+<h3 id="處理方式">處理方式</h3>
+<p>流程如下：</p>
+<ol>
+<li>設定 server 的 HTTP response headers 來讓瀏覽器知道可以執行 CORS</li>
+</ol>
+<ul>
+<li>以 Express 為例：加上<code>cors()</code></li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#F97583">var</span><span style="color:#E1E4E8"> express </span><span style="color:#F97583">=</span><span style="color:#B392F0"> require</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'express'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">var</span><span style="color:#E1E4E8"> cors </span><span style="color:#F97583">=</span><span style="color:#B392F0"> require</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'cors'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">var</span><span style="color:#E1E4E8"> app </span><span style="color:#F97583">=</span><span style="color:#B392F0"> express</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">app.</span><span style="color:#B392F0">use</span><span style="color:#E1E4E8">(</span><span style="color:#B392F0">cors</span><span style="color:#E1E4E8">()); </span><span style="color:#6A737D">// 讓server允許CORS</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">app.</span><span style="color:#B392F0">get</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'/products/:id'</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">function</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">req</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">res</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">next</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#E1E4E8">  res.</span><span style="color:#B392F0">json</span><span style="color:#E1E4E8">({ msg: </span><span style="color:#9ECBFF">'This is CORS-enabled for all origins!'</span><span style="color:#E1E4E8"> });</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">app.</span><span style="color:#B392F0">listen</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">80</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">function</span><span style="color:#E1E4E8"> () {</span></span>
+<span class="line"><span style="color:#E1E4E8">  console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'CORS-enabled web server listening on port 80'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+<ol>
+<li>透過瀏覽器發出 request 的時候，header 需包含<code>Origin</code>資訊</li>
+</ol>
+<ul>
+<li>透過<code>fetch()</code> API 發出的 request 預設就會包含<code>Origin</code>，參考<a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch#supplying_request_options">MDN: Supplying request options</a></li>
+<li>或是加上<code>{mode: 'cors'}</code>確保 request header 包含<code>Origin</code></li>
+<li>重點仍然是 server 端要允許 CORS，參考<a href="https://stackoverflow.com/a/40063679/15028185">Allow Access-Control-Allow-Origin header using HTML5 fetch API</a></li>
+</ul>
+<ol>
+<li>server 收到包含<code>Origin</code>資訊的 header、並 server 本身允許 CORS 時，server 發出的 response header 就會包含<code>Access-Control-Allow-Origin</code>的 key-value pair；<code>*</code>代表允許來自任何 URL 的 CORS，或是字串（僅允許特定 URL 進行 CORS）</li>
+<li>瀏覽器收到 response header，並<code>Access-Control-Allow-Origin</code>的值允許客戶端 CORS 的話，就會將 server 回覆的內容提供給客戶端</li>
+</ol>
+<h2 id="參考文件">參考文件</h2>
+<ul>
+<li>YouTube:
+<ul>
+<li><a href="https://youtu.be/4KHiSt0oLJ0">CORS in 100 Seconds</a></li>
+<li><a href="https://youtu.be/KaEj_qZgiKY">CSRF Introduction and what is the Same-Origin Policy? - web 0x04</a></li>
+</ul>
+</li>
+<li>Google Developers:
+<ul>
+<li><a href="https://web.dev/cross-origin-resource-sharing/">Cross-Origin Resource Sharing (CORS)</a></li>
+<li><a href="https://developers.google.com/web/ilt/pwa/working-with-the-fetch-api#cross-origin_requests">Cross-origin requests</a></li>
+</ul>
+</li>
+<li>Express:
+<ul>
+<li><a href="https://expressjs.com/en/resources/middleware/cors.html">cors()</a></li>
+<li><a href="https://node-cors-client.netlify.app/">What happens without CORS?</a></li>
+</ul>
+</li>
+<li>其他參考資源
+<ul>
+<li><a href="https://www.moxio.com/blog/12/how-to-make-a-cross-domain-request-in-javascript-using-cors">How to make a cross domain request in JavaScript using CORS</a></li>
+</ul>
+</li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

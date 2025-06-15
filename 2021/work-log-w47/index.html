@@ -1,0 +1,277 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.BScVxmeO.js"></script><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.1.2"><!-- Primary Meta Tags --><title>2021 第47週 學習記錄：TypeScript</title><meta name="title" content="2021 第47週 學習記錄：TypeScript"><meta name="description" content="這是一個文組轉職前端工程師的技術部落格"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2021/work-log-w47"><meta property="og:title" content="2021 第47週 學習記錄：TypeScript"><meta property="og:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="og:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2021/work-log-w47"><meta property="twitter:title" content="2021 第47週 學習記錄：TypeScript"><meta property="twitter:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="twitter:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul:not(:has(li)){margin-top:16px;margin-bottom:16px}li{margin-top:4px;margin-bottom:4px;line-height:24px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:16px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}del{color:#4c5958e6}ol>li:has(p)>p{display:inline;margin:0}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+[data-astro-image]{width:100%;height:auto;object-fit:var(--fit);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>2021 第47週 學習記錄：TypeScript</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2021-11-27 12:51</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/TypeScript" data-astro-cid-2iymvi75> TypeScript </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#總結" data-astro-cid-qtokga5y>總結</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#generic" data-astro-cid-qtokga5y>Generic</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#generic-types" data-astro-cid-qtokga5y>Generic Types</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#generic-classes" data-astro-cid-qtokga5y>Generic classes</a> </li><li class="toc-4" data-astro-cid-qtokga5y> <a href="#class-static-keyword" data-astro-cid-qtokga5y>Class: static keyword</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#generic-constraints" data-astro-cid-qtokga5y>Generic Constraints</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#keyof-type-operator" data-astro-cid-qtokga5y>keyof Type Operator</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#typeof-type-operator" data-astro-cid-qtokga5y>typeof Type Operator</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#type-any" data-astro-cid-qtokga5y>type any</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#type-unknown" data-astro-cid-qtokga5y>type unknown</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#type-never" data-astro-cid-qtokga5y>type never</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#type-void" data-astro-cid-qtokga5y>type void</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#void--undefined" data-astro-cid-qtokga5y>void !== undefined</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#type-vs-interface" data-astro-cid-qtokga5y>type vs interface</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#interface-always-extendable" data-astro-cid-qtokga5y>interface: always extendable</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#type-can-not-be-re-opened" data-astro-cid-qtokga5y>type: can NOT be re-opened</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#custom-primitives-name-type-only" data-astro-cid-qtokga5y>Custom primitives name (type only)</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#ide-中是否顯示名稱" data-astro-cid-qtokga5y>IDE 中是否顯示名稱</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#參考文件" data-astro-cid-qtokga5y>參考文件</a> </li> </ul> </div> <h2 id="總結">總結</h2>
+<p>本週重心放在理解公司專案結構以及 TypeScript Generics、Utility types、Basic types 中的<code>any</code>、<code>unknown</code>、<code>never</code>、<code>void</code>以及<code>type</code>與<code>interface</code>之間的比較，筆記以 TS 相關內容為主</p>
+<h2 id="generic">Generic</h2>
+<h3 id="generic-types">Generic Types</h3>
+<ul>
+<li>
+<p>用<code>&#x3C;Type></code>（或時常簡寫為<code>&#x3C;T></code>）這種特殊變數來儲存「變數的類型」</p>
+</li>
+<li>
+<p><code>&#x3C;T></code>的功能是「保存變數的類型」，不會處理、保證「保存變數的類型」以外的事；以下程式碼會報錯，就是因為無法保證傳入的變數一定會有<code>length</code>這個 property：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> loggingIdentity</span><span style="color:#E1E4E8">&#x3C;</span><span style="color:#B392F0">T</span><span style="color:#E1E4E8">>(</span><span style="color:#FFAB70">arg</span><span style="color:#F97583">:</span><span style="color:#B392F0"> T</span><span style="color:#E1E4E8">)</span><span style="color:#F97583">:</span><span style="color:#B392F0"> T</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">  console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(arg.</span><span style="color:#79B8FF">length</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#6A737D">  // Property 'length' does not exist on type 'Type'.</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> arg;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>改為以下即可執行，因為參數被限定為陣列類型的資料了：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#6A737D">// 限定傳入的會是「包含單一類型資料的陣列」</span></span>
+<span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> loggingIdentity</span><span style="color:#E1E4E8">&#x3C;</span><span style="color:#B392F0">T</span><span style="color:#E1E4E8">>(</span><span style="color:#FFAB70">arg</span><span style="color:#F97583">:</span><span style="color:#B392F0"> T</span><span style="color:#E1E4E8">[])</span><span style="color:#F97583">:</span><span style="color:#B392F0"> T</span><span style="color:#E1E4E8">[] {</span></span>
+<span class="line"><span style="color:#E1E4E8">  console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(arg.</span><span style="color:#79B8FF">length</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> arg;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// 限定傳入的會是「包含單一類型資料的陣列」</span></span>
+<span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> loggingIdentity</span><span style="color:#E1E4E8">&#x3C;</span><span style="color:#B392F0">T</span><span style="color:#E1E4E8">>(</span><span style="color:#FFAB70">arg</span><span style="color:#F97583">:</span><span style="color:#B392F0"> Array</span><span style="color:#E1E4E8">&#x3C;</span><span style="color:#B392F0">T</span><span style="color:#E1E4E8">>)</span><span style="color:#F97583">:</span><span style="color:#B392F0"> Array</span><span style="color:#E1E4E8">&#x3C;</span><span style="color:#B392F0">T</span><span style="color:#E1E4E8">> {</span></span>
+<span class="line"><span style="color:#E1E4E8">  console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(arg.</span><span style="color:#79B8FF">length</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> arg;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+</li>
+<li>
+<p>在 interface 上使用<code>&#x3C;T></code>，即可直接觀察到資料的類型：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">interface</span><span style="color:#B392F0"> GenericIdentityFn</span><span style="color:#E1E4E8">&#x3C;</span><span style="color:#B392F0">T</span><span style="color:#E1E4E8">> {</span></span>
+<span class="line"><span style="color:#E1E4E8">  (</span><span style="color:#FFAB70">arg</span><span style="color:#F97583">:</span><span style="color:#B392F0"> T</span><span style="color:#E1E4E8">)</span><span style="color:#F97583">:</span><span style="color:#B392F0"> T</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> identity</span><span style="color:#E1E4E8">&#x3C;</span><span style="color:#B392F0">T</span><span style="color:#E1E4E8">>(</span><span style="color:#FFAB70">arg</span><span style="color:#F97583">:</span><span style="color:#B392F0"> T</span><span style="color:#E1E4E8">)</span><span style="color:#F97583">:</span><span style="color:#B392F0"> T</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> arg;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// 指定傳入的參數一定是number type</span></span>
+<span class="line"><span style="color:#F97583">let</span><span style="color:#E1E4E8"> myIdentity</span><span style="color:#F97583">:</span><span style="color:#B392F0"> GenericIdentityFn</span><span style="color:#E1E4E8">&#x3C;</span><span style="color:#79B8FF">number</span><span style="color:#E1E4E8">> </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> identity;</span></span>
+<span class="line"><span style="color:#E1E4E8">console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#B392F0">myIdentity</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">4</span><span style="color:#E1E4E8">)); </span><span style="color:#6A737D">// 4</span></span></code></pre>
+</li>
+</ul>
+<h3 id="generic-classes">Generic classes</h3>
+<blockquote>
+<p>Generic classes are only generic over their <strong>instance side</strong> rather than their static side, so when working with classes, <strong>static members can not use the class’s type parameter</strong>.</p>
+</blockquote>
+<h4 id="class-static-keyword">Class: static keyword</h4>
+<blockquote>
+<p>Static methods are <strong>often utility functions</strong>, such as functions to create or clone objects, whereas static properties are useful for caches, fixed-configuration, or any other data <strong>you don’t need to be replicated across instances</strong>.</p>
+</blockquote>
+<p>簡單記法：有<code>static</code>關鍵字的話，可以直接透過該 class 取用，不用先<code>new</code>一個該 class 的 instance 出來（如以下示範碼的<code>displayName</code>與<code>logDisplayName()</code>）；如果沒有<code>static</code>的話，必須透過該 class 的 instance 才能操作（如以下示範碼的<code>bark()</code>）</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">class</span><span style="color:#B392F0"> Dog</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">  static</span><span style="color:#FFAB70"> displayName</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> 'A Dog.'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">  static</span><span style="color:#B392F0"> logDisplayName</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#E1E4E8">    console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">this</span><span style="color:#E1E4E8">.displayName);</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">  bark</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#E1E4E8">    console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'Bark!'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">let</span><span style="color:#E1E4E8"> d </span><span style="color:#F97583">=</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> Dog</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">d.</span><span style="color:#B392F0">bark</span><span style="color:#E1E4E8">(); </span><span style="color:#6A737D">// 'Bark!'</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">Dog.</span><span style="color:#B392F0">logDisplayName</span><span style="color:#E1E4E8">(); </span><span style="color:#6A737D">// 'A Dog.'</span></span>
+<span class="line"><span style="color:#E1E4E8">Dog.</span><span style="color:#B392F0">bark</span><span style="color:#E1E4E8">(); </span><span style="color:#6A737D">// Error: Dog.bark is not a function</span></span></code></pre>
+<h3 id="generic-constraints">Generic Constraints</h3>
+<p>簡單總結：透過關鍵字<code>extends</code>對傳進來的參數的<code>&#x3C;T></code>做出一些限制</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">interface</span><span style="color:#B392F0"> Lengthwise</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#FFAB70">  length</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> number</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// 確保傳進來的參數一定會有length這個property</span></span>
+<span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> loggingIdentity</span><span style="color:#E1E4E8">&#x3C;</span><span style="color:#B392F0">T</span><span style="color:#F97583"> extends</span><span style="color:#B392F0"> Lengthwise</span><span style="color:#E1E4E8">>(</span><span style="color:#FFAB70">arg</span><span style="color:#F97583">:</span><span style="color:#B392F0"> T</span><span style="color:#E1E4E8">)</span><span style="color:#F97583">:</span><span style="color:#B392F0"> T</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">  console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(arg.</span><span style="color:#79B8FF">length</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> arg;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">loggingIdentity</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">3</span><span style="color:#E1E4E8">); </span><span style="color:#6A737D">// 會報錯，'3'並沒有length這個property</span></span>
+<span class="line"><span style="color:#B392F0">loggingIdentity</span><span style="color:#E1E4E8">({ length: </span><span style="color:#79B8FF">10</span><span style="color:#E1E4E8">, value: </span><span style="color:#79B8FF">3</span><span style="color:#E1E4E8"> }); </span><span style="color:#6A737D">// 這樣OK，因為傳入的參數有length這個property</span></span></code></pre>
+<p>組合技：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> getProperty</span><span style="color:#E1E4E8">&#x3C;</span><span style="color:#B392F0">T</span><span style="color:#E1E4E8">, </span><span style="color:#B392F0">Key</span><span style="color:#F97583"> extends</span><span style="color:#F97583"> keyof</span><span style="color:#B392F0"> T</span><span style="color:#E1E4E8">>(</span><span style="color:#FFAB70">obj</span><span style="color:#F97583">:</span><span style="color:#B392F0"> T</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">key</span><span style="color:#F97583">:</span><span style="color:#B392F0"> Key</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> obj[key];</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">let</span><span style="color:#E1E4E8"> x </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> { a: </span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">, b: </span><span style="color:#79B8FF">2</span><span style="color:#E1E4E8">, c: </span><span style="color:#79B8FF">3</span><span style="color:#E1E4E8">, d: </span><span style="color:#79B8FF">4</span><span style="color:#E1E4E8"> };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">getProperty</span><span style="color:#E1E4E8">(x, </span><span style="color:#9ECBFF">'a'</span><span style="color:#E1E4E8">); </span><span style="color:#6A737D">// OK</span></span>
+<span class="line"><span style="color:#B392F0">getProperty</span><span style="color:#E1E4E8">(x, </span><span style="color:#9ECBFF">'m'</span><span style="color:#E1E4E8">); </span><span style="color:#6A737D">// 這個會報錯，因為傳入的obj裡面沒有m這個key</span></span></code></pre>
+<p>解說：</p>
+<ol>
+<li>透過<code>keyof</code>取傳入的物件參數的所有 keys</li>
+<li>型別變數<code>&#x3C;key></code>為「物件參數所有 keys 的延伸」</li>
+<li>對於傳入的<code>key</code>參數的限制為「只能是該物件參數的 keys」</li>
+</ol>
+<h3 id="keyof-type-operator">keyof Type Operator</h3>
+<blockquote>
+<p>The <code>keyof</code> operator takes an object type and produces a string or numeric literal union of its keys.</p>
+</blockquote>
+<p>簡單來說：抓某物件的 keys 作為 type</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">type</span><span style="color:#B392F0"> Point</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> { </span><span style="color:#FFAB70">x</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> number</span><span style="color:#E1E4E8">; </span><span style="color:#FFAB70">y</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> number</span><span style="color:#E1E4E8"> };</span></span>
+<span class="line"><span style="color:#F97583">type</span><span style="color:#B392F0"> P</span><span style="color:#F97583"> =</span><span style="color:#F97583"> keyof</span><span style="color:#B392F0"> Point</span><span style="color:#E1E4E8">; </span><span style="color:#6A737D">// P會是 'x' | 'y'</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">let</span><span style="color:#E1E4E8"> p</span><span style="color:#F97583">:</span><span style="color:#B392F0"> P</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> 'x'</span><span style="color:#E1E4E8">; </span><span style="color:#6A737D">// 變數p只能是'x'或'y'，其他都會報錯</span></span></code></pre>
+<h3 id="typeof-type-operator">typeof Type Operator</h3>
+<blockquote>
+<p>Specifically, it’s only legal to use typeof on identifiers (i.e. variable names) or their properties.</p>
+</blockquote>
+<p>簡單來說：把它變成 type</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> f</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> { x: </span><span style="color:#79B8FF">10</span><span style="color:#E1E4E8">, y: </span><span style="color:#79B8FF">3</span><span style="color:#E1E4E8"> };</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// 這樣會報錯</span></span>
+<span class="line"><span style="color:#F97583">type</span><span style="color:#B392F0"> P</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> ReturnType</span><span style="color:#E1E4E8">&#x3C;</span><span style="color:#B392F0">f</span><span style="color:#E1E4E8">>;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// 要這樣寫，透過typeof取出f的type</span></span>
+<span class="line"><span style="color:#6A737D">// type P = { x: number; y: number; }</span></span>
+<span class="line"><span style="color:#F97583">type</span><span style="color:#B392F0"> P</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> ReturnType</span><span style="color:#E1E4E8">&#x3C;</span><span style="color:#F97583">typeof</span><span style="color:#E1E4E8"> f>;</span></span></code></pre>
+<h2 id="type-any">type any</h2>
+<ul>
+<li>可以 compile，TS compiler 會跳過 type checking（<code>@ts-ignore</code>），但執行時就有機會出錯</li>
+<li>基本上就像是原生 JS</li>
+<li>在 TS 無法透過上下文推論出類型時，會帶入 type <code>any</code>（When you don’t specify a type, and <strong>TypeScript can’t infer it from context</strong>, the compiler will typically default to <code>any</code>.）</li>
+</ul>
+<h2 id="type-unknown">type unknown</h2>
+<blockquote>
+<p>The <code>unknown</code> type is a lot safer than any because <code>unknown</code> forces us to do <strong>additional type-checking</strong> to perform operations on the variable.</p>
+</blockquote>
+<ul>
+<li>TS compiler 在使用者直接操作<code>unknown</code>類型的資料時會報錯（The <code>unknown</code> type represents any value. This is similar to the <code>any</code> type, but is safer because it’s <strong>not legal to do anything with an <code>unknown</code> value</strong>.）</li>
+<li>搭配 type narrowing 或 type assertion（anUnknownVariable <strong>as</strong> string）使用（No operations are permitted on an <code>unknown</code> without <strong>first asserting</strong> or <strong>narrowing</strong> to a more specific type.）</li>
+</ul>
+<h2 id="type-never">type never</h2>
+<ul>
+<li>
+<p>Indicates a function that <strong>never returns</strong>.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> throwUserNotFoundError</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">userId</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> number</span><span style="color:#E1E4E8">)</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> never</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">  throw</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> Error</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">`User with id ${</span><span style="color:#E1E4E8">userId</span><span style="color:#9ECBFF">} is not found`</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> infiniteLoop</span><span style="color:#E1E4E8">()</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> never</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">  while</span><span style="color:#E1E4E8"> (</span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">) console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'infinite loop'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+</li>
+<li>
+<p>Also, the TypeScript compiler asserts the <code>never</code> type if we <strong>create an impossible type guard</strong>.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> uncertain</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> unknown</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> 'Hello world!'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">if</span><span style="color:#E1E4E8"> (</span><span style="color:#F97583">typeof</span><span style="color:#E1E4E8"> uncertain </span><span style="color:#F97583">===</span><span style="color:#9ECBFF"> 'number'</span><span style="color:#F97583"> &#x26;&#x26;</span><span style="color:#F97583"> typeof</span><span style="color:#E1E4E8"> uncertain </span><span style="color:#F97583">===</span><span style="color:#9ECBFF"> 'string'</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#E1E4E8">  console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(uncertain.</span><span style="color:#B392F0">toLowerCase</span><span style="color:#E1E4E8">());</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// 會報錯：Property ‘toLowerCase’ does not exist on type ‘never’.</span></span></code></pre>
+</li>
+</ul>
+<h2 id="type-void">type void</h2>
+<ul>
+<li>A function that <strong>does not return any value</strong> explicitly has a return value of <code>undefined</code>. To indicate that we <strong>ignore the return value</strong>, we use the <code>void</code> return type.
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> greeting</span><span style="color:#E1E4E8">()</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> void</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">  console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'hi there!'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+</li>
+</ul>
+<h3 id="void--undefined">void !== undefined</h3>
+<blockquote>
+<p>When a function’s return value set as void, this also means that <strong>don’t use the return value of this function</strong>.</p>
+</blockquote>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">declare</span><span style="color:#F97583"> function</span><span style="color:#B392F0"> forEach</span><span style="color:#E1E4E8">&#x3C;</span><span style="color:#B392F0">T</span><span style="color:#E1E4E8">>(</span><span style="color:#FFAB70">arr</span><span style="color:#F97583">:</span><span style="color:#B392F0"> T</span><span style="color:#E1E4E8">[], </span><span style="color:#B392F0">callback</span><span style="color:#F97583">:</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">el</span><span style="color:#F97583">:</span><span style="color:#B392F0"> T</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#79B8FF"> undefined</span><span style="color:#E1E4E8">)</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> void</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">let</span><span style="color:#E1E4E8"> target</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> number</span><span style="color:#E1E4E8">[] </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> [];</span></span>
+<span class="line"><span style="color:#B392F0">forEach</span><span style="color:#E1E4E8">([</span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">2</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">3</span><span style="color:#E1E4E8">], (</span><span style="color:#FFAB70">el</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> target.</span><span style="color:#B392F0">push</span><span style="color:#E1E4E8">(el));</span></span>
+<span class="line"><span style="color:#6A737D">// 這樣會報錯：Type "number" is not assignable to type "undefined"</span></span>
+<span class="line"><span style="color:#6A737D">// 因為Array.prototype.push()會回傳陣列的長度，陣列長度不是undefined.</span></span></code></pre>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#6A737D">// 這樣就可以</span></span>
+<span class="line"><span style="color:#F97583">declare</span><span style="color:#F97583"> function</span><span style="color:#B392F0"> forEach</span><span style="color:#E1E4E8">&#x3C;</span><span style="color:#B392F0">T</span><span style="color:#E1E4E8">>(</span><span style="color:#FFAB70">arr</span><span style="color:#F97583">:</span><span style="color:#B392F0"> T</span><span style="color:#E1E4E8">[], </span><span style="color:#B392F0">callback</span><span style="color:#F97583">:</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">el</span><span style="color:#F97583">:</span><span style="color:#B392F0"> T</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> **</span><span style="color:#79B8FF">void</span><span style="color:#E1E4E8">**)</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> void</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">let</span><span style="color:#E1E4E8"> target</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> number</span><span style="color:#E1E4E8">[] </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> [];</span></span>
+<span class="line"><span style="color:#B392F0">forEach</span><span style="color:#E1E4E8">([</span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">2</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">3</span><span style="color:#E1E4E8">], </span><span style="color:#FFAB70">el</span><span style="color:#F97583"> =></span><span style="color:#E1E4E8"> target.</span><span style="color:#B392F0">push</span><span style="color:#E1E4E8">(el));</span></span></code></pre>
+<h2 id="type-vs-interface">type vs interface</h2>
+<blockquote>
+<p>The key distinction is that a <strong>type can NOT be re-opened</strong> to add new properties vs an <strong>interface</strong> which is <strong>always extendable</strong>.</p>
+</blockquote>
+<blockquote>
+<p>If you would like a heuristic, <strong>use <code>interface</code></strong> until you need to use features from <code>type</code>.</p>
+</blockquote>
+<h3 id="interface-always-extendable">interface: always extendable</h3>
+<p>以下寫法等於是延伸了 interface Point 的內容，最後 interface Point 的 z 值被視為 optional，故傳入的物件有無包含 z 都不會報錯：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">interface</span><span style="color:#B392F0"> Point</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#FFAB70">  x</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> number</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#FFAB70">  y</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> number</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// 可以直接沿用同一個interface，追加新的內容</span></span>
+<span class="line"><span style="color:#F97583">interface</span><span style="color:#B392F0"> Point</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#FFAB70">  z</span><span style="color:#F97583">?:</span><span style="color:#79B8FF"> number</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> printCoord</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">pt</span><span style="color:#F97583">:</span><span style="color:#B392F0"> Point</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#E1E4E8">  console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"The coordinate's x value is "</span><span style="color:#F97583"> +</span><span style="color:#E1E4E8"> pt.x);</span></span>
+<span class="line"><span style="color:#E1E4E8">  console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"The coordinate's y value is "</span><span style="color:#F97583"> +</span><span style="color:#E1E4E8"> pt.y);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">  if</span><span style="color:#E1E4E8"> (pt.z) console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"The coordinate's z value is "</span><span style="color:#F97583"> +</span><span style="color:#E1E4E8"> pt.z);</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">printCoord</span><span style="color:#E1E4E8">({ x: </span><span style="color:#79B8FF">100</span><span style="color:#E1E4E8">, y: </span><span style="color:#79B8FF">100</span><span style="color:#E1E4E8"> });</span></span>
+<span class="line"><span style="color:#B392F0">printCoord</span><span style="color:#E1E4E8">({ x: </span><span style="color:#79B8FF">100</span><span style="color:#E1E4E8">, y: </span><span style="color:#79B8FF">100</span><span style="color:#E1E4E8">, z: </span><span style="color:#79B8FF">123</span><span style="color:#E1E4E8"> }); </span><span style="color:#6A737D">// 這樣不會報錯</span></span></code></pre>
+<p>但會建議使用 extends 關鍵字來延伸 interface 內容，增加閱讀性，也減少意外覆蓋的可能性</p>
+<h3 id="type-can-not-be-re-opened">type: can NOT be re-opened</h3>
+<p>以下這樣會報錯：<code>Duplicate identifier 'Animal'.</code>，type 變數不可重複 assign value：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">type</span><span style="color:#B392F0"> Animal</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#FFAB70">  name</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> string</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">type</span><span style="color:#B392F0"> Animal</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#FFAB70">  species</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> string</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span></code></pre>
+<h3 id="custom-primitives-name-type-only">Custom primitives name (type only)</h3>
+<blockquote>
+<p>Interfaces may only be used to <strong>declare the shapes of objects</strong>, can <strong>NOT rename primitives</strong>.</p>
+</blockquote>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#6A737D">// 可以透過type來為primitive type自訂新名稱</span></span>
+<span class="line"><span style="color:#F97583">type</span><span style="color:#B392F0"> SanitizedString</span><span style="color:#F97583"> =</span><span style="color:#79B8FF"> string</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">type</span><span style="color:#B392F0"> EvenNumber</span><span style="color:#F97583"> =</span><span style="color:#79B8FF"> number</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// 這樣不行，會報錯</span></span>
+<span class="line"><span style="color:#F97583">interface</span><span style="color:#B392F0"> X</span><span style="color:#F97583"> extends</span><span style="color:#B392F0"> string</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">  // ...</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<ul>
+<li>interface 只能描述物件，無法描述原始型別（Primitive）、列舉（Enum）、元組（Tuple）和複合型別</li>
+<li>type 可以描述任何型別</li>
+</ul>
+<h3 id="ide-中是否顯示名稱">IDE 中是否顯示名稱</h3>
+<p><img src="/2021/work-log-w47/type-and-interface-in-IDE.png" alt="demo"></p>
+<ul>
+<li>type 不會創建新名稱</li>
+<li>故 interfaced 會回傳 Interface（新名稱），而 aliased 會回傳 <code>{ num: number }</code>（而非 Alias）</li>
+</ul>
+<h2 id="參考文件">參考文件</h2>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/static">MDN: static</a></li>
+<li><a href="https://www.typescriptlang.org/docs/handbook/2/generics.html">TypeScript: Generics</a></li>
+<li><a href="https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#differences-between-type-aliases-and-interfaces">TypeScript: Differences Between Type Aliases and Interfaces</a></li>
+<li><a href="https://stackoverflow.com/questions/58885485/why-does-typescript-have-both-void-and-undefined">Why does TypeScript have both <code>void</code> and <code>undefined</code>?</a></li>
+<li><a href="https://ithelp.ithome.com.tw/articles/10224646">【Day 19】TypeScript 介面(Interface) v.s. 型別別名(Type Alias)</a></li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

@@ -1,0 +1,147 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.BScVxmeO.js"></script><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.1.2"><!-- Primary Meta Tags --><title>捨棄 create-react-app 之餘還架了個 astro blog 昭告天下：專案結構</title><meta name="title" content="捨棄 create-react-app 之餘還架了個 astro blog 昭告天下：專案結構"><meta name="description" content="介紹個人慣用的 tsconfig.json 設定內容、以及如何引用其他套件分享的設定檔；順便聊一點資料夾結構的安排方式。"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2023/ithome-2023-4"><meta property="og:title" content="捨棄 create-react-app 之餘還架了個 astro blog 昭告天下：專案結構"><meta property="og:description" content="介紹個人慣用的 tsconfig.json 設定內容、以及如何引用其他套件分享的設定檔；順便聊一點資料夾結構的安排方式。"><meta property="og:image" content="https://tzynwang.github.io/2023/ithome-2023-4/agence-olloweb-d9ILr-dbEdg-unsplash.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2023/ithome-2023-4"><meta property="twitter:title" content="捨棄 create-react-app 之餘還架了個 astro blog 昭告天下：專案結構"><meta property="twitter:description" content="介紹個人慣用的 tsconfig.json 設定內容、以及如何引用其他套件分享的設定檔；順便聊一點資料夾結構的安排方式。"><meta property="twitter:image" content="https://tzynwang.github.io/2023/ithome-2023-4/agence-olloweb-d9ILr-dbEdg-unsplash.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul:not(:has(li)){margin-top:16px;margin-bottom:16px}li{margin-top:4px;margin-bottom:4px;line-height:24px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:16px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}del{color:#4c5958e6}ol>li:has(p)>p{display:inline;margin:0}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+[data-astro-image]{width:100%;height:auto;object-fit:var(--fit);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>捨棄 create-react-app 之餘還架了個 astro blog 昭告天下：專案結構</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2023-09-19 07:07</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/2023鐵人賽" data-astro-cid-2iymvi75> 2023鐵人賽 </a> <a class="tag" href="/tag/Frontend Infrastructure" data-astro-cid-2iymvi75> Frontend Infrastructure </a> <a class="tag" href="/tag/TypeScript" data-astro-cid-2iymvi75> TypeScript </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#本文" data-astro-cid-qtokga5y>本文</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#設定-tsconfigjson" data-astro-cid-qtokga5y>設定 tsconfig.json</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#專案結構" data-astro-cid-qtokga5y>專案結構</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#總結" data-astro-cid-qtokga5y>總結</a> </li> </ul> </div> <p>今天來為專案加上 TypeScript 設定，同時也會檢視目前為止的專案資料夾結構安排。</p>
+<h2 id="本文">本文</h2>
+<h3 id="設定-tsconfigjson">設定 tsconfig.json</h3>
+<p>如果還沒安裝 TypeScript 的話可先在終端執行 <code>yarn add -D typescript</code> 來進行安裝。然後執行 <code>node ./node_modules/typescript/bin/tsc --init</code> 來建立 <code>tsconfig.json</code>。</p>
+<p>其他建立方式可參考 <a href="https://stackoverflow.com/questions/38030078/how-to-install-and-run-typescript-locally-in-npm">Stack Overflow: How to install and run Typescript locally in npm?</a>）。</p>
+<p>因為是一次性的設定，所以個人沒有選擇在 package.json 中加入 <code>scripts</code> <code>tsc</code>。</p>
+<hr>
+<p>以下是個人目前慣用的設定檔內容，基本上都是參考 React+TypeScript Cheatsheets 中的 <a href="https://github.com/typescript-cheatsheets/react#troubleshooting-handbook-tsconfigjson">Troubleshooting Handbook: tsconfig.json</a> ，會使用比較嚴格的型別與變數使用狀況檢查，並加上 <code>paths</code> 設定。</p>
+<p><code>compilerOptions</code> 中的參數先分為上下兩半（文字值與布林），上半根據功能性、下半根據字母順序進行排列：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="json"><code><span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#79B8FF">  "compilerOptions"</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#79B8FF">    "target"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"es6"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    "lib"</span><span style="color:#E1E4E8">: [</span><span style="color:#9ECBFF">"DOM"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"ESNext"</span><span style="color:#E1E4E8">],</span></span>
+<span class="line"><span style="color:#79B8FF">    "module"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"esnext"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    "jsx"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"react"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    "moduleResolution"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"node"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    "paths"</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#79B8FF">      "@Api/*"</span><span style="color:#E1E4E8">: [</span><span style="color:#9ECBFF">"./src/api/*"</span><span style="color:#E1E4E8">],</span></span>
+<span class="line"><span style="color:#79B8FF">      "@Asset/*"</span><span style="color:#E1E4E8">: [</span><span style="color:#9ECBFF">"./src/asset/*"</span><span style="color:#E1E4E8">],</span></span>
+<span class="line"><span style="color:#79B8FF">      "@Component/*"</span><span style="color:#E1E4E8">: [</span><span style="color:#9ECBFF">"./src/component/*"</span><span style="color:#E1E4E8">],</span></span>
+<span class="line"><span style="color:#79B8FF">      "@Hook/*"</span><span style="color:#E1E4E8">: [</span><span style="color:#9ECBFF">"./src/hook/*"</span><span style="color:#E1E4E8">],</span></span>
+<span class="line"><span style="color:#79B8FF">      "@Model/*"</span><span style="color:#E1E4E8">: [</span><span style="color:#9ECBFF">"./src/model/*"</span><span style="color:#E1E4E8">],</span></span>
+<span class="line"><span style="color:#79B8FF">      "@Reducer/*"</span><span style="color:#E1E4E8">: [</span><span style="color:#9ECBFF">"./src/reducer/*"</span><span style="color:#E1E4E8">],</span></span>
+<span class="line"><span style="color:#79B8FF">      "@Style/*"</span><span style="color:#E1E4E8">: [</span><span style="color:#9ECBFF">"./src/style/*"</span><span style="color:#E1E4E8">],</span></span>
+<span class="line"><span style="color:#79B8FF">      "@Tool/*"</span><span style="color:#E1E4E8">: [</span><span style="color:#9ECBFF">"./src/tool/*"</span><span style="color:#E1E4E8">],</span></span>
+<span class="line"><span style="color:#79B8FF">      "@/*"</span><span style="color:#E1E4E8">: [</span><span style="color:#9ECBFF">"./*"</span><span style="color:#E1E4E8">]</span></span>
+<span class="line"><span style="color:#E1E4E8">    },</span></span>
+<span class="line"><span style="color:#79B8FF">    "allowJs"</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">false</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    "allowSyntheticDefaultImports"</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    "declaration"</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    "esModuleInterop"</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    "experimentalDecorators"</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    "forceConsistentCasingInFileNames"</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    "importHelpers"</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    "incremental"</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    "isolatedModules"</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    "resolveJsonModule"</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    "sourceMap"</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    "strict"</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    "noFallthroughCasesInSwitch"</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    "noImplicitReturns"</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    "noUnusedLocals"</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    "noUnusedParameters"</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">true</span></span>
+<span class="line"><span style="color:#E1E4E8">  },</span></span>
+<span class="line"><span style="color:#79B8FF">  "include"</span><span style="color:#E1E4E8">: [</span></span>
+<span class="line"><span style="color:#9ECBFF">    "./config/**/*"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">    "./script/**/*"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">    "./tool/**/*"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">    "./src/**/*"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">    "./src/env.d.ts"</span></span>
+<span class="line"><span style="color:#E1E4E8">  ],</span></span>
+<span class="line"><span style="color:#79B8FF">  "exclude"</span><span style="color:#E1E4E8">: [</span><span style="color:#9ECBFF">"./node_modules"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"./build"</span><span style="color:#E1E4E8">]</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>真心推薦設定 <code>paths</code>，可以省去引用專案內檔案時，計算相對路徑的問題。且也能一眼就看出引用的是第三方套件、還是專案本身內的檔案：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#6A737D">// 第三方套件</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> React </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> 'react'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> dayjs </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> 'dayjs'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#6A737D">// 專案內元件</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> TopNav </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> '@Component/common/TopNav'</span><span style="color:#E1E4E8">;</span></span></code></pre>
+<p>提醒：自定義 <code>paths</code> 後，連帶需要在 webpack 中設定 <code>alias</code> 才能順利打包，這會在後續介紹到專案 webpack 設定檔時說明。</p>
+<hr>
+<p>想參考現成套件 tsconfig.json 設定的朋友也可以到 <a href="https://github.com/tsconfig/bases#centralized-recommendations-for-tsconfig-bases">Centralized Recommendations for TSConfig bases</a> 尋找資源。安裝後，透過 tsconfig.json 中的 <code>extends</code> 欄位即可借用其他人設定好的 ts 內容。</p>
+<h3 id="專案結構">專案結構</h3>
+<p>不論是 side project 或是公司專案，個人通常會使用如下的資料夾結構：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#79B8FF">.</span></span>
+<span class="line"><span style="color:#B392F0">├──</span><span style="color:#9ECBFF"> README.md</span></span>
+<span class="line"><span style="color:#B392F0">├──</span><span style="color:#9ECBFF"> config</span></span>
+<span class="line"><span style="color:#B392F0">├──</span><span style="color:#9ECBFF"> doc</span></span>
+<span class="line"><span style="color:#B392F0">├──</span><span style="color:#9ECBFF"> package.json</span></span>
+<span class="line"><span style="color:#B392F0">├──</span><span style="color:#9ECBFF"> public</span></span>
+<span class="line"><span style="color:#B392F0">├──</span><span style="color:#9ECBFF"> script</span></span>
+<span class="line"><span style="color:#B392F0">├──</span><span style="color:#9ECBFF"> src</span></span>
+<span class="line"><span style="color:#B392F0">│</span><span style="color:#9ECBFF">   ├──</span><span style="color:#9ECBFF"> api</span></span>
+<span class="line"><span style="color:#B392F0">│</span><span style="color:#9ECBFF">   ├──</span><span style="color:#9ECBFF"> asset</span></span>
+<span class="line"><span style="color:#B392F0">│</span><span style="color:#9ECBFF">   ├──</span><span style="color:#9ECBFF"> component</span></span>
+<span class="line"><span style="color:#B392F0">│</span><span style="color:#9ECBFF">   │</span><span style="color:#9ECBFF">   ├──</span><span style="color:#9ECBFF"> AppEntryPoint</span></span>
+<span class="line"><span style="color:#B392F0">│</span><span style="color:#9ECBFF">   │</span><span style="color:#9ECBFF">   ├──</span><span style="color:#9ECBFF"> Common</span></span>
+<span class="line"><span style="color:#B392F0">│</span><span style="color:#9ECBFF">   │</span><span style="color:#9ECBFF">   ├──</span><span style="color:#9ECBFF"> Layer</span></span>
+<span class="line"><span style="color:#B392F0">│</span><span style="color:#9ECBFF">   │</span><span style="color:#9ECBFF">   ├──</span><span style="color:#9ECBFF"> Layout</span></span>
+<span class="line"><span style="color:#B392F0">│</span><span style="color:#9ECBFF">   │</span><span style="color:#9ECBFF">   └──</span><span style="color:#9ECBFF"> Page</span></span>
+<span class="line"><span style="color:#B392F0">│</span><span style="color:#9ECBFF">   ├──</span><span style="color:#9ECBFF"> env.d.ts</span></span>
+<span class="line"><span style="color:#B392F0">│</span><span style="color:#9ECBFF">   ├──</span><span style="color:#9ECBFF"> hook</span></span>
+<span class="line"><span style="color:#B392F0">│</span><span style="color:#9ECBFF">   ├──</span><span style="color:#9ECBFF"> index.tsx</span></span>
+<span class="line"><span style="color:#B392F0">│</span><span style="color:#9ECBFF">   ├──</span><span style="color:#9ECBFF"> model</span></span>
+<span class="line"><span style="color:#B392F0">│</span><span style="color:#9ECBFF">   ├──</span><span style="color:#9ECBFF"> reducer</span></span>
+<span class="line"><span style="color:#B392F0">│</span><span style="color:#9ECBFF">   ├──</span><span style="color:#9ECBFF"> style</span></span>
+<span class="line"><span style="color:#B392F0">│</span><span style="color:#9ECBFF">   └──</span><span style="color:#9ECBFF"> tool</span></span>
+<span class="line"><span style="color:#B392F0">├──</span><span style="color:#9ECBFF"> tool</span></span>
+<span class="line"><span style="color:#B392F0">├──</span><span style="color:#9ECBFF"> tsconfig.json</span></span>
+<span class="line"><span style="color:#B392F0">└──</span><span style="color:#9ECBFF"> yarn.lock</span></span></code></pre>
+<p>（可在終端輸入 <code>tree -I node_modules -L 3</code> 來得到資料夾結構樹，更多使用方式可參考 <a href="https://stackoverflow.com/questions/3455625/linux-command-to-print-directory-structure-in-the-form-of-a-tree">Stack Overflow: Linux command to print directory structure in the form of a tree</a>）</p>
+<hr>
+<p>各資料夾的目的說明如下：</p>
+<ul>
+<li><code>README.md</code> 為專案的快速指南，通常會在這裡簡短說明專案概要、提供專案啟動腳本，如果此專案有更詳盡的操作手冊，則會將比較長篇的說明收納於 <code>./doc</code> 中</li>
+<li><code>./config</code> 用於存放 webpack 開發、打包用的設定內容；詳細的 webpack 設定會於日後文章解說</li>
+<li><code>./public</code> 負責收納 React app 專案的 <code>index.html</code> 模板與靜態檔案（包括但不限於 <code>favicon</code> <code>apple-touch-icon.png</code> <code>robots.txt</code> 等等）</li>
+<li><code>./script</code> 負責收納專案的啟動、打包腳本；更多關於這個資料夾的內容，會在鐵人賽後續文章中說明</li>
+<li><code>./src</code> 負責收納 React app 專案的核心內容
+<ul>
+<li><code>api</code> <code>asset</code> <code>hook</code> 如其名稱描述，負責收納 api、靜態資源（字型、圖示等）與 react hook 內容</li>
+<li><code>component</code> 會再根據元件特性歸納到 <code>Common</code> <code>Layer</code> <code>Layout</code> <code>Page</code> 中（詳細的歸納判斷會於明天文章說明）；<code>AppEntryPoint</code> 內僅會有一個檔案，即是整個 React app 在 <code>./src/index.tsx</code> 中使用的入口</li>
+<li><code>env.d.ts</code> 負責提供 React app 的型別定義</li>
+<li><code>model</code> 收納 React app 會用到的純資料（例如常數、共用型別）以及 React Redux store 內容</li>
+<li><code>reducer</code> 收納 React Redux action/reducer 相關內容</li>
+<li><code>style</code> 負責收納 React app 的樣式檔案</li>
+<li><code>tool</code> 中是給 React app 專用的工具包，可能是 data formatter/transformer 或是 dayjs 函式</li>
+</ul>
+</li>
+<li>根目錄的 <code>./tool</code> 負責收納專案用的工具，比如執行本機 webpack-dev 的 <code>start</code> 或打包用的 <code>build</code> 腳本</li>
+</ul>
+<hr>
+<p>補充：</p>
+<ul>
+<li>不論一個資料夾內會有幾份檔案，個人都習慣以單數名詞來為資料夾命名</li>
+<li>專案間會盡量維持類似的資料夾結構，避免在維護不同專案時需要特別回想各個專案的檔案分類邏輯</li>
+</ul>
+<p>以上結構歡迎參考。而如果有感覺奇怪、困惑，或是你認為有更好的分類方式，也非常歡迎留言討論唷 (`･∀･)</p>
+<h2 id="總結">總結</h2>
+<p>本日重點回顧：想在專案內使用 TypeScript 但不想自己寫 tsconfig.json 的人可以到 <a href="https://github.com/tsconfig/bases#centralized-recommendations-for-tsconfig-bases">Centralized Recommendations for TSConfig bases</a> 尋找資源。另外，一套通用的專案資料夾結構，可以避免在維護多個專案時需要主動回想各類檔案的分類邏輯。</p> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

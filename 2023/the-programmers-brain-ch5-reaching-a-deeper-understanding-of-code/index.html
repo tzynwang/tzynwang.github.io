@@ -1,0 +1,79 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.BScVxmeO.js"></script><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.1.2"><!-- Primary Meta Tags --><title>閱讀筆記：The Programmer&#39;s Brain Chapter 5 Reaching a deeper understanding of code</title><meta name="title" content="閱讀筆記：The Programmer's Brain Chapter 5 Reaching a deeper understanding of code"><meta name="description" content="這是一個文組轉職前端工程師的技術部落格"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2023/the-programmers-brain-ch5-reaching-a-deeper-understanding-of-code"><meta property="og:title" content="閱讀筆記：The Programmer's Brain Chapter 5 Reaching a deeper understanding of code"><meta property="og:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="og:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2023/the-programmers-brain-ch5-reaching-a-deeper-understanding-of-code"><meta property="twitter:title" content="閱讀筆記：The Programmer's Brain Chapter 5 Reaching a deeper understanding of code"><meta property="twitter:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="twitter:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul:not(:has(li)){margin-top:16px;margin-bottom:16px}li{margin-top:4px;margin-bottom:4px;line-height:24px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:16px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}del{color:#4c5958e6}ol>li:has(p)>p{display:inline;margin:0}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+[data-astro-image]{width:100%;height:auto;object-fit:var(--fit);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>閱讀筆記：The Programmer&#39;s Brain Chapter 5 Reaching a deeper understanding of code</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2023-07-19 19:57</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/General" data-astro-cid-2iymvi75> General </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#總結" data-astro-cid-qtokga5y>總結</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#筆記" data-astro-cid-qtokga5y>筆記</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#變數的角色" data-astro-cid-qtokga5y>變數的角色</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#將角色納入變數命名" data-astro-cid-qtokga5y>將角色納入變數命名</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#閱讀技巧" data-astro-cid-qtokga5y>閱讀技巧</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#參考文件" data-astro-cid-qtokga5y>參考文件</a> </li> </ul> </div> <h2 id="總結">總結</h2>
+<p>此篇文章是 Good Code, Bad Code: Think like a software engineer 第五章（Reaching a deeper understanding of code）的閱讀筆記。此章主要圍繞在「加深理解程式碼」這個主題上，實際應用技巧則包含：理解變數的角色與命名方式、將閱讀一般文字的技巧套用於閱讀程式碼上。</p>
+<h2 id="筆記">筆記</h2>
+<h3 id="變數的角色">變數的角色</h3>
+<blockquote>
+<p>Understanding <strong>what types of information</strong> variables hold is key to being able to <strong>reason about</strong> and <strong>make changes to code</strong>.</p>
+</blockquote>
+<p>本書作者認為：辨認一個變數在程式碼中扮演的角色，可以加深閱讀者對於該段程式碼的理解。或者，讀者可以根據各類變數的出現頻率，來推理現在閱讀中的程式碼想完成的任務。</p>
+<blockquote>
+<p>…often <strong>a group of roles together characterizes a certain type of program</strong>. For example, a program with a stepper and a most wanted holder value is a search program.</p>
+</blockquote>
+<p>而根據學者 Jorma Sajaniemi 的理論，變數可分類為以下 11 種角色：</p>
+<ol>
+<li>fixed value：如其名，此類變數保管的值不會在程式碼的執行途中被改變</li>
+<li>stepper：出現於迴圈中，比如 JavaScript loop 中 <code>for (let i = 0; i &#x3C; 10; i++)</code> 中的 <code>i</code></li>
+<li>flag：常見於條件判斷中，通常是布林值</li>
+<li>walker：與 stepper 差距在於 stepper 是用於「已知」的物件結構（如陣列），而 walker 則是對應那些還未全盤了解其結構（比如 tree）的步驟點
+<ul>
+<li>A walker traverses a data structure, similar to a stepper. The difference lies in the way the data structure is traversed. A stepper always iterates over a list of values that are known beforehand, like in a for-loop. A walker, on the other hand, is a variable that <strong>traverses a data structure in a way that is unknown before the loop starts</strong>. Examples of a walker are a variable that is traversing a linked list to find the position where a new element should be added or a search index in a binary tree.</li>
+</ul>
+</li>
+<li>most recent holder：保管一連串計算後，最後一次得到的值（比如記錄一個檔案最後被讀取到哪一行）</li>
+<li>most wanted holder：保管一連串計算後，最想要被獲得的值（比如取出一個數字陣列中最大的值）</li>
+<li>gatherer：保管疊加出來的值，類似 JavaScript <code>Array.reduce()</code> 執行完畢後得到的那一個變數</li>
+<li>container：負責保管值的變數，比如陣列、物件等等</li>
+<li>follower：比如 linked list 中指向「前一個」節點的變數</li>
+<li>organizer：常見於「轉換資料結構」時，用於保存暫時的值的變數，但這個變數至少還有一些目的性（轉換結構途中的容器）</li>
+<li>temporary：純粹用來暫時保存某些值的變數</li>
+</ol>
+<p><img src="/2023/the-programmers-brain-ch5-reaching-a-deeper-understanding-of-code/figure_5-1.png" alt="types of variables"></p>
+<h3 id="將角色納入變數命名">將角色納入變數命名</h3>
+<p>匈牙利命名法（Hungarian notation）事實上有兩種類別：</p>
+<ol>
+<li>系統匈牙利命名法（systems Hungarian notation）：將型別納入變數命名中，比如 <code>numList</code> 即代表一個保存了 <code>number</code> 型態資料的陣列</li>
+<li>匈牙利應用命名法（apps Hungarian notation）：將變數的目的納入命名中，比如 <code>usName</code> 代表此變數處在 <code>unsafe</code> 狀態，需要經過處理才能使用</li>
+</ol>
+<p>鑑於現行的開發環境多半能直接查看變數的型別，應用命名法是比較有意義的命名規範。</p>
+<h3 id="閱讀技巧">閱讀技巧</h3>
+<p>書中提到，人類在閱讀一般文字時會運用到的技巧也能應用在閱讀程式碼上。這些技巧包含：</p>
+<ol>
+<li>先大略掃過一整段程式碼，確認是否有熟悉或完全不理解的概念</li>
+<li>標註程式碼中引起困惑的部分，並確認這些引起困惑的內容是否有過去沒接觸過的概念；如果有，或許要先針對這些不熟的部分做一些準備</li>
+<li>標記該段程式碼中可能是重點的部位（可能是一些邏輯判斷、或是演算法）</li>
+<li>從變數名稱來搜尋腦中是否有與之相符的長期記憶內容</li>
+<li>總結該段程式碼的功能</li>
+</ol>
+<h2 id="參考文件">參考文件</h2>
+<ul>
+<li><a href="https://www.manning.com/books/the-programmers-brain">Manning: The Programmer’s Brain</a></li>
+<li><a href="https://www.researchgate.net/publication/277285502_Roles_of_variables_in_experts&#x27;_programming_knowledge">Roles of variables in experts’ programming knowledge</a></li>
+<li><a href="https://zh.wikipedia.org/zh-tw/%E5%8C%88%E7%89%99%E5%88%A9%E5%91%BD%E5%90%8D%E6%B3%95">匈牙利命名法</a></li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

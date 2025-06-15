@@ -1,0 +1,66 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.BScVxmeO.js"></script><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.1.2"><!-- Primary Meta Tags --><title>Git workflow</title><meta name="title" content="Git workflow"><meta name="description" content="這是一個文組轉職前端工程師的技術部落格"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2021/git-workflow"><meta property="og:title" content="Git workflow"><meta property="og:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="og:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2021/git-workflow"><meta property="twitter:title" content="Git workflow"><meta property="twitter:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="twitter:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul:not(:has(li)){margin-top:16px;margin-bottom:16px}li{margin-top:4px;margin-bottom:4px;line-height:24px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:16px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}del{color:#4c5958e6}ol>li:has(p)>p{display:inline;margin:0}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+[data-astro-image]{width:100%;height:auto;object-fit:var(--fit);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>Git workflow</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2021-02-19 11:03</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/git" data-astro-cid-2iymvi75> git </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#summary-of-this-post" data-astro-cid-qtokga5y>Summary of this post</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#environment" data-astro-cid-qtokga5y>Environment</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#workflow-git-clone-first" data-astro-cid-qtokga5y>Workflow: git clone first</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#workflow-local-work-first" data-astro-cid-qtokga5y>Workflow: local work first</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#reference" data-astro-cid-qtokga5y>Reference</a> </li> </ul> </div> <h2 id="summary-of-this-post">Summary of this post</h2>
+<p>A note for 2 types of the git workflow:</p>
+<ol>
+<li>Create a GitHub repository first, then clone it to local to work</li>
+<li>Work on local first, then create a GitHub repository to push local work to it</li>
+</ol>
+<p>先<code>git clone</code>一個空的 repository 再開始本機作業會省事一點。</p>
+<h2 id="environment">Environment</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>git: 2.30.0.windows.2</span></span>
+<span class="line"><span>os: Windows_NT 10.0.18363 win32 x64</span></span></code></pre>
+<h2 id="workflow-git-clone-first">Workflow: git clone first</h2>
+<ol>
+<li>Create a repository on GitHub</li>
+<li>Copy the repository URL <code>https://github.com/&#x3C;username>/&#x3C;repository-name>.git</code></li>
+<li>Launch cmd.exe, move to the preferred location, run <code>git clone &#x3C;repository URL></code></li>
+<li>Move to the folder by <code>cd &#x3C;repository-name></code></li>
+<li>Complete the work in local folder, run <code>git add .</code> and <code>git commit</code></li>
+<li>Run <code>git push</code> to push the local work to the GitHub repository</li>
+</ol>
+<p>Note: no need to config the <code>remote</code> and <code>branch</code> manually, <code>git clone</code> will take care these.
+先<code>git clone</code>一個空的 repository 可以省略手動設定 remote 跟 branch 的步驟。</p>
+<h2 id="workflow-local-work-first">Workflow: local work first</h2>
+<ol>
+<li>Complete the work locally</li>
+<li>Create a repository on GitHub</li>
+<li>Run <code>git init</code> in the local working folder</li>
+<li>Run the following command to add remote URL: <code>git remote add &#x3C;short-name-for-repository> &#x3C;url-for-repository></code>
+For example: <code>git remote add origin https://github.com/tzynwang/hello.git</code></li>
+<li>Run <code>git add .</code> and <code>git commit</code></li>
+<li>Run <code>git push --set-upstream origin master</code> to push local content to GitHub repository</li>
+</ol>
+<p>Note: need to config <code>git remote</code> and <code>git push --set-upstream</code> manually
+如果先在本機執行作業前沒有先<code>git clone</code>一個空的 repository，那麼<code>git init</code>後必須手動執行<code>git remote add</code>，第一次<code>git push</code>時也須加上<code>--set-upstream origin master</code></p>
+<h2 id="reference">Reference</h2>
+<ul>
+<li><a href="https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes">Git Basics - Working with Remotes</a></li>
+<li><a href="https://github.com/git-guides/git-remote">Git Guides: Git Remote</a></li>
+<li><a href="https://github.com/git-guides/git-push">Git Guides: Git Push</a></li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

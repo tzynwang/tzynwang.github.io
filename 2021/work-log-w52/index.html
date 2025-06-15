@@ -1,0 +1,274 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.BScVxmeO.js"></script><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.1.2"><!-- Primary Meta Tags --><title>2021 第52週 學習記錄：前端測試</title><meta name="title" content="2021 第52週 學習記錄：前端測試"><meta name="description" content="這是一個文組轉職前端工程師的技術部落格"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2021/work-log-w52"><meta property="og:title" content="2021 第52週 學習記錄：前端測試"><meta property="og:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="og:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2021/work-log-w52"><meta property="twitter:title" content="2021 第52週 學習記錄：前端測試"><meta property="twitter:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="twitter:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul:not(:has(li)){margin-top:16px;margin-bottom:16px}li{margin-top:4px;margin-bottom:4px;line-height:24px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:16px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}del{color:#4c5958e6}ol>li:has(p)>p{display:inline;margin:0}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+[data-astro-image]{width:100%;height:auto;object-fit:var(--fit);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>2021 第52週 學習記錄：前端測試</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2021-12-29 21:17</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/Testing" data-astro-cid-2iymvi75> Testing </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#總結" data-astro-cid-qtokga5y>總結</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#前端測試" data-astro-cid-qtokga5y>前端測試</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#unit-testing" data-astro-cid-qtokga5y>Unit testing</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#integration-testing" data-astro-cid-qtokga5y>Integration testing</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#e2e-testing" data-astro-cid-qtokga5y>E2E testing</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#visual-regression-testing" data-astro-cid-qtokga5y>Visual regression testing</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#testing-best-practice" data-astro-cid-qtokga5y>Testing best practice</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#the-golden-rule" data-astro-cid-qtokga5y>The Golden Rule</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#the-test-anatomy" data-astro-cid-qtokga5y>The Test Anatomy</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#frontend-testing" data-astro-cid-qtokga5y>Frontend Testing</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#參考文件" data-astro-cid-qtokga5y>參考文件</a> </li> </ul> </div> <h2 id="總結">總結</h2>
+<p>本週以整理前端相關測試的筆記為主</p>
+<h2 id="前端測試">前端測試</h2>
+<h3 id="unit-testing">Unit testing</h3>
+<ul>
+<li>What is unit testing: The most basic building block for testing. It looks at individual method/function/component and ensures they work as expected.</li>
+<li>Why runs unit tests: The purpose is to validate that each unit of the software code performs as expected, and the most important thing is to make sure <strong>all possible edge cases are covered and taken into account</strong>. 確保功能在極端情境下也能提供正確產出</li>
+</ul>
+<h3 id="integration-testing">Integration testing</h3>
+<ul>
+<li>Why runs integration testing: To make sure that functions/components <strong>work flawlessly together</strong>.</li>
+</ul>
+<h3 id="e2e-testing">E2E testing</h3>
+<ul>
+<li>What is E2E testing:
+<ul>
+<li>E2E testing refers to a software testing method that involves testing an application’s <strong>workflow from beginning to end</strong>. This method basically aims to <strong>replicate real user scenarios</strong> so that the system can be validated for integration and data integrity.</li>
+<li>E2E tests are similar to integration tests in a sort of way. However, E2E tests are executed in a <strong>real browser with a real DOM</strong> rather than something we mock up —- we generally work with real data and a real API in E2E tests.</li>
+</ul>
+</li>
+<li>Why runs E2E testing: E2E testing determines if <strong>various dependencies of an application are working accurately</strong>. It also checks if accurate information is being communicated between multiple system components.</li>
+<li>Best practice: E2E Testing is best used to <strong>test common user scenarios</strong>. When it comes to exceptional user scenarios, use integration testing or unit testing. E2E 腳本應以使用者會實際執行的操作為主，edge case 測試交給 unit test 或 integration test</li>
+</ul>
+<h3 id="visual-regression-testing">Visual regression testing</h3>
+<ul>
+<li>What is visual regression testing: Tests the <strong>visual structure</strong> of application, including the visual differences produced by a change in the code. 跑測試時通常會將邏輯與畫面分開來測試，邏輯會交由 unit test  或 E2E testing 處理，而檢查專案的畫面是否持續維持正確的結構與外觀就由 visual regression testing 來處理</li>
+<li>Why visual regression testing: Sometimes E2E tests are insufficient to verify that the last changes to your application didn’t break the visual appearance of anything in an interface. The solution is visual regression testing, it merely take a <strong>screenshot</strong> of pages or components and <strong>compare them with screenshots that were captured in previous successful tests</strong>. If these tests find any discrepancies between the screenshots, they’ll give us some sort of notification.</li>
+</ul>
+<h2 id="testing-best-practice">Testing best practice</h2>
+<h3 id="the-golden-rule">The Golden Rule</h3>
+<ul>
+<li>Testing code should be dead-simple, short, abstraction-free, flat, delightful to work with, lean. One should <strong>look at a test and get the intent instantly</strong>. 測試內容應簡單、易理解，讓其他閱讀測試的人能夠一看就知道這份測試的目的是什麼</li>
+</ul>
+<h3 id="the-test-anatomy">The Test Anatomy</h3>
+<ul>
+<li>
+<p>1.1 Include 3 parts in each test name</p>
+<ul>
+<li><strong>What</strong> is being tested? 測試目標</li>
+<li>Under <strong>what circumstances and scenario</strong>? 測試情境</li>
+<li>What is the <strong>expected result</strong>? 預期產出</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#6A737D">//1. the unit under test</span></span>
+<span class="line"><span style="color:#B392F0">describe</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'Products Service'</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">function</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#B392F0">  describe</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'Add new product'</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">function</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#6A737D">    //2. test scenario and 3. expectation</span></span>
+<span class="line"><span style="color:#B392F0">    it</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'When no price is specified, then the product status is pending approval'</span><span style="color:#E1E4E8">, ()</span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">      const</span><span style="color:#79B8FF"> newProduct</span><span style="color:#F97583"> =</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> ProductService</span><span style="color:#E1E4E8">().</span><span style="color:#B392F0">add</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">...</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#B392F0">      expect</span><span style="color:#E1E4E8">(newProduct.status).to.</span><span style="color:#B392F0">equal</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'pendingApproval'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">    });</span></span>
+<span class="line"><span style="color:#E1E4E8">  });</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+</li>
+<li>
+<p>1.2 Structure tests by the AAA pattern 測試 code 的本體建議以 Arrange-Act-Assert 的順序來撰寫</p>
+<ul>
+<li>Arrange: All the <strong>setup code</strong> to bring the system to the scenario the test aims to simulate. 設定好測試環境</li>
+<li>Act: <strong>Execute</strong> the unit under test. 執行測試</li>
+<li>Assert: Ensure that the <strong>received value satisfies the expectation</strong>. 確認測試的產出是否符合預期</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#B392F0">describe</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'Customer classifier'</span><span style="color:#E1E4E8">, () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#B392F0">  test</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'When customer spent more than 500$, should be classified as premium'</span><span style="color:#E1E4E8">, () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">    //Arrange</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> customerToClassify</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> { spent: </span><span style="color:#79B8FF">505</span><span style="color:#E1E4E8">, joined: </span><span style="color:#F97583">new</span><span style="color:#B392F0"> Date</span><span style="color:#E1E4E8">(), id: </span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8"> };</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> DBStub</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> sinon</span></span>
+<span class="line"><span style="color:#E1E4E8">      .</span><span style="color:#B392F0">stub</span><span style="color:#E1E4E8">(dataAccess, </span><span style="color:#9ECBFF">'getCustomer'</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">      .</span><span style="color:#B392F0">reply</span><span style="color:#E1E4E8">({ id: </span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">, classification: </span><span style="color:#9ECBFF">'regular'</span><span style="color:#E1E4E8"> });</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">    //Act</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> receivedClassification</span><span style="color:#F97583"> =</span></span>
+<span class="line"><span style="color:#E1E4E8">      customerClassifier.</span><span style="color:#B392F0">classifyCustomer</span><span style="color:#E1E4E8">(customerToClassify);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">    //Assert</span></span>
+<span class="line"><span style="color:#B392F0">    expect</span><span style="color:#E1E4E8">(receivedClassification).</span><span style="color:#B392F0">toMatch</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'premium'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">  });</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+</li>
+<li>
+<p>1.3 Describe expectations in a product language: use BDD-style assertions</p>
+<ul>
+<li>Coding your tests in a declarative-style allows the reader to get the grab instantly without spending even a single brain-CPU cycle.</li>
+<li><strong>Code the expectation in a human-like language</strong>, declarative BDD style using <code>expect</code> or <code>should</code> and not using custom code.</li>
+</ul>
+</li>
+<li>
+<p>1.4 <strong>Stick to black-box testing</strong>: Test only public methods</p>
+</li>
+<li>
+<p>1.5 Choose the right test doubles: Avoid mocks in favor of stubs and spies</p>
+<ul>
+<li><strong>Test double</strong> refers to any number of <strong>replacement objects that make testing easier</strong>. Test doubles stand in for software integrations or features that are not easily testable.</li>
+</ul>
+</li>
+<li>
+<p>1.6 Don’t “foo”, use realistic input data</p>
+<ul>
+<li>Use dedicated libraries like <code>Faker</code> to generate pseudo-real data that resembles the variety and form of production data.</li>
+<li>All your development testing will falsely show green when you use synthetic inputs like “Foo”, but then production might turn red when a hacker passes-in a nasty string like <code>@3e2ddsf . ##’ 1 fdsfds . fds432 AAAA</code></li>
+</ul>
+</li>
+<li>
+<p>1.7 Test many input combinations using Property-based testing 使用 library 幫忙湊出所有 input 的可能性</p>
+<ul>
+<li><strong>Property-based testing</strong> is a technique that does exactly that: by sending <strong>all the possible input combinations</strong> to your unit under test it increases the serendipity of finding a bug.</li>
+</ul>
+</li>
+<li>
+<p>1.8 If needed, use only short &#x26; inline snapshots 保存有意義的 snapshot 段落即可，不需要全部拍下來</p>
+</li>
+<li>
+<p>1.9 Avoid global test fixtures and seeds, add data per-test</p>
+<ul>
+<li>Each test should add and act on its own set of DB rows to prevent coupling and easily reason about the test flow.</li>
+<li>Practically, make each test case explicitly add the DB records it needs and <strong>act only on those records</strong>.</li>
+</ul>
+</li>
+<li>
+<p>1.10 Don’t catch errors, expect them</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#B392F0">it</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'When no product name, it throws error 400'</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">async</span><span style="color:#E1E4E8"> () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">  await</span><span style="color:#B392F0"> expect</span><span style="color:#E1E4E8">(</span><span style="color:#B392F0">addNewProduct</span><span style="color:#E1E4E8">({}))</span></span>
+<span class="line"><span style="color:#E1E4E8">    .to.eventually.</span><span style="color:#B392F0">throw</span><span style="color:#E1E4E8">(AppError)</span></span>
+<span class="line"><span style="color:#E1E4E8">    .with.</span><span style="color:#B392F0">property</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'code'</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">'InvalidInput'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+</li>
+<li>
+<p>1.11 Tag your tests 為測試分類，各類開發階段應執行不同類型的測試</p>
+<ul>
+<li>Different tests must run on different scenarios: quick smoke, IO-less, tests should run when a developer saves or commits a file, full end-to-end tests usually run when a new pull request is submitted, etc. This can be achieved by <strong>tagging tests with keywords</strong> like <code>#cold</code> <code>#api</code> <code>#sanity</code> so you can grep with your testing harness and invoke the desired subset.</li>
+</ul>
+</li>
+<li>
+<p>1.12 Categorize tests under at least 2 levels</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#B392F0">describe</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'Transfer service'</span><span style="color:#E1E4E8">, () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">  //Scenario</span></span>
+<span class="line"><span style="color:#B392F0">  describe</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'When no credit'</span><span style="color:#E1E4E8">, () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">    //Expectation</span></span>
+<span class="line"><span style="color:#B392F0">    test</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'Then the response status should decline'</span><span style="color:#E1E4E8">, () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {});</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">    //Expectation</span></span>
+<span class="line"><span style="color:#B392F0">    test</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'Then it should send email to admin'</span><span style="color:#E1E4E8">, () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {});</span></span>
+<span class="line"><span style="color:#E1E4E8">  });</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+<p><img src="/2021/work-log-w52/hierarchical-report.png" alt="hierarchical report"></p>
+</li>
+</ul>
+<h3 id="frontend-testing">Frontend Testing</h3>
+<ul>
+<li>
+<p>3.1 Separate UI from functionality 跑 unit test 時就專精於檢查資料，不檢驗 UI</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#6A737D">// DON'T</span></span>
+<span class="line"><span style="color:#B392F0">test</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'When flagging to show only VIP, should display only VIP members'</span><span style="color:#E1E4E8">, () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> allUsers</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> [</span></span>
+<span class="line"><span style="color:#E1E4E8">    { id: </span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">, name: </span><span style="color:#9ECBFF">'Yoni Goldberg'</span><span style="color:#E1E4E8">, vip: </span><span style="color:#79B8FF">false</span><span style="color:#E1E4E8"> },</span></span>
+<span class="line"><span style="color:#E1E4E8">    { id: </span><span style="color:#79B8FF">2</span><span style="color:#E1E4E8">, name: </span><span style="color:#9ECBFF">'John Doe'</span><span style="color:#E1E4E8">, vip: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8"> },</span></span>
+<span class="line"><span style="color:#E1E4E8">  ];</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#E1E4E8"> { </span><span style="color:#79B8FF">getAllByTestId</span><span style="color:#E1E4E8"> } </span><span style="color:#F97583">=</span><span style="color:#B392F0"> render</span><span style="color:#E1E4E8">(</span></span>
+<span class="line"><span style="color:#F97583">    &#x3C;</span><span style="color:#E1E4E8">UsersList users</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{allUsers} showOnlyVIP</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{true} </span><span style="color:#F97583">/></span></span>
+<span class="line"><span style="color:#E1E4E8">  );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">  // Assert - Mix UI &#x26; data in assertion</span></span>
+<span class="line"><span style="color:#B392F0">  expect</span><span style="color:#E1E4E8">(</span><span style="color:#B392F0">getAllByTestId</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'user'</span><span style="color:#E1E4E8">)).</span><span style="color:#B392F0">toEqual</span><span style="color:#E1E4E8">(</span></span>
+<span class="line"><span style="color:#9ECBFF">    '[&#x3C;li data-test-id="user">John Doe&#x3C;/li>]'</span></span>
+<span class="line"><span style="color:#E1E4E8">  );</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#6A737D">// DO</span></span>
+<span class="line"><span style="color:#B392F0">test</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'When users-list is flagged to show only VIP, should display only VIP members'</span><span style="color:#E1E4E8">, () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> allUsers</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> [</span></span>
+<span class="line"><span style="color:#E1E4E8">    { id: </span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">, name: </span><span style="color:#9ECBFF">'Yoni Goldberg'</span><span style="color:#E1E4E8">, vip: </span><span style="color:#79B8FF">false</span><span style="color:#E1E4E8"> },</span></span>
+<span class="line"><span style="color:#E1E4E8">    { id: </span><span style="color:#79B8FF">2</span><span style="color:#E1E4E8">, name: </span><span style="color:#9ECBFF">'John Doe'</span><span style="color:#E1E4E8">, vip: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8"> },</span></span>
+<span class="line"><span style="color:#E1E4E8">  ];</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#E1E4E8"> { </span><span style="color:#79B8FF">getAllByTestId</span><span style="color:#E1E4E8"> } </span><span style="color:#F97583">=</span><span style="color:#B392F0"> render</span><span style="color:#E1E4E8">(</span></span>
+<span class="line"><span style="color:#F97583">    &#x3C;</span><span style="color:#E1E4E8">UsersList users</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{allUsers} showOnlyVIP</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{true} </span><span style="color:#F97583">/></span></span>
+<span class="line"><span style="color:#E1E4E8">  );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">  // Assert - Extract the data from the UI first</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> allRenderedUsers</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> getAllByTestId</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'user'</span><span style="color:#E1E4E8">).</span><span style="color:#B392F0">map</span><span style="color:#E1E4E8">(</span></span>
+<span class="line"><span style="color:#E1E4E8">    (</span><span style="color:#FFAB70">uiElement</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> uiElement.textContent</span></span>
+<span class="line"><span style="color:#E1E4E8">  );</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> allRealVIPUsers</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> allUsers</span></span>
+<span class="line"><span style="color:#E1E4E8">    .</span><span style="color:#B392F0">filter</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">user</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> user.vip)</span></span>
+<span class="line"><span style="color:#E1E4E8">    .</span><span style="color:#B392F0">map</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">user</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> user.name);</span></span>
+<span class="line"><span style="color:#B392F0">  expect</span><span style="color:#E1E4E8">(allRenderedUsers).</span><span style="color:#B392F0">toEqual</span><span style="color:#E1E4E8">(allRealVIPUsers); </span><span style="color:#6A737D">//compare data with data, no UI here</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+</li>
+<li>
+<p>3.2 Query HTML elements based on attributes that are unlikely to change</p>
+<ul>
+<li>If the designated element doesn’t have such attributes, <strong>create a dedicated test attribute</strong> like ‘test-id-submit-button’.</li>
+<li>Doing do not only ensures that your functional/logic tests never break because of look &#x26; feel changes but also it becomes clear to the entire team that <strong>this element and attribute are utilized by tests and shouldn’t get removed</strong>.</li>
+</ul>
+</li>
+<li>
+<p>3.3 Whenever possible, test with a realistic and fully rendered component</p>
+</li>
+<li>
+<p>3.4 Don’t sleep, use frameworks built-in support for <code>async</code> events. Also try to speed things up</p>
+<ul>
+<li>標題的 sleep 指的是使用 <code>setTimeout</code> 等方式來等待非同步的資料，但請避免此類行為，使用 async/await 或 framework 提供的功能來進行等待動作</li>
+<li>When sleeping for a long time, tests will be an order of magnitude slower.</li>
+<li>When trying to sleep for small numbers, test will fail when the unit under test didn’t respond in a timely fashion.</li>
+</ul>
+</li>
+<li>
+<p>3.5 Watch how the content is served over the network</p>
+</li>
+<li>
+<p>3.6 Stub flaky and slow resources like backend APIs</p>
+<ul>
+<li>The main benefit is <strong>preventing flakiness</strong> — testing or staging APIs by definition are not highly stable and from time to time will fail your tests although YOUR component behaves just fine</li>
+<li>使用內容正確的假資料來進行測試的話，在實際串接 API 後若發現結果不如預期，則可明確知道問題出現在 API 部分</li>
+<li>並 fetch API 也是花費時間的行為，會造成測試時間上升</li>
+</ul>
+</li>
+<li>
+<p>3.7 Have very few end-to-end tests that spans the whole system</p>
+</li>
+<li>
+<p>3.8 Speed-up E2E tests by <strong>reusing login credentials</strong></p>
+<ul>
+<li>Login only once before the tests execution start (i.e. before-all hook), save the token in some local storage and reuse it across requests.</li>
+<li>如果專案有權限管控，就先把 token 準備好，在執行測試時直接使用該 token 而不進行重複登入的動作</li>
+</ul>
+</li>
+<li>
+<p>3.9 Have one E2E smoke test that just travels across the site map 測試每一條 url 都能正常載入</p>
+</li>
+<li>
+<p>3.10 Expose the tests as a live collaborative document</p>
+<ul>
+<li>讓測試文件本身就可以提供專案的規格與目標，令非開發人員也可以一看就知道專案內容</li>
+<li>For example, some frameworks allow expressing the flow and expectations (i.e. tests plan) using a human-readable language so any stakeholder, including product managers, can read, approve and collaborate on the tests which just became the live requirements document. This technique is also being referred to as <strong>‘acceptance test’ as it allows the customer to define his acceptance criteria in plain language</strong>. This is <strong>BDD (behavior-driven testing)</strong> at its purest form.</li>
+</ul>
+</li>
+<li>
+<p>3.11 Detect visual issues with automated tools</p>
+<ul>
+<li>除確保資料流正確之外，也需檢查最終畫面是否有如預期呈現</li>
+<li>This ensures that not only the right data is prepared but also the user can conveniently see it.</li>
+</ul>
+</li>
+</ul>
+<h2 id="參考文件">參考文件</h2>
+<ul>
+<li><a href="https://css-tricks.com/front-end-testing-is-for-everyone/">Front-End Testing is For Everyone</a></li>
+<li><a href="https://www.browserstack.com/guide/end-to-end-testing">End To End Testing: A Detailed Guide</a></li>
+<li><a href="https://github.com/goldbergyoni/javascript-testing-best-practices#section-3%EF%B8%8F%E2%83%A3-frontend-testing">JavaScript &#x26; Node.js Testing Best Practices</a></li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

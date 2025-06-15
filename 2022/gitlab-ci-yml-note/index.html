@@ -1,0 +1,167 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.BScVxmeO.js"></script><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.1.2"><!-- Primary Meta Tags --><title>2022 第43週 學習筆記：.gitlab-ci.yml</title><meta name="title" content="2022 第43週 學習筆記：.gitlab-ci.yml"><meta name="description" content="這是一個文組轉職前端工程師的技術部落格"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2022/gitlab-ci-yml-note"><meta property="og:title" content="2022 第43週 學習筆記：.gitlab-ci.yml"><meta property="og:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="og:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2022/gitlab-ci-yml-note"><meta property="twitter:title" content="2022 第43週 學習筆記：.gitlab-ci.yml"><meta property="twitter:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="twitter:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul:not(:has(li)){margin-top:16px;margin-bottom:16px}li{margin-top:4px;margin-bottom:4px;line-height:24px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:16px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}del{color:#4c5958e6}ol>li:has(p)>p{display:inline;margin:0}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+[data-astro-image]{width:100%;height:auto;object-fit:var(--fit);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>2022 第43週 學習筆記：.gitlab-ci.yml</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2022-10-28 18:02</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/GitLab" data-astro-cid-2iymvi75> GitLab </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#總結" data-astro-cid-qtokga5y>總結</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#筆記" data-astro-cid-qtokga5y>筆記</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#關鍵字" data-astro-cid-qtokga5y>關鍵字</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#基礎語法" data-astro-cid-qtokga5y>基礎語法</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#其他常見關鍵字" data-astro-cid-qtokga5y>其他常見關鍵字</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#參考文件" data-astro-cid-qtokga5y>參考文件</a> </li> </ul> </div> <h2 id="總結">總結</h2>
+<p>關於 <code>.gitlab-ci.yml</code> 基本語法與規則的自用筆記，以目前工作上有用到的內容為主。</p>
+<h2 id="筆記">筆記</h2>
+<blockquote>
+<p>大前提：檔案必定命名為 <code>.gitlab-ci.yml</code> 且放置在 repo 根目錄中</p>
+</blockquote>
+<h3 id="關鍵字">關鍵字</h3>
+<ul>
+<li><a href="https://docs.gitlab.com/runner/">GitLab Runner</a>: is an <strong>application</strong> that works with GitLab CI/CD to <strong>run jobs in a pipeline</strong>.</li>
+<li><a href="https://docs.gitlab.com/ee/ci/pipelines/">CI/CD Pipelines</a>: are the top-level component of continuous integration, delivery, and deployment. Pipelines comprise:
+<ul>
+<li>Jobs, which define <strong>what to do</strong>. For example, jobs that compile or test code.</li>
+<li>Stages, which define <strong>when to run the jobs</strong>. For example, stages that run tests after stages that compile the code.</li>
+</ul>
+</li>
+<li><a href="https://docs.gitlab.com/ee/ci/jobs/">Jobs</a>: Pipeline configuration begins with jobs. Jobs are the most fundamental element of a <code>.gitlab-ci.yml</code> file.</li>
+</ul>
+<h3 id="基礎語法">基礎語法</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="yaml"><code><span class="line"><span style="color:#85E89D">stages</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#E1E4E8">  - </span><span style="color:#9ECBFF">build</span></span>
+<span class="line"><span style="color:#E1E4E8">  - </span><span style="color:#9ECBFF">test</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#85E89D">build-code-job</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">  stage</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">build</span></span>
+<span class="line"><span style="color:#85E89D">  script</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#E1E4E8">    - </span><span style="color:#9ECBFF">echo "Check the ruby version, then build some Ruby project files:"</span></span>
+<span class="line"><span style="color:#E1E4E8">    - </span><span style="color:#9ECBFF">ruby -v</span></span>
+<span class="line"><span style="color:#E1E4E8">    - </span><span style="color:#9ECBFF">rake</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#85E89D">test-code-job1</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">  stage</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">test</span></span>
+<span class="line"><span style="color:#85E89D">  script</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#E1E4E8">    - </span><span style="color:#9ECBFF">echo "If the files are built successfully, test some files with one command:"</span></span>
+<span class="line"><span style="color:#E1E4E8">    - </span><span style="color:#9ECBFF">rake test1</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#85E89D">test-code-job2</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">  stage</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">test</span></span>
+<span class="line"><span style="color:#85E89D">  script</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#E1E4E8">    - </span><span style="color:#9ECBFF">echo "If the files are built successfully, test other files with a different command:"</span></span>
+<span class="line"><span style="color:#E1E4E8">    - </span><span style="color:#9ECBFF">rake test2</span></span></code></pre>
+<ul>
+<li>stages: 定義好的 stage 會從上到下依序發生</li>
+<li>jobs: 範例中的 <code>build-code-job</code>、<code>test-code-job1</code> 與 <code>test-code-job2</code>
+<ul>
+<li>會先執行設定在 <code>stage: build</code> 的 <code>build-code-job</code>，如果此 job 順利結束，則 <code>stage test</code> 中的 <code>test-code-job1</code> 與 <code>test-code-job2</code> 會同時開始執行（沒有先後之分）</li>
+</ul>
+</li>
+<li>script: 在此區塊設定要在 runner 中執行的指令</li>
+</ul>
+<h3 id="其他常見關鍵字">其他常見關鍵字</h3>
+<p><a href="https://docs.gitlab.com/ee/ci/pipelines/job_artifacts.html">artifacts</a>: Jobs can output an archive of files and directories. This output is known as a job artifact. They are available for download in the GitLab UI if the size is smaller than the the maximum artifact size. By default, jobs in later stages <strong>automatically download all the artifacts created by jobs in earlier stages</strong>.</p>
+<p>簡單來說就是 gitlab-ci 的檔案機制，且後發的 jobs 預設會下載先行 jobs 產生的 artifacts
+下方範例翻成白話文即是：在 job pdf 中，透過指令 <code>xelatex mycv.tex</code> 產生 pdf 檔案，並產生出來的檔案 <code>mycv.pdf</code> 一週後過期</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="yaml"><code><span class="line"><span style="color:#85E89D">pdf</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">  script</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">xelatex mycv.tex</span></span>
+<span class="line"><span style="color:#85E89D">  artifacts</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">    paths</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#E1E4E8">      - </span><span style="color:#9ECBFF">mycv.pdf</span></span>
+<span class="line"><span style="color:#85E89D">    expire_in</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">1 week</span></span></code></pre>
+<p>dependencies: 指定 artifacts 來源</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="yaml"><code><span class="line"><span style="color:#85E89D">build osx</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">  stage</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">build</span></span>
+<span class="line"><span style="color:#85E89D">  script</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">make build:osx</span></span>
+<span class="line"><span style="color:#85E89D">  artifacts</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">    paths</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#E1E4E8">      - </span><span style="color:#9ECBFF">binaries/</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#85E89D">build linux</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">  stage</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">build</span></span>
+<span class="line"><span style="color:#85E89D">  script</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">make build:linux</span></span>
+<span class="line"><span style="color:#85E89D">  artifacts</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">    paths</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#E1E4E8">      - </span><span style="color:#9ECBFF">binaries/</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#85E89D">test osx</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">  stage</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">test</span></span>
+<span class="line"><span style="color:#85E89D">  script</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">make test:osx</span></span>
+<span class="line"><span style="color:#85E89D">  dependencies</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#E1E4E8">    - </span><span style="color:#9ECBFF">build osx</span><span style="color:#6A737D"> # 在這個 job 取用 build osx 產生的檔案</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#85E89D">test linux</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">  stage</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">test</span></span>
+<span class="line"><span style="color:#85E89D">  script</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">make test:linux</span></span>
+<span class="line"><span style="color:#85E89D">  dependencies</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#E1E4E8">    - </span><span style="color:#9ECBFF">build linux</span><span style="color:#6A737D"> # 在這個 job 取用 build linux 產生的檔案</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#85E89D">deploy</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">  stage</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">deploy</span></span>
+<span class="line"><span style="color:#85E89D">  script</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">make deploy</span></span>
+<span class="line"><span style="color:#85E89D">  environment</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">production</span></span></code></pre>
+<p>extends: 功能如關鍵字本身的描述，可在此定義可複用的內容，並讓其他 jobs 引用</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="yaml"><code><span class="line"><span style="color:#6A737D"># 以下這個組合</span></span>
+<span class="line"><span style="color:#85E89D">.tests</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">  script</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">rake test</span></span>
+<span class="line"><span style="color:#85E89D">  stage</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">test</span></span>
+<span class="line"><span style="color:#85E89D">  only</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">    refs</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#E1E4E8">      - </span><span style="color:#9ECBFF">branches</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#85E89D">rspec</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">  extends</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">.tests</span></span>
+<span class="line"><span style="color:#85E89D">  script</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">rake rspec</span></span>
+<span class="line"><span style="color:#85E89D">  only</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">    variables</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#E1E4E8">      - </span><span style="color:#9ECBFF">$RSPEC</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># 最終的結果等同於</span></span>
+<span class="line"><span style="color:#85E89D">rspec</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">  script</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">rake rspec</span></span>
+<span class="line"><span style="color:#85E89D">  stage</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">test</span></span>
+<span class="line"><span style="color:#85E89D">  only</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">    refs</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#E1E4E8">      - </span><span style="color:#9ECBFF">branches</span></span>
+<span class="line"><span style="color:#85E89D">    variables</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#E1E4E8">      - </span><span style="color:#9ECBFF">$RSPEC</span></span></code></pre>
+<p>image: 指定 jobs 的執行環境，注意僅能在 <code>default</code> 或 <code>job</code> 中指名要使用的 Docker image</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="yaml"><code><span class="line"><span style="color:#85E89D">default</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">  image</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">ruby:3.0</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#85E89D">rspec</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">  script</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">bundle exec rspec</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#85E89D">rspec 2.7</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">  image</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">registry.example.com/my-group/my-project/ruby:2.7</span></span>
+<span class="line"><span style="color:#85E89D">  script</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">bundle exec rspec</span></span></code></pre>
+<p>variables: 定義在 <code>.gitlab-ci.yml</code> 最上方為全域變數，定義在 jobs 中則只有該 job 可以使用</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="yaml"><code><span class="line"><span style="color:#85E89D">variables</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">  TEST_VAR</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"All jobs can use this variable's value"</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#85E89D">job1</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">  variables</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">    TEST_VAR_JOB</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"Only job1 can use this variable's value"</span></span>
+<span class="line"><span style="color:#85E89D">  script</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#E1E4E8">    - </span><span style="color:#9ECBFF">echo "$TEST_VAR" and "$TEST_VAR_JOB"</span></span></code></pre>
+<h2 id="參考文件">參考文件</h2>
+<ul>
+<li><a href="https://docs.gitlab.com/ee/ci/yaml/gitlab_ci_yaml.html">GitLab Docs: The .gitlab-ci.yml file</a></li>
+<li><a href="https://docs.gitlab.com/ee/ci/yaml/">GitLab Docs: .gitlab-ci.yml keyword reference</a></li>
+<li><a href="https://youtu.be/qP8kir2GUgo">YouTube: GitLab CI CD Tutorial for Beginners [Crash Course]</a></li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

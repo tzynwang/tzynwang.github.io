@@ -1,0 +1,122 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.BScVxmeO.js"></script><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.1.2"><!-- Primary Meta Tags --><title>VSCode擴充套件（Extensions）與自訂snippets</title><meta name="title" content="VSCode擴充套件（Extensions）與自訂snippets"><meta name="description" content="這是一個文組轉職前端工程師的技術部落格"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2021/vs-code-extensions-snippets"><meta property="og:title" content="VSCode擴充套件（Extensions）與自訂snippets"><meta property="og:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="og:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2021/vs-code-extensions-snippets"><meta property="twitter:title" content="VSCode擴充套件（Extensions）與自訂snippets"><meta property="twitter:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="twitter:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul:not(:has(li)){margin-top:16px;margin-bottom:16px}li{margin-top:4px;margin-bottom:4px;line-height:24px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:16px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}del{color:#4c5958e6}ol>li:has(p)>p{display:inline;margin:0}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+[data-astro-image]{width:100%;height:auto;object-fit:var(--fit);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>VSCode擴充套件（Extensions）與自訂snippets</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2021-03-04 09:27</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/VSCode" data-astro-cid-2iymvi75> VSCode </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#總結" data-astro-cid-qtokga5y>總結</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#版本與環境" data-astro-cid-qtokga5y>版本與環境</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#擴充套件extensions" data-astro-cid-qtokga5y>擴充套件（Extensions）</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#bracket-pair-colorizer-2" data-astro-cid-qtokga5y>Bracket Pair Colorizer 2</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#indent-rainbow" data-astro-cid-qtokga5y>indent-rainbow</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#lorem-picsum-photos-snippets" data-astro-cid-qtokga5y>Lorem Picsum photos snippets</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#live-server" data-astro-cid-qtokga5y>Live Server</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#code-spell-checker" data-astro-cid-qtokga5y>Code Spell Checker</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#自訂-snippets" data-astro-cid-qtokga5y>自訂 snippets</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#參考文件" data-astro-cid-qtokga5y>參考文件</a> </li> </ul> </div> <h2 id="總結">總結</h2>
+<p>記錄一些目前有在使用的 VSCode 擴充套件，與自訂 snippets 的步驟筆記。</p>
+<h2 id="版本與環境">版本與環境</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>VSCode: 1.53.2 (user setup)</span></span>
+<span class="line"><span>os: Windows_NT 10.0.18363 win32 x64</span></span></code></pre>
+<h2 id="擴充套件extensions">擴充套件（Extensions）</h2>
+<h3 id="bracket-pair-colorizer-2">Bracket Pair Colorizer 2</h3>
+<p>套件網址：<a href="https://marketplace.visualstudio.com/items?itemName=CoenraadS.bracket-pair-colorizer-2">https://marketplace.visualstudio.com/items?itemName=CoenraadS.bracket-pair-colorizer-2</a>
+幫成對的括號套用相同的顏色，方便辨識。
+根據<a href="https://github.com/CoenraadS/Bracket-Pair-Colorizer-2#faq">官方 Q&#x26;A</a>的內容，2 代改善了執行速度與正確性，其餘設定與 1 代看起來沒什麼差異。</p>
+<p>如果要修改套件設定的話，可參考以下 gif：
+<img src="/2021/vs-code-extensions-snippets/extension-setting.gif" alt="demo 1"></p>
+<h3 id="indent-rainbow">indent-rainbow</h3>
+<p>套件網址：<a href="https://marketplace.visualstudio.com/items?itemName=oderwat.indent-rainbow">https://marketplace.visualstudio.com/items?itemName=oderwat.indent-rainbow</a>
+幫縮排區域套上顏色，縮排尺寸不正確時顯示為紅色，如下圖。
+<img src="/2021/vs-code-extensions-snippets/incorrect-space.png" alt="demo 2"></p>
+<h3 id="lorem-picsum-photos-snippets">Lorem Picsum photos snippets</h3>
+<p>套件網址：<a href="https://marketplace.visualstudio.com/items?itemName=huang-an-sheng.lorem-picsum-photos-snippets">https://marketplace.visualstudio.com/items?itemName=huang-an-sheng.lorem-picsum-photos-snippets</a>
+練習切版時直接在 html 檔案中輸入<code>picsum</code>即可帶出有假圖的<code>&#x3C;img></code>標籤。
+<img src="/021/vs-code-extensions-snippets/lorem-piscum.gif" alt="picsum demo 1"></p>
+<ul>
+<li>輸入<code>picsum</code>後直接按下<code>tab</code>會產生帶一張固定 id 假圖的標籤<code>&#x3C;img src="https://picsum.photos/id/684/600/400" alt=""></code>
+<ul>
+<li>需要隨機圖片的話，把圖片網址改為<code>https://picsum.photos/{width}/{height}?random={seed}</code></li>
+<li><code>{width}</code>代表圖片寬度（單位 px），<code>{height}</code>代表圖片高度（單位 px），<code>{seed}</code>為正整數</li>
+<li>假圖網址加上不同的<code>{seed}</code>會讓每一組網址產生不同的圖片，參考下圖：
+<img src="/2021/vs-code-extensions-snippets/lorem-picsum.png" alt="picsum demo 2"></li>
+<li>第一列圖片的網址由左至右分別是<code>https://picsum.photos/600/400?random=1</code>、<code>https://picsum.photos/600/400?random=2</code>、<code>https://picsum.photos/600/400?random=3</code>、<code>https://picsum.photos/600/400?random=4</code>，第二列圖片的網址統一使用<code>https://picsum.photos/600/400?random</code></li>
+<li>第二列的圖片在每次重新整理網頁時都會更新，但會是四張一樣的圖</li>
+</ul>
+</li>
+<li><code>picsum-grayscale</code>：灰階假圖</li>
+<li><code>picsum-blur</code>：有模糊效果的假圖</li>
+<li><code>picsum-square</code>：正方形假圖</li>
+<li><code>picsum-grayscale-blur</code>：灰階加模糊效果</li>
+<li>其餘預設效果可參考套件的說明內容</li>
+</ul>
+<h3 id="live-server">Live Server</h3>
+<p>套件網址：<a href="https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer">https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer</a>
+安裝完畢後，VSCode 右下角會出現 Go Live 按鈕，點下啟動 Live Server。
+預設可以在<code>localhost:5500</code>即時看到 VSCode 的檔案（修改檔案內容後，存檔、重新整理<code>localhost:5500</code>上的頁面，才會看到修改內容）。</p>
+<h3 id="code-spell-checker">Code Spell Checker</h3>
+<p>套件網址：<a href="https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker">https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker</a>
+支援 CamelCase，並且偵測到拼寫不正確的單字時，會提供建議用字，如下圖：
+<img src="/2021/vs-code-extensions-snippets/code-spell-checker.gif" alt="spell checker demo"></p>
+<h2 id="自訂-snippets">自訂 snippets</h2>
+<p>自訂了一個帶有 bootstrap5 CSS 與 JS CDN 連結的 html 樣板。</p>
+<ol>
+<li>從<a href="https://getbootstrap.com/docs/5.0/getting-started/introduction/#starter-template">bootstrap5 官方文件</a>複製 html 樣板內容</li>
+<li>開啟 VSCode，按下 F1，輸入「snippets」，選擇「Preferences: Configure User Snippets」
+<img src="/2021/vs-code-extensions-snippets/snippets-edit-0.png" alt="snippets demo 1"></li>
+<li>因為要建立的是 html 樣板，故輸入 html，意即建立給 html 文件使用的 snippets
+<img src="/2021/vs-code-extensions-snippets/snippets-edit-1.png" alt="snippets demo 2"></li>
+<li>另外一個開啟 html.json 的方式是依序點選「畫面右上角的 File（Mac 版為 Code） >> Preferences >> User Snippets」後，輸入 html 開啟 html.json
+<img src="/2021/vs-code-extensions-snippets/snippets-edit-another-path.png" alt="snippets demo 3"></li>
+<li>在 html.json 檔案中貼上 bootstrap5 的 html 樣板內容
+<img src="/2021/vs-code-extensions-snippets/snippets-edit-content.png" alt="snippets demo 4">
+<ul>
+<li>圖中第 16 行<code>bootstrap5 template</code>代表 snippets 名稱 - 第 17 行<code>prefix</code>的值代表呼叫 snippets 的快速鍵，為了避免跟 VSCode 預設的 html 樣板起衝突，設定為<code>!!</code> - 第 18 至 35 行<code>body</code>的值代表 snippets 的內容，每一行後面須加上半形逗號<code>,</code>分隔內容 - 第 36 行<code>description</code>是輸入快速鍵時出現在 snippets 選單的說明內容，請參考下圖
+<img src="/021/vs-code-extensions-snippets/snippets-enter-hotkey.png" alt="snippets demo 5">
+原始碼如下：</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#9ECBFF">"bootstrap5 template"</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#9ECBFF"> "prefix"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"!!"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF"> "body"</span><span style="color:#E1E4E8">: [</span></span>
+<span class="line"><span style="color:#9ECBFF">     "&#x3C;!doctype html>"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">     "&#x3C;html lang=</span><span style="color:#79B8FF">\"</span><span style="color:#9ECBFF">en</span><span style="color:#79B8FF">\"</span><span style="color:#9ECBFF">>"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">     "    &#x3C;head>"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">     "        &#x3C;meta charset=</span><span style="color:#79B8FF">\"</span><span style="color:#9ECBFF">utf-8</span><span style="color:#79B8FF">\"</span><span style="color:#9ECBFF">>"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">     "        &#x3C;meta name=</span><span style="color:#79B8FF">\"</span><span style="color:#9ECBFF">viewport</span><span style="color:#79B8FF">\"</span><span style="color:#9ECBFF"> content=</span><span style="color:#79B8FF">\"</span><span style="color:#9ECBFF">width=device-width, initial-scale=1</span><span style="color:#79B8FF">\"</span><span style="color:#9ECBFF">>"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">     ""</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">     "        &#x3C;!-- Bootstrap CSS -->"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">     "        &#x3C;link href=</span><span style="color:#79B8FF">\"</span><span style="color:#9ECBFF">https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css</span><span style="color:#79B8FF">\"</span><span style="color:#9ECBFF"> rel=</span><span style="color:#79B8FF">\"</span><span style="color:#9ECBFF">stylesheet</span><span style="color:#79B8FF">\"</span><span style="color:#9ECBFF"> integrity=</span><span style="color:#79B8FF">\"</span><span style="color:#9ECBFF">sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl</span><span style="color:#79B8FF">\"</span><span style="color:#9ECBFF"> crossorigin=</span><span style="color:#79B8FF">\"</span><span style="color:#9ECBFF">anonymous</span><span style="color:#79B8FF">\"</span><span style="color:#9ECBFF">>"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">     ""</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">     "        &#x3C;title>Hello, world!&#x3C;/title>"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">     "    &#x3C;/head>"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">     "    &#x3C;body>"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">     "        &#x3C;!-- Option 1: Bootstrap Bundle with Popper -->"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">     "        &#x3C;script src=</span><span style="color:#79B8FF">\"</span><span style="color:#9ECBFF">https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js</span><span style="color:#79B8FF">\"</span><span style="color:#9ECBFF"> integrity=</span><span style="color:#79B8FF">\"</span><span style="color:#9ECBFF">sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0</span><span style="color:#79B8FF">\"</span><span style="color:#9ECBFF"> crossorigin=</span><span style="color:#79B8FF">\"</span><span style="color:#9ECBFF">anonymous</span><span style="color:#79B8FF">\"</span><span style="color:#9ECBFF">>&#x3C;/script>"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">     "    &#x3C;/body>"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">     "&#x3C;/html>"</span></span>
+<span class="line"><span style="color:#E1E4E8"> ],</span></span>
+<span class="line"><span style="color:#9ECBFF"> "description"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"bootstrap5 template"</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+</li>
+<li>以上內容輸入完畢後，存檔，之後即可在 html 格式的檔案中輸入快速鍵<code>!!</code>並按下<code>tab</code>來套用剛才自訂的 snippets 內容
+<img src="/2021/vs-code-extensions-snippets/snippets-done.png" alt="snippets demo 6"></li>
+</ol>
+<h2 id="參考文件">參考文件</h2>
+<ul>
+<li><a href="https://wcc723.github.io/development/2020/12/13/vscode-extension/">12 個前端愛用的 VSCode 擴充套件</a></li>
+<li><a href="https://tw.alphacamp.co/blog/visual-studio-code-editor-tutorial-and-extensions">VSCode 快速安裝教學，推薦常用外掛擴充套件</a></li>
+<li><a href="https://stackoverflow.com/a/29973358/15028185">How do you format code in Visual Studio Code (VSCode)</a></li>
+<li><a href="https://code.visualstudio.com/docs/editor/userdefinedsnippets#_create-your-own-snippets">Visual Studio Code: Create your own snippets</a></li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

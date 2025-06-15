@@ -1,0 +1,74 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.BScVxmeO.js"></script><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.1.2"><!-- Primary Meta Tags --><title>閱讀筆記：The Art of Unit Testing Chapter 11 Integrating unit testing into the organization</title><meta name="title" content="閱讀筆記：The Art of Unit Testing Chapter 11 Integrating unit testing into the organization"><meta name="description" content="本章為「想要帶來改變」的人整理了三個注意事項：如何讓改變成真、能讓計畫成功的秘訣、可能搞砸計畫的因素"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2024/the-art-of-unit-testing-ch11-integrating-unit-testing-into-the-organization"><meta property="og:title" content="閱讀筆記：The Art of Unit Testing Chapter 11 Integrating unit testing into the organization"><meta property="og:description" content="本章為「想要帶來改變」的人整理了三個注意事項：如何讓改變成真、能讓計畫成功的秘訣、可能搞砸計畫的因素"><meta property="og:image" content="https://tzynwang.github.io/2024/the-art-of-unit-testing-ch11-integrating-unit-testing-into-the-organization/patrick-perkins-ETRPjvb0KM0-unsplash.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2024/the-art-of-unit-testing-ch11-integrating-unit-testing-into-the-organization"><meta property="twitter:title" content="閱讀筆記：The Art of Unit Testing Chapter 11 Integrating unit testing into the organization"><meta property="twitter:description" content="本章為「想要帶來改變」的人整理了三個注意事項：如何讓改變成真、能讓計畫成功的秘訣、可能搞砸計畫的因素"><meta property="twitter:image" content="https://tzynwang.github.io/2024/the-art-of-unit-testing-ch11-integrating-unit-testing-into-the-organization/patrick-perkins-ETRPjvb0KM0-unsplash.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul:not(:has(li)){margin-top:16px;margin-bottom:16px}li{margin-top:4px;margin-bottom:4px;line-height:24px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:16px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}del{color:#4c5958e6}ol>li:has(p)>p{display:inline;margin:0}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+[data-astro-image]{width:100%;height:auto;object-fit:var(--fit);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>閱讀筆記：The Art of Unit Testing Chapter 11 Integrating unit testing into the organization</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2024-02-08 17:52</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/Testing" data-astro-cid-2iymvi75> Testing </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#簡介" data-astro-cid-qtokga5y>簡介</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#如何成為推動改變之人" data-astro-cid-qtokga5y>如何成為「推動改變之人」</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#找出組織中的幫手與擋路者" data-astro-cid-qtokga5y>找出組織中的幫手與擋路者</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#找出適合導入改變的起點" data-astro-cid-qtokga5y>找出適合導入改變的起點</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#做好被質疑的準備" data-astro-cid-qtokga5y>做好被質疑的準備</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#成功的秘訣" data-astro-cid-qtokga5y>成功的秘訣</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#失敗的因素" data-astro-cid-qtokga5y>失敗的因素</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#參考文件" data-astro-cid-qtokga5y>參考文件</a> </li> </ul> </div> <h2 id="簡介">簡介</h2>
+<p>本章為「想要帶來改變」的人整理了三個注意事項：</p>
+<ol>
+<li>如何讓改變成真</li>
+<li>能讓計畫成功的秘訣</li>
+<li>可能搞砸計畫的因素</li>
+</ol>
+<h2 id="如何成為推動改變之人">如何成為「推動改變之人」</h2>
+<h3 id="找出組織中的幫手與擋路者">找出組織中的幫手與擋路者</h3>
+<p>幫手（champions）：指那些願意接受改變的人，他們通常都懷抱著開放的心態。有些人甚至就有嘗試導入改變的經驗——若是如此，請記得向他們請教：</p>
+<ul>
+<li>組織中是否有比較容易接受改變計畫的成員？</li>
+<li>是否有比較容易被接受的改變？</li>
+<li>是否有需要留意的<del>坑</del>人事物？</li>
+</ul>
+<p>擋路者（blockers）：指那些寧可保持現狀的人。面對擋路者，你要盡量讓他們成為改變的一份子——讓他們協助你規劃、制定新規則，重點是讓他們感受到自己被依賴、對團體產生貢獻。</p>
+<p>與同事討論後的感想：擋路者不等於反對者。能說動中立份子加入你就不錯了，不要期待能說服反對者加入你的陣營 🤡</p>
+<h3 id="找出適合導入改變的起點">找出適合導入改變的起點</h3>
+<p>建議從小規模、低複雜度的專案開始比較好——尤其是初次嘗試推動改變的人，請將計畫規模限制在自己能力可及的範圍內。另外，從小型專案起手，也能避免在計畫不幸失敗時產生無法負擔的代價。</p>
+<h3 id="做好被質疑的準備">做好被質疑的準備</h3>
+<p>在你制定計劃時，請搜集足夠多的資訊來證明改變帶來的優勢會遠多於缺點。試著挑自己計畫的毛病，並針對這些尖銳問題找出合理的解答——因為一定會有人問這些問題。</p>
+<p>以單元測試來說，常見的問題有：</p>
+<ul>
+<li>撰寫單元測試會增加開發的時間：這是事實。但單元測試能確保「在我們有預想到的範圍內，產品的功能都會符合預期」，這能減少產品上線後的錯誤數量，也能減低日後除錯、重構的時間成本。整體而言，開發的時間會變長，但維護與除錯的成本都會下降</li>
+<li>你這是在搶 QA 的飯碗：不盡然。單元測試著重驗證「一個單元的行為是否符合規格」，但沒有驗證「當一堆單元組合起來後，整個產品的操作流程是否依舊流暢」——而後者是 QA 可以集中火力檢視的部分</li>
+<li>為什麼你花時間寫了測試，但產品還是會發生問題：同上，只有寫單元測試的話，就只能確保一個單元的功能正常，沒有保證產品的使用流程</li>
+<li>這麼大一包程式碼，到底要從哪裡開始：推薦從「最常出現問題的模組」開始導入單元測試</li>
+</ul>
+<h2 id="成功的秘訣">成功的秘訣</h2>
+<p>擬定暫時性（例：為期三個月）的導入計劃，<strong>訂定可量化的目標</strong>並<strong>持續公布、追蹤之</strong>，確保計畫有為專案、產品帶來正面影響。如果沒有顯著改善，那就確實終止計畫，讓大家回到過去的作業方式。</p>
+<hr>
+<p>不必堅持計畫一定要完全根據你的腳本進行，如果其他操作方式也能實現你的目標，那就放手讓大家去做。</p>
+<hr>
+<p>申請外部資源（例：顧問）來主持計畫。請外人協助的優勢是：沒有發言包袱、（或許）較多的計畫導入經驗，以及明確的時間限制與成敗判斷標準。</p>
+<h2 id="失敗的因素">失敗的因素</h2>
+<p>本書作者認為「缺乏持續改變的推力」是造成改變失敗的頭號原因。作為改變的推動者，你必須意識到自己就是得貢獻時間在教導、推廣、解決他人在計畫裡遇到的問題。</p>
+<p>引入外部資源可以緩解這種過度燃燒自己的問題。</p>
+<hr>
+<p>另外兩個可能造成改變告吹的要素如下：</p>
+<ul>
+<li>在自己都沒有準備好之前，就匆促開始計劃</li>
+<li>缺乏人和：有政敵、缺少隊友支持等等（或許可參閱<a href="https://readmoo.com/book/210306431000101">《協作原則》</a>）</li>
+</ul>
+<h2 id="參考文件">參考文件</h2>
+<ul>
+<li><a href="https://www.manning.com/books/the-art-of-unit-testing-third-edition">Manning: The Art of Unit Testing, Third Edition</a></li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

@@ -1,0 +1,61 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.BScVxmeO.js"></script><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.1.2"><!-- Primary Meta Tags --><title>如何讓人認真看待你的 PR？或是你其實可以拒看過胖的 PR 嗎？</title><meta name="title" content="如何讓人認真看待你的 PR？或是你其實可以拒看過胖的 PR 嗎？"><meta name="description" content="此篇是 NDC Oslo 議程 Looks GREAT To Me 的自用筆記。講者針對 PR/MR 的作者（author）和審查者（reviewer）分別提出了一些 Dos 和 Don'ts。"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2024/how-to-code-review"><meta property="og:title" content="如何讓人認真看待你的 PR？或是你其實可以拒看過胖的 PR 嗎？"><meta property="og:description" content="此篇是 NDC Oslo 議程 Looks GREAT To Me 的自用筆記。講者針對 PR/MR 的作者（author）和審查者（reviewer）分別提出了一些 Dos 和 Don'ts。"><meta property="og:image" content="https://tzynwang.github.io/2024/how-to-code-review/christian-rucinski-9-emauS-yBQ-unsplash.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2024/how-to-code-review"><meta property="twitter:title" content="如何讓人認真看待你的 PR？或是你其實可以拒看過胖的 PR 嗎？"><meta property="twitter:description" content="此篇是 NDC Oslo 議程 Looks GREAT To Me 的自用筆記。講者針對 PR/MR 的作者（author）和審查者（reviewer）分別提出了一些 Dos 和 Don'ts。"><meta property="twitter:image" content="https://tzynwang.github.io/2024/how-to-code-review/christian-rucinski-9-emauS-yBQ-unsplash.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul:not(:has(li)){margin-top:16px;margin-bottom:16px}li{margin-top:4px;margin-bottom:4px;line-height:24px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:16px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}del{color:#4c5958e6}ol>li:has(p)>p{display:inline;margin:0}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+[data-astro-image]{width:100%;height:auto;object-fit:var(--fit);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>如何讓人認真看待你的 PR？或是你其實可以拒看過胖的 PR 嗎？</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2024-10-31 19:28</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/General" data-astro-cid-2iymvi75> General </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#此篇筆記中的名詞定義" data-astro-cid-qtokga5y>此篇筆記中的名詞定義</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#筆記本體" data-astro-cid-qtokga5y>筆記本體</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#prmr-作者應該做到的事情" data-astro-cid-qtokga5y>PR/MR 作者應該做到的事情</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#prmr-審查者應該做到的事情" data-astro-cid-qtokga5y>PR/MR 審查者應該做到的事情</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#參考" data-astro-cid-qtokga5y>參考</a> </li> </ul> </div> <p>此篇是 NDC Oslo 2024 議程 <a href="https://www.youtube.com/watch?v=zxHRYRxBNVE&#x26;ab_channel=NDCConferences">👍 Looks GREAT To Me: Getting Past Bare Minimum Code Reviews - Adrienne Braganza Tacke</a> 的自用筆記。講者針對 PR/MR 的作者（author）和審查者（reviewer）分別提出了一些 Dos 和 Don’ts。</p>
+<h2 id="此篇筆記中的名詞定義">此篇筆記中的名詞定義</h2>
+<ul>
+<li>PR: pull request</li>
+<li>MR: merge request</li>
+<li>作者（author）：發起 PR/MR 的開發者</li>
+<li>審查者（reviewer）：決定該 PR/MR 是否能被合併的開發者</li>
+</ul>
+<h2 id="筆記本體">筆記本體</h2>
+<h3 id="prmr-作者應該做到的事情">PR/MR 作者應該做到的事情</h3>
+<p>重點：在指定審查者之前，<strong>作者要先檢查該 PR/MR 是否確實已經達到「可以被審查」的狀態</strong>。</p>
+<p>「寫完」跟「這段程式碼已經準備好被審查」是兩碼子事。「寫完」代表完成功能、修好 bug，但不一定代表這些程式碼已經被整理到「可以讓其他人<strong>專注於檢查程式碼品質</strong>，確認其是否達到能合併的程度」。</p>
+<p>以下是一些「雖然程式碼確實已經寫完，但會讓審查者頭很大」的例子：</p>
+<ul>
+<li>過於籠統的 MR/PR 標題（「修正電話號碼檢查問題」）與描述（「修正日文版網站付款問題」）</li>
+<li>沒有遵守規定好的 lint/format 格式（或是任何團隊開發規範）</li>
+<li>在一隻 PR/MR 製造過量（比如超過 500 行或 20 個檔案）的有意義改動</li>
+</ul>
+<p>在要求審查以前，可以執行以下檢查來確保你的程式碼能收到應有的回饋：</p>
+<ul>
+<li>在標題具體說明這隻 MR/PR 的目標（「修正在日文版網站的付款流程中，沒有阻擋使用者輸入非日本區電話號碼的問題」），並在描述區提供脈絡（需求從何而來、合併後的預期結果、關聯的 issue 或設計稿等⋯⋯）</li>
+<li>透過自動化工具、腳本來處理掉 lint/format 之類的工作，不要讓審查者花心思在那些能自動化處理的事情上</li>
+<li>確保 MR/PR <strong>只有一個目標</strong>，所有的程式碼、改動都只為了達成該目標；如果一個 MR/PR 的<strong>改動範圍大到連你自己都沒有耐性看完，那就下修到你能看完的程度</strong></li>
+</ul>
+<h3 id="prmr-審查者應該做到的事情">PR/MR 審查者應該做到的事情</h3>
+<p>重點：專注於確保程式碼的<strong>品質</strong>，並<strong>確實審查每一行程式碼</strong>。</p>
+<p>這兩件事可以先從提供<strong>具體</strong>的回饋開始。如果你希望作者修改程式碼，就<strong>明確指出</strong>何處應該被修改，並說明<strong>為什麼</strong>應該要修改——所有的修改都要帶來<strong>明確、能量化的改善</strong>（而不是因為「我感覺這樣寫比較好」所以「你應該要改」）。</p>
+<p>議程中介紹了 request/rationale/result （需求、理由、預期結果）的建議模板，如果你完全沒有頭緒，可以參考以下「建議將某 method 移到更合適的位置」與「建議使用更有辨識度的變數命名」的範例：</p>
+<p><img src="/2024/how-to-code-review/example-moving-a-method.png" alt="example: moving a method"></p>
+<p><img src="/2024/how-to-code-review/example-a-more-meaningful-variable-name.png" alt="example: a more meaningful variable name"></p>
+<p>再來，查程式碼並<strong>不是一個讓審查者展現自己有多厲害的場合</strong>，審查的目的是確保程式碼的品質足夠合回去。因此，如果該 PR/MR 的改動範圍實在太大，審查者應該主動要求作者進行拆分，而不是眼睛一閉直接按下去。</p>
+<p>請記得審查者本身也有責任避免 repo 中出現有問題的程式碼，而不是雙手一攤讓提出 PR/MR 的作者承擔出現 bug 的全部責任。</p>
+<h2 id="參考">參考</h2>
+<p><a href="https://www.youtube.com/watch?v=zxHRYRxBNVE&#x26;ab_channel=NDCConferences">👍 Looks GREAT To Me: Getting Past Bare Minimum Code Reviews - Adrienne Braganza Tacke</a></p> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

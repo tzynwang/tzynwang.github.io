@@ -1,0 +1,77 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.BScVxmeO.js"></script><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.1.2"><!-- Primary Meta Tags --><title>快速筆記：bloom filter</title><meta name="title" content="快速筆記：bloom filter"><meta name="description" content="bloom filter 是一種資料結構。當你只需要知道某個目標是否存在時，可以使用此結構來保存目標「存在與否」的資訊。"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2024/data-structure-bloom-filter"><meta property="og:title" content="快速筆記：bloom filter"><meta property="og:description" content="bloom filter 是一種資料結構。當你只需要知道某個目標是否存在時，可以使用此結構來保存目標「存在與否」的資訊。"><meta property="og:image" content="https://tzynwang.github.io/2024/data-structure-bloom-filter/freestocks-fplnXE5loWo-unsplash.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2024/data-structure-bloom-filter"><meta property="twitter:title" content="快速筆記：bloom filter"><meta property="twitter:description" content="bloom filter 是一種資料結構。當你只需要知道某個目標是否存在時，可以使用此結構來保存目標「存在與否」的資訊。"><meta property="twitter:image" content="https://tzynwang.github.io/2024/data-structure-bloom-filter/freestocks-fplnXE5loWo-unsplash.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul:not(:has(li)){margin-top:16px;margin-bottom:16px}li{margin-top:4px;margin-bottom:4px;line-height:24px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:16px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}del{color:#4c5958e6}ol>li:has(p)>p{display:inline;margin:0}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+[data-astro-image]{width:100%;height:auto;object-fit:var(--fit);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>快速筆記：bloom filter</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2024-09-08 09:11</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/Browser" data-astro-cid-2iymvi75> Browser </a> <a class="tag" href="/tag/Data Structure" data-astro-cid-2iymvi75> Data Structure </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#筆記" data-astro-cid-qtokga5y>筆記</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#基本原理" data-astro-cid-qtokga5y>基本原理</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#優缺點" data-astro-cid-qtokga5y>優缺點</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#應用於瀏覽器的樣式計算" data-astro-cid-qtokga5y>應用於瀏覽器的樣式計算</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#參考文件" data-astro-cid-qtokga5y>參考文件</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#css-runtime-performance" data-astro-cid-qtokga5y>CSS runtime performance</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#bloom-filter" data-astro-cid-qtokga5y>Bloom filter</a> </li> </ul> </div> <blockquote>
+<p>懶人包：這是一種資料結構。當你只需要知道<strong>某個目標是否存在</strong>，而<strong>不需要知道該目標本身的內容</strong>的時候，可以使用此結構來保存目標「是否存在」的資訊。</p>
+</blockquote>
+<h2 id="筆記">筆記</h2>
+<h3 id="基本原理">基本原理</h3>
+<p>使用 bloom filter 需要兩個工具：</p>
+<ol>
+<li>將資料 hash 成數字的演算法</li>
+<li>用來保存布林的陣列</li>
+</ol>
+<p>Bloom filter 的工作原理是：把一組資料 hash 成特定數字，再根據數字結果將陣列中對應的 index 從「無（<code>false</code>）」改為「有（<code>true</code>）」。當我們想查詢<strong>某個目標是否存在</strong>時，就把該目標拿去 hash，並比對陣列中的對應 index 是否為「有（<code>true</code>）」。</p>
+<p>舉個例子。當我們要將 <code>hello</code> 字串收錄為「太弱的密碼」時，會有以下步驟：</p>
+<ol>
+<li>把 <code>hello</code> hash 後，得到數字組合 <code>0 1 1</code></li>
+<li>把陣列的 index 1 與 2 設定為 <code>true</code></li>
+</ol>
+<p>而當我們要查詢 <code>hello</code> 這個字串是否為「太弱的密碼」時，步驟如下：</p>
+<ol>
+<li>把 <code>hello</code> hash 後，得到數字組合 <code>0 1 1</code></li>
+<li>檢查陣列的 index 1 與 2 是否都為 <code>true</code>，如果都是 <code>true</code> 就代表字串 <code>hello</code> 曾經被保存在陣列中</li>
+</ol>
+<p>結論：得知 <code>hello</code> 屬於「太弱的密碼」。在實務上的對應行動可能是「在 UI 提示使用者換一組更強的密碼」。</p>
+<h3 id="優缺點">優缺點</h3>
+<ul>
+<li>優點：節省記憶體，且速度快</li>
+<li>缺點（特性）：會出現偽陽性（false positive）；即「某個目標可能不在陣列中，但查詢後的結果卻告訴你『它在』」</li>
+</ul>
+<h2 id="應用於瀏覽器的樣式計算">應用於瀏覽器的樣式計算</h2>
+<p>情境：你撰寫了一些 CSS 樣式，其中包含 <code>.foo div</code> 這類有點廣泛的選取規則（「選取任何親代為 <code>.foo</code> 的 <code>div</code> 節點」）。</p>
+<p>提問：瀏覽器要如何有效率地將 <code>.foo div</code> 的樣式套用到所有符合規則的 <code>div</code> 上呢？</p>
+<p>解決方式：</p>
+<p>首先，將檢索的方向反過來。瀏覽器不一定要從親代走向子代，它可以從子代反查該節點是否有特定親代。接著，瀏覽器可以將一個子代節點的所有親代以 bloom filter 的形式保存起來。</p>
+<p>而當瀏覽器想知道一個子代節點是否有特定親代（比如 <code>.foo</code>）時，瀏覽器只要查詢該子代的 bloom filter 是否對特定親代樣式名回傳 <code>true</code>，就能知道該子代是否「可能」有特定名稱的親代元件。</p>
+<p>最後，瀏覽器只會遍歷（實際查詢）那些「可能有特定親代」的子代節點。直到瀏覽器確認某個 <code>div</code> 真的有名為 <code>.foo</code> 的親代時，才把樣式套用到該 <code>div</code> 上。</p>
+<hr>
+<p>以上應用是從 <a href="https://youtu.be/nWcexTnvIKI?si=8WgiOyiVh59Or0-Y">CSS runtime performance | Nolan Lawson | performance.now() 2022</a> 學到的。關於 bloom filter 的段落大約在 <code>17:13</code> 開始，非常推薦對瀏覽器處理樣式有興趣的讀者聽一下。</p>
+<p>演講原稿節錄如下：</p>
+<p>The browser <strong>keeps a little Bloom filter hash on each node of its ancestors’ tag name, IDs, and classes</strong>. This means that if we’re on <code>div</code>, and we want to figure out if <code>.foo</code> is an ancestor, then we don’t have to walk up the tree — we know instantly, because <code>.foo</code> is in the Bloom filter. So now we can quickly filter all the <code>div</code>s based on the Bloom filter, “fast rejecting” any that couldn’t possibly have <code>.foo</code> as an ancestor. Note that, because we could have false positives, <strong>we still need to walk the ancestor chain to check that it really has <code>.foo</code> as an ancestor</strong>, but we are still eliminating a lot of work.</p>
+<h2 id="參考文件">參考文件</h2>
+<h3 id="css-runtime-performance">CSS runtime performance</h3>
+<ul>
+<li><a href="https://youtu.be/nWcexTnvIKI?si=8WgiOyiVh59Or0-Y">YouTube: CSS runtime performance | Nolan Lawson | performance.now() 2022</a></li>
+<li><a href="https://nolanlawson.github.io/css-talk-2022/#p1">CSS runtime performance | Slide</a></li>
+</ul>
+<h3 id="bloom-filter">Bloom filter</h3>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Bloom_filter">Wikipedia: Bloom filter</a></li>
+<li><a href="https://youtu.be/kfFacplFY4Y?si=Iv3L0Xi6KRrWTWun">YouTube: What Are Bloom Filters?</a></li>
+<li><a href="https://youtu.be/V3pzxngeLqw?si=vpECWXRYq8UnLWXh">YouTube: Bloom Filters | Algorithms You Should Know #2 | Real-world Examples</a></li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

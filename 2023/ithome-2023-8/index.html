@@ -1,0 +1,203 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.BScVxmeO.js"></script><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.1.2"><!-- Primary Meta Tags --><title>捨棄 create-react-app 之餘還架了個 astro blog 昭告天下：webpack 5 與 TypeScript</title><meta name="title" content="捨棄 create-react-app 之餘還架了個 astro blog 昭告天下：webpack 5 與 TypeScript"><meta name="description" content="瀏覽器環境是認不得 TypeScript 內容的，今天會分享個人平常如何透過 webpack 將 .ts/.tsx 處理成 JavaScript 檔案。"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2023/ithome-2023-8"><meta property="og:title" content="捨棄 create-react-app 之餘還架了個 astro blog 昭告天下：webpack 5 與 TypeScript"><meta property="og:description" content="瀏覽器環境是認不得 TypeScript 內容的，今天會分享個人平常如何透過 webpack 將 .ts/.tsx 處理成 JavaScript 檔案。"><meta property="og:image" content="https://tzynwang.github.io/2023/ithome-2023-8/victor-charlie-QG9xUOQTYCY-unsplash.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2023/ithome-2023-8"><meta property="twitter:title" content="捨棄 create-react-app 之餘還架了個 astro blog 昭告天下：webpack 5 與 TypeScript"><meta property="twitter:description" content="瀏覽器環境是認不得 TypeScript 內容的，今天會分享個人平常如何透過 webpack 將 .ts/.tsx 處理成 JavaScript 檔案。"><meta property="twitter:image" content="https://tzynwang.github.io/2023/ithome-2023-8/victor-charlie-QG9xUOQTYCY-unsplash.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul:not(:has(li)){margin-top:16px;margin-bottom:16px}li{margin-top:4px;margin-bottom:4px;line-height:24px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:16px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}del{color:#4c5958e6}ol>li:has(p)>p{display:inline;margin:0}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+[data-astro-image]{width:100%;height:auto;object-fit:var(--fit);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>捨棄 create-react-app 之餘還架了個 astro blog 昭告天下：webpack 5 與 TypeScript</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2023-09-23 08:58</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/2023鐵人賽" data-astro-cid-2iymvi75> 2023鐵人賽 </a> <a class="tag" href="/tag/Frontend Infrastructure" data-astro-cid-2iymvi75> Frontend Infrastructure </a> <a class="tag" href="/tag/webpack" data-astro-cid-2iymvi75> webpack </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#流程說明" data-astro-cid-qtokga5y>流程說明</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#處理-alias" data-astro-cid-qtokga5y>處理 alias</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#處理-typescript" data-astro-cid-qtokga5y>處理 TypeScript</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#目前為止的-webpack-設定" data-astro-cid-qtokga5y>目前為止的 webpack 設定</a> </li> </ul> </div> <p>在<a href="/2023/ithome-2023-4">第 4 天</a>個人曾經推薦在 tsconfig.json 中透過 <code>paths</code> 設定短路徑、省去在檔案間互相 import 時計算路徑的麻煩。而今天就會來詳細解釋如何為 webpack 加上 <code>alias</code> 設定，以及要安裝哪些 loader 來讓 webpack 能夠將 TypeScript 轉為瀏覽器能夠理解的 JavaScript 內容。</p>
+<h2 id="流程說明">流程說明</h2>
+<p>先來順一下今天預計要做的事情：</p>
+<ol>
+<li>從 <code>tsconfig.json</code> 讀取 <code>paths</code> 資料，並把這些內容轉為 webpack alias 能夠使用的格式</li>
+<li>將 alias 灌進 webpack 開發環境設定中。注意：沒有提供 alias 的話，<code>webpack-dev-server</code> 拉起來之後，是無法正確解析我們在 tsconfig.json 中自訂的 <code>@Asset/*</code> 這類路徑的</li>
+<li>為 webpack 加上 <a href="https://github.com/esbuild-kit/esbuild-loader">esbuild-loader</a> 來將 <code>.ts/.tsx/.js</code> 處理成瀏覽器環境能夠讀懂的格式。選擇 esbuild-loader 是因為此套件是用 Go 寫的，編譯速度較快</li>
+<li>到 <code>./public</code> 資料夾中新增一個給 React app 掛載的 index.html 檔案，然後設定 <code>html-webpack-plugin</code> 讓 webpack 知道去哪裡撈 html 內容</li>
+</ol>
+<p>完成以上步驟後，你的本機伺服器就能正常顯示專案中的 TypeScript 內容了 (・∀・)</p>
+<h3 id="處理-alias">處理 alias</h3>
+<p>首先在專案根目錄的 <code>./tool</code> 資料夾中新增 <code>resolvePath.ts</code>：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#6A737D">/* Packages */</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> fs </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> 'fs'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> path </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> 'path'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">/* Data */</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> APP_ROOT</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> fs.</span><span style="color:#B392F0">realpathSync</span><span style="color:#E1E4E8">(process.</span><span style="color:#B392F0">cwd</span><span style="color:#E1E4E8">());</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">/* Functions */</span></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> function</span><span style="color:#B392F0"> resolvePath</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">file</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> string</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> path.</span><span style="color:#B392F0">resolve</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">APP_ROOT</span><span style="color:#E1E4E8">, file);</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>這個工具會負責回傳「傳入的參數相對於專案根目錄的絕對路徑」。比如當我呼叫 <code>resolvePath('src/index')</code> 時，我會得到（以 mac 環境為例）<code>/Users/&#x3C;user name>/ithome-2023/src/index</code> 這樣的路徑資訊。</p>
+<p>接著新增 <code>./config/data/alias.ts</code> 並撰寫以下內容：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#6A737D">/* Tools */</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { resolvePath } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> '@/tool/resolvePath'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">/* Data */</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> tsConfig </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> '@/tsconfig.json'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">type</span><span style="color:#B392F0"> PathPair</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> [</span><span style="color:#79B8FF">string</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">string</span><span style="color:#E1E4E8">];</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">/* Main */</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> paths</span><span style="color:#F97583">:</span><span style="color:#B392F0"> PathPair</span><span style="color:#E1E4E8">[] </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> Object.</span><span style="color:#B392F0">entries</span><span style="color:#E1E4E8">(tsConfig.compilerOptions.paths).</span><span style="color:#B392F0">map</span><span style="color:#E1E4E8">(</span></span>
+<span class="line"><span style="color:#E1E4E8">  (</span><span style="color:#FFAB70">pathPair</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#E1E4E8"> [</span><span style="color:#79B8FF">pathKey</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">pathValue</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> pathPair;</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#E1E4E8"> [pathKey.</span><span style="color:#B392F0">replace</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'/*'</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">''</span><span style="color:#E1E4E8">), pathValue.</span><span style="color:#B392F0">join</span><span style="color:#E1E4E8">().</span><span style="color:#B392F0">replace</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'/*'</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">''</span><span style="color:#E1E4E8">)];</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> alias</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> paths.</span><span style="color:#B392F0">reduce</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">reducedValue</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">currentValue</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#E1E4E8"> [</span><span style="color:#79B8FF">key</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">pathToResolve</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> currentValue;</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">    ...</span><span style="color:#E1E4E8">reducedValue,</span></span>
+<span class="line"><span style="color:#E1E4E8">    [key]: </span><span style="color:#B392F0">resolvePath</span><span style="color:#E1E4E8">(pathToResolve),</span></span>
+<span class="line"><span style="color:#E1E4E8">  };</span></span>
+<span class="line"><span style="color:#E1E4E8">}, {});</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> default</span><span style="color:#E1E4E8"> alias;</span></span></code></pre>
+<p>首先透過 <code>Object.entries(tsConfig.compilerOptions.paths)</code> 將 tsconfig.json 中的 paths 物件轉為 <code>[key, value]</code> 陣列，再將 key 部分的 <code>@Asset/*</code> 轉為 <code>@Asset</code>、將 value 部分的 <code>["src/asset/*"]</code> 轉為 <code>src/asset</code>。印出來看會長這樣：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#E1E4E8">[</span></span>
+<span class="line"><span style="color:#E1E4E8">  [ </span><span style="color:#9ECBFF">'@'</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">'.'</span><span style="color:#E1E4E8"> ],</span></span>
+<span class="line"><span style="color:#E1E4E8">  [ </span><span style="color:#9ECBFF">'@Api'</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">'./src/api'</span><span style="color:#E1E4E8"> ],</span></span>
+<span class="line"><span style="color:#E1E4E8">  [ </span><span style="color:#9ECBFF">'@Asset'</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">'./src/asset'</span><span style="color:#E1E4E8"> ],</span></span>
+<span class="line"><span style="color:#E1E4E8">  [ </span><span style="color:#9ECBFF">'@Component'</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">'./src/component'</span><span style="color:#E1E4E8"> ],</span></span>
+<span class="line"><span style="color:#E1E4E8">  [ </span><span style="color:#9ECBFF">'@Hook'</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">'./src/hook'</span><span style="color:#E1E4E8"> ],</span></span>
+<span class="line"><span style="color:#E1E4E8">  [ </span><span style="color:#9ECBFF">'@Model'</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">'./src/model'</span><span style="color:#E1E4E8"> ],</span></span>
+<span class="line"><span style="color:#E1E4E8">  [ </span><span style="color:#9ECBFF">'@Reducer'</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">'./src/reducer'</span><span style="color:#E1E4E8"> ],</span></span>
+<span class="line"><span style="color:#E1E4E8">  [ </span><span style="color:#9ECBFF">'@Style'</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">'./src/style'</span><span style="color:#E1E4E8"> ],</span></span>
+<span class="line"><span style="color:#E1E4E8">  [ </span><span style="color:#9ECBFF">'@Tool'</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">'./src/tool'</span><span style="color:#E1E4E8"> ]</span></span>
+<span class="line"><span style="color:#E1E4E8">]</span></span></code></pre>
+<p>然後使用 <code>Array..prototype.reduce()</code> 並搭配一開始寫好的 <code>resolvePath</code> 工具，將 <code>paths</code> 加工為以下格式：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#B392F0">  '@'</span><span style="color:#79B8FF">:</span><span style="color:#9ECBFF"> '/Users/&#x3C;user name>/ithome-2023/',</span></span>
+<span class="line"><span style="color:#B392F0">  '@Api'</span><span style="color:#79B8FF">:</span><span style="color:#9ECBFF"> '/Users/&#x3C;user name>/ithome-2023/src/api',</span></span>
+<span class="line"><span style="color:#B392F0">  '@Asset'</span><span style="color:#79B8FF">:</span><span style="color:#9ECBFF"> '/Users/&#x3C;user name>/ithome-2023/src/asset',</span></span>
+<span class="line"><span style="color:#B392F0">  '@Component'</span><span style="color:#79B8FF">:</span><span style="color:#9ECBFF"> '/Users/&#x3C;user name>/ithome-2023/src/component',</span></span>
+<span class="line"><span style="color:#B392F0">  '@Hook'</span><span style="color:#79B8FF">:</span><span style="color:#9ECBFF"> '/Users/&#x3C;user name>/ithome-2023/src/hook',</span></span>
+<span class="line"><span style="color:#B392F0">  '@Model'</span><span style="color:#79B8FF">:</span><span style="color:#9ECBFF"> '/Users/&#x3C;user name>/ithome-2023/src/model',</span></span>
+<span class="line"><span style="color:#B392F0">  '@Reducer'</span><span style="color:#79B8FF">:</span><span style="color:#9ECBFF"> '/Users/&#x3C;user name>/ithome-2023/src/reducer',</span></span>
+<span class="line"><span style="color:#B392F0">  '@Style'</span><span style="color:#79B8FF">:</span><span style="color:#9ECBFF"> '/Users/&#x3C;user name>/ithome-2023/src/style',</span></span>
+<span class="line"><span style="color:#B392F0">  '@Tool'</span><span style="color:#79B8FF">:</span><span style="color:#9ECBFF"> '/Users/&#x3C;user name>/ithome-2023/src/tool'</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>接下來把這個 <code>alias</code> 變數餵進 <a href="https://webpack.js.org/configuration/resolve/#resolvealias">resolve.alias</a> 中，webpack 就能認得我們在 tsconfig.json 中自訂的路徑了：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> webpackDevelopmentConfig</span><span style="color:#F97583">:</span><span style="color:#B392F0"> WebpackConfiguration</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">  resolve: {</span></span>
+<span class="line"><span style="color:#E1E4E8">    alias,</span></span>
+<span class="line"><span style="color:#E1E4E8">  },</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span></code></pre>
+<h3 id="處理-typescript">處理 TypeScript</h3>
+<p>以下是個人慣用的最小啟動＋處理 TypeScript 設定：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> webpackDevelopmentConfig</span><span style="color:#F97583">:</span><span style="color:#B392F0"> WebpackConfiguration</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">  module: {</span></span>
+<span class="line"><span style="color:#E1E4E8">    rules: [</span></span>
+<span class="line"><span style="color:#E1E4E8">      {</span></span>
+<span class="line"><span style="color:#E1E4E8">        test:</span><span style="color:#9ECBFF"> /</span><span style="color:#85E89D;font-weight:bold">\.</span><span style="color:#DBEDFF">(js</span><span style="color:#F97583">|</span><span style="color:#DBEDFF">ts</span><span style="color:#F97583">|</span><span style="color:#DBEDFF">tsx)</span><span style="color:#F97583">$</span><span style="color:#9ECBFF">/</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">        loader: </span><span style="color:#9ECBFF">'esbuild-loader'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">        options: {</span></span>
+<span class="line"><span style="color:#E1E4E8">          loader: </span><span style="color:#9ECBFF">'tsx'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">          target: </span><span style="color:#9ECBFF">'es2015'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">        },</span></span>
+<span class="line"><span style="color:#E1E4E8">      },</span></span>
+<span class="line"><span style="color:#E1E4E8">    ],</span></span>
+<span class="line"><span style="color:#E1E4E8">  },</span></span>
+<span class="line"><span style="color:#E1E4E8">  resolve: {</span></span>
+<span class="line"><span style="color:#E1E4E8">    extensions: [</span><span style="color:#9ECBFF">'.js'</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">'.ts'</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">'.tsx'</span><span style="color:#E1E4E8">],</span></span>
+<span class="line"><span style="color:#E1E4E8">    alias,</span></span>
+<span class="line"><span style="color:#E1E4E8">  },</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span></code></pre>
+<p>較詳細的說明如下：</p>
+<ul>
+<li><code>module.rules</code> 目前的任務是：當偵測到 <code>.js</code> / <code>.ts</code> / <code>.tsx</code> 類型的檔案時，使用 <code>esbuild-loader</code> 來處理之。這邊的寫法是從 loader 的<a href="https://github.com/esbuild-kit/esbuild-loader#-quick-setup">官方說明</a>借來的，有更多客製化的需求可以參考該套件的 README</li>
+<li>設定 <code>resolve.extensions</code> 為 <code>['.js', '.ts', '.tsx']</code> 代表可以在 import 這類檔案時省略副檔名，<a href="https://webpack.js.org/configuration/resolve/#resolveextensions">參考 webpack 文件</a></li>
+</ul>
+<p>現在你可以放心撰寫 TypeScript 檔案了 (*ﾟーﾟ)</p>
+<h2 id="目前為止的-webpack-設定">目前為止的 webpack 設定</h2>
+<p>只差一點點就能啟動了！現在加上 <code>html-webpack-plugin</code> 來讓 webpack 知道要去哪裡抓 index.html 模板（記得模板內要留一個 html 元件綁 <code>id="root"</code> 讓 React app 有地方住）。另外個人也習慣設定 <code>devtool: source-map</code> 來確保除錯時能夠取得最完整的檔案名、程式行數資訊：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#6A737D">/* Packages */</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> HtmlWebpackPlugin </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> 'html-webpack-plugin'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> Webpack </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> 'webpack'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">/* Tools */</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { resolvePath } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> '@/tool/resolvePath'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">/* Data */</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> alias </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> './data/alias'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> env </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> './data/env'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#F97583"> type</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">  WebPackDevServerConfiguration,</span></span>
+<span class="line"><span style="color:#E1E4E8">  WebpackConfiguration,</span></span>
+<span class="line"><span style="color:#E1E4E8">  EnvForStartApp,</span></span>
+<span class="line"><span style="color:#E1E4E8">} </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> './data/types'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> envForStartApp</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> env[</span><span style="color:#9ECBFF">'process.env'</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">as</span><span style="color:#B392F0"> EnvForStartApp</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> port</span><span style="color:#F97583"> =</span><span style="color:#F97583"> +</span><span style="color:#79B8FF">JSON</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">parse</span><span style="color:#E1E4E8">(envForStartApp.</span><span style="color:#79B8FF">APP_PORT</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">/* Main */</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> webpackDevelopmentConfig</span><span style="color:#F97583">:</span><span style="color:#B392F0"> WebpackConfiguration</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">  mode: </span><span style="color:#9ECBFF">'development'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">  entry: </span><span style="color:#B392F0">resolvePath</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'src/index'</span><span style="color:#E1E4E8">),</span></span>
+<span class="line"><span style="color:#E1E4E8">  devtool: </span><span style="color:#9ECBFF">'source-map'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">  module: {</span></span>
+<span class="line"><span style="color:#E1E4E8">    rules: [</span></span>
+<span class="line"><span style="color:#E1E4E8">      {</span></span>
+<span class="line"><span style="color:#E1E4E8">        test:</span><span style="color:#9ECBFF"> /</span><span style="color:#85E89D;font-weight:bold">\.</span><span style="color:#DBEDFF">(js</span><span style="color:#F97583">|</span><span style="color:#DBEDFF">ts</span><span style="color:#F97583">|</span><span style="color:#DBEDFF">tsx)</span><span style="color:#F97583">$</span><span style="color:#9ECBFF">/</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">        loader: </span><span style="color:#9ECBFF">'esbuild-loader'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">        options: {</span></span>
+<span class="line"><span style="color:#E1E4E8">          loader: </span><span style="color:#9ECBFF">'tsx'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">          target: </span><span style="color:#9ECBFF">'es2015'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">        },</span></span>
+<span class="line"><span style="color:#E1E4E8">      },</span></span>
+<span class="line"><span style="color:#E1E4E8">    ],</span></span>
+<span class="line"><span style="color:#E1E4E8">  },</span></span>
+<span class="line"><span style="color:#E1E4E8">  plugins: [</span></span>
+<span class="line"><span style="color:#F97583">    new</span><span style="color:#B392F0"> HtmlWebpackPlugin</span><span style="color:#E1E4E8">({</span></span>
+<span class="line"><span style="color:#E1E4E8">      template: </span><span style="color:#B392F0">resolvePath</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'public/index.html'</span><span style="color:#E1E4E8">),</span></span>
+<span class="line"><span style="color:#E1E4E8">      publicPath: </span><span style="color:#9ECBFF">'/'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">    }),</span></span>
+<span class="line"><span style="color:#F97583">    new</span><span style="color:#E1E4E8"> Webpack.</span><span style="color:#B392F0">DefinePlugin</span><span style="color:#E1E4E8">({ </span><span style="color:#F97583">...</span><span style="color:#E1E4E8">env }),</span></span>
+<span class="line"><span style="color:#E1E4E8">  ],</span></span>
+<span class="line"><span style="color:#E1E4E8">  resolve: {</span></span>
+<span class="line"><span style="color:#E1E4E8">    extensions: [</span><span style="color:#9ECBFF">'.js'</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">'.ts'</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">'.tsx'</span><span style="color:#E1E4E8">],</span></span>
+<span class="line"><span style="color:#E1E4E8">    alias,</span></span>
+<span class="line"><span style="color:#E1E4E8">  },</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> const</span><span style="color:#79B8FF"> webpackDevServerConfig</span><span style="color:#F97583">:</span><span style="color:#B392F0"> WebPackDevServerConfiguration</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">  port,</span></span>
+<span class="line"><span style="color:#E1E4E8">  open: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">  historyApiFallback: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> default</span><span style="color:#E1E4E8"> webpackDevelopmentConfig;</span></span></code></pre>
+<p><code>./public/index.html</code> 先簡單寫就好，後續開始部署或是有 SEO 優化需求時再更新即可：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="html"><code><span class="line"><span style="color:#E1E4E8">&#x3C;!</span><span style="color:#85E89D">DOCTYPE</span><span style="color:#B392F0"> html</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">&#x3C;</span><span style="color:#85E89D">html</span><span style="color:#B392F0"> lang</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"en"</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;</span><span style="color:#85E89D">head</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#85E89D">meta</span><span style="color:#B392F0"> charset</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"UTF-8"</span><span style="color:#E1E4E8"> /></span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#85E89D">meta</span><span style="color:#B392F0"> name</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"viewport"</span><span style="color:#B392F0"> content</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"width=device-width, initial-scale=1.0"</span><span style="color:#E1E4E8"> /></span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#85E89D">title</span><span style="color:#E1E4E8">>ithome 2023 demo&#x3C;/</span><span style="color:#85E89D">title</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;/</span><span style="color:#85E89D">head</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;</span><span style="color:#85E89D">body</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#85E89D">main</span><span style="color:#B392F0"> id</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"root"</span><span style="color:#E1E4E8">>&#x3C;/</span><span style="color:#85E89D">main</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;/</span><span style="color:#85E89D">body</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">&#x3C;/</span><span style="color:#85E89D">html</span><span style="color:#E1E4E8">></span></span></code></pre>
+<p>現在 webpack 已經知道如何編譯 TypeScript、也知道去哪裡尋找 index.html 內容了。在終端輸入 <code>make start</code> （參考<a href="/2023/ithome-2023-6#%E9%80%8F%E9%81%8E-makefile-%E8%A8%AD%E5%AE%9A%E8%85%B3%E6%9C%AC">第 6 天</a>）來看看到目前為止的成果吧 (≖ᴗ≖๑)</p> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

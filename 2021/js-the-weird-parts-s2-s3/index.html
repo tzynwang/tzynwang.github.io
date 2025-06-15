@@ -1,0 +1,279 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.BScVxmeO.js"></script><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.1.2"><!-- Primary Meta Tags --><title>「JavaScript Understanding the Weird Parts」第二、三章筆記</title><meta name="title" content="「JavaScript Understanding the Weird Parts」第二、三章筆記"><meta name="description" content="這是一個文組轉職前端工程師的技術部落格"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2021/js-the-weird-parts-s2-s3"><meta property="og:title" content="「JavaScript Understanding the Weird Parts」第二、三章筆記"><meta property="og:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="og:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2021/js-the-weird-parts-s2-s3"><meta property="twitter:title" content="「JavaScript Understanding the Weird Parts」第二、三章筆記"><meta property="twitter:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="twitter:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul:not(:has(li)){margin-top:16px;margin-bottom:16px}li{margin-top:4px;margin-bottom:4px;line-height:24px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:16px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}del{color:#4c5958e6}ol>li:has(p)>p{display:inline;margin:0}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+[data-astro-image]{width:100%;height:auto;object-fit:var(--fit);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>「JavaScript Understanding the Weird Parts」第二、三章筆記</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2021-08-30 15:29</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/JavaScript" data-astro-cid-2iymvi75> JavaScript </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#總結" data-astro-cid-qtokga5y>總結</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#section-2-execution-contexts-and-lexical-environments" data-astro-cid-qtokga5y>Section 2: Execution contexts and lexical environments</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#syntax-parser" data-astro-cid-qtokga5y>Syntax parser</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#lexical-environment" data-astro-cid-qtokga5y>Lexical environment</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#execution-context" data-astro-cid-qtokga5y>Execution context</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#creation-phase" data-astro-cid-qtokga5y>Creation phase</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#execution-phase" data-astro-cid-qtokga5y>Execution phase</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#global-execution-context" data-astro-cid-qtokga5y>Global execution context</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#global" data-astro-cid-qtokga5y>Global</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#undefined" data-astro-cid-qtokga5y>undefined</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#name-value-pair" data-astro-cid-qtokga5y>name-value pair</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#object-in-javascript" data-astro-cid-qtokga5y>Object (in JavaScript)</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#invoke-function-function-invocation" data-astro-cid-qtokga5y>Invoke function, function invocation</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#scope" data-astro-cid-qtokga5y>scope</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#block-scope" data-astro-cid-qtokga5y>block scope</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#scope-chain" data-astro-cid-qtokga5y>scope chain</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#single-threaded" data-astro-cid-qtokga5y>Single threaded</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#synchronous" data-astro-cid-qtokga5y>Synchronous</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#asynchronous" data-astro-cid-qtokga5y>Asynchronous</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#section-3-types-and-operators" data-astro-cid-qtokga5y>Section 3 Types and Operators</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#dynamic-types" data-astro-cid-qtokga5y>Dynamic types</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#primitive-type" data-astro-cid-qtokga5y>Primitive type</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#operator" data-astro-cid-qtokga5y>Operator</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#operator-precedence" data-astro-cid-qtokga5y>Operator precedence</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#associativity" data-astro-cid-qtokga5y>Associativity</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#coercion" data-astro-cid-qtokga5y>Coercion</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#參考文件" data-astro-cid-qtokga5y>參考文件</a> </li> </ul> </div> <h2 id="總結">總結</h2>
+<p>如題，記錄下課程中提到的相關關鍵字與額外補充的筆記</p>
+<h2 id="section-2-execution-contexts-and-lexical-environments">Section 2: Execution contexts and lexical environments</h2>
+<h2 id="syntax-parser">Syntax parser</h2>
+<ul>
+<li>A program that reads your code, and determines what the code does and if code’s <strong>grammar is valid</strong>.</li>
+<li>There’s a <strong>compiler</strong> or an <strong>interpreter</strong> between the code you write and the computer (who runs your code), and <strong>part of that is a syntax parser</strong>.</li>
+</ul>
+<p><a href="https://github.com/getify/You-Dont-Know-JS/blob/2nd-ed/get-started/ch1.md#whats-in-an-interpretation">What’s in an Interpretation?</a></p>
+<ul>
+<li>The real reason it matters to have a clear picture on whether JS is interpreted or compiled relates to <strong>the nature of how errors are handled</strong>.</li>
+<li>In other words, parsed languages usually also <strong>perform code generation before execution</strong>, in spirit, they’re compiled languages.</li>
+<li>The answer is closer to yes than no. The parsed JS is converted to an <strong>optimized (binary) form</strong>, and that “code” is subsequently executed; the engine does not commonly switch back into line-by-line execution mode after it has finished all the hard work of parsing—most languages/engines wouldn’t, because that would be highly inefficient.</li>
+<li>The reason that matters is, since JS is <strong>compiled</strong>, we are informed of <strong>static errors</strong> (such as malformed syntax) <strong>before our code is executed</strong>. That is a substantively different interaction model than we get with traditional “scripting” programs, and arguably more helpful!</li>
+</ul>
+<h2 id="lexical-environment">Lexical environment</h2>
+<ul>
+<li><strong>Where</strong> you write is important.</li>
+<li>Where you see things written gives you the idea of where it will actually sit in computer’s memory, and how it will interact with other variables and functions of the program.</li>
+</ul>
+<p><a href="https://stackoverflow.com/questions/12599965/lexical-environment-and-function-scope">Lexical environment and function scope</a></p>
+<ul>
+<li>It’s the internal js engine construct that <strong>holds identifier-variable mapping</strong>. Here identifier refers to the <strong>name of variables/functions</strong>, and variable is the reference to <strong>actual object</strong> (including function type object) or <strong>primitive value</strong>.</li>
+<li>A lexical environment also holds a <strong>reference to a parent lexical environment</strong>.</li>
+</ul>
+<p><a href="https://ithelp.ithome.com.tw/articles/10192743">那些年，我們一起錯過的 Javascript 系列：JS 的二三事</a></p>
+<ul>
+<li>Lexical Environment 在 Javascript 代表的是，今天我們 Code 寫在哪個<strong>位置</strong> ，是非常重要的。</li>
+<li>下面我們看到一個變數<code>message</code>位在函式裡面，這變數在字詞上來說就是坐落於、存在於這個函式，<strong>這隻函式就是一個 Lexical Environment</strong>。
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> greet</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> message</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> 'hello'</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+</li>
+</ul>
+<p><a href="https://blog.bitsrc.io/a-beginners-guide-to-closures-in-javascript-97d372284dda">Understanding Closures in JavaScript</a></p>
+<ul>
+<li>A Lexical Environment has two components:
+<ol>
+<li>the <strong>environment record</strong> and;</li>
+<li>a <strong>reference to the outer environment</strong>.</li>
+</ol>
+</li>
+</ul>
+<h2 id="execution-context">Execution context</h2>
+<ul>
+<li>A wrapper to help manage the code that is running.</li>
+<li>There are a lot of lexical environments, which one is <strong>currently running</strong> is managed via execution context.</li>
+<li>When a code is running in JavaScript, it <strong>runs inside the execution context</strong>.</li>
+<li><strong>A syntax parser wraps the currently executing code in an execution context.</strong></li>
+</ul>
+<p><a href="https://stackoverflow.com/questions/12599965/lexical-environment-and-function-scope">Lexical environment and function scope</a></p>
+<ul>
+<li>The js engine maintains a execution context stack (or call stack), which contains these contexts and the global execution context stays at the bottom of this stack.</li>
+<li>A <strong>new execution context is created</strong> and pushed to the stack <strong>when execution of a function begins</strong>. 每執行一個 function 就會建立一個新的 execution context</li>
+</ul>
+<h3 id="creation-phase">Creation phase</h3>
+<ul>
+<li>In the creation phase of execution context, JavaScript engine will create <code>global object</code>, <code>this</code> and <code>outer environment</code>; also it <strong>allocate memory space for the variables and function</strong>, this is <strong>hoisting</strong>.</li>
+<li>Before you code run line by line, the JS engine has already <strong>set memory space for the variables and functions</strong>.</li>
+</ul>
+<h3 id="execution-phase">Execution phase</h3>
+<ul>
+<li>
+<p>When <strong>value assigning</strong> happens.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#F97583">var</span><span style="color:#E1E4E8"> msg </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> 'hello world'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// creation phase</span></span>
+<span class="line"><span style="color:#F97583">var</span><span style="color:#E1E4E8"> msg; </span><span style="color:#6A737D">// = undefined</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// execution phase</span></span>
+<span class="line"><span style="color:#E1E4E8">msg </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> 'hello world'</span><span style="color:#E1E4E8">;</span></span></code></pre>
+</li>
+<li>
+<p><strong>Run the codes</strong> you written line by line.</p>
+</li>
+</ul>
+<h3 id="global-execution-context">Global execution context</h3>
+<ul>
+<li>When JavaScript engine <strong>parse your code</strong>, it creates the <strong>global execution context</strong>; also it creates <code>Global Object</code>, <code>this</code> and <code>outer environment</code> for you automatically.</li>
+<li>就算載入一隻完全空白的 js 檔案，打開 Chrome DevTools 也可以呼叫出<code>global object</code>與<code>this</code></li>
+</ul>
+<h3 id="global">Global</h3>
+<ul>
+<li>Means “<strong>not inside a function</strong>”.</li>
+<li>If a code or variable is <strong>not inside a function</strong>, it is <strong>global</strong>.</li>
+</ul>
+<h2 id="undefined">undefined</h2>
+<ul>
+<li>The <strong>value</strong> that a <code>var</code> variable receive during the <strong>creation phase</strong>.</li>
+</ul>
+<h2 id="name-value-pair">name-value pair</h2>
+<ul>
+<li>A name which <strong>maps to a unique value</strong>.</li>
+<li>Name may be defined more than once, but <strong>only one value</strong> in any given <strong>context</strong>.</li>
+</ul>
+<h2 id="object-in-javascript">Object (in JavaScript)</h2>
+<ul>
+<li>A <strong>collection of name-value pairs</strong>.</li>
+<li>Function is Object, a collection of name-value pairs.</li>
+</ul>
+<h2 id="invoke-function-function-invocation">Invoke function, function invocation</h2>
+<ul>
+<li><strong>Running a function</strong>; in JS we do this by using <strong>parentheses</strong>: <code>()</code></li>
+<li>When a function is invoked, a <strong>new execution context</strong> is created and put on the <strong>execution stack</strong>.</li>
+</ul>
+<h2 id="scope">scope</h2>
+<ul>
+<li>Where a variable is <strong>available</strong> in your code.</li>
+</ul>
+<h3 id="block-scope">block scope</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#E1E4E8">  {</span></span>
+<span class="line"><span style="color:#F97583">    let</span><span style="color:#E1E4E8"> a </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> 'apple'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> c</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> 'cherry'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">  console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(a); </span><span style="color:#6A737D">// ReferenceError</span></span>
+<span class="line"><span style="color:#E1E4E8">  console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(c); </span><span style="color:#6A737D">// ReferenceError</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">  {</span></span>
+<span class="line"><span style="color:#F97583">    var</span><span style="color:#E1E4E8"> b </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> 'banana'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">  console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(b); </span><span style="color:#6A737D">// 'banana'</span></span></code></pre>
+<h3 id="scope-chain">scope chain</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#F97583">  function</span><span style="color:#B392F0"> b</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#E1E4E8">    console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(myVar);</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">  function</span><span style="color:#B392F0"> a</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">    var</span><span style="color:#E1E4E8"> myVar </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> 2</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#B392F0">    b</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">  var</span><span style="color:#E1E4E8"> myVar </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> 1</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#B392F0">  a</span><span style="color:#E1E4E8">(); </span><span style="color:#6A737D">// 1</span></span></code></pre>
+<ul>
+<li>上述程式碼會印出 1，因為<code>function b</code>執行時找不到<code>myVar</code>，會依循 scope chain 到他的親代（reference to the <strong>outer environment</strong>）去尋找此變數，故找到 global 的<code>myVar = 1</code></li>
+<li><code>function b</code><strong>沒有</strong>位在<code>function a</code>裡面，他的 outer lexical environment 就是 global environment</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#F97583">  function</span><span style="color:#B392F0"> b</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">myVar</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#E1E4E8">    console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(myVar);</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">  function</span><span style="color:#B392F0"> a</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">    var</span><span style="color:#E1E4E8"> myVar </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> 2</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#B392F0">    b</span><span style="color:#E1E4E8">(myVar);</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">  var</span><span style="color:#E1E4E8"> myVar </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> 1</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#B392F0">  a</span><span style="color:#E1E4E8">(); </span><span style="color:#6A737D">// 這樣才會印出2</span></span></code></pre>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#F97583">  function</span><span style="color:#B392F0"> a</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">    function</span><span style="color:#B392F0"> b</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#E1E4E8">      console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(myVar);</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">    var</span><span style="color:#E1E4E8"> myVar </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> 2</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#B392F0">    b</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">  var</span><span style="color:#E1E4E8"> myVar </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> 1</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#B392F0">  a</span><span style="color:#E1E4E8">(); </span><span style="color:#6A737D">// 這樣也會印出2</span></span></code></pre>
+<h2 id="single-threaded">Single threaded</h2>
+<ul>
+<li><strong>One</strong> command at a time.</li>
+</ul>
+<h2 id="synchronous">Synchronous</h2>
+<ul>
+<li><strong>One</strong> at a time, in <strong>order</strong>.</li>
+</ul>
+<h2 id="asynchronous">Asynchronous</h2>
+<ul>
+<li><strong>More than one</strong> at a time.</li>
+</ul>
+<h2 id="section-3-types-and-operators">Section 3 Types and Operators</h2>
+<h2 id="dynamic-types">Dynamic types</h2>
+<ul>
+<li>JavaScript engine <strong>figures out the type</strong> of the variable when it runs the code. You don’t decide it.</li>
+</ul>
+<h2 id="primitive-type">Primitive type</h2>
+<ul>
+<li>Not an object, data that represents a <strong>single value</strong>.
+<ol>
+<li><code>undefined</code></li>
+<li><code>null</code></li>
+<li><code>Boolean</code></li>
+<li><code>Number</code></li>
+<li><code>String</code></li>
+<li><code>Symbol</code></li>
+</ol>
+</li>
+</ul>
+<h2 id="operator">Operator</h2>
+<ul>
+<li>
+<p>Operators <strong>take two parameters</strong> and <strong>return one result</strong>.</p>
+</li>
+<li>
+<p>Just a <strong>special function</strong> that is syntactically written differently (<strong>infix notation</strong>).</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#6A737D">// prefix notation</span></span>
+<span class="line"><span style="color:#F97583">+</span><span style="color:#79B8FF">3</span><span style="color:#79B8FF"> 4</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// post notation</span></span>
+<span class="line"><span style="color:#79B8FF">3</span><span style="color:#79B8FF"> 4</span><span style="color:#F97583">+</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// infix notation</span></span>
+<span class="line"><span style="color:#79B8FF">3</span><span style="color:#F97583"> +</span><span style="color:#79B8FF"> 4</span><span style="color:#E1E4E8">;</span></span></code></pre>
+</li>
+</ul>
+<h3 id="operator-precedence">Operator precedence</h3>
+<ul>
+<li><strong>Which</strong> operator function gets <strong>called first</strong>.</li>
+<li>不同的 operator 之間也是有優先順序的，參考 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence">Operator precedence - JavaScript | MDN</a></li>
+</ul>
+<h2 id="associativity">Associativity</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#F97583">var</span><span style="color:#E1E4E8"> a </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> 2</span><span style="color:#E1E4E8">, b </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> 3</span><span style="color:#E1E4E8">, c </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> 4</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">a </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> b </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> c;</span></span>
+<span class="line"><span style="color:#E1E4E8">console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(a); </span><span style="color:#6A737D">// 4</span></span>
+<span class="line"><span style="color:#E1E4E8">console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(b); </span><span style="color:#6A737D">// 4</span></span>
+<span class="line"><span style="color:#E1E4E8">console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(c); </span><span style="color:#6A737D">// 4</span></span>
+<span class="line"><span style="color:#6A737D">// = is right-to-left</span></span></code></pre>
+<ul>
+<li>In what <strong>order</strong> the operator functions get called: <strong>left-to-right</strong> or <strong>right-to-left</strong>, when functions have the <strong>same precedence</strong>.</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#79B8FF">0</span><span style="color:#F97583"> ||</span><span style="color:#9ECBFF"> "0"</span><span style="color:#F97583"> &#x26;&#x26;</span><span style="color:#E1E4E8"> {}</span></span></code></pre>
+<ul>
+<li>先進行<code>"0" &#x26;&#x26; {}</code>，<code>&#x26;&#x26;</code>左側<code>Boolean("0")</code>為<code>true</code>，故回傳<code>{}</code></li>
+<li><code>0 || {}</code>因<code>||</code>左側為<code>false</code>，得到最終結果<code>{}</code></li>
+</ul>
+<h2 id="coercion">Coercion</h2>
+<ul>
+<li>
+<p><strong>Converting</strong> a value from one <strong>type</strong> to another.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#B392F0">Number</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">undefined</span><span style="color:#E1E4E8">) </span><span style="color:#6A737D">// NaN</span></span>
+<span class="line"><span style="color:#B392F0">Number</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">null</span><span style="color:#E1E4E8">) </span><span style="color:#6A737D">// 0</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">Boolean</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">undefined</span><span style="color:#E1E4E8">) </span><span style="color:#6A737D">// false</span></span>
+<span class="line"><span style="color:#B392F0">Boolean</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">null</span><span style="color:#E1E4E8">) </span><span style="color:#6A737D">// false</span></span>
+<span class="line"><span style="color:#B392F0">Boolean</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">""</span><span style="color:#E1E4E8">) </span><span style="color:#6A737D">// false</span></span>
+<span class="line"><span style="color:#B392F0">Boolean</span><span style="color:#E1E4E8">([]), </span><span style="color:#B392F0">Boolean</span><span style="color:#E1E4E8">({}) </span><span style="color:#6A737D">// true</span></span></code></pre>
+</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#E1E4E8">console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">1</span><span style="color:#F97583"> &#x3C;</span><span style="color:#79B8FF"> 2</span><span style="color:#F97583"> &#x3C;</span><span style="color:#79B8FF"> 3</span><span style="color:#E1E4E8">) </span><span style="color:#6A737D">// true</span></span>
+<span class="line"><span style="color:#E1E4E8">console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">3</span><span style="color:#F97583"> &#x3C;</span><span style="color:#79B8FF"> 2</span><span style="color:#F97583"> &#x3C;</span><span style="color:#79B8FF"> 1</span><span style="color:#E1E4E8">) </span><span style="color:#6A737D">// true</span></span>
+<span class="line"><span style="color:#E1E4E8">console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">3</span><span style="color:#F97583"> ></span><span style="color:#79B8FF"> 2</span><span style="color:#F97583"> ></span><span style="color:#79B8FF"> 1</span><span style="color:#E1E4E8">) </span><span style="color:#6A737D">// false</span></span>
+<span class="line"><span style="color:#6A737D">// &#x3C;, > is left-to-right</span></span></code></pre>
+<ul>
+<li><code>1 &#x3C; 2</code>為<code>true</code>，<code>true &#x3C; 3</code>轉型為<code>1 &#x3C; 3</code>，得到最終結果<code>true</code></li>
+<li><code>3 &#x3C; 2</code>為<code>false</code>，<code>false &#x3C; 1</code>轉型為<code>0 &#x3C; 1</code>，得到最終結果<code>true</code></li>
+<li><code>3 > 2</code>為<code>true</code>，<code>true > 1</code>轉型為<code>1 > 1</code>，得到最終結果<code>false</code></li>
+</ul>
+<h2 id="參考文件">參考文件</h2>
+<ul>
+<li><a href="https://www.udemy.com/course/understand-javascript/">(Udemy) JavaScript: Understanding the Weird Parts</a></li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

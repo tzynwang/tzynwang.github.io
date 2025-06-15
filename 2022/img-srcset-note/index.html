@@ -1,0 +1,82 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.BScVxmeO.js"></script><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.1.2"><!-- Primary Meta Tags --><title>2022 第45週 試用筆記：HTMLImageElement.srcset</title><meta name="title" content="2022 第45週 試用筆記：HTMLImageElement.srcset"><meta name="description" content="這是一個文組轉職前端工程師的技術部落格"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2022/img-srcset-note"><meta property="og:title" content="2022 第45週 試用筆記：HTMLImageElement.srcset"><meta property="og:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="og:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2022/img-srcset-note"><meta property="twitter:title" content="2022 第45週 試用筆記：HTMLImageElement.srcset"><meta property="twitter:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="twitter:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul:not(:has(li)){margin-top:16px;margin-bottom:16px}li{margin-top:4px;margin-bottom:4px;line-height:24px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:16px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}del{color:#4c5958e6}ol>li:has(p)>p{display:inline;margin:0}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+[data-astro-image]{width:100%;height:auto;object-fit:var(--fit);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>2022 第45週 試用筆記：HTMLImageElement.srcset</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2022-11-12 21:25</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/Web performance" data-astro-cid-2iymvi75> Web performance </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#總結" data-astro-cid-qtokga5y>總結</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#版本與環境" data-astro-cid-qtokga5y>版本與環境</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#筆記" data-astro-cid-qtokga5y>筆記</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#參考文件" data-astro-cid-qtokga5y>參考文件</a> </li> </ul> </div> <h2 id="總結">總結</h2>
+<p>可透過 <code>img</code> 標籤的 <code>srcset</code> 屬性來指定使用複數個圖片來源、以及這些圖片的使用條件。
+比如使用者如果使用較為窄小裝置開啟網站，瀏覽器即可根據 <code>img.srcset</code> 中的設定來抓取對應尺寸的圖片，而不用嘗試載入使用者裝置根本用不到的寬大尺寸圖片。</p>
+<h2 id="版本與環境">版本與環境</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>chrome: 107.0.5304.87 (arm64)</span></span>
+<span class="line"><span>firefox: 105.0.1</span></span></code></pre>
+<h2 id="筆記">筆記</h2>
+<p>語法：<code>{圖片路徑}{空格}{搭配的渲染尺寸 或 pixel density descriptor}</code></p>
+<ul>
+<li>搭配的渲染尺寸：以語法 <code>/img/small.jpg 640w</code> 來說，即是「如果畫面上需要一個 640px 寬的圖片，請使用圖片 <code>small.jpg</code>」；而 <code>/img/medium.jpg 960w</code> 則是「如果需要在畫面上顯示 960px 這麼寬的圖片，使用 <code>medium.jpg</code> 這個檔案」。注意書寫時使用的單位不是 <code>px</code> 而是 <code>w</code></li>
+<li>pixel density descriptor：指定各種像素密度要搭配使用的檔案</li>
+</ul>
+<p>在 chrome 與 firefox 中執行下方範例 1 觀察到的結果是：</p>
+<ul>
+<li>當螢幕寬度小於 640px 時，會顯示 img640</li>
+<li>當螢幕寬度介於 640px 至 960px 時，使用圖片 img960</li>
+<li>螢幕寬度大於 960px 後，一律顯示 img1280</li>
+<li>img1920 永遠沒有出現</li>
+</ul>
+<p>相較之下範例 2 在兩款瀏覽器上透過開發者工具來觀察則很好理解，透過 dev tool 切換裝置 dpr 後，即可觀察到瀏覽器根據 dpr 設定使用對應的圖片。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> img640 </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> '@Assets/alexander-andrews-mEdKuPYJe1I-640.jpg'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> img960 </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> '@Assets/ray-hennessy-xUUZcpQlqpM-960.jpg'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> img1280 </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> '@Assets/erik-mclean-OVWn1sbGIYQ-1280.jpg'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> img1920 </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> '@Assets/qijin-xu-fJyO0eo6_1920.jpg'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// 範例1 根據尺寸使用對應檔案</span></span>
+<span class="line"><span style="color:#E1E4E8">&#x3C;</span><span style="color:#85E89D">img</span></span>
+<span class="line"><span style="color:#B392F0">  srcSet</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{</span><span style="color:#9ECBFF">`${</span><span style="color:#E1E4E8">img640</span><span style="color:#9ECBFF">} 640w, ${</span><span style="color:#E1E4E8">img960</span><span style="color:#9ECBFF">} 960w, ${</span><span style="color:#E1E4E8">img1280</span><span style="color:#9ECBFF">} 1280w`</span><span style="color:#E1E4E8">}</span></span>
+<span class="line"><span style="color:#B392F0">  src</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{img1920}</span></span>
+<span class="line"><span style="color:#B392F0">  alt</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"fox"</span></span>
+<span class="line"><span style="color:#E1E4E8">/>;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// 範例2 根據像素密度使用對應檔案</span></span>
+<span class="line"><span style="color:#E1E4E8">&#x3C;</span><span style="color:#85E89D">img</span></span>
+<span class="line"><span style="color:#B392F0">  srcSet</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{</span><span style="color:#9ECBFF">`${</span><span style="color:#E1E4E8">img640</span><span style="color:#9ECBFF">} 1x, ${</span><span style="color:#E1E4E8">img960</span><span style="color:#9ECBFF">} 2x, ${</span><span style="color:#E1E4E8">img1280</span><span style="color:#9ECBFF">} 3x`</span><span style="color:#E1E4E8">}</span></span>
+<span class="line"><span style="color:#B392F0">  src</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{img1920}</span></span>
+<span class="line"><span style="color:#B392F0">  alt</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"fox"</span></span>
+<span class="line"><span style="color:#E1E4E8">/>;</span></span></code></pre>
+<p>不解的部分是參考 MDN 為 srcset 指定 fallback 時，反而無法在 chrome 以及 firefox 中正常發揮功用 ( ͡° ͜ʖ ͡°)</p>
+<blockquote>
+<p>MDN: If the condition descriptor is not provided (in other words, the image candidate provides only a URL), the candidate is used as the fallback <strong>if none of the other candidates match</strong>.</p>
+</blockquote>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#6A737D">// 直接導致圖片切換失敗，不論是 chrome 或 firefox 都只會渲染 img1920</span></span>
+<span class="line"><span style="color:#E1E4E8">&#x3C;</span><span style="color:#85E89D">img</span></span>
+<span class="line"><span style="color:#B392F0">  srcSet</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{</span><span style="color:#9ECBFF">`${</span><span style="color:#E1E4E8">img640</span><span style="color:#9ECBFF">} 640w, ${</span><span style="color:#E1E4E8">img960</span><span style="color:#9ECBFF">} 960w, ${</span><span style="color:#E1E4E8">img1280</span><span style="color:#9ECBFF">} 1280w, ${</span><span style="color:#E1E4E8">img1920</span><span style="color:#9ECBFF">}`</span><span style="color:#E1E4E8">}</span></span>
+<span class="line"><span style="color:#B392F0">  alt</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"fox"</span></span>
+<span class="line"><span style="color:#E1E4E8">/></span></span></code></pre>
+<h2 id="參考文件">參考文件</h2>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/srcset">MDN: HTMLImageElement.srcset</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#attr-srcset">MDN: img #srcset</a></li>
+<li><a href="https://austingil.com/better-html-images/">6 Steps to Improve HTML Images For Users &#x26; Developers</a></li>
+<li><a href="https://youtu.be/2QYpkrX2N48">YouTube: srcset and sizes attributes - [ images on the web | part one ]</a></li>
+<li><a href="https://github.com/tzynwang/img-srcset">本篇 demo code repo: tzynwang/img-srcset</a></li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

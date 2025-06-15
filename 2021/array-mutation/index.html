@@ -1,0 +1,149 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.BScVxmeO.js"></script><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.1.2"><!-- Primary Meta Tags --><title>為什麼可以修改使用const宣告的陣列（或物件）的內容？</title><meta name="title" content="為什麼可以修改使用const宣告的陣列（或物件）的內容？"><meta name="description" content="這是一個文組轉職前端工程師的技術部落格"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2021/array-mutation"><meta property="og:title" content="為什麼可以修改使用const宣告的陣列（或物件）的內容？"><meta property="og:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="og:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2021/array-mutation"><meta property="twitter:title" content="為什麼可以修改使用const宣告的陣列（或物件）的內容？"><meta property="twitter:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="twitter:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul:not(:has(li)){margin-top:16px;margin-bottom:16px}li{margin-top:4px;margin-bottom:4px;line-height:24px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:16px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}del{color:#4c5958e6}ol>li:has(p)>p{display:inline;margin:0}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+[data-astro-image]{width:100%;height:auto;object-fit:var(--fit);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>為什麼可以修改使用const宣告的陣列（或物件）的內容？</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2021-04-09 14:23</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/JavaScript" data-astro-cid-2iymvi75> JavaScript </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#原始問題" data-astro-cid-qtokga5y>原始問題</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#簡答" data-astro-cid-qtokga5y>簡答</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#環境" data-astro-cid-qtokga5y>環境</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#關於const的事實" data-astro-cid-qtokga5y>關於const的事實</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#you-dont-know-js-yet-相關筆記" data-astro-cid-qtokga5y>You Don’t Know JS Yet 相關筆記</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#es2015-const-is-not-about-immutability-相關筆記" data-astro-cid-qtokga5y>ES2015 const is not about immutability 相關筆記</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#mdn-上的相關內容" data-astro-cid-qtokga5y>MDN 上的相關內容</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#objectfreeze" data-astro-cid-qtokga5y>Object.freeze()</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#objectseal" data-astro-cid-qtokga5y>Object.seal()</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#objectpreventextensions" data-astro-cid-qtokga5y>Object.preventExtensions()</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#objectgetownpropertydescriptor" data-astro-cid-qtokga5y>Object.getOwnPropertyDescriptor()</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#補充無法解凍或再開封" data-astro-cid-qtokga5y>補充：無法解凍或再開封</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#參考文件" data-astro-cid-qtokga5y>參考文件</a> </li> </ul> </div> <h2 id="原始問題">原始問題</h2>
+<p>以<code>const</code>宣告一個陣列（或物件），為何可以在宣告完畢後繼續修改該陣列（或物件）的內容？</p>
+<p><img src="/2021/array-mutation/騎士王的提問時間.jpg" alt="事實上const的限制是「變數不能被re-assigned或re-declared」"></p>
+<h2 id="簡答">簡答</h2>
+<p><code>const</code>的限制是「只能賦值一次，不能重新賦值」，不直接等同「不能修改內容」。</p>
+<h2 id="環境">環境</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Google Chrome: 89.0.4389.114 (Official Build) (64-bit)</span></span>
+<span class="line"><span>os: Windows_NT 10.0.18363 win32 x64</span></span></code></pre>
+<h2 id="關於const的事實">關於<code>const</code>的事實</h2>
+<h3 id="you-dont-know-js-yet-相關筆記">You Don’t Know JS Yet 相關筆記</h3>
+<ul>
+<li>
+<p><code>const</code> declared variables are not “unchangeable”, they just cannot be re-assigned.</p>
+<ul>
+<li>不適合以「不能被修改」來理解透過<code>const</code>宣告的變數，而是「使用<code>const</code>宣告的變數只能被賦值一次」</li>
+</ul>
+<script src="https://gist.github.com/tzynwang/bf4ef105981d115a11ae4eb761e34ac8.js"></script>
+</li>
+<li>
+<p>It’s ill-advised to use <code>const</code> with object values, because those values can still be changed even though the variable can’t be re-assigned.</p>
+</li>
+</ul>
+<script src="https://gist.github.com/tzynwang/b7f3ee4e1e7c8936a98bb8f7fa76b634.js"></script>
+<ul>
+<li>If you stick to using <code>const</code> only with primitive values, you avoid any confusion of re-assignment (not allowed) vs. mutation (allowed)! That’s the safest and best way to use const.</li>
+</ul>
+<h3 id="es2015-const-is-not-about-immutability-相關筆記">ES2015 const is not about immutability 相關筆記</h3>
+<script src="https://gist.github.com/tzynwang/0945c27501de984d3aaa410bf55a08ce.js"></script>
+<ul>
+<li>The only thing that’s immutable here is the binding. <code>const</code> assigns a value (<code>{}</code>) to a variable name (<code>foo</code>), and guarantees that no rebinding will happen. ES2015 const has nothing to do with immutability of values.</li>
+<li>與其描述為「透過<code>const</code>宣告的陣列（或物件）不能被修改內容」，不如將<code>const</code>理解為「建立一個變數與值之間不變的 binding」。</li>
+</ul>
+<h3 id="mdn-上的相關內容">MDN 上的相關內容</h3>
+<ul>
+<li>The value of a constant can’t be changed through reassignment, and it can’t be re-declared.</li>
+<li>以<code>const</code>宣告變數的同時就得賦值
+<script src="https://gist.github.com/tzynwang/b92649f9945fb3cb92275cf448adb199.js"></script>
+</li>
+</ul>
+<h2 id="objectfreeze"><code>Object.freeze()</code></h2>
+<ul>
+<li>如果想要確保陣列或物件內容不被修改，可以使用<code>Object.freeze()</code>
+<ul>
+<li>MDN: Use <code>Object.freeze()</code> to make object immutable. A frozen object can no longer be changed; freezing an object prevents new properties from being added to it, existing properties from being removed, prevents changing the enumerability, configurability, or writability of existing properties, and prevents the values of existing properties from being changed.</li>
+<li>一個陣列或物件被凍結後，無法新增或移除該陣列、物件的內容，也不可修改該陣列、物件的 properties</li>
+</ul>
+</li>
+<li><code>Object.freeze()</code>不會自動套用到巢狀結構內的所有內容上，如以下範例：
+<script src="https://gist.github.com/tzynwang/a52efc027532899027d7d0e0c9f1cfef.js"></script>
+<img src="/2021/array-mutation/object-freeze-demo-1.png" alt="Object.freeze() demo 1"></li>
+<li>可透過遞迴來凍結巢狀結構物件的內容
+<script src="https://gist.github.com/tzynwang/e7a3cf50d030d90f05eee59257806b1e.js"></script>
+<img src="/2021/array-mutation/object-freeze-demo-2.png" alt="Object.freeze() demo 2"></li>
+</ul>
+<h2 id="objectseal"><code>Object.seal()</code></h2>
+<ul>
+<li>The Object.seal() method seals an object, preventing new properties from being added to it and marking all existing properties as non-configurable. Values of present properties can still be changed as long as they are writable.
+<ul>
+<li>與<code>Object.freeze()</code>的差異是，經<code>Object.seal()</code>封閉的物件，不能對其新增或刪除內容，但封閉前就存在的內容可以被修改
+<script src="https://gist.github.com/tzynwang/1e8917a16a8450fb76fd5a6bd34201e9.js"></script>
+<img src="/2021/array-mutation/object-freeze-demo-3.png" alt="Object.freeze() demo 3"></li>
+</ul>
+</li>
+</ul>
+<h2 id="objectpreventextensions"><code>Object.preventExtensions()</code></h2>
+<p><code>Object.preventExtensions()</code>只會禁止對物件新增內容，但可以刪除或修改既有內容</p>
+<script src="https://gist.github.com/tzynwang/034ffb5ed714a851cc2e35c5b8a148df.js"></script>
+<p><img src="/2021/array-mutation/object-freeze-demo-4.png" alt="Object.freeze() demo 4"></p>
+<h2 id="objectgetownpropertydescriptor"><code>Object.getOwnPropertyDescriptor()</code></h2>
+<p>回傳一物件中某內容的相關設定</p>
+<script src="https://gist.github.com/tzynwang/e0618d9ef2d4fa0b153ad6d9347ae8ee.js"></script>
+<p><img src="/2021/array-mutation/object-freeze-demo-5.png" alt="Object.freeze() demo 5"></p>
+<p>參考<a href="https://tc39.es/ecma262/#table-data-property-attributes">ECMAScript Specification, Table 3: Attributes of a Data Property</a>：</p>
+<ul>
+<li><code>writable</code>: If false, attempts by ECMAScript code to change the property’s [[Value]] attribute using [[Set]] will not succeed.
+<ul>
+<li><code>writable</code>若為<code>false</code>，代表該<code>value</code>無法被修改</li>
+<li>被<code>Object.freeze()</code>凍結的物件，其<code>value</code>的<code>writable</code>就被修改為<code>false</code></li>
+</ul>
+</li>
+<li><code>enumerable</code>: If true, the property will be enumerated by a for-in enumeration. Otherwise, the property is said to be non-enumerable.
+<ul>
+<li><code>enumerable</code>為<code>true</code>代表該<code>value</code>會<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...in">被<code>for...in</code>遍歷</a></li>
+</ul>
+</li>
+<li><code>configurable</code>: If false, attempts to delete the property, change the property to be an accessor property, or change its attributes (other than <code>[[Value]]</code>, or changing <code>[[Writable]]</code> to false) will fail.
+<ul>
+<li><code>configurable</code>若為<code>false</code>，代表該<code>value</code>無法被刪除</li>
+<li>經<code>Object.freeze()</code>或<code>Object.seal()</code>處理過的物件，其<code>value</code>的<code>configurable</code>就被修改為<code>false</code>
+<img src="/2021/array-mutation/attributes-of-data-property.png" alt="attributes of data property"></li>
+</ul>
+</li>
+</ul>
+<h2 id="補充無法解凍或再開封">補充：無法解凍或再開封</h2>
+<p><a href="https://stackoverflow.com/questions/19293321/opposite-of-object-freeze-or-object-seal-in-javascript">Opposite of Object.freeze or Object.seal in JavaScript</a></p>
+<blockquote>
+<p>Freezing an object is the ultimate form of lock-down. Once an object has been frozen it cannot be unfrozen – nor can it be tampered in any manner. This is the best way to make sure that your objects will stay exactly as you left them, indefinitely</p>
+</blockquote>
+<ul>
+<li><code>Object.freeze()</code>與<code>Object.seal()</code>是不可逆的程序，一旦一個物件（或陣列）被凍結或封閉，該物件就無法回到凍結（或封閉）前的狀態</li>
+<li>可以透過<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign"><code>Object.assign()</code></a>來製作該物件（或陣列）的副本，再修改其內容</li>
+</ul>
+<h2 id="參考文件">參考文件</h2>
+<ul>
+<li>You Don’t Know JS Yet: Get Started - 2nd Edition
+<ul>
+<li><a href="https://github.com/getify/You-Dont-Know-JS/blob/2nd-ed/get-started/ch2.md">Chapter 2: Surveying JS</a></li>
+<li><a href="https://github.com/getify/You-Dont-Know-JS/blob/2nd-ed/get-started/apA.md">Appendix A: Exploring Further</a></li>
+</ul>
+</li>
+<li><a href="https://mathiasbynens.be/notes/es6-const">ES2015 const is not about immutability</a></li>
+<li>MDN
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const">const</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/freeze">Object.freeze()</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/seal">Object.seal()</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/preventExtensions">Object.preventExtensions()</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/getOwnPropertyDescriptor">Object.getOwnPropertyDescriptor()</a></li>
+</ul>
+</li>
+<li><a href="https://stackoverflow.com/questions/7509894/freezing-arrays-in-javascript">‘Freezing’ Arrays in Javascript?</a></li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

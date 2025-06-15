@@ -1,0 +1,91 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.BScVxmeO.js"></script><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.1.2"><!-- Primary Meta Tags --><title>閱讀筆記：The Programmer&#39;s Brain Chapter 10 Getting better at solving complex problems</title><meta name="title" content="閱讀筆記：The Programmer's Brain Chapter 10 Getting better at solving complex problems"><meta name="description" content="你知道嗎？參考別人的解題方式能幫助你在未來解決更多問題喔 (́=◞౪◟=‵)"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2023/the-programmers-brain-ch10-getting-better-at-solving-comples-problems"><meta property="og:title" content="閱讀筆記：The Programmer's Brain Chapter 10 Getting better at solving complex problems"><meta property="og:description" content="你知道嗎？參考別人的解題方式能幫助你在未來解決更多問題喔 (́=◞౪◟=‵)"><meta property="og:image" content="https://tzynwang.github.io/2023/the-programmers-brain-ch10-getting-better-at-solving-comples-problems/rob-schreckhise-8zdEgWg5JAA-unsplash.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2023/the-programmers-brain-ch10-getting-better-at-solving-comples-problems"><meta property="twitter:title" content="閱讀筆記：The Programmer's Brain Chapter 10 Getting better at solving complex problems"><meta property="twitter:description" content="你知道嗎？參考別人的解題方式能幫助你在未來解決更多問題喔 (́=◞౪◟=‵)"><meta property="twitter:image" content="https://tzynwang.github.io/2023/the-programmers-brain-ch10-getting-better-at-solving-comples-problems/rob-schreckhise-8zdEgWg5JAA-unsplash.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul:not(:has(li)){margin-top:16px;margin-bottom:16px}li{margin-top:4px;margin-bottom:4px;line-height:24px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:16px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}del{color:#4c5958e6}ol>li:has(p)>p{display:inline;margin:0}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+[data-astro-image]{width:100%;height:auto;object-fit:var(--fit);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>閱讀筆記：The Programmer&#39;s Brain Chapter 10 Getting better at solving complex problems</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2023-10-21 10:42</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/General" data-astro-cid-2iymvi75> General </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#總結" data-astro-cid-qtokga5y>總結</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#筆記" data-astro-cid-qtokga5y>筆記</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#何謂解決問題" data-astro-cid-qtokga5y>何謂解決問題</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#解題時的心智活動" data-astro-cid-qtokga5y>解題時的心智活動</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#記憶的類型" data-astro-cid-qtokga5y>記憶的類型</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#提升解題能力的方式" data-astro-cid-qtokga5y>提升解題能力的方式</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#參考文件" data-astro-cid-qtokga5y>參考文件</a> </li> </ul> </div> <h2 id="總結">總結</h2>
+<p>第十章先定義了「何謂解決問題」，並提出以下兩點「提升解題能力」的方式：</p>
+<ol>
+<li>增加相關的內隱記憶（implicit memory）</li>
+<li>學習他人解決問題的方法</li>
+</ol>
+<h2 id="筆記">筆記</h2>
+<h3 id="何謂解決問題">何謂解決問題</h3>
+<p>本書認為「解決問題」可以拆解三個步驟：</p>
+<ol>
+<li>定義起點（start state）</li>
+<li>定義終點（goal state）</li>
+<li>在限制條件（rules）內，以最短的路徑（state space）從起點抵達終點</li>
+</ol>
+<p>以前端開發來舉例，一個解決問題的流程可能是：</p>
+<ol>
+<li>為既有的線上服務（起點）新增一種付費方式（終點）</li>
+<li>使用 TypeScript 開發、並且既有的所有單元測試都要維持綠燈（限制條件）</li>
+<li>避免不必要的重造輪子（最短路徑）</li>
+</ol>
+<h3 id="解題時的心智活動">解題時的心智活動</h3>
+<p>解決問題時，我們會根據該問題的特徵，從<strong>長期記憶</strong>中搜索對應的內容（以便解決眼下的問題）。問題的特徵越明顯，回想的難度就會比較低。大腦比較擅長處理它曾經解決過的問題。</p>
+<blockquote>
+<p>…while thinking about a problem, the brain <strong>retrieves information from the LTM</strong>, which could be relevant to the problem at hand. … It is easier for your brain to <strong>solve familiar problems</strong>.</p>
+</blockquote>
+<h3 id="記憶的類型">記憶的類型</h3>
+<p>記憶有內隱記憶（implicit memory）與外顯記憶（explicit memory）兩大類。而外顯記憶又能分成情景記憶（ episodic memory）和語意記憶（semantic memory）</p>
+<p><img src="/2023/the-programmers-brain-ch10-getting-better-at-solving-comples-problems/CH10_F02_Hermans2.png" alt="types of memories"></p>
+<p>內隱記憶比如打領帶、綁鞋帶，以程式開發來說，能進行「鍵盤盲打」就是一種內隱記憶。</p>
+<p>情景記憶則是「我記得某年夏天去了某處玩」這類記憶。以程式開發來說，就是你記得「你曾經解過類似的問題」。本書就提出「專家通常是將舊問題的解決方式改編為新問題的解方」，而不是一味的從零開始解題：</p>
+<blockquote>
+<p>In a sense, experts <strong>recreate, rather than solve</strong>, familiar problems. That means that instead of finding a new solution, they <strong>rely on solutions that have previously worked</strong> for similar problems.</p>
+</blockquote>
+<p>作者也提到「除錯時的靈光一閃」乍看是一種直覺，但可能只是你想起來過去處理過類似的問題，並且當時問題是發生在什麼地方：</p>
+<blockquote>
+<p>Sometimes what we call intuition, in fact, happens when you solve a problem similar to one you have solved before; you just know what to do without really knowing how to do it.</p>
+</blockquote>
+<p>語意記憶（以程式開發來說）是關於迴圈語法的記憶、或是知道如何宣告變數等。可以靠背誦來強化的，都算是這類記憶。</p>
+<h3 id="提升解題能力的方式">提升解題能力的方式</h3>
+<p>第一種方式：增加相關的內隱記憶（肌肉記憶）。</p>
+<p>人可以在散步的同時聊天，或是邊看電視邊打毛線。能做到前面這些事情，是因為「散步」與「打毛線」已經成為內隱記憶，不需要消耗太多認知負荷（cognitive load）就能執行。<del>開車時滑手機之所以危險，是因為開車不只依靠肌肉記憶。</del></p>
+<blockquote>
+<p>The interesting thing about implicit memories is that when you <strong>have trained implicit memories well enough</strong>, it takes your brain <strong>hardly any energy to use them</strong>.</p>
+</blockquote>
+<p>以程式開發來說，如果你能毫不費力地理解 JavaScript 陣列的語法糖（map/sort/reduce）在做什麼、或是正規表達式要比對的字串內容，這就代表你的大腦比「不能直接理解的人」有更多的餘裕可以專注在「解決問題」上。</p>
+<p>故本書認為「增加內隱記憶」是一種能夠提升解題能力的方式。</p>
+<blockquote>
+<p>…cognitive load indicates how busy or full your brain is. When you experience <strong>too much cognitive load, thinking can become really hard</strong>. The more implicit memories you have for programming, the easier it will be to solve larger problems because <strong>you will have more cognitive load to spare</strong>.</p>
+</blockquote>
+<p>訓練內隱記憶主要靠「重複」。舉例：如果你對 JavaScript 的 <code>Array.reduce()</code> 還不熟悉，書中建議可以透過練習各種 <code>.reduce()</code> 組合來強化相關記憶。比如 <code>.reduce()</code> 不同種類的陣列、或是要將同一個陣列透過 <code>.reduce()</code> 輸出成各式內容。</p>
+<hr>
+<p>第二種方式：學習他人解決問題的方法</p>
+<p>本書第四章曾提過「認知負荷有三種類型」（可參考<a href="/2023/the-programmers-brain-ch4-how-to-read-complex-code">此篇筆記</a>）。而「學習解決問題的方式」就是為了減低一個問題帶來的密切認知負荷（germane load）。</p>
+<p>當我們在沒有其他幫助下試圖解決一個非常困難的問題時，我們會耗費所有的能量在「解決問題」上。但因為解決這個問題的認知負荷實在太大，所以我們根本沒有餘裕「記住我們今天究竟如何解決問題」。</p>
+<blockquote>
+<p>When all the cognitive load you have room for is filled with intrinsic and extraneous load, <strong>there is no room left for germane load</strong>; in other words, <strong>you cannot remember the problems you have solved and their solutions</strong>.</p>
+</blockquote>
+<p>而此章上半部也提過，人類在解決問題時，需要依賴長期記憶中的線索來幫解眼下的問題。如果解決了一個問題卻記不住它，今天的解決就無法成為未來的助力。</p>
+<p>但若在你試圖解決一個問題時，你能參考其他人的解法（有一個樣本可以看著改），這就能讓大腦有餘裕可以「記住今天你是如何解決某個問題」。日後再遇到類似的狀況，你就能透過回想來解決新遇到的問題。</p>
+<p>參考別人的解法並不可恥，且能夠幫助自己未來解決更多問題 =͟͟͞͞( •̀д•́)！</p>
+<h2 id="參考文件">參考文件</h2>
+<ul>
+<li><a href="https://www.manning.com/books/the-programmers-brain">Manning: The Programmer’s Brain</a></li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

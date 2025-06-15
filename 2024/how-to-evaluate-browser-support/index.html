@@ -1,0 +1,78 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.BScVxmeO.js"></script><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.1.2"><!-- Primary Meta Tags --><title>如何評估是否導入嶄新的 CSS 樣式</title><meta name="title" content="如何評估是否導入嶄新的 CSS 樣式"><meta name="description" content="此篇是 A Framework for Evaluating Browser Support 一文的閱讀筆記。作者提供了一組「判斷是否要導入某個新 CSS 功能」的 SOP，極致懶人包就是「先確認你的網站受眾分佈」，接著確認「當瀏覽器不支援時會發生什麼事」，最後根據前兩項資訊判斷到底要不要導入新功能。"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2024/how-to-evaluate-browser-support"><meta property="og:title" content="如何評估是否導入嶄新的 CSS 樣式"><meta property="og:description" content="此篇是 A Framework for Evaluating Browser Support 一文的閱讀筆記。作者提供了一組「判斷是否要導入某個新 CSS 功能」的 SOP，極致懶人包就是「先確認你的網站受眾分佈」，接著確認「當瀏覽器不支援時會發生什麼事」，最後根據前兩項資訊判斷到底要不要導入新功能。"><meta property="og:image" content="https://tzynwang.github.io/2024/how-to-evaluate-browser-support/federico-burgalassi-rhRoDuYLvxI-unsplash.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2024/how-to-evaluate-browser-support"><meta property="twitter:title" content="如何評估是否導入嶄新的 CSS 樣式"><meta property="twitter:description" content="此篇是 A Framework for Evaluating Browser Support 一文的閱讀筆記。作者提供了一組「判斷是否要導入某個新 CSS 功能」的 SOP，極致懶人包就是「先確認你的網站受眾分佈」，接著確認「當瀏覽器不支援時會發生什麼事」，最後根據前兩項資訊判斷到底要不要導入新功能。"><meta property="twitter:image" content="https://tzynwang.github.io/2024/how-to-evaluate-browser-support/federico-burgalassi-rhRoDuYLvxI-unsplash.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul:not(:has(li)){margin-top:16px;margin-bottom:16px}li{margin-top:4px;margin-bottom:4px;line-height:24px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:16px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}del{color:#4c5958e6}ol>li:has(p)>p{display:inline;margin:0}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+[data-astro-image]{width:100%;height:auto;object-fit:var(--fit);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>如何評估是否導入嶄新的 CSS 樣式</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2024-11-30 10:49</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/CSS" data-astro-cid-2iymvi75> CSS </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#懶人包" data-astro-cid-qtokga5y>懶人包</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#評估流程" data-astro-cid-qtokga5y>評估流程</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#了解網站受眾的瀏覽器版本分佈" data-astro-cid-qtokga5y>了解網站受眾的瀏覽器版本分佈</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#確認瀏覽器不支援時的畫面" data-astro-cid-qtokga5y>確認瀏覽器不支援時的畫面</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#評估不支援時的使用者體驗" data-astro-cid-qtokga5y>評估不支援時的使用者體驗</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#參考文件" data-astro-cid-qtokga5y>參考文件</a> </li> </ul> </div> <h2 id="懶人包">懶人包</h2>
+<p>當你考慮是否要導入一個<strong>普及度逐漸上升</strong>（比如列為 <a href="https://developer.mozilla.org/en-US/docs/Glossary/Baseline/Compatibility">Baseline Widely available</a> 狀態，或是 <a href="https://caniuse.com/">Can I use…</a> 支援度大於 90% 等等）的 CSS 功能時，可以問自己以下三個問題來幫助判斷<strong>現在是不是導入的好時機</strong>：</p>
+<ul>
+<li>先了解「你的網站受眾」的瀏覽器版本分佈</li>
+<li>再確認瀏覽器不支援這個樣式設定時，畫面會長怎樣？</li>
+<li>最後，評估瀏覽器不支援新樣式時，會對使用者體驗造成什麼影響</li>
+</ul>
+<h2 id="評估流程">評估流程</h2>
+<h3 id="了解網站受眾的瀏覽器版本分佈">了解網站受眾的瀏覽器版本分佈</h3>
+<p><a href="https://caniuse.com/">Can I use…</a> 會告訴你某個功能在全世界的市占率，但「全世界的使用者組成」卻不一定和「你的網站受眾（Target Audience）組成」一樣。</p>
+<blockquote>
+<p>Because these 1.5 million websites are spread across all sorts of industries in hundreds of different languages, we wind up with a pretty good worldwide sample of internet usage. But <strong>your product’s audience might look very different</strong>!</p>
+</blockquote>
+<p>舉個例子：你的網站高達 9 成 5 的流量來自通勤族，你的客戶基本上只會透過手機使用你的網站。那在評估是否導入新的 CSS 功能時，重點就要放在「這個新功能在手機上的支援度如何」以及「客戶的瀏覽器版本分佈為何？有大於支援此 CSS 功能的最低瀏覽器版本嗎？」</p>
+<p>好消息是 <a href="https://caniuse.com/ciu/import">Can I use… analysis Google Analytics</a> 有個從 GA 報表中整理出「你的網站受眾通常使用哪個版本的瀏覽器」的功能，根據指示匯入 GA 資料後，它就會列出你的實際受眾的瀏覽器資訊。比如以下就是普通文組 2.0 的統計資訊：</p>
+<p><img src="/2024/how-to-evaluate-browser-support/caniuse.com-ciu-import-normal-reader.jpg" alt="Browser version information of this blog&#x27;s reader"></p>
+<p>這代表當我考慮是否在普通文組 2.0 導入一個新的 CSS 功能時，第一個重點就是確認該功能在 Chrome 的最低支援版本是多少 😎</p>
+<h3 id="確認瀏覽器不支援時的畫面">確認瀏覽器不支援時的畫面</h3>
+<p>重點：當瀏覽器不支援一個新的 CSS 樣式時，它會直接使用該樣式的預設值（詳參下方補充 ☕️）。所以要確認<strong>當網站不是套用你指定，而是預設的 CSS 樣式時，畫面會是什麼樣子</strong>？</p>
+<p>測試方式（以 <code>overflow-x: clip</code> 為例）：</p>
+<ol>
+<li>從 MDN 的 Formal definition 區塊查到 <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/overflow-x#formal_definition"><code>overflow-x</code> 的預設值為 <code>visible</code></a></li>
+<li>把整包 code 中的 <code>overflow-x: clip</code> 替換為 <code>overflow-x: visible</code></li>
+<li>確認網站改用預設 CSS 樣式時的畫面</li>
+</ol>
+<hr>
+<p>☕️ 補充，以下是 CSS 關於設定值的規格原文（<a href="https://www.w3.org/TR/CSS22/cascade.html#specified-value">Cascading Style Sheets Level 2 Revision 2 (CSS 2.2) Specification</a>）：</p>
+<p>User agents must first assign a specified value to each property based on the following mechanisms (in order of precedence):</p>
+<ol>
+<li>If the cascade results in a value, use it. Except that, if the value is ‘inherit’, the specified value is defined in “The ‘inherit’ value” below.</li>
+<li>Otherwise, if the property is inherited and the element is not the root of the document tree, use the computed value of the parent element.</li>
+<li>Otherwise <strong>use the property’s initial value</strong>. The initial value of each property is indicated in the property’s definition.</li>
+</ol>
+<p>當我們指定了瀏覽器不支援的樣式時，就會進入規格中的第三點，即瀏覽器<strong>會使用該樣式的 initial value 來繪製畫面</strong>。比如當瀏覽器認不得 <code>overflow-x: clip</code> 時，它就會改用 <code>overflow-x: visible</code>，因為 <code>visible</code> 是 <code>overflow-x</code> 的預設值。</p>
+<h3 id="評估不支援時的使用者體驗">評估不支援時的使用者體驗</h3>
+<p>承上一點，當使用者使用不支援該樣式的瀏覽器操作你的網站時，他的體驗會是：</p>
+<ul>
+<li>在一些無關緊要的地方看起來有點怪，但不影響可用性？</li>
+<li>在一些重要的部位（比如 landing page）看起來有點怪，影響網站的專業感？（這導致使用者可能拒絕繼續使用）</li>
+<li>因為畫面不如預期，導致中斷某些重要操作？（比如 CTA 按鈕出現在意想不到的位置、畫面上有大片莫名空白等等）</li>
+</ul>
+<p>造成的影響越大且負面，就越不適合「現在」導入該新樣式 ☢️</p>
+<blockquote>
+<p>On the other end of the spectrum, let’s suppose you work for <em>ClicSanté,</em> a tool developed by the Quebec government to allow people to book vaccines, blood tests, and other medical appointments. For something like this, it’s super important that as many people as possible can access the service. We don’t want people to skip getting a vaccine because our web app didn’t work for them!</p>
+</blockquote>
+<h2 id="參考文件">參考文件</h2>
+<ul>
+<li><a href="https://www.joshwcomeau.com/css/browser-support/">A Framework for Evaluating Browser Support</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/initial_value">MDN CSS Initial value</a></li>
+<li><a href="https://www.w3.org/TR/CSS22/cascade.html#specified-value">Cascading Style Sheets Level 2 Revision 2 (CSS 2.2) Specification</a></li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

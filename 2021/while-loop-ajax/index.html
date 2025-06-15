@@ -1,0 +1,85 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.BScVxmeO.js"></script><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.1.2"><!-- Primary Meta Tags --><title>為什麼在瀏覽器環境中使用while loop執行ajax request會讓頁面陷入凍結狀態？</title><meta name="title" content="為什麼在瀏覽器環境中使用while loop執行ajax request會讓頁面陷入凍結狀態？"><meta name="description" content="這是一個文組轉職前端工程師的技術部落格"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2021/while-loop-ajax"><meta property="og:title" content="為什麼在瀏覽器環境中使用while loop執行ajax request會讓頁面陷入凍結狀態？"><meta property="og:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="og:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2021/while-loop-ajax"><meta property="twitter:title" content="為什麼在瀏覽器環境中使用while loop執行ajax request會讓頁面陷入凍結狀態？"><meta property="twitter:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="twitter:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul:not(:has(li)){margin-top:16px;margin-bottom:16px}li{margin-top:4px;margin-bottom:4px;line-height:24px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:16px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}del{color:#4c5958e6}ol>li:has(p)>p{display:inline;margin:0}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+[data-astro-image]{width:100%;height:auto;object-fit:var(--fit);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>為什麼在瀏覽器環境中使用while loop執行ajax request會讓頁面陷入凍結狀態？</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2021-04-08 21:10</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/JavaScript" data-astro-cid-2iymvi75> JavaScript </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#環境" data-astro-cid-qtokga5y>環境</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#原始題目" data-astro-cid-qtokga5y>原始題目</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#遭遇問題" data-astro-cid-qtokga5y>遭遇問題</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#問題背後的脈絡梳理" data-astro-cid-qtokga5y>問題背後的脈絡梳理</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#結論" data-astro-cid-qtokga5y>結論</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#此問題的解決方式" data-astro-cid-qtokga5y>此問題的解決方式</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#補充" data-astro-cid-qtokga5y>補充</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#參考文件" data-astro-cid-qtokga5y>參考文件</a> </li> </ul> </div> <h2 id="環境">環境</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Google Chrome: 89.0.4389.114 (Official Build) (64-bit)</span></span>
+<span class="line"><span>os: Windows_NT 10.0.18363 win32 x64</span></span></code></pre>
+<h2 id="原始題目">原始題目</h2>
+<p>ALPHA Camp 學期 2-2：請向 <a href="https://randomuser.me/">RANDOM USER GENERATOR</a> 這支 API 索取資料，並在瀏覽器畫面上點擊按鈕後，輸出三位「只有女性」的資料。</p>
+<h2 id="遭遇問題">遭遇問題</h2>
+<p>最初想要使用以下程式碼來過濾 API 回傳的資料，但會讓瀏覽器分頁陷入凍結狀態：</p>
+<script src="https://gist.github.com/tzynwang/b7049eb35ec2a9950f4c48f1fdd48c28.js"></script>
+<h2 id="問題背後的脈絡梳理">問題背後的脈絡梳理</h2>
+<p>基本上 Philip Roberts 的影片回答了「為什麼以上程式碼會造成瀏覽器凍結？」的問題：</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/8aGhZQkoFbQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<ul>
+<li>V8（Chrome 的 JavaScript runtime）本身僅包含 call stack 與 heap，V8 的原始碼沒有<code>setTimeout()</code>、<code>XMLHttpRequest</code>（實現 ajax 的 API）等內容</li>
+<li><code>setTimeout()</code>與<code>XMLHttpRequest</code>並非由 ECMAScript 定義，在 MDN 文件中，這兩個功能分別由 HTML Living Standard 與 XMLHttpRequest Living Standard 規範
+<ul>
+<li><code>setTimeout()</code>: <a href="https://html.spec.whatwg.org/multipage/timers-and-user-prompts.html#dom-settimeout">HTML Living Standard</a></li>
+<li><code>XMLHttpRequest</code>: <a href="https://xhr.spec.whatwg.org/">XMLHttpRequest Living Standard</a></li>
+</ul>
+</li>
+<li><code>setTimeout()</code>與<code>XMLHttpRequest</code>的 callback function 會停留在 callback queue，等待 stack 裡面的 task 被清空後，這些停留在 callback queue 的 task 才會被執行</li>
+<li>瀏覽器分頁當機的原因是：我請 JavaScript 在 user array 長度沒有大於 4 前，不停執行<code>getFemaleUser()</code>此功能
+<ul>
+<li>在<code>getFemaleUser()</code>中，我使用 ajax 技術向 API 請求資料，但是，「整理取得的資料」這個 task 會停留在 callback queue 中</li>
+<li>而在 stack 沒有清空前，callback queue 是不會被推到 stack 被執行的</li>
+<li>stack 因為 while loop 的條件一直為 true（整理資料的 task 沒有被執行的話，user array 的長度是不會改變的），所以 while loop 會一直被執行下去</li>
+<li>在程式碼加上<code>console.log()</code>觀察實際被執行的內容，可以很明顯看出<code>axios.get()</code>以內的程式碼根本沒有被執行
+<script src="https://gist.github.com/tzynwang/b0f95a819bf495c771c321cfaa4ecf8e.js"></script>
+<img src="/2021/while-loop-ajax/ajax.png" alt="因為stack裡面的任務沒有清空，callback queue裡面的task永遠不會被執行"></li>
+</ul>
+</li>
+</ul>
+<h2 id="結論">結論</h2>
+<ul>
+<li>我的 while loop 條件是根據 callback queue task 來決定的，但我讓 callback queue 中的 task 永遠沒有機會被執行</li>
+<li>而 JavaScript 的 single thread 特性會讓它不停地執行 stack 內的任務，直到 stack 清空之前 JavaScript 不會處理其他事情，所以分頁畫面凍結了，JavaScript 也永遠卡在 while loop 裡面</li>
+<li>Jake Archibald 的演講在提到 Render steps 時提供了相關說明，約 8:55 開始：</li>
+</ul>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/cCOL7MC4Pl0?start=535" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<h2 id="此問題的解決方式">此問題的解決方式</h2>
+<ul>
+<li>直接根據<a href="https://randomuser.me/documentation#gender">RANDOM USER GENERATOR 的說明文件</a>，在請求的 URL 加上特定 parameter 過濾需求資料（女性、三位：<code>?gender=female&#x26;results=3</code>）</li>
+<li>透過 recursive 讓<code>getFemaleUser()</code>在條件沒有被滿足的情況下再度呼叫<code>getFemaleUser()</code></li>
+</ul>
+<h2 id="補充">補充</h2>
+<script src="https://gist.github.com/tzynwang/1cf59700311f401a74042df5c76cf47f.js"></script>
+<p><img src="/2021/while-loop-ajax/setTimeout.png" alt="因為stack裡面的任務沒有清空，callback queue裡面的task永遠不會被執行"></p>
+<ul>
+<li>將<code>axios.get()</code>抽換為<code>setTimeout()</code>也會造成頁面凍結，原理與上述一致</li>
+<li><code>setTimeout()</code>的 callback function（<code>arr.push("add item to array");</code>）被推到 callback queue 之後，<code>arr.push</code>等待 stack 被清空，但能讓 while loop 停下來的 task 本身就在 callback queue 中被 stack 永遠不會結束的 task 卡住，因此 while loop 永遠不會停下來
+<img src="/2021/while-loop-ajax/不要停下來.jpg" alt="meme"></li>
+</ul>
+<h2 id="參考文件">參考文件</h2>
+<ul>
+<li><a href="https://youtu.be/8aGhZQkoFbQ">What the heck is the event loop anyway? | Philip Roberts</a></li>
+<li><a href="https://youtu.be/cCOL7MC4Pl0">Jake Archibald: In The Loop</a></li>
+<li><a href="https://youtu.be/u1kqx6AenYw">Further Adventures of the Event Loop - Erin Zimmer</a></li>
+<li><a href="https://pjchender.blogspot.com/2017/08/javascript-learn-event-loop-stack-queue.html">[筆記] 理解 JavaScript 中的事件循環、堆疊、佇列和併發模式（Learn event loop, stack, queue, and concurrency mode of JavaScript in depth）</a>：這篇文章內的影片全部都是 Philip Roberts 的演講內容，影片部分直接觀看 Philip Roberts 本人的演講錄影即可</li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

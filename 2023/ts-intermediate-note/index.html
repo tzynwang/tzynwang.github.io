@@ -1,0 +1,264 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.BScVxmeO.js"></script><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.1.2"><!-- Primary Meta Tags --><title>2023 第2週 學習筆記：Frontend Masters Intermediate TypeScript</title><meta name="title" content="2023 第2週 學習筆記：Frontend Masters Intermediate TypeScript"><meta name="description" content="這是一個文組轉職前端工程師的技術部落格"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2023/ts-intermediate-note"><meta property="og:title" content="2023 第2週 學習筆記：Frontend Masters Intermediate TypeScript"><meta property="og:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="og:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2023/ts-intermediate-note"><meta property="twitter:title" content="2023 第2週 學習筆記：Frontend Masters Intermediate TypeScript"><meta property="twitter:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="twitter:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul:not(:has(li)){margin-top:16px;margin-bottom:16px}li{margin-top:4px;margin-bottom:4px;line-height:24px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:16px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}del{color:#4c5958e6}ol>li:has(p)>p{display:inline;margin:0}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+[data-astro-image]{width:100%;height:auto;object-fit:var(--fit);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>2023 第2週 學習筆記：Frontend Masters Intermediate TypeScript</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2023-01-14 09:01</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/TypeScript" data-astro-cid-2iymvi75> TypeScript </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#總結" data-astro-cid-qtokga5y>總結</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#筆記" data-astro-cid-qtokga5y>筆記</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#namespace-的應用場合" data-astro-cid-qtokga5y>namespace 的應用場合</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#class-可作為值或型別定義" data-astro-cid-qtokga5y>class 可作為值或型別定義</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#commonjs-interop" data-astro-cid-qtokga5y>CommonJS interop</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#透過-infer-抽取型別內容" data-astro-cid-qtokga5y>透過 infer 抽取型別內容</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#根據鍵值來篩選型別" data-astro-cid-qtokga5y>根據鍵值來篩選型別</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#根據回傳值來篩選型別" data-astro-cid-qtokga5y>根據回傳值來篩選型別</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#參考文件" data-astro-cid-qtokga5y>參考文件</a> </li> </ul> </div> <h2 id="總結">總結</h2>
+<p>記錄一些從 Frontend Masters 課程「Intermediate TypeScript」學習到的新概念以及 TypeScript 使用技巧。</p>
+<h2 id="筆記">筆記</h2>
+<h3 id="namespace-的應用場合">namespace 的應用場合</h3>
+<p>參考以下程式碼，在使用 jQuery 的時候，使用者可以透過兩種方式來使用 <code>$</code> 符號，分別是 <code>$.ajax(...)</code> 或 <code>$(/* selector syntax */)</code> 形式：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#6A737D">// $ 符號透過 . 連接一個函式</span></span>
+<span class="line"><span style="color:#E1E4E8">$.</span><span style="color:#B392F0">ajax</span><span style="color:#E1E4E8">({</span></span>
+<span class="line"><span style="color:#E1E4E8">  url: </span><span style="color:#9ECBFF">'/api/getWeather'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">  data: { zipCode: </span><span style="color:#79B8FF">97201</span><span style="color:#E1E4E8"> },</span></span>
+<span class="line"><span style="color:#B392F0">  success</span><span style="color:#E1E4E8">: (</span><span style="color:#FFAB70">result</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#B392F0">    $</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'#weather-temp'</span><span style="color:#E1E4E8">)[</span><span style="color:#79B8FF">0</span><span style="color:#E1E4E8">].innerHTML </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> '&#x3C;strong>'</span><span style="color:#F97583"> +</span><span style="color:#E1E4E8"> result </span><span style="color:#F97583">+</span><span style="color:#9ECBFF"> '&#x3C;/strong> degrees'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">  },</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// $ 符號作為功能名稱，可將選取器語法作為參數傳入</span></span>
+<span class="line"><span style="color:#B392F0">$</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'h1.title'</span><span style="color:#E1E4E8">).</span><span style="color:#B392F0">forEach</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">node</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">  node.tagName; </span><span style="color:#6A737D">// "h1"</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+<p>而在這類 lib 搭配 TypeScript 的場合時，其型別定義就可以透過以下形式來處理：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#6A737D">// 透過 namespace 來為第一種使用方式定義型別</span></span>
+<span class="line"><span style="color:#F97583">namespace</span><span style="color:#B392F0"> $</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">  export</span><span style="color:#F97583"> function</span><span style="color:#B392F0"> ajax</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">arg</span><span style="color:#F97583">:</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#FFAB70">    url</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> string</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#FFAB70">    data</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> any</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#B392F0">    success</span><span style="color:#F97583">:</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">response</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> any</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#79B8FF"> void</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">  })</span><span style="color:#F97583">:</span><span style="color:#B392F0"> Promise</span><span style="color:#E1E4E8">&#x3C;</span><span style="color:#79B8FF">any</span><span style="color:#E1E4E8">> {</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#79B8FF"> Promise</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">resolve</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// 如果要將 $ 作為函式使用，則型別定義如下</span></span>
+<span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> $</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">selector</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> string</span><span style="color:#E1E4E8">)</span><span style="color:#F97583">:</span><span style="color:#B392F0"> NodeListOf</span><span style="color:#E1E4E8">&#x3C;</span><span style="color:#B392F0">Element</span><span style="color:#E1E4E8">> {</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> document.</span><span style="color:#B392F0">querySelectorAll</span><span style="color:#E1E4E8">(selector);</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<h3 id="class-可作為值或型別定義">class 可作為值或型別定義</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">class</span><span style="color:#B392F0"> User</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#FFAB70">  displayName</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> string</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> ''</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FFAB70">  email</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> string</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> ''</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">  static</span><span style="color:#B392F0"> createUser</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">displayName</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> string</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">email</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> string</span><span style="color:#E1E4E8">)</span><span style="color:#F97583">:</span><span style="color:#B392F0"> User</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#E1E4E8"> { displayName, email };</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// 將 class 作為值賦予其他變數</span></span>
+<span class="line"><span style="color:#6A737D">// 在 IDE 中 hover 該變數時，會發現變數的型別定義是 const valueTest: typeof User</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> valueTest</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> User;</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> createResult</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> valueTest.</span><span style="color:#B392F0">createUser</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'user'</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">'mail@example.com'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// 將 class 作為型別定義使用</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> typeTest</span><span style="color:#F97583">:</span><span style="color:#B392F0"> User</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> { displayName: </span><span style="color:#9ECBFF">'user'</span><span style="color:#E1E4E8">, email: </span><span style="color:#9ECBFF">'mail@example.com'</span><span style="color:#E1E4E8"> };</span></span></code></pre>
+<h3 id="commonjs-interop">CommonJS interop</h3>
+<p>在大部分的情況下，以下 require 寫法可無痛轉換成 import 語法：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> fs</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> require</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'fs'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#79B8FF"> *</span><span style="color:#F97583"> as</span><span style="color:#E1E4E8"> fs </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> 'fs'</span><span style="color:#E1E4E8">;</span></span></code></pre>
+<p>但某些 cjs 模組的 export 方式可能會造成 esm import 語法失效：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#6A737D">////////////////////////////////////////////////////////</span></span>
+<span class="line"><span style="color:#6A737D">// @filename: fruits.ts</span></span>
+<span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> createBanana</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> { name: </span><span style="color:#9ECBFF">'banana'</span><span style="color:#E1E4E8">, color: </span><span style="color:#9ECBFF">'yellow'</span><span style="color:#E1E4E8">, mass: </span><span style="color:#79B8FF">183</span><span style="color:#E1E4E8"> };</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// equivalent to CJS `module.exports = createBanana`</span></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> createBanana;</span></span>
+<span class="line"><span style="color:#6A737D">////////////////////////////////////////////////////////</span></span>
+<span class="line"><span style="color:#6A737D">// @filename: smoothie.ts</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#79B8FF"> *</span><span style="color:#F97583"> as</span><span style="color:#E1E4E8"> createBanana </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> './fruits'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#6A737D">// 出現錯誤訊息 This module can only be referenced with ECMAScript imports/exports by turning on the 'esModuleInterop' flag and referencing its default export.</span></span></code></pre>
+<p>此時有兩種解決方式：</p>
+<ol>
+<li>根據錯誤訊息的指示，將 <code>smoothie.ts</code> 中的 <code>tsConfig</code> <code>esModuleInterop</code> 與 <code>allowSyntheticDefaultImports</code> 設定為 <code>true</code> 即可，但這樣做的缺點是未來所有依賴 <code>smoothie.ts</code> 的檔案都需要把 <code>tsConfig</code> 中的 <code>esModuleInterop</code> 與 <code>allowSyntheticDefaultImports</code> 都一併設定為 <code>true</code></li>
+<li>調整 <code>smoothie.ts</code> 的語法如下：</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> createBanana </span><span style="color:#F97583">=</span><span style="color:#F97583"> require</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'./fruits'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> banana</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> createBanana</span><span style="color:#E1E4E8">(); </span><span style="color:#6A737D">// 可正常執行</span></span></code></pre>
+<h3 id="透過-infer-抽取型別內容">透過 <code>infer</code> 抽取型別內容</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">class</span><span style="color:#B392F0"> Fruit</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">  constructor</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">fruitNames</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> string</span><span style="color:#E1E4E8">[]) {}</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">type</span><span style="color:#B392F0"> ConstructorArg</span><span style="color:#E1E4E8">&#x3C;</span><span style="color:#B392F0">T</span><span style="color:#E1E4E8">> </span><span style="color:#F97583">=</span><span style="color:#B392F0"> T</span><span style="color:#F97583"> extends</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">  new</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">arg</span><span style="color:#F97583">:</span><span style="color:#F97583"> infer</span><span style="color:#B392F0"> ARGUMENT</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">...</span><span style="color:#FFAB70">args</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> any</span><span style="color:#E1E4E8">)</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> any</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"><span style="color:#F97583">  ?</span><span style="color:#B392F0"> ARGUMENT</span></span>
+<span class="line"><span style="color:#F97583">  :</span><span style="color:#79B8FF"> never</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> fruits</span><span style="color:#F97583">:</span><span style="color:#B392F0"> ConstructorArg</span><span style="color:#E1E4E8">&#x3C;</span><span style="color:#F97583">typeof</span><span style="color:#E1E4E8"> Fruit> </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> [</span><span style="color:#9ECBFF">'apple'</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">'banana'</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">'cherry'</span><span style="color:#E1E4E8">];</span></span>
+<span class="line"><span style="color:#6A737D">// 可透過 IDE hover 變數來觀察到 const fruits: string[]</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> webpackCompilerOptions</span><span style="color:#F97583">:</span><span style="color:#B392F0"> ConstructorArg</span><span style="color:#E1E4E8">&#x3C;</span><span style="color:#F97583">typeof</span><span style="color:#E1E4E8"> WebpackCompiler>;</span></span>
+<span class="line"><span style="color:#6A737D">// 現在就可以知道哪些鍵值能被傳入 webpack constructor 了 🌚</span></span></code></pre>
+<p>在上述範例中，<code>ConstructorArg&#x3C;T></code> 透過三元運算子來驗證「傳入的型別 <code>T</code>」是否為「型別 <code>{ new (arg: infer ARGUMENT, ...args: any): any }</code>」的延伸，如果為 <code>true</code> 則 <code>ConstructorArg&#x3C;T></code> 被賦值（等同）型別 <code>ARGUMENT</code>。</p>
+<p>型別 <code>ARGUMENT</code> 則是透過搭配關鍵字 <code>infer</code> 來取出。</p>
+<p>當使用者將各種 constructor 傳入 <code>ConstructorArg&#x3C;T></code> 後，即可獲得該 constructor 的參數型別。</p>
+<h3 id="根據鍵值來篩選型別">根據鍵值來篩選型別</h3>
+<p>首先透過關鍵字 <code>Extract</code> 取得 <code>Document</code> 之中名稱包含 <code>query${string}</code> 的鍵值，再透過 <code>[K in DocKeys]</code> 來遍歷出「名稱包含 <code>query${string}</code> 的型別定義」。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">type</span><span style="color:#B392F0"> DocQueryKeys</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> Extract</span><span style="color:#E1E4E8">&#x3C;</span><span style="color:#F97583">keyof</span><span style="color:#B392F0"> Document</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">`query${</span><span style="color:#79B8FF">string</span><span style="color:#9ECBFF">}`</span><span style="color:#E1E4E8">>;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">type</span><span style="color:#B392F0"> DocumentQuery</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">  [</span><span style="color:#B392F0">K</span><span style="color:#F97583"> in</span><span style="color:#B392F0"> DocQueryKeys</span><span style="color:#E1E4E8">]</span><span style="color:#F97583">:</span><span style="color:#B392F0"> Document</span><span style="color:#E1E4E8">[</span><span style="color:#B392F0">K</span><span style="color:#E1E4E8">];</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">/*</span></span>
+<span class="line"><span style="color:#6A737D">篩選結果如下</span></span>
+<span class="line"><span style="color:#6A737D">type KeyFilteredDoc = {</span></span>
+<span class="line"><span style="color:#6A737D">    queryCommandEnabled: (commandId: string) => boolean;</span></span>
+<span class="line"><span style="color:#6A737D">    queryCommandIndeterm: (commandId: string) => boolean;</span></span>
+<span class="line"><span style="color:#6A737D">    queryCommandState: (commandId: string) => boolean;</span></span>
+<span class="line"><span style="color:#6A737D">    queryCommandSupported: (commandId: string) => boolean;</span></span>
+<span class="line"><span style="color:#6A737D">    queryCommandValue: (commandId: string) => string;</span></span>
+<span class="line"><span style="color:#6A737D">    querySelector: {</span></span>
+<span class="line"><span style="color:#6A737D">        ...;</span></span>
+<span class="line"><span style="color:#6A737D">    };</span></span>
+<span class="line"><span style="color:#6A737D">    querySelectorAll: {</span></span>
+<span class="line"><span style="color:#6A737D">        ...;</span></span>
+<span class="line"><span style="color:#6A737D">    };</span></span>
+<span class="line"><span style="color:#6A737D">}</span></span>
+<span class="line"><span style="color:#6A737D">*/</span></span></code></pre>
+<p>把上述內容抽象化之後，即可得到型別工具 <code>type FilterBy&#x3C;T, U></code>：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">type</span><span style="color:#B392F0"> FilterBy</span><span style="color:#E1E4E8">&#x3C;</span><span style="color:#B392F0">T</span><span style="color:#E1E4E8">, </span><span style="color:#B392F0">U</span><span style="color:#E1E4E8">> </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">  [</span><span style="color:#B392F0">K</span><span style="color:#F97583"> in</span><span style="color:#B392F0"> Extract</span><span style="color:#E1E4E8">&#x3C;</span><span style="color:#F97583">keyof</span><span style="color:#B392F0"> T</span><span style="color:#E1E4E8">, </span><span style="color:#B392F0">U</span><span style="color:#E1E4E8">>]</span><span style="color:#F97583">:</span><span style="color:#B392F0"> T</span><span style="color:#E1E4E8">[</span><span style="color:#B392F0">K</span><span style="color:#E1E4E8">];</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">type</span><span style="color:#B392F0"> DocumentQuery</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> FilterBy</span><span style="color:#E1E4E8">&#x3C;</span><span style="color:#B392F0">Document</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">`query${</span><span style="color:#79B8FF">string</span><span style="color:#9ECBFF">}`</span><span style="color:#E1E4E8">>;</span></span>
+<span class="line"><span style="color:#6A737D">/*</span></span>
+<span class="line"><span style="color:#6A737D">篩選結果與上方的 code snippet 相同</span></span>
+<span class="line"><span style="color:#6A737D">type KeyFilteredDoc = {</span></span>
+<span class="line"><span style="color:#6A737D">    queryCommandEnabled: (commandId: string) => boolean;</span></span>
+<span class="line"><span style="color:#6A737D">    queryCommandIndeterm: (commandId: string) => boolean;</span></span>
+<span class="line"><span style="color:#6A737D">    queryCommandState: (commandId: string) => boolean;</span></span>
+<span class="line"><span style="color:#6A737D">    queryCommandSupported: (commandId: string) => boolean;</span></span>
+<span class="line"><span style="color:#6A737D">    queryCommandValue: (commandId: string) => string;</span></span>
+<span class="line"><span style="color:#6A737D">    querySelector: {</span></span>
+<span class="line"><span style="color:#6A737D">        ...;</span></span>
+<span class="line"><span style="color:#6A737D">    };</span></span>
+<span class="line"><span style="color:#6A737D">    querySelectorAll: {</span></span>
+<span class="line"><span style="color:#6A737D">        ...;</span></span>
+<span class="line"><span style="color:#6A737D">    };</span></span>
+<span class="line"><span style="color:#6A737D">}</span></span>
+<span class="line"><span style="color:#6A737D">*/</span></span></code></pre>
+<h3 id="根據回傳值來篩選型別">根據回傳值來篩選型別</h3>
+<p>先從簡單的範例來推演。首先建立一個相對單純的型別 <code>Color</code>，在這個範例型別中，只有鍵值 <code>blue</code> 會搭配 <code>number</code> 類型的資料：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">type</span><span style="color:#B392F0"> Color</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#FFAB70">  red</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> string</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#FFAB70">  green</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> string</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#FFAB70">  blue</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> number</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span></code></pre>
+<p>接著根據 <code>Color[key]</code> 是否為 <code>number</code> 型態的資料來決定每一個 <code>key</code> 對應的資料型態：</p>
+<ul>
+<li>如果 <code>Color[key]</code> 可以取得 <code>number</code> 型態的資料，則 <code>[key in keyof Color]: key</code></li>
+<li>如果 <code>Color[key]</code> 沒有辦法取得 <code>number</code> 型態的資料，則 <code>[key in keyof Color]: never</code></li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">type</span><span style="color:#B392F0"> ColorNumber1</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">  [</span><span style="color:#B392F0">key</span><span style="color:#F97583"> in</span><span style="color:#F97583"> keyof</span><span style="color:#B392F0"> Color</span><span style="color:#E1E4E8">]</span><span style="color:#F97583">:</span><span style="color:#B392F0"> Color</span><span style="color:#E1E4E8">[</span><span style="color:#B392F0">key</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">extends</span><span style="color:#79B8FF"> number</span><span style="color:#F97583"> ?</span><span style="color:#B392F0"> key</span><span style="color:#F97583"> :</span><span style="color:#79B8FF"> never</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span>
+<span class="line"><span style="color:#6A737D">/* </span></span>
+<span class="line"><span style="color:#6A737D">type ColorNumber1 = {</span></span>
+<span class="line"><span style="color:#6A737D">    red: never;</span></span>
+<span class="line"><span style="color:#6A737D">    green: never;</span></span>
+<span class="line"><span style="color:#6A737D">    blue: "blue";</span></span>
+<span class="line"><span style="color:#6A737D">}</span></span>
+<span class="line"><span style="color:#6A737D">*/</span></span></code></pre>
+<p>然後搭配 index access 來取出不為 <code>never</code> 的鍵：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">type</span><span style="color:#B392F0"> ColorNumber2</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">  [</span><span style="color:#B392F0">key</span><span style="color:#F97583"> in</span><span style="color:#F97583"> keyof</span><span style="color:#B392F0"> Color</span><span style="color:#E1E4E8">]</span><span style="color:#F97583">:</span><span style="color:#B392F0"> Color</span><span style="color:#E1E4E8">[</span><span style="color:#B392F0">key</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">extends</span><span style="color:#79B8FF"> number</span><span style="color:#F97583"> ?</span><span style="color:#B392F0"> key</span><span style="color:#F97583"> :</span><span style="color:#79B8FF"> never</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">}[</span><span style="color:#F97583">keyof</span><span style="color:#B392F0"> Color</span><span style="color:#E1E4E8">];</span></span>
+<span class="line"><span style="color:#6A737D">// type ColorNumber2 = "blue"</span></span></code></pre>
+<p>最後，透過 <code>Pick&#x3C;T, U></code> 來取得「型別 <code>Color</code> 中，鍵值對應的資料類型為 <code>number</code>」的型別子集合：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">type</span><span style="color:#B392F0"> PickColorIfTypeNumber</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> Pick</span><span style="color:#E1E4E8">&#x3C;</span><span style="color:#B392F0">Color</span><span style="color:#E1E4E8">, </span><span style="color:#B392F0">ColorNumber3</span><span style="color:#E1E4E8">>;</span></span>
+<span class="line"><span style="color:#6A737D">/*</span></span>
+<span class="line"><span style="color:#6A737D">type PickColorIfTypeNumber = {</span></span>
+<span class="line"><span style="color:#6A737D">    blue: number;</span></span>
+<span class="line"><span style="color:#6A737D">}</span></span>
+<span class="line"><span style="color:#6A737D">*/</span></span></code></pre>
+<p>在課程示範中用來檢驗的型別為 <code>Document</code>，以下是推演流程：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">type</span><span style="color:#B392F0"> ReturnElementArray</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> (</span><span style="color:#F97583">...</span><span style="color:#FFAB70">args</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> any</span><span style="color:#E1E4E8">[]) </span><span style="color:#F97583">=></span><span style="color:#B392F0"> Element</span><span style="color:#E1E4E8">[];</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">type</span><span style="color:#B392F0"> DocumentReturnElementArray</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">  [</span><span style="color:#B392F0">key</span><span style="color:#F97583"> in</span><span style="color:#F97583"> keyof</span><span style="color:#B392F0"> Document</span><span style="color:#E1E4E8">]</span><span style="color:#F97583">:</span><span style="color:#B392F0"> Document</span><span style="color:#E1E4E8">[</span><span style="color:#B392F0">key</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">extends</span><span style="color:#B392F0"> ReturnElementArray</span></span>
+<span class="line"><span style="color:#F97583">    ?</span><span style="color:#B392F0"> key</span></span>
+<span class="line"><span style="color:#F97583">    :</span><span style="color:#79B8FF"> never</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">type</span><span style="color:#B392F0"> DocumentReturnElementArray2</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">  [</span><span style="color:#B392F0">key</span><span style="color:#F97583"> in</span><span style="color:#F97583"> keyof</span><span style="color:#B392F0"> Document</span><span style="color:#E1E4E8">]</span><span style="color:#F97583">:</span><span style="color:#B392F0"> Document</span><span style="color:#E1E4E8">[</span><span style="color:#B392F0">key</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">extends</span><span style="color:#B392F0"> ReturnElementArray</span></span>
+<span class="line"><span style="color:#F97583">    ?</span><span style="color:#B392F0"> key</span></span>
+<span class="line"><span style="color:#F97583">    :</span><span style="color:#79B8FF"> never</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">}[</span><span style="color:#F97583">keyof</span><span style="color:#B392F0"> Document</span><span style="color:#E1E4E8">];</span></span>
+<span class="line"><span style="color:#6A737D">// "adoptNode" | "createElement" | "createElementNS" | "importNode" | "appendChild" | "insertBefore" | "removeChild" | "replaceChild" | "elementsFromPoint" | "querySelector" | undefined</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">type</span><span style="color:#B392F0"> DocumentReturnElementArray3</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">  [</span><span style="color:#B392F0">key</span><span style="color:#F97583"> in</span><span style="color:#F97583"> keyof</span><span style="color:#B392F0"> Document</span><span style="color:#E1E4E8">]</span><span style="color:#F97583">:</span><span style="color:#B392F0"> Document</span><span style="color:#E1E4E8">[</span><span style="color:#B392F0">key</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">extends</span><span style="color:#B392F0"> ReturnElementArray</span></span>
+<span class="line"><span style="color:#F97583">    ?</span><span style="color:#B392F0"> key</span></span>
+<span class="line"><span style="color:#F97583">    :</span><span style="color:#79B8FF"> never</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">}[</span><span style="color:#F97583">keyof</span><span style="color:#B392F0"> Document</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">&#x26;</span></span>
+<span class="line"><span style="color:#F97583">  keyof</span><span style="color:#B392F0"> Document</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#6A737D">// "adoptNode" | "createElement" | "createElementNS" | "importNode" | "appendChild" | "insertBefore" | "removeChild" | "replaceChild" | "elementsFromPoint" | "querySelector"</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">type</span><span style="color:#B392F0"> PickDocumentReturnElementArray</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> Pick</span><span style="color:#E1E4E8">&#x3C;</span></span>
+<span class="line"><span style="color:#B392F0">  Document</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#B392F0">  DocumentReturnElementArray3</span></span>
+<span class="line"><span style="color:#E1E4E8">>;</span></span>
+<span class="line"><span style="color:#6A737D">/*</span></span>
+<span class="line"><span style="color:#6A737D">type PickDocumentReturnElementArray = {</span></span>
+<span class="line"><span style="color:#6A737D">    adoptNode: &#x3C;T extends Node>(node: T) => T;</span></span>
+<span class="line"><span style="color:#6A737D">    createElement: {</span></span>
+<span class="line"><span style="color:#6A737D">        &#x3C;K extends keyof HTMLElementTagNameMap>(tagName: K, options?: ElementCreationOptions | undefined): HTMLElementTagNameMap[K];</span></span>
+<span class="line"><span style="color:#6A737D">        &#x3C;K extends keyof HTMLElementDeprecatedTagNameMap>(tagName: K, options?: ElementCreationOptions | undefined): HTMLElementDeprecatedTagNameMap[K];</span></span>
+<span class="line"><span style="color:#6A737D">        (tagName: string, options?: ElementCreationOptions | undefined): HTMLElement;</span></span>
+<span class="line"><span style="color:#6A737D">    };</span></span>
+<span class="line"><span style="color:#6A737D">    ... 7 more ...;</span></span>
+<span class="line"><span style="color:#6A737D">    querySelector: {</span></span>
+<span class="line"><span style="color:#6A737D">        ...;</span></span>
+<span class="line"><span style="color:#6A737D">    };</span></span>
+<span class="line"><span style="color:#6A737D">}</span></span>
+<span class="line"><span style="color:#6A737D">*/</span></span></code></pre>
+<p>相較於取出 <code>type Color</code>，處理 <code>type Document</code> 時多了一個步驟 <code>DocumentReturnElementArray3</code> 來過濾掉 <code>DocumentReturnElementArray2</code> 包含到的 <code>undefined</code>，不過並不清楚這個 <code>undefined</code> 從何而來 ⋯⋯。</p>
+<p>整理一下以上內容，可以歸納出工具型別 <code>PickByReturnType&#x3C;T></code> 來搭配 <code>Pick&#x3C;T, U></code>：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">type</span><span style="color:#B392F0"> FilterByMappedType</span><span style="color:#E1E4E8">&#x3C;</span><span style="color:#B392F0">T</span><span style="color:#E1E4E8">, </span><span style="color:#B392F0">U</span><span style="color:#E1E4E8">> </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">  [</span><span style="color:#B392F0">key</span><span style="color:#F97583"> in</span><span style="color:#F97583"> keyof</span><span style="color:#B392F0"> T</span><span style="color:#E1E4E8">]</span><span style="color:#F97583">:</span><span style="color:#B392F0"> T</span><span style="color:#E1E4E8">[</span><span style="color:#B392F0">key</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">extends</span><span style="color:#B392F0"> U</span><span style="color:#F97583"> ?</span><span style="color:#B392F0"> key</span><span style="color:#F97583"> :</span><span style="color:#79B8FF"> never</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">}[</span><span style="color:#F97583">keyof</span><span style="color:#B392F0"> T</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">&#x26;</span></span>
+<span class="line"><span style="color:#F97583">  keyof</span><span style="color:#B392F0"> T</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">type</span><span style="color:#B392F0"> ColorKeysMappedString</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> Pick</span><span style="color:#E1E4E8">&#x3C;</span><span style="color:#B392F0">Color</span><span style="color:#E1E4E8">, </span><span style="color:#B392F0">FilterByMappedType</span><span style="color:#E1E4E8">&#x3C;</span><span style="color:#B392F0">Color</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">string</span><span style="color:#E1E4E8">>>;</span></span>
+<span class="line"><span style="color:#6A737D">/*</span></span>
+<span class="line"><span style="color:#6A737D">type ColorKeysMappedString = {</span></span>
+<span class="line"><span style="color:#6A737D">    red: string;</span></span>
+<span class="line"><span style="color:#6A737D">    green: string;</span></span>
+<span class="line"><span style="color:#6A737D">}</span></span>
+<span class="line"><span style="color:#6A737D">*/</span></span></code></pre>
+<p>結束 😎</p>
+<h2 id="參考文件">參考文件</h2>
+<ul>
+<li><a href="https://www.typescript-training.com/course/intermediate-v1">Intermediate TypeScript</a></li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

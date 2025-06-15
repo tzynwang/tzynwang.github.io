@@ -1,0 +1,97 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.BScVxmeO.js"></script><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.1.2"><!-- Primary Meta Tags --><title>2022 第1週 學習記錄： React 表單元件與動態內容</title><meta name="title" content="2022 第1週 學習記錄： React 表單元件與動態內容"><meta name="description" content="這是一個文組轉職前端工程師的技術部落格"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2022/work-log-2022-w1"><meta property="og:title" content="2022 第1週 學習記錄： React 表單元件與動態內容"><meta property="og:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="og:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2022/work-log-2022-w1"><meta property="twitter:title" content="2022 第1週 學習記錄： React 表單元件與動態內容"><meta property="twitter:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="twitter:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul:not(:has(li)){margin-top:16px;margin-bottom:16px}li{margin-top:4px;margin-bottom:4px;line-height:24px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:16px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}del{color:#4c5958e6}ol>li:has(p)>p{display:inline;margin:0}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+[data-astro-image]{width:100%;height:auto;object-fit:var(--fit);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>2022 第1週 學習記錄： React 表單元件與動態內容</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2022-01-07 23:25</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/React" data-astro-cid-2iymvi75> React </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#總結" data-astro-cid-qtokga5y>總結</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#筆記" data-astro-cid-qtokga5y>筆記</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#we-no-longer-support-global-installation-of-create-react-app" data-astro-cid-qtokga5y>we no longer support global installation of Create React App</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#declarative-programming-imperative-programming" data-astro-cid-qtokga5y>Declarative programming, Imperative programming</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#react-表單元件與動態內容" data-astro-cid-qtokga5y>React 表單元件與動態內容</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#參考文件" data-astro-cid-qtokga5y>參考文件</a> </li> </ul> </div> <h2 id="總結">總結</h2>
+<p>在週末花了一點時間實作出可以適應動態內容的 React 表單元件</p>
+<h2 id="筆記">筆記</h2>
+<h3 id="we-no-longer-support-global-installation-of-create-react-app">we no longer support global installation of Create React App</h3>
+<p>本週執行 <code>npx create-react-app &#x3C;app-name></code> 時遇到以下問題：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>We are running `create-react-app` 4.0.3,</span></span>
+<span class="line"><span>which is behind the latest release (5.0.0).</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>We no longer support global installation of Create React App.</span></span></code></pre>
+<p>但我並沒有在 global 環境安裝 <code>create-react-app</code>，故也無從更新起，搜尋關鍵字後得到以下兩種解決方式：</p>
+<ol>
+<li>輸入 <code>npx create-react-app@5.0.0 &#x3C;app-name></code> ，直接標註出要使用的版本</li>
+<li>先輸入 <code>npx clear-npx-cache</code> 後再執行 <code>npx create-react-app@ &#x3C;app-name></code></li>
+</ol>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Q7i8kDJGyHE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<h3 id="declarative-programming-imperative-programming">Declarative programming, Imperative programming</h3>
+<p>重看 Complete React Developer in 2022 時發現之前沒注意到的內容，筆記一下</p>
+<ul>
+<li>Declarative programming: what you want from the program
+<ul>
+<li>React 屬於此種類型</li>
+<li>開發者僅需宣告「資料（state）應該長什麼樣子」，由 React 來處理「如何把資料更新到畫面上」這一段</li>
+</ul>
+</li>
+<li>Imperative programming: how should the program work, how you solve the problem (the algorithm, the steps to reach the goal)
+<ul>
+<li>開發者寫下所有要執行的內容，徹底說明要透過什麼方式來達成目的地</li>
+<li>在不使用 React 等前端框架的情況下，開發者如果要更新畫面上的 DOM 文字內容，就需要透過（舉例） <code>document.querySelector('#id')</code> 來抓取特定 DOM 後，再將要更新的內容透過 <code>innerText</code> 或 <code>innerHTML</code> 塞進去；這種做法就是 imperative programming</li>
+</ul>
+</li>
+</ul>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/4A2mWqLUpzw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<h3 id="react-表單元件與動態內容">React 表單元件與動態內容</h3>
+<p><img src="/2022/work-log-2022-w1/dynamic-content-table.png" alt="demo"></p>
+<p>成品連結：<a href="https://tzynwang.github.io/react-dynamic-table/">https://tzynwang.github.io/react-dynamic-table/</a></p>
+<p>簡述：截圖中兩個表格都是同一個元件，但可處理各種數量的欄位、與一定程度的彈性樣式，以及配合不同資料的對應互動行為</p>
+<ul>
+<li>上方表格在滑鼠 hover 每一列 table row 時，最右側會顯示一圖示，點擊後會彈出 model 描述該 table row 的內容</li>
+<li>下方表格的每一列 table row 都是一個 anchor，點擊後會開啟對應的 google 搜尋頁面結果</li>
+</ul>
+<p>架構：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>src</span></span>
+<span class="line"><span>  component</span></span>
+<span class="line"><span>    modal</span></span>
+<span class="line"><span>    page</span></span>
+<span class="line"><span>    table</span></span>
+<span class="line"><span>      table</span></span>
+<span class="line"><span>      tableRow - 將 tableRow 額外拆出來是為了處理一條 tableRow 本身可能會是 &#x3C;a> 的狀況</span></span>
+<span class="line"><span>  mock - 本次沒串 API，直接把假資料設定好後 import 到 component/page 中</span></span>
+<span class="line"><span>    dessert</span></span>
+<span class="line"><span>    pet</span></span>
+<span class="line"><span>  model - types definition 放這邊</span></span>
+<span class="line"><span>    dessert</span></span>
+<span class="line"><span>    pet</span></span></code></pre>
+<p>相關段落原始碼：</p>
+<script src="https://gist.github.com/tzynwang/bbd5b26a9f93dfc9f48b4aafbc9ece80.js"></script>
+<script src="https://gist.github.com/tzynwang/e3df232f84cdefc912e164ff808103a5.js"></script>
+<p>概念說明：</p>
+<ul>
+<li>每一行 tableRow 的內容由元件 <code>DynamicTableRow</code> 包覆，而一行 tableRow 中的每一個 col 則使用 <code>function renderRowCol(row, headerCol)</code> 產生</li>
+<li>元件 <code>DynamicTableRow</code> 的意義是根據傳入的 <code>props</code> 決定該 row 是否需渲染為 <code>&#x3C;a></code>，如果沒有把表單內容做成超連結的需求的話，不需額外抽出此元件</li>
+<li>每一個 table col 的寬度由 HeaderCol 控制（欄位寬度設定在 <code>src/mock</code> 資料中）</li>
+<li>元件 <code>DynamicTable</code> 的 <code>renderRowCol</code> 可根據不同的表格資料傳入不同的 render function，本次練習即使用了兩種 function <code>handlePetRowCol</code> 與 <code>handleDesertRowCol</code></li>
+<li>兩種 <code>renderRowCol</code> 都會配合各自的 mock data 來回傳對應內容；如 <code>handlePetRowCol</code> 在 action col 會回傳 <code>IconButton</code> 元件</li>
+</ul>
+<h2 id="參考文件">參考文件</h2>
+<ul>
+<li><a href="https://dev.to/arjuncodes/we-no-longer-support-global-installation-of-create-react-app-2p">We no longer support global installation of Create React App</a></li>
+<li><a href="https://youtu.be/yOBBkIJBEL8">(YouTube) Imperative vs Declarative Programming</a></li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

@@ -1,0 +1,60 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.BScVxmeO.js"></script><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.1.2"><!-- Primary Meta Tags --><title>課程筆記：重構（refactor）的上位互換——重寫（rewrite）</title><meta name="title" content="課程筆記：重構（refactor）的上位互換——重寫（rewrite）"><meta name="description" content="重構只有消除開發者的困擾，但重寫可以一次解決開發者和使用者都在意的問題。"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2024/how-to-rewrite-software"><meta property="og:title" content="課程筆記：重構（refactor）的上位互換——重寫（rewrite）"><meta property="og:description" content="重構只有消除開發者的困擾，但重寫可以一次解決開發者和使用者都在意的問題。"><meta property="og:image" content="https://tzynwang.github.io/2024/how-to-rewrite-software/aaron-burden-y02jEX_B0O0-unsplash.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2024/how-to-rewrite-software"><meta property="twitter:title" content="課程筆記：重構（refactor）的上位互換——重寫（rewrite）"><meta property="twitter:description" content="重構只有消除開發者的困擾，但重寫可以一次解決開發者和使用者都在意的問題。"><meta property="twitter:image" content="https://tzynwang.github.io/2024/how-to-rewrite-software/aaron-burden-y02jEX_B0O0-unsplash.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul:not(:has(li)){margin-top:16px;margin-bottom:16px}li{margin-top:4px;margin-bottom:4px;line-height:24px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:16px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}del{color:#4c5958e6}ol>li:has(p)>p{display:inline;margin:0}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+[data-astro-image]{width:100%;height:auto;object-fit:var(--fit);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>課程筆記：重構（refactor）的上位互換——重寫（rewrite）</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2024-11-19 08:43</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/Product Design" data-astro-cid-2iymvi75> Product Design </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#重寫rewrite是什麼" data-astro-cid-qtokga5y>重寫（rewrite）是什麼</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#為何選擇重寫而不是進行重構" data-astro-cid-qtokga5y>為何選擇重寫（而不是進行重構）</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#如何重寫" data-astro-cid-qtokga5y>如何重寫</a> </li> </ul> </div> <p>在 Udemy 課程 <a href="https://www.udemy.com/course/right-software-and-right-stack">How to Build the Right Software (and Choose the Right Stack)</a> 中得到一個有趣的洞見：</p>
+<blockquote>
+<p>考慮重寫（rewrite），而不止步於重構（refactor）。</p>
+</blockquote>
+<p>如果只能用一句話來解釋何謂重寫，那就是<strong>從使用者的角度出發，解決前一版軟體沒有處理掉的問題</strong>。</p>
+<h2 id="重寫rewrite是什麼">重寫（rewrite）是什麼</h2>
+<p>重構（refactor）和重寫（rewrite）不同。前者（參考 <a href="https://en.wikipedia.org/wiki/Code_refactoring">wiki</a> 與 <a href="https://refactoring.guru/refactoring">refactoring.guru</a>）的定義是：</p>
+<blockquote>
+<p>在<strong>不影響產品功能</strong>的前提下，改善程式碼的設計、結構或實作方式。目的是<strong>提升程式碼的維護性與（功能）拓展性</strong>。</p>
+</blockquote>
+<p>而本課程提出的重寫則是想達成以下目的：</p>
+<blockquote>
+<p>解決前一版軟體沒有解決的問題（讓產品更成功）。</p>
+</blockquote>
+<p>所以重寫絕不是單純升級既有功能的實作方式，而是在徹底理解使用者目前的問題後，移除/融合/升級既有功能。</p>
+<h2 id="為何選擇重寫而不是進行重構">為何選擇重寫（而不是進行重構）</h2>
+<blockquote>
+<p>因為重構只有解決開發者（程式碼面向）的問題。產品在重構後，可能還是沒有解決使用者的問題。但一個產品的<strong>終極目標應該是解決使用者遇到的問題</strong>。</p>
+</blockquote>
+<p>另外課程中也指出，在重寫既有的產品時，開發者可能會發現<strong>多個功能其實都是在試圖解決一樣的問題</strong>（目的相同），這代表重寫時可以<strong>刪除目的相同的程式碼</strong>（日後要維護的程式碼變少）。所以重寫可以帶來雙贏的結果：</p>
+<ul>
+<li>使用者能得到確實有解決問題的產品</li>
+<li>開發者能維護比較少的程式碼</li>
+</ul>
+<h2 id="如何重寫">如何重寫</h2>
+<ul>
+<li>尋找<strong>熟悉產品</strong>的志願使用者，因為開發者需要<del>老司機</del>熟稔產品的使用者來協助確認<strong>重寫後的產品是否真的有解決使用者的問題</strong></li>
+<li>從使用者的<strong>暫時解決方法（workaround）<strong>切入：當使用者需要透過「暫時解決方法」來操作產品時，就代表這個產品還有無法滿足使用者需求的部分；開發者可以考慮</strong>將「暫時解決方法」變成產品的標準流程</strong>來解決使用者的問題</li>
+<li>採取<strong>小範圍調整、快速迭代</strong>的策略來重寫產品，不要直接搞出 breaking change</li>
+</ul>
+<blockquote>
+<p>don’t replace the whole software at once</p>
+</blockquote> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

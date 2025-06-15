@@ -1,0 +1,86 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.BScVxmeO.js"></script><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.1.2"><!-- Primary Meta Tags --><title>2022 第44週 cypress 綜合筆記：對應元件可能不存在的情境、搭配 typescript 使用 dayjs</title><meta name="title" content="2022 第44週 cypress 綜合筆記：對應元件可能不存在的情境、搭配 typescript 使用 dayjs"><meta name="description" content="這是一個文組轉職前端工程師的技術部落格"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2022/cypress-note"><meta property="og:title" content="2022 第44週 cypress 綜合筆記：對應元件可能不存在的情境、搭配 typescript 使用 dayjs"><meta property="og:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="og:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2022/cypress-note"><meta property="twitter:title" content="2022 第44週 cypress 綜合筆記：對應元件可能不存在的情境、搭配 typescript 使用 dayjs"><meta property="twitter:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="twitter:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul:not(:has(li)){margin-top:16px;margin-bottom:16px}li{margin-top:4px;margin-bottom:4px;line-height:24px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:16px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}del{color:#4c5958e6}ol>li:has(p)>p{display:inline;margin:0}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+[data-astro-image]{width:100%;height:auto;object-fit:var(--fit);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>2022 第44週 cypress 綜合筆記：對應元件可能不存在的情境、搭配 typescript 使用 dayjs</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2022-11-04 21:15</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/cypress" data-astro-cid-2iymvi75> cypress </a> <a class="tag" href="/tag/Testing" data-astro-cid-2iymvi75> Testing </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#總結" data-astro-cid-qtokga5y>總結</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#版本" data-astro-cid-qtokga5y>版本</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#筆記" data-astro-cid-qtokga5y>筆記</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#對應元件可能不存在的情境" data-astro-cid-qtokga5y>對應元件可能不存在的情境</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#搭配-typescript-使用-dayjs" data-astro-cid-qtokga5y>搭配 typescript 使用 dayjs</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#參考文件" data-astro-cid-qtokga5y>參考文件</a> </li> </ul> </div> <h2 id="總結">總結</h2>
+<p>紀錄一下這週在透過 cypress 寫 e2e 腳本時遇到的兩個問題：</p>
+<ul>
+<li>如何在 cypress 中，將「某個元件的存在與否」作為條件來撰寫測試腳本。</li>
+<li>如何在 cypress 中搭配 typescript 使用 dayjs 套件</li>
+</ul>
+<h2 id="版本">版本</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>cypress: 10.6.0</span></span></code></pre>
+<h2 id="筆記">筆記</h2>
+<h3 id="對應元件可能不存在的情境">對應元件可能不存在的情境</h3>
+<p>在 cypress 中無法直接處理「（根據條件查詢後）某個 DOM 可能不存在」的情境（查詢後如果找不到該 DOM 會直接拋錯），而如果測試情境會有「執行某操作後，根據不同的條件，畫面上可能會出現 X 或 Y 元件（即不管查詢 X 或 Y 都有可能會得到「不存在」的結果）」，這種時候可透過下列方法來確認「到底是哪一個元件出現在畫面上」：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#6A737D">// 先透過 cy.get() 抓取一個必定存在的 DOM</span></span>
+<span class="line"><span style="color:#E1E4E8">cy.</span><span style="color:#B392F0">get</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'body'</span><span style="color:#E1E4E8">).</span><span style="color:#B392F0">then</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">$body</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">  // 接著再從上一行取得的 body element 中確認目標 DOM 是否存在</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> isComponentX</span><span style="color:#F97583"> =</span><span style="color:#F97583"> !!</span><span style="color:#E1E4E8">$body.</span><span style="color:#B392F0">find</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'.here-is-the-condition'</span><span style="color:#E1E4E8">).</span><span style="color:#79B8FF">length</span><span style="color:#F97583"> ></span><span style="color:#79B8FF"> 0</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">  if</span><span style="color:#E1E4E8"> (isComponentX) {</span></span>
+<span class="line"><span style="color:#6A737D">    // 針對 component X 的測試腳本</span></span>
+<span class="line"><span style="color:#E1E4E8">  } </span><span style="color:#F97583">else</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">    // 針對 component Y 的測試腳本</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+<p>先透過 <code>cy.get('body')</code> 取得「必定在畫面上的容器元件」，再透過 <code>$body.find('...')</code> 來確認 <code>$body</code> （容器元件）中是否有符合某查詢條件的元件。</p>
+<p>接下來就可透過 <code>isComponentX</code> 來撰寫針對元件 X 與 Y 的測試。</p>
+<h3 id="搭配-typescript-使用-dayjs">搭配 typescript 使用 dayjs</h3>
+<p>在 cypress <code>10.6.0</code> 版本中，開啟 <code>cypress/support/commands.ts</code> 追加以下內容：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#6A737D">/// &#x3C;</span><span style="color:#85E89D">reference</span><span style="color:#B392F0"> types</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"cypress"</span><span style="color:#6A737D"> /></span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> dayjs </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> 'dayjs'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">declare</span><span style="color:#E1E4E8"> global {</span></span>
+<span class="line"><span style="color:#F97583">  namespace</span><span style="color:#B392F0"> Cypress</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">    interface</span><span style="color:#B392F0"> Chainable</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">      // 這邊用不到，跳過</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#F97583">    interface</span><span style="color:#B392F0"> Cypress</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">      // 將 dayjs 追加到 Cypress.Cypress namespace 中</span></span>
+<span class="line"><span style="color:#B392F0">      dayjs</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">date</span><span style="color:#F97583">?:</span><span style="color:#B392F0"> dayjs</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">ConfigType</span><span style="color:#E1E4E8">)</span><span style="color:#F97583">:</span><span style="color:#B392F0"> dayjs</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">Dayjs</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// 最後將 dayjs 賦值給 Cypress.dayjs</span></span>
+<span class="line"><span style="color:#E1E4E8">Cypress.dayjs </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> dayjs;</span></span></code></pre>
+<p>之後在腳本中即可透過 <code>Cypress.dayjs</code> 使用 dayjs 功能：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#6A737D">/// &#x3C;</span><span style="color:#85E89D">reference</span><span style="color:#B392F0"> types</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"cypress"</span><span style="color:#6A737D"> /></span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">describe</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'[dayjs]'</span><span style="color:#E1E4E8">, () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#B392F0">  it</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'should be able to use dayjs'</span><span style="color:#E1E4E8">, () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> dayjsString</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> Cypress.</span><span style="color:#B392F0">dayjs</span><span style="color:#E1E4E8">().</span><span style="color:#B392F0">format</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'YYYY-MM-DD'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#B392F0">    expect</span><span style="color:#E1E4E8">(dayjsString).to.</span><span style="color:#B392F0">equal</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'2022-11-05'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">  });</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+<p><img src="/2022/cypress-note/testResult.png" alt="dayjs in cypress"></p>
+<h2 id="參考文件">參考文件</h2>
+<ul>
+<li><a href="https://docs.cypress.io/api/commands/find">cypress: find</a></li>
+<li><a href="https://docs.cypress.io/api/commands/get">cypress: get</a></li>
+<li><a href="https://github.com/cypress-io/cypress-example-recipes/blob/cc13866e55bd28e1d1323ba6d498d85204f292b5/examples/blogs__dayjs/README.md">cypress-example-recipes: dayjs</a></li>
+<li><a href="https://stackoverflow.com/questions/56145926/how-to-check-if-element-exists-using-cypress-io">How to check if element exists using Cypress.io</a></li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

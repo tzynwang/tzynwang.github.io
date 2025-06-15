@@ -1,0 +1,97 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.BScVxmeO.js"></script><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.1.2"><!-- Primary Meta Tags --><title>30天挑戰：「使用SCSS搭配Vue實作dark mode」技術記錄</title><meta name="title" content="30天挑戰：「使用SCSS搭配Vue實作dark mode」技術記錄"><meta name="description" content="這是一個文組轉職前端工程師的技術部落格"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2021/ithome2021-2-vue-dark-mode"><meta property="og:title" content="30天挑戰：「使用SCSS搭配Vue實作dark mode」技術記錄"><meta property="og:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="og:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2021/ithome2021-2-vue-dark-mode"><meta property="twitter:title" content="30天挑戰：「使用SCSS搭配Vue實作dark mode」技術記錄"><meta property="twitter:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="twitter:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul:not(:has(li)){margin-top:16px;margin-bottom:16px}li{margin-top:4px;margin-bottom:4px;line-height:24px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:16px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}del{color:#4c5958e6}ol>li:has(p)>p{display:inline;margin:0}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+[data-astro-image]{width:100%;height:auto;object-fit:var(--fit);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>30天挑戰：「使用SCSS搭配Vue實作dark mode」技術記錄</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2021-08-07 09:02</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/CSS" data-astro-cid-2iymvi75> CSS </a> <a class="tag" href="/tag/Vue" data-astro-cid-2iymvi75> Vue </a> <a class="tag" href="/tag/2021鐵人賽" data-astro-cid-2iymvi75> 2021鐵人賽 </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#總結" data-astro-cid-qtokga5y>總結</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#環境" data-astro-cid-qtokga5y>環境</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#前言" data-astro-cid-qtokga5y>前言</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#正篇開始" data-astro-cid-qtokga5y>正篇開始</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#scss" data-astro-cid-qtokga5y>SCSS</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#html" data-astro-cid-qtokga5y>HTML</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#vue" data-astro-cid-qtokga5y>Vue</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#參考文件" data-astro-cid-qtokga5y>參考文件</a> </li> </ul> </div> <h2 id="總結">總結</h2>
+<p>在不使用其他框架或 library 的情況下，僅透過 SCSS 與 Vue 來實作網頁的 dark mode</p>
+<p><img src="/2021/ithome2021-2-vue-dark-mode/darkmode-demo.png" alt="dark mode展示"></p>
+<p>成品：<a href="https://tzynwang.github.io/ac_assignment_3F_ALPHA-Shop/">https://tzynwang.github.io/ac_assignment_3F_ALPHA-Shop/</a>
+原始碼：<a href="https://github.com/tzynwang/ac_assignment_3F_ALPHA-Shop">https://github.com/tzynwang/ac_assignment_3F_ALPHA-Shop</a></p>
+<h2 id="環境">環境</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Vue.js: 2.X</span></span>
+<span class="line"><span>os: Windows_NT 10.0.18363 win32 x64</span></span></code></pre>
+<h2 id="前言">前言</h2>
+<p>結構較複雜的專案不適合僅使用<code>&#x3C;input type="checkbox"></code>搭配<code>filter: hue-rotate() invert();</code>來實作 dark mode 需求，且在設計師有指定 dark mode 色票時，還是引入 JavaScript 來協助處理 dark mode 較為輕鬆</p>
+<p>純 CSS 的 dark mode 相關技巧可參考：</p>
+<ul>
+<li><a href="https://youtu.be/qimopjP6YoM">(YouTube) Full Dark Mode with only 1 CSS PROPERTY?!</a></li>
+<li><a href="https://youtu.be/5aJTVV-rlBw">(YouTube) Pure CSS3 Dark Mode Effects For Website | CSS Only Night mode</a></li>
+</ul>
+<h2 id="正篇開始">正篇開始</h2>
+<h3 id="scss">SCSS</h3>
+<script src="https://gist.github.com/tzynwang/7a9ea9e2a13e499121f1cef6d18f53d0.js"></script>
+<ul>
+<li>僅有需要在 dark mode 變色的顏色變數才須設定兩套值；範例中的<code>--primary-pink</code>因設計師並不打算在 dark mode 進行變色，故僅在<code>html {...}</code>中出現，不須於<code>html[data-theme="dark"] {...}</code>再設定一次</li>
+<li>開發時可先將專案 body 中的<code>color</code>與<code>background</code>都設定為最終成品不會使用到的顏色，方便一眼確認還有哪些部位沒有上色
+<img src="/2021/ithome2021-2-vue-dark-mode/color-check.png" alt="填入專案不會用到的顏色，方便檢查填色進度"></li>
+<li>版面配置多使用<code>padding</code>而非<code>margin</code>，才方便滿版上色</li>
+<li>使用<code>var()</code>進行顏色設定
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="scss"><code><span class="line"><span style="color:#E1E4E8">background-color: var(</span><span style="color:#FFAB70">--white</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">color: var(</span><span style="color:#FFAB70">--dark</span><span style="color:#E1E4E8">);</span></span></code></pre>
+</li>
+</ul>
+<h3 id="html">HTML</h3>
+<ul>
+<li>因搭配 Vue 進行操作，故在 light/dark mode 切換時需要更換圖片的部位皆須搭配<code>v-bind:src</code>，比如<code>&#x3C;img :src="navMenuIcon"></code></li>
+<li>使用<code>&#x3C;input type="checkbox"></code>搭配<code>v-model</code>讀取 checkbox 的勾選狀態：<code>&#x3C;input type="checkbox" id="darkModeSwitch" v-model="darkMode"></code></li>
+</ul>
+<h3 id="vue">Vue</h3>
+<script src="https://gist.github.com/tzynwang/c719372a29bdc21e6f6678933614abe8.js"></script>
+<ul>
+<li><code>darkMode</code>預設為<code>false</code></li>
+<li>使用<code>watch</code>監看<code>darkMode</code>的值，一旦更動後，就根據<code>darkMode</code>為 true 或 false 修改<code>data-theme</code>（與 CSS 中的<code>var()</code>變數們連動）與圖示的<code>src</code></li>
+<li>也可對<code>&#x3C;input type="checkbox"></code>綁定<code>@change="darkModeMethod($event)</code>，並透過<code>methods</code>來切換為 dark mode（以下方式就不需對 input 綁 v-model）：
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#B392F0">methods</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#B392F0">  darkModeMethod</span><span style="color:#E1E4E8"> (event) {</span></span>
+<span class="line"><span style="color:#F97583">    if</span><span style="color:#E1E4E8"> (event.target.checked) {</span></span>
+<span class="line"><span style="color:#E1E4E8">      document.documentElement.</span><span style="color:#B392F0">setAttribute</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'data-theme'</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">'dark'</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#79B8FF">      this</span><span style="color:#E1E4E8">.navLogoSrc </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> './images/logo-dark.svg'</span></span>
+<span class="line"><span style="color:#79B8FF">      this</span><span style="color:#E1E4E8">.navSearchIcon </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> './images/icon-nav-search-dark.svg'</span></span>
+<span class="line"><span style="color:#79B8FF">      this</span><span style="color:#E1E4E8">.navChartIcon </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> './images/icon-nav-chart-dark.svg'</span></span>
+<span class="line"><span style="color:#79B8FF">      this</span><span style="color:#E1E4E8">.navModeIcon </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> './images/icon-nav-to-light-mode.svg'</span></span>
+<span class="line"><span style="color:#79B8FF">      this</span><span style="color:#E1E4E8">.navMenuIcon </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> './images/icon-nav-menu-dark.svg'</span></span>
+<span class="line"><span style="color:#79B8FF">      this</span><span style="color:#E1E4E8">.footerFbIcon </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> './images/icon-footer-fb-dark.svg'</span></span>
+<span class="line"><span style="color:#79B8FF">      this</span><span style="color:#E1E4E8">.footerIGIcon </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> './images/icon-footer-ig-dark.svg'</span></span>
+<span class="line"><span style="color:#79B8FF">      this</span><span style="color:#E1E4E8">.footerTelIcon </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> './images/icon-footer-tel-dark.svg'</span></span>
+<span class="line"><span style="color:#E1E4E8">    } </span><span style="color:#F97583">else</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">      document.documentElement.</span><span style="color:#B392F0">setAttribute</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'data-theme'</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">''</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#79B8FF">      this</span><span style="color:#E1E4E8">.navLogoSrc </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> './images/logo.svg'</span></span>
+<span class="line"><span style="color:#79B8FF">      this</span><span style="color:#E1E4E8">.navSearchIcon </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> './images/icon-nav-search.svg'</span></span>
+<span class="line"><span style="color:#79B8FF">      this</span><span style="color:#E1E4E8">.navChartIcon </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> './images/icon-nav-chart.svg'</span></span>
+<span class="line"><span style="color:#79B8FF">      this</span><span style="color:#E1E4E8">.navModeIcon </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> './images/icon-nav-to-dark-mode.svg'</span></span>
+<span class="line"><span style="color:#79B8FF">      this</span><span style="color:#E1E4E8">.navMenuIcon </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> './images/icon-nav-menu.svg'</span></span>
+<span class="line"><span style="color:#79B8FF">      this</span><span style="color:#E1E4E8">.footerFbIcon </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> './images/icon-footer-fb.svg'</span></span>
+<span class="line"><span style="color:#79B8FF">      this</span><span style="color:#E1E4E8">.footerIGIcon </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> './images/icon-footer-ig.svg'</span></span>
+<span class="line"><span style="color:#79B8FF">      this</span><span style="color:#E1E4E8">.footerTelIcon </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> './images/icon-footer-tel.svg'</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+</li>
+</ul>
+<h2 id="參考文件">參考文件</h2>
+<ul>
+<li><a href="https://codyhouse.co/blog/post/dark-light-switch-css-javascript">How to create a dark\light mode switch in CSS and Javascript</a></li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

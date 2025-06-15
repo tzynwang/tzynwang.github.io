@@ -1,0 +1,144 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.BScVxmeO.js"></script><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.1.2"><!-- Primary Meta Tags --><title>正規表達式筆記：群與反向參考（groups and backreferences）</title><meta name="title" content="正規表達式筆記：群與反向參考（groups and backreferences）"><meta name="description" content="這是一個文組轉職前端工程師的技術部落格"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2023/regex-note-groups-and-backreferences"><meta property="og:title" content="正規表達式筆記：群與反向參考（groups and backreferences）"><meta property="og:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="og:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2023/regex-note-groups-and-backreferences"><meta property="twitter:title" content="正規表達式筆記：群與反向參考（groups and backreferences）"><meta property="twitter:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="twitter:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul:not(:has(li)){margin-top:16px;margin-bottom:16px}li{margin-top:4px;margin-bottom:4px;line-height:24px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:16px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}del{color:#4c5958e6}ol>li:has(p)>p{display:inline;margin:0}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+[data-astro-image]{width:100%;height:auto;object-fit:var(--fit);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>正規表達式筆記：群與反向參考（groups and backreferences）</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2023-05-09 19:11</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/Regular expressions" data-astro-cid-2iymvi75> Regular expressions </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#總結" data-astro-cid-qtokga5y>總結</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#筆記" data-astro-cid-qtokga5y>筆記</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#文法" data-astro-cid-qtokga5y>文法</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#mdn-範例解讀" data-astro-cid-qtokga5y>MDN 範例解讀</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#參考文件" data-astro-cid-qtokga5y>參考文件</a> </li> </ul> </div> <h2 id="總結">總結</h2>
+<p>此篇是關於正規表達式「群（groups）」與「反向參考（backreferences）」的相關筆記。</p>
+<h2 id="筆記">筆記</h2>
+<h3 id="文法">文法</h3>
+<ul>
+<li>群：使用 <code>()</code> 來建立；加上 <code>(?&#x3C;group-name>)</code> 可以為該群命名，名稱即是 <code>&#x3C;></code> 中的內容；如果寫成 <code>(?:)</code> 則代表「比對 <code>()</code> 中的內容，但不需記憶之」</li>
+<li>反向參考：可寫為 <code>\n</code> 或 <code>\k&#x3C;group-name></code>，前者代表使用 group index 、後者代表使用群的名稱來進行參考</li>
+</ul>
+<h3 id="mdn-範例解讀">MDN 範例解讀</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> personList</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> `First_Name: John, Last_Name: Doe</span></span>
+<span class="line"><span style="color:#9ECBFF">First_Name: Jane, Last_Name: Smith`</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> regexpNames</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> /</span><span style="color:#DBEDFF">First_Name: (</span><span style="color:#79B8FF">\w</span><span style="color:#F97583">+</span><span style="color:#DBEDFF">), Last_Name: (</span><span style="color:#79B8FF">\w</span><span style="color:#F97583">+</span><span style="color:#DBEDFF">)</span><span style="color:#9ECBFF">/</span><span style="color:#F97583">gm</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> matchResults</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> [</span><span style="color:#F97583">...</span><span style="color:#E1E4E8">personList.</span><span style="color:#B392F0">matchAll</span><span style="color:#E1E4E8">(regexpNames)];</span></span>
+<span class="line"><span style="color:#F97583">for</span><span style="color:#E1E4E8"> (</span><span style="color:#F97583">const</span><span style="color:#79B8FF"> match</span><span style="color:#F97583"> of</span><span style="color:#E1E4E8"> matchResults) {</span></span>
+<span class="line"><span style="color:#E1E4E8">  console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">`Hello ${</span><span style="color:#E1E4E8">match</span><span style="color:#9ECBFF">[</span><span style="color:#79B8FF">1</span><span style="color:#9ECBFF">]</span><span style="color:#9ECBFF">} ${</span><span style="color:#E1E4E8">match</span><span style="color:#9ECBFF">[</span><span style="color:#79B8FF">2</span><span style="color:#9ECBFF">]</span><span style="color:#9ECBFF">}`</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#6A737D">  // Hello John Doe</span></span>
+<span class="line"><span style="color:#6A737D">  // Hello Jane Smith</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>說明：</p>
+<ul>
+<li><code>regexpNames</code> 中有兩個群，第一個是 <code>First_Name:</code> 後出現的單字，第二個是 <code>Last_Name:</code> 後出現的單字</li>
+<li><code>matchResults</code> 會包含兩組 <code>match</code> ，內容如下：
+<ul>
+<li><code>["First_Name: John, Last_Name: Doe", "John", "Doe"]</code></li>
+<li><code>["First_Name: Jane, Last_Name: Smith", "Jane", "Smith"]</code></li>
+</ul>
+</li>
+</ul>
+<p>執行 <code>console.log</code> 時可透過 <code>match[1]</code> 取出 <code>First_Name</code> 、透過 <code>match[2]</code> 取出 <code>Last_name</code></p>
+<p>補充說明：</p>
+<ul>
+<li><code>String.prototype.matchAll()</code> 的回傳內容為「一個可迭代的物件，此物件中的每一個項目與 <code>RegExp.prototype.exec()</code> 有相同的 shape」</li>
+<li><code>RegExp.prototype.exec()</code> 在比對成功時，回傳的陣列內容依序為
+<ul>
+<li>第 0 個項目：比對到的字串</li>
+<li>此後依序為「群的內容」</li>
+<li>可透過關鍵字 <code>index</code> 來取得「比對到的字串的 index 位置」</li>
+<li>可透過關鍵字 <code>input</code> 來取得「被拿來比對的原始字串」</li>
+<li>可透過關鍵字 <code>groups</code> 搭配「群的名字（若有命名的話）」來取得「該群的內容」，可參考下方範例</li>
+</ul>
+</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> personList</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> `First_Name: John, Last_Name: Doe</span></span>
+<span class="line"><span style="color:#9ECBFF">First_Name: Jane, Last_Name: Smith`</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> regexpNames</span><span style="color:#F97583"> =</span></span>
+<span class="line"><span style="color:#9ECBFF">  /</span><span style="color:#DBEDFF">First_Name: (?&#x3C;</span><span style="color:#E1E4E8">firstName</span><span style="color:#DBEDFF">></span><span style="color:#79B8FF">\w</span><span style="color:#F97583">+</span><span style="color:#DBEDFF">), Last_Name: (?&#x3C;</span><span style="color:#E1E4E8">lastName</span><span style="color:#DBEDFF">></span><span style="color:#79B8FF">\w</span><span style="color:#F97583">+</span><span style="color:#DBEDFF">)</span><span style="color:#9ECBFF">/</span><span style="color:#F97583">gm</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> matchResults</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> [</span><span style="color:#F97583">...</span><span style="color:#E1E4E8">personList.</span><span style="color:#B392F0">matchAll</span><span style="color:#E1E4E8">(regexpNames)];</span></span>
+<span class="line"><span style="color:#F97583">for</span><span style="color:#E1E4E8"> (</span><span style="color:#F97583">const</span><span style="color:#79B8FF"> match</span><span style="color:#F97583"> of</span><span style="color:#E1E4E8"> matchResults) {</span></span>
+<span class="line"><span style="color:#E1E4E8">  console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">`Hello ${</span><span style="color:#E1E4E8">match</span><span style="color:#9ECBFF">.</span><span style="color:#E1E4E8">groups</span><span style="color:#9ECBFF">.</span><span style="color:#E1E4E8">firstName</span><span style="color:#9ECBFF">} ${</span><span style="color:#E1E4E8">match</span><span style="color:#9ECBFF">.</span><span style="color:#E1E4E8">groups</span><span style="color:#9ECBFF">.</span><span style="color:#E1E4E8">lastName</span><span style="color:#9ECBFF">}`</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#6A737D">  // Hello John Doe</span></span>
+<span class="line"><span style="color:#6A737D">  // Hello Jane Smith</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<hr>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> quote</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> `Single quote "'" and double quote '"'`</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> regexpQuotes</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> /</span><span style="color:#DBEDFF">(</span><span style="color:#79B8FF">['"]</span><span style="color:#DBEDFF">)</span><span style="color:#79B8FF">.</span><span style="color:#F97583">*?\1</span><span style="color:#9ECBFF">/</span><span style="color:#F97583">g</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">for</span><span style="color:#E1E4E8"> (</span><span style="color:#F97583">const</span><span style="color:#79B8FF"> match</span><span style="color:#F97583"> of</span><span style="color:#E1E4E8"> quote.</span><span style="color:#B392F0">matchAll</span><span style="color:#E1E4E8">(regexpQuotes)) {</span></span>
+<span class="line"><span style="color:#E1E4E8">  console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(match[</span><span style="color:#79B8FF">0</span><span style="color:#E1E4E8">]);</span></span>
+<span class="line"><span style="color:#6A737D">  // "'"</span></span>
+<span class="line"><span style="color:#6A737D">  // '"'</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>說明：</p>
+<ul>
+<li><code>(['"])</code> 代表比對 <code>'</code> 或 <code>"</code>，並把這兩個符號設定為「第一個群（無命名）」</li>
+<li><code>.*?</code> 代表比對任何字元，數量為零至無限，且「一找到就停止繼續尋找」</li>
+<li><code>\1</code> 代表反向參考時要參考「第一個群」</li>
+</ul>
+<p>總結：尋找同為 <code>'</code> 或 <code>"</code> 開頭＋結尾的字串內容</p>
+<p>可透過 <code>\k&#x3C;group-name></code> 來透過群名進行反向參考，範例如下：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> quote</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> `Single quote "'" and double quote '"'`</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> regexpQuotes</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> /</span><span style="color:#DBEDFF">(?&#x3C;</span><span style="color:#E1E4E8">sign</span><span style="color:#DBEDFF">></span><span style="color:#79B8FF">['"]</span><span style="color:#DBEDFF">)</span><span style="color:#79B8FF">.</span><span style="color:#F97583">*?\k&#x3C;</span><span style="color:#E1E4E8">sign</span><span style="color:#F97583">></span><span style="color:#9ECBFF">/</span><span style="color:#F97583">g</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">for</span><span style="color:#E1E4E8"> (</span><span style="color:#F97583">const</span><span style="color:#79B8FF"> match</span><span style="color:#F97583"> of</span><span style="color:#E1E4E8"> quote.</span><span style="color:#B392F0">matchAll</span><span style="color:#E1E4E8">(regexpQuotes)) {</span></span>
+<span class="line"><span style="color:#E1E4E8">  console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(match[</span><span style="color:#79B8FF">0</span><span style="color:#E1E4E8">], match.groups.sign);</span></span>
+<span class="line"><span style="color:#6A737D">  // "'" "</span></span>
+<span class="line"><span style="color:#6A737D">  // '"' '</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<hr>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> code</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> `function add(x, y) {</span></span>
+<span class="line"><span style="color:#9ECBFF">  return x + y;</span></span>
+<span class="line"><span style="color:#9ECBFF">}`</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> functionRegexp</span><span style="color:#F97583"> =</span></span>
+<span class="line"><span style="color:#9ECBFF">  /</span><span style="color:#DBEDFF">(function</span><span style="color:#79B8FF">\s</span><span style="color:#F97583">+</span><span style="color:#DBEDFF">)(?&#x3C;</span><span style="color:#E1E4E8">name</span><span style="color:#DBEDFF">></span><span style="color:#79B8FF">[$_</span><span style="color:#85E89D;font-weight:bold">\p</span><span style="color:#79B8FF">{ID_Start}][$\u200c\u200d</span><span style="color:#85E89D;font-weight:bold">\p</span><span style="color:#79B8FF">{ID_Continue}]</span><span style="color:#F97583">*</span><span style="color:#DBEDFF">)</span><span style="color:#9ECBFF">/</span><span style="color:#F97583">du</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> match</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> functionRegexp.</span><span style="color:#B392F0">exec</span><span style="color:#E1E4E8">(code);</span></span>
+<span class="line"><span style="color:#E1E4E8">console.</span><span style="color:#B392F0">info</span><span style="color:#E1E4E8">(match);</span></span>
+<span class="line"><span style="color:#6A737D">// ["function add", "function ", "add"]</span></span>
+<span class="line"><span style="color:#6A737D">// groups: { name: 'add' }</span></span>
+<span class="line"><span style="color:#6A737D">// index: 0</span></span>
+<span class="line"><span style="color:#6A737D">// indices: [[0, 12], [0, 9], [9, 12], groups: { name: [9, 12] } ]</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> lines</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> code.</span><span style="color:#B392F0">split</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'</span><span style="color:#79B8FF">\n</span><span style="color:#9ECBFF">'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">lines.</span><span style="color:#B392F0">splice</span><span style="color:#E1E4E8">(</span></span>
+<span class="line"><span style="color:#79B8FF">  1</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">  0</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">  ' '</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">repeat</span><span style="color:#E1E4E8">(match.indices[</span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">][</span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">-</span><span style="color:#E1E4E8"> match.indices[</span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">][</span><span style="color:#79B8FF">0</span><span style="color:#E1E4E8">]) </span><span style="color:#F97583">+</span></span>
+<span class="line"><span style="color:#9ECBFF">    '^'</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">repeat</span><span style="color:#E1E4E8">(match.indices.groups.name[</span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">-</span><span style="color:#E1E4E8"> match.indices.groups.name[</span><span style="color:#79B8FF">0</span><span style="color:#E1E4E8">])</span></span>
+<span class="line"><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(lines.</span><span style="color:#B392F0">join</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'</span><span style="color:#79B8FF">\n</span><span style="color:#9ECBFF">'</span><span style="color:#E1E4E8">));</span></span>
+<span class="line"><span style="color:#6A737D">// function add(x, y) {</span></span>
+<span class="line"><span style="color:#6A737D">//          ^^^</span></span>
+<span class="line"><span style="color:#6A737D">//   return x + y;</span></span>
+<span class="line"><span style="color:#6A737D">// }</span></span></code></pre>
+<p>說明：</p>
+<ul>
+<li><code>functionRegexp</code> 會挑出 JavaScript 功能與其功能名，後綴 <code>d</code> 與 <code>u</code> 代表此次比對要回傳 <code>indices</code> 且要比對完整 unicode</li>
+<li><code>match.indices</code> 包含所有比對到的（子）字串的 index 位置，並且本次有對群進行命名，故陣列中還會納入 groups 資訊，提供命名群的 index 位置</li>
+</ul>
+<p>總結：印出原始字串第一行，於第二行印出「與功能名（含空格）等長的空白」，接著「印出與功能名等量的 <code>^</code> 符號」，最後再接著印完功能剩下的內容</p>
+<h2 id="參考文件">參考文件</h2>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions/Groups_and_backreferences">MDN Regular expressions > Groups and backreferences</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/matchAll#return_value">MDN: String.prototype.matchAll() > Return value</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/exec#return_value">MDN: RegExp.prototype.exec() > Return value</a></li>
+<li><a href="https://javascript.info/regexp-groups">JAVASCRIPT.INFO Regular expressions > Capturing groups</a></li>
+<li><a href="https://javascript.info/regexp-backreferences">JAVASCRIPT.INFO Regular expressions > Backreferences in pattern: \N and \k<name></name></a></li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

@@ -1,0 +1,198 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.BScVxmeO.js"></script><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.1.2"><!-- Primary Meta Tags --><title>Alpha Camp結業專案「Simple Twitter」開發記錄</title><meta name="title" content="Alpha Camp結業專案「Simple Twitter」開發記錄"><meta name="description" content="這是一個文組轉職前端工程師的技術部落格"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2021/simple-twitter-development-note"><meta property="og:title" content="Alpha Camp結業專案「Simple Twitter」開發記錄"><meta property="og:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="og:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2021/simple-twitter-development-note"><meta property="twitter:title" content="Alpha Camp結業專案「Simple Twitter」開發記錄"><meta property="twitter:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="twitter:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul:not(:has(li)){margin-top:16px;margin-bottom:16px}li{margin-top:4px;margin-bottom:4px;line-height:24px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:16px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}del{color:#4c5958e6}ol>li:has(p)>p{display:inline;margin:0}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+[data-astro-image]{width:100%;height:auto;object-fit:var(--fit);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>Alpha Camp結業專案「Simple Twitter」開發記錄</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2021-10-03 13:31</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/Vue" data-astro-cid-2iymvi75> Vue </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#總結" data-astro-cid-qtokga5y>總結</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#介紹" data-astro-cid-qtokga5y>介紹</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#指定規格" data-astro-cid-qtokga5y>指定規格</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#加碼功能" data-astro-cid-qtokga5y>加碼功能</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#開發之旅" data-astro-cid-qtokga5y>開發之旅</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#組隊" data-astro-cid-qtokga5y>組隊</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#關於遠端協作" data-astro-cid-qtokga5y>關於遠端協作</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#個人負責任務" data-astro-cid-qtokga5y>個人負責任務</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#實際開發記錄" data-astro-cid-qtokga5y>實際開發記錄</a> </li><li class="toc-4" data-astro-cid-qtokga5y> <a href="#實作首頁推文懶載入" data-astro-cid-qtokga5y>實作首頁推文懶載入</a> </li><li class="toc-4" data-astro-cid-qtokga5y> <a href="#聊天室自動捲至畫面底部" data-astro-cid-qtokga5y>聊天室自動捲至畫面底部</a> </li><li class="toc-4" data-astro-cid-qtokga5y> <a href="#vue-router-與-vuex-actions" data-astro-cid-qtokga5y>vue-router 與 vuex actions</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#反省會" data-astro-cid-qtokga5y>反省會</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#專案結業收穫" data-astro-cid-qtokga5y>專案結業收穫</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#同組成員心得" data-astro-cid-qtokga5y>同組成員心得</a> </li> </ul> </div> <h2 id="總結">總結</h2>
+<p>本篇記錄了 Alpha Camp 學期三 8 月班「Simple Twitter」前後端分離協作專案的相關工作心得
+個人負責的是前端相關的工作</p>
+<ul>
+<li>專案本體：<a href="https://tzynwang.github.io/simple-twitter-frontend/">https://tzynwang.github.io/simple-twitter-frontend/</a>
+<ul>
+<li>測試帳號（五選一）：<code>user1</code>、<code>user2</code>、<code>user3</code>、<code>user4</code>、<code>user5</code></li>
+<li>密碼：一律為<code>12345678</code></li>
+</ul>
+</li>
+<li>專案 repo（前端）：<a href="https://github.com/tzynwang/simple-twitter-frontend">https://github.com/tzynwang/simple-twitter-frontend</a></li>
+<li>專案 repo（後端）：<a href="https://github.com/JHIH-LEI/twitter-api-2020">https://github.com/JHIH-LEI/twitter-api-2020</a></li>
+</ul>
+<p><img src="/2021/simple-twitter-development-note/project-screenshot.png" alt="專案畫面預覽"></p>
+<h2 id="介紹">介紹</h2>
+<ul>
+<li>「Simple Twitter」前後分離專案的組成為兩位前端與兩位後端開發者，於兩週內進行合作、完成專案</li>
+<li>專案規格書與測試檔案由 Alpha Camp 提供</li>
+<li>開發小組需於前 12 天內完成指定規格</li>
+<li>開發小組可自行決定是否在兩週內的最後兩天挑戰加碼功能</li>
+</ul>
+<h3 id="指定規格">指定規格</h3>
+<ul>
+<li>畫面需 100%還原設計稿外觀</li>
+<li>專案使用者有兩種身分：一般使用者（以下簡稱使用者）與管理者</li>
+<li>使用者需進行註冊才可進入專案首頁瀏覽推文，首頁會出現「全部的推文」（不問追蹤條件）</li>
+<li>使用者可新增推文；而僅有管理者可以刪除推文</li>
+<li>使用者可回應推文、對推文按讚（成為「喜歡的推文」），也可跟隨其他使用者</li>
+<li>使用者可瀏覽任意使用者的活動記錄（包含該使用者所有發過的推文、回應過的推文與喜歡的推文）</li>
+<li>使用者可修改自身名稱、封面圖片、大頭照、自我介紹，以及帳號相關設定</li>
+</ul>
+<h3 id="加碼功能">加碼功能</h3>
+<ul>
+<li>公開聊天室：使用者可在同一畫面進行即時聊天</li>
+<li>私人訊息：使用者可與特定使用者進行一對一聊天</li>
+<li>訂閱：一旦訂閱某使用者，在該使用者新增、回應、按讚與進行追蹤動作時皆會收到通知</li>
+</ul>
+<h2 id="開發之旅">開發之旅</h2>
+<h3 id="組隊">組隊</h3>
+<ul>
+<li>協作專案於學期三第六週正式開始，而學期三開始後沒多久就收到前端隊友發來組隊邀約，覺得先定下來也沒什麼不妥，故答應邀請</li>
+<li>後端隊友則是有先在學生 workshop 以「活動主持人與分享者」的模式下合作過，決定主動發送邀請是因為有個能融洽相處的隊友在合作上會愉快很多，故選擇邀約比較熟稔的同學，而幸運地對方也答應了 ◟(∗ ˊωˋ ∗)◞</li>
+</ul>
+<h3 id="關於遠端協作">關於遠端協作</h3>
+<ul>
+<li>若是報告進度、或進行比較小規模的功能討論，小組通常在 slack 上透過文字頻道進行交流（舉例如下）；一旦有結論後就各自回頭完成任務
+<ul>
+<li>為了滿足畫面規格，前端請求後端於 response.body 中新增指定資料</li>
+<li>前後端相互通知目前的開發狀況，若開發停滯則同時會補充暫停原因，比如等待後端路由推上測試環境、或前端已經完成邏輯但尚在處理 CSS 細節</li>
+</ul>
+</li>
+<li>若組員皆還未對問題本身有任何共識、或是遭遇問題起因不明確的 bug，則在 gather 上先進行口頭討論會，待認知一致後再進行開發
+<ul>
+<li>在排除加碼功能出現的 bug 時，開發小組基本上會直接在 gather 上透過口說溝通讓彼此儘快了解「現在的問題」以及「我們要解決什麼問題」</li>
+</ul>
+</li>
+</ul>
+<h3 id="個人負責任務">個人負責任務</h3>
+<ul>
+<li>專案元件拆分規劃</li>
+<li>專案 RWD 規劃與實作</li>
+<li>完成下列路由之功能與外觀
+<ul>
+<li>使用者註冊：/register</li>
+<li>登入：/login</li>
+<li>專案首頁：/home</li>
+<li>個別推文瀏覽頁：/&#x3C;@userId>/&#x3C;@tweetId></li>
+<li>使用者資料頁：/&#x3C;@userId></li>
+<li>*使用者回覆過的全部內容：/&#x3C;@userId>/replies</li>
+<li>*使用者喜歡的全部推文：/&#x3C;@userId>/likes</li>
+<li>帳號設定：/settings</li>
+<li>後台登入：/admin/login</li>
+</ul>
+</li>
+</ul>
+<h3 id="實際開發記錄">實際開發記錄</h3>
+<ul>
+<li>在解析設計稿時發現按鈕與元件之間的 margin 並無明顯規則，可能在部分畫面中的尺寸是 xx、但在其他畫面的尺寸又微調為 yy，為了確定這些不同的尺寸是否為不可變更的設計內容、或開放開發者自行判斷，前後與設計師來回溝通了三四趟，確認開發時有哪些部分開放開發者因地制宜</li>
+<li>設計稿並未提供小版面設計，故花了四個小時參考正版推特，補完手機與平板裝置的畫面設計</li>
+<li>個人感受：Alpha Camp 學期三 8 月前端班的 Vue 教材基本上涵蓋了 Simple Twitter 專案指定規格絕大多數的解決方式，在實作指定規格時並未遭遇太多問題</li>
+<li>幾個印象比較深刻的問題都是在強化使用者體驗以及操作 vuex 中發生，以下列出各點分別說明
+（註：專案開始前就收到學姊建議若有空可先研究 vue-router 與 vuex，故個人對 vuex 的理解與知識基本上都出自 vuex 官方文件、YouTube 教學影片以及 stackOverFlow 討論串，較少使用到 Alpha Camp 提到的技巧）</li>
+</ul>
+<h4 id="實作首頁推文懶載入">實作首頁推文懶載入</h4>
+<p>需求：後端組員提到想看看前端是否能做出「捲動畫面後載入更多推文」的畫面，覺得這需求確實可以提升使用者在操作專案時的好感，故在完成所有功能測試後，開始研究如何實作
+思考梳理：</p>
+<ul>
+<li>要實現的事情：「捲動到畫面底部後，載入更多資料」</li>
+<li>要透過程式碼處理的工作：「偵測一個元素是否已經被 scroll 到底部」、「前述事件發生後，載入資料」</li>
+<li>邏輯確認後，開始下關鍵字來尋找如何透過程式碼來實現上述需求；本次使用的關鍵字是<code>(js) detect scroll to bottom</code>
+<ul>
+<li>參考討論串如下：</li>
+<li><a href="https://stackoverflow.com/questions/9439725/javascript-how-to-detect-if-browser-window-is-scrolled-to-bottom">Javascript: How to detect if browser window is scrolled to bottom?</a></li>
+<li><a href="https://thewebdev.info/2021/06/27/how-to-detect-scroll-end-with-javascript/">How to Detect Scroll End with JavaScript?</a></li>
+</ul>
+</li>
+<li>在 codePen 中快速實驗討論串提供的程式碼，確認理解沒有出錯後，便開始在專案中實作功能</li>
+</ul>
+<p>實作：</p>
+<ul>
+<li>於元件<code>data()</code>中設定每一批載入的推文的數量，本專案設定為一次 10 筆推文</li>
+<li>從後端收到推文內容後，先保存至 vuex 中，並使用<code>array.slice</code>切出第一批推文渲染到畫面上</li>
+<li>使用<code>$refs</code>搭配<code>scroll</code>監聽推文容器的滑鼠滾輪事件，一旦推文容器捲到底部，載入下一批推文</li>
+</ul>
+<p>其他：</p>
+<ul>
+<li>實際上只是畫面上有做出懶載入效果，並沒有真的有與後端搭配資料分頁</li>
+<li>「與後端合作一起處理懶載入」這個想法在規劃需求時不知為何就是沒有出現在腦海中，而在聽到講師點評後才後知後覺意識到前後端合作實際上可以做出「真的」懶載入 ⋯⋯ 感覺自己現階段的想法廣度還是不太夠，需要多跳離問題本身來進行更高層次的觀察</li>
+</ul>
+<h4 id="聊天室自動捲至畫面底部">聊天室自動捲至畫面底部</h4>
+<p>需求：使用者於聊天室發言後，畫面應自動捲至底部讓使用者可以直接看到方才送出的發言
+思考梳理：</p>
+<ul>
+<li>事件發生的時間點是使用者送出聊天內容後，一旦確認訊息發送成功，就將該發言追加到聊天室容器內，並容器捲到底</li>
+<li>新發出的聊天訊息會被儲存在元件的<code>data()</code>中，亦即在 vue lifecycle hook 的<code>updated()</code>階段做出捲動行為即可</li>
+</ul>
+<p>實作時並沒有遇到什麼困難，且被大量文章提醒需要搭配<code>this.$nextTick</code>來確保捲動行為要在資料更新<strong>並且</strong>在 DOM 渲染後才執行，感謝巨人們
+參考文章：</p>
+<ul>
+<li><a href="https://vuejs.org/v2/api/#Vue-nextTick">Vue.nextTick( [callback, context] )</a></li>
+<li><a href="https://ithelp.ithome.com.tw/articles/10240669">[Day 19] Vue nextTick 處理完成後就換我!</a></li>
+</ul>
+<h4 id="vue-router-與-vuex-actions">vue-router 與 vuex actions</h4>
+<p>需求：需要在資料夾 router 中的 index.js 檔案執行 vuex module 中的 action，將使用者資料儲存在 vuex module 中
+問題：在元件內可以使用<code>mapActions</code>來呼叫 vuex action，但在元件以外的場合呢？
+關鍵字：<code>vue router vuex action</code></p>
+<p>參考了兩篇 vue forum 的討論串，最終使用以下寫法：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#6A737D">// 在src\router\index.js執行import store</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> store </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> '@/store'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// 然後直接呼叫modules中的actions名稱即可</span></span>
+<span class="line"><span style="color:#E1E4E8">store.</span><span style="color:#B392F0">dispatch</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'setUser'</span><span style="color:#E1E4E8">, data, { root: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8"> });</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// 也可採用以下寫法</span></span>
+<span class="line"><span style="color:#E1E4E8">store.</span><span style="color:#B392F0">dispatch</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'authorization/setUser'</span><span style="color:#E1E4E8">, data);</span></span></code></pre>
+<ul>
+<li><a href="https://forum.vuejs.org/t/how-to-use-vuex-namespaced-module-from-router-js/59155">How to use Vuex Namespaced Module from router.js?</a></li>
+<li><a href="https://forum.vuejs.org/t/vue-2-0-fetching-data-in-beforerouteenter-with-a-vuex-action/1191">Fetching data in beforeRouteEnter with a vuex action</a></li>
+</ul>
+<h2 id="反省會">反省會</h2>
+<ul>
+<li>在進行元件拆分時尚未充分意識到元件應該主要根據<strong>資料</strong>、而非畫面來進行分拆
+<ul>
+<li>錯誤示範：本次專案將導覽列分拆為手機、平板與桌機三種尺寸的版本（導覽列本身就有三種元件）</li>
+<li>但事實上既然這個元件要滿足的是「導覽」的功能，那麼要做的事情其實是「透過 props 或純 CSS 搭配 media query 來控制在不同的尺寸下應該顯示哪一種導覽列」，而不是「在不同的畫面尺寸下使用不同的元件」，作三套功能幾乎一致而只有外觀不同的元件並沒有達到 DRY 原則</li>
+</ul>
+</li>
+<li>開發第三天進入工作模式後沒有先去看分工表，僅憑印象「這好像是我的？」做掉了兩條本該由前端隊友負責的內容（<code>/&#x3C;@userId>/replies</code>與<code>/&#x3C;@userId>/likes</code>）
+<ul>
+<li>教訓：Always read the doc first.</li>
+<li>不要過度相信自己的記憶力，文件存在的意義就是為了保存那些討論過的事情</li>
+</ul>
+</li>
+<li>vuex 太氾濫了，很多時候使用元件內的<code>data()</code>搭配<code>props</code>與<code>emit</code>就可以達成目的；如果沒有在平行元件之間傳遞資料的需求、或是沒有多個元件必須共用同一組資料的前提，那麼基本上就不需要請出 vuex</li>
+<li>CSS 的 utils 還不夠徹底，雖然有達成跨元件樣式共用，但樣式命名應該再更 utils；收到非常寶貴的反饋：「可研究看看 Tailwind 是怎麼解決這個問題的」
+<ul>
+<li>錯誤示範：在設計稿中「推文」的樣式基本上在首頁、單一推文頁與個人資料頁都是一致的，但開發時我採用<code>.icon-text-wrapper</code>作為樣式名稱，但既然想要讓樣式共用的話，在命名上就應該更有辨識度，比如改為<code>.avatar-round</code>、<code>.ml-15</code>與<code>.mt-10</code>等組合</li>
+</ul>
+</li>
+</ul>
+<h2 id="專案結業收穫">專案結業收穫</h2>
+<ul>
+<li>並不是寫了 media query 就代表做好 RWD，即使是在同一個 break point 下，前端工程師依舊需要考慮在該 break point 下的畫面尺寸的變動（桌機也會有桌機自己的 RWD）</li>
+<li>可研究看看「virtual scrollbar」，在可視區範圍以外的資料是可以不用保留的</li>
+<li>很慶幸在正式開始工作前就能得到珍貴的前後分離且從零開始開發的經驗，實際動手做了一次才知道哪邊有坑、下一個專案在哪些部分可以更好 ٩(ˊᗜˋ*)و</li>
+</ul>
+<h2 id="同組成員心得">同組成員心得</h2>
+<ul>
+<li><a href="https://alicialin2020.medium.com/twitter%E5%B0%88%E6%A1%88%E5%9B%9E%E9%A1%A7-c1aec47f0afa">（後端隊友）Alicia: Twitter 專案回顧</a></li>
+<li><a href="https://ravenera0317.medium.com/simple-twitter-%E5%B0%88%E6%A1%88%E5%8F%8D%E6%80%9D-c798eb8db8af">（前端隊友）Raven: Simple Twitter 專案反思</a></li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

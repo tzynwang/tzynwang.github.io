@@ -1,0 +1,151 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.BScVxmeO.js"></script><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.1.2"><!-- Primary Meta Tags --><title>捨棄 create-react-app 之餘還架了個 astro blog 昭告天下：程式碼分塊</title><meta name="title" content="捨棄 create-react-app 之餘還架了個 astro blog 昭告天下：程式碼分塊"><meta name="description" content="今天來聊聊如何透過 React lazy 與 Suspense 來根據路由將程式碼進行分塊"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2023/ithome-2023-15"><meta property="og:title" content="捨棄 create-react-app 之餘還架了個 astro blog 昭告天下：程式碼分塊"><meta property="og:description" content="今天來聊聊如何透過 React lazy 與 Suspense 來根據路由將程式碼進行分塊"><meta property="og:image" content="https://tzynwang.github.io/2023/ithome-2023-15/manja-vitolic-j6UmKxKDRPw-unsplash.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2023/ithome-2023-15"><meta property="twitter:title" content="捨棄 create-react-app 之餘還架了個 astro blog 昭告天下：程式碼分塊"><meta property="twitter:description" content="今天來聊聊如何透過 React lazy 與 Suspense 來根據路由將程式碼進行分塊"><meta property="twitter:image" content="https://tzynwang.github.io/2023/ithome-2023-15/manja-vitolic-j6UmKxKDRPw-unsplash.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul:not(:has(li)){margin-top:16px;margin-bottom:16px}li{margin-top:4px;margin-bottom:4px;line-height:24px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:16px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}del{color:#4c5958e6}ol>li:has(p)>p{display:inline;margin:0}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+[data-astro-image]{width:100%;height:auto;object-fit:var(--fit);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>捨棄 create-react-app 之餘還架了個 astro blog 昭告天下：程式碼分塊</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2023-09-30 10:22</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/2023鐵人賽" data-astro-cid-2iymvi75> 2023鐵人賽 </a> <a class="tag" href="/tag/Frontend Infrastructure" data-astro-cid-2iymvi75> Frontend Infrastructure </a> <a class="tag" href="/tag/React" data-astro-cid-2iymvi75> React </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#設定部分" data-astro-cid-qtokga5y>設定部分</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#react-元件" data-astro-cid-qtokga5y>React 元件</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#webpack" data-astro-cid-qtokga5y>webpack</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#成果" data-astro-cid-qtokga5y>成果</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#總結" data-astro-cid-qtokga5y>總結</a> </li> </ul> </div> <p>除了透過 webpack 的 <code>optimization.splitChunks</code> 來進行分塊外，也可使用 React 提供的 <code>lazy</code> 與 <code>Suspense</code> 來根據<strong>每一次 import</strong> 做分塊處理。</p>
+<p>為什麼會需要這麼做呢？因為隨著一個 React app 的內容越來越多，你可能不會希望使用者開啟網站時<strong>一口氣</strong>把所有的內容都抓下來。因為這包內容可能很大、需要抓很久，使用者或許也不會探索這個網站的所有內容（抓了也沒用到）。</p>
+<p>因此今天就來聊聊「如何根據專案路由來進行分塊」(`･∀･)</p>
+<h2 id="設定部分">設定部分</h2>
+<h3 id="react-元件">React 元件</h3>
+<p>首先在路由層自 react 引用 <code>lazy</code> 與 <code>Suspense</code> 功能，並使用 <code>lazy</code> 來對每一條路由會用到的元件進行懶載入。此時可選擇加上 webpack <a href="https://webpack.js.org/api/module-methods/#magic-comments">magic comment</a> 來指定分塊後的名稱以及 prefetch/preload 狀態。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> React, { lazy, Suspense } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> 'react'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> Product</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> lazy</span><span style="color:#E1E4E8">(</span></span>
+<span class="line"><span style="color:#E1E4E8">  () </span><span style="color:#F97583">=></span></span>
+<span class="line"><span style="color:#B392F0">    import</span><span style="color:#E1E4E8">(</span></span>
+<span class="line"><span style="color:#6A737D">      /* webpackChunkName: "product" */</span></span>
+<span class="line"><span style="color:#6A737D">      /* webpackMode: "lazy" */</span></span>
+<span class="line"><span style="color:#6A737D">      /* webpackPrefetch: true */</span></span>
+<span class="line"><span style="color:#9ECBFF">      '@Component/Page/Product'</span></span>
+<span class="line"><span style="color:#E1E4E8">    )</span></span>
+<span class="line"><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> Landing</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> lazy</span><span style="color:#E1E4E8">(</span></span>
+<span class="line"><span style="color:#E1E4E8">  () </span><span style="color:#F97583">=></span></span>
+<span class="line"><span style="color:#B392F0">    import</span><span style="color:#E1E4E8">(</span></span>
+<span class="line"><span style="color:#6A737D">      /* webpackChunkName: "landing" */</span></span>
+<span class="line"><span style="color:#6A737D">      /* webpackMode: "lazy" */</span></span>
+<span class="line"><span style="color:#6A737D">      /* webpackPrefetch: true */</span></span>
+<span class="line"><span style="color:#6A737D">      /* webpackPreload: true */</span></span>
+<span class="line"><span style="color:#9ECBFF">      '@Component/Page/Landing'</span></span>
+<span class="line"><span style="color:#E1E4E8">    )</span></span>
+<span class="line"><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> NotFound</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> lazy</span><span style="color:#E1E4E8">(</span></span>
+<span class="line"><span style="color:#E1E4E8">  () </span><span style="color:#F97583">=></span></span>
+<span class="line"><span style="color:#B392F0">    import</span><span style="color:#E1E4E8">(</span></span>
+<span class="line"><span style="color:#6A737D">      /* webpackChunkName: "not-found" */</span></span>
+<span class="line"><span style="color:#6A737D">      /* webpackMode: "lazy" */</span></span>
+<span class="line"><span style="color:#6A737D">      /* webpackPrefetch: true */</span></span>
+<span class="line"><span style="color:#9ECBFF">      '@Component/Page/NotFound'</span></span>
+<span class="line"><span style="color:#E1E4E8">    )</span></span>
+<span class="line"><span style="color:#E1E4E8">);</span></span></code></pre>
+<p>補充：在 webpack 5.87.0 後甚至開始支援 <code>webpackFetchPriority</code> 功能，可指定分塊的<a href="https://webpack.js.org/configuration/module/#moduleparserjavascriptdynamicimportfetchpriority">載入優先序</a>。</p>
+<p>而你的路由元件大致上會長這樣子：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#6A737D">// ...上面是透過懶載入引用的元件</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> ReactRouteLayer</span><span style="color:#E1E4E8">()</span><span style="color:#F97583">:</span><span style="color:#B392F0"> React</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">ReactElement</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">  /* Main */</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> (</span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#79B8FF">BrowserRouter</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">      &#x3C;</span><span style="color:#79B8FF">Suspense</span><span style="color:#B392F0"> fallback</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{&#x3C;</span><span style="color:#79B8FF">Loading</span><span style="color:#E1E4E8"> />}></span></span>
+<span class="line"><span style="color:#E1E4E8">        &#x3C;</span><span style="color:#79B8FF">Switch</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">          &#x3C;</span><span style="color:#79B8FF">Route</span><span style="color:#B392F0"> path</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"/"</span><span style="color:#B392F0"> exact</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">            &#x3C;</span><span style="color:#79B8FF">Landing</span><span style="color:#E1E4E8"> /></span></span>
+<span class="line"><span style="color:#E1E4E8">          &#x3C;/</span><span style="color:#79B8FF">Route</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">          &#x3C;</span><span style="color:#79B8FF">Route</span><span style="color:#B392F0"> path</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"/product"</span><span style="color:#B392F0"> exact</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">            &#x3C;</span><span style="color:#79B8FF">Product</span><span style="color:#E1E4E8"> /></span></span>
+<span class="line"><span style="color:#E1E4E8">          &#x3C;/</span><span style="color:#79B8FF">Route</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">          &#x3C;</span><span style="color:#79B8FF">Route</span><span style="color:#B392F0"> path</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"/404"</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">            &#x3C;</span><span style="color:#79B8FF">NotFound</span><span style="color:#E1E4E8"> /></span></span>
+<span class="line"><span style="color:#E1E4E8">          &#x3C;/</span><span style="color:#79B8FF">Route</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">          &#x3C;</span><span style="color:#79B8FF">Route</span><span style="color:#B392F0"> path</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"*"</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">            &#x3C;</span><span style="color:#79B8FF">Redirect</span><span style="color:#B392F0"> to</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"/404"</span><span style="color:#E1E4E8"> /></span></span>
+<span class="line"><span style="color:#E1E4E8">          &#x3C;/</span><span style="color:#79B8FF">Route</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">        &#x3C;/</span><span style="color:#79B8FF">Switch</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">      &#x3C;/</span><span style="color:#79B8FF">Suspense</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;/</span><span style="color:#79B8FF">BrowserRouter</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  );</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>放在 <code>Suspense.fallback</code> 中的 <code>&#x3C;Loading /></code> 元件代表「畫面正在載入時，要顯示的替代內容」：</p>
+<blockquote>
+<p><a href="https://react.dev/reference/react/Suspense#suspense">react: Suspense</a>: An alternate UI to render in place of the actual UI if it has not finished loading.</p>
+</blockquote>
+<p>備註：React 的<a href="https://legacy.reactjs.org/docs/code-splitting.html">第一版官方文件</a>有比較多關於分塊的說明。</p>
+<h3 id="webpack">webpack</h3>
+<p>什麼都不用改。<a href="/2023/ithome-2023-13">第 13 天</a>介紹的設定內容一個字都不用動，直接執行 <code>make build</code> 來看看加上懶載入的打包結果吧！</p>
+<h2 id="成果">成果</h2>
+<p>使用懶載入：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">./build</span></span>
+<span class="line"><span style="color:#B392F0">├──</span><span style="color:#9ECBFF"> static</span></span>
+<span class="line"><span style="color:#B392F0">│</span><span style="color:#9ECBFF">   ├──</span><span style="color:#9ECBFF"> css</span></span>
+<span class="line"><span style="color:#B392F0">│</span><span style="color:#9ECBFF">   │</span><span style="color:#9ECBFF">   ├──</span><span style="color:#9ECBFF"> product-31743c5a.fa288847.chunk.css</span></span>
+<span class="line"><span style="color:#B392F0">│</span><span style="color:#9ECBFF">   │</span><span style="color:#9ECBFF">   ├──</span><span style="color:#9ECBFF"> landing-15ac0598.766c0cdf.chunk.css</span></span>
+<span class="line"><span style="color:#B392F0">│</span><span style="color:#9ECBFF">   │</span><span style="color:#9ECBFF">   ├──</span><span style="color:#9ECBFF"> main-31743c5a.8244227e.css</span></span>
+<span class="line"><span style="color:#B392F0">│</span><span style="color:#9ECBFF">   │</span><span style="color:#9ECBFF">   └──</span><span style="color:#9ECBFF"> not-found.c46f968c.chunk.css</span></span>
+<span class="line"><span style="color:#B392F0">│</span><span style="color:#9ECBFF">   └──</span><span style="color:#9ECBFF"> js</span></span>
+<span class="line"><span style="color:#B392F0">│</span><span style="color:#9ECBFF">       ├──</span><span style="color:#9ECBFF"> ...其他</span><span style="color:#79B8FF"> 60</span><span style="color:#9ECBFF"> 個分塊</span></span>
+<span class="line"><span style="color:#B392F0">│</span><span style="color:#9ECBFF">       ├──</span><span style="color:#9ECBFF"> product-17ac9733.b9ca3a17.js</span></span>
+<span class="line"><span style="color:#B392F0">│</span><span style="color:#9ECBFF">       ├──</span><span style="color:#9ECBFF"> product-88d3322f.6af21003.js</span></span>
+<span class="line"><span style="color:#B392F0">│</span><span style="color:#9ECBFF">       ├──</span><span style="color:#9ECBFF"> product-d91a9049.6bd193d8.js</span></span>
+<span class="line"><span style="color:#B392F0">│</span><span style="color:#9ECBFF">       ├──</span><span style="color:#9ECBFF"> landing-31743c5a.c50d3631.js</span></span>
+<span class="line"><span style="color:#B392F0">│</span><span style="color:#9ECBFF">       ├──</span><span style="color:#9ECBFF"> landing-443a0b6e.d0a45c76.js</span></span>
+<span class="line"><span style="color:#B392F0">│</span><span style="color:#9ECBFF">       ├──</span><span style="color:#9ECBFF"> landing-e96e9bea.3a9047a7.js</span></span>
+<span class="line"><span style="color:#B392F0">│</span><span style="color:#9ECBFF">       ├──</span><span style="color:#9ECBFF"> main-84781932.397ae544.js</span></span>
+<span class="line"><span style="color:#B392F0">│</span><span style="color:#9ECBFF">       ├──</span><span style="color:#9ECBFF"> main-c92480b7.d9863f01.js</span></span>
+<span class="line"><span style="color:#B392F0">│</span><span style="color:#9ECBFF">       ├──</span><span style="color:#9ECBFF"> main-d91a9049.28df7033.js</span></span>
+<span class="line"><span style="color:#B392F0">│</span><span style="color:#9ECBFF">       └──</span><span style="color:#9ECBFF"> not-found.b83ea821.js</span></span>
+<span class="line"><span style="color:#B392F0">└──</span><span style="color:#9ECBFF"> index.html</span></span></code></pre>
+<p>沒有使用懶載入：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">./build</span></span>
+<span class="line"><span style="color:#B392F0">├──</span><span style="color:#9ECBFF"> static</span></span>
+<span class="line"><span style="color:#B392F0">│</span><span style="color:#9ECBFF">   ├──</span><span style="color:#9ECBFF"> css</span></span>
+<span class="line"><span style="color:#B392F0">│</span><span style="color:#9ECBFF">   │</span><span style="color:#9ECBFF">   └──</span><span style="color:#9ECBFF"> main-31743c5a.358f495d.css</span></span>
+<span class="line"><span style="color:#B392F0">│</span><span style="color:#9ECBFF">   └──</span><span style="color:#9ECBFF"> js</span></span>
+<span class="line"><span style="color:#B392F0">│</span><span style="color:#9ECBFF">       ├──</span><span style="color:#9ECBFF"> ...其他</span><span style="color:#79B8FF"> 105</span><span style="color:#9ECBFF"> 個分塊</span></span>
+<span class="line"><span style="color:#B392F0">│</span><span style="color:#9ECBFF">       ├──</span><span style="color:#9ECBFF"> main-03bc91d9.778a2136.js</span></span>
+<span class="line"><span style="color:#B392F0">│</span><span style="color:#9ECBFF">       ├──</span><span style="color:#9ECBFF"> main-0575efbd.3fe42463.js</span></span>
+<span class="line"><span style="color:#B392F0">│</span><span style="color:#9ECBFF">       ├──</span><span style="color:#9ECBFF"> main-17ac9733.9ae86415.js</span></span>
+<span class="line"><span style="color:#B392F0">│</span><span style="color:#9ECBFF">       ├──</span><span style="color:#9ECBFF"> main-1c176814.70827397.js</span></span>
+<span class="line"><span style="color:#B392F0">│</span><span style="color:#9ECBFF">       ├──</span><span style="color:#9ECBFF"> main-28095760.e2d645d6.js</span></span>
+<span class="line"><span style="color:#B392F0">│</span><span style="color:#9ECBFF">       ├──</span><span style="color:#9ECBFF"> main-28c0c43c.4af8e1f2.js</span></span>
+<span class="line"><span style="color:#B392F0">│</span><span style="color:#9ECBFF">       ├──</span><span style="color:#9ECBFF"> main-3a8144f2.faf9c54b.js</span></span>
+<span class="line"><span style="color:#B392F0">│</span><span style="color:#9ECBFF">       ├──</span><span style="color:#9ECBFF"> main-402b4630.157af26e.js</span></span>
+<span class="line"><span style="color:#B392F0">│</span><span style="color:#9ECBFF">       ├──</span><span style="color:#9ECBFF"> main-443a0b6e.dd433636.js</span></span>
+<span class="line"><span style="color:#B392F0">│</span><span style="color:#9ECBFF">       ├──</span><span style="color:#9ECBFF"> main-5ad2027e.148cad22.js</span></span>
+<span class="line"><span style="color:#B392F0">│</span><span style="color:#9ECBFF">       ├──</span><span style="color:#9ECBFF"> main-6b882012.9a243b76.js</span></span>
+<span class="line"><span style="color:#B392F0">│</span><span style="color:#9ECBFF">       ├──</span><span style="color:#9ECBFF"> main-6f34ed7a.4db55c82.js</span></span>
+<span class="line"><span style="color:#B392F0">│</span><span style="color:#9ECBFF">       ├──</span><span style="color:#9ECBFF"> main-7ae1fe87.367186f4.js</span></span>
+<span class="line"><span style="color:#B392F0">│</span><span style="color:#9ECBFF">       ├──</span><span style="color:#9ECBFF"> main-7c85fd9e.e3c95ef0.js</span></span>
+<span class="line"><span style="color:#B392F0">│</span><span style="color:#9ECBFF">       ├──</span><span style="color:#9ECBFF"> main-84781932.9b204099.js</span></span>
+<span class="line"><span style="color:#B392F0">│</span><span style="color:#9ECBFF">       ├──</span><span style="color:#9ECBFF"> main-87afd78e.9f1e9bc9.js</span></span>
+<span class="line"><span style="color:#B392F0">│</span><span style="color:#9ECBFF">       ├──</span><span style="color:#9ECBFF"> main-a3af9828.92b83948.js</span></span>
+<span class="line"><span style="color:#B392F0">│</span><span style="color:#9ECBFF">       ├──</span><span style="color:#9ECBFF"> main-a5409c8c.acca68b3.js</span></span>
+<span class="line"><span style="color:#B392F0">│</span><span style="color:#9ECBFF">       ├──</span><span style="color:#9ECBFF"> main-bc4009a1.443e7d0f.js</span></span>
+<span class="line"><span style="color:#B392F0">│</span><span style="color:#9ECBFF">       ├──</span><span style="color:#9ECBFF"> main-e0f427da.bcb1dc56.js</span></span>
+<span class="line"><span style="color:#B392F0">│</span><span style="color:#9ECBFF">       └──</span><span style="color:#9ECBFF"> main-f16aa68b.cc8b68ba.js</span></span>
+<span class="line"><span style="color:#B392F0">└──</span><span style="color:#9ECBFF"> index.html</span></span></code></pre>
+<p>可以看到 css 與 js 根據路由（<code>landing</code> / <code>product</code> / <code>not-found</code>）進行分塊了。</p>
+<h2 id="總結">總結</h2>
+<p>當 React app 內容越來越多時，可考慮搭配 React 提供的 <code>lazy</code> / <code>Suspense</code> 來執行分塊，避免使用者需要一口氣下載超大包的內容。</p>
+<p>如果以上設定有讓你困惑、或是不正確的部分歡迎留言交流 ( ´∀`)</p> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

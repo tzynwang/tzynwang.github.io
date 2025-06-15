@@ -1,0 +1,115 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.BScVxmeO.js"></script><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.1.2"><!-- Primary Meta Tags --><title>捨棄 create-react-app 之餘還架了個 astro blog 昭告天下：astro 簡介</title><meta name="title" content="捨棄 create-react-app 之餘還架了個 astro blog 昭告天下：astro 簡介"><meta name="description" content="astro 發布 3.0 版了，但因為種種現實因素所以實在無法在今年鐵人賽跟上升版，本系列還是會以 2.0 版的內容分享為主，敬請見諒。"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2023/ithome-2023-18"><meta property="og:title" content="捨棄 create-react-app 之餘還架了個 astro blog 昭告天下：astro 簡介"><meta property="og:description" content="astro 發布 3.0 版了，但因為種種現實因素所以實在無法在今年鐵人賽跟上升版，本系列還是會以 2.0 版的內容分享為主，敬請見諒。"><meta property="og:image" content="https://tzynwang.github.io/2023/ithome-2023-18/nasa-Yj1M5riCKk4-unsplash.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2023/ithome-2023-18"><meta property="twitter:title" content="捨棄 create-react-app 之餘還架了個 astro blog 昭告天下：astro 簡介"><meta property="twitter:description" content="astro 發布 3.0 版了，但因為種種現實因素所以實在無法在今年鐵人賽跟上升版，本系列還是會以 2.0 版的內容分享為主，敬請見諒。"><meta property="twitter:image" content="https://tzynwang.github.io/2023/ithome-2023-18/nasa-Yj1M5riCKk4-unsplash.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul:not(:has(li)){margin-top:16px;margin-bottom:16px}li{margin-top:4px;margin-bottom:4px;line-height:24px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:16px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}del{color:#4c5958e6}ol>li:has(p)>p{display:inline;margin:0}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+[data-astro-image]{width:100%;height:auto;object-fit:var(--fit);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>捨棄 create-react-app 之餘還架了個 astro blog 昭告天下：astro 簡介</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2023-10-03 08:08</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/2023鐵人賽" data-astro-cid-2iymvi75> 2023鐵人賽 </a> <a class="tag" href="/tag/astro" data-astro-cid-2iymvi75> astro </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#本文" data-astro-cid-qtokga5y>本文</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#專案建立" data-astro-cid-qtokga5y>專案建立</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#scripts" data-astro-cid-qtokga5y>scripts</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#資料夾結構" data-astro-cid-qtokga5y>資料夾結構</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#tsconfigjson" data-astro-cid-qtokga5y>tsconfig.json</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#總結" data-astro-cid-qtokga5y>總結</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#參考" data-astro-cid-qtokga5y>參考</a> </li> </ul> </div> <p>給沒聽過 astro 的人的快速說明：astro 是一個靜態網站產生器（static site generator），能根據 <code>.md</code> 內容來建立靜態網站。假設現在的目標是「架設部落格」，那麽 astro 相較 next 與 gatsby 的優點是——astro 已經幫開發者處理掉 markdown 內容編譯的工，開發者只要留意路由編排以及畫面排版即可。而相較於個人過去使用過的 hexo，體感上 astro 的設定更簡單、速度也更快。</p>
+<p>如果讀者有興趣在 GitHub Page 架設自己的部落格，個人認為 astro 是個入門相對容易的框架 =͟͟͞͞( •̀д•́)</p>
+<blockquote>
+<p>注意：今年鐵人賽聊的 <strong>astro 內容全都以 2.0 版為主</strong> 😭</p>
+</blockquote>
+<blockquote>
+<p>官方在 8/30 發布了 <a href="https://astro.build/blog/astro-3/">3.0 版的更新通知</a>，追加了一些酷炫的新東西（View Transitions 實在令人心動），但也<a href="https://docs.astro.build/en/guides/upgrade-to/v3/#deprecated-markdowndrafts">取消了 2.0 的 markdown.drafts 功能</a>。很不巧地，這個功能對個人來說很重要；但在評估後，我認為自己無法在能力所及範圍內同時處理升版、功能銜接與產出文章這三個任務，因此升級計畫只能先擱置。</p>
+</blockquote>
+<blockquote>
+<p>鐵人賽會盡量避開 astro 2.0 專屬的內容，但整體文章還是會以個人使用 astro 2.0 開發的心得分享為主，還請包容。</p>
+</blockquote>
+<p>那麽，如果上方行前說明沒有勸退你的話，以下就來開始鐵人賽下半場 astro 篇的第一天內容：專案建立與資料夾結構。</p>
+<h2 id="本文">本文</h2>
+<h3 id="專案建立">專案建立</h3>
+<p>開啟終端，移動到想放置 astro 專案的目的地，輸入 <code>npm run dev</code> 或 <code>yarn run dev</code> 後即可開始安裝程序。在建立專案的過程中，astro 會詢問開發者專案要放在哪裡（這時候才需要指定資料夾名稱）、是否需要順便在資料夾內幫你建立一些基本內容、是否需要搭配 TypeScript 以及幫忙 git init 等等。這些選項請根據平常的開發習慣來設定即可。</p>
+<h3 id="scripts">scripts</h3>
+<p>astro 專案預設提供以下腳本：</p>
+<ul>
+<li><code>dev</code> / <code>start</code>: 啟動本機伺服器預覽專案內容。2.0 版預設 port 為 <code>3000</code>，3.0 版改為 <code>4321</code></li>
+<li><code>build</code>: 打包專案，預設的打包目的地為 <code>./dist</code></li>
+<li><code>preview</code>: 預覽打包後（位於 <code>./dist</code>）的結果</li>
+<li><code>astro</code>: 呼叫後可於終端查看指令說明，如下圖</li>
+</ul>
+<p><img src="/2023/ithome-2023-18/astro-cli.png" alt="astro cli"></p>
+<h3 id="資料夾結構">資料夾結構</h3>
+<p>在建立專案時設定 <code>How would you like to start your new project?</code> 為 <code>Empty</code> 的話，就可以看到近乎最基礎的 astro 資料夾內容：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#79B8FF">.</span></span>
+<span class="line"><span style="color:#B392F0">├──</span><span style="color:#9ECBFF"> README.md</span></span>
+<span class="line"><span style="color:#B392F0">├──</span><span style="color:#9ECBFF"> astro.config.mjs</span></span>
+<span class="line"><span style="color:#B392F0">├──</span><span style="color:#9ECBFF"> package.json</span></span>
+<span class="line"><span style="color:#B392F0">├──</span><span style="color:#9ECBFF"> public</span></span>
+<span class="line"><span style="color:#B392F0">│</span><span style="color:#9ECBFF">   └──</span><span style="color:#9ECBFF"> favicon.svg</span></span>
+<span class="line"><span style="color:#B392F0">├──</span><span style="color:#9ECBFF"> src</span></span>
+<span class="line"><span style="color:#B392F0">│</span><span style="color:#9ECBFF">   ├──</span><span style="color:#9ECBFF"> env.d.ts</span></span>
+<span class="line"><span style="color:#B392F0">│</span><span style="color:#9ECBFF">   └──</span><span style="color:#9ECBFF"> pages</span></span>
+<span class="line"><span style="color:#B392F0">│</span><span style="color:#9ECBFF">       └──</span><span style="color:#9ECBFF"> index.astro</span></span>
+<span class="line"><span style="color:#B392F0">├──</span><span style="color:#9ECBFF"> tsconfig.json</span></span>
+<span class="line"><span style="color:#B392F0">└──</span><span style="color:#9ECBFF"> yarn.lock</span></span></code></pre>
+<p>重點：<strong><code>./src</code> 中一定要有 <code>/pages</code> 資料夾</strong>，否則 <a href="https://docs.astro.build/en/core-concepts/project-structure/#srcpages">astro 無法顯示內容</a>。其餘在 <code>./src</code> 內的資料夾都可根據實際分類規則來增減（如 <code>layout</code> / <code>components</code> 等）。</p>
+<p>而放在 <code>./public</code> 中的內容會在打包（<code>build</code>）時，直接被<a href="https://docs.astro.build/en/core-concepts/project-structure/#public">複製一份</a>到最後輸出的資料夾（<code>dist</code>）內。基本上圖片檔、以及 sitemap 與 robot.txt 等內容會被收納在這裡。</p>
+<p>建立畫面與內容讀取都是在 <code>./src</code> 內處理的事情。這些工作會於後續的鐵人賽文章提及。</p>
+<hr>
+<p>而以下是個人技術部落格實際使用的結構。其實也只是在官方推薦的 <code>components</code> / <code>styles</code> 以外再新增兩個資料夾來收納型別、固定變數以及通用工具而已：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#79B8FF">.</span></span>
+<span class="line"><span style="color:#B392F0">├──</span><span style="color:#9ECBFF"> public</span></span>
+<span class="line"><span style="color:#B392F0">├──</span><span style="color:#9ECBFF"> src</span></span>
+<span class="line"><span style="color:#B392F0">│</span><span style="color:#9ECBFF">   ├──</span><span style="color:#9ECBFF"> env.d.ts</span></span>
+<span class="line"><span style="color:#B392F0">│</span><span style="color:#9ECBFF">   ├──</span><span style="color:#9ECBFF"> components</span></span>
+<span class="line"><span style="color:#B392F0">│</span><span style="color:#9ECBFF">   ├──</span><span style="color:#9ECBFF"> models</span></span>
+<span class="line"><span style="color:#B392F0">│</span><span style="color:#9ECBFF">   ├──</span><span style="color:#9ECBFF"> pages</span></span>
+<span class="line"><span style="color:#B392F0">│</span><span style="color:#9ECBFF">   ├──</span><span style="color:#9ECBFF"> styles</span></span>
+<span class="line"><span style="color:#B392F0">│</span><span style="color:#9ECBFF">   └──</span><span style="color:#9ECBFF"> tools</span></span>
+<span class="line"><span style="color:#B392F0">├──</span><span style="color:#9ECBFF"> .gitignore</span></span>
+<span class="line"><span style="color:#B392F0">├──</span><span style="color:#9ECBFF"> .markdownlint.jsonc</span></span>
+<span class="line"><span style="color:#B392F0">├──</span><span style="color:#9ECBFF"> .nvmrc</span></span>
+<span class="line"><span style="color:#B392F0">├──</span><span style="color:#9ECBFF"> astro.config.ts</span></span>
+<span class="line"><span style="color:#B392F0">├──</span><span style="color:#9ECBFF"> Makefile</span></span>
+<span class="line"><span style="color:#B392F0">├──</span><span style="color:#9ECBFF"> package.json</span></span>
+<span class="line"><span style="color:#B392F0">├──</span><span style="color:#9ECBFF"> README.md</span></span>
+<span class="line"><span style="color:#B392F0">├──</span><span style="color:#9ECBFF"> tsconfig.json</span></span>
+<span class="line"><span style="color:#B392F0">└──</span><span style="color:#9ECBFF"> yarn.lock</span></span></code></pre>
+<p>astro 在資料夾名稱與結構上沒有太多限制，要注意的只有保留 <code>./src/pages</code> 以及使用中括號 <code>[]</code> 命名的檔案有<a href="https://docs.astro.build/en/core-concepts/routing/#dynamic-routes">特殊用途</a>。其他都可以根據開發習慣來自由安排。</p>
+<h3 id="tsconfigjson">tsconfig.json</h3>
+<p>支援 <code>paths</code> 設定，可以繼續在 astro 專案中使用自訂路徑來匯入檔案：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="json"><code><span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#79B8FF">  "extends"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"astro/tsconfigs/strict"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">  "compilerOptions"</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#79B8FF">    "baseUrl"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"./src"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    "paths"</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#79B8FF">      "@Components/*"</span><span style="color:#E1E4E8">: [</span><span style="color:#9ECBFF">"components/*"</span><span style="color:#E1E4E8">],</span></span>
+<span class="line"><span style="color:#79B8FF">      "@Models/*"</span><span style="color:#E1E4E8">: [</span><span style="color:#9ECBFF">"models/*"</span><span style="color:#E1E4E8">],</span></span>
+<span class="line"><span style="color:#79B8FF">      "@Pages/*"</span><span style="color:#E1E4E8">: [</span><span style="color:#9ECBFF">"pages/*"</span><span style="color:#E1E4E8">],</span></span>
+<span class="line"><span style="color:#79B8FF">      "@Styles/*"</span><span style="color:#E1E4E8">: [</span><span style="color:#9ECBFF">"styles/*"</span><span style="color:#E1E4E8">],</span></span>
+<span class="line"><span style="color:#79B8FF">      "@Tools/*"</span><span style="color:#E1E4E8">: [</span><span style="color:#9ECBFF">"tools/*"</span><span style="color:#E1E4E8">]</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>比如現在我就可以使用 <code>@Components/pages/SinglePostLayout.astro</code> 這個路徑在 astro 專案中各處匯入實際上位於 <code>./src/components/pages</code> 中的 astro 元件 <code>SinglePostLayout</code>。</p>
+<hr>
+<p>想查看 astro 完整 TypeScript 設定的人可以到官方 repo 中的 <a href="https://github.com/withastro/astro/tree/main/packages/astro/tsconfigs">astro/packages/astro/tsconfigs</a> 查看詳細內容。</p>
+<h2 id="總結">總結</h2>
+<p>個人是從 hexo 跳槽到 astro 的，整包專案翻修完畢後，基本只有後悔沒有早點開始。框架本身的使用難度不高，（英文）資源也算充足，真心推薦還沒有自己的 blog 的人可以建立一個 astro 專案來試玩看看。</p>
+<h2 id="參考">參考</h2>
+<ul>
+<li><a href="https://docs.astro.build/en/install/auto/">astro docs: Install Astro with the Automatic CLI</a></li>
+<li><a href="https://docs.astro.build/en/core-concepts/project-structure/">astro docs: Project Structure</a></li>
+<li><a href="https://docs.astro.build/en/reference/cli-reference/">astro docs: CLI Commands</a></li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

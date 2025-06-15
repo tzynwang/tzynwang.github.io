@@ -1,0 +1,91 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.BScVxmeO.js"></script><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.1.2"><!-- Primary Meta Tags --><title>30天挑戰：「CSS progress bar (stepper) 」技術記錄</title><meta name="title" content="30天挑戰：「CSS progress bar (stepper) 」技術記錄"><meta name="description" content="這是一個文組轉職前端工程師的技術部落格"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2021/ithome2021-1-progress-bar"><meta property="og:title" content="30天挑戰：「CSS progress bar (stepper) 」技術記錄"><meta property="og:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="og:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2021/ithome2021-1-progress-bar"><meta property="twitter:title" content="30天挑戰：「CSS progress bar (stepper) 」技術記錄"><meta property="twitter:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="twitter:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul:not(:has(li)){margin-top:16px;margin-bottom:16px}li{margin-top:4px;margin-bottom:4px;line-height:24px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:16px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}del{color:#4c5958e6}ol>li:has(p)>p{display:inline;margin:0}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+[data-astro-image]{width:100%;height:auto;object-fit:var(--fit);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>30天挑戰：「CSS progress bar (stepper) 」技術記錄</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2021-08-05 10:48</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/CSS" data-astro-cid-2iymvi75> CSS </a> <a class="tag" href="/tag/2021鐵人賽" data-astro-cid-2iymvi75> 2021鐵人賽 </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#總結" data-astro-cid-qtokga5y>總結</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#設計圖" data-astro-cid-qtokga5y>設計圖</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#html-結構" data-astro-cid-qtokga5y>HTML 結構</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#scss" data-astro-cid-qtokga5y>SCSS</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#參考文件" data-astro-cid-qtokga5y>參考文件</a> </li> </ul> </div> <h2 id="總結">總結</h2>
+<p>記錄頭尾至頂至底的進度條之 HTML 結構與 CSS 設定</p>
+<p class="codepen" data-height="300" data-theme-id="dark" data-default-tab="css,result" data-slug-hash="Pomdayv" data-user="Charlie7779" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+  <span>See the Pen <a href="https://codepen.io/Charlie7779/pen/Pomdayv">
+  stepper (justify-content-between) (::after line)</a> by Charlie (<a href="https://codepen.io/Charlie7779">@Charlie7779</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+<h2 id="設計圖">設計圖</h2>
+<p><img src="/2021/ithome2021-1-progress-bar/mobile.png" alt="手機版畫面"></p>
+<p><img src="/2021/ithome2021-1-progress-bar/desktop.png" alt="桌面版畫面"></p>
+<ul>
+<li>手機版不顯示步驟文字</li>
+<li>步驟圖示與文字需左右頭尾滿版</li>
+<li>三個狀態階段：已完成（黑底白字配黑線）、進行中（紅底白字配紅線）、待填寫（灰框灰字配灰線條）</li>
+</ul>
+<h2 id="html-結構">HTML 結構</h2>
+<script src="https://gist.github.com/tzynwang/8383c1f085057180b1cf87473c7e9e31.js"></script>
+<ul>
+<li>全部 stepper 的 HTML 結構都維持一致，代表日後可改用程式碼搭配迴圈動態產生 progress bar 內容</li>
+<li>stepper 的步驟數字不使用 CSS 偽元素，避免分散產生內容的相關邏輯
+<ul>
+<li>補充理由：「步驟數字不建議放到偽元素裡面，因為擴展為更多步驟，變數不好塞」、「（如果數字透過偽元素處理的話，）實務上若遇到多語系需求，或是不同數字的表達方式等等，就容易傷腦筋」</li>
+</ul>
+</li>
+<li>使用<code>complete</code>、<code>active</code>與<code>pending</code>三種 CSS class name 來明確標註不同狀態，增加原始碼的好讀性</li>
+</ul>
+<h2 id="scss">SCSS</h2>
+<script src="https://gist.github.com/tzynwang/ad326ea498a0945085e5961e188a3c21.js"></script>
+<ul>
+<li>第 9 行<code>.step-container</code>：注意並<strong>沒有</strong>使用<code>justify-content: space-between;</code></li>
+<li>第 18 行<code>.step-item</code>：
+<ul>
+<li>使用<code>flex: 1 1;</code>讓 flex item 佔據所有空間</li>
+<li><code>overflow-x: hidden;</code>乃是為了配合 progress bar line，重要的伏筆（？）</li>
+</ul>
+</li>
+<li>第 26 行<code>.step-item:not(:first-child)</code>：除了第一個 stepper 外，其餘 stepper 一律使用<code>padding-left</code>往右側退<code>1rem</code></li>
+<li>第 30 行<code>.step-item:last-child</code>：使用<code>flex: none;</code>讓最後一個 stepper 完全不額外佔據任何空間
+<img src="/2021/ithome2021-1-progress-bar/flex-none-demo.gif" alt="套用flex none後，最後一個stepper即可靠右置底"></li>
+<li>第 34-35 行：設定<code>.icon</code>與<code>.content</code>為<code>display: inline-block;</code>，即可直接水平排列</li>
+<li>第 39 行<code>.icon</code>：
+<ul>
+<li>設定<code>flex: none;</code>避免圖示本身被壓縮變形</li>
+<li>使用<code>text-align: center;</code>與<code>line-height: 32px;</code>讓文字水平垂直置中</li>
+</ul>
+</li>
+<li>第 53 行<code>.step-item:not(:last-child)</code>：
+<ul>
+<li>54 行<code>.content</code>設定為<code>position: relative;</code>作為 progress bar line 的定位基準點</li>
+<li>60 行<code>.content::after</code>：繪製 progress bar line，設定<code>left: calc(100% + 1rem);</code>讓線條往右推移，並因為第 18 行已經設定<code>.step-item</code>需<code>overflow-x: hidden;</code>，所以多餘的線條長度會直接被隱藏起來
+<img src="/2021/ithome2021-1-progress-bar/progress-line-demo.gif" alt="以.content為定位基準，右推100%後，再補推1rem留下一點空間"></li>
+<li>66 行<code>width: 99999px;</code>：直接設定一個足夠長的線段數值</li>
+</ul>
+</li>
+<li>第 73 行<code>.content-text</code>：手機版時不顯示，故<code>display: none;</code></li>
+<li>79-106 行：針對不同的狀態進行顏色調整</li>
+<li>第 109 行：在桌面版要顯示<code>.content-text</code>，將<code>display: inline-block;</code>加回</li>
+</ul>
+<h2 id="參考文件">參考文件</h2>
+<ul>
+<li><a href="https://preview.pro.ant.design/form/step-form">Ant Design Pro: 分步表單</a></li>
+<li>特別銘謝：超感謝 Red Chou 助教願意撥冗給予原始碼的改善建議</li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

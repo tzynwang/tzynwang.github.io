@@ -1,0 +1,221 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.BScVxmeO.js"></script><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.1.2"><!-- Primary Meta Tags --><title>「用TS改寫幼兒難度的React App」相關筆記</title><meta name="title" content="「用TS改寫幼兒難度的React App」相關筆記"><meta name="description" content="這是一個文組轉職前端工程師的技術部落格"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2021/react-app-to-typescript"><meta property="og:title" content="「用TS改寫幼兒難度的React App」相關筆記"><meta property="og:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="og:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2021/react-app-to-typescript"><meta property="twitter:title" content="「用TS改寫幼兒難度的React App」相關筆記"><meta property="twitter:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="twitter:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul:not(:has(li)){margin-top:16px;margin-bottom:16px}li{margin-top:4px;margin-bottom:4px;line-height:24px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:16px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}del{color:#4c5958e6}ol>li:has(p)>p{display:inline;margin:0}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+[data-astro-image]{width:100%;height:auto;object-fit:var(--fit);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>「用TS改寫幼兒難度的React App」相關筆記</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2021-11-05 13:00</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/React" data-astro-cid-2iymvi75> React </a> <a class="tag" href="/tag/TypeScript" data-astro-cid-2iymvi75> TypeScript </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#總結" data-astro-cid-qtokga5y>總結</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#版本" data-astro-cid-qtokga5y>版本</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#react-部分" data-astro-cid-qtokga5y>React 部分</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#jsx" data-astro-cid-qtokga5y>JSX</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#usestate" data-astro-cid-qtokga5y>useState()</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#改裝為-ts" data-astro-cid-qtokga5y>改裝為 TS</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#將-ts-加入專案中" data-astro-cid-qtokga5y>將 TS 加入專案中</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#將原始碼改為-ts" data-astro-cid-qtokga5y>將原始碼改為 TS</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#關於-reactfc" data-astro-cid-qtokga5y>關於 React.FC</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#補充" data-astro-cid-qtokga5y>補充</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#named-export-default-export" data-astro-cid-qtokga5y>named export, default export</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#參考文件" data-astro-cid-qtokga5y>參考文件</a> </li> </ul> </div> <h2 id="總結">總結</h2>
+<p>快速入門 React 後，將其 JS 部分改為 TypeScript，記錄下相關筆記以及轉換途中遇到的坑
+另外因為已經學過 Vue，故以下筆記會包含一些與 Vue 類似或相異的比較</p>
+<p>JS 版原始碼：<a href="https://github.com/tzynwang/react-practice/tree/speed-converter">https://github.com/tzynwang/react-practice/tree/speed-converter</a>
+TS 版原始碼：<a href="https://github.com/tzynwang/react-practice/tree/speed-converter-ts">https://github.com/tzynwang/react-practice/tree/speed-converter-ts</a></p>
+<p>教材內容取自：<a href="https://ithelp.ithome.com.tw/users/20103315/ironman/2668">從 Hooks 開始，讓你的網頁 React 起來</a></p>
+<h2 id="版本">版本</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>react: 17.0.2</span></span>
+<span class="line"><span>typescript: 4.4.4</span></span></code></pre>
+<h2 id="react-部分">React 部分</h2>
+<ul>
+<li>React components are regular JavaScript functions, but their <strong>names must start with a capital letter</strong> or they won’t work! 作為<strong>元件</strong>的 function 其名稱一定要<strong>大寫開頭</strong></li>
+</ul>
+<h3 id="jsx">JSX</h3>
+<ul>
+<li>
+<p>基本上接收任何資料（strings, numbers, and other <strong>JavaScript expressions</strong>），需注意在進行條件判斷的時候只能使用 expressions</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#B392F0">App</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#E1E4E8"> [</span><span style="color:#79B8FF">userInput</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">setUserInput</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">=</span><span style="color:#B392F0"> useState</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">0</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#B392F0"> handleUserInput</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">e</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#B392F0">    setUserInput</span><span style="color:#E1E4E8">(e.target.value);</span></span>
+<span class="line"><span style="color:#E1E4E8">  };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> (</span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#85E89D">div</span><span style="color:#B392F0"> className</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"container"</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">      &#x3C;</span><span style="color:#85E89D">div</span><span style="color:#B392F0"> className</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"card-header"</span><span style="color:#E1E4E8">>Network Speed Converter&#x3C;/</span><span style="color:#85E89D">div</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">      &#x3C;</span><span style="color:#85E89D">div</span><span style="color:#B392F0"> className</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"card-body"</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">        &#x3C;</span><span style="color:#79B8FF">UnitControl</span><span style="color:#E1E4E8"> /></span></span>
+<span class="line"><span style="color:#E1E4E8">        &#x3C;</span><span style="color:#79B8FF">UnitConverter</span></span>
+<span class="line"><span style="color:#B392F0">          userInput</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{userInput}</span></span>
+<span class="line"><span style="color:#B392F0">          handleUserInput</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{handleUserInput}</span></span>
+<span class="line"><span style="color:#E1E4E8">        /></span></span>
+<span class="line"><span style="color:#E1E4E8">      &#x3C;/</span><span style="color:#85E89D">div</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">      &#x3C;</span><span style="color:#79B8FF">CardFooter</span><span style="color:#B392F0"> userInput</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{userInput} /></span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;/</span><span style="color:#85E89D">div</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  );</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span></code></pre>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#B392F0"> UnitConverter</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> ({ </span><span style="color:#FFAB70">userInput</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">handleUserInput</span><span style="color:#E1E4E8"> }) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> (</span></span>
+<span class="line"><span style="color:#E1E4E8">    {</span><span style="color:#6A737D">/* 略 */</span><span style="color:#E1E4E8">}</span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#85E89D">input</span></span>
+<span class="line"><span style="color:#B392F0">      type</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"number"</span></span>
+<span class="line"><span style="color:#B392F0">      className</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"input-number"</span></span>
+<span class="line"><span style="color:#B392F0">      min</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"0"</span></span>
+<span class="line"><span style="color:#B392F0">      value</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{userInput}</span></span>
+<span class="line"><span style="color:#B392F0">      autoFocus</span></span>
+<span class="line"><span style="color:#B392F0">      onChange</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{handleUserInput}</span></span>
+<span class="line"><span style="color:#E1E4E8">    /></span></span>
+<span class="line"><span style="color:#E1E4E8">    {</span><span style="color:#6A737D">/* 略 */</span><span style="color:#E1E4E8">}</span></span>
+<span class="line"><span style="color:#E1E4E8">  )</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p><code>handleUserInput</code>透過 props 傳給<code>UnitConverter</code>元件，<code>UnitConverter</code>在 onChange 事件發生時，即可透過<code>handleUserInput</code>修改<code>userInput</code>的值</p>
+</li>
+<li>
+<p>放 CSS Object 的話就多包一層<code>{}</code></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#B392F0"> TodoList</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> (</span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#85E89D">ul</span></span>
+<span class="line"><span style="color:#B392F0">      style</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{{</span></span>
+<span class="line"><span style="color:#E1E4E8">        backgroundColor: </span><span style="color:#9ECBFF">'black'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">        color: </span><span style="color:#9ECBFF">'pink'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">      }}</span></span>
+<span class="line"><span style="color:#E1E4E8">    ></span></span>
+<span class="line"><span style="color:#E1E4E8">      &#x3C;</span><span style="color:#85E89D">li</span><span style="color:#E1E4E8">>Improve the videophone&#x3C;/</span><span style="color:#85E89D">li</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">      &#x3C;</span><span style="color:#85E89D">li</span><span style="color:#E1E4E8">>Prepare aeronautics lectures&#x3C;/</span><span style="color:#85E89D">li</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">      &#x3C;</span><span style="color:#85E89D">li</span><span style="color:#E1E4E8">>Work on the alcohol-fuelled engine&#x3C;/</span><span style="color:#85E89D">li</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;/</span><span style="color:#85E89D">ul</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  );</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span></code></pre>
+</li>
+<li>
+<p>JSX looks like HTML, but under the hood it is transformed into <strong>plain JavaScript objects</strong>. You can’t return two objects from a function without wrapping them into an array. This explains why you also can’t return two JSX tags without wrapping them into another tag or a fragment. 每個 react 元件只能回傳單一內容，超過一個元素請用<code>&#x3C;>&#x3C;/></code>包起來；不能回傳超過一個元素是因為這些元件最後會被轉為 JS Object，複數個元素在 return 時一定要打包成單一元素</p>
+</li>
+<li>
+<p>JSX requires tags to be explicitly closed: self-closing tags like <code>&#x3C;img></code> must become <code>&#x3C;img /></code>, and wrapping tags like <code>&#x3C;li>oranges</code> must be written as <code>&#x3C;li>oranges&#x3C;/li></code>. 所有的<strong>HTML 元素一定要 closed</strong>（舉例：<code>&#x3C;br></code>要改寫為<code>&#x3C;br /></code>）</p>
+</li>
+<li>
+<p>JSX turns into JavaScript and <strong>attributes written in JSX become keys</strong> of JavaScript objects.</p>
+</li>
+</ul>
+<h3 id="usestate">useState()</h3>
+<ul>
+<li>Returns a stateful value, and <strong>a function to update it</strong>.</li>
+<li>放到<code>useState(...)</code>裡的變數才會被 React 追蹤，概念類似資料要放在<code>data()</code>中才會被 Vue 追蹤、修改後才會跟著驅動畫面更新</li>
+</ul>
+<h2 id="改裝為-ts">改裝為 TS</h2>
+<h3 id="將-ts-加入專案中">將 TS 加入專案中</h3>
+<p>透過以下手續將原本是 JS 的 React 專案改為 TS 版本：</p>
+<ol>
+<li><code>npm install --save typescript @types/node @types/react @types/react-dom @types/jest</code></li>
+<li>package.json 中的<code>scripts/build</code>內容改為<code>tsc</code></li>
+<li><code>npx tsc --init</code></li>
+<li>根據實際情況調整 tsconfig.json 中<code>rootDir</code>與<code>rootDir</code>的設定（官方文件預設為<code>src</code>與<code>build</code>）</li>
+<li>設定<code>jsx</code>為<code>preserve</code>（參考討論串：<a href="https://github.com/Microsoft/vscode/issues/15814">Error when opening TSX file: Cannot use JSX unless ‘—jsx’ flag is provided</a>）</li>
+<li><code>.js</code>副檔名改為<code>.ts</code>或<code>.tsx</code>（enable JSX with TypeScript，參考<a href="https://www.typescriptlang.org/docs/handbook/jsx.html">TS 官方文件</a>）</li>
+</ol>
+<p>完整說明參考 React 官方文件：<a href="https://reactjs.org/docs/static-type-checking.html#adding-typescript-to-a-project">Adding TypeScript to a Project</a>
+備註：如果是要從零開始一個 React+TS 專案的話，直接<code>npx create-react-app &#x3C;app-name> --template typescript</code>即可</p>
+<h3 id="將原始碼改為-ts">將原始碼改為 TS</h3>
+<ul>
+<li>
+<p>偷吃步：在 vs code 中如果不知道該 event 的類型，可以在<code>{}</code>中寫出 e 然後透過滑鼠 hover 來查看 event 類型
+<img src="/2021/react-app-to-typescript/peek-event-type.png" alt="peek event type"></p>
+</li>
+<li>
+<p>需注意：在透過<code>e.target.value</code>取使用者輸入的值（<code>value</code>）的時候，取到的<code>value</code>會是<code>string</code>型態資料</p>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#attr-value">MDN <code>&#x3C;input></code> element value</a>: It can be altered or retrieved at any time using JavaScript to <strong>access the respective <code>HTMLInputElement</code> object’s value property</strong>.</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement">MDN <code>HTMLInputElement</code> value property</a>: It is <strong>string</strong>, returns / sets the current value of the control.</li>
+<li>所以<code>handleUserInput</code>在改寫成 TS 版加上的 type 必須為<code>string</code>：</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#B392F0"> handleUserInput</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">e</span><span style="color:#F97583">:</span><span style="color:#B392F0"> ChangeEvent</span><span style="color:#E1E4E8">&#x3C;{ </span><span style="color:#FFAB70">value</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> string</span><span style="color:#E1E4E8"> }>) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> rawInput</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> Number</span><span style="color:#E1E4E8">(e.target.value);</span></span>
+<span class="line"><span style="color:#F97583">  if</span><span style="color:#E1E4E8"> (</span><span style="color:#B392F0">isNaN</span><span style="color:#E1E4E8">(rawInput)) </span><span style="color:#F97583">return</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#B392F0">  setUserInput</span><span style="color:#E1E4E8">(rawInput);</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span></code></pre>
+</li>
+<li>
+<p>在將 function <code>handleUserInput</code>透過 props 傳給元件<code>UnitConverter</code>的時候想不通「function 的類型究竟是什麼」，透過關鍵字搜尋後發現與其說是 function 的「type」是什麼，不如說是告訴 TS「這個 function 的 shape 是什麼形狀」</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#6A737D">// in UnitConverter.tsx</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">interface</span><span style="color:#B392F0"> propsType</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#FFAB70">  userInput</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> number</span></span>
+<span class="line"><span style="color:#6A737D">  // handleUserInput的形狀是：接受e做為參數傳入，並「不回傳」任何值，所以 => void</span></span>
+<span class="line"><span style="color:#B392F0">  handleUserInput</span><span style="color:#F97583">:</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">e</span><span style="color:#F97583">:</span><span style="color:#B392F0"> ChangeEvent</span><span style="color:#E1E4E8">&#x3C;{ </span><span style="color:#FFAB70">value</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> string</span><span style="color:#E1E4E8"> }>) </span><span style="color:#F97583">=></span><span style="color:#79B8FF"> void</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#B392F0"> UnitConverter</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> ({ </span><span style="color:#FFAB70">userInput</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">handleUserInput</span><span style="color:#E1E4E8"> }</span><span style="color:#F97583">:</span><span style="color:#B392F0"> propsType</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> (</span></span>
+<span class="line"><span style="color:#E1E4E8">    {</span><span style="color:#6A737D">/* 略 */</span><span style="color:#E1E4E8">}</span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#85E89D">input</span></span>
+<span class="line"><span style="color:#B392F0">      type</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"number"</span></span>
+<span class="line"><span style="color:#B392F0">      className</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"input-number"</span></span>
+<span class="line"><span style="color:#B392F0">      min</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"0"</span></span>
+<span class="line"><span style="color:#B392F0">      value</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{userInput}</span></span>
+<span class="line"><span style="color:#B392F0">      autoFocus</span></span>
+<span class="line"><span style="color:#B392F0">      onChange</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{handleUserInput}</span></span>
+<span class="line"><span style="color:#E1E4E8">    /></span></span>
+<span class="line"><span style="color:#E1E4E8">    {</span><span style="color:#6A737D">/* 略 */</span><span style="color:#E1E4E8">}</span></span>
+<span class="line"><span style="color:#E1E4E8">  )</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>參考討論串：「<a href="https://stackoverflow.com/questions/29689966/how-to-define-type-for-a-function-callback-as-any-function-type-not-universal">How to define type for a function callback (as any function type, not universal any) used in a method parameter</a>」</p>
+</li>
+<li>
+<p>使用 deconstruct 技巧處理 props 又必須給予 type 時，可使用以下寫法：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#B392F0"> CardFooter</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">props</span><span style="color:#F97583">:</span><span style="color:#E1E4E8"> { </span><span style="color:#FFAB70">userInput</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> number</span><span style="color:#E1E4E8"> }) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">  /* 略 */</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span></code></pre>
+<p>或是這樣：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#B392F0"> CardFooter</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> ({ </span><span style="color:#FFAB70">userInput</span><span style="color:#E1E4E8"> }</span><span style="color:#F97583">:</span><span style="color:#E1E4E8"> { </span><span style="color:#FFAB70">userInput</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> number</span><span style="color:#E1E4E8"> }) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">  /* 略 */</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span></code></pre>
+<p>或是這樣：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#F97583">interface</span><span style="color:#B392F0"> userInputType</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#FFAB70">  userInput</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> number</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#B392F0"> CardFooter</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> ({ </span><span style="color:#FFAB70">userInput</span><span style="color:#E1E4E8"> }</span><span style="color:#F97583">:</span><span style="color:#B392F0"> userInputType</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">  /* 略 */</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span></code></pre>
+<p>以上做的都是「設定 props 中 userInput 的類型為<code>number</code>」同一件事情</p>
+</li>
+</ul>
+<h3 id="關於-reactfc">關於 React.FC</h3>
+<p>參考 React+TypeScript Cheatsheets，小總結：不建議使用<code>React.FC</code>，可改用<code>React.VFC</code>；<code>React.FC</code>與一般 function 不同的部分如下列：</p>
+<ul>
+<li><code>React.FunctionComponent</code> is <strong>explicit about the return type</strong>, while the normal function version is implicit (or else needs additional annotation).</li>
+<li>引用自 PJ：<code>React.FC</code>會明確定義 Function Component 回傳的型別一定要是<code>JSX.Element</code>或<code>null</code>而不能是<code>undefined</code>。</li>
+<li>It <strong>provides typechecking and autocomplete</strong> for static properties like <code>displayName</code>, <code>propTypes</code>, and <code>defaultProps</code>. Note that there are some known issues using <code>defaultProps</code> with <code>React.FunctionComponent</code>.</li>
+<li>It provides an implicit definition of children - however there are some issues with the implicit children type (e.g. DefinitelyTyped#33006), and it might be better to be explicit about components that consume children, anyway.</li>
+<li>引用自 PJ：<code>React.FC</code>會自動接受<code>children</code>作為可以傳入的 props，即使在這個 React 元件中並不會使用到<code>children</code>。</li>
+</ul>
+<h2 id="補充">補充</h2>
+<h3 id="named-export-default-export">named export, default export</h3>
+<ul>
+<li>If a module defines a <strong>default export</strong>, then you can import that default export by <strong>omitting the curly braces</strong>.
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#6A737D">// foo.js</span></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> default</span><span style="color:#F97583"> function</span><span style="color:#B392F0"> foo</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#E1E4E8">  console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'hello!'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> foo </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> 'foo'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#B392F0">foo</span><span style="color:#E1E4E8">(); </span><span style="color:#6A737D">// hello!</span></span></code></pre>
+</li>
+<li>A file can have <strong>no more than one <em>default</em> export</strong>, but it can have <strong>as many <em>named</em> exports as you like</strong>. export default 只能有一個，但 named exports 可以有無數個</li>
+<li>When you write a <strong><em>default</em> import</strong>, you can put <strong>any name</strong> you want after <code>import</code>. For example, you could write <code>import Banana from './button.js'</code> instead and it would still provide you with the same default export.</li>
+<li>In contrast, with <strong>named imports, the name has to match on both sides</strong>. That’s why they are called <em>named</em> imports!</li>
+</ul>
+<p><img src="/2021/react-app-to-typescript/export.jpg" alt="export"></p>
+<h2 id="參考文件">參考文件</h2>
+<ul>
+<li><a href="https://pjchender.blogspot.com/2020/07/typescript-react-using-typescript-in.html">[掘竅] 了解這些，更快掌握 TypeScript 在 React 中的使用（Using TypeScript in React）</a></li>
+<li><a href="https://github.com/typescript-cheatsheets/react#readme">React+TypeScript Cheatsheets</a></li>
+<li><a href="https://transform.tools/html-to-jsx">transform HTML to JSX</a></li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

@@ -1,0 +1,401 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.BScVxmeO.js"></script><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.1.2"><!-- Primary Meta Tags --><title>「Inside look at modern web browser」相關筆記</title><meta name="title" content="「Inside look at modern web browser」相關筆記"><meta name="description" content="這是一個文組轉職前端工程師的技術部落格"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2021/inside-look-at-modern-web-browser-notes"><meta property="og:title" content="「Inside look at modern web browser」相關筆記"><meta property="og:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="og:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2021/inside-look-at-modern-web-browser-notes"><meta property="twitter:title" content="「Inside look at modern web browser」相關筆記"><meta property="twitter:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="twitter:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul:not(:has(li)){margin-top:16px;margin-bottom:16px}li{margin-top:4px;margin-bottom:4px;line-height:24px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:16px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}del{color:#4c5958e6}ol>li:has(p)>p{display:inline;margin:0}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+[data-astro-image]{width:100%;height:auto;object-fit:var(--fit);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>「Inside look at modern web browser」相關筆記</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2021-04-23 11:54</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/Browser" data-astro-cid-2iymvi75> Browser </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#總結" data-astro-cid-qtokga5y>總結</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#第一部架構-architecture" data-astro-cid-qtokga5y>第一部：架構 Architecture</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#process-與-thread" data-astro-cid-qtokga5y>Process 與 Thread</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#瀏覽器架構" data-astro-cid-qtokga5y>瀏覽器架構</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#第二部導航-navigation" data-astro-cid-qtokga5y>第二部：導航 Navigation</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#browser-process" data-astro-cid-qtokga5y>browser process</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#流程" data-astro-cid-qtokga5y>流程</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#renderer-process-1" data-astro-cid-qtokga5y>renderer process 1</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#前往另一個網站" data-astro-cid-qtokga5y>前往另一個網站</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#service-worker" data-astro-cid-qtokga5y>service worker</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#第三部渲染-rendering" data-astro-cid-qtokga5y>第三部：渲染 Rendering</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#renderer-process-2" data-astro-cid-qtokga5y>renderer process 2</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#parsing" data-astro-cid-qtokga5y>parsing</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#style-calculation" data-astro-cid-qtokga5y>style calculation</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#layout" data-astro-cid-qtokga5y>layout</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#paint" data-astro-cid-qtokga5y>paint</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#compositing" data-astro-cid-qtokga5y>compositing</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#compositor-only-properties" data-astro-cid-qtokga5y>compositor-only properties</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#第四部瀏覽器如何處理事件" data-astro-cid-qtokga5y>第四部：瀏覽器如何處理事件</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#non-fast-scrollable-region" data-astro-cid-qtokga5y>non-fast scrollable region</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#補充" data-astro-cid-qtokga5y>補充</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#參考文件" data-astro-cid-qtokga5y>參考文件</a> </li> </ul> </div> <h2 id="總結">總結</h2>
+<p>此為「Inside look at modern web browser」四部曲文章的相關筆記。
+註：本篇筆記內的圖片除了以下這張之外，全部都是從「Inside look at modern web browser」系列取得的說明圖片。</p>
+<p><img src="/2021/inside-look-at-modern-web-browser-notes/process-in-chrome.png" alt="Chrome在呈現網頁給使用者看的時候，大部分的工作是由browser process與renderer process處理的"></p>
+<h2 id="第一部架構-architecture">第一部：架構 Architecture</h2>
+<h3 id="process-與-thread">Process 與 Thread</h3>
+<ul>
+<li>在電腦（或手機）上開啟瀏覽器應用程式後，電腦（或手機）會建立一個 process，並分配記憶體空間給該 process。</li>
+<li>一個 process 裡面可以包含多個 thread。</li>
+<li>一個 process 可以要求電腦（或手機）建立另外一個 process 來幫忙，而 process 之間透過 IPC 來溝通。</li>
+</ul>
+<blockquote>
+<p>A process can be described as an application’s executing program.
+A <strong>thread</strong> is the one that <strong>lives inside of process</strong> and executes any part of its process’s program.
+Wikipedia: In computing, a process is the instance of a computer program that is being executed by one or many threads.</p>
+</blockquote>
+<p>Process 中可能有一個或複數個 Thread。</p>
+<blockquote>
+<p>When you <strong>start an application</strong>, a <strong>process is created</strong>. The program might create thread(s) to help it do work, but that’s optional.
+The Operating System gives the process a “slab” of memory to work with and all application state is kept in that private memory space. When you close the application, the process also goes away and the Operating System frees up the memory.</p>
+</blockquote>
+<p>「開啟應用程式」代表建立一個 process，而計算機的 OS 會分配記憶體中的一些空間給該 process；當使用者結束該應用程序後，那個 process 使用的記憶體空間就會被釋放。</p>
+<blockquote>
+<p>A process can ask the Operating System to <strong>spin up another process</strong> to run different tasks. When this happens, different parts of the memory are allocated for the new process.
+If two processes need to talk, they can do so by using <strong>Inter Process Communication (IPC)</strong>.</p>
+</blockquote>
+<p>Process 可以請 OS 再建立另一個 process 來處理其他任務，而不同的 process 彼此使用 IPC 來互相溝通。</p>
+<h3 id="瀏覽器架構">瀏覽器架構</h3>
+<ul>
+<li>不同廠牌的瀏覽器會有不同的架構。</li>
+<li>以 Chrome 為例，其架構可拆為 browser process、renderer process、plugin process 與 GPU process 等等。
+<img src="/2021/inside-look-at-modern-web-browser-notes/browserui.png" alt="process們有各自的負責範圍">
+<ul>
+<li>browser process 負責的是「Chrome 這個應用程式中『不是 web content』的部分」。其中包含 UI thread、Network thread 與 Storage thread 等等。
+<blockquote>
+<p>Controls “chrome” part of the application including address bar, bookmarks, back and forward buttons. Also handles the invisible, privileged parts of a web browser such as network requests and file access.</p>
+</blockquote>
+</li>
+<li>renderer process 負責的是「Chrome 這個應用程式中『屬於 web content』的部分」。
+<blockquote>
+<p>Controls anything inside of the tab where a website is displayed.</p>
+</blockquote>
+</li>
+<li>一個 tab 可能會有複數個 renderer processes，因為 Chrome 現行的架構是：「一個網站（包含 iframes）分配一個 process」。
+<img src="/2021/inside-look-at-modern-web-browser-notes/isolation.png" alt="process各自獨立的優勢是，即使其中一個process不幸出了問題，也不會影響畫面中的其他內容"></li>
+</ul>
+</li>
+</ul>
+<h2 id="第二部導航-navigation">第二部：導航 Navigation</h2>
+<h3 id="browser-process">browser process</h3>
+<blockquote>
+<p>The browser process has threads like the <strong>UI thread</strong> which draws buttons and input fields of the browser, the <strong>network thread</strong> which deals with network stack to receive data from the internet, the <strong>storage thread</strong> that controls access to the files and more.</p>
+</blockquote>
+<ul>
+<li>UI thread：負責處理「使用者可以鍵入關鍵字、或直接輸入 URL 來前往特定網站」的輸入區塊（input fields）。</li>
+<li>Network thread：處理「向網路索取資料」的相關工作。</li>
+<li>Storage thread：處理「檔案存取權限」的相關工作。</li>
+</ul>
+<blockquote>
+<p>When you type a URL into the address bar, your input is handled by browser process’s UI thread.</p>
+</blockquote>
+<p>當一個使用者在瀏覽器的輸入區塊鍵入 URL 後，「使用者輸入的資料」就是由 UI thread（隸屬於 browser process）負責處理的。</p>
+<h3 id="流程">流程</h3>
+<ol>
+<li>當使用者在輸入區塊鍵入資料後，UI thread 首先要辨別該資料是「URL（使用者要前往特定網頁）」還是「關鍵字（使用者要查找資料）」。</li>
+<li>UI thread 要決定它應該「呈現特定網頁」或是「呈現搜尋結果」給使用者看。</li>
+<li>如果使用者輸入的是 URL，UI thread 會發起 network call，通知 Network thread 去取得網頁內容，這時 Network thread 會使用相對應的 protocols 來與伺服器建立連線。
+<blockquote>
+<p>When a user hits enter, the UI thread initiates a network call to get site content.</p>
+</blockquote>
+</li>
+</ol>
+<ul>
+<li>注意：如果伺服器回覆 HTTP 301（Moved Permanently）給 Network thread 的話，Network thread 會通知 UI thread：「伺服器要求重新導向」，此時 UI thread 會發一個新的 URL request 給 Network thread。
+<blockquote>
+<p>At this point, the network thread may receive a server redirect header like HTTP 301. In that case, the network thread communicates with UI thread that the server is requesting redirect. Then, another URL request will be initiated.</p>
+</blockquote>
+</li>
+</ul>
+<ol>
+<li>Network thread 從伺服器收到資料後，它會檢查該資料的 content-Type header，以便知道伺服器究竟提供了什麼類型的資料。</li>
+</ol>
+<ul>
+<li>但 content-Type header 中自稱的資料類型可能是錯的。</li>
+<li>這時候需要執行 MIME Type sniffing 來確認資料類型。
+<blockquote>
+<p><a href="https://en.wikipedia.org/wiki/Content_sniffing">MIME Type sniffering</a>：inspecting the content of a byte stream to attempt to deduce (推斷) the file format of the data within it.</p>
+</blockquote>
+</li>
+</ul>
+<ol>
+<li>如果資料內容是 HTML 檔案，且檔案內容經過檢查、看起來安全的話，Network thread 會告訴 UI thread「資料已經準備好了」（注意這兩個 threads 都還在 browser process 內），然後 UI thread 會去找一個 renderer process 來處理 HTML 渲染的工作。
+<blockquote>
+<p>Once all of the checks are done and Network thread is confident that browser should navigate to the requested site, the Network thread tells UI thread that the data is ready. UI thread then finds a renderer process to carry on rendering of the web page.</p>
+</blockquote>
+</li>
+<li>browser process 會透過 IPC 來「commit the navigation」給 renderer process。
+<blockquote>
+<p>Now that the data and the renderer process is ready, an IPC is sent from the browser process to the renderer process to commit the navigation.</p>
+</blockquote>
+</li>
+<li>browser process 也會對 renderer process 建立 data stream，以便把收到的資料交給 renderer process。
+<blockquote>
+<p>It also passes on the data stream so the renderer process can keep receiving HTML data.</p>
+</blockquote>
+</li>
+<li>一旦 browser process 確認 commit 在 renderer process 發生後，navigation 流程就算是結束，而 document loading 流程開始。
+<blockquote>
+<p>Once the browser process hears confirmation that the <strong>commit has happened</strong> in the <strong>renderer process</strong>, the <strong>navigation is complete</strong> and the <strong>document loading phase begins</strong>.</p>
+</blockquote>
+</li>
+<li>tab 的 session history 會更新，這樣瀏覽器的「上一頁／下一頁」按鈕才會記住瀏覽過的頁面，而 session history 會存在硬碟中（不然 session 在關掉 tab 後就不見了）。
+<blockquote>
+<p>The session history for the tab will be updated so back/forward buttons will step through the site that was just navigated to. To facilitate tab/session restore when you close a tab or window, the <strong>session history is stored on disk</strong>.</p>
+</blockquote>
+</li>
+</ol>
+<h3 id="renderer-process-1">renderer process 1</h3>
+<p><img src="/2021/inside-look-at-modern-web-browser-notes/commit.png" alt="navigation commit後，由renderer process負責渲染畫面"></p>
+<ol>
+<li>「navigation commit」發生後，由 renderer process 接手處理渲染畫面的工作。</li>
+<li>然後當 renderer process 結束渲染工作後，它會透過 IPC 告訴 browser process 渲染完成了，這時候 browser process 內的 UI thread 會把 tag 上的 spinning 圖示停下來。</li>
+<li>所謂的「渲染結束」指的是「所有的<code>onload</code>事件都已經觸發且完成了」。</li>
+</ol>
+<h3 id="前往另一個網站">前往另一個網站</h3>
+<p>如果要從「目前正在瀏覽的網站」移動到「另一個網站」，流程又是如何？</p>
+<ol>
+<li>從一個網頁 navigate 到另外一網頁「前」，要先檢查現在的網頁有沒有<code>beforeunload</code>要處理。
+<blockquote>
+<p>Well, the browser process goes through the same steps to navigate to the different site. But <strong>before</strong> it can do that, it needs to check with the currently rendered site if they care about <code>beforeunload</code> event.</p>
+</blockquote>
+</li>
+<li>web content 所有的內容都歸 renderer process 管，所以 browser process 在導向新的網頁前，要先透過 renderer process 確認有沒有<code>beforeunload</code>要處理。
+<blockquote>
+<p><code>beforeunload</code> can create “Leave this site?” alert when you try to navigate away or close the tab. Everything inside of a tab including your JavaScript code is handled by the renderer process, so the browser process has to check with current renderer process when new navigation request comes in.</p>
+</blockquote>
+</li>
+<li>舊的 renderer process 會處理<code>unload</code>之類的事件，新的 renderer process 會負責渲染頁面的工作。
+<blockquote>
+<p>When the new navigation is made to a different site than currently rendered one, a separate render process is called in to handle the new navigation while current render process is kept around to handle events like <code>unload</code>.
+<img src="/2021/inside-look-at-modern-web-browser-notes/unload.png" alt="兩個renderer process分別處理既有網頁的unload事件，與新網頁的渲染工作"></p>
+</blockquote>
+</li>
+</ol>
+<h3 id="service-worker">service worker</h3>
+<p>service worker 搭配<code>Cache API</code>可以讓應用程式即使處在<strong>沒有網路</strong>的環境下，也能進行一定程度的操作。</p>
+<blockquote>
+<p>Service worker is a way to <strong>write network proxy in your application code</strong>; allowing web developers to have more control over what to cache locally and when to get new data from the network. If service worker is set to <strong>load the page from the cache</strong>, there is <strong>no need to request the data from the network</strong>.</p>
+</blockquote>
+<p>那麼，提問：
+service worker 是 JavaScript code（由 renderer process 管轄），browser process 怎麼知道某網站會用到 service worker？</p>
+<blockquote>
+<p>The important part to remember is that service worker is JavaScript code that runs in a <strong>renderer process</strong>. But when the navigation request comes in, <strong>how does a browser process know the site has a service worker?</strong></p>
+</blockquote>
+<p>回答如下：</p>
+<ol>
+<li>透過 JavaScript 註冊 service worker 時（發生在 renderer process 中），service worker 的「scope」會被記錄下來。</li>
+<li>當使用者要導覽到某個網站時，browser process 內的 Network thread 會檢查某網站「是否有註冊過 service worker」？</li>
+<li>「有」的話，UI thread（屬於 browser process）會找一個 renderer process 來運行 service worker。</li>
+<li>render process 內的 worker thread 會決定要向網路還是快取拿資料。</li>
+</ol>
+<blockquote>
+<p>When a service worker is registered, the <strong>scope</strong> of the service worker is kept as a reference. When a navigation happens, <strong>network thread checks the domain against registered service worker scopes</strong>, if a service worker is registered for that URL, the UI thread finds a renderer process in order to execute the service worker code.</p>
+</blockquote>
+<blockquote>
+<p>The service worker may <strong>load data from cache</strong>, eliminating the need to request data from the network, or it may <strong>request new resources from the network</strong>.</p>
+</blockquote>
+<h2 id="第三部渲染-rendering">第三部：渲染 Rendering</h2>
+<h3 id="renderer-process-2">renderer process 2</h3>
+<blockquote>
+<p>The renderer process’s core job is to turn HTML, CSS, and JavaScript into a web page that the user can interact with.</p>
+</blockquote>
+<p>renderer process 的工作：把原始碼轉換成使用者可以互動的網頁。</p>
+<blockquote>
+<p>The renderer process is responsible for <strong>everything that happens inside of a tab</strong>. In a renderer process, the main thread handles most of the code you send to the user. Sometimes parts of your JavaScript is handled by worker threads if you use a web worker or a service worker. Compositor and raster threads are also run inside of a renderer processes to render a page efficiently and smoothly.</p>
+</blockquote>
+<p>renderer process 包含以下幾種 thread：</p>
+<ul>
+<li>main thread：處理大部分的程式碼</li>
+<li>worker thread：如果有使用 web worker 或 service worker 的話，worker thread 會負責處理這些部位的 JavaScript</li>
+<li>compositor thread：把畫面分拆為不同的圖層（layers）</li>
+<li>raster thread：負責把向量圖轉換成像素圖</li>
+</ul>
+<h3 id="parsing">parsing</h3>
+<p>重點：（renderer process 中的）main thread 將 HTML 轉換為 DOM 的過程就是 parsing。</p>
+<ol>
+<li>建立 DOM：由 main thread 把 text string (HTML)轉換為 Document Object Model (DOM)。
+<blockquote>
+<p>When the renderer process receives a commit message for a navigation and starts to receive HTML data, the main thread begins to parse the text string (HTML) and turn it into a Document Object Model (DOM).</p>
+</blockquote>
+</li>
+<li>導入外部資源：外部資源包括任何網頁上會用到的圖片、CSS 樣式或 JavaScript 程式碼。這些資料會由 preload scanner 統整起來，然後送去 browser process，請 network thread 幫忙處理（而不是由 renderer process 的 main thread 來請求這些資料）。
+<blockquote>
+<p>A website usually uses external resources like images, CSS, and JavaScript. Those files need to be loaded from network or cache. The main thread could request them one by one as they find them while parsing to build a DOM, but in order to speed up, “preload scanner” is run concurrently. If there are things like <code>&#x3C;img></code> or <code>&#x3C;link></code> in the HTML document, preload scanner peeks at tokens generated by HTML parser and <strong>sends requests to the network thread in the browser process</strong>.</p>
+</blockquote>
+</li>
+<li>不要讓 JavaScript 阻擋渲染流程：因為 JavaScript 程式碼中可能包含改變 DOM 的內容，所以瀏覽器一定要把 JavaScript 相關的內容解析完畢後、才能繼續進行畫面渲染的流程。
+<blockquote>
+<p>When the HTML parser finds a <code>&#x3C;script></code> tag, it pauses the parsing of the HTML document and has to load, parse, and execute the JavaScript code. Why? because JavaScript can change the shape of the document using things like <code>document.write()</code> which changes the entire DOM structure (overview of the parsing model in the HTML spec has a nice diagram). This is why the HTML parser has to wait for JavaScript to run before it can resume parsing of the HTML document.</p>
+</blockquote>
+</li>
+<li>換句話說，如果是與畫面渲染沒有關聯的資源，可透過加上<code>async</code>或<code>defer</code>關鍵字來提醒瀏覽器「不用急著載入這些資料」，避免卡住瀏覽器進行畫面渲染。
+<blockquote>
+<p>There are many ways web developers can send hints to the browser in order to load resources nicely. If your JavaScript does not use <code>document.write()</code>, you can add async or defer attribute to the <code>&#x3C;script></code> tag. The browser then loads and runs the JavaScript code asynchronously and does not block the parsing. You may also use JavaScript module if that’s suitable. <code>&#x3C;link rel="preload"></code> is a way to inform browser that the resource is definitely needed for current navigation and you would like to download as soon as possible.</p>
+</blockquote>
+</li>
+</ol>
+<h3 id="style-calculation">style calculation</h3>
+<p>重點：建構完 DOM 後，main thread 會開始解析 CSS 樣式內容。</p>
+<ol>
+<li>將 DOM 建構完畢後，main thread 會開始解析 CSS 樣式。
+<blockquote>
+<p>Having a DOM is not enough to know what the page would look like because we can style page elements in CSS. The <strong>main thread parses CSS</strong> and determines the computed style for each DOM node.</p>
+</blockquote>
+</li>
+<li>Chrome 會提供 user agent stylesheet（可理解為網頁套用預設樣式，不同品牌的瀏覽器，其 user agent stylesheet 內容也會不同），所以即使一份 HTML 檔案沒有被給定任何 CSS 樣式，該網頁也不會以「完全沒有任何樣式」的模樣呈現在使用者面前。
+<blockquote>
+<p>Even if you do not provide any CSS, each DOM node has a computed style. <code>&#x3C;h1></code> tag is displayed bigger than <code>&#x3C;h2></code> tag and margins are defined for each element. This is because the browser has a default style sheet.</p>
+</blockquote>
+</li>
+</ol>
+<ul>
+<li>Chrome 的 user agent stylesheet 原始碼可<a href="https://source.chromium.org/chromium/chromium/src/+/master:third_party/blink/renderer/core/html/resources/html.css">在此查看</a>。</li>
+</ul>
+<h3 id="layout">layout</h3>
+<p>重點：CSS 樣式解析完畢後，main thread 開始建立 layout tree，layout tree 只會包含「要被安排在畫面上的內容」。</p>
+<ol>
+<li>解析完 CSS 樣式後，main thread 會根據 DOM 與 CSS 樣式內容來建構 layout tree。
+<blockquote>
+<p>The layout is a process to find the geometry of elements. The <strong>main thread</strong> walks through the DOM and computed styles and creates the <strong>layout tree</strong> which has information like x y coordinates and bounding box sizes.</p>
+</blockquote>
+</li>
+<li>layout tree 只會列出真正要顯示在畫面上的元素，亦即，如果有某個<code>&#x3C;div></code>的 CSS 樣式被設定為<code>display: none</code>的話，該<code>&#x3C;div></code>是不會出現在 layout tree 中的。
+<blockquote>
+<p>Layout tree may be similar structure to the DOM tree, but it <strong>only contains</strong> information related to what’s <strong>visible</strong> on the page. If <code>display: none</code> is applied, that element is not part of the layout tree (however, an element with <code>visibility: hidden</code> is in the layout tree).</p>
+</blockquote>
+</li>
+</ol>
+<h3 id="paint">paint</h3>
+<blockquote>
+<p>At this paint step, the <strong>main thread</strong> walks the layout tree to create <strong>paint records</strong>. Paint record is a note of painting process like “background first, then text, then rectangle”.</p>
+</blockquote>
+<p>paint records：「根據特定順序分別繪製不同元素」的指令。</p>
+<blockquote>
+<p>The most important thing to grasp in rendering pipeline is that at each step the result of the previous operation is used to create new data. For example, if something changes in the layout tree, then the Paint order needs to be regenerated for affected parts of the document.</p>
+</blockquote>
+<p>須注意 rendering pipeline 中的資料都是<strong>承先啟後</strong>的，一旦修改了 layout tree，paint record 的資料也需要跟著變動。</p>
+<h3 id="compositing">compositing</h3>
+<blockquote>
+<p>Compositing is a technique to <strong>separate parts of a page into layers</strong>, rasterize them separately, and composite as a page in a separate thread called <strong>compositor thread</strong>. If scroll happens, since layers are already rasterized, all it has to do is to composite a new frame. Animation can be achieved in the same way by moving layers and composite a new frame.</p>
+</blockquote>
+<p>compositing 的工作：把一個畫面分拆為不同的 layers，並讓每個 layer 各自 rasterize。</p>
+<blockquote>
+<p>Turning this information into pixels on the screen is called rasterizing.</p>
+</blockquote>
+<p>rasterizing：把向量資訊繪製成顯示裝置上的像素點。</p>
+<blockquote>
+<p>In order to find out which elements need to be in which layers, the <strong>main thread</strong> walks through the layout tree to <strong>create the layer tree</strong>. If certain parts of a page that should be separate layer (like slide-in side menu) is not getting one, then you can hint to the browser by using will-change attribute in CSS.</p>
+</blockquote>
+<blockquote>
+<p>Once the layer tree is created and paint orders are determined, the main thread commits that information to the compositor thread. The compositor thread then rasterizes each layer. A layer could be large like the entire length of a page, so the compositor thread divides them into <strong>tiles</strong> and sends each tile off to raster threads. Raster threads rasterize each tile and store them in GPU memory.</p>
+</blockquote>
+<p>流程如下：</p>
+<ol>
+<li>renderer process 的 main thread 計算出 layer tree。</li>
+<li>main thread 把 layer tree 的資訊交給 compositor thread。</li>
+<li>compositor thread 對每一個 layer 進行 rasterization（向量變像素）。</li>
+<li>layer 如果太大，compositor thread 會把 layer 切成 tiles 後，再送進 raster thread 進行 rasterization。</li>
+</ol>
+<blockquote>
+<p>Once tiles are rastered, compositor thread gathers tile information called <strong>draw quads</strong> to create a compositor frame.</p>
+</blockquote>
+<p><img src="/2021/inside-look-at-modern-web-browser-notes/draw-quads-compositor-frame.png" alt="draw quads與compositor frame"></p>
+<p>tiles 從向量變像素（rasterization）後，compositor thread 會收集關於 tiles 的資訊（稱為 draw quads），以便建立 compositor frame。</p>
+<ul>
+<li>draw quads：包含「tile 在記憶體中的位置」以及「tile 要被繪製在畫面上的什麼位置」的資訊。</li>
+<li>compositor frame：畫面的一個 frame。</li>
+</ul>
+<blockquote>
+<p>A compositor frame is then submitted to the <strong>browser process</strong> via IPC. At this point, another compositor frame could be added from UI thread for the browser UI change or from other renderer processes for extensions. These <strong>compositor frames are sent to the GPU to display it on a screen</strong>. If a scroll event comes in, compositor thread creates another compositor frame to be sent to the GPU.</p>
+</blockquote>
+<p><img src="/2021/inside-look-at-modern-web-browser-notes/composit.png" alt="Compositor thread creating compositing frame. Frame is sent to the browser process then to GPU"></p>
+<p>compositor frame 從 renderer process 透過 IPC 傳遞到 browser process 後，會被轉交給 GPU 來「呈現在使用者的裝置上」，直到這一步使用者才真的會「看到網頁」。</p>
+<h3 id="compositor-only-properties">compositor-only properties</h3>
+<blockquote>
+<p>The benefit of compositing is that it is done <strong>without involving the main thread</strong>. Compositor thread does not need to wait on style calculation or JavaScript execution. This is why compositing only animations are considered the best for smooth performance. If layout or paint needs to be <strong>calculated again</strong> then the <strong>main thread has to be involved</strong>.</p>
+</blockquote>
+<p><img src="/2021/inside-look-at-modern-web-browser-notes/frame-no-layout-paint.jpg" alt="The best-performing version of the pixel pipeline avoids both layout and paint, and only requires compositing changes"></p>
+<ul>
+<li>不經過 layout 與 paint（不需要 main thread），全部都由 compositing thread 處理的 CSS 樣式：
+<ul>
+<li><code>transform</code></li>
+<li><code>opacity</code>：須注意 Blink 在處理<code>opacity</code>時會進入 painting 階段</li>
+<li>不同的 CSS 樣式各自會觸發不同廠牌瀏覽器的哪些階段，可參考：<a href="https://csstriggers.com/">CSS Triggers</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="第四部瀏覽器如何處理事件">第四部：瀏覽器如何處理事件</h2>
+<blockquote>
+<p>From the browser’s point of view, <strong>input</strong> means <strong>any gesture from the user</strong>. Mouse wheel scroll is an input event and touch or mouse over is also an input event.</p>
+</blockquote>
+<p>事件（input）：瀏覽器將「使用者對網頁進行操作的行為」視為事件（input）。</p>
+<ol>
+<li>browser process 會注意到「有 input event 在 web content 上的某處發生」。
+<blockquote>
+<p>When user gesture like touch on a screen occurs, the <strong>browser process</strong> is the one that <strong>receives the gesture</strong> at first. However, the browser process is only aware of <strong>where</strong> that gesture occurred since content inside of a tab is handled by the renderer process.</p>
+</blockquote>
+</li>
+<li>browser process 會把 event type 以及 event type 的 coordinates（座標）資訊發給 renderer process。
+<blockquote>
+<p>So the browser process sends the event type (like <code>touchstart</code>) and its coordinates to the <strong>renderer process</strong>.</p>
+</blockquote>
+</li>
+<li>renderer process 會計算出 event target 是對應到畫面上的哪一個元素，以及配合該元素 event listener 的 function。
+<blockquote>
+<p>Renderer process handles the event appropriately by finding the event target and running event listeners that are attached.</p>
+</blockquote>
+</li>
+</ol>
+<p><img src="/2021/inside-look-at-modern-web-browser-notes/input.png" alt="由renderer process來確認哪一個元素與使用者發生互動"></p>
+<h3 id="non-fast-scrollable-region">non-fast scrollable region</h3>
+<ol>
+<li>compositor thread 會把帶有事件監聽器的畫面區塊標記為「non-fast scrollable region」。
+<blockquote>
+<p>Since <strong>running JavaScript is the main thread’s job</strong>, when a page is composited, the compositor thread marks a region of the page that <strong>has event handlers attached</strong> as “<strong>Non-Fast Scrollable Region</strong>”.</p>
+</blockquote>
+</li>
+<li>如果該區域有與使用者發生互動，compositor thread 會把互動事件發給 main thread 處理。
+<blockquote>
+<p>By having this information, the compositor thread can make sure to send input event to the main thread if the event occurs in that region.</p>
+</blockquote>
+</li>
+</ol>
+<ul>
+<li>如果互動事件是在「non-fast scrollable region」以外的地方發生，compositor thread 會負責產生一個新的 frame。
+<blockquote>
+<p>If input event comes from <strong>outside</strong> of this region, then the compositor thread carries on <strong>compositing new frame</strong> without waiting for the main thread.</p>
+</blockquote>
+</li>
+</ul>
+<ol>
+<li>事件送到 main thread 後，會執行 hit test 來確認 event target。hit test 會查詢 renderer process 在 paint 階段的資料，來知道事件到底是在哪一個元素上發生的。
+<blockquote>
+<p>When the compositor thread sends an input event to the main thread, the first thing to run is a <strong>hit test</strong> to find the <strong>event target</strong>. Hit test uses <strong>paint records data</strong> that was generated in the rendering process to find out what is underneath the point coordinates in which the event occurred.</p>
+</blockquote>
+</li>
+</ol>
+<h2 id="補充">補充</h2>
+<ul>
+<li>本文僅記錄「Inside look at modern web browser」系列文中目前能理解的部分，有機會還是請閱讀原文。</li>
+<li>關於「渲染 Rendering」的細部分解可參考以下影片：
+<iframe width="560" height="315" src="https://www.youtube.com/embed/m-J-tbAlFic" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</li>
+</ul>
+<h2 id="參考文件">參考文件</h2>
+<ul>
+<li>Inside look at modern web browser
+<ul>
+<li><a href="https://developers.google.com/web/updates/2018/09/inside-browser-part1">Inside look at modern web browser (part 1)</a></li>
+<li><a href="https://developers.google.com/web/updates/2018/09/inside-browser-part2">Inside look at modern web browser (part 2)</a></li>
+<li><a href="https://developers.google.com/web/updates/2018/09/inside-browser-part3">Inside look at modern web browser (part 3)</a></li>
+<li><a href="https://developers.google.com/web/updates/2018/09/inside-browser-part4">Inside look at modern web browser (part 4)</a></li>
+</ul>
+</li>
+<li>Wikipedia
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Process_(computing)">Process (computing)</a></li>
+<li><a href="https://zh.wikipedia.org/wiki/%E8%A1%8C%E7%A8%8B">行程</a></li>
+<li><a href="https://zh.wikipedia.org/wiki/%E8%A1%8C%E7%A8%8B%E9%96%93%E9%80%9A%E8%A8%8A">行程間通訊</a></li>
+</ul>
+</li>
+<li><a href="https://csstriggers.com/">CSS Triggers</a></li>
+<li><a href="https://developers.google.com/web/fundamentals/performance/rendering/stick-to-compositor-only-properties-and-manage-layer-count">Stick to Compositor-Only Properties and Manage Layer Count</a></li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

@@ -1,0 +1,79 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.BScVxmeO.js"></script><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.1.2"><!-- Primary Meta Tags --><title>閱讀筆記：The Programmer&#39;s Brain Chapter 4 How to read complex code</title><meta name="title" content="閱讀筆記：The Programmer's Brain Chapter 4 How to read complex code"><meta name="description" content="這是一個文組轉職前端工程師的技術部落格"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2023/the-programmers-brain-ch4-how-to-read-complex-code"><meta property="og:title" content="閱讀筆記：The Programmer's Brain Chapter 4 How to read complex code"><meta property="og:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="og:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2023/the-programmers-brain-ch4-how-to-read-complex-code"><meta property="twitter:title" content="閱讀筆記：The Programmer's Brain Chapter 4 How to read complex code"><meta property="twitter:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="twitter:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul:not(:has(li)){margin-top:16px;margin-bottom:16px}li{margin-top:4px;margin-bottom:4px;line-height:24px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:16px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}del{color:#4c5958e6}ol>li:has(p)>p{display:inline;margin:0}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+[data-astro-image]{width:100%;height:auto;object-fit:var(--fit);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>閱讀筆記：The Programmer&#39;s Brain Chapter 4 How to read complex code</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2023-07-06 20:07</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/General" data-astro-cid-2iymvi75> General </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#總結" data-astro-cid-qtokga5y>總結</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#筆記" data-astro-cid-qtokga5y>筆記</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#定義解釋" data-astro-cid-qtokga5y>定義解釋</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#認知負荷的種類" data-astro-cid-qtokga5y>認知負荷的種類</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#解決方式" data-astro-cid-qtokga5y>解決方式</a> </li><li class="toc-4" data-astro-cid-qtokga5y> <a href="#反向重構" data-astro-cid-qtokga5y>反向重構</a> </li><li class="toc-4" data-astro-cid-qtokga5y> <a href="#取代" data-astro-cid-qtokga5y>取代</a> </li><li class="toc-4" data-astro-cid-qtokga5y> <a href="#依賴圖與狀態表" data-astro-cid-qtokga5y>依賴圖與狀態表</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#參考文件" data-astro-cid-qtokga5y>參考文件</a> </li> </ul> </div> <h2 id="總結">總結</h2>
+<p>此篇文章是 Good Code, Bad Code: Think like a software engineer 第四章（How to read complex code）的閱讀筆記。</p>
+<p>本書認為看 code 時的困惑感共有三種類型（長期記憶中的知識不足、短期記憶過載、工作記憶過載），而此章的重點在如何減少「工作記憶過載」導致的困惑。手段如下：</p>
+<ul>
+<li>反向重構：將程式碼重構為便於理解的結構</li>
+<li>取代：將程式碼中不熟悉的語法換成自己熟悉的版本</li>
+<li>透過依賴圖（dependency graph）以及狀態表（state table）來降低工作記憶的負荷</li>
+</ul>
+<h2 id="筆記">筆記</h2>
+<h3 id="定義解釋">定義解釋</h3>
+<p>本書對於工作記憶（working memory）的定義為：大腦能思考、產生想法、解決問題的能力。</p>
+<blockquote>
+<p>The working memory represents the <strong>brain’s capacity to think, to form new ideas, and to solve problems</strong>.</p>
+</blockquote>
+<p>對本書作者來說短期記憶（short-term memory）與工作記憶是不同的能力。短期記憶用於「保存資訊」，而工作記憶的任務是「處理資訊」。</p>
+<blockquote>
+<p>The role of the STM is to remember information. The role of the working memory, on the other hand, is to <strong>process information</strong>.</p>
+</blockquote>
+<p>可參考下圖，同樣都是數字，圖左是使用短期記憶來記住一組電話號碼，而圖右是使用工作記憶來計算數字相加。</p>
+<p><img src="/2023/the-programmers-brain-ch4-how-to-read-complex-code/CH04_F02_Hermans2.png" alt="short term memory v.s. working memory"></p>
+<p>工作記憶也有上限，且上限與短期記憶相差不多，一般來說只能處理 2 到 6 組資訊。在閱讀且試圖「理解」該段程式碼時，如果程式碼無法被有效分塊，那麼工作記憶就會進入過載（overloaded）的狀況；困惑感即是源自於此。</p>
+<h3 id="認知負荷的種類">認知負荷的種類</h3>
+<p>書中更近一步指出，認知負荷（cognitive load）還能在分為三種類型（同步參考維基百科）：</p>
+<ol>
+<li>內在（intrinsic）：問題本身帶來的困難</li>
+<li>外部（extraneous）：不屬於問題本質，而是呈現方式引起的困難</li>
+<li>密切的（germane）：為了能將資訊保存到長期記憶（long-term memory）所需要的認知負荷</li>
+</ol>
+<p>接下來要介紹的「減少工作記憶過載」方法主要針對「內在」與「外在」類型的負荷。</p>
+<h3 id="解決方式">解決方式</h3>
+<h4 id="反向重構">反向重構</h4>
+<p>重構通常是將重複出現或是結構繁冗的程式碼整理成比較精簡、好維護的樣式。但這份精簡可能會讓對該份程式碼還不夠熟悉的開發者帶來理解困難。書中提到的「反向重構」則是與一般認知的重構反過來：為了理解方便，將那些整理到他處的程式碼直接複製一份到目前正在閱讀的檔案裡。</p>
+<blockquote>
+<p>The goal of a cognitive refactoring is not to make the code more maintainable, but to <strong>make it more readable for the current reader</strong> at the current point in time.</p>
+</blockquote>
+<h4 id="取代">取代</h4>
+<p>如果一個開發者對於某語言的掌握度還不是非常完善，在閱讀程式碼時，可考慮將那些還不熟悉的語法替換為自己比較熟悉的版本。</p>
+<p>舉例：對一個剛開始接觸 JavaScript 的工程師來說，比起使用 <code>Array.map()</code> 來透過一個陣列產生另外一個陣列，使用 <code>for (let i = 0; i &#x3C; arr.length; i++)</code> 搭配 <code>Array.push()</code> 來產生一個新陣列可能會「更好懂」。這就是「取代」。</p>
+<h4 id="依賴圖與狀態表">依賴圖與狀態表</h4>
+<p>依賴圖（dependency graph）：推薦將程式碼印到紙上來作業、或至少存成 PDF 格式搭配平板來進行標記。標記的方法是：圈選變數、功能，以及將出現多次的變數透過線條彼此連接。這樣做的目的是——讓工程師在閱讀程式碼時能夠專注在內容、不用額外花費工作記憶來處理流程資訊</p>
+<blockquote>
+<p>Creating a dependency graph can help you understand a piece of complex and interconnected code.</p>
+</blockquote>
+<p>狀態表（state table）：以迴圈為例，狀態表會列出一個迴圈功能中所有的變數，並紀錄每一輪、每個變數當下的值。將計算結果紀錄下來，閱讀程式碼時可減低工作記憶的負荷</p>
+<blockquote>
+<p>Creating a state table containing the intermediate values of variables can aid in reading code that is heavy on calculations.</p>
+</blockquote>
+<h2 id="參考文件">參考文件</h2>
+<ul>
+<li><a href="https://www.manning.com/books/the-programmers-brain">Manning: The Programmer’s Brain</a></li>
+<li><a href="https://zh.wikipedia.org/zh-hant/%E8%AA%8D%E7%9F%A5%E8%B2%A0%E8%8D%B7">維基百科：認知負荷</a></li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

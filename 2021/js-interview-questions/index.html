@@ -1,0 +1,518 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.BScVxmeO.js"></script><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.1.2"><!-- Primary Meta Tags --><title>「JavaScript初級面試題目」相關筆記</title><meta name="title" content="「JavaScript初級面試題目」相關筆記"><meta name="description" content="這是一個文組轉職前端工程師的技術部落格"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2021/js-interview-questions"><meta property="og:title" content="「JavaScript初級面試題目」相關筆記"><meta property="og:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="og:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2021/js-interview-questions"><meta property="twitter:title" content="「JavaScript初級面試題目」相關筆記"><meta property="twitter:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="twitter:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul:not(:has(li)){margin-top:16px;margin-bottom:16px}li{margin-top:4px;margin-bottom:4px;line-height:24px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:16px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}del{color:#4c5958e6}ol>li:has(p)>p{display:inline;margin:0}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+[data-astro-image]{width:100%;height:auto;object-fit:var(--fit);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>「JavaScript初級面試題目」相關筆記</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2021-10-18 13:52</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/JavaScript" data-astro-cid-2iymvi75> JavaScript </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#總結" data-astro-cid-qtokga5y>總結</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#第一週題目串" data-astro-cid-qtokga5y>第一週題目串</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#varconst-與-let-之差異" data-astro-cid-qtokga5y>var、const 與 let 之差異</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#請調整以下程式碼使其每隔一秒依序印出數列-01234" data-astro-cid-qtokga5y>請調整以下程式碼，使其每隔一秒依序印出數列 01234</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#第一週以下程式碼的輸出結果為" data-astro-cid-qtokga5y>第一週：以下程式碼的輸出結果為？</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#consolelog0102--03的結果是什麼" data-astro-cid-qtokga5y>console.log((0.1+0.2) === 0.3)的結果是什麼？</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#什麼是-hoist" data-astro-cid-qtokga5y>什麼是 hoist？</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#undefinednull-與-not-defined-之差異" data-astro-cid-qtokga5y>undefined、null 與 not defined 之差異？</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#以下兩種宣告函數的方式有何差異" data-astro-cid-qtokga5y>以下兩種宣告函數的方式有何差異？</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#請列出以下輸出結果" data-astro-cid-qtokga5y>請列出以下輸出結果</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#何謂-iife" data-astro-cid-qtokga5y>何謂 IIFE</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#第二週題目串" data-astro-cid-qtokga5y>第二週題目串</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#何謂閉包closure" data-astro-cid-qtokga5y>何謂閉包（closure）</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#寫出一函數使-consolelogmul234為-24consolelogmul434為-48" data-astro-cid-qtokga5y>寫出一函數，使 console.log(mul(2)(3)(4))為 24，console.log(mul(4)(3)(4))為 48</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#如何檢查一個變數的型別" data-astro-cid-qtokga5y>如何檢查一個變數的型別？</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#call-by-reference-與-call-by-value-之差異" data-astro-cid-qtokga5y>call by reference 與 call by value 之差異</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#如何拷貝一個陣列或物件" data-astro-cid-qtokga5y>如何拷貝一個陣列或物件</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#請回答以下程式碼輸出結果" data-astro-cid-qtokga5y>請回答以下程式碼輸出結果</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#什麼是-this" data-astro-cid-qtokga5y>什麼是 this</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#applybind與-call的差異" data-astro-cid-qtokga5y>apply()、bind()與 call()的差異</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#第三週題目串" data-astro-cid-qtokga5y>第三週題目串</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#第三週以下程式碼的輸出結果為" data-astro-cid-qtokga5y>第三週：以下程式碼的輸出結果為？</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#箭頭函數的特性" data-astro-cid-qtokga5y>箭頭函數的特性</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#consolelog0--1--1--2的輸出結果為何" data-astro-cid-qtokga5y>console.log(0 &amp;&amp; 1 || 1 &amp;&amp; 2)的輸出結果為何</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#js-如何處理非同步" data-astro-cid-qtokga5y>JS 如何處理非同步？</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#什麼是-promise" data-astro-cid-qtokga5y>什麼是 promise？</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#以下程式碼的輸出結果為何" data-astro-cid-qtokga5y>以下程式碼的輸出結果為何？</a> </li><li class="toc-4" data-astro-cid-qtokga5y> <a href="#第一題" data-astro-cid-qtokga5y>第一題</a> </li><li class="toc-4" data-astro-cid-qtokga5y> <a href="#第二題" data-astro-cid-qtokga5y>第二題</a> </li><li class="toc-4" data-astro-cid-qtokga5y> <a href="#第三題" data-astro-cid-qtokga5y>第三題</a> </li><li class="toc-4" data-astro-cid-qtokga5y> <a href="#第四題" data-astro-cid-qtokga5y>第四題</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#參考文件" data-astro-cid-qtokga5y>參考文件</a> </li> </ul> </div> <h2 id="總結">總結</h2>
+<p>整理了今年 7 月參加的 JS 模擬面試之題目與相關筆記。
+感謝<a href="https://eruditeness.news.blog/">丹尼哥</a>無償出借時間陪大家練習。</p>
+<p>第一週摘要：scope、浮點數陷阱、hoist、強制轉型、null vs undefined、IIFE
+第二週摘要：closure、變數型別、by value &#x26; by reference、深淺拷貝、this
+第三週摘要：箭頭函數、運算子、event loop、promise、micro task vs macro task</p>
+<h2 id="第一週題目串">第一週題目串</h2>
+<h3 id="varconst-與-let-之差異">var、const 與 let 之差異</h3>
+<ul>
+<li><code>var</code> 為 functional scope，而 <code>let</code> 與 <code>const</code> 為 block scope</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#6A737D">// functional scope</span></span>
+<span class="line"><span style="color:#E1E4E8">(() </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">  {</span></span>
+<span class="line"><span style="color:#F97583">    var</span><span style="color:#E1E4E8"> s </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> 'hello world'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">  console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(s);</span></span>
+<span class="line"><span style="color:#E1E4E8">})();</span></span>
+<span class="line"><span style="color:#6A737D">// 'hello world'</span></span></code></pre>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#6A737D">// block scope</span></span>
+<span class="line"><span style="color:#E1E4E8">(() </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">  {</span></span>
+<span class="line"><span style="color:#F97583">    let</span><span style="color:#E1E4E8"> s </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> 'hello world'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">  console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(s);</span></span>
+<span class="line"><span style="color:#E1E4E8">})();</span></span>
+<span class="line"><span style="color:#6A737D">// Uncaught ReferenceError: s is not defined</span></span></code></pre>
+<ul>
+<li>透過 <code>var</code> 與 <code>let</code> 宣告的變數可以重新賦值（value can be reassigned），而透過 <code>const</code> 宣告的變數不可</li>
+<li>透過三種方法宣告的變數都會在 creation phase 被 hoist，但是只有透過 <code>var</code> 宣告的變數可以先被取得（can be accessed before created），並取得的值會是 <code>undefined</code></li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#E1E4E8">console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(a); </span><span style="color:#6A737D">// Uncaught ReferenceError: b is not defined</span></span>
+<span class="line"><span style="color:#F97583">let</span><span style="color:#E1E4E8"> a </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> 'hello world'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(b); </span><span style="color:#6A737D">// undefined</span></span>
+<span class="line"><span style="color:#F97583">var</span><span style="color:#E1E4E8"> b </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> 'hello world'</span><span style="color:#E1E4E8">;</span></span></code></pre>
+<h3 id="請調整以下程式碼使其每隔一秒依序印出數列-01234">請調整以下程式碼，使其每隔一秒依序印出數列 01234</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#E1E4E8">(() </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">  for</span><span style="color:#E1E4E8"> (</span><span style="color:#F97583">var</span><span style="color:#E1E4E8"> i </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> 0</span><span style="color:#E1E4E8">; i </span><span style="color:#F97583">&#x3C;</span><span style="color:#79B8FF"> 5</span><span style="color:#E1E4E8">; i</span><span style="color:#F97583">++</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#B392F0">    setTimeout</span><span style="color:#E1E4E8">(() </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">      console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(i);</span></span>
+<span class="line"><span style="color:#E1E4E8">    }, </span><span style="color:#79B8FF">1000</span><span style="color:#F97583"> *</span><span style="color:#E1E4E8"> i);</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">})();</span></span></code></pre>
+<ul>
+<li>將 <code>var</code> 改為 <code>let</code>，因 <code>var</code> 為 functional scope，而五組 console.log 在 event loop 的 queue 中等到 stack 清空後，<code>i</code> 已經為 5，故只會每隔一秒印出 5；改為使用 <code>let</code> 宣告 block scope 的變數後，即可輸出值分別為 01234 的結果</li>
+<li>使用 IIFE 概念改寫，如下：</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#E1E4E8">(() </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">  for</span><span style="color:#E1E4E8"> (</span><span style="color:#F97583">var</span><span style="color:#E1E4E8"> i </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> 0</span><span style="color:#E1E4E8">; i </span><span style="color:#F97583">&#x3C;</span><span style="color:#79B8FF"> 5</span><span style="color:#E1E4E8">; i</span><span style="color:#F97583">++</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#B392F0">    setTimeout</span><span style="color:#E1E4E8">(</span></span>
+<span class="line"><span style="color:#E1E4E8">      ((</span><span style="color:#FFAB70">i</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">        return</span><span style="color:#E1E4E8"> () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">          console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(i);</span></span>
+<span class="line"><span style="color:#E1E4E8">        };</span></span>
+<span class="line"><span style="color:#E1E4E8">      })(i),</span></span>
+<span class="line"><span style="color:#79B8FF">      1000</span><span style="color:#F97583"> *</span><span style="color:#E1E4E8"> i</span></span>
+<span class="line"><span style="color:#E1E4E8">    );</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">})();</span></span></code></pre>
+<h3 id="第一週以下程式碼的輸出結果為">第一週：以下程式碼的輸出結果為？</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#E1E4E8">  (</span><span style="color:#F97583">function</span><span style="color:#E1E4E8"> () {</span></span>
+<span class="line"><span style="color:#F97583">    var</span><span style="color:#E1E4E8"> a </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> (b </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> 'hello world'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">  })();</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">  console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">`a defined? ${</span><span style="color:#F97583">typeof</span><span style="color:#E1E4E8"> a</span><span style="color:#F97583"> !==</span><span style="color:#9ECBFF"> 'undefined'}`</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">  console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">`b defined? ${</span><span style="color:#F97583">typeof</span><span style="color:#E1E4E8"> b</span><span style="color:#F97583"> !==</span><span style="color:#9ECBFF"> 'undefined'}`</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<ul>
+<li>分別為<code>false</code>與<code>true</code>，a 為<code>undefined</code>而 b 為<code>hello world</code></li>
+<li>實際發生的事情如下：b 被宣告為全域變數，a 的作用範圍則是匿名函數內（functional scope）；IIFE 執行完畢後，在 function 外無法取得 a，但可取得全域變數 b</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#E1E4E8">  (</span><span style="color:#F97583">function</span><span style="color:#E1E4E8"> () {</span></span>
+<span class="line"><span style="color:#E1E4E8">    b </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> 'hello world'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">    var</span><span style="color:#E1E4E8"> a </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> b;</span></span>
+<span class="line"><span style="color:#E1E4E8">  })();</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>備註：<code>typeof</code>可處理未被定義的（var）變數而不會報錯，參考 MDN：</p>
+<blockquote>
+<p>Before ECMAScript 2015, <code>typeof</code> was always guaranteed to return a string for any operand it was supplied with. Even with undeclared identifiers, <code>typeof</code> will return <code>undefined</code>. Using typeof could never generate an error.
+However, with the addition of block-scoped <code>let</code> and <code>const</code>, using <code>typeof</code> on <code>let</code> and <code>const</code> variables (or using <code>typeof</code> on a <code>class</code>) <strong>in a block before they are declared will throw a <code>ReferenceError</code></strong>. Block scoped variables are in a “<strong>temporal dead zone</strong>” from the start of the block until the initialization is processed, during which, it will throw an error if accessed.</p>
+</blockquote>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#F97583">typeof</span><span style="color:#E1E4E8"> aLet;</span></span>
+<span class="line"><span style="color:#F97583">let</span><span style="color:#E1E4E8"> aLet;</span></span>
+<span class="line"><span style="color:#6A737D">// Uncaught ReferenceError: Cannot access 'aLet' before initialization</span></span></code></pre>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#F97583">typeof</span><span style="color:#E1E4E8"> aConst;</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> aConst</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> 'hello world'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#6A737D">// Uncaught ReferenceError: Cannot access 'aConst' before initialization</span></span></code></pre>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#F97583">typeof</span><span style="color:#E1E4E8"> aConst2</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> aConst2</span></span>
+<span class="line"><span style="color:#6A737D">// Uncaught SyntaxError: Missing initializer in const declaration</span></span></code></pre>
+<h3 id="consolelog0102--03的結果是什麼">console.log((0.1+0.2) === 0.3)的結果是什麼？</h3>
+<ul>
+<li>false</li>
+<li>雖然人眼看到的是 0.1、0.2 與 0.3，但因為計算機是二進位制，所以實際上小數點後面（人眼看不到的地方）會有誤差，0.1 加上 0.2 之後不會「剛好」等於 0.3，故結果會是 false</li>
+</ul>
+<p>解決方式：可以先（乘以 10）變為整數後再進行運算（直接避免使用浮點數做運算）</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#E1E4E8">console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">((</span><span style="color:#79B8FF">0.1</span><span style="color:#F97583"> *</span><span style="color:#79B8FF"> 10</span><span style="color:#F97583"> +</span><span style="color:#79B8FF"> 0.2</span><span style="color:#F97583"> *</span><span style="color:#79B8FF"> 10</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">/</span><span style="color:#79B8FF"> 10</span><span style="color:#F97583"> ===</span><span style="color:#79B8FF"> 0.3</span><span style="color:#E1E4E8">); </span><span style="color:#6A737D">// true</span></span></code></pre>
+<p>或是運算完畢後使用 <code>.toPrecision(1)</code> 讓結果為小數點後一位，再使用 <code>parseFloat()</code> 將型別轉回 <code>Number</code></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#E1E4E8">console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#B392F0">parseFloat</span><span style="color:#E1E4E8">((</span><span style="color:#79B8FF">0.1</span><span style="color:#F97583"> +</span><span style="color:#79B8FF"> 0.2</span><span style="color:#E1E4E8">).</span><span style="color:#B392F0">toPrecision</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">)) </span><span style="color:#F97583">===</span><span style="color:#79B8FF"> 0.3</span><span style="color:#E1E4E8">); </span><span style="color:#6A737D">// true</span></span></code></pre>
+<p>或是使用現有的套件，比如<a href="https://www.npmjs.com/package/mathjs">mathjs</a></p>
+<h3 id="什麼是-hoist">什麼是 hoist？</h3>
+<ul>
+<li>JavaScript engine 在 creation phase 解析程式碼時，從上到下將程式碼中所有的函數與變數放進記憶體（allocate in memory space）的過程</li>
+<li>透過 var 宣告的變數在 hoisting 階段會被賦予值 <code>undefined</code>，並且可以在宣告前就被取用；而透過 <code>const</code> 與 <code>let</code> 宣告的變數要在「被執行到的時候」才會被賦值，並且無法在被執行之前取用（Temporal Dead Zone）</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#E1E4E8">console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(v); </span><span style="color:#6A737D">// 輸出undefined，不會報錯</span></span>
+<span class="line"><span style="color:#F97583">var</span><span style="color:#E1E4E8"> v </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> 'hello world'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(c); </span><span style="color:#6A737D">// Uncaught ReferenceError: c is not defined</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> c</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> 'hello again'</span><span style="color:#E1E4E8">;</span></span></code></pre>
+<p>備註：參考 MDN，各家瀏覽器的錯誤訊息有所差異；分別是 <code>ReferenceError: Cannot access 'c' before initialization (Edge)</code>、<code>ReferenceError: can't access lexical declaration 'c' before initialization (Firefox)</code> 與 <code>ReferenceError: 'c' is not defined (Chrome)</code></p>
+<h3 id="undefinednull-與-not-defined-之差異">undefined、null 與 not defined 之差異？</h3>
+<ul>
+<li><code>undefined</code>：由 JS engine 賦予，在 var 或 let 變數已經被宣告但還沒有值的時候，先賦<code>undefined</code>予透過這兩個關鍵字宣告的變數</li>
+<li><code>null</code>：代表「空、什麼都沒有」的值</li>
+<li><code>not defined</code>：根本「沒有被定義」</li>
+</ul>
+<h3 id="以下兩種宣告函數的方式有何差異">以下兩種宣告函數的方式有何差異？</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#E1E4E8">console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#B392F0">bar</span><span style="color:#E1E4E8">());</span></span>
+<span class="line"><span style="color:#E1E4E8">console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#B392F0">foo</span><span style="color:#E1E4E8">());</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> bar</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#9ECBFF"> 'bar'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">var</span><span style="color:#B392F0"> foo</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#9ECBFF"> 'foo'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span></code></pre>
+<ul>
+<li>分別會輸出<code>bar</code>與報錯<code>TypeError: foo is not a function</code></li>
+<li>儲存 function express 的變數<code>foo</code>在 hoisting 階段其值會是<code>undefined</code>，而<code>undefined</code>無法被調用（invoked），所以會出現 TypeError</li>
+<li>function statement 在 creation phase 經 hoisting 後其 code 部分就被保存在 JS engine 的記憶體中，可以在程式碼執行到該內容前就被調用</li>
+</ul>
+<h3 id="請列出以下輸出結果">請列出以下輸出結果</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#F97583">let</span><span style="color:#E1E4E8"> bar </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> true</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(bar </span><span style="color:#F97583">+</span><span style="color:#79B8FF"> 0</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(bar </span><span style="color:#F97583">+</span><span style="color:#9ECBFF"> 'hello world'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(bar </span><span style="color:#F97583">+</span><span style="color:#79B8FF"> true</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(bar </span><span style="color:#F97583">+</span><span style="color:#79B8FF"> false</span><span style="color:#E1E4E8">);</span></span></code></pre>
+<ul>
+<li>強制轉型概念題，輸出結果由上到下分別為 1、truehello world、2 與 1</li>
+<li>若加號兩側皆為 primitive type 且有字串型別（<code>string</code>）的情況下，兩邊皆轉型為字串；不符合前述條件的話轉數字（<code>number</code>）</li>
+</ul>
+<p>參考 MDN 範例：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#6A737D">// String + String -> concatenation</span></span>
+<span class="line"><span style="color:#9ECBFF">'foo'</span><span style="color:#F97583"> +</span><span style="color:#9ECBFF"> 'bar'</span><span style="color:#E1E4E8">; </span><span style="color:#6A737D">// "foobar"</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// Number + String -> concatenation</span></span>
+<span class="line"><span style="color:#79B8FF">5</span><span style="color:#F97583"> +</span><span style="color:#9ECBFF"> 'foo'</span><span style="color:#E1E4E8">; </span><span style="color:#6A737D">// "5foo"</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// String + Boolean -> concatenation</span></span>
+<span class="line"><span style="color:#9ECBFF">'foo'</span><span style="color:#F97583"> +</span><span style="color:#79B8FF"> false</span><span style="color:#E1E4E8">; </span><span style="color:#6A737D">// "foofalse"</span></span></code></pre>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#6A737D">// Number + Number -> addition</span></span>
+<span class="line"><span style="color:#79B8FF">1</span><span style="color:#F97583"> +</span><span style="color:#79B8FF"> 2</span><span style="color:#E1E4E8">; </span><span style="color:#6A737D">// 3</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// Boolean + Number -> addition</span></span>
+<span class="line"><span style="color:#79B8FF">true</span><span style="color:#F97583"> +</span><span style="color:#79B8FF"> 1</span><span style="color:#E1E4E8">; </span><span style="color:#6A737D">// 2</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// Boolean + Boolean -> addition</span></span>
+<span class="line"><span style="color:#79B8FF">false</span><span style="color:#F97583"> +</span><span style="color:#79B8FF"> false</span><span style="color:#E1E4E8">; </span><span style="color:#6A737D">// 0</span></span></code></pre>
+<p>轉型成 <code>string</code> 就左右串連起來，如果是 <code>number</code> 就左右相加。</p>
+<p>備註：if statement、while statement 與 <code>==</code> 也會觸發隱性的強制轉型，也可有以下操作：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#F97583">let</span><span style="color:#E1E4E8"> n </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> '123'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">typeof</span><span style="color:#F97583"> +</span><span style="color:#E1E4E8">n); </span><span style="color:#6A737D">// number</span></span></code></pre>
+<h3 id="何謂-iife">何謂 IIFE</h3>
+<ul>
+<li>立即執行函數（Immediately Invoked Function Expression），使用括號包裹一函數並在其後加上另一組括號；如其名稱所表示，會「立即」執行括號中的函數</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#E1E4E8">(() </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">  console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'hello world'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">})();</span></span>
+<span class="line"><span style="color:#6A737D">// 會直接輸出'hello world'</span></span></code></pre>
+<ul>
+<li>可透過 IIFE 限制變數的存活範圍（execution context 結束，變數跟著進回收區），避免變數污染的問題</li>
+</ul>
+<h2 id="第二週題目串">第二週題目串</h2>
+<h3 id="何謂閉包closure">何謂閉包（closure）</h3>
+<ul>
+<li>代表函數本身，以及他當時 reference 到的作用環境</li>
+<li>即使該函數已經執行完畢，依存該函數的變數依舊可以被取用（透過 scope 概念，現在的環境找不到，就往外層找）</li>
+<li>閉包儲存的位置是 heep memory</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#6A737D">// 經典範例：function return function</span></span>
+<span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> add</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">a</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#F97583"> function</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">b</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#E1E4E8"> a </span><span style="color:#F97583">+</span><span style="color:#E1E4E8"> b;</span></span>
+<span class="line"><span style="color:#E1E4E8">  };</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> addFunction</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> add</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">3</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#B392F0">addFunction</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">4</span><span style="color:#E1E4E8">)); </span><span style="color:#6A737D">// 7</span></span></code></pre>
+<p>需注意閉包使用過度會有 memory leak 的問題，因為 JS 引擎不會主動處理掉閉包</p>
+<h3 id="寫出一函數使-consolelogmul234為-24consolelogmul434為-48">寫出一函數，使 console.log(mul(2)(3)(4))為 24，console.log(mul(4)(3)(4))為 48</h3>
+<p>解法如下，closure 與 scope 概念的應用：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#B392F0"> mul</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">a</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">b</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">c</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> a </span><span style="color:#F97583">*</span><span style="color:#E1E4E8"> b </span><span style="color:#F97583">*</span><span style="color:#E1E4E8"> c;</span></span>
+<span class="line"><span style="color:#6A737D">// 從 const mul = (a) => (b) => (c) => { return a * b * c } 優化而來</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> mul</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">a</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#F97583"> function</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">b</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#F97583"> function</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">c</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">      return</span><span style="color:#E1E4E8"> a </span><span style="color:#F97583">*</span><span style="color:#E1E4E8"> b </span><span style="color:#F97583">*</span><span style="color:#E1E4E8"> c;</span></span>
+<span class="line"><span style="color:#E1E4E8">    };</span></span>
+<span class="line"><span style="color:#E1E4E8">  };</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<h3 id="如何檢查一個變數的型別">如何檢查一個變數的型別？</h3>
+<p>使用 <code>typeof</code>：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#6A737D">// 但須注意地雷</span></span>
+<span class="line"><span style="color:#E1E4E8">console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">typeof</span><span style="color:#E1E4E8"> []); </span><span style="color:#6A737D">// object</span></span>
+<span class="line"><span style="color:#E1E4E8">console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">typeof</span><span style="color:#79B8FF"> null</span><span style="color:#E1E4E8">); </span><span style="color:#6A737D">// object</span></span>
+<span class="line"><span style="color:#E1E4E8">console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">typeof</span><span style="color:#F97583"> function</span><span style="color:#B392F0"> f</span><span style="color:#E1E4E8">() {}); </span><span style="color:#6A737D">// function，並非object</span></span>
+<span class="line"><span style="color:#E1E4E8">console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">typeof</span><span style="color:#79B8FF"> undefined</span><span style="color:#E1E4E8">); </span><span style="color:#6A737D">// undefined</span></span></code></pre>
+<p>使用 <code>Object.prototype.toString.call()</code>：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#E1E4E8">console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">Object</span><span style="color:#E1E4E8">.</span><span style="color:#79B8FF">prototype</span><span style="color:#E1E4E8">.toString.</span><span style="color:#B392F0">call</span><span style="color:#E1E4E8">([])); </span><span style="color:#6A737D">// [object Array]</span></span>
+<span class="line"><span style="color:#E1E4E8">console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">Object</span><span style="color:#E1E4E8">.</span><span style="color:#79B8FF">prototype</span><span style="color:#E1E4E8">.toString.</span><span style="color:#B392F0">call</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">null</span><span style="color:#E1E4E8">)); </span><span style="color:#6A737D">// [object Null]</span></span>
+<span class="line"><span style="color:#E1E4E8">console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">Object</span><span style="color:#E1E4E8">.</span><span style="color:#79B8FF">prototype</span><span style="color:#E1E4E8">.toString.</span><span style="color:#B392F0">call</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">function</span><span style="color:#B392F0"> f</span><span style="color:#E1E4E8">() {})); </span><span style="color:#6A737D">// [object Function]</span></span>
+<span class="line"><span style="color:#E1E4E8">console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">Object</span><span style="color:#E1E4E8">.</span><span style="color:#79B8FF">prototype</span><span style="color:#E1E4E8">.toString.</span><span style="color:#B392F0">call</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">undefined</span><span style="color:#E1E4E8">)); </span><span style="color:#6A737D">// [object Undefined]</span></span></code></pre>
+<h3 id="call-by-reference-與-call-by-value-之差異">call by reference 與 call by value 之差異</h3>
+<ul>
+<li>JS 中除了 primitive type 以外的型別皆是 call by reference</li>
+<li>將 primitive type 賦值給另外一個變數的話，該資料會被拷貝；但如果將 primitive type 以外的值賦予另外一個變數的話，賦予的是記憶體中的位置</li>
+</ul>
+<h3 id="如何拷貝一個陣列或物件">如何拷貝一個陣列或物件</h3>
+<ul>
+<li>for loop</li>
+<li>展開運算子（<code>[...]</code>或<code>{...}</code>），但僅限於一層的陣列或物件，無法處理巢狀結構</li>
+<li><code>Array.prototype.slice()</code></li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> arr1</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> [</span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">2</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">3</span><span style="color:#E1E4E8">];</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> arr2</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> arr1.</span><span style="color:#B392F0">slice</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">arr1.</span><span style="color:#B392F0">push</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">4</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(arr2); </span><span style="color:#6A737D">// [1, 2, 3]</span></span></code></pre>
+<ul>
+<li><code>Array.prototype.concat()</code></li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> arr1</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> [</span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">2</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">3</span><span style="color:#E1E4E8">];</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> arr2</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> arr1.</span><span style="color:#B392F0">concat</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">arr1.</span><span style="color:#B392F0">push</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">4</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(arr2); </span><span style="color:#6A737D">// [1, 2, 3]</span></span></code></pre>
+<ul>
+<li><code>Object.assign()</code>或<code>Array.prototype.map()</code></li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> obj1</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> { a: </span><span style="color:#9ECBFF">'apple'</span><span style="color:#E1E4E8"> };</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> obj2</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> Object.</span><span style="color:#B392F0">assign</span><span style="color:#E1E4E8">({}, obj1);</span></span>
+<span class="line"><span style="color:#E1E4E8">obj1.b </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> 'banana'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(obj2); </span><span style="color:#6A737D">// { a: 'apple' }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> arr1</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> [</span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">2</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">3</span><span style="color:#E1E4E8">];</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> arr2</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> arr1.</span><span style="color:#B392F0">map</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">x</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> x);</span></span>
+<span class="line"><span style="color:#E1E4E8">arr1.</span><span style="color:#B392F0">push</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">4</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(arr2); </span><span style="color:#6A737D">// [1, 2, 3]</span></span></code></pre>
+<ul>
+<li>深拷貝：<code>JSON.stringify()</code>搭配<code>JSON.parse()</code>，但注意此方式無法處理包含 function 的陣列、物件</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> obj1</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> { a: </span><span style="color:#9ECBFF">'apple'</span><span style="color:#E1E4E8"> };</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> obj2</span><span style="color:#F97583"> =</span><span style="color:#79B8FF"> JSON</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">parse</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">JSON</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">stringify</span><span style="color:#E1E4E8">(arr1));</span></span>
+<span class="line"><span style="color:#E1E4E8">obc1.b </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> 'banana'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(obj2); </span><span style="color:#6A737D">// { a: "apple" }</span></span></code></pre>
+<h3 id="請回答以下程式碼輸出結果">請回答以下程式碼輸出結果</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#F97583">let</span><span style="color:#E1E4E8"> pay </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> '1000'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">(() </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">  console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">`origin pay is ${</span><span style="color:#E1E4E8">pay</span><span style="color:#9ECBFF">}`</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">  var</span><span style="color:#E1E4E8"> pay </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> '5000'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">  console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">`new pay is ${</span><span style="color:#E1E4E8">pay</span><span style="color:#9ECBFF">}`</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">})();</span></span></code></pre>
+<ul>
+<li>分別是 <code>origin pay is undefined</code> 與 <code>new pay is 5000</code></li>
+<li>IIFE、scope 與 hoisting 概念題</li>
+<li>最外層的 let pay 沒有任何影響，IIFE 中的 var pay 經 hoisting 可先取用（access），但值只會取到 <code>undefined</code>，直到執行到 <code>var pay = 5000</code> 後才會輸出 <code>new pay is 5000</code></li>
+</ul>
+<h3 id="什麼是-this">什麼是 this</h3>
+<ul>
+<li>JS engine 在 creation phase 會自動建立的物件，（在非 strict 情況下）<strong>預設<code>this</code>會指向目前的執行環境（execution context）</strong></li>
+<li>object 中的 method 中的 this 會直接指向該 object，但需注意即使是位在 object 中，<strong>arrow function 的 this 還是會直接指向 global object</strong></li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#E1E4E8">console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">this</span><span style="color:#E1E4E8">); </span><span style="color:#6A737D">// Window</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> obj</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">  firstName: </span><span style="color:#9ECBFF">'Charlie'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">  lastName: </span><span style="color:#9ECBFF">'Wang'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#B392F0">  greet</span><span style="color:#E1E4E8">: </span><span style="color:#F97583">function</span><span style="color:#E1E4E8"> () {</span></span>
+<span class="line"><span style="color:#E1E4E8">    console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">`Hello ${</span><span style="color:#79B8FF">this</span><span style="color:#9ECBFF">.</span><span style="color:#E1E4E8">firstName</span><span style="color:#9ECBFF">}`</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">    function</span><span style="color:#B392F0"> nestInGreet</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#E1E4E8">      console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">`this in nestInGreet: ${</span><span style="color:#79B8FF">this</span><span style="color:#9ECBFF">}`</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#B392F0">    nestInGreet</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">  },</span></span>
+<span class="line"><span style="color:#B392F0">  greetArrow</span><span style="color:#E1E4E8">: () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">    console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">`Hello ${</span><span style="color:#79B8FF">this</span><span style="color:#9ECBFF">.</span><span style="color:#E1E4E8">firstName</span><span style="color:#9ECBFF">}`</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">  },</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">obj.</span><span style="color:#B392F0">greet</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#6A737D">// 'Hello Charlie'</span></span>
+<span class="line"><span style="color:#6A737D">// 'this in nestInGreet: [object Window]'</span></span>
+<span class="line"><span style="color:#6A737D">// undefined</span></span></code></pre>
+<ul>
+<li>可透過<code>apply()</code>、<code>bind()</code>與<code>call()</code>綁給指定目標</li>
+<li>需注意 arrow function 的<code>this</code>乃是根據其被建立的 scope 決定（MDN: Arrow functions establish “this” <strong>based on the scope the Arrow function is defined within</strong>.），也無法透過<code>apply()</code>、<code>bind()</code>與<code>call()</code>調整目標</li>
+</ul>
+<h3 id="applybind與-call的差異">apply()、bind()與 call()的差異</h3>
+<ul>
+<li><code>apply()</code>與<code>call()</code>皆會讓函數在綁定後馬上執行，<code>apply()</code>接受陣列做為參數</li>
+<li><code>bind()</code>僅執行綁定，並回傳一個綁定後的函數</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> obj</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">  firstName: </span><span style="color:#9ECBFF">'Charlie'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">  lastName: </span><span style="color:#9ECBFF">'Wang'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> greet</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">a</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">b</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#9ECBFF"> `${</span><span style="color:#E1E4E8">a</span><span style="color:#9ECBFF">} ${</span><span style="color:#79B8FF">this</span><span style="color:#9ECBFF">.</span><span style="color:#E1E4E8">firstName</span><span style="color:#9ECBFF">}, ${</span><span style="color:#E1E4E8">b</span><span style="color:#9ECBFF">}`</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(greet.</span><span style="color:#B392F0">call</span><span style="color:#E1E4E8">(obj, </span><span style="color:#9ECBFF">'Hello'</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">'how are you?'</span><span style="color:#E1E4E8">)); </span><span style="color:#6A737D">// Hello Charlie, how are you?</span></span>
+<span class="line"><span style="color:#E1E4E8">console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(greet.</span><span style="color:#B392F0">apply</span><span style="color:#E1E4E8">(obj, [</span><span style="color:#9ECBFF">'Hello'</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">'how are you?'</span><span style="color:#E1E4E8">])); </span><span style="color:#6A737D">// Hello Charlie, how are you?</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> bindGreet</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> greet.</span><span style="color:#B392F0">bind</span><span style="color:#E1E4E8">(obj);</span></span>
+<span class="line"><span style="color:#E1E4E8">console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#B392F0">bindGreet</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'Hello'</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">'how are you?'</span><span style="color:#E1E4E8">)); </span><span style="color:#6A737D">// Hello Charlie, how are you?</span></span></code></pre>
+<h2 id="第三週題目串">第三週題目串</h2>
+<h3 id="第三週以下程式碼的輸出結果為">第三週：以下程式碼的輸出結果為？</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#F97583">var</span><span style="color:#E1E4E8"> hero </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">  _name: </span><span style="color:#9ECBFF">'John Doe'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#B392F0">  getSecretIdentity</span><span style="color:#E1E4E8">: </span><span style="color:#F97583">function</span><span style="color:#E1E4E8"> () {</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#79B8FF"> this</span><span style="color:#E1E4E8">._name;</span></span>
+<span class="line"><span style="color:#E1E4E8">  },</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">var</span><span style="color:#E1E4E8"> stoleSecretIdentity </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> hero.getSecretIdentity;</span></span>
+<span class="line"><span style="color:#E1E4E8">console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#B392F0">stoleSecretIdentity</span><span style="color:#E1E4E8">());</span></span>
+<span class="line"><span style="color:#E1E4E8">console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(hero.</span><span style="color:#B392F0">getSecretIdentity</span><span style="color:#E1E4E8">());</span></span></code></pre>
+<ul>
+<li><code>undefined</code> 與 <code>John Doe</code></li>
+<li><code>stoleSecretIdentity</code> 執行時的 <code>this</code> 指向 global object 中的 <code>_name</code>，因沒有賦予值所以回傳 <code>undefined</code></li>
+<li><code>hero.getSecretIdentity</code> 執行時回傳 hero 的 <code>_name</code>，為 <code>John Doe</code></li>
+<li>備註：這裡在 hero 中使用 <code>_name</code> 是因為瀏覽器的 global object 中本身就有 <code>name</code> 這個值了，所以命名為 <code>_name</code> 避免覆蓋</li>
+</ul>
+<h3 id="箭頭函數的特性">箭頭函數的特性</h3>
+<ul>
+<li>匿名</li>
+<li>箭頭函數的 <code>this</code> 固定指向該箭頭函數的執行環境（execution context）</li>
+<li><code>apply()</code>、<code>bind()</code> 與 <code>call()</code> 對其無效</li>
+<li>沒有 <code>arguments</code></li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#E1E4E8">(</span><span style="color:#F97583">function</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">a</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#E1E4E8">  console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">arguments</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">})()(</span></span>
+<span class="line"><span style="color:#6A737D">  // Arguments [callee: ƒ, Symbol(Symbol.iterator): ƒ]</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">  (</span><span style="color:#FFAB70">b</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">    console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">arguments</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">)();</span></span>
+<span class="line"><span style="color:#6A737D">// Uncaught ReferenceError: arguments is not defined</span></span></code></pre>
+<h3 id="consolelog0--1--1--2的輸出結果為何">console.log(0 &#x26;&#x26; 1 || 1 &#x26;&#x26; 2)的輸出結果為何</h3>
+<ul>
+<li><code>2</code>，拆解如下：
+<ul>
+<li>先處理<code>1 &#x26;&#x26; 2</code>，結果為 2</li>
+<li>再處理<code>0 &#x26;&#x26; 1</code>，結果為 0</li>
+<li>最後比較<code>0 || 2</code>，得到 2</li>
+</ul>
+</li>
+</ul>
+<p>參考 MDN 說明：</p>
+<blockquote>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_AND">Logical AND (expr1 &#x26;&#x26; expr2)</a>: If <strong>expr1 can be converted to true</strong>, <strong>returns expr2</strong>; else, returns expr1.</p>
+</blockquote>
+<blockquote>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_OR">Logical OR (expr1 || expr2)</a>: If <strong>expr1 can be converted to true</strong>, <strong>returns expr1</strong>; else, returns expr2.</p>
+</blockquote>
+<h3 id="js-如何處理非同步">JS 如何處理非同步？</h3>
+<ul>
+<li>JS 的本質是<strong>single thread</strong>，而在瀏覽器環境中的非同步任務會由 web API 處理；非同步的 callback function 會被推到 queue 中，當<strong>event loop</strong>確認 stack 清空後才會開始執行 queue 中累積的任務</li>
+<li>常見的非同步任務如 setTimeout、promise、以及 DOM manipulation</li>
+</ul>
+<h3 id="什麼是-promise">什麼是 promise？</h3>
+<ul>
+<li>讓一個非同步任務執行完畢後回傳「一個」結果，結果只會是成功或失敗</li>
+<li>簡單範例：</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> myPromise</span><span style="color:#F97583"> =</span><span style="color:#F97583"> new</span><span style="color:#79B8FF"> Promise</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">resolve</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">reject</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> r</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> Math.</span><span style="color:#B392F0">floor</span><span style="color:#E1E4E8">(Math.</span><span style="color:#B392F0">random</span><span style="color:#E1E4E8">() </span><span style="color:#F97583">*</span><span style="color:#79B8FF"> 10</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">  if</span><span style="color:#E1E4E8"> (r </span><span style="color:#F97583">></span><span style="color:#79B8FF"> 5</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#B392F0">    resolve</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'成功'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">  } </span><span style="color:#F97583">else</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#B392F0">    reject</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'失敗'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">myPromise</span></span>
+<span class="line"><span style="color:#E1E4E8">  .</span><span style="color:#B392F0">then</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">result</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(result))</span></span>
+<span class="line"><span style="color:#E1E4E8">  .</span><span style="color:#B392F0">catch</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">error</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(error));</span></span></code></pre>
+<h3 id="以下程式碼的輸出結果為何">以下程式碼的輸出結果為何？</h3>
+<h4 id="第一題">第一題</h4>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> promiseF</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">num</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">time</span><span style="color:#F97583"> =</span><span style="color:#79B8FF"> 500</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#F97583"> new</span><span style="color:#79B8FF"> Promise</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">resolve</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">reject</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#B392F0">    setTimeout</span><span style="color:#E1E4E8">(() </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">      num </span><span style="color:#F97583">?</span><span style="color:#B392F0"> resolve</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">`${</span><span style="color:#E1E4E8">num</span><span style="color:#9ECBFF">}, success`</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">:</span><span style="color:#B392F0"> reject</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'fail'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">    }, time);</span></span>
+<span class="line"><span style="color:#E1E4E8">  });</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">promiseF</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">0</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">  .</span><span style="color:#B392F0">then</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">value</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(value))</span></span>
+<span class="line"><span style="color:#E1E4E8">  .</span><span style="color:#B392F0">catch</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">error</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(error));</span></span></code></pre>
+<ul>
+<li>fail，傳入 <code>0</code> 在<code>num ? resolve() : reject()</code> 這裏會進入 <code>reject()</code>，所以最後輸出 <code>fail</code></li>
+<li>重點：<code>0</code> 強制轉型為 <code>false</code></li>
+</ul>
+<h4 id="第二題">第二題</h4>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> p</span><span style="color:#F97583"> =</span><span style="color:#F97583"> new</span><span style="color:#79B8FF"> Promise</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">resolve</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">reject</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">  console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#B392F0">  resolve</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">5</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">  console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">2</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#B392F0">  reject</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">6</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">p.</span><span style="color:#B392F0">then</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">value</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">  console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(value);</span></span>
+<span class="line"><span style="color:#E1E4E8">  console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">3</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">}).</span><span style="color:#B392F0">catch</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">error</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">  console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(error);</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">4</span><span style="color:#E1E4E8">);</span></span></code></pre>
+<ul>
+<li>依序輸出 <code>1</code>、<code>2</code>、<code>4</code>、<code>5</code>、<code>3</code></li>
+<li>解釋：
+<ul>
+<li>先輸出執行 p（同步）的 1 與 2</li>
+<li>執行同步的 <code>console.log(4)</code></li>
+<li>執行 <code>resolve</code> 的結果 5 與 3</li>
+<li>p 到 <code>resolve</code> 就結束了，不會進入 <code>reject</code></li>
+</ul>
+</li>
+<li>提示：Promise 也只是個物件，所以宣告 p 的時候，裡面的 console.log 就跟著執行</li>
+</ul>
+<h4 id="第三題">第三題</h4>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#B392F0">setTimeout</span><span style="color:#E1E4E8">(() </span><span style="color:#F97583">=></span><span style="color:#B392F0"> alert</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'timeout!'</span><span style="color:#E1E4E8">));</span></span>
+<span class="line"><span style="color:#79B8FF">Promise</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">resolve</span><span style="color:#E1E4E8">().</span><span style="color:#B392F0">then</span><span style="color:#E1E4E8">(() </span><span style="color:#F97583">=></span><span style="color:#B392F0"> alert</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'promise!'</span><span style="color:#E1E4E8">));</span></span>
+<span class="line"><span style="color:#B392F0">alert</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'global alert!'</span><span style="color:#E1E4E8">);</span></span></code></pre>
+<ul>
+<li>先<code>global alert!</code>，接著 <code>promise!</code>，最後 <code>timeout!</code></li>
+<li>瀏覽器的 event loop 會先處理 stack 中的任務，接著處理「所有」的 microtasks，最後才處理 queue 中的任務</li>
+</ul>
+<h4 id="第四題">第四題</h4>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#E1E4E8">console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">setTimeout</span><span style="color:#E1E4E8">(() </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">  console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">2</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#79B8FF">  Promise</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">resolve</span><span style="color:#E1E4E8">().</span><span style="color:#B392F0">then</span><span style="color:#E1E4E8">(() </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">3</span><span style="color:#E1E4E8">));</span></span>
+<span class="line"><span style="color:#E1E4E8">}, </span><span style="color:#79B8FF">0</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">new</span><span style="color:#79B8FF"> Promise</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">resolve</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">reject</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">  console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">4</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#B392F0">  resolve</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">5</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">}).</span><span style="color:#B392F0">then</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">data</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(data));</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">setTimeout</span><span style="color:#E1E4E8">(() </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">  console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">6</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">}, </span><span style="color:#79B8FF">0</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">7</span><span style="color:#E1E4E8">);</span></span></code></pre>
+<ul>
+<li><code>1</code>、<code>4</code>、<code>7</code>、<code>5</code>、<code>2</code>、<code>3</code>、<code>6</code></li>
+<li>解釋：
+<ul>
+<li>輸出同步的 1</li>
+<li>輸出 new Promise 物件內部同步的 4</li>
+<li>輸出同步的 7</li>
+<li>輸出 micortask Promise 的 5</li>
+<li>輸出第一個<code>setTimeout</code>的結果 2</li>
+<li>因 micortask 在 event loop 中的優先度較高，輸出 3</li>
+<li>最後輸出第二個<code>setTimeout</code>的結果 6</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2021/js-interview-questions/browser-event-loop.png" alt="Browser event loop chart"></p>
+<h2 id="參考文件">參考文件</h2>
+<ul>
+<li><a href="https://hackmd.io/XM6PlGD-ST-EDBkR_nH5Sg">JS 模擬面試讀書會(2021/7 月版)</a></li>
+<li><a href="https://stackoverflow.com/questions/31219420/are-variables-declared-with-let-or-const-hoisted">Are variables declared with let or const hoisted?</a></li>
+<li><a href="https://medium.com/coderbyte/a-tricky-javascript-interview-question-asked-by-google-and-amazon-48d212890703">A Tricky JavaScript Interview Question Asked by Google and Amazon</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof">MDN: typeof</a></li>
+<li><a href="https://stackoverflow.com/questions/588004/is-floating-point-math-broken">Is floating point math broken?</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Errors/Cant_access_lexical_declaration_before_init">MDN: ReferenceError: can’t access lexical declaration ‘X’ before initialization</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Addition">MDN: Addition (+)</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions">MDN: Arrow function expressions</a></li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

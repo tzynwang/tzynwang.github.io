@@ -1,0 +1,90 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.BScVxmeO.js"></script><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.1.2"><!-- Primary Meta Tags --><title>2022 第16週 實作筆記：Mui 滑動式清單</title><meta name="title" content="2022 第16週 實作筆記：Mui 滑動式清單"><meta name="description" content="這是一個文組轉職前端工程師的技術部落格"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2022/mui-slide-menu"><meta property="og:title" content="2022 第16週 實作筆記：Mui 滑動式清單"><meta property="og:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="og:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2022/mui-slide-menu"><meta property="twitter:title" content="2022 第16週 實作筆記：Mui 滑動式清單"><meta property="twitter:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="twitter:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul:not(:has(li)){margin-top:16px;margin-bottom:16px}li{margin-top:4px;margin-bottom:4px;line-height:24px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:16px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}del{color:#4c5958e6}ol>li:has(p)>p{display:inline;margin:0}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+[data-astro-image]{width:100%;height:auto;object-fit:var(--fit);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>2022 第16週 實作筆記：Mui 滑動式清單</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2022-04-23 11:35</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/MaterialUI" data-astro-cid-2iymvi75> MaterialUI </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#總結" data-astro-cid-qtokga5y>總結</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#版本與環境" data-astro-cid-qtokga5y>版本與環境</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#筆記" data-astro-cid-qtokga5y>筆記</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#開發思路" data-astro-cid-qtokga5y>開發思路</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#原始碼" data-astro-cid-qtokga5y>原始碼</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#實作筆記" data-astro-cid-qtokga5y>實作筆記</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#參考文件" data-astro-cid-qtokga5y>參考文件</a> </li> </ul> </div> <h2 id="總結">總結</h2>
+<p>使用 MuiMenu 與 MuiPaper 搭配組合出有滑動效果的清單元件，支援 RWD</p>
+<p><img src="/2022/mui-slide-menu/demo-desktop.png" alt="桌機版本"></p>
+<p><img src="/2022/mui-slide-menu/demo-mobile.png" alt="手機版本"></p>
+<h2 id="版本與環境">版本與環境</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>@mui/material: 5.6.2</span></span></code></pre>
+<h2 id="筆記">筆記</h2>
+<h3 id="開發思路">開發思路</h3>
+<ul>
+<li>對 Mui theme 中的各個元件加上 <code>styleOverrides</code> 搭配開發時自定義的 css class names 處理排版效果
+<ul>
+<li>大多數的 Mui 元件都有支援 <code>classes</code> props，搭配各元件的 API 說明即可將自定義的 css classes names 傳入對應的元件層</li>
+<li>以 <a href="https://mui.com/material-ui/api/menu/#css">MuiMenu</a> 為例，其 <code>classes</code> props 支援三組 key：root、paper 與 list；亦即在 MuiMenu 的 classes 傳入 <code>{{ root: '___CustomRootClass___', paper: '___CustomPaperClass___', list: '___CustomListClass__' }}</code> 的話，最終 MuiMenu 的 css class names 會長這樣：</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="html"><code><span class="line"><span style="color:#E1E4E8">&#x3C;</span><span style="color:#85E89D">div</span></span>
+<span class="line"><span style="color:#B392F0">  class</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"MuiModal-root ___CustomRootClass___ MuiPopover-root MuiMenu-root css-10nakn3-MuiModal-root-MuiPopover-root-MuiMenu-root"</span></span>
+<span class="line"><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;</span><span style="color:#85E89D">div</span></span>
+<span class="line"><span style="color:#B392F0">    class</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 ___CustomPaperClass___ MuiMenu-paper MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation8 MuiPopover-paper css-1poimk-MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper"</span></span>
+<span class="line"><span style="color:#E1E4E8">  ></span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#85E89D">ul</span></span>
+<span class="line"><span style="color:#B392F0">      class</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"MuiList-root MuiList-padding ___CustomListClass__ MuiMenu-list css-6hp17o-MuiList-root-MuiMenu-list"</span></span>
+<span class="line"><span style="color:#E1E4E8">    ></span></span>
+<span class="line"><span style="color:#FDAEB7;font-style:italic">      &#x3C;</span><span style="color:#E1E4E8">! –– list items ––></span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;/</span><span style="color:#85E89D">ul</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;/</span><span style="color:#85E89D">div</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">&#x3C;/</span><span style="color:#85E89D">div</span><span style="color:#E1E4E8">></span></span></code></pre>
+<ul>
+<li><code>___CustomRootClass___</code> 與 <code>MuiMenu-root</code> 並列</li>
+<li><code>___CustomPaperClass___</code> 與 <code>MuiMenu-paper</code> 並列</li>
+<li><code>___CustomListClass__</code> 與 <code>MuiMenu-list</code> 並列</li>
+<li>接著就可以在 mui theme 中透過 <code>styleOverrides</code> 來進行樣式設定了</li>
+</ul>
+</li>
+<li>使用 Mui <code>useMediaQuery</code> hook 判定目前的視區是否進入小版狀態，並根據此狀態替換元件的 css class names</li>
+<li>套用 Mui <code>&#x3C;Slide /></code> 元件在小版面時做出滑動效果
+<ul>
+<li>在「非小版面」的狀態下設定 props <code>in</code> 恆常為 <code>true</code> 避免滑動發生（確保元件會固定顯示在畫面上）</li>
+<li>使用 props <code>container</code> 控制滑動的視覺效果只會發生在 <code>container</code> 容器中</li>
+</ul>
+</li>
+</ul>
+<h3 id="原始碼">原始碼</h3>
+<script src="https://gist.github.com/tzynwang/a72ae5095969ca85ca877b86837f83a1.js"></script>
+<h3 id="實作筆記">實作筆記</h3>
+<ul>
+<li>根據 <code>parent</code> 的值來過濾出 <code>dynamicChildList</code> 內容；並且 <code>parent</code> 為 <code>null</code> 時，右側欄位不會渲染出任何內容（在使用者未點擊親類別前，不顯示子類別）</li>
+<li>透過 Mui <code>Checkbox</code> 元件的 <code>indeterminate</code> props 處理「某一親類別下的子類別沒有被全數勾選時」的視覺效果；邏輯如下：
+<ul>
+<li>如果 <code>checkedChild</code> 陣列中「屬於某一親類別的子類別數量 !== 屬於該親類別的全體子類別數量」的話，代表該親類別處於 <code>indeterminate</code> 狀態</li>
+<li>如果<code>checkedChild</code> 陣列中「屬於某一親類別的子類別數量 === 屬於該親類別的全體子類別數量」的話，代表該親類別下的子類別已經全部被使用者勾選了，故該親類別應進入 <code>checked</code> 狀態</li>
+</ul>
+</li>
+<li>在使用者勾選親類別時，先將所有屬於該親類別的子類別都加入 <code>checkedChild</code> 陣列中，再透過 lodash 的 <code>uniqBy</code> 移除重複加入子類別</li>
+<li>透過 lodash 的 <code>find</code> 功能判定某一子類別是否存在於 <code>checkedChild</code> 中，進而決定該子類別的 Mui <code>Checkbox</code> 元件是否應進入 <code>checked</code> 狀態</li>
+</ul>
+<h2 id="參考文件">參考文件</h2>
+<ul>
+<li><a href="https://mui.com/material-ui/customization/theme-components/">MaterialUI: Customization/Components</a></li>
+<li><a href="https://mui.com/material-ui/react-menu/#main-content">MaterialUI: Menu</a></li>
+<li><a href="https://mui.com/material-ui/transitions/#slide">MaterialUI: Transition/Slide</a></li>
+<li><a href="https://mui.com/material-ui/react-paper/#main-content">MaterialUI: Paper</a></li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

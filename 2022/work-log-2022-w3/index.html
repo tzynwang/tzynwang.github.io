@@ -1,0 +1,96 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.BScVxmeO.js"></script><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.1.2"><!-- Primary Meta Tags --><title>2022 第3週 學習記錄：Creational Design Patterns</title><meta name="title" content="2022 第3週 學習記錄：Creational Design Patterns"><meta name="description" content="這是一個文組轉職前端工程師的技術部落格"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2022/work-log-2022-w3"><meta property="og:title" content="2022 第3週 學習記錄：Creational Design Patterns"><meta property="og:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="og:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2022/work-log-2022-w3"><meta property="twitter:title" content="2022 第3週 學習記錄：Creational Design Patterns"><meta property="twitter:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="twitter:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul:not(:has(li)){margin-top:16px;margin-bottom:16px}li{margin-top:4px;margin-bottom:4px;line-height:24px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:16px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}del{color:#4c5958e6}ol>li:has(p)>p{display:inline;margin:0}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+[data-astro-image]{width:100%;height:auto;object-fit:var(--fit);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>2022 第3週 學習記錄：Creational Design Patterns</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2022-01-22 17:39</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/Design Patterns" data-astro-cid-2iymvi75> Design Patterns </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#總結" data-astro-cid-qtokga5y>總結</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#筆記" data-astro-cid-qtokga5y>筆記</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#factory-method" data-astro-cid-qtokga5y>Factory Method</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#abstract-factory" data-astro-cid-qtokga5y>Abstract Factory</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#builder" data-astro-cid-qtokga5y>Builder</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#prototype" data-astro-cid-qtokga5y>Prototype</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#singleton" data-astro-cid-qtokga5y>Singleton</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#參考文件" data-astro-cid-qtokga5y>參考文件</a> </li> </ul> </div> <h2 id="總結">總結</h2>
+<p>本篇整理了 design patterns 中歸類為 creational design patterns 的相關筆記：</p>
+<ul>
+<li>Factory Method</li>
+<li>Abstract Factory</li>
+<li>Builder</li>
+<li>Prototype</li>
+<li>Singleton</li>
+</ul>
+<p>Creational patterns 的關注點：provide various object <strong>creation mechanisms</strong>, which increase <strong>flexibility</strong> and <strong>reuse</strong> of existing code. 著眼點在「物件應該如何被建立」的 design patterns</p>
+<h2 id="筆記">筆記</h2>
+<h3 id="factory-method">Factory Method</h3>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/EcFVTgRHJLM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<ul>
+<li>Provides an interface for <strong>creating objects in a superclass</strong>, but allows <strong>subclasses to alter the type of objects</strong> that will be created. 由 superclass 定義好 interface，由 subclass 來實際進行物件的建立與回傳</li>
+<li>The Factory Method <strong>separates product construction</strong> code from the code that <strong>actually uses the product</strong>. For example, <strong>to add a new product</strong> type to the app, you’ll only need to <strong>create a new creator subclass</strong> and override the factory method in it.</li>
+<li>Use the Factory Method <strong>when you don’t know beforehand the exact types and dependencies of the objects</strong> your code should work with. 由 factory method 來根據情境回傳對應的物件</li>
+<li>Using factories provides encapsulation, and means the <strong>code is not tied to specific classes or objects</strong>, and thus the class hierarchy or prototypes can be changed or refactored <strong>without needing to change code that uses them</strong>. 不需要知道物件是根據什麼樣的邏輯或步驟被建立，只要呼叫 subclass 就可以得到需要的物件</li>
+</ul>
+<script src="https://gist.github.com/tzynwang/cd786a10bedf28a61043a8923ce0fdd6.js"></script>
+<ul>
+<li>gist/app.tsx 第 22 行的 <code>generateRandomAnimal.runFactory()</code>，運用這段 code 的人不需要知道 Animal 是根據什麼樣的邏輯被隨機產出，只知道一旦呼叫了 <code>generateRandomAnimal.runFactory()</code> 就會得到隨機的 Animal 物件</li>
+<li>gist/app.tsx 第 26 行的 <code>generateSerialAnimal.runFactory()</code> 則是會以固定的順序回傳 Animal 物件，使用這段 code 的人也不需要知道 Animal 是透過哪些邏輯被依序產出</li>
+<li>使用 <code>runFactory()</code>（即 <code>factory method</code>）的好處是，日後 Animal 的種類就算越變越多，使用者維持使用 <code>generateRandomAnimal.runFactory()</code> 依舊可以隨機獲得任何 Animal 物件，client code 不需進行任何調整</li>
+</ul>
+<h3 id="abstract-factory">Abstract Factory</h3>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/v-GiuMmsXj4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<ul>
+<li>與 Factory Method 概念類似，唯一的不同是 Factory Method 基本上是產生單一物件，但 Abstract Factory 是產出一組互相搭配的物件，比如在 light mode 或 dark mode 下使用的不同 UI 組合</li>
+<li>Abstract Factory 要解決的問題是：確保產出的物件會是合理的組合</li>
+<li>Abstract Factory can serve as <strong>an alternative to Facade</strong> when you only want to hide the way the subsystem objects are created from the client code.</li>
+</ul>
+<h3 id="builder">Builder</h3>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/ziQqmvfg5XE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<ul>
+<li>使用一連串的 method 來產生物件；舉例：透過在披薩上追加不同的配料（<code>methods</code>），會產生不同口味的披薩</li>
+<li>Builder focuses on <strong>constructing complex objects step by step</strong>. Abstract Factory specializes in creating <strong>families of related objects</strong>.</li>
+<li>Abstract Factory returns the product immediately, whereas <strong>Builder lets you run some additional construction steps before fetching the product</strong>.</li>
+</ul>
+<script src="https://gist.github.com/tzynwang/ced5f0ff99570ac61580481dae622b46.js"></script>
+<ul>
+<li>gist/builder.ts 第 50 至 52 行即示範 builder pattern 的特徵：透過一系列的 steps 來建構類似但細節不同的物件</li>
+</ul>
+<h3 id="prototype">Prototype</h3>
+<ul>
+<li>Prototype can help when you need to <strong>save copies of Commands into history</strong>.</li>
+<li>Sometimes Prototype can be a <strong>simpler alternative to Memento</strong>. This works if the object, the state of which you want to store in the history, is fairly straightforward and doesn’t have links to external resources, or the links are easy to re-establish.</li>
+</ul>
+<script src="https://gist.github.com/tzynwang/cdfd010f777a9394e21ac2f9378e4447.js"></script>
+<ul>
+<li>gist/prototype.ts 與 gist/builder.ts 的差異在於使用 <code>.clone()</code> 複製 <code>Pizza</code> 物件當下的狀態，並修改 clone 回傳出來的 <code>Pizza</code> 物件；透過 <code>.listPizzaSpec()</code> 可以發現修改 <code>.clone()</code> 後的新 <code>Pizza</code> 不會影響到被當作複製對象的原始 <code>Pizza</code></li>
+</ul>
+<h3 id="singleton">Singleton</h3>
+<ul>
+<li>Singleton is a creational design pattern that lets you ensure that a class <strong>has only one instance</strong>, while <strong>providing a global access point</strong> to this instance. 實作過的例子：推特專案中唯一一個 web socket instance，確保推特專案在開啟的時候永遠只會有一個 web socket instance 在連線，避免出現使用者重複進出聊天室的錯誤</li>
+<li>注意 redux 並不等於 singleton pattern，而是使用者選擇只維護一個唯一實例，這才讓 redux 保管的資料擁有 singleton 的特性</li>
+<li>Implementation:
+<ul>
+<li>Make the default <code>constructor</code> <strong>private</strong>, to prevent other objects from using the new operator with the Singleton class.</li>
+</ul>
+</li>
+<li>Create a static creation method that acts as a constructor. Under the hood, <strong>this method calls the private constructor to create an object</strong> and saves it in a static field. All following calls to this method <strong>return the cached object</strong>.</li>
+</ul>
+<h2 id="參考文件">參考文件</h2>
+<ul>
+<li><a href="https://refactoring.guru/design-patterns/creational-patterns">Refactoring.Guru: Creational Design Patterns</a></li>
+<li><a href="https://www.dofactory.com/javascript/design-patterns">dofactory: JavaScript Design Patterns</a></li>
+<li><a href="https://www.patterns.dev/posts/introduction/">patterns</a></li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

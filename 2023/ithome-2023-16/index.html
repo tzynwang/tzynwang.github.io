@@ -1,0 +1,118 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.BScVxmeO.js"></script><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.1.2"><!-- Primary Meta Tags --><title>捨棄 create-react-app 之餘還架了個 astro blog 昭告天下：寫文件</title><meta name="title" content="捨棄 create-react-app 之餘還架了個 astro blog 昭告天下：寫文件"><meta name="description" content="建議：趁著記憶還鮮明的時候寫 README"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2023/ithome-2023-16"><meta property="og:title" content="捨棄 create-react-app 之餘還架了個 astro blog 昭告天下：寫文件"><meta property="og:description" content="建議：趁著記憶還鮮明的時候寫 README"><meta property="og:image" content="https://tzynwang.github.io/2023/ithome-2023-16/arisa-chattasa-0LaBRkmH4fM-unsplash.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2023/ithome-2023-16"><meta property="twitter:title" content="捨棄 create-react-app 之餘還架了個 astro blog 昭告天下：寫文件"><meta property="twitter:description" content="建議：趁著記憶還鮮明的時候寫 README"><meta property="twitter:image" content="https://tzynwang.github.io/2023/ithome-2023-16/arisa-chattasa-0LaBRkmH4fM-unsplash.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul:not(:has(li)){margin-top:16px;margin-bottom:16px}li{margin-top:4px;margin-bottom:4px;line-height:24px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:16px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}del{color:#4c5958e6}ol>li:has(p)>p{display:inline;margin:0}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+[data-astro-image]{width:100%;height:auto;object-fit:var(--fit);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>捨棄 create-react-app 之餘還架了個 astro blog 昭告天下：寫文件</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2023-10-01 10:26</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/2023鐵人賽" data-astro-cid-2iymvi75> 2023鐵人賽 </a> <a class="tag" href="/tag/Frontend Infrastructure" data-astro-cid-2iymvi75> Frontend Infrastructure </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#本文" data-astro-cid-qtokga5y>本文</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#專案名稱" data-astro-cid-qtokga5y>專案名稱</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#簡介" data-astro-cid-qtokga5y>簡介</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#快速啟動" data-astro-cid-qtokga5y>快速啟動</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#資料夾結構" data-astro-cid-qtokga5y>資料夾結構</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#基礎設施" data-astro-cid-qtokga5y>基礎設施</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#系統架構或設計模式" data-astro-cid-qtokga5y>系統架構或設計模式</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#腳本詳細說明" data-astro-cid-qtokga5y>腳本詳細說明</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#其他" data-astro-cid-qtokga5y>其他</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#總結" data-astro-cid-qtokga5y>總結</a> </li> </ul> </div> <p>一個專案在自己手上如火如荼地進行開發時，會感覺自己對這包 code 的裡外內容無所不知、無所不曉。但是 ⋯⋯</p>
+<blockquote>
+<p>在熱戀期結束後的某一天，你收到一張票，要給這個半年間都不聞不問的老相好加上一點新功能。現在這包 code 陌生的彷彿農曆新年才會見到的遠房親戚。</p>
+</blockquote>
+<blockquote>
+<p>你甚至需要認真思考十分鐘，才能確定這個新功能該跟誰拿資料、又該寫在哪個元件裡比較好。</p>
+</blockquote>
+<p><img src="/2023/ithome-2023-16/cat-loading.jpg" alt="cat loading meme"></p>
+<p>上面是有點誇張。不過就算你天生記憶力過人，總是會有請假、或是經歷「總之就是需要其他人來看你 code」的時刻。</p>
+<p>此時一份好的 README 可以幫助所有人更快理解這個專案——這就是今天的主題：來介紹一下個人通常會在 README 提供哪些內容。</p>
+<h2 id="本文">本文</h2>
+<p>以下是個人撰寫 README 時常用的大綱：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="markdown"><code><span class="line"><span style="color:#79B8FF;font-weight:bold"># 專案名稱</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF;font-weight:bold">## 簡介</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF;font-weight:bold">## 快速啟動</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF;font-weight:bold">## 資料夾結構</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF;font-weight:bold">## 基礎設施</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF;font-weight:bold">## （選填）系統架構、設計模式</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF;font-weight:bold">## 腳本詳細說明</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF;font-weight:bold">## 其他</span></span></code></pre>
+<h3 id="專案名稱">專案名稱</h3>
+<p>在此寫下專案的大名。</p>
+<p><img src="/2023/ithome-2023-16/waltwhite-breakingbad.gif" alt="say my name"></p>
+<p><del>⋯⋯ 還有比專案名更適合放在 h1 的內容嗎？</del></p>
+<h3 id="簡介">簡介</h3>
+<p>通常會在這裡寫一些「就算之前對這個專案一無所知，看到這一行也會有點基本概念」的東西。不需要在這裡長篇大論，詳細說明可以安排在 README 下方慢慢補充。</p>
+<p>比如 <code>Normal Reader 2.0 是查理的技術部落格專案</code> 或是 <code>Artemis 是（產品Ｘ）的帳號權限管理專案</code>。</p>
+<h3 id="快速啟動">快速啟動</h3>
+<p>在這裡說明可以馬上啟動專案的終端指令，比如以下：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">nvm</span><span style="color:#9ECBFF"> use</span></span>
+<span class="line"><span style="color:#B392F0">make</span><span style="color:#9ECBFF"> i</span></span>
+<span class="line"><span style="color:#B392F0">cp</span><span style="color:#9ECBFF"> .env.example</span><span style="color:#9ECBFF"> .env</span></span>
+<span class="line"><span style="color:#B392F0">make</span><span style="color:#9ECBFF"> start</span></span></code></pre>
+<p>如果需要對指令追加補充說明，個人通常會將這些內容放到「腳本詳細說明」區塊。</p>
+<h3 id="資料夾結構">資料夾結構</h3>
+<p>個人認為繼「快速啟動」後，能夠最快讓「對這包 code 完全沒概念的人」進入狀況的說明欄位。</p>
+<p>以<a href="/2023/ithome-2023-4#%E5%B0%88%E6%A1%88%E7%B5%90%E6%A7%8B">第 4 天</a>的專案結構為例，個人通常會搭配以下說明：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#79B8FF">.</span></span>
+<span class="line"><span style="color:#B392F0">├──</span><span style="color:#9ECBFF"> README.md</span><span style="color:#6A737D">               # 專案的說明檔</span></span>
+<span class="line"><span style="color:#B392F0">├──</span><span style="color:#9ECBFF"> config</span><span style="color:#6A737D">                  # 專案啟動、打包用的 webpack 設定檔</span></span>
+<span class="line"><span style="color:#B392F0">├──</span><span style="color:#9ECBFF"> doc</span><span style="color:#6A737D">                     # 內容較長的專案說明，會從 README 切分至此資料夾</span></span>
+<span class="line"><span style="color:#B392F0">├──</span><span style="color:#9ECBFF"> package.json</span><span style="color:#6A737D">            # 專案的 package 設定檔</span></span>
+<span class="line"><span style="color:#B392F0">├──</span><span style="color:#9ECBFF"> public</span><span style="color:#6A737D">                  # 放置靜態檔案，包含 index.html 與 favicon 等內容</span></span>
+<span class="line"><span style="color:#B392F0">├──</span><span style="color:#9ECBFF"> script</span><span style="color:#6A737D">                  # 放置專案的啟動、打包腳本</span></span>
+<span class="line"><span style="color:#B392F0">├──</span><span style="color:#9ECBFF"> src</span></span>
+<span class="line"><span style="color:#B392F0">│</span><span style="color:#9ECBFF">   ├──</span><span style="color:#9ECBFF"> api</span><span style="color:#6A737D">                 # 收納於 React app 內使用的 api 設定與路由</span></span>
+<span class="line"><span style="color:#B392F0">│</span><span style="color:#9ECBFF">   ├──</span><span style="color:#9ECBFF"> asset</span><span style="color:#6A737D">               # 收納於 React app 內使用的靜態資源</span></span>
+<span class="line"><span style="color:#B392F0">│</span><span style="color:#9ECBFF">   ├──</span><span style="color:#9ECBFF"> component</span><span style="color:#6A737D">           # 收納 React app 使用到的元件</span></span>
+<span class="line"><span style="color:#B392F0">│</span><span style="color:#9ECBFF">   │</span><span style="color:#9ECBFF">   ├──</span><span style="color:#9ECBFF"> AppEntryPoint</span><span style="color:#6A737D">   # 最終掛載到 src/index.tsx 的主元件</span></span>
+<span class="line"><span style="color:#B392F0">│</span><span style="color:#9ECBFF">   │</span><span style="color:#9ECBFF">   ├──</span><span style="color:#9ECBFF"> Common</span><span style="color:#6A737D">          # 收納一般的 react 元件，若該元件有更強烈的 Layer/Layout/Page 特徵，請將之歸納到合適的資料夾</span></span>
+<span class="line"><span style="color:#B392F0">│</span><span style="color:#9ECBFF">   │</span><span style="color:#9ECBFF">   ├──</span><span style="color:#9ECBFF"> Layer</span><span style="color:#6A737D">           # 處理商業邏輯的元件層，這類元件可能不會有外觀</span></span>
+<span class="line"><span style="color:#B392F0">│</span><span style="color:#9ECBFF">   │</span><span style="color:#9ECBFF">   ├──</span><span style="color:#9ECBFF"> Layout</span><span style="color:#6A737D">          # 處理排版的元件，這類元件通常不會包含太多邏輯計算內容</span></span>
+<span class="line"><span style="color:#B392F0">│</span><span style="color:#9ECBFF">   │</span><span style="color:#9ECBFF">   └──</span><span style="color:#9ECBFF"> Page</span><span style="color:#6A737D">            # 根據路由來切分的大元件，如果可以，請將其內容合理地分拆為子元件</span></span>
+<span class="line"><span style="color:#B392F0">│</span><span style="color:#9ECBFF">   ├──</span><span style="color:#9ECBFF"> env.d.ts</span><span style="color:#6A737D">            # 有需要時，請在此宣告或覆蓋全域 TypeScript 定義</span></span>
+<span class="line"><span style="color:#B392F0">│</span><span style="color:#9ECBFF">   ├──</span><span style="color:#9ECBFF"> hook</span><span style="color:#6A737D">                # 收納各類 react custom hook</span></span>
+<span class="line"><span style="color:#B392F0">│</span><span style="color:#9ECBFF">   ├──</span><span style="color:#9ECBFF"> index.tsx</span><span style="color:#6A737D">           # 整個 React app 的主入口</span></span>
+<span class="line"><span style="color:#B392F0">│</span><span style="color:#9ECBFF">   ├──</span><span style="color:#9ECBFF"> model</span><span style="color:#6A737D">               # 收納 React app 中的純資料、以及搭配 React redux 用的資料實例</span></span>
+<span class="line"><span style="color:#B392F0">│</span><span style="color:#9ECBFF">   ├──</span><span style="color:#9ECBFF"> reducer</span><span style="color:#6A737D">             # 收納 React app 的 React redux reducer 相關內容</span></span>
+<span class="line"><span style="color:#B392F0">│</span><span style="color:#9ECBFF">   ├──</span><span style="color:#9ECBFF"> style</span><span style="color:#6A737D">               # 收納 React app 的樣式設定</span></span>
+<span class="line"><span style="color:#B392F0">│</span><span style="color:#9ECBFF">   └──</span><span style="color:#9ECBFF"> tool</span><span style="color:#6A737D">                # 收納在 React app 使用的通用功能</span></span>
+<span class="line"><span style="color:#B392F0">├──</span><span style="color:#9ECBFF"> tool</span><span style="color:#6A737D">                    # 放置整個專案通用的小工具</span></span>
+<span class="line"><span style="color:#B392F0">├──</span><span style="color:#9ECBFF"> tsconfig.json</span><span style="color:#6A737D">           # 專案的 TypeScript 設定檔</span></span>
+<span class="line"><span style="color:#B392F0">└──</span><span style="color:#9ECBFF"> yarn.lock</span><span style="color:#6A737D">               # 執行套件安裝時，說明套件間依賴性的文件</span></span></code></pre>
+<p>以上說明能作為地圖，讓一個初次接觸這個專案對於「該去哪裡找什麼」有點概念。</p>
+<p>比起從 <code>./src/index.tsx</code> 慢慢翻、或是透過 class name 來反查元件，了解（且遵守）「分類的原則」比較能維持專案的程式碼品質。</p>
+<h3 id="基礎設施">基礎設施</h3>
+<p>個人習慣在此區塊說明啟動專案的基本要求。內容可能如下：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="markdown"><code><span class="line"><span style="color:#FFAB70">-</span><span style="color:#E1E4E8"> Node.js: </span><span style="color:#79B8FF">`lts/gallium`</span></span>
+<span class="line"><span style="color:#FFAB70">-</span><span style="color:#E1E4E8"> Package Manager: </span><span style="color:#79B8FF">`yarn`</span></span></code></pre>
+<h3 id="系統架構或設計模式">系統架構或設計模式</h3>
+<p>在專案規模逐漸擴增後，整包 code 可能會發展為「使用 event driven 的風格來實作」或「採用 singleton 的方式來實作邏輯」。除了提示新加入的維護者如何理解專案內容外，也可做為開發時的軟性規範。</p>
+<h3 id="腳本詳細說明">腳本詳細說明</h3>
+<p>在啟動腳本多的專案（比如含有啟動、測試、資料匯入、打包、報表輸出、部署等等功能完全不同；且可能額外搭配 command line flag 操作的指令），個人傾向在 README 中花一點篇幅介紹各類指令的操作方式。比如：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D"># 執行單元測試</span></span>
+<span class="line"><span style="color:#B392F0">make</span><span style="color:#9ECBFF"> test</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># 透過 option 將終端指令轉交給 jest，比如以下 make test option=-u 效力等同 yarn jest -u</span></span>
+<span class="line"><span style="color:#B392F0">make</span><span style="color:#9ECBFF"> test</span><span style="color:#9ECBFF"> option=-u</span></span></code></pre>
+<p><del>如果你真的好好寫了一篇 README，甚至可以把向你請教指令用法的問題丟回去給發問的人。</del></p>
+<h3 id="其他">其他</h3>
+<p>如果你發現 README 開始長到沒有人想看完它，可以考慮將比較詳細的說明內容搬移到 <code>./doc</code> 資料夾，並在 README 留下目錄以及問題關鍵字，讓未來有需要的人（很有可能是你自己）能夠查看是否有說明文、或是解決辦法。</p>
+<h2 id="總結">總結</h2>
+<p>寫文件的確不太有趣、也非常消耗腦力。開發（手感正熱）的當下大概也感受不到文件能幫到什麼忙（「這包 code 我熟得很」「這件事情我不可能會忘記」）。</p>
+<p>不過當時間久了、或是整包專案即將易手維護的話，如果有一份指南來告訴下一位維護者（或是半年後的你）整個專案的結構、以及可能有哪些坑需要注意的話——個人覺得這份文件還是值得投資一點時間來撰寫的 ρ(・ω・、)</p> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

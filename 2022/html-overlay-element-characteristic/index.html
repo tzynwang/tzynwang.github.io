@@ -1,0 +1,73 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.BScVxmeO.js"></script><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.1.2"><!-- Primary Meta Tags --><title>2022 第46週 閱讀筆記：Dialogs, modality and popovers seem similar. How are they different?</title><meta name="title" content="2022 第46週 閱讀筆記：Dialogs, modality and popovers seem similar. How are they different?"><meta name="description" content="這是一個文組轉職前端工程師的技術部落格"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2022/html-overlay-element-characteristic"><meta property="og:title" content="2022 第46週 閱讀筆記：Dialogs, modality and popovers seem similar. How are they different?"><meta property="og:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="og:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2022/html-overlay-element-characteristic"><meta property="twitter:title" content="2022 第46週 閱讀筆記：Dialogs, modality and popovers seem similar. How are they different?"><meta property="twitter:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="twitter:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul:not(:has(li)){margin-top:16px;margin-bottom:16px}li{margin-top:4px;margin-bottom:4px;line-height:24px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:16px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}del{color:#4c5958e6}ol>li:has(p)>p{display:inline;margin:0}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+[data-astro-image]{width:100%;height:auto;object-fit:var(--fit);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>2022 第46週 閱讀筆記：Dialogs, modality and popovers seem similar. How are they different?</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2022-11-20 10:39</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/HTML" data-astro-cid-2iymvi75> HTML </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#總結" data-astro-cid-qtokga5y>總結</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#筆記" data-astro-cid-qtokga5y>筆記</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#特性" data-astro-cid-qtokga5y>特性</a> </li><li class="toc-4" data-astro-cid-qtokga5y> <a href="#modalmodality" data-astro-cid-qtokga5y>modal/modality</a> </li><li class="toc-4" data-astro-cid-qtokga5y> <a href="#top-layer-backdrop" data-astro-cid-qtokga5y>top layer, backdrop</a> </li><li class="toc-4" data-astro-cid-qtokga5y> <a href="#inert" data-astro-cid-qtokga5y>inert</a> </li><li class="toc-4" data-astro-cid-qtokga5y> <a href="#explicitlight-dismiss" data-astro-cid-qtokga5y>explicit/light dismiss</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#元件" data-astro-cid-qtokga5y>元件</a> </li><li class="toc-4" data-astro-cid-qtokga5y> <a href="#dialog" data-astro-cid-qtokga5y>dialog</a> </li><li class="toc-4" data-astro-cid-qtokga5y> <a href="#popover" data-astro-cid-qtokga5y>popover</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#參考文件" data-astro-cid-qtokga5y>參考文件</a> </li> </ul> </div> <h2 id="總結">總結</h2>
+<p>參考文章 <a href="https://hidde.blog/dialog-modal-popover-differences/">Dialogs, modality and popovers seem similar. How are they different?</a> 的內容，整理了一些 UI 特性與實作元件的筆記。</p>
+<h2 id="筆記">筆記</h2>
+<h3 id="特性">特性</h3>
+<h4 id="modalmodality">modal/modality</h4>
+<p>當一個有 modal 特性的元件在被開啟時，使用者無法與該元件以外的內容進行互動（沒有包含在 modal 元件中的內容會進入 inert 狀態），等於使用者的注意力被強制停留在元件上。</p>
+<p>modal 特性的元件會有流程中斷的效果，除非必要，不然不應該經常讓有 modal 特性的元件來干擾使用者與產品的互動。</p>
+<h4 id="top-layer-backdrop">top layer, backdrop</h4>
+<p>top layer 讓元件必定出現在畫面最上方，而根據 <a href="https://fullscreen.spec.whatwg.org/#top-layer">Fullscreen API</a> 文件內容，每一個在 top layer 中的元件都會附帶一個 <code>::backdrop</code> 偽元件。</p>
+<blockquote>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/::backdrop">MDN</a>: The <code>::backdrop</code> CSS pseudo-element is a box the size of the viewport which is rendered immediately beneath any element being presented in fullscreen mode. This includes both elements which have been placed in fullscreen mode using the Fullscreen API and <code>&#x3C;dialog></code> elements.</p>
+</blockquote>
+<p>使用 <code>&#x3C;dialog></code> 標籤搭配 <code>HTMLDialogElement.showModal()</code> 來開啟元件時，支援此標籤的瀏覽器除了在畫面最上方繪製對話框元件外，也會為此元件附上 <code>::backdrop</code> 偽元件作為背景。</p>
+<h4 id="inert">inert</h4>
+<p>使用者無法與帶有 <code>inert</code> 屬性的元件互動：</p>
+<blockquote>
+<p>MDN: The HTMLElement property <code>inert</code> is a boolean value that, when present, makes the browser <strong>“ignore” user input events for the element</strong>, including <strong>focus events</strong> and events from assistive technologies. The browser may also ignore page search and text selection in the element. This can be useful when building UIs such as modals where you would want to “trap” the focus inside the modal when it’s visible.</p>
+</blockquote>
+<h4 id="explicitlight-dismiss">explicit/light dismiss</h4>
+<ul>
+<li>explicit dismiss: 當使用者點擊元件上的關閉鈕或按下鍵盤 esc 時，關閉該元件</li>
+<li>light dismiss: 滿足一定條件時，元件會自動關閉。比如 toast 元件會在時間倒數完畢後自動消失，或是參考以下動畫，當使用者移動到不同的功能按鈕（或點擊選單範圍外的地方）時，下方的選單會自動關閉：</li>
+</ul>
+<p><img src="/2022/html-overlay-element-characteristic/light-dismiss-example.gif" alt="explicit dismiss and light dismiss"></p>
+<h3 id="元件">元件</h3>
+<h4 id="dialog">dialog</h4>
+<p>dialog 元件不一定會有 modal 特性，參考以下兩張螢幕截圖：</p>
+<p><img src="/2022/html-overlay-element-characteristic/dialog-modal.png" alt="example of modal dialog"></p>
+<p>這是 slack 在設定連結時會開啟的對話框元件，擁有 modal 特性，除非使用者設定完連結或是主動點及關閉按鈕，否則無法與畫面剩下的部分進行互動。</p>
+<p><img src="/2022/html-overlay-element-characteristic/dialog-non-modal.png" alt="example of non modal dialog"></p>
+<p>這是 gmail 的 non-modal 類對話框元件，使用者即使開啟了「撰寫信件」的對話框，依舊可以與畫面剩下的部分進行互動。</p>
+<h4 id="popover">popover</h4>
+<p>在 <a href="https://open-ui.org/components/popup.research.explainer">open-ui.org 現階段的提案</a>中，被視為一種新的「屬性」（不像 <code>dialog</code> 是元件）。擁有此類屬性的元件通常會有以下特徵：</p>
+<ul>
+<li>會出現在畫面最上層，不會被其他內容覆蓋</li>
+<li>不會一直維持可見度，參考上方的 light dismiss 範例，在一定情況下會自動從畫面上消失</li>
+<li>通常一次只會顯示一個有此屬性的元件</li>
+</ul>
+<p>Material UI 中的 <a href="https://mui.com/material-ui/react-menu/#main-content">Menu</a> 與 <a href="https://mui.com/material-ui/react-tooltip/#main-content">Tooltip</a> 元件都是帶有 popover 屬性的元件。而提案中的 popover 屬性即是希望能透過 HTML 原生元件來滿足這類型 UI 的需求（而不是透過 lib 來實現）。</p>
+<h2 id="參考文件">參考文件</h2>
+<ul>
+<li><a href="https://hidde.blog/dialog-modal-popover-differences/">Dialogs, modality and popovers seem similar. How are they different?</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog">MDN: dialog</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/::backdrop">MDN: ::backdrop</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/showModal">MDN: HTMLDialogElement.showModal()</a></li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

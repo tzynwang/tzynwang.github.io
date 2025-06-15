@@ -1,0 +1,96 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.BScVxmeO.js"></script><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.1.2"><!-- Primary Meta Tags --><title>閱讀筆記：The Art of Unit Testing Chapter 10 Developing a testing strategy</title><meta name="title" content="閱讀筆記：The Art of Unit Testing Chapter 10 Developing a testing strategy"><meta name="description" content="本章旨在介紹「測試食譜（test recipes）」——目的是為了幫助開發者安排測試策略（test strategy），避免測試種類失衡或目標重疊的問題。"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2024/the-art-of-unit-testing-ch10-developing-a-testing-strategy"><meta property="og:title" content="閱讀筆記：The Art of Unit Testing Chapter 10 Developing a testing strategy"><meta property="og:description" content="本章旨在介紹「測試食譜（test recipes）」——目的是為了幫助開發者安排測試策略（test strategy），避免測試種類失衡或目標重疊的問題。"><meta property="og:image" content="https://tzynwang.github.io/2024/the-art-of-unit-testing-ch10-developing-a-testing-strategy/kristine-tumanyan-YmgpoBhJAkI-unsplash.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2024/the-art-of-unit-testing-ch10-developing-a-testing-strategy"><meta property="twitter:title" content="閱讀筆記：The Art of Unit Testing Chapter 10 Developing a testing strategy"><meta property="twitter:description" content="本章旨在介紹「測試食譜（test recipes）」——目的是為了幫助開發者安排測試策略（test strategy），避免測試種類失衡或目標重疊的問題。"><meta property="twitter:image" content="https://tzynwang.github.io/2024/the-art-of-unit-testing-ch10-developing-a-testing-strategy/kristine-tumanyan-YmgpoBhJAkI-unsplash.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul:not(:has(li)){margin-top:16px;margin-bottom:16px}li{margin-top:4px;margin-bottom:4px;line-height:24px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:16px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}del{color:#4c5958e6}ol>li:has(p)>p{display:inline;margin:0}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+[data-astro-image]{width:100%;height:auto;object-fit:var(--fit);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>閱讀筆記：The Art of Unit Testing Chapter 10 Developing a testing strategy</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2024-02-03 15:42</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/Testing" data-astro-cid-2iymvi75> Testing </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#總結" data-astro-cid-qtokga5y>總結</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#測試的層次" data-astro-cid-qtokga5y>測試的層次</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#衡量測試品質的標準" data-astro-cid-qtokga5y>衡量測試品質的標準</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#測試策略的反模式" data-astro-cid-qtokga5y>測試策略的反模式</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#只有高層次測試" data-astro-cid-qtokga5y>只有高層次測試</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#只有低層次測試" data-astro-cid-qtokga5y>只有低層次測試</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#目標重複的測試" data-astro-cid-qtokga5y>目標重複的測試</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#透過測試食譜避免反模式" data-astro-cid-qtokga5y>透過測試食譜避免反模式</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#如何執行" data-astro-cid-qtokga5y>如何執行</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#注意事項" data-astro-cid-qtokga5y>注意事項</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#補充部署流程注意事項" data-astro-cid-qtokga5y>補充：部署流程注意事項</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#參考文件" data-astro-cid-qtokga5y>參考文件</a> </li> </ul> </div> <h2 id="總結">總結</h2>
+<p>本章旨在介紹「測試食譜（test recipes）」——目的是為了幫助開發者安排測試策略（test strategy），避免測試種類失衡或目標重疊的問題。</p>
+<h2 id="測試的層次">測試的層次</h2>
+<p><img src="/2024/the-art-of-unit-testing-ch10-developing-a-testing-strategy/common-software-test-levels.png" alt="common-software-test-levels"></p>
+<p>我們可以根據依賴（dependency）的數量來分類測試，由多到少依序是：</p>
+<ul>
+<li>E2E 測試</li>
+<li>整合測試（integration test）</li>
+<li>單元測試（unit test）</li>
+</ul>
+<p>高層次的測試（E2E）能提供較高的信心加成。低層次測試的優勢則是低複雜度、低脆弱度、好維護以及較快的執行速度。</p>
+<h2 id="衡量測試品質的標準">衡量測試品質的標準</h2>
+<p>本書透過以下五個標準來衡量測試的品質：</p>
+<ul>
+<li>複雜度：自然是越低越好</li>
+<li>脆弱度（flakiness）：指的是「會影響測試結果」的不可控因素，越少越好</li>
+<li>維護性：需要修改測試的頻率（參閱 <a href="/2024/the-art-of-unit-testing-ch8-maintainability">8 Maintainability</a>），越低越好</li>
+<li>執行速度：自然是越快越好</li>
+<li>信心加成：當測試通過時，能增加我們對這包程式碼的信心嗎？增幅越高越好</li>
+</ul>
+<h2 id="測試策略的反模式">測試策略的反模式</h2>
+<h3 id="只有高層次測試">只有高層次測試</h3>
+<p>指一包程式碼只有 E2E 測試。缺點非常明顯：</p>
+<ul>
+<li>因為使用真實依賴，讓測試裡不可控的部分極多，導致測試失敗也不一定代表產品真的有問題，誤報率高（flaky test）</li>
+<li>執行耗時</li>
+<li>新增一組測試的成本很高，但帶來的效益偏低，因為腳本之間必定會有重複的流程</li>
+</ul>
+<p>本書認為高層次的測試數量應該越少越好，高、低層次測試的比率應該維持在 1: 5 至 1:10 左右即可。</p>
+<h3 id="只有低層次測試">只有低層次測試</h3>
+<p>指一包程式碼只有單元測試。缺點是——因為缺少「模擬實際使用流程」的測試，所以開發者對於服務「能正常運行」的信心可能不太夠。</p>
+<h3 id="目標重複的測試">目標重複的測試</h3>
+<p>本書認為高、低層次測試有著相同的測試目標是一種反模式，因為最差的情況是「高層次測試耗時又容易誤報，低層次測試也無法供應足夠的信心」。</p>
+<blockquote>
+<p>We suffer the worst of both worlds: at the top level, we suffer from the long test times, difficult maintainability, build whisperers, and flakiness; at the bottom level we suffer from lack of confidence.</p>
+</blockquote>
+<p>與同事討論後，我們將這個反模式理解為：高層次的測試不該與低層次的測試擁有完全一致的測試目標。</p>
+<p>舉個例子：我已經為「處理登入的模組」寫好單元測試，覆蓋一般操作與極端情境。而當我在撰寫 E2E 測試時，我<strong>不應該只測試登入模組的行為是否符合預期</strong>，而是要將「登入行為」納入 E2E 腳本的一部分，讓這個 E2E 測試驗證「使用者操作整個前端服務的流程」是否符合預期。</p>
+<h2 id="透過測試食譜避免反模式">透過測試食譜避免反模式</h2>
+<p>為了避免以上三種測試策略的反模式，本書提出測試食譜（test recipes）的概念，其目的是讓開發者制定出「測試某個功能的最佳組合」。</p>
+<blockquote>
+<p>The idea is to have an informal plan for <strong>how a particular feature is going to be tested</strong>.</p>
+</blockquote>
+<h3 id="如何執行">如何執行</h3>
+<p>在實際開發前，先列出一個單元的使用情境清單。完成清單的標準是，如果一個單元能滿足清單裡的所有情境，你就會對它的功能充滿信心（不會擔心功能疏漏）。</p>
+<blockquote>
+<p>A test recipe represents <strong>the list of scenarios</strong> that gives its creators “pretty good confidence” that the feature works.</p>
+</blockquote>
+<p>舉個例子——在開發「檢查使用者輸入的內容是否能用來建立帳號」的功能前，我列出了以下測試情境：</p>
+<ul>
+<li>（單元測試）如果傳入「可以建立成帳號的字串」，要回傳 ture</li>
+<li>（單元測試）如果傳入「不可以建立成帳號的字串」，要回傳 false</li>
+<li>（E2E 測試）使用者如果還沒輸入任何內容，不應該回傳任何判定結果</li>
+</ul>
+<p>對我來說，該單元只要能針對以上三種情境做出正確反應，它的功能就完備了。這樣就是「完成一個單元的測試食譜」。如果你是遵循 TDD 原則開發的工程師，現在就能根據食譜來撰寫測試。</p>
+<h3 id="注意事項">注意事項</h3>
+<ul>
+<li>建議至少兩人一起規劃測試食譜，用意是為了討論情境是否已經全數列出，以及審視測試層次是否有分配不均的狀況</li>
+<li>食譜是可以隨時修改的——需求有變時，就要檢查清單中的情境是否還能符合需求</li>
+<li>食譜盡量以低層次測試為主要成分，因爲執行速度與測試穩健度都比高層次的測試優秀</li>
+<li>不要重複已經驗證過的情境</li>
+</ul>
+<h2 id="補充部署流程注意事項">補充：部署流程注意事項</h2>
+<p>部署時，除了執行「一定要全數通過才能發佈」的測試，也需要跑「負責收集數據」的任務（code analysis / complexity scanning / high-load performance testing）。</p>
+<p>本書認為這兩大類工作應該各自啟動一個流程（pipeline）執行，不應混雜。理由是——收集數據的任務成敗不應影響部署進行。反之，測試失敗時需要停止後續的發佈工作，但不用為此暫停數據收集。</p>
+<h2 id="參考文件">參考文件</h2>
+<ul>
+<li><a href="https://www.manning.com/books/the-art-of-unit-testing-third-edition">Manning: The Art of Unit Testing, Third Edition</a></li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

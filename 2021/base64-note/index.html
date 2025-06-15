@@ -1,0 +1,105 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.BScVxmeO.js"></script><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.1.2"><!-- Primary Meta Tags --><title>「Base64」相關筆記</title><meta name="title" content="「Base64」相關筆記"><meta name="description" content="這是一個文組轉職前端工程師的技術部落格"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2021/base64-note"><meta property="og:title" content="「Base64」相關筆記"><meta property="og:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="og:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2021/base64-note"><meta property="twitter:title" content="「Base64」相關筆記"><meta property="twitter:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="twitter:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul:not(:has(li)){margin-top:16px;margin-bottom:16px}li{margin-top:4px;margin-bottom:4px;line-height:24px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:16px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}del{color:#4c5958e6}ol>li:has(p)>p{display:inline;margin:0}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+[data-astro-image]{width:100%;height:auto;object-fit:var(--fit);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>「Base64」相關筆記</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2021-07-05 11:18</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/Data exchange format" data-astro-cid-2iymvi75> Data exchange format </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#總結" data-astro-cid-qtokga5y>總結</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#筆記" data-astro-cid-qtokga5y>筆記</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#base64-是什麼" data-astro-cid-qtokga5y>base64 是什麼？</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#base64-要解決什麼問題" data-astro-cid-qtokga5y>base64 要解決什麼問題？</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#轉換範例" data-astro-cid-qtokga5y>轉換範例</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#補充" data-astro-cid-qtokga5y>補充</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#參考文件" data-astro-cid-qtokga5y>參考文件</a> </li> </ul> </div> <h2 id="總結">總結</h2>
+<p>發現自己還沒有辦法流暢地解釋「Base64 到底是什麼？」，此篇為查找相關資料後整理的筆記</p>
+<h2 id="筆記">筆記</h2>
+<h3 id="base64-是什麼">base64 是什麼？</h3>
+<ul>
+<li>Wiki: In programming, Base64 is a group of <strong>binary-to-text encoding schemes</strong> that represent binary data (more specifically, a sequence of <strong>8-bit bytes</strong>) in an <strong>ASCII string format</strong> by translating the data into a radix-64 representation.
+<ul>
+<li>A binary-to-text encoding is <strong>encoding of data in plain text</strong>.</li>
+<li>（引用自維基百科）Encoding、編碼是一種「資訊從一種形式轉換為另一種形式」的過程；解碼則是編碼的逆過程。</li>
+</ul>
+</li>
+<li>維基百科：一種基於 64 個可列印字元來<strong>表示二進位資料</strong>的表示方法。</li>
+<li>From <a href="https://elmah.io/tools/base64-image-encoder/">elmah.io</a>: Base64 is an encoding algorithm that <strong>converts any characters, binary data, and even images or sound files into a readable string</strong>, which can be saved or transported over the network without data loss. The characters generated from Base64 encoding consist of Latin letters, digits, plus, and slash.</li>
+</ul>
+<blockquote>
+<p>小結論：base64 是一種編碼方式，可以把二進位資料轉換成純文字；透過 base64 編碼後得到的純文字串，可以再解碼變回二進位資料。</p>
+</blockquote>
+<h3 id="base64-要解決什麼問題">base64 要解決什麼問題？</h3>
+<ul>
+<li>
+<p>Wiki:</p>
+<ul>
+<li>Base64 is designed <strong>to carry data</strong> stored in binary formats <strong>across channels that only reliably support text content</strong>.</li>
+<li>Base64 is particularly prevalent on the World Wide Web where its uses include the ability <strong>to embed image files</strong> (or other binary assets) <strong>inside textual assets</strong> such as <strong>HTML</strong> and <strong>CSS files</strong>.</li>
+<li>Base64 is also widely used for <strong>sending e-mail attachments</strong>. This is required because SMTP (in its <strong>original form</strong>) was designed to transport <strong>7-bit ASCII characters only</strong>.</li>
+</ul>
+</li>
+<li>
+<p>Text-based protocols (according to <a href="https://en.wikipedia.org/wiki/Binary_protocol">Wiki</a>):</p>
+<ul>
+<li>IRC, old versions of SMTP, HTTP/1.1</li>
+</ul>
+</li>
+<li>
+<p><a href="https://elmah.io/tools/base64-image-encoder/">elmah.io</a>:</p>
+<ul>
+<li>Base64 is most commonly used as a MIME (Multipurpose Internet Mail Extensions) transfer encoding for email.</li>
+<li>Base64 <strong>images</strong> are primarily used to embed image data within other formats like HTML, CSS, or JSON. By including image data within an HTML document, <strong>the browser doesn’t need to make an additional web request</strong> to fetch the file, since the image is already embedded in the HTML document. A Base64 representation of an image is larger than a separate image and the string gets very long for large images.</li>
+</ul>
+</li>
+</ul>
+<h3 id="轉換範例">轉換範例</h3>
+<p><img src="/2021/base64-note/base64example.png" alt="Base64轉換示意圖，取自中文維基百科"></p>
+<ol>
+<li>字母 M、a、n 先個別轉換為 ASCII 編碼，得到十進位數字 77、97 與 110</li>
+<li>再將這三個十進位數字各自轉為二進位數字後，得到<code>01001101</code>、<code>01100001</code>與<code>01101110</code>，合併為<code>010011010110000101101110</code>，總計為 24 位元的資料</li>
+<li>將<code>010011010110000101101110</code>分拆為 4 組各為 6 位元的資料：<code>010011</code>、<code>101011</code>、<code>000101</code>與<code>101110</code></li>
+<li>上述 4 組二進位數字轉回十進位，再對照 ASCII，得到英文單字 T、W、F、u</li>
+<li>單字<code>Man</code>透過 base64 編碼後，得到字串<code>TWFu</code></li>
+</ol>
+<h3 id="補充">補充</h3>
+<ul>
+<li>Wiki: This encoding causes <strong>an overhead of 33–36%</strong> (33% by the encoding itself; up to 3% more by the inserted line breaks). 進行 base64 編碼後，檔案大小會上升</li>
+<li>Wiki: The data URI scheme can use Base64 to represent file contents. For instance, background images and fonts can be specified in a CSS stylesheet file as <code>data: URIs</code>, instead of being supplied in separate files.
+<ul>
+<li>參考<a href="https://css-tricks.com/data-uris/">CSS-Tricks</a>：</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="css"><code><span class="line"><span style="color:#6A737D">/* CSS */</span></span>
+<span class="line"><span style="color:#85E89D">li</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#79B8FF">  background</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">url</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">data:image/gif;base64,R0lGODlhEAAQAMQAAORHHOVSKudfOulrSOp3WOyDZu6QdvCchPGolfO0o/XBs/fNwfjZ0frl3/zy7////wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAkAABAALAAAAAAQABAAAAVVICSOZGlCQAosJ6mu7fiyZeKqNKToQGDsM8hBADgUXoGAiqhSvp5QAnQKGIgUhwFUYLCVDFCrKUE1lBavAViFIDlTImbKC5Gm2hB0SlBCBMQiB0UjIQA7</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#79B8FF">    no-repeat</span><span style="color:#79B8FF"> left</span><span style="color:#79B8FF"> center</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#79B8FF">  padding</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">5</span><span style="color:#F97583">px</span><span style="color:#79B8FF"> 0</span><span style="color:#79B8FF"> 5</span><span style="color:#F97583">px</span><span style="color:#79B8FF"> 25</span><span style="color:#F97583">px</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="html"><code><span class="line"><span style="color:#6A737D">&#x3C;!-- HTML img element --></span></span>
+<span class="line"><span style="color:#E1E4E8">&#x3C;</span><span style="color:#85E89D">img</span></span>
+<span class="line"><span style="color:#B392F0">  src</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"data:image/gif;base64,R0lGODlhEAAQAMQAAORHHOVSKudfOulrSOp3WOyDZu6QdvCchPGolfO0o/XBs/fNwfjZ0frl3/zy7////wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAkAABAALAAAAAAQABAAAAVVICSOZGlCQAosJ6mu7fiyZeKqNKToQGDsM8hBADgUXoGAiqhSvp5QAnQKGIgUhwFUYLCVDFCrKUE1lBavAViFIDlTImbKC5Gm2hB0SlBCBMQiB0UjIQA7"</span></span>
+<span class="line"><span style="color:#B392F0">  alt</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"star"</span></span>
+<span class="line"><span style="color:#B392F0">  width</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"16"</span></span>
+<span class="line"><span style="color:#B392F0">  height</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"16"</span></span>
+<span class="line"><span style="color:#E1E4E8">/></span></span></code></pre>
+</li>
+</ul>
+<h2 id="參考文件">參考文件</h2>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Base64">Wikipedia: Base64</a></li>
+<li><a href="https://zh.wikipedia.org/wiki/Base64">維基百科：Base64（基底 64）</a></li>
+<li><a href="https://youtu.be/8qkxeZmKmOY">YouTube: What is Base64?</a></li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

@@ -1,0 +1,160 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.BScVxmeO.js"></script><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.1.2"><!-- Primary Meta Tags --><title>「CSS Cascading and Inheritance Level 4」相關筆記</title><meta name="title" content="「CSS Cascading and Inheritance Level 4」相關筆記"><meta name="description" content="這是一個文組轉職前端工程師的技術部落格"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2021/css-w3c-cascade-specificity"><meta property="og:title" content="「CSS Cascading and Inheritance Level 4」相關筆記"><meta property="og:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="og:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2021/css-w3c-cascade-specificity"><meta property="twitter:title" content="「CSS Cascading and Inheritance Level 4」相關筆記"><meta property="twitter:description" content="這是一個文組轉職前端工程師的技術部落格"><meta property="twitter:image" content="https://tzynwang.github.io/alexander-andrews-mEdKuPYJe1I.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul:not(:has(li)){margin-top:16px;margin-bottom:16px}li{margin-top:4px;margin-bottom:4px;line-height:24px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:16px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}del{color:#4c5958e6}ol>li:has(p)>p{display:inline;margin:0}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+[data-astro-image]{width:100%;height:auto;object-fit:var(--fit);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>「CSS Cascading and Inheritance Level 4」相關筆記</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2021-08-28 10:04</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/CSS" data-astro-cid-2iymvi75> CSS </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#總結" data-astro-cid-qtokga5y>總結</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#筆記" data-astro-cid-qtokga5y>筆記</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#introduction" data-astro-cid-qtokga5y>Introduction</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#value-processing" data-astro-cid-qtokga5y>Value Processing</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#cascade" data-astro-cid-qtokga5y>Cascade</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#specificity" data-astro-cid-qtokga5y>Specificity</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#defaulting" data-astro-cid-qtokga5y>Defaulting</a> </li><li class="toc-4" data-astro-cid-qtokga5y> <a href="#explicit-defaulting" data-astro-cid-qtokga5y>Explicit Defaulting</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#參考文件" data-astro-cid-qtokga5y>參考文件</a> </li> </ul> </div> <h2 id="總結">總結</h2>
+<p>此篇為 CSS cascading 與 specificity 的相關筆記，來源為 W3C、MDN 與 CSS-Tricks 文章</p>
+<blockquote>
+<p>The cascade and specificity are mechanisms that control <strong>which rule applies</strong> when there is such a <strong>conflict</strong>.</p>
+</blockquote>
+<h2 id="筆記">筆記</h2>
+<h3 id="introduction">Introduction</h3>
+<ul>
+<li>One of the fundamental design principles of CSS is cascading, which allows <strong>several style sheets</strong> to influence the presentation of a document.</li>
+<li>When different declarations try to set a value for the same element/property combination, the <strong>conflicts must somehow be resolved</strong>. 目的：解決樣式衝突</li>
+<li>The opposite problem arises when <strong>no declarations</strong> try to set a the value for an element/property combination. In this case, a value is be found by way of <strong>inheritance</strong> or by looking at the property’s <strong>initial value</strong>. 在沒有宣告樣式的時候，透過繼承（<code>inherit</code>）或初始樣式（<code>initial</code>）來為一元素取得樣式</li>
+<li>The cascading and defaulting process takes a set of declarations as input, and outputs a <strong>specified value</strong> for each property on each element.</li>
+</ul>
+<h3 id="value-processing">Value Processing</h3>
+<p>The final value of a CSS property for a given element or box is the result of a multi-step calculation（所有的 CSS 樣式最終都會變為以 px 為單位的數值）</p>
+<ol>
+<li>
+<p>First, all the <strong>declared values</strong> applied to an element are collected, for each property on each element. There may be zero or many declared values applied to the element. 同一個元素可能被宣告多種樣式</p>
+</li>
+<li>
+<p>Cascading yields the <strong>cascaded value</strong>. There is at most one cascaded value per property per element. 透過 cascading 將一元素的樣式縮減為僅有一個的 cascaded value</p>
+</li>
+<li>
+<p>Defaulting yields the <strong>specified value</strong>. Every element has exactly one specified value per property.</p>
+</li>
+<li>
+<p>It is the result of putting the cascaded value through the <strong>defaulting processes</strong>, guaranteeing that a specified value exists for every property on every element.</p>
+</li>
+<li>
+<p>In many cases, the specified value is the cascaded value.</p>
+</li>
+<li>
+<p>However, if there is <strong>no cascaded value at all</strong>, the specified value is <strong>defaulted</strong>.</p>
+</li>
+<li>
+<p>如果沒有 cascaded value 則透過 initial 或 inherit 取得樣式</p>
+</li>
+<li>
+<p>Resolving value dependencies yields the <strong>computed value</strong>. Every element has exactly one computed value per property. 將 relative value（比如原本以 rem 為單位的數值）轉為固定數值</p>
+</li>
+<li>
+<p>relative units: em, ex, vh, vw</p>
+</li>
+<li>
+<p>certain keywords (e.g., smaller, bolder) must be replaced according to their definitions</p>
+</li>
+<li>
+<p><strong>percentages</strong> on some properties must be multiplied by a reference value (defined by the property)</p>
+</li>
+<li>
+<p>Formatting the document yields the <strong>used value</strong>. An element only has a used value for a given property if that property applies to the element. 根據 layout 來計算 used value，比如<code>width: auto;</code>要根據畫面最終 layout 才能計算出<code>auto</code>的實際數值</p>
+</li>
+<li>
+<p>Finally, the used value is transformed to the <strong>actual value</strong> based on constraints of the display environment. As with the used value, there may or may not be an actual value for a given property on an element. 瀏覽器等裝置最後使用的數值</p>
+<p><img src="/2021/css-w3c-cascade-specificity/css-value-processed.png" alt="How CSS values are processed">
+<img src="/2021/css-w3c-cascade-specificity/css-value-computation.png" alt="Examples of CSS Value Computation"></p>
+</li>
+</ol>
+<h3 id="cascade">Cascade</h3>
+<blockquote>
+<p>When equal specificity, <strong>order</strong> matters.</p>
+</blockquote>
+<ul>
+<li>The cascade is an <strong>algorithm</strong> that defines <strong>how to combine</strong> property values originating <strong>from different sources</strong>.</li>
+<li>The CSS cascade algorithm’s job is to select CSS declarations in order to <strong>determine the correct values</strong> for CSS properties.</li>
+<li>Only CSS declarations, that is <strong>property/value pairs</strong>, participate in the cascade.</li>
+<li><strong>Keyframes don’t cascade</strong>, meaning that at any given time CSS takes values from only one single <code>@keyframes</code>, and <strong>never mixes</strong> multiple ones together.</li>
+<li>When several keyframes are appropriate, it chooses the <strong>latest defined</strong> in the most important document, but <strong>never combined</strong> all together.</li>
+<li>Origin and Importance（以下權重從高至低排列，出自高順位文件的樣式會覆蓋來源為低順位的樣式）
+<ol>
+<li>Transition declarations</li>
+<li><code>!important</code> user agent declarations</li>
+<li><code>!important</code> user declarations</li>
+<li><code>!important</code> author declarations</li>
+<li>Animation declarations</li>
+<li>Author declarations</li>
+<li>User declarations</li>
+<li>User agent declarations</li>
+</ol>
+</li>
+</ul>
+<h3 id="specificity">Specificity</h3>
+<blockquote>
+<p>When <strong>different styles</strong> apply to <strong>same element</strong>, which wins.</p>
+</blockquote>
+<ul>
+<li>Specificity is the means by which browsers decide <strong>which CSS property values</strong> are the most relevant to an element and, therefore, <strong>will be applied</strong>.</li>
+<li>Specificity is a <strong>weight</strong> that is applied to a given CSS declaration.</li>
+<li>Specificity only applies when the <strong>same element</strong> is targeted by <strong>multiple declarations</strong>.</li>
+</ul>
+<h3 id="defaulting">Defaulting</h3>
+<blockquote>
+<p>No cascaded value? Ask defaults.</p>
+</blockquote>
+<ul>
+<li><strong>Inherited</strong> properties draw their defaults from their parent element through inheritance;
+<ul>
+<li>The inherited value of a property on an element is <strong>the computed value</strong> of the property on the element’s <strong>parent element</strong>.</li>
+</ul>
+</li>
+<li>All other properties take their <strong>initial value</strong>.
+<ul>
+<li>Each property has an initial value, defined in the property’s definition table.</li>
+<li>If the property is not an inherited property, and the cascade does not result in a value, then the specified value of the property is its initial value.</li>
+</ul>
+</li>
+</ul>
+<h4 id="explicit-defaulting">Explicit Defaulting</h4>
+<p>除了<code>initial</code>與<code>inherit</code>以外還有另外兩種關鍵字可以使用</p>
+<ul>
+<li><code>unset</code>: <strong>erase</strong> all declarations
+<ul>
+<li>If it is an <strong>inherited property</strong>, this is treated as inherit;</li>
+<li>If it is not, this is treated as <strong>initial</strong>.</li>
+</ul>
+</li>
+<li><code>revert</code>: <strong>roll back</strong> to cascade origins, the behavior depends on the <strong>cascade origin</strong> to which the declaration belongs:
+<ul>
+<li>author origin: Rolls back the cascaded value to the <strong>user level</strong>, so that the specified value is calculated <strong>as if no author-origin rules</strong> were specified for this property on this element.</li>
+<li>user origin: Rolls back the cascaded value to the <strong>user-agent level</strong>, so that the specified value is calculated <strong>as if no author-origin or user-origin rules</strong> were specified for this property on this element.</li>
+<li>user-agent origin: Equivalent to <code>unset</code>.</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2021/css-w3c-cascade-specificity/styling-order.jpg" alt="The definitive guide to CSS styling order"></p>
+<h2 id="參考文件">參考文件</h2>
+<ul>
+<li><a href="https://www.w3.org/TR/css-cascade/">W3C: CSS Cascading and Inheritance Level 4</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Cascade_and_inheritance">MDN: Cascade and inheritance</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Cascade">MDN: Introducing the CSS Cascade</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity">MDN: Specificity</a></li>
+<li><a href="https://css-tricks.com/the-c-in-css-the-cascade/">The “C” in CSS: The Cascade</a></li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

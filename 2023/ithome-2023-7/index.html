@@ -1,0 +1,315 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.BScVxmeO.js"></script><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.1.2"><!-- Primary Meta Tags --><title>捨棄 create-react-app 之餘還架了個 astro blog 昭告天下：webpack 5 與環境變數</title><meta name="title" content="捨棄 create-react-app 之餘還架了個 astro blog 昭告天下：webpack 5 與環境變數"><meta name="description" content="很抱歉吊了幾天的胃口，從今天開始終於要來聊聊 webpack 設定了。首先從處理環境變數開始吧。"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2023/ithome-2023-7"><meta property="og:title" content="捨棄 create-react-app 之餘還架了個 astro blog 昭告天下：webpack 5 與環境變數"><meta property="og:description" content="很抱歉吊了幾天的胃口，從今天開始終於要來聊聊 webpack 設定了。首先從處理環境變數開始吧。"><meta property="og:image" content="https://tzynwang.github.io/2023/ithome-2023-7/cookie-the-pom-gySMaocSdqs-unsplash.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2023/ithome-2023-7"><meta property="twitter:title" content="捨棄 create-react-app 之餘還架了個 astro blog 昭告天下：webpack 5 與環境變數"><meta property="twitter:description" content="很抱歉吊了幾天的胃口，從今天開始終於要來聊聊 webpack 設定了。首先從處理環境變數開始吧。"><meta property="twitter:image" content="https://tzynwang.github.io/2023/ithome-2023-7/cookie-the-pom-gySMaocSdqs-unsplash.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul:not(:has(li)){margin-top:16px;margin-bottom:16px}li{margin-top:4px;margin-bottom:4px;line-height:24px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:16px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}del{color:#4c5958e6}ol>li:has(p)>p{display:inline;margin:0}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+[data-astro-image]{width:100%;height:auto;object-fit:var(--fit);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>捨棄 create-react-app 之餘還架了個 astro blog 昭告天下：webpack 5 與環境變數</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2023-09-22 08:11</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/2023鐵人賽" data-astro-cid-2iymvi75> 2023鐵人賽 </a> <a class="tag" href="/tag/Frontend Infrastructure" data-astro-cid-2iymvi75> Frontend Infrastructure </a> <a class="tag" href="/tag/webpack" data-astro-cid-2iymvi75> webpack </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#本文" data-astro-cid-qtokga5y>本文</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#流程說明" data-astro-cid-qtokga5y>流程說明</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#程式碼" data-astro-cid-qtokga5y>程式碼</a> </li><li class="toc-4" data-astro-cid-qtokga5y> <a href="#configdataenvts" data-astro-cid-qtokga5y>config/data/env.ts</a> </li><li class="toc-4" data-astro-cid-qtokga5y> <a href="#configdatatypesdts" data-astro-cid-qtokga5y>config/data/types.d.ts</a> </li><li class="toc-4" data-astro-cid-qtokga5y> <a href="#toolprocessenvvalidatets" data-astro-cid-qtokga5y>tool/processEnvValidate.ts</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#webpack-設定內容" data-astro-cid-qtokga5y>webpack 設定內容</a> </li><li class="toc-3" data-astro-cid-qtokga5y> <a href="#envdts" data-astro-cid-qtokga5y>env.d.ts</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#總結" data-astro-cid-qtokga5y>總結</a> </li> </ul> </div> <p>接下來幾天會來介紹個人開發時慣用的 webpack 設定。會從零開始撰寫，處理範圍如下：</p>
+<ul>
+<li><code>.env</code> 讀取、驗證、帶入設定</li>
+<li>處理 <code>TypeScript</code> 檔案（包含在 tsconfig.json 設定過的 <code>paths</code> 內容）</li>
+<li>處理靜態資源、樣式（css）內容</li>
+</ul>
+<p>那麼以下就來說明個人將 <code>.env</code> 導入 webpack 的工作流程 (•ㅂ•)/</p>
+<h2 id="本文">本文</h2>
+<h3 id="流程說明">流程說明</h3>
+<p>大流程如下：</p>
+<ol>
+<li>首先透過套件 <code>dotenv</code> 來讀取 <code>process.env</code> 內容</li>
+<li>透過套件 <code>superstruct</code> 來驗證 <code>process.env</code> 的結構與資料是否符合預期；比如檢查 <code>APP_PORT</code> 是否為數字、<code>APP_API_URL</code> 是否為有效 url 內容</li>
+<li>資料通過驗證後，才將環境變數傳入 <code>Webpack.DefinePlugin</code> 讓 React app 能夠取用</li>
+</ol>
+<p>而以下是與「處理環境變數」有關的資料夾與其結構：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">./config</span></span>
+<span class="line"><span style="color:#B392F0">├──</span><span style="color:#9ECBFF"> data</span></span>
+<span class="line"><span style="color:#B392F0">│</span><span style="color:#9ECBFF">   ├──</span><span style="color:#9ECBFF"> env.ts</span></span>
+<span class="line"><span style="color:#B392F0">│</span><span style="color:#9ECBFF">   └──</span><span style="color:#9ECBFF"> types.d.ts</span></span>
+<span class="line"><span style="color:#B392F0">└──</span><span style="color:#9ECBFF"> webpack.config.development.ts</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">./tool</span></span>
+<span class="line"><span style="color:#B392F0">├──</span><span style="color:#9ECBFF"> processEnvValidate.ts</span></span>
+<span class="line"><span style="color:#B392F0">└──</span><span style="color:#9ECBFF"> urlValidate.ts</span></span></code></pre>
+<p>結合上方關於大流程的說明，資料基本上是這樣跑的：</p>
+<ol>
+<li>在 <code>./config/data/env.ts</code> 中透過 <code>dotenv</code> 讀取 <code>process.env</code></li>
+<li>在 <code>./config/data/env.ts</code> 引用 <code>./tool/processEnvValidate.ts</code> 提供的「驗證資料的功能」，由 <code>processEnvValidate.ts</code> 來判斷 <code>process.env</code> 的結構與內容是否正確</li>
+<li>確定 <code>process.env</code> 的通過驗證後，<code>./config/data/env.ts</code> 會預設匯出（default export）檢驗過的環境變數資料</li>
+<li>開發專用的 webpack 設定檔 <code>./config/webpack.config.development.ts</code> 會引用 <code>./config/data/env.ts</code> 匯出的環境變數資料，並將之傳遞到 <code>new Webpack.DefinePlugin()</code> 中</li>
+</ol>
+<p>那麽，接下來會開始示範如何讀取以下的 <code>.env</code> 內容：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D"># +------------------+</span></span>
+<span class="line"><span style="color:#6A737D"># |Run Time Env Block|</span></span>
+<span class="line"><span style="color:#6A737D"># +------------------+</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">NODE_ENV</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">development</span></span>
+<span class="line"><span style="color:#E1E4E8">BUILD_DESTINATION</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">build</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># +---------+</span></span>
+<span class="line"><span style="color:#6A737D"># |APP Block|</span></span>
+<span class="line"><span style="color:#6A737D"># +---------+</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">APP_API_URL</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">https://api.example.com</span></span>
+<span class="line"><span style="color:#E1E4E8">APP_PORT</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">3000</span></span>
+<span class="line"></span></code></pre>
+<h3 id="程式碼">程式碼</h3>
+<h4 id="configdataenvts">config/data/env.ts</h4>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#6A737D">/* Packages */</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> dotenv </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> 'dotenv'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">  setDevelopmentEnvObject,</span></span>
+<span class="line"><span style="color:#E1E4E8">  setProductionEnvObject,</span></span>
+<span class="line"><span style="color:#E1E4E8">  getValidatedDevelopmentEnv,</span></span>
+<span class="line"><span style="color:#E1E4E8">  getValidatedProductionEnv,</span></span>
+<span class="line"><span style="color:#E1E4E8">  getEnvsForDefineConfig,</span></span>
+<span class="line"><span style="color:#E1E4E8">} </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> '@/tool/processEnvValidate'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#F97583"> type</span><span style="color:#E1E4E8"> { GetValidatedProcessEnv } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> './types'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">/* Functions */</span></span>
+<span class="line"><span style="color:#E1E4E8">dotenv.</span><span style="color:#B392F0">config</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> getValidatedProcessEnv</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> isDevelopment</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> process.env.</span><span style="color:#79B8FF">NODE_ENV</span><span style="color:#F97583"> ===</span><span style="color:#9ECBFF"> 'development'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> isProduction</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> process.env.</span><span style="color:#79B8FF">NODE_ENV</span><span style="color:#F97583"> ===</span><span style="color:#9ECBFF"> 'production'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">  if</span><span style="color:#E1E4E8"> (isDevelopment </span><span style="color:#F97583">===</span><span style="color:#E1E4E8"> isProduction) {</span></span>
+<span class="line"><span style="color:#F97583">    throw</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> Error</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'NODE_ENV should either be development or production'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#F97583">  if</span><span style="color:#E1E4E8"> (isDevelopment) {</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> env</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> setDevelopmentEnvObject</span><span style="color:#E1E4E8">(process.env);</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> validatedEnv</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> getValidatedDevelopmentEnv</span><span style="color:#E1E4E8">(env);</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#B392F0"> getEnvsForDefineConfig</span><span style="color:#E1E4E8">(validatedEnv);</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#6A737D">  // rest: return production evn config</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> env</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> setProductionEnvObject</span><span style="color:#E1E4E8">(process.env);</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> validatedEnv</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> getValidatedProductionEnv</span><span style="color:#E1E4E8">(env);</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#B392F0"> getEnvsForDefineConfig</span><span style="color:#E1E4E8">(validatedEnv);</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">/* Main */</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> validatedProcessEnv</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> getValidatedProcessEnv</span><span style="color:#E1E4E8">() </span><span style="color:#F97583">as</span><span style="color:#B392F0"> GetValidatedProcessEnv</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> default</span><span style="color:#E1E4E8"> validatedProcessEnv;</span></span></code></pre>
+<p>先透過 <code>dotenv.config();</code> 來讀取 <code>.env</code> 內容（需要更多說明可參考 <code>dotenv</code> 套件的<a href="https://www.npmjs.com/package/dotenv">官方文件</a>）。接著，檢查 <code>NODE_ENV</code> 是否有被設定，若無則拋錯（<code>throw new Error('NODE_ENV should either be development or production');</code>）。</p>
+<p>在這個階段直接拋錯停止，是因為接下來的驗證流程完全取決於「環境是哪一套」。在最基本的條件都不成立的情況下，我認為拋錯、停止執行是比較合理的決定。</p>
+<p>在能確認環境的情況下，如果處在開發模式（<code>isDevelopment</code>），就透過 <code>setDevelopmentEnvObject</code> / <code>getValidatedDevelopmentEnv</code> 來取得、驗證 <code>process.env</code> 資料；而如果是在正式環境，則進入註解 <code>// rest: return production evn config</code> 後的流程。</p>
+<p>最後，這個檔案會預設匯出（default export）已經驗證、確保正確性的環境變數資料。</p>
+<h4 id="configdatatypesdts">config/data/types.d.ts</h4>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#F97583"> type</span><span style="color:#E1E4E8"> { Configuration </span><span style="color:#F97583">as</span><span style="color:#E1E4E8"> WebpackConfiguration } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> 'webpack'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#F97583"> type</span><span style="color:#E1E4E8"> { Configuration </span><span style="color:#F97583">as</span><span style="color:#E1E4E8"> WebPackDevServerConfiguration } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> 'webpack-dev-server'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#F97583"> type</span><span style="color:#E1E4E8"> { EnvForStartApp, EnvForBuildApp } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> '@/tool/processEnvValidate'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> type</span><span style="color:#B392F0"> GetValidatedProcessEnv</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#9ECBFF">  'process.env'</span><span style="color:#F97583">:</span><span style="color:#B392F0"> EnvForStartApp</span><span style="color:#F97583"> |</span><span style="color:#B392F0"> EnvForBuildApp</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> type</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">  WebpackConfiguration,</span></span>
+<span class="line"><span style="color:#E1E4E8">  WebPackDevServerConfiguration,</span></span>
+<span class="line"><span style="color:#E1E4E8">  EnvForStartApp,</span></span>
+<span class="line"><span style="color:#E1E4E8">  EnvForBuildApp,</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span></code></pre>
+<p>這個檔案收納了與 webpack 有關的型別定義。型別 <code>EnvForStartApp</code> 與 <code>EnvForBuildApp</code> 分別定義了「開發」與「正式環境」用的環境變數。</p>
+<p>特別拆成兩份是因為「不一定每一個變數都會通用到開發/正式環境」上。比如只有在開發模式時，我才需要取得 <code>process.env.APP_PORT</code> 來啟動本機伺服器；也只有在正式環境時，我才需要 <code>process.env.BUILD_DESTINATION</code> 來設定打包檔的輸出目的地。</p>
+<h4 id="toolprocessenvvalidatets">tool/processEnvValidate.ts</h4>
+<p>這個檔案的核心任務即是「檢驗 <code>process.env</code> 內容」，大方向如下：</p>
+<ol>
+<li>透過 <code>setDevelopmentEnvObject</code> / <code>setProductionEnvObject</code> 將 <code>process.env</code> 帶入物件中</li>
+<li>透過套件 <a href="https://www.npmjs.com/package/superstruct">superstruct</a> 檢查開發、正式環境各自的環境變數物件內容是否符合預期</li>
+<li>最後，透過 <code>getEnvsForDefineConfig</code> 將驗證過的環境變數資料以 <code>{ "process.env": { [env.key]: [env.value] } }</code> 的格式回傳出去</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#6A737D">/* Packages */</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { enums, nonempty, string, object, assert, Infer } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> 'superstruct'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> url </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> '@/tool/urlValidate'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#F97583"> type</span><span style="color:#E1E4E8"> { StructError } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> 'superstruct'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">/* Data */</span></span>
+<span class="line"><span style="color:#F97583">type</span><span style="color:#B392F0"> RawEnv</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">  [</span><span style="color:#B392F0">key</span><span style="color:#F97583"> in</span><span style="color:#79B8FF"> string</span><span style="color:#E1E4E8">]</span><span style="color:#F97583">?:</span><span style="color:#79B8FF"> string</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">/** 已被 `superstruct` 檢驗，但為避免在 `getValidatedProcessEnv` 中 reduce `envsForReactApp` 時產生型別衝突，先使用相對寬鬆的型別定義 */</span></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> type</span><span style="color:#B392F0"> ValidatedEnv</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> Required</span><span style="color:#E1E4E8">&#x3C;</span><span style="color:#B392F0">RawEnv</span><span style="color:#E1E4E8">>;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">/** 於本地開發專案時使用的環境變數型別 */</span></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> type</span><span style="color:#B392F0"> EnvForStartApp</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> Infer</span><span style="color:#E1E4E8">&#x3C;</span><span style="color:#F97583">typeof</span><span style="color:#79B8FF"> SUPERSTRUCT_VALIDATION_DEV</span><span style="color:#E1E4E8">>;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">/** 打包專案時使用的環境變數型別 */</span></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> type</span><span style="color:#B392F0"> EnvForBuildApp</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> Infer</span><span style="color:#E1E4E8">&#x3C;</span><span style="color:#F97583">typeof</span><span style="color:#79B8FF"> SUPERSTRUCT_VALIDATION_PROD</span><span style="color:#E1E4E8">>;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> SUPERSTRUCT_VALIDATION_DEV</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> object</span><span style="color:#E1E4E8">({</span></span>
+<span class="line"><span style="color:#E1E4E8">  NODE_ENV: </span><span style="color:#B392F0">enums</span><span style="color:#E1E4E8">([</span><span style="color:#9ECBFF">'development'</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">'production'</span><span style="color:#E1E4E8">]),</span></span>
+<span class="line"><span style="color:#E1E4E8">  APP_API_URL: </span><span style="color:#B392F0">url</span><span style="color:#E1E4E8">(),</span></span>
+<span class="line"><span style="color:#E1E4E8">  APP_PORT: </span><span style="color:#B392F0">nonempty</span><span style="color:#E1E4E8">(</span><span style="color:#B392F0">string</span><span style="color:#E1E4E8">()),</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> SUPERSTRUCT_VALIDATION_PROD</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> object</span><span style="color:#E1E4E8">({</span></span>
+<span class="line"><span style="color:#E1E4E8">  NODE_ENV: </span><span style="color:#B392F0">enums</span><span style="color:#E1E4E8">([</span><span style="color:#9ECBFF">'development'</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">'production'</span><span style="color:#E1E4E8">]),</span></span>
+<span class="line"><span style="color:#E1E4E8">  APP_API_URL: </span><span style="color:#B392F0">url</span><span style="color:#E1E4E8">(),</span></span>
+<span class="line"><span style="color:#E1E4E8">  BUILD_DESTINATION: </span><span style="color:#B392F0">nonempty</span><span style="color:#E1E4E8">(</span><span style="color:#B392F0">string</span><span style="color:#E1E4E8">()),</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">/* Functions */</span></span>
+<span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> getStructError</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">error</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> unknown</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> structError</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> error </span><span style="color:#F97583">as</span><span style="color:#B392F0"> StructError</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> failureArray</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> structError.</span><span style="color:#B392F0">failures</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#F97583">  if</span><span style="color:#E1E4E8"> (failureArray.</span><span style="color:#79B8FF">length</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> failEnvs</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> failureArray</span></span>
+<span class="line"><span style="color:#E1E4E8">      .</span><span style="color:#B392F0">map</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">failure</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#9ECBFF"> `${</span><span style="color:#E1E4E8">failure</span><span style="color:#9ECBFF">.</span><span style="color:#E1E4E8">key</span><span style="color:#9ECBFF">}: ${</span><span style="color:#E1E4E8">failure</span><span style="color:#9ECBFF">.</span><span style="color:#E1E4E8">message</span><span style="color:#9ECBFF">}`</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">      .</span><span style="color:#B392F0">join</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">', '</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> Error</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">`invalid process.env: ${</span><span style="color:#E1E4E8">failEnvs</span><span style="color:#9ECBFF">}`</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">  } </span><span style="color:#F97583">else</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#E1E4E8"> error;</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> function</span><span style="color:#B392F0"> getValidatedDevelopmentEnv</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">envsObject</span><span style="color:#F97583">:</span><span style="color:#B392F0"> RawEnv</span><span style="color:#E1E4E8">)</span><span style="color:#F97583">:</span><span style="color:#B392F0"> ValidatedEnv</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">  try</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#B392F0">    assert</span><span style="color:#E1E4E8">(envsObject, </span><span style="color:#79B8FF">SUPERSTRUCT_VALIDATION_DEV</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#E1E4E8"> envsObject;</span></span>
+<span class="line"><span style="color:#E1E4E8">  } </span><span style="color:#F97583">catch</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">error</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> unknown</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">    throw</span><span style="color:#B392F0"> getStructError</span><span style="color:#E1E4E8">(error);</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> function</span><span style="color:#B392F0"> getValidatedProductionEnv</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">envsObject</span><span style="color:#F97583">:</span><span style="color:#B392F0"> RawEnv</span><span style="color:#E1E4E8">)</span><span style="color:#F97583">:</span><span style="color:#B392F0"> ValidatedEnv</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">  try</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#B392F0">    assert</span><span style="color:#E1E4E8">(envsObject, </span><span style="color:#79B8FF">SUPERSTRUCT_VALIDATION_PROD</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#E1E4E8"> envsObject;</span></span>
+<span class="line"><span style="color:#E1E4E8">  } </span><span style="color:#F97583">catch</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">error</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> unknown</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">    throw</span><span style="color:#B392F0"> getStructError</span><span style="color:#E1E4E8">(error);</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> function</span><span style="color:#B392F0"> setDevelopmentEnvObject</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">processEnv</span><span style="color:#F97583">:</span><span style="color:#B392F0"> RawEnv</span><span style="color:#E1E4E8">)</span><span style="color:#F97583">:</span><span style="color:#B392F0"> RawEnv</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">    NODE_ENV: processEnv.</span><span style="color:#79B8FF">NODE_ENV</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">    APP_API_URL: processEnv.</span><span style="color:#79B8FF">APP_API_URL</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">    APP_PORT: processEnv.</span><span style="color:#79B8FF">APP_PORT</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">  };</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> function</span><span style="color:#B392F0"> setProductionEnvObject</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">processEnv</span><span style="color:#F97583">:</span><span style="color:#B392F0"> RawEnv</span><span style="color:#E1E4E8">)</span><span style="color:#F97583">:</span><span style="color:#B392F0"> RawEnv</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">    NODE_ENV: processEnv.</span><span style="color:#79B8FF">NODE_ENV</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">    APP_API_URL: processEnv.</span><span style="color:#79B8FF">APP_API_URL</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">    BUILD_DESTINATION: processEnv.</span><span style="color:#79B8FF">BUILD_DESTINATION</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">  };</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> function</span><span style="color:#B392F0"> getEnvsForDefineConfig</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">envs</span><span style="color:#F97583">:</span><span style="color:#B392F0"> ValidatedEnv</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#9ECBFF">    'process.env'</span><span style="color:#E1E4E8">: Object.</span><span style="color:#B392F0">keys</span><span style="color:#E1E4E8">(envs).</span><span style="color:#B392F0">reduce</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">env</span><span style="color:#F97583">:</span><span style="color:#B392F0"> ValidatedEnv</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">key</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">      env[key] </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> JSON</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">stringify</span><span style="color:#E1E4E8">(envs[key]);</span></span>
+<span class="line"><span style="color:#F97583">      return</span><span style="color:#E1E4E8"> env;</span></span>
+<span class="line"><span style="color:#E1E4E8">    }, {}),</span></span>
+<span class="line"><span style="color:#E1E4E8">  };</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>以下為細節補充：</p>
+<p><code>SUPERSTRUCT_VALIDATION_DEV</code> 與 <code>SUPERSTRUCT_VALIDATION_PROD</code> 分別代表開發及正式環境應該要有的「環境變數鍵」與「值」，即 <code>NODE_ENV</code> 只能會是 <code>development</code> / <code>production</code> 二選一、<code>APP_API_URL</code> 必須是有效的 url 內容。而 <code>PORT</code> 必須為數字，<code>BUILD_DESTINATION</code> 不能為空字串。</p>
+<p>執行 <code>getValidatedDevelopmentEnv</code> / <code>getValidatedProductionEnv</code> 時，會透過 <code>superstruct</code> 提供的 <a href="https://docs.superstructjs.org/api-reference/core#assert">assert()</a> 來檢驗資料內容。此功能會在檢驗失敗時拋出一個 <code>StructError</code> 錯誤。而 <code>getStructError</code> 的任務就是將錯誤訊息輸出到終端，幫助開發者確認在檢驗過程中「是哪一些資料驗證失敗」。</p>
+<hr>
+<p>superstruct 有提供<a href="https://docs.superstructjs.org/guides/02-validating-data#custom-values">自訂驗證格式</a>的功能，而 <code>./tool/urlValidate</code> 的任務就是負責「檢查傳入的值是否為有效的 url 格式」：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { Struct, define } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> 'superstruct'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> function</span><span style="color:#B392F0"> isUrl</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">value</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> unknown</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">  if</span><span style="color:#E1E4E8"> (</span><span style="color:#F97583">typeof</span><span style="color:#E1E4E8"> value </span><span style="color:#F97583">!==</span><span style="color:#9ECBFF"> 'string'</span><span style="color:#F97583"> &#x26;&#x26;</span><span style="color:#F97583"> !</span><span style="color:#E1E4E8">(value </span><span style="color:#F97583">instanceof</span><span style="color:#B392F0"> URL</span><span style="color:#E1E4E8">)) {</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#79B8FF"> false</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#F97583">  try</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#F97583"> !!new</span><span style="color:#B392F0"> URL</span><span style="color:#E1E4E8">(value);</span></span>
+<span class="line"><span style="color:#E1E4E8">  } </span><span style="color:#F97583">catch</span><span style="color:#E1E4E8"> (e) {</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#79B8FF"> false</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#B392F0"> urlSuperstructValidate</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> ()</span><span style="color:#F97583">:</span><span style="color:#B392F0"> Struct</span><span style="color:#E1E4E8">&#x3C;</span><span style="color:#79B8FF">string</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">null</span><span style="color:#E1E4E8">> </span><span style="color:#F97583">=></span></span>
+<span class="line"><span style="color:#B392F0">  define</span><span style="color:#E1E4E8">&#x3C;</span><span style="color:#79B8FF">string</span><span style="color:#E1E4E8">>(</span><span style="color:#9ECBFF">'url'</span><span style="color:#E1E4E8">, (</span><span style="color:#FFAB70">value</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> unknown</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#B392F0"> isUrl</span><span style="color:#E1E4E8">(value));</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> default</span><span style="color:#E1E4E8"> urlSuperstructValidate;</span></span></code></pre>
+<p>先透過 <code>isUrl</code> 來檢查傳入的值究竟是否為 url 類型的資料，再使用 superstruct 提供的 <code>define()</code> 來產生此套件可使用的自訂驗證結構（custom validation struct）。</p>
+<hr>
+<p>最後，當環境變數通過檢驗時，再透過 <code>getEnvsForDefineConfig</code> 將資料字串化（<code>JSON.stringify()</code>）、打包為如下格式，方便 <code>Webpack.DefinePlugin</code> 使用：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#9ECBFF">  'process.env'</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#E1E4E8">    NODE_ENV: </span><span style="color:#9ECBFF">'"development"'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">    APP_API_URL: </span><span style="color:#9ECBFF">'"https://api.example.com"'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">    APP_PORT: </span><span style="color:#9ECBFF">'"3000"'</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>需要過一道 <code>JSON.stringify()</code> 是為了配合官方需求：</p>
+<blockquote>
+<p><a href="https://webpack.js.org/plugins/define-plugin/">DefinePlugin</a>: Note that because the plugin does a direct text replacement, the value given to it <strong>must include actual quotes inside of the string itself</strong>. Typically, this is done either with alternate quotes, such as <code>'"production"'</code>, or by using <code>JSON.stringify('production')</code>.</p>
+</blockquote>
+<hr>
+<p>以上就是個人平常在使用的環境變數完整驗證功能，現在來回頭看看 <code>config/webpack.config.development.ts</code> 該怎麼使用這包處理好的資料。</p>
+<h3 id="webpack-設定內容">webpack 設定內容</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#6A737D">/* Packages */</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> Webpack </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> 'webpack'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">/* Data */</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> env </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> './data/env'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#F97583"> type</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">  WebPackDevServerConfiguration,</span></span>
+<span class="line"><span style="color:#E1E4E8">  WebpackConfiguration,</span></span>
+<span class="line"><span style="color:#E1E4E8">  EnvForStartApp,</span></span>
+<span class="line"><span style="color:#E1E4E8">} </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> './data/types'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> envForStartApp</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> env[</span><span style="color:#9ECBFF">'process.env'</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">as</span><span style="color:#B392F0"> EnvForStartApp</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> port</span><span style="color:#F97583"> =</span><span style="color:#F97583"> +</span><span style="color:#79B8FF">JSON</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">parse</span><span style="color:#E1E4E8">(envForStartApp.</span><span style="color:#79B8FF">APP_PORT</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">/* Main */</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> webpackDevelopmentConfig</span><span style="color:#F97583">:</span><span style="color:#B392F0"> WebpackConfiguration</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">  plugins: [</span><span style="color:#F97583">new</span><span style="color:#E1E4E8"> Webpack.</span><span style="color:#B392F0">DefinePlugin</span><span style="color:#E1E4E8">({ </span><span style="color:#F97583">...</span><span style="color:#E1E4E8">env })],</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> const</span><span style="color:#79B8FF"> webpackDevServerConfig</span><span style="color:#F97583">:</span><span style="color:#B392F0"> WebPackDevServerConfiguration</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">  port,</span></span>
+<span class="line"><span style="color:#6A737D">  // 設定為 true 代表自動在瀏覽器中開啟本機伺服器</span></span>
+<span class="line"><span style="color:#E1E4E8">  open: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#6A737D">  // 當 webpack 找不到路由對應的資源時，回傳 index.html 檔案；開發 single page application 多半需要開啟此設定</span></span>
+<span class="line"><span style="color:#E1E4E8">  historyApiFallback: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> default</span><span style="color:#E1E4E8"> webpackDevelopmentConfig;</span></span></code></pre>
+<p>以 <code>APP_PORT</code> 為例：</p>
+<p>從 <code>./config/data/env.ts</code> 取出驗證後的環境變數資料 <code>env</code> 後，因為我們目前是在開發用的 webpack 設定中，所以先透過型別 <code>EnvForStartApp</code> 來描述環境變數的結構。</p>
+<p>接著，再透過 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse">JSON.parse()</a> 與 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Unary_plus">+</a> 將 <code>envForStartApp.APP_PORT</code> 轉回數字型別資料。最後，把 <code>port</code> 傳入 <code>webpackDevServerConfig</code> 中，讓我們透過 <code>webpack-dev-server</code> 啟動本機伺服器時，可以透過 <code>localhost:3000</code> 來查看專案內容。</p>
+<p>至於那個熱騰騰的 <code>env</code> ，就把它丟進 <code>plugins: [new Webpack.DefinePlugin({ ...env })]</code> 裡面吧，這樣我們就能在 React app 內透過 <code>process.env.[VARIABLE_NAME]</code> 直取驗證完畢的環境變數資料了。</p>
+<h3 id="envdts">env.d.ts</h3>
+<p>這真的是最後一步了。還記得那個躺在 <code>./src</code> 中的 <code>.env.d.ts</code> 嗎？請在這份檔案裡面補上以下內容：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#6A737D">/// &#x3C;</span><span style="color:#85E89D">reference</span><span style="color:#B392F0"> types</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"node"</span><span style="color:#6A737D"> /></span></span>
+<span class="line"><span style="color:#6A737D">/// &#x3C;</span><span style="color:#85E89D">reference</span><span style="color:#B392F0"> types</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"react"</span><span style="color:#6A737D"> /></span></span>
+<span class="line"><span style="color:#6A737D">/// &#x3C;</span><span style="color:#85E89D">reference</span><span style="color:#B392F0"> types</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"react-dom"</span><span style="color:#6A737D"> /></span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">declare</span><span style="color:#F97583"> namespace</span><span style="color:#B392F0"> NodeJS</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">  interface</span><span style="color:#B392F0"> ProcessEnv</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">    readonly</span><span style="color:#FFAB70"> NODE_ENV</span><span style="color:#F97583">:</span><span style="color:#9ECBFF"> 'development'</span><span style="color:#F97583"> |</span><span style="color:#9ECBFF"> 'production'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">    readonly</span><span style="color:#FFAB70"> APP_API_URL</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> string</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">    readonly</span><span style="color:#FFAB70"> APP_PORT</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> string</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>這樣就能讓型別資訊支援到 <code>process.env</code>。比如當你輸入 <code>process.env.NODE_ENV</code> 時，IDE（至少 vs code 有支援）會提示你這個值只有可能是 <code>development</code> 或 <code>production</code>。</p>
+<h2 id="總結">總結</h2>
+<p>雖然前置作業有點長，但好處是這樣嚴格把關 <code>.env</code> 內容能確保開發、打包時很難在環境變數這一個環節上出包（忘記餵變數、餵錯資料等等）。</p>
+<p>加一點保險，晚上會睡得比較安穩 (っ ´ω`c)</p> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 

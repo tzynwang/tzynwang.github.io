@@ -1,0 +1,130 @@
+<!DOCTYPE html><html lang="en"> <head><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.BScVxmeO.js"></script><!-- Google Tag Manager --><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', ga4Id);
+    })();</script><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=GTM-KM9SGJLK">(function(){const gTagId = "GTM-KM9SGJLK";
+})();</script><script>(function(){const ga4Id = "G-6QC9CKHCTY";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', ga4Id);
+    })();</script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>"><link rel="sitemap" href="/sitemap-index.xml"><meta name="generator" content="Astro v5.1.2"><!-- Primary Meta Tags --><title>CSS :has / :is 選取器筆記</title><meta name="title" content="CSS :has / :is 選取器筆記"><meta name="description" content="在休假前經手了一個 wordpress 的樣式調整任務，故趁機整理了一篇關於 CSS 選取器  :has() 和 :is() 的筆記。"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://tzynwang.github.io/2024/css-has-is-selector"><meta property="og:title" content="CSS :has / :is 選取器筆記"><meta property="og:description" content="在休假前經手了一個 wordpress 的樣式調整任務，故趁機整理了一篇關於 CSS 選取器  :has() 和 :is() 的筆記。"><meta property="og:image" content="https://tzynwang.github.io/2024/css-has-is-selector/agence-olloweb-Z2ImfOCafFk-unsplash.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://tzynwang.github.io/2024/css-has-is-selector"><meta property="twitter:title" content="CSS :has / :is 選取器筆記"><meta property="twitter:description" content="在休假前經手了一個 wordpress 的樣式調整任務，故趁機整理了一篇關於 CSS 選取器  :has() 和 :is() 的筆記。"><meta property="twitter:image" content="https://tzynwang.github.io/2024/css-has-is-selector/agence-olloweb-Z2ImfOCafFk-unsplash.jpg"><!-- Font --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet"><style>.tag[data-astro-cid-2iymvi75]{position:relative;display:inline-flex;align-items:center;padding:2px 8px;font-size:14px;font-weight:400;text-decoration:none;background-color:#8aa6a3;color:#fff;transition:background-color .2s ease-in-out}.tag[data-astro-cid-2iymvi75]:not(:last-of-type){margin-right:8px}.tag[data-astro-cid-2iymvi75]:hover{background-color:#127369}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}.footer[data-astro-cid-qlgq3onj]{padding:36px;text-align:center}.bottom[data-astro-cid-qlgq3onj]{position:absolute;bottom:0;left:50%;transform:translate(-50%)}.side-content[data-astro-cid-75hifxor],.main-content[data-astro-cid-75hifxor]{margin:24px}nav[data-astro-cid-75hifxor]{display:flex;gap:16px}@media screen and (min-width: 800px){body{height:100vh;display:flex;flex-direction:row;overflow-y:hidden}nav[data-astro-cid-75hifxor]{flex-direction:column}.side-content[data-astro-cid-75hifxor]{flex:0 0 240px}.main-content[data-astro-cid-75hifxor]{margin:0;padding:40px 24px 0;flex:1 1 auto;overflow-y:auto;position:relative}}*{margin:0;padding:0;box-sizing:content-box;font-family:sans-serif;text-wrap:pretty;color:#000000e6}html{background-color:#bfbfbf66}a{color:#127369;font-weight:700;text-decoration:underline;text-decoration-color:transparent;transition:text-decoration-color .2s ease-in-out}a:hover{text-decoration-color:#127369}a.link-out{position:absolute;inset:0}ul,li{list-style-position:inside}ul:not(:has(li)){margin-top:16px;margin-bottom:16px}li{margin-top:4px;margin-bottom:4px;line-height:24px}li li{padding-left:16px}img{display:block;max-width:100%}h1,h2{font-size:28px;line-height:42px;margin:16px 0;color:#4c5958}h3,h4{font-size:22px;line-height:34px;margin:16px 0;color:#4c5958}h5{font-size:18px;line-height:28px;margin:4px 0;color:#4c5958}p{font-size:16px;line-height:24px;margin:16px 0}p code{font-size:14px}blockquote{padding-left:16px;border-left:4px solid #4c5958}blockquote *{font-family:Noto Sans,sans-serif}pre{padding:8px 16px}code,code span{font-family:monospace}hr{width:100%;height:1px;margin:16px 0;background-color:#4c5958}del{color:#4c5958e6}ol>li:has(p)>p{display:inline;margin:0}
+.post-container[data-astro-cid-qtokga5y] h1[data-astro-cid-qtokga5y]{margin:0 0 16px}.info[data-astro-cid-qtokga5y]{display:flex;flex-direction:column;gap:8px}.toc-container[data-astro-cid-qtokga5y]{margin-bottom:0}.toc-container[data-astro-cid-qtokga5y]>li[data-astro-cid-qtokga5y]:not(:last-of-type){margin-bottom:4px}.toc-2[data-astro-cid-qtokga5y]{margin-left:1rem}.toc-3[data-astro-cid-qtokga5y]{margin-left:2rem}.toc-4[data-astro-cid-qtokga5y]{margin-left:3rem}.toc-5[data-astro-cid-qtokga5y]{margin-left:4rem}@media screen and (min-width: 800px){.post-container[data-astro-cid-qtokga5y]{max-width:600px}}@media screen and (min-width: 1200px){.post-container[data-astro-cid-qtokga5y]{max-width:720px}}
+[data-astro-image]{width:100%;height:auto;object-fit:var(--fit);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body> <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM9SGJLK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> <section class="side-content" data-astro-cid-75hifxor> <h1 data-astro-cid-75hifxor>普通文組 2.0</h1> <nav data-astro-cid-75hifxor> <a href="/" data-astro-cid-75hifxor>首頁</a> <a href="/archive" data-astro-cid-75hifxor>全文章歸檔</a> <a href="/tag" data-astro-cid-75hifxor>以標籤檢視</a> <a href="/rss.xml" data-astro-cid-75hifxor>RSS</a> </nav> </section> <section class="main-content" data-astro-cid-75hifxor>   <div class="post-container" data-astro-cid-qtokga5y> <h1 data-astro-cid-qtokga5y>CSS :has / :is 選取器筆記</h1> <div class="info" data-astro-cid-qtokga5y> <span data-astro-cid-qtokga5y>2024-06-09 13:38</span> <span data-astro-cid-qtokga5y><a class="tag" href="/tag/CSS" data-astro-cid-2iymvi75> CSS </a> </span> <ul class="toc-container" data-astro-cid-qtokga5y> <li class="toc-2" data-astro-cid-qtokga5y> <a href="#has" data-astro-cid-qtokga5y>:has()</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#is" data-astro-cid-qtokga5y>:is()</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#支援度20246" data-astro-cid-qtokga5y>支援度（2024/6）</a> </li><li class="toc-2" data-astro-cid-qtokga5y> <a href="#參考文章" data-astro-cid-qtokga5y>參考文章</a> </li> </ul> </div> <p>簡易的可操作範例可參考 <a href="https://codepen.io/Charlie7779/pen/VwOPxQW">codepen</a>。</p>
+<h2 id="has">:has()</h2>
+<blockquote>
+<p>MND: <code>:has()</code> represents an element if any of the relative selectors that are passed as an argument match at least one element when anchored against this element. This pseudo-class presents a way of <strong>selecting a parent element</strong> or a previous sibling element with respect to a reference element by taking a relative selector list as an argument.</p>
+</blockquote>
+<p>參數：（目標親元件、錨點）需要包含的子元件。</p>
+<p>行為：選取包含指定元件的親元件。</p>
+<p>注意事項：</p>
+<ul>
+<li>在不支援 <code>:has()</code> 的瀏覽器中，整個選取區塊（selector block）就不會有任何作用（the entire selector block will fail）</li>
+<li>不支援巢狀選取——不能在 <code>:has()</code> 裡再包一個 <code>:has()</code></li>
+<li>不支援偽元素（pseudo-elements）——既不能作為錨點，也不能作為參數傳入</li>
+</ul>
+<hr>
+<p>選擇所有「包含 <code>.special</code> 元件」的 div 元件：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="css"><code><span class="line"><span style="color:#85E89D">div</span><span style="color:#B392F0">:has</span><span style="color:#E1E4E8">(</span><span style="color:#B392F0">.special</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#79B8FF">  border</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">2</span><span style="color:#F97583">px</span><span style="color:#79B8FF"> dashed</span><span style="color:#79B8FF"> salmon</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#79B8FF">  color</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">gold</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>選取所有「被 p 元件緊隨在後」的 h1 元件：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="css"><code><span class="line"><span style="color:#85E89D">h1</span><span style="color:#B392F0">:has</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">+</span><span style="color:#85E89D"> p</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#79B8FF">  margin-bottom</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">0</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<h2 id="is">:is()</h2>
+<blockquote>
+<p>MDN: <code>:is()</code> takes a selector list as its argument, and selects any element that can be selected by one of the selectors in that list.</p>
+</blockquote>
+<p>參數：一個列表（list），包含各種選取器（CSS selector）。</p>
+<p>行為：選取任何在參數列表中的元件。</p>
+<p>注意事項：</p>
+<ul>
+<li>參數列表中的每一個選取器都會獨立運作，不支援、無效的選取器會被瀏覽器無視。可參閱 <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Selector_list#forgiving_selector_list">MDN: Forgiving selector list</a></li>
+<li><code>:is()</code> 本身的權重（specificity）會根據其參數列表中最高權重的選取器決定——順帶一提，功能完全相同的 <code>:where()</code> 則是 0 權重（The difference between <code>:where()</code> and <code>:is()</code> is that <code>:where()</code> always has 0 specificity, whereas <code>:is()</code> takes on the specificity of the most specific selector in its arguments）；權重範例可參考 <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:where#comparing_where_and_is">Comparing :where() and :is()</a></li>
+</ul>
+<hr>
+<p>選取所有親元件是 <code>.parent1</code> 或 <code>.parent2</code> 的 <code>.child</code> 元件：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="css"><code><span class="line"><span style="color:#B392F0">:is</span><span style="color:#E1E4E8">(</span><span style="color:#B392F0">.parent1</span><span style="color:#E1E4E8">, </span><span style="color:#B392F0">.parent2</span><span style="color:#E1E4E8">) </span><span style="color:#B392F0">.child</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#79B8FF">  color</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">skyblue</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>由 mdn 提供的最佳優化範例——比如以下又臭又長的樣式：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="css"><code><span class="line"><span style="color:#85E89D">ol</span><span style="color:#85E89D"> ol</span><span style="color:#85E89D"> ul</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#85E89D">ol</span><span style="color:#85E89D"> ul</span><span style="color:#85E89D"> ul</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#85E89D">ol</span><span style="color:#85E89D"> menu</span><span style="color:#85E89D"> ul</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#85E89D">ol</span><span style="color:#85E89D"> dir</span><span style="color:#85E89D"> ul</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#85E89D">ol</span><span style="color:#85E89D"> ol</span><span style="color:#85E89D"> menu</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#85E89D">ol</span><span style="color:#85E89D"> ul</span><span style="color:#85E89D"> menu</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#85E89D">ol</span><span style="color:#85E89D"> menu</span><span style="color:#85E89D"> menu</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#85E89D">ol</span><span style="color:#85E89D"> dir</span><span style="color:#85E89D"> menu</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#85E89D">ol</span><span style="color:#85E89D"> ol</span><span style="color:#85E89D"> dir</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#85E89D">ol</span><span style="color:#85E89D"> ul</span><span style="color:#85E89D"> dir</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#85E89D">ol</span><span style="color:#85E89D"> menu</span><span style="color:#85E89D"> dir</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#85E89D">ol</span><span style="color:#85E89D"> dir</span><span style="color:#85E89D"> dir</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#85E89D">ul</span><span style="color:#85E89D"> ol</span><span style="color:#85E89D"> ul</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#85E89D">ul</span><span style="color:#85E89D"> ul</span><span style="color:#85E89D"> ul</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#85E89D">ul</span><span style="color:#85E89D"> menu</span><span style="color:#85E89D"> ul</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#85E89D">ul</span><span style="color:#85E89D"> dir</span><span style="color:#85E89D"> ul</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#85E89D">ul</span><span style="color:#85E89D"> ol</span><span style="color:#85E89D"> menu</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#85E89D">ul</span><span style="color:#85E89D"> ul</span><span style="color:#85E89D"> menu</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#85E89D">ul</span><span style="color:#85E89D"> menu</span><span style="color:#85E89D"> menu</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#85E89D">ul</span><span style="color:#85E89D"> dir</span><span style="color:#85E89D"> menu</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#85E89D">ul</span><span style="color:#85E89D"> ol</span><span style="color:#85E89D"> dir</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#85E89D">ul</span><span style="color:#85E89D"> ul</span><span style="color:#85E89D"> dir</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#85E89D">ul</span><span style="color:#85E89D"> menu</span><span style="color:#85E89D"> dir</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#85E89D">ul</span><span style="color:#85E89D"> dir</span><span style="color:#85E89D"> dir</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#85E89D">menu</span><span style="color:#85E89D"> ol</span><span style="color:#85E89D"> ul</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#85E89D">menu</span><span style="color:#85E89D"> ul</span><span style="color:#85E89D"> ul</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#85E89D">menu</span><span style="color:#85E89D"> menu</span><span style="color:#85E89D"> ul</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#85E89D">menu</span><span style="color:#85E89D"> dir</span><span style="color:#85E89D"> ul</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#85E89D">menu</span><span style="color:#85E89D"> ol</span><span style="color:#85E89D"> menu</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#85E89D">menu</span><span style="color:#85E89D"> ul</span><span style="color:#85E89D"> menu</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#85E89D">menu</span><span style="color:#85E89D"> menu</span><span style="color:#85E89D"> menu</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#85E89D">menu</span><span style="color:#85E89D"> dir</span><span style="color:#85E89D"> menu</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#85E89D">menu</span><span style="color:#85E89D"> ol</span><span style="color:#85E89D"> dir</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#85E89D">menu</span><span style="color:#85E89D"> ul</span><span style="color:#85E89D"> dir</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#85E89D">menu</span><span style="color:#85E89D"> menu</span><span style="color:#85E89D"> dir</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#85E89D">menu</span><span style="color:#85E89D"> dir</span><span style="color:#85E89D"> dir</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#85E89D">dir</span><span style="color:#85E89D"> ol</span><span style="color:#85E89D"> ul</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#85E89D">dir</span><span style="color:#85E89D"> ul</span><span style="color:#85E89D"> ul</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#85E89D">dir</span><span style="color:#85E89D"> menu</span><span style="color:#85E89D"> ul</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#85E89D">dir</span><span style="color:#85E89D"> dir</span><span style="color:#85E89D"> ul</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#85E89D">dir</span><span style="color:#85E89D"> ol</span><span style="color:#85E89D"> menu</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#85E89D">dir</span><span style="color:#85E89D"> ul</span><span style="color:#85E89D"> menu</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#85E89D">dir</span><span style="color:#85E89D"> menu</span><span style="color:#85E89D"> menu</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#85E89D">dir</span><span style="color:#85E89D"> dir</span><span style="color:#85E89D"> menu</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#85E89D">dir</span><span style="color:#85E89D"> ol</span><span style="color:#85E89D"> dir</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#85E89D">dir</span><span style="color:#85E89D"> ul</span><span style="color:#85E89D"> dir</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#85E89D">dir</span><span style="color:#85E89D"> menu</span><span style="color:#85E89D"> dir</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#85E89D">dir</span><span style="color:#85E89D"> dir</span><span style="color:#85E89D"> dir</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#79B8FF">  list-style-type</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">square</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>可以簡化成以下：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="css"><code><span class="line"><span style="color:#B392F0">:is</span><span style="color:#E1E4E8">(</span><span style="color:#85E89D">ol</span><span style="color:#E1E4E8">, </span><span style="color:#85E89D">ul</span><span style="color:#E1E4E8">, </span><span style="color:#85E89D">menu</span><span style="color:#E1E4E8">, </span><span style="color:#85E89D">dir</span><span style="color:#E1E4E8">) </span><span style="color:#B392F0">:is</span><span style="color:#E1E4E8">(</span><span style="color:#85E89D">ol</span><span style="color:#E1E4E8">, </span><span style="color:#85E89D">ul</span><span style="color:#E1E4E8">, </span><span style="color:#85E89D">menu</span><span style="color:#E1E4E8">, </span><span style="color:#85E89D">dir</span><span style="color:#E1E4E8">) </span><span style="color:#B392F0">:is</span><span style="color:#E1E4E8">(</span><span style="color:#85E89D">ul</span><span style="color:#E1E4E8">, </span><span style="color:#85E89D">menu</span><span style="color:#E1E4E8">, </span><span style="color:#85E89D">dir</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#79B8FF">  list-style-type</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">square</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>簡直是魔法 🪄</p>
+<h2 id="支援度20246">支援度（2024/6）</h2>
+<p><img src="/2024/css-has-is-selector/caniuse-css-has.png" alt="caniuse: css :has() selector"></p>
+<p><img src="/2024/css-has-is-selector/caniuse-css-is.png" alt="caniuse: css :is() selector"></p>
+<h2 id="參考文章">參考文章</h2>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:has">MDN > CSS > :has()</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:is">MDN > CSS > :is()</a></li>
+</ul> </div>   <footer class="footer" data-astro-cid-qlgq3onj>
+Tzu Yin (Charlie) 🦊 Made in Taiwan
+</footer>  </section>  </body></html> 
