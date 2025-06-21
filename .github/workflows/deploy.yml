@@ -1,9 +1,7 @@
 name: Deploy astro blog as GitHub Pages
 
 on:
-    branches: [ master ]
-  # Allows you to run this workflow manually from the Actions tab on GitHub.
-  workflow_dispatch:
+    branches: [master]
 
 # Allow this job to clone the repo and create a page deployment
 permissions:
