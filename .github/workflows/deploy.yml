@@ -1,9 +1,9 @@
 name: Deploy astro blog as GitHub Pages
 
 on:
-    branches: [master]
+  push:
+    branches: master
 
-# Allow this job to clone the repo and create a page deployment
 permissions:
   contents: read
   pages: write
