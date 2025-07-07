@@ -24,7 +24,7 @@ flex item 其中一種被遮蔽的原因是「容器寬高限制」。比如改�
 
 ![inspect justify-content no safe from Chrome dev tool](/2024/css-safe-alignment/justify-content-no-safe.png)
 
-但如果將容器設定為 `justify-content: center center`，在同樣寫死寬度的情況下，我只要滾動捲軸就能看到所有的子項目：
+但如果將容器設定為 `justify-content: safe center`，在同樣寫死寬度的情況下，我只要滾動捲軸就能看到所有的子項目：
 
 ![inspect justify-content safe from Chrome dev tool](/2024/css-safe-alignment/justify-content-with-safe.png)
 
