@@ -122,3 +122,15 @@ ol > li:has(p) > p {
   display: inline;
   margin: 0;
 }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+}
+
+table,
+th,
+td {
+  border: 1px solid #4c5958;
+}
