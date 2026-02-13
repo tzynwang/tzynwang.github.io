@@ -1,23 +1,22 @@
 ---
-import type { Post } from '@Models/GeneralTypes';
-
-import Tag from '@Components/element/Tag.astro';
-import { GA4_READ_POST } from '@Models/GeneralModels';
-import { dateFormatter } from '@Tools/formatter';
+import type { Post } from "@Models/GeneralTypes";
+import Tag from "@Components/element/Tag.astro";
+import { GA4_READ_POST } from "@Models/GeneralModels";
+import { dateFormatter } from "@Tools/formatter";
 
 interface Props extends Post {
   url?: string;
 }
 
 const { title, date, tag, banner, summary, url } = Astro.props;
-const bannerUrl = banner ? `url(${banner})` : 'none';
+const bannerUrl = banner ? `url(${banner})` : "none";
 ---
 
 <div class="featured-post-wrapper">
   <div class="featured-post-layout">
     <div class="banner-wrapper"></div>
     <div class="text-wrapper">
-      <a href={url} class:list={[GA4_READ_POST, 'link-out']}></a>
+      <a href={url} class:list={[GA4_READ_POST, "link-out"]}></a>
       <p class="title">{title}</p>
       <div>{dateFormatter(date)}</div>
       <div>
@@ -43,12 +42,13 @@ const bannerUrl = banner ? `url(${banner})` : 'none';
 
   .banner-wrapper {
     position: relative;
-    min-height: 200px;
+    min-height: max(280px, 28dvh);
+    max-height: min(320px, 33dvh);
     overflow: hidden;
   }
 
   .banner-wrapper::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
@@ -71,6 +71,7 @@ const bannerUrl = banner ? `url(${banner})` : 'none';
     display: flex;
     flex-direction: column;
     gap: 4px;
+    text-wrap: pretty;
   }
 
   p {
@@ -90,22 +91,5 @@ const bannerUrl = banner ? `url(${banner})` : 'none';
 
   .text-wrapper:hover .title {
     text-decoration-color: #127369;
-  }
-
-  @container (min-width: 520px) {
-    .featured-post-layout {
-      flex-direction: row;
-    }
-
-    .banner-wrapper,
-    .text-wrapper {
-      flex: 0 0 50%;
-    }
-
-    a,
-    p {
-      max-width: 100%;
-      padding-right: 16px;
-    }
   }
 </style>
