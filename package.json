@@ -1,22 +1,24 @@
 {
-	"name": "tzynwang.github.io",
-	"type": "module",
-	"version": "2.1.0",
-	"scripts": {
-		"dev": "astro dev",
-		"build": "astro build",
-		"preview": "astro preview"
-	},
-	"dependencies": {
-		"@astrojs/rss": "4.0.11",
-		"@astrojs/sitemap": "3.2.1",
-		"astro": "5.1.2",
-		"dayjs": "1.11.9"
-	},
-	"devDependencies": {
-		"@types/node": "^20"
-	},
-	"engines": {
-		"node": ">=20"
-	}
+  "name": "tzynwang.github.io",
+  "type": "module",
+  "version": "2.1.0",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "@astrojs/rss": "4.0.11",
+    "@astrojs/sitemap": "3.2.1",
+    "astro": "5.1.2",
+    "dayjs": "1.11.9",
+    "prettier": "^3.8.1",
+    "prettier-plugin-astro": "^0.14.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20"
+  },
+  "engines": {
+    "node": ">=20"
+  }
 }
