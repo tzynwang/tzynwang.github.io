@@ -2,7 +2,7 @@
 title: Git workflow
 date: 2021-02-19 11:03:13
 tag:
-- [git]
+  - [git]
 ---
 
 ## Summary of this post

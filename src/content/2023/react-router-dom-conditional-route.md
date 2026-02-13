@@ -2,7 +2,7 @@
 title: 快速筆記：在 react-router-dom 5 實作條件路由
 date: 2023-06-17 12:44:24
 tag:
-- [React]
+  - [React]
 ---
 
 ## 總結
@@ -32,14 +32,14 @@ react-router-dom: 5.3.4
 - 作為 `React.Suspense` 的 fallback 元件不使用懶載入
 
 ```tsx
-import React, { lazy, Suspense } from 'react';
-import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
-import Loading from '@Component/Page/Loading';
-import env from '@Model/env';
-const Landing = lazy(() => import('@Component/Page/Landing'));
-const SomePage = lazy(() => import('@Component/Page/SomePage'));
-const DevelopmentOnly = lazy(() => import('@Component/Page/DevelopmentOnly'));
-const NotFound = lazy(() => import('@Component/Page/NotFound'));
+import React, { lazy, Suspense } from "react";
+import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
+import Loading from "@Component/Page/Loading";
+import env from "@Model/env";
+const Landing = lazy(() => import("@Component/Page/Landing"));
+const SomePage = lazy(() => import("@Component/Page/SomePage"));
+const DevelopmentOnly = lazy(() => import("@Component/Page/DevelopmentOnly"));
+const NotFound = lazy(() => import("@Component/Page/NotFound"));
 
 function Router(): React.ReactElement {
   return (

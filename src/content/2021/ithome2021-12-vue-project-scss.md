@@ -2,8 +2,8 @@
 title: 30天挑戰：「Vue project與SCSS」相關筆記
 date: 2021-08-27 09:25:15
 tag:
-- [Vue]
-- [2021鐵人賽]
+  - [Vue]
+  - [2021鐵人賽]
 ---
 
 ## 總結
@@ -44,11 +44,11 @@ tag:
           additionalData: `
             @import "@/styles/_module1.scss";
             @import "@/styles/_module2.scss";
-          `
-        }
-      }
-    }
-  }
+          `,
+        },
+      },
+    },
+  };
   ```
 - 使用反引號即可 import 多組檔案
 

@@ -2,7 +2,7 @@
 title: Alpha Camp「3前 毛小孩星球」相關筆記
 date: 2021-07-13 15:40:31
 tag:
-- [CSS]
+  - [CSS]
 ---
 
 ## 總結
@@ -109,15 +109,15 @@ scroll-behavior: smooth;
   display: inline-block;
   width: 36px;
   height: 36px;
-  content: '';
+  content: "";
   background-size: 36px 36px;
-  background-image: url('./images/list.svg');
+  background-image: url("./images/list.svg");
   background-repeat: no-repeat;
   transition: background-image 0.2s;
 }
 
 .navbar-toggle:checked ~ .navbar-toggle-label .hamburger::before {
-  background-image: url('./images/cross.svg');
+  background-image: url("./images/cross.svg");
 }
 ```
 
@@ -213,7 +213,7 @@ header {
 ```css
 .card::before,
 .card::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 5%;
   left: 5%;

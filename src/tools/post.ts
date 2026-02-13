@@ -1,9 +1,9 @@
-import type { CollectionEntry } from 'astro:content';
-import type { PostContent, PostYear } from '@Models/GeneralTypes';
+import type { PostContent, PostYear } from "@Models/GeneralTypes";
+import type { CollectionEntry } from "astro:content";
 
-import { getCollection } from 'astro:content';
-import dayjs from 'dayjs';
-import { dateFormatter } from '@Tools/formatter';
+import { dateFormatter } from "@Tools/formatter";
+import { getCollection } from "astro:content";
+import dayjs from "dayjs";
 
 function getThisYear() {
   return dayjs().year();
@@ -22,7 +22,7 @@ function getAllYears() {
   const thisYear = getThisYear();
   const years = Array.from(
     { length: thisYear - startYear + 1 },
-    (_, index) => startYear + index
+    (_, index) => startYear + index,
   );
   return years;
 }
@@ -34,7 +34,7 @@ export function filterOutDraft(post: CollectionEntry<PostYear>) {
 
 export async function getPublishedPostsOfThisYear(dirYear: PostYear) {
   const blogEntries = await getCollection(dirYear, (post) =>
-    filterOutDraft(post)
+    filterOutDraft(post),
   );
   return blogEntries.map((entry) => ({
     params: { slug: entry.slug },
@@ -47,7 +47,7 @@ async function getAllPosts() {
   let allPosts = [];
   for (const year of years) {
     const posts = await getCollection(year.toString() as PostYear, (post) =>
-      filterOutDraft(post)
+      filterOutDraft(post),
     );
     allPosts.push(posts);
   }
@@ -56,7 +56,7 @@ async function getAllPosts() {
 
 function sortPostByDate(posts: PostContent[]) {
   return posts.sort(
-    (a, b) => dayjs(b.data.date).valueOf() - dayjs(a.data.date).valueOf()
+    (a, b) => dayjs(b.data.date).valueOf() - dayjs(a.data.date).valueOf(),
   );
 }
 
@@ -66,8 +66,8 @@ export const ALL_SORTED_POSTS = sortPostByDate(await getAllPosts());
 function getPostRss(posts: PostContent[]) {
   return posts.map((p) => ({
     title: p.data.title,
-    link: `${p.collection}/${p.slug}` || '',
-    description: p.data.summary || '',
+    link: `${p.collection}/${p.slug}` || "",
+    description: p.data.summary || "",
     pubDate: new Date(dateFormatter(p.data.date)),
   }));
 }
@@ -87,7 +87,7 @@ export function getFlatTags(tags: string[][]) {
 export function groupPostByYear(posts: PostContent[]) {
   const yearsMap: Record<string, PostContent[]> = {};
   posts.forEach((post) => {
-    const y = dayjs(post.data.date).format('YYYY');
+    const y = dayjs(post.data.date).format("YYYY");
     if (!yearsMap[y]) {
       yearsMap[y] = [];
     }

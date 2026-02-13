@@ -2,10 +2,10 @@
 title: 下載附件時，檔案名稱從何而來？
 date: 2024-10-12 10:32:45
 tag:
-- [HTTP]
+  - [HTTP]
 banner: /2024/http-res-headers-content-disposition/camila-serey-QLPl9HDHKZ4-unsplash.jpg
 summary: 答：HTTP response headers 中的 Content-Disposition filename 會決定瀏覽器下載附件時，預設使用的檔案名稱。
-draft: 
+draft:
 ---
 
 懶人包：透過瀏覽器下載檔案時，會由 HTTP response headers 中的 `Content-Disposition` `filename` 來決定該檔案的預設名稱。

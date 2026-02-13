@@ -2,7 +2,7 @@
 title: 開發筆記：設定 dayjs timezone
 date: 2023-05-13 14:55:02
 tag:
-- [JavaScript]
+  - [JavaScript]
 ---
 
 ## 總結
@@ -24,19 +24,19 @@ dayjs: 1.11.7
 範例如下：
 
 ```ts
-import dayjs from 'dayjs';
-import utc from 'dayjs/plugin/utc';
-import timezone from 'dayjs/plugin/timezone';
+import dayjs from "dayjs";
+import utc from "dayjs/plugin/utc";
+import timezone from "dayjs/plugin/timezone";
 
-const LOCAL_TIME_ZONE = 'Asia/Taipei';
+const LOCAL_TIME_ZONE = "Asia/Taipei";
 
 dayjs.extend(utc);
 dayjs.extend(timezone);
 dayjs.tz.setDefault(LOCAL_TIME_ZONE); // 指定預設時區為 Asia/Taipei
 
-const t1 = dayjs('2023-5-13 22:07').toISOString();
+const t1 = dayjs("2023-5-13 22:07").toISOString();
 // 2023-05-13T14:07:00.000Z
-const t2 = dayjs('2023-5-13').toISOString();
+const t2 = dayjs("2023-5-13").toISOString();
 // 2023-05-12T16:00:00.000Z
 ```
 

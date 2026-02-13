@@ -2,9 +2,9 @@
 title: 2022 第4週 實作筆記：React App 與 webpack
 date: 2022-01-28 20:22:42
 tag:
-- [React]
-- [TypeScript]
-- [webpack]
+  - [React]
+  - [TypeScript]
+  - [webpack]
 ---
 
 ## 總結

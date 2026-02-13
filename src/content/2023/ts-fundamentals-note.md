@@ -2,7 +2,7 @@
 title: 2023 第3週 學習筆記：Frontend Masters TypeScript Fundamentals
 date: 2023-01-21 10:35:59
 tag:
-- [TypeScript]
+  - [TypeScript]
 ---
 
 ## 總結
@@ -21,13 +21,13 @@ function handleArrayUnshift(elem: number, arr: number[]): number[];
 function handleArrayUnshift(elem: string, arr: string[]): string[];
 function handleArrayUnshift(
   elem: number | string,
-  arr: Array<number | string>
+  arr: Array<number | string>,
 ): Array<number | string> {
   return [elem, ...arr];
 }
 
 console.log(handleArrayUnshift(1, [2, 3, 4]));
-console.log(handleArrayUnshift('hello', ['world']));
+console.log(handleArrayUnshift("hello", ["world"]));
 
 /*
 下面這行會報錯
@@ -35,7 +35,7 @@ No overload matches this call.
   Overload 1 of 2, '(elem: number, arr: number[]): number[]', gave the following error.
     Argument of type 'string' is not assignable to parameter of type 'number'.(2769)
 */
-console.log(handleArrayUnshift('no way', [1, 2, 3]));
+console.log(handleArrayUnshift("no way", [1, 2, 3]));
 ```
 
 ### Parameter Properties
@@ -61,10 +61,14 @@ class Car {
 ```ts
 /* 在 TS 中可以透過 constructor 偷懶 */
 class Car {
-  constructor(public make: string, public model: string, public year: number) {}
+  constructor(
+    public make: string,
+    public model: string,
+    public year: number,
+  ) {}
 }
 
-const aHonda = new Car('Honda', 'Accord', 2017);
+const aHonda = new Car("Honda", "Accord", 2017);
 console.info(aHonda.year); // 2017
 ```
 

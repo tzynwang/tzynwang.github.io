@@ -2,7 +2,7 @@
 title: Alpha Camp「2-2 社群名單」技術記錄
 date: 2021-05-04 19:59:34
 tag:
-- [JavaScript]
+  - [JavaScript]
 ---
 
 <p class="codepen" data-height="265" data-theme-id="dark" data-default-tab="js,result" data-user="Charlie7779" data-slug-hash="ExZJLzG" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="2-2 社群名單">

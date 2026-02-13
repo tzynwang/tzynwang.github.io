@@ -2,7 +2,7 @@
 title: 2022 第52週 實作筆記：於 MaterialUI theme 新增 custom breakpoints
 date: 2022-12-30 21:01:05
 tag:
-- [MaterialUI]
+  - [MaterialUI]
 ---
 
 ## 總結
@@ -39,9 +39,9 @@ src
 ```ts
 /// <reference types="react-scripts" />
 
-import type { BreakpointOverrides } from '@mui/system/createTheme/createBreakpoints';
+import type { BreakpointOverrides } from "@mui/system/createTheme/createBreakpoints";
 
-declare module '@mui/system/createTheme/createBreakpoints' {
+declare module "@mui/system/createTheme/createBreakpoints" {
   interface BreakpointOverrides {
     xs: false;
     sm: false;
@@ -58,10 +58,10 @@ declare module '@mui/system/createTheme/createBreakpoints' {
 
 ```ts
 /* theme.ts */
-import { useTheme } from '@mui/material';
-import { ThemeProvider, createTheme } from '@mui/material/styles';
-import useMediaQuery from '@mui/material/useMediaQuery';
-import type { Theme } from '@mui/material/styles';
+import { useTheme } from "@mui/material";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import type { Theme } from "@mui/material/styles";
 
 const theme = createTheme({
   breakpoints: {
@@ -81,36 +81,36 @@ export { ThemeProvider, theme, useTheme, useMediaQuery, Theme };
 
 ```tsx
 /* MainAppView.tsx */
-import React, { memo } from 'react';
-import { useTheme, useMediaQuery, Theme } from './theme';
+import React, { memo } from "react";
+import { useTheme, useMediaQuery, Theme } from "./theme";
 
 function MainAppView(): React.ReactElement {
   /* States */
   const theme = useTheme();
-  const upMobile = useMediaQuery(theme.breakpoints.up('mobile'));
-  const upTablet = useMediaQuery(theme.breakpoints.up('tablet'));
-  const upLapTop = useMediaQuery(theme.breakpoints.up('laptop'));
+  const upMobile = useMediaQuery(theme.breakpoints.up("mobile"));
+  const upTablet = useMediaQuery(theme.breakpoints.up("tablet"));
+  const upLapTop = useMediaQuery(theme.breakpoints.up("laptop"));
   const upDesktop = useMediaQuery((theme: Theme) =>
-    theme.breakpoints.up('desktop')
+    theme.breakpoints.up("desktop"),
   );
 
   /* Main */
   return (
     <ul>
       <li>
-        {theme.breakpoints.up('mobile')}
+        {theme.breakpoints.up("mobile")}
         {`theme.breakpoints.up('mobile'): ${upMobile}`}
       </li>
       <li>
-        {theme.breakpoints.up('tablet')}
+        {theme.breakpoints.up("tablet")}
         {`theme.breakpoints.up('tablet'): ${upTablet}`}
       </li>
       <li>
-        {theme.breakpoints.up('laptop')}
+        {theme.breakpoints.up("laptop")}
         {`theme.breakpoints.up('laptop'): ${upLapTop}`}
       </li>
       <li>
-        {theme.breakpoints.up('desktop')}
+        {theme.breakpoints.up("desktop")}
         {`theme.breakpoints.up('desktop'): ${upDesktop}`}
       </li>
     </ul>
@@ -122,9 +122,9 @@ export default memo(MainAppView);
 
 ```tsx
 /* App.tsx */
-import React, { memo } from 'react';
-import MainAppView from './MainAppView';
-import { ThemeProvider, theme } from './theme';
+import React, { memo } from "react";
+import MainAppView from "./MainAppView";
+import { ThemeProvider, theme } from "./theme";
 
 function App(): React.ReactElement {
   /* Main */
@@ -152,13 +152,13 @@ export default function createTheme(
 而同一份檔案往上翻，發現 interface `ThemeOptions` 是延伸自 `Omit<SystemThemeOptions, 'zIndex'> { ... }`：
 
 ```ts
-import { ThemeOptions as SystemThemeOptions } from '@mui/system';
+import { ThemeOptions as SystemThemeOptions } from "@mui/system";
 
 // 中間略
 
-export interface ThemeOptions extends Omit<SystemThemeOptions, 'zIndex'> {
+export interface ThemeOptions extends Omit<SystemThemeOptions, "zIndex"> {
   mixins?: MixinsOptions;
-  components?: Components<Omit<Theme, 'components'>>;
+  components?: Components<Omit<Theme, "components">>;
   palette?: PaletteOptions;
   shadows?: Shadows;
   transitions?: TransitionsOptions;
@@ -205,7 +205,7 @@ export interface Breakpoints {
 export interface BreakpointOverrides {}
 
 export type Breakpoint = OverridableStringUnion<
-  'xs' | 'sm' | 'md' | 'lg' | 'xl',
+  "xs" | "sm" | "md" | "lg" | "xl",
   BreakpointOverrides
 >;
 ```
@@ -224,7 +224,7 @@ export type Breakpoint = OverridableStringUnion<
  */
 export type OverridableStringUnion<
   T extends string | number,
-  U = {}
+  U = {},
 > = GenerateStringUnion<Overwrite<Record<T, true>, U>>;
 ```
 

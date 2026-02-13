@@ -1,6 +1,6 @@
-import type { CollectionEntry } from 'astro:content';
+import type { CollectionEntry } from "astro:content";
 
-export type PostYear = '2021' | '2022' | '2023' | '2024' | '2025';
+export type PostYear = "2021" | "2022" | "2023" | "2024" | "2025";
 
 export type Post = {
   title: string;
@@ -15,4 +15,4 @@ export type EntryData = {
   data: Post;
 };
 
-export type PostContent = CollectionEntry<'2021'>;
+export type PostContent = CollectionEntry<"2021">;

@@ -2,11 +2,11 @@
 title: 我該寫什麼？——"Writing for Developers" 閱讀筆記，日常的又恨又愛
 date: 2025-04-22 19:37:46
 tag:
-- [閱讀筆記]
-- [關於寫作這件事]
+  - [閱讀筆記]
+  - [關於寫作這件事]
 banner: /2025/writing-for-developers-what-to-write/拜託讓我遺忘那又羨又恨的愛吧.jpg
 summary: 這篇是我在看完 "Writing for Developers" 後，整理出「什麼可以成為技術寫作題材」的相關筆記。不論是剛開始寫作的新手，或是想讓自己的技術文章能受歡迎的歷戰工程師，應該都能從這篇筆記裡撈到一些靈感吧 🌚
-draft: 
+draft:
 ---
 
 ## 前言

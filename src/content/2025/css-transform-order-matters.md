@@ -2,10 +2,10 @@
 title: 變形的秩序（CSS transform order matters）
 date: 2025-07-05 18:40:31
 tag:
-- [CSS]
+  - [CSS]
 banner: /2025/css-transform-order-matters/Las_Meninas.jpg
 summary: 你知道嗎，CSS `transform` 的順序會影響元件的變形結果。
-draft: 
+draft:
 ---
 
 ## 懶人包
@@ -32,7 +32,7 @@ draft:
 </p>
 <script async src="https://public.codepenassets.com/embed/index.js"></script>
 
-為什麼？因為執行變形時，會將 transformation functions （即 `translateX()` /  `rotate()` 等）**轉為矩陣，並從左側一路往右乘**。但**因為矩陣乘法並不符合交換律**，所以變形的順序會影響結果。
+為什麼？因為執行變形時，會將 transformation functions （即 `translateX()` / `rotate()` 等）**轉為矩陣，並從左側一路往右乘**。但**因為矩陣乘法並不符合交換律**，所以變形的順序會影響結果。
 
 ### 如果我就是不想在乎順序呢？
 

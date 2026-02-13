@@ -2,8 +2,8 @@
 title: 如何設定 view transition 動畫效果
 date: 2025-01-11 08:47:19
 tag:
-- [CSS]
-- [Web api]
+  - [CSS]
+  - [Web api]
 banner: /2025/how-to-view-transition-animation/daniel-olah-0GOUcmFYsZ4-unsplash.jpg
 summary: 先透過 view-transition-name 標記出要帶 view transition 效果的元件，再搭配 ::view-transition-group() / ::view-transition-old() / ::view-transition-new() 將動畫掛給特定元件
 draft:
@@ -90,7 +90,7 @@ draft:
 在 react app 中監聽 `popstate` 事件，就能在使用者點擊瀏覽器原生的上一頁、下一頁按鈕時也觸發 view transition 效果：
 
 ```ts
-window.addEventListener('popstate', () => {
+window.addEventListener("popstate", () => {
   document.startViewTransition();
 });
 ```

@@ -2,10 +2,10 @@
 title: 以地圖來比喻 DDD 的領域（domain）與模型（model）
 date: 2023-12-10 06:03:08
 tag:
-- [Software Architecture]
+  - [Software Architecture]
 banner: /2023/ddd-world-map-metaphor/aliaksei-lepik-5F4oYUg-WvM-unsplash.jpg
 summary: 本篇筆記會說明如何透過「地圖」的概念來理解 DDD 中的領域（domain）與模型（model）。
-draft: 
+draft:
 ---
 
 本筆記的內容出自影片 [What is DDD - Eric Evans - DDD Europe 2019](https://youtu.be/pMuiVlnGqjk?si=4pNZhdSyeG1ZDNVX)，我認為地圖很適合用來解釋 DDD 中領域（domain）與模型（model）代表的意義。

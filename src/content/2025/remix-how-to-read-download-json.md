@@ -2,10 +2,10 @@
 title: 如何在 Remix 讀取、下載 json 檔
 date: 2025-01-04 10:20:19
 tag:
-- [Remix]
+  - [Remix]
 banner: /2025/remix-how-to-read-download-json/food-photographer-jennifer-pallian-dcPNZeSY3yk-unsplash.jpg
 summary: 如題，新的一年就從分享在 Remix 裡面處理「讀取 .json 檔內容」和「將特定內容下載為 .json 檔」的程式碼開始。新年快樂 🍾
-draft: 
+draft:
 ---
 
 ## 讀取 json
@@ -18,11 +18,11 @@ draft:
 2. 使用 `JSON.parse()` 將字串化的檔案內容解析成物件，接著就可以透過 `useLoaderData` 隨意使用了
 
 ```tsx
-import { useLoaderData } from '@remix-run/react';
-import { readFile } from 'node:fs/promises';
+import { useLoaderData } from "@remix-run/react";
+import { readFile } from "node:fs/promises";
 
 export async function loader() {
-  const fileContent = await readFile('path/to/file.json');
+  const fileContent = await readFile("path/to/file.json");
   return JSON.parse(fileContent.toString());
 }
 
@@ -39,12 +39,12 @@ export default function ReadJson() {
 - 透過 `await new Response(file).text();` 即可取得純文字版的 .json 檔內容，加上 `JSON.parse(text);` 就可得到 JS 物件
 
 ```tsx
-import type { ActionFunctionArgs, MetaFunction } from '@remix-run/node';
+import type { ActionFunctionArgs, MetaFunction } from "@remix-run/node";
 import {
   unstable_createMemoryUploadHandler,
   unstable_parseMultipartFormData,
-} from '@remix-run/node';
-import { Form, useActionData } from '@remix-run/react';
+} from "@remix-run/node";
+import { Form, useActionData } from "@remix-run/react";
 
 // https://remix.run/docs/en/main/guides/file-uploads
 // https://remix.run/docs/en/main/utils/unstable-create-memory-upload-handler
@@ -52,9 +52,9 @@ export async function action({ request }: ActionFunctionArgs) {
   const uploadHandler = unstable_createMemoryUploadHandler();
   const formData = await unstable_parseMultipartFormData(
     request,
-    uploadHandler
+    uploadHandler,
   );
-  const file = formData.get('file');
+  const file = formData.get("file");
   const text = await new Response(file).text();
   return JSON.parse(text);
 }
@@ -82,11 +82,11 @@ export default function Index() {
 2. 透過 `useActionData` 取出 qs 處理好的內容，再搭配 `downloadJson`（詳細請參考下一大段）執行檔案下載
 
 ```tsx
-import type { ActionFunctionArgs } from '@remix-run/node';
-import { Form, useActionData } from '@remix-run/react';
-import { useEffect } from 'react';
-import qs from 'qs';
-import { downloadJson } from '~util';
+import type { ActionFunctionArgs } from "@remix-run/node";
+import { Form, useActionData } from "@remix-run/react";
+import { useEffect } from "react";
+import qs from "qs";
+import { downloadJson } from "~util";
 
 export async function action({ request }: ActionFunctionArgs) {
   const text = await request.text();
@@ -142,7 +142,7 @@ export class JsonHandler {
     const formatted = overwriteFormatter
       ? overwriteFormatter(input)
       : JSON.stringify(input, null, 2);
-    const blob = new Blob([formatted], { type: 'application/json' });
+    const blob = new Blob([formatted], { type: "application/json" });
     return window.URL.createObjectURL(blob);
   }
 
@@ -171,7 +171,7 @@ export class DownloadHandler {
   }
 
   createDownloadAnchor(href: string, fileName: string) {
-    const link = document.createElement('a');
+    const link = document.createElement("a");
     link.href = href;
     link.download = fileName;
     return link;
@@ -195,12 +195,12 @@ export class DownloadHandler {
 
 ```ts
 export function action() {
-  const content = 'some text content...';
+  const content = "some text content...";
   return new Response(content, {
     status: 200,
     headers: {
-      'Content-Disposition': 'attachment; filename="some.txt"',
-      'Content-Type': 'plain/text',
+      "Content-Disposition": 'attachment; filename="some.txt"',
+      "Content-Type": "plain/text",
     },
   });
 }
@@ -211,18 +211,18 @@ export function action() {
 出自 stack overflow [Remix: file download](https://stackoverflow.com/questions/75526237/remix-file-download)：
 
 ```ts
-import { createReadableStreamFromReadable } from '@remix-run/node';
-import { Readable } from 'node:stream';
+import { createReadableStreamFromReadable } from "@remix-run/node";
+import { Readable } from "node:stream";
 
 export const loader = async () => {
   const file = createReadableStreamFromReadable(
-    Readable.from(['Hello, World!'])
+    Readable.from(["Hello, World!"]),
   );
 
   return new Response(file, {
     headers: {
-      'Content-Disposition': 'attachment; filename="hello.md"',
-      'Content-Type': 'text/markdown',
+      "Content-Disposition": 'attachment; filename="hello.md"',
+      "Content-Type": "text/markdown",
     },
   });
 };

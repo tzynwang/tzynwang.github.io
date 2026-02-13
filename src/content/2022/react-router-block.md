@@ -2,8 +2,8 @@
 title: 2022 第7週 實作筆記：在離開路由前顯示確認視窗
 date: 2022-02-16 18:30:04
 tag:
-- [React]
-- [webpack]
+  - [React]
+  - [webpack]
 ---
 
 ## 總結
@@ -40,13 +40,13 @@ webpack: 5.69.0
   ```ts
   export interface History<HistoryLocationState = LocationState> {
     block(
-      prompt?: boolean | string | TransitionPromptHook<HistoryLocationState>
+      prompt?: boolean | string | TransitionPromptHook<HistoryLocationState>,
     ): UnregisterCallback;
   }
 
   export type TransitionPromptHook<S = LocationState> = (
     location: Location<S>,
-    action: Action
+    action: Action,
   ) => string | false | void;
   ```
 

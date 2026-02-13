@@ -2,10 +2,10 @@
 title: 閱讀筆記：The Art of Unit Testing Chapter 9 Readability
 date: 2024-01-29 21:20:37
 tag:
-- [Testing]
+  - [Testing]
 banner: /2024/the-art-of-unit-testing-ch9-readability/david-travis-aVvZJC0ynBQ-unsplash.jpg
 summary: 沒人在乎「看不懂到底在幹麼」的測試，而為了確保我們費力寫出來的測試能發揮價值，這一章會介紹（回顧）四個能讓測試更好懂的技巧。
-draft: 
+draft:
 ---
 
 ## 簡介
@@ -17,10 +17,10 @@ draft:
 魔術數字（magic value）的定義：指那些寫死（hard-coded）且**很難理解其目的**的值。比如以下範例：
 
 ```js
-describe('password verifier', () => {
-  it('should throw exceptions on weekend', () => {
-    expect(() => verifyPassword('jhGGu78!', [], 0)).toThrowError(
-      "It's the weekend!"
+describe("password verifier", () => {
+  it("should throw exceptions on weekend", () => {
+    expect(() => verifyPassword("jhGGu78!", [], 0)).toThrowError(
+      "It's the weekend!",
     );
   });
 });
@@ -31,14 +31,14 @@ describe('password verifier', () => {
 為了避免產生「我看得懂你寫的每一個字但我不知道你想幹麼 🤔」的窘境，請為變數賦予有意義的名稱，以便**傳遞你的意圖**。可參考以下改良後的範例：
 
 ```js
-describe('password verifier', () => {
-  test('should throw exceptions on weekend', () => {
+describe("password verifier", () => {
+  test("should throw exceptions on weekend", () => {
     // arrange
     const SUNDAY = 0;
     const NO_RULES = [];
     // act, assert
-    expect(() => verifyPassword2('anything', NO_RULES, SUNDAY)).toThrowError(
-      "It's the weekend!"
+    expect(() => verifyPassword2("anything", NO_RULES, SUNDAY)).toThrowError(
+      "It's the weekend!",
     );
   });
 });
@@ -60,13 +60,13 @@ describe('password verifier', () => {
 單元測試的名稱裡應包含測試對象（unit）、情境（scenario）與預期結果（expected behavior）。可參考以下比對，首先是沒有使用 USE 命名的範例：
 
 ```js
-it('should return error based on rule.reason', () => {
+it("should return error based on rule.reason", () => {
   // lack of unit
 });
-test('verifyPassword should return error', () => {
+test("verifyPassword should return error", () => {
   // lack of seenario
 });
-test('verifyPassword with a failing rule', () => {
+test("verifyPassword with a failing rule", () => {
   // lack of expected behavior
 });
 ```
@@ -74,8 +74,8 @@ test('verifyPassword with a failing rule', () => {
 再來是有使用 USE 命名的範例：
 
 ```js
-describe('verifyPassword', () => {
-  it('with a failing rule, should return error based on the rule.reason', () => {
+describe("verifyPassword", () => {
+  it("with a failing rule, should return error based on the rule.reason", () => {
     // ...
   });
 });
@@ -93,24 +93,24 @@ describe('verifyPassword', () => {
 以下兩組範例分別是「沒有」「有」使用 AAA 結構（詳細可回頭翻 [2 A first unit test#2.5.1 The Arrange-Act-Assert (AAA) structure](/2023/the-art-of-unit-testing-ch2-a-first-unit-test#251-the-arrange-act-assert-aaa-structure)）撰寫的測試。除非你的測試腳本真的非常、非常簡短，否則請分段。你未來的讀者會感謝你的。
 
 ```js
-describe('verifyPassword', () => {
-  it('with a failing rule, should return results with item that contain `fake reason`', () => {
-    expect(getPasswordVerifier().verify('any value')[0]).toContain(
-      'fake reason'
+describe("verifyPassword", () => {
+  it("with a failing rule, should return results with item that contain `fake reason`", () => {
+    expect(getPasswordVerifier().verify("any value")[0]).toContain(
+      "fake reason",
     );
   });
 });
 ```
 
 ```js
-describe('verifyPassword', () => {
-  it('with a failing rule, should return results with item that contain `fake reason`', () => {
+describe("verifyPassword", () => {
+  it("with a failing rule, should return results with item that contain `fake reason`", () => {
     // arrange
     const verifier = getPasswordVerifier();
     // act
-    const results = verifier.verify('any value');
+    const results = verifier.verify("any value");
     // assert
-    expect(results[0]).toContain('fake reason');
+    expect(results[0]).toContain("fake reason");
   });
 });
 ```

@@ -2,7 +2,7 @@
 title: 工作筆記：使用 JavaScript 控制輸入內容僅限於數字
 date: 2023-07-15 12:36:42
 tag:
-- [JavaScript]
+  - [JavaScript]
 ---
 
 ## 總結
@@ -23,7 +23,7 @@ tag:
 ```tsx
 /* Function */
 const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-  if (!/^\d*$/.test(e.target.value || '')) return;
+  if (!/^\d*$/.test(e.target.value || "")) return;
   // TODO...
   // 已經確保使用者無法輸入非數字內容，剩下就根據實作需要來處理 e.target.value
 };

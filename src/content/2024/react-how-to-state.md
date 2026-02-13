@@ -2,10 +2,10 @@
 title: 影片筆記：Managing React State -- 10 Years of Lessons Learned
 date: 2024-02-27 20:32:49
 tag:
-- [React]
+  - [React]
 banner: /2024/react-how-to-state/aveedibya-dey-nfzdRKD0Zkg-unsplash.jpg
 summary: 這部影片非常簡潔地介紹了一些 React 本地狀態的反模式，以及可以透過哪些作法來化解這些不良設計
-draft: 
+draft:
 ---
 
 ## 筆記
@@ -20,15 +20,15 @@ draft:
 
 ```js
 // don't
-const [cardNo, setCardNo] = useState('');
-const [cardExpDate, setCardExpDate] = useState('');
-const [cardHolderName, setCardHolderName] = useState('');
+const [cardNo, setCardNo] = useState("");
+const [cardExpDate, setCardExpDate] = useState("");
+const [cardHolderName, setCardHolderName] = useState("");
 
 // do
 const [cardInfo, setCardInfo] = useState({
-  no: '',
-  expDate: '',
-  holderName: '',
+  no: "",
+  expDate: "",
+  holderName: "",
 });
 ```
 
@@ -44,7 +44,7 @@ setUser(user);
 setIsLoading(false);
 
 // do: update multiple states in one dispatch
-dispatch({ type: 'save-user', payload: user });
+dispatch({ type: "save-user", payload: user });
 ```
 
 ### 偏好推導

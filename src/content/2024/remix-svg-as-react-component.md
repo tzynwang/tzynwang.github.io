@@ -2,10 +2,10 @@
 title: 如何在 TypeScript remix 專案中把 .svg 引用成 React 元件
 date: 2024-08-03 19:23:07
 tag:
-- [Remix]
+  - [Remix]
 banner: /2024/remix-svg-as-react-component/dan-asaki-aI3jlXTqrdI-unsplash.jpg
 summary: 我感覺 SVGR 官方提供的 remix 設定有點太複雜，其實可以直接上 vite-plugin-svgr 就好。如果你也在用 remix 並且需要把 .svg 引用成 React 元件，歡迎參考此篇筆記。
-draft: 
+draft:
 ---
 
 搜尋 remix SVG as react component 會找到[SVGR 官方提供的 remix 設定](https://react-svgr.com/docs/remix/)，但感覺太複雜了。其實可以直接用 [vite-plugin-svgr](https://www.npmjs.com/package/vite-plugin-svgr) 來處理就好。
@@ -41,7 +41,7 @@ module.exports = {
 ```bash
 7:34:05 PM [vite] Internal server error: Transform failed with 1 error:
 (略)/app/assets/icons/arrow_back.svg?react:2:12: ERROR: Expected "from" but found "{"
-  
+
   Expected "from" but found "{"
   1  |  import * as React from 'react';
   2  |  import type { SVGProps } from 'react';
@@ -71,11 +71,11 @@ module.exports = {
 
 ```js
 import svgr from "vite-plugin-svgr";
-import svgrOptions from './svgr.config.cjs';
+import svgrOptions from "./svgr.config.cjs";
 
 export default {
   // ...
-  plugins: [svgr({ svgrOptions }),],
+  plugins: [svgr({ svgrOptions })],
 };
 ```
 

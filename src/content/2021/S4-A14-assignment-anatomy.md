@@ -2,7 +2,7 @@
 title: ALPHA Camp 履歷網頁作業：內容解析
 date: 2021-03-20 21:06:49
 tag:
-- [CSS]
+  - [CSS]
 ---
 
 ## 總結
@@ -73,7 +73,6 @@ os: Windows_NT 10.0.18363 win32 x64
 - `header`與`.avatar`：為了在各種版面下都能簡單的處理水平置中，直接使用`display: flex;`搭配`flex-direction: column;`與`align-items: center;`來做讓`header`與`.avatar`下所有的內容都呈現水平置中
 - `img`：與 wireframe 的設計不同，最後決定拿掉履歷照片的`border-radius: 50%;`，因為最終成品一眼望過去只有照片是圓形反而覺得有點突兀
 - `h1`：加上`transform: rotate(-5deg);`讓文字稍微向右上角抬起，增加一點活躍感；並配合`margin-bottom: 8px;`來製造空間，稍稍推開下方的連結組合
-
   - 最終並沒有實作 wireframe 中「讓姓名重疊到照片上」的排版，因目前只想到可以使用`position: absolute;`來控制，但這樣會難以處理 RWD 下欄位寬度浮動時的水平置中問題，故暫時放棄此設計
   - 更新：將`<h1>`包在一層`<div>`內，設定`<div>`為`position: absolute;`，然後加上`display: flex;`來控制`<h1>`的水平位置即可
   <p class="codepen" data-height="265" data-theme-id="dark" data-default-tab="css,result" data-user="Charlie7779" data-slug-hash="MWJgKrP" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="S4 A14 為客戶打造履歷網頁 bonus track">

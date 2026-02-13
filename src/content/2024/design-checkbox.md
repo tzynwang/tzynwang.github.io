@@ -2,10 +2,10 @@
 title: 閱讀筆記：核取方塊的設計準則
 date: 2024-07-16 19:32:56
 tag:
-- [Product Design]
+  - [Product Design]
 banner: /2024/design-checkbox/glenn-carstens-peters-RLw-UC03Gwc-unsplash.jpg
 summary: 在閱讀 NNG 的設計準則以前，我確實沒有注意到「清單」與「巢狀」核取方塊最大的差別是什麼⋯⋯👀
-draft: 
+draft:
 ---
 
 提醒：原文 [NNG | Checkboxes: Design Guidelines](https://www.nngroup.com/articles/checkboxes-design-guidelines/) 其實不會太長，寫得也算平易近人，有空的讀者真的可以親自讀一下。

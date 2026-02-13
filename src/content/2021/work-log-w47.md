@@ -2,7 +2,7 @@
 title: 2021 第47週 學習記錄：TypeScript
 date: 2021-11-27 12:51:14
 tag:
-- [TypeScript]
+  - [TypeScript]
 ---
 
 ## 總結
@@ -68,14 +68,14 @@ tag:
 
 ```ts
 class Dog {
-  static displayName = 'A Dog.';
+  static displayName = "A Dog.";
 
   static logDisplayName() {
     console.log(this.displayName);
   }
 
   bark() {
-    console.log('Bark!');
+    console.log("Bark!");
   }
 }
 
@@ -115,8 +115,8 @@ function getProperty<T, Key extends keyof T>(obj: T, key: Key) {
 
 let x = { a: 1, b: 2, c: 3, d: 4 };
 
-getProperty(x, 'a'); // OK
-getProperty(x, 'm'); // 這個會報錯，因為傳入的obj裡面沒有m這個key
+getProperty(x, "a"); // OK
+getProperty(x, "m"); // 這個會報錯，因為傳入的obj裡面沒有m這個key
 ```
 
 解說：
@@ -135,7 +135,7 @@ getProperty(x, 'm'); // 這個會報錯，因為傳入的obj裡面沒有m這個k
 type Point = { x: number; y: number };
 type P = keyof Point; // P會是 'x' | 'y'
 
-let p: P = 'x'; // 變數p只能是'x'或'y'，其他都會報錯
+let p: P = "x"; // 變數p只能是'x'或'y'，其他都會報錯
 ```
 
 ### typeof Type Operator
@@ -180,15 +180,15 @@ type P = ReturnType<typeof f>;
   }
 
   function infiniteLoop(): never {
-    while (true) console.log('infinite loop');
+    while (true) console.log("infinite loop");
   }
   ```
 
 - Also, the TypeScript compiler asserts the `never` type if we **create an impossible type guard**.
 
   ```ts
-  const uncertain: unknown = 'Hello world!';
-  if (typeof uncertain === 'number' && typeof uncertain === 'string') {
+  const uncertain: unknown = "Hello world!";
+  if (typeof uncertain === "number" && typeof uncertain === "string") {
     console.log(uncertain.toLowerCase());
   }
 
@@ -200,7 +200,7 @@ type P = ReturnType<typeof f>;
 - A function that **does not return any value** explicitly has a return value of `undefined`. To indicate that we **ignore the return value**, we use the `void` return type.
   ```ts
   function greeting(): void {
-    console.log('hi there!');
+    console.log("hi there!");
   }
   ```
 

@@ -2,7 +2,7 @@
 title: 2022 第3週 學習記錄：Creational Design Patterns
 date: 2022-01-22 17:39:18
 tag:
-- [Design Patterns]
+  - [Design Patterns]
 ---
 
 ## 總結

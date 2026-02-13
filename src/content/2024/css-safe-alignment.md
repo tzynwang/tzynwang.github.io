@@ -2,10 +2,10 @@
 title: CSS 筆記：給 flex 的 justify-* 與 align-* 系列使用的 `safe` 關鍵字
 date: 2024-06-25 20:35:47
 tag:
-- [CSS]
+  - [CSS]
 banner: /2024/css-safe-alignment/umit-yildirim-9OB46apMbC4-unsplash.jpg
 summary: 在一些極端情況下，設定為 `justify-content center` 的容器有可能會造成 flex item 從畫面上消失，但現在你可以使用 `safe` 這個已經被主流瀏覽器支援的關鍵字來解決問題 🎉
-draft: 
+draft:
 ---
 
 ## 功能

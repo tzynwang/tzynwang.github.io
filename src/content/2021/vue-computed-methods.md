@@ -2,8 +2,8 @@
 title: 「Vue computed與methods之差異，以及getter/setter」相關筆記
 date: 2021-07-25 18:02:30
 tag:
-- [Vue]
-- [JavaScript]
+  - [Vue]
+  - [JavaScript]
 ---
 
 ## 總結
@@ -42,12 +42,12 @@ Vue.js: 2.X
 ```js
 const vm = new Vue({
   data: {
-    a: 1
-  }
-})
+    a: 1,
+  },
+});
 // vm.a is reactive
 
-vm.b = 2
+vm.b = 2;
 // vm.b is NOT reactive
 ```
 
@@ -57,12 +57,12 @@ A property must **be present in the data object** in order for Vue to convert it
 const vm = new Vue({
   data: {
     // declare message with an empty value
-    message: ''
+    message: "",
   },
-  template: '<div>{{ message }}</div>'
-})
+  template: "<div>{{ message }}</div>",
+});
 // set `message` later
-vm.message = 'Hello!'
+vm.message = "Hello!";
 ```
 
 Vue doesn’t allow dynamically adding root-level reactive properties, you have to initialize Vue instances by **declaring all root-level reactive data properties upfront**, even with an empty value.
@@ -119,30 +119,40 @@ MDN 對 getter/setter 的定義：
 [W3Schools 的範例](https://www.w3schools.com/js/js_object_accessors.asp)：
 
 ```js
-const obj = { counter : 0 }
+const obj = { counter: 0 };
 
 // Define setters
 Object.defineProperty(obj, "reset", {
-  get: function () { this.counter = 0 }
-})
+  get: function () {
+    this.counter = 0;
+  },
+});
 Object.defineProperty(obj, "increment", {
-  get: function () { this.counter++ }
-})
+  get: function () {
+    this.counter++;
+  },
+});
 Object.defineProperty(obj, "decrement", {
-  get: function () { this.counter-- }
-})
+  get: function () {
+    this.counter--;
+  },
+});
 Object.defineProperty(obj, "add", {
-  set: function (value) { this.counter += value }
-})
+  set: function (value) {
+    this.counter += value;
+  },
+});
 Object.defineProperty(obj, "subtract", {
-  set: function (value) { this.counter -= value }
-})
+  set: function (value) {
+    this.counter -= value;
+  },
+});
 
-obj.reset         // { counter : 0 }
-obj.add = 5       // { counter : 5 }
-obj.subtract = 1  // { counter : 4 }
-obj.increment     // { counter : 5 }
-obj.decrement     // { counter : 4 }
+obj.reset; // { counter : 0 }
+obj.add = 5; // { counter : 5 }
+obj.subtract = 1; // { counter : 4 }
+obj.increment; // { counter : 5 }
+obj.decrement; // { counter : 4 }
 ```
 
 ## 參考文件

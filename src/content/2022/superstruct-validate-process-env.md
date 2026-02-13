@@ -2,8 +2,8 @@
 title: 2022 第14週 學習筆記：使用 superstruct 驗證 process.env 資料
 date: 2022-04-08 17:07:56
 tag:
-- [React]
-- [webpack]
+  - [React]
+  - [webpack]
 ---
 
 ## 總結

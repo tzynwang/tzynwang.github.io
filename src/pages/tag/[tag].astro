@@ -1,7 +1,7 @@
 ---
-import Html from '@Components/layout/Html.astro';
-import PostItem from '@Components/element/PostItem.astro';
-import { ALL_SORTED_POSTS, ALL_UNIQUE_TAGS, getFlatTags } from '@Tools/post';
+import Html from "@Components/layout/Html.astro";
+import PostItem from "@Components/element/PostItem.astro";
+import { ALL_SORTED_POSTS, ALL_UNIQUE_TAGS, getFlatTags } from "@Tools/post";
 
 export async function getStaticPaths() {
   return ALL_UNIQUE_TAGS.map((tag) => ({ params: { tag } }));
@@ -9,7 +9,7 @@ export async function getStaticPaths() {
 
 const { tag } = Astro.params;
 const posts = ALL_SORTED_POSTS.filter((post) =>
-  getFlatTags(post.data.tag).includes(tag)
+  getFlatTags(post.data.tag).includes(tag),
 );
 ---
 

@@ -2,10 +2,10 @@
 title: 閱讀筆記：UI Density -- What UI density means and how to design for it
 date: 2024-05-26 11:39:23
 tag:
-- [Product Design]
+  - [Product Design]
 banner: /2024/ui-density-note/hal-gatewood-tZc3vjPCk-Q-unsplash.jpg
 summary: 最近讀到一篇以「密度」來分析「何謂好設計」的文章。除了說到設計會馬上想到的「視覺效果」以外，該文作者也以資訊、時間與價值面向來評價設計結果。即使對設計沒什麼概念，也是一篇讀起來很有趣的文章，原文值得一看。
-draft: 
+draft:
 ---
 
 ## 定義

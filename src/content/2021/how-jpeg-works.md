@@ -2,7 +2,7 @@
 title: 「How JPEG Works」相關筆記
 date: 2021-03-28 16:02:12
 tag:
-- [Image format]
+  - [Image format]
 ---
 
 ## 總結

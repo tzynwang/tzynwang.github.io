@@ -2,7 +2,7 @@
 title: 再訪 event loop
 date: 2021-04-14 14:02:39
 tag:
-- [JavaScript]
+  - [JavaScript]
 ---
 
 ## 總結
@@ -68,16 +68,16 @@ tag:
 第一組程式碼：
 
 ```js
-const button = document.querySelector('button');
+const button = document.querySelector("button");
 
-button.addEventListener('click', function first () {
-  Promise.resolve().then(() => console.log('microtask 1'));
-  console.log('listener 1');
+button.addEventListener("click", function first() {
+  Promise.resolve().then(() => console.log("microtask 1"));
+  console.log("listener 1");
 });
 
-button.addEventListener('click', function second() {
-  Promise.resolve().then(() => console.log('microtask 2'));
-  console.log('listener 2');
+button.addEventListener("click", function second() {
+  Promise.resolve().then(() => console.log("microtask 2"));
+  console.log("listener 2");
 });
 ```
 
@@ -93,17 +93,17 @@ button.addEventListener('click', function second() {
 第二組程式碼：
 
 ```js
-const button = document.querySelector('button');
+const button = document.querySelector("button");
 
-button.addEventListener('click', function first () {
-  Promise.resolve().then(() => console.log('microtask 1'));
-  console.log('listener 1');
-})
+button.addEventListener("click", function first() {
+  Promise.resolve().then(() => console.log("microtask 1"));
+  console.log("listener 1");
+});
 
-button.addEventListener('click', function second() {
-  Promise.resolve().then(() => console.log('microtask 2'));
-  console.log('listener 2');
-})
+button.addEventListener("click", function second() {
+  Promise.resolve().then(() => console.log("microtask 2"));
+  console.log("listener 2");
+});
 
 button.click();
 ```
@@ -130,12 +130,12 @@ button.click();
 - 03:19 In the end, the event loop is just something that spins around and takes tasks out of different queues. And these **different queues have different priorities**.
 
   ```js
-  synchronous(() => console.log('sync 1'));
-  task       (() => console.log('task 1'));
-  microtask  (() => console.log('microtask 1'));
-  task       (() => console.log('task 2'));
-  synchronous(() => console.log('sync 2'));
-  microtask  (() => console.log('microtask 2'));
+  synchronous(() => console.log("sync 1"));
+  task(() => console.log("task 1"));
+  microtask(() => console.log("microtask 1"));
+  task(() => console.log("task 2"));
+  synchronous(() => console.log("sync 2"));
+  microtask(() => console.log("microtask 2"));
 
   /*
   output order:
@@ -147,18 +147,18 @@ button.click();
   task 2
   */
 
-  function synchronous (cb) {
+  function synchronous(cb) {
     cb();
   }
 
-  function microtask (cb) {
+  function microtask(cb) {
     queueMicrotask(cb);
 
     // This can work too:
     // Promise.resolve().then(() => cb());
   }
 
-  function task (cb) {
+  function task(cb) {
     setTimeout(() => cb());
 
     // A more reliable way without timeout clamping, use MessageChannel():
@@ -175,9 +175,9 @@ button.click();
 - 04:57 (The code below) is not correct because the constructor of the promise, the function inside the promise constructor, this is call the **revealing constructor pattern**...will invoke **synchronously**.
 
   ```js
-  function microtask (cb) {
+  function microtask(cb) {
     // This can NOT add the callback to microtask queue:
-    new Promise(resolve => {
+    new Promise((resolve) => {
       cb();
       resolve();
     });

@@ -2,10 +2,10 @@
 title: 閱讀筆記：The Art of Unit Testing Chapter 4 Interaction testing using mock objects
 date: 2023-12-28 20:04:09
 tag:
-- [Testing]
+  - [Testing]
 banner: /2023/the-art-of-unit-testing-ch4-interaction-testing-using-mock-objects/izzad-syah-JF34nJycWCo-unsplash.jpg
 summary: 這章定義了何謂互動測試（interaction testing），以及我們如何透過 mock 來測試那些呼叫（出走型）依賴的單元。
-draft: 
+draft:
 ---
 
 ## 4.1 Interaction testing, mocks, and stubs
@@ -34,7 +34,7 @@ Assertion Roulette 一詞就是在形容「一個單元測試同時驗證多個 
 以下是本章會使用到的範例功能。這一版的 `verifyPassword` 包含「回傳值」與「呼叫依賴」這兩類退出點：
 
 ```js
-const log = require('./complicated-logger');
+const log = require("./complicated-logger");
 
 const verifyPassword = (input, rules) => {
   const failed = rules
@@ -42,11 +42,11 @@ const verifyPassword = (input, rules) => {
     .filter((result) => result === false);
 
   if (failed.length === 0) {
-    log.info('PASSED'); // exit point: call 3rd dependency
+    log.info("PASSED"); // exit point: call 3rd dependency
     return true; // exit point: return value
   }
 
-  log.info('FAIL'); // exit point: call 3rd dependency
+  log.info("FAIL"); // exit point: call 3rd dependency
   return false; // exit point: return value
 };
 ```
@@ -66,11 +66,11 @@ const verifyPassword2 = (input, rules, logger) => {
     .filter((result) => result === false);
 
   if (failed.length === 0) {
-    logger.info('PASSED');
+    logger.info("PASSED");
     return true;
   }
 
-  logger.info('FAIL');
+  logger.info("FAIL");
   return false;
 };
 ```
@@ -78,18 +78,18 @@ const verifyPassword2 = (input, rules, logger) => {
 在執行單元測試時，我們透過檢查 mock `mockLog` 的內容是否符合預期，來確認參數 `logger` 是否有被正確呼叫。
 
 ```js
-describe('password verifier with logger', () => {
-  describe('when all rules pass', () => {
-    it('calls the logger with PASSED', () => {
+describe("password verifier with logger", () => {
+  describe("when all rules pass", () => {
+    it("calls the logger with PASSED", () => {
       // arrange
-      let written = '';
+      let written = "";
       const mockLog = {
         info: (text) => {
           written = text;
         },
       };
       // act
-      verifyPassword2('anything', [], mockLog);
+      verifyPassword2("anything", [], mockLog);
       // assert
       expect(written).toMatch(/PASSED/);
     });
@@ -106,14 +106,14 @@ describe('password verifier with logger', () => {
 第二種接縫：透過額外暴露 api 來注入依賴。實作方式基本上與本書第三章第五節類似。首先看到原版功能：
 
 ```js
-const { info, debug } = require('./complicated-logger');
-const { getLogLevel } = require('./configuration-service');
+const { info, debug } = require("./complicated-logger");
+const { getLogLevel } = require("./configuration-service");
 
 const log = (text) => {
-  if (getLogLevel() === 'info') {
+  if (getLogLevel() === "info") {
     info(text);
   }
-  if (getLogLevel() === 'debug') {
+  if (getLogLevel() === "debug") {
     debug(text);
   }
 };
@@ -123,10 +123,10 @@ const verifyPassword = (input, rules) => {
     .map((rule) => rule(input))
     .filter((result) => result === false);
   if (failed.length === 0) {
-    log('PASSED');
+    log("PASSED");
     return true;
   }
-  log('FAIL');
+  log("FAIL");
   return false;
 };
 
@@ -139,7 +139,7 @@ module.exports = {
 
 ```js
 const originalDependencies = {
-  log: require('./complicated-logger'),
+  log: require("./complicated-logger"),
 };
 let dependencies = { ...originalDependencies };
 const resetDependencies = () => {
@@ -154,10 +154,10 @@ const verifyPassword = (input, rules) => {
     .map((rule) => rule(input))
     .filter((result) => result === false);
   if (failed.length === 0) {
-    dependencies.log.info('PASSED');
+    dependencies.log.info("PASSED");
     return true;
   }
-  dependencies.log.info('FAIL');
+  dependencies.log.info("FAIL");
   return false;
 };
 
@@ -173,18 +173,18 @@ const {
   verifyPassword,
   injectDependencies,
   resetDependencies,
-} = require('./password-verifier-injectable');
+} = require("./password-verifier-injectable");
 
-describe('password verifier', () => {
+describe("password verifier", () => {
   afterEach(resetDependencies);
-  describe('given logger and passing scenario', () => {
-    it('calls the logger with PASS', () => {
+  describe("given logger and passing scenario", () => {
+    it("calls the logger with PASS", () => {
       // arrange
-      let logged = '';
+      let logged = "";
       const mockLog = { info: (text) => (logged = text) };
       injectDependencies({ log: mockLog });
       // act
-      verifyPassword('anything', []);
+      verifyPassword("anything", []);
       // assert
       expect(logged).toMatch(/PASSED/);
       resetDependencies();
@@ -202,25 +202,25 @@ describe('password verifier', () => {
 使用 `lodash/curry` 實作的柯里化版本：
 
 ```js
-import curry from 'lodash/curry';
+import curry from "lodash/curry";
 
 const curriedVerifyPassword = curry((rules, logger, input) => {
   const failed = rules
     .map((rule) => rule(input))
     .filter((result) => result === false);
   if (failed.length === 0) {
-    logger.info('PASSED');
+    logger.info("PASSED");
     return true;
   }
-  logger.info('FAIL');
+  logger.info("FAIL");
   return false;
 });
 
-describe('password verifier', () => {
-  describe('given logger and passing scenario', () => {
-    it('calls the logger with PASS', () => {
+describe("password verifier", () => {
+  describe("given logger and passing scenario", () => {
+    it("calls the logger with PASS", () => {
       // arrange
-      let logged = '';
+      let logged = "";
       const mockLog = {
         info: (text) => {
           logged = text;
@@ -228,7 +228,7 @@ describe('password verifier', () => {
       };
       const verifierWithLogger = curriedVerifyPassword([], mockLog);
       // act
-      verifierWithLogger('any input');
+      verifierWithLogger("any input");
       // assert
       expect(logged).toMatch(/PASSED/);
     });
@@ -245,19 +245,19 @@ const makeVerifier = (rules, logger) => {
       .map((rule) => rule(input))
       .filter((result) => result === false);
     if (failed.length === 0) {
-      logger.info('PASSED');
+      logger.info("PASSED");
       return true;
     }
-    logger.info('FAIL');
+    logger.info("FAIL");
     return false;
   };
 };
 
-describe('higher order factory functions', () => {
-  describe('password verifier', () => {
-    test('given logger and passing scenario', () => {
+describe("higher order factory functions", () => {
+  describe("password verifier", () => {
+    test("given logger and passing scenario", () => {
       // arrange
-      let logged = '';
+      let logged = "";
       const mockLog = {
         info: (text) => {
           logged = text;
@@ -265,7 +265,7 @@ describe('higher order factory functions', () => {
       };
       const verifier = makeVerifier([], mockLog);
       // act
-      verifier('any input');
+      verifier("any input");
       // assert
       expect(logged).toMatch(/PASSED/);
     });
@@ -298,29 +298,29 @@ class PasswordVerifier {
       .map((rule) => rule(input))
       .filter((result) => result === false);
     if (failed.length === 0) {
-      this.#logger.info('PASSED');
+      this.#logger.info("PASSED");
       return true;
     }
-    this.#logger.info('FAIL');
+    this.#logger.info("FAIL");
     return false;
   }
 }
 
 class FakeLogger implements Logger {
-  text: string = '';
+  text: string = "";
 
   info(text: string) {
     this.text = text;
   }
 }
 
-describe('PasswordVerifier', () => {
-  test('with empty rule, should log `PASSED`', () => {
+describe("PasswordVerifier", () => {
+  test("with empty rule, should log `PASSED`", () => {
     // arrange
     const MockLogger = new FakeLogger();
     const VerifierInstance = new PasswordVerifier([], MockLogger);
     // act
-    VerifierInstance.verify('any input');
+    VerifierInstance.verify("any input");
     // assert
     expect(MockLogger.text).toMatch(/PASS/);
   });
@@ -360,10 +360,10 @@ interface ComplicatedLogger {
 
 ```ts
 class RealLogger implements ComplicatedLogger {
-  infoWritten = '';
-  debugWritten = '';
-  errorWritten = '';
-  warnWritten = '';
+  infoWritten = "";
+  debugWritten = "";
+  errorWritten = "";
+  warnWritten = "";
 
   info(text: string) {
     this.infoWritten = text;
@@ -393,10 +393,10 @@ class PasswordVerifier2 {
       .map((rule) => rule(input))
       .filter((result) => result === false);
     if (failed.length === 0) {
-      this.#logger.info('PASSED');
+      this.#logger.info("PASSED");
       return true;
     }
-    this.#logger.info('FAIL');
+    this.#logger.info("FAIL");
     return false;
   }
 }
@@ -406,19 +406,19 @@ class PasswordVerifier2 {
 
 ```ts
 class FakeComplicatedLogger extends RealLogger {
-  fakeInfo = '';
+  fakeInfo = "";
   info(text: string) {
     this.fakeInfo = text;
   }
 }
 
-describe('PasswordVerifier2', () => {
-  test('with empty rule, logger.info should log `PASSED`', () => {
+describe("PasswordVerifier2", () => {
+  test("with empty rule, logger.info should log `PASSED`", () => {
     // arrange
     const MockLogInstance = new FakeComplicatedLogger();
     const VerifierInstance = new PasswordVerifier2([], MockLogInstance);
     // act
-    VerifierInstance.verify('any input');
+    VerifierInstance.verify("any input");
     // assert
     expect(MockLogInstance.info).toMatch(/PASSED/);
   });
@@ -434,7 +434,7 @@ describe('PasswordVerifier2', () => {
 最後來示範一下如何透過 `jest.mock()` 在不修改既有實作（這次可沒有接縫）的情況下測試「退出點包含呼叫依賴」的功能。首先回到第一版的 `verifyPassword`：
 
 ```js
-const log = require('some-3rd-party-lib');
+const log = require("some-3rd-party-lib");
 
 const verifyPassword = (input, rules) => {
   const failed = rules
@@ -442,11 +442,11 @@ const verifyPassword = (input, rules) => {
     .filter((result) => result === false);
 
   if (failed.length === 0) {
-    log.info('PASSED');
+    log.info("PASSED");
     return true;
   }
 
-  log.info('FAIL');
+  log.info("FAIL");
   return false;
 };
 
@@ -457,19 +457,19 @@ module.exports = verifyPassword;
 
 ```js
 // arrange
-jest.mock('some-3rd-party-lib', () => ({
+jest.mock("some-3rd-party-lib", () => ({
   info: jest.fn(),
 }));
 
-const log = require('some-3rd-party-lib');
-const verifyPassword = require('./verifyPassword');
+const log = require("some-3rd-party-lib");
+const verifyPassword = require("./verifyPassword");
 
-describe('verifyPassword', () => {
-  it('with any input and empty rule, should call log.info with PASSED', () => {
+describe("verifyPassword", () => {
+  it("with any input and empty rule, should call log.info with PASSED", () => {
     // act
-    verifyPassword('any input', []);
+    verifyPassword("any input", []);
     // assert
-    expect(log.info).toHaveBeenCalledWith('PASSED');
+    expect(log.info).toHaveBeenCalledWith("PASSED");
   });
 });
 ```

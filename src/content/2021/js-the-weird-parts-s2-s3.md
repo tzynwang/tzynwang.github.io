@@ -2,7 +2,7 @@
 title: 「JavaScript Understanding the Weird Parts」第二、三章筆記
 date: 2021-08-30 15:29:47
 tag:
-- [JavaScript]
+  - [JavaScript]
 ---
 
 ## 總結
@@ -39,7 +39,7 @@ tag:
 - 下面我們看到一個變數`message`位在函式裡面，這變數在字詞上來說就是坐落於、存在於這個函式，**這隻函式就是一個 Lexical Environment**。
   ```js
   function greet() {
-    const message = 'hello'
+    const message = "hello";
   }
   ```
 
@@ -71,13 +71,13 @@ tag:
 - When **value assigning** happens.
 
   ```jsx
-  var msg = 'hello world';
+  var msg = "hello world";
 
   // creation phase
   var msg; // = undefined
 
   // execution phase
-  msg = 'hello world';
+  msg = "hello world";
   ```
 
 - **Run the codes** you written line by line.
@@ -118,64 +118,64 @@ tag:
 ### block scope
 
 ```js
-  {
-    let a = 'apple';
-    const c = 'cherry';
-  }
-  console.log(a); // ReferenceError
-  console.log(c); // ReferenceError
+{
+  let a = "apple";
+  const c = "cherry";
+}
+console.log(a); // ReferenceError
+console.log(c); // ReferenceError
 
-  {
-    var b = 'banana';
-  }
-  console.log(b); // 'banana'
+{
+  var b = "banana";
+}
+console.log(b); // 'banana'
 ```
 
 ### scope chain
 
 ```js
-  function b() {
-    console.log(myVar);
-  }
+function b() {
+  console.log(myVar);
+}
 
-  function a() {
-    var myVar = 2;
-    b();
-  }
+function a() {
+  var myVar = 2;
+  b();
+}
 
-  var myVar = 1;
-  a(); // 1
+var myVar = 1;
+a(); // 1
 ```
 
 - 上述程式碼會印出 1，因為`function b`執行時找不到`myVar`，會依循 scope chain 到他的親代（reference to the **outer environment**）去尋找此變數，故找到 global 的`myVar = 1`
 - `function b`**沒有**位在`function a`裡面，他的 outer lexical environment 就是 global environment
 
 ```js
-  function b(myVar) {
-    console.log(myVar);
-  }
+function b(myVar) {
+  console.log(myVar);
+}
 
-  function a() {
-    var myVar = 2;
-    b(myVar);
-  }
+function a() {
+  var myVar = 2;
+  b(myVar);
+}
 
-  var myVar = 1;
-  a(); // 這樣才會印出2
+var myVar = 1;
+a(); // 這樣才會印出2
 ```
 
 ```js
-  function a() {
-    function b() {
-      console.log(myVar);
-    }
-
-    var myVar = 2;
-    b();
+function a() {
+  function b() {
+    console.log(myVar);
   }
 
-  var myVar = 1;
-  a(); // 這樣也會印出2
+  var myVar = 2;
+  b();
+}
+
+var myVar = 1;
+a(); // 這樣也會印出2
 ```
 
 ## Single threaded
@@ -230,7 +230,9 @@ tag:
 ## Associativity
 
 ```js
-var a = 2, b = 3, c = 4;
+var a = 2,
+  b = 3,
+  c = 4;
 a = b = c;
 console.log(a); // 4
 console.log(b); // 4
@@ -241,7 +243,7 @@ console.log(c); // 4
 - In what **order** the operator functions get called: **left-to-right** or **right-to-left**, when functions have the **same precedence**.
 
 ```js
-0 || "0" && {}
+0 || ("0" && {});
 ```
 
 - 先進行`"0" && {}`，`&&`左側`Boolean("0")`為`true`，故回傳`{}`
@@ -252,19 +254,19 @@ console.log(c); // 4
 - **Converting** a value from one **type** to another.
 
   ```js
-  Number(undefined) // NaN
-  Number(null) // 0
+  Number(undefined); // NaN
+  Number(null); // 0
 
-  Boolean(undefined) // false
-  Boolean(null) // false
-  Boolean("") // false
-  Boolean([]), Boolean({}) // true
+  Boolean(undefined); // false
+  Boolean(null); // false
+  Boolean(""); // false
+  (Boolean([]), Boolean({})); // true
   ```
 
 ```js
-console.log(1 < 2 < 3) // true
-console.log(3 < 2 < 1) // true
-console.log(3 > 2 > 1) // false
+console.log(1 < 2 < 3); // true
+console.log(3 < 2 < 1); // true
+console.log(3 > 2 > 1); // false
 // <, > is left-to-right
 ```
 

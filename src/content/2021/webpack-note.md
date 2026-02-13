@@ -2,7 +2,7 @@
 title: 「webpack環境設置步驟」相關筆記
 date: 2021-06-12 11:02:00
 tag:
-- [webpack]
+  - [webpack]
 ---
 
 ## 總結
@@ -68,15 +68,15 @@ sass-loader: 12.1.0
 1. 在`index.js`中匯入.css 檔案
 
 ```js
-import './bootstrap.bundle';
-import './bootstrap.css';
-import './style.css';
+import "./bootstrap.bundle";
+import "./bootstrap.css";
+import "./style.css";
 ```
 
 1. `webpack.config.js`加入以下內容：
 
 ```js
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
   plugins: [new MiniCssExtractPlugin()],
@@ -84,7 +84,7 @@ module.exports = {
     rules: [
       {
         test: /\.css$/i,
-        use: [MiniCssExtractPlugin.loader, 'css-loader'],
+        use: [MiniCssExtractPlugin.loader, "css-loader"],
       },
     ],
   },

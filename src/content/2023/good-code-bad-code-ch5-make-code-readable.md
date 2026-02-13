@@ -2,7 +2,7 @@
 title: 閱讀筆記：Good Code, Bad Code Chapter 5 Make code readable
 date: 2023-03-25 14:40:09
 tag:
-- [Software Architecture]
+  - [Software Architecture]
 ---
 
 ## 總結
@@ -29,8 +29,8 @@ tag:
 
 ```ts
 function getHeadingMarginTopByRWD(): number {
-  const upBreakpointXl = isCurrentBreakPointUp('xl');
-  const upBreakpointMd = isCurrentBreakPointUp('md');
+  const upBreakpointXl = isCurrentBreakPointUp("xl");
+  const upBreakpointMd = isCurrentBreakPointUp("md");
 
   if (upBreakpointXl) {
     return 92;
@@ -47,8 +47,8 @@ function getHeadingMarginTopByRWD(): number {
 ```ts
 function getHeadingMarginTopByRWD(): number {
   const APP_BAR_HEIGHT_PX = 60;
-  const upBreakpointXl = isCurrentBreakPointUp('xl');
-  const upBreakpointMd = isCurrentBreakPointUp('md');
+  const upBreakpointXl = isCurrentBreakPointUp("xl");
+  const upBreakpointMd = isCurrentBreakPointUp("md");
 
   if (upBreakpointXl) {
     return APP_BAR_HEIGHT_PX + 32;
@@ -77,8 +77,8 @@ function sendMessage({ message, priority, allowRetry }: sendMessageArgs) {
   // ...
 }
 
-sendMessage({ message: 'hello world!' });
-sendMessage({ message: 'hello again!', priority: 3, allowRetry: true });
+sendMessage({ message: "hello world!" });
+sendMessage({ message: "hello again!", priority: 3, allowRetry: true });
 ```
 
 #### 合理使用註解

@@ -2,10 +2,10 @@
 title: 用 CSS anchor function 實現 Tab 元件滑動效果
 date: 2025-08-31 10:13:33
 tag:
-- [CSS]
+  - [CSS]
 banner: /2025/css-tab-switch-anchor-position/armands-brants-BX8w_quWj_c-unsplash.jpg
 summary: 優點：你可以少寫很多程式碼；缺點：火狐還不支援
-draft: 
+draft:
 ---
 
 ## 懶人包

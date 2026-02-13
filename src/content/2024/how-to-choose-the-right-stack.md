@@ -2,10 +2,10 @@
 title: 課程筆記：如何挑選框架（工具）
 date: 2024-11-13 20:51:01
 tag:
-- [Product Design]
+  - [Product Design]
 banner: /2024/how-to-choose-the-right-stack/chris-chow-wQ5Po8HAEAI-unsplash.jpg
 summary: 首先確認你的產品目的，然後確實搞懂框架（工具）的原理，最後就是記得你永遠有其他選擇 😉
-draft: 
+draft:
 ---
 
 ## 前言＆聲明

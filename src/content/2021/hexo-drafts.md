@@ -2,8 +2,7 @@
 title: Display draft post
 date: 2021-02-19 14:25:20
 tag:
-- [hexo]
-
+  - [hexo]
 ---
 
 To view the draft posts (in the `source\_drafts` folder) on localhost:4000, just run `hexo server --draft`.

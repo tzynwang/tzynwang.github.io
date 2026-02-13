@@ -2,9 +2,9 @@
 title: 2022 第31週 學習筆記：在 react 專案透過 @svgr/webpack 引用 .svg 檔案
 date: 2022-08-04 20:27:24
 tag:
-- [React]
-- [TypeScript]
-- [webpack]
+  - [React]
+  - [TypeScript]
+  - [webpack]
 ---
 
 ## 總結

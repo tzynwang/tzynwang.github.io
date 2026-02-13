@@ -2,10 +2,10 @@
 title: React 19 筆記：hooks 篇
 date: 2024-05-05 19:37:19
 tag:
-- [React]
+  - [React]
 banner: /2024/react-19-hooks/anne-nygard-viq9Ztqi3Vc-unsplash.jpg
 summary: 這週花了一些時間在了解 React 19 Beta 預定要帶來的新功能與改動，此篇旨在記錄新 hooks 的用途與使用方式。
-draft: 
+draft:
 ---
 
 提醒：這篇筆記是我在讀完 [React 19 Beta](https://react.dev/blog/2024/04/25/react-19) 後，參考官方文件對於各 hook 的說明整理出來的東西。這不是一篇把每個 hook 從頭講解到尾的文章，我只記錄自認重要的部分。如果你需要知道 React 19 預定帶來的新功能與每個 hook 的詳細解說，請務必閱讀官方文件。
@@ -19,7 +19,7 @@ draft:
 ```jsx
 function TabContainer() {
   const [isPending, startTransition] = useTransition();
-  const [tab, setTab] = useState('about');
+  const [tab, setTab] = useState("about");
 
   function selectTab(nextTab) {
     startTransition(() => {
@@ -54,11 +54,11 @@ function TabContainer() {
 使用範例：
 
 ```jsx
-import { useState, useDeferredValue } from 'react';
-import SlowList from './SlowList.js';
+import { useState, useDeferredValue } from "react";
+import SlowList from "./SlowList.js";
 
 export default function App() {
-  const [text, setText] = useState('');
+  const [text, setText] = useState("");
   const deferredText = useDeferredValue(text);
   return (
     <>

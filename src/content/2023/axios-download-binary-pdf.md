@@ -2,7 +2,7 @@
 title: 快速筆記：使用 axios 下載後端回傳的 pdf binary
 date: 2023-06-02 19:42:22
 tag:
-- [axios]
+  - [axios]
 ---
 
 ## 總結
@@ -21,14 +21,14 @@ axios: 0.24.1
 
 ```ts
 const response = await axios.post(
-  '/api/to/download/pdf',
+  "/api/to/download/pdf",
   { url },
-  { responseType: 'arraybuffer' }
+  { responseType: "arraybuffer" },
 );
 const pdfUrl = window.URL.createObjectURL(new Blob([response.data]));
-const link = document.createElement('a');
+const link = document.createElement("a");
 link.href = pdfUrl;
-link.setAttribute('download', 'file.pdf');
+link.setAttribute("download", "file.pdf");
 link.click(); // 瀏覽器應該會自動開始執行下載
 ```
 

@@ -2,7 +2,7 @@
 title: Alpha Camp結業專案「Simple Twitter」開發記錄
 date: 2021-10-03 13:31:43
 tag:
-- [Vue]
+  - [Vue]
 ---
 
 ## 總結
@@ -127,13 +127,13 @@ tag:
 
 ```js
 // 在src\router\index.js執行import store
-import store from '@/store';
+import store from "@/store";
 
 // 然後直接呼叫modules中的actions名稱即可
-store.dispatch('setUser', data, { root: true });
+store.dispatch("setUser", data, { root: true });
 
 // 也可採用以下寫法
-store.dispatch('authorization/setUser', data);
+store.dispatch("authorization/setUser", data);
 ```
 
 - [How to use Vuex Namespaced Module from router.js?](https://forum.vuejs.org/t/how-to-use-vuex-namespaced-module-from-router-js/59155)

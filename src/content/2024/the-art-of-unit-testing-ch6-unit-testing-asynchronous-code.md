@@ -2,10 +2,10 @@
 title: 閱讀筆記：The Art of Unit Testing Chapter 6 Unit testing asynchronous code
 date: 2024-01-14 18:26:23
 tag:
-- [Testing]
+  - [Testing]
 banner: /2024/the-art-of-unit-testing-ch6-unit-testing-asynchronous-code/age-barros-rBPOfVqROzY-unsplash.jpg
 summary: 本章提供兩種實作技巧讓我們能為「包含非同步功能」的單元寫出良好的單元測試，其為「分離進入點（extracting an entry point）」與「配接器模式（adapter pattern）」
-draft: 
+draft:
 ---
 
 ## intro
@@ -22,22 +22,22 @@ draft:
 非同步功能為單元測試帶來的困擾是——產生結果所需的時間、結果是成功或失敗——這些都是我們無法控制的部分。以下方的 `isWebsiteAlive` 為例：
 
 ```js
-const fetch = require('node-fetch');
+const fetch = require("node-fetch");
 
 const isWebsiteAlive = async () => {
   try {
-    const resp = await fetch('http://example.com');
+    const resp = await fetch("http://example.com");
     if (!resp.ok) {
       // exit point 1
       throw resp.statusText;
     }
     const text = await resp.text();
-    if (text.includes('illustrative')) {
+    if (text.includes("illustrative")) {
       // exit point 2
-      return { success: true, status: 'ok' };
+      return { success: true, status: "ok" };
     }
     // exit point 3
-    throw 'text missing';
+    throw "text missing";
   } catch (err) {
     // exit point 4
     return { success: false, status: err };
@@ -61,7 +61,7 @@ const isWebsiteAlive = async () => {
 我們可以將 `isWebsiteAlive` 裡，只進行邏輯判斷（純）的部份抽出（`throwIfResponseNotOK` / `processFetchContent` / `processFetchError`）：
 
 ```js
-const fetch = require('node-fetch');
+const fetch = require("node-fetch");
 
 const throwIfResponseNotOK = (resp) => {
   if (!resp.ok) {
@@ -69,11 +69,11 @@ const throwIfResponseNotOK = (resp) => {
   }
 };
 const processFetchContent = (text) => {
-  const included = text.includes('illustrative');
+  const included = text.includes("illustrative");
   if (included) {
-    return { success: true, status: 'ok' };
+    return { success: true, status: "ok" };
   }
-  return { success: false, status: 'missing text' };
+  return { success: false, status: "missing text" };
 };
 const processFetchError = (err) => {
   return { success: false, status: err };
@@ -82,7 +82,7 @@ const processFetchError = (err) => {
 // Await version
 const isWebsiteAlive = async () => {
   try {
-    const resp = await fetch('http://example.com');
+    const resp = await fetch("http://example.com");
     // exit point 1
     throwIfResponseNotOK(resp);
     const text = await resp.text();
@@ -98,42 +98,42 @@ const isWebsiteAlive = async () => {
 雖然我們依舊無法控制 `const resp = await fetch("http://example.com");` 的結果，但能透過單元測試確保「這三個新單元會根據 `resp` 內容採取正確的行動」：
 
 ```js
-describe('throwIfResponseNotOK', () => {
-  it('should not throw an error if response is ok', () => {
+describe("throwIfResponseNotOK", () => {
+  it("should not throw an error if response is ok", () => {
     const response = { ok: true };
     expect(() => throwIfResponseNotOK(response)).not.toThrow();
   });
-  it('should throw an error with response status text if response is not ok', () => {
-    const response = { ok: false, statusText: 'Not Found' };
-    expect(() => throwIfResponseNotOK(response)).toThrowError('Not Found');
+  it("should throw an error with response status text if response is not ok", () => {
+    const response = { ok: false, statusText: "Not Found" };
+    expect(() => throwIfResponseNotOK(response)).toThrowError("Not Found");
   });
 });
 
-describe('processFetchContent', () => {
+describe("processFetchContent", () => {
   it("should return success true and status 'ok' when text includes 'illustrative'", () => {
-    const text = 'This is illustrative content';
+    const text = "This is illustrative content";
     expect(processFetchContent(text)).toEqual({
       //
       success: true,
-      status: 'ok',
+      status: "ok",
     });
   });
   it("should return success false and status 'missing text' when text does not include 'illustrative'", () => {
-    const text = 'Some random content';
+    const text = "Some random content";
     expect(processFetchContent(text)).toEqual({
       //
       success: false,
-      status: 'missing text',
+      status: "missing text",
     });
   });
 });
 
-describe('processFetchError', () => {
-  test('should return an object with success false and provided error message', () => {
-    const errorMessage = 'Failed to fetch';
+describe("processFetchError", () => {
+  test("should return an object with success false and provided error message", () => {
+    const errorMessage = "Failed to fetch";
     expect(processFetchError(errorMessage)).toEqual({
       success: false,
-      status: 'Failed to fetch',
+      status: "Failed to fetch",
     });
   });
 });
@@ -165,14 +165,14 @@ const fetchUrlText = async (url) => {
 
 ```js
 // index.js
-const { fetchUrlText } = require('./network');
+const { fetchUrlText } = require("./network");
 
 const processFetchSuccess = (text) => {
-  const included = text.includes('illustrative');
+  const included = text.includes("illustrative");
   if (included) {
-    return { success: true, status: 'ok' };
+    return { success: true, status: "ok" };
   }
-  return { success: false, status: 'missing text' };
+  return { success: false, status: "missing text" };
 };
 
 const processFetchFail = (err) => {
@@ -181,7 +181,7 @@ const processFetchFail = (err) => {
 
 const isWebsiteAlive = async () => {
   try {
-    const result = await fetchUrlText('http://example.com');
+    const result = await fetchUrlText("http://example.com");
     if (!result.ok) {
       return processFetchFail(result.text);
     }
@@ -196,47 +196,47 @@ const isWebsiteAlive = async () => {
 在測試 `isWebsiteAlive` 時，我們就能透過 `jest.mock()` 與 `.mockResolvedValue()` 控制非同步功能 `fetchUrlText()` 回傳的值，進而決定我們在每一個單元測試中要通過哪一個退出點：
 
 ```js
-jest.mock('./network');
+jest.mock("./network");
 
-const stub = require('./network');
-const { isWebsiteAlive } = require('./index');
+const stub = require("./network");
+const { isWebsiteAlive } = require("./index");
 
-describe('isWebsiteAlive', () => {
+describe("isWebsiteAlive", () => {
   beforeEach(() => {
     jest.clearAllMocks();
   });
-  it('should return success: true, status: ok when fetchUrlText returns ok and text include `illustrative`', async () => {
+  it("should return success: true, status: ok when fetchUrlText returns ok and text include `illustrative`", async () => {
     // arrange
     stub.fetchUrlText.mockResolvedValue({
       ok: true,
-      text: 'This is illustrative text',
+      text: "This is illustrative text",
     });
     // act
     const result = await isWebsiteAlive();
     // assert
-    expect(result).toEqual({ success: true, status: 'ok' });
+    expect(result).toEqual({ success: true, status: "ok" });
   });
-  it('should return success: false, status: missing text when fetchUrlText returns ok but text not include `illustrative`', async () => {
+  it("should return success: false, status: missing text when fetchUrlText returns ok but text not include `illustrative`", async () => {
     // arrange
     stub.fetchUrlText.mockResolvedValue({
       ok: true,
-      text: 'Some random text',
+      text: "Some random text",
     });
     // act
     const result = await isWebsiteAlive();
     // assert
-    expect(result).toEqual({ success: false, status: 'missing text' });
+    expect(result).toEqual({ success: false, status: "missing text" });
   });
-  it('should throw success: false and status with error text when fetchUrlText return ok: false', async () => {
+  it("should throw success: false and status with error text when fetchUrlText return ok: false", async () => {
     // arrange
     stub.fetchUrlText.mockResolvedValue({
       ok: false,
-      text: 'Failed to fetch',
+      text: "Failed to fetch",
     });
     // act
     const result = await isWebsiteAlive();
     // assert
-    expect(result).toEqual({ success: false, status: 'Failed to fetch' });
+    expect(result).toEqual({ success: false, status: "Failed to fetch" });
   });
 });
 ```
@@ -249,11 +249,11 @@ describe('isWebsiteAlive', () => {
 
 ```js
 const processFetchSuccess = (text) => {
-  const included = text.includes('illustrative');
+  const included = text.includes("illustrative");
   if (included) {
-    return { success: true, status: 'ok' };
+    return { success: true, status: "ok" };
   }
-  return { success: false, status: 'missing text' };
+  return { success: false, status: "missing text" };
 };
 
 const processFetchFail = (err) => {
@@ -261,7 +261,7 @@ const processFetchFail = (err) => {
 };
 
 const isWebsiteAlive = async (fetchUrlText) => {
-  const result = await fetchUrlText('http://exa-mple.com');
+  const result = await fetchUrlText("http://exa-mple.com");
   if (!result.ok) {
     return processFetchFail(result.text);
   }
@@ -273,7 +273,7 @@ const isWebsiteAlive = async (fetchUrlText) => {
 在撰寫測試時，就能透過工廠功能 `getStubResult()` 控制環境了：
 
 ```js
-const { isWebsiteAlive } = require('./index');
+const { isWebsiteAlive } = require("./index");
 
 // arrange
 const getStubResult = (ok, text) => () => ({
@@ -281,30 +281,30 @@ const getStubResult = (ok, text) => () => ({
   text,
 });
 
-describe('isWebsiteAlive', () => {
-  it('should return success: true, status: ok when fetchUrlText returns ok and text include `illustrative`', async () => {
+describe("isWebsiteAlive", () => {
+  it("should return success: true, status: ok when fetchUrlText returns ok and text include `illustrative`", async () => {
     // act
     const result = await isWebsiteAlive(
-      getStubResult(true, 'This is illustrative text')
+      getStubResult(true, "This is illustrative text"),
     );
     // assert
-    expect(result).toEqual({ success: true, status: 'ok' });
+    expect(result).toEqual({ success: true, status: "ok" });
   });
-  it('should return success: false, status: missing text when fetchUrlText returns ok but text not include `illustrative`', async () => {
+  it("should return success: false, status: missing text when fetchUrlText returns ok but text not include `illustrative`", async () => {
     // act
     const result = await isWebsiteAlive(
-      getStubResult(true, 'Some random text')
+      getStubResult(true, "Some random text"),
     );
     // assert
-    expect(result).toEqual({ success: false, status: 'missing text' });
+    expect(result).toEqual({ success: false, status: "missing text" });
   });
-  it('should throw success: false and status with error text when fetchUrlText return ok: false', async () => {
+  it("should throw success: false and status with error text when fetchUrlText return ok: false", async () => {
     // act
     const result = await isWebsiteAlive(
-      getStubResult(false, 'Failed to fetch')
+      getStubResult(false, "Failed to fetch"),
     );
     // assert
-    expect(result).toEqual({ success: false, status: 'Failed to fetch' });
+    expect(result).toEqual({ success: false, status: "Failed to fetch" });
   });
 });
 ```
@@ -334,7 +334,7 @@ export type WebsiteAliveResult = {
 在正式環境裡，我們會根據 `FetchAdapter` 實作一個「真」的 `NetworkAdapter` 實例，並在建構 `class WebsiteVerifier` 時，傳入這個 `NetworkAdapter` 作為參數：
 
 ```ts
-import type { FetchAdapter, FetchResult } from './types';
+import type { FetchAdapter, FetchResult } from "./types";
 
 export class NetworkAdapter implements FetchAdapter {
   async fetchUrlText(url: string): Promise<FetchResult> {
@@ -349,7 +349,7 @@ export class NetworkAdapter implements FetchAdapter {
 ```
 
 ```ts
-import type { FetchAdapter, WebsiteAliveResult } from './types';
+import type { FetchAdapter, WebsiteAliveResult } from "./types";
 
 export class WebsiteVerifier {
   network: FetchAdapter;
@@ -360,7 +360,7 @@ export class WebsiteVerifier {
 
   isWebsiteAlive = async (): Promise<WebsiteAliveResult> => {
     try {
-      const result = await this.network.fetchUrlText('http://example.com');
+      const result = await this.network.fetchUrlText("http://example.com");
       return result.ok
         ? this.processFetchSuccess(result.text)
         : this.processFetchFail(result.text);
@@ -370,10 +370,10 @@ export class WebsiteVerifier {
   };
 
   processFetchSuccess = (text: string): WebsiteAliveResult => {
-    const included = text.includes('illustrative');
+    const included = text.includes("illustrative");
     return included
-      ? { success: true, status: 'ok' }
-      : { success: false, status: 'missing text' };
+      ? { success: true, status: "ok" }
+      : { success: false, status: "missing text" };
   };
 
   processFetchFail = (err: any): WebsiteAliveResult => {
@@ -385,9 +385,9 @@ export class WebsiteVerifier {
 但是——在為 `class WebsiteVerifier` 寫測試時，我們大可直接根據 `interface FetchAdapter` 實作一個測試專用的 `StubNetworkAdapter` 來控制 `fetchUrlText()` 的回傳結果，進而為所有的情境撰寫對應測試：
 
 ```ts
-import type { FetchAdapter, FetchResult } from './types';
-import { describe, it, expect } from '@jest/globals';
-import { WebsiteVerifier } from './index';
+import type { FetchAdapter, FetchResult } from "./types";
+import { describe, it, expect } from "@jest/globals";
+import { WebsiteVerifier } from "./index";
 
 class StubNetworkAdapter implements FetchAdapter {
   ok: boolean;
@@ -407,35 +407,35 @@ class StubNetworkAdapter implements FetchAdapter {
 
 const getVerifierWithStubAdapter = (
   ok: boolean,
-  text: string
+  text: string,
 ): WebsiteVerifier => {
   const stubAdapter = new StubNetworkAdapter(ok, text);
   return new WebsiteVerifier(stubAdapter);
 };
 
-describe('WebsiteVerifier', () => {
-  it('should return success: true, status: ok when fetchUrlText returns ok and text include `illustrative`', async () => {
+describe("WebsiteVerifier", () => {
+  it("should return success: true, status: ok when fetchUrlText returns ok and text include `illustrative`", async () => {
     // arrange
     const verifier = getVerifierWithStubAdapter(
       true,
-      'This is illustrative text'
+      "This is illustrative text",
     );
     // act
     const result = await verifier.isWebsiteAlive();
     // assert
-    expect(result).toEqual({ success: true, status: 'ok' });
+    expect(result).toEqual({ success: true, status: "ok" });
   });
-  it('should return success: false, status: missing text when fetchUrlText returns ok but text not include `illustrative`', async () => {
+  it("should return success: false, status: missing text when fetchUrlText returns ok but text not include `illustrative`", async () => {
     // arrange
-    const verifier = getVerifierWithStubAdapter(true, 'Some random text');
+    const verifier = getVerifierWithStubAdapter(true, "Some random text");
     // act
     const result = await verifier.isWebsiteAlive();
     // assert
-    expect(result).toEqual({ success: false, status: 'missing text' });
+    expect(result).toEqual({ success: false, status: "missing text" });
   });
-  it('should throw success: false and status with error text when fetchUrlText return ok: false', async () => {
+  it("should throw success: false and status with error text when fetchUrlText return ok: false", async () => {
     // arrange
-    const verifier = getVerifierWithStubAdapter(false, 'Failed to fetch');
+    const verifier = getVerifierWithStubAdapter(false, "Failed to fetch");
     try {
       // act
       await verifier.isWebsiteAlive();
@@ -470,8 +470,8 @@ const calculate1 = (x, y, resultCallback) => {
   }, 1000);
 };
 
-describe('calculate1', () => {
-  describe('in monkey patching style', () => {
+describe("calculate1", () => {
+  describe("in monkey patching style", () => {
     // arrange
     let originalTimeOut;
     beforeEach(() => {
@@ -480,7 +480,7 @@ describe('calculate1', () => {
     });
     afterEach(() => (setTimeout = originalTimeOut));
 
-    it('should return calculate result after 1 second', () => {
+    it("should return calculate result after 1 second", () => {
       // act, assert
       calculate1(1, 2, (result) => expect(result).toBe(3));
     });
@@ -497,22 +497,22 @@ Jest 提供隔離 api `useFakeTimers()` / `useRealTimers()` 來讓工程師決�
 以下列 snippet 為例，我們讓 Jest 控制計時器後，不需要「真的等待一秒過去」才能看到單元執行完畢。想驗證 `setTimeout()` 是否有如期被呼叫，也能搭配 `toHaveBeenCalledTimes()` 來進行驗證：
 
 ```js
-const { calculate1 } = require('./index');
+const { calculate1 } = require("./index");
 
-describe('calculate1', () => {
-  describe('in jest isolation api style', () => {
+describe("calculate1", () => {
+  describe("in jest isolation api style", () => {
     // arrange
     beforeEach(() => {
       jest.clearAllTimers();
       jest.useFakeTimers();
     });
-    it('should return calculate result', () => {
+    it("should return calculate result", () => {
       // act, assert
       calculate1(1, 2, (result) => expect(result).toBe(3));
     });
-    it('should call setTimeout once', () => {
+    it("should call setTimeout once", () => {
       // arrange
-      jest.spyOn(global, 'setTimeout');
+      jest.spyOn(global, "setTimeout");
       // act
       calculate1(1, 2);
       // assert
@@ -534,12 +534,12 @@ const calculate2 = (getInputsFn, resultFn) => {
   }, 1000);
 };
 
-describe('calculate2', () => {
+describe("calculate2", () => {
   beforeEach(() => {
     jest.clearAllTimers();
     jest.useFakeTimers();
   });
-  it('should execute getInputsFn/resultFn at interval', () => {
+  it("should execute getInputsFn/resultFn at interval", () => {
     // arrange
     let xInput = 1;
     let yInput = 2;
@@ -585,23 +585,23 @@ As of Jest 28 "jsdom" is no longer shipped by default, make sure to install it s
  */
 
 const emitMessageEvent = (detail: string) => {
-  const event = new CustomEvent('message', { detail });
+  const event = new CustomEvent("message", { detail });
   window.dispatchEvent(event);
 };
 
-describe('emitMessageEvent', () => {
+describe("emitMessageEvent", () => {
   let handler: jest.Mock;
   beforeEach(() => {
     handler = jest.fn();
-    window.addEventListener('message', handler);
+    window.addEventListener("message", handler);
   });
   afterEach(() => {
-    window.removeEventListener('message', handler);
+    window.removeEventListener("message", handler);
     handler.mockReset();
   });
-  it('should dispatch a custom event with the correct detail', () => {
+  it("should dispatch a custom event with the correct detail", () => {
     // arrange
-    const detail = 'Test message';
+    const detail = "Test message";
     // act
     emitMessageEvent(detail);
     // assert
@@ -641,14 +641,14 @@ describe('emitMessageEvent', () => {
 // index.js
 
 function onMyButtonClick() {
-  const resultDiv = document.getElementById('myResult');
-  resultDiv.innerText = 'Clicked!';
+  const resultDiv = document.getElementById("myResult");
+  resultDiv.innerText = "Clicked!";
 }
 
-window.addEventListener('load', () => {
+window.addEventListener("load", () => {
   document
-    .getElementById('myButton')
-    .addEventListener('click', onMyButtonClick);
+    .getElementById("myButton")
+    .addEventListener("click", onMyButtonClick);
 });
 
 module.exports = {
@@ -663,25 +663,25 @@ module.exports = {
  * @jest-environment jsdom
  */
 
-const fs = require('fs');
-const path = require('path');
-const { onMyButtonClick } = require('./index');
+const fs = require("fs");
+const path = require("path");
+const { onMyButtonClick } = require("./index");
 
 const setHtmlContent = () => {
-  const html = fs.readFileSync(path.resolve(__dirname, './index.html'), 'utf8');
+  const html = fs.readFileSync(path.resolve(__dirname, "./index.html"), "utf8");
   document.documentElement.innerHTML = html;
 };
-const getTargetDiv = () => document.getElementById('myResult');
+const getTargetDiv = () => document.getElementById("myResult");
 
-describe('Button click behavior', () => {
-  test('myButton innerText should change after clicking', () => {
+describe("Button click behavior", () => {
+  test("myButton innerText should change after clicking", () => {
     // arrange
     setHtmlContent();
     const target = getTargetDiv();
     // act
     onMyButtonClick();
     // assert
-    expect(target.innerText).toBe('Clicked!');
+    expect(target.innerText).toBe("Clicked!");
   });
 });
 ```

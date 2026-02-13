@@ -2,10 +2,10 @@
 title: 工作筆記：在 remix 中根據系統外觀（system appearance）更新 shadcn/ui 的主題（theme）
 date: 2024-12-21 19:06:33
 tag:
-- [Remix]
+  - [Remix]
 banner: /2024/remix-shad-cn-ui-theme/jim-niakaris-f62RBhbXn8M-unsplash.jpg
 summary: 這篇筆記說明了如何在 remix app 中預設 shadcn/ui 參照系統外觀，並在使用者切換系統外觀時同步切換整個介面的主題。
-draft: 
+draft:
 ---
 
 最近開始研究如何在服務中導入 shadcn/ui 來搭配 tailwind，研究途中順便記錄一下如何讓 shadcn/ui 元件能對應系統外觀進行淺、深色模式變化。~~我自己是覺得[官方版本的 Remix 實作說明](https://ui.shadcn.com/docs/dark-mode/remix)複雜的有點沒必要啦~~ 🌚
@@ -26,29 +26,29 @@ draft:
 最後此 hook 會將 `theme` 回傳出來，以便和 `createContext()` 建立的 `ThemeProviderContext` 搭配使用。
 
 ```tsx
-import { createContext, useEffect, useState } from 'react';
+import { createContext, useEffect, useState } from "react";
 
-type Theme = 'dark' | 'light' | 'system';
+type Theme = "dark" | "light" | "system";
 
 export default function useShadCnTheme() {
   /* data */
-  const [theme, setTheme] = useState<Theme>('system');
+  const [theme, setTheme] = useState<Theme>("system");
   /* hook */
   useEffect(() => {
     window
-      .matchMedia('(prefers-color-scheme: dark)')
-      .addEventListener('change', (e) => {
-        setTheme(e.matches ? 'dark' : 'light');
+      .matchMedia("(prefers-color-scheme: dark)")
+      .addEventListener("change", (e) => {
+        setTheme(e.matches ? "dark" : "light");
       });
   }, []);
   useEffect(() => {
     const root = window.document.documentElement;
-    root.classList.remove('light', 'dark');
-    if (theme === 'system') {
-      const systemTheme = window.matchMedia('(prefers-color-scheme: dark)')
+    root.classList.remove("light", "dark");
+    if (theme === "system") {
+      const systemTheme = window.matchMedia("(prefers-color-scheme: dark)")
         .matches
-        ? 'dark'
-        : 'light';
+        ? "dark"
+        : "light";
       root.classList.add(systemTheme);
       return;
     }
@@ -63,7 +63,7 @@ type ThemeProviderState = {
 };
 
 export const ThemeProviderContext = createContext<ThemeProviderState>({
-  theme: 'system',
+  theme: "system",
 });
 ```
 
@@ -72,10 +72,10 @@ export const ThemeProviderContext = createContext<ThemeProviderState>({
 這裡要做的事情很簡單，把 `useShadCnTheme` 回傳的 `theme` 餵給 `ThemeProviderContext.Provider` 即可。之後當使用者切換系統外觀時，整個 app 的 shadcn/ui 元件顏色也會跟著調整。
 
 ```tsx
-import { Outlet } from '@remix-run/react';
+import { Outlet } from "@remix-run/react";
 import useShadCnTheme, {
   ThemeProviderContext,
-} from 'app/hooks/use_shad_cn_theme';
+} from "app/hooks/use_shad_cn_theme";
 
 export default function App() {
   /* data */

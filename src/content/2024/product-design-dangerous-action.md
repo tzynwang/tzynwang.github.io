@@ -2,10 +2,10 @@
 title: 何謂危險操作（dangerous action）？如何避免？
 date: 2024-10-05 15:06:33
 tag:
-- [Product Design]
+  - [Product Design]
 banner: /2024/product-design-dangerous-action/sandy-millar-yvpexJFLTSU-unsplash.jpg
 summary: 此篇為 How To Manage Dangerous Actions In User Interfaces 的閱讀筆記，記錄了一些「能減少使用者執行危險操作」的產品開發心法。
-draft: 
+draft:
 ---
 
 此篇為 [How To Manage Dangerous Actions In User Interfaces](https://www.smashingmagazine.com/2024/09/how-manage-dangerous-actions-user-interfaces/) 的閱讀筆記，記錄了一些「能減少使用者執行危險操作」的產品開發心法。

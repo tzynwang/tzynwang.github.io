@@ -2,7 +2,7 @@
 title: 2021 第51週 學習記錄：實作複數條件搜尋
 date: 2021-12-25 16:01:08
 tag:
-- [React]
+  - [React]
 ---
 
 ## 總結
@@ -22,17 +22,17 @@ tag:
 ### 保存搜尋條件的資料結構
 
 ```ts
-const TABS: Gender[] = ['female', 'male'];
+const TABS: Gender[] = ["female", "male"];
 const DEFAULT_PAGE = 5;
 const DATA_PER_PAGE = [5, 7, 10];
 const CONDITION: QueryCondition = {
   global: {
     results: DEFAULT_PAGE,
     gender: TABS[0],
-    nat: '',
+    nat: "",
   },
   local: {
-    nat: '',
+    nat: "",
   },
 };
 ```
@@ -66,8 +66,8 @@ useEffect(() => {
   async function fetchUser() {
     const params = { ...queryCondition.global };
     const res = await axios.get<undefined, AxiosResponse<FetchUserListRes>>(
-      'https://randomuser.me/api/',
-      { params }
+      "https://randomuser.me/api/",
+      { params },
     );
     setUserList(res.data.results);
   }

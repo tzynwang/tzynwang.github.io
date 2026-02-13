@@ -2,8 +2,8 @@
 title: 2021 第50週 學習記錄：MuiTabs、React.useEffect
 date: 2021-12-14 22:46:37
 tag:
-- [React]
-- [MaterialUI]
+  - [React]
+  - [MaterialUI]
 ---
 
 ## 總結
@@ -19,12 +19,12 @@ tag:
 // 比如以下
 const CONDITION = {
   page: 0,
-  query: '',
+  query: "",
 };
 
 enum STEP {
-  ORDER = 'order',
-  SUMMARY = 'summary',
+  ORDER = "order",
+  SUMMARY = "summary",
 }
 ```
 

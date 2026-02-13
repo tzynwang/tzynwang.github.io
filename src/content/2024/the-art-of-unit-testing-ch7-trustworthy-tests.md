@@ -2,10 +2,10 @@
 title: 閱讀筆記：The Art of Unit Testing Chapter 7 Trustworthy tests
 date: 2024-01-21 10:45:50
 tag:
-- [Testing]
+  - [Testing]
 banner: /2024/the-art-of-unit-testing-ch7-trustworthy-tests/hannah-busing-Zyx1bK9mqmA-unsplash.jpg
 summary: 本書第一章曾提過，好的單元測試應有三種特徵——好讀、值得信任、好維護。第二到六章說明了如何寫出「好讀」的測試，而這一章則會說明「信任感」在單元測試中扮演什麼角色。
-draft: 
+draft:
 ---
 
 ## intro
@@ -35,14 +35,14 @@ draft:
 
 ```js
 const makeGreeting = (name) => {
-  return 'hello' + name;
+  return "hello" + name;
 };
 
-describe('makeGreeting', () => {
-  it('should return string hello with name', () => {
-    const name = 'abc';
+describe("makeGreeting", () => {
+  it("should return string hello with name", () => {
+    const name = "abc";
     const result = trust.makeGreeting(name);
-    expect(result).toBe('hello' + name);
+    expect(result).toBe("hello" + name);
   });
 });
 ```
@@ -52,10 +52,10 @@ describe('makeGreeting', () => {
 直接驗證寫死的值，反而能正確反應該單元的問題：
 
 ```js
-describe('makeGreeting', () => {
-  it('should return `hello ${name}`', () => {
-    const result = trust.makeGreeting('abc');
-    expect(result).toBe('hello abc');
+describe("makeGreeting", () => {
+  it("should return `hello ${name}`", () => {
+    const result = trust.makeGreeting("abc");
+    expect(result).toBe("hello abc");
   });
 });
 ```
@@ -66,15 +66,15 @@ describe('makeGreeting', () => {
 
 ```js
 const isName = (input) => {
-  return input.split(' ').length === 2;
+  return input.split(" ").length === 2;
 };
 
-describe('isName', () => {
-  const namesToTest = ['firstOnly', 'first second', ''];
-  it('correctly finds out if it is a name', () => {
+describe("isName", () => {
+  const namesToTest = ["firstOnly", "first second", ""];
+  it("correctly finds out if it is a name", () => {
     namesToTest.forEach((name) => {
       const result = trust.isName(name);
-      if (name.includes(' ')) {
+      if (name.includes(" ")) {
         expect(result).toBe(true);
       } else {
         expect(result).toBe(false);
@@ -124,8 +124,8 @@ expect(() => someFunction()).not.toThrow(error);
 如果有複數種情境需要驗證，就為不同的情境撰寫對應的單元測試。這也能避免我們用太攏統的名稱來描述一個測試。比如以下範例：
 
 ```js
-describe('trigger', () => {
-  it('should work as expect', () => {
+describe("trigger", () => {
+  it("should work as expect", () => {
     const callback = jest.fn();
     const result = trigger(1, 2, callback);
     expect(result).toBe(3);
@@ -137,13 +137,13 @@ describe('trigger', () => {
 可以拆為兩組命名更具體的單元測試：
 
 ```js
-describe('trigger', () => {
-  it('should run the callback', () => {
+describe("trigger", () => {
+  it("should run the callback", () => {
     const callback = jest.fn();
     trigger(1, 2, callback);
     expect(callback).toHaveBeenCalledWith("I'm triggered");
   });
-  it('should return the sum from the given values', () => {
+  it("should return the sum from the given values", () => {
     const result = trigger(1, 2, jest.fn());
     expect(result).toBe(3);
   });

@@ -2,8 +2,8 @@
 title: 如何指南：在 React Router v7 Framework 模式下，設定 Google Analytics (gtag)
 date: 2025-08-17 10:32:30
 tag:
-- [React Router v7]
-- [Remix]
+  - [React Router v7]
+  - [Remix]
 banner: /2025/remix-google-analytics/it-works-why.jpg
 summary: 早點想到用 import.meta.env 帶入環境變數，事情應該就不會那麼複雜了吧 😶‍🌫️
 draft: 

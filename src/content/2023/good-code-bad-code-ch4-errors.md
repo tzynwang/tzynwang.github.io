@@ -2,7 +2,7 @@
 title: 閱讀筆記：Good Code, Bad Code Chapter 4 Errors
 date: 2023-03-19 15:11:59
 tag:
-- [Software Architecture]
+  - [Software Architecture]
 ---
 
 ## 總結
@@ -60,9 +60,9 @@ function getSquareRoot(arg) {
 
 ```ts
 function getSquareRoot(arg) {
-  if (typeof arg !== 'number') {
+  if (typeof arg !== "number") {
     throw new Error(
-      `getSquareRoot arg not valid, should be number, but receive ${arg}, type: ${typeof arg}.`
+      `getSquareRoot arg not valid, should be number, but receive ${arg}, type: ${typeof arg}.`,
     );
   }
   // ...
@@ -76,7 +76,7 @@ function getSquareRoot(arg) {
 
 ```ts
 function getSquareRoot(arg) {
-  if (typeof arg !== 'number') {
+  if (typeof arg !== "number") {
     return null;
   } else {
     // ...
@@ -90,7 +90,7 @@ function getSquareRoot(arg) {
 
 ```ts
 function getSquareRoot(arg) {
-  if (typeof arg !== 'number') {
+  if (typeof arg !== "number") {
     return -1;
   } else {
     // ...

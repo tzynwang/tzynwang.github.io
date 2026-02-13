@@ -2,10 +2,10 @@
 title: 給習慣寫 CSR 服務的 remix 入門注意事項
 date: 2024-08-31 21:57:06
 tag:
-- [Remix]
+  - [Remix]
 banner: /2024/remix-note-for-developer-from-cra/sascha-bosshard-4x_yDlANVhs-unsplash.jpg
 summary: 最近用 remix 開發了一個新產品。而因為我到目前為止的前端生涯一直都是在寫 client side render 服務，所以使用 remix 開發時需要克服一些習慣。此篇筆記記錄了一些開發時的心得，如果你也是習慣寫 client side render 的 React app 但想考慮試用 remix，這篇筆記可以提供一些踩坑經驗。
-draft: 
+draft:
 ---
 
 提示：這不是一篇關於 [remix](https://remix.run/) 的手把手教學筆記，而是一個過去**只寫過 client side render 服務的前端工程師在改用 remix 開發後的心得分享**。如果你完全不知道 remix 是什麼，請先參考此框架的[新手教學](https://remix.run/docs/en/main/start/quickstart)。
@@ -52,8 +52,8 @@ remix 有提供 [meta](https://remix.run/docs/en/main/route/meta) 功能方便�
 以下是自用的 custom hook:
 
 ```tsx
-import { useNavigation } from '@remix-run/react';
-import { useMemo } from 'react';
+import { useNavigation } from "@remix-run/react";
+import { useMemo } from "react";
 
 type NavState = {
   /** Means NO navigation pending */
@@ -68,11 +68,11 @@ export default function useNavState() {
   const { state } = useNavigation();
   return useMemo<NavState>(
     () => ({
-      isIdle: state === 'idle',
-      isSubmitting: state === 'submitting',
-      isLoading: state === 'loading',
+      isIdle: state === "idle",
+      isSubmitting: state === "submitting",
+      isLoading: state === "loading",
     }),
-    [state]
+    [state],
   );
 }
 ```

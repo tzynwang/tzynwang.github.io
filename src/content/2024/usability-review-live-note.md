@@ -2,10 +2,10 @@
 title: 筆記：Usability Review Live
 date: 2024-09-28 09:37:52
 tag:
-- [Product Design]
+  - [Product Design]
 banner: /2024/usability-review-live-note/med-badr-chemmaoui-ZSPBhokqDMc-unsplash.jpg
 summary: 整理了之前追 Tony Alicea Usability Review Live 的筆記。這段一小時的直播以很平易近人的方式說明了一些介面設計的基本知識，值得一看。
-draft: 
+draft:
 ---
 
 ## 重點
@@ -65,8 +65,8 @@ draft:
 
 原生介面比客製化介面好，原生介面能減少技術債與無障礙問題（accessibility issue）。
 
-| 原生介面                        | 客製化介面                      |
-| ------------------------------- | ------------------------------- |
+| 原生介面                                                                               | 客製化介面                                                                             |
+| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
 | ![native control example](/2024/usability-review-live-note/native-control-example.png) | ![custom control example](/2024/usability-review-live-note/custom-control-example.png) |
 
 ## 參考資料

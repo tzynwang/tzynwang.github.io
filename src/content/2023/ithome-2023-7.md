@@ -2,9 +2,9 @@
 title: 捨棄 create-react-app 之餘還架了個 astro blog 昭告天下：webpack 5 與環境變數
 date: 2023-09-22 08:11:44
 tag:
-- [2023鐵人賽]
-- [Frontend Infrastructure]
-- [webpack]
+  - [2023鐵人賽]
+  - [Frontend Infrastructure]
+  - [webpack]
 banner: /2023/ithome-2023-7/cookie-the-pom-gySMaocSdqs-unsplash.jpg
 summary: 很抱歉吊了幾天的胃口，從今天開始終於要來聊聊 webpack 設定了。首先從處理環境變數開始吧。
 draft:
@@ -74,25 +74,25 @@ APP_PORT=3000
 
 ```ts
 /* Packages */
-import dotenv from 'dotenv';
+import dotenv from "dotenv";
 import {
   setDevelopmentEnvObject,
   setProductionEnvObject,
   getValidatedDevelopmentEnv,
   getValidatedProductionEnv,
   getEnvsForDefineConfig,
-} from '@/tool/processEnvValidate';
-import type { GetValidatedProcessEnv } from './types';
+} from "@/tool/processEnvValidate";
+import type { GetValidatedProcessEnv } from "./types";
 
 /* Functions */
 dotenv.config();
 
 function getValidatedProcessEnv() {
-  const isDevelopment = process.env.NODE_ENV === 'development';
-  const isProduction = process.env.NODE_ENV === 'production';
+  const isDevelopment = process.env.NODE_ENV === "development";
+  const isProduction = process.env.NODE_ENV === "production";
 
   if (isDevelopment === isProduction) {
-    throw new Error('NODE_ENV should either be development or production');
+    throw new Error("NODE_ENV should either be development or production");
   }
   if (isDevelopment) {
     const env = setDevelopmentEnvObject(process.env);
@@ -122,12 +122,12 @@ export default validatedProcessEnv;
 #### config/data/types.d.ts
 
 ```ts
-import type { Configuration as WebpackConfiguration } from 'webpack';
-import type { Configuration as WebPackDevServerConfiguration } from 'webpack-dev-server';
-import type { EnvForStartApp, EnvForBuildApp } from '@/tool/processEnvValidate';
+import type { Configuration as WebpackConfiguration } from "webpack";
+import type { Configuration as WebPackDevServerConfiguration } from "webpack-dev-server";
+import type { EnvForStartApp, EnvForBuildApp } from "@/tool/processEnvValidate";
 
 export type GetValidatedProcessEnv = {
-  'process.env': EnvForStartApp | EnvForBuildApp;
+  "process.env": EnvForStartApp | EnvForBuildApp;
 };
 
 export type {
@@ -152,9 +152,9 @@ export type {
 
 ```ts
 /* Packages */
-import { enums, nonempty, string, object, assert, Infer } from 'superstruct';
-import url from '@/tool/urlValidate';
-import type { StructError } from 'superstruct';
+import { enums, nonempty, string, object, assert, Infer } from "superstruct";
+import url from "@/tool/urlValidate";
+import type { StructError } from "superstruct";
 
 /* Data */
 type RawEnv = {
@@ -171,13 +171,13 @@ export type EnvForStartApp = Infer<typeof SUPERSTRUCT_VALIDATION_DEV>;
 export type EnvForBuildApp = Infer<typeof SUPERSTRUCT_VALIDATION_PROD>;
 
 const SUPERSTRUCT_VALIDATION_DEV = object({
-  NODE_ENV: enums(['development', 'production']),
+  NODE_ENV: enums(["development", "production"]),
   APP_API_URL: url(),
   APP_PORT: nonempty(string()),
 });
 
 const SUPERSTRUCT_VALIDATION_PROD = object({
-  NODE_ENV: enums(['development', 'production']),
+  NODE_ENV: enums(["development", "production"]),
   APP_API_URL: url(),
   BUILD_DESTINATION: nonempty(string()),
 });
@@ -189,7 +189,7 @@ function getStructError(error: unknown) {
   if (failureArray.length) {
     const failEnvs = failureArray
       .map((failure) => `${failure.key}: ${failure.message}`)
-      .join(', ');
+      .join(", ");
     return new Error(`invalid process.env: ${failEnvs}`);
   } else {
     return error;
@@ -232,7 +232,7 @@ export function setProductionEnvObject(processEnv: RawEnv): RawEnv {
 
 export function getEnvsForDefineConfig(envs: ValidatedEnv) {
   return {
-    'process.env': Object.keys(envs).reduce((env: ValidatedEnv, key) => {
+    "process.env": Object.keys(envs).reduce((env: ValidatedEnv, key) => {
       env[key] = JSON.stringify(envs[key]);
       return env;
     }, {}),
@@ -251,10 +251,10 @@ export function getEnvsForDefineConfig(envs: ValidatedEnv) {
 superstruct 有提供[自訂驗證格式](https://docs.superstructjs.org/guides/02-validating-data#custom-values)的功能，而 `./tool/urlValidate` 的任務就是負責「檢查傳入的值是否為有效的 url 格式」：
 
 ```ts
-import { Struct, define } from 'superstruct';
+import { Struct, define } from "superstruct";
 
 export function isUrl(value: unknown) {
-  if (typeof value !== 'string' && !(value instanceof URL)) {
+  if (typeof value !== "string" && !(value instanceof URL)) {
     return false;
   }
   try {
@@ -265,7 +265,7 @@ export function isUrl(value: unknown) {
 }
 
 const urlSuperstructValidate = (): Struct<string, null> =>
-  define<string>('url', (value: unknown) => isUrl(value));
+  define<string>("url", (value: unknown) => isUrl(value));
 
 export default urlSuperstructValidate;
 ```
@@ -298,17 +298,17 @@ export default urlSuperstructValidate;
 
 ```ts
 /* Packages */
-import Webpack from 'webpack';
+import Webpack from "webpack";
 
 /* Data */
-import env from './data/env';
+import env from "./data/env";
 import type {
   WebPackDevServerConfiguration,
   WebpackConfiguration,
   EnvForStartApp,
-} from './data/types';
+} from "./data/types";
 
-const envForStartApp = env['process.env'] as EnvForStartApp;
+const envForStartApp = env["process.env"] as EnvForStartApp;
 const port = +JSON.parse(envForStartApp.APP_PORT);
 
 /* Main */
@@ -346,7 +346,7 @@ export default webpackDevelopmentConfig;
 
 declare namespace NodeJS {
   interface ProcessEnv {
-    readonly NODE_ENV: 'development' | 'production';
+    readonly NODE_ENV: "development" | "production";
     readonly APP_API_URL: string;
     readonly APP_PORT: string;
   }

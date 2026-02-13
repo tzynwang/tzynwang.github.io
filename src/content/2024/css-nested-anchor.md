@@ -2,10 +2,10 @@
 title: 透過 CSS position absolute 來實現巢狀連結
 date: 2024-07-02 20:40:34
 tag:
-- [CSS]
+  - [CSS]
 banner: 2024/css-nested-anchor/karen-ciocca-967F5E0YTPA-unsplash.jpg
 summary: 從 Nested Anchor Links using CSS 學到一招極度簡單但非常實用的技巧來實現巢狀連結，必須分享。
-draft: 
+draft:
 ---
 
 ## 需求與限制

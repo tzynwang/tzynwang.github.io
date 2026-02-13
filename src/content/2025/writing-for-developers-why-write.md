@@ -2,11 +2,11 @@
 title: 我該不該寫？——"Writing for Developers" 閱讀筆記，你現在需要的是理由
 date: 2025-03-24 07:40:33
 tag:
-- [閱讀筆記]
-- [關於寫作這件事]
+  - [閱讀筆記]
+  - [關於寫作這件事]
 banner: /2025/writing-for-developers-why-write/妳現在需要的.jpg
 summary: 這篇是 "Writing for Developers" 一書的內容分享暨自用筆記，旨在傳教技術寫作能為工程師帶來的好處。如果你還需要一些理由來說服自己開始技術寫作，那就委身於這篇文章吧。
-draft: 
+draft:
 ---
 
 ## 前言

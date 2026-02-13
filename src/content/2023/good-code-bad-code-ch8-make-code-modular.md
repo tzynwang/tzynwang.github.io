@@ -2,7 +2,7 @@
 title: 閱讀筆記：Good Code, Bad Code Chapter 8 Make code modular
 date: 2023-04-08 19:13:46
 tag:
-- [Software Architecture]
+  - [Software Architecture]
 ---
 
 ## 總結

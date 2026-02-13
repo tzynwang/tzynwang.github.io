@@ -2,7 +2,7 @@
 title: Add local search
 date: 2021-02-17 09:07:53
 tag:
-- [hexo]
+  - [hexo]
 ---
 
 ## Summary of this post
@@ -108,7 +108,7 @@ Another way to add search function for hexo blog is adding [Google's Programmabl
    ---
    title: search
    date: 2021-02-17 10:33:04
-   type: 'search'
+   type: "search"
    layout: search
    ---
 

@@ -2,7 +2,7 @@
 title: 閱讀筆記：Good Code, Bad Code Chapter 2 Layers of abstraction
 date: 2023-03-07 20:04:23
 tag:
-- [Software Architecture]
+  - [Software Architecture]
 ---
 
 ## 總結

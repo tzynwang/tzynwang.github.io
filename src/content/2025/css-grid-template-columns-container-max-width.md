@@ -2,10 +2,10 @@
 title: 以 grid-template-columns 來限制最大容器寬
 date: 2025-07-29 18:45:56
 tag:
-- [CSS]
+  - [CSS]
 banner: /2025/css-grid-template-columns-container-max-width/let-me-in.jpg
 summary: 在需要同時處理 overflow 和 filter drop-shadow 時，平常慣用的 max-width 配 margin-inline 的寫法可能會讓陰影⋯⋯看起來有點問題 🌚
-draft: 
+draft:
 ---
 
 行前說明：這篇文章會直接使用 [tailwind v3](https://v3.tailwindcss.com/) 的語法來描述 CSS 樣式。

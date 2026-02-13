@@ -2,10 +2,10 @@
 title: 工作筆記：在前端顯示不同 origin 後端提供的圖片
 date: 2023-11-19 07:52:25
 tag:
-- [Web security]
+  - [Web security]
 banner: /2023/html-image-element-cross-origin/wai-siew-LjesOs00QRg-unsplash.jpg
 summary: 對 HtmlImageElement 設定 crossOrigin="use-credentials" 來解決因為 CORS 無法顯示圖片的問題。
-draft: 
+draft:
 ---
 
 ## 問題描述
@@ -19,7 +19,7 @@ draft:
 在 `<img />` 設定 `crossOrigin="use-credentials"`。
 
 ```html
-<img src={urlFromBackend} crossOrigin="use-credentials" />
+<img src="{urlFromBackend}" crossorigin="use-credentials" />
 ```
 
 `<img />` 在沒有設定 `crossOrigin` 時，預設為 `crossOrigin="anonymous"`，代表只在前後端有相同的 origin 時，才傳送憑證（credential）。

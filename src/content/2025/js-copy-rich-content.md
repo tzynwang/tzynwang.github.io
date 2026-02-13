@@ -2,7 +2,7 @@
 title: 如何複製帶格式的文字（rich content, rich text copy）
 date: 2025-09-07 18:17:45
 tag:
-- [JavaScript]
+  - [JavaScript]
 banner: /2025/js-copy-rich-content/spider-man-point-each-other.jpg
 summary: 終極懶人包：在使用 navigator.clipboard.write 複製網頁上的文字（附帶格式）時，要同時提供 text/html 和 text/plain 型態的內容，不然無法對純文字編輯器進行貼上。
 draft: 

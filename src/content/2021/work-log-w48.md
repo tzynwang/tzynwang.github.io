@@ -2,8 +2,8 @@
 title: 2021 第48週 學習記錄：JavaScript Class
 date: 2021-12-05 10:48:40
 tag:
-- [JavaScript]
-- [TypeScript]
+  - [JavaScript]
+  - [TypeScript]
 ---
 
 ## 總結
@@ -51,12 +51,12 @@ tag:
 
 ```js
 class ClassWithStaticMethod {
-  static staticProperty = 'someValue';
+  static staticProperty = "someValue";
   static staticMethod() {
-    return 'static method has been called.';
+    return "static method has been called.";
   }
   static {
-    console.log('Class static initialization block called');
+    console.log("Class static initialization block called");
   }
 }
 

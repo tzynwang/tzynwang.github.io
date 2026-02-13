@@ -2,10 +2,10 @@
 title: 關於在 JavaScript 中執行「複製」這件事
 date: 2024-04-28 14:33:50
 tag:
-- [JavaScript]
+  - [JavaScript]
 banner: /2024/js-about-clone/andre-mouton-GBEHjsPQbEQ-unsplash.jpg
 summary: 最近才發現 node 原生的 `structuredClone` 在複製上的限制比想像中的多，如果有複製純物件以外的需求（比如要處理實例），還是需要使用 `lodash/cloneDeep` 🙈
-draft: 
+draft:
 ---
 
 最近在因緣際會下嘗試透過 `structuredClone` 來複製實例（JavaScript [Instance](https://developer.mozilla.org/en-US/docs/Glossary/Instance)），卻發現這個 node 的原生功能在「能複製的對象」上其實有不少限制。在回頭找了老朋友 `lodash/cloneDeep` 之餘，順便研究一下 `cloneDeep` 是用什麼手段來實現「實例複製」。
@@ -22,10 +22,10 @@ draft:
 
 ```js
 class Demo {
-  name = '';
+  name = "";
 
   constructor() {
-    this.name = 'hello world';
+    this.name = "hello world";
   }
 
   get showName() {
@@ -33,7 +33,7 @@ class Demo {
   }
 
   logName() {
-    console.log('name:::', this.name);
+    console.log("name:::", this.name);
   }
 }
 
@@ -82,14 +82,14 @@ console.info(Demo.prototype.logName === d1.logName); // true
 
 ```js
 class Demo {
-  #name = '';
+  #name = "";
 
   constructor() {
-    this.#name = 'hello world';
+    this.#name = "hello world";
   }
 
   logName() {
-    console.log('name:::', this.#name);
+    console.log("name:::", this.#name);
   }
 }
 
@@ -120,10 +120,10 @@ d1.logName(); // TypeError: Cannot read private member #name from an object whos
 
 ```js
 class Demo {
-  name = '';
+  name = "";
 
   constructor() {
-    this.name = 'hello world';
+    this.name = "hello world";
   }
 
   get showName() {
@@ -131,7 +131,7 @@ class Demo {
   }
 
   logName() {
-    console.log('name:::', this.name);
+    console.log("name:::", this.name);
   }
 }
 

@@ -2,8 +2,8 @@
 title: 2022 第49週 學習筆記：React.SyntheticEvent
 date: 2022-12-09 08:03:16
 tag:
-- [MaterialUI]
-- [React]
+  - [MaterialUI]
+  - [React]
 ---
 
 ## 總結
@@ -22,8 +22,9 @@ tag:
 
 ```ts
 interface SelectProps
-  extends StandardProps<InputProps, SelectClassKey, 'value' | 'onChange'>,
-    Pick<SelectInputProps, 'onChange'> {
+  extends
+    StandardProps<InputProps, SelectClassKey, "value" | "onChange">,
+    Pick<SelectInputProps, "onChange"> {
   /**
    * Callback function fired when a menu item is selected.
    *
@@ -32,14 +33,14 @@ interface SelectProps
    * @param {object} [child] The react element that was selected when `native` is `false` (default).
    * @document
    */
-  onChange?: SelectInputProps['onChange'];
+  onChange?: SelectInputProps["onChange"];
 }
 
 interface SelectInputProps {
   // ...
   onChange?: (
     event: React.ChangeEvent<{ name?: string; value: unknown }>,
-    child: React.ReactNode
+    child: React.ReactNode,
   ) => void;
 }
 ```
@@ -50,9 +51,10 @@ MaterialUI 4 `Select` 元件 `onChange` 的 `event` 型別為 `React.ChangeEvent
 
 ```ts
 interface SelectProps<T = unknown>
-  extends StandardProps<InputProps, 'value' | 'onChange'>,
-    Omit<OutlinedInputProps, 'value' | 'onChange'>,
-    Pick<SelectInputProps<T>, 'onChange'> {
+  extends
+    StandardProps<InputProps, "value" | "onChange">,
+    Omit<OutlinedInputProps, "value" | "onChange">,
+    Pick<SelectInputProps<T>, "onChange"> {
   /**
    * Callback fired when a menu item is selected.
    *
@@ -61,7 +63,7 @@ interface SelectProps<T = unknown>
    * **Warning**: This is a generic event, not a change event, unless the change event is caused by browser autofill.
    * @param {object} [child] The react element that was selected when `native` is `false` (default).
    */
-  onChange?: SelectInputProps<T>['onChange'];
+  onChange?: SelectInputProps<T>["onChange"];
 }
 
 export interface SelectInputProps<T = unknown> {
@@ -86,8 +88,11 @@ interface ChangeEvent<T = Element> extends SyntheticEvent<T> {
   target: EventTarget & T;
 }
 
-interface SyntheticEvent<T = Element, E = Event>
-  extends BaseSyntheticEvent<E, EventTarget & T, EventTarget> {}
+interface SyntheticEvent<T = Element, E = Event> extends BaseSyntheticEvent<
+  E,
+  EventTarget & T,
+  EventTarget
+> {}
 
 interface BaseSyntheticEvent<E = object, C = any, T = any> {
   nativeEvent: E;

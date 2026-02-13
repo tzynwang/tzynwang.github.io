@@ -2,7 +2,7 @@
 title: JSDC 2021 議程筆記
 date: 2021-10-30 12:27:13
 tag:
-- [JavaScript]
+  - [JavaScript]
 ---
 
 ## 總結
@@ -134,7 +134,7 @@ function ProfilePage() {
 ![start transition](/2021/jsdc-2021-note/startTransition.png)
 
 ```jsx
-import { startTransition } from 'react';
+import { startTransition } from "react";
 
 highPriorityTask();
 
@@ -148,7 +148,7 @@ startTransition(() => {
 > 回傳的是布林值，其中一種應用方式為搭配控制 spinner 元件的顯示與否
 
 ```jsx
-import { useTransition } from 'react';
+import { useTransition } from "react";
 
 function myComponent() {
   const [isPending, startTransition] = useTransition();
@@ -163,13 +163,13 @@ function myComponent() {
 
 ```jsx
 <SuspenseList revealOrder="forwards">
-  <Suspense fallback={'Loading...'}>
+  <Suspense fallback={"Loading..."}>
     <ProfilePicture id={1} />
   </Suspense>
-  <Suspense fallback={'Loading...'}>
+  <Suspense fallback={"Loading..."}>
     <ProfilePicture id={2} />
   </Suspense>
-  <Suspense fallback={'Loading...'}>
+  <Suspense fallback={"Loading..."}>
     <ProfilePicture id={3} />
   </Suspense>
   ...

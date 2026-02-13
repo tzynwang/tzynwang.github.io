@@ -2,8 +2,8 @@
 title: TypeScript 觀摩筆記：React.PropsWithChildren 與 React.FC
 date: 2022-09-09 20:22:41
 tag:
-- [React]
-- [TypeScript]
+  - [React]
+  - [TypeScript]
 ---
 
 ## 總結
@@ -24,8 +24,8 @@ tag:
 `children` 由 `React.PropsWithChildren` 提供（且定義為 optional），children 以外的型別定義內容直接傳入 `T` 即可
 
 ```tsx
-import React, { memo } from 'react';
-import type { Property } from 'csstype';
+import React, { memo } from "react";
+import type { Property } from "csstype";
 
 type BaseButton = {
   color: Property.Color;
@@ -34,7 +34,7 @@ type ButtonProps = React.PropsWithChildren<BaseButton>;
 
 function Button(props: ButtonProps): React.ReactElement {
   /* States */
-  const { color, children, type = 'button', ...rest } = props;
+  const { color, children, type = "button", ...rest } = props;
 
   /* Main */
   return (
@@ -52,8 +52,8 @@ export default memo(Button);
 參考 DefinitelyTyped 的型別定義文件可得知 `type FC<P = {}> = FunctionComponent<P>`，兩者可互換
 
 ```tsx
-import React from 'react';
-import type { Property } from 'csstype';
+import React from "react";
+import type { Property } from "csstype";
 
 type ButtonProps = {
   color: Property.Color;
@@ -61,7 +61,7 @@ type ButtonProps = {
 
 const Button: React.FC<ButtonProps> = (props: ButtonProps) => {
   /* States */
-  const { color, type = 'button', children, ...rest } = props;
+  const { color, type = "button", children, ...rest } = props;
 
   /* Main */
   return (

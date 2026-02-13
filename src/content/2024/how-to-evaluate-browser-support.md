@@ -2,10 +2,10 @@
 title: 如何評估是否導入嶄新的 CSS 樣式
 date: 2024-11-30 10:49:26
 tag:
-- [CSS]
+  - [CSS]
 banner: /2024/how-to-evaluate-browser-support/federico-burgalassi-rhRoDuYLvxI-unsplash.jpg
 summary: 此篇是 A Framework for Evaluating Browser Support 一文的閱讀筆記。作者提供了一組「判斷是否要導入某個新 CSS 功能」的 SOP，極致懶人包就是「先確認你的網站受眾分佈」，接著確認「當瀏覽器不支援時會發生什麼事」，最後根據前兩項資訊判斷到底要不要導入新功能。
-draft: 
+draft:
 ---
 
 ## 懶人包

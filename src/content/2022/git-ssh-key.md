@@ -2,7 +2,7 @@
 title: SSH Keys for GitHub
 date: 2022-02-22 20:01:32
 tag:
-- [git]
+  - [git]
 ---
 
 ## 總結
@@ -15,7 +15,6 @@ tag:
 ## 步驟
 
 1. 開啟 terminal 後，輸入 `ssh-keygen -t ed25519 -C "your@email.here"`
-
    - `ed25519` 是產生 SSH key 的演算法
    - 若不需要搭配 email 產生 key 則 `-C "your@email.here"` 此 flag 與 email 一起移除
 

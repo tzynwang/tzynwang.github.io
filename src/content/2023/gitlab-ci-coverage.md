@@ -2,8 +2,8 @@
 title: 快速筆記：透過 GitLab 執行 ci/cd 時，取得測試覆蓋率的方法
 date: 2023-10-20 21:06:53
 tag:
-- [GitLab]
-- [Testing]
+  - [GitLab]
+  - [Testing]
 banner: /2023/gitlab-ci-coverage/no-revisions-oQEVnA7D3Uk-unsplash.jpg
 summary: GitLab 有提供關鍵字 `coverage` 來收集 job output 中的測試覆蓋率數據，這篇筆記會解說使用方式
 draft:
@@ -54,23 +54,23 @@ test:
 ```js
 /** @type {import('jest').Config} */
 const config = {
-  preset: 'ts-jest',
-  testEnvironment: 'jsdom',
-  coverageReporters: ['text', 'text-summary'],
+  preset: "ts-jest",
+  testEnvironment: "jsdom",
+  coverageReporters: ["text", "text-summary"],
   collectCoverage: true,
   collectCoverageFrom: [
-    'src/(model|tool)/**/*.ts',
-    '!src/(model|tool)/**/*.(d|test).ts',
-    '!src/model/General*.ts',
-    '!**/node_modules/**',
+    "src/(model|tool)/**/*.ts",
+    "!src/(model|tool)/**/*.(d|test).ts",
+    "!src/model/General*.ts",
+    "!**/node_modules/**",
   ],
-  maxWorkers: '25%',
+  maxWorkers: "25%",
   moduleNameMapper: {
-    '@/jest.config': '<rootDir>/jest.config.js',
+    "@/jest.config": "<rootDir>/jest.config.js",
   },
   transform: {
-    '^.+\\.tsx?$': ['ts-jest', {}],
-    '^.+\\.ts?$': ['ts-jest', {}],
+    "^.+\\.tsx?$": ["ts-jest", {}],
+    "^.+\\.ts?$": ["ts-jest", {}],
   },
 };
 

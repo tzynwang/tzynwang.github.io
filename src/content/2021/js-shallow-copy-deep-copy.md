@@ -2,7 +2,7 @@
 title: 「pass by value、pass by reference、深拷貝」相關筆記
 date: 2021-04-18 16:43:24
 tag:
-- [JavaScript]
+  - [JavaScript]
 ---
 
 ## 總結
@@ -17,11 +17,12 @@ tag:
 - 將基本類別的資料從一個變數「賦值」到另外一個變數的時候，傳遞的是「值」本身（pass by value）
 - 參考以下程式碼，在將`bag`的值`apples`賦予`pocket`時，傳遞給`pocket`的是`bag`的值（`apples`）
   ```js
-  let bag = 'apples'
-  let pocket = bag
-  bag = 'oranges'
-  console.log(pocket) // output: apples
+  let bag = "apples";
+  let pocket = bag;
+  bag = "oranges";
+  console.log(pocket); // output: apples
   ```
+
   - `pocket`的`apples`與`bag`的`apples`分別位在記憶體中不同的空間，實際上是兩筆值為`apples`的資料
   - 所以，即使對`bag`賦予一組新的值`oranges`，也不會影響到`pocket`的值
 
@@ -30,10 +31,10 @@ tag:
 - 將`Object`與`function`類型的資料從一個變數「賦值」到另外一個變數的時候，傳遞的是「記憶體中的位置」（pass by reference）
 - 參考以下程式碼，`container1`與`container2`兩個變數「指向」同一筆資料`{apple: 6}`；修改`container1`「指向」的內容後，呼叫「指向同一筆資料」的`container2`就會看到被修改後的內容，即是`{apple: 3}`
   ```js
-  const container1 = {apple: 6}
-  const container2 = container1
-  container1.apple = 3
-  console.log(container2) // output: {apple: 3}
+  const container1 = { apple: 6 };
+  const container2 = container1;
+  container1.apple = 3;
+  console.log(container2); // output: {apple: 3}
   ```
 
 ## 深拷貝（deep copy）
@@ -49,11 +50,11 @@ tag:
 把需要進行深拷貝的目標傳入`JSON.stringify`，再將`JSON.stringify`回傳的 JSON string 傳入`JSON.parse()`重建為 JavaScript 物件（或值）
 
 ```js
-const container1 = {apple: 6}
-const jsonString = JSON.stringify(container1) // 取得JSON string化的container1
-const container2 = JSON.parse(jsonString)     // 將JSON string化的container1重建為JavaScript物件，得到與container1無關的container2
-container1.apple = 3
-console.log(container2) // output: {apple: 6}
+const container1 = { apple: 6 };
+const jsonString = JSON.stringify(container1); // 取得JSON string化的container1
+const container2 = JSON.parse(jsonString); // 將JSON string化的container1重建為JavaScript物件，得到與container1無關的container2
+container1.apple = 3;
+console.log(container2); // output: {apple: 6}
 ```
 
 `JSON.stringify`的特性：
@@ -74,8 +75,8 @@ console.log(container2) // output: {apple: 6}
 
 - 無法處理 trailing commas
   ```js
-  JSON.parse('[1, 2, 3, 4, ]')
-  JSON.parse('{"foo" : 1, }')
+  JSON.parse("[1, 2, 3, 4, ]");
+  JSON.parse('{"foo" : 1, }');
   // both will throw a SyntaxError
   ```
 - 僅允許單引號`'`包覆雙引號`"`，反過來使用雙引號包覆單引號會丟出`SyntaxError`
@@ -91,12 +92,12 @@ console.log(container2) // output: {apple: 6}
 文件：[https://docs-lodash.com/v4/clone-deep/](https://docs-lodash.com/v4/clone-deep/)
 
 ```js
-const container1 = [{ apple: 6 }, { orange: 2 }]
-const container2 = _.cloneDeep(container1)
+const container1 = [{ apple: 6 }, { orange: 2 }];
+const container2 = _.cloneDeep(container1);
 
-container1[0].apple = 3
-console.log(container1) // [{ apple: 3 }, { orange: 2 }]
-console.log(container2) // [{ apple: 6 }, { orange: 2 }]
+container1[0].apple = 3;
+console.log(container1); // [{ apple: 3 }, { orange: 2 }]
+console.log(container2); // [{ apple: 6 }, { orange: 2 }]
 ```
 
 ### 使用[jQuery](https://jquery.com/)的`$.extend`
@@ -104,12 +105,12 @@ console.log(container2) // [{ apple: 6 }, { orange: 2 }]
 文件：[https://api.jquery.com/jquery.extend/](https://api.jquery.com/jquery.extend/)
 
 ```js
-const container1 = [{ apple: 6 }, { orange: 2 }]
+const container1 = [{ apple: 6 }, { orange: 2 }];
 const container2 = $.extend(true, [], container1);
 
-container1[0].apple = 3
-console.log(container1) // [{ apple: 3 }, { orange: 2 }]
-console.log(container2) // [{ apple: 6 }, { orange: 2 }]
+container1[0].apple = 3;
+console.log(container1); // [{ apple: 3 }, { orange: 2 }]
+console.log(container2); // [{ apple: 6 }, { orange: 2 }]
 ```
 
 ### Node.js: Serialization API
@@ -117,11 +118,11 @@ console.log(container2) // [{ apple: 6 }, { orange: 2 }]
 文件：[https://nodejs.org/api/all.html#v8_serialization_api](https://nodejs.org/api/all.html#v8_serialization_api)
 
 ```js
-const v8 = require('v8')
+const v8 = require("v8");
 
-const structuredClone = obj => {
+const structuredClone = (obj) => {
   return v8.deserialize(v8.serialize(obj));
-}
+};
 ```
 
 ### The structured clone algorithm

@@ -2,7 +2,7 @@
 title: 為什麼可以修改使用const宣告的陣列（或物件）的內容？
 date: 2021-04-09 14:23:04
 tag:
-- [JavaScript]
+  - [JavaScript]
 ---
 
 ## 原始問題
@@ -27,7 +27,6 @@ os: Windows_NT 10.0.18363 win32 x64
 ### You Don't Know JS Yet 相關筆記
 
 - `const` declared variables are not "unchangeable", they just cannot be re-assigned.
-
   - 不適合以「不能被修改」來理解透過`const`宣告的變數，而是「使用`const`宣告的變數只能被賦值一次」
   <script src="https://gist.github.com/tzynwang/bf4ef105981d115a11ae4eb761e34ac8.js"></script>
 
@@ -87,7 +86,7 @@ os: Windows_NT 10.0.18363 win32 x64
 
 參考[ECMAScript Specification, Table 3: Attributes of a Data Property](https://tc39.es/ecma262/#table-data-property-attributes)：
 
-- `writable`: If false, attempts by ECMAScript code to change the property's [[Value]] attribute using [[Set]] will not succeed.
+- `writable`: If false, attempts by ECMAScript code to change the property's `[[Value]]` attribute using `[[Set]]` will not succeed.
   - `writable`若為`false`，代表該`value`無法被修改
   - 被`Object.freeze()`凍結的物件，其`value`的`writable`就被修改為`false`
 - `enumerable`: If true, the property will be enumerated by a for-in enumeration. Otherwise, the property is said to be non-enumerable.

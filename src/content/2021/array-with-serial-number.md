@@ -2,7 +2,7 @@
 title: 「產生順序數陣列」相關筆記
 date: 2021-06-14 18:27:20
 tag:
-- [JavaScript]
+  - [JavaScript]
 ---
 
 ## 總結
@@ -27,7 +27,7 @@ let x = Array(7);
 此功能會回傳「Array Iterator object」，並非單純的陣列
 
 ```js
-const array1 = ['a', 'b', 'c'];
+const array1 = ["a", "b", "c"];
 const iterator = array1.keys();
 // 呼叫iterator的話，會得到Array Iterator Object，而非陣列
 

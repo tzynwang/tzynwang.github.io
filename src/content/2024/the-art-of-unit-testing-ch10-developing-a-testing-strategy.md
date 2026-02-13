@@ -2,10 +2,10 @@
 title: 閱讀筆記：The Art of Unit Testing Chapter 10 Developing a testing strategy
 date: 2024-02-03 15:42:28
 tag:
-- [Testing]
+  - [Testing]
 banner: /2024/the-art-of-unit-testing-ch10-developing-a-testing-strategy/kristine-tumanyan-YmgpoBhJAkI-unsplash.jpg
 summary: 本章旨在介紹「測試食譜（test recipes）」——目的是為了幫助開發者安排測試策略（test strategy），避免測試種類失衡或目標重疊的問題。
-draft: 
+draft:
 ---
 
 ## 總結

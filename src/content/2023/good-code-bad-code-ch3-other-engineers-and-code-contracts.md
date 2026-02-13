@@ -2,7 +2,7 @@
 title: 閱讀筆記：Good Code, Bad Code Chapter 3 Other engineers and code contracts
 date: 2023-03-11 17:19:51
 tag:
-- [Software Architecture]
+  - [Software Architecture]
 ---
 
 ## 總結

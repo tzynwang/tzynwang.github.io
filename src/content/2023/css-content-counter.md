@@ -2,7 +2,7 @@
 title: 使用 CSS `content` 與 `counter` 設定序列的數字樣式
 date: 2023-05-26 19:35:39
 tag:
-- [CSS]
+  - [CSS]
 ---
 
 ## 總結
@@ -43,7 +43,7 @@ tag:
 
 .display_list_item::marker {
   /* 使用十進制數字來作為序列樣式，並前後包夾小括號 */
-  content: '(' counter(fruit-item, decimal) ')';
+  content: "(" counter(fruit-item, decimal) ")";
 }
 ```
 
@@ -65,7 +65,7 @@ tag:
 ```css
 .counter::before {
   /* 原理與上方的 .display_list_item::marker 一樣，都是透過 content counter 來指定序列數字樣式 */
-  content: counter(fruit-item, trad-chinese-informal) '、';
+  content: counter(fruit-item, trad-chinese-informal) "、";
 }
 ```
 

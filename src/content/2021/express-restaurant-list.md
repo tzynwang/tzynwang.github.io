@@ -2,9 +2,9 @@
 title: 從零開始重寫：餐廳清單（Express版）基礎功能與架構
 date: 2021-06-21 15:47:32
 tag:
-- [Express]
-- [Express Handlebars]
-- [Mongoose]
+  - [Express]
+  - [Express Handlebars]
+  - [Mongoose]
 ---
 
 ## 總結

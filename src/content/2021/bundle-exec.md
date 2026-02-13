@@ -2,7 +2,7 @@
 title: bundle exec
 date: 2021-02-08 20:31:26
 tag:
-- [jekyll]
+  - [jekyll]
 ---
 
 Question: why adds `bundle exec` in the command when running jekyll server in the first time?

@@ -2,7 +2,7 @@
 title: 「部屬Express.js App至Google App Engine」相關筆記
 date: 2021-06-25 14:06:51
 tag:
-- [Express]
+  - [Express]
 ---
 
 ## 總結
@@ -26,7 +26,7 @@ os: Windows_NT 10.0.18363 win32 x64
 const port = process.env.PORT || 5000;
 
 // 追加以下內容
-app.set('trust proxy', true);
+app.set("trust proxy", true);
 ```
 
 - 關於`app.set('trust proxy', true)`
@@ -47,7 +47,7 @@ mongoose.connect(MONGODB_URI, { ... })
 ```yaml
 runtime: nodejs12
 env_variables:
-  MONGODB_URI: 'mongodb+srv://<DB使用者帳號>:<DB密碼>@<MongoDB cluster名稱>.8glc1.mongodb.net/<MongoDB cluster名稱>?retryWrites=true&w=majority'
+  MONGODB_URI: "mongodb+srv://<DB使用者帳號>:<DB密碼>@<MongoDB cluster名稱>.8glc1.mongodb.net/<MongoDB cluster名稱>?retryWrites=true&w=majority"
 ```
 
 - `app.yaml`檔案位於專案的根目錄

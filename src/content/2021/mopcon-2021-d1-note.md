@@ -2,7 +2,7 @@
 title: MOPCON 2021 第一天之JS、前端相關內容之議程筆記
 date: 2021-10-23 16:47:32
 tag:
-- [JavaScript]
+  - [JavaScript]
 ---
 
 ## 總結
@@ -29,6 +29,7 @@ tag:
   0.5 + 0.1 === 0.6; // true
   0.2 + 0.1 === 0.3; // false
   ```
+
   - [Is floating point math broken?](https://stackoverflow.com/questions/588004/is-floating-point-math-broken)
     - In most programming languages, it is based on the **IEEE 754 standard**. The crux of the problem is that numbers are represented in this format as a whole number times a power of two; rational numbers (such as 0.1, which is 1/10) **whose denominator is not a power of two cannot be exactly represented**.
     - Think about representing 1/3 as a decimal value. It's **impossible to do exactly**! In the same way, 1/10 (decimal 0.1) **cannot be represented exactly in base 2 (binary)** as a "decimal" value; a repeating pattern after the decimal point goes on forever. **The value is not exact**, and therefore you can't do exact math with it using normal floating point methods.
@@ -43,20 +44,20 @@ tag:
 
 - `this`的值跟怎麼呼叫函式有關
   ```js
-  document.querySelector('.a'); // null
+  document.querySelector(".a"); // null
   const q = document.querySelector;
-  q('.a'); // Uncaught TypeError: Illegal invocation
+  q(".a"); // Uncaught TypeError: Illegal invocation
   ```
   `document.querySelector('.a')`中的`this`是`document`，而`q('.a')`的`this`在非嚴格模式下會指向 global object，可透過使用`bind()`將`document`綁進去解決：
   ```js
   const q = document.querySelector.bind(document);
-  q('.a'); // null
+  q(".a"); // null
   ```
   ```js
   // 這樣也可以
   const q = document.querySelector;
-  q.call(document, '.a');
-  q.apply(document, ['.a']);
+  q.call(document, ".a");
+  q.apply(document, [".a"]);
   ```
 - 箭頭函式的 this 與一般函式的 this 不一樣（以下內容節錄自[MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions)）
   - Arrow functions establish "this" **based on the scope the Arrow function is defined within**.
@@ -114,7 +115,7 @@ tag:
   ```
 - Utility Types：把型別當成參數，透過 Utility Types 取得型的型別；TypeScript 本身就內建了多種 Utility Types
   ```ts
-  type conferenceNameWithNull = 'MOPCON' | 'JSDC' | 'COSCUP' | null;
+  type conferenceNameWithNull = "MOPCON" | "JSDC" | "COSCUP" | null;
   type T1 = NonNullable<conferenceNameWithNull>;
   ```
   `NonNullable`是 TypeScript 內建的 Utility Types，如果檢視 T1 的內容會發現僅剩下`MOPCON`、`JSDC`與`COSCUP`；`null`不見了
@@ -131,8 +132,8 @@ tag:
   得到的內容是`'name' | 'year' | 'isAddToCalendar' | 'price'`
 - 支援 Template Literals（反引號）：TS 會根據傳入的聯集組合出新的聯集
   ```ts
-  type X = 'left' | 'right';
-  type Y = 'top' | 'bottom';
+  type X = "left" | "right";
+  type Y = "top" | "bottom";
   type Position = `${X}-${Y}`; // 'left-top' | 'left-bottom' | 'right-top' | 'right-bottom'
   ```
 - 練習：寫一個 Utility Type 取得物件型別中所有屬性的 Keys
@@ -165,8 +166,8 @@ tag:
     price: number;
   };
 
-  type T1 = Conference['name']; // string
-  type T2 = Conference['name' | 'year']; // string | number
+  type T1 = Conference["name"]; // string
+  type T2 = Conference["name" | "year"]; // string | number
   type T3 = Conference[keyof Conference]; // string | number | boolean
   ```
 
@@ -183,7 +184,7 @@ tag:
 
   ```ts
   type T = {
-    [P in 'MOPCON' | 'JSDC' | 'COSCUP']: string;
+    [P in "MOPCON" | "JSDC" | "COSCUP"]: string;
   };
   // T = { MOPCON: string; JSDC: string; COSCUP: string; }
   ```
@@ -212,7 +213,7 @@ tag:
   ```ts
   // 只取出Conference中的name與price
   type T3 = {
-    [Property in 'name' | 'price']: Conference[Property];
+    [Property in "name" | "price"]: Conference[Property];
   };
 
   // 抽象化
@@ -221,18 +222,17 @@ tag:
   };
 
   // 一樣取出Conference中的name與price
-  type T3 = PickObject<Conference, 'name' | 'price'>;
+  type T3 = PickObject<Conference, "name" | "price">;
   ```
 
 - Conditional Types
-
   - `X extends Y ? T : F`：若 X 是 Y 的子集合，型別 A 就是 T，反之為 F
   - `never extends Y ? T : F`：因為`never`（可理解為空集合）不是任何型態的子集合，因此型別 A 必定為 F
 
   ```ts
   type InferResp<T> = T extends { response: infer R; status: number } ? R : T;
 
-  const successResp = { response: { data: 'foo' }, status: 200 };
+  const successResp = { response: { data: "foo" }, status: 200 };
   const errorResp = { status: 400 };
 
   type TS = InferResp<typeof successRest>; // { data: string }

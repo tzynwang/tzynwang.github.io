@@ -2,7 +2,7 @@
 title: 「CSS Specificity」相關筆記
 date: 2021-03-18 20:52:44
 tag:
-- [CSS]
+  - [CSS]
 ---
 
 ## 重點整理
@@ -20,7 +20,6 @@ Specificity（以降以「權重」稱之）的高低影響哪一些 CSS 樣式�
 
 1. universal selector 與 inherited style：使用`*`選取「全部」與繼承得來的樣式，兩者的權重皆為`0-0-0-0-0`；最低的權重
 1. element selector、::pseudo-element selector：選取 HTML 元素或偽元素，權重為`0-0-0-0-1`
-
    - HTML 元素：html、body、section、div、p……等 HTML 元素（element）
    - 偽元素：
      > A CSS pseudo-element is a keyword added to a selector that lets you style a specific **part** of the selected element(s).
@@ -28,12 +27,10 @@ Specificity（以降以「權重」稱之）的高低影響哪一些 CSS 樣式�
    參考[MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-elements)，偽元素指的是 HTML 元素的「某一個部份」，較常見的大概是`::after`、`::before`與`::first-letter`
 
 1. .class selector、:pseudo-class selector、[attribute] selector：選取 class、偽類或具有特定屬性（attribute）的 HTML 元素，權重為`0-0-0-1-0`
-
    - 偽類：
      > A CSS pseudo-class is a keyword added to a selector that specifies a special **state** of the selected element(s).
 
    參考[MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes)，偽類指的是 HTML 元素的「某一種狀態」，最常見的大概是`:hover`
-
    - 屬性：參考[MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes)，以`input[type="checkbox"]`為例，就是「選取所有是 checkbox 特性的 input 元素」
 
 1. #id selector：選取擁有某 id 的 HTML 元素，權重是`0-0-1-0-0`

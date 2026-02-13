@@ -2,8 +2,8 @@
 title: 如何指南：在 remix 專案使用 @mui/material
 date: 2024-10-20 17:56:45
 tag:
-- [MaterialUI]
-- [Remix]
+  - [MaterialUI]
+  - [Remix]
 banner: /2024/remix-how-to-work-with-mui/jakub-chlouba-LVRgFVLgbK4-unsplash.jpg
 summary: 在 remix 使用 @mui/material 主要得克服 SSR 與 CSR 結果不同步的問題。本篇筆記會分享我在參考各路範例後拼出來的解法 🫠
 draft:
@@ -25,9 +25,9 @@ draft:
 ### `app/mui/createEmotionCache.ts`
 
 ```ts
-import createCache from '@emotion/cache';
+import createCache from "@emotion/cache";
 
-const cache = createCache({ key: 'css' });
+const cache = createCache({ key: "css" });
 
 export default cache;
 ```
@@ -43,7 +43,7 @@ export default cache;
 在這裡根據需求設定 @mui 的預設樣式。如果預計用其他套件（比如 tailwind）管理樣式的話，這裡直接呼叫 `createTheme()` 取得 @mui 預設的 `theme` 物件即可。
 
 ```ts
-import { createTheme } from '@mui/material/styles';
+import { createTheme } from "@mui/material/styles";
 
 const theme = createTheme();
 
@@ -55,13 +55,13 @@ export default theme;
 重點：對 `RemixBrowser` 包覆 @emotion 的 `CacheProvider` 與 @mui 的 `ThemeProvider`。
 
 ```tsx
-import { CacheProvider } from '@emotion/react';
-import { ThemeProvider } from '@mui/material/styles';
-import { RemixBrowser } from '@remix-run/react';
-import { startTransition, StrictMode } from 'react';
-import { hydrateRoot } from 'react-dom/client';
-import emotionCache from './mui/createEmotionCache';
-import theme from './mui/theme';
+import { CacheProvider } from "@emotion/react";
+import { ThemeProvider } from "@mui/material/styles";
+import { RemixBrowser } from "@remix-run/react";
+import { startTransition, StrictMode } from "react";
+import { hydrateRoot } from "react-dom/client";
+import emotionCache from "./mui/createEmotionCache";
+import theme from "./mui/theme";
 
 startTransition(() => {
   hydrateRoot(
@@ -72,7 +72,7 @@ startTransition(() => {
           <RemixBrowser />
         </StrictMode>
       </ThemeProvider>
-    </CacheProvider>
+    </CacheProvider>,
   );
 });
 ```
@@ -82,17 +82,17 @@ startTransition(() => {
 重點：類似在 `app/entry.client.tsx` 的改動，要對 `RemixBrowser` 包覆 `CacheProvider` 與 `ThemeProvider`
 
 ```tsx
-import { CacheProvider } from '@emotion/react';
-import createEmotionServer from '@emotion/server/create-instance';
-import { ThemeProvider } from '@mui/material/styles';
-import type { EntryContext } from '@remix-run/node';
-import { createReadableStreamFromReadable } from '@remix-run/node';
-import { RemixServer } from '@remix-run/react';
-import { isbot } from 'isbot';
-import { PassThrough } from 'node:stream';
-import { renderToPipeableStream } from 'react-dom/server';
-import emotionCache from './mui/createEmotionCache';
-import theme from './mui/theme';
+import { CacheProvider } from "@emotion/react";
+import createEmotionServer from "@emotion/server/create-instance";
+import { ThemeProvider } from "@mui/material/styles";
+import type { EntryContext } from "@remix-run/node";
+import { createReadableStreamFromReadable } from "@remix-run/node";
+import { RemixServer } from "@remix-run/react";
+import { isbot } from "isbot";
+import { PassThrough } from "node:stream";
+import { renderToPipeableStream } from "react-dom/server";
+import emotionCache from "./mui/createEmotionCache";
+import theme from "./mui/theme";
 
 const ABORT_DELAY = 5_000;
 
@@ -100,20 +100,20 @@ export default function handleRequest(
   request: Request,
   responseStatusCode: number,
   responseHeaders: Headers,
-  remixContext: EntryContext
+  remixContext: EntryContext,
 ) {
-  return isbot(request.headers.get('user-agent') || '')
+  return isbot(request.headers.get("user-agent") || "")
     ? handleBotRequest(
         request,
         responseStatusCode,
         responseHeaders,
-        remixContext
+        remixContext,
       )
     : handleBrowserRequest(
         request,
         responseStatusCode,
         responseHeaders,
-        remixContext
+        remixContext,
       );
 }
 
@@ -121,7 +121,7 @@ function handleBotRequest(
   request: Request,
   responseStatusCode: number,
   responseHeaders: Headers,
-  remixContext: EntryContext
+  remixContext: EntryContext,
 ) {
   return new Promise((resolve, reject) => {
     let shellRendered = false;
@@ -137,12 +137,12 @@ function handleBotRequest(
           shellRendered = true;
           const body = new PassThrough();
           const stream = createReadableStreamFromReadable(body);
-          responseHeaders.set('Content-Type', 'text/html');
+          responseHeaders.set("Content-Type", "text/html");
           resolve(
             new Response(stream, {
               headers: responseHeaders,
               status: responseStatusCode,
-            })
+            }),
           );
           pipe(body);
         },
@@ -155,7 +155,7 @@ function handleBotRequest(
             console.error(error);
           }
         },
-      }
+      },
     );
     setTimeout(abort, ABORT_DELAY);
   });
@@ -165,7 +165,7 @@ function handleBrowserRequest(
   request: Request,
   responseStatusCode: number,
   responseHeaders: Headers,
-  remixContext: EntryContext
+  remixContext: EntryContext,
 ) {
   return new Promise((resolve, reject) => {
     let shellRendered = false;
@@ -181,12 +181,12 @@ function handleBrowserRequest(
           shellRendered = true;
           const body = new PassThrough();
           const stream = createReadableStreamFromReadable(body);
-          responseHeaders.set('Content-Type', 'text/html');
+          responseHeaders.set("Content-Type", "text/html");
           resolve(
             new Response(stream, {
               headers: responseHeaders,
               status: responseStatusCode,
-            })
+            }),
           );
           pipe(body);
         },
@@ -199,7 +199,7 @@ function handleBrowserRequest(
             console.error(error);
           }
         },
-      }
+      },
     );
 
     setTimeout(abort, ABORT_DELAY);
@@ -212,9 +212,9 @@ function handleBrowserRequest(
 重點：在執行 `isSsrBuild`（即執行預設 `npm run build`）時，**不要排除 @mui 相關內容**；但在一般開發（`npm run dev`）時不做任何處理
 
 ```ts
-import { vitePlugin as remix } from '@remix-run/dev';
-import { defineConfig } from 'vite';
-import tsconfigPaths from 'vite-tsconfig-paths';
+import { vitePlugin as remix } from "@remix-run/dev";
+import { defineConfig } from "vite";
+import tsconfigPaths from "vite-tsconfig-paths";
 
 export default defineConfig(({ isSsrBuild }) => ({
   ssr: {

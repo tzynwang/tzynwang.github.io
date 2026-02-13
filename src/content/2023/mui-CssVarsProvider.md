@@ -2,7 +2,7 @@
 title: 使用 CssVarsProvider 來取得 MaterialUI 樣式的 CSS 變數
 date: 2023-02-05 13:51:29
 tag:
-- [MaterialUI]
+  - [MaterialUI]
 ---
 
 ## 總結
@@ -33,13 +33,13 @@ tag:
 透過 `import { Experimental_CssVarsProvider as CssVarsProvider } from '@mui/material/styles';` 來匯入 `CssVarsProvider` 元件，使用方式基本如下：
 
 ```tsx
-import * as React from 'react';
-import { render } from 'react-dom';
-import { Experimental_CssVarsProvider as CssVarsProvider } from '@mui/material/styles';
-import CssBaseline from '@mui/material/CssBaseline';
-import ToggleButton from './ToggleButton';
-import scopedStyle from './index.module.css';
-import './styles.css';
+import * as React from "react";
+import { render } from "react-dom";
+import { Experimental_CssVarsProvider as CssVarsProvider } from "@mui/material/styles";
+import CssBaseline from "@mui/material/CssBaseline";
+import ToggleButton from "./ToggleButton";
+import scopedStyle from "./index.module.css";
+import "./styles.css";
 
 function App() {
   /* Main */
@@ -69,7 +69,7 @@ function App() {
   );
 }
 
-const rootElement = document.getElementById('root');
+const rootElement = document.getElementById("root");
 render(<App />, rootElement);
 ```
 
@@ -123,18 +123,18 @@ return (
 搭配 `import { useColorScheme } from '@mui/material/styles';` 即可取得當下的 MaterialUI mode 資訊。也可透過 `setMode` 直接更新 mode 設定：
 
 ```tsx
-import React from 'react';
-import { useColorScheme } from '@mui/material/styles';
-import Button from '@mui/material/Button';
+import React from "react";
+import { useColorScheme } from "@mui/material/styles";
+import Button from "@mui/material/Button";
 
 function ToggleButton() {
   const { mode, setMode } = useColorScheme();
 
   const updateMuiMode = () => {
-    if (mode === 'light') {
-      setMode('dark');
+    if (mode === "light") {
+      setMode("dark");
     } else {
-      setMode('light');
+      setMode("light");
     }
   };
 

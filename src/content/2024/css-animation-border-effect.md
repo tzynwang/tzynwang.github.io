@@ -2,10 +2,10 @@
 title: CSS 筆記：邊線動畫效果
 date: 2024-03-24 20:39:33
 tag:
-- [CSS]
+  - [CSS]
 banner: /2024/css-animation-border-effect/daniele-levis-pelusi--aEpe2N916c-unsplash.jpg
 summary: 最近在做的 to c 產品需要一些小動畫來幫忙活絡氣氛，記錄一下如何透過 `:before` `:after` 以及 `conic-gradient()` 來做出邊線動畫效果 🪄
-draft: 
+draft:
 ---
 
 ## 成品展示
@@ -49,7 +49,7 @@ hover 目標元件後，會觸發邊線動畫效果：
 
 ```css
 .card:hover:before {
-  content: '';
+  content: "";
   position: absolute;
   width: 150%;
   height: 150%;
@@ -66,7 +66,7 @@ hover 目標元件後，會觸發邊線動畫效果：
 
 ```css
 .card:hover:after {
-  content: '';
+  content: "";
   position: absolute;
   height: calc(100% - 2 * var(--offset));
   width: calc(100% - 2 * var(--offset));

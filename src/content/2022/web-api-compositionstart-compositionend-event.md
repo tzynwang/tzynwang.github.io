@@ -2,7 +2,7 @@
 title: 2022 第50週 實作筆記：透過 compositionstart/compositionend 來暫停驗證輸入內容
 date: 2022-12-16 21:32:29
 tag:
-- [React]
+  - [React]
 ---
 
 ## 總結
@@ -19,8 +19,8 @@ tag:
 實作上的邏輯非常簡單，僅是「偵測到 `compositionstart` 時，暫停驗證行為；反之當輸入完成（偵測到 `compositionend` 事件後），再透過 `String.prototype.match()` 來判定輸入的內容是否有效。
 
 ```tsx
-import React, { memo, useRef, useState, useEffect } from 'react';
-import TextField from '@mui/material/TextField';
+import React, { memo, useRef, useState, useEffect } from "react";
+import TextField from "@mui/material/TextField";
 
 // INFO: 定義好有效字元的 regex，以下內容是允許「所有的中文字元」
 const VALID_CHARS_REGEX =
@@ -30,7 +30,7 @@ function Input1(): React.ReactElement {
   /* States */
   const inputRef = useRef<HTMLInputElement | null>(null);
   const [canVerify, setCanVerify] = useState<boolean>(true);
-  const [userInput, setUserInput] = useState<string>('');
+  const [userInput, setUserInput] = useState<string>("");
   // INFO: 只有在應該要開始驗證的時候，才回傳字元驗證結果，否則一律回傳 true 讓輸入欄位不要出現錯誤與提示文字
   const isValidInput = canVerify ? !!userInput.match(VALID_CHARS_REGEX) : true;
 
@@ -49,11 +49,11 @@ function Input1(): React.ReactElement {
   useEffect(() => {
     const ref = inputRef.current;
     // INFO: 偵測到 compositionstart 時，停止驗證；反之當 compositionend 時，開始內容驗證
-    ref?.addEventListener('compositionstart', stopVerify);
-    ref?.addEventListener('compositionend', startVerify);
+    ref?.addEventListener("compositionstart", stopVerify);
+    ref?.addEventListener("compositionend", startVerify);
     return () => {
-      ref?.removeEventListener('compositionstart', stopVerify);
-      ref?.removeEventListener('compositionend', startVerify);
+      ref?.removeEventListener("compositionstart", stopVerify);
+      ref?.removeEventListener("compositionend", startVerify);
     };
   }, []);
 
@@ -62,7 +62,7 @@ function Input1(): React.ReactElement {
     <TextField
       error={!isValidInput}
       fullWidth
-      helperText={isValidInput ? '' : '只能輸入中文字'}
+      helperText={isValidInput ? "" : "只能輸入中文字"}
       label="輸入一些中文（在你輸入注音時，不會進行內容判定）"
       margin="normal"
       onChange={handleUserInput}

@@ -1,9 +1,9 @@
 ---
-import SinglePostLayout from '@Components/pages/SinglePostLayout.astro';
-import { getPublishedPostsOfThisYear } from '@Tools/post';
+import SinglePostLayout from "@Components/pages/SinglePostLayout.astro";
+import { getPublishedPostsOfThisYear } from "@Tools/post";
 
 export async function getStaticPaths() {
-  return getPublishedPostsOfThisYear('2024');
+  return getPublishedPostsOfThisYear("2024");
 }
 
 const { entry } = Astro.props;

@@ -2,7 +2,7 @@
 title: VSCode Tab Decorations
 date: 2022-05-02 12:20:13
 tag:
-- [VSCode]
+  - [VSCode]
 ---
 
 ## 總結

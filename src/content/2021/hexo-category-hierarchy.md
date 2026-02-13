@@ -2,7 +2,7 @@
 title: Category hierarchy
 date: 2021-02-15 09:38:00
 tag:
-- [hexo]
+  - [hexo]
 ---
 
 ## Summary of this post

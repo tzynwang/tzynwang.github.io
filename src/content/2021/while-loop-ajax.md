@@ -2,7 +2,7 @@
 title: 為什麼在瀏覽器環境中使用while loop執行ajax request會讓頁面陷入凍結狀態？
 date: 2021-04-08 21:10:25
 tag:
-- [JavaScript]
+  - [JavaScript]
 ---
 
 ## 環境

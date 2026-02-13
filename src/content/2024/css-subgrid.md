@@ -2,10 +2,10 @@
 title: CSS 筆記：subgrid
 date: 2024-05-19 09:25:25
 tag:
-- [CSS]
+  - [CSS]
 banner: /2024/css-subgrid/alexander-grey-_Y3IuVbPpmU-unsplash.jpg
 summary: 有效治療排版強迫症，用來對付內容長短差距極大的元件更是妙不可言，但需要 16.0 的 Safari 瀏覽器，實作前請確認自家產品 TA 的裝置組成與版本分佈。
-draft: 
+draft:
 ---
 
 此篇筆記是在參考多篇文章與影片後濃縮的自用內容，不是新手教學文章，如果你完全不知道 CSS `subgrid` 的操作方式，可以先閱讀本篇最下方列出的參考資料。

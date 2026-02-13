@@ -2,7 +2,7 @@
 title: 快速筆記：使用 URL 與 URLSearchParams 建構子處理網址
 date: 2023-08-09 19:52:24
 tag:
-- [Web api]
+  - [Web api]
 summary: 此篇筆記會記錄如何使用 web api `URL` 與 `URLSearchParams` 來處理網址。
 banner: /2023/web-api-url-search-params/richy-great-MAYEkmn7G6E-unsplash.jpg
 ---
@@ -26,20 +26,20 @@ function getUrlSearchParams<T>(initialValue: T) {
 }
 
 // 以 https://example.com/product?category=A 為例，會取出 params = { category: 'A' }
-const params = getUrlSearchParams({ category: '' });
+const params = getUrlSearchParams({ category: "" });
 ```
 
 以下功能會產生一組「開啟 Gmail 並預先填好收件人與信件主旨」的 url 連結：
 
 ```ts
 function getMailUrl() {
-  const baseUrl = 'https://mail.google.com/mail/u/0/';
+  const baseUrl = "https://mail.google.com/mail/u/0/";
   const params = new URLSearchParams();
-  params.append('fs', '1');
-  params.append('tf', 'cm');
-  params.append('source', 'mailto');
-  params.append('to', 'mail@example.com');
-  params.append('su', '這裡寫主旨');
+  params.append("fs", "1");
+  params.append("tf", "cm");
+  params.append("source", "mailto");
+  params.append("to", "mail@example.com");
+  params.append("su", "這裡寫主旨");
   const url = new URL(baseUrl);
   url.search = params.toString();
   return url.href;

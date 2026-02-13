@@ -2,9 +2,9 @@
 title: 「電影清單（Vue版本）」技術記錄
 date: 2021-06-17 14:13:19
 tag:
-- [Vue]
-- [JavaScript]
-- [CSS]
+  - [Vue]
+  - [JavaScript]
+  - [CSS]
 ---
 
 ## 總結
@@ -74,32 +74,32 @@ os: Windows_NT 10.0.18363 win32 x64
 ```js
 // 使用getter
 const obj = {
-  log: ['a', 'b', 'c'],
+  log: ["a", "b", "c"],
   get latest() {
     if (this.log.length === 0) {
-      return undefined
+      return undefined;
     }
-    return this.log[this.log.length - 1]
-  }
+    return this.log[this.log.length - 1];
+  },
 };
 
-console.log(obj.latest) // expected output: "c"
+console.log(obj.latest); // expected output: "c"
 ```
 
 ```js
 // 不使用getter，直接執行obj.latest()
 // 注意與上方的程式碼差在latest後有無()
 const obj = {
-  log: ['a', 'b', 'c'],
+  log: ["a", "b", "c"],
   latest() {
     if (this.log.length === 0) {
-      return undefined
+      return undefined;
     }
-    return this.log[this.log.length - 1]
-  }
+    return this.log[this.log.length - 1];
+  },
 };
 
-console.log(obj.latest()) // expected output: "c"
+console.log(obj.latest()); // expected output: "c"
 ```
 
 ### CSS 部分

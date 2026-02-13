@@ -2,7 +2,7 @@
 title: 2022 第16週 實作筆記：Mui 滑動式清單
 date: 2022-04-23 11:35:33
 tag:
-- [MaterialUI]
+  - [MaterialUI]
 ---
 
 ## 總結
@@ -41,6 +41,7 @@ tag:
     </div>
   </div>
   ```
+
   - `___CustomRootClass___` 與 `MuiMenu-root` 並列
   - `___CustomPaperClass___` 與 `MuiMenu-paper` 並列
   - `___CustomListClass__` 與 `MuiMenu-list` 並列

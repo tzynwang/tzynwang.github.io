@@ -2,7 +2,7 @@
 title: 「X-Frame-Options、Same-origin policy、Cross-Origin Resource Sharing」相關筆記
 date: 2021-04-13 18:09:25
 tag:
-- [Web security]
+  - [Web security]
 ---
 
 ## 原始問題
@@ -118,18 +118,18 @@ os: Windows_NT 10.0.18363 win32 x64
 - 以 Express 為例：加上`cors()`
 
 ```js
-var express = require('express');
-var cors = require('cors');
+var express = require("express");
+var cors = require("cors");
 var app = express();
 
 app.use(cors()); // 讓server允許CORS
 
-app.get('/products/:id', function (req, res, next) {
-  res.json({ msg: 'This is CORS-enabled for all origins!' });
+app.get("/products/:id", function (req, res, next) {
+  res.json({ msg: "This is CORS-enabled for all origins!" });
 });
 
 app.listen(80, function () {
-  console.log('CORS-enabled web server listening on port 80');
+  console.log("CORS-enabled web server listening on port 80");
 });
 ```
 

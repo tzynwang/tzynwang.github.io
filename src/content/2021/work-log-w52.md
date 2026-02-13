@@ -2,7 +2,7 @@
 title: 2021 第52週 學習記錄：前端測試
 date: 2021-12-29 21:17:18
 tag:
-- [Testing]
+  - [Testing]
 ---
 
 ## 總結
@@ -58,26 +58,25 @@ tag:
   });
   ```
 - 1.2 Structure tests by the AAA pattern 測試 code 的本體建議以 Arrange-Act-Assert 的順序來撰寫
-
   - Arrange: All the **setup code** to bring the system to the scenario the test aims to simulate. 設定好測試環境
   - Act: **Execute** the unit under test. 執行測試
   - Assert: Ensure that the **received value satisfies the expectation**. 確認測試的產出是否符合預期
 
   ```js
-  describe('Customer classifier', () => {
-    test('When customer spent more than 500$, should be classified as premium', () => {
+  describe("Customer classifier", () => {
+    test("When customer spent more than 500$, should be classified as premium", () => {
       //Arrange
       const customerToClassify = { spent: 505, joined: new Date(), id: 1 };
       const DBStub = sinon
-        .stub(dataAccess, 'getCustomer')
-        .reply({ id: 1, classification: 'regular' });
+        .stub(dataAccess, "getCustomer")
+        .reply({ id: 1, classification: "regular" });
 
       //Act
       const receivedClassification =
         customerClassifier.classifyCustomer(customerToClassify);
 
       //Assert
-      expect(receivedClassification).toMatch('premium');
+      expect(receivedClassification).toMatch("premium");
     });
   });
   ```
@@ -99,10 +98,10 @@ tag:
   - Practically, make each test case explicitly add the DB records it needs and **act only on those records**.
 - 1.10 Don’t catch errors, expect them
   ```js
-  it('When no product name, it throws error 400', async () => {
+  it("When no product name, it throws error 400", async () => {
     await expect(addNewProduct({}))
       .to.eventually.throw(AppError)
-      .with.property('code', 'InvalidInput');
+      .with.property("code", "InvalidInput");
   });
   ```
 - 1.11 Tag your tests 為測試分類，各類開發階段應執行不同類型的測試
@@ -110,14 +109,14 @@ tag:
 - 1.12 Categorize tests under at least 2 levels
 
   ```js
-  describe('Transfer service', () => {
+  describe("Transfer service", () => {
     //Scenario
-    describe('When no credit', () => {
+    describe("When no credit", () => {
       //Expectation
-      test('Then the response status should decline', () => {});
+      test("Then the response status should decline", () => {});
 
       //Expectation
-      test('Then it should send email to admin', () => {});
+      test("Then it should send email to admin", () => {});
     });
   });
   ```

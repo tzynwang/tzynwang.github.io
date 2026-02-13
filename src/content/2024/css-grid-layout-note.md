@@ -2,10 +2,10 @@
 title: 快速筆記：用 grid 搞定佈局變化較大的 RWD
 date: 2024-12-14 10:48:41
 tag:
-- [CSS]
+  - [CSS]
 banner: /2024/css-grid-layout-note/gleb-gurenko-EEeRzM3U_XQ-unsplash.jpg
 summary: 標題有點難下。簡單來說就是除了靠傳統的 fixed 搭配一大堆 margin 跟 height 計算之外，其實也可以考慮用 grid-template-columns/rows 搭配 grid-column/rows 來處理一些大小版佈局變化較明顯的排版。
-draft: 
+draft:
 ---
 
 這篇是給未來的自己當備忘錄的 grid 排版筆記。我流重點如下：

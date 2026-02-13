@@ -2,8 +2,8 @@
 title: 「CSS pseudo class與pseudo element」相關筆記
 date: 2021-09-05 13:16:09
 tag:
-- [Browser]
-- [CSS]
+  - [Browser]
+  - [CSS]
 ---
 
 ## 原始問題

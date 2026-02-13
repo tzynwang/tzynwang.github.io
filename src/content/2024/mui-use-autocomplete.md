@@ -2,10 +2,10 @@
 title: 透過 useAutocomplete 來處理 Material UI 5 Autocomplete 的樣式客製化需求
 date: 2024-04-14 19:47:35
 tag:
-- [MaterialUI]
+  - [MaterialUI]
 banner: /2024/mui-use-autocomplete/torbjorn-helgesen-C4FbCe4L_pw-unsplash.jpg
 summary: 如題，記錄一下如何對 MUI 5 的 Autocomplete 進行完全的樣式客製化。
-draft: 
+draft:
 ---
 
 ## 版本與環境
@@ -25,9 +25,9 @@ const [value, setValue] = useState<string | null>(options[0]);
   value={value}
   onChange={(_, newValue: string | null) => {
     setValue(newValue);
-}}
+  }}
   options={options}
-/>
+/>;
 ```
 
 改為：
@@ -73,7 +73,7 @@ const listBoxProps = getListboxProps();
       ))}
     </ul>
   ) : null}
-</section>
+</section>;
 ```
 
 完整的[程式碼](https://stackblitz.com/edit/react-d3vwze?file=UseAutocomplete.tsx)放這裡。

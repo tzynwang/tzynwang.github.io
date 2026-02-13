@@ -2,10 +2,10 @@
 title: 你現在在做什麼？不要找藉口——《晉身怪傑》書摘
 date: 2025-06-22 07:43:57
 tag:
-- [閱讀筆記]
+  - [閱讀筆記]
 banner: /2025/book-being-geek/gerald-schombs-BqySllTmBhk-unsplash.jpg
 summary: 雖然是 15 年前的書了，但有些內容對現代工程師還是有當頭棒喝的效果。總之先記下來提醒自己不要過得太安逸。
-draft: 
+draft:
 ---
 
 這篇是[《晉身怪傑》](https://www.tenlong.com.tw/products/9789862765777)的書摘。這本書的目的在它的副標題 "The Software Developer's Career Handbook" 昭然若揭。雖然是一本 15 年前就出版的書，但有些內容放到現代依舊辛辣有效，是一本在職場迷惘時可以拿出來壓壓驚的讀物。

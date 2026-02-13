@@ -2,10 +2,10 @@
 title: CSS 筆記：處理 safari display grid 破版問題
 date: 2024-04-12 19:21:47
 tag:
-- [CSS]
+  - [CSS]
 banner: /2024/css-safari-grid-template-rows-bug/kelly-sikkema-n4FujS2oSng-unsplash.jpg
 summary: 發現 Material UI 5 的 RadioGroup 元件使用 flex 排版，而如果工程師在 RadioGroup 的子元件用 grid 排版且沒有額外設定 grid-template-rows，則子元件的排版有機率在 safari 瀏覽器中炸裂 ¯\_(ツ)_/¯
-draft: 
+draft:
 ---
 
 ## 版本與環境

@@ -2,7 +2,7 @@
 title: 「JavaScript初級面試題目」相關筆記
 date: 2021-10-18 13:52:32
 tag:
-- [JavaScript]
+  - [JavaScript]
 ---
 
 ## 總結
@@ -24,7 +24,7 @@ tag:
 // functional scope
 (() => {
   {
-    var s = 'hello world';
+    var s = "hello world";
   }
   console.log(s);
 })();
@@ -35,7 +35,7 @@ tag:
 // block scope
 (() => {
   {
-    let s = 'hello world';
+    let s = "hello world";
   }
   console.log(s);
 })();
@@ -47,10 +47,10 @@ tag:
 
 ```js
 console.log(a); // Uncaught ReferenceError: b is not defined
-let a = 'hello world';
+let a = "hello world";
 
 console.log(b); // undefined
-var b = 'hello world';
+var b = "hello world";
 ```
 
 ### 請調整以下程式碼，使其每隔一秒依序印出數列 01234
@@ -77,7 +77,7 @@ var b = 'hello world';
           console.log(i);
         };
       })(i),
-      1000 * i
+      1000 * i,
     );
   }
 })();
@@ -88,11 +88,11 @@ var b = 'hello world';
 ```js
 {
   (function () {
-    var a = (b = 'hello world');
+    var a = (b = "hello world");
   })();
 
-  console.log(`a defined? ${typeof a !== 'undefined'}`);
-  console.log(`b defined? ${typeof b !== 'undefined'}`);
+  console.log(`a defined? ${typeof a !== "undefined"}`);
+  console.log(`b defined? ${typeof b !== "undefined"}`);
 }
 ```
 
@@ -102,7 +102,7 @@ var b = 'hello world';
 ```js
 {
   (function () {
-    b = 'hello world';
+    b = "hello world";
     var a = b;
   })();
 }
@@ -121,13 +121,13 @@ let aLet;
 
 ```js
 typeof aConst;
-const aConst = 'hello world';
+const aConst = "hello world";
 // Uncaught ReferenceError: Cannot access 'aConst' before initialization
 ```
 
 ```js
-typeof aConst2
-const aConst2
+typeof aConst2;
+const aConst2;
 // Uncaught SyntaxError: Missing initializer in const declaration
 ```
 
@@ -157,10 +157,10 @@ console.log(parseFloat((0.1 + 0.2).toPrecision(1)) === 0.3); // true
 
 ```js
 console.log(v); // 輸出undefined，不會報錯
-var v = 'hello world';
+var v = "hello world";
 
 console.log(c); // Uncaught ReferenceError: c is not defined
-const c = 'hello again';
+const c = "hello again";
 ```
 
 備註：參考 MDN，各家瀏覽器的錯誤訊息有所差異；分別是 `ReferenceError: Cannot access 'c' before initialization (Edge)`、`ReferenceError: can't access lexical declaration 'c' before initialization (Firefox)` 與 `ReferenceError: 'c' is not defined (Chrome)`
@@ -178,11 +178,11 @@ console.log(bar());
 console.log(foo());
 
 function bar() {
-  return 'bar';
+  return "bar";
 }
 
 var foo = () => {
-  return 'foo';
+  return "foo";
 };
 ```
 
@@ -195,7 +195,7 @@ var foo = () => {
 ```js
 let bar = true;
 console.log(bar + 0);
-console.log(bar + 'hello world');
+console.log(bar + "hello world");
 console.log(bar + true);
 console.log(bar + false);
 ```
@@ -207,13 +207,13 @@ console.log(bar + false);
 
 ```js
 // String + String -> concatenation
-'foo' + 'bar'; // "foobar"
+"foo" + "bar"; // "foobar"
 
 // Number + String -> concatenation
-5 + 'foo'; // "5foo"
+5 + "foo"; // "5foo"
 
 // String + Boolean -> concatenation
-'foo' + false; // "foofalse"
+"foo" + false; // "foofalse"
 ```
 
 ```js
@@ -232,7 +232,7 @@ false + false; // 0
 備註：if statement、while statement 與 `==` 也會觸發隱性的強制轉型，也可有以下操作：
 
 ```js
-let n = '123';
+let n = "123";
 console.log(typeof +n); // number
 ```
 
@@ -242,7 +242,7 @@ console.log(typeof +n); // number
 
 ```js
 (() => {
-  console.log('hello world');
+  console.log("hello world");
 })();
 // 會直接輸出'hello world'
 ```
@@ -338,9 +338,9 @@ console.log(arr2); // [1, 2, 3]
 - `Object.assign()`或`Array.prototype.map()`
 
 ```js
-const obj1 = { a: 'apple' };
+const obj1 = { a: "apple" };
 const obj2 = Object.assign({}, obj1);
-obj1.b = 'banana';
+obj1.b = "banana";
 console.log(obj2); // { a: 'apple' }
 
 const arr1 = [1, 2, 3];
@@ -352,20 +352,20 @@ console.log(arr2); // [1, 2, 3]
 - 深拷貝：`JSON.stringify()`搭配`JSON.parse()`，但注意此方式無法處理包含 function 的陣列、物件
 
 ```js
-const obj1 = { a: 'apple' };
+const obj1 = { a: "apple" };
 const obj2 = JSON.parse(JSON.stringify(arr1));
-obc1.b = 'banana';
+obc1.b = "banana";
 console.log(obj2); // { a: "apple" }
 ```
 
 ### 請回答以下程式碼輸出結果
 
 ```js
-let pay = '1000';
+let pay = "1000";
 
 (() => {
   console.log(`origin pay is ${pay}`);
-  var pay = '5000';
+  var pay = "5000";
   console.log(`new pay is ${pay}`);
 })();
 ```
@@ -383,8 +383,8 @@ let pay = '1000';
 console.log(this); // Window
 
 const obj = {
-  firstName: 'Charlie',
-  lastName: 'Wang',
+  firstName: "Charlie",
+  lastName: "Wang",
   greet: function () {
     console.log(`Hello ${this.firstName}`);
     function nestInGreet() {
@@ -413,18 +413,18 @@ obj.greet();
 
 ```js
 const obj = {
-  firstName: 'Charlie',
-  lastName: 'Wang',
+  firstName: "Charlie",
+  lastName: "Wang",
 };
 
 function greet(a, b) {
   return `${a} ${this.firstName}, ${b}`;
 }
 
-console.log(greet.call(obj, 'Hello', 'how are you?')); // Hello Charlie, how are you?
-console.log(greet.apply(obj, ['Hello', 'how are you?'])); // Hello Charlie, how are you?
+console.log(greet.call(obj, "Hello", "how are you?")); // Hello Charlie, how are you?
+console.log(greet.apply(obj, ["Hello", "how are you?"])); // Hello Charlie, how are you?
 const bindGreet = greet.bind(obj);
-console.log(bindGreet('Hello', 'how are you?')); // Hello Charlie, how are you?
+console.log(bindGreet("Hello", "how are you?")); // Hello Charlie, how are you?
 ```
 
 ## 第三週題目串
@@ -433,7 +433,7 @@ console.log(bindGreet('Hello', 'how are you?')); // Hello Charlie, how are you?
 
 ```js
 var hero = {
-  _name: 'John Doe',
+  _name: "John Doe",
   getSecretIdentity: function () {
     return this._name;
   },
@@ -464,7 +464,7 @@ console.log(hero.getSecretIdentity());
 
   (b) => {
     console.log(arguments);
-  }
+  },
 )();
 // Uncaught ReferenceError: arguments is not defined
 ```
@@ -496,9 +496,9 @@ console.log(hero.getSecretIdentity());
 const myPromise = new Promise((resolve, reject) => {
   const r = Math.floor(Math.random() * 10);
   if (r > 5) {
-    resolve('成功');
+    resolve("成功");
   } else {
-    reject('失敗');
+    reject("失敗");
   }
 });
 
@@ -515,7 +515,7 @@ myPromise
 function promiseF(num, time = 500) {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
-      num ? resolve(`${num}, success`) : reject('fail');
+      num ? resolve(`${num}, success`) : reject("fail");
     }, time);
   });
 }
@@ -559,9 +559,9 @@ console.log(4);
 #### 第三題
 
 ```js
-setTimeout(() => alert('timeout!'));
-Promise.resolve().then(() => alert('promise!'));
-alert('global alert!');
+setTimeout(() => alert("timeout!"));
+Promise.resolve().then(() => alert("promise!"));
+alert("global alert!");
 ```
 
 - 先`global alert!`，接著 `promise!`，最後 `timeout!`

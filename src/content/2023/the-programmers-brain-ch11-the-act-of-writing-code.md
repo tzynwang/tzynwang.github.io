@@ -2,10 +2,10 @@
 title: 閱讀筆記：The Programmer's Brain Chapter 11 The act of writing code
 date: 2023-10-26 19:32:17
 tag:
-- [General]
+  - [General]
 banner: /2023/the-programmers-brain-ch11-the-act-of-writing-code/k8-rJ236eQHXGA-unsplash.jpg
 summary: 即使都稱為「開發（programming）」，也有可能消耗不同種類的心智活動。另外，工作到一半被打斷、打擾，是真的會降低生產力的。
-draft: 
+draft:
 ---
 
 ## 總結

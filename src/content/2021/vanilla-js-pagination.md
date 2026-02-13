@@ -2,7 +2,7 @@
 title: 自主練習「純手工pagination」技術記錄
 date: 2021-04-15 19:29:46
 tag:
-- [JavaScript]
+  - [JavaScript]
 ---
 
 ## 總結

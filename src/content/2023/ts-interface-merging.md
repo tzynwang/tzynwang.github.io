@@ -2,7 +2,7 @@
 title: 2023 第1週 學習筆記：TypeScript 中的 interface merging
 date: 2023-01-07 12:48:40
 tag:
-- [TypeScript]
+  - [TypeScript]
 ---
 
 ## 總結
@@ -40,13 +40,13 @@ interface User {
 }
 
 const u1: User = {
-  name: 'user1',
+  name: "user1",
 };
 
 const u2: User = {
-  name: 'user2',
+  name: "user2",
   age: 42,
-  job: 'engineer',
+  job: "engineer",
 };
 ```
 

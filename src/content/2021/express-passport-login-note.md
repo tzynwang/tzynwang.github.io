@@ -2,7 +2,7 @@
 title: 「使用passport middleware實作登入系統」相關筆記
 date: 2021-06-24 13:41:18
 tag:
-- [Express]
+  - [Express]
 ---
 
 ## 總結
@@ -68,7 +68,6 @@ os: Windows_NT 10.0.18363 win32 x64
 - 關於`.isAuthenticated()`
 
   ![We just don't have it in the docs](/2021/express-passport-login-note/it_just_works_king_crimson.jpg)
-
   - [How is req.isAuthenticated() in Passport JS implemented?](https://stackoverflow.com/questions/38820251/how-is-req-isauthenticated-in-passport-js-implemented)
     For any request, you can check if a user **is authenticated or not** by using this method.
   - [No Mention of isAuthenticated() in docs #683](https://github.com/jaredhanson/passport/issues/683)

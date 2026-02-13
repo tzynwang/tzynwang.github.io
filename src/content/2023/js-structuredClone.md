@@ -2,7 +2,7 @@
 title: JavaScript 原生深拷貝功能：structuredClone
 date: 2023-05-20 12:48:14
 tag:
-- [JavaScript]
+  - [JavaScript]
 ---
 
 ## 總結
@@ -27,12 +27,12 @@ Node.js: 17.0.0
 
 ```ts
 const obj1 = {
-  fruit: ['apple', 'banana', 'cherry'],
-  vegetable: ['broccoli', 'carrot'],
+  fruit: ["apple", "banana", "cherry"],
+  vegetable: ["broccoli", "carrot"],
 };
 const obj2 = structuredClone(obj1);
 
-obj1.vegetable.push('garlic');
+obj1.vegetable.push("garlic");
 console.info(obj1);
 /*
 {
@@ -53,12 +53,12 @@ console.info(obj2);
 
 ```ts
 const obj1 = {
-  fruit: ['apple', 'banana', 'cherry'],
-  vegetable: ['broccoli', 'carrot'],
+  fruit: ["apple", "banana", "cherry"],
+  vegetable: ["broccoli", "carrot"],
 };
 const obj2 = { ...obj1 };
 
-obj1.vegetable.push('garlic');
+obj1.vegetable.push("garlic");
 console.info(obj1);
 /*
 {

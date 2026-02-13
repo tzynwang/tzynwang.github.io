@@ -2,7 +2,7 @@
 title: 2022 第45週 試用筆記：HTMLImageElement.srcset
 date: 2022-11-12 21:25:59
 tag:
-- [Web performance]
+  - [Web performance]
 ---
 
 ## 總結
@@ -34,10 +34,10 @@ firefox: 105.0.1
 相較之下範例 2 在兩款瀏覽器上透過開發者工具來觀察則很好理解，透過 dev tool 切換裝置 dpr 後，即可觀察到瀏覽器根據 dpr 設定使用對應的圖片。
 
 ```tsx
-import img640 from '@Assets/alexander-andrews-mEdKuPYJe1I-640.jpg';
-import img960 from '@Assets/ray-hennessy-xUUZcpQlqpM-960.jpg';
-import img1280 from '@Assets/erik-mclean-OVWn1sbGIYQ-1280.jpg';
-import img1920 from '@Assets/qijin-xu-fJyO0eo6_1920.jpg';
+import img640 from "@Assets/alexander-andrews-mEdKuPYJe1I-640.jpg";
+import img960 from "@Assets/ray-hennessy-xUUZcpQlqpM-960.jpg";
+import img1280 from "@Assets/erik-mclean-OVWn1sbGIYQ-1280.jpg";
+import img1920 from "@Assets/qijin-xu-fJyO0eo6_1920.jpg";
 
 // 範例1 根據尺寸使用對應檔案
 <img

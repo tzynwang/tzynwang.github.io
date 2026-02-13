@@ -2,7 +2,7 @@
 title: 2022 第2週 學習記錄：React Forwarding Refs
 date: 2022-01-15 20:20:21
 tag:
-- [React]
+  - [React]
 ---
 
 ## 總結
@@ -21,7 +21,6 @@ functional component 無法直接搭配 `useRef()` 來操作其 DOM，本篇紀�
 
 - 在需要傳遞 `ref` 的情境下，使用 `React.forwardRef()` 來建立 functional component（參考以下 gist 中的 `Layer.TableContainer.tsx`）
 - 傳入 `React.forwardRef()` 的 arrow function 形式如右：`(props, ref) => {/* return a component */}`；第一個參數為 `props`，`ref` 放在 arrow function 的第二個參數傳入
-
   - 或參考 stackOverFlow 上的寫法：
 
   ```tsx

@@ -2,7 +2,7 @@
 title: 作業功能擴充：讓老爸的私房錢「可以記住使用者的登入狀態」
 date: 2021-07-10 15:13:24
 tag:
-- [Express]
+  - [Express]
 ---
 
 ## 總結
@@ -35,7 +35,6 @@ os: Windows_NT 10.0.18363 win32 x64
 
 - sessions**不是**Chrome DevTools 打開來切換到 Application 分頁看到的 session storage
 - sessions 儲存在伺服器端，不存在使用者的瀏覽器中
-
   - 而 sessions 實際究竟儲存在 Express.js 伺服器的「哪裡」則是根據開發者的設定決定
   - 參考「[Where does express js save session details?](https://stackoverflow.com/questions/23821302/where-does-express-js-save-session-details)」，在沒有任何設定的情況下，Express.js 伺服器會把 sessions 儲存在 RAM 中，所以重啟伺服器後，已登入的使用者也會被踢回登入畫面
   - 而如果把 sessions 保存在 Redis 或 MongoDB 等資料庫裡面的話，重啟 Web APP 的伺服器也不會失去 sessions 資料，已登入的使用者會繼續維持登入狀態

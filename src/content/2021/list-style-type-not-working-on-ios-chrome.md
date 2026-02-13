@@ -2,7 +2,7 @@
 title: 為什麼iOS上的Chrome沒有呈現設定好的list-style-type
 date: 2021-04-22 11:53:12
 tag:
-- [CSS]
+  - [CSS]
 ---
 
 ![一種Chrome，各自表述渲染結果](/2021/list-style-type-not-working-on-ios-chrome/ask.jpg)
@@ -30,7 +30,7 @@ HTML 內容如下：
 
 ```css
 #thumbs-up li {
-  list-style-type: '\1F44D';
+  list-style-type: "\1F44D";
 }
 ```
 
@@ -79,7 +79,7 @@ HTML 內容不變，CSS 樣式改為以下內容：
 }
 
 #thumbs-up li::before {
-  content: '👍 ';
+  content: "👍 ";
   /* 使用content搭配::before來填入樣式內容 */
 }
 ```

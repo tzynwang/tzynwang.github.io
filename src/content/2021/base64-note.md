@@ -2,7 +2,7 @@
 title: 「Base64」相關筆記
 date: 2021-07-05 11:18:25
 tag:
-- [Data exchange format]
+  - [Data exchange format]
 ---
 
 ## 總結
@@ -28,7 +28,6 @@ tag:
   - Base64 is particularly prevalent on the World Wide Web where its uses include the ability **to embed image files** (or other binary assets) **inside textual assets** such as **HTML** and **CSS files**.
   - Base64 is also widely used for **sending e-mail attachments**. This is required because SMTP (in its **original form**) was designed to transport **7-bit ASCII characters only**.
 - Text-based protocols (according to [Wiki](https://en.wikipedia.org/wiki/Binary_protocol)):
-
   - IRC, old versions of SMTP, HTTP/1.1
 
 - [elmah.io](https://elmah.io/tools/base64-image-encoder/):

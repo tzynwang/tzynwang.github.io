@@ -2,7 +2,7 @@
 title: 「10 modern layouts in 1 line of CSS」相關筆記
 date: 2021-03-07 12:36:03
 tag:
-- [CSS]
+  - [CSS]
 ---
 
 ## 總結
@@ -106,13 +106,13 @@ grid-template-areas: none;
 
 ```css
 .header {
-    padding: 2rem;
-    grid-column: 1 / 4;
-    /* column從line 1開始，到lin 4結束 */
-    /* 可以換成
+  padding: 2rem;
+  grid-column: 1 / 4;
+  /* column從line 1開始，到lin 4結束 */
+  /* 可以換成
     grid-column-start: 1;
     grid-column-end: 4;  */
-  }
+}
 
 .left-side {
   grid-column: 1 / 2;

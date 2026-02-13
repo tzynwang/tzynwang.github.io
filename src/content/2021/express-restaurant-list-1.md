@@ -2,8 +2,8 @@
 title: 從零開始重寫：餐廳清單（Express版）路由、METHODS重構
 date: 2021-06-22 14:06:28
 tag:
-- [Express]
-- [HTML]
+  - [Express]
+  - [HTML]
 ---
 
 ## 總結
@@ -47,12 +47,12 @@ os: Windows_NT 10.0.18363 win32 x64
   官方示範程式碼：
 
   ```js
-  const express = require('express');
-  const methodOverride = require('method-override');
+  const express = require("express");
+  const methodOverride = require("method-override");
   const app = express();
 
   // override with POST having ?_method=DELETE
-  app.use(methodOverride('_method'));
+  app.use(methodOverride("_method"));
   ```
 
   ```html

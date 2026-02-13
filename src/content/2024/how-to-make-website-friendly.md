@@ -2,10 +2,10 @@
 title: 如何讓你的網站對使用者友善，或是如何不要讓使用者感覺像是被你的網站拷問
 date: 2024-10-29 19:08:45
 tag:
-- [Product Design]
+  - [Product Design]
 banner: /2024/how-to-make-website-friendly/對宅宅友善的辣妹.jpg
 summary: 此篇是 NDC Oslo 議程 How to Make Your Website Not Ugly 的自用筆記。議程標題雖然是 ugly，但實際演講內容比較接近「如何讓產品（網站）對使用者更友善」。
-draft: 
+draft:
 ---
 
 ## 總結

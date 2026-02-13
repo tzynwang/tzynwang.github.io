@@ -2,7 +2,7 @@
 title: 閱讀筆記：Good Code, Bad Code Chapter 9 Make code reusable and generalizable
 date: 2023-04-12 19:24:18
 tag:
-- [Software Architecture]
+  - [Software Architecture]
 ---
 
 ## 總結
@@ -41,7 +41,7 @@ tag:
 function getAvatarImageUrl(user: User) {
   return user.avatar_image_url
     ? user.avatar_image_url
-    : 'asset/default_avatar_image.jpg';
+    : "asset/default_avatar_image.jpg";
 }
 ```
 

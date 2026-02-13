@@ -2,7 +2,7 @@
 title: 2022 第42週 實作筆記：TypeScript type predicates
 date: 2022-10-21 19:45:14
 tag:
-- [TypeScript]
+  - [TypeScript]
 ---
 
 ## 問題描述
@@ -28,18 +28,18 @@ interface AttachmentB {
 
 /* 接下來要根據 url 內容來判定該檔案屬於類型 A 或類型 B */
 const attachmentMixed: AttachmentFromGCS[] = [
-  { url: 'xxx/typeA/xxx', name: 'file1', size: 8000 },
-  { url: 'xxx/typeB/xxx', name: 'file2', size: 600 },
-  { url: 'xxx/typeB/xxx', name: 'file3', size: 960 },
+  { url: "xxx/typeA/xxx", name: "file1", size: 8000 },
+  { url: "xxx/typeB/xxx", name: "file2", size: 600 },
+  { url: "xxx/typeB/xxx", name: "file3", size: 960 },
 ];
 
 /* 但以下寫法在 TypeScript 4.8.4 版依舊會報錯 */
 const resultFail: (AttachmentA | AttachmentB)[] = attachmentMixed
   .map((attach) => {
-    if (attach.url.includes('typeA')) {
+    if (attach.url.includes("typeA")) {
       return { fileName: attach.name, fileSize: attach.size };
     }
-    if (attach.url.includes('typeB')) {
+    if (attach.url.includes("typeB")) {
       return { fileName: attach.name, fileUrl: attach.url };
     }
     return null;
@@ -59,10 +59,10 @@ Type '({ fileName: string; fileSize: number; fileUrl?: undefined; } | { fileName
 /* 可以透過 type predicates 來讓 .filter() 發揮作用 */
 const resultPass: (AttachmentA | AttachmentB)[] = attachmentMixed
   .map((attach) => {
-    if (attach.url.includes('typeA')) {
+    if (attach.url.includes("typeA")) {
       return { fileName: attach.name, fileSize: attach.size };
     }
-    if (attach.url.includes('typeB')) {
+    if (attach.url.includes("typeB")) {
       return { fileName: attach.name, fileUrl: attach.url };
     }
     return null;
@@ -81,10 +81,10 @@ const resultPass: (AttachmentA | AttachmentB)[] = attachmentMixed
 ```ts
 const resultPass: (AttachmentA | AttachmentB)[] = attachmentMixed
   .map((attach) => {
-    if (attach.url.includes('typeA')) {
+    if (attach.url.includes("typeA")) {
       return { fileName: attach.name, fileSize: attach.size };
     }
-    if (attach.url.includes('typeB')) {
+    if (attach.url.includes("typeB")) {
       return { fileName: attach.name, fileUrl: attach.url };
     }
     return null;

@@ -2,7 +2,7 @@
 title: 閱讀筆記：The Programmer's Brain Chapter 3 How to learn programming syntax quickly
 date: 2023-07-02 18:31:33
 tag:
-- [General]
+  - [General]
 ---
 
 ## 總結

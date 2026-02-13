@@ -2,7 +2,7 @@
 title: 葫蘆裡的 React：關於組件（components）與元素（elements）
 date: 2024-01-08 08:05:59
 tag:
-- [React]
+  - [React]
 banner: /2024/react-under-the-hood-components-elements-and-instances/luis-aguila-xLvIcAYuuMQ-unsplash.jpg
 summary: 你知道嗎？對 React 來說，組件（components）、組件實例（components instances）和元素（elements）這三者是不同的東西唷 🌚
 draft: 

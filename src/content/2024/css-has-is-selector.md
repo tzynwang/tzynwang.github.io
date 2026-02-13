@@ -2,10 +2,10 @@
 title: CSS :has / :is 選取器筆記
 date: 2024-06-09 13:38:20
 tag:
-- [CSS]
+  - [CSS]
 banner: /2024/css-has-is-selector/agence-olloweb-Z2ImfOCafFk-unsplash.jpg
 summary: 在休假前經手了一個 wordpress 的樣式調整任務，故趁機整理了一篇關於 CSS 選取器  :has() 和 :is() 的筆記。
-draft: 
+draft:
 ---
 
 簡易的可操作範例可參考 [codepen](https://codepen.io/Charlie7779/pen/VwOPxQW)。

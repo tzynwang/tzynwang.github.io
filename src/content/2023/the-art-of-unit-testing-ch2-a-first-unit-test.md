@@ -2,10 +2,10 @@
 title: 閱讀筆記：The Art of Unit Testing Chapter 2 A first unit test
 date: 2023-12-17 13:03:40
 tag:
-- [Testing]
+  - [Testing]
 banner: /2023/the-art-of-unit-testing-ch2-a-first-unit-test/towfiqu-barbhuiya-J6g_szOtMF4-unsplash.jpg
 summary: 此為 The Art of Unit Testing 第二章的閱讀筆記。此章介紹了測試框架 Jest 與撰寫單元測試的架構、命名技巧。也說明濫用 .beforeEach() 的副作用，以及如何透過工廠模式（factory method）來避免在 .beforeEach() 塞入太多設定的問題。
-draft: 
+draft:
 ---
 
 ## 筆記總結
@@ -64,15 +64,15 @@ function verifyPassword(input, rules) {
 指「先安排（arrange）環境，再執行（act）功能，最後驗證（assert）結果」的測試架構。此架構能讓工程師輕鬆理解一個測試的情境與目的。
 
 ```js
-test('badly named test', () => {
+test("badly named test", () => {
   // arrange part
-  const fakeRule = (input) => ({ passed: false, reason: 'fake reason' });
+  const fakeRule = (input) => ({ passed: false, reason: "fake reason" });
 
   // act part
-  const errors = verifyPassword('any value', [fakeRule]);
+  const errors = verifyPassword("any value", [fakeRule]);
 
   // assert part
-  expect(errors[0]).toMatch('fake reason');
+  expect(errors[0]).toMatch("fake reason");
 });
 ```
 
@@ -109,12 +109,12 @@ function verifyPassword(input, rules) {
 
 ```js
 // unit
-test('verifyPassword, given a failing rule, returns errors', () => {
+test("verifyPassword, given a failing rule, returns errors", () => {
   // scenario
-  const fakeRule = (input) => ({ passed: false, reason: 'fake reason' });
-  const errors = verifyPassword('any value', [fakeRule]);
+  const fakeRule = (input) => ({ passed: false, reason: "fake reason" });
+  const errors = verifyPassword("any value", [fakeRule]);
   // expected behavior
-  expect(errors[0]).toContain('fake reason');
+  expect(errors[0]).toContain("fake reason");
 });
 ```
 
@@ -127,11 +127,11 @@ test('verifyPassword, given a failing rule, returns errors', () => {
 讓 `describe()` 描述被測試的單元（unit），讓 `test()` 描述情境（scenario）與預期結果（expected behavior）：
 
 ```js
-describe('verifyPassword', () => {
-  test('given a failing rule, returns errors', () => {
-    const fakeRule = (input) => ({ passed: false, reason: 'fake reason' });
-    const errors = verifyPassword('any value', [fakeRule]);
-    expect(errors[0]).toContain('fake reason');
+describe("verifyPassword", () => {
+  test("given a failing rule, returns errors", () => {
+    const fakeRule = (input) => ({ passed: false, reason: "fake reason" });
+    const errors = verifyPassword("any value", [fakeRule]);
+    expect(errors[0]).toContain("fake reason");
   });
 });
 ```
@@ -141,15 +141,15 @@ describe('verifyPassword', () => {
 `describe()` 支援巢狀結構，所以還能進一步將單元測試的情境（scenario）也收納到 `describe()` 中：
 
 ```js
-describe('verifyPassword', () => {
-  describe('with a failing rule', () => {
+describe("verifyPassword", () => {
+  describe("with a failing rule", () => {
     // arrange, scenario
-    const fakeRule = (input) => ({ passed: false, reason: 'fake reason' });
-    test('returns errors', () => {
+    const fakeRule = (input) => ({ passed: false, reason: "fake reason" });
+    test("returns errors", () => {
       // act
-      const errors = verifyPassword('any value', [fakeRule]);
+      const errors = verifyPassword("any value", [fakeRule]);
       // assert, expected behavior
-      expect(errors[0]).toContain('fake reason');
+      expect(errors[0]).toContain("fake reason");
     });
   });
 });
@@ -162,12 +162,12 @@ describe('verifyPassword', () => {
 `it()` 與 `test()` 在 Jest 中是等價功能。硬要說的話—— `it()` 會讓測試讀起來比較自然。將本書章節 2.5.6 測試中的 `test()` 以 `it()` 取代後，會增加一點 BDD (behavior-driven development) 風味：
 
 ```js
-describe('verifyPassword', () => {
-  describe('with a failing rule', () => {
-    it('returns errors', () => {
-      const fakeRule = (input) => ({ passed: false, reason: 'fake reason' });
-      const errors = verifyPassword('any value', [fakeRule]);
-      expect(errors[0]).toContain('fake reason');
+describe("verifyPassword", () => {
+  describe("with a failing rule", () => {
+    it("returns errors", () => {
+      const fakeRule = (input) => ({ passed: false, reason: "fake reason" });
+      const errors = verifyPassword("any value", [fakeRule]);
+      expect(errors[0]).toContain("fake reason");
     });
   });
 });
@@ -214,15 +214,15 @@ class PasswordVerifier1 {
 而第二版的單元測試會變成這樣：
 
 ```js
-describe('PasswordVerifier', () => {
-  describe('with a failing rule', () => {
-    it('has an error message based on the rule.reason', () => {
+describe("PasswordVerifier", () => {
+  describe("with a failing rule", () => {
+    it("has an error message based on the rule.reason", () => {
       const verifier = new PasswordVerifier1();
-      const fakeRule = (input) => ({ passed: false, reason: 'fake reason' });
+      const fakeRule = (input) => ({ passed: false, reason: "fake reason" });
       verifier.addRule(fakeRule);
 
-      const errors = verifier.verify('any value');
-      expect(errors[0]).toContain('fake reason');
+      const errors = verifier.verify("any value");
+      expect(errors[0]).toContain("fake reason");
     });
   });
 });
@@ -233,23 +233,23 @@ describe('PasswordVerifier', () => {
 但如果我們想把「驗證錯誤訊息內容」「驗證 `errors` 陣列長度」拆為兩個單元測試的話，會發現一堆重複的內容（`verifier` / `fakeRule` / `addRule`）：
 
 ```js
-describe('PasswordVerifier', () => {
-  describe('with a failing rule', () => {
-    it('has an error message based on the rule.reason', () => {
+describe("PasswordVerifier", () => {
+  describe("with a failing rule", () => {
+    it("has an error message based on the rule.reason", () => {
       const verifier = new PasswordVerifier1();
-      const fakeRule = (input) => ({ passed: false, reason: 'fake reason' });
+      const fakeRule = (input) => ({ passed: false, reason: "fake reason" });
       verifier.addRule(fakeRule);
 
-      const errors = verifier.verify('any value');
-      expect(errors[0]).toContain('fake reason');
+      const errors = verifier.verify("any value");
+      expect(errors[0]).toContain("fake reason");
     });
 
-    it('has exactly one error', () => {
+    it("has exactly one error", () => {
       const verifier = new PasswordVerifier1();
-      const fakeRule = (input) => ({ passed: false, reason: 'fake reason' });
+      const fakeRule = (input) => ({ passed: false, reason: "fake reason" });
       verifier.addRule(fakeRule);
 
-      const errors = verifier.verify('any value');
+      const errors = verifier.verify("any value");
       expect(errors.length).toBe(1);
     });
   });
@@ -267,24 +267,24 @@ describe('PasswordVerifier', () => {
 而每次測試前都要建立的 `verifier` 實例、透過 `.addRule()` 注入規則——這些重複的佈局（arrange）工作可以移到 `beforeEach()` 中：
 
 ```js
-describe('PasswordVerifier', () => {
-  describe('with a failing rule', () => {
+describe("PasswordVerifier", () => {
+  describe("with a failing rule", () => {
     // arrange
     let verifier, fakeRule;
     beforeEach(() => {
       verifier = new PasswordVerifier1();
-      fakeRule = (input) => ({ passed: false, reason: 'fake reason' });
+      fakeRule = (input) => ({ passed: false, reason: "fake reason" });
       verifier.addRule(fakeRule);
     });
-    it('has an error message based on the rule.reason', () => {
+    it("has an error message based on the rule.reason", () => {
       // act
-      const errors = verifier.verify('any value');
+      const errors = verifier.verify("any value");
       // assert
-      expect(errors[0]).toContain('fake reason');
+      expect(errors[0]).toContain("fake reason");
     });
-    it('has exactly one error', () => {
+    it("has exactly one error", () => {
       // act
-      const errors = verifier.verify('any value');
+      const errors = verifier.verify("any value");
       // assert
       expect(errors.length).toBe(1);
     });
@@ -310,7 +310,7 @@ describe('PasswordVerifier', () => {
 
 ```js
 const makeVerifier = () => new PasswordVerifier1();
-const passingRule = (input) => ({ passed: true, reason: '' });
+const passingRule = (input) => ({ passed: true, reason: "" });
 const makeVerifierWithPassingRule = () => {
   const verifier = makeVerifier();
   verifier.addRule(passingRule);
@@ -323,53 +323,53 @@ const makeVerifierWithFailedRule = (reason) => {
   return verifier;
 };
 
-describe('PasswordVerifier', () => {
-  describe('with a failing rule', () => {
-    it('has an error message based on the rule.reason', () => {
+describe("PasswordVerifier", () => {
+  describe("with a failing rule", () => {
+    it("has an error message based on the rule.reason", () => {
       // arrange
-      const verifier = makeVerifierWithFailedRule('fake reason');
+      const verifier = makeVerifierWithFailedRule("fake reason");
       // act
-      const errors = verifier.verify('any input');
+      const errors = verifier.verify("any input");
       // assert
-      expect(errors[0]).toContain('fake reason');
+      expect(errors[0]).toContain("fake reason");
     });
-    it('has exactly one error', () => {
+    it("has exactly one error", () => {
       // arrange
-      const verifier = makeVerifierWithFailedRule('fake reason');
+      const verifier = makeVerifierWithFailedRule("fake reason");
       // act
-      const errors = verifier.verify('any input');
+      const errors = verifier.verify("any input");
       // assert
       expect(errors.length).toBe(1);
     });
   });
-  describe('with a passing rule', () => {
-    it('has no errors', () => {
+  describe("with a passing rule", () => {
+    it("has no errors", () => {
       // arrange
       const verifier = makeVerifierWithPassingRule();
       // act
-      const errors = verifier.verify('any input');
+      const errors = verifier.verify("any input");
       // assert
       expect(errors.length).toBe(0);
     });
   });
-  describe('with a failing and a passing rule', () => {
-    it('has one error', () => {
+  describe("with a failing and a passing rule", () => {
+    it("has one error", () => {
       // arrange
-      const verifier = makeVerifierWithFailedRule('fake reason');
+      const verifier = makeVerifierWithFailedRule("fake reason");
       verifier.addRule(passingRule);
       // act
-      const errors = verifier.verify('any input');
+      const errors = verifier.verify("any input");
       // assert
       expect(errors.length).toBe(1);
     });
-    it('error text belongs to failed rule', () => {
+    it("error text belongs to failed rule", () => {
       // arrange
-      const verifier = makeVerifierWithFailedRule('fake reason');
+      const verifier = makeVerifierWithFailedRule("fake reason");
       verifier.addRule(passingRule);
       // act
-      const errors = verifier.verify('any input');
+      const errors = verifier.verify("any input");
       //assert
-      expect(errors[0]).toContain('fake reason');
+      expect(errors[0]).toContain("fake reason");
     });
   });
 });
@@ -385,7 +385,7 @@ describe('PasswordVerifier', () => {
 
 ```js
 const makeVerifier = () => new PasswordVerifier1();
-const passingRule = () => ({ passed: true, reason: '' });
+const passingRule = () => ({ passed: true, reason: "" });
 const makeVerifierWithPassingRule = () => {
   const verifier = makeVerifier();
   verifier.addRule(passingRule);
@@ -398,36 +398,36 @@ const makeVerifierWithFailedRule = (reason) => {
   return verifier;
 };
 
-test('pass verifier, with passing rule, has no errors', () => {
+test("pass verifier, with passing rule, has no errors", () => {
   const verifier = makeVerifierWithPassingRule();
-  const errors = verifier.verify('any input');
+  const errors = verifier.verify("any input");
   expect(errors.length).toBe(0);
 });
 
-test('pass verifier, with failed rule, has an error message based on the rule.reason', () => {
-  const verifier = makeVerifierWithFailedRule('fake reason');
-  const errors = verifier.verify('any input');
-  expect(errors[0]).toContain('fake reason');
+test("pass verifier, with failed rule, has an error message based on the rule.reason", () => {
+  const verifier = makeVerifierWithFailedRule("fake reason");
+  const errors = verifier.verify("any input");
+  expect(errors[0]).toContain("fake reason");
 });
 
-test('pass verifier, with failed rule, has exactly one error', () => {
-  const verifier = makeVerifierWithFailedRule('fake reason');
-  const errors = verifier.verify('any input');
+test("pass verifier, with failed rule, has exactly one error", () => {
+  const verifier = makeVerifierWithFailedRule("fake reason");
+  const errors = verifier.verify("any input");
   expect(errors.length).toBe(1);
 });
 
-test('pass verifier, with passing and failing rule, has one error', () => {
-  const verifier = makeVerifierWithFailedRule('fake reason');
+test("pass verifier, with passing and failing rule, has one error", () => {
+  const verifier = makeVerifierWithFailedRule("fake reason");
   verifier.addRule(passingRule);
-  const errors = verifier.verify('any input');
+  const errors = verifier.verify("any input");
   expect(errors.length).toBe(1);
 });
 
-test('pass verifier, with passing and failing rule, error text belongs to failed rule', () => {
-  const verifier = makeVerifierWithFailedRule('fake reason');
+test("pass verifier, with passing and failing rule, error text belongs to failed rule", () => {
+  const verifier = makeVerifierWithFailedRule("fake reason");
   verifier.addRule(passingRule);
-  const errors = verifier.verify('any input');
-  expect(errors[0]).toContain('fake reason');
+  const errors = verifier.verify("any input");
+  expect(errors[0]).toContain("fake reason");
 });
 ```
 
@@ -439,7 +439,7 @@ test('pass verifier, with passing and failing rule, error text belongs to failed
 const oneUpperCaseRule = (input) => {
   return {
     passed: input.toLowerCase() !== input,
-    reason: 'at least one upper case needed',
+    reason: "at least one upper case needed",
   };
 };
 ```
@@ -449,19 +449,19 @@ const oneUpperCaseRule = (input) => {
 第一種：一個條件就是一組 `test()`。條件變化少的時候確實可以這樣玩，但之後 `oneUpperCaseRule` 如果更改了實作規格，就有一堆測試要調整。
 
 ```js
-describe('one uppercase rule', function () {
-  test('given no uppercase, it fails', () => {
-    const result = oneUpperCaseRule('abc');
+describe("one uppercase rule", function () {
+  test("given no uppercase, it fails", () => {
+    const result = oneUpperCaseRule("abc");
     expect(result.passed).toEqual(false);
   });
 
-  test('given one uppercase, it passes', () => {
-    const result = oneUpperCaseRule('Abc');
+  test("given one uppercase, it passes", () => {
+    const result = oneUpperCaseRule("Abc");
     expect(result.passed).toEqual(true);
   });
 
-  test('given a different uppercase, it passes', () => {
-    const result = oneUpperCaseRule('aBc');
+  test("given a different uppercase, it passes", () => {
+    const result = oneUpperCaseRule("aBc");
     expect(result.passed).toEqual(true);
   });
 });
@@ -470,12 +470,12 @@ describe('one uppercase rule', function () {
 第二種：使用 Jest 的 `test.each()` 一口氣傳入所有情境。相較於第一種測試的撰寫方式，現在少了很多重複的部分。
 
 ```js
-describe('one uppercase rule', () => {
-  test('given no uppercase, it fails', () => {
-    const result = oneUpperCaseRule('abc');
+describe("one uppercase rule", () => {
+  test("given no uppercase, it fails", () => {
+    const result = oneUpperCaseRule("abc");
     expect(result.passed).toEqual(false);
   });
-  test.each(['Abc', 'aBc'])('given one uppercase, it passes', (input) => {
+  test.each(["Abc", "aBc"])("given one uppercase, it passes", (input) => {
     const result = oneUpperCaseRule(input);
     expect(result.passed).toEqual(true);
   });
@@ -483,12 +483,12 @@ describe('one uppercase rule', () => {
 ```
 
 ```js
-describe('one uppercase rule', () => {
+describe("one uppercase rule", () => {
   test.each([
-    ['Abc', true],
-    ['aBc', true],
-    ['abc', false],
-  ])('given %s, %s ', (input, expected) => {
+    ["Abc", true],
+    ["aBc", true],
+    ["abc", false],
+  ])("given %s, %s ", (input, expected) => {
     const result = oneUpperCaseRule(input);
     expect(result.passed).toEqual(expected);
   });
@@ -498,7 +498,7 @@ describe('one uppercase rule', () => {
 第三種：使用 JavaScript 原生的 `Object.entries` 來為每一種條件跑測試。
 
 ```js
-describe('one uppercase rule, with vanilla JS for', () => {
+describe("one uppercase rule, with vanilla JS for", () => {
   const TEST_CASE = {
     Abc: true,
     aBc: true,
@@ -532,7 +532,7 @@ class PasswordVerifier1 {
   verify(input) {
     // add this line
     if (!this.rules.length) {
-      throw new Error('There are no rules configured');
+      throw new Error("There are no rules configured");
     }
 
     const errors = [];
@@ -550,10 +550,10 @@ class PasswordVerifier1 {
 當我們想要確認「沒有設定 `this.rules` 的話，執行 `this.verify()` 應該拋出錯誤」時，可以使用 Jest 的 `.toThrowError()` 來檢查是否有拋錯、錯誤訊息是否符合預期：
 
 ```js
-test('verify, with no rules, throws exception', () => {
+test("verify, with no rules, throws exception", () => {
   const verifier = makeVerifier();
-  expect(() => verifier.verify('any input')).toThrowError(
-    /no rules configured/
+  expect(() => verifier.verify("any input")).toThrowError(
+    /no rules configured/,
   );
 });
 ```
@@ -563,7 +563,7 @@ test('verify, with no rules, throws exception', () => {
 使用 `.toMatchSnapshot()` 無法讓人一眼就看出該測試的預期結果是什麼。如果真的需要為測試保留快照，請考慮使用 `.toMatchInlineSnapshot()` 明列預期結果：
 
 ```js
-it('renders correctly', () => {
+it("renders correctly", () => {
   const tree = renderer
     .create(<Link page="https://example.com">Example Site</Link>)
     .toJSON();

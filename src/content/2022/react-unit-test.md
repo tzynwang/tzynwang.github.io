@@ -2,8 +2,8 @@
 title: 2022 第9週 實作筆記：create-react-app 與單元測試
 date: 2022-03-07 19:59:59
 tag:
-- [React]
-- [Testing]
+  - [React]
+  - [Testing]
 ---
 
 ## 總結
@@ -68,6 +68,7 @@ Error: Failed to initialize watch plugin "node_modules/jest-watch-typeahead/file
   const { container } = render(< Component />);
   container.querySelector(...);
   ```
+
   - Container: The containing DOM node of your rendered Component. This is **a regular DOM node**, so you can call `container.querySelector` etc. to inspect the children.
 - `act()`: To prepare a component for assertions, wrap the code rendering it and performing updates inside an · call 在需要對元件執行操作時，可將一連串動作包在 `act(() => {...})` 中
 

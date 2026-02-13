@@ -2,10 +2,10 @@
 title: 在 React app 實作拖曳上傳區塊（drag and drop file uploader）
 date: 2024-03-31 17:29:52
 tag:
-- [React]
+  - [React]
 banner: /2024/react-drag-and-drop-file-uploader/cesar-couto-eIDXdlfelVE-unsplash.jpg
 summary: 如題，之後的專案可能會用到這類元件，趁有空時搓一個練手感。在有 Html5 Drag and Drop Api 的今天，實作起來其實挺簡單的。
-draft: 
+draft:
 ---
 
 如題，之後的專案可能會用到這類元件，趁有空時搓一個練手感。成品與全部原始碼請參考[這裡](https://stackblitz.com/edit/vitejs-vite-wl2mik?file=src%2FApp.tsx)。
@@ -15,9 +15,9 @@ draft:
 ### 關於 `DragAndDrop.tsx`
 
 ```tsx
-import { useState } from 'react';
-import cn from 'classnames';
-import './DragAndDrop.css';
+import { useState } from "react";
+import cn from "classnames";
+import "./DragAndDrop.css";
 
 type Props = {
   onUploadFile: (files: FileList) => void;
@@ -54,8 +54,8 @@ function DragAndDrop({ onUploadFile }: Props) {
       onDragOver={handleDragOver}
       onDragLeave={handleDragLeave}
       className={cn(
-        'DragAndDrop_dropZone',
-        isHighlight && 'DragAndDrop_highlight'
+        "DragAndDrop_dropZone",
+        isHighlight && "DragAndDrop_highlight",
       )}
     >
       <p>Drag and drop the files here</p>
@@ -93,10 +93,10 @@ export default DragAndDrop;
 ### 關於 `App.tsx`
 
 ```tsx
-import { useState, useRef } from 'react';
-import Container from './Container';
-import DragAndDrop from './DragAndDrop';
-import classes from './App.module.css';
+import { useState, useRef } from "react";
+import Container from "./Container";
+import DragAndDrop from "./DragAndDrop";
+import classes from "./App.module.css";
 
 function App() {
   /* State */
@@ -120,7 +120,7 @@ function App() {
     const error: File[] = [];
     for (const f of files) {
       // for example, only accept png files
-      if (f.type === 'image/png') {
+      if (f.type === "image/png") {
         result.push(f);
       } else {
         error.push(f);

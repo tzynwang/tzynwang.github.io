@@ -2,7 +2,7 @@
 title: 閱讀筆記：Good Code, Bad Code Chapter 6 Avoid surprises
 date: 2023-03-29 19:15:27
 tag:
-- [Software Architecture]
+  - [Software Architecture]
 ---
 
 ## 總結
@@ -48,15 +48,15 @@ async function getUserInfo(user_id: string): UserInfo {
     };
   } catch (error) {
     return {
-      user_id: '',
-      display_name: '',
-      email: '',
+      user_id: "",
+      display_name: "",
+      email: "",
       is_validate: false,
     };
   }
 }
 
-const userInfo = getUserInfo('id_1');
+const userInfo = getUserInfo("id_1");
 ```
 
 若有一個工程師不做任何檢查，直接使用變數 `userInfo` 來渲染畫面的話，就會遇到「呼叫 API 失敗時，畫面上會缺少使用者的相關資訊」的狀況。
@@ -92,8 +92,8 @@ TypeScript 目前尚未支援「檢查是否所有的 enum 項目都有被 `swit
 
 ```ts
 enum user_action {
-  set_user_info = 'set_user_info',
-  logout_user = 'logout_user',
+  set_user_info = "set_user_info",
+  logout_user = "logout_user",
 }
 
 function reduxUserReducer(state, action) {

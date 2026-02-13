@@ -2,10 +2,10 @@
 title: 閱讀筆記：The Art of Unit Testing Chapter 5 Isolation frameworks
 date: 2024-01-02 20:24:36
 tag:
-- [Testing]
+  - [Testing]
 banner: /2024/the-art-of-unit-testing-ch5-isolation-frameworks/matthew-guay-vIjt8UHhSVo-unsplash.jpg
 summary: 本書在第三、四章示範了不少手動處理 stub/mock 的方式，但其實我們可以透過 jest 這類有提供 isolation api 的測試框架來省掉不少人工作業。
-draft: 
+draft:
 ---
 
 ## summary
@@ -25,14 +25,14 @@ draft:
 再次見到我們的老朋友 `verifyPassword`，這個同時擁有進入型（`service`）與出走型（`logger`）依賴的單元：
 
 ```js
-const service = require('./configuration-service');
-const logger = require('./complicated-logger');
+const service = require("./configuration-service");
+const logger = require("./complicated-logger");
 
 const log = (text) => {
-  if (service.getLogLevel() === 'info') {
+  if (service.getLogLevel() === "info") {
     logger.info(text);
   }
-  if (service.getLogLevel() === 'debug') {
+  if (service.getLogLevel() === "debug") {
     logger.debug(text);
   }
 };
@@ -42,10 +42,10 @@ const verifyPassword = (input, rules) => {
     .map((rule) => rule(input))
     .filter((result) => result === false);
   if (failed.length === 0) {
-    log('PASSED');
+    log("PASSED");
     return true;
   }
-  log('FAIL');
+  log("FAIL");
   return false;
 };
 ```
@@ -53,36 +53,36 @@ const verifyPassword = (input, rules) => {
 透過 `jest.mock()` 與 `mockFn.mockReturnValue()` 來取代 `verifyPassword` 的兩種依賴，我們省去那些在 [4 Interaction testing using mock objects#4.5 Modular-style mocks](/2023/the-art-of-unit-testing-ch4-interaction-testing-using-mock-objects#45-modular-style-mocks) 為了「暴露 api 以便注入依賴」而進行的加工：
 
 ```js
-jest.mock('./configuration-service');
-jest.mock('./complicated-logger');
+jest.mock("./configuration-service");
+jest.mock("./complicated-logger");
 
-const stubService = require('./configuration-service');
-const mockLogger = require('./complicated-logger');
+const stubService = require("./configuration-service");
+const mockLogger = require("./complicated-logger");
 
-describe('password verifier', () => {
+describe("password verifier", () => {
   afterEach(jest.resetAllMocks);
   test(`with info log level and no rules, 
   it calls the logger with PASSED`, () => {
     // arrange
-    stubService.getLogLevel.mockReturnValue('info');
+    stubService.getLogLevel.mockReturnValue("info");
     // act
-    verifyPassword('anything', []);
+    verifyPassword("anything", []);
     // assert
     expect(mockLogger.info).toHaveBeenCalledWith(
       //
-      expect.stringMatching(/PASS/)
+      expect.stringMatching(/PASS/),
     );
   });
   test(`with debug log level and no rules, 
   it calls the logger with PASSED`, () => {
     // arrange
-    stubService.getLogLevel.mockReturnValue('debug');
+    stubService.getLogLevel.mockReturnValue("debug");
     // act
-    verifyPassword('anything', []);
+    verifyPassword("anything", []);
     // assert
     expect(mockLogger.debug).toHaveBeenCalledWith(
       //
-      expect.stringMatching(/PASS/)
+      expect.stringMatching(/PASS/),
     );
   });
 });
@@ -107,17 +107,17 @@ const makeVerifier = (rules, logger) => {
       .map((rule) => rule(input))
       .filter((result) => result === false);
     if (failed.length === 0) {
-      logger.info('PASSED');
+      logger.info("PASSED");
       return true;
     }
-    logger.info('FAIL');
+    logger.info("FAIL");
     return false;
   };
 };
 
-test('given logger and passing scenario', () => {
+test("given logger and passing scenario", () => {
   // arrange
-  let logged = '';
+  let logged = "";
   const mockLog = {
     info: (text) => {
       logged = text;
@@ -125,7 +125,7 @@ test('given logger and passing scenario', () => {
   };
   const passVerify = makeVerifier([], mockLog);
   // act
-  passVerify('any input');
+  passVerify("any input");
   // assert
   expect(logged).toMatch(/PASSED/);
 });
@@ -134,15 +134,15 @@ test('given logger and passing scenario', () => {
 更簡單粗暴的作法是把 `jest.fn()` 餵進 `const mockLog` 裡，接著就能搭配 `.toHaveBeenCalledWith()` 來驗證 `mockLog.info()` 是否有被正確呼叫：
 
 ```js
-test('given logger and passing scenario', () => {
+test("given logger and passing scenario", () => {
   // arrange
   const mockLog = { info: jest.fn() };
   const verify = makeVerifier([], mockLog);
   // act
-  verify('any input');
+  verify("any input");
   expect(mockLog.info).toHaveBeenCalledWith(
     //
-    expect.stringMatching(/PASS/)
+    expect.stringMatching(/PASS/),
   );
 });
 ```
@@ -173,10 +173,10 @@ class PasswordVerifier2 {
       .map((rule) => rule(input))
       .filter((result) => result === false);
     if (failed.length === 0) {
-      this.#logger.info('PASSED');
+      this.#logger.info("PASSED");
       return true;
     }
-    this.#logger.info('FAIL');
+    this.#logger.info("FAIL");
     return false;
   }
 }
@@ -185,16 +185,16 @@ class PasswordVerifier2 {
 進行測試時，我們先呼叫 `const realLogger = new RealLogger();` 來取得 logger 實例，然後再~~注入靈魂~~透過 `const mockLoggerInfo = jest.spyOn(realLogger, "info");` 來把 `realLogger.info()` mock 起來。接著，檢查 `mockLoggerInfo` 是否有被呼叫、且被傳入參數 `PASSED` 即可：
 
 ```js
-describe('PasswordVerifier2', () => {
+describe("PasswordVerifier2", () => {
   it('whan pass empty rule, should call logger.info with "PASSED"', () => {
     // arrange
     const realLogger = new RealLogger();
-    const mockLoggerInfo = jest.spyOn(realLogger, 'info');
+    const mockLoggerInfo = jest.spyOn(realLogger, "info");
     const verifier = new PasswordVerifier2([], realLogger);
     // act
-    verifier.verify('someInput');
+    verifier.verify("someInput");
     // assert
-    expect(mockLoggerInfo).toHaveBeenCalledWith('PASSED');
+    expect(mockLoggerInfo).toHaveBeenCalledWith("PASSED");
     // restore
     mockLoggerInfo.mockRestore();
   });
@@ -219,7 +219,7 @@ export class PasswordVerifier3 {
   constructor(
     rules: any[],
     logger: ComplicatedLogger,
-    maintenanceWindow: MaintenanceWindow
+    maintenanceWindow: MaintenanceWindow,
   ) {
     this._rules = rules;
     this._logger = logger;
@@ -228,7 +228,7 @@ export class PasswordVerifier3 {
   verify(input: string): boolean {
     if (this._maintenanceWindow.isUnderMaintenance()) {
       // exit point set 1
-      this._logger.info('Under Maintenance');
+      this._logger.info("Under Maintenance");
       return false;
     }
     const failed = this._rules
@@ -236,11 +236,11 @@ export class PasswordVerifier3 {
       .filter((result) => result === false);
     if (failed.length === 0) {
       // exit point set 2
-      this._logger.info('PASSED');
+      this._logger.info("PASSED");
       return true;
     }
     // exit point set 3
-    this._logger.info('FAIL');
+    this._logger.info("FAIL");
     return false;
   }
 }
@@ -249,22 +249,22 @@ export class PasswordVerifier3 {
 幸好這一切都還在 jest 能搞定的範圍內。我們能透過 `jest.spyOn()` 與 `.mockReturnValue()` 的組合技來限制測試環境的 `Maintainer.isUnderMaintenance()` 一定要是 `true`：
 
 ```js
-describe('PasswordVerifier3', () => {
+describe("PasswordVerifier3", () => {
   it('when under maintenance, should call logger.info with "Under Maintenance"', () => {
     // arrange
     const realMaintainer = new Maintainer();
     const stubIsUnderMaintenance = jest.spyOn(
       realMaintainer,
-      'isUnderMaintenance'
+      "isUnderMaintenance",
     );
     stubIsUnderMaintenance.mockReturnValue(true);
     const realLogger = new ComplicatedLog();
-    const mockLoggerInfo = jest.spyOn(realLogger, 'info');
+    const mockLoggerInfo = jest.spyOn(realLogger, "info");
     const Verifier = new PasswordVerifier3([], realLogger, realMaintainer);
     // act
-    Verifier.verify('someInput');
+    Verifier.verify("someInput");
     // assert
-    expect(mockLoggerInfo).toHaveBeenCalledWith('Under Maintenance');
+    expect(mockLoggerInfo).toHaveBeenCalledWith("Under Maintenance");
     // restore
     stubIsUnderMaintenance.mockRestore();
     mockLoggerInfo.mockRestore();
@@ -281,9 +281,9 @@ describe('PasswordVerifier3', () => {
 除了透過 `.mockReturnValue()` 與 `.mockReturnValueOnce()` 來指定 stub 要回傳的內容外，還可以透過 `.mockImplementation()` 來模擬拋錯等「不是單純回傳值」的行為，比如：
 
 ```js
-test('stub a function that throw error', () => {
+test("stub a function that throw error", () => {
   const stubFunc = jest.fn().mockImplementation(() => {
-    throw new Error('Oops!');
+    throw new Error("Oops!");
   });
   expect(stubFunc()).toThrow(/oops/);
 });

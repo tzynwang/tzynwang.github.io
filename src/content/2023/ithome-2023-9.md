@@ -2,9 +2,9 @@
 title: 捨棄 create-react-app 之餘還架了個 astro blog 昭告天下：webpack 5 與 css
 date: 2023-09-24 10:15:57
 tag:
-- [2023鐵人賽]
-- [Frontend Infrastructure]
-- [webpack]
+  - [2023鐵人賽]
+  - [Frontend Infrastructure]
+  - [webpack]
 banner: /2023/ithome-2023-9/aneta-voborilova-c8ovzYe3z0s-unsplash.jpg
 summary: 除了一般的 .css 檔案，今天也會介紹如何設定 webpack 來支援 css modules
 draft:
@@ -30,7 +30,7 @@ const webpackDevelopmentConfig: WebpackConfiguration = {
         test: /\.css$/,
         exclude: /\.module\.css$/,
         sideEffects: true,
-        use: ['style-loader', 'css-loader'],
+        use: ["style-loader", "css-loader"],
       },
     ],
   },
@@ -53,18 +53,18 @@ const webpackDevelopmentConfig: WebpackConfiguration = {
         test: /\.css$/,
         exclude: /\.module\.css$/,
         sideEffects: true,
-        use: ['style-loader', 'css-loader'],
+        use: ["style-loader", "css-loader"],
       },
       {
         test: /\.module\.css$/,
         use: [
-          'style-loader',
+          "style-loader",
           {
-            loader: 'css-loader',
+            loader: "css-loader",
             options: {
               modules: {
-                mode: 'local',
-                localIdentName: '[file]__[local]__[hash:6]',
+                mode: "local",
+                localIdentName: "[file]__[local]__[hash:6]",
               },
             },
           },
@@ -96,7 +96,7 @@ const webpackDevelopmentConfig: WebpackConfiguration = {
 而為了避免 TypeScript 在你 import `*.module.css` 檔案時抱怨，請開啟 `./src/env.d.ts` 並填入以下內容：
 
 ```ts
-declare module '*.module.css' {
+declare module "*.module.css" {
   const classes: { readonly [key: string]: string };
   export default classes;
 }
@@ -107,8 +107,8 @@ declare module '*.module.css' {
 比如下方範例，`moduleStyle` 的型別就是 `{ readonly [key: string]: string }`，而 `moduleStyle.container` 的型別會是字串：
 
 ```tsx
-import React from 'react';
-import moduleStyle from './index.module.css';
+import React from "react";
+import moduleStyle from "./index.module.css";
 
 function Greeting() {
   return <div className={moduleStyle.container}>hello world</div>;

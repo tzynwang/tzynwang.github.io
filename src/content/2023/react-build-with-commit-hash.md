@@ -2,7 +2,7 @@
 title: 快速筆記：在 React app 取得最新的 git commit sha
 date: 2023-06-10 10:09:07
 tag:
-- [GitLab]
+  - [GitLab]
 ---
 
 ## 總結
@@ -19,16 +19,16 @@ tag:
 需注意瀏覽器中不會有 `child_process` ，故下列程式碼需要在 React app 透過 webpack 打包或是透過 devServer 拉起來**之前**執行，再將 `{ hash, time }` 透過 `process.env` 或 webpack DefinePlugin 餵入 React app 中。
 
 ```ts
-import { execSync } from 'child_process';
+import { execSync } from "child_process";
 
 export default function getLatestCommitHistory() {
   try {
-    const hash = execSync('git rev-parse HEAD').toString().trim();
+    const hash = execSync("git rev-parse HEAD").toString().trim();
     const time = execSync('git log -1 --date=iso --format="%ad"').toString();
     return { hash, time };
   } catch (error) {
-    console.error('Error getting the latest commit history:::', error);
-    return { hash: 'no data', time: 'no data' };
+    console.error("Error getting the latest commit history:::", error);
+    return { hash: "no data", time: "no data" };
   }
 }
 ```

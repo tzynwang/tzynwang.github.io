@@ -2,8 +2,8 @@
 title: 2021 第46週 學習記錄：CSS modules、React HOC、React router、debounce 與 throttle
 date: 2021-11-18 20:53:38
 tag:
-- [CSS]
-- [React]
+  - [CSS]
+  - [React]
 ---
 
 ## 總結
@@ -53,7 +53,7 @@ const EnhancedComponent = higherOrderComponent(WrappedComponent);
 
   ```js
   // remove props
-  import React from 'react';
+  import React from "react";
 
   function HocRemoveProp(WrappedComponent) {
     return class WrappingComponent extends React.Component {
@@ -69,7 +69,7 @@ const EnhancedComponent = higherOrderComponent(WrappedComponent);
 
   ```js
   // remove props
-  import React from 'react';
+  import React from "react";
 
   function HocRemoveProp(WrappedComponent) {
     return class WrappingComponent extends React.Component {
@@ -89,9 +89,9 @@ const EnhancedComponent = higherOrderComponent(WrappedComponent);
   基本上會用`<BrowserRouter>`把`<App>`包起來
 
   ```jsx
-  import React from 'react';
-  import ReactDOM from 'react-dom';
-  import { BrowserRouter } from 'react-router-dom';
+  import React from "react";
+  import ReactDOM from "react-dom";
+  import { BrowserRouter } from "react-router-dom";
 
   function App() {
     return <h1>Hello React Router</h1>;
@@ -101,7 +101,7 @@ const EnhancedComponent = higherOrderComponent(WrappedComponent);
     <BrowserRouter>
       <App />
     </BrowserRouter>,
-    document.getElementById('root')
+    document.getElementById("root"),
   );
   ```
 

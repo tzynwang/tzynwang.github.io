@@ -2,10 +2,10 @@
 title: 閱讀筆記：The Art of Unit Testing Chapter 3 Breaking dependencies with stubs
 date: 2023-12-25 08:23:20
 tag:
-- [Testing]
+  - [Testing]
 banner: /2023/the-art-of-unit-testing-ch3-breaking-dependencies-with-stubs/tim-mossholder-WHXbCz2KWhE-unsplash.jpg
 summary: 在本書第二章我們為「回傳值」與「改變狀態」這兩種退出點寫了測試，在第三章則會討論如何測試那些會呼叫「進入型依賴」的單元。
-draft: 
+draft:
 ---
 
 ## Intro
@@ -183,7 +183,7 @@ describe("verifier", () => {
 
 ```js
 const originalDependencies = {
-  moment: require('moment'),
+  moment: require("moment"),
 };
 let dependencies = { ...originalDependencies };
 const inject = (fakes) => {
@@ -219,7 +219,7 @@ const {
   inject,
   verifyPassword,
   SATURDAY,
-} = require('./password-verifier-time00-modular');
+} = require("./password-verifier-time00-modular");
 
 const injectDate = (newDay) => {
   const reset = inject({
@@ -231,11 +231,11 @@ const injectDate = (newDay) => {
   return reset;
 };
 
-describe('verifyPassword', () => {
-  describe('when its the weekend', () => {
-    it('throws an error', () => {
+describe("verifyPassword", () => {
+  describe("when its the weekend", () => {
+    it("throws an error", () => {
       const reset = injectDate(SATURDAY);
-      expect(() => verifyPassword('any input')).toThrow("It's the weekend!");
+      expect(() => verifyPassword("any input")).toThrow("It's the weekend!");
       reset();
     });
   });
@@ -272,27 +272,27 @@ class PasswordVerifier {
 注意——在下列單元測試中，我們都透過 `makeVerifier` 這個工廠功能（factory function）來建立驗證密碼的實例，而不是直接在每一道測試中呼叫 `new PasswordVerifier(rules, getCurrentDayFn)`：
 
 ```js
-const { PasswordVerifier } = require('./password-verifier');
+const { PasswordVerifier } = require("./password-verifier");
 
-describe('refactored with constructor', () => {
+describe("refactored with constructor", () => {
   const makeVerifier = (rules, getCurrentDayFn) => {
     return new PasswordVerifier(rules, getCurrentDayFn);
   };
 
-  test('class constructor: on weekends, throws exceptions', () => {
+  test("class constructor: on weekends, throws exceptions", () => {
     // arrange
-    const alwaysSunday = () => 'SUNDAY';
+    const alwaysSunday = () => "SUNDAY";
     const verifier = makeVerifier([], alwaysSunday);
     // act and assert
-    expect(() => verifier.verify('anything')).toThrow("It's the weekend!");
+    expect(() => verifier.verify("anything")).toThrow("It's the weekend!");
   });
 
-  test('class constructor: on weekdays, with no rules, passes', () => {
+  test("class constructor: on weekdays, with no rules, passes", () => {
     // arrange
-    const alwaysMonday = () => 'MONDAY';
+    const alwaysMonday = () => "MONDAY";
     const verifier = makeVerifier([], alwaysMonday);
     // act
-    const result = verifier.verify('anything');
+    const result = verifier.verify("anything");
     // assert
     expect(result.length).toBe(0);
   });
@@ -357,14 +357,14 @@ class FakeTimeProvider implements TimeProvider {
   }
 }
 
-describe('password verifier with interfaces', () => {
-  test('on weekends, throws exceptions', () => {
+describe("password verifier with interfaces", () => {
+  test("on weekends, throws exceptions", () => {
     // arrange
     const stub = new FakeTimeProvider();
     stub.fakeDay = 0;
     const verifier = new PasswordVerifier([], stub);
     // act and assert
-    expect(() => verifier.verify('anything')).toThrow("It's the weekend!");
+    expect(() => verifier.verify("anything")).toThrow("It's the weekend!");
   });
 });
 ```
@@ -372,7 +372,7 @@ describe('password verifier with interfaces', () => {
 而在我們正式使用 `PasswordVerifier` 時，就搭配當下使用的函式庫實作一個「真」的實例即可：
 
 ```ts
-import moment from 'moment';
+import moment from "moment";
 
 class RealTimeProvider implements TimeProvider {
   getDay(): number {

@@ -2,10 +2,10 @@
 title: 閱讀筆記：The Programmer's Brain Chapter 10 Getting better at solving complex problems
 date: 2023-10-21 10:42:54
 tag:
-- [General]
+  - [General]
 banner: /2023/the-programmers-brain-ch10-getting-better-at-solving-comples-problems/rob-schreckhise-8zdEgWg5JAA-unsplash.jpg
 summary: 你知道嗎？參考別人的解題方式能幫助你在未來解決更多問題喔 (́=◞౪◟=‵)
-draft: 
+draft:
 ---
 
 ## 總結

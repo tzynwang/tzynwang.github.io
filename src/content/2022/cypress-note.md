@@ -2,8 +2,8 @@
 title: 2022 第44週 cypress 綜合筆記：對應元件可能不存在的情境、搭配 typescript 使用 dayjs
 date: 2022-11-04 21:15:42
 tag:
-- [cypress]
-- [Testing]
+  - [cypress]
+  - [Testing]
 ---
 
 ## 總結
@@ -27,9 +27,9 @@ cypress: 10.6.0
 
 ```ts
 // 先透過 cy.get() 抓取一個必定存在的 DOM
-cy.get('body').then(($body) => {
+cy.get("body").then(($body) => {
   // 接著再從上一行取得的 body element 中確認目標 DOM 是否存在
-  const isComponentX = !!$body.find('.here-is-the-condition').length > 0;
+  const isComponentX = !!$body.find(".here-is-the-condition").length > 0;
   if (isComponentX) {
     // 針對 component X 的測試腳本
   } else {
@@ -48,7 +48,7 @@ cy.get('body').then(($body) => {
 
 ```ts
 /// <reference types="cypress" />
-import dayjs from 'dayjs';
+import dayjs from "dayjs";
 
 declare global {
   namespace Cypress {
@@ -71,10 +71,10 @@ Cypress.dayjs = dayjs;
 ```ts
 /// <reference types="cypress" />
 
-describe('[dayjs]', () => {
-  it('should be able to use dayjs', () => {
-    const dayjsString = Cypress.dayjs().format('YYYY-MM-DD');
-    expect(dayjsString).to.equal('2022-11-05');
+describe("[dayjs]", () => {
+  it("should be able to use dayjs", () => {
+    const dayjsString = Cypress.dayjs().format("YYYY-MM-DD");
+    expect(dayjsString).to.equal("2022-11-05");
   });
 });
 ```

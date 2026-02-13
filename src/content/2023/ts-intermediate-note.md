@@ -2,7 +2,7 @@
 title: 2023 第2週 學習筆記：Frontend Masters Intermediate TypeScript
 date: 2023-01-14 09:01:59
 tag:
-- [TypeScript]
+  - [TypeScript]
 ---
 
 ## 總結
@@ -18,15 +18,15 @@ tag:
 ```js
 // $ 符號透過 . 連接一個函式
 $.ajax({
-  url: '/api/getWeather',
+  url: "/api/getWeather",
   data: { zipCode: 97201 },
   success: (result) => {
-    $('#weather-temp')[0].innerHTML = '<strong>' + result + '</strong> degrees';
+    $("#weather-temp")[0].innerHTML = "<strong>" + result + "</strong> degrees";
   },
 });
 
 // $ 符號作為功能名稱，可將選取器語法作為參數傳入
-$('h1.title').forEach((node) => {
+$("h1.title").forEach((node) => {
   node.tagName; // "h1"
 });
 ```
@@ -55,9 +55,9 @@ function $(selector: string): NodeListOf<Element> {
 
 ```ts
 class User {
-  displayName: string = '';
+  displayName: string = "";
 
-  email: string = '';
+  email: string = "";
 
   static createUser(displayName: string, email: string): User {
     return { displayName, email };
@@ -67,10 +67,10 @@ class User {
 // 將 class 作為值賦予其他變數
 // 在 IDE 中 hover 該變數時，會發現變數的型別定義是 const valueTest: typeof User
 const valueTest = User;
-const createResult = valueTest.createUser('user', 'mail@example.com');
+const createResult = valueTest.createUser("user", "mail@example.com");
 
 // 將 class 作為型別定義使用
-const typeTest: User = { displayName: 'user', email: 'mail@example.com' };
+const typeTest: User = { displayName: "user", email: "mail@example.com" };
 ```
 
 ### CommonJS interop
@@ -78,9 +78,9 @@ const typeTest: User = { displayName: 'user', email: 'mail@example.com' };
 在大部分的情況下，以下 require 寫法可無痛轉換成 import 語法：
 
 ```ts
-const fs = require('fs');
+const fs = require("fs");
 
-import * as fs from 'fs';
+import * as fs from "fs";
 ```
 
 但某些 cjs 模組的 export 方式可能會造成 esm import 語法失效：
@@ -89,7 +89,7 @@ import * as fs from 'fs';
 ////////////////////////////////////////////////////////
 // @filename: fruits.ts
 function createBanana() {
-  return { name: 'banana', color: 'yellow', mass: 183 };
+  return { name: "banana", color: "yellow", mass: 183 };
 }
 
 // equivalent to CJS `module.exports = createBanana`
@@ -97,7 +97,7 @@ export = createBanana;
 ////////////////////////////////////////////////////////
 // @filename: smoothie.ts
 
-import * as createBanana from './fruits';
+import * as createBanana from "./fruits";
 // 出現錯誤訊息 This module can only be referenced with ECMAScript imports/exports by turning on the 'esModuleInterop' flag and referencing its default export.
 ```
 
@@ -107,7 +107,7 @@ import * as createBanana from './fruits';
 2. 調整 `smoothie.ts` 的語法如下：
 
 ```ts
-import createBanana = require('./fruits');
+import createBanana = require("./fruits");
 const banana = createBanana(); // 可正常執行
 ```
 
@@ -124,7 +124,7 @@ type ConstructorArg<T> = T extends {
   ? ARGUMENT
   : never;
 
-const fruits: ConstructorArg<typeof Fruit> = ['apple', 'banana', 'cherry'];
+const fruits: ConstructorArg<typeof Fruit> = ["apple", "banana", "cherry"];
 // 可透過 IDE hover 變數來觀察到 const fruits: string[]
 
 const webpackCompilerOptions: ConstructorArg<typeof WebpackCompiler>;

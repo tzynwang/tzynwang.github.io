@@ -2,8 +2,8 @@
 title: 「用TS改寫幼兒難度的React App」相關筆記
 date: 2021-11-05 13:00:44
 tag:
-- [React]
-- [TypeScript]
+  - [React]
+  - [TypeScript]
 ---
 
 ## 總結
@@ -79,8 +79,8 @@ typescript: 4.4.4
     return (
       <ul
         style={{
-          backgroundColor: 'black',
-          color: 'pink',
+          backgroundColor: "black",
+          color: "pink",
         }}
       >
         <li>Improve the videophone</li>
@@ -207,11 +207,11 @@ typescript: 4.4.4
   ```javascript
   // foo.js
   export default function foo() {
-    console.log('hello!');
+    console.log("hello!");
   }
   ```
   ```javascript
-  import foo from 'foo';
+  import foo from "foo";
   foo(); // hello!
   ```
 - A file can have **no more than one _default_ export**, but it can have **as many _named_ exports as you like**. export default 只能有一個，但 named exports 可以有無數個

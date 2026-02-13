@@ -2,9 +2,9 @@
 title: 捨棄 create-react-app 之餘還架了個 astro blog 昭告天下：webpack 5 與 TypeScript
 date: 2023-09-23 08:58:41
 tag:
-- [2023鐵人賽]
-- [Frontend Infrastructure]
-- [webpack]
+  - [2023鐵人賽]
+  - [Frontend Infrastructure]
+  - [webpack]
 banner: /2023/ithome-2023-8/victor-charlie-QG9xUOQTYCY-unsplash.jpg
 summary: 瀏覽器環境是認不得 TypeScript 內容的，今天會分享個人平常如何透過 webpack 將 .ts/.tsx 處理成 JavaScript 檔案。
 draft:
@@ -29,8 +29,8 @@ draft:
 
 ```ts
 /* Packages */
-import fs from 'fs';
-import path from 'path';
+import fs from "fs";
+import path from "path";
 
 /* Data */
 const APP_ROOT = fs.realpathSync(process.cwd());
@@ -47,10 +47,10 @@ export function resolvePath(file: string) {
 
 ```ts
 /* Tools */
-import { resolvePath } from '@/tool/resolvePath';
+import { resolvePath } from "@/tool/resolvePath";
 
 /* Data */
-import tsConfig from '@/tsconfig.json';
+import tsConfig from "@/tsconfig.json";
 
 type PathPair = [string, string];
 
@@ -58,8 +58,8 @@ type PathPair = [string, string];
 const paths: PathPair[] = Object.entries(tsConfig.compilerOptions.paths).map(
   (pathPair) => {
     const [pathKey, pathValue] = pathPair;
-    return [pathKey.replace('/*', ''), pathValue.join().replace('/*', '')];
-  }
+    return [pathKey.replace("/*", ""), pathValue.join().replace("/*", "")];
+  },
 );
 const alias = paths.reduce((reducedValue, currentValue) => {
   const [key, pathToResolve] = currentValue;
@@ -124,16 +124,16 @@ const webpackDevelopmentConfig: WebpackConfiguration = {
     rules: [
       {
         test: /\.(js|ts|tsx)$/,
-        loader: 'esbuild-loader',
+        loader: "esbuild-loader",
         options: {
-          loader: 'tsx',
-          target: 'es2015',
+          loader: "tsx",
+          target: "es2015",
         },
       },
     ],
   },
   resolve: {
-    extensions: ['.js', '.ts', '.tsx'],
+    extensions: [".js", ".ts", ".tsx"],
     alias,
   },
 };
@@ -152,50 +152,50 @@ const webpackDevelopmentConfig: WebpackConfiguration = {
 
 ```ts
 /* Packages */
-import HtmlWebpackPlugin from 'html-webpack-plugin';
-import Webpack from 'webpack';
+import HtmlWebpackPlugin from "html-webpack-plugin";
+import Webpack from "webpack";
 
 /* Tools */
-import { resolvePath } from '@/tool/resolvePath';
+import { resolvePath } from "@/tool/resolvePath";
 
 /* Data */
-import alias from './data/alias';
-import env from './data/env';
+import alias from "./data/alias";
+import env from "./data/env";
 import type {
   WebPackDevServerConfiguration,
   WebpackConfiguration,
   EnvForStartApp,
-} from './data/types';
+} from "./data/types";
 
-const envForStartApp = env['process.env'] as EnvForStartApp;
+const envForStartApp = env["process.env"] as EnvForStartApp;
 const port = +JSON.parse(envForStartApp.APP_PORT);
 
 /* Main */
 const webpackDevelopmentConfig: WebpackConfiguration = {
-  mode: 'development',
-  entry: resolvePath('src/index'),
-  devtool: 'source-map',
+  mode: "development",
+  entry: resolvePath("src/index"),
+  devtool: "source-map",
   module: {
     rules: [
       {
         test: /\.(js|ts|tsx)$/,
-        loader: 'esbuild-loader',
+        loader: "esbuild-loader",
         options: {
-          loader: 'tsx',
-          target: 'es2015',
+          loader: "tsx",
+          target: "es2015",
         },
       },
     ],
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: resolvePath('public/index.html'),
-      publicPath: '/',
+      template: resolvePath("public/index.html"),
+      publicPath: "/",
     }),
     new Webpack.DefinePlugin({ ...env }),
   ],
   resolve: {
-    extensions: ['.js', '.ts', '.tsx'],
+    extensions: [".js", ".ts", ".tsx"],
     alias,
   },
 };

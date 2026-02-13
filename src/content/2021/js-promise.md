@@ -2,7 +2,7 @@
 title: 「從Callback到Promise」相關筆記
 date: 2021-07-19 13:02:58
 tag:
-- [JavaScript]
+  - [JavaScript]
 ---
 
 ## 總結
@@ -39,21 +39,21 @@ tag:
 
 ```js
 const posts = [
-  { title: 'Post 1', content: 'Content post 1' },
-  { title: 'Post 2', content: 'Content post 2' }
-]
+  { title: "Post 1", content: "Content post 1" },
+  { title: "Post 2", content: "Content post 2" },
+];
 
-function postToList () {
+function postToList() {
   setTimeout(() => {
-    let content = ''
-    posts.forEach(post => {
-      content += `<li>${post.title}</li>`
-    })
-    document.body.innerHTML = content
-  }, 1000)
+    let content = "";
+    posts.forEach((post) => {
+      content += `<li>${post.title}</li>`;
+    });
+    document.body.innerHTML = content;
+  }, 1000);
 }
 
-postToList()
+postToList();
 ```
 
 - 模擬情境：
@@ -62,28 +62,28 @@ postToList()
 
 ```js
 const posts = [
-  { title: 'Post 1', content: 'Content post 1' },
-  { title: 'Post 2', content: 'Content post 2' }
-]
+  { title: "Post 1", content: "Content post 1" },
+  { title: "Post 2", content: "Content post 2" },
+];
 
-function postToList () {
+function postToList() {
   setTimeout(() => {
-    let content = ''
-    posts.forEach(post => {
-      content += `<li>${post.title}</li>`
-    })
-    document.body.innerHTML = content
-  }, 1000) // 延後1秒執行
+    let content = "";
+    posts.forEach((post) => {
+      content += `<li>${post.title}</li>`;
+    });
+    document.body.innerHTML = content;
+  }, 1000); // 延後1秒執行
 }
 
-function addPost (post) {
+function addPost(post) {
   setTimeout(() => {
-    posts.push(post)
-  }, 2000) // 延後2秒執行
+    posts.push(post);
+  }, 2000); // 延後2秒執行
 }
 
-addPost({ title: 'Post 3', content: 'Content post 3' })
-postToList()
+addPost({ title: "Post 3", content: "Content post 3" });
+postToList();
 ```
 
 - 模擬情境：
@@ -94,28 +94,28 @@ postToList()
 
 ```js
 const posts = [
-  { title: 'Post 1', content: 'Content post 1' },
-  { title: 'Post 2', content: 'Content post 2' }
-]
+  { title: "Post 1", content: "Content post 1" },
+  { title: "Post 2", content: "Content post 2" },
+];
 
-function postToList () {
+function postToList() {
   setTimeout(() => {
-    let content = ''
-    posts.forEach(post => {
-      content += `<li>${post.title}</li>`
-    })
-    document.body.innerHTML = content
-  }, 1000)
+    let content = "";
+    posts.forEach((post) => {
+      content += `<li>${post.title}</li>`;
+    });
+    document.body.innerHTML = content;
+  }, 1000);
 }
 
-function addPost (post, callback) {
+function addPost(post, callback) {
   setTimeout(() => {
-    posts.push(post)
-    callback()
-  }, 2000)
+    posts.push(post);
+    callback();
+  }, 2000);
 }
 
-addPost({ title: 'Post 3', content: 'Content post 3' }, postToList)
+addPost({ title: "Post 3", content: "Content post 3" }, postToList);
 ```
 
 - callback function 登場，將`postToList`作為 callback 傳入`addPost`後，程式碼的行為變成「待`addPost`結束後，再執行`postToList`」
@@ -125,41 +125,41 @@ addPost({ title: 'Post 3', content: 'Content post 3' }, postToList)
 
 ```js
 const posts = [
-  { title: 'Post 1', content: 'Content post 1' },
-  { title: 'Post 2', content: 'Content post 2' }
-]
+  { title: "Post 1", content: "Content post 1" },
+  { title: "Post 2", content: "Content post 2" },
+];
 
-function postToList () {
+function postToList() {
   setTimeout(() => {
-    let content = ''
-    posts.forEach(post => {
-      content += `<li>${post.title}</li>`
-    })
-    document.body.innerHTML = content
-  }, 1000)
+    let content = "";
+    posts.forEach((post) => {
+      content += `<li>${post.title}</li>`;
+    });
+    document.body.innerHTML = content;
+  }, 1000);
 }
 
-function addPost (post) {
+function addPost(post) {
   return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        const error = false
-        if (!error) {
-          posts.push(post)
-          resolve()
-        } else {
-          reject('something goes wrong')
-        }
-      })
-    })
+    setTimeout(() => {
+      const error = false;
+      if (!error) {
+        posts.push(post);
+        resolve();
+      } else {
+        reject("something goes wrong");
+      }
+    });
+  });
 }
 
-addPost({ title: 'Post 3', content: 'Content post 3' })
+addPost({ title: "Post 3", content: "Content post 3" })
   .then(() => {
-    postToList()
+    postToList();
   })
-  .catch(error => {
-    console.error(error)
-  })
+  .catch((error) => {
+    console.error(error);
+  });
 ```
 
 1. 移除`addPost`的 callback 參數
@@ -173,43 +173,49 @@ addPost({ title: 'Post 3', content: 'Content post 3' })
 原始 callback 版本：
 
 ```js
-const http = require('http')
-const https = require('https')
-const imgPath = ''
+const http = require("http");
+const https = require("https");
+const imgPath = "";
 
-http.createServer((req, res) => {
-  https.get('https://dog.ceo/api/breeds/image/random', (body) => {
-    let data = ''
+http
+  .createServer((req, res) => {
+    https
+      .get("https://dog.ceo/api/breeds/image/random", (body) => {
+        let data = "";
 
-    body.on('data', (chunk) => {
-      data += chunk
-    })
+        body.on("data", (chunk) => {
+          data += chunk;
+        });
 
-    body.on('end', () => {
-      console.log(JSON.parse(data))
-      imgPath = JSON.parse(data).message
-      res.end(`<h1>DOG PAGE</h1><img src='${imgPath}' >`)
-    })
-  }).on('error', (error) => {
-    console.error(error)
+        body.on("end", () => {
+          console.log(JSON.parse(data));
+          imgPath = JSON.parse(data).message;
+          res.end(`<h1>DOG PAGE</h1><img src='${imgPath}' >`);
+        });
+      })
+      .on("error", (error) => {
+        console.error(error);
+      });
   })
-}).listen(3000)
+  .listen(3000);
 ```
 
 Promise 版起手式：
 
 ```js
-const http = require('http')
-const https = require('https')
+const http = require("http");
+const https = require("https");
 
 const requestData = () => {
   // TODO
-}
+};
 
-http.createServer((req, res) => {
-  // TODO
-  res.end(`<h1>DOG PAGE</h1><img src='${imgPath}' >`)
-}).listen(3000)
+http
+  .createServer((req, res) => {
+    // TODO
+    res.end(`<h1>DOG PAGE</h1><img src='${imgPath}' >`);
+  })
+  .listen(3000);
 ```
 
 思考過程：
@@ -222,59 +228,61 @@ http.createServer((req, res) => {
 改裝完成：
 
 ```js
-const http = require('http')
-const https = require('https')
+const http = require("http");
+const https = require("https");
 
-const workingURL = 'https://dog.ceo/api/breeds/image/random'
-const errorURL = 'https://this.will.not/work'
+const workingURL = "https://dog.ceo/api/breeds/image/random";
+const errorURL = "https://this.will.not/work";
 
 const requestData = () => {
   return new Promise((resolve, reject) => {
-    https.get(workingURL, (body) => {
-      let data = ''
+    https
+      .get(workingURL, (body) => {
+        let data = "";
 
-      body.on('data', (chunk) => {
-        data += chunk
-      })
+        body.on("data", (chunk) => {
+          data += chunk;
+        });
 
-      body.on('end', () => {
-        console.log(JSON.parse(data))
-        resolve(JSON.parse(data))
+        body.on("end", () => {
+          console.log(JSON.parse(data));
+          resolve(JSON.parse(data));
+        });
       })
-    }).on('error', (error) => {
-      reject(error)
-    })
+      .on("error", (error) => {
+        reject(error);
+      });
+  });
+};
+
+http
+  .createServer((req, res) => {
+    requestData()
+      .then((result) => {
+        const imgPath = result.message;
+        res.end(`<h1>DOG PAGE</h1><img src='${imgPath}' >`);
+      })
+      .catch((error) => {
+        console.error(error);
+        res.end(`<p>Sorry but something goes wrong.</p>`);
+      });
   })
-}
-
-http.createServer((req, res) => {
-  requestData()
-    .then(result => {
-      const imgPath = result.message
-      res.end(`<h1>DOG PAGE</h1><img src='${imgPath}' >`)
-    })
-    .catch(error => {
-      console.error(error)
-      res.end(`<p>Sorry but something goes wrong.</p>`)
-    })
-
-}).listen(3000)
+  .listen(3000);
 ```
 
 ### 補充：`Promise.all()`
 
 ```js
 // MDN範例
-const promise1 = Promise.resolve('Answer to the Ultimate Question of Life, ')
-const promise2 = 'the Universe, and Everything'
+const promise1 = Promise.resolve("Answer to the Ultimate Question of Life, ");
+const promise2 = "the Universe, and Everything";
 const promise3 = new Promise((resolve, reject) => {
-  setTimeout(resolve, 1000, '42')
+  setTimeout(resolve, 1000, "42");
 });
 
-Promise.all([promise1, promise2, promise3])
-  .then((values) => {
-    console.log(values)
-})
+Promise.all([promise1, promise2, promise3]).then((values) => {
+  console.log(values);
+});
 // 輸出結果：
 // ["Answer to the Ultimate Question of Life, ", "the Universe, and Everything", "42"]
 ```

@@ -2,7 +2,7 @@
 title: 透過 Node.js API 執行 webpack
 date: 2023-02-11 19:04:17
 tag:
-- [webpack]
+  - [webpack]
 ---
 
 ## 總結
@@ -36,10 +36,10 @@ macOS: Ventura 13.0
 
 ```js
 /* Packages */
-const webpack = require('webpack');
+const webpack = require("webpack");
 
 /* Data */
-const webpackProductionConfig = require('../config/webpack.config.production');
+const webpackProductionConfig = require("../config/webpack.config.production");
 const compiler = webpack(webpackProductionConfig);
 
 /* Main */
@@ -69,9 +69,9 @@ compiler.run((error, stats) => {
 
 ```js
 /* Packages 追加以下內容 */
-const fs = require('fs');
-const path = require('path');
-const fsExtra = require('fs-extra');
+const fs = require("fs");
+const path = require("path");
+const fsExtra = require("fs-extra");
 
 /* Data 追加以下內容 */
 const APP_ROOT = fs.realpathSync(process.cwd());
@@ -79,12 +79,12 @@ const APP_ROOT = fs.realpathSync(process.cwd());
 /* Main */
 /* 在 compiler.run() 下方加上複製腳本 */
 fsExtra.copySync(
-  path.resolve(APP_ROOT, 'public'),
-  path.resolve(APP_ROOT, 'build'),
+  path.resolve(APP_ROOT, "public"),
+  path.resolve(APP_ROOT, "build"),
   {
     dereference: true,
-    filter: (file) => file !== path.resolve(APP_ROOT, 'public/index.html'),
-  }
+    filter: (file) => file !== path.resolve(APP_ROOT, "public/index.html"),
+  },
 );
 ```
 

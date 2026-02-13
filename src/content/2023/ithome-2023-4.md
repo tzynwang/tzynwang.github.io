@@ -2,9 +2,9 @@
 title: 捨棄 create-react-app 之餘還架了個 astro blog 昭告天下：專案結構
 date: 2023-09-19 07:07:27
 tag:
-- [2023鐵人賽]
-- [Frontend Infrastructure]
-- [TypeScript]
+  - [2023鐵人賽]
+  - [Frontend Infrastructure]
+  - [TypeScript]
 banner: /2023/ithome-2023-4/agence-olloweb-d9ILr-dbEdg-unsplash.jpg
 summary: 介紹個人慣用的 tsconfig.json 設定內容、以及如何引用其他套件分享的設定檔；順便聊一點資料夾結構的安排方式。
 draft:
@@ -79,10 +79,10 @@ draft:
 
 ```tsx
 // 第三方套件
-import React from 'react';
-import dayjs from 'dayjs';
+import React from "react";
+import dayjs from "dayjs";
 // 專案內元件
-import TopNav from '@Component/common/TopNav';
+import TopNav from "@Component/common/TopNav";
 ```
 
 提醒：自定義 `paths` 後，連帶需要在 webpack 中設定 `alias` 才能順利打包，這會在後續介紹到專案 webpack 設定檔時說明。

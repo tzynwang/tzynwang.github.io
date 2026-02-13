@@ -2,8 +2,8 @@
 title: 使用 JavaScript RegExp() 過濾 HTML entity NBSP
 date: 2023-02-14 19:20:57
 tag:
-- [HTML]
-- [JavaScript]
+  - [HTML]
+  - [JavaScript]
 ---
 
 ## 總結
@@ -38,8 +38,8 @@ const HTML_ENTITY_SPACE = String.fromCharCode(160);
 
 // 透過 new RegExp() 來設定過濾半形、全形以及 HTML entity 空白的 regex 模式，符合此模式的內容將被取代掉
 function removeFullAndHalfSpace(rawString: string): string {
-  const regexpSpace = new RegExp(`[\u0020\u3000${HTML_ENTITY_SPACE}]`, 'g');
-  return rawString.replaceAll(regexpSpace, '');
+  const regexpSpace = new RegExp(`[\u0020\u3000${HTML_ENTITY_SPACE}]`, "g");
+  return rawString.replaceAll(regexpSpace, "");
 }
 ```
 

@@ -2,7 +2,7 @@
 title: 「Express Handlebars 取得父層變數內容」相關筆記
 date: 2021-05-14 21:11:16
 tag:
-- [Express Handlebars]
+  - [Express Handlebars]
 ---
 
 ## 問題描述
@@ -16,27 +16,27 @@ tag:
 - 行為不如預期的原始碼：
   ```js
   // app.js端
-  app.get('/restaurants/:id/edit', (req, res) => {
-    const id = Number(req.params.id)
-    const targetRestaurant = restaurantList.results.find((restaurant) => restaurant.id === id)
-    const categories = []
-    restaurantList.results.forEach(restaurant => {
+  app.get("/restaurants/:id/edit", (req, res) => {
+    const id = Number(req.params.id);
+    const targetRestaurant = restaurantList.results.find(
+      (restaurant) => restaurant.id === id,
+    );
+    const categories = [];
+    restaurantList.results.forEach((restaurant) => {
       if (!categories.includes(restaurant.category)) {
-        categories.push(restaurant.category)
+        categories.push(restaurant.category);
       }
-    })
-    res.render('edit', { restaurant: targetRestaurant, categories })
-  })
+    });
+    res.render("edit", { restaurant: targetRestaurant, categories });
+  });
   ```
   ```html
   <!-- handlebars端 -->
-  {{#each categories}}
-    {{#is this restaurant.category)}}
-    <option value="{{this}}" selected>{{this}}</option>
-    {{else}}
-    <option value="{{this}}">{{this}}</option>
-    {{/is}}
-  {{/each}}
+  {{#each categories}} {{#is this restaurant.category)}}
+  <option value="{{this}}" selected>{{this}}</option>
+  {{else}}
+  <option value="{{this}}">{{this}}</option>
+  {{/is}} {{/each}}
   ```
 
 ## 環境
@@ -52,13 +52,11 @@ handlebars-helpers: 0.10.0
 
 ```html
 <!-- handlebars端 -->
-{{#each categories}}
-  {{#is this ../restaurant.category)}}
-  <option value="{{this}}" selected>{{this}}</option>
-  {{else}}
-  <option value="{{this}}">{{this}}</option>
-  {{/is}}
-{{/each}}
+{{#each categories}} {{#is this ../restaurant.category)}}
+<option value="{{this}}" selected>{{this}}</option>
+{{else}}
+<option value="{{this}}">{{this}}</option>
+{{/is}} {{/each}}
 ```
 
 參考 Handlebars 官方文件的說明：

@@ -2,13 +2,13 @@
 title: 奇妙的 JavaScript 程式碼： for (var of of of) {...}
 date: 2022-06-21 20:46:05
 tag:
-- [JavaScript]
+  - [JavaScript]
 ---
 
 ## 奇妙範例
 
 ```js
-var of = ['of'];
+var of = ["of"];
 for (var of of of) {
   console.log(of);
 }
@@ -21,7 +21,7 @@ for (var of of of) {
 把開頭的題目整理一下，先去掉眾多 `of` 帶來的混亂：
 
 ```js
-var arr = ['hello world'];
+var arr = ["hello world"];
 for (var a of arr) {
   console.log(a); // 輸出 'hello world'
   console.log(arr); // 輸出 ['hello world']
@@ -31,8 +31,8 @@ for (var a of arr) {
 - 可反推得知開頭題目被輸出到終端的是 `(var of of of)` 的第一個 `of`
 - 另外已知透過 `var` 可以重複宣告同名變數：
   ```js
-  var str = 'hello';
-  var str = 'world';
+  var str = "hello";
+  var str = "world";
   console.log(str); // 'world'
   ```
 - 謎底：其實開頭的題目就是 `var of = ['of'];` 被 `(var of of of)` 覆蓋過去，內容從原本的 `['of']` 變成 `'of'`
@@ -40,7 +40,7 @@ for (var a of arr) {
 ### 變形 A
 
 ```js
-let of = ['of'];
+let of = ["of"];
 for (let of of of) {
   console.log(of);
 }
@@ -48,7 +48,7 @@ for (let of of of) {
 ```
 
 ```js
-var of = ['of'];
+var of = ["of"];
 for (let of of of) {
   console.log(of);
 }
@@ -62,7 +62,7 @@ for (let of of of) {
 ### 變形 B
 
 ```js
-let of = ['of'];
+let of = ["of"];
 for (var of of of) {
   console.info(of);
 }
@@ -72,8 +72,8 @@ for (var of of of) {
 - 其實就是不能對透過 `let` 宣告的變數再進行一次同名變數宣告
 - 變形 B 可抽換成：
   ```js
-  let str = 'hello';
-  var str = 'world';
+  let str = "hello";
+  var str = "world";
   ```
 - JavaScript 只允許 `var` 進行同名變數的重複宣告，透過 `let` 或 `const` 宣告的變數都不允許此行為
 

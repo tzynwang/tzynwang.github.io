@@ -2,10 +2,10 @@
 title: tailwind 快速上手筆記
 date: 2024-06-22 11:53:07
 tag:
-- [CSS]
+  - [CSS]
 banner: /2024/css-tailwind-best-practice/jason-leung-cwhtQIssH9k-unsplash.jpg
 summary: 最近有機會在新專案試用 tailwind。而為了避免繞遠路，在正式開工前先花了點時間搜集關於這個套件的 best practice。
-draft: 
+draft:
 ---
 
 最近有機會在新專案試用 tailwind。而為了避免繞遠路，在正式開工前先花了點時間搜集關於這個套件的 best practice。
@@ -85,7 +85,7 @@ draft:
 
 ```tsx
 const meetCondition = Math.random() >= 0.5;
-const dynamicClass = `text-${meetCondition ? 'green' : 'red'}-500`;
+const dynamicClass = `text-${meetCondition ? "green" : "red"}-500`;
 
 <h1 class={dynamicClass}>Hello World</h1>;
 ```
@@ -96,7 +96,7 @@ const dynamicClass = `text-${meetCondition ? 'green' : 'red'}-500`;
 
 ```tsx
 const meetCondition = Math.random() >= 0.5;
-const dynamicClass = meetCondition ? 'text-green-500' : 'text-red-500';
+const dynamicClass = meetCondition ? "text-green-500" : "text-red-500";
 
 <h1 class={dynamicClass}>Hello World</h1>;
 ```

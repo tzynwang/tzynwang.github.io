@@ -2,7 +2,7 @@
 title: 正規表達式筆記：群與反向參考（groups and backreferences）
 date: 2023-05-09 19:11:06
 tag:
-- [Regular expressions]
+  - [Regular expressions]
 ---
 
 ## 總結
@@ -112,14 +112,14 @@ console.info(match);
 // index: 0
 // indices: [[0, 12], [0, 9], [9, 12], groups: { name: [9, 12] } ]
 
-const lines = code.split('\n');
+const lines = code.split("\n");
 lines.splice(
   1,
   0,
-  ' '.repeat(match.indices[1][1] - match.indices[1][0]) +
-    '^'.repeat(match.indices.groups.name[1] - match.indices.groups.name[0])
+  " ".repeat(match.indices[1][1] - match.indices[1][0]) +
+    "^".repeat(match.indices.groups.name[1] - match.indices.groups.name[0]),
 );
-console.log(lines.join('\n'));
+console.log(lines.join("\n"));
 // function add(x, y) {
 //          ^^^
 //   return x + y;

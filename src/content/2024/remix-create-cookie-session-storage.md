@@ -2,10 +2,10 @@
 title: 快速筆記：Remix 的 createCookieSessionStorage 與 window.sessionStorage 毫無關係
 date: 2024-09-04 20:53:47
 tag:
-- [Remix]
+  - [Remix]
 banner: /2024/remix-create-cookie-session-storage/annie-spratt-IENa-E_0nro-unsplash.jpg
 summary: 這個功能主要功能是「把 session 資料完整地保存在 cookie 中」，跟關閉瀏覽器分頁後就消失的 window.sessionStorage 沒有任何關係。
-draft: 
+draft:
 ---
 
 Remix 的 [`createCookieSessionStorage`](https://remix.run/docs/en/main/utils/sessions#createcookiesessionstorage) 跟 Browser Api [`window.sessionStorage`](https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage) 完全沒有關係。
@@ -38,4 +38,4 @@ session 是「有狀態（stateful）」的，但請求（HTTP request）沒有�
 - [Remix: Sessions](https://remix.run/docs/en/main/utils/sessions)
 - [Remix: Cookies](https://remix.run/docs/en/main/utils/cookies)
 - [MDN: `window.sessionStorage`](https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage)
-- [Wikipedia: Session (computer science)](https://en.wikipedia.org/wiki/Session_(computer_science))
+- [Wikipedia: Session (computer science)](<https://en.wikipedia.org/wiki/Session_(computer_science)>)

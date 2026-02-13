@@ -2,10 +2,10 @@
 title: CSS 筆記：如何實現 display none 的漸變效果
 date: 2024-06-15 07:42:04
 tag:
-- [CSS]
+  - [CSS]
 banner: /2024/css-transition-for-display-none/marc-olivier-jodoin-NqOInJ-ttqM-unsplash.jpg
 summary: 雖然目前 Firefox 還不支援，不過已經可以靠 `@starting-style` 與 `allow-discrete` 這兩個屬性來讓元件在「從有到無、從無到有」時也能表現漸變（`transition`）效果了。
-draft: 
+draft:
 ---
 
 ## 懶人包
@@ -30,7 +30,7 @@ div {
   transition: all 0.4s allow-discrete; /* <== here */
 
   /* and here */
-  @starting-style { 
+  @starting-style {
     opacity: 0;
     scale: 1 0;
   }

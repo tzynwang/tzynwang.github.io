@@ -2,7 +2,7 @@
 title: 使用GitHub Actions自動產生sitemap.xml
 date: 2021-03-09 10:54:00
 tag:
-- [git]
+  - [git]
 ---
 
 ## 總結
@@ -37,25 +37,25 @@ jobs:
     runs-on: ubuntu-latest
     name: Generate a sitemap
     steps:
-    - name: Checkout the repo
-      uses: actions/checkout@v2
-      with:
-        fetch-depth: 0
-    - name: Generate new sitemap
-      id: sitemap
-      uses: cicirello/generate-sitemap@v1.6.1
-      with:
-        base-url-path: https://tzynwang.github.io/action-practice/
-        # 參考cicirello/generate-sitemap的文件，將base-url-path的值設定為要產生sitemap的URL
-    - name: Push sitemap to repository
-    # 根據cicirello/generate-sitemap文件的說明，使用者需另找方法處理透過腳本產生的sitemap.xml
-    # 故追加一段git腳本內容，把方才在GitHub Actions VM產生出來的sitemap透過git push放到repository中
-      run: |
-        git config --global user.name "tzyn (GitHub Actions sitemap gen)"
-        git config --global user.email "tzyn.wang@gmail.com"
-        git add sitemap.xml
-        git commit -m "add sitemap.xml"
-        git push
+      - name: Checkout the repo
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Generate new sitemap
+        id: sitemap
+        uses: cicirello/generate-sitemap@v1.6.1
+        with:
+          base-url-path: https://tzynwang.github.io/action-practice/
+          # 參考cicirello/generate-sitemap的文件，將base-url-path的值設定為要產生sitemap的URL
+      - name: Push sitemap to repository
+        # 根據cicirello/generate-sitemap文件的說明，使用者需另找方法處理透過腳本產生的sitemap.xml
+        # 故追加一段git腳本內容，把方才在GitHub Actions VM產生出來的sitemap透過git push放到repository中
+        run: |
+          git config --global user.name "tzyn (GitHub Actions sitemap gen)"
+          git config --global user.email "tzyn.wang@gmail.com"
+          git add sitemap.xml
+          git commit -m "add sitemap.xml"
+          git push
 ```
 
 1. 在本機執行`git push`將 commit 內容推到 GitHub 上

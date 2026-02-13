@@ -2,7 +2,7 @@
 title: ALPHA Camp 2-1 S1作業：技術筆記
 date: 2021-04-20 09:42:02
 tag:
-- [JavaScript]
+  - [JavaScript]
 ---
 
 2021/4/21 更新：
@@ -47,15 +47,16 @@ tag:
 - 大寫字母有兩種產生方式：
   - 宣告一組全大寫字母的字串`ABCDEFGHIJKLMNOPQRSTUVWXYZ`，配合`Math.floor(Math.random() * 26)`來隨機挑選字母
     ```js
-    let ticket = ''
-    const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-    ticket += letters[Math.floor(Math.random() * 26)] // 隨機挑選letters字串中的字母
+    let ticket = "";
+    const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    ticket += letters[Math.floor(Math.random() * 26)]; // 隨機挑選letters字串中的字母
     ```
   - 使用`Math.floor(Math.random() * 25) + 1`搭配`String.fromCharCode()`將數字轉換為大寫字母
     ```js
-    let ticketChar1 = Math.floor(Math.random() * 25) + 1
-    ticketChar1 = String.fromCharCode(64 + ticketChar1)
+    let ticketChar1 = Math.floor(Math.random() * 25) + 1;
+    ticketChar1 = String.fromCharCode(64 + ticketChar1);
     ```
+
     - [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/fromCharCode) `String.fromCharCode()`: returns a string created from the specified sequence of **UTF-16 code units**.
     - [UTF-16 Table](https://asecuritysite.com/coding/asc2)
 - 產生四位數字：使用`Math.floor(Math.random() * 10000)`隨機產生 0-9999 的數值，並搭配`.toString().padStart(4, '0')`將未滿四位數的數值補 0
@@ -63,11 +64,13 @@ tag:
 解法（直接包裝為函式）：
 
 ```js
-function generateTicket () {
-  const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-  const ticketLetters = `${letters[Math.floor(Math.random() * 26)]}${letters[Math.floor(Math.random() * 26)]}`
-  const ticketNum = Math.floor(Math.random() * 10000).toString().padStart(4, '0')
-  return `${ticketLetters}${ticketNum}` // 回傳「兩個大寫英文字母＋四位數字組合」的彩券號碼
+function generateTicket() {
+  const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  const ticketLetters = `${letters[Math.floor(Math.random() * 26)]}${letters[Math.floor(Math.random() * 26)]}`;
+  const ticketNum = Math.floor(Math.random() * 10000)
+    .toString()
+    .padStart(4, "0");
+  return `${ticketLetters}${ticketNum}`; // 回傳「兩個大寫英文字母＋四位數字組合」的彩券號碼
 }
 ```
 
@@ -83,10 +86,10 @@ function generateTicket () {
 
 ```js
 // input
-let name = 'Bernard'
+let name = "Bernard";
 
 // output should be 'Be*****'
-console.log(name)
+console.log(name);
 ```
 
 - 名字的總長度不變
@@ -106,22 +109,23 @@ console.log(name)
 
 ```js
 for (const n in name) {
-  if (n > 1) name = name.replace(name.charAt(n),'*')
+  if (n > 1) name = name.replace(name.charAt(n), "*");
 }
-console.log(name) // Be*****
+console.log(name); // Be*****
 ```
 
 舊版解法包裝為函式：
 
 ```js
-function encodeName (name, replaceTo, startIndex = 2, endIndex = name.length) {
+function encodeName(name, replaceTo, startIndex = 2, endIndex = name.length) {
   for (const n in name) {
-    if (n >= startIndex && n < endIndex) name = name.replace(name.charAt(n), replaceTo)
+    if (n >= startIndex && n < endIndex)
+      name = name.replace(name.charAt(n), replaceTo);
   }
-  return name
+  return name;
 }
 
-console.log(encodeName('Bernard', '*')) // Be*****
+console.log(encodeName("Bernard", "*")); // Be*****
 ```
 
 - `name`：傳入需打碼的名字
@@ -149,7 +153,6 @@ console.log(encodeName('Bernard', '*')) // Be*****
 
 - 可參考[MDN: Parameters without defaults after default parameters](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Default_parameters#parameters_without_defaults_after_default_parameters)
 - 舊版解法的問題：
-
   - 假設我要從「第三個」字母以後開始打碼：
 
   ```js
@@ -162,7 +165,6 @@ console.log(encodeName('Bernard', '*')) // Be*****
   ```
 
   舊版的解法會輸出`Be***r*`，因為：
-
   - 當`name`遍歷到`name.charAt(5)`的時候，取得的字母是「r」
   - `replace()`收到的指示是「把`r`替換為`*`」，但`replace()`的特性是「抓到第一個符合條件的結果後，後續一致的結果都不會去理會他」
   - 結果`Bernard`中的第一個`r`（不應該被替換）被`replace()`替換了，而第二個（應該要被替換的）`r`還是維持原狀
@@ -170,14 +172,14 @@ console.log(encodeName('Bernard', '*')) // Be*****
 2021/4/21 追加新解法（直接包裝為函示）
 
 ```js
-function encodeName (name, replaceTo = '*', startIndex = 0, endIndex = 2) {
-  const partialName = name.substring(startIndex, endIndex)
-  const replace = replaceTo.repeat(name.length - endIndex)
-  return `${partialName}${replace}`
+function encodeName(name, replaceTo = "*", startIndex = 0, endIndex = 2) {
+  const partialName = name.substring(startIndex, endIndex);
+  const replace = replaceTo.repeat(name.length - endIndex);
+  return `${partialName}${replace}`;
 }
 
-name = encodeName(name)
-console.log(name) // Be*****
+name = encodeName(name);
+console.log(name); // Be*****
 ```
 
 解析：
@@ -191,10 +193,10 @@ console.log(name) // Be*****
 
 ```js
 // input
-let email = 'bernard@example.com'
+let email = "bernard@example.com";
 
 // output should be 'ber...@example.com'
-console.log(email)
+console.log(email);
 ```
 
 - 顯示`@`後的資訊
@@ -209,38 +211,43 @@ console.log(email)
 解法：
 
 ```js
-let namePartial = email.substring(0, email.indexOf('@') / 2)
-email = `${namePartial}...${email.substring(email.indexOf('@'), email.length )}`
+let namePartial = email.substring(0, email.indexOf("@") / 2);
+email = `${namePartial}...${email.substring(email.indexOf("@"), email.length)}`;
 
-console.log(email) // ber...@example.co
+console.log(email); // ber...@example.co
 ```
 
 包裝為函式：
 
 ```js
-function getEmailName (email) {
-  return email.substring(0, email.indexOf('@'))
+function getEmailName(email) {
+  return email.substring(0, email.indexOf("@"));
 }
 
-function getEmailDomain (email) {
-  return email.substring(email.indexOf('@'), email.length)
+function getEmailDomain(email) {
+  return email.substring(email.indexOf("@"), email.length);
 }
 
-function encodeNameForEmail (name, replaceTo = '...', keepStartIndex = 0, keepEndIndex = name.length / 2) {
-  return `${name.substring(keepStartIndex, keepEndIndex)}${replaceTo}`
+function encodeNameForEmail(
+  name,
+  replaceTo = "...",
+  keepStartIndex = 0,
+  keepEndIndex = name.length / 2,
+) {
+  return `${name.substring(keepStartIndex, keepEndIndex)}${replaceTo}`;
 }
 
-function encodeEmail (email) {
-  const name = getEmailName(email)
-  const encodeName = encodeNameForEmail(name)
-  const domain = getEmailDomain(email)
-  return `${encodeName}${domain}`
+function encodeEmail(email) {
+  const name = getEmailName(email);
+  const encodeName = encodeNameForEmail(name);
+  const domain = getEmailDomain(email);
+  return `${encodeName}${domain}`;
 }
 
-console.log(encodeEmail('bernard@example.com'))  // ber...@example.com
-console.log(encodeEmail('info@example.com'))     // in...@example.com
-console.log(encodeEmail('genie@example.com'))    // ge...@example.com
-console.log(encodeEmail('eva_chan@example.com')) // eva_...@example.com
+console.log(encodeEmail("bernard@example.com")); // ber...@example.com
+console.log(encodeEmail("info@example.com")); // in...@example.com
+console.log(encodeEmail("genie@example.com")); // ge...@example.com
+console.log(encodeEmail("eva_chan@example.com")); // eva_...@example.com
 ```
 
 - `getEmailName(email)`：任務是「取得 email 中『姓名』的部分」
@@ -264,10 +271,10 @@ console.log(encodeEmail('eva_chan@example.com')) // eva_...@example.com
 第一版解法：兩層迴圈會讓時間複雜度升高，還有優化空間
 
 ```js
-for (let i = 0; i < blackList.length; i ++) {
-  for (let j = 0; j < players.length; j ++) {
+for (let i = 0; i < blackList.length; i++) {
+  for (let j = 0; j < players.length; j++) {
     if (blackList[i] === players[j]) {
-      players.splice(j, 1)
+      players.splice(j, 1);
     }
   }
 }
@@ -278,9 +285,9 @@ for (let i = 0; i < blackList.length; i ++) {
 ```js
 // 直接包裝為函式
 // 此函式會直接修改players的內容，而不會回傳一個新陣列
-function playersRemoveBlackListArray (players, blackList) {
-  for (let i = players.length - 1; i >= 0; i --) {
-    if (blackList.includes(players[i])) players.splice(i, 1)
+function playersRemoveBlackListArray(players, blackList) {
+  for (let i = players.length - 1; i >= 0; i--) {
+    if (blackList.includes(players[i])) players.splice(i, 1);
   }
 }
 ```
@@ -291,28 +298,30 @@ function playersRemoveBlackListArray (players, blackList) {
 觀摩到的解法：使用`filter()`過濾掉位在黑名單中的名字
 
 ```js
-const playersAllowed = players.filter(player => player.name !== 'Tim' && player.name !== 'Walter')
-console.log(playersAllowed)
+const playersAllowed = players.filter(
+  (player) => player.name !== "Tim" && player.name !== "Walter",
+);
+console.log(playersAllowed);
 ```
 
 但以上的程式碼是直接上黑名單手動輸入到`filter()`中，日後黑名單若擴充還需更新程式碼內容，彈性不夠好。
 於是改良第三版：
 
 ```js
-function getPermittedUsers (users, blackList) {
-  const black = getBlackListNames(blackList)
-  const pass = users.filter(user => black.indexOf(user.name) === -1)
-  return pass
+function getPermittedUsers(users, blackList) {
+  const black = getBlackListNames(blackList);
+  const pass = users.filter((user) => black.indexOf(user.name) === -1);
+  return pass;
 }
 
-function getBlackListNames (blackList) {
-  const names = []
-  blackList.forEach(black => names.push(black.name))
-  return names // 會得到 ['Tim', 'Walter']
+function getBlackListNames(blackList) {
+  const names = [];
+  blackList.forEach((black) => names.push(black.name));
+  return names; // 會得到 ['Tim', 'Walter']
 }
 
-const permittedUsers = getPermittedUsers(players, blackList)
-console.log(permittedUsers)
+const permittedUsers = getPermittedUsers(players, blackList);
+console.log(permittedUsers);
 /*
 輸出結果如下：
 [

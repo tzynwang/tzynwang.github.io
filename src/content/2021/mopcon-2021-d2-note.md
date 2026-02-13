@@ -2,7 +2,7 @@
 title: MOPCON 2021 第二天之前端開發相關內容之議程筆記
 date: 2021-10-24 11:46:28
 tag:
-- [Web performance]
+  - [Web performance]
 ---
 
 ## 總結
@@ -81,7 +81,7 @@ tag:
   - JavaScript 目前可以靠 Lodash 中的[toArray](https://lodash.com/docs#toArray)來幫忙處理
     解法來自[Why is "👍".length === 2?](https://stackoverflow.com/a/46085089/15028185)
     ```js
-    _.toArray('🤔').length; // --> 1
+    _.toArray("🤔").length; // --> 1
     ```
 - 延伸閱讀：
   - [Emoji String Length, Issues with Rounded Buttons, Bundled Exchanges](https://css-tricks.com/weekly-platform-news-emoji-string-length-issues-with-rounded-buttons-bundled-exchanges/)

@@ -2,7 +2,7 @@
 title: 閱讀筆記：The Programmer's Brain Chapter 7 Misconceptions -- Bugs in thinking
 date: 2023-07-31 20:06:27
 tag:
-- [General]
+  - [General]
 summary: 工程師在已學會一種程式語言的前提下，學習第二套程式語言會更簡單嗎？
 banner: /2023/the-programmers-brain-ch7-misconceptions-bugs-in-thinking/markus-winkler-wpOa2i3MUrY-unsplash.jpg
 ---

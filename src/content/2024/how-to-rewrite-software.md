@@ -2,10 +2,10 @@
 title: 課程筆記：重構（refactor）的上位互換——重寫（rewrite）
 date: 2024-11-19 08:43:05
 tag:
-- [Product Design]
+  - [Product Design]
 banner: /2024/how-to-rewrite-software/aaron-burden-y02jEX_B0O0-unsplash.jpg
 summary: 重構只有消除開發者的困擾，但重寫可以一次解決開發者和使用者都在意的問題。
-draft: 
+draft:
 ---
 
 在 Udemy 課程 [How to Build the Right Software (and Choose the Right Stack)](https://www.udemy.com/course/right-software-and-right-stack) 中得到一個有趣的洞見：

@@ -2,8 +2,8 @@
 title: 30天挑戰：「將Vue project部屬至GitHub Pages」相關筆記
 date: 2021-08-31 10:05:53
 tag:
-- [Vue]
-- [2021鐵人賽]
+  - [Vue]
+  - [2021鐵人賽]
 ---
 
 ## 總結
@@ -26,10 +26,8 @@ os: Windows_NT 10.0.18363 win32 x64
 // in vue.config.js
 
 module.exports = {
-  publicPath: process.env.NODE_ENV === 'production'
-    ? '/my-project/'
-    : '/'
-}
+  publicPath: process.env.NODE_ENV === "production" ? "/my-project/" : "/",
+};
 ```
 
 - 注意事項：

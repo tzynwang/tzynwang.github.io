@@ -2,7 +2,7 @@
 title: Theme "NexT" font modification
 date: 2021-02-12 15:23:22
 tag:
-- [hexo]
+  - [hexo]
 ---
 
 ## Summary of this post
@@ -82,7 +82,7 @@ font:
 
 - Set `external: true` to load the font family from `host`.
 - Go to [Google Fonts](https://fonts.google.com/) to get the host URI for "Roboto". 1. Search for the font family "Roboto" 1. Click "+ Select this style" 1. Click the button "View your selected families" on the top-right side on the screen 1. Copy `link href`, paste as the value for "host" key in `_config.next.yml` 1. Here's the screenshot for reference:
-  
+
 ![3 steps to get the font hosting URI from Google Fonts](/2021/next-theme-edit/steps-to-get-font-host-uri.png)
 
 💡 Hint:

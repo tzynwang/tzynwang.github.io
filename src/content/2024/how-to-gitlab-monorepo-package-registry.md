@@ -2,11 +2,11 @@
 title: 工作筆記：GitLab monorepo package registry/install
 date: 2024-12-07 13:14:52
 tag:
-- [GitLab]
-- [monorepo]
+  - [GitLab]
+  - [monorepo]
 banner: /2024/how-to-gitlab-monorepo-package-registry/falco-negenman-nipCGHE-M98-unsplash.jpg
 summary: 記錄一下將 monorepo 的其中一個 package 發布成私人 GitLab 套件，以及安裝私人 GitLab 套件的步驟。
-draft: 
+draft:
 ---
 
 提醒：

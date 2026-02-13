@@ -2,7 +2,7 @@
 title: Deploy to GitHub Page
 date: 2021-02-10 19:00:23
 tag:
-- [hexo]
+  - [hexo]
 ---
 
 ## Summary of this post
@@ -82,7 +82,7 @@ name: Pages
 on:
   push:
     branches:
-      - source  # default branch
+      - source # default branch
 
 jobs:
   pages:
@@ -92,7 +92,7 @@ jobs:
       - name: Use Node.js 12.x
         uses: actions/setup-node@v1
         with:
-          node-version: '12.x'
+          node-version: "12.x"
       - name: Cache NPM dependencies
         uses: actions/cache@v2
         with:
@@ -109,7 +109,7 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./public
-          publish_branch: master  # deploying branch
+          publish_branch: master # deploying branch
 ```
 
 1. Back to cmd.exe, run `hexo clean`, and then `hexo generate`
@@ -159,7 +159,7 @@ jobs:
       - name: Use Node.js 12.x
         uses: actions/setup-node@v1
         with:
-          node-version: '12.x'
+          node-version: "12.x"
       - name: Cache NPM dependencies
         uses: actions/cache@v2
         with:

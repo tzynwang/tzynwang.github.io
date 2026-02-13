@@ -5,7 +5,7 @@ tag:
   - [閱讀筆記]
 banner: /2024/book-building-a-second-brain/jesse-orrico-h6xNSDlgciU-unsplash.jpg
 summary: 如果你發現自己常常陷入「我之前好像有為某件事查了一些資料，但那些資料放哪了」的情況，或是有很多偉大想法但很少實際執行——你可以根據《打造第二大腦》的 PARA 原則來管理筆記，並搭配 CODE 原則來完成計劃。假如你沒時間讀完這本書，那麼，歡迎參考此篇讀後筆記。
-draft: 
+draft:
 ---
 
 ## 何謂第二大腦

@@ -2,7 +2,7 @@
 title: 「JavaScript陣列遍歷」相關筆記
 date: 2021-03-27 09:37:48
 tag:
-- [JavaScript]
+  - [JavaScript]
 ---
 
 ## 總結
@@ -204,6 +204,7 @@ let function = (item) => console.log(item)
   arr.flat(Infinity);
   // [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
   ```
+
   - 可以拿來去除陣列中的空位
   ```js
   const arr = [1, 2, , 4, 5];

@@ -2,8 +2,8 @@
 title: 2022 第21週 實作筆記： MaterialUI theme 一鍵換皮
 date: 2022-05-29 10:55:09
 tag:
-- [MaterialUI]
-- [React]
+  - [MaterialUI]
+  - [React]
 ---
 
 ## 總結
@@ -50,14 +50,14 @@ daisyui: 2.15.1
     source,
     options = {
       clone: true,
-    }
+    },
   ) {
     const output = options.clone ? (0, _extends2.default)({}, target) : target;
 
     if (isPlainObject(target) && isPlainObject(source)) {
       Object.keys(source).forEach((key) => {
         // Avoid prototype pollution
-        if (key === '__proto__') {
+        if (key === "__proto__") {
           return;
         }
 

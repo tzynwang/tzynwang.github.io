@@ -2,7 +2,7 @@
 title: 正規表達式筆記：斷言（assertions）
 date: 2023-04-29 16:48:58
 tag:
-- [Regular expressions]
+  - [Regular expressions]
 ---
 
 ## 總結
@@ -49,19 +49,19 @@ assertions 字元讓開發者可以根據「邊際」或「前後符合條件」
 buggyMultiline = `tey, ihe light-greon apple
 tangs on ihe greon traa`;
 
-buggyMultiline = buggyMultiline.replace(/^t/gim, 'h');
+buggyMultiline = buggyMultiline.replace(/^t/gim, "h");
 // 將位於每一個「單字開頭」的 t 替換成 h
 // 這裡會將 tey 與 tangs 換成 hey 與 hangs
 
-buggyMultiline = buggyMultiline.replace(/aa$/gim, 'ee.');
+buggyMultiline = buggyMultiline.replace(/aa$/gim, "ee.");
 // 將每一個「單字結束前」的 aa 替換為 ee.
 // 這裡會將 greon traa 的 traa 換成 tree
 
-buggyMultiline = buggyMultiline.replace(/\bi/gim, 't');
+buggyMultiline = buggyMultiline.replace(/\bi/gim, "t");
 // 將每一個「前方有字元邊際」的 i 替換為 t
 // 這裡會將出現兩次的 ihe 替換為 the
 
-fixedMultiline = buggyMultiline.replace(/\Bo/gim, 'e');
+fixedMultiline = buggyMultiline.replace(/\Bo/gim, "e");
 // 將每一個被其他字母包圍的 o 替換為 e
 // 這裡會將出現兩次的 greon 替換為 green
 ```
@@ -69,7 +69,7 @@ fixedMultiline = buggyMultiline.replace(/\Bo/gim, 'e');
 ---
 
 ```ts
-const fruits = ['Apple', 'Watermelon', 'Orange', 'Avocado', 'Strawberry'];
+const fruits = ["Apple", "Watermelon", "Orange", "Avocado", "Strawberry"];
 
 const fruitsStartsWithA = fruits.filter((fruit) => /^A/.test(fruit));
 // 取出「開頭為大寫字母 A」的字串
@@ -82,10 +82,10 @@ const fruitsStartsWithNotA = fruits.filter((fruit) => /^[^A]/.test(fruit));
 ---
 
 ```ts
-const fruitsWithDescription = ['Red apple', 'Orange orange', 'Green Avocado'];
+const fruitsWithDescription = ["Red apple", "Orange orange", "Green Avocado"];
 
 const enEdSelection = fruitsWithDescription.filter((descr) =>
-  /(en|ed)\b/.test(descr)
+  /(en|ed)\b/.test(descr),
 );
 // 取出「以 en 或 ed 結尾」的字串
 ```
@@ -124,7 +124,7 @@ const regex = /\d+(?!\.)/g;
 
 ```ts
 const orangeNotLemon =
-  'Do you want to have an orange? Yes, I do not want to have a lemon!';
+  "Do you want to have an orange? Yes, I do not want to have a lemon!";
 
 const selectNotLemonRegex = /[^?!]+have(?! a lemon)[^?!]+[?!]/gi;
 console.log(orangeNotLemon.match(selectNotLemonRegex));
@@ -149,7 +149,7 @@ console.log(orangeNotLemon.match(selectNotOrangeRegex));
 ---
 
 ```ts
-const oranges = ['ripe orange A', 'green orange B', 'ripe orange C'];
+const oranges = ["ripe orange A", "green orange B", "ripe orange C"];
 const ripeOranges = oranges.filter((fruit) => /(?<=ripe )orange/.test(fruit));
 ```
 

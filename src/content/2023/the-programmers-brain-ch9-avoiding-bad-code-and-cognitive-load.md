@@ -2,7 +2,7 @@
 title: 閱讀筆記：The Programmer's Brain Chapter 9 Avoiding bad code and cognitive load -- Two frameworks
 date: 2023-08-17 19:52:10
 tag:
-- [General]
+  - [General]
 summary: 本書認為程式碼引起困惑的理由主要可分為「結構不良」與「命名不良」兩大類型。
 banner: /2023/the-programmers-brain-ch9-avoiding-bad-code-and-cognitive-load/jamie-street-Zqy-x7K5Qcg-unsplash.jpg
 ---

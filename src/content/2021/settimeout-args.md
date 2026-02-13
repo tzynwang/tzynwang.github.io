@@ -2,7 +2,7 @@
 title: 「setTimeout() difference between parameters as string or function」相關筆記
 date: 2021-04-12 20:27:31
 tag:
-- [JavaScript]
+  - [JavaScript]
 ---
 
 ## 原始問題
@@ -13,8 +13,8 @@ tag:
 
 ```js
 // 傳入與函式內容一樣的字串作為參數
-setTimeout(console.log('first'), 0);
-console.log('second');
+setTimeout(console.log("first"), 0);
+console.log("second");
 // 輸出結果：
 // >> first
 // >> second
@@ -24,8 +24,8 @@ console.log('second');
 
 ```js
 // 直接傳入函式作為參數
-setTimeout(() => console.log('first'), 0);
-console.log('second');
+setTimeout(() => console.log("first"), 0);
+console.log("second");
 // 輸出結果：
 // >> second
 // >> first

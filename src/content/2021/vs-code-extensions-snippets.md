@@ -2,7 +2,7 @@
 title: VSCode擴充套件（Extensions）與自訂snippets
 date: 2021-03-04 09:27:50
 tag:
-- [VSCode]
+  - [VSCode]
 ---
 
 ## 總結
@@ -78,8 +78,8 @@ os: Windows_NT 10.0.18363 win32 x64
 1. 在 html.json 檔案中貼上 bootstrap5 的 html 樣板內容
    ![snippets demo 4](/2021/vs-code-extensions-snippets/snippets-edit-content.png)
    - 圖中第 16 行`bootstrap5 template`代表 snippets 名稱 - 第 17 行`prefix`的值代表呼叫 snippets 的快速鍵，為了避免跟 VSCode 預設的 html 樣板起衝突，設定為`!!` - 第 18 至 35 行`body`的值代表 snippets 的內容，每一行後面須加上半形逗號`,`分隔內容 - 第 36 行`description`是輸入快速鍵時出現在 snippets 選單的說明內容，請參考下圖
-   ![snippets demo 5](/021/vs-code-extensions-snippets/snippets-enter-hotkey.png)
-   原始碼如下：
+     ![snippets demo 5](/021/vs-code-extensions-snippets/snippets-enter-hotkey.png)
+     原始碼如下：
    ```js
    "bootstrap5 template": {
     "prefix": "!!",

@@ -2,8 +2,8 @@
 title: 在不使用 create-react-app 的情況下為 TypeScript React 專案設定 jest
 date: 2023-04-23 20:11:02
 tag:
-- [React]
-- [Testing]
+  - [React]
+  - [Testing]
 ---
 
 ## 總結
@@ -32,23 +32,23 @@ tag:
 在終端執行 `jest --init` 建立設定檔：
 
 ```ts
-import type { Config } from 'jest';
+import type { Config } from "jest";
 
 const config: Config = {
-  preset: 'ts-jest',
-  testEnvironment: 'jsdom',
+  preset: "ts-jest",
+  testEnvironment: "jsdom",
   moduleNameMapper: {
     // 下面這行設定代表各測試檔案中的路徑 @/jest.config 會指向根目錄的 jest.config.ts 檔案
-    '@/jest.config': '<rootDir>/jest.config.ts',
+    "@/jest.config": "<rootDir>/jest.config.ts",
   },
   transform: {
     // 下面的設定讓 jest 能支援測試 .tsx 與 .ts 類型的檔案
-    '^.+\\.tsx?$': ['ts-jest', {}],
-    '^.+\\.ts?$': ['ts-jest', {}],
+    "^.+\\.tsx?$": ["ts-jest", {}],
+    "^.+\\.ts?$": ["ts-jest", {}],
   },
   globals: {
     SOME_GLOBAL_VARIABLE:
-      '可以在 jest.config.ts 中的 config.globals 設定全域變數',
+      "可以在 jest.config.ts 中的 config.globals 設定全域變數",
   },
 };
 
@@ -58,10 +58,10 @@ export default config;
 接著就可在各處測試檔案中引用 `jestConfig` 了：
 
 ```ts
-import jestConfig from '@/jest.config';
+import jestConfig from "@/jest.config";
 
-describe('Some unit tests for a function', () => {
-  test('to test...', () => {
+describe("Some unit tests for a function", () => {
+  test("to test...", () => {
     const GLOBAL_VARIABLE = jestConfig.globals?.SOME_GLOBAL_VARIABLE as string;
     // do the test...
   });

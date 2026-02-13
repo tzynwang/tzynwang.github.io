@@ -2,7 +2,7 @@
 title: 自主練習專案「grid-template-areas generator」技術記錄
 date: 2021-03-24 12:18:30
 tag:
-- [CSS]
+  - [CSS]
 ---
 
 ## 總結
@@ -33,17 +33,16 @@ os: Windows_NT 10.0.18363 win32 x64
 
 - 先選取`.label`的`::before`部位，設定`position: absolute;`與`top: 8px;`、`left: 4px;`來讓圖示預定繪製的範圍離`.label`左邊框 4px 遠，並垂直置中
 - `background`如果設定多個`linear-gradient()`，原始碼從上到下會分別對應圖層從上到下繪製的內容
-
   - 以 cell start 的圖示為例：
-  <script src="https://gist.github.com/tzynwang/9b197345e6727409ced24f58820e1a47.js"></script>
+    <script src="https://gist.github.com/tzynwang/9b197345e6727409ced24f58820e1a47.js"></script>
 
-    <p class="codepen" data-height="265" data-theme-id="dark" data-default-tab="css,result" data-user="Charlie7779" data-slug-hash="GRrJEJM" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="linear-gradient()">
-    <span>See the Pen <a href="https://codepen.io/Charlie7779/pen/GRrJEJM">
-    linear-gradient()</a> by Charlie (<a href="https://codepen.io/Charlie7779">@Charlie7779</a>)
-    on <a href="https://codepen.io">CodePen</a>.</span>
-    </p>
-    <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
-    - 其他欄位的圖示原理相同，僅是修改色塊位置或縮小覆蓋區域
+      <p class="codepen" data-height="265" data-theme-id="dark" data-default-tab="css,result" data-user="Charlie7779" data-slug-hash="GRrJEJM" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="linear-gradient()">
+      <span>See the Pen <a href="https://codepen.io/Charlie7779/pen/GRrJEJM">
+      linear-gradient()</a> by Charlie (<a href="https://codepen.io/Charlie7779">@Charlie7779</a>)
+      on <a href="https://codepen.io">CodePen</a>.</span>
+      </p>
+      <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+      - 其他欄位的圖示原理相同，僅是修改色塊位置或縮小覆蓋區域
 
 ### `<textarea>`換行上色效果
 

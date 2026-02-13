@@ -2,8 +2,8 @@
 title: 「create-react-app template」實作筆記
 date: 2022-02-05 19:18:59
 tag:
-- [React]
-- [webpack]
+  - [React]
+  - [webpack]
 ---
 
 ## 總結

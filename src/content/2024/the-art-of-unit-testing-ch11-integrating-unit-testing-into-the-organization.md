@@ -2,10 +2,10 @@
 title: 閱讀筆記：The Art of Unit Testing Chapter 11 Integrating unit testing into the organization
 date: 2024-02-08 17:52:43
 tag:
-- [Testing]
+  - [Testing]
 banner: /2024/the-art-of-unit-testing-ch11-integrating-unit-testing-into-the-organization/patrick-perkins-ETRPjvb0KM0-unsplash.jpg
 summary: 本章為「想要帶來改變」的人整理了三個注意事項：如何讓改變成真、能讓計畫成功的秘訣、可能搞砸計畫的因素
-draft: 
+draft:
 ---
 
 ## 簡介

@@ -2,7 +2,7 @@
 title: 「從零開始React Todo List with TypeScript」相關筆記
 date: 2021-11-12 14:52:46
 tag:
-- [React]
+  - [React]
 ---
 
 ## 總結
@@ -60,10 +60,10 @@ firebase: 9.4.0
 
   ```ts
   // theme.ts
-  import { extendTheme, ThemeConfig } from '@chakra-ui/react';
+  import { extendTheme, ThemeConfig } from "@chakra-ui/react";
 
   const config: ThemeConfig = {
-    initialColorMode: 'light',
+    initialColorMode: "light",
     useSystemColorMode: false,
   };
   const theme = extendTheme({ config });
@@ -241,7 +241,7 @@ firebase: 9.4.0
 
   ```ts
   // App.tsx
-  const firebaseTodoRef = collection(db, 'todos');
+  const firebaseTodoRef = collection(db, "todos");
   useEffect(() => {
     const getFirebaseTodo = async () => {
       try {
@@ -268,11 +268,11 @@ firebase: 9.4.0
 
   ```ts
   // service/firebase.ts
-  import { initializeApp } from 'firebase/app';
-  import { getFirestore } from 'firebase/firestore/lite';
+  import { initializeApp } from "firebase/app";
+  import { getFirestore } from "firebase/firestore/lite";
 
   const firebaseConfig = {
-    apiKey: 'xxx',
+    apiKey: "xxx",
     // skip the data parts...
   };
 

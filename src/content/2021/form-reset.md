@@ -2,7 +2,7 @@
 title: 「重設表單（form reset）」相關筆記
 date: 2021-05-13 14:27:11
 tag:
-- [HTML]
+  - [HTML]
 ---
 
 ## 總結
@@ -47,8 +47,8 @@ ox: macOS Big Suf Version 11.1
 
 ```js
 // JavaScript部分
-document.querySelector('#resetFirst').addEventListener('click', (event) => {
-  document.querySelector('.first').reset();
+document.querySelector("#resetFirst").addEventListener("click", (event) => {
+  document.querySelector(".first").reset();
   event.preventDefault();
 });
 ```

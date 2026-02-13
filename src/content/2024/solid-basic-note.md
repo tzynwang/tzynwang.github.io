@@ -2,8 +2,8 @@
 title: TypeScript 工程師的基礎 SOLID 筆記
 date: 2024-02-21 20:57:03
 tag:
-- [clean code]
-- [Design Patterns]
+  - [clean code]
+  - [Design Patterns]
 banner: /2024/solid-basic-note/uve-sanchez-9DRX_cW48RQ-unsplash.jpg
 summary: 最近在看《Clean Code 學派的風格實踐：開發可靠、可維護又強健的 JavaScript》，順便整理一下 SOLID 在 JS/TS 中的應用方式。
 draft:
@@ -35,10 +35,10 @@ SOLID 是為了讓**物件導向程式碼**能更好懂、好維護的設計原�
 ```js
 function handlePayment(method) {
   switch (method) {
-    case 'atm':
+    case "atm":
       // ...
       break;
-    case 'credit-card':
+    case "credit-card":
       // ...
       break;
     default:
@@ -77,8 +77,8 @@ class CreditCardpayment implements PaymentHandler {
 
 ```ts
 enum paymentMethods {
-  atm = 'atm',
-  creditCard = 'creditCard',
+  atm = "atm",
+  creditCard = "creditCard",
 }
 
 type Payments = {
@@ -148,7 +148,7 @@ class Bird {
 
 class Penguin extends Bird {
   fly() {
-    throw new Error('Penguin can not fly.');
+    throw new Error("Penguin can not fly.");
   }
 }
 ```

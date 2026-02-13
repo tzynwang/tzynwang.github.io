@@ -2,10 +2,10 @@
 title: 2022 第32週 學習筆記：在 react app 中實作 event driven pattern
 date: 2022-08-11 20:22:06
 tag:
-- [Design Patterns]
-- [JavaScript]
-- [React]
-- [TypeScript]
+  - [Design Patterns]
+  - [JavaScript]
+  - [React]
+  - [TypeScript]
 ---
 
 ## 總結
@@ -27,15 +27,15 @@ interface TokenLoginEvent {
 
 ```ts
 enum AUTH_EVENT {
-  TOKEN_LOGIN = 'TOKEN_LOGIN',
-  LOGOUT = 'LOGOUT',
+  TOKEN_LOGIN = "TOKEN_LOGIN",
+  LOGOUT = "LOGOUT",
 }
 ```
 
 ```ts
 function dispatchTokenLoginEvent(): void {
   const event = new CustomEvent<TokenLoginEvent>(AUTH_EVENT.TOKEN_LOGIN, {
-    detail: { token: 'a very long token' },
+    detail: { token: "a very long token" },
   });
   document.dispatchEvent(event);
 }
@@ -55,7 +55,7 @@ function dispatchLogoutEvent(): void {
 ```ts
 function handleLogout(): void {
   // run the logout logic
-  console.info('receive logout event.');
+  console.info("receive logout event.");
 }
 function handleLoginByToken(e: Event): void {
   // run the logic of login by token
