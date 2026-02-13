@@ -5,10 +5,16 @@
   font-family: sans-serif;
   text-wrap: pretty;
   color: rgba(0, 0, 0, 0.9);
+  @media (prefers-color-scheme: dark) {
+    color: rgba(255, 255, 255, 0.9);
+  }
 }
 
 html {
   background-color: rgb(191, 191, 191, 0.4);
+  @media (prefers-color-scheme: dark) {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
 }
 
 a {
@@ -17,10 +23,16 @@ a {
   text-decoration: underline;
   text-decoration-color: transparent;
   transition: text-decoration-color 0.2s ease-in-out;
+  @media (prefers-color-scheme: dark) {
+    color: oklch(from #127369 calc(l + 0.2) c h);
+  }
 }
 
 a:hover {
   text-decoration-color: #127369;
+  @media (prefers-color-scheme: dark) {
+    text-decoration-color: oklch(from #127369 calc(l + 0.2) c h);
+  }
 }
 
 a.link-out {
@@ -59,6 +71,9 @@ h2 {
   line-height: 42px;
   margin: 16px 0;
   color: #4c5958;
+  @media (prefers-color-scheme: dark) {
+    color: oklch(from #4c5958 calc(l + 0.1) calc(c + 0.1) h);
+  }
 }
 
 h3,
@@ -67,6 +82,9 @@ h4 {
   line-height: 34px;
   margin: 16px 0;
   color: #4c5958;
+  @media (prefers-color-scheme: dark) {
+    color: oklch(from #4c5958 calc(l + 0.1) calc(c + 0.1) h);
+  }
 }
 
 h5 {
@@ -74,6 +92,9 @@ h5 {
   line-height: 28px;
   margin: 4px 0;
   color: #4c5958;
+  @media (prefers-color-scheme: dark) {
+    color: oklch(from #4c5958 calc(l + 0.1) calc(c + 0.1) h);
+  }
 }
 
 p {
@@ -89,6 +110,9 @@ p code {
 blockquote {
   padding-left: 16px;
   border-left: 4px solid #4c5958;
+  @media (prefers-color-scheme: dark) {
+    border-left-color: oklch(from #4c5958 calc(l + 0.4) c h);
+  }
 }
 
 blockquote * {
@@ -110,11 +134,17 @@ hr {
   height: 1px;
   margin: 16px 0;
   background-color: #4c5958;
+  @media (prefers-color-scheme: dark) {
+    background-color: oklch(from #4c5958 calc(l + 0.4) c h);
+  }
 }
 
 del {
   /* 90% opacity */
   color: #4c5958e6;
+  @media (prefers-color-scheme: dark) {
+    color: oklch(from #4c5958 calc(l + 0.4) c h / 0.9);
+  }
 }
 
 ol > li:has(p) > p {
@@ -133,6 +163,9 @@ table,
 th,
 td {
   border: 1px solid #4c5958;
+  @media (prefers-color-scheme: dark) {
+    border-color: oklch(from #4c5958 calc(l + 0.4) c h);
+  }
 }
 
 @media (prefers-color-scheme: dark) {
