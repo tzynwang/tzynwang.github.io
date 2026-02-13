@@ -93,7 +93,7 @@ blockquote {
 
 blockquote * {
   /* 引用的內容多半是英文，故使用 Noto Sans 避免 ' 這類符號變成全形 */
-  font-family: 'Noto Sans', sans-serif;
+  font-family: "Noto Sans", sans-serif;
 }
 
 pre {
@@ -133,4 +133,12 @@ table,
 th,
 td {
   border: 1px solid #4c5958;
+}
+
+@media (prefers-color-scheme: dark) {
+  .astro-code,
+  .astro-code span {
+    color: var(--shiki-dark) !important;
+    background-color: var(--shiki-dark-bg) !important;
+  }
 }
