@@ -1,41 +1,25 @@
 ---
-import Html from '@Components/layout/Html.astro';
-import FeaturedPostLayout from '@Components/layout/FeaturedPostLayout.astro';
-import ListedPostLayout from '@Components/layout/ListedPostLayout.astro';
-import { ALL_SORTED_POSTS, getFlatTags, getPostUrl } from '@Tools/post';
-
+import Html from "@Components/layout/Html.astro";
+import FeaturedPostLayout from "@Components/layout/FeaturedPostLayout.astro";
+import { ALL_SORTED_POSTS, getFlatTags, getPostUrl } from "@Tools/post";
 const firstTenPosts = ALL_SORTED_POSTS.slice(0, 10);
-const postShouldWithSummary = firstTenPosts.slice(0, 5);
-const restOfPost = firstTenPosts.slice(5, firstTenPosts.length);
 ---
 
 <Html>
   <div class="post-container">
     <div class="featured-posts-container">
       {
-        postShouldWithSummary.map((post, index) => (
-          <div class:list={['post', `post-${index}`]}>
+        firstTenPosts.map((post, index) => (
+          <div class:list={["post", `post-${index}`]}>
             <FeaturedPostLayout
               title={post.data.title}
               date={post.data.date}
               tag={getFlatTags(post.data.tag)}
               banner={post.data.banner}
-              summary={post.data.summary || ''}
+              summary={post.data.summary || ""}
               url={getPostUrl(post)}
             />
           </div>
-        ))
-      }
-    </div>
-    <div class="listed-posts-container">
-      {
-        restOfPost.map((post) => (
-          <ListedPostLayout
-            title={post.data.title}
-            date={post.data.date}
-            tag={getFlatTags(post.data.tag)}
-            url={getPostUrl(post)}
-          />
         ))
       }
     </div>
@@ -48,37 +32,5 @@ const restOfPost = firstTenPosts.slice(5, firstTenPosts.length);
     flex-direction: column;
     gap: 16px;
     margin-bottom: 16px;
-  }
-
-  @media screen and (min-width: 1200px) {
-    .featured-posts-container {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      grid-template-rows: repeat(2, 1fr);
-      grid-template-areas:
-        'post-0 post-0 post-1'
-        'post-2 post-3 post-4';
-      gap: 16px;
-    }
-
-    .post-0 {
-      grid-area: post-0;
-    }
-
-    .post-1 {
-      grid-area: post-1;
-    }
-
-    .post-2 {
-      grid-area: post-2;
-    }
-
-    .post-3 {
-      grid-area: post-3;
-    }
-
-    .post-4 {
-      grid-area: post-4;
-    }
   }
 </style>

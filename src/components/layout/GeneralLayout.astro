@@ -1,5 +1,5 @@
 ---
-import Footer from '@Components/element/Footer.astro';
+import Footer from "@Components/element/Footer.astro";
 ---
 
 <section class="side-content">
@@ -27,28 +27,11 @@ import Footer from '@Components/element/Footer.astro';
     gap: 16px;
   }
 
-  @media screen and (min-width: 800px) {
-    body {
-      height: 100vh;
-      display: flex;
-      flex-direction: row;
-      overflow-y: hidden;
-    }
-
-    nav {
-      flex-direction: column;
-    }
-
-    .side-content {
-      flex: 0 0 240px;
-    }
-
+  @media (min-width: 800px) {
+    .side-content,
     .main-content {
-      margin: 0;
-      padding: 40px 24px 0;
-      flex: 1 1 auto;
-      overflow-y: auto;
-      position: relative;
+      max-width: 60ch;
+      margin-inline: auto;
     }
   }
 </style>

@@ -1,16 +1,15 @@
 ---
-import type { MarkdownInstance, MarkdownHeading } from 'astro';
-import type { EntryData } from '@Models/GeneralTypes';
-
-import Html from '@Components/layout/Html.astro';
-import Tag from '@Components/element/Tag.astro';
-import { dateFormatter } from '@Tools/formatter';
-import { getFlatTags } from '@Tools/post';
+import type { MarkdownInstance, MarkdownHeading } from "astro";
+import type { EntryData } from "@Models/GeneralTypes";
+import Html from "@Components/layout/Html.astro";
+import Tag from "@Components/element/Tag.astro";
+import { dateFormatter } from "@Tools/formatter";
+import { getFlatTags } from "@Tools/post";
 
 interface Props {
   entry: EntryData;
   headings: MarkdownHeading[];
-  Content: MarkdownInstance<{}>['Content'];
+  Content: MarkdownInstance<{}>["Content"];
 }
 
 const { entry, headings, Content } = Astro.props;
@@ -18,8 +17,8 @@ const { entry, headings, Content } = Astro.props;
 
 <Html
   title={entry.data.title}
-  description={entry.data.summary || ''}
-  image={entry.data.banner || ''}
+  description={entry.data.summary || ""}
+  image={entry.data.banner || ""}
 >
   <div class="post-container">
     <h1>{entry.data.title}</h1>
@@ -48,6 +47,7 @@ const { entry, headings, Content } = Astro.props;
   .post-container h1 {
     margin: 0;
     margin-bottom: 16px;
+    text-wrap: balance;
   }
 
   .info {
@@ -82,13 +82,8 @@ const { entry, headings, Content } = Astro.props;
 
   @media screen and (min-width: 800px) {
     .post-container {
-      max-width: 600px;
-    }
-  }
-
-  @media screen and (min-width: 1200px) {
-    .post-container {
-      max-width: 720px;
+      max-width: 60ch;
+      margin-inline: auto;
     }
   }
 </style>
