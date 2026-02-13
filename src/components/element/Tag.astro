@@ -21,8 +21,11 @@ const tagUrl = `/tag/${tag}`;
     font-weight: 400;
     text-decoration: none;
     background-color: #8aa6a3;
-    color: #fff;
+    color: rgba(255, 255, 255, 0.9);
     transition: background-color 0.2s ease-in-out;
+    @media (prefers-color-scheme: dark) {
+      background-color: oklch(from #8aa6a3 calc(l - 0.2) c h);
+    }
   }
 
   .tag:not(:last-of-type) {
@@ -30,6 +33,10 @@ const tagUrl = `/tag/${tag}`;
   }
 
   .tag:hover {
-    background-color: #127369;
+    background-color: oklch(from #8aa6a3 calc(l - 0.2) c h);
+    @media (prefers-color-scheme: dark) {
+      color: rgba(0, 0, 0, 0.9);
+      background-color: oklch(from #8aa6a3 calc(l + 0.2) c h);
+    }
   }
 </style>

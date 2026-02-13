@@ -87,9 +87,15 @@ const bannerUrl = banner ? `url(${banner})` : "none";
     text-decoration-color: transparent;
     transition: text-decoration-color 0.2s ease-in-out;
     cursor: pointer;
+    @media (prefers-color-scheme: dark) {
+      color: oklch(from #127369 calc(l + 0.2) c h);
+    }
   }
 
   .text-wrapper:hover .title {
     text-decoration-color: #127369;
+    @media (prefers-color-scheme: dark) {
+      color: oklch(from #127369 calc(l + 0.2) c h);
+    }
   }
 </style>
