@@ -12,42 +12,16 @@ const sortYears = Object.keys(groupByYearPosts).sort(
 <Html>
   {
     sortYears.map((year, i) => (
-      <>
-        <div class="year-container">
-          <h2>
-            {year}（計{groupByYearPosts[year].length}篇）
-          </h2>
-          <ul class="post-container">
-            {groupByYearPosts[year].map((post) => (
-              <PostItem post={post} />
-            ))}
-          </ul>
-        </div>
-        {i !== sortYears.length - 1 && <hr class="divider" />}
-      </>
+      <section>
+        <h2>
+          {year}（計{groupByYearPosts[year].length}篇）
+        </h2>
+        <ul class="flex flex-col gap-8">
+          {groupByYearPosts[year].map((post) => (
+            <PostItem post={post} />
+          ))}
+        </ul>
+      </section>
     ))
   }
 </Html>
-
-<style scoped>
-  .year-container {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
-
-  .year-container h2 {
-    margin: 0;
-  }
-
-  .post-container {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
-
-  .divider {
-    width: calc(100% - 16px);
-    margin-right: auto;
-  }
-</style>

@@ -5,20 +5,7 @@ import { ALL_UNIQUE_TAGS } from "@Tools/post";
 ---
 
 <Html>
-  <ul class="tag-container">
+  <ul class="flex flex-col gap-4">
     {ALL_UNIQUE_TAGS.map((tag) => <li>{<Tag tag={tag}>{tag}</Tag>}</li>)}
   </ul>
 </Html>
-
-<style scoped>
-  .tag-container {
-    display: inline-flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-
-  ul,
-  li {
-    list-style-type: none;
-  }
-</style>

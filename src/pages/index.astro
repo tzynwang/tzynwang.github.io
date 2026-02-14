@@ -7,29 +7,18 @@ const firstTenPosts = ALL_SORTED_POSTS.slice(0, 10);
 ---
 
 <Html>
-  <div class="featured-posts-container">
+  <div class="space-y-8">
     {
-      firstTenPosts.map((post, index) => (
-        <div class:list={["post", `post-${index}`]}>
-          <FeaturedPostLayout
-            title={post.data.title}
-            date={post.data.date}
-            tag={getFlatTags(post.data.tag)}
-            banner={post.data.banner}
-            summary={post.data.summary || ""}
-            url={getPostUrl(post)}
-          />
-        </div>
+      firstTenPosts.map((post) => (
+        <FeaturedPostLayout
+          title={post.data.title}
+          date={post.data.date}
+          tag={getFlatTags(post.data.tag)}
+          banner={post.data.banner}
+          summary={post.data.summary || ""}
+          url={getPostUrl(post)}
+        />
       ))
     }
   </div>
 </Html>
-
-<style scoped>
-  .featured-posts-container {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    margin-bottom: 16px;
-  }
-</style>

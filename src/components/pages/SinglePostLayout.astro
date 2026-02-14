@@ -20,70 +20,44 @@ const { entry, headings, Content } = Astro.props;
   description={entry.data.summary || ""}
   image={entry.data.banner || ""}
 >
-  <div class="post-container">
+  <section class="space-y-8">
     <h1>{entry.data.title}</h1>
-    <div class="info">
-      <span>{dateFormatter(entry.data.date)}</span>
-      <span
-        >{
-          getFlatTags(entry.data.tag).map((tag) => <Tag tag={tag}>{tag}</Tag>)
-        }</span
-      >
-      <ul class="toc-container">
+    <div class="flex flex-col gap-3">
+      <time>{dateFormatter(entry.data.date)}</time>
+      <nav class="flex items-center gap-2">
+        {getFlatTags(entry.data.tag).map((tag) => <Tag tag={tag}>{tag}</Tag>)}
+      </nav>
+      <ul class="list-none space-y-1">
         {
           headings.map((head) => (
-            <li class={`toc-${head.depth}`}>
-              <a href={`#${head.slug}`}>{head.text}</a>
+            <li
+              class:list={[
+                "block",
+                head.depth === 3 && "ml-4",
+                head.depth === 4 && "ml-8",
+                head.depth === 5 && "ml-12",
+              ]}
+            >
+              <a
+                href={`#${head.slug}`}
+                class="text-teal-800 dark:text-teal-300"
+              >
+                {head.text}
+              </a>
             </li>
           ))
         }
       </ul>
     </div>
-    <Content />
-  </div>
+    <article
+      class:list={[
+        "space-y-6",
+        "[&_:is(blockquote)]:border-l-4 [&_:is(blockquote)]:pl-4",
+        "[&_:is(ol)]:list-decimal [&_:is(ol,ul)]:list-inside [&_:is(ul)]:list-disc",
+        "[&_:is(a)]:text-teal-800 dark:[&_:is(a)]:text-teal-300",
+      ]}
+    >
+      <Content />
+    </article>
+  </section>
 </Html>
-
-<style scoped>
-  .post-container h1 {
-    margin: 0;
-    margin-bottom: 16px;
-    text-wrap: balance;
-  }
-
-  .info {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-
-  .toc-container {
-    margin-bottom: 0;
-  }
-
-  .toc-container > li:not(:last-of-type) {
-    margin-bottom: 4px;
-  }
-
-  .toc-2 {
-    margin-left: 1rem;
-  }
-
-  .toc-3 {
-    margin-left: 2rem;
-  }
-
-  .toc-4 {
-    margin-left: 3rem;
-  }
-
-  .toc-5 {
-    margin-left: 4rem;
-  }
-
-  @media screen and (min-width: 800px) {
-    .post-container {
-      max-width: 60ch;
-      margin-inline: auto;
-    }
-  }
-</style>

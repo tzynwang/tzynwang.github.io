@@ -18,7 +18,16 @@ const ga4Id = import.meta.env.PUBLIC_GA4_ID;
 const gTagId = import.meta.env.PUBLIC_GTAG_ID;
 ---
 
-<html lang="zh-tw">
+<html
+  lang="zh-tw"
+  class:list={[
+    "bg-neutral-200 text-neutral-900 *:text-pretty dark:bg-neutral-700 dark:text-neutral-200",
+    "[&_:is(h1,h2,h3,h4,h5,h6)]:my-6 [&_:is(h1,h2,h3,h4,h5,h6)]:text-balance [&_h1]:text-5xl/16 [&_h2]:text-4xl/12 [&_h3]:text-3xl/8 [&_h4]:text-2xl [&_h5]:text-xl [&_h6]:text-lg",
+    "[&_hr]:my-6",
+    "[&_:is(table,th,td)]:border [&_:is(table,th,td)]:border-neutral-900 [&_:is(table,th,td)]:p-2 dark:[&_:is(table,th,td)]:border-neutral-200 [&_table]:w-full",
+    "[&_del]:mx-0.5 [&_del]:text-neutral-900/70 [&_del]:line-through dark:[&_del]:dark:text-neutral-200/75",
+  ]}
+>
   <head>
     <!-- Global Metadata -->
     <meta charset="utf-8" />
