@@ -87,17 +87,15 @@ const gTagId = import.meta.env.PUBLIC_GTAG_ID;
     />
   </head>
   <body>
-    <!-- Google Tag Manager (noscript) -->
-    <noscript
-      ><iframe
-        src=`https://www.googletagmanager.com/ns.html?id=${gTagId}`
-        height="0"
-        width="0"
-        style="display:none;visibility:hidden"></iframe></noscript
-    >
-    <!-- End Google Tag Manager (noscript) -->
     <GeneralLayout>
       <slot />
     </GeneralLayout>
+    <!-- Google Tag Manager (noscript) -->
+    <iframe
+      src=`https://www.googletagmanager.com/ns.html?id=${gTagId}`
+      height="0"
+      width="0"
+      style="display:none;visibility:hidden"></iframe>
+    <!-- End Google Tag Manager (noscript) -->
   </body>
 </html>
