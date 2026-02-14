@@ -2,19 +2,19 @@
 
 ## 簡介
 
-這個 repo 是技術部落格[普通文組 2.2](https://tzynwang.github.io/) 的本體，由查理（tzyn.wang🦊gmail.com）維護。
+這個 repo 是技術部落格 [普通文組 2.2](https://tzynwang.github.io/) 的本體，由查理（tzyn.wang🦊gmail.com）維護。
 
 ## 快速啟動
 
 ```bash
-make i
-make start
+npm install
+npm run dev
 ```
 
 ## 基礎設施
 
-- Node.js: v20
-- Package Manager: `yarn`
+- Node.js: v24
+- Package Manager: `npm`
 
 ## 資源出處
 
