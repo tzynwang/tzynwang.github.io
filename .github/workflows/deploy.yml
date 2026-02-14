@@ -21,8 +21,8 @@ jobs:
         with:
           node-version: "24"
         env:
-          PUBLIC_GA4_ID: "G-6QC9CKHCTY"
-          PUBLIC_GTAG_ID: "GTM-KM9SGJLK"
+          PUBLIC_GA4_ID: ${{ vars.PUBLIC_GA4_ID }}
+          PUBLIC_GTAG_ID: ${{ vars.PUBLIC_GTAG_ID }}
   deploy:
     needs: build
     runs-on: ubuntu-latest
