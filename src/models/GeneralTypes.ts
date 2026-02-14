@@ -5,7 +5,7 @@ export type PostYear = "2021" | "2022" | "2023" | "2024" | "2025";
 export type Post = {
   title: string;
   date: Date;
-  tag: string[];
+  tag: string[][];
   banner?: string;
   summary?: string;
   draft?: boolean | null;
