@@ -14,15 +14,7 @@ const posts = ALL_SORTED_POSTS.filter((post) =>
 ---
 
 <Html>
-  <ul class="post-container">
+  <ul class="flex flex-col gap-8">
     {posts.map((post) => <PostItem post={post} />)}
   </ul>
 </Html>
-
-<style scoped>
-  .post-container {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
-</style>

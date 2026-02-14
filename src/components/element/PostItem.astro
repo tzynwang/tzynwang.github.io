@@ -12,20 +12,14 @@ interface Props {
 const { post } = Astro.props;
 ---
 
-<li class="post-wrapper">
-  <a href={`/${getPostUrl(post)}`} class={GA4_READ_POST}>{post.data.title}</a>
-  <div>{dateFormatter(post.data.date)}</div>
-  <div>
+<li class="flex flex-col gap-1">
+  <a
+    href={`/${getPostUrl(post)}`}
+    class:list={[GA4_READ_POST, "text-xl text-teal-800 dark:text-teal-300"]}
+    >{post.data.title}</a
+  >
+  <time>{dateFormatter(post.data.date)}</time>
+  <div class="flex flex-wrap items-center gap-2">
     {getFlatTags(post.data.tag).map((tag) => <Tag tag={tag}>{tag}</Tag>)}
   </div>
 </li>
-
-<style scoped>
-  .post-wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    list-style-type: none;
-    container-type: inline-size;
-  }
-</style>

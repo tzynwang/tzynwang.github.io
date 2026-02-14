@@ -9,93 +9,16 @@ interface Props extends Post {
 }
 
 const { title, date, tag, banner, summary, url } = Astro.props;
-const bannerUrl = banner ? `url(${banner})` : "none";
 ---
 
-<div class="featured-post-wrapper">
-  <div class="featured-post-layout">
-    <div class="banner-wrapper"></div>
-    <div class="text-wrapper">
-      <a href={url} class:list={[GA4_READ_POST, "link-out"]}></a>
-      <p class="title">{title}</p>
-      <div>{dateFormatter(date)}</div>
-      <div>
-        {tag.map((tag) => <Tag tag={tag}>{tag}</Tag>)}
-      </div>
-      <p set:html={summary} />
-    </div>
-  </div>
-</div>
-
-<style scoped define:vars={{ bannerUrl }}>
-  .featured-post-wrapper {
-    container-type: inline-size;
-    height: 100%;
-  }
-
-  .featured-post-layout {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
-
-  .banner-wrapper {
-    position: relative;
-    min-height: max(280px, 28dvh);
-    max-height: min(320px, 33dvh);
-    overflow: hidden;
-  }
-
-  .banner-wrapper::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-image: var(--bannerUrl);
-    transform: scale(1);
-    transition: transform 0.3s ease;
-  }
-
-  .banner-wrapper:hover::before {
-    transform: scale(1.1);
-  }
-
-  .text-wrapper {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    text-wrap: pretty;
-  }
-
-  p {
-    margin: 0;
-    padding: 0;
-  }
-
-  .text-wrapper .title {
-    margin: 0;
-    color: #127369;
-    font-weight: 700;
-    text-decoration: underline;
-    text-decoration-color: transparent;
-    transition: text-decoration-color 0.2s ease-in-out;
-    cursor: pointer;
-    @media (prefers-color-scheme: dark) {
-      color: oklch(from #127369 calc(l + 0.2) c h);
-    }
-  }
-
-  .text-wrapper:hover .title {
-    text-decoration-color: #127369;
-    @media (prefers-color-scheme: dark) {
-      color: oklch(from #127369 calc(l + 0.2) c h);
-    }
-  }
-</style>
+<section class="space-y-2">
+  <img src={banner} alt="" class="block aspect-video w-full object-cover" />
+  <h2 class="relative text-teal-800 dark:text-teal-300">
+    {title}<a href={url} class:list={[GA4_READ_POST, "absolute inset-0"]}></a>
+  </h2>
+  <time class="block">{dateFormatter(date)}</time>
+  <nav class="flex items-center gap-2">
+    {tag.map((tag) => <Tag tag={tag}>{tag}</Tag>)}
+  </nav>
+  <p set:html={summary} />
+</section>

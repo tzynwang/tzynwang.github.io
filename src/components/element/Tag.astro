@@ -7,36 +7,9 @@ const { tag } = Astro.props;
 const tagUrl = `/tag/${tag}`;
 ---
 
-<a class="tag" href={tagUrl}>
+<a
+  class="relative inline-flex items-center bg-teal-800 px-2 py-1 text-sm text-neutral-50 transition-colors dark:bg-teal-300 dark:text-neutral-800"
+  href={tagUrl}
+>
   <slot />
 </a>
-
-<style scoped>
-  .tag {
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-    padding: 2px 8px;
-    font-size: 14px;
-    font-weight: 400;
-    text-decoration: none;
-    background-color: #8aa6a3;
-    color: rgba(255, 255, 255, 0.9);
-    transition: background-color 0.2s ease-in-out;
-    @media (prefers-color-scheme: dark) {
-      background-color: oklch(from #8aa6a3 calc(l - 0.2) c h);
-    }
-  }
-
-  .tag:not(:last-of-type) {
-    margin-right: 8px;
-  }
-
-  .tag:hover {
-    background-color: oklch(from #8aa6a3 calc(l - 0.2) c h);
-    @media (prefers-color-scheme: dark) {
-      color: rgba(0, 0, 0, 0.9);
-      background-color: oklch(from #8aa6a3 calc(l + 0.2) c h);
-    }
-  }
-</style>

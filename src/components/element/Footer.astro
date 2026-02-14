@@ -2,20 +2,11 @@
 const is404 = Astro.url.pathname.includes("/404");
 ---
 
-<footer class:list={["footer", { bottom: is404 }]}>
+<footer
+  class:list={[
+    "p-8 text-center",
+    is404 ? "absolute bottom-0 left-1/2 -translate-1/2" : null,
+  ]}
+>
   Tzu Yin (Charlie) 🦊 Made in Taiwan
 </footer>
-
-<style>
-  .footer {
-    padding: 36px;
-    text-align: center;
-  }
-
-  .bottom {
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-</style>
