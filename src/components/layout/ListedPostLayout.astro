@@ -1,8 +1,7 @@
 ---
-import type { Post } from "@Models/GeneralTypes";
-
 import Tag from "@Components/element/Tag.astro";
 import { GA4_READ_POST } from "@Models/GeneralModels";
+import type { Post } from "@Models/GeneralTypes";
 import { dateFormatter } from "@Tools/formatter";
 
 interface Props extends Pick<Post, "title" | "date" | "tag"> {

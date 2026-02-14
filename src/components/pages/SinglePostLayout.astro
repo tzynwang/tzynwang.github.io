@@ -1,10 +1,10 @@
 ---
-import type { MarkdownInstance, MarkdownHeading } from "astro";
-import type { EntryData } from "@Models/GeneralTypes";
-import Html from "@Components/layout/Html.astro";
 import Tag from "@Components/element/Tag.astro";
+import Html from "@Components/layout/Html.astro";
+import type { EntryData } from "@Models/GeneralTypes";
 import { dateFormatter } from "@Tools/formatter";
 import { getFlatTags } from "@Tools/post";
+import type { MarkdownHeading, MarkdownInstance } from "astro";
 
 interface Props {
   entry: EntryData;

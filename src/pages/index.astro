@@ -1,27 +1,28 @@
 ---
-import Html from "@Components/layout/Html.astro";
 import FeaturedPostLayout from "@Components/layout/FeaturedPostLayout.astro";
+import Html from "@Components/layout/Html.astro";
 import { ALL_SORTED_POSTS, getFlatTags, getPostUrl } from "@Tools/post";
+
 const firstTenPosts = ALL_SORTED_POSTS.slice(0, 10);
 ---
 
 <Html>
-    <div class="featured-posts-container">
-      {
-        firstTenPosts.map((post, index) => (
-          <div class:list={["post", `post-${index}`]}>
-            <FeaturedPostLayout
-              title={post.data.title}
-              date={post.data.date}
-              tag={getFlatTags(post.data.tag)}
-              banner={post.data.banner}
-              summary={post.data.summary || ""}
-              url={getPostUrl(post)}
-            />
-          </div>
-        ))
-      }
-    </div>
+  <div class="featured-posts-container">
+    {
+      firstTenPosts.map((post, index) => (
+        <div class:list={["post", `post-${index}`]}>
+          <FeaturedPostLayout
+            title={post.data.title}
+            date={post.data.date}
+            tag={getFlatTags(post.data.tag)}
+            banner={post.data.banner}
+            summary={post.data.summary || ""}
+            url={getPostUrl(post)}
+          />
+        </div>
+      ))
+    }
+  </div>
 </Html>
 
 <style scoped>

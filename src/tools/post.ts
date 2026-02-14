@@ -1,7 +1,6 @@
 import type { PostContent, PostYear } from "@Models/GeneralTypes";
-import type { CollectionEntry } from "astro:content";
-
 import { dateFormatter } from "@Tools/formatter";
+import type { CollectionEntry } from "astro:content";
 import { getCollection } from "astro:content";
 import dayjs from "dayjs";
 
