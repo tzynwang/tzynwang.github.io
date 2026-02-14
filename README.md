@@ -1,8 +1,8 @@
-# 普通文組 Normal Reader 2.0
+# 普通文組 Normal Reader 2.2
 
 ## 簡介
 
-這個 repo 是技術部落格[普通文組 2.0](https://tzynwang.github.io/) 的本體，由查理（tzyn.wang🦊gmail.com）維護。
+這個 repo 是技術部落格[普通文組 2.2](https://tzynwang.github.io/) 的本體，由查理（tzyn.wang🦊gmail.com）維護。
 
 ## 快速啟動
 
