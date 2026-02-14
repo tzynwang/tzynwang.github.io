@@ -80,7 +80,7 @@ draft:
 
 ## 延伸閱讀
 
-The Programmer's Brain 一書也有關於[人為何會誤解程式碼](/2023/the-programmers-brain-ch9-avoiding-bad-code-and-cognitive-load)，以及[如何減少被打斷造成的損失](/2023/the-programmers-brain-ch11-the-act-of-writing-code/#%E9%97%9C%E6%96%BC%E8%A2%AB%E6%89%93%E6%93%BE)的討論。雖然目標讀者是工程師，但本書對人的心智活動、認知理解有非常深入淺出的說明，值得一看。
+The Programmer's Brain 一書也有關於[人為何會誤解程式碼](/2023/the-programmers-brain-ch9-avoiding-bad-code-and-cognitive-load#總結)，以及[如何減少被打斷造成的損失](/2023/the-programmers-brain-ch11-the-act-of-writing-code#關於被打擾)的討論。雖然目標讀者是工程師，但本書對人的心智活動、認知理解有非常深入淺出的說明，值得一看。
 
 ## 後記
 
