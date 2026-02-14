@@ -1,24 +1,13 @@
 ---
 import FeaturedPostLayout from "@Components/layout/FeaturedPostLayout.astro";
 import Html from "@Components/layout/Html.astro";
-import { ALL_SORTED_POSTS, getFlatTags, getPostUrl } from "@Tools/post";
+import { ALL_SORTED_POSTS } from "@Tools/post";
 
 const firstTenPosts = ALL_SORTED_POSTS.slice(0, 10);
 ---
 
 <Html>
   <div class="space-y-8">
-    {
-      firstTenPosts.map((post) => (
-        <FeaturedPostLayout
-          title={post.data.title}
-          date={post.data.date}
-          tag={getFlatTags(post.data.tag)}
-          banner={post.data.banner}
-          summary={post.data.summary || ""}
-          url={getPostUrl(post)}
-        />
-      ))
-    }
+    {firstTenPosts.map((post) => <FeaturedPostLayout post={post} />)}
   </div>
 </Html>

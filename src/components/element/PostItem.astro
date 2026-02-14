@@ -1,12 +1,12 @@
 ---
 import Tag from "@Components/element/Tag.astro";
 import { GA4_READ_POST } from "@Models/GeneralModels";
-import type { PostContent } from "@Models/GeneralTypes";
 import { dateFormatter } from "@Tools/formatter";
-import { getFlatTags, getPostUrl } from "@Tools/post";
+import { getFlatTags } from "@Tools/post";
+import type { CollectionEntry } from "astro:content";
 
 interface Props {
-  post: PostContent;
+  post: CollectionEntry<"legacyPosts">;
 }
 
 const { post } = Astro.props;
@@ -14,7 +14,7 @@ const { post } = Astro.props;
 
 <li class="flex flex-col gap-1">
   <a
-    href={`/${getPostUrl(post)}`}
+    href={`/${post.id}`}
     class:list={[GA4_READ_POST, "text-xl text-teal-800 dark:text-teal-300"]}
     >{post.data.title}</a
   >

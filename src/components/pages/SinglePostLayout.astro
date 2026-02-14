@@ -1,15 +1,16 @@
 ---
 import Tag from "@Components/element/Tag.astro";
 import Html from "@Components/layout/Html.astro";
-import type { EntryData } from "@Models/GeneralTypes";
 import { dateFormatter } from "@Tools/formatter";
 import { getFlatTags } from "@Tools/post";
-import type { MarkdownHeading, MarkdownInstance } from "astro";
+import type { MarkdownHeading } from "astro";
+import type { CollectionEntry } from "astro:content";
+import type { AstroComponentFactory } from "astro/runtime/server/index.js";
 
 interface Props {
-  entry: EntryData;
+  entry: CollectionEntry<"legacyPosts">;
   headings: MarkdownHeading[];
-  Content: MarkdownInstance<{}>["Content"];
+  Content: AstroComponentFactory;
 }
 
 const { entry, headings, Content } = Astro.props;
