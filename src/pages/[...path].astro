@@ -1,0 +1,18 @@
+---
+import SinglePostLayout from "@Components/pages/SinglePostLayout.astro";
+import { ALL_SORTED_POSTS } from "@Tools/post";
+
+export function getStaticPaths() {
+  return ALL_SORTED_POSTS.map((entry) => ({
+    // see astro doc >> routing >> rest paramters
+    // https://docs.astro.build/en/guides/routing/#rest-parameters
+    params: { path: `${entry.data.date.getFullYear()}/${entry.slug}` },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content, headings } = await entry.render();
+---
+
+<SinglePostLayout entry={entry} Content={Content} headings={headings} />
