@@ -52,9 +52,10 @@ const { entry, headings, Content } = Astro.props;
     <article
       class:list={[
         "space-y-6",
-        "[&_:is(blockquote)]:border-l-4 [&_:is(blockquote)]:pl-4",
-        "[&_:is(ol)]:list-decimal [&_:is(ol,ul)]:list-inside [&_:is(ul)]:list-disc",
-        "[&_:is(a)]:text-teal-800 dark:[&_:is(a)]:text-teal-300",
+        "[&_blockquote]:border-l-4 [&_blockquote]:pl-4",
+        "[&_:is(ol,ul)]:mx-7 [&_:is(ol,ul)]:leading-7 [&_ol]:list-decimal [&_ul]:list-disc",
+        "[&_a]:text-teal-800 dark:[&_a]:text-teal-300",
+        "[&_li>p]:inline", // for data-footnotes
       ]}
     >
       <Content />
