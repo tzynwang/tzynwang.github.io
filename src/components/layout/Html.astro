@@ -1,5 +1,5 @@
 ---
-import { ViewTransitions } from "astro:transitions";
+import { ClientRouter } from "astro:transitions";
 import GeneralLayout from "@Components/layout/GeneralLayout.astro";
 import { AVATAR, TITLE, DESCRIPTION } from "@Models/GeneralModels";
 import "@Styles/global.css";
@@ -20,7 +20,7 @@ const gTagId = import.meta.env.PUBLIC_GTAG_ID;
 
 <html lang="en">
   <head>
-    <ViewTransitions />
+    <ClientRouter />
     <!-- Google Tag Manager -->
     <script is:inline define:vars={{ ga4Id }}>
       (function (w, d, s, l, i) {
