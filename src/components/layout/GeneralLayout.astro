@@ -11,10 +11,10 @@ import Footer from "@Components/element/Footer.astro";
     <a href="/rss.xml">RSS</a>
   </nav>
 </section>
-<section class="main-content">
+<main class="main-content">
   <slot />
   <Footer />
-</section>
+</main>
 
 <style scoped>
   .side-content,
@@ -24,6 +24,7 @@ import Footer from "@Components/element/Footer.astro";
 
   nav {
     display: flex;
+    align-items: center;
     gap: 16px;
   }
 
