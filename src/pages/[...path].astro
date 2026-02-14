@@ -4,7 +4,7 @@ import { ALL_SORTED_POSTS } from "@Tools/post";
 
 export function getStaticPaths() {
   return ALL_SORTED_POSTS.map((entry) => ({
-    // see astro doc >> routing >> rest paramters
+    // see astro doc >> routing >> rest parameters
     // https://docs.astro.build/en/guides/routing/#rest-parameters
     params: { path: `${entry.data.date.getFullYear()}/${entry.slug}` },
     props: { entry },
