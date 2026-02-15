@@ -1,13 +1,14 @@
-import dayJS from "dayjs";
-import timezone from "dayjs/plugin/timezone";
-import utc from "dayjs/plugin/utc";
-
-dayJS.extend(utc);
-dayJS.extend(timezone);
-
 export function dateFormatter(d: Date) {
-  // 使用 +0 UTC 是因為 Astro 讀到日期時會自動轉成 ISO 日期
-  // 比如台灣本地時間 2023-08-09 19:52:24 直接變成 2023-08-09T19:52:24.000Z
-  // 只好設定時區為 UTC
-  return dayJS(d).tz("UTC").format("YYYY-MM-DD HH:mm");
+  return d.toLocaleString(
+    "sv-SE", // Swedish (Sweden) for YYYY-MM-DD
+    {
+      hour12: false,
+      timeZone: "UTC", // 因為 `2023-08-09 19:52:24` 讀進來會邊成 `2023-08-09T19:52:24.000Z` 故指定時區為 UTC 補回時差
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+      hour: "2-digit",
+      minute: "2-digit",
+    },
+  );
 }
