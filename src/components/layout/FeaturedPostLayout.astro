@@ -1,24 +1,31 @@
 ---
 import Tag from "@Components/element/Tag.astro";
 import { GA4_READ_POST } from "@Models/GeneralModels";
-import type { Post } from "@Models/GeneralTypes";
 import { dateFormatter } from "@Tools/formatter";
+import { getFlatTags } from "@Tools/post";
+import type { CollectionEntry } from "astro:content";
 
-interface Props extends Post {
-  url?: string;
+interface Props {
+  post: CollectionEntry<"legacyPosts">;
 }
 
-const { title, date, tag, banner, summary, url } = Astro.props;
+const { post } = Astro.props;
 ---
 
 <section class="space-y-2">
-  <img src={banner} alt="" class="block aspect-video w-full object-cover" />
+  <img
+    src={post.data.banner}
+    alt=""
+    class="block aspect-video w-full object-cover"
+  />
   <h2 class="relative text-teal-800 dark:text-teal-300">
-    {title}<a href={url} class:list={[GA4_READ_POST, "absolute inset-0"]}></a>
+    {post.data.title}<a
+      href={post.id}
+      class:list={[GA4_READ_POST, "absolute inset-0"]}></a>
   </h2>
-  <time class="block">{dateFormatter(date)}</time>
+  <time class="block">{dateFormatter(post.data.date)}</time>
   <nav class="flex items-center gap-2">
-    {tag.map((tag) => <Tag tag={tag}>{tag}</Tag>)}
+    {getFlatTags(post.data.tag).map((tag) => <Tag tag={tag}>{tag}</Tag>)}
   </nav>
-  <p set:html={summary} />
+  <p set:html={post.data.summary} />
 </section>

@@ -1,71 +1,20 @@
-import type { PostContent, PostYear } from "@Models/GeneralTypes";
 import { dateFormatter } from "@Tools/formatter";
 import type { CollectionEntry } from "astro:content";
 import { getCollection } from "astro:content";
-import dayjs from "dayjs";
-
-function getThisYear() {
-  return dayjs().year();
-}
-
-function getYearOfPost(date: Date) {
-  return dayjs(date).year();
-}
-
-export function getPostUrl(post: PostContent) {
-  return `${getYearOfPost(post.data.date)}/${post.slug}`;
-}
-
-function getAllYears() {
-  const startYear = 2021;
-  const thisYear = getThisYear();
-  const years = Array.from(
-    { length: thisYear - startYear + 1 },
-    (_, index) => startYear + index,
-  );
-  return years;
-}
-
-/** Filter posts with `draft: true` only when building for production */
-export function filterOutDraft(post: CollectionEntry<PostYear>) {
-  return import.meta.env.PROD ? post.data.draft !== true : true;
-}
-
-export async function getPublishedPostsOfThisYear(dirYear: PostYear) {
-  const blogEntries = await getCollection(dirYear, (post) =>
-    filterOutDraft(post),
-  );
-  return blogEntries.map((entry) => ({
-    params: { slug: entry.slug },
-    props: { entry },
-  }));
-}
 
 async function getAllPosts() {
-  const years = getAllYears();
-  let allPosts = [];
-  for (const year of years) {
-    const posts = await getCollection(year.toString() as PostYear, (post) =>
-      filterOutDraft(post),
-    );
-    allPosts.push(posts);
-  }
-  return allPosts.flat();
-}
-
-function sortPostByDate(posts: PostContent[]) {
-  return posts.sort(
-    (a, b) => dayjs(b.data.date).valueOf() - dayjs(a.data.date).valueOf(),
-  );
+  return await getCollection("legacyPosts");
 }
 
 // @ts-ignore
-export const ALL_SORTED_POSTS = sortPostByDate(await getAllPosts());
+export const ALL_SORTED_POSTS = (await getAllPosts()).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
+);
 
-function getPostRss(posts: PostContent[]) {
+function getPostRss(posts: CollectionEntry<"legacyPosts">[]) {
   return posts.map((p) => ({
     title: p.data.title,
-    link: `${p.collection}/${p.slug}` || "",
+    link: p.id,
     description: p.data.summary || "",
     pubDate: new Date(dateFormatter(p.data.date)),
   }));
@@ -83,14 +32,16 @@ export function getFlatTags(tags: string[][]) {
   return tags.flat(2);
 }
 
-export function groupPostByYear(posts: PostContent[]) {
-  const yearsMap: Record<string, PostContent[]> = {};
-  posts.forEach((post) => {
-    const y = dayjs(post.data.date).format("YYYY");
-    if (!yearsMap[y]) {
-      yearsMap[y] = [];
-    }
-    yearsMap[y].push(post);
-  });
-  return yearsMap;
+export function groupPostByYear(posts: CollectionEntry<"legacyPosts">[]) {
+  return posts.reduce<Record<string, CollectionEntry<"legacyPosts">[]>>(
+    (acc, post) => {
+      const year = new Date(post.data.date).getFullYear();
+      if (!acc[year]) {
+        acc[year] = [];
+      }
+      acc[year].push(post);
+      return acc;
+    },
+    {},
+  );
 }

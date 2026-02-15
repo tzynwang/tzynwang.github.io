@@ -11,7 +11,7 @@ const sortYears = Object.keys(groupByYearPosts).sort(
 
 <Html>
   {
-    sortYears.map((year, i) => (
+    sortYears.map((year) => (
       <section>
         <h2>
           {year}（計{groupByYearPosts[year].length}篇）
