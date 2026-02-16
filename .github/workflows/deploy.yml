@@ -25,6 +25,8 @@ jobs:
         env:
           PUBLIC_GA4_ID: ${{ vars.PUBLIC_GA4_ID }}
           PUBLIC_GTAG_ID: ${{ vars.PUBLIC_GTAG_ID }}
+          PUBLIC_GISCUS_REPO_ID: ${{ vars.PUBLIC_GISCUS_REPO_ID }}
+          PUBLIC_GISCUS_CATEGORY_ID: ${{ vars.PUBLIC_GISCUS_CATEGORY_ID }}
   deploy:
     needs: build
     runs-on: ubuntu-latest

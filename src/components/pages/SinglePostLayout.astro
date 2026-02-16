@@ -14,6 +14,8 @@ interface Props {
 }
 
 const { entry, headings, Content } = Astro.props;
+const giscusRepoId = import.meta.env.PUBLIC_GISCUS_REPO_ID;
+const giscusCategoryId = import.meta.env.PUBLIC_GISCUS_CATEGORY_ID;
 ---
 
 <Html
@@ -65,4 +67,20 @@ const { entry, headings, Content } = Astro.props;
       <Content />
     </article>
   </section>
+  <script
+    src="https://giscus.app/client.js"
+    data-repo="tzynwang/tzynwang.github.io"
+    data-repo-id={giscusRepoId}
+    data-category="Ideas"
+    data-category-id={giscusCategoryId}
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="preferred_color_scheme"
+    data-lang="zh-TW"
+    data-loading="lazy"
+    crossorigin="anonymous"
+    async></script>
 </Html>
