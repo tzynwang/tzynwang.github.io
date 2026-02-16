@@ -56,7 +56,10 @@ const { entry, headings, Content } = Astro.props;
         "[&_blockquote]:border-l-4 [&_blockquote]:pl-4",
         "[&_:is(ol,ul)]:mx-7 [&_:is(ol,ul)]:leading-7 [&_ol]:list-decimal [&_ul]:list-disc",
         "[&_a]:text-teal-800 dark:[&_a]:text-teal-300",
-        "[&_li>p]:inline", // for data-footnotes
+        // for inline code (parts that do not belong to shiki)
+        "[&_code]:text-sm [&_code:not(:has(*))]:bg-neutral-900/70 [&_code:not(:has(*))]:px-1 [&_code:not(:has(*))]:py-0.5 [&_code:not(:has(*))]:text-neutral-200 dark:[&_code:not(:has(*))]:bg-neutral-200/70 dark:[&_code:not(:has(*))]:text-neutral-700",
+        // for data-footnotes
+        "[&_li>p]:inline",
       ]}
     >
       <Content />
