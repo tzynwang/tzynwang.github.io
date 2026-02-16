@@ -1,6 +1,9 @@
 @import "tailwindcss";
 
 @media (prefers-color-scheme: dark) {
+  .astro-code {
+    padding: calc(var(--spacing) * 2);
+  }
   .astro-code,
   .astro-code span {
     color: var(--shiki-dark) !important;
