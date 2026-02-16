@@ -19,6 +19,7 @@ npm run dev
 ## 資源出處
 
 - [astro](https://astro.build/)
+- [giscus](https://giscus.app/)
 - [Google Fonts](https://fonts.google.com/)
 - [Squoosh](https://squoosh.app/)
 - [Unsplash](https://unsplash.com/)
