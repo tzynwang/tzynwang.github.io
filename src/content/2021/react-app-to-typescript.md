@@ -204,16 +204,20 @@ typescript: 4.4.4
 ### named export, default export
 
 - If a module defines a **default export**, then you can import that default export by **omitting the curly braces**.
+
   ```javascript
   // foo.js
   export default function foo() {
     console.log("hello!");
   }
   ```
+
   ```javascript
   import foo from "foo";
+
   foo(); // hello!
   ```
+
 - A file can have **no more than one _default_ export**, but it can have **as many _named_ exports as you like**. export default 只能有一個，但 named exports 可以有無數個
 - When you write a **_default_ import**, you can put **any name** you want after `import`. For example, you could write `import Banana from './button.js'` instead and it would still provide you with the same default export.
 - In contrast, with **named imports, the name has to match on both sides**. That’s why they are called _named_ imports!

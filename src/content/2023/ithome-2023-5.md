@@ -48,13 +48,13 @@ src/component
 這個元件唯一的任務，就是引用整個專案中會使用到的其他元件與資料層，個人不會在這裡執行任何額外的邏輯運算任務了。
 
 ```tsx
-import React from "react";
-import { HelmetProvider } from "react-helmet-async";
 import AppRoutes from "@Component/Layer/AppRoutes";
 import Dialog from "@Component/Layer/Dialog";
 import GA4 from "@Component/Layer/GA4";
 import MuiThemeInject from "@Component/Layer/MuiThemeInject";
 import ReduxProvider from "@Component/Layer/ReduxProvider";
+import React from "react";
+import { HelmetProvider } from "react-helmet-async";
 import "@Style/css/global.css";
 import "@Tool/dayjsGlobalSetting";
 
@@ -105,8 +105,8 @@ export default AppEntryPoint;
 這個資料夾負責收納無功能邏輯、僅有排版作用的元件。假設一個 React app 專案大部分的畫面都包含「一個 TopNav 搭配下方的內容區塊」，那麽 `src/component/Layout` 中大概就會有一個叫做 `MainLayout` 的檔案：
 
 ```tsx
-import React, { memo, PropsWithChildren } from "react";
 import TopNav from "@Component/Common/TopNav";
+import React, { memo, PropsWithChildren } from "react";
 import moduleStyle from "./index.module.css";
 
 function MainLayout({ children }: PropsWithChildren): React.ReactElement {

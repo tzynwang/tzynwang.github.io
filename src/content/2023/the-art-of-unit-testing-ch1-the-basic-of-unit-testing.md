@@ -3,7 +3,7 @@ title: 閱讀筆記：The Art of Unit Testing Chapter 1 The basics of unit testi
 date: 2023-12-01 21:12:26
 tag:
   - [Testing]
-banner: /2023/the-art-of-unit-testing-ch1-the-basic-of-unit-testing/roman-mager-5mZ_M06Fc9g-unsplash.jpg 
+banner: /2023/the-art-of-unit-testing-ch1-the-basic-of-unit-testing/roman-mager-5mZ_M06Fc9g-unsplash.jpg
 summary: 此為 The Art of Unit Testing 第一章的閱讀筆記。此章旨在討論單元測試的定義，以及怎樣才算是好的單元測試。
 draft:
 ---
@@ -76,12 +76,12 @@ draft:
 
 ```js
 const sum = (numbers) => {
-  const [a, b] = numbers.split(',');
+  const [a, b] = numbers.split(",");
   const result = parseInt(a) + parseInt(b);
   return result;
 };
 
-sum('2,3'); // 5
+sum("2,3"); // 5
 ```
 
 ### 改變狀態的退出點
@@ -94,13 +94,13 @@ const totalSoFar = () => {
   return total;
 };
 const sum = (numbers) => {
-  const [a, b] = numbers.split(',');
+  const [a, b] = numbers.split(",");
   const result = parseInt(a) + parseInt(b);
   total += result;
   return result;
 };
 
-sum('2,3'); // 5
+sum("2,3"); // 5
 ```
 
 以上程式碼至少要有兩個單元測試覆蓋兩個退出點。

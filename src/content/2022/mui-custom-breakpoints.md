@@ -59,9 +59,9 @@ declare module "@mui/system/createTheme/createBreakpoints" {
 ```ts
 /* theme.ts */
 import { useTheme } from "@mui/material";
-import { ThemeProvider, createTheme } from "@mui/material/styles";
-import useMediaQuery from "@mui/material/useMediaQuery";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 import type { Theme } from "@mui/material/styles";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 const theme = createTheme({
   breakpoints: {
@@ -82,7 +82,7 @@ export { ThemeProvider, theme, useTheme, useMediaQuery, Theme };
 ```tsx
 /* MainAppView.tsx */
 import React, { memo } from "react";
-import { useTheme, useMediaQuery, Theme } from "./theme";
+import { Theme, useMediaQuery, useTheme } from "./theme";
 
 function MainAppView(): React.ReactElement {
   /* States */
@@ -124,7 +124,7 @@ export default memo(MainAppView);
 /* App.tsx */
 import React, { memo } from "react";
 import MainAppView from "./MainAppView";
-import { ThemeProvider, theme } from "./theme";
+import { theme, ThemeProvider } from "./theme";
 
 function App(): React.ReactElement {
   /* Main */

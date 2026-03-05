@@ -82,6 +82,7 @@ startTransition(() => {
 重點：類似在 `app/entry.client.tsx` 的改動，要對 `RemixBrowser` 包覆 `CacheProvider` 與 `ThemeProvider`
 
 ```tsx
+import { PassThrough } from "node:stream";
 import { CacheProvider } from "@emotion/react";
 import createEmotionServer from "@emotion/server/create-instance";
 import { ThemeProvider } from "@mui/material/styles";
@@ -89,7 +90,6 @@ import type { EntryContext } from "@remix-run/node";
 import { createReadableStreamFromReadable } from "@remix-run/node";
 import { RemixServer } from "@remix-run/react";
 import { isbot } from "isbot";
-import { PassThrough } from "node:stream";
 import { renderToPipeableStream } from "react-dom/server";
 import emotionCache from "./mui/createEmotionCache";
 import theme from "./mui/theme";

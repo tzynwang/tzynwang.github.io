@@ -25,8 +25,8 @@ dayjs: 1.11.7
 
 ```ts
 import dayjs from "dayjs";
-import utc from "dayjs/plugin/utc";
 import timezone from "dayjs/plugin/timezone";
+import utc from "dayjs/plugin/utc";
 
 const LOCAL_TIME_ZONE = "Asia/Taipei";
 

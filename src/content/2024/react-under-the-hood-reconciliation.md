@@ -5,7 +5,7 @@ tag:
   - [React]
 banner: /2024/react-under-the-hood-reconciliation/dan-hadar-HMG2ELxyos8-unsplash.jpg
 summary: 此篇筆記整理了 React 官方文件中關於 reconciliation 的相關內容，並順便說明在某些情況下你可能需要指定組件的 props.key 來強制更新畫面。
-draft: 
+draft:
 ---
 
 ## 總結
@@ -88,26 +88,26 @@ React 會從根部（root element）開始比對，結果有三種：
 首先，我們建立一個 `Input` 組件：
 
 ```tsx
-import React, { useState, useId } from 'react';
-import type { HTMLAttributes } from 'react';
+import React, { useId, useState } from "react";
+import type { HTMLAttributes } from "react";
 
-type Props = HTMLAttributes<'Input'> & {
+type Props = HTMLAttributes<"Input"> & {
   label?: string;
 };
 
 export default function Input({ label, placeholder }: Props) {
   /* local state */
-  const [input, setInput] = useState('');
+  const [input, setInput] = useState("");
   const id = useId();
 
   /* main */
   return (
     <div
       style={{
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '8px',
-        margin: '8px auto',
+        display: "flex",
+        flexDirection: "column",
+        gap: "8px",
+        margin: "8px auto",
       }}
     >
       {label && <label htmlFor={id}>{label}</label>}
@@ -117,8 +117,8 @@ export default function Input({ label, placeholder }: Props) {
         value={input}
         placeholder={placeholder}
         style={{
-          width: '80%',
-          padding: '8px 16px',
+          width: "80%",
+          padding: "8px 16px",
         }}
       />
     </div>
@@ -129,8 +129,8 @@ export default function Input({ label, placeholder }: Props) {
 然後在 `App.tsx` 中實作以下邏輯：
 
 ```tsx
-import React, { useState } from 'react';
-import Input from './Input';
+import React, { useState } from "react";
+import Input from "./Input";
 
 export default function App() {
   const [isCheck, setIsCheck] = useState(false);
@@ -192,8 +192,8 @@ export default function App() {
 為了避免局部狀態被保留下來，請為兩個 `Input` 組件加上不同的 `key`：
 
 ```jsx
-import React, { useState } from 'react';
-import Input from './Input';
+import React, { useState } from "react";
+import Input from "./Input";
 
 export default function App() {
   const [isCheck, setIsCheck] = useState(false);

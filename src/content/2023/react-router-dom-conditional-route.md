@@ -32,10 +32,11 @@ react-router-dom: 5.3.4
 - 作為 `React.Suspense` 的 fallback 元件不使用懶載入
 
 ```tsx
-import React, { lazy, Suspense } from "react";
-import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import Loading from "@Component/Page/Loading";
 import env from "@Model/env";
+import React, { lazy, Suspense } from "react";
+import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
+
 const Landing = lazy(() => import("@Component/Page/Landing"));
 const SomePage = lazy(() => import("@Component/Page/SomePage"));
 const DevelopmentOnly = lazy(() => import("@Component/Page/DevelopmentOnly"));

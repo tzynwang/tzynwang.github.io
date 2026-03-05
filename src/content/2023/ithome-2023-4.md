@@ -79,10 +79,11 @@ draft:
 
 ```tsx
 // 第三方套件
-import React from "react";
-import dayjs from "dayjs";
+
 // 專案內元件
 import TopNav from "@Component/common/TopNav";
+import dayjs from "dayjs";
+import React from "react";
 ```
 
 提醒：自定義 `paths` 後，連帶需要在 webpack 中設定 `alias` 才能順利打包，這會在後續介紹到專案 webpack 設定檔時說明。

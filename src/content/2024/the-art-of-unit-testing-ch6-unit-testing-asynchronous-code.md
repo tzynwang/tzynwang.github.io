@@ -385,9 +385,9 @@ export class WebsiteVerifier {
 但是——在為 `class WebsiteVerifier` 寫測試時，我們大可直接根據 `interface FetchAdapter` 實作一個測試專用的 `StubNetworkAdapter` 來控制 `fetchUrlText()` 的回傳結果，進而為所有的情境撰寫對應測試：
 
 ```ts
-import type { FetchAdapter, FetchResult } from "./types";
-import { describe, it, expect } from "@jest/globals";
+import { describe, expect, it } from "@jest/globals";
 import { WebsiteVerifier } from "./index";
+import type { FetchAdapter, FetchResult } from "./types";
 
 class StubNetworkAdapter implements FetchAdapter {
   ok: boolean;

@@ -52,6 +52,7 @@ tag:
     ticket += letters[Math.floor(Math.random() * 26)]; // 隨機挑選letters字串中的字母
     ```
   - 使用`Math.floor(Math.random() * 25) + 1`搭配`String.fromCharCode()`將數字轉換為大寫字母
+
     ```js
     let ticketChar1 = Math.floor(Math.random() * 25) + 1;
     ticketChar1 = String.fromCharCode(64 + ticketChar1);
@@ -59,6 +60,7 @@ tag:
 
     - [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/fromCharCode) `String.fromCharCode()`: returns a string created from the specified sequence of **UTF-16 code units**.
     - [UTF-16 Table](https://asecuritysite.com/coding/asc2)
+
 - 產生四位數字：使用`Math.floor(Math.random() * 10000)`隨機產生 0-9999 的數值，並搭配`.toString().padStart(4, '0')`將未滿四位數的數值補 0
 
 解法（直接包裝為函式）：

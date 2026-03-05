@@ -54,7 +54,7 @@ function TabContainer() {
 使用範例：
 
 ```jsx
-import { useState, useDeferredValue } from "react";
+import { useDeferredValue, useState } from "react";
 import SlowList from "./SlowList.js";
 
 export default function App() {

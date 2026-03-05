@@ -37,7 +37,6 @@ draft:
 /* Packages */
 import webpack from "webpack";
 import WebpackDevServer from "webpack-dev-server";
-
 /* Data */
 import devConfig, {
   devServerConfig,

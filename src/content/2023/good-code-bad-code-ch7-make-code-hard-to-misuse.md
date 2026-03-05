@@ -23,8 +23,8 @@ tag:
 參考以下範例：
 
 ```tsx
-import React, { memo, useState, useCallback, useEffect } from "react";
 import cloneDeep from "lodash";
+import React, { memo, useCallback, useEffect, useState } from "react";
 
 interface InputValue {
   id: string;

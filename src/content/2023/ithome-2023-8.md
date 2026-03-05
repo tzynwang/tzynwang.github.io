@@ -48,7 +48,6 @@ export function resolvePath(file: string) {
 ```ts
 /* Tools */
 import { resolvePath } from "@/tool/resolvePath";
-
 /* Data */
 import tsConfig from "@/tsconfig.json";
 
@@ -152,19 +151,18 @@ const webpackDevelopmentConfig: WebpackConfiguration = {
 
 ```ts
 /* Packages */
-import HtmlWebpackPlugin from "html-webpack-plugin";
-import Webpack from "webpack";
 
 /* Tools */
 import { resolvePath } from "@/tool/resolvePath";
-
+import HtmlWebpackPlugin from "html-webpack-plugin";
+import Webpack from "webpack";
 /* Data */
 import alias from "./data/alias";
 import env from "./data/env";
 import type {
-  WebPackDevServerConfiguration,
-  WebpackConfiguration,
   EnvForStartApp,
+  WebpackConfiguration,
+  WebPackDevServerConfiguration,
 } from "./data/types";
 
 const envForStartApp = env["process.env"] as EnvForStartApp;

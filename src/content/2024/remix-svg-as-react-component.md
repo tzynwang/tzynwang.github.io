@@ -101,8 +101,8 @@ declare module "*.svg?react" {
 這代表這個專案的 .svg 檔有兩種用法。一個是在路徑尾巴加上 `?react` 把 .svg 當成 React 元件用。一個是不加上 `?react` 來載入 .svg 的檔案路徑。參考以下範例：
 
 ```tsx
-import ArrowBack from "~/assets/icons/arrow_back.svg?react";
 import arrowBackSrc from "~/assets/icons/arrow_back.svg";
+import ArrowBack from "~/assets/icons/arrow_back.svg?react";
 
 function IconButton() {
   return (

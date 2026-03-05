@@ -78,14 +78,19 @@ const typeTest: User = { displayName: "user", email: "mail@example.com" };
 在大部分的情況下，以下 require 寫法可無痛轉換成 import 語法：
 
 ```ts
-const fs = require("fs");
-
 import * as fs from "fs";
+
+const fs = require("fs");
 ```
 
 但某些 cjs 模組的 export 方式可能會造成 esm import 語法失效：
 
 ```ts
+////////////////////////////////////////////////////////
+// @filename: smoothie.ts
+
+import * as createBanana from "./fruits";
+
 ////////////////////////////////////////////////////////
 // @filename: fruits.ts
 function createBanana() {
@@ -94,10 +99,7 @@ function createBanana() {
 
 // equivalent to CJS `module.exports = createBanana`
 export = createBanana;
-////////////////////////////////////////////////////////
-// @filename: smoothie.ts
 
-import * as createBanana from "./fruits";
 // 出現錯誤訊息 This module can only be referenced with ECMAScript imports/exports by turning on the 'esModuleInterop' flag and referencing its default export.
 ```
 

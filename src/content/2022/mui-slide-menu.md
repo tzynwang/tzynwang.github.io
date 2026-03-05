@@ -26,6 +26,7 @@ tag:
 - 對 Mui theme 中的各個元件加上 `styleOverrides` 搭配開發時自定義的 css class names 處理排版效果
   - 大多數的 Mui 元件都有支援 `classes` props，搭配各元件的 API 說明即可將自定義的 css classes names 傳入對應的元件層
   - 以 [MuiMenu](https://mui.com/material-ui/api/menu/#css) 為例，其 `classes` props 支援三組 key：root、paper 與 list；亦即在 MuiMenu 的 classes 傳入 `{{ root: '___CustomRootClass___', paper: '___CustomPaperClass___', list: '___CustomListClass__' }}` 的話，最終 MuiMenu 的 css class names 會長這樣：
+
   ```html
   <div
     class="MuiModal-root ___CustomRootClass___ MuiPopover-root MuiMenu-root css-10nakn3-MuiModal-root-MuiPopover-root-MuiMenu-root"
@@ -46,6 +47,7 @@ tag:
   - `___CustomPaperClass___` 與 `MuiMenu-paper` 並列
   - `___CustomListClass__` 與 `MuiMenu-list` 並列
   - 接著就可以在 mui theme 中透過 `styleOverrides` 來進行樣式設定了
+
 - 使用 Mui `useMediaQuery` hook 判定目前的視區是否進入小版狀態，並根據此狀態替換元件的 css class names
 - 套用 Mui `<Slide />` 元件在小版面時做出滑動效果
   - 在「非小版面」的狀態下設定 props `in` 恆常為 `true` 避免滑動發生（確保元件會固定顯示在畫面上）

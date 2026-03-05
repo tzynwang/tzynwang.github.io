@@ -25,6 +25,7 @@ tag:
 - 留意`String + Number`會回傳字串結果
 - `Array.prototype.sort()`預設是字典排序，要進行數字大小排列的話，需傳入 callback function `((a, b) => a - b)`
 - 留意浮點數陷阱
+
   ```js
   0.5 + 0.1 === 0.6; // true
   0.2 + 0.1 === 0.3; // false
@@ -34,6 +35,7 @@ tag:
     - In most programming languages, it is based on the **IEEE 754 standard**. The crux of the problem is that numbers are represented in this format as a whole number times a power of two; rational numbers (such as 0.1, which is 1/10) **whose denominator is not a power of two cannot be exactly represented**.
     - Think about representing 1/3 as a decimal value. It's **impossible to do exactly**! In the same way, 1/10 (decimal 0.1) **cannot be represented exactly in base 2 (binary)** as a "decimal" value; a repeating pattern after the decimal point goes on forever. **The value is not exact**, and therefore you can't do exact math with it using normal floating point methods.
   - [【筆記】Javascript 大數字與浮點數的計算處理 (decimal.js)](https://jsy.tw/blog/1878/javascript-decimal-js/)：Javascript 的數字型態一律為遵守 IEEE 754 規範的 number，採用雙精度儲存（double precision），佔用 64 bit。若整體數字（整數 + 小數）的長度超過 16 ~ 17 位，就會發生數字丟失的問題。
+
 - JS 的 Number 有其極限（[Number.MAX_SAFE_INTEGER](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/MAX_SAFE_INTEGER): `9007199254740991`），超過此範圍請改用`BigInt`或`String`型態來保存資料
 
 ### Hoisting

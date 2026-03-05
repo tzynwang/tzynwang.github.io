@@ -64,12 +64,14 @@ Error: Failed to initialize watch plugin "node_modules/jest-watch-typeahead/file
 ### testing-library/react 基礎語法
 
 - `render(ui, options)`: Render into a container which is appended to `document.body`, return `RenderResult` 把畫面掛載到元件上，也可使用變數接住回傳的 `RenderResult` 並 deconstruct 出 container 來使用 `.querySelector()` 等 DOM 操作
+
   ```tsx
   const { container } = render(< Component />);
   container.querySelector(...);
   ```
 
   - Container: The containing DOM node of your rendered Component. This is **a regular DOM node**, so you can call `container.querySelector` etc. to inspect the children.
+
 - `act()`: To prepare a component for assertions, wrap the code rendering it and performing updates inside an · call 在需要對元件執行操作時，可將一連串動作包在 `act(() => {...})` 中
 
 ### 原始碼

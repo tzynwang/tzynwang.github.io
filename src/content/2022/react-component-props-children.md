@@ -24,8 +24,8 @@ tag:
 `children` 由 `React.PropsWithChildren` 提供（且定義為 optional），children 以外的型別定義內容直接傳入 `T` 即可
 
 ```tsx
-import React, { memo } from "react";
 import type { Property } from "csstype";
+import React, { memo } from "react";
 
 type BaseButton = {
   color: Property.Color;
@@ -52,8 +52,8 @@ export default memo(Button);
 參考 DefinitelyTyped 的型別定義文件可得知 `type FC<P = {}> = FunctionComponent<P>`，兩者可互換
 
 ```tsx
-import React from "react";
 import type { Property } from "csstype";
+import React from "react";
 
 type ButtonProps = {
   color: Property.Color;

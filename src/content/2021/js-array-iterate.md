@@ -199,6 +199,7 @@ let function = (item) => console.log(item)
 - 預設參數為 1
 - 其他應用（[參考 MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/flat#examples)）：
   - 參數傳入`Infinity`的話，陣列中任何深度的巢狀陣列全部都會被扁平化
+
   ```js
   const arr = [1, 2, [3, 4, [5, 6, [7, 8, [9, 10]]]]];
   arr.flat(Infinity);
@@ -206,6 +207,7 @@ let function = (item) => console.log(item)
   ```
 
   - 可以拿來去除陣列中的空位
+
   ```js
   const arr = [1, 2, , 4, 5];
   arr.flat();

@@ -74,14 +74,14 @@ APP_PORT=3000
 
 ```ts
 /* Packages */
-import dotenv from "dotenv";
 import {
-  setDevelopmentEnvObject,
-  setProductionEnvObject,
+  getEnvsForDefineConfig,
   getValidatedDevelopmentEnv,
   getValidatedProductionEnv,
-  getEnvsForDefineConfig,
+  setDevelopmentEnvObject,
+  setProductionEnvObject,
 } from "@/tool/processEnvValidate";
+import dotenv from "dotenv";
 import type { GetValidatedProcessEnv } from "./types";
 
 /* Functions */
@@ -122,9 +122,9 @@ export default validatedProcessEnv;
 #### config/data/types.d.ts
 
 ```ts
+import type { EnvForBuildApp, EnvForStartApp } from "@/tool/processEnvValidate";
 import type { Configuration as WebpackConfiguration } from "webpack";
 import type { Configuration as WebPackDevServerConfiguration } from "webpack-dev-server";
-import type { EnvForStartApp, EnvForBuildApp } from "@/tool/processEnvValidate";
 
 export type GetValidatedProcessEnv = {
   "process.env": EnvForStartApp | EnvForBuildApp;
@@ -152,8 +152,8 @@ export type {
 
 ```ts
 /* Packages */
-import { enums, nonempty, string, object, assert, Infer } from "superstruct";
 import url from "@/tool/urlValidate";
+import { assert, enums, Infer, nonempty, object, string } from "superstruct";
 import type { StructError } from "superstruct";
 
 /* Data */
@@ -251,7 +251,7 @@ export function getEnvsForDefineConfig(envs: ValidatedEnv) {
 superstruct 有提供[自訂驗證格式](https://docs.superstructjs.org/guides/02-validating-data#custom-values)的功能，而 `./tool/urlValidate` 的任務就是負責「檢查傳入的值是否為有效的 url 格式」：
 
 ```ts
-import { Struct, define } from "superstruct";
+import { define, Struct } from "superstruct";
 
 export function isUrl(value: unknown) {
   if (typeof value !== "string" && !(value instanceof URL)) {
@@ -299,13 +299,12 @@ export default urlSuperstructValidate;
 ```ts
 /* Packages */
 import Webpack from "webpack";
-
 /* Data */
 import env from "./data/env";
 import type {
-  WebPackDevServerConfiguration,
-  WebpackConfiguration,
   EnvForStartApp,
+  WebpackConfiguration,
+  WebPackDevServerConfiguration,
 } from "./data/types";
 
 const envForStartApp = env["process.env"] as EnvForStartApp;

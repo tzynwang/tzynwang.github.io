@@ -161,7 +161,7 @@ export default function App() {
   }
 
   body {
-    @apply bg-background font-sans text-foreground antialiased;
+    @apply bg-background text-foreground font-sans antialiased;
   }
 }
 

@@ -5,7 +5,7 @@ tag:
   - [React]
 banner: /2024/react-under-the-hood-components-elements-and-instances/luis-aguila-xLvIcAYuuMQ-unsplash.jpg
 summary: 你知道嗎？對 React 來說，組件（components）、組件實例（components instances）和元素（elements）這三者是不同的東西唷 🌚
-draft: 
+draft:
 ---
 
 ## 元素不是組件
@@ -32,7 +32,7 @@ class Form extends TraditionalObjectOrientedView {
       // Form is not yet submitted. Create the button!
       this.button = new Button({
         children: buttonText,
-        color: 'blue',
+        color: "blue",
       });
       this.el.appendChild(this.button.el);
     }
@@ -51,7 +51,7 @@ class Form extends TraditionalObjectOrientedView {
 
     if (isSubmitted && !this.message) {
       // Form was submitted. Show the success message!
-      this.message = new Message({ text: 'Success!' });
+      this.message = new Message({ text: "Success!" });
       this.el.appendChild(this.message.el);
     }
   }
@@ -194,7 +194,7 @@ const Form = ({ isSubmitted, buttonText }) => {
     return {
       type: Message,
       props: {
-        text: 'Success!',
+        text: "Success!",
       },
     };
   }
@@ -204,7 +204,7 @@ const Form = ({ isSubmitted, buttonText }) => {
     type: Button,
     props: {
       children: buttonText,
-      color: 'blue',
+      color: "blue",
     },
   };
 };

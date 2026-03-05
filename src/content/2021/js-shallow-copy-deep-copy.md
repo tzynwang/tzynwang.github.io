@@ -16,6 +16,7 @@ tag:
 
 - 將基本類別的資料從一個變數「賦值」到另外一個變數的時候，傳遞的是「值」本身（pass by value）
 - 參考以下程式碼，在將`bag`的值`apples`賦予`pocket`時，傳遞給`pocket`的是`bag`的值（`apples`）
+
   ```js
   let bag = "apples";
   let pocket = bag;

@@ -5,7 +5,7 @@ tag:
   - [React]
 banner: /2024/react-19-apis/justus-menke-hwHJrWIh5SM-unsplash.jpg
 summary: 此篇筆記記錄了 React 19 預計提供的新 api 與 props 功能。
-draft: 
+draft:
 ---
 
 提醒：此篇筆記整理了 [React 19 Beta](https://react.dev/blog/2024/04/25/react-19) 中關於 api 與 props 的改動，但不是一份 100% 詳盡的翻譯與解說文，我只記錄了自認需要關注的內容。如果你想了解 React 19 預計要提供的所有改動，請務必閱讀官方文件。
@@ -17,7 +17,7 @@ draft:
 讀取 Promise：
 
 ```jsx
-import { use } from 'react';
+import { use } from "react";
 
 function Comments({ commentsPromise }) {
   // `use` will suspend until the promise resolves.
@@ -39,8 +39,8 @@ function Page({ commentsPromise }) {
 讀取 Context：
 
 ```jsx
-import { use } from 'react';
-import ThemeContext from './ThemeContext';
+import { use } from "react";
+import ThemeContext from "./ThemeContext";
 
 function Heading({ children }) {
   if (children == null) {
@@ -68,7 +68,8 @@ function Heading({ children }) {
 
 ```jsx
 // before
-import { forwardRef } from 'react';
+import { forwardRef } from "react";
+
 const MyInput = forwardRef(function MyInput(props, ref) {
   return <input placeholder={placeholder} ref={ref} />;
 });
@@ -99,7 +100,7 @@ function MyInput({ placeholder, ref }) {
 如標題以及以下範例所示，語法從原本的 `<ThemeContext.Provider>` 簡化為 `<ThemeContext>`。
 
 ```jsx
-const ThemeContext = createContext('');
+const ThemeContext = createContext("");
 
 function App({ children }) {
   return <ThemeContext value="dark">{children}</ThemeContext>;
@@ -164,14 +165,14 @@ function ComponentTwo() {
 `react-dom` 追加數種可以預先載入資源的 api：
 
 ```jsx
-import { prefetchDNS, preconnect, preload, preinit } from 'react-dom';
+import { preconnect, prefetchDNS, preinit, preload } from "react-dom";
 
 function MyComponent() {
-  preinit('https://.../path/to/some/script.js', { as: 'script' }); // loads and executes this script eagerly
-  preload('https://.../path/to/font.woff', { as: 'font' }); // preloads this font
-  preload('https://.../path/to/stylesheet.css', { as: 'style' }); // preloads this stylesheet
-  prefetchDNS('https://...'); // when you may not actually request anything from this host
-  preconnect('https://...'); // when you will request something but aren't sure what
+  preinit("https://.../path/to/some/script.js", { as: "script" }); // loads and executes this script eagerly
+  preload("https://.../path/to/font.woff", { as: "font" }); // preloads this font
+  preload("https://.../path/to/stylesheet.css", { as: "style" }); // preloads this stylesheet
+  prefetchDNS("https://..."); // when you may not actually request anything from this host
+  preconnect("https://..."); // when you will request something but aren't sure what
 }
 ```
 

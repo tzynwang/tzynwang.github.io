@@ -19,8 +19,8 @@ tag:
 實作上的邏輯非常簡單，僅是「偵測到 `compositionstart` 時，暫停驗證行為；反之當輸入完成（偵測到 `compositionend` 事件後），再透過 `String.prototype.match()` 來判定輸入的內容是否有效。
 
 ```tsx
-import React, { memo, useRef, useState, useEffect } from "react";
 import TextField from "@mui/material/TextField";
+import React, { memo, useEffect, useRef, useState } from "react";
 
 // INFO: 定義好有效字元的 regex，以下內容是允許「所有的中文字元」
 const VALID_CHARS_REGEX =

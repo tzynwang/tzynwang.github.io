@@ -15,8 +15,8 @@ draft:
 ### 關於 `DragAndDrop.tsx`
 
 ```tsx
-import { useState } from "react";
 import cn from "classnames";
+import { useState } from "react";
 import "./DragAndDrop.css";
 
 type Props = {
@@ -93,10 +93,10 @@ export default DragAndDrop;
 ### 關於 `App.tsx`
 
 ```tsx
-import { useState, useRef } from "react";
+import { useRef, useState } from "react";
+import classes from "./App.module.css";
 import Container from "./Container";
 import DragAndDrop from "./DragAndDrop";
-import classes from "./App.module.css";
 
 function App() {
   /* State */

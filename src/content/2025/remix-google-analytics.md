@@ -6,7 +6,7 @@ tag:
   - [Remix]
 banner: /2025/remix-google-analytics/it-works-why.jpg
 summary: 早點想到用 import.meta.env 帶入環境變數，事情應該就不會那麼複雜了吧 😶‍🌫️
-draft: 
+draft:
 ---
 
 [時隔一年後](/2024/remix-note-for-developer-from-cra#關於-ga4)再度嘗試，發現可以在 **React Router v7 的 Framework 模式**順利以原生 script 標籤啟動 Google Analytics (gtag) 了 ~~去年到底是發生了什麼呢~~。總之紀錄並分享一下做法。
@@ -39,7 +39,7 @@ draft:
               `,
     }}
   />
-</>;
+</>
 ```
 
 新增 script 後的 `function Layout` 會長得像這樣：

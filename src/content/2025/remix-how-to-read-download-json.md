@@ -18,8 +18,8 @@ draft:
 2. 使用 `JSON.parse()` 將字串化的檔案內容解析成物件，接著就可以透過 `useLoaderData` 隨意使用了
 
 ```tsx
-import { useLoaderData } from "@remix-run/react";
 import { readFile } from "node:fs/promises";
+import { useLoaderData } from "@remix-run/react";
 
 export async function loader() {
   const fileContent = await readFile("path/to/file.json");
@@ -84,9 +84,9 @@ export default function Index() {
 ```tsx
 import type { ActionFunctionArgs } from "@remix-run/node";
 import { Form, useActionData } from "@remix-run/react";
-import { useEffect } from "react";
-import qs from "qs";
 import { downloadJson } from "~util";
+import qs from "qs";
+import { useEffect } from "react";
 
 export async function action({ request }: ActionFunctionArgs) {
   const text = await request.text();
@@ -211,8 +211,8 @@ export function action() {
 出自 stack overflow [Remix: file download](https://stackoverflow.com/questions/75526237/remix-file-download)：
 
 ```ts
-import { createReadableStreamFromReadable } from "@remix-run/node";
 import { Readable } from "node:stream";
+import { createReadableStreamFromReadable } from "@remix-run/node";
 
 export const loader = async () => {
   const file = createReadableStreamFromReadable(
