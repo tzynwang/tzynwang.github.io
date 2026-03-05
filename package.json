@@ -4,6 +4,7 @@
   "version": "2.5.0",
   "scripts": {
     "dev": "astro dev",
+    "format": "npx prettier --config .prettierrc --write ./src",
     "build": "astro build",
     "preview": "astro preview"
   },
