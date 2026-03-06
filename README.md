@@ -18,8 +18,9 @@ npm run dev
 
 ## 資源出處
 
-- [astro](https://astro.build/)
-- [giscus](https://giscus.app/)
+- [astro](https://astro.build/) as the static site generator
+- [expressive code](https://expressive-code.com/) for handling code blocks in markdown
+- [giscus](https://giscus.app/) for comments
 - [Google Fonts](https://fonts.google.com/)
-- [Squoosh](https://squoosh.app/)
-- [Unsplash](https://unsplash.com/)
+- [Squoosh](https://squoosh.app/) for image optimization
+- [Unsplash](https://unsplash.com/) for post cover images
