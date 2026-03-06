@@ -1,20 +1,20 @@
 import sitemap from "@astrojs/sitemap";
 import tailwindcss from "@tailwindcss/vite";
+import expressiveCode from "astro-expressive-code";
 import { defineConfig } from "astro/config";
 import { SITE } from "./src/models/GeneralModels";
 
 // https://astro.build/config
 export default defineConfig({
   compressHTML: true,
-  integrations: [sitemap()],
+  integrations: [
+    sitemap(),
+    expressiveCode({
+      themes: ["material-theme-darker", "material-theme-lighter"],
+    }),
+  ],
   markdown: {
     remarkRehype: { footnoteLabel: "註解" },
-    shikiConfig: {
-      themes: {
-        light: "github-light",
-        dark: "github-dark",
-      },
-    },
   },
   redirects: {
     "/archives": "/archive",
