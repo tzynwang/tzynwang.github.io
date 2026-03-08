@@ -29,7 +29,7 @@ Display a "zero-width space" character in `.element`'s `::after` pseudo-element.
 
 ## Further reading
 
-Why would I want to [[How to prevent CSS height collapse on empty grid item | insert a "zero-width space"]] to pseudo-elements?
+Why would I want to [[How to prevent CSS height collapse on empty grid item | insert a "zero-width space" | css-prevent-empty-grid-item-height-collapse]] to pseudo-elements?
 
 [^1]: For more information on CSS escape character, see [Using character escapes in markup and CSS](https://www.w3.org/International/questions/qa-escapes.en.html#cssescapes).
 
