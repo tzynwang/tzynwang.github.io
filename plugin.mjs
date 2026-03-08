@@ -1,3 +1,4 @@
+import { findAndReplace } from "mdast-util-find-and-replace";
 import remarkWikiLink from "remark-wiki-link";
 import { visit } from "unist-util-visit";
 
@@ -36,4 +37,34 @@ export function remarkCustomWikiLinkResolver() {
     },
     wikiLinkClassName: "wiki-link",
   });
+}
+
+export function remarkCustomWikiLinkResolver() {
+  return (tree) => {
+    findAndReplace(tree, [
+      // 1. The Regex to match [[Wiki Link]]
+      /\[\[(.*?)\]\]/g,
+      // 2. The replacer function
+      (_match, content) => {
+        const [_wiki, alias, slug] = content
+          .split("|")
+          .map((part) => part.trim());
+        return {
+          type: "link",
+          url: `./${slug}`,
+          children: [
+            {
+              type: "text",
+              value: alias,
+            },
+          ],
+          data: {
+            hProperties: {
+              className: ["custom-anchor-link"],
+            },
+          },
+        };
+      },
+    ]);
+  };
 }
