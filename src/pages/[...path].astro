@@ -5,7 +5,7 @@ import { render } from "astro:content";
 
 export async function getStaticPaths() {
   return ALL_SORTED_POSTS.map((entry) => ({
-    params: { path: entry.id },
+    params: { path: entry.data.slug },
     props: { entry },
   }));
 }
