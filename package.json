@@ -11,9 +11,6 @@
   "dependencies": {
     "@astrojs/rss": "^4.0.0",
     "@astrojs/sitemap": "^3.7.0",
-    "@braindb/astro": "^0.1.1",
-    "@braindb/core": "^0.0.17",
-    "@braindb/remark-wiki-link": "^2.1.0",
     "@ianvs/prettier-plugin-sort-imports": "^4.7.0",
     "@tailwindcss/vite": "^4.1.0",
     "astro": "^5.17.0",
@@ -22,9 +19,7 @@
     "prettier": "^3.8.0",
     "prettier-plugin-astro": "^0.14.0",
     "prettier-plugin-tailwindcss": "^0.7.0",
-    "remark-wiki-link": "^2.0.1",
-    "tailwindcss": "^4.1.0",
-    "unist-util-visit": "^5.1.0"
+    "tailwindcss": "^4.1.0"
   },
   "engines": {
     "node": ">=24"
