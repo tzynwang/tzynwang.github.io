@@ -6,10 +6,11 @@ const legacyPosts = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "./src/content" }),
   schema: z.object({
     title: z.string(),
+    slug: z.string(),
     date: z.date(),
     tag: z.array(z.array(z.string())),
-    banner: z.string().optional(),
-    summary: z.string().optional(),
+    banner: z.string().nullable().optional(),
+    summary: z.string().nullable().optional(),
     draft: z.boolean().nullable().optional(),
   }),
 });
