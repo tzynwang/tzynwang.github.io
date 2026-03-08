@@ -1,12 +1,13 @@
+import type { Link, Root } from "mdast";
 import { findAndReplace } from "mdast-util-find-and-replace";
 
 export function remarkCustomWikiLinkResolver() {
-  return (tree) => {
+  return (tree: Root) => {
     findAndReplace(tree, [
       // to match [[Wiki Link]]
       /\[\[(.*?)\]\]/g,
       // see https://github.com/syntax-tree/mdast-util-find-and-replace?tab=readme-ov-file#replacefunction
-      (_match, content) => {
+      (_match: string, content: string): Link => {
         const [_wiki, alias, slug] = content
           .split("|")
           .map((part) => part.trim());
