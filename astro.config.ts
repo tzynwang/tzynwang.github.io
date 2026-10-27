@@ -1,3 +1,4 @@
+import { unified } from "@astrojs/markdown-remark";
 import sitemap from "@astrojs/sitemap";
 import tailwindcss from "@tailwindcss/vite";
 import expressiveCode from "astro-expressive-code";
@@ -14,7 +15,7 @@ export default defineConfig({
     }),
   ],
   markdown: {
-    remarkRehype: { footnoteLabel: "註解" },
+    processor: unified({ remarkRehype: { footnoteLabel: "註解" } }),
   },
   redirects: {
     "/archives": "/archive",
