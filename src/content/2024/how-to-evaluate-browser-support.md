@@ -64,7 +64,7 @@ User agents must first assign a specified value to each property based on the fo
 
 造成的影響越大且負面，就越不適合「現在」導入該新樣式 ☢️
 
-> On the other end of the spectrum, let’s suppose you work for *ClicSanté,* a tool developed by the Quebec government to allow people to book vaccines, blood tests, and other medical appointments. For something like this, it’s super important that as many people as possible can access the service. We don’t want people to skip getting a vaccine because our web app didn’t work for them!
+> On the other end of the spectrum, let’s suppose you work for _ClicSanté,_ a tool developed by the Quebec government to allow people to book vaccines, blood tests, and other medical appointments. For something like this, it’s super important that as many people as possible can access the service. We don’t want people to skip getting a vaccine because our web app didn’t work for them!
 
 ## 參考文件
 

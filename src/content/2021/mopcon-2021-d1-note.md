@@ -204,8 +204,9 @@ tag:
 
   ```ts
   type T2 = {
-    [Property in keyof Conference as `at${string &
-      Property}`]: Conference[Property];
+    [
+      Property in keyof Conference as `at${string & Property}`
+    ]: Conference[Property];
   };
   // atname: string; atyear: number; atisAddToCalendar: boolean; atprice: number;
   ```

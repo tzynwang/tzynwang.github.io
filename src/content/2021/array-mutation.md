@@ -28,6 +28,7 @@ os: Windows_NT 10.0.18363 win32 x64
 
 - `const` declared variables are not "unchangeable", they just cannot be re-assigned.
   - 不適合以「不能被修改」來理解透過`const`宣告的變數，而是「使用`const`宣告的變數只能被賦值一次」
+
   <script src="https://gist.github.com/tzynwang/bf4ef105981d115a11ae4eb761e34ac8.js"></script>
 
 - It's ill-advised to use `const` with object values, because those values can still be changed even though the variable can't be re-assigned.

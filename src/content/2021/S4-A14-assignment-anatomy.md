@@ -75,6 +75,7 @@ os: Windows_NT 10.0.18363 win32 x64
 - `h1`：加上`transform: rotate(-5deg);`讓文字稍微向右上角抬起，增加一點活躍感；並配合`margin-bottom: 8px;`來製造空間，稍稍推開下方的連結組合
   - 最終並沒有實作 wireframe 中「讓姓名重疊到照片上」的排版，因目前只想到可以使用`position: absolute;`來控制，但這樣會難以處理 RWD 下欄位寬度浮動時的水平置中問題，故暫時放棄此設計
   - 更新：將`<h1>`包在一層`<div>`內，設定`<div>`為`position: absolute;`，然後加上`display: flex;`來控制`<h1>`的水平位置即可
+
   <p class="codepen" data-height="265" data-theme-id="dark" data-default-tab="css,result" data-user="Charlie7779" data-slug-hash="MWJgKrP" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="S4 A14 為客戶打造履歷網頁 bonus track">
   <span>See the Pen <a href="https://codepen.io/Charlie7779/pen/MWJgKrP">
   S4 A14 為客戶打造履歷網頁 bonus track</a> by Charlie (<a href="https://codepen.io/Charlie7779">@Charlie7779</a>)
