@@ -1,16 +1,24 @@
 ---
 import Footer from "@Components/element/Footer.astro";
+
+const NEEDS_HEADING_PATHS = ["/", "/archive", "/tag"];
+const needsHeading = NEEDS_HEADING_PATHS.includes(Astro.url.pathname);
+const Tag = needsHeading ? "h1" : "p";
 ---
 
-<section class="m-6 sm:mx-auto sm:max-w-[60ch]">
-  <h1>普通文組 2.5</h1>
+<header class="m-6 sm:mx-auto sm:max-w-[60ch]">
+  <Tag class={needsHeading ? undefined : "my-6"}
+    ><a
+      href="/"
+      class="text-5xl/16 text-balance text-teal-800 dark:text-teal-300"
+      >普通文組 2.5</a
+    ></Tag
+  >
   <nav class="flex items-center gap-4">
-    <a href="/" class="text-teal-800 dark:text-teal-300">首頁</a>
     <a href="/archive" class="text-teal-800 dark:text-teal-300">全文章歸檔</a>
     <a href="/tag" class="text-teal-800 dark:text-teal-300">以標籤檢視</a>
-    <a href="/rss.xml" class="text-teal-800 dark:text-teal-300">RSS</a>
   </nav>
-</section>
+</header>
 <main class="m-6 sm:mx-auto sm:max-w-[60ch]">
   <slot />
   <Footer />
